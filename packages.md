@@ -24,10 +24,10 @@ Packages are named as "Yii Framework *** Extension".
 |---|---|---|
 | [core](https://github.com/yiisoft/core) | [yiisoft/core](https://packagist.org/packages/yiisoft/core) | Framework core |
 | [yii-console](https://github.com/yiisoft/yii-console) | | Yii console components |
-| [yii-web](https://github.com/yiisoft/yii-web) | | Yii web components | 
-| [yii-rest](https://github.com/yiisoft/yii-rest) | | Yii REST API framework |
-| [yii-app-template](https://github.com/yiisoft/yii-app-template) | | Yii web application template |
-| [yii-app](https://github.com/yiisoft/yii-app) |   | Yii web application template |
+| [yii-web](https://github.com/yiisoft/yii-web) | [yiisoft/yii-web](https://packagist.org/packages/yiisoft/yii-web) | Yii web components | 
+| [yii-rest](https://github.com/yiisoft/yii-rest) | [yiisoft/yii-rest](https://packagist.org/packages/yiisoft/yii-rest) | Yii REST API framework |
+| [yii-app-template](https://github.com/yiisoft/yii-app-template) | - | Yii web application template |
+| [yii-app](https://github.com/yiisoft/yii-app) | [yiisoft/yii-app](https://packagist.org/packages/yiisoft/yii-app)  | Yii web application template |
 
 ## DB drivers
 
