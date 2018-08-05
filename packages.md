@@ -11,7 +11,7 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | [di](https://github.com/yiisoft/di) | | PSR-11 compatible DI container and injector |
 | [cache](https://github.com/yiisoft/cache) | | PSR-16 compatible cache library |
 | [db](https://github.com/yiisoft/db) | | Database abstraction library |
-| [rbac](https://github.com/yiisoft/db) | | Role based access control |
+| [rbac](https://github.com/yiisoft/rbac) | | Role based access control |
 
 ## Yii-dependent packages
 
