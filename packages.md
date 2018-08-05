@@ -67,6 +67,6 @@ Packages are named as "Yii Framework *** Extension".
 | [yii-jquery](https://github.com/yiisoft/yii-jquery)  |   |   |
 | [yii-captcha](https://github.com/yiisoft/yii-captcha)  |   |   |
 | [yii-swiftmailer](https://github.com/yiisoft/yii-swiftmailer)  |   |   |
-| ⚠️ [yii-twig](https://github.com/yiisoft/yii-twig) | | |
+| [yii-twig](https://github.com/yiisoft/yii-twig) | [yiisoft/yii-twig](https://packagist.org/packages/yiisoft/yii-twig) | Yii Framework Twig Extension |
 | [yii-http-client](https://github.com/yiisoft/yii-http-client) | [yiisoft/yii-http-client](https://packagist.org/packages/yiisoft/yii-http-client) | Yii Framework HTTP client extension |
 | [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | [yiisoft/yii-auth-client](https://packagist.org/packages/yiisoft/yii-auth-client) | Yii Framework external authentication via OAuth and OpenID Extension |
