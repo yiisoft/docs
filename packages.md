@@ -8,8 +8,10 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | Repository  | Package name  | Description  |
 |---|---|---|
 | [log](https://github.com/yiisoft/log) |   | PSR-3 compatible logger |
-| [di](https://github.com/yiisoft/di) | | |
-| [cache](https://github.com/yiisoft/cache) | | |
+| [di](https://github.com/yiisoft/di) | | PSR-11 compatible DI container and injector |
+| [cache](https://github.com/yiisoft/cache) | | PSR-16 compatible cache library |
+| [db](https://github.com/yiisoft/db) | | Database abstraction library |
+| [rbac](https://github.com/yiisoft/db) | | Role based access control |
 
 ## Yii-dependent packages
 
