@@ -57,8 +57,8 @@ Packages are named as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [yii-debug](https://github.com/yiisoft/yii-debug) |   | Yii debug panel extension    |
-| [yii-gii](https://github.com/yiisoft/yii-gii)     |   | Yii code generator extension |
+| [yii-debug](https://github.com/yiisoft/yii-debug) | [yiisoft/yii-debug](https://packagist.org/packages/yiisoft/yii-debug) | Yii debug panel extension    |
+| [yii-gii](https://github.com/yiisoft/yii-gii)     | [yiisoft/yii-gii](https://packagist.org/packages/yiisoft/yii-gii) | Yii code generator extension |
 
 ## Others
 
