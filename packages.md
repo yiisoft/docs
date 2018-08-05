@@ -10,8 +10,8 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | [log](https://github.com/yiisoft/log) |   | PSR-3 compatible logger |
 | [di](https://github.com/yiisoft/di) | | PSR-11 compatible DI container and injector |
 | [cache](https://github.com/yiisoft/cache) | | PSR-16 compatible cache library |
-| [db](https://github.com/yiisoft/db) | | Database abstraction library |
-| [rbac](https://github.com/yiisoft/rbac) | | Role based access control |
+| ⚠️ [db](https://github.com/yiisoft/db) | | Database abstraction library |
+| ⚠️ [rbac](https://github.com/yiisoft/rbac) | | Role based access control |
 
 ## Yii-dependent packages
 
@@ -30,15 +30,13 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | [yii-jquery](https://github.com/yiisoft/yii-jquery)  |   |   |
 | [yii-captcha](https://github.com/yiisoft/yii-captcha)  |   |   |
 | [yii-swiftmailer](https://github.com/yiisoft/yii-swiftmailer)  |   |   |
-| [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
-| [yii-redis](https://github.com/yiisoft/yii-redis)  |   |   |
-| [yii-imagine](https://github.com/yiisoft/yii-imagine) | | |
-| [yii-twig](https://github.com/yiisoft/yii-twig) | | |
-| [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
-| [yii-faker](https://github.com/yiisoft/yii-faker) | | |
-| [yii-httpclient](https://github.com/yiisoft/yii-httpclient) | | |
-| [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
-| [yii-authclient](https://github.com/yiisoft/yii-authclient) | | |
+| ⚠️ [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
+| ⚠️ [yii-redis](https://github.com/yiisoft/yii-redis)  |   |   |
+| ⚠️ [yii-twig](https://github.com/yiisoft/yii-twig) | | |
+| ⚠️ [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
+| ⚠️ [yii-httpclient](https://github.com/yiisoft/yii-httpclient) | | |
+| ⚠️ [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
+| ⚠️ [yii-authclient](https://github.com/yiisoft/yii-authclient) | | |
 | [yii-oracle](https://github.com/yiisoft/yii-oracle) | | |
 | [yii-mssql](https://github.com/yiisoft/yii-mssql) | | |
 | [yii-maskedinput](https://github.com/yiisoft/yii-maskedinput) | | |
