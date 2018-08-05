@@ -51,7 +51,7 @@ Packages are named as "Yii Framework *** Extension".
 |---|---|---|
 | [yii-boostrap3](https://github.com/yiisoft/yii-bootstrap3) | | |
 | [yii-bootstrap4](https://github.com/yiisoft/yii-bootstrap4) |  | |
-| [yii-maskedinput](https://github.com/yiisoft/yii-maskedinput) | | |
+| [yii-masked-input](https://github.com/yiisoft/yii-masked-input) | [yiisoft/yii-masked-input](https://packagist.org/packages/yiisoft/yii-masked-input) | Yii Framework Masked input widget Extension |
 
 ## Tools
 
