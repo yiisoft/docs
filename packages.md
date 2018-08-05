@@ -69,4 +69,4 @@ Packages are named as "Yii Framework *** Extension".
 | [yii-swiftmailer](https://github.com/yiisoft/yii-swiftmailer)  |   |   |
 | ⚠️ [yii-twig](https://github.com/yiisoft/yii-twig) | | |
 | ⚠️ [yii-http-client](https://github.com/yiisoft/yii-http-client) | | |
-| ⚠️ [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | | |
+| [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | [yiisoft/yii-auth-client](https://packagist.org/packages/yiisoft/yii-auth-client) | Yii Framework external authentication via OAuth and OpenID Extension |
