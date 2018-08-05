@@ -31,8 +31,8 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [yii-oracle](https://github.com/yiisoft/yii-oracle) | | |
-| [yii-mssql](https://github.com/yiisoft/yii-mssql) | | |
+| [yii-oracle](https://github.com/yiisoft/yii-oracle) | | Oracle Database support for Yii |
+| [yii-mssql](https://github.com/yiisoft/yii-mssql) | | MSSQL support for Yii |
 
 ## NoSQL
 
