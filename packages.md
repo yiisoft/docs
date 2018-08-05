@@ -33,8 +33,8 @@ Packages are named as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [yii-oracle](https://github.com/yiisoft/yii-oracle) | | Oracle Database support for Yii |
-| [yii-mssql](https://github.com/yiisoft/yii-mssql) | | MSSQL support for Yii |
+| [yii-oracle](https://github.com/yiisoft/yii-oracle) | [yiisoft/yii-oracle](https://packagist.org/packages/yiisoft/yii-oracle) | Oracle Database support for Yii |
+| [yii-mssql](https://github.com/yiisoft/yii-mssql) | [yiisoft/yii-mssql](https://packagist.org/packages/yiisoft/yii-mssql) | MSSQL support for Yii |
 
 ## NoSQL
 
