@@ -43,7 +43,8 @@ Packages are named as "Yii Framework *** Extension".
 | ⚠️ [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
 | ⚠️ [yii-redis](https://github.com/yiisoft/yii-redis)  |   |   |
 | ⚠️ [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
-| ⚠️ [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
+| [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | [yiisoft/yii-elasticsearch](https://packagist.org/packages/yiisoft/yii-elasticsearch) | 
+Yii Framework Elasticsearch Query and ActiveRecord  |
 
 ## Widgets and wrappers
 
