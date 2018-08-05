@@ -22,9 +22,9 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 |---|---|---|
 | [core](https://github.com/yiisoft/core) | | Framework core |
 | [yii-console](https://github.com/yiisoft/yii-console) | | |
-| [yii-web](https://github.com/yiisoft/yii-web) | | | 
-| [yii-rest](https://github.com/yiisoft/yii-rest) | | |
-| [yii-app-template](https://github.com/yiisoft/yii-app-template) | | |
+| [yii-web](https://github.com/yiisoft/yii-web) | | Yii web components | 
+| [yii-rest](https://github.com/yiisoft/yii-rest) | | Yii REST API framework |
+| [yii-app-template](https://github.com/yiisoft/yii-app-template) | | Yii web application template |
 | [yii-app](https://github.com/yiisoft/yii-app) |   |   |
 
 ## DB drivers
