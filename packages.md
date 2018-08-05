@@ -40,7 +40,7 @@ Packages are named as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| ⚠️ [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
+| [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  | [yiisoft/yii-sphinx](https://packagist.org/packages/yiisoft/yii-sphinx)  | Yii Framework Sphinx full text search engine extension  |
 | [yii-redis](https://github.com/yiisoft/yii-redis)  | [yiisoft/yii-redis](https://packagist.org/packages/yiisoft/yii-redis) | Yii Framework Redis Cache, Session and ActiveRecord extension |
 | [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | [yiisoft/yii-mongodb](https://packagist.org/packages/yiisoft/yii-mongodb)  | Yii Framework MongoDB extension |
 | [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | [yiisoft/yii-elasticsearch](https://packagist.org/packages/yiisoft/yii-elasticsearch) | Yii Framework Elasticsearch Query and ActiveRecord |
