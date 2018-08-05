@@ -27,7 +27,7 @@ Packages are named as "Yii Framework *** Extension".
 | [yii-web](https://github.com/yiisoft/yii-web) | | Yii web components | 
 | [yii-rest](https://github.com/yiisoft/yii-rest) | | Yii REST API framework |
 | [yii-app-template](https://github.com/yiisoft/yii-app-template) | | Yii web application template |
-| [yii-app](https://github.com/yiisoft/yii-app) |   |   |
+| [yii-app](https://github.com/yiisoft/yii-app) |   | Yii web application template |
 
 ## DB drivers
 
