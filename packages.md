@@ -22,7 +22,7 @@ Packages are named as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [core](https://github.com/yiisoft/core) | | Framework core |
+| [core](https://github.com/yiisoft/core) | [yiisoft/core](https://packagist.org/packages/yiisoft/core) | Framework core |
 | [yii-console](https://github.com/yiisoft/yii-console) | | Yii console components |
 | [yii-web](https://github.com/yiisoft/yii-web) | | Yii web components | 
 | [yii-rest](https://github.com/yiisoft/yii-rest) | | Yii REST API framework |
