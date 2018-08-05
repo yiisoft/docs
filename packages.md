@@ -3,6 +3,8 @@
 Since 3.0 Yii is divided into several packages. Packages that do not depend on Yii itself are names as `yiisoft/something`,
 packages that depend on Yii are named `yiisoft/yii-something`.
 
+Packages are named as "Yii Framework *** Extension".
+
 ## General packages
 
 | Repository  | Package name  | Description  |
