@@ -21,7 +21,7 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | Repository  | Package name  | Description  |
 |---|---|---|
 | [core](https://github.com/yiisoft/core) | | Framework core |
-| [yii-console](https://github.com/yiisoft/yii-console) | | |
+| [yii-console](https://github.com/yiisoft/yii-console) | | Yii console components |
 | [yii-web](https://github.com/yiisoft/yii-web) | | Yii web components | 
 | [yii-rest](https://github.com/yiisoft/yii-rest) | | Yii REST API framework |
 | [yii-app-template](https://github.com/yiisoft/yii-app-template) | | Yii web application template |
