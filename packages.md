@@ -16,6 +16,8 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 
 ## Yii-dependent packages
 
+### Framework
+
 | Repository  | Package name  | Description  |
 |---|---|---|
 | [core](https://github.com/yiisoft/core) | | Framework core |
@@ -23,21 +25,46 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | [yii-web](https://github.com/yiisoft/yii-web) | | | 
 | [yii-rest](https://github.com/yiisoft/yii-rest) | | |
 | [yii-app-template](https://github.com/yiisoft/yii-app-template) | | |
+| [yii-app](https://github.com/yiisoft/yii-app) |   |   |
+
+## DB drivers
+
+| Repository  | Package name  | Description  |
+|---|---|---|
+| [yii-oracle](https://github.com/yiisoft/yii-oracle) | | |
+| [yii-mssql](https://github.com/yiisoft/yii-mssql) | | |
+
+## NoSQL
+
+| Repository  | Package name  | Description  |
+|---|---|---|
+| ⚠️ [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
+| ⚠️ [yii-redis](https://github.com/yiisoft/yii-redis)  |   |   |
+| ⚠️ [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
+| ⚠️ [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
+
+## Widgets and wrappers
+
+| Repository  | Package name  | Description  |
+|---|---|---|
+| [yii-boostrap3](https://github.com/yiisoft/yii-bootstrap3) | | |
+| [yii-bootstrap4](https://github.com/yiisoft/yii-bootstrap4) |  | |
+| [yii-maskedinput](https://github.com/yiisoft/yii-maskedinput) | | |
+
+## Tools
+
+| Repository  | Package name  | Description  |
+|---|---|---|
 | [yii-debug](https://github.com/yiisoft/yii-debug) |   | Yii debug panel extension    |
 | [yii-gii](https://github.com/yiisoft/yii-gii)     |   | Yii code generator extension |
-| [yii-boostrap3](https://github.com/yiisoft/yii-bootstrap3) | | |
-| [yii-bootstrap4](https://github.com/yiisoft/yii-bootstrap4) |   |   | 
-| [yii-app](https://github.com/yiisoft/yii-app) |   |   |
+
+## Others
+
+| Repository  | Package name  | Description  |
+|---|---|---|
 | [yii-jquery](https://github.com/yiisoft/yii-jquery)  |   |   |
 | [yii-captcha](https://github.com/yiisoft/yii-captcha)  |   |   |
 | [yii-swiftmailer](https://github.com/yiisoft/yii-swiftmailer)  |   |   |
-| ⚠️ [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  |   |   |
-| ⚠️ [yii-redis](https://github.com/yiisoft/yii-redis)  |   |   |
 | ⚠️ [yii-twig](https://github.com/yiisoft/yii-twig) | | |
-| ⚠️ [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
 | ⚠️ [yii-http-client](https://github.com/yiisoft/yii-http-client) | | |
-| ⚠️ [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
 | ⚠️ [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | | |
-| [yii-oracle](https://github.com/yiisoft/yii-oracle) | | |
-| [yii-mssql](https://github.com/yiisoft/yii-mssql) | | |
-| [yii-maskedinput](https://github.com/yiisoft/yii-maskedinput) | | |
