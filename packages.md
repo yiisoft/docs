@@ -7,7 +7,7 @@ Packages are named as "Yii Framework *** Extension".
 
 ## General packages
 
-| Repository  | Package name  | Description  |
+| Repository  | Package  | Description  |
 |---|---|---|
 | [log](https://github.com/yiisoft/log) | [yiisoft/log](https://packagist.org/packages/yiisoft/log)  | PSR-3 compatible logger |
 | [di](https://github.com/yiisoft/di) | [yiisoft/di](https://packagist.org/packages/yiisoft/di) | PSR-11 compatible DI container and injector |
@@ -31,7 +31,7 @@ Packages are named as "Yii Framework *** Extension".
 
 ## DB drivers
 
-| Repository  | Package name  | Description  |
+| Repository  | Package  | Description  |
 |---|---|---|
 | [yii-oracle](https://github.com/yiisoft/yii-oracle) | [yiisoft/yii-oracle](https://packagist.org/packages/yiisoft/yii-oracle) | Oracle Database support for Yii |
 | [yii-mssql](https://github.com/yiisoft/yii-mssql) | [yiisoft/yii-mssql](https://packagist.org/packages/yiisoft/yii-mssql) | MSSQL support for Yii |
@@ -47,7 +47,7 @@ Packages are named as "Yii Framework *** Extension".
 
 ## Widgets and wrappers
 
-| Repository  | Package name  | Description  |
+| Repository  | Package  | Description  |
 |---|---|---|
 | [yii-boostrap3](https://github.com/yiisoft/yii-bootstrap3) | [yiisoft/yii-bootstrap3](https://packagist.org/packages/yiisoft/yii-bootstrap3) | Yii Framework Bootstrap3 Extension |
 | [yii-bootstrap4](https://github.com/yiisoft/yii-bootstrap4) | [yiisoft/yii-bootstrap4](https://packagist.org/packages/yiisoft/yii-bootstrap4)  | Yii Framework Bootstrap4 Extension |
@@ -55,7 +55,7 @@ Packages are named as "Yii Framework *** Extension".
 
 ## Tools
 
-| Repository  | Package name  | Description  |
+| Repository  | Package  | Description  |
 |---|---|---|
 | [yii-debug](https://github.com/yiisoft/yii-debug) | [yiisoft/yii-debug](https://packagist.org/packages/yiisoft/yii-debug) | Yii debug panel extension    |
 | [yii-gii](https://github.com/yiisoft/yii-gii)     | [yiisoft/yii-gii](https://packagist.org/packages/yiisoft/yii-gii) | Yii code generator extension |
