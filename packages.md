@@ -36,7 +36,7 @@ packages that depend on Yii are named `yiisoft/yii-something`.
 | ⚠️ [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | | |
 | ⚠️ [yii-httpclient](https://github.com/yiisoft/yii-httpclient) | | |
 | ⚠️ [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | | |
-| ⚠️ [yii-authclient](https://github.com/yiisoft/yii-authclient) | | |
+| ⚠️ [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | | |
 | [yii-oracle](https://github.com/yiisoft/yii-oracle) | | |
 | [yii-mssql](https://github.com/yiisoft/yii-mssql) | | |
 | [yii-maskedinput](https://github.com/yiisoft/yii-maskedinput) | | |
