@@ -9,9 +9,9 @@ Packages are named as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [log](https://github.com/yiisoft/log) |   | PSR-3 compatible logger |
-| [di](https://github.com/yiisoft/di) | | PSR-11 compatible DI container and injector |
-| [cache](https://github.com/yiisoft/cache) | | PSR-16 compatible cache library |
+| [log](https://github.com/yiisoft/log) | [yiisoft/log](https://packagist.org/packages/yiisoft/log)  | PSR-3 compatible logger |
+| [di](https://github.com/yiisoft/di) | [yiisoft/di](https://packagist.org/packages/yiisoft/di) | PSR-11 compatible DI container and injector |
+| [cache](https://github.com/yiisoft/cache) | [yiisoft/cache](https://packagist.org/packages/yiisoft/cache) | PSR-16 compatible cache library |
 | ⚠️ [db](https://github.com/yiisoft/db) | | Database abstraction library |
 | ⚠️ [active-record](https://github.com/yiisoft/active-record) | | Active Record
 | ⚠️ [rbac](https://github.com/yiisoft/rbac) | | Role based access control |
