@@ -65,7 +65,7 @@ Packages are named as "Yii Framework *** Extension".
 | Repository  | Package name  | Description  |
 |---|---|---|
 | [yii-jquery](https://github.com/yiisoft/yii-jquery)  |   |   |
-| [yii-captcha](https://github.com/yiisoft/yii-captcha)  | [yiisoft/yii-captcha](https://packagist.org/packages/yiisoft/yii-captcha) |   | Yii Framework CAPTCHA Extension
+| [yii-captcha](https://github.com/yiisoft/yii-captcha)  | [yiisoft/yii-captcha](https://packagist.org/packages/yiisoft/yii-captcha) |   Yii Framework CAPTCHA Extension | 
 | [yii-swift-mailer](https://github.com/yiisoft/yii-swift-mailer)  | [yiisoft/swift-mailer](https://packagist.org/packages/yiisoft/yii-swift-mailer)  | Yii Framework Swift Mailer Extension |
 | [yii-twig](https://github.com/yiisoft/yii-twig) | [yiisoft/yii-twig](https://packagist.org/packages/yiisoft/yii-twig) | Yii Framework Twig Extension |
 | [yii-http-client](https://github.com/yiisoft/yii-http-client) | [yiisoft/yii-http-client](https://packagist.org/packages/yiisoft/yii-http-client) | Yii Framework HTTP client extension |
