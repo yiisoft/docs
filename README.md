@@ -1,2 +1,3 @@
-# docs
-Various Yii-related documentation
+# Various Yii-related documentation
+
+- [Packages](packages.md)
