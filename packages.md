@@ -2,8 +2,8 @@
 
 Since 3.0 Yii is divided into several packages:
 
-- packages that do not depend on Yii itself are named as `yiisoft/something`,
-- packages that depend on Yii are named `yiisoft/yii-something`.
+- packages that *depend* on Yii (`core`) are named `yiisoft/yii-something`,
+- packages that *do not depend* on Yii itself (`core`) are named as `yiisoft/something`.
 
 Extension packages are titled as "Yii Framework *** Extension".
 
@@ -11,6 +11,7 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 | Repository        | Package                   | Description                                      |
 |-------------------|---------------------------|--------------------------------------------------|
+| [core]            | [yiisoft/core]            | Framework core |
 | [log]             | [yiisoft/log]             | [PSR-3] compatible logger |
 | [di]              | [yiisoft/di]              | [PSR-11] compatible DI container and injector |
 | [cache]           | [yiisoft/cache]           | [PSR-16] compatible cache library |
@@ -22,6 +23,7 @@ Extension packages are titled as "Yii Framework *** Extension".
 [PSR-11]:                   https://www.php-fig.org/psr/psr-11
 [PSR-16]:                   https://www.php-fig.org/psr/psr-16
 
+[core]:                     https://github.com/yiisoft/core
 [log]:                      https://github.com/yiisoft/log
 [di]:                       https://github.com/yiisoft/di
 [cache]:                    https://github.com/yiisoft/cache
@@ -29,6 +31,7 @@ Extension packages are titled as "Yii Framework *** Extension".
 [rbac]:                     https://github.com/yiisoft/rbac
 [active-record]:            https://github.com/yiisoft/active-record
 
+[yiisoft/core]:             https://packagist.org/packages/yiisoft/core
 [yiisoft/log]:              https://packagist.org/packages/yiisoft/log
 [yiisoft/di]:               https://packagist.org/packages/yiisoft/di
 [yiisoft/cache]:            https://packagist.org/packages/yiisoft/cache
@@ -73,7 +76,6 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 | Repository  | Package name  | Description  |
 |---|---|---|
-| [core](https://github.com/yiisoft/core) | [yiisoft/core](https://packagist.org/packages/yiisoft/core) | Framework core |
 | [yii-console](https://github.com/yiisoft/yii-console) | [yiisoft/console](https://packagist.org/packages/yiisoft/console) | Yii console components |
 | [yii-web](https://github.com/yiisoft/yii-web) | [yiisoft/yii-web](https://packagist.org/packages/yiisoft/yii-web) | Yii web components | 
 | [yii-rest](https://github.com/yiisoft/yii-rest) | [yiisoft/yii-rest](https://packagist.org/packages/yiisoft/yii-rest) | Yii REST API framework |
