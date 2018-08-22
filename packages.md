@@ -1,20 +1,71 @@
 # Yii packages
 
-Since 3.0 Yii is divided into several packages. Packages that do not depend on Yii itself are names as `yiisoft/something`,
-packages that depend on Yii are named `yiisoft/yii-something`.
+Since 3.0 Yii is divided into several packages:
 
-Packages are named as "Yii Framework *** Extension".
+- packages that do not depend on Yii itself are named as `yiisoft/something`,
+- packages that depend on Yii are named `yiisoft/yii-something`.
+
+Extension packages are titled as "Yii Framework *** Extension".
 
 ## General packages
 
-| Repository  | Package  | Description  |
+| Repository        | Package                   | Description                                      |
+|-------------------|---------------------------|--------------------------------------------------|
+| [log]             | [yiisoft/log]             | [PSR-3] compatible logger |
+| [di]              | [yiisoft/di]              | [PSR-11] compatible DI container and injector |
+| [cache]           | [yiisoft/cache]           | [PSR-16] compatible cache library |
+| [db]              | [yiisoft/db]              | Database abstraction library |
+| [active-record]   | [yiisoft/active-record]   | Active Record
+| [rbac]            | [yiisoft/rbac]            | Role-based access control |
+
+[PSR-3]:                    https://www.php-fig.org/psr/psr-3
+[PSR-11]:                   https://www.php-fig.org/psr/psr-11
+[PSR-16]:                   https://www.php-fig.org/psr/psr-16
+
+[log]:                      https://github.com/yiisoft/log
+[di]:                       https://github.com/yiisoft/di
+[cache]:                    https://github.com/yiisoft/cache
+[db]:                       https://github.com/yiisoft/db
+[rbac]:                     https://github.com/yiisoft/rbac
+[active-record]:            https://github.com/yiisoft/active-record
+
+[yiisoft/log]:              https://packagist.org/packages/yiisoft/log
+[yiisoft/di]:               https://packagist.org/packages/yiisoft/di
+[yiisoft/cache]:            https://packagist.org/packages/yiisoft/cache
+[yiisoft/db]:               https://packagist.org/packages/yiisoft/db
+[yiisoft/rbac]:             https://packagist.org/packages/yiisoft/rbac
+[yiisoft/active-record]:    https://packagist.org/packages/yiisoft/active-record
+
+### DB drivers
+
+| Repository    | Package               | Description  |
+|---------------|-----------------------|--------------------------------|
+| [db-mysql]    | [yiisoft/db-mysql]    | MySQL support for Yii |
+| [db-mssql]    | [yiisoft/db-mssql]    | MSSQL support for Yii |
+| [db-pgsql]    | [yiisoft/db-pgsql]    | PostgreSQL support for Yii |
+| [db-sqlite]   | [yiisoft/db-sqlite]   | SQLite support for Yii |
+| [db-oracle]   | [yiisoft/db-oracle]   | Oracle Database support for Yii |
+
+[db-oracle]:                https://github.com/yiisoft/db-oracle
+[db-mssql]:                 https://github.com/yiisoft/db-mssql
+[db-mysql]:                 https://github.com/yiisoft/db-mysql
+[db-pgsql]:                 https://github.com/yiisoft/db-pgsql
+[db-sqlite]:                https://github.com/yiisoft/db-sqlite
+
+[yiisoft/db-oracle]:        https://packagist.org/packages/yiisoft/db-oracle
+[yiisoft/db-mssql]:         https://packagist.org/packages/yiisoft/db-mssql
+[yiisoft/db-mysql]:         https://packagist.org/packages/yiisoft/db-mysql
+[yiisoft/db-pgsql]:         https://packagist.org/packages/yiisoft/db-pgsql
+[yiisoft/db-sqlite]:        https://packagist.org/packages/yiisoft/db-sqlite
+
+### NoSQL DB drivers
+
+| Repository  | Package name  | Description  |
 |---|---|---|
-| [log](https://github.com/yiisoft/log) | [yiisoft/log](https://packagist.org/packages/yiisoft/log)  | PSR-3 compatible logger |
-| [di](https://github.com/yiisoft/di) | [yiisoft/di](https://packagist.org/packages/yiisoft/di) | PSR-11 compatible DI container and injector |
-| [cache](https://github.com/yiisoft/cache) | [yiisoft/cache](https://packagist.org/packages/yiisoft/cache) | PSR-16 compatible cache library |
-| ⚠️ [db](https://github.com/yiisoft/db) | | Database abstraction library |
-| ⚠️ [active-record](https://github.com/yiisoft/active-record) | | Active Record
-| ⚠️ [rbac](https://github.com/yiisoft/rbac) | | Role based access control |
+| [db-sphinx](https://github.com/yiisoft/db-sphinx)  | [yiisoft/db-sphinx](https://packagist.org/packages/yiisoft/db-sphinx)  | Yii Framework Sphinx full text search engine extension  |
+| [db-redis](https://github.com/yiisoft/db-redis)  | [yiisoft/db-redis](https://packagist.org/packages/yiisoft/db-redis) | Yii Framework Redis Cache, Session and ActiveRecord extension |
+| [db-mongodb](https://github.com/yiisoft/db-mongodb) | [yiisoft/db-mongodb](https://packagist.org/packages/yiisoft/db-mongodb)  | Yii Framework MongoDB extension |
+| [db-elasticsearch](https://github.com/yiisoft/db-elasticsearch) | [yiisoft/db-elasticsearch](https://packagist.org/packages/yiisoft/db-elasticsearch) | Yii Framework Elasticsearch Query and ActiveRecord |
 
 ## Yii-dependent packages
 
@@ -29,21 +80,6 @@ Packages are named as "Yii Framework *** Extension".
 | [yii-app-template](https://github.com/yiisoft/yii-app-template) | - | Yii web application template |
 | [yii-app](https://github.com/yiisoft/yii-app) | [yiisoft/yii-app](https://packagist.org/packages/yiisoft/yii-app)  | Yii web application template |
 
-## DB drivers
-
-| Repository  | Package  | Description  |
-|---|---|---|
-| [yii-oracle](https://github.com/yiisoft/yii-oracle) | [yiisoft/yii-oracle](https://packagist.org/packages/yiisoft/yii-oracle) | Oracle Database support for Yii |
-| [yii-mssql](https://github.com/yiisoft/yii-mssql) | [yiisoft/yii-mssql](https://packagist.org/packages/yiisoft/yii-mssql) | MSSQL support for Yii |
-
-## NoSQL
-
-| Repository  | Package name  | Description  |
-|---|---|---|
-| [yii-sphinx](https://github.com/yiisoft/yii-sphinx)  | [yiisoft/yii-sphinx](https://packagist.org/packages/yiisoft/yii-sphinx)  | Yii Framework Sphinx full text search engine extension  |
-| [yii-redis](https://github.com/yiisoft/yii-redis)  | [yiisoft/yii-redis](https://packagist.org/packages/yiisoft/yii-redis) | Yii Framework Redis Cache, Session and ActiveRecord extension |
-| [yii-mongodb](https://github.com/yiisoft/yii-mongodb) | [yiisoft/yii-mongodb](https://packagist.org/packages/yiisoft/yii-mongodb)  | Yii Framework MongoDB extension |
-| [yii-elasticsearch](https://github.com/yiisoft/yii-elasticsearch) | [yiisoft/yii-elasticsearch](https://packagist.org/packages/yiisoft/yii-elasticsearch) | Yii Framework Elasticsearch Query and ActiveRecord |
 
 ## Widgets and wrappers
 
