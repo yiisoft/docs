@@ -9,15 +9,15 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 ## General packages
 
-| Repository        | Package                   | Description                                      |
-|-------------------|---------------------------|--------------------------------------------------|
-| [core]            | [yiisoft/core]            | Framework core |
-| [log]             | [yiisoft/log]             | [PSR-3] compatible logger |
-| [di]              | [yiisoft/di]              | [PSR-11] compatible DI container and injector |
-| [cache]           | [yiisoft/cache]           | [PSR-16] compatible cache library |
-| [db]              | [yiisoft/db]              | Database abstraction library |
-| [active-record]   | [yiisoft/active-record]   | Active Record
-| [rbac]            | [yiisoft/rbac]            | Role-based access control |
+| Repository            | Package                       | Description                                      |
+|-----------------------|-------------------------------|--------------------------------------------------|
+| [core]                | [yiisoft/core]                | Framework core |
+| [log]                 | [yiisoft/log]                 | [PSR-3] compatible logger |
+| [di]                  | [yiisoft/di]                  | [PSR-11] compatible DI container and injector |
+| [cache]               | [yiisoft/cache]               | [PSR-16] compatible cache library |
+| [db]                  | [yiisoft/db]                  | Database abstraction library |
+| [active-record]       | [yiisoft/active-record]       | Active Record
+| [rbac]                | [yiisoft/rbac]                | Role-based access control |
 
 [PSR-3]:                    https://www.php-fig.org/psr/psr-3
 [PSR-11]:                   https://www.php-fig.org/psr/psr-11
@@ -41,13 +41,13 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 ### DB drivers
 
-| Repository    | Package               | Description  |
-|---------------|-----------------------|--------------------------------|
-| [db-mysql]    | [yiisoft/db-mysql]    | MySQL support for Yii |
-| [db-mssql]    | [yiisoft/db-mssql]    | MSSQL support for Yii |
-| [db-pgsql]    | [yiisoft/db-pgsql]    | PostgreSQL support for Yii |
-| [db-sqlite]   | [yiisoft/db-sqlite]   | SQLite support for Yii |
-| [db-oracle]   | [yiisoft/db-oracle]   | Oracle Database support for Yii |
+| Repository            | Package                       | Description                    |
+|-----------------------|-------------------------------|--------------------------------|
+| [db-mysql]            | [yiisoft/db-mysql]            | MySQL support for Yii |
+| [db-mssql]            | [yiisoft/db-mssql]            | MSSQL support for Yii |
+| [db-pgsql]            | [yiisoft/db-pgsql]            | PostgreSQL support for Yii |
+| [db-sqlite]           | [yiisoft/db-sqlite]           | SQLite support for Yii |
+| [db-oracle]           | [yiisoft/db-oracle]           | Oracle Database support for Yii |
 
 [db-oracle]:                https://github.com/yiisoft/db-oracle
 [db-mssql]:                 https://github.com/yiisoft/db-mssql
@@ -64,11 +64,21 @@ Extension packages are titled as "Yii Framework *** Extension".
 ### NoSQL DB drivers
 
 | Repository  | Package name  | Description  |
-|---|---|---|
-| [db-sphinx](https://github.com/yiisoft/db-sphinx)  | [yiisoft/db-sphinx](https://packagist.org/packages/yiisoft/db-sphinx)  | Yii Framework Sphinx full text search engine extension  |
-| [db-redis](https://github.com/yiisoft/db-redis)  | [yiisoft/db-redis](https://packagist.org/packages/yiisoft/db-redis) | Yii Framework Redis Cache, Session and ActiveRecord extension |
-| [db-mongodb](https://github.com/yiisoft/db-mongodb) | [yiisoft/db-mongodb](https://packagist.org/packages/yiisoft/db-mongodb)  | Yii Framework MongoDB extension |
-| [db-elasticsearch](https://github.com/yiisoft/db-elasticsearch) | [yiisoft/db-elasticsearch](https://packagist.org/packages/yiisoft/db-elasticsearch) | Yii Framework Elasticsearch Query and ActiveRecord |
+|-----------------------|-------------------------------|---|
+| [db-sphinx]           | [yiisoft/db-sphinx]           | Yii Framework Sphinx full text search engine extension  |
+| [db-redis]            | [yiisoft/db-redis]            | Yii Framework Redis Cache, Session and ActiveRecord extension |
+| [db-mongodb]          | [yiisoft/db-mongodb]          | Yii Framework MongoDB extension |
+| [db-elasticsearch]    | [yiisoft/db-elasticsearch]    | Yii Framework Elasticsearch Query and ActiveRecord |
+
+[db-sphinx]:                https://github.com/yiisoft/db-sphinx
+[db-redis]:                 https://github.com/yiisoft/db-redis
+[db-mongodb]:               https://github.com/yiisoft/db-mongodb
+[db-elasticsearch]:         https://github.com/yiisoft/db-elasticsearch
+
+[yiisoft/db-sphinx]:        https://packagist.org/packages/yiisoft/db-sphinx
+[yiisoft/db-redis]:         https://packagist.org/packages/yiisoft/db-redis
+[yiisoft/db-mongodb]:       https://packagist.org/packages/yiisoft/db-mongodb
+[yiisoft/db-elasticsearch]: https://packagist.org/packages/yiisoft/db-elasticsearch
 
 ## Yii-dependent packages
 
