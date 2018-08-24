@@ -1,29 +1,37 @@
-# Yii packages
+# Yii Packages
 
-Since 3.0 Yii is divided into several packages:
+Since version 3.0 Yii is divided into several packages following these agreements:
 
-- packages that *depend* on Yii (`core`) are named `yiisoft/yii-something`,
-- packages that *do not depend* on Yii itself (`core`) are named as `yiisoft/something`.
+- Yii Framework and Extensions:
+    - *depend* on Yii (`yii-core`)
+    - named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:
+        - application bases: `yii-base-web`, `yii-base-api`
+        - modules: `yii-module-users`, `yii-module-pages`
+        - themes: `yii-theme-adminlte`, `yii-theme-hyde`
+        - widgets: `yii-widget-datepicker`
+        - and so on
+    - titled as "Yii Framework ... Extension"
+- Yii Libraries:
+    - *do not depend* on Yii itself (`yii-core`)
+    - can be used outside of Yii Framework
+    - named as `yiisoft/something` without yii-prefix
+    - titled as "Yii ... Library"
 
-Extension packages are titled as "Yii Framework *** Extension".
+## Yii Libraries
 
-## General packages
-
-| Repository            | Package                       | Description                                      |
-|-----------------------|-------------------------------|--------------------------------------------------|
-| [core]                | [yiisoft/core]                | Framework core |
-| [log]                 | [yiisoft/log]                 | [PSR-3] compatible logger |
-| [di]                  | [yiisoft/di]                  | [PSR-11] compatible DI container and injector |
-| [cache]               | [yiisoft/cache]               | [PSR-16] compatible cache library |
-| [db]                  | [yiisoft/db]                  | Database abstraction library |
-| [active-record]       | [yiisoft/active-record]       | Active Record
-| [rbac]                | [yiisoft/rbac]                | Role-based access control |
+| Repository            | Package                       | Title                                 | Description                                   |
+|-----------------------|-------------------------------|---------------------------------------|-----------------------------------------------|
+| [log]                 | [yiisoft/log]                 | Yii Logging Library                   | [PSR-3] compatible logger                     |
+| [di]                  | [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector |
+| [cache]               | [yiisoft/cache]               | Yii Caching Library                   | [PSR-16] compatible cache                     |
+| [db]                  | [yiisoft/db]                  | Yii Database Abstraction Library      | |
+| [active-record]       | [yiisoft/active-record]       | Yii Active Record Library             | |
+| [rbac]                | [yiisoft/rbac]                | Yii Role-Based Access Control Library | |
 
 [PSR-3]:                    https://www.php-fig.org/psr/psr-3
 [PSR-11]:                   https://www.php-fig.org/psr/psr-11
 [PSR-16]:                   https://www.php-fig.org/psr/psr-16
 
-[core]:                     https://github.com/yiisoft/core
 [log]:                      https://github.com/yiisoft/log
 [di]:                       https://github.com/yiisoft/di
 [cache]:                    https://github.com/yiisoft/cache
@@ -31,7 +39,6 @@ Extension packages are titled as "Yii Framework *** Extension".
 [rbac]:                     https://github.com/yiisoft/rbac
 [active-record]:            https://github.com/yiisoft/active-record
 
-[yiisoft/core]:             https://packagist.org/packages/yiisoft/core
 [yiisoft/log]:              https://packagist.org/packages/yiisoft/log
 [yiisoft/di]:               https://packagist.org/packages/yiisoft/di
 [yiisoft/cache]:            https://packagist.org/packages/yiisoft/cache
@@ -41,8 +48,8 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 ### DB drivers
 
-| Repository            | Package                       | Description                    |
-|-----------------------|-------------------------------|--------------------------------|
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
 | [db-mysql]            | [yiisoft/db-mysql]            | MySQL support for Yii |
 | [db-mssql]            | [yiisoft/db-mssql]            | MSSQL support for Yii |
 | [db-pgsql]            | [yiisoft/db-pgsql]            | PostgreSQL support for Yii |
@@ -63,8 +70,8 @@ Extension packages are titled as "Yii Framework *** Extension".
 
 ### NoSQL DB drivers
 
-| Repository  | Package name  | Description  |
-|-----------------------|-------------------------------|---|
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
 | [db-sphinx]           | [yiisoft/db-sphinx]           | Yii Framework Sphinx full text search engine extension  |
 | [db-redis]            | [yiisoft/db-redis]            | Yii Framework Redis Cache, Session and ActiveRecord extension |
 | [db-mongodb]          | [yiisoft/db-mongodb]          | Yii Framework MongoDB extension |
@@ -80,41 +87,96 @@ Extension packages are titled as "Yii Framework *** Extension".
 [yiisoft/db-mongodb]:       https://packagist.org/packages/yiisoft/db-mongodb
 [yiisoft/db-elasticsearch]: https://packagist.org/packages/yiisoft/db-elasticsearch
 
-## Yii-dependent packages
+## Yii Framework
 
 ### Framework
 
-| Repository  | Package name  | Description  |
-|---|---|---|
-| [yii-console](https://github.com/yiisoft/yii-console) | [yiisoft/yii-console](https://packagist.org/packages/yiisoft/yii-console) | Yii console components |
-| [yii-web](https://github.com/yiisoft/yii-web) | [yiisoft/yii-web](https://packagist.org/packages/yiisoft/yii-web) | Yii web components | 
-| [yii-rest](https://github.com/yiisoft/yii-rest) | [yiisoft/yii-rest](https://packagist.org/packages/yiisoft/yii-rest) | Yii REST API framework |
-| [yii-app-template](https://github.com/yiisoft/yii-app-template) | - | Yii web application template |
-| [yii-app](https://github.com/yiisoft/yii-app) | [yiisoft/yii-app](https://packagist.org/packages/yiisoft/yii-app)  | Yii web application template |
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [yii-core]            | [yiisoft/yii-core]            | Yii Framework Core                                |
+| [yii-console]         | [yiisoft/yii-console]         | Yii Framework Console Extension                   |
+| [yii-web]             | [yiisoft/yii-web]             | Yii Framework Web Extension                       |
+| [yii-rest]            | [yiisoft/yii-rest]            | Yii Framework REST Extension                      |
 
+[yii-core]:                 https://github.com/yiisoft/yii-core
+[yii-console]:              https://github.com/yiisoft/yii-console
+[yii-web]:                  https://github.com/yiisoft/yii-web
+[yii-rest]:                 https://github.com/yiisoft/yii-rest
+
+[yiisoft/yii-core]:         https://packagist.org/packages/yiisoft/yii-core
+[yiisoft/yii-console]:      https://packagist.org/packages/yiisoft/yii-console
+[yiisoft/yii-web]:          https://packagist.org/packages/yiisoft/yii-web
+[yiisoft/yii-rest]:         https://packagist.org/packages/yiisoft/yii-rest
+
+## Yii project template and application bases
+
+| Repository             | Package                        | Title                                           |
+|------------------------|--------------------------------|-------------------------------------------------|
+| [yii-project-template] | [yiisoft/yii-project-template] | Yii Framework Project Template                  |
+| [yii-base-web]         | [yiisoft/yii-base-web]         | Yii Framework Web Application Base              |
+| [yii-base-api]         | [yiisoft/yii-base-api]         | Yii Framework API Application Base              |
+| [yii-base-cli]         | [yiisoft/yii-base-cli]         | Yii Framework CLI Application Base              |
+
+[yii-project-template]:     https://github.com/yiisoft/yii-project-template
+[yii-base-web]:             https://github.com/yiisoft/yii-base-web
+[yii-base-api]:             https://github.com/yiisoft/yii-base-api
+[yii-base-cli]:             https://github.com/yiisoft/yii-base-cli
+
+[yiisoft/yii-project-template]: https://packagist.org/packages/yiisoft/yii-project-template
+[yiisoft/yii-base-web]:     https://packagist.org/packages/yiisoft/yii-base-web
+[yiisoft/yii-base-api]:     https://packagist.org/packages/yiisoft/yii-base-api
+[yiisoft/yii-base-cli]:     https://packagist.org/packages/yiisoft/yii-base-cli
 
 ## Widgets and wrappers
 
-| Repository  | Package  | Description  |
-|---|---|---|
-| [yii-boostrap3](https://github.com/yiisoft/yii-bootstrap3) | [yiisoft/yii-bootstrap3](https://packagist.org/packages/yiisoft/yii-bootstrap3) | Yii Framework Bootstrap3 Extension |
-| [yii-bootstrap4](https://github.com/yiisoft/yii-bootstrap4) | [yiisoft/yii-bootstrap4](https://packagist.org/packages/yiisoft/yii-bootstrap4)  | Yii Framework Bootstrap4 Extension |
-| [yii-masked-input](https://github.com/yiisoft/yii-masked-input) | [yiisoft/yii-masked-input](https://packagist.org/packages/yiisoft/yii-masked-input) | Yii Framework Masked input widget Extension |
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [yii-boostrap3]       | [yiisoft/yii-bootstrap3]      | Yii Framework Bootstrap3 Extension                |
+| [yii-bootstrap4]      | [yiisoft/yii-bootstrap4]      | Yii Framework Bootstrap4 Extension                |
+| [yii-masked-input]    | [yiisoft/yii-masked-input]    | Yii Framework Masked Input Widget Extension       |
+
+[yii-boostrap3]:            https://github.com/yiisoft/yii-bootstrap3
+[yii-bootstrap4]:           https://github.com/yiisoft/yii-bootstrap4
+[yii-masked-input]:         https://github.com/yiisoft/yii-masked-input
+
+[yiisoft/yii-bootstrap3]:   https://packagist.org/packages/yiisoft/yii-bootstrap3
+[yiisoft/yii-bootstrap4]:   https://packagist.org/packages/yiisoft/yii-bootstrap4
+[yiisoft/yii-masked-input]: https://packagist.org/packages/yiisoft/yii-masked-input
 
 ## Tools
 
-| Repository  | Package  | Description  |
-|---|---|---|
-| [yii-debug](https://github.com/yiisoft/yii-debug) | [yiisoft/yii-debug](https://packagist.org/packages/yiisoft/yii-debug) | Yii debug panel extension    |
-| [yii-gii](https://github.com/yiisoft/yii-gii)     | [yiisoft/yii-gii](https://packagist.org/packages/yiisoft/yii-gii) | Yii code generator extension |
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [yii-debug]           | [yiisoft/yii-debug]           | Yii Framework Debug Panel Extension               |
+| [yii-gii]             | [yiisoft/yii-gii]             | Yii Framework Code Generator Extension            |
+
+[yii-debug]:                https://github.com/yiisoft/yii-debug
+[yii-gii]:                  https://github.com/yiisoft/yii-gii
+
+[yiisoft/yii-debug]:        https://packagist.org/packages/yiisoft/yii-debug
+[yiisoft/yii-gii]:          https://packagist.org/packages/yiisoft/yii-gii
 
 ## Others
 
-| Repository  | Package name  | Description  |
-|---|---|---|
-| [yii-jquery](https://github.com/yiisoft/yii-jquery)  | [yiisoft/yii-jquery](https://packagist.org/packages/yiisoft/yii-jquery)  | Yii Framework jQuery Extension |
-| [yii-captcha](https://github.com/yiisoft/yii-captcha)  | [yiisoft/yii-captcha](https://packagist.org/packages/yiisoft/yii-captcha) |   Yii Framework CAPTCHA Extension | 
-| [yii-swift-mailer](https://github.com/yiisoft/yii-swift-mailer)  | [yiisoft/swift-mailer](https://packagist.org/packages/yiisoft/yii-swift-mailer)  | Yii Framework Swift Mailer Extension |
-| [yii-twig](https://github.com/yiisoft/yii-twig) | [yiisoft/yii-twig](https://packagist.org/packages/yiisoft/yii-twig) | Yii Framework Twig Extension |
-| [yii-http-client](https://github.com/yiisoft/yii-http-client) | [yiisoft/yii-http-client](https://packagist.org/packages/yiisoft/yii-http-client) | Yii Framework HTTP client extension |
-| [yii-auth-client](https://github.com/yiisoft/yii-auth-client) | [yiisoft/yii-auth-client](https://packagist.org/packages/yiisoft/yii-auth-client) | Yii Framework external authentication via OAuth and OpenID Extension |
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [yii-jquery]          | [yiisoft/yii-jquery]          | Yii Framework jQuery Extension                    |
+| [yii-captcha]         | [yiisoft/yii-captcha]         | Yii Framework CAPTCHA Extension                   |
+| [yii-swift-mailer]    | [yiisoft/swift-mailer]        | Yii Framework Swift Mailer Extension              |
+| [yii-twig]            | [yiisoft/yii-twig]            | Yii Framework Twig Extension                      |
+| [yii-http-client]     | [yiisoft/yii-http-client]     | Yii Framework HTTP client extension               |
+| [yii-auth-client]     | [yiisoft/yii-auth-client]     | Yii Framework External Authentication Extension   |
+
+[yii-jquery]:               https://github.com/yiisoft/yii-jquery
+[yii-captcha]:              https://github.com/yiisoft/yii-captcha
+[yii-swift-mailer]:         https://github.com/yiisoft/yii-swift-mailer
+[yii-twig]:                 https://github.com/yiisoft/yii-twig
+[yii-http-client]:          https://github.com/yiisoft/yii-http-client
+[yii-auth-client]:          https://github.com/yiisoft/yii-auth-client
+
+[yiisoft/yii-jquery]:       https://packagist.org/packages/yiisoft/yii-jquery
+[yiisoft/yii-captcha]:      https://packagist.org/packages/yiisoft/yii-captcha
+[yiisoft/swift-mailer]:     https://packagist.org/packages/yiisoft/yii-swift-mailer
+[yiisoft/yii-twig]:         https://packagist.org/packages/yiisoft/yii-twig
+[yiisoft/yii-http-client]:  https://packagist.org/packages/yiisoft/yii-http-client
+[yiisoft/yii-auth-client]:  https://packagist.org/packages/yiisoft/yii-auth-client
