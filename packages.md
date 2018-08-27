@@ -12,80 +12,10 @@ Since version 3.0 Yii is divided into several packages following these agreement
         - and so on
     - titled as "Yii Framework ... Extension"
 - Yii Libraries:
-    - *do not depend* on Yii itself (`yii-core`)
+    - *do not depend* on Yii (`yii-core`)
     - can be used outside of Yii Framework
     - named as `yiisoft/something` without yii-prefix
     - titled as "Yii ... Library"
-
-## Yii Libraries
-
-| Repository            | Package                       | Title                                 | Description                                   |
-|-----------------------|-------------------------------|---------------------------------------|-----------------------------------------------|
-| [log]                 | [yiisoft/log]                 | Yii Logging Library                   | [PSR-3] compatible logger                     |
-| [di]                  | [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector |
-| [cache]               | [yiisoft/cache]               | Yii Caching Library                   | [PSR-16] compatible cache                     |
-| [db]                  | [yiisoft/db]                  | Yii Database Abstraction Library      | |
-| [active-record]       | [yiisoft/active-record]       | Yii Active Record Library             | |
-| [rbac]                | [yiisoft/rbac]                | Yii Role-Based Access Control Library | |
-
-[PSR-3]:                    https://www.php-fig.org/psr/psr-3
-[PSR-11]:                   https://www.php-fig.org/psr/psr-11
-[PSR-16]:                   https://www.php-fig.org/psr/psr-16
-
-[log]:                      https://github.com/yiisoft/log
-[di]:                       https://github.com/yiisoft/di
-[cache]:                    https://github.com/yiisoft/cache
-[db]:                       https://github.com/yiisoft/db
-[rbac]:                     https://github.com/yiisoft/rbac
-[active-record]:            https://github.com/yiisoft/active-record
-
-[yiisoft/log]:              https://packagist.org/packages/yiisoft/log
-[yiisoft/di]:               https://packagist.org/packages/yiisoft/di
-[yiisoft/cache]:            https://packagist.org/packages/yiisoft/cache
-[yiisoft/db]:               https://packagist.org/packages/yiisoft/db
-[yiisoft/rbac]:             https://packagist.org/packages/yiisoft/rbac
-[yiisoft/active-record]:    https://packagist.org/packages/yiisoft/active-record
-
-### DB drivers
-
-| Repository            | Package                       | Title                                             |
-|-----------------------|-------------------------------|---------------------------------------------------|
-| [db-mysql]            | [yiisoft/db-mysql]            | MySQL support for Yii |
-| [db-mssql]            | [yiisoft/db-mssql]            | MSSQL support for Yii |
-| [db-pgsql]            | [yiisoft/db-pgsql]            | PostgreSQL support for Yii |
-| [db-sqlite]           | [yiisoft/db-sqlite]           | SQLite support for Yii |
-| [db-oracle]           | [yiisoft/db-oracle]           | Oracle Database support for Yii |
-
-[db-oracle]:                https://github.com/yiisoft/db-oracle
-[db-mssql]:                 https://github.com/yiisoft/db-mssql
-[db-mysql]:                 https://github.com/yiisoft/db-mysql
-[db-pgsql]:                 https://github.com/yiisoft/db-pgsql
-[db-sqlite]:                https://github.com/yiisoft/db-sqlite
-
-[yiisoft/db-oracle]:        https://packagist.org/packages/yiisoft/db-oracle
-[yiisoft/db-mssql]:         https://packagist.org/packages/yiisoft/db-mssql
-[yiisoft/db-mysql]:         https://packagist.org/packages/yiisoft/db-mysql
-[yiisoft/db-pgsql]:         https://packagist.org/packages/yiisoft/db-pgsql
-[yiisoft/db-sqlite]:        https://packagist.org/packages/yiisoft/db-sqlite
-
-### NoSQL DB drivers
-
-| Repository            | Package                       | Title                                             |
-|-----------------------|-------------------------------|---------------------------------------------------|
-| [db-sphinx]           | [yiisoft/db-sphinx]           | Yii Framework Sphinx full text search engine extension  |
-| [db-redis]            | [yiisoft/db-redis]            | Yii Framework Redis Cache, Session and ActiveRecord extension |
-| [db-mongodb]          | [yiisoft/db-mongodb]          | Yii Framework MongoDB extension |
-| [db-elasticsearch]    | [yiisoft/db-elasticsearch]    | Yii Framework Elasticsearch Query and ActiveRecord |
-
-[db-sphinx]:                https://github.com/yiisoft/db-sphinx
-[db-redis]:                 https://github.com/yiisoft/db-redis
-[db-mongodb]:               https://github.com/yiisoft/db-mongodb
-[db-elasticsearch]:         https://github.com/yiisoft/db-elasticsearch
-
-[yiisoft/db-sphinx]:        https://packagist.org/packages/yiisoft/db-sphinx
-[yiisoft/db-redis]:         https://packagist.org/packages/yiisoft/db-redis
-[yiisoft/db-mongodb]:       https://packagist.org/packages/yiisoft/db-mongodb
-[yiisoft/db-elasticsearch]: https://packagist.org/packages/yiisoft/db-elasticsearch
 
 ## Yii Framework
 
@@ -180,3 +110,73 @@ Since version 3.0 Yii is divided into several packages following these agreement
 [yiisoft/yii-twig]:         https://packagist.org/packages/yiisoft/yii-twig
 [yiisoft/yii-http-client]:  https://packagist.org/packages/yiisoft/yii-http-client
 [yiisoft/yii-auth-client]:  https://packagist.org/packages/yiisoft/yii-auth-client
+
+## Yii Libraries
+
+| Repository            | Package                       | Title                                 | Description                                   |
+|-----------------------|-------------------------------|---------------------------------------|-----------------------------------------------|
+| [log]                 | [yiisoft/log]                 | Yii Logging Library                   | [PSR-3] compatible logger                     |
+| [di]                  | [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector |
+| [cache]               | [yiisoft/cache]               | Yii Caching Library                   | [PSR-16] compatible cache                     |
+| [db]                  | [yiisoft/db]                  | Yii Database Abstraction Library      | |
+| [active-record]       | [yiisoft/active-record]       | Yii Active Record Library             | |
+| [rbac]                | [yiisoft/rbac]                | Yii Role-Based Access Control Library | |
+
+[PSR-3]:                    https://www.php-fig.org/psr/psr-3
+[PSR-11]:                   https://www.php-fig.org/psr/psr-11
+[PSR-16]:                   https://www.php-fig.org/psr/psr-16
+
+[log]:                      https://github.com/yiisoft/log
+[di]:                       https://github.com/yiisoft/di
+[cache]:                    https://github.com/yiisoft/cache
+[db]:                       https://github.com/yiisoft/db
+[rbac]:                     https://github.com/yiisoft/rbac
+[active-record]:            https://github.com/yiisoft/active-record
+
+[yiisoft/log]:              https://packagist.org/packages/yiisoft/log
+[yiisoft/di]:               https://packagist.org/packages/yiisoft/di
+[yiisoft/cache]:            https://packagist.org/packages/yiisoft/cache
+[yiisoft/db]:               https://packagist.org/packages/yiisoft/db
+[yiisoft/rbac]:             https://packagist.org/packages/yiisoft/rbac
+[yiisoft/active-record]:    https://packagist.org/packages/yiisoft/active-record
+
+### DB drivers
+
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [db-mysql]            | [yiisoft/db-mysql]            | MySQL support for Yii |
+| [db-mssql]            | [yiisoft/db-mssql]            | MSSQL support for Yii |
+| [db-pgsql]            | [yiisoft/db-pgsql]            | PostgreSQL support for Yii |
+| [db-sqlite]           | [yiisoft/db-sqlite]           | SQLite support for Yii |
+| [db-oracle]           | [yiisoft/db-oracle]           | Oracle Database support for Yii |
+
+[db-oracle]:                https://github.com/yiisoft/db-oracle
+[db-mssql]:                 https://github.com/yiisoft/db-mssql
+[db-mysql]:                 https://github.com/yiisoft/db-mysql
+[db-pgsql]:                 https://github.com/yiisoft/db-pgsql
+[db-sqlite]:                https://github.com/yiisoft/db-sqlite
+
+[yiisoft/db-oracle]:        https://packagist.org/packages/yiisoft/db-oracle
+[yiisoft/db-mssql]:         https://packagist.org/packages/yiisoft/db-mssql
+[yiisoft/db-mysql]:         https://packagist.org/packages/yiisoft/db-mysql
+[yiisoft/db-pgsql]:         https://packagist.org/packages/yiisoft/db-pgsql
+[yiisoft/db-sqlite]:        https://packagist.org/packages/yiisoft/db-sqlite
+
+### NoSQL DB drivers
+
+| Repository            | Package                       | Title                                             |
+|-----------------------|-------------------------------|---------------------------------------------------|
+| [db-sphinx]           | [yiisoft/db-sphinx]           | Yii Framework Sphinx full text search engine extension  |
+| [db-redis]            | [yiisoft/db-redis]            | Yii Framework Redis Cache, Session and ActiveRecord extension |
+| [db-mongodb]          | [yiisoft/db-mongodb]          | Yii Framework MongoDB extension |
+| [db-elasticsearch]    | [yiisoft/db-elasticsearch]    | Yii Framework Elasticsearch Query and ActiveRecord |
+
+[db-sphinx]:                https://github.com/yiisoft/db-sphinx
+[db-redis]:                 https://github.com/yiisoft/db-redis
+[db-mongodb]:               https://github.com/yiisoft/db-mongodb
+[db-elasticsearch]:         https://github.com/yiisoft/db-elasticsearch
+
+[yiisoft/db-sphinx]:        https://packagist.org/packages/yiisoft/db-sphinx
+[yiisoft/db-redis]:         https://packagist.org/packages/yiisoft/db-redis
+[yiisoft/db-mongodb]:       https://packagist.org/packages/yiisoft/db-mongodb
+[yiisoft/db-elasticsearch]: https://packagist.org/packages/yiisoft/db-elasticsearch
