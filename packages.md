@@ -142,3 +142,14 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/db-mongodb]:           https://github.com/yiisoft/db-mongodb
 [yiisoft/db-elasticsearch]:     https://github.com/yiisoft/db-elasticsearch
 
+---
+
+## Older versions
+
+| Package                       | Title                                 | Description                       | Status
+|-------------------------------|---------------------------------------|-----------------------------------|-------------
+| [yiisoft/yii]                 | Yii Framework 1.x                     | Full-stack web-framework          | [![Build Status](https://secure.travis-ci.org/yiisoft/yii.png)](http://travis-ci.org/yiisoft/yii)
+| [yiisoft/yii2]                | Yii Framework 2.x                     | Full-stack web-framework          | [![Build Status](https://secure.travis-ci.org/yiisoft/yii2.png)](http://travis-ci.org/yiisoft/yii2)
+
+[yiisoft/yii]:                  https://github.com/yiisoft/yii
+[yiisoft/yii2]:                  https://github.com/yiisoft/yii2
