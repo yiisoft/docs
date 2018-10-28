@@ -60,3 +60,7 @@ For example:
 - Solutions for known use cases should not over-engineered for flexibility if practically there is no need for it.
 - Standard implementations should take practical usage into account.
 - Experiments are preferred to theories.
+
+## Performance
+
+We believe that software should perform efficiently in terms of both resources consumption and how fast one can achieve goals using it.
