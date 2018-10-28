@@ -13,7 +13,7 @@ We share some common values that apply to what we do.
 
 ### Being helpful
 
-It applies to both technical decisions and community. Comminity-wise we value any high quality contribution, be it a
+It applies to both technical decisions and community. Community-wise we value any high quality contribution, be it a
 pull request or elaborative answer at the forum.
 
 When following principles conflict we choose solution that is more helpful to community.
