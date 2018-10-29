@@ -4,7 +4,7 @@
 
 The Yii project goal is to build and maintain:
 
-- Practical and Helpful Tools and Community.
+- Practical and helpful tools and community.
 
 ## Values
 
