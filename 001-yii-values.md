@@ -1,22 +1,49 @@
-# 001 - Yii goals and values
+# 001 - Yii goal and values
 
-## Goals
+## Goal
 
-The Yii project goals are to build and maintain:
+The Yii project goal is to build and maintain:
 
-- Great tools.
-- Great community.
+- Practical and Helpful Tools and Community.
 
 ## Values
 
-We share some common values that apply to what we do.
+We share some common values that serves the goal.
 
-### Being helpful
+- Being Practical
+    - High Performance
+    - Sensible Defaults and Flexibility / Convention over Configuration
+    - Practice-orientation
+- Being Helpful
+    - Simplicity
+    - Explicitness
+    - Consistency
 
-It applies to both technical decisions and community. Community-wise we value any high quality contribution, be it a
-pull request or elaborative answer at the forum.
+### High Performance
 
-When following principles conflict we choose solution that is more helpful to community.
+High performance is an innevitable element of being practical. We believe that software should perform efficiently in terms of both resource consumption and how fast one can achieve goals using it.
+
+### Sensible Defaults and Flexibility / Convention over Configuration
+
+We provide sensible defaults and conventions that one could customize via configuration.
+That allows to achieve flexibility without sacrificing good practices and simplicity.
+
+### Practice-orientation
+
+We prefer practice over theory.
+
+For example:
+
+- Solutions for known use cases should not over-engineered for flexibility if practically there is no need for it.
+- Standard implementations should take practical usage into account.
+- Experiments are preferred to theories.
+
+### Being Helpful
+
+It applies both to the technical decisions and to the community. Community-wise we value any high quality contribution, be it a
+pull request or an elaborative answer at the forum.
+
+When the other principles could conflict, we choose a solution that is more helpful to the community.
 
 ### Simplicity
 
@@ -45,22 +72,3 @@ We try being consistent in everything:
 - Naming.
 - Design.
 - Structure.
-
-### Convention over configuration
-
-We provide sensible defaults and conventions that one could customize via configuration.
-That allows to achieve flexibility without sacrificing simplicity.
-
-### Practice-orientation
-
-We prefer practice over theory.
-
-For example:
-
-- Solutions for known use cases should not over-engineered for flexibility if practically there is no need for it.
-- Standard implementations should take practical usage into account.
-- Experiments are preferred to theories.
-
-## Performance
-
-We believe that software should perform efficiently in terms of both resources consumption and how fast one can achieve goals using it.
