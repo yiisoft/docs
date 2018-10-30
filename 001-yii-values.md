@@ -11,13 +11,15 @@ The Yii project goal is to build and maintain:
 We share some common values that serve the goal.
 
 - Being Practical
-    - High Performance
-    - Sensible Defaults and Flexibility / Convention over Configuration
-    - Practice-orientation
+    - [High Performance](#high-performance)
+    - [Sensible Defaults and Flexibility / Convention over Configuration](#sensible-defaults-and-flexibility--convention-over-configuration)
+    - [Practice-orientation](#practice-orientation)
 - Being Helpful
-    - Simplicity
-    - Explicitness
-    - Consistency
+    - [Simplicity](#simplicity)
+    - [Explicitness](#explicitness)
+    - [Consistency](#consistency)
+    
+## Being Practical
 
 ### High Performance
 
@@ -38,7 +40,7 @@ For example:
 - Standard implementations should take practical usage into account.
 - Experiments are preferred to theories.
 
-### Being Helpful
+## Being Helpful
 
 It applies both to the technical decisions and to the community. Community-wise we value any high quality contribution, be it a
 pull request or an elaborative answer at the forum.
