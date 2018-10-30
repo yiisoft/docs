@@ -8,7 +8,7 @@ The Yii project goal is to build and maintain:
 
 ## Values
 
-We share some common values that serves the goal.
+We share some common values that serve the goal.
 
 - Being Practical
     - High Performance
