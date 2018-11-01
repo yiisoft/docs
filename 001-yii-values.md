@@ -25,22 +25,21 @@ Performance is a necessary condition of practicality. Software should not waste 
 
 ### Sensible Defaults and Flexibility
 
-We seek sensible defaults and conventions that users can customize. We want to provide flexibility without sacrificing good practices and simplicity.
+We prefer sensible defaults and conventions that users can customize. We seek a balance between flexibility, discipline and simplicity that meets common needs.
 
-### Practice-orientation
+### Be practice-oriented
 
-We prefer practice over theory.
+We prefer practice over theory. For example:
 
-For example:
+- Solutions for known use cases should avoid excess complexity by providing only needed flexibility.
+- Standard implementations should take practical use into account.
+- Experience is at least as useful as theory in guiding design.
+- Context is critical in determiniung appropriateness.
 
-- Solutions for known use cases should not over-engineered for flexibility if practically there is no need for it.
-- Standard implementations should take practical usage into account.
-- Experiments are preferred to theories.
+## Be Helpful
 
-## Being Helpful
-
-It applies both to the technical decisions and to the community. Community-wise we value any high quality contribution, be it a
-pull request or an elaborative answer at the forum.
+This value guides technical decisions as well as community activity. Consideration of how software features help users should guide development. Community-wise, we value any helpful contribution, be it a
+pull request or an answer in the forum.
 
 When the other principles could conflict, we choose a solution that is more helpful to the community.
 
