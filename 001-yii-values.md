@@ -57,7 +57,7 @@ We prefer explicit, obvious solutions and code. Solutions should clearly express
 
 - A straightforward solution is better than an abstract one unless the abstraction has practical purpose.
 - Loud fails are better than silent fails or masking errors.
-- Explicit casts are better than PHP type juggling, type hints are good, `declare(strict_types=1)` with scalar type hints.
+- Explicit casts are better than PHP type juggling, type hints are good, `declare(strict_types=1)` when using scalar type hints.
 - No magic unless necessary.
 
 ### Be consistent
