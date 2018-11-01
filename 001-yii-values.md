@@ -2,33 +2,30 @@
 
 ## Goal
 
-The Yii project goal is to build and maintain:
-
-- Practical and helpful tools and community.
+The Yii project aims to build and maintain _practical_ and _helpful_ tools and community.
 
 ## Values
 
-We share some common values that serve the goal.
+The values we express in our work support the goal. We try to
 
-- Being Practical
+- Be Practical
     - [High Performance](#high-performance)
-    - [Sensible Defaults and Flexibility / Convention over Configuration](#sensible-defaults-and-flexibility--convention-over-configuration)
+    - [Sensible Defaults and Flexibility](#sensible-defaults-and-flexibility)
     - [Practice-orientation](#practice-orientation)
-- Being Helpful
-    - [Simplicity](#simplicity)
-    - [Explicitness](#explicitness)
-    - [Consistency](#consistency)
+- Be Helpful
+    - [Be simple](#simplicity)
+    - [Be explicit](#explicitness)
+    - [Be consistent](#consistency)
     
-## Being Practical
+## Be Practical
 
 ### High Performance
 
-High performance is an innevitable element of being practical. We believe that software should perform efficiently in terms of both resource consumption and how fast one can achieve goals using it.
+Performance is a necessary condition of practicality. Software should not waste machine or human resources.
 
-### Sensible Defaults and Flexibility / Convention over Configuration
+### Sensible Defaults and Flexibility
 
-We provide sensible defaults and conventions that one could customize via configuration.
-That allows to achieve flexibility without sacrificing good practices and simplicity.
+We seek sensible defaults and conventions that users can customize. We want to provide flexibility without sacrificing good practices and simplicity.
 
 ### Practice-orientation
 
