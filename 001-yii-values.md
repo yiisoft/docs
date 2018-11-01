@@ -43,30 +43,29 @@ pull request or an answer in the forum.
 
 When the other principles could conflict, we choose a solution that is more helpful to the community.
 
-### Simplicity
+### Be Simple
 
-Solutions should be simple yet elegant:
+Solutions should be simple and expressive:
 
-- We add complexity where necessary and avoid it otherwise.
-- We do not tolerate ugly solutions unless there is no other way.
-- Less rules are better than more rules.
+- We use as much complexity as needed and no more.
+- We avoid ugly solutions unless there is no alternative.
+- Fewer rules are better than more rules.
 
-### Explicitness
+### Be Explicit
 
-We prefer explicit solutions and code.
+We prefer explicit, obvious solutions and code. Solutions should clearly express exactly what they do. For example:
 
-For example:
-
-- Straightforward solution is better than over-abstracted one. That is not an excuse not to abstract though.
-- Typecasting is better than type coercion, type-hinting is better than no type hinting.
+- A straightforward solution is better than an abstract one unless the abstraction is necessary for some other purpose.
+- Loud fails are better than silent fails or masking errors.
+- Explicit casts are better than PHP type juggling, type hints are good, `declare(strict_types=1)` with scalar type hints.
 - No magic unless necessary.
-- Loud fails are preferred to silent fails.
 
-### Consistency
+### Be consistent
 
-We try being consistent in everything:
+We try to be consistent:
 
-- Code style.
-- Naming.
-- Design.
-- Structure.
+- Code style
+- Naming
+- Design
+- Structure
+- Values and goals
