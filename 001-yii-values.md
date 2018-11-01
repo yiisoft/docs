@@ -34,7 +34,7 @@ We prefer practice over theory. For example:
 - Solutions for known use cases should avoid excess complexity by providing only needed flexibility.
 - Standard implementations should take practical use into account.
 - Experience is at least as useful as theory in guiding design.
-- Context is critical in determiniung appropriateness.
+- Context is critical in determining appropriateness.
 
 ## Be Helpful
 
