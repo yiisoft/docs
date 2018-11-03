@@ -11,7 +11,7 @@ The values we express in our work support the goal. We try to
 - Be Practical
     - [High Performance](#high-performance)
     - [Sensible Defaults and Flexibility](#sensible-defaults-and-flexibility)
-    - [Practice-orientation](#practice-orientation)
+    - [Be practice-oriented](#be-practice-orientated)
 - Be Helpful
     - [Be simple](#simplicity)
     - [Be explicit](#explicitness)
