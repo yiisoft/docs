@@ -2,75 +2,70 @@
 
 ## Goal
 
-The Yii project goal is to build and maintain:
-
-- Practical and helpful tools and community.
+The Yii project aims to build and maintain _practical_ and _helpful_ tools and community.
 
 ## Values
 
-We share some common values that serve the goal.
+The values we express in our work support the goal. We try to
 
-- Being Practical
+- Be Practical
     - [High Performance](#high-performance)
-    - [Sensible Defaults and Flexibility / Convention over Configuration](#sensible-defaults-and-flexibility--convention-over-configuration)
+    - [Sensible Defaults and Flexibility](#sensible-defaults-and-flexibility)
     - [Practice-orientation](#practice-orientation)
-- Being Helpful
-    - [Simplicity](#simplicity)
-    - [Explicitness](#explicitness)
-    - [Consistency](#consistency)
+- Be Helpful
+    - [Be simple](#simplicity)
+    - [Be explicit](#explicitness)
+    - [Be consistent](#consistency)
     
-## Being Practical
+## Be Practical
 
 ### High Performance
 
-High performance is an innevitable element of being practical. We believe that software should perform efficiently in terms of both resource consumption and how fast one can achieve goals using it.
+Performance is a necessary condition of practicality. Software should not waste machine or human resources.
 
-### Sensible Defaults and Flexibility / Convention over Configuration
+### Sensible Defaults and Flexibility
 
-We provide sensible defaults and conventions that one could customize via configuration.
-That allows to achieve flexibility without sacrificing good practices and simplicity.
+We prefer sensible defaults and conventions that users can customize. We seek a balance between flexibility, discipline and simplicity that meets common needs.
 
-### Practice-orientation
+### Be practice-oriented
 
-We prefer practice over theory.
+We prefer practice over theory. For example:
 
-For example:
+- Solutions for known use cases should avoid excess complexity by providing only needed flexibility.
+- Standard implementations should take practical use into account.
+- Experience is at least as useful as theory in guiding design.
+- Context is critical in determining appropriateness.
 
-- Solutions for known use cases should not over-engineered for flexibility if practically there is no need for it.
-- Standard implementations should take practical usage into account.
-- Experiments are preferred to theories.
+## Be Helpful
 
-## Being Helpful
-
-It applies both to the technical decisions and to the community. Community-wise we value any high quality contribution, be it a
-pull request or an elaborative answer at the forum.
+This value guides technical decisions as well as community activity. Consideration of how software features help users should guide development. Community-wise, we value any helpful contribution, be it a
+pull request or an answer in the forum.
 
 When the other principles could conflict, we choose a solution that is more helpful to the community.
 
-### Simplicity
+### Be Simple
 
-Solutions should be simple yet elegant:
+Solutions should be simple and expressive:
 
-- We add complexity where necessary and avoid it otherwise.
-- We do not tolerate ugly solutions unless there is no other way.
-- Less rules are better than more rules.
+- We use as much complexity as needed and no more.
+- We avoid ugly solutions unless there is no alternative.
+- Fewer rules are better than more rules.
 
-### Explicitness
+### Be Explicit
 
-We prefer explicit solutions and code.
+We prefer explicit, obvious solutions and code. Solutions should clearly express exactly what they do. For example:
 
-For example:
-
-- Straightforward solution is better than over-abstracted one. That is not an excuse not to abstract though.
-- Typecasting is better than type coercion, type-hinting is better than no type hinting.
+- A straightforward solution is better than an abstract one unless the abstraction has practical purpose.
+- Loud fails are better than silent fails or masking errors.
+- Explicit casts are better than PHP type juggling, type hints are good.
 - No magic unless necessary.
-- Loud fails are preferred to silent fails.
 
-### Consistency
+### Be consistent
 
-We try being consistent in everything:
+We try to be consistent in:
 
-- Code style.
-- Naming.
-- Design.
-- Structure.
+- Code style
+- Naming
+- Design
+- Structure
+- Values and goals
