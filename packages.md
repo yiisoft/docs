@@ -101,6 +101,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/db]                  | Yii Database Abstraction Library      |                                               | [![Build Status](https://travis-ci.org/yiisoft/db.svg?branch=master)](https://travis-ci.org/yiisoft/db)
 | [yiisoft/active-record]       | Yii Active Record Library             |                                               | [![Build Status](https://travis-ci.org/yiisoft/active-record.svg?branch=master)](https://travis-ci.org/yiisoft/active-record)
 | [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
+| [yiisoft/mutex]               | Yii Mutex Library | [![Build Status](https://travis-ci.org/yiisoft/mutex.svg?branch=master)](https://travis-ci.org/yiisoft/mutex)
 
 [PSR-3]:                        https://www.php-fig.org/psr/psr-3
 [PSR-11]:                       https://www.php-fig.org/psr/psr-11
@@ -112,6 +113,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/db]:                   https://github.com/yiisoft/db
 [yiisoft/rbac]:                 https://github.com/yiisoft/rbac
 [yiisoft/active-record]:        https://github.com/yiisoft/active-record
+[yiisoft/mutex]:                https://github.com/yiisoft/mutex
 
 ### DB drivers
 
