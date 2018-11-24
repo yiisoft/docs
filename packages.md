@@ -58,10 +58,10 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/yii-bootstrap4]      | Yii Framework Bootstrap4 Extension                | [![Build Status](https://travis-ci.org/yiisoft/yii-bootstrap4.svg?branch=master)](https://travis-ci.org/yiisoft/yii-bootstrap4)
 | [yiisoft/yii-masked-input]    | Yii Framework Masked Input Widget Extension       | [![Build Status](https://travis-ci.org/yiisoft/yii-masked-input.svg?branch=master)](https://travis-ci.org/yiisoft/yii-masked-input)
 
-[yiisoft/yii-boostrap3]:        https://github.com/yiisoft/yii-bootstrap3
+[yiisoft/yii-bootstrap3]:       https://github.com/yiisoft/yii-bootstrap3
 [yiisoft/yii-bootstrap4]:       https://github.com/yiisoft/yii-bootstrap4
 [yiisoft/yii-masked-input]:     https://github.com/yiisoft/yii-masked-input
-[yiisoft/yii-dataview]:     https://github.com/yiisoft/yii-dataview
+[yiisoft/yii-dataview]:         https://github.com/yiisoft/yii-dataview
 
 ## Tools
 
