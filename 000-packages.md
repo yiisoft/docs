@@ -70,9 +70,11 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |-------------------------------|---------------------------------------------------|--------------
 | [yiisoft/yii-debug]           | Yii Framework Debug Panel Extension               | [![Build Status](https://travis-ci.org/yiisoft/yii-debug.svg?branch=master)](https://travis-ci.org/yiisoft/yii-debug)
 | [yiisoft/yii-gii]             | Yii Framework Code Generator Extension            | [![Build Status](https://travis-ci.org/yiisoft/yii-gii.svg?branch=master)](https://travis-ci.org/yiisoft/yii-gii)
+| [yiisoft/yii-dev]             | Yii framework contributor toolset                 | [![Build Status](https://travis-ci.org/yiisoft/yii-dev.svg?branch=master)](https://travis-ci.org/yiisoft/yii-dev)
 
 [yiisoft/yii-debug]:            https://github.com/yiisoft/yii-debug
 [yiisoft/yii-gii]:              https://github.com/yiisoft/yii-gii
+[yiisoft/yii-dev]:              https://github.com/yiisoft/yii-dev
 
 ## Others
 
