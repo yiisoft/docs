@@ -1,4 +1,4 @@
-# Yii Packages
+# 000 - Packages
 
 Since version 3.0 Yii is divided into several packages following these agreements:
 
