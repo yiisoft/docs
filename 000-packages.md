@@ -26,7 +26,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | Package                       | Title                                             | Status
 |-------------------------------|---------------------------------------------------|-------------
 | [yiisoft/yii-core]            | Yii Framework Core                                | [![Build Status](https://travis-ci.org/yiisoft/yii-core.svg?branch=master)](https://travis-ci.org/yiisoft/yii-core)
-| [yiisoft/yii-console]         | Yii Framework Console Extension                   | [![Build Status](https://travis-ci.org/yiisoft/yii-console.svg?branch=master)](https://travis-ci.org/yiisoft/yii-console)
+| [yiisoft/yii-console]         | Yii Framework Console Extension                   | [![Build Status](https://travis-ci.com/yiisoft/yii-console.svg?branch=master)](https://travis-ci.com/yiisoft/yii-console)
 | [yiisoft/yii-web]             | Yii Framework Web Extension                       | [![Build Status](https://travis-ci.org/yiisoft/yii-web.svg?branch=master)](https://travis-ci.org/yiisoft/yii-web)
 | [yiisoft/yii-rest]            | Yii Framework REST Extension                      | [![Build Status](https://travis-ci.org/yiisoft/yii-rest.svg?branch=master)](https://travis-ci.org/yiisoft/yii-rest)
 
@@ -41,8 +41,8 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |--------------------------------|-------------------------------------------------|----------------
 | [yiisoft/yii-project-template] | Yii Framework Project Template                  | [![Build Status](https://travis-ci.org/yiisoft/yii-project-template.svg?branch=master)](https://travis-ci.org/yiisoft/yii-project-template)
 | [yiisoft/yii-base-web]         | Yii Framework Web Application Base              | [![Build Status](https://travis-ci.org/yiisoft/yii-base-web.svg?branch=master)](https://travis-ci.org/yiisoft/yii-base-web)
-| [yiisoft/yii-base-api]         | Yii Framework API Application Base              | [![Build Status](https://travis-ci.org/yiisoft/yii-base-api.svg?branch=master)](https://travis-ci.org/yiisoft/yii-base-api)
-| [yiisoft/yii-base-cli]         | Yii Framework CLI Application Base              | [![Build Status](https://travis-ci.org/yiisoft/yii-base-cli.svg?branch=master)](https://travis-ci.org/yiisoft/yii-base-cli)
+| [yiisoft/yii-base-api]         | Yii Framework API Application Base              | [![Build Status](https://travis-ci.com/yiisoft/yii-base-api.svg?branch=master)](https://travis-ci.com/yiisoft/yii-base-api)
+| [yiisoft/yii-base-cli]         | Yii Framework CLI Application Base              | [![Build Status](https://travis-ci.com/yiisoft/yii-base-cli.svg?branch=master)](https://travis-ci.com/yiisoft/yii-base-cli)
 
 [yiisoft/yii-project-template]: https://github.com/yiisoft/yii-project-template
 [yiisoft/yii-base-web]:         https://github.com/yiisoft/yii-base-web
@@ -56,7 +56,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |-------------------------------|---------------------------------------------------|-----------------
 | [yiisoft/yii-bootstrap3]      | Yii Framework Bootstrap3 Extension                | [![Build Status](https://travis-ci.org/yiisoft/yii-bootstrap3.svg?branch=master)](https://travis-ci.org/yiisoft/yii-bootstrap3)
 | [yiisoft/yii-bootstrap4]      | Yii Framework Bootstrap4 Extension                | [![Build Status](https://travis-ci.org/yiisoft/yii-bootstrap4.svg?branch=master)](https://travis-ci.org/yiisoft/yii-bootstrap4)
-| [yiisoft/yii-dataview]        | Yii Framework Data Displaying Extension           | [![Build Status](https://travis-ci.org/yiisoft/yii-dataview.svg?branch=master)](https://travis-ci.org/yiisoft/yii-dataview)
+| [yiisoft/yii-dataview]        | Yii Framework Data Displaying Extension           | [![Build Status](https://travis-ci.com/yiisoft/yii-dataview.svg?branch=master)](https://travis-ci.com/yiisoft/yii-dataview)
 | [yiisoft/yii-masked-input]    | Yii Framework Masked Input Widget Extension       | [![Build Status](https://travis-ci.org/yiisoft/yii-masked-input.svg?branch=master)](https://travis-ci.org/yiisoft/yii-masked-input)
 
 [yiisoft/yii-bootstrap3]:       https://github.com/yiisoft/yii-bootstrap3
@@ -70,7 +70,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |-------------------------------|---------------------------------------------------|--------------
 | [yiisoft/yii-debug]           | Yii Framework Debug Panel Extension               | [![Build Status](https://travis-ci.org/yiisoft/yii-debug.svg?branch=master)](https://travis-ci.org/yiisoft/yii-debug)
 | [yiisoft/yii-gii]             | Yii Framework Code Generator Extension            | [![Build Status](https://travis-ci.org/yiisoft/yii-gii.svg?branch=master)](https://travis-ci.org/yiisoft/yii-gii)
-| [yiisoft/yii-dev]             | Yii framework contributor toolset                 | [![Build Status](https://travis-ci.org/yiisoft/yii-dev.svg?branch=master)](https://travis-ci.org/yiisoft/yii-dev)
+| [yiisoft/yii-dev]             | Yii framework contributor toolset                 | [![Build Status](https://travis-ci.com/yiisoft/yii-dev.svg?branch=master)](https://travis-ci.com/yiisoft/yii-dev)
 
 [yiisoft/yii-debug]:            https://github.com/yiisoft/yii-debug
 [yiisoft/yii-gii]:              https://github.com/yiisoft/yii-gii
@@ -143,7 +143,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/db-sphinx]           | Yii Framework Sphinx Extension        |                                   | [![Build Status](https://travis-ci.org/yiisoft/db-sphinx.svg?branch=master)](https://travis-ci.org/yiisoft/db-sphinx)
 | [yiisoft/db-redis]            | Yii Framework Redis Extension         | Cache, Session and ActiveRecord   | [![Build Status](https://travis-ci.org/yiisoft/db-redis.svg?branch=master)](https://travis-ci.org/yiisoft/db-redis)
 | [yiisoft/db-mongodb]          | Yii Framework MongoDB Extension       |                                   | [![Build Status](https://travis-ci.org/yiisoft/db-mongodb.svg?branch=master)](https://travis-ci.org/yiisoft/db-mongodb)
-| [yiisoft/db-elasticsearch]    | Yii Framework ElasticSearch Extension | Query and ActiveRecord            | [![Build Status](https://travis-ci.org/yiisoft/db-elasticsearch.svg?branch=master)](https://travis-ci.org/yiisoft/db-elasticsearch)
+| [yiisoft/db-elasticsearch]    | Yii Framework ElasticSearch Extension | Query and ActiveRecord            | [![Build Status](https://travis-ci.com/yiisoft/db-elasticsearch.svg?branch=master)](https://travis-ci.com/yiisoft/db-elasticsearch)
 
 [yiisoft/db-sphinx]:            https://github.com/yiisoft/db-sphinx
 [yiisoft/db-redis]:             https://github.com/yiisoft/db-redis
