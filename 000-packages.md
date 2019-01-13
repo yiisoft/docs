@@ -83,7 +83,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/yii-jquery]          | Yii Framework jQuery Extension                    | [![Build Status](https://travis-ci.org/yiisoft/yii-jquery.svg?branch=master&a=1)](https://travis-ci.org/yiisoft/yii-jquery)
 | [yiisoft/yii-captcha]         | Yii Framework CAPTCHA Extension                   | [![Build Status](https://travis-ci.org/yiisoft/yii-captcha.svg?branch=master)](https://travis-ci.org/yiisoft/yii-captcha)
 | [yiisoft/yii-swiftmailer]     | Yii Framework Swift Mailer Extension              | [![Build Status](https://travis-ci.org/yiisoft/yii-swiftmailer.svg?branch=master)](https://travis-ci.org/yiisoft/yii-swiftmailer)
-| [yiisoft/yii-twig]            | Yii Framework Twig Extension                      | [![Build Status](https://travis-ci.com/yiisoft/yii-twig.svg?branch=master)](https://travis-ci.com/yiisoft/yii-twig)
+| [yiisoft/yii-twig]            | Yii Framework Twig Extension                      | [![Build Status](https://travis-ci.org/yiisoft/yii-twig.svg?branch=master)](https://travis-ci.org/yiisoft/yii-twig)
 | [yiisoft/yii-http-client]     | Yii Framework HTTP client extension               | [![Build Status](https://travis-ci.com/yiisoft/yii-http-client.svg?branch=master)](https://travis-ci.com/yiisoft/yii-http-client)
 | [yiisoft/yii-auth-client]     | Yii Framework External Authentication Extension   | [![Build Status](https://travis-ci.com/yiisoft/yii-auth-client.svg?branch=master)](https://travis-ci.com/yiisoft/yii-auth-client)
 
