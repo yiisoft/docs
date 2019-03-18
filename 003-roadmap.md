@@ -77,7 +77,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 ## Router
 
 - [ ] DSL for configuration.
-- [ ] Abiltiy to route to any callable.
+- [ ] Ability to route to any callable.
 - [ ] Named routes.
 - [ ] Route groups w/ middleware support.
 
@@ -98,7 +98,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 
 ## Console
 
-- [ ] Separate web and console applicaition
+- [ ] Separate web and console application
 - [ ] Possibly eliminate base application
 
 ## Documentation
