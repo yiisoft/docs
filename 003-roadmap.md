@@ -72,7 +72,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 ## Single application template
 
 - [x] Drop basic/advanced.
-- [ ] Create a single application template that works out of the box.
+- [ ] Create a [single application template that works out of the box](https://github.com/yiisoft/yii-project-template).
 
 ## Router
 
@@ -89,6 +89,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 - [ ] Do not inherit from `BaseObject` or `Component`. Remove these.
 - [ ] No globals.
 - [ ] No static calls except helpers that are final.
+- [ ] Prefer throwing exceptions to fixing input.
 
 ## Development toolkit
 
@@ -104,7 +105,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 
 - [ ] Follow best practices.
 - [ ] Don't use "MVC" term.
-- [ ] Upgrading from Yii 2.
+- [ ] [Upgrading from Yii 2](https://github.com/yiisoft/yii-core/blob/master/UPGRADE.md).
 
 ## RBAC
 
@@ -119,5 +120,6 @@ View is implemented as [framework-independing package](https://github.com/yiisof
 ## Others
 
 - [ ] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
-- [ ] Clean up error handler.
-- [ ] Make validators independent from models to allow reusing them in handlers
+- [ ] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure error handler catches fatals and is using response.
+- [ ] Make validators independent from models to allow reusing them in handlers.
+- [ ] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
