@@ -1,0 +1,123 @@
+# 003 - Roadmap
+
+We want Yii 3 to:
+
+- Not limit developer in choosing architecture. Allow anything from "classic" MVC to DDD.
+- Be based on best practices such as SOLID, GRASP etc. and teach them to community.
+- Keep most good things from Yii 2.
+- Be more open to global PHP community and infrastructure.
+
+## PSRs compliance
+
+PSR compliance helps with customizability, ability to use general PHP libraries and implement less wrappers.
+Here's the list of PSRs we want to implement.
+
+### PSR-3 Logger
+
+Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/log).
+
+- [ ] Framework packages should depend on interface only.
+
+### PSR-4 Autoloading
+
+### PSR-7 HTTP message
+
+- [ ] Remove our own implementation. At least for now.
+- [ ] Framework packages should depend on interfaces only.
+
+### PSR-11 Container
+
+Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/di).
+
+- [ ] Framework packages should not use container directly including interface. One should be able to instantiate everything manually.
+- [ ] Finish refactoring.
+- [ ] Remove all framework-specific implementations from the package. Move to framework.
+
+### PSR-12 Code style
+
+- [ ] Make sure code follows it.
+- [ ] Automate fixing style before release.
+
+### PSR-13 Hypermedia links
+
+### PSR-14 Event dispatcher
+
+### PSR-15 HTTP handlers
+
+- [ ] Rewrite HTTP flow to PSR-7 request-reponse + formatting response via emitter.
+- [ ] Provide SAPI emitter out of the box.
+- [ ] Make it possible to use alternative emitters such as RoadRunner.
+- [ ] Support middlewares.
+- [ ] Re-implement router w/ middleware support for route groups.
+- [ ] Filters should be middlewares.
+
+### PSR-16 Simple cache
+
+Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/cache).
+
+- [ ] Framework packages should depend on interfaces only.
+
+### PSR-17 HTTP factories
+
+### PSR-18 HTTP client
+
+- [ ] Remove our own implementation. At least for now.
+- [ ] Framework packages should depend on interfaces only.
+
+## Stricter types
+
+- [ ] Make sure PHP 7.2 type hinting is used everywhere.
+- [ ] Make sure types are as definitive as possible. Avoid varying types if possible.
+
+## Single application template
+
+- [x] Drop basic/advanced.
+- [ ] Create a single application template that works out of the box.
+
+## Router
+
+- [ ] DSL for configuration.
+- [ ] Abiltiy to route to any callable.
+- [ ] Named routes.
+- [ ] Route groups w/ middleware support.
+
+## Best practices and SOLID compliance of all classes/packages
+
+- [ ] Make sure interfaces follow "interface segregation" principle.
+- [ ] Do not use public properties.
+- [ ] Do not use `init()`.
+- [ ] Do not inherit from `BaseObject` or `Component`. Remove these.
+- [ ] No globals.
+- [ ] No static calls except helpers that are final.
+
+## Development toolkit
+
+- [ ] Release command line tool
+- [ ] Development command line tool (symlinks packages into usable application)
+
+## Console
+
+- [ ] Separate web and console applicaition
+- [ ] Possibly eliminate base application
+
+## Documentation
+
+- [ ] Follow best practices.
+- [ ] Don't use "MVC" term.
+- [ ] Upgrading from Yii 2.
+
+## RBAC
+
+RBAC is implemented as [framework-independing package](https://github.com/yiisoft/rbac).
+
+- [ ] Make sure it follows best practices.
+
+## View
+
+View is implemented as [framework-independing package](https://github.com/yiisoft/view).
+
+## Others
+
+- [ ] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
+- [ ] Clean up error handler.
+- [ ] Make validators independent from models to allow reusing them in handlers
