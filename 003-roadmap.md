@@ -109,13 +109,13 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 
 ## RBAC
 
-RBAC is implemented as [framework-independing package](https://github.com/yiisoft/rbac).
+RBAC is implemented as [framework-independent package](https://github.com/yiisoft/rbac).
 
 - [ ] Make sure it follows best practices.
 
 ## View
 
-View is implemented as [framework-independing package](https://github.com/yiisoft/view).
+View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
 ## Others
 
