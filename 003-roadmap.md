@@ -14,7 +14,7 @@ Here's the list of PSRs we want to implement.
 
 ### PSR-3 Logger
 
-Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/log).
+Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/log).
 
 - [ ] Framework packages should depend on interface only.
 
@@ -27,7 +27,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 
 ### PSR-11 Container
 
-Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/di).
+Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/di).
 
 - [ ] Framework packages should not use container directly including interface. One should be able to instantiate everything manually.
 - [ ] Finish refactoring.
@@ -53,7 +53,7 @@ Implemented as a [separate pacakge that is not dependent on a framework](https:/
 
 ### PSR-16 Simple cache
 
-Implemented as a [separate pacakge that is not dependent on a framework](https://github.com/yiisoft/cache).
+Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/cache).
 
 - [ ] Framework packages should depend on interfaces only.
 
