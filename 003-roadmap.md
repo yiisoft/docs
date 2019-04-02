@@ -20,10 +20,14 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-4 Autoloading
 
+- [x] Autoloading is fine already.
+- [ ] Docuement on how it works.
+
 ### PSR-7 HTTP message
 
 - [ ] Remove our own implementation. At least for now.
 - [ ] Framework packages should depend on interfaces only.
+- [ ] Implement decorators for Request, ServerRequest, Response adding handy methods.
 
 ### PSR-11 Container
 
@@ -51,7 +55,11 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [ ] Rewrite HTTP flow to PSR-7 request-reponse + formatting response via emitter.
 - [ ] Provide SAPI emitter out of the box.
 - [ ] Make it possible to use alternative emitters such as RoadRunner.
-- [ ] Support middlewares.
+- [ ] Support middleware.
+- [ ] Implement filters as middleware:
+  - [ ] Rate limiting
+  - [ ] Basic auth
+  - [ ] Digest auth
 - [ ] Re-implement router w/ middleware support for route groups.
 - [ ] Filters should be middlewares.
 
