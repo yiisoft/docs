@@ -17,6 +17,7 @@ Here's the list of PSRs we want to implement.
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/log).
 
 - [ ] Framework packages should depend on interface only.
+- [ ] Split drivers into packages.
 
 ### PSR-4 Autoloading
 
@@ -68,6 +69,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/cache).
 
 - [ ] Framework packages should depend on interfaces only.
+- [ ] Split drivers into packages.
 
 ### PSR-17 HTTP factories
 
@@ -112,6 +114,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [ ] Separate web and console application
 - [ ] Possibly eliminate base application
+- [ ] Create interface for console
+- [ ] Implementation may be one of the popular ones
 
 ## Documentation
 
@@ -124,6 +128,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 RBAC is implemented as [framework-independent package](https://github.com/yiisoft/rbac).
 
 - [ ] Make sure it follows best practices.
+- [ ] Split drivers into packages.
 
 ## View
 
