@@ -106,6 +106,10 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 
 [PSR-3]:                        https://www.php-fig.org/psr/psr-3
 [yiisoft/log]:                  https://github.com/yiisoft/log
+[yiisoft/log-target-db]:        https://github.com/yiisoft/log-target-db
+[yiisoft/log-target-email]:     https://github.com/yiisoft/log-target-email
+[yiisoft/log-target-file]:      https://github.com/yiisoft/log-target-file
+[yiisoft/log-target-syslog]:    https://github.com/yiisoft/log-target-syslog
 
 ## Cache
 | Package                       | Title                                 | Description                                   | Status
