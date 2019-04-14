@@ -99,6 +99,13 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/log]                 | Yii Logging Library                   | [PSR-3] compatible logger                     | [![Build Status](https://travis-ci.org/yiisoft/log.svg?branch=master)](https://travis-ci.org/yiisoft/log)
+| [yiisoft/log-target-db]       | Yii Logging Library - DB Target       | Database target for logs                      | [![Build Status](https://travis-ci.com/yiisoft/log-target-db.svg?branch=master)](https://travis-ci.com/yiisoft/log-target-db)
+| [yiisoft/log-target-email]    | Yii Logging Library - Email Target    | Email target for logs                         | [![Build Status](https://travis-ci.com/yiisoft/log-target-email.svg?branch=master)](https://travis-ci.com/yiisoft/log-target-email)
+| [yiisoft/log-target-file]     | Yii Logging Library - File Target     | File target for logs                          | [![Build Status](https://travis-ci.org/yiisoft/log-target-file.svg?branch=master)](https://travis-ci.org/yiisoft/log-target-file)
+| [yiisoft/log-target-syslog]   | Yii Logging Library - Syslog Target   | Syslog target for logs                        | [![Build Status](https://travis-ci.org/yiisoft/log-target-syslog.svg?branch=master)](https://travis-ci.org/yiisoft/log-target-syslog)
+
+[PSR-3]:                        https://www.php-fig.org/psr/psr-3
+[yiisoft/log]:                  https://github.com/yiisoft/log
 
 ## Cache
 | Package                       | Title                                 | Description                                   | Status
@@ -127,11 +134,9 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/active-record]       | Yii Active Record Library             |                                               | [![Build Status](https://travis-ci.org/yiisoft/active-record.svg?branch=master)](https://travis-ci.org/yiisoft/active-record)
 | [yiisoft/view]                | Yii View Rendering Library            |                                               | [![Build Status](https://travis-ci.org/yiisoft/view.svg?branch=master)](https://travis-ci.org/yiisoft/view)
 
-[PSR-3]:                        https://www.php-fig.org/psr/psr-3
 [PSR-11]:                       https://www.php-fig.org/psr/psr-11
 [PSR-16]:                       https://www.php-fig.org/psr/psr-16
 
-[yiisoft/log]:                  https://github.com/yiisoft/log
 [yiisoft/di]:                   https://github.com/yiisoft/di
 [yiisoft/cache]:                https://github.com/yiisoft/cache
 [yiisoft/db]:                   https://github.com/yiisoft/db
@@ -169,4 +174,3 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/db-redis]:             https://github.com/yiisoft/db-redis
 [yiisoft/db-mongodb]:           https://github.com/yiisoft/db-mongodb
 [yiisoft/db-elasticsearch]:     https://github.com/yiisoft/db-elasticsearch
-
