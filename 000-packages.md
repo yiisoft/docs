@@ -94,18 +94,38 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/yii-http-client]:      https://github.com/yiisoft/yii-http-client
 [yiisoft/yii-auth-client]:      https://github.com/yiisoft/yii-auth-client
 
-## Yii Libraries
+## Log
 
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/log]                 | Yii Logging Library                   | [PSR-3] compatible logger                     | [![Build Status](https://travis-ci.org/yiisoft/log.svg?branch=master)](https://travis-ci.org/yiisoft/log)
-| [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector | [![Build Status](https://travis-ci.org/yiisoft/di.svg?branch=master)](https://travis-ci.org/yiisoft/di)
+
+## Cache
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/cache]               | Yii Caching Library                   | [PSR-16] compatible cache                     | [![Build Status](https://travis-ci.com/yiisoft/cache.svg?branch=master)](https://travis-ci.com/yiisoft/cache)
+
+## RBAC
+
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
+
+## Mutex
+
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/mutex]               | Yii Mutex Library | Framework-independent mutex lock implementation | [![Build Status](https://travis-ci.com/yiisoft/mutex.svg?branch=master)](https://travis-ci.com/yiisoft/mutex)
+
+
+## Yii Libraries
+
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector | [![Build Status](https://travis-ci.org/yiisoft/di.svg?branch=master)](https://travis-ci.org/yiisoft/di)
 | [yiisoft/db]                  | Yii Database Abstraction Library      |                                               | [![Build Status](https://travis-ci.org/yiisoft/db.svg?branch=master)](https://travis-ci.org/yiisoft/db)
 | [yiisoft/active-record]       | Yii Active Record Library             |                                               | [![Build Status](https://travis-ci.org/yiisoft/active-record.svg?branch=master)](https://travis-ci.org/yiisoft/active-record)
-| [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
 | [yiisoft/view]                | Yii View Rendering Library            |                                               | [![Build Status](https://travis-ci.org/yiisoft/view.svg?branch=master)](https://travis-ci.org/yiisoft/view)
-| [yiisoft/mutex]               | Yii Mutex Library | Framework-independent mutex lock implementation | [![Build Status](https://travis-ci.com/yiisoft/mutex.svg?branch=master)](https://travis-ci.com/yiisoft/mutex)
 
 [PSR-3]:                        https://www.php-fig.org/psr/psr-3
 [PSR-11]:                       https://www.php-fig.org/psr/psr-11
