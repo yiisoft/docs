@@ -124,10 +124,21 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 
 ## Mutex
 
-| Package                       | Title                                 | Description                                   | Status
-|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
-| [yiisoft/mutex]               | Yii Mutex Library | Framework-independent mutex lock implementation | [![Build Status](https://travis-ci.com/yiisoft/mutex.svg?branch=master)](https://travis-ci.com/yiisoft/mutex)
+| Package                       | Title                                  | Description                                   | Status
+|-------------------------------|----------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/mutex]               | Yii Mutex Library                      | Framework-independent mutex lock implementation | [![Build Status](https://travis-ci.com/yiisoft/mutex.svg?branch=master)](https://travis-ci.com/yiisoft/mutex)
+| [yiisoft/mutex-db-mysql]      | Yii Mutex Library - MySQL DB Driver    | MySQL driver for mutex operations               | [![Build Status](https://travis-ci.com/yiisoft/mutex-db-mysql.svg?branch=master)](https://travis-ci.com/yiisoft/mutex-db-mysql)
+| [yiisoft/mutex-db-oracle]     | Yii Mutex Library - Oracle DB Driver   | Oracle driver for mutex operations              | [![Build Status](https://travis-ci.com/yiisoft/mutex-db-oracle.svg?branch=master)](https://travis-ci.com/yiisoft/mutex-db-oracle)
+| [yiisoft/mutex-db-pgsql]      | Yii Mutex Library - Postgres DB Driver | Postgres driver for mutex operations            | [![Build Status](https://travis-ci.com/yiisoft/mutex-db-pgsql.svg?branch=master)](https://travis-ci.com/yiisoft/mutex-db-pgsql)
+| [yiisoft/mutex-db-redis]      | Yii Mutex Library - Redis DB Driver    | Redis driver for mutex operations               | [![Build Status](https://travis-ci.com/yiisoft/mutex-db-redis.svg?branch=master)](https://travis-ci.com/yiisoft/mutex-db-redis)
+| [yiisoft/mutex-file]          | Yii Mutex Library - File Driver        | File driver for mutex operations                | [![Build Status](https://travis-ci.com/yiisoft/mutex-file.svg?branch=master)](https://travis-ci.com/yiisoft/mutex-file)
 
+[yiisoft/mutex]:                https://github.com/yiisoft/mutex
+[yiisoft/mutex-db-mysql]:       https://github.com/yiisoft/mutex-db-mysql
+[yiisoft/mutex-db-oracle]:      https://github.com/yiisoft/mutex-db-oracle
+[yiisoft/mutex-db-pgsql]:       https://github.com/yiisoft/mutex-db-pgsql
+[yiisoft/mutex-db-redis]:       https://github.com/yiisoft/mutex-db-redis
+[yiisoft/mutex-file]:           https://github.com/yiisoft/mutex-file
 
 ## Yii Libraries
 
