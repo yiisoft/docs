@@ -118,11 +118,24 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/cache]               | Yii Caching Library                   | [PSR-16] compatible cache                     | [![Build Status](https://travis-ci.com/yiisoft/cache.svg?branch=master)](https://travis-ci.com/yiisoft/cache)
 
+[PSR-16]:                       https://www.php-fig.org/psr/psr-16
+[yiisoft/cache]:                https://github.com/yiisoft/cache
+
+## Event Dispatcher
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/event-dispatcher]    | Yii Event Dispatcher Library          | [PSR-14] compatible event dispatcher          | [![Build Status](https://travis-ci.org/yiisoft/event-dispatcher.svg?branch=master)](https://travis-ci.org/yiisoft/event-dispatcher)
+
+[PSR-14]:                       https://www.php-fig.org/psr/psr-14
+[yiisoft/event-dispatcher]:     https://github.com/yiisoft/event-dispatcher
+
 ## RBAC
 
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
+
+[yiisoft/rbac]:                 https://github.com/yiisoft/rbac
 
 ## Mutex
 
@@ -152,13 +165,9 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | [yiisoft/view]                | Yii View Rendering Library            |                                               | [![Build Status](https://travis-ci.org/yiisoft/view.svg?branch=master)](https://travis-ci.org/yiisoft/view)
 
 [PSR-11]:                       https://www.php-fig.org/psr/psr-11
-[PSR-16]:                       https://www.php-fig.org/psr/psr-16
-
 [yiisoft/di]:                   https://github.com/yiisoft/di
-[yiisoft/cache]:                https://github.com/yiisoft/cache
 [yiisoft/db]:                   https://github.com/yiisoft/db
 [yiisoft/active-record]:        https://github.com/yiisoft/active-record
-[yiisoft/rbac]:                 https://github.com/yiisoft/rbac
 [yiisoft/view]:                 https://github.com/yiisoft/view
 [yiisoft/mutex]:                https://github.com/yiisoft/mutex
 
