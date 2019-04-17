@@ -82,6 +82,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 |-------------------------------|---------------------------------------------------|---------
 | [yiisoft/yii-jquery]          | Yii Framework jQuery Extension                    | [![Build Status](https://travis-ci.org/yiisoft/yii-jquery.svg?branch=master&a=1)](https://travis-ci.org/yiisoft/yii-jquery)
 | [yiisoft/yii-captcha]         | Yii Framework CAPTCHA Extension                   | [![Build Status](https://travis-ci.org/yiisoft/yii-captcha.svg?branch=master)](https://travis-ci.org/yiisoft/yii-captcha)
+| [yiisoft/yii-queue]           | Yii Framework Queue Extension                     | [![Build Status](https://travis-ci.org/yiisoft/yii-queue.svg?branch=master&a=1)](https://travis-ci.org/yiisoft/yii-queue)
 | [yiisoft/yii-swiftmailer]     | Yii Framework Swift Mailer Extension              | [![Build Status](https://travis-ci.org/yiisoft/yii-swiftmailer.svg?branch=master)](https://travis-ci.org/yiisoft/yii-swiftmailer)
 | [yiisoft/yii-twig]            | Yii Framework Twig Extension                      | [![Build Status](https://travis-ci.org/yiisoft/yii-twig.svg?branch=master)](https://travis-ci.org/yiisoft/yii-twig)
 | [yiisoft/yii-http-client]     | Yii Framework HTTP client extension               | [![Build Status](https://travis-ci.com/yiisoft/yii-http-client.svg?branch=master)](https://travis-ci.com/yiisoft/yii-http-client)
@@ -89,6 +90,7 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 
 [yiisoft/yii-jquery]:           https://github.com/yiisoft/yii-jquery
 [yiisoft/yii-captcha]:          https://github.com/yiisoft/yii-captcha
+[yiisoft/yii-queue]:            https://github.com/yiisoft/yii-queue
 [yiisoft/yii-swiftmailer]:      https://github.com/yiisoft/yii-swiftmailer
 [yiisoft/yii-twig]:             https://github.com/yiisoft/yii-twig
 [yiisoft/yii-http-client]:      https://github.com/yiisoft/yii-http-client
