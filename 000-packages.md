@@ -134,9 +134,11 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/array]               | Yii Array Helper                      |                                               | [![Build Status](https://travis-ci.com/yiisoft/array.svg?branch=master)](https://travis-ci.com/yiisoft/array)
+| [yiisoft/inflector]           | Yii Inflector Helper                  |                                               | [![Build Status](https://travis-ci.com/yiisoft/inflector.svg?branch=master)](https://travis-ci.com/yiisoft/inflector)
 | [yiisoft/string]              | Yii String Helper                     |                                               | [![Build Status](https://travis-ci.com/yiisoft/string.svg?branch=master)](https://travis-ci.com/yiisoft/string)
 
 [yiisoft/array]:                https://github.com/yiisoft/array
+[yiisoft/inflector]:            https://github.com/yiisoft/inflector
 [yiisoft/string]:               https://github.com/yiisoft/string
 
 ## Mutex
