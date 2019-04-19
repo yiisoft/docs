@@ -15,7 +15,7 @@ Since version 3.0 Yii is divided into several packages following these agreement
     - *do not depend* on Yii (`yii-core`)
     - can be used outside of Yii Framework
     - named as `yiisoft/something` without yii-prefix
-    - titled as "Yii ... Library"
+    - titled as "Yii ... Library" or "Yii ... Helper"
 
 For all Yii packages GitHub repository name exactly matches Packagist package name.
 
@@ -129,13 +129,15 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [PSR-14]:                       https://www.php-fig.org/psr/psr-14
 [yiisoft/event-dispatcher]:     https://github.com/yiisoft/event-dispatcher
 
-## RBAC
+## Helpers
 
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
-| [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
+| [yiisoft/array]               | Yii Array Helper                      |                                               | [![Build Status](https://travis-ci.com/yiisoft/array.svg?branch=master)](https://travis-ci.com/yiisoft/array)
+| [yiisoft/string]              | Yii String Helper                     |                                               | [![Build Status](https://travis-ci.com/yiisoft/string.svg?branch=master)](https://travis-ci.com/yiisoft/string)
 
-[yiisoft/rbac]:                 https://github.com/yiisoft/rbac
+[yiisoft/array]:                https://github.com/yiisoft/array
+[yiisoft/string]:               https://github.com/yiisoft/string
 
 ## Mutex
 
@@ -154,6 +156,14 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/mutex-db-pgsql]:       https://github.com/yiisoft/mutex-db-pgsql
 [yiisoft/mutex-db-redis]:       https://github.com/yiisoft/mutex-db-redis
 [yiisoft/mutex-file]:           https://github.com/yiisoft/mutex-file
+
+## RBAC
+
+| Package                       | Title                                 | Description                                   | Status
+|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/rbac]                | Yii Role-Based Access Control Library |                                               | [![Build Status](https://travis-ci.org/yiisoft/rbac.svg?branch=master)](https://travis-ci.org/yiisoft/rbac)
+
+[yiisoft/rbac]:                 https://github.com/yiisoft/rbac
 
 ## Yii Libraries
 
