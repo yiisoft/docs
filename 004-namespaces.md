@@ -13,4 +13,4 @@ Some examples:
 |------------------|-----------------
 | yiisoft/yii-web  | Yiisoft/Yii/Web
 | yiisoft/di       | Yiisoft/DI
-| yiisoft/db-mysql | Yiisoft/Db/MySQL
+| yiisoft/db-mysql | Yiisoft/DB/MySQL
