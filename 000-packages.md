@@ -157,6 +157,17 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 [yiisoft/mutex-db-redis]:       https://github.com/yiisoft/mutex-db-redis
 [yiisoft/mutex-file]:           https://github.com/yiisoft/mutex-file
 
+## Router
+
+| Package                       | Title                                 | Description                                       | Status
+|-------------------------------|---------------------------------------|---------------------------------------------------|------------------------------------------------------
+| [yiisoft/router]              | Yii Router                            | [PSR-7] compatible request routing and middleware | [![Build Status](https://travis-ci.com/yiisoft/router.svg?branch=master)](https://travis-ci.com/yiisoft/router)
+| [yiisoft/router-fastroute]    | Yii Router - FastRoute adapter        | FastRoute adapter for Yii Router                  | [![Build Status](https://travis-ci.com/yiisoft/router-fastroute.svg?branch=master)](https://travis-ci.com/yiisoft/router-fastroute)
+
+[PSR-7]:                        https://www.php-fig.org/psr/psr-7
+[yiisoft/router]:               https://github.com/yiisoft/router
+[yiisoft/router-fastroute]:     https://github.com/yiisoft/router-fastroute
+
 ## RBAC
 
 | Package                       | Title                                 | Description                                   | Status
