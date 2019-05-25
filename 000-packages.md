@@ -131,13 +131,15 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 
 ## Helpers
 
-| Package                       | Title                                 | Description                                   | Status
-|-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
-| [yiisoft/array]               | Yii Array Helper                      |                                               | [![Build Status](https://travis-ci.com/yiisoft/array.svg?branch=master)](https://travis-ci.com/yiisoft/array)
-| [yiisoft/string]              | Yii String Helper                     |                                               | [![Build Status](https://travis-ci.com/yiisoft/string.svg?branch=master)](https://travis-ci.com/yiisoft/string)
+| Package                    | Title                        | Description                                   | Status
+|----------------------------|------------------------------|-----------------------------------------------|------------------------------------------------------
+| [yiisoft/arrays]           | Yii Array Helper             |                                               | [![Build Status](https://travis-ci.com/yiisoft/arrays.svg?branch=master)](https://travis-ci.com/yiisoft/arrays)
+| [yiisoft/strings]          | Yii String Helper            |                                               | [![Build Status](https://travis-ci.com/yiisoft/strings.svg?branch=master)](https://travis-ci.com/yiisoft/strings)
+| [yiisoft/var-dumper]       | Yii VarDumper Helper         |                                               | [![Build Status](https://travis-ci.com/yiisoft/var-dumper.svg?branch=master)](https://travis-ci.com/yiisoft/var-dumper)
 
-[yiisoft/array]:                https://github.com/yiisoft/array
-[yiisoft/string]:               https://github.com/yiisoft/string
+[yiisoft/arrays]:                https://github.com/yiisoft/arrays
+[yiisoft/strings]:               https://github.com/yiisoft/strings
+[yiisoft/var-dumper]:            https://github.com/yiisoft/var-dumper
 
 ## Mutex
 
