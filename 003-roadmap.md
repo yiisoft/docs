@@ -26,7 +26,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-7 HTTP message
 
-- [ ] Remove our own implementation. At least for now.
+- [x] Remove our own implementation. At least for now.
 - [ ] Framework packages should depend on interfaces only.
 - [ ] Implement decorators for Request, ServerRequest, Response adding handy methods.
 
@@ -53,16 +53,16 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-15 HTTP handlers
 
-- [ ] Rewrite HTTP flow to PSR-7 request-reponse + formatting response via emitter.
-- [ ] Provide SAPI emitter out of the box.
-- [ ] Make it possible to use alternative emitters such as RoadRunner.
-- [ ] Support middleware.
+- [x] Rewrite HTTP flow to PSR-7 request-reponse + formatting response via emitter.
+- [x] Provide SAPI emitter out of the box.
+- [x] Make it possible to use alternative emitters such as RoadRunner.
+- [x] Support middleware.
 - [ ] Implement filters as middleware:
   - [ ] Rate limiting
   - [ ] Basic auth
   - [ ] Digest auth
 - [ ] Re-implement router w/ middleware support for route groups.
-- [ ] Filters should be middlewares.
+- [x] Filters should be middlewares.
 
 ### PSR-16 Simple cache
 
@@ -72,6 +72,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [ ] Split drivers into packages.
 
 ### PSR-17 HTTP factories
+
+- [x] Use PSR factories.
 
 ### PSR-18 HTTP client
 
@@ -90,9 +92,11 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Router
 
-- [ ] DSL for configuration.
-- [ ] Ability to route to any callable.
-- [ ] Named routes.
+Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/router).
+
+- [x] DSL for configuration.
+- [x] Ability to route to any callable.
+- [x] Named routes.
 - [ ] Route groups w/ middleware support.
 
 ## Best practices and SOLID compliance of all classes/packages
