@@ -19,8 +19,8 @@ Available Commands:
 
   install             Install all packages listed in packages.php
   install <package>   Install a single package. <package> refers to the array key in packages.php
-  update             Update all packages listed in packages.php
-  update <package>   Update a single package. <package> refers to the array key in packages.php
+  update              Update all packages listed in packages.php
+  update <package>    Update a single package. <package> refers to the array key in packages.php
   status              Show stats summary about all packages.
   lint                Check packages for common mistakes.
 ```
