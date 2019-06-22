@@ -5,3 +5,4 @@
 - [002 - Issue workflow](002-issue-workflow.md)
 - [003 - Roadmap](003-roadmap.md)
 - [004 - Namespaces](004-namespaces.md)
+- [005 - Development Tool](005-development-tool.md)
