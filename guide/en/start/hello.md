@@ -66,11 +66,60 @@ a `message` parameter with a value of `"Goodbye"`, the `$message` variable withi
 
 ## Configuring router
 
-Now in order to map our handler to URL we need to configure router.
+Now in order to map our handler to URL we need to configure router. We will use a factory
+to create configured router. Create `src/Factory/AppRouterFactory`:
 
+```php
+<?php
+namespace App\Factory;
 
-Creating a View Template <span id="creating-view-template"></span>
----------------
+use Psr\Container\ContainerInterface;
+use Yiisoft\Router\FastRoute\FastRouteFactory;
+use Yiisoft\Router\Route;
+use Yiisoft\Router\RouterFactory;
+use Yiisoft\Web\Middleware\Controller;
+use App\Controller\Hello;
+
+class AppRouterFactory
+{
+    public function __invoke(ContainerInterface $container)
+    {
+        $routes = [
+            Route::get('/say')->to(new Controller(Hello::class, 'say', $container)),
+            Route::get('/say/{message}')->to(new Controller(Hello::class, 'say', $container)),
+        ];
+
+        return (new RouterFactory(new FastRouteFactory(), $routes))($container);
+    }
+
+    public static function __set_state(array $state): self
+    {
+        return new self();
+    }
+}
+```
+
+In the above we are using FastRoute as routing engine and configuring two routes. For each route
+a "controller" `Hello` will be created and its "action" method `say` will be invoked. 
+
+The factory class should be used in the DI container to define router instance. In order
+to do that edit `config/web.php` by adding:
+
+```php
+use Yiisoft\Router\RouterInterface;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Router\UrlMatcherInterface;
+use App\Factory\AppRouterFactory;
+
+return [
+    // ...
+    RouterInterface::class => new AppRouterFactory(),
+    UrlMatcherInterface::class => Reference::to(RouterInterface::class),
+    UrlGeneratorInterface::class => Reference::to(RouterInterface::class),
+];
+```
+
+## Creating a View Template <span id="creating-view-template"></span>
 
 [Views templates](structure/view.md) are scripts you write to generate a response's body.
 For the "Hello" task, you will create a `say` view that prints the `message` parameter received from the action method:
