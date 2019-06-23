@@ -183,12 +183,14 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 | Package                       | Title                                 | Description                                   | Status
 |-------------------------------|---------------------------------------|-----------------------------------------------|------------------------------------------------------
 | [yiisoft/di]                  | Yii Dependency Injection Library      | [PSR-11] compatible DI container and injector | [![Build Status](https://travis-ci.org/yiisoft/di.svg?branch=master)](https://travis-ci.org/yiisoft/di)
+| [yiisoft/injector]            | Yii Injector Library                  | [PSR-11] compatible injector                  | [![Build Status](https://travis-ci.com/yiisoft/injector.svg?branch=master)](https://travis-ci.com/yiisoft/injector)
 | [yiisoft/db]                  | Yii Database Abstraction Library      |                                               | [![Build Status](https://travis-ci.org/yiisoft/db.svg?branch=master)](https://travis-ci.org/yiisoft/db)
 | [yiisoft/active-record]       | Yii Active Record Library             |                                               | [![Build Status](https://travis-ci.org/yiisoft/active-record.svg?branch=master)](https://travis-ci.org/yiisoft/active-record)
 | [yiisoft/view]                | Yii View Rendering Library            |                                               | [![Build Status](https://travis-ci.org/yiisoft/view.svg?branch=master)](https://travis-ci.org/yiisoft/view)
 
 [PSR-11]:                       https://www.php-fig.org/psr/psr-11
 [yiisoft/di]:                   https://github.com/yiisoft/di
+[yiisoft/injector]:             https://github.com/yiisoft/injector
 [yiisoft/db]:                   https://github.com/yiisoft/db
 [yiisoft/active-record]:        https://github.com/yiisoft/active-record
 [yiisoft/view]:                 https://github.com/yiisoft/view
