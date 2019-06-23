@@ -97,9 +97,7 @@ You should see the above "Congratulations!" page in your browser.
 
 The application installed according to the above instructions should work out of box with either
 an [Apache HTTP server](http://httpd.apache.org/) or an [Nginx HTTP server](http://nginx.org/), on
-Windows, Mac OS X, or Linux running PHP 5.4 or higher. Yii 2.0 is also compatible with facebook's
-[HHVM](http://hhvm.com/). However, there are some edge cases where HHVM behaves different than native
-PHP, so you have to take some extra care when using HHVM.
+Windows, Mac OS X, or Linux running PHP 7.2 or higher.
 
 On a production server, you may want to configure your Web server so that the application can be accessed
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`. Such configuration
