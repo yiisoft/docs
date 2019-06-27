@@ -6,3 +6,4 @@
 - [003 - Roadmap](003-roadmap.md)
 - [004 - Namespaces](004-namespaces.md)
 - [005 - Development Tool](005-development-tool.md)
+- [006 - Git commit messages](006-git-commit-messages.md)
