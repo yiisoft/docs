@@ -4,8 +4,7 @@ For Yii 3 the number of packages increased significantly in order to achieve mor
 In order to ease development of the framework itself we have created a special tool available from [yiisoft/yii-dev](https://github.com/yiisoft/yii-dev).
 
 ```
-$ ./yii-dev
-  _   _  _  _
+$ ./yii-dev                                                                                                                                 _   _  _  _
  | | | |(_)(_)
  | |_| || || |  Development Tool
   \__, ||_||_|
@@ -17,12 +16,15 @@ Usage: ./yii-dev <command>
 
 Available Commands:
 
-  install             Install all packages listed in packages.php
+  install             Install all packages listed in packages.php or package specified
   install <package>   Install a single package. <package> refers to the array key in packages.php
-  update              Update all packages listed in packages.php
+  update              Update all packages listed in packages.php or package specified
   update <package>    Update a single package. <package> refers to the array key in packages.php
-  status              Show stats summary about all packages.
-  lint                Check packages for common mistakes.
+  status              Show git status for all packages
+  replicate           Copy files specified in replicate.php into each package or package specified
+  commit              Add and commit changes into each repository
+  push                Push changes into each repository
+  lint                Check packages for common mistakes
 ```
 
 There are multiple commands available. The most important ones are `install` and `update`. What it does is:
@@ -34,3 +36,7 @@ There are multiple commands available. The most important ones are `install` and
 
 As a result you will have multiple packages using each other so there is no need to `git push` and `composer install` / `composer update`
 during development.
+
+
+> Note: In case you are using PhpStorm you have to mark `vendor/yiisoft` directory of each package as excluded.
+> Else it would go into infinite indexing cycle.
