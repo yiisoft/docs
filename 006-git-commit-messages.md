@@ -7,7 +7,7 @@
 - Use imperative mood i.e. `Fix`, not `Fixed`
 - Do not add period at the end
 - Use `[skip ci]` if there is no need to run unit tests
-- Start with a captical letter
+- Start with a capital letter
 - Limit to 50 characters
 
 ## Body
