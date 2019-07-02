@@ -1,6 +1,8 @@
 Saying Hello
 ============
 
+> Note: This document reflects current configuration. Yii team is going to make it significantly simpler before release.
+
 This section describes how to create a new "Hello" page in your application.
 To achieve this goal, you will define a route, create [a handler](structure/handler.md)
 and use [view](structure/views.md) to get content for response:
