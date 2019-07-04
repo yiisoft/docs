@@ -58,7 +58,7 @@ class AppRouterFactory
 ```
 
 In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middeware consisting of basic
-authentication and the action itself. A chain is a special middleware that executes all the middeware it is configured
+authentication and the action itself. A chain is a special middleware that executes all the middleware it is configured
 with.
 
 The action itself may be the following:
