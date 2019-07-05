@@ -14,3 +14,7 @@ Some examples:
 | yiisoft/yii-web  | Yiisoft/Yii/Web
 | yiisoft/di       | Yiisoft/Di
 | yiisoft/db-mysql | Yiisoft/Db/Mysql
+
+## References
+
+- [International forum discussion](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)
