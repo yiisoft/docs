@@ -11,7 +11,7 @@ either return a response or pass execution to the next middleware.
 
 Depending on how stack is configured, application behavior may vary significantly.
 
-## Using third party middleware
+## Using middleware
 
 Any PSR-15 compatible middleware could be used with Yii and there are many. Say, we need to add basic authentication
 one of the application URLs. URL-dependent middeware are configured using router so we need to modify router factory. 
@@ -46,12 +46,12 @@ class AppRouterFactory
     {
          $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
          $authorizedAction = new Controller(SiteController::class, 'auth', $container);
-         
+
          $routes = [
             // ...
             Route::get('/basic-auth')->to(new Chain($basicAuth, $authorizedAction)),
         ];
-        
+
         return (new RouterFactory(new FastRouteFactory(), $routes))($container);
     }
 }
@@ -73,3 +73,63 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 ```
 
 Basic authentication middleware wrote to request `username` attribute so we can access the data if needed.
+
+## Creating your own middleware
+
+In order to create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
+
+```php
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
+```
+
+There are multiple ways to handle request and choosing one depends on what the middleware should achieve.
+
+### Forming response directly
+
+In order to respond directly one needs a response factory passed via constructor:
+
+```php
+<?php
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+class RespondingMiddleware implements MiddlewareInterface
+{
+    private $responseFactory;
+
+    public function __construct(ResponseFactoryInterface $responseFactory)
+    {
+        $this->responseFactory = $responseFactory;
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $response = $this->responseFactory->createResponse();
+        $response->getBody()->write('Hello!');
+        return $response;
+    }
+}
+```
+
+### Delegating handling to the next middleware
+
+In case middleware either is not intended form response / modify request or cannot do it this time, handling could be
+left to next middleware in the stack:  
+
+```php
+return $handler->handle($request);
+```
+
+### Capturing response to manipulate it
+
+You may want to capture response to manipulate it. It could be useful for adding CORS headers, gzipping content etc.
+
+```php
+$response = $handler->handle($request);
+// extra handing
+return $response;
+```
+
