@@ -7,3 +7,5 @@
 - [004 - Namespaces](004-namespaces.md)
 - [005 - Development Tool](005-development-tool.md)
 - [006 - Git commit messages](006-git-commit-messages.md)
+- [007 - Exceptions](007-exceptions.md)
+- [008 - Interfaces](008-interfaces.md)
