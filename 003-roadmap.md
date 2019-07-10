@@ -143,6 +143,6 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 ## Others
 
 - [x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
-- [ ] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure error handler catches fatals and is using response.
+- [x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure error handler catches fatals and is using response.
 - [ ] Make validators independent from models to allow reusing them in handlers.
 - [ ] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
