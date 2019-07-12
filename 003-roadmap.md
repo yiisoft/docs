@@ -16,18 +16,19 @@ Here's the list of PSRs we want to implement.
 
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/log).
 
-- [ ] Framework packages should depend on interface only.
-- [ ] Split drivers into packages.
+- [x] Framework packages should depend on interface only.
+- [x] Split drivers into packages.
+- [ ] Clean up code.
 
 ### PSR-4 Autoloading
 
 - [x] Autoloading is fine already.
-- [ ] Docuement on how it works.
+- [ ] Document on how it works.
 
 ### PSR-7 HTTP message
 
 - [x] Remove our own implementation. At least for now.
-- [ ] Framework packages should depend on interfaces only.
+- [x] Framework packages should depend on interfaces only.
 - [ ] Implement decorators for Request, ServerRequest, Response adding handy methods.
 
 ### PSR-11 Container
@@ -36,12 +37,12 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [ ] Framework packages should not use container directly including interface. One should be able to instantiate everything manually.
 - [ ] Finish refactoring.
-- [ ] Remove all framework-specific implementations from the package. Move to framework.
+- [x] Remove all framework-specific implementations from the package. Move to framework.
 
 ### PSR-12 Code style
 
 - [ ] Make sure code follows it.
-- [ ] Automate fixing style before release.
+- [x] Automate fixing style before release.
 
 ### PSR-13 Hypermedia links
 
@@ -49,7 +50,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher).
 - [ ] Use in other packages.
-- [ ] Polish.
+- [x] Polish.
 
 ### PSR-15 HTTP handlers
 
@@ -68,8 +69,9 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/cache).
 
-- [ ] Framework packages should depend on interfaces only.
+- [x] Framework packages should depend on interfaces only.
 - [ ] Split drivers into packages.
+- [x] Clean up code.
 
 ### PSR-17 HTTP factories
 
@@ -103,23 +105,24 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [ ] Make sure interfaces follow "interface segregation" principle.
 - [ ] Do not use public properties.
-- [ ] Do not use `init()`.
-- [ ] Do not inherit from `BaseObject` or `Component`. Remove these.
-- [ ] No globals.
+- [x] Do not use `init()`.
+- [x] Do not inherit from `BaseObject` or `Component`. Remove these.
+- [x] No globals.
 - [ ] No static calls except helpers that are final.
 - [ ] Prefer throwing exceptions to fixing input.
 
 ## Development toolkit
 
 - [ ] Release command line tool
-- [ ] Development command line tool (symlinks packages into usable application)
+- [x] Development command line tool (symlinks packages into usable application)
 
 ## Console
 
-- [ ] Separate web and console application
-- [ ] Possibly eliminate base application
-- [ ] Create interface for console
-- [ ] Implementation may be one of the popular ones
+- [x] Separate web and console application
+- [x] Possibly eliminate base application (still needed)
+- [x] Create interface for console (using Symfony one)
+- [x] Implementation may be one of the popular ones (using Symfony one)
+- [ ] Port useful commands
 
 ## Documentation
 
@@ -144,5 +147,5 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 - [x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
 - [x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure error handler catches fatals and is using response.
-- [ ] Make validators independent from models to allow reusing them in handlers.
+- [x] Make validators independent from models to allow reusing them in handlers.
 - [ ] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
