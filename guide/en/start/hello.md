@@ -79,7 +79,7 @@ use Psr\Container\ContainerInterface;
 use Yiisoft\Router\FastRoute\FastRouteFactory;
 use Yiisoft\Router\Route;
 use Yiisoft\Router\RouterFactory;
-use Yiisoft\Web\Middleware\Controller;
+use Yiisoft\Web\Middleware\ActionCaller;
 use App\Controller\Hello;
 
 class AppRouterFactory
@@ -87,8 +87,8 @@ class AppRouterFactory
     public function __invoke(ContainerInterface $container)
     {
         $routes = [
-            Route::get('/say')->to(new Controller(Hello::class, 'say', $container)),
-            Route::get('/say/{message}')->to(new Controller(Hello::class, 'say', $container)),
+            Route::get('/say')->to(new ActionCaller(Hello::class, 'say', $container)),
+            Route::get('/say/{message}')->to(new ActionCaller(Hello::class, 'say', $container)),
         ];
 
         return (new RouterFactory(new FastRouteFactory(), $routes))($container);
