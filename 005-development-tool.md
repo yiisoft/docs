@@ -38,5 +38,5 @@ As a result you will have multiple packages using each other so there is no need
 during development.
 
 
-> Note: In case you are using PhpStorm you have to mark `vendor/yiisoft` directory of each package as excluded.
+> Note: In case you are using PhpStorm you have to add `yiisoft` exclusion pattern in "Settings → Directories → Exclude Files".
 > Else it would go into infinite indexing cycle.
