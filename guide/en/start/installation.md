@@ -47,7 +47,7 @@ You can choose a different directory name if you want.
 > which adds a [stability option](https://getcomposer.org/doc/04-schema.md#minimum-stability):
 >
 > ```bash
-> composer create-project --prefer-dist --stability=dev yiisoft/yii-dev app
+> composer create-project --prefer-dist --stability=dev yiisoft/yii-demo app
 > ```
 >
 > Note that the development version of Yii should not be used for production as it may break your running code.
