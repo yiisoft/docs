@@ -69,14 +69,14 @@ After installation is done, either configure your web server (see next section) 
 console command while in the project `public` directory:
  
 ```bash
-./vendor/bin/yii serve
+../vendor/bin/yii serve
 ```
 
 > Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use or you wish to 
 serve multiple applications this way, you might want to specify what port to use. Just add the --port argument:
 
 ```bash
-./vendor/bin/yii serve --port=8888
+../vendor/bin/yii serve --port=8888
 ```
 
 You can use your browser to access the installed Yii application with the following URL:
