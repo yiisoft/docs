@@ -147,7 +147,7 @@ DocumentRoot "path/to/app/public"
 ### Recommended Nginx Configuration <span id="recommended-nginx-configuration"></span>
 
 To use [Nginx](http://wiki.nginx.org/), you should install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
-You may use the following Nginx configuration, replacing `path/to/basic/web` with the actual path for 
+You may use the following Nginx configuration, replacing `path/to/app/public` with the actual path for 
 `app/public` and `mysite.test` with the actual hostname to serve.
 
 ```nginx
