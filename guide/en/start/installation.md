@@ -21,10 +21,10 @@ On Windows, you'll download and run [Composer-Setup.exe](https://getcomposer.org
 
 Please refer to the [Troubleshooting section of the Composer Documentation](https://getcomposer.org/doc/articles/troubleshooting.md)
 if you encounter any problems.
-If you are new to Composer, we also recommend to read at least the [Basic usage section](https://getcomposer.org/doc/01-basic-usage.md)
+If you are new to Composer, we also recommend reading at least the [Basic usage section](https://getcomposer.org/doc/01-basic-usage.md)
 of the Composer documentation.
 
-In this guide all composer commands assume you have installed composer [globally](https://getcomposer.org/doc/00-intro.md#globally)
+In this guide, all composer commands assume you have installed composer [globally](https://getcomposer.org/doc/00-intro.md#globally)
 so that it is available as the `composer` command. If you are using the `composer.phar` in the local directory instead,
 you have to adjust the example commands accordingly.
 
@@ -72,7 +72,7 @@ console command while in the project `public` directory:
 ./vendor/bin/yii serve
 ```
 
-> Note: By default the HTTP-server will listen to port 8080. However if that port is already in use or you wish to 
+> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use or you wish to 
 serve multiple applications this way, you might want to specify what port to use. Just add the --port argument:
 
 ```bash
@@ -92,10 +92,10 @@ You should see the above "Congratulations!" page in your browser.
 
 ## Configuring Web Servers <span id="configuring-web-servers"></span>
 
-> Info: You may skip this subsection for now if you are just test driving Yii with no intention
+> Info: You may skip this subsection for now if you are just test-driving Yii with no intention
   of deploying it to a production server.
 
-The application installed according to the above instructions should work out of box with either
+The application installed according to the above instructions should work out of the box with either
 an [Apache HTTP server](http://httpd.apache.org/) or an [Nginx HTTP server](http://nginx.org/), on
 Windows, Mac OS X, or Linux running PHP 7.2 or higher.
 
