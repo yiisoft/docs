@@ -11,7 +11,7 @@ how the code is organized, and how the application handles requests in general.
   your application to be `http://hostname/index.php` or something similar.
   For your needs, please adjust the URLs in our descriptions accordingly.
   
-Note that unlike framework itself, after project template is installed it's all yours. You're free to add or delete
+Note that unlike the framework itself, after the project template is installed, it's all yours. You're free to add or delete
 code and overall modify it as you need.
 
 
@@ -22,17 +22,17 @@ The application installed contains four pages:
 
 * the homepage, displayed when you access the URL `http://hostname/index.php`,
 * the "About" page,
-* the "Contact" page, which displays a contact form that allows end users to contact you via email,
-* and the "Login" page, which displays a login form that can be used to authenticate end users. Try logging in
+* the "Contact" page, which displays a contact form that allows end-users to contact you via email,
+* and the "Login" page, which displays a login form that can be used to authenticate end-users. Try logging in
   with "admin/admin", and you will find the "Login" main menu item will change to "Logout".
 
-These pages share a common header and footer. The header contains a main menu bar to allow navigation
+These pages share a common header and footer. The header contains the main menu bar to allow navigation
 among different pages.
 
 You should also see a toolbar at the bottom of the browser window.
 This is a useful [debugger tool](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md) provided by Yii to record and display a lot of debugging information, such as log messages, response statuses, the database queries run, and so on.
 
-Additionally to the web application, there is a console script called `yii`, which is located in the applications base directory.
+Additionally, to the web application, there is a console script called `yii`, which is located in the applications base directory.
 This script can be used to run background and maintenance tasks for the application, which are described
 in the [Console Application Section](tutorial-console.md).
 
@@ -72,10 +72,10 @@ The following diagram shows the static structure of an application.
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
 The entry script is creating an instance an incoming request with the help of one of PSR-7 packages
 and passes it to [application](structure-applications.md) instance. An application contains a set of
-middeware that are executed sequentially processing the request. The result is passed further to emitter
-that takes case of sending a response to the browser.
+middlewares that are executed sequentially processing the request. The result is passed further to emitter
+that takes care of sending a response to the browser.
 
-Depending on the middleware used, application may behave differently. By default there is a router
+Depending on the middleware used, the application may behave differently. By default, there is a router
 that, based on URL requested and configuration, chooses a handler that is executed to produce a response.
 
 
@@ -92,5 +92,5 @@ The following diagram shows how an application handles a request.
 3. Application is starting to execute middleware configured. One of these is typically a router.
 4. Router finds out what handler to execute based on request and configuration.
 5. The handler may load some data, possibly from a database.
-6. The handler] forms response by using data. Either directly or with help of view package.
-7. The response is passed to emitter that takes care about sending response to user's browser.
+6. The handler forms a response by using data. Either directly or with the help of the view package.
+7. The response is passed to the emitter that takes care of sending the response to the user's browser.
