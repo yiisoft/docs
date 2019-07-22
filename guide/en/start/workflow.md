@@ -72,7 +72,7 @@ The following diagram shows the static structure of an application.
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
 The entry script is creating an instance an incoming request with the help of one of PSR-7 packages
 and passes it to [application](structure-applications.md) instance. An application contains a set of
-middlewares that are executed sequentially processing the request. The result is passed further to emitter
+middleware that are executed sequentially processing the request. The result is passed further to emitter
 that takes care of sending a response to the browser.
 
 Depending on the middleware used, the application may behave differently. By default, there is a router
