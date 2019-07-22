@@ -45,7 +45,7 @@ class AppRouterFactory
     public function __invoke(ContainerInterface $container)
     {
          $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
-         $authorizedAction = new Controller(SiteController::class, 'auth', $container);
+         $authorizedAction = new ActionCaller(SiteController::class, 'auth', $container);
 
          $routes = [
             // ...
