@@ -116,7 +116,7 @@ the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more de
 > Info: If you are running your Yii application behind a reverse proxy, you might need to configure
 > [Trusted proxies and headers](runtime-requests.md#trusted-proxies) in the request component.
 
-### Recommended Apache Configuration <span id="recommended-apache-configuration"></span>
+### Apache <span id="apache"></span>
 
 Use the following configuration in Apache's `httpd.conf` file or within a virtual host configuration. Note that you
 should replace `path/to/app/public` with the actual path for `app/public`.
@@ -163,7 +163,7 @@ RewriteRule . index.php
 # ...other settings...
 ```
 
-### Recommended Nginx Configuration <span id="recommended-nginx-configuration"></span>
+### Nginx <span id="nginx"></span>
 
 To use [Nginx](http://wiki.nginx.org/), you should install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
 You may use the following Nginx configuration, replacing `path/to/app/public` with the actual path for 
@@ -219,3 +219,37 @@ in order to avoid many unnecessary system `stat()` calls.
 
 Also note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can properly detect if a connection is secure.
+
+### IIS <span id="iss"></span>
+
+To use [IIS](https://www.iis.net/), put `Web.config` and `index.php` to public accessible directory. The following
+configuration goes to `Web.config`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="slim" patternSyntax="Wildcard">
+                    <match url="*" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
+```
+
+
+### lighttpd <span id="lighttpd"></span>
+
+To use [lighttpd](http://www.lighttpd.net/) >= 1.4.24 put `index.php` to webroot and add the following to configuration:
+
+```
+url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")
+```
