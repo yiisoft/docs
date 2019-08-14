@@ -121,7 +121,7 @@ the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more de
 Use the following configuration in Apache's `httpd.conf` file or within a virtual host configuration. Note that you
 should replace `path/to/app/public` with the actual path for `app/public`.
 
-```apache
+```apacheconfig
 # Set document root to be "app/public"
 DocumentRoot "path/to/app/public"
 
@@ -143,6 +143,25 @@ DocumentRoot "path/to/app/public"
 </Directory>
 ```
 
+In case you have `AllowOverride All` you can add `.htaccess` file with the following configuration instead of
+using `httpd.conf`:
+
+```apacheconfig
+# use mod_rewrite for pretty URL support
+RewriteEngine on
+
+# if $showScriptName is false in UrlManager, do not allow accessing URLs with script name
+RewriteRule ^index.php/ - [L,R=404]
+
+# If a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise forward the request to index.php
+RewriteRule . index.php
+
+# ...other settings...
+```
 
 ### Recommended Nginx Configuration <span id="recommended-nginx-configuration"></span>
 
