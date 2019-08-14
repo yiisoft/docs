@@ -11,9 +11,9 @@ Some examples:
 
 | Package          | Namespace
 |------------------|-----------------
-| yiisoft/yii-web  | Yiisoft/Yii/Web
-| yiisoft/di       | Yiisoft/Di
-| yiisoft/db-mysql | Yiisoft/Db/Mysql
+| yiisoft/yii-web  | Yiisoft\Yii\Web
+| yiisoft/di       | Yiisoft\Di
+| yiisoft/db-mysql | Yiisoft\Db\Mysql
 
 ## References
 
