@@ -49,7 +49,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ### PSR-14 Event dispatcher
 
 - [x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher).
-- [ ] Use in other packages.
+- [x] Use in other packages.
 - [x] Polish.
 
 ### PSR-15 HTTP handlers
