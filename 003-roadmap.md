@@ -18,7 +18,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [x] Framework packages should depend on interface only.
 - [x] Split drivers into packages.
-- [ ] Clean up code.
+- [x] Clean up code.
 
 ### PSR-4 Autoloading
 
@@ -35,8 +35,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/di).
 
-- [ ] Framework packages should not use container directly including interface. One should be able to instantiate everything manually.
-- [ ] Finish refactoring.
+- [x] Framework packages should not use container directly. One should be able to instantiate everything manually.
+- [x] Finish refactoring.
 - [x] Remove all framework-specific implementations from the package. Move to framework.
 
 ### PSR-12 Code style
@@ -62,7 +62,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
   - [ ] Rate limiting
   - [ ] Basic auth
   - [ ] Digest auth
-- [ ] Re-implement router w/ middleware support for route groups.
+- [x] Re-implement router w/ middleware support for route groups.
 - [x] Filters should be middlewares.
 
 ### PSR-16 Simple cache
@@ -70,7 +70,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 Implemented as a [separate package that is not dependent on a framework](https://github.com/yiisoft/cache).
 
 - [x] Framework packages should depend on interfaces only.
-- [ ] Split drivers into packages.
+- [x] Split drivers into packages.
 - [x] Clean up code.
 
 ### PSR-17 HTTP factories
@@ -99,7 +99,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] DSL for configuration.
 - [x] Ability to route to any callable.
 - [x] Named routes.
-- [ ] Route groups w/ middleware support.
+- [x] Route groups w/ middleware support.
 
 ## Best practices and SOLID compliance of all classes/packages
 
@@ -148,4 +148,4 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 - [x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
 - [x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure error handler catches fatals and is using response.
 - [x] Make validators independent from models to allow reusing them in handlers.
-- [ ] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
+- [x] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
