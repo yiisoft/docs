@@ -10,10 +10,6 @@ In the application template [hiqdev/composer-config-plugin](https://github.com/h
 What the plugin does is collecting configs specified in all dependencies `composer.json`, `config-plugin` section and
 merging them.
 
-> Note: There is [an issue with closures and `use`](https://github.com/hiqdev/composer-config-plugin/issues/31) in
-> the current verison of the plugin. Until it is fixed, please use fully qualified class names in DI container config
-> closures. 
-
 ## Dependency Injection Container
 
 
