@@ -142,6 +142,20 @@ RBAC is implemented as [framework-independent package](https://github.com/yiisof
 View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
 - [ ] Finish refactoring.
+- [ ] Port widgets.
+
+## Data abstractions and Grid
+
+- [ ] Finish [data abstractions](https://github.com/yiisoft/data).
+- [ ] Port grid, make it use data abstractions.
+
+## Debug toolbar
+
+- [ ] Port debug toolbar.
+
+## Gii
+
+- [ ] Port Gii.
 
 ## Others
 
