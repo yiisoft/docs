@@ -143,11 +143,16 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 - [ ] Finish refactoring.
 - [ ] Port widgets.
+- [ ] Rethink and implement active form widgets.
+- [ ] Implement caching widgets.
 
 ## Data abstractions and Grid
 
 - [ ] Finish [data abstractions](https://github.com/yiisoft/data).
-- [ ] Port grid, make it use data abstractions.
+- [ ] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [ ] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [ ] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [ ] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 
 ## Debug toolbar
 
