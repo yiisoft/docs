@@ -39,6 +39,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Framework packages should not use container directly. One should be able to instantiate everything manually.
 - [x] Finish refactoring.
 - [x] Remove all framework-specific implementations from the package. Move to framework.
+- [ ] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)
 
 ### PSR-12 Code style
 
@@ -124,7 +125,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Create interface for console (using Symfony one)
 - [x] Implementation may be one of the popular ones (using Symfony one)
 - [ ] Port useful commands
-- [ ] Ensure application can add commands via config
+- [x] Ensure application can add commands via config
 
 ## Documentation
 
