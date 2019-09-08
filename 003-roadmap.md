@@ -19,6 +19,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Framework packages should depend on interface only.
 - [x] Split drivers into packages.
 - [x] Clean up code.
+- [ ] Fix email target.
 
 ### PSR-4 Autoloading
 
