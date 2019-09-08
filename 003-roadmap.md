@@ -124,6 +124,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Create interface for console (using Symfony one)
 - [x] Implementation may be one of the popular ones (using Symfony one)
 - [ ] Port useful commands
+- [ ] Ensure application can add commands via config
 
 ## Documentation
 
@@ -162,6 +163,10 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 ## Gii
 
 - [ ] Port Gii.
+
+## Infrastructure
+
+- [ ] Cover composer config plugin with tests.
 
 ## Others
 
