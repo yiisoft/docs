@@ -3,7 +3,6 @@
 Since version 3.0 Yii is divided into several packages following these agreements:
 
 - Yii Framework and Extensions:
-    - *depend* on Yii (`yii-core`)
     - named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:
         - application bases: `yii-base-web`, `yii-base-api`
         - modules: `yii-module-users`, `yii-module-pages`
@@ -12,7 +11,6 @@ Since version 3.0 Yii is divided into several packages following these agreement
         - and so on
     - titled as "Yii Framework ... Extension"
 - Yii Libraries:
-    - *do not depend* on Yii (`yii-core`)
     - can be used outside of Yii Framework
     - named as `yiisoft/something` without yii-prefix
     - titled as "Yii ... Library" or "Yii ... Helper"
@@ -25,12 +23,10 @@ For all Yii packages GitHub repository name exactly matches Packagist package na
 
 | Package                       | Title                                             | Status
 |-------------------------------|---------------------------------------------------|-------------
-| [yiisoft/yii-core]            | Yii Framework Core                                | [![Build Status](https://travis-ci.org/yiisoft/yii-core.svg?branch=master)](https://travis-ci.org/yiisoft/yii-core)
 | [yiisoft/yii-console]         | Yii Framework Console Extension                   | [![Build Status](https://travis-ci.com/yiisoft/yii-console.svg?branch=master&a=1)](https://travis-ci.com/yiisoft/yii-console)
 | [yiisoft/yii-web]             | Yii Framework Web Extension                       | [![Build Status](https://travis-ci.org/yiisoft/yii-web.svg?branch=master&a=1)](https://travis-ci.org/yiisoft/yii-web)
 | [yiisoft/yii-rest]            | Yii Framework REST Extension                      | [![Build Status](https://travis-ci.org/yiisoft/yii-rest.svg?branch=master)](https://travis-ci.org/yiisoft/yii-rest)
 
-[yiisoft/yii-core]:             https://github.com/yiisoft/yii-core
 [yiisoft/yii-console]:          https://github.com/yiisoft/yii-console
 [yiisoft/yii-web]:              https://github.com/yiisoft/yii-web
 [yiisoft/yii-rest]:             https://github.com/yiisoft/yii-rest

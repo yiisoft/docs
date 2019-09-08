@@ -129,7 +129,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [ ] Follow best practices.
 - [ ] Don't use "MVC" term.
-- [ ] [Upgrading from Yii 2](https://github.com/yiisoft/yii-core/blob/master/UPGRADE.md).
+- [ ] Upgrading from Yii 2.
 
 ## RBAC
 
