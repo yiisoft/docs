@@ -19,7 +19,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Framework packages should depend on interface only.
 - [x] Split drivers into packages.
 - [x] Clean up code.
-- [ ] Fix email target.
+- [ ] [Fix email target](https://github.com/yiisoft/log-target-email).
 
 ### PSR-4 Autoloading
 
@@ -30,7 +30,6 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 - [x] Remove our own implementation. At least for now.
 - [x] Framework packages should depend on interfaces only.
-- [ ] Implement decorators for Request, ServerRequest, Response adding handy methods.
 
 ### PSR-11 Container
 
@@ -46,8 +45,6 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [ ] Make sure code follows it.
 - [x] Automate fixing style before release.
 
-### PSR-13 Hypermedia links
-
 ### PSR-14 Event dispatcher
 
 - [x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher).
@@ -61,9 +58,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Make it possible to use alternative emitters such as RoadRunner.
 - [x] Support middleware.
 - [ ] Implement filters as middleware:
-  - [ ] Rate limiting
-  - [ ] Basic auth
-  - [ ] Digest auth
+  - [ ] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)
+  - [ ] [Authentication](https://github.com/yiisoft/yii-web/issues/114)
 - [x] Re-implement router w/ middleware support for route groups.
 - [x] Filters should be middlewares.
 
@@ -81,7 +77,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-18 HTTP client
 
-- [ ] Remove our own implementation. At least for now.
+- [x] Remove our own implementation. At least for now.
 - [ ] Framework packages should depend on interfaces only.
 
 ## Stricter types
@@ -124,7 +120,6 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Possibly eliminate base application (still needed)
 - [x] Create interface for console (using Symfony one)
 - [x] Implementation may be one of the popular ones (using Symfony one)
-- [ ] Port useful commands
 - [x] Ensure application can add commands via config
 
 ## Documentation
@@ -144,14 +139,14 @@ RBAC is implemented as [framework-independent package](https://github.com/yiisof
 
 View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
-- [ ] Finish refactoring.
+- [ ] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
 - [ ] Port widgets.
 - [ ] Rethink and implement active form widgets.
 - [ ] Implement caching widgets.
 
 ## Data abstractions and Grid
 
-- [ ] Finish [data abstractions](https://github.com/yiisoft/data).
+- [x] Finish [data abstractions](https://github.com/yiisoft/data).
 - [ ] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 - [ ] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 - [ ] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
@@ -167,7 +162,7 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Infrastructure
 
-- [ ] Cover composer config plugin with tests.
+- [ ] Cover [composer config plugin](https://github.com/hiqdev/composer-config-plugin) with tests.
 
 ## Others
 
