@@ -152,6 +152,11 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 - [ ] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 - [ ] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 
+## Validators
+
+- [ ] Finish [main package](https://github.com/yiisoft/validator) redesign
+- [ ] Port necessary validators
+
 ## Debug toolbar
 
 - [ ] Port debug toolbar.
