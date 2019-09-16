@@ -132,6 +132,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 RBAC is implemented as [framework-independent package](https://github.com/yiisoft/rbac).
 
+- [ ] Finish refactoring.
 - [ ] Make sure it follows best practices.
 - [ ] Split drivers into packages.
 
