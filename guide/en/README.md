@@ -140,12 +140,12 @@ Development Tools
 Testing
 -------
 
-* [Testing Overview](test/overview.md)
-* [Testing environment setup](test/environment-setup.md)
-* [Unit Tests](test/unit.md)
-* [Functional Tests](test/functional.md)
-* [Acceptance Tests](test/acceptance.md)
-* [Fixtures](test/fixtures.md)
+* [Testing Overview](testing/overview.md)
+* [Testing environment setup](testing/environment-setup.md)
+* [Unit Tests](testing/unit.md)
+* [Functional Tests](testing/functional.md)
+* [Acceptance Tests](testing/acceptance.md)
+* [Fixtures](testing/fixtures.md)
 
 
 Special Topics

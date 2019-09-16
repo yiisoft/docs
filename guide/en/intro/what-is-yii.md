@@ -33,7 +33,7 @@ If you're already familiar with another framework, you may appreciate knowing ho
 - Yii extensively uses PSR interfaces with ability to reuse what PHP community created and even
   replace core implementations if needed.
 - Yii is both a set of libraries and a full-stack framework providing many proven and ready-to-use features:
-  caching, logging, template engine, data providers, development tools, code generation; and more.
+  caching, logging, template engine, data abstraction, development tools, code generation; and more.
 - Yii is extremely extensible. You can customize or replace nearly every piece of the core's code. You can also
   take advantage of Yii's solid extension architecture to use or develop redistributable extensions.
 - High performance is always a primary goal of Yii.
