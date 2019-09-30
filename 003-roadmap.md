@@ -38,7 +38,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Framework packages should not use container directly. One should be able to instantiate everything manually.
 - [x] Finish refactoring.
 - [x] Remove all framework-specific implementations from the package. Move to framework.
-- [ ] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)
+- [x] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)
 
 ### PSR-12 Code style
 
