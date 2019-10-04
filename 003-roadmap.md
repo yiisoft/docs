@@ -59,7 +59,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Support middleware.
 - [ ] Implement filters as middleware:
   - [ ] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)
-  - [ ] [Authentication](https://github.com/yiisoft/yii-web/issues/114)
+  - [x] [Authentication](https://github.com/yiisoft/yii-web/issues/114)
 - [x] Re-implement router w/ middleware support for route groups.
 - [x] Filters should be middlewares.
 
