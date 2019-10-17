@@ -158,6 +158,7 @@ Special Topics
 * [Mailing](tutorial/mailing.md)
 * [Performance Tuning](tutorial/performance-tuning.md)
 * [Template Engines](tutorial/template-engines.md)
+* [Using Yii with event loop](tutorial/using-with-event-loop.md)
 
 Widgets
 -------
