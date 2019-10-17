@@ -47,7 +47,9 @@ Handling Requests
 * [Routing and URL Creation](runtime/routing.md)
 * [Request](runtime/request.md)
 * [Response](runtime/response.md)
-* [Sessions and Cookies](runtime/sessions-cookies.md)
+* [Sessions](runtime/sessions.md)
+* [Cookies](runtime/cookies.md)
+* [Flash messages](runtime/flash-messages.md)
 * [Handling Errors](runtime/handling-errors.md)
 * [Logging](runtime/logging.md)
 

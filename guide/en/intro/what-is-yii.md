@@ -63,7 +63,6 @@ Requirements and Prerequisites
 Yii 3.0 requires PHP 7.2.0 or above and runs best with the latest version of PHP 7.
 
 Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.
-Yii 3.0 also makes use of the latest features of PHP, such as [namespaces](https://secure.php.net/manual/en/language.namespaces.php)
-and [traits](https://secure.php.net/manual/en/language.oop5.traits.php). Understanding these concepts will help
-you more easily pick up Yii 3.0.
+Yii 3.0 also makes use of the latest features of PHP, such as type declarations and generators. Understanding these
+concepts will help you more easily pick up Yii 3.0.
 
