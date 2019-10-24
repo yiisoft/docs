@@ -76,3 +76,10 @@ Yii 2 has its own versioning policy. Problems:
 - Composer rely on SemVer
 - It is hard to maintain framework built on top of packages if versioning policy
   isn't strict
+
+## Prevent validators mutating data
+
+In Yii 1 and Yii 2 validators such as "date" were mutating data. It was confusing for validation process that was
+not initially meant to mutate data it validates.
+
+[See related discussion](https://forum.yiiframework.com/t/saving-or-killing-non-validation-in-validators/126086).
