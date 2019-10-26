@@ -26,17 +26,17 @@ Application Structure
 ---------------------
 
 * [Application Structure Overview](structure/overview.md)
-* [Entry Scripts](structure/entry-scripts.md)
-* [Applications](structure/applications.md)
-* [Services](structure/services.md)
-* [Controllers](structure/controllers.md)
+* [Entry Scripts](structure/entry-script.md)
+* [Applications](structure/application.md)
+* [Service components](structure/service.md)
+* [Actions](structure/action.md)
 * [Domain](structure/domain.md)
-* [Views](structure/views.md)
-* [Modules](structure/modules.md)
+* [Views](structure/view.md)
+* [Modules](structure/module.md)
 * [Middleware](structure/middleware.md)
-* [Widgets](structure/widgets.md)
-* [Assets](structure/assets.md)
-* [Extensions](structure/extensions.md)
+* [Widgets](structure/widget.md)
+* [Assets](structure/asset.md)
+* [Extensions](structure/extension.md)
 
 
 Handling Requests
