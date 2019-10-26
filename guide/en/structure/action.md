@@ -28,6 +28,21 @@ use Yiisoft\Router\Route;
 Route::get('/')->to(new ActionCaller(FrontPageAction::class, 'run', $container)),
 ```
 
+The class itself would like:
+
+```php
+use \Psr\Http\Message\ServerRequestInterface;
+use \Psr\Http\Message\ResponseInterface;
+
+class FrontPageAction
+{
+    public function run(ServerRequestInterface $request): ResponseInterface
+    {
+        // render front page    
+    }
+}
+```
+
 For many cases it makes sense to group handling for multiple routes into a single class:
 
 
