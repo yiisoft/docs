@@ -4,8 +4,8 @@ Saying Hello
 > Note: This document reflects current configuration. Yii team is going to make it significantly simpler before release.
 
 This section describes how to create a new "Hello" page in your application.
-To achieve this goal, you will define a route, create [a handler](structure/handler.md)
-and use [view](structure/views.md) to get content for response:
+To achieve this goal, you will define a route, create [a handler](../structure/handler.md)
+and use [view](../structure/views.md) to get content for response:
 
 * The application will dispatch the request to the handler
 * and the handler will in turn use view to render a template that shows the word "Hello" to the end user.
@@ -13,8 +13,8 @@ and use [view](structure/views.md) to get content for response:
 Through this tutorial, you will learn three things:
 
 1. how to create an handler to respond to requests,
-2. how to create a [view](structure/view.md) to compose the response's content, and
-3. how an application dispatches requests to [handlers](structure/handler.md).
+2. how to create a [view](../structure/view.md) to compose the response's content, and
+3. how an application dispatches requests to [handlers](../structure/handler.md).
 
 
 ## Creating a Handler <span id="creating-handler"></span>

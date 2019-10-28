@@ -2,8 +2,7 @@ Running Applications
 ====================
 
 After installing Yii, you have a working Yii application that can be accessed via
-the URL `http://hostname/app/public/index.php` or `http://hostname/index.php`, depending
-upon your configuration. This section will introduce the application's built-in functionality,
+the URL `http://hostname/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
 > Info: For simplicity, throughout this "Getting Started" tutorial, it's assumed that you have set `app/public`
@@ -30,11 +29,12 @@ These pages share a common header and footer. The header contains the main menu 
 among different pages.
 
 You should also see a toolbar at the bottom of the browser window.
-This is a useful [debugger tool](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md) provided by Yii to record and display a lot of debugging information, such as log messages, response statuses, the database queries run, and so on.
+This is a useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of
+debugging information, such as log messages, response statuses, the database queries run, and so on.
 
 Additionally, to the web application, there is a console script called `yii`, which is located in the applications base directory.
 This script can be used to run background and maintenance tasks for the application, which are described
-in the [Console Application Section](tutorial-console.md).
+in the [Console Application Section](../tutorial/console.md).
 
 
 Application Structure <span id="application-structure"></span>
