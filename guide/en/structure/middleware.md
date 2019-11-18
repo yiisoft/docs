@@ -74,6 +74,28 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 
 Basic authentication middleware wrote to request `username` attribute so we can access the data if needed.
 
+In order to apply middleware to application overall regardless of URL, adjust `src/Factory/MiddlewareDispatcherFactory.php`:
+
+```php
+class MiddlewareDispatcherFactory
+{
+    public function __invoke(ContainerInterface $container)
+    {
+        $session = $container->get(SessionMiddleware::class);
+        $router = $container->get(Router::class);
+        $errorCatcher = $container->get(ErrorCatcher::class);
+        $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
+
+        return new MiddlewareDispatcher([
+            $errorCatcher,
+            $session,
+            $basicAuth,
+            $router,
+        ], $container);
+    }
+}
+```
+
 ## Creating your own middleware
 
 In order to create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
