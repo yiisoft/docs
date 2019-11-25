@@ -4,7 +4,7 @@ Application may get complicated so it makes sense to extract focused parts of bu
 or infrastructure into service components. These components are typically instantiated
 once and put into dependency injection container.
 
-These components are typically accessed either from other components or from controller.
+These components are typically accessed either from other components or from action handler.
 It is typically done via autowiring:
 
 ```php
@@ -24,5 +24,5 @@ Check:
 
 - Repository
 - Widget
-- Middleware
+- [Middleware](middleware.md)
 - Entity
