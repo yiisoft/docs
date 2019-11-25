@@ -38,7 +38,7 @@ Key Concepts
 ------------
 
 * [Class Autoloading](concept/autoloading.md) -
-* [Dependency Injection Container](concept/di-container.md) -
+* [Dependency Injection Container](concept/di-container.md) +
 * [Configuration](concept/configuration.md) !
 * [Aliases](concept/aliases.md) -
 * [Events](concept/events.md) -
