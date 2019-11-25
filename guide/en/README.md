@@ -5,78 +5,78 @@ This tutorial is released under the [Terms of Yii Documentation](http://www.yiif
 Introduction
 ------------
 
-* [About Yii](intro/what-is-yii.md)
-* [Upgrading from Version 2.0](intro/upgrade-from-v2.md)
+* [About Yii](intro/what-is-yii.md) +
+* [Upgrading from Version 2.0](intro/upgrade-from-v2.md) +
 
 
 Getting Started
 ---------------
 
-* [What do you need to know](start/prerequisites.md)
-* [Installing Yii](start/installation.md)
-* [Running Applications](start/workflow.md)
-* [Saying Hello](start/hello.md)
-* [Working with Forms](start/forms.md)
-* [Working with Databases](start/databases.md)
-* [Generating Code with Gii](start/gii.md)
-* [Looking Ahead](start/looking-ahead.md)
+* [What do you need to know](start/prerequisites.md) +
+* [Installing Yii](start/installation.md) 
+* [Running Applications](start/workflow.md) +
+* [Saying Hello](start/hello.md) +
+* [Working with Forms](start/forms.md) -
+* [Working with Databases](start/databases.md) !
+* [Generating Code with Gii](start/gii.md) -
+* [Looking Ahead](start/looking-ahead.md) -
 
 
 Application Structure
 ---------------------
 
-* [Application Structure Overview](structure/overview.md)
-* [Entry Scripts](structure/entry-script.md)
-* [Applications](structure/application.md)
-* [Service components](structure/service.md)
-* [Actions](structure/action.md)
-* [Domain](structure/domain.md)
-* [Views](structure/view.md)
-* [Modules](structure/module.md)
-* [Middleware](structure/middleware.md)
-* [Widgets](structure/widget.md)
-* [Assets](structure/asset.md)
-* [Extensions](structure/extension.md)
-
-
-Handling Requests
------------------
-
-* [Request Handling Overview](runtime/overview.md)
-* [Bootstrapping](runtime/bootstrapping.md)
-* [Routing and URL Creation](runtime/routing.md)
-* [Request](runtime/request.md)
-* [Response](runtime/response.md)
-* [Sessions](runtime/sessions.md)
-* [Cookies](runtime/cookies.md)
-* [Flash messages](runtime/flash-messages.md)
-* [Handling Errors](runtime/handling-errors.md)
-* [Logging](runtime/logging.md)
-
+* [Application Structure Overview](structure/overview.md) -
+* [Entry Scripts](structure/entry-script.md) +
+* [Applications](structure/application.md) +
+* [Service components](structure/service.md) +
+* [Actions](structure/action.md) +
+* [Domain](structure/domain.md) +
+* [Middleware](structure/middleware.md) +
+* [Extensions](structure/extension.md) -
 
 Key Concepts
 ------------
 
-* [Events](concept/events.md)
-* [Aliases](concept/aliases.md)
-* [Class Autoloading](concept/autoloading.md)
-* [Dependency Injection Container](concept/di-container.md)
+* [Class Autoloading](concept/autoloading.md) -
+* [Dependency Injection Container](concept/di-container.md) -
+* [Configuration](concept/configuration.md) !
+* [Aliases](concept/aliases.md) -
+* [Events](concept/events.md) -
+
+Handling Requests
+-----------------
+
+* [Request Handling Overview](runtime/overview.md) -
+* [Bootstrapping](runtime/bootstrapping.md) -
+* [Routing and URL Creation](runtime/routing.md) -
+* [Request](runtime/request.md) +
+* [Response](runtime/response.md) +
+* [Sessions](runtime/sessions.md) +
+* [Cookies](runtime/cookies.md) +
+* [Flash messages](runtime/flash-messages.md) +
+* [Handling Errors](runtime/handling-errors.md) -
+* [Logging](runtime/logging.md) +
+
+Views
+-----
+
+* [Views](views/view.md) -
+* [Widgets](views/widget.md) -
+* [Assets](views/asset.md) -
+* [Working with Client Scripts](views/client-scripts.md) -
+* [Theming](views/theming.md) -
+* [Template Engines](views/template-engines.md) -
 
 
-Working with Databases
+Working with Databases -
 ----------------------
 
 * [Database Access Objects](db-dao.md): Connecting to a database, basic queries, transactions, and schema manipulation
 * [Query Builder](db-query-builder.md): Querying the database using a simple abstraction layer
 * [Active Record](db-active-record.md): The Active Record ORM, retrieving and manipulating records, and defining relations
 * [Migrations](db-migrations.md): Apply version control to your databases in a team development environment
-* [Sphinx](https://www.yiiframework.com/extension/yiisoft/yii2-sphinx/doc/guide)
-* [Redis](https://www.yiiframework.com/extension/yiisoft/yii2-redis/doc/guide)
-* [MongoDB](https://www.yiiframework.com/extension/yiisoft/yii2-mongodb/doc/guide)
-* [ElasticSearch](https://www.yiiframework.com/extension/yiisoft/yii2-elasticsearch/doc/guide)
 
-
-Getting Data from Users
+Getting Data from Users -
 -----------------------
 
 * [Creating Forms](input/forms.md)
@@ -93,11 +93,8 @@ Displaying Data
 * [Sorting](output/sorting.md)
 * [Data Providers](output/data-providers.md)
 * [Data Widgets](output/data-widgets.md)
-* [Working with Client Scripts](output/client-scripts.md)
-* [Theming](output/theming.md)
 
-
-Security
+Security -
 --------
 
 * [Security Overview](security/overview.md)
@@ -105,11 +102,10 @@ Security
 * [Authorization](security/authorization.md)
 * [Working with Passwords](security/passwords.md)
 * [Cryptography](security/cryptography.md)
-* [Auth Clients](https://www.yiiframework.com/extension/yiisoft/yii2-authclient/doc/guide)
 * [Best Practices](security/best-practices.md)
 
 
-Caching
+Caching -
 -------
 
 * [Caching Overview](caching/overview.md)
@@ -119,7 +115,7 @@ Caching
 * [HTTP Caching](caching/http.md)
 
 
-RESTful Web Services
+RESTful Web Services -
 --------------------
 
 * [Quick Start](rest/quick-start.md)
@@ -131,7 +127,7 @@ RESTful Web Services
 * [Versioning](rest/versioning.md)
 * [Error Handling](rest/error-handling.md)
 
-Development Tools
+Development Tools -
 -----------------
 
 * [Debug Toolbar and Debugger](https://www.yiiframework.com/extension/yiisoft/yii2-debug/doc/guide)
@@ -139,7 +135,7 @@ Development Tools
 * [Generating API Documentation](https://www.yiiframework.com/extension/yiisoft/yii2-apidoc)
 
 
-Testing
+Testing -
 -------
 
 * [Testing Overview](testing/overview.md)
@@ -153,16 +149,15 @@ Testing
 Special Topics
 --------------
 
-* [Building Application from Scratch](tutorial/start-from-scratch.md)
-* [Console Commands](tutorial/console.md)
-* [Docker](tutorial/docker.md)
-* [Internationalization](tutorial/i18n.md)
-* [Mailing](tutorial/mailing.md)
-* [Performance Tuning](tutorial/performance-tuning.md)
-* [Template Engines](tutorial/template-engines.md)
-* [Using Yii with event loop](tutorial/using-with-event-loop.md)
+* [Building Application from Scratch](tutorial/start-from-scratch.md) -
+* [Console Commands](tutorial/console.md) -
+* [Docker](tutorial/docker.md) -
+* [Internationalization](tutorial/i18n.md) -
+* [Mailing](tutorial/mailing.md) -
+* [Performance Tuning](tutorial/performance-tuning.md) +
+* [Using Yii with event loop](tutorial/using-with-event-loop.md) +
 
-Widgets
+Widgets -
 -------
 
 * [GridView](https://www.yiiframework.com/doc-2.0/yii-grid-gridview.html)
@@ -175,7 +170,7 @@ Widgets
 * [Bootstrap Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
 
 
-Helpers
+Helpers -
 -------
 
 * [Helpers Overview](helper-overview.md)
