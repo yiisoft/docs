@@ -3,9 +3,13 @@
 Code formatting used in Yii 3 packages is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) with additional rules
 added on top of it.
 
-## Property placement
+## Property, constant and method placement
 
-Properties are placement at the beginning of the class after constants but before methods.
+Order should be the following:
+
+- Constants
+- Properties
+- Methods
   
 ## Comments
 
