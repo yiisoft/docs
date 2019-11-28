@@ -54,7 +54,7 @@ Handling Requests
 * [Sessions](runtime/sessions.md) +
 * [Cookies](runtime/cookies.md) +
 * [Flash messages](runtime/flash-messages.md) +
-* [Handling Errors](runtime/handling-errors.md) -
+* [Handling Errors](runtime/handling-errors.md) !
 * [Logging](runtime/logging.md) +
 
 Views
