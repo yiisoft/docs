@@ -2,8 +2,10 @@
 
 ## Add packages to composer.json
 
-- "doctrine/orm": "^2.7".
-- "symfony/orm-pack": "^1.0".
+- "doctrine/orm": "*",
+- "doctrine/migrations": "*",
+- "doctrine/annotations": "*",
+
 
 ## How to work with doctrine
 
