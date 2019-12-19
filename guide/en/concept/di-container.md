@@ -57,7 +57,7 @@ class CachedWidget
     
     public function render()
     {
-        $output = $this->cache('cachedWidget');
+        $output = $this->cache->getCachedValue('cachedWidget');
         if ($output !== null) {
             return $output;
         }
@@ -100,7 +100,7 @@ all their dependent objects. [Martin Fowler's article](http://martinfowler.com/a
 explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
 Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and
-[yiisoft/injector](https://github.com/yiisoft/injector) pacakge.
+[yiisoft/injector](https://github.com/yiisoft/injector) package.
 
 ### Configuring container <span id="configuring-container"></span>
 
@@ -202,7 +202,7 @@ class MyController
 Since action handler is instantiated and called using [yiisoft/injector](https://github.com/yiisoft/injector), it
 would check constructor and method argument types, obtain dependencies of these types from container and pass them as
 arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e. if dependency is not provided
-explicitly, container would check if it has such a dependency first. As developer it's enough to declare a dependency
+explicitly, container would check if it has such a dependency first. As a developer it's enough to declare a dependency
 you need and it would be obtained from container automatically.
 
 
