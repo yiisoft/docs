@@ -156,6 +156,7 @@ Special Topics
 * [Mailing](tutorial/mailing.md) -
 * [Performance Tuning](tutorial/performance-tuning.md) +
 * [Using Yii with event loop](tutorial/using-with-event-loop.md) +
+* [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +
 
 Widgets -
 -------
