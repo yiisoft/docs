@@ -57,8 +57,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 - [x] Provide SAPI emitter out of the box.
 - [x] Make it possible to use alternative emitters such as RoadRunner.
 - [x] Support middleware.
-- [ ] Implement filters as middleware:
-  - [ ] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)
+- [x] Implement filters as middleware:
+  - [x] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)
   - [x] [Authentication](https://github.com/yiisoft/yii-web/issues/114)
 - [x] Re-implement router w/ middleware support for route groups.
 - [x] Filters should be middlewares.
