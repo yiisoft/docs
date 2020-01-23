@@ -42,7 +42,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-12 Code style
 
-- [ ] Make sure code follows it.
+- [x] Make sure code follows it.
 - [x] Automate fixing style before release.
 
 ### PSR-14 Event dispatcher
