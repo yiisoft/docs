@@ -12,7 +12,7 @@ use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\Route;
 
-Route::get('/')->to(function (ServerRequestInterface $request) use ($responseFactory): ResponseInterface {
+Route::get('/', function (ServerRequestInterface $request) use ($responseFactory): ResponseInterface {
     $response = $responseFactory->createResponse();
     $response->getBody()->write('You are at homepage.');
     return $response;
@@ -25,7 +25,7 @@ a good idea would be moving the handling to a class method. Callback middleware 
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/')->to(new ActionCaller(FrontPageAction::class, 'run', $container)),
+Route::get('/', new ActionCaller(FrontPageAction::class, 'run', $container)),
 ```
 
 The class itself would like:
@@ -49,8 +49,8 @@ For many cases it makes sense to group handling for multiple routes into a singl
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/post/index')->to(new ActionCaller(PostController::class, 'actionIndex', $container)),
-Route::get('/post/view/{id:\d+}')->to(new ActionCaller(PostController::class, 'actionView', $container)),
+Route::get('/post/index', new ActionCaller(PostController::class, 'actionIndex', $container)),
+Route::get('/post/view/{id:\d+}', new ActionCaller(PostController::class, 'actionView', $container)),
 ```
 
 The class itself would look like the following:
@@ -81,7 +81,7 @@ middleware:
 use Yiisoft\Router\Route;
 use Yiisoft\Yii\Web\Middleware\WebActionsCaller;
 
-Route::anyMethod('/post/{action:\w+}')->to(new WebActionsCaller(PostController::class, $container)),
+Route::anyMethod('/post/{action:\w+}', new WebActionsCaller(PostController::class, $container)),
 ```
 
 ## Autowiring

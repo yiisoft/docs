@@ -49,7 +49,7 @@ class AppRouterFactory
 
          $routes = [
             // ...
-            Route::get('/basic-auth')->to(new Chain($basicAuth, $authorizedAction)),
+            Route::get('/basic-auth', new Chain($basicAuth, $authorizedAction)),
         ];
 
         return (new RouterFactory(new FastRouteFactory(), $routes))($container);

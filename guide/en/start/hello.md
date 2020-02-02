@@ -87,8 +87,8 @@ class AppRouterFactory
     public function __invoke(ContainerInterface $container)
     {
         $routes = [
-            Route::get('/say')->to(new ActionCaller(Hello::class, 'say', $container)),
-            Route::get('/say/{message}')->to(new ActionCaller(Hello::class, 'say', $container)),
+            Route::get('/say', new ActionCaller(Hello::class, 'say', $container)),
+            Route::get('/say/{message}', new ActionCaller(Hello::class, 'say', $container)),
         ];
 
         return (new RouterFactory(new FastRouteFactory(), $routes))($container);
