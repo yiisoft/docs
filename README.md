@@ -9,3 +9,9 @@
 - [006 - Git commit messages](006-git-commit-messages.md)
 - [007 - Exceptions](007-exceptions.md)
 - [008 - Interfaces](008-interfaces.md)
+- [009 - Design Decisions](009-design-decisions.md)
+- [010 - Code Style](010-code-style.md)
+- [011 - Error correction](011-error-correction.md)
+- [012 - Tests](012-tests.md)
+- [013 - Code Review](013-code-review.md)
+
