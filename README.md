@@ -1,4 +1,8 @@
-# Various Yii 3.0 related documentation
+# The Definitive Guide to Yii 3.0
+
+- [English](https://github.com/yiisoft/docs/tree/master/guide/en)
+
+# Internals
 
 - [000 - Packages](000-packages.md)
 - [001 - Yii goals and values](001-yii-values.md)
