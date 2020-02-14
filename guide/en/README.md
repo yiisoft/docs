@@ -150,7 +150,7 @@ Special Topics
 --------------
 
 * [Building Application from Scratch](tutorial/start-from-scratch.md) -
-* [Console Commands](tutorial/console.md) -
+* [Console Applications](tutorial/console-applications.md) +
 * [Docker](tutorial/docker.md) -
 * [Internationalization](tutorial/i18n.md) -
 * [Mailing](tutorial/mailing.md) -
