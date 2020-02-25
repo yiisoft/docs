@@ -56,7 +56,7 @@ use Yiisoft\Yii\Web\Emitter\EmitterInterface;
 
 class RoadrunnerEmitter implements EmitterInterface
 {
-    private $roadRunnerClient;
+    private PSR7Client $roadRunnerClient;
 
     public function __construct(PSR7Client $roadRunnerClient)
     {

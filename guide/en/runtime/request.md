@@ -45,6 +45,16 @@ Usually it is one of the:
 - PATCH
 - OPTIONS
 
+In case you want to make sure the request method is of a certain type, there is a special class with method names:
+
+```php
+use Yiisoft\Http\Method;
+
+if ($request->getMethod() === Method::POST) {
+    // method is POST
+}
+``` 
+
 ## URI
 
 An URI has:
@@ -135,7 +145,7 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 class JsonBodyParserMiddleware implements MiddlewareInterface
 {
-    public function process(Request $request, RequestHandler $handler): Response
+    public function process(Request $request, RequestHandler $next): Response
     {
         $contentType = $request->getHeaderLine('Content-Type');
 
@@ -146,7 +156,7 @@ class JsonBodyParserMiddleware implements MiddlewareInterface
             
         }
 
-        return $handler->handle($request);
+        return $next->handle($request);
     }
 }
 ```

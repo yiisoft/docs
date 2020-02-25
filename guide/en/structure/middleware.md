@@ -39,20 +39,28 @@ In the router factory, `src/Factory/AppRouterFactory.php` modify the route:
 
 ```php
 <?php
+use Yiisoft\Router\FastRoute\UrlMatcher;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+use Yiisoft\Router\RouteCollection;
+use Yiisoft\Router\RouteCollectorInterface;
+
 // ...
 class AppRouterFactory
 {
     public function __invoke(ContainerInterface $container)
     {
          $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
-         $authorizedAction = new ActionCaller(SiteController::class, 'auth', $container);
 
          $routes = [
             // ...
-            Route::get('/basic-auth', new Chain($basicAuth, $authorizedAction)),
+            Route::get('/basic-auth', [SiteController::class, 'auth'])->addMiddleware($basicAuth),
         ];
 
-        return (new RouterFactory(new FastRouteFactory(), $routes))($container);
+        $collector =  $container->get(RouteCollectorInterface::class);
+        $collector->addGroup(Group::create(null, $routes));
+
+        return new UrlMatcher(new RouteCollection($collector));
     }
 }
 ```
@@ -77,6 +85,13 @@ Basic authentication middleware wrote to request `username` attribute so we can 
 In order to apply middleware to application overall regardless of URL, adjust `src/Factory/MiddlewareDispatcherFactory.php`:
 
 ```php
+use Psr\Container\ContainerInterface;
+use Yiisoft\Router\Middleware\Router;
+use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
+use Yiisoft\Yii\Web\Middleware\SubFolder;
+use Yiisoft\Yii\Web\MiddlewareDispatcher;
+use Yiisoft\Yii\Web\Session\SessionMiddleware;
+
 class MiddlewareDispatcherFactory
 {
     public function __invoke(ContainerInterface $container)
@@ -84,14 +99,15 @@ class MiddlewareDispatcherFactory
         $session = $container->get(SessionMiddleware::class);
         $router = $container->get(Router::class);
         $errorCatcher = $container->get(ErrorCatcher::class);
+        $subFolder = $container->get(SubFolder::class);
         $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
 
-        return new MiddlewareDispatcher([
-            $errorCatcher,
-            $session,
-            $basicAuth,
-            $router,
-        ], $container);
+        return (new MiddlewareDispatcher($container))
+            ->addMiddleware($router)
+            ->addMiddleware($subFolder)
+            ->addMiddleware($session)
+            ->addMiddleware($basicAuth)
+            ->addMiddleware($errorCatcher);
     }
 }
 ```
@@ -101,7 +117,7 @@ class MiddlewareDispatcherFactory
 In order to create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
 
 ```php
-public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
+public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
 ```
 
 There are multiple ways to handle request and choosing one depends on what the middleware should achieve.
@@ -120,14 +136,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class RespondingMiddleware implements MiddlewareInterface
 {
-    private $responseFactory;
+    private ResponseFactoryInterface $responseFactory;
 
     public function __construct(ResponseFactoryInterface $responseFactory)
     {
         $this->responseFactory = $responseFactory;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
     {
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('Hello!');
@@ -142,7 +158,7 @@ In case middleware either is not intended form response / modify request or cann
 left to next middleware in the stack:  
 
 ```php
-return $handler->handle($request);
+return $next->handle($request);
 ```
 
 ### Capturing response to manipulate it
@@ -150,7 +166,7 @@ return $handler->handle($request);
 You may want to capture response to manipulate it. It could be useful for adding CORS headers, gzipping content etc.
 
 ```php
-$response = $handler->handle($request);
+$response = $next->handle($request);
 // extra handing
 return $response;
 ```

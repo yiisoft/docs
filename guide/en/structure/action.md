@@ -25,7 +25,7 @@ a good idea would be moving the handling to a class method. Callback middleware 
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/', new ActionCaller(FrontPageAction::class, 'run', $container)),
+Route::get('/', [FrontPageAction::class, 'run']),
 ```
 
 The class itself would like:
@@ -38,7 +38,7 @@ class FrontPageAction
 {
     public function run(ServerRequestInterface $request): ResponseInterface
     {
-        // render front page    
+        // build response for a front page    
     }
 }
 ```
@@ -49,8 +49,8 @@ For many cases it makes sense to group handling for multiple routes into a singl
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/post/index', new ActionCaller(PostController::class, 'actionIndex', $container)),
-Route::get('/post/view/{id:\d+}', new ActionCaller(PostController::class, 'actionView', $container)),
+Route::get('/post/index', [PostController::class, 'actionIndex']),
+Route::get('/post/view/{id:\d+}', [PostController::class, 'actionView']),
 ```
 
 The class itself would look like the following:

@@ -20,22 +20,25 @@ The object should be constructed and returned as a result of execution of contro
 Usually the middleware has response factory injected into its constructor.
 
 ```php
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 class PostAction
 {
-    private $responseFactory;
+    private ResponseFactoryInterface $responseFactory;
 
     public function __construct(ResponseFactoryInterface $responseFactory)
     {
         $this->responseFactory = $responseFactory;
     }
-}
 
-
-public function view(ServerRequestInterface $request): ResponseInterface
-{
-    $response = $this->responseFactory->createResponse();
-    $response->getBody()->write('Hello!');
-    return $response;
+    public function view(ServerRequestInterface $request): ResponseInterface
+    {
+        $response = $this->responseFactory->createResponse();
+        $response->getBody()->write('Hello!');
+        return $response;
+    }
 }
 ```
 
@@ -44,9 +47,12 @@ public function view(ServerRequestInterface $request): ResponseInterface
 Setting status code is done like the following:
 
 ```php
-$response = $response->withStatus(404);
+use Yiisoft\Http\Status;
+
+$response = $response->withStatus(Status::NOT_FOUND);
 ```
 
+Majority of status codes are available from `Status` class for convenience and readability.
 
 ## Headers
 
@@ -85,14 +91,18 @@ $body->write('Hello');
 ### Redirecting
 
 ```php
+use Yiisoft\Http\Status;
+
 return $response
-  ->withStatus(302)
+  ->withStatus(STatus::PERMANENT_REDIRECT)
   ->withHeader('Location', 'https://www.example.com');  
 ```
 
 ### Responding with JSON
 
 ```php
+use Yiisoft\Json\Json;
+
 $data = [
     'account' => 'samdark',
     'value' => 42
