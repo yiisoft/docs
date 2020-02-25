@@ -172,7 +172,7 @@ return [
 ### Injecting dependencies <span id="injecting-dependencies"></span>
 
 Directly referencing container in a class is a bad idea since the code becomes non-generic, coupled to container interface
-and, what's worse, dependencies are becoming hidden.  Because of that, Yii inverts the control by automatically injecting
+and, what's worse, dependencies are becoming hidden. Because of that, Yii inverts the control by automatically injecting
 objects from container in some constructors and methods based on method argument types.
 
 This is primarily done in constructor and handing method of action handlers:
@@ -209,6 +209,3 @@ you need and it would be obtained from container automatically.
 ## References <span id="references"></span>
 
 - [Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler](https://martinfowler.com/articles/injection.html)
-
-
-
