@@ -38,22 +38,35 @@ Aggregate is a set of domain objects such as entities and value objects and addi
 a single unit. It usually represents a compound object from domain model such as shop order or HR person dossier.
 
 One of the components of an aggregate is called a root. The root identifies an aggregate as a whole and should be used
-to access it. 
+to access it.
 
 ### Domain event
 
 An aggregate, while processed, may raise events. For example, when order is confirmed, `OrderConfirmed` event would
 be risen so other parts of the system may react on these.
 
+### Data transfer object
+
+Data transfer object or DTO is an object which only purpose is to hold data as is. It is commonly used to pass data
+between different services.
+
 ### Service
 
-Service is a class that contains a standalone operation within the context of your domain model. 
+Service is a class that contains a standalone operation within the context of your domain model. See "[service 
+components](service.md)".
 
 ### Repository
 
 Repository task is to abstract away how domain objects are obtained. These are usually separated in two parts: an interface
 that stays in the domain layer and implementation that is situated in infrastructure layer. In such way domain doesn't
 care how data is obtained and saves and may be focused around the complicated business logic instead.
+
+Repository is usually implemented as a service.
+
+### Instantiating building blocks
+
+Entity, value object, aggregate and domain event are not services and should not be instantiated through DI container.
+Using `new` is the way to go with these.
 
 ## References
 

@@ -37,10 +37,10 @@ Application Structure
 Key Concepts
 ------------
 
-* [Class Autoloading](concept/autoloading.md) -
+* [Class autoloading](concept/autoloading.md) +
 * [Dependency Injection Container](concept/di-container.md) +
 * [Configuration](concept/configuration.md) !
-* [Aliases](concept/aliases.md) -
+* [Aliases](concept/aliases.md) +
 * [Events](concept/events.md) -
 
 Handling Requests
@@ -53,7 +53,7 @@ Handling Requests
 * [Response](runtime/response.md) +
 * [Sessions](runtime/sessions.md) +
 * [Cookies](runtime/cookies.md) +
-* [Flash messages](runtime/flash-messages.md) +
+* [Flash messages](runtime/flash-messages.md) -
 * [Handling Errors](runtime/handling-errors.md) !
 * [Logging](runtime/logging.md) +
 
