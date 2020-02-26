@@ -41,7 +41,7 @@ Key Concepts
 * [Dependency Injection Container](concept/di-container.md) +
 * [Configuration](concept/configuration.md) !
 * [Aliases](concept/aliases.md) +
-* [Events](concept/events.md) -
+* [Events](concept/events.md) +
 
 Handling Requests
 -----------------
