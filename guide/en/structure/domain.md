@@ -1,9 +1,9 @@
 # Domain
 
 Domain or domain model is what makes the project unique. With requirements and terminology of the problem being solved
-in mind (the problem context), we build an abstraction that consists of entities, their relationships and logic that
-operates these entities. In order to focus on the complex part of the problem, domain is, ideally, separated from
-infrastructure part of the system (i.e. how to save data into database, how to form HTTP response etc.).
+in mind (the problem context), we build an abstraction that consists of entities, their relationships, and logic that
+operates these entities. To focus on the complex part of the problem, domain is, ideally, separated from
+infrastructure part of the system (i.e., how to save data into database, how to form HTTP response etc.).
 
 > Note: Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete
 > for a set of records with not much complex logic it makes no sense to apply complex solution to a simple problem.
@@ -24,12 +24,12 @@ all of them.
 ### Entity
 
 Entity is an uniquely identifiable object such as user, product, payment etc. When comparing them, you're checking ID,
-not the attribute values. If there are two objects with different attributes but the same ID, they are considered the
+not the attribute values. If there are two objects with different attributes but the same ID, they are considered
 being the same thing.
 
 ### Value object
 
-Value object describes an object by its characteristincs. For example, a price that consists of value and currency. When
+Value object describes an object by its characteristics. For example, a price that consists of value and currency. When
 comparing such objects you're checking actual values. If they match, object is considered being the same.
 
 ### Aggregate

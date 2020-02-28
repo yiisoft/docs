@@ -14,7 +14,7 @@ Depending on how stack is configured, application behavior may vary significantl
 ## Using middleware
 
 Any PSR-15 compatible middleware could be used with Yii and there are many. Say, we need to add basic authentication
-one of the application URLs. URL-dependent middeware are configured using router so we need to modify router factory. 
+one of the application URLs. URL-dependent middeware are configured using router, so we need to modify router factory. 
 
 Authentication middleware is implemented by `middlewares/http-authentication` package so execute
 `composer require middlewares/http-authentication` in the application root directory.
@@ -82,7 +82,7 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 
 Basic authentication middleware wrote to request `username` attribute so we can access the data if needed.
 
-In order to apply middleware to application overall regardless of URL, adjust `src/Factory/MiddlewareDispatcherFactory.php`:
+To apply middleware to application overall regardless of URL, adjust `src/Factory/MiddlewareDispatcherFactory.php`:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -114,7 +114,7 @@ class MiddlewareDispatcherFactory
 
 ## Creating your own middleware
 
-In order to create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
+To create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
 
 ```php
 public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
@@ -124,7 +124,7 @@ There are multiple ways to handle request and choosing one depends on what the m
 
 ### Forming response directly
 
-In order to respond directly one needs a response factory passed via constructor:
+To respond directly one needs a response factory passed via constructor:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ class RespondingMiddleware implements MiddlewareInterface
 
 ### Delegating handling to the next middleware
 
-In case middleware either is not intended form response / modify request or cannot do it this time, handling could be
+If middleware either is not intended form response / modify request or cannot do it this time, handling could be
 left to next middleware in the stack:  
 
 ```php

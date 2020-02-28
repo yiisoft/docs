@@ -12,7 +12,7 @@ and source code lines in verbose mode.
 
 The error handler consists of two parts. One part is `Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher` middleware that,
 when registered, catches exceptions that appear during middleware stack execution and passes them to the handler.
-Another part is the error handler itself that is catching fatal errors, exceptions occuring outside of the middleware stack,
+Another part is the error handler itself that is catching fatal errors, exceptions occurring outside of the middleware stack,
 converts warnings and notices to exceptions and more.
 
 The error handler is registered by an application and its configuration by default comes from the container. 
@@ -96,9 +96,9 @@ TODO
 
 ### Customizing error response format <span id="error-format"></span>
 
-The error catcher chooses how to render an exception based on accept HTTP header. If it's `text/html` or any unknown
+The error catcher chooses how to render an exception based on accept HTTP header. If it is `text/html` or any unknown
 content type, it will use the error or exception view to display errors. For other mime types, the error handler will
-choose different rendering that is registered within the error catcher. By default JSON, XML and plain text are supported.
+choose different rendering that is registered within the error catcher. By default, JSON, XML and plain text are supported.
                                                           
 You may customize the error response format by providing your own instance of `Yiisoft\Yii\Web\ErrorHandler\ThrowableRendererInterface`
 when registering error catcher middleware. That is typically done in `MiddlewareDispatcherFactory` of your application:

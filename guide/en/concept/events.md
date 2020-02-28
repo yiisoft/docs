@@ -51,6 +51,9 @@ class WelcomeEmailSender
 }
 ```
 
+The `attach()` method is accepting a callback. Based on a type of this callback argument event type is
+determined.
+
 ## Event handlers order
 
 You may attach one or more handlers to a single event. When an event is triggered, the attached handlers

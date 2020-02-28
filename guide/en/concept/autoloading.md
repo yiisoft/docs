@@ -2,11 +2,11 @@
 
 Since Yii uses [Composer](https://getcomposer.org/) to manage packages, classes from these packages are automatically
 loaded without the need to `require` their file explicitly. When packages are installed,
-a [PSR-0 compatible autoloader](https://www.php-fig.org/psr/psr-4/) is generated. In order to use it, `require_once`
+a [PSR-0 compatible autoloader](https://www.php-fig.org/psr/psr-4/) is generated. To use it, `require_once`
 autoloader `/vendor/autoload.php` in your `index.php` entry point file. 
 
-Autoloader is used not only for the packages being installed but for your application, that is also a package. In
-order to load classes of a certain namespace, the following should be added to `composer.json`:
+Autoloader is used not only for the packages being installed but for your application, that is also a package. To load
+classes of a certain namespace, the following should be added to `composer.json`:
 
 ```json
 {

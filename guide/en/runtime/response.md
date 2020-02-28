@@ -14,9 +14,9 @@ Connection: Closed
 Hello!
 ```
 
-Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web applicaiton in order to represent response.
+Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web applicaiton to represent response.
 
-The object should be constructed and returned as a result of execution of controller actions or other type of middleware.
+The object should be constructed and returned as a result of execution of controller actions or other middleware.
 Usually the middleware has response factory injected into its constructor.
 
 ```php
@@ -62,7 +62,7 @@ Headers could be set like this:
 $response = $response->withHeader('Content-type', 'application/json');
 ```
 
-In case there is a need to append a header value to existing header:
+If there is a need to append a header value to existing header:
 
 ```php
 $response = $response->withAddedHeader('Set-Cookie', 'qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT');

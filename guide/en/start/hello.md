@@ -11,7 +11,7 @@ and use [view](../structure/views.md) to get content for response:
 
 Through this tutorial, you will learn three things:
 
-1. how to create an handler to respond to requests,
+1. how to create a handler to respond to requests,
 2. how to create a [view](../structure/view.md) to compose the response's content, and
 3. how an application dispatches requests to [handlers](../structure/handler.md).
 
@@ -54,7 +54,7 @@ class Hello
 ```
 
 The `say` method in our example is given `$request` parameter that we can use to obtain
-message, whose value defaults to `"Hello"` (in exactly
+message, whose value defaults to `"Hello"` (in 
 the same way you set a default value for any function or method argument in PHP). When the application
 receives a request and determines that the `say` action is responsible for handling said request, the application will
 populate this parameter with the same named parameter found in the request. In other words, if the request includes
@@ -65,8 +65,8 @@ via emitter.
 
 ## Configuring router
 
-Now in order to map our handler to URL we need to configure router. We will use a factory
-to create configured router. Create `src/Factory/AppRouterFactory`:
+Now to map our handler to URL we need to configure router. We will use a factory
+to create the configured router. Create `src/Factory/AppRouterFactory`:
 
 ```php
 <?php
@@ -100,8 +100,7 @@ class AppRouterFactory
 In the above we are using FastRoute as routing engine and configuring two routes. For each route
 a "controller" `Hello` will be created and its "action" method `say` will be invoked. 
 
-The factory class should be used in the DI container to define router instance. In order
-to do that edit `config/web.php` by adding:
+The factory class should be used in the DI container to define router instance. To do that edit `config/web.php` by adding:
 
 ```php
 use Yiisoft\Router\FastRoute\UrlGenerator;
@@ -120,7 +119,7 @@ return [
 ];
 ```
 
-## Trying it Out <span id="trying-it-out"></span>
+## Trying it out <span id="trying-it-out"></span>
 
 After creating the action and the view, start a web server with `./yii serve` and follow the following URL:
 
@@ -153,9 +152,9 @@ before being printed. This is necessary as the parameter comes from an end user,
 malicious JavaScript code in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
-PHP statements. In fact, the `say` view is just a PHP script that is executed by the view service.
+PHP statements. In fact, the `say` view is a PHP script that is executed by the view service.
 
-In order to use the view we need to modify `src/Controller/Hello.php`:
+To use the view we need to modify `src/Controller/Hello.php`:
 
 ```php
 <?php

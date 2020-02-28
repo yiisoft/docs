@@ -1,6 +1,6 @@
 # Service components
 
-Application may get complicated so it makes sense to extract focused parts of business logic
+Application may get complicated, so it makes sense to extract focused parts of business logic
 or infrastructure into service components. They are typically injected into other components or action handler.
 It is usually done via autowiring:
 
@@ -100,7 +100,7 @@ class PostPersister
 
 In the code above we have a service that saves posts into permanent storage such as database. An object allowing to
 communicate with a concrete storage is always the same so it is injected using constructor while the post being saved
-could be different so it is passed as a service method argument.
+could be different, so it is passed as a service method argument.
 
 ## Is everything a service?
 

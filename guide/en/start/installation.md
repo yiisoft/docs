@@ -214,7 +214,7 @@ server {
 ```
 
 When using this configuration, you should also set `cgi.fix_pathinfo=0` in the `php.ini` file
-in order to avoid many unnecessary system `stat()` calls.
+to avoid many unnecessary system `stat()` calls.
 
 Also note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can properly detect if a connection is secure.

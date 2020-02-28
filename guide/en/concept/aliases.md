@@ -73,7 +73,7 @@ path/URL in the derived alias.
 
 
 A root alias may also contain slash `/` characters. The `get()` method
-is intelligent enough to tell which part of an alias is a root alias and thus correctly determines
+is intelligent enough to tell, which part of an alias is a root alias and thus correctly determines
 the corresponding file path or URL:
 
 ```php

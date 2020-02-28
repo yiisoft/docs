@@ -9,7 +9,7 @@ how the code is organized, and how the application handles requests in general.
   your application to be `http://hostname/index.php` or something similar.
   For your needs, please adjust the URLs in our descriptions accordingly.
   
-Note that unlike the framework itself, after the project template is installed, it's all yours. You're free to add or delete
+Note that unlike the framework itself, after the project template is installed, it is all yours. You're free to add or delete
 code and overall modify it as you need.
 
 

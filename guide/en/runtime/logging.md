@@ -33,7 +33,7 @@ class MyService
 
 Recording log messages is as simple as calling one of the following logging methods that correspond to log levels:
 
-- `emergency` - System is unusable
+- `emergency` - System is unusable.
 - `alert` -  Action must be taken immediately. Example: Entire website down, database unavailable, etc. This should trigger
   the SMS alerts and wake you up.
 - `critical` - Critical conditions. Example: Application component unavailable, unexpected exception.
@@ -44,8 +44,8 @@ Recording log messages is as simple as calling one of the following logging meth
 - `info` - Interesting events. Example: User logs in, SQL logs.
 - `debug` - Detailed debug information.
 
-Each method has two arguments. First is message. Second is context array that typically contains structured data that
-doesn't fit message well but still does provide imporant information. In case exception is provided as context, it should
+Each method has two arguments. First is a message. Second is context array that typically contains structured data that
+doesn't fit message well but still does provide important information. In case exception is provided as context, it should
 be passed in "exception" key. Another special key is "category". Categories are handy to better organize and filter
 log messages.
 
@@ -66,7 +66,7 @@ class MyService
 }
 ```
 
-When deciding on category for a message, you may choose a hierarchical naming scheme, which will make it easier for 
+When deciding on a category for a message, you may choose a hierarchical naming scheme, which will make it easier for 
 [log targets](#log-targets) to filter messages based on their categories. A simple yet effective naming scheme
 is to use the PHP magic constant `__METHOD__` for the category names. This is also the approach used in the core 
 Yii framework code.
@@ -125,12 +125,12 @@ In the following, we will describe the features common to all log targets.
   
 ### Message Filtering <span id="message-filtering"></span>
 
-For each log target, you can configure its levels and categories to specify which severity levels and categories of the
+For each log target, you can configure its levels and categories to specify, which severity levels and categories of the
 messages the target should process.
 
 The target `setLevels()` method takes an array consisting of one or several of `\Psr\Log\LogLevel` constants.
 
-By default the target will process messages of *any* severity level.
+By default, the target will process messages of *any* severity level.
 
 The target `setCategories()` method takes an array consisting of message category names or patterns.
 A target will only process messages whose category can be found or match one of the patterns in this array.
@@ -138,7 +138,7 @@ A category pattern is a category name prefix with an asterisk `*` at its end. A 
 if it starts with the same prefix of the pattern. For example, `Yiisoft\Cache\Cache::set` and `Yiisoft\Cache\Cache::get`
 both match the pattern `Yiisoft\Cache\*`.
 
-By default the target will process messages of *any* category.
+By default, the target will process messages of *any* category.
 
 Besides whitelisting the categories by the `setCategories()` method, you may also
 blacklist certain categories by the `setExcept()` method. If the category of a message
@@ -170,7 +170,7 @@ By default, log messages will be formatted as follows by the [[\Yiisoft\Log\Targ
 Timestamp [IP address][User ID][Session ID][Severity Level][Category] Message Text
 ```
 
-You may customize this format by calling `setPrefix()` method which takes a PHP callable
+You may customize this format by calling `setPrefix()` method, which takes a PHP callable
 returning a customized message prefix. For example, the following code configures a log target to prefix each
 log message with the current user ID (IP address and Session ID are removed for privacy reasons).
 

@@ -19,7 +19,7 @@ Route::get('/', function (ServerRequestInterface $request) use ($responseFactory
 }));
 ```
 
-It is fine for very simple handling since any more complicated one would require getting dependencies so
+It is fine for simple handling since any more complicated one would require getting dependencies so
 a good idea would be moving the handling to a class method. Callback middleware could be used for the purpose:
 
 ```php
@@ -74,7 +74,7 @@ class PostController
 }
 ```
 
-This class is usually called "controller". Above code is quite repetitive so you can use `WebActionsCaller`
+This class is usually called "controller". Above code is repetitive so you can use `WebActionsCaller`
 middleware:
 
 ```php

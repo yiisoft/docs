@@ -17,7 +17,7 @@ pecl install swoole
 
 ## Putting up a server
 
-Since Swoole doesn't have built-in PSR-7 support, we need a package doing so:
+Since Swoole doesn't have built-in PSR-7 support, we need a package fixing so:
 
 ```php
 composer require ilexn/swoole-convent-psr7
@@ -77,7 +77,7 @@ $server->start();
 
 ## Starting a server
 
-In order to start a server execute the following command:
+To start a server execute the following command:
 
 ```
 php server.php

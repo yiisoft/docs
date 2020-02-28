@@ -41,8 +41,8 @@ corresponding HTTP headers to it.
 
 Each cookie should be properly configured in order to be secure. In the above code important security settings are:
 
-- `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value
-- `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only
+- `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value.
+- `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only.
 - `sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would prevent sending a cookie in cross-site
   browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g. POST, PUT,
   PATCH etc). `SAME_SITE_STRICT` would prevent cookie sending for all methods.

@@ -2,7 +2,7 @@
 
 Console applications are mainly used to create utility, background processing and maintenance tasks.
 
-In order to get support for console application in your project, get `yiisoft/yii-console` via composer:
+To get support for console application in your project, get `yiisoft/yii-console` via composer:
 
 
 ```
@@ -17,7 +17,7 @@ After it is installed, you can access entry point as
 
 Out of the box only `serve` command is available. It is starting PHP built-in web server to serve the application locally.
 
-Commands are executed with `symfony/console`. In order to create your own console command you need to define a command:
+Commands are executed with `symfony/console`. To create your own console command you need to define a command:
 
 ```php
 <?php

@@ -23,7 +23,7 @@ That would download ready to use RoadRunner server `rr` binary.
 
 ## Configuration
 
-First, we need to configre server itself. Create `./rr.yml` and add the following config:
+First, we need to configure the server itself. Create `./rr.yml` and add the following config:
 
 ```yaml
 http:
@@ -86,11 +86,11 @@ while ($request = $psr7->acceptRequest()) {
 $application->shutdown();
 ```
 
-We're creating a worker, intializing DI container and then starting to process requests in an event loop. 
+We're creating a worker, initializing DI container and then starting to process requests in an event loop. 
 
 ## Starting a server
 
-In order to start a server execute the following command:
+To start a server execute the following command:
 
 ```
 ./rr serve -d

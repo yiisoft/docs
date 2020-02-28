@@ -10,7 +10,7 @@ provided Web servers can locate them.
 
 Entry script for console application is `./vendor/bin/yii`.
 
-Entry scripts mainly do the following work:
+Entry scripts mainly perform the following work:
 
 
 * Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);

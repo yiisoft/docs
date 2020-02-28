@@ -14,7 +14,7 @@ When developing with Yii you will be writing code in an object oriented fashion,
 Basic understanding of object oriented programming is required. If you're not familiar with it, check one of the many
 tutorials available such as [the one from tuts+](https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762).
 
-Note that the more complicated your application is the more advanced OOP concepts you should learn in order to successfully
+Note that the more complicated your application is the more advanced OOP concepts you should learn to successfully
 manage that complexity.
 
 ## Command line and composer
