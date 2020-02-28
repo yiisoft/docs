@@ -1,13 +1,13 @@
 # Using Yii with RoadRunner
 
-[RoadRunner](https://roadrunner.dev/) is a Golang-powered application server that intergrates well with PHP. It runs
+[RoadRunner](https://roadrunner.dev/) is a Golang-powered application server that integrates well with PHP. It runs
 it as workers and each worker may handle multiple requests. Such operation mode is often called
 [event loop](using-with-event-loop.md) and allows not to re-initialize framework for each request that improves
 performance significantly.
 
 ## Installation
 
-First, you need to install RoadRunner. Best way is to use Composer:
+RoadRunner works on Linux, MacOS and Windows. Best way to install it is to use Composer:
 
 ```
 composer require spiral/roadrunner
@@ -43,35 +43,7 @@ headers:
 We're specifying that entry script is `psr-worker.php`, there should be three workers on port 8080, `public` directory
 files are static ones except `.php` and `.htaccess`. Also, we're sending additional header.
 
-Since we're going to work with PSR-7 request and response, we need an emitter that would send responses.
-Create `/src/Emitter/RoadrunnerEmitter.php`:
-
-```php
-<?php
-namespace App\Emitter;
-
-use Psr\Http\Message\ResponseInterface;
-use Spiral\RoadRunner\PSR7Client;
-use Yiisoft\Yii\Web\Emitter\EmitterInterface;
-
-class RoadrunnerEmitter implements EmitterInterface
-{
-    private PSR7Client $roadRunnerClient;
-
-    public function __construct(PSR7Client $roadRunnerClient)
-    {
-        $this->roadRunnerClient = $roadRunnerClient;
-    }
-
-    public function emit(ResponseInterface $response, bool $withoutBody = false): bool
-    {
-        $this->roadRunnerClient->respond($response);
-        return true;
-    }
-}
-```
-
-Now, the last part. Entry script. Create `/psr-worker.php`:
+Create `/psr-worker.php`:
 
 ```php
 <?php
@@ -98,16 +70,20 @@ $container = new Container(require Builder::path('web'));
 require dirname(__DIR__) . '/src/globals.php';
 
 $container->set(Spiral\RoadRunner\PSR7Client::class, $psr7);
-$container->set(\Yiisoft\Yii\Web\Emitter\EmitterInterface::class, \App\Emitter\RoadrunnerEmitter::class);
+$application = $container->get(Application::class);
+$application->start();
 
 while ($request = $psr7->acceptRequest()) {
     try {
-        $container->get(Application::class)->handle($request);
+        $response = $application->handle($request);
+        $psr7->respond($response);
     } catch (\Throwable $e) {
         $psr7->getWorker()->error((string)$e);
     }
     gc_collect_cycles();
 }
+
+$application->shutdown();
 ```
 
 We're creating a worker, intializing DI container and then starting to process requests in an event loop. 
