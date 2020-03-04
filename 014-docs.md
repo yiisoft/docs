@@ -9,7 +9,8 @@ Usually `docs` is there if the package usage or configuration is not trivial or 
 
 ## Definitive guide
 
-The definitive guide aims at covering usage of packages as a whole framework. Unlike package documentation, it is not
+The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
+aims at covering usage of packages as a whole framework. Unlike package documentation, it is not
 focused on a single package but is covering certain use-cases.
 
 ## PHPDoc
