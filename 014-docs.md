@@ -7,6 +7,11 @@ Documentation is one of the most important parts of Yii.
 Documentation for a package could either be in `README.md` or `docs/{language}` where `{language}` is language code.
 Usually `docs` is there if the package usage or configuration is not trivial or there's a need for translation.
 
+## Definitive guide
+
+The definitive guide aims at covering usage of packages as a whole framework. Unlike package documentation, it is not
+focused on a single package but is covering certain use-cases.
+
 ## PHPDoc
 
 PHPDoc must not be added if it does not add anything to what it describes. The following is a bad example:
