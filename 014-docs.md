@@ -21,7 +21,7 @@ PHPDoc must not be added if it does not add anything to what it describes. The f
 use Psr\Log\LoggerInterface;
 
 /**
-* MyService class
+ * MyService class
  */
 final class MyService extends MyServiceBase
 {
