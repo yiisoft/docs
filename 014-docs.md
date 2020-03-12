@@ -50,3 +50,19 @@ final class MyService extends MyServiceBase
 ``` 
 
 PHPDoc, if present, should describe the purpose of the element it is added for.
+
+## Readme checklist
+
+Each package readme should be placed into `README.md` and contain the following:
+
+- [ ] Logo.
+- [ ] Short description of the package. What does it do?
+- [ ] Quality badges (build, code coverage).
+- [ ] Screenshot (if applicable).
+- [ ] Requirements.
+- [ ] Installation. Usually `composer require`.
+- [ ] Getting started. One or two common usage examples demonstrated.
+- [ ] Configuration.
+- [ ] Contributing. Should contain a link to guidelines.
+- [ ] Running tests.
+- [ ] License.
