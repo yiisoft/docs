@@ -20,7 +20,8 @@ Yii 3 does not technically imply any limitations on how you build services. In g
 a base class or implement a certain interface.
 
 Services either perform a task or return data. They are created once, put into DI container and then could be used
-multiple times. Because of that, it is a good idea to keep your services stateless.
+multiple times. Because of that, it is a good idea to keep your services stateless i.e. both service itself and any of
+its dependencies should not hold state.
 
 ## Service dependencies and configuration
 
@@ -28,9 +29,9 @@ Services should always define all their dependencies on other services via `__co
 service right away after it is created and serves as an indicator of a service doing too much if there are too many
 dependencies.
 
-- After the service is created it is preferred that it should not be re-configured in runtime.
+- After the service created it should not be re-configured in runtime.
 - DI container instance usually **should not** not be injected as a dependency. Prefer concrete interfaces.
-- In case of complicated or "heavy" initialization, try to postpone it until service method is called.  
+- In case of complicated or "heavy" initialization, try to postpone it until service method called.  
 
 The same is valid for configuration values. They should be provided as constructor argument. Related values could be
 grouped together into value objects. For example, database connection usually requires DSN string, username and password.
@@ -98,9 +99,9 @@ class PostPersister
 }
 ```
 
-In the code above we have a service that saves posts into permanent storage such as database. An object allowing to
-communicate with a concrete storage is always the same so it is injected using constructor while the post being saved
-could be different, so it is passed as a service method argument.
+In the code above we have a service saving posts into permanent storage such as database. An object allowing
+communication with a concrete storage is always the same, so it is injected using constructor while the post saved
+could vary, so it is passed as a method argument.
 
 ## Is everything a service?
 
