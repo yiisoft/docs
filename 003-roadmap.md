@@ -24,7 +24,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ### PSR-4 Autoloading
 
 - [x] Autoloading is fine already.
-- [ ] Document on how it works.
+- [x] Document on how it works.
 
 ### PSR-7 HTTP message
 
@@ -82,7 +82,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Stricter types
 
-- [ ] Make sure PHP 7.2 type hinting is used everywhere.
+- [ ] Make sure type hinting is used everywhere.
 - [ ] Make sure types are as definitive as possible. Avoid varying types if possible.
 
 ## Single application template
