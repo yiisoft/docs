@@ -91,3 +91,10 @@ use Yiisoft\Yii\Console\Application;
     $container->get(Application::class)->run();
 })();
 ```
+
+## Alternative runtimes
+
+For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:
+
+- [Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)
+- [Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)

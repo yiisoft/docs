@@ -13,7 +13,7 @@ Getting Started
 ---------------
 
 * [What do you need to know](start/prerequisites.md) +
-* [Installing Yii](start/installation.md) 
+* [Installing Yii](start/installation.md) +
 * [Running Applications](start/workflow.md) +
 * [Saying Hello](start/hello.md) +
 * [Working with Forms](start/forms.md) -
@@ -22,17 +22,17 @@ Getting Started
 * [Looking Ahead](start/looking-ahead.md) -
 
 
-Application Structure
+Application Structure +
 ---------------------
 
-* [Application Structure Overview](structure/overview.md) -
+* [Application Structure Overview](structure/overview.md) +
 * [Entry Scripts](structure/entry-script.md) +
 * [Applications](structure/application.md) +
 * [Service components](structure/service.md) +
 * [Actions](structure/action.md) +
 * [Domain](structure/domain.md) +
 * [Middleware](structure/middleware.md) +
-* [Extensions](structure/extension.md) -
+* [Packages](structure/package.md) +
 
 Key Concepts
 ------------
