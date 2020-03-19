@@ -99,7 +99,7 @@ Security -
 
 * [Security Overview](security/overview.md) +
 * [Authentication](security/authentication.md) +
-* [Authorization](security/authorization.md) -
+* [Authorization](security/authorization.md) +-
 * [Working with Passwords](security/passwords.md) +
 * [Cryptography](security/cryptography.md) -
 * [Best Practices](security/best-practices.md) -
