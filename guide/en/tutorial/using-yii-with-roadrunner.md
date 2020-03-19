@@ -74,12 +74,8 @@ $application = $container->get(Application::class);
 $application->start();
 
 while ($request = $psr7->acceptRequest()) {
-    try {
-        $response = $application->handle($request);
-        $psr7->respond($response);
-    } catch (\Throwable $e) {
-        $psr7->getWorker()->error((string)$e);
-    }
+    $response = $application->handle($request);
+    $psr7->respond($response);
     gc_collect_cycles();
 }
 
