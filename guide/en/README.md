@@ -94,15 +94,15 @@ Displaying Data -
 * [Data Providers](output/data-providers.md) -
 * [Data Widgets](output/data-widgets.md) -
 
-Security -
+Security +-
 --------
 
 * [Security Overview](security/overview.md) +
 * [Authentication](security/authentication.md) +
 * [Authorization](security/authorization.md) +-
 * [Working with Passwords](security/passwords.md) +
-* [Cryptography](security/cryptography.md) -
-* [Best Practices](security/best-practices.md) -
+* [Cryptography](security/cryptography.md) +
+* [Best Practices](security/best-practices.md) +
 
 
 Caching -
