@@ -45,4 +45,4 @@ clean up services at the end of the request processing.
 ## Integrations
 
 - [RoadRunner](using-yii-with-roadrunner.md)
-
+- [Swoole](using-yii-with-swoole.md)
