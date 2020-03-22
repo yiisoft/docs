@@ -16,8 +16,9 @@ Entry scripts mainly perform the following work:
 * Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);
 * Obtain configuration;
 * Use configuration to initialize dependency injection container;
-* Call `Application::run()` to process the incoming request.
-
+* Get an instance of request.
+* Pass it to `Application` to handle and get a response from it.
+* With the help of emitter that transform response object into actual HTTP response that is sent to client browser.
 
 ## Web Applications <span id="web-applications"></span>
 
@@ -25,9 +26,13 @@ The following is the code in the entry script for the application template:
 
 ```php
 <?php
+
 use hiqdev\composer\config\Builder;
+use Psr\Container\ContainerInterface;
 use Yiisoft\Di\Container;
+use Yiisoft\Http\Method;
 use Yiisoft\Yii\Web\Application;
+use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -35,10 +40,23 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 // Don't do it in production, assembling takes it's time
 Builder::rebuild();
 
-$container = new Container(require Builder::path('web'));
+$container = new Container(require Builder::path('web'), require Builder::path('providers'));
+$container = $container->get(ContainerInterface::class);
+
+require_once dirname(__DIR__) . '/src/globals.php';
+
+$application = $container->get(Application::class);
 
 $request = $container->get(ServerRequestFactory::class)->createFromGlobals();
-$container->get(Application::class)->handle($request);
+
+try {
+    $application->start();
+    $response = $application->handle($request);
+    $emitter = new SapiEmitter();
+    $emitter->emit($response, $request->getMethod() === Method::HEAD);
+} finally {
+    $application->shutdown();
+}
 ```
 
 
