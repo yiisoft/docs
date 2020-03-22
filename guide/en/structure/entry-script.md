@@ -27,7 +27,7 @@ The following is the code in the entry script for the application template:
 ```php
 <?php
 
-use hiqdev\composer\config\Builder;
+use Yiisoft\Composer\Config\Builder;
 use Psr\Container\ContainerInterface;
 use Yiisoft\Di\Container;
 use Yiisoft\Http\Method;
@@ -68,7 +68,7 @@ Similarly, the following is the code for the entry script of a console applicati
 #!/usr/bin/env php
 <?php
 
-use hiqdev\composer\config\Builder;
+use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Console\Application;
 

@@ -33,7 +33,7 @@ use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
-use hiqdev\composer\config\Builder;
+use Yiisoft\Composer\Config\Builder;
 
 ini_set('display_errors', 'stderr');
 require 'vendor/autoload.php';
