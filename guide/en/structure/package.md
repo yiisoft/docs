@@ -76,7 +76,7 @@ The following example shows the `composer.json` file for the `yiisoft/yii-widget
     },
     // development depdendencies
     "require-dev": {
-        "hiqdev/composer-config-plugin": "^1.0@dev",
+        "yiisoft/composer-config-plugin": "^1.0@dev",
         "phpunit/phpunit": "^8.4",
         "phan/phan": "^2.4",
         "yiisoft/di": "^3.0@dev",
