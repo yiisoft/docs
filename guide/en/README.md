@@ -27,7 +27,7 @@ Application Structure +
 
 * [Application Structure Overview](structure/overview.md) +
 * [Entry Scripts](structure/entry-script.md) +
-* [Applications](structure/application.md) +
+* [Application](structure/application.md) +
 * [Service components](structure/service.md) +
 * [Actions](structure/action.md) +
 * [Domain](structure/domain.md) +
