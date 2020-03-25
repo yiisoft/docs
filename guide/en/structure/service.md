@@ -92,7 +92,7 @@ class PostPersister
         $this->db = $db;
     }
     
-    public function perist(Post $post)
+    public function persist(Post $post)
     {
         $this->db->insertOrUpdate('post', $post);    
     }
