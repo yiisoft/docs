@@ -76,6 +76,7 @@ $application->start();
 while ($request = $psr7->acceptRequest()) {
     $response = $application->handle($request);
     $psr7->respond($response);
+    $application->afterEmit($response);
     gc_collect_cycles();
 }
 
