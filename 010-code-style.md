@@ -20,6 +20,13 @@ Method comment is necessary except it adds nothing to what method name and signa
 
 Class comment should describe the purpose of the class.
 
+[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
+
+## Strings
+
+- When no variables involved, use `'Hello!'`
+- To get variables into string prefer `"Hello, $username!"`
+
 ## No alignment
 
 Property, variable and constant value assignments should not be aligned. Same applies to phpdoc tags.

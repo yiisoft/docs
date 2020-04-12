@@ -12,7 +12,7 @@ and source code lines in verbose mode.
 
 The error handler consists of two parts. One part is `Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher` middleware that,
 when registered, catches exceptions that appear during middleware stack execution and passes them to the handler.
-Another part is the error handler itself that is catching fatal errors, exceptions occuring outside of the middleware stack,
+Another part is the error handler itself that is catching fatal errors, exceptions occurring outside of the middleware stack,
 converts warnings and notices to exceptions and more.
 
 The error handler is registered by an application and its configuration by default comes from the container. 
@@ -96,34 +96,40 @@ TODO
 
 ### Customizing error response format <span id="error-format"></span>
 
-The error catcher chooses how to render an exception based on accept HTTP header. If it's `text/html` or any unknown
+The error catcher chooses how to render an exception based on accept HTTP header. If it is `text/html` or any unknown
 content type, it will use the error or exception view to display errors. For other mime types, the error handler will
-choose different rendering that is registered within the error catcher. By default JSON, XML and plain text are supported.
+choose different rendering that is registered within the error catcher. By default, JSON, XML and plain text are supported.
                                                           
 You may customize the error response format by providing your own instance of `Yiisoft\Yii\Web\ErrorHandler\ThrowableRendererInterface`
 when registering error catcher middleware. That is typically done in `MiddlewareDispatcherFactory` of your application:
 
 ```php
+namespace App\Factory;
+
 use Psr\Container\ContainerInterface;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
+use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\MiddlewareDispatcher;
 use Yiisoft\Yii\Web\Session\SessionMiddleware;
 
-class MiddlewareDispatcherFactory
+final class MiddlewareDispatcherFactory
 {
     public function __invoke(ContainerInterface $container)
     {
         $session = $container->get(SessionMiddleware::class);
         $router = $container->get(Router::class);
+
         $errorCatcher = $container->get(ErrorCatcher::class);
         $errorCatcher->withAddedRenderer('application/myformat', new MyFormatErrorRenderer());
+        
+        $subFolder = $container->get(SubFolder::class);
 
-        return new MiddlewareDispatcher([
-            $errorCatcher,
-            $session,
-            $router,
-        ], $container);
+        return (new MiddlewareDispatcher($container))
+            ->addMiddleware($router)
+            ->addMiddleware($subFolder)
+            ->addMiddleware($session)
+            ->addMiddleware($errorCatcher);
     }
 }
 ```

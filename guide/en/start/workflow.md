@@ -1,5 +1,4 @@
-Running Applications
-====================
+# Running Applications
 
 After installing Yii, you have a working Yii application that can be accessed via
 the URL `http://hostname/`. This section will introduce the application's built-in functionality,
@@ -10,12 +9,11 @@ how the code is organized, and how the application handles requests in general.
   your application to be `http://hostname/index.php` or something similar.
   For your needs, please adjust the URLs in our descriptions accordingly.
   
-Note that unlike the framework itself, after the project template is installed, it's all yours. You're free to add or delete
+Note that unlike the framework itself, after the project template is installed, it is all yours. You're free to add or delete
 code and overall modify it as you need.
 
 
-Functionality <span id="functionality"></span>
--------------
+## Functionality <span id="functionality"></span>
 
 The application installed contains four pages:
 
@@ -37,8 +35,7 @@ This script can be used to run background and maintenance tasks for the applicat
 in the [Console Application Section](../tutorial/console.md).
 
 
-Application Structure <span id="application-structure"></span>
----------------------
+## Application Structure <span id="application-structure"></span>
 
 The most important directories and files in your application are (assuming the application's root directory is `app`):
 
@@ -79,8 +76,7 @@ Depending on the middleware used, the application may behave differently. By def
 that, based on URL requested and configuration, chooses a handler that is executed to produce a response.
 
 
-Request Lifecycle <span id="request-lifecycle"></span>
------------------
+## Request Lifecycle <span id="request-lifecycle"></span>
 
 The following diagram shows how an application handles a request.
 

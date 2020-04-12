@@ -7,7 +7,7 @@ factors and explain how you can improve your application performance by adjustin
 
 ## Optimizing your PHP Environment <span id="optimizing-php"></span>
 
-A well configured PHP environment is very important. In order to get maximum performance,
+A well configured PHP environment is important. To get maximum performance,
 
 - Use the latest stable PHP version. Major releases of PHP may bring significant performance improvements.
 - Enable bytecode caching with [Opcache](https://secure.php.net/opcache). 
@@ -26,9 +26,9 @@ the [Caching](caching/overview.md) section to learn about the caching support pr
 
 ## Optimizing Session Storage <span id="optimizing-session"></span>
 
-By default session data are stored in files. The implementation is locking a file from opening a session to the point it's
+By default, session data are stored in files. The implementation is locking a file from opening a session to the point it's
 closed either by `$session->close()` or at the end of request.
-While session file is locked all other requests which are trying to use the same session are blocked i.e. waiting for the
+While session file is locked all other requests, which are trying to use the same session are blocked i.e. waiting for the
 initial request to release session file. This is fine for development and probably small projects. But when it comes 
 to handling massive concurrent requests, it is better to use more sophisticated storage, such as Redis.
 
@@ -69,10 +69,10 @@ by executing the following command:
 composer dumpautoload -o
 ```
 
-Additionally you may consider using
+Additionally, you may consider using
 [authoritative class maps](https://getcomposer.org/doc/articles/autoloader-optimization.md#optimization-level-2-a-authoritative-class-maps)
 and [APCu cache](https://getcomposer.org/doc/articles/autoloader-optimization.md#optimization-level-2-b-apcu-cache).
-Note that both opmizations may or may not be suitable for your particular case.
+Note that both optimizations may or may not be suitable for your particular case.
 
 
 ## Processing Data Offline <span id="processing-data-offline"></span>

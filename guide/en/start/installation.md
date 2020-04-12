@@ -1,5 +1,4 @@
-Installing Yii
-==============
+# Installing Yii
 
 You can install Yii using the [Composer](https://getcomposer.org/) package manager.
 
@@ -7,7 +6,7 @@ Standard installations of Yii result in both the framework packages and a projec
 A project template is a working Yii project implementing some basic features, such as login, contact form, etc.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
 
-### Installing Composer
+## Installing Composer
 
 If you do not already have Composer installed, you may do so by following the instructions at
 [getcomposer.org](https://getcomposer.org/download/). On Linux and Mac OS X, you'll run the following commands:
@@ -31,7 +30,7 @@ you have to adjust the example commands accordingly.
 If you had Composer already installed before, make sure you use an up to date version. You can update Composer
 by running `composer self-update`.
 
-### Installing Yii <span id="installing-from-composer"></span>
+## Installing Yii <span id="installing-from-composer"></span>
 
 With Composer installed, you can install Yii application template by running the following command
 under a Web-accessible folder:
@@ -215,7 +214,7 @@ server {
 ```
 
 When using this configuration, you should also set `cgi.fix_pathinfo=0` in the `php.ini` file
-in order to avoid many unnecessary system `stat()` calls.
+to avoid many unnecessary system `stat()` calls.
 
 Also note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can properly detect if a connection is secure.

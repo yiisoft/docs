@@ -67,10 +67,10 @@ class CachedWidget
 ```
 
 In the above we've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache
-implementation without changing `CachedWidget` so it's becoming more stable.
+implementation without changing `CachedWidget` so it is becoming more stable.
 
 The process of getting an instance of `CacheInterface` into `CachedWidget` is called dependency injection.
-There are multiple ways to do so:
+There are multiple ways to perform it:
 
 - Constructor injection. Best for mandatory dependencies.
 - Method injection. Best for optional dependencies.
@@ -80,11 +80,11 @@ There are multiple ways to do so:
 ## DI container <span id="di-container"></span>
 
 Injecting basic dependencies is simple and easy. You're choosing a place where you don't care about dependencies,
-which is usually action handler which you aren't going to unit-test ever, create instances of dependencies needed
+which is usually action handler, which you aren't going to unit-test ever, create instances of dependencies needed
 and pass these to dependent classes.
 
 It works well when there aren't many dependencies overall and when there are no nested dependencies. When there are
-many and each dependency has dependencies itself, instantiating the whole hierarchy becomes tedious process which
+many and each dependency has dependencies itself, instantiating the whole hierarchy becomes tedious process, which
 requires lots of code and may lead to hard to debug mistakes.
 
 Additionally, lots of dependencies, such as certain third party API wrapper, are the same for any class using it.
@@ -172,7 +172,7 @@ return [
 ### Injecting dependencies <span id="injecting-dependencies"></span>
 
 Directly referencing container in a class is a bad idea since the code becomes non-generic, coupled to container interface
-and, what's worse, dependencies are becoming hidden.  Because of that, Yii inverts the control by automatically injecting
+and, what's worse, dependencies are becoming hidden. Because of that, Yii inverts the control by automatically injecting
 objects from container in some constructors and methods based on method argument types.
 
 This is primarily done in constructor and handing method of action handlers:
@@ -200,15 +200,12 @@ class MyController
 ```
 
 Since action handler is instantiated and called using [yiisoft/injector](https://github.com/yiisoft/injector), it
-would check constructor and method argument types, obtain dependencies of these types from container and pass them as
-arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e. if dependency is not provided
-explicitly, container would check if it has such a dependency first. As a developer it's enough to declare a dependency
-you need and it would be obtained from container automatically.
+would check constructor and method argument types, get dependencies of these types from container and pass them as
+arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e., if dependency is not provided
+explicitly, container would check if it has such a dependency first. As a developer it is enough to declare a dependency
+you need, and it would be got from container automatically.
 
 
 ## References <span id="references"></span>
 
 - [Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler](https://martinfowler.com/articles/injection.html)
-
-
-

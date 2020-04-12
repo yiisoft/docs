@@ -1,9 +1,9 @@
 # Domain
 
 Domain or domain model is what makes the project unique. With requirements and terminology of the problem being solved
-in mind (the problem context), we build an abstraction that consists of entities, their relationships and logic that
-operates these entities. In order to focus on the complex part of the problem, domain is, ideally, separated from
-infrastructure part of the system (i.e. how to save data into database, how to form HTTP response etc.).
+in mind (the problem context), we build an abstraction that consists of entities, their relationships, and logic that
+operates these entities. To focus on the complex part of the problem, domain is, ideally, separated from
+infrastructure part of the system (i.e., how to save data into database, how to form HTTP response etc.).
 
 > Note: Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete
 > for a set of records with not much complex logic it makes no sense to apply complex solution to a simple problem.
@@ -24,12 +24,12 @@ all of them.
 ### Entity
 
 Entity is an uniquely identifiable object such as user, product, payment etc. When comparing them, you're checking ID,
-not the attribute values. If there are two objects with different attributes but the same ID, they are considered the
+not the attribute values. If there are two objects with different attributes but the same ID, they are considered
 being the same thing.
 
 ### Value object
 
-Value object describes an object by its characteristincs. For example, a price that consists of value and currency. When
+Value object describes an object by its characteristics. For example, a price that consists of value and currency. When
 comparing such objects you're checking actual values. If they match, object is considered being the same.
 
 ### Aggregate
@@ -38,22 +38,35 @@ Aggregate is a set of domain objects such as entities and value objects and addi
 a single unit. It usually represents a compound object from domain model such as shop order or HR person dossier.
 
 One of the components of an aggregate is called a root. The root identifies an aggregate as a whole and should be used
-to access it. 
+to access it.
 
 ### Domain event
 
 An aggregate, while processed, may raise events. For example, when order is confirmed, `OrderConfirmed` event would
 be risen so other parts of the system may react on these.
 
+### Data transfer object
+
+Data transfer object or DTO is an object which only purpose is to hold data as is. It is commonly used to pass data
+between different services.
+
 ### Service
 
-Service is a class that contains a standalone operation within the context of your domain model. 
+Service is a class that contains a standalone operation within the context of your domain model. See "[service 
+components](service.md)".
 
 ### Repository
 
 Repository task is to abstract away how domain objects are obtained. These are usually separated in two parts: an interface
 that stays in the domain layer and implementation that is situated in infrastructure layer. In such way domain doesn't
 care how data is obtained and saves and may be focused around the complicated business logic instead.
+
+Repository is usually implemented as a service.
+
+### Instantiating building blocks
+
+Entity, value object, aggregate and domain event are not services and should not be instantiated through DI container.
+Using `new` is the way to go with these.
 
 ## References
 

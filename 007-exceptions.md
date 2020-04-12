@@ -1,6 +1,10 @@
 # 007 - Exceptions
 
-- Exception class name should be suffixed with `Exception`.
+- Throw exceptions instead of returning an error code.
+- Exception class name must be suffixed with `Exception`.
+- Use grammatically correct error messages including ending punctuation i.e. most exceptions must end with period.
+- `\InvalidArgumentException` must be used directly. There should be no exceptions inherited from it.
+- `\InvalidArgumentException` must never be caught.
 
 ## References
 

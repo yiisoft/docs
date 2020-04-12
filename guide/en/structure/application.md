@@ -1,10 +1,11 @@
 # Application
 
-The web application in Yii 3 accepts an instance of middleware dispatcher, emitter and error handler. When being constructed,
-it registers error handler so it can handle errors occuring. On each request:
+The primary purpose of the web application in Yii 3 is to process requests in order to get responses.
 
-1. It is calling dispatcher with a request object to execute [middleware stack](middleware.md) and get response.
-2. Using emitter and response object it actually forms HTTP response that is sent to client browser.  
-3. After response is done, it resets dispatcher state so another request could be handled. In usual PHP applications it's
-   not the case since context is destroyed and re-created but in [environments such as RoadRunner](../tutorial/using-with-event-loop.md)
-   such state reset is necessary. 
+Typically, application runtime consists of:
+
+1. Startup. There it registers error handler, so it can handle errors occurring and firing `ApplicationStartup` event.
+2. Handle requests by passing request object to middleware dispatcher to execute [middleware stack](middleware.md) and
+   get response object. In usual PHP applications it is done once. In [environments such as RoadRunner](../tutorial/using-with-event-loop.md)
+   it could be done multiple times with the same application instance. Outside of the application response object is converted into actual HTTP response.
+3. Shutdown. `ApplicationShutdown` event is called.  

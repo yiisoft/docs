@@ -1,19 +1,19 @@
 # The Definitive Guide to Yii 3.0
 
-This tutorial is released under the [Terms of Yii Documentation](http://www.yiiframework.com/doc/terms/).
+This guide is released under the [Terms of Yii Documentation](http://www.yiiframework.com/doc/terms/).
 
-Introduction
+Introduction +
 ------------
 
 * [About Yii](intro/what-is-yii.md) +
 * [Upgrading from Version 2.0](intro/upgrade-from-v2.md) +
 
 
-Getting Started
+Getting Started -
 ---------------
 
 * [What do you need to know](start/prerequisites.md) +
-* [Installing Yii](start/installation.md) 
+* [Installing Yii](start/installation.md) +
 * [Running Applications](start/workflow.md) +
 * [Saying Hello](start/hello.md) +
 * [Working with Forms](start/forms.md) -
@@ -22,28 +22,28 @@ Getting Started
 * [Looking Ahead](start/looking-ahead.md) -
 
 
-Application Structure
+Application Structure +
 ---------------------
 
-* [Application Structure Overview](structure/overview.md) -
+* [Application Structure Overview](structure/overview.md) +
 * [Entry Scripts](structure/entry-script.md) +
-* [Applications](structure/application.md) +
+* [Application](structure/application.md) +
 * [Service components](structure/service.md) +
 * [Actions](structure/action.md) +
 * [Domain](structure/domain.md) +
 * [Middleware](structure/middleware.md) +
-* [Extensions](structure/extension.md) -
+* [Packages](structure/package.md) +
 
-Key Concepts
+Key Concepts -
 ------------
 
-* [Class Autoloading](concept/autoloading.md) -
+* [Class autoloading](concept/autoloading.md) +
 * [Dependency Injection Container](concept/di-container.md) +
 * [Configuration](concept/configuration.md) !
-* [Aliases](concept/aliases.md) -
-* [Events](concept/events.md) -
+* [Aliases](concept/aliases.md) +
+* [Events](concept/events.md) +
 
-Handling Requests
+Handling Requests -
 -----------------
 
 * [Request Handling Overview](runtime/overview.md) -
@@ -53,11 +53,11 @@ Handling Requests
 * [Response](runtime/response.md) +
 * [Sessions](runtime/sessions.md) +
 * [Cookies](runtime/cookies.md) +
-* [Flash messages](runtime/flash-messages.md) +
+* [Flash messages](runtime/flash-messages.md) -
 * [Handling Errors](runtime/handling-errors.md) !
 * [Logging](runtime/logging.md) +
 
-Views
+Views -
 -----
 
 * [Views](views/view.md) -
@@ -79,40 +79,40 @@ Working with Databases -
 Getting Data from Users -
 -----------------------
 
-* [Creating Forms](input/forms.md)
-* [Validating Input](input/validation.md)
-* [Uploading Files](input/file-upload.md)
-* [Collecting Tabular Input](input/tabular-input.md)
+* [Creating Forms](input/forms.md) -
+* [Validating Input](input/validation.md) -
+* [Uploading Files](input/file-upload.md) -
+* [Collecting Tabular Input](input/tabular-input.md) -
 
 
-Displaying Data
+Displaying Data -
 ---------------
 
-* [Data Formatting](output/formatting.md)
-* [Pagination](output/pagination.md)
-* [Sorting](output/sorting.md)
-* [Data Providers](output/data-providers.md)
-* [Data Widgets](output/data-widgets.md)
+* [Data Formatting](output/formatting.md) -
+* [Pagination](output/pagination.md) -
+* [Sorting](output/sorting.md) -
+* [Data Providers](output/data-providers.md) -
+* [Data Widgets](output/data-widgets.md) -
 
-Security -
+Security +-
 --------
 
-* [Security Overview](security/overview.md)
-* [Authentication](security/authentication.md)
-* [Authorization](security/authorization.md)
-* [Working with Passwords](security/passwords.md)
-* [Cryptography](security/cryptography.md)
-* [Best Practices](security/best-practices.md)
+* [Security Overview](security/overview.md) +
+* [Authentication](security/authentication.md) +
+* [Authorization](security/authorization.md) +-
+* [Working with Passwords](security/passwords.md) +
+* [Cryptography](security/cryptography.md) +
+* [Best Practices](security/best-practices.md) +
 
 
 Caching -
 -------
 
-* [Caching Overview](caching/overview.md)
-* [Data Caching](caching/data.md)
-* [Fragment Caching](caching/fragment.md)
-* [Page Caching](caching/page.md)
-* [HTTP Caching](caching/http.md)
+* [Caching Overview](caching/overview.md) -
+* [Data Caching](caching/data.md) -
+* [Fragment Caching](caching/fragment.md) -
+* [Page Caching](caching/page.md) -
+* [HTTP Caching](caching/http.md) -
 
 
 RESTful Web Services -
@@ -146,11 +146,11 @@ Testing -
 * [Fixtures](testing/fixtures.md)
 
 
-Special Topics
+Special Topics -
 --------------
 
 * [Building Application from Scratch](tutorial/start-from-scratch.md) -
-* [Console Commands](tutorial/console.md) -
+* [Console Applications](tutorial/console-applications.md) +
 * [Docker](tutorial/docker.md) -
 * [Internationalization](tutorial/i18n.md) -
 * [Mailing](tutorial/mailing.md) -

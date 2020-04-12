@@ -1,6 +1,6 @@
 # Using Yii with event loop
 
-Normal PHP web request execution cycle consist of setting up environment, obtaining response, processing it to form response
+Normal PHP web request execution cycle consist of setting up environment, getting response, processing it to form response
 and sending response. After response is sent, execution is terminated and its context is lost. So for the subsequent 
 request the whole sequence is repeated. Such approach has a big advantage in ease of development since developer does not
 have to take much care about memory leaks or properly cleaning up context. On the other side, initializing everything for
@@ -24,13 +24,13 @@ while ($request = getRequest()) {
 }
 ```
 
-Usually there are muliple workers processing requests at the same time same as in case with traditional php-fpm.
+Usually there are muliple workers processing requests at the same time same as with traditional php-fpm.
 
 That means that there's more to consider when developing applications.
 
 ### Processing is blocking
 
-Worker process requests one by one i.e. current processing is blocking processing next request. That means that
+Worker process requests one by one i.e., current processing is blocking processing next request. That means that
 long running processes, same as in general PHP applications, should be put into background via using a queue.
 
 ### Services and state
@@ -45,4 +45,4 @@ clean up services at the end of the request processing.
 ## Integrations
 
 - [RoadRunner](using-yii-with-roadrunner.md)
-
+- [Swoole](using-yii-with-swoole.md)
