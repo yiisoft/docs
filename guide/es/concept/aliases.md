@@ -1,46 +1,45 @@
-# Aliases
+# Alias
 
-Aliases are used to represent file paths or URLs so that you don't have to hard-code absolute paths or URLs in your
-project. An alias must start with the `@` character to be differentiated from normal file paths and URLs. Alias defined
-without leading `@` will be prefixed with `@` character.
+Los alias son utilizados para representar rutas o URLs de manera que no tengas que escribir explícitamente rutas absolutas o URLs en tu
+proyecto. Un alias debe comenzar con el signo `@` para ser diferenciado de una ruta normal de archivo y de URLs. Los alias definidos
+sin el `@` del principio, serán prefijados con el signo `@`.
 
-Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@src` represents
-the installation path of application `src` directory; `@web` represents the base URL for the currently running Web application.
+Yii incluye varios alias predefinidos en `config/params.php`. Por ejemplo, el alias `@src` representa la ruta de instalación de la aplicación en la carpeta `src`; `@web` representa la URL base para la aplicación Web ejecutándose.
 
-## Defining Aliases <span id="defining-aliases"></span>
+## Definir Alias <span id="defining-aliases"></span>
 
-You can define an alias via application's `config/params.php`:
+Puedes definir un alias mediante la aplicación en `config/params.php`:
 
 ```php
 return [
     // ...
 
     'aliases' => [
-        // an alias of a file path
+        // un alias de una ruta de archivos
         '@foo' => '/path/to/foo',
-    
-        // an alias of a URL
+
+        // un alias de un URL
         '@bar' => 'http://www.example.com',
-    
-        // an alias of a concrete file that contains a \foo\Bar class 
+
+        // un alias de un archivo en concreto que contiene la clase \foo\Bar
         '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
     ]
 ];
 ```
 
-> Note: The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
+> Nota: Una ruta de archivo o URL en alias *no* se refiere necesariamente a un archivo o recurso existente.
 
-Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.
-For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias.
+Dado un alias, puedes derivar un nuevo alias anexando una barra diagonal `/` seguida por uno o varios segmentos de la ruta.
+Por ejemplo, `@foo` es un alias de raíz, mientras que `@foo/bar/file.php` es un alias derivado.
 
-You can define an alias using another alias (either root or derived):
+Puedes definir un alias usando otro alias (ya sea un alias de raíz o derivado):
 
 ```php
-'@foobar' => '@foo/bar', 
+'@foobar' => '@foo/bar',
 ```
 
-The `aliases` parameter initializes `Aliases` service from [`yiisoft/aliases` package](https://github.com/yiisoft/aliases).
-You can set additional aliases in runtime by using the service:
+El parámetro `aliases` inicializa el servicio `Aliases` desde el [paquete `yiisoft/aliases`](https://github.com/yiisoft/aliases).
+Puedes agregar alias adicionales en tiempo de ejecución usando el servicio:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -51,9 +50,9 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Resolving Aliases <span id="resolving-aliases"></span>
+## Resolución de Alias <span id="resolving-aliases"></span>
 
-You can use `Aliases` service to resolve an alias or derived alias into the file path or URL it represents:
+Puedes utilizar el servicio `Aliases` para resolver un alias o un alias derivado a la ruta de archivo o URL que representa:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -66,15 +65,16 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-The path/URL represented by a derived alias is determined by replacing the root alias part with its corresponding
-path/URL in the derived alias.
+La ruta de archivo/URL representado por un alias derivado está determinado por la sustitución de la parte de su alias raíz con su correspondiente ruta/Url en el alias derivado.
 
-> Note: The `get()` method does not check whether the resulting path/URL refers to an existing file or resource.
-
+> Nota: El método `get()` no comprueba si la ruta/URL resultante hacer referencia a un archivo o recurso existente.
 
 A root alias may also contain slash `/` characters. The `get()` method
 is intelligent enough to tell, which part of an alias is a root alias and thus correctly determines
 the corresponding file path or URL:
+
+Un alias de raíz puede contener carácteres `/`.
+El método `get()` es lo suficientemente inteligente para saber qué parte de un alias es un alias de raíz y por lo tanto determinar correctamente la correspondiente ruta de archivo o URL. Por ejemplo:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -86,28 +86,28 @@ public function actionIndex(Aliases $aliases)
 
     $aliases->get('@foo/test/file.php'); // /path/to/foo/test/file.php
     $aliases->get('@foo/bar/file.php'); // /path2/bar/file.php
-} 
+}
 ```
 
-If `@foo/bar` is not defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
+Si `@foo/bar` no está definido como un alias de raíz, la última declaración mostraría `/path/to/foo/bar/file.php`.
 
 
-## Predefined Aliases <span id="predefined-aliases"></span>
+## Alias Predefinidos <span id="predefined-aliases"></span>
 
-Yii predefines a set of aliases to easily reference commonly used file paths and URLs:
+Yii predefine un conjunto de alias para aliviar la necesidad de hacer referencia a rutas de archivo o URLs que son utilizadas regularmente:
 
-- `@root`, the base directory of the currently running application.
-- `@vendor`, Composer's `vendor` directory.
-- `@public`, the web root directory of the currently running Web application.
-- `@runtime`, the runtime path of the currently running application. Defaults to `@root/runtime`.
-- `@web`, the base URL of the currently running Web application.
+- `@root`, la ruta base de la aplicación que se está ejecutando actualmente.
+- `@vendor`, la carpeta `vendor` de Composer.
+- `@public`, el directorio raíz Web de la aplicación Web se está ejecutando actualmente.
+- `@runtime`, la ruta de ejecución de la aplicación en ejecución. Por defecto`@root/runtime`.
+- `@web`, la URL base de la aplicación web se ejecuta actualmente.
 
-## Package Aliases <span id="package-aliases"></span>
+## Alias en extensiones <span id="package-aliases"></span>
 
-An alias is automatically defined for each [extension](structure-extensions.md) that is installed via Composer.
-Each alias is named after the root namespace of the extension as declared in its `composer.json` file, and each alias
-represents the root directory of the package. For example, if you install the `yiisoft/yii2-jui` extension,
-you will automatically have the alias `@yii/jui` defined during the [bootstrapping](runtime-bootstrapping.md) stage, equivalent to:
+Un alias se define automáticamente por cada [extensión](structure-extensions.md) que ha sido instalada a través de Composer.
+El alias es nombrado tras el `namespace` de raíz de la extensión instalada tal y como está declarada en su archivo `composer.json`,
+y representa el directorio raíz de la extensión. Por ejemplo, si instalas la extensión `yiisoft/yii2-jui`, tendrás
+automáticamente definido el alias `@yii/jui` durante la etapa [bootstrapping](runtime-bootstrapping.md) de la aplicación:
 
 ```php
 Yii::setAlias('@yii/jui', 'VendorPath/yiisoft/yii2-jui');
