@@ -33,9 +33,9 @@
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-9,-31)" stroke-linecap="butt">
       <circle fill="none" r="42.5" clip-path="url(#clipPath2)" cx="405.5" cy="228.5"/>
-      <text x="388.8242" xml:space="preserve" y="233.2139" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">Action</text>
-      <text x="33.2539" font-size="20px" y="236.3564" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" xml:space="preserve">Request</text>
-      <text x="668.4707" font-size="20px" y="230.3564" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" xml:space="preserve">Response</text>
+      <text x="388.8242" xml:space="preserve" y="233.2139" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">Acci&#x000F3;n</text>
+      <text x="33.2539" font-size="20px" y="236.3564" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" xml:space="preserve">Petici&#x000F3;n</text>
+      <text x="668.4707" font-size="20px" y="230.3564" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none" xml:space="preserve">Respuesta</text>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-9,-31)" stroke-linecap="butt">
       <path fill="none" d="M208 222.25 L210.85 227 L117 227 L117 230 L210.85 230 L208 234.75 L223 228.5 L208 222.25 Z" clip-path="url(#clipPath2)"/>
