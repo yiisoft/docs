@@ -1,38 +1,37 @@
-# Events
+# Eventos
 
-Events allow you to make custom code executed at certain execution points without modifying existing code.
-You can attach custom code called "handler" to an event so that when the event is triggered, the handler
-gets executed automatically. 
+Los eventos permiten ejecutar código personalizado en ciertos puntos de ejecución sin modificar el código existente.
+A un evento se le puede acoplar un código especial llamado gestor (handler), de manera que una vez que el evento se dispare (triggered),
+el código se ejecuta de manera automática.
 
-For example, when a user is signed up you need to send a welcome email. You can do it right in
-the `SignupService` but then when you will additionally need to resize users's avatar image you'll have
-to modify `SignupService` code again. In other words, `SignupService` will be coupled to both code sending
-welcome email and code resizing avatar image.
- 
-In order to avoid it, instead of telling what do after signup explicitly we can, instead, raise `UserSignedUp` event
-and then finish signup process. The code sending an email and the code resizing avatar image will attach to the event
-and therefore will be executed. If you'll ever need to do more on signup, you'll be able to attach additional event
-handlers without modifying `SignupService`. 
- 
-For raising events and attaching handlers to these events, Yii has a special service called event dispatcher.
-It is available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher).
+Por ejemplo, cuando un usuario se registra debes enviarle un correo electrónico de bienvenida. Puedes realizar esto directamente en `RegistroService`,
+pero luego adicionalmente debes redimensionar la imagen del avatar del usuario, y tendrás que modificar nuevamente `RegistroService`.
+En otras palabras, a `RegistroService` se le acoplan el codigo de enviar un correo de bienvenida y redimensionar la imagen del avatar.
 
-## Event Handlers <span id="event-handlers"></span>
+Para evitar todo eso, en vez de decir explicitamente qué hacer despues de un registro, podemos levantar el evento `UsuarioRegistrado`
+y luego finalizar el proceso de registro. El código que envía el correo y el código que redimensiona la imagen de avatar se adjuntan al evento
+y por lo tanto serán ejecutados cuando el evento se dispara. Si alguna vez se necesita hacer más cosas en el proceso de registro, puedes añadir distintos gestores de
+eventos sin necesidad de modificar `RegistroService`.
 
-An event handler is a [PHP callable](https://secure.php.net/manual/en/language.types.callable.php) that gets executed
-when the event it is attached to is triggered.
+Para levantar eventos y acoplar gestores a esos eventos, Yii tiene un servicio especial llamado despachador de eventos.
+Se encuentra disponible en el [paquete yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher).
 
-The signature of an event handler is:
+## Gestores de Eventos <span id="event-handlers"></span>
+
+Un gestor de eventos es una [llamada de retorno PHP (PHP callback)](https://secure.php.net/manual/es/language.types.callable.php) que se ejecuta cuando se
+lanza el evento al que corresponde.
+
+La firma de un gestor de eventos es:
 
 ```php
 function (EventClass $event) {
-    // handle it
+    // gestionar evento
 }
 ```
 
-## Attaching event handlers <span id="attaching-event-handlers"></span>
+## Acoplar Gestores de Eventos <span id="attaching-event-handlers"></span>
 
-You can attach a handler to an event like the following:
+Puedes acoplar un gestor a un evento como se demuestra a continuación:
 
 ```php
 use Yiisoft\EventDispatcher\Provider\Provider;
@@ -46,26 +45,25 @@ class WelcomeEmailSender
 
     public function handleUserSignup(UserSignedUp $event)
     {
-        // handle it    
+        // gestionar evento
     }
 }
 ```
 
-The `attach()` method is accepting a callback. Based on a type of this callback argument event type is
-determined.
+El método `attach()` acepta funciones de retorno (callbacks). Dependiendo del argumento de la función de retorno
+se determina el tipo de evento.
 
-## Event handlers order
+## Orden de Gestores de Eventos
 
-You may attach one or more handlers to a single event. When an event is triggered, the attached handlers
-will be called in the order that they were attached to the event. In case an event implements
-`Psr\EventDispatcher\StoppableEventInterface`, event handler can stop executing the rest of the handlers 
-that follow it if `isPropagationStopped()` returns `true`.
+Se puede acoplar uno o más gestores a un único evento. Cuando se lanza un evento, se ejecutarán los gestores adjuntos
+en el orden que se hayan añadido al evento. En el caso que un evento implemente `Psr\EventDispatcher\StoppableEventInterface`,
+el gestor de eventos puede detener la ejecución del resto de los gestores que le siguen si `isPropagationStopped()` devuelve `true`.
 
-In general, it is better not to rely on the order of event handlers.
+En general, lo mejor es no depender del orden de los gestores de eventos.
 
-## Raising events <span id="raising-events"></span>
+## Lanzamiento de Eventos <span id="raising-events"></span>
 
-Events are raised like the following:
+Los eventos se lanzan de la siguiente forma:
 
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -81,7 +79,7 @@ class SignupService
 
     public function signup(SignupForm $form)
     {
-        // handle signup
+        // manejar el registro
 
         $event = new UserSignedUp($form);
         $this->eventDispatcher->dispatch($event);
@@ -89,10 +87,9 @@ class SignupService
 }
 ```
 
-First, we are creating an event supplying it with data that may be useful for handlers. Then we are dispatching
-the event.
+Primero, estamos creando un evento entregandole datos que pueden ser útiles para los gestores. Luego, se lanza el evento.
 
-The event class itself may look like the following:
+La clase del evento en sí se podría ver como esto:
 
 ```php
 final class UserSignedUp
@@ -111,10 +108,10 @@ final class UserSignedUp
 }
 ```
 
-## Events hierarchy
+## Jerarquía de Eventos
 
-Events do not have any name or wildcard matching on purpose. Event class names and class/interface hierarchy
-and composition could be used to achieve great flexibility:
+Los eventos no tienen nombre o wildcard matching por una razón. Los nombres de clases de los eventos y la jerarquía de clases/interfaces
+y composición se puede utilizar para obtener mayor flexibilidad:
 
 ```php
 interface DocumentEvent
@@ -130,18 +127,17 @@ class AfterDocumentProcessed implements DocumentEvent
 }
 ```
 
-With the interface above listening to all document-related events could be done as:
-
+Para que la interface de arriba escuche todos los eventos relacionados con documentos, se puede realizar de la siguiente forma:
 
 ```php
 $provider->attach(function (DocumentEvent $event) {
     // log events here
 });
-``` 
+```
 
-## Detaching Event Handlers <span id="detaching-event-handlers"></span>
+## Desacoplar Gestores de Eventos <span id="detaching-event-handlers"></span>
 
-To detach a handler from an event you can call `detach()` method:
+Para desacoplar un gestor de eventos puedes llamar al método `detach()`:
 
 
 ```php

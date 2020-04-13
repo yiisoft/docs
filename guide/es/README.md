@@ -37,7 +37,7 @@ Estructura De Una Aplicación
 Conceptos Clave
 ------------
 
-* [Autocarga de Clases](concept/autoloading.md)
+* [Autocarga de Clases (Autoloading)](concept/autoloading.md)
 * [Contenedor de Inyección de Dependencia](concept/di-container.md)
 * [Configuración](concept/configuration.md)
 * [Alias](concept/aliases.md)
