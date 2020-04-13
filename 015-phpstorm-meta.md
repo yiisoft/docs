@@ -15,7 +15,7 @@ We use the following set of coding styles for metadata.
 ## Constants 
 
 All constant dictionaries should be named as `{Class FQN}::{Group name}`. Group name should be short and written in
-capital letters. Use underscore as a word separator i.e. `\Yiisoft\Http\Status::NOT_FOUND`. For example:
+capital letters. Use underscore as a word separator i.e. `\Yiisoft\Http\Status::STATUSES`. For example:
 
 ```php
 expectedReturnValues(
