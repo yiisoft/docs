@@ -10,6 +10,10 @@ In the application template [hiqdev/composer-config-plugin](https://github.com/h
 What the plugin does is collecting configs specified in all dependencies `composer.json`, `config-plugin` section and
 merging them.
 
+Best practices:
+
+- Do not use parameters directly in your application, configure services instead.
+
 ## Dependency Injection Container
 
 
