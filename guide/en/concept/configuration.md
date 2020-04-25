@@ -12,7 +12,7 @@ merging them.
 
 Best practices:
 
-- Do not use parameters directly in your application, configure services instead.
+- Do not use parameters, constants or environment variables directly in your application, configure services instead.
 
 ## Dependency Injection Container
 
