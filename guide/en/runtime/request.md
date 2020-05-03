@@ -106,7 +106,8 @@ header contains a single value:
 
 ```php
 if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
-    // this is AJAX request
+    // This is AJAX request made with jQuery.
+    // Note that header presence and name may vary depending on the library used. 
 }
 ```
 
