@@ -42,15 +42,6 @@ return [
         // instead of Cycle-based repository, any implementation could be used
         return $container->get(\Cycle\ORM\ORMInterface::class)->getRepository(\App\Entity\User::class);
     },
-    User::class => static function (ContainerInterface $container) {
-        $session = $container->get(SessionInterface::class);
-        $identityRepository = $container->get(IdentityRepositoryInterface::class);
-        $eventDispatcher = $container->get(EventDispatcherInterface::class);
-        $user = new Yiisoft\Yii\Web\User\User($identityRepository, $eventDispatcher);
-        $user->setSession($session);
-    
-        return $user;
-    },
 ];
 ```
 
