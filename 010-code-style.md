@@ -32,6 +32,10 @@ Class comment should describe the purpose of the class.
 Property, variable and constant value assignments should not be aligned. Same applies to phpdoc tags.
 The reason is that aligned statements often cause larger diff and even conflicts.
 
+## Native functions call
+
+Each native function should have `\` prefix for performance reasons. See https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/3048
+
 ```php
 class X
 {
