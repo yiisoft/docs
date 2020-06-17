@@ -1,6 +1,6 @@
 # Aliases
 
-Aliases are used to represent file paths or URLs so that you don't have to hard-code absolute paths or URLs in your
+You can use aliases to represent file paths or URLs so that you don't have to hard-code absolute paths or URLs in your
 project. An alias must start with the `@` character to be differentiated from normal file paths and URLs. Alias defined
 without leading `@` will be prefixed with `@` character.
 
@@ -94,21 +94,21 @@ If `@foo/bar` is not defined as a root alias, the last statement would display `
 
 ## Predefined Aliases <span id="predefined-aliases"></span>
 
-Yii predefines a set of aliases to easily reference commonly used file paths and URLs:
+[Yii application](https://github.com/yiisoft/app) predefines a set of aliases to easily reference commonly used file paths and URLs:
 
-- `@root`, the base directory of the currently running application.
-- `@vendor`, Composer's `vendor` directory.
-- `@public`, the web root directory of the currently running Web application.
-- `@runtime`, the runtime path of the currently running application. Defaults to `@root/runtime`.
-- `@web`, the base URL of the currently running Web application.
+- `@root` - the base directory of the currently running application.
+- `@assets` -  application's public assets directory where assets are published to.
+- `@assetsUrl` - URL of base directory with published assets.
+- `@npm` - node packages directory.
+- `@bower` - bower packages directory.
+- `@vendor` - Composer's `vendor` directory.
+- `@public` - application's publicly accessible directory that contains `index.php`.
+- `@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`.
+- `@web` - the base URL of the currently running Web application. Defaults to `/`.
+- `@resources` - directory where views, assets sources and other resources are located.
+- `@views` - application view templates base directory.
 
 ## Package Aliases <span id="package-aliases"></span>
 
-An alias is automatically defined for each [extension](structure-extensions.md) that is installed via Composer.
-Each alias is named after the root namespace of the extension as declared in its `composer.json` file, and each alias
-represents the root directory of the package. For example, if you install the `yiisoft/yii2-jui` extension,
-you will automatically have the alias `@yii/jui` defined during the [bootstrapping](runtime-bootstrapping.md) stage, equivalent to:
-
-```php
-Yii::setAlias('@yii/jui', 'VendorPath/yiisoft/yii2-jui');
-```
+Composer places installed package under `vendor/authorName/packageName` so there is no need for special
+alias for each package. Instead, you can use `@vendor/authorName/packageName` to refer to package directory. 
