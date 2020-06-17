@@ -178,3 +178,8 @@ Helpers -
 * [ArrayHelper](helper/array.md)
 * [Html](helper-html.md)
 * [Url](helper-url.md)
+
+Extras
+------
+
+* [Glossary](glossary.md)
