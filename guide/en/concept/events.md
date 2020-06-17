@@ -148,3 +148,6 @@ To detach a handler from an event you can call `detach()` method:
 $provider->detach(DocmentEvent::class);
 ```
 
+## Configuring application events
+
+Event handlers are usually assigned via application config. See ["Configuration"](configuration.md) for details.

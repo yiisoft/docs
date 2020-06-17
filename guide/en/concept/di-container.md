@@ -104,8 +104,8 @@ Yii provides the DI container feature through the [yiisoft/di](https://github.co
 
 ### Configuring container <span id="configuring-container"></span>
 
-Because dependencies are needed when new objects are being created, their registration should be done
-as early as possible. If you are application developer it could be done right in the application configuration,
+Because to create a new object you need its dependencies, you should register them as early as possible.
+If you are application developer it could be done right in the application configuration,
 `config/web.php`. For the following service:
 
 ```php
@@ -173,16 +173,18 @@ return [
 
 Directly referencing container in a class is a bad idea since the code becomes non-generic, coupled to container interface
 and, what's worse, dependencies are becoming hidden. Because of that, Yii inverts the control by automatically injecting
-objects from container in some constructors and methods based on method argument types.
+objects from a container in some constructors and methods based on method argument types.
 
 This is primarily done in constructor and handing method of action handlers:
 
 ```php
+use \Yiisoft\Cache\Cache;
+
 class MyController
 {
-    private $cache;
+    private Cache $cache;
 
-    public function __construct(\Yiisoft\Cache\Cache $cache) {
+    public function __construct(Cache $cache) {
         $this->cache = $cache;    
     }
 
