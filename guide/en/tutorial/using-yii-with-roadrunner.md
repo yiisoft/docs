@@ -7,7 +7,7 @@ performance significantly.
 
 ## Installation
 
-RoadRunner works on Linux, MacOS and Windows. Best way to install it is to use Composer:
+RoadRunner works on Linux, MacOS and Windows. The best way to install it is to use Composer:
 
 ```
 composer require spiral/roadrunner

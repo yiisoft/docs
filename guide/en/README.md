@@ -130,9 +130,9 @@ RESTful Web Services -
 Development Tools -
 -----------------
 
-* [Debug Toolbar and Debugger](https://www.yiiframework.com/extension/yiisoft/yii2-debug/doc/guide)
-* [Generating Code using Gii](https://www.yiiframework.com/extension/yiisoft/yii2-gii/doc/guide)
-* [Generating API Documentation](https://www.yiiframework.com/extension/yiisoft/yii2-apidoc)
+* Debug Toolbar and Debugger
+* Generating Code using Gii
+* Generating API Documentation
 
 
 Testing -
@@ -157,6 +157,7 @@ Special Topics -
 * [Performance Tuning](tutorial/performance-tuning.md) +
 * [Using Yii with event loop](tutorial/using-with-event-loop.md) +
 * [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +
+* [Using Yii with Swoole](using-yii-with-swoole.md) +
 
 Widgets -
 -------
