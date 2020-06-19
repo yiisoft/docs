@@ -154,8 +154,10 @@ class EchoController extends AbstractController
 }
 ```
 
-Now open your browser and check it again. It should give you similar result but now we have separated the part about
-how it works and part about how it is presented. In the larger applications it helps a lot to deal with complexity.
+Now open your browser and check it again. It should give you similar text but with a layout applied.
+
+Also, we have separated the part about how it works and part about how it is presented. In the larger applications
+it helps a lot to deal with complexity.
 
 ## Summary <span id="summary"></span>
 
