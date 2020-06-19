@@ -65,6 +65,8 @@ Array means that the plugin will merge multiple files in the order they are spec
 `params` config is a bit special because it is reserved for application parameters. These are automatically available
 as `$params` in all other configuration files.
 
+You can learn more about config plugin features [from its documentation](https://github.com/yiisoft/composer-config-plugin/blob/master/README.md).
+
 ## Config files
 
 Now as we know how the plugin assembles configs, let's look at what is each file in `config` directory for:
