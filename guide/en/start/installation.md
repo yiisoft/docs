@@ -2,8 +2,7 @@
 
 You can install Yii using the [Composer](https://getcomposer.org/) package manager.
 
-Standard installations of Yii result in both the framework packages and a project template being downloaded and installed.
-A project template is a working Yii project implementing some basic features, such as login, contact form, etc.
+We recommend starting with a project template that is a minimal working Yii project implementing some basic features.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
 
 ## Installing Composer
@@ -32,14 +31,14 @@ by running `composer self-update`.
 
 ## Installing Yii <span id="installing-from-composer"></span>
 
-With Composer installed, you can install Yii application template by running the following command
+With Composer installed, you can install Yii project template by running the following command
 under a Web-accessible folder:
 
 ```bash
-composer create-project --prefer-dist yiisoft/yii-demo app
+composer create-project yiisoft/app your_project
 ```
 
-This will install the latest stable version of Yii application template in a directory named `app`.
+This will install the latest stable version of Yii project template in a directory named `your_project`.
 You can choose a different directory name if you want.
 
 > Tip: If you want to install the latest development version of Yii, you may use the following command instead,
@@ -54,18 +53,13 @@ You can choose a different directory name if you want.
 ## Using individual packages
 
 Many Yii packages could be used separately from the framework via Composer. Framework-specific ones
-are prefixed with `yii-`.
-
-## Installing Assets <span id="installing-assets"></span>
-
-...
-
+have `yii-` prefix in their name.
 
 ## Verifying the Installation <span id="verifying-installation"></span>
 
-After installation is done, either configure your web server (see next section) or use the
+After you finish installation, either configure your web server (see next section) or use the
 [built-in PHP web server](https://secure.php.net/manual/en/features.commandline.webserver.php) by running the following
-console command while in the project `public` directory:
+console command while in the project root directory:
  
 ```bash
 ../vendor/bin/yii serve
@@ -84,9 +78,10 @@ You can use your browser to access the installed Yii application with the follow
 http://localhost:8080/
 ```
 
-![Successful Installation of Yii](images/start-app-installed.png)
+![Successful Installation of Yii](img/app-installed.png)
 
-You should see the above "Congratulations!" page in your browser.
+You should see the above page in your browser. If not, please check if your PHP installation satisfies
+Yii's requirements by using [yiisoft/requirements package](https://github.com/yiisoft/requirements).
 
 
 ## Configuring Web Servers <span id="configuring-web-servers"></span>
@@ -96,21 +91,20 @@ You should see the above "Congratulations!" page in your browser.
 
 The application installed according to the above instructions should work out of the box with either
 an [Apache HTTP server](http://httpd.apache.org/) or an [Nginx HTTP server](http://nginx.org/), on
-Windows, Mac OS X, or Linux running PHP 7.2 or higher.
+Windows, Mac OS X, or Linux running PHP 7.4 or higher.
 
-On a production server, you may want to configure your Web server so that the application can be accessed
-via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`. Such configuration
-requires pointing the document root of your Web server to the `app/public` folder. You may also
-want to hide `index.php` from the URL, as described in the [Routing and URL Creation](runtime-routing.md) section.
-In this subsection, you'll learn how to configure your Apache or Nginx server to achieve these goals.
+On a production server, we recommend configuring your Web server so that the application can be accessed
+via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.
+Such a configuration requires pointing the document root of your Web server to the `app/public` folder.
+In this subsection, you'll learn how to configure your webserver achieve it.
 
 > Info: By setting `app/public` as the document root, you also prevent end users from accessing
-your private application code and sensitive data files that are stored in the sibling directories
-of `app/public`. Denying access to those other folders is a security improvement.
+> your private application code and sensitive data files that are stored in the sibling directories
+> of `app/public`. Denying access to those other folders is a security improvement.
 
 > Info: If your application will run in a shared hosting environment where you do not have permission
-to modify its Web server configuration, you may still adjust the structure of your application for better security. Please refer to
-the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more details.
+> to modify its Web server configuration, you may still adjust the structure of your application for better security.
+> Please refer to the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more details.
 
 > Info: If you are running your Yii application behind a reverse proxy, you might need to configure
 > [Trusted proxies and headers](runtime-requests.md#trusted-proxies) in the request component.
@@ -216,34 +210,103 @@ server {
 When using this configuration, you should also set `cgi.fix_pathinfo=0` in the `php.ini` file
 to avoid many unnecessary system `stat()` calls.
 
-Also note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
+Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can properly detect if a connection is secure.
+
+### NGINX Unit <span id="nginx-unit"></span>
+
+You can run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.
+Here is a sample configuration.
+
+```json
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes/yii"
+        }
+    },
+
+    "routes": {
+        "yii": [
+            {
+                "match": {
+                    "uri": [
+                        "!/assets/*",
+                        "*.php",
+                        "*.php/*"
+                    ]
+                },
+
+                "action": {
+                    "pass": "applications/yii/direct"
+                }
+            },
+            {
+                "action": {
+                    "share": "/path/to/app/public/",
+                    "fallback": {
+                        "pass": "applications/yii/index"
+                    }
+                }
+            }
+        ]
+    },
+
+    "applications": {
+        "yii": {
+            "type": "php",
+            "user": "www-data",
+            "targets": {
+                "direct": {
+                    "root": "/path/to/app/public/"
+                },
+
+                "index": {
+                    "root": "/path/to/app/public/",
+                    "script": "index.php"
+                }
+            }
+        }
+    }
+}
+```
+
+You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini`
+in the same configuration.
 
 ### IIS <span id="iss"></span>
 
-To use [IIS](https://www.iis.net/), put `Web.config` and `index.php` to public accessible directory. The following
-configuration goes to `Web.config`:
+When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Web site) where document
+root points to `path/to/app/web` folder and that Web site is configured to run PHP. In that `web` folder you have to
+place a file named `web.config` i.e. `path/to/app/web/web.config`. Content of the file should be the following:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <system.webServer>
-        <rewrite>
-            <rules>
-                <rule name="slim" patternSyntax="Wildcard">
-                    <match url="*" />
-                    <conditions>
-                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
-                    </conditions>
-                    <action type="Rewrite" url="index.php" />
-                </rule>
-            </rules>
-        </rewrite>
-    </system.webServer>
+<system.webServer>
+<directoryBrowse enabled="false" />
+  <rewrite>
+    <rules>
+      <rule name="Hide Yii Index" stopProcessing="true">
+        <match url="." ignoreCase="false" />
+        <conditions>
+        <add input="{REQUEST_FILENAME}" matchType="IsFile" 
+              ignoreCase="false" negate="true" />
+        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" 
+              ignoreCase="false" negate="true" />
+        </conditions>
+        <action type="Rewrite" url="index.php" appendQueryString="true" />
+      </rule> 
+    </rules>
+  </rewrite>
+</system.webServer>
 </configuration>
 ```
 
+Also, the following list of Microsoft's official resources could be useful in order to configure PHP on IIS:
+
+ 1. [How to set up your first IIS Web site](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
+ 2. [Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)
 
 ### lighttpd <span id="lighttpd"></span>
 

@@ -30,7 +30,7 @@ Since Yii 3 is forcing you to inject dependencies properly, it is a good idea to
 service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
 
 If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller
-actions and widgets and passing dependencies manually from controller to what needs them.
+actions and widgets and passing dependencies manually from a controller to what needs them.
 
 See [Dependency injection and container](../concept/di-container.md) for explanation of the concept.
 
