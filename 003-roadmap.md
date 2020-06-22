@@ -88,7 +88,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ## Single application template
 
 - [x] Drop basic/advanced.
-- [ ] Create a [single application template that works out of the box](https://github.com/yiisoft/yii-project-template).
+- [x] Create a [single application template that works out of the box](https://github.com/yiisoft/app).
 
 ## Router
 
@@ -102,12 +102,12 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ## Best practices and SOLID compliance of all classes/packages
 
 - [ ] Make sure interfaces follow "interface segregation" principle.
-- [ ] Do not use public properties.
+- [x] Do not use public properties.
 - [x] Do not use `init()`.
 - [x] Do not inherit from `BaseObject` or `Component`. Remove these.
 - [x] No globals.
 - [ ] No static calls except helpers that are final.
-- [ ] Prefer throwing exceptions to fixing input.
+- [x] Prefer throwing exceptions to fixing input.
 
 ## Development toolkit
 
@@ -132,18 +132,18 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 RBAC is implemented as [framework-independent package](https://github.com/yiisoft/rbac).
 
-- [ ] Finish refactoring.
-- [ ] Make sure it follows best practices.
-- [ ] Split drivers into packages.
+- [x] Finish refactoring.
+- [x] Make sure it follows best practices.
+- [x] Split drivers into packages.
 
 ## View
 
 View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
 - [ ] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
-- [ ] Port widgets.
-- [ ] Rethink and implement active form widgets.
-- [ ] Implement caching widgets.
+- [x] Port widgets.
+- [x] Rethink and implement active form widgets.
+- [x] Implement caching widgets.
 
 ## Data abstractions and Grid
 
@@ -156,7 +156,7 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 ## Validators
 
 - [ ] Finish [main package](https://github.com/yiisoft/validator) redesign
-- [ ] Port necessary validators
+- [x] Port necessary validators
 
 ## Debug toolbar
 
@@ -168,7 +168,7 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Infrastructure
 
-- [ ] Cover [composer config plugin](https://github.com/hiqdev/composer-config-plugin) with tests.
+- [ ] Cover [composer config plugin](https://github.com/yiisoft/composer-config-plugin) with tests.
 
 ## Others
 
