@@ -124,7 +124,7 @@ malicious JavaScript code in the parameter.
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
 PHP statements. In fact, the `say` view is a PHP script that is executed by the view service.
 
-To use the view we need to modify `src/Controller/Echo.php`:
+To use the view we need to modify `src/Controller/EchoController.php`:
 
 ```php
 <?php
