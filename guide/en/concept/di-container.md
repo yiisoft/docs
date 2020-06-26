@@ -1,6 +1,6 @@
 # Dependency injection and container
 
-## Depdendency injection <span id="dependency-injection"></span>
+## Dependency injection <span id="dependency-injection"></span>
 
 There are two ways of re-using things in OOP: inheritance and composition.
 
@@ -17,9 +17,9 @@ class Cache
 
 class CachedWidget extends Cache
 {
-    public function render()
+    public function render(): string
     {
-        $output = parent::getCachedValue('cachedWidget');
+        $output = $this->getCachedValue('cachedWidget');
         if ($output !== null) {
             return $output;
         }
@@ -48,7 +48,7 @@ class Cache implements CacheInterface
 
 class CachedWidget
 {
-    private $cache;
+    private CacheInterface $cache;
 
     public function __construct(CacheInterface $cache)
     {
@@ -115,7 +115,7 @@ class MyService implements MyServiceInterface
     {
     }
 
-    public function setDiscount(int $discount)
+    public function setDiscount(int $discount): void
     {
     
     }
@@ -157,7 +157,7 @@ return [
     ],
 
     // closure
-    'closure' => function(ContainerInterface $container) {
+    'closure' => static function(ContainerInterface $container) {
         return new MyClass($container->get('db'));
     },
 
@@ -178,13 +178,13 @@ objects from a container in some constructors and methods based on method argume
 This is primarily done in constructor and handing method of action handlers:
 
 ```php
-use \Yiisoft\Cache\Cache;
+use \Yiisoft\Cache\CacheInterface;
 
 class MyController
 {
-    private Cache $cache;
+    private CacheInterface $cache;
 
-    public function __construct(Cache $cache) {
+    public function __construct(CacheInterface $cache) {
         $this->cache = $cache;    
     }
 
@@ -201,9 +201,9 @@ class MyController
 }
 ```
 
-Since action handler is instantiated and called using [yiisoft/injector](https://github.com/yiisoft/injector), it
-would check constructor and method argument types, get dependencies of these types from container and pass them as
-arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e., if dependency is not provided
+Since it is [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it
+checks the constructor and method argument types, get dependencies of these types from container and pass them as
+arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e., if you do not provide dependency
 explicitly, container would check if it has such a dependency first. As a developer it is enough to declare a dependency
 you need, and it would be got from container automatically.
 
