@@ -15,6 +15,8 @@ is available at GitHub.
 - Run tests and/or application using code from the pull request. Are these OK? 
 - Read all lines of code in the pull request.
 - Could it be done simpler?
+- Are there security issues?
+- Are there performance issues?
 - When leaving comments be polite.
 - Avoid code formatting comments.
 
