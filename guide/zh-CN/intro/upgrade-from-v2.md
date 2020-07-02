@@ -10,13 +10,13 @@
 
 Yii 3 要求 PHP 7.4 或更高版本。因此，它有一些在 Yii 2 中没有使用过的语言特性：
 
-- [类型声明](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
-- [返回类型声明](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
-- [类常量的可见性](https://www.php.net/manual/en/language.oop5.constants.php)
-- [匿名类](https://www.php.net/manual/en/language.oop5.anonymous.php)
-- [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
-- [生成器](https://www.php.net/manual/en/language.generators.php)
-- [变参函数](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
+- [类型声明](https://www.php.net/manual/zh/functions.arguments.php#functions.arguments.type-declaration)
+- [返回类型声明](https://www.php.net/manual/zh/functions.returning-values.php#functions.returning-values.type-declaration)
+- [类常量的可见性](https://www.php.net/manual/zh/language.oop5.constants.php)
+- [匿名类](https://www.php.net/manual/zh/language.oop5.anonymous.php)
+- [::class](https://www.php.net/manual/zh/language.oop5.basic.php#language.oop5.basic.class.class)
+- [生成器](https://www.php.net/manual/zh/language.generators.php)
+- [变参函数](https://www.php.net/manual/zh/functions.arguments.php#functions.variable-arg-list)
 
 ## 初步的重构
 在将 Yii 2 的项目移植到 Yii 3 之前重构它，会是一个好主意。这将使移植更加简单，而且，在它还没有移植到 Yii 3 之前，是有利于正在规划的项目。
@@ -24,7 +24,7 @@ Yii 3 要求 PHP 7.4 或更高版本。因此，它有一些在 Yii 2 中没有�
 ### 使用DI（依赖注入）代替服务定位器模式
 
 由于 Yii 3 强制你正确地注入依赖关系，因此，预备从使用服务定位器模式 (`Yii::$app->`) 
-向 [依赖注入容器](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container) 切换会是一个好主意
+向 [依赖注入容器](https://www.yiiframework.com/doc/guide/2.0/zh-cn/concept-di-container) 切换会是一个好主意
 
 如果依赖注入容器的使用由于某种原因出现问题，考虑将所有对' Yii::$app-> '的调用移动到控制器动作和小部件，并将依赖项从控制器手动传递给需要它们的对象。
 
