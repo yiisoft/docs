@@ -48,6 +48,11 @@ class EchoController extends AbstractController
         $response->getBody()->write('The message is: ' . Html::encode($message));
         return $response;
     }
+    
+    public function getViewPath(): string
+    {
+        return $this->aliases->get('@views');
+    }
 }
 ```
 
@@ -150,6 +155,11 @@ class EchoController extends AbstractController
         return $this->render('say', [
             'message' => $message,
         ]);
+    }
+    
+    public function getViewPath(): string
+    {
+        return $this->aliases->get('@views');
     }
 }
 ```
