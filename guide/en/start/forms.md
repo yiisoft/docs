@@ -84,10 +84,15 @@ class EchoController extends AbstractController
             $form->load($request->getParsedBody());
         }
 
-        return $this->render('say', [
+        return $this->render('echo/say', [
             'csrf' => $request->getAttribute(Csrf::REQUEST_NAME),
             'form' => $form,
         ]);
+    }
+    
+    public function getViewPath(): string
+    {
+        return $this->aliases->get('@views');
     }
 }
 ```
@@ -202,10 +207,15 @@ class EchoController extends AbstractController
             $form->validate();
         }
 
-        return $this->render('say', [
+        return $this->render('echo/say', [
             'csrf' => $request->getAttribute(Csrf::REQUEST_NAME),
             'form' => $form,
         ]);
+    }
+    
+    public function getViewPath(): string
+    {
+        return $this->aliases->get('@views');
     }
 }
 ```
