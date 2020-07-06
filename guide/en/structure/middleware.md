@@ -35,34 +35,24 @@ Now register the middleware in DI container configuration `config/web.php`:
 ],
 ```
 
-In the router factory, `src/Factory/AppRouterFactory.php` modify the route:
+In the `config/routes.php`, add new route:
 
 ```php
 <?php
-use Yiisoft\Router\FastRoute\UrlMatcher;
-use Yiisoft\Router\Group;
+
+declare(strict_types=1);
+
 use Yiisoft\Router\Route;
-use Yiisoft\Router\RouteCollection;
-use Yiisoft\Router\RouteCollectorInterface;
+use App\Controller\SiteController;
+use Middlewares\BasicAuthentication;
 
-// ...
-class AppRouterFactory
-{
-    public function __invoke(ContainerInterface $container)
-    {
-         $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
 
-         $routes = [
-            // ...
-            Route::get('/basic-auth', [SiteController::class, 'auth'])->addMiddleware($basicAuth),
-        ];
-
-        $collector =  $container->get(RouteCollectorInterface::class);
-        $collector->addGroup(Group::create(null, $routes));
-
-        return new UrlMatcher(new RouteCollection($collector));
-    }
-}
+return [
+    //...
+    Route::get('/basic-auth', [SiteController::class, 'auth'])
+        ->name('site/auth')
+        ->addMiddleware(BasicAuthentication::class)
+];
 ```
 
 In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middeware consisting of basic
@@ -82,34 +72,41 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 
 Basic authentication middleware wrote to request `username` attribute so we can access the data if needed.
 
-To apply middleware to application overall regardless of URL, adjust `src/Factory/MiddlewareDispatcherFactory.php`:
+To apply middleware to application overall regardless of URL, adjust `src/Provider/MiddlewareProvider.php`:
 
 ```php
+<?php
+declare(strict_types=1);
+
+namespace App\Provider;
+
 use Psr\Container\ContainerInterface;
+use Yiisoft\Di\Container;
+use Yiisoft\Di\Support\ServiceProvider;
 use Yiisoft\Router\Middleware\Router;
-use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
-use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\MiddlewareDispatcher;
+use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
+use Yiisoft\Yii\Web\Middleware\Csrf;
+use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\Session\SessionMiddleware;
+use Middlewares\BasicAuthentication;
 
-class MiddlewareDispatcherFactory
+final class MiddlewareProvider extends ServiceProvider
 {
-    public function __invoke(ContainerInterface $container)
+    public function register(Container $container): void
     {
-        $session = $container->get(SessionMiddleware::class);
-        $router = $container->get(Router::class);
-        $errorCatcher = $container->get(ErrorCatcher::class);
-        $subFolder = $container->get(SubFolder::class);
-        $basicAuth = $container->get(\Middlewares\BasicAuthentication::class);
-
-        return (new MiddlewareDispatcher($container))
-            ->addMiddleware($router)
-            ->addMiddleware($subFolder)
-            ->addMiddleware($session)
-            ->addMiddleware($basicAuth)
-            ->addMiddleware($errorCatcher);
+        $container->set(MiddlewareDispatcher::class, static function (ContainerInterface $container) {
+            return (new MiddlewareDispatcher($container))
+                ->addMiddleware($container->get(Router::class))
+                ->addMiddleware($container->get(SubFolder::class))
+                ->addMiddleware($container->get(SessionMiddleware::class))
+                ->addMiddleware($container->get(Csrf::class))
+                ->addMiddleware($container->get(BasicAuthentication::class))
+                ->addMiddleware($container->get(ErrorCatcher::class));
+        });
     }
 }
+
 ```
 
 ## Creating your own middleware
@@ -128,6 +125,8 @@ To respond directly one needs a response factory passed via constructor:
 
 ```php
 <?php
+declare(strict_types=1);
+
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
