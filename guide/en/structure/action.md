@@ -81,7 +81,9 @@ middleware:
 use Yiisoft\Router\Route;
 use Yiisoft\Yii\Web\Middleware\WebActionsCaller;
 
-Route::anyMethod('/post/{action:\w+}', new WebActionsCaller(PostController::class, $container)),
+Route::anyMethod('/profile/{action:\w+}', function (Psr\Container\ContainerInterface $container) {
+    return new WebActionsCaller(ProfileController::class, $container);
+})->name('profile');
 ```
 
 ## Autowiring
