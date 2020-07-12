@@ -74,17 +74,7 @@ class PostController
 }
 ```
 
-This class is usually called "controller". Above code is repetitive so you can use `WebActionsCaller`
-middleware:
-
-```php
-use Yiisoft\Router\Route;
-use Yiisoft\Yii\Web\Middleware\WebActionsCaller;
-
-Route::anyMethod('/profile/{action:\w+}', function (Psr\Container\ContainerInterface $container) {
-    return new WebActionsCaller(ProfileController::class, $container);
-})->name('profile');
-```
+We usually call this class a "controller".
 
 ## Autowiring
 
