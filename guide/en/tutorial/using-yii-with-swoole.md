@@ -42,7 +42,6 @@ require 'vendor/autoload.php';
 Builder::rebuild();
 
 $container = new Container(require Builder::path('web'));
-require dirname(__DIR__) . '/src/globals.php';
 
 $application = $container->get(Application::class);
 
