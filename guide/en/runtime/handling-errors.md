@@ -126,7 +126,7 @@ final class MiddlewareProvider extends ServiceProvider
         $container->set(MiddlewareDispatcher::class, static function (ContainerInterface $container) {
 
             $errorCatcher = $container->get(ErrorCatcher::class);
-            $errorCatcher->withAddedRenderer('application/myformat', new MyFormatErrorRenderer());
+            $errorCatcher->withRenderer('application/myformat', new MyFormatErrorRenderer());
 
             return (new MiddlewareDispatcher($container))
                 ->addMiddleware($container->get(Router::class))
