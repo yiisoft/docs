@@ -101,35 +101,40 @@ content type, it will use the error or exception view to display errors. For oth
 choose different rendering that is registered within the error catcher. By default, JSON, XML and plain text are supported.
                                                           
 You may customize the error response format by providing your own instance of `Yiisoft\Yii\Web\ErrorHandler\ThrowableRendererInterface`
-when registering error catcher middleware. That is typically done in `MiddlewareDispatcherFactory` of your application:
+when registering error catcher middleware. That is typically done in `MiddlewareProvider` of your application:
 
 ```php
-namespace App\Factory;
+
+declare(strict_types=1);
+
+namespace App\Provider;
 
 use Psr\Container\ContainerInterface;
+use Yiisoft\Di\Container;
+use Yiisoft\Di\Support\ServiceProvider;
 use Yiisoft\Router\Middleware\Router;
-use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
-use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\MiddlewareDispatcher;
+use Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher;
+use Yiisoft\Yii\Web\Middleware\Csrf;
+use Yiisoft\Yii\Web\Middleware\SubFolder;
 use Yiisoft\Yii\Web\Session\SessionMiddleware;
 
-final class MiddlewareDispatcherFactory
+final class MiddlewareProvider extends ServiceProvider
 {
-    public function __invoke(ContainerInterface $container)
+    public function register(Container $container): void
     {
-        $session = $container->get(SessionMiddleware::class);
-        $router = $container->get(Router::class);
+        $container->set(MiddlewareDispatcher::class, static function (ContainerInterface $container) {
 
-        $errorCatcher = $container->get(ErrorCatcher::class);
-        $errorCatcher->withAddedRenderer('application/myformat', new MyFormatErrorRenderer());
-        
-        $subFolder = $container->get(SubFolder::class);
+            $errorCatcher = $container->get(ErrorCatcher::class);
+            $errorCatcher->withAddedRenderer('application/myformat', new MyFormatErrorRenderer());
 
-        return (new MiddlewareDispatcher($container))
-            ->addMiddleware($router)
-            ->addMiddleware($subFolder)
-            ->addMiddleware($session)
-            ->addMiddleware($errorCatcher);
+            return (new MiddlewareDispatcher($container))
+                ->addMiddleware($container->get(Router::class))
+                ->addMiddleware($container->get(SubFolder::class))
+                ->addMiddleware($container->get(SessionMiddleware::class))
+                ->addMiddleware($container->get(Csrf::class))
+                ->addMiddleware($errorCatcher);
+        });
     }
 }
 ```
