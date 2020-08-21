@@ -64,28 +64,27 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\EchoForm;
+use App\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
-use Yiisoft\Yii\Web\Middleware\Csrf;
 
-class EchoController extends AbstractController
+class EchoController
 {
-    protected function name(): string
+    private ViewRenderer $viewRenderer;
+
+    public function __construct(ViewRenderer $viewRenderer)
     {
-        return 'echo';
+        $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(ServerRequestInterface $request, EchoForm $form): ResponseInterface
     {
-        $form = new EchoForm();
-
         if ($request->getMethod() === Method::POST) {
             $form->load($request->getParsedBody());
         }
 
-        return $this->render('say', [
-            'csrf' => $request->getAttribute(Csrf::REQUEST_NAME),
+        return $this->viewRenderer->withCsrf()->render('say', [
             'form' => $form,
         ]);
     }
@@ -104,6 +103,7 @@ Additionally, to allow POST, we need to adjust our route in `config/routes.php`:
 
 declare(strict_types=1);
 
+use App\Contact\ContactController;
 use App\Controller\EchoController;
 use App\Controller\SiteController;
 use Yiisoft\Http\Method;
@@ -111,6 +111,9 @@ use Yiisoft\Router\Route;
 
 return [
     Route::get('/', [SiteController::class, 'index'])->name('site/index'),
+        Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
+        Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
+            ->name('contact/form'),
     Route::methods([Method::GET, Method::POST], '/say', [EchoController::class, 'say'])->name('echo/say'),
 ];
 ```
@@ -159,7 +162,9 @@ It is configured in `config/params.php`:
     'defaultParameters' => [
         'applicationParameters' => ApplicationParameters::class,
         'assetManager' => AssetManager::class,
+        'field' => Field::class,
         'url' => UrlGeneratorInterface::class,
+        'urlMatcher' => UrlMatcherInterface::class,
     ],
 ],
 ```
@@ -181,29 +186,28 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\EchoForm;
+use App\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
-use Yiisoft\Yii\Web\Middleware\Csrf;
 
-class EchoController extends AbstractController
+class EchoController
 {
-    protected function name(): string
+    private ViewRenderer $viewRenderer;
+
+    public function __construct(ViewRenderer $viewRenderer)
     {
-        return 'echo';
+        $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(ServerRequestInterface $request, EchoForm $form): ResponseInterface
     {
-        $form = new EchoForm();
-
         if ($request->getMethod() === Method::POST) {
             $form->load($request->getParsedBody());
             $form->validate();
         }
 
-        return $this->render('say', [
-            'csrf' => $request->getAttribute(Csrf::REQUEST_NAME),
+        return $this->viewRenderer->withCsrf()->render('say', [
             'form' => $form,
         ]);
     }

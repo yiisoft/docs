@@ -64,7 +64,7 @@ vendor/             Installed Composer packages.
 ```
 
 In general, the files in the application can be divided into two types: those under `app/public` and those
-under other directories. The former can be directly accessed via HTTP (i.e., in a browser), while the latter can not
+under other directories. The former can be directly accessed via HTTP (i.e., in a browser), while the latter cannot
 and should not be.
 
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.

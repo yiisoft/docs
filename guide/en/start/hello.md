@@ -1,6 +1,6 @@
 # Saying Hello
 
-> Note: This document reflects current configuration. Yii team is going to make it significantly simpler before release.
+> Note: This document reflects the current configuration. Yii team is going to make it simpler before release.
 
 This section describes how to create a new "Hello" page in your application. It is a simple page that will
 echo back whatever you pass to it or, if nothing passed, will just say "Hello!".
@@ -29,15 +29,18 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Html\Html;
 
-class EchoController extends AbstractController
-{
-    protected function name(): string
+class EchoController
+{  
+    private ResponseFactoryInterface $responseFactory;
+
+    public function __construct(ResponseFactoryInterface $responseFactory)
     {
-        return 'echo';
+        $this->responseFactory = $responseFactory;
     }
 
     public function say(ServerRequestInterface $request): ResponseInterface
@@ -71,12 +74,17 @@ Now to map our handler to URL we need to add a route in `config/routes.php`:
 declare(strict_types=1);
 
 use App\Controller\EchoController;
+use App\Contact\ContactController;
 use App\Controller\SiteController;
 use Yiisoft\Router\Route;
+use Yiisoft\Http\Method;
 
 return [
     Route::get('/', [SiteController::class, 'index'])->name('site/index'),
-    Route::get('/say[/{message}]', [EchoController::class, 'say'])->name('echo/say'),    
+    Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
+    Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
+        ->name('contact/form'),
+    Route::get('/say[/{message}]', [EchoController::class, 'say'])->name('echo/say'),
 ];
 ```
 
@@ -119,7 +127,7 @@ use Yiisoft\Html\Html;
 Note that in the above code, the `message` parameter is HTML-encoded
 before being printed. This is necessary as the parameter comes from an end user, making it vulnerable to
 [cross-site scripting (XSS) attacks](http://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
-malicious JavaScript code in the parameter.
+malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
 PHP statements. In fact, the `say` view is a PHP script that is executed by the view service.
@@ -133,21 +141,24 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class EchoController extends AbstractController
+class EchoController
 {
-    protected function name(): string
+    private ViewRenderer $viewRenderer;
+    
+    public function __construct(ViewRenderer $viewRenderer)
     {
-        return 'echo';
+        $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
     public function say(ServerRequestInterface $request): ResponseInterface
     {
         $message = $request->getAttribute('message', 'Hello!');
 
-        return $this->render('say', [
+        return $this->viewRenderer->render('say', [
             'message' => $message,
         ]);
     }
