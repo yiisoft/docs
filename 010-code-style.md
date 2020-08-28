@@ -53,6 +53,22 @@ class X
 }
 ```
 
+## Immutable methods
+
+Immutable method convention is the following:
+
+```php
+public function withName(string $name): self
+{
+    $new = clone $this;
+    $new->name = $name;
+    return $new; 
+}
+```
+
+1. Cloned object name is `$new`.
+2. Return type is `self`.
+
 ## Additional conventions
 
 - [Namespaces](004-namespaces.md)
