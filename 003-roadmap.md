@@ -168,7 +168,8 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Infrastructure
 
-- [ ] Cover [composer config plugin](https://github.com/yiisoft/composer-config-plugin) with tests.
+- [x] Cover [composer config plugin](https://github.com/yiisoft/composer-config-plugin) with tests.
+- [ ] Release stable [composer config plugin](https://github.com/yiisoft/composer-config-plugin).
 
 ## Others
 
