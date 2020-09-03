@@ -22,4 +22,13 @@ For a full list of packages and their build statuses see [status page at yiifram
 - named as `yiisoft/something` without yii-prefix
 - titled as "Yii ... Package" or "Yii ... Helper"
 - must not have dependencies on any Yii-specific packages
-- should have as less dependencies as possible
+- should have as fewer dependencies as possible
+
+## Configs and defaults
+
+The following applies to both Yii-specific packages and general purpose packages:
+
+- Package may have `config` directory with Yii-specific defaults.
+- Package may have "config-plugin" in "extra" section of `composer.json`.  
+- Package must not have dependencies in `require` section of `composer.json` that are used in `config` only.
+  
