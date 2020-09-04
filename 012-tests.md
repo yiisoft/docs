@@ -13,3 +13,4 @@ the following guidelines should be taken into account.
 - There must be one test case per test method i.e. a single AAA.
 - Test must use public API. Private properties or methods should not be accessed, assumptions on internals
   of the class tested should not be made.
+- Tests should not rely on composer-config-plugin and DI container unless absolutely necessary.
