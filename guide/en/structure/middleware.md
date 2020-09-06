@@ -3,7 +3,7 @@
 Yii works with HTTP using abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)
 and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/).
 
-The application is composed from one or several middleware. When the URL is requested, the request object is passed to
+The application is composed of one or several middleware. When the URL is requested, the request object is passed to
 the middleware dispatcher that executes middleware from the stack one by one. Each middleware, given the request, can
 either return a response or pass execution to the next middleware. 
 
@@ -56,7 +56,7 @@ return [
 ```
 
 In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middeware consisting of basic
-authentication and the action itself. A chain is a special middleware that executes all the middleware it is configured
+authentication, and the action itself. A chain is a special middleware that executes all the middleware it is configured
 with.
 
 The action itself may be the following:
@@ -70,7 +70,7 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 }
 ```
 
-Basic authentication middleware wrote to request `username` attribute so we can access the data if needed.
+Basic authentication middleware wrote to request `username` attribute, so we can access the data if needed.
 
 To apply middleware to application overall regardless of URL, adjust `src/Provider/MiddlewareProvider.php`:
 
@@ -106,7 +106,6 @@ final class MiddlewareProvider extends ServiceProvider
         });
     }
 }
-
 ```
 
 ## Creating your own middleware
@@ -158,6 +157,19 @@ left to next middleware in the stack:
 
 ```php
 return $next->handle($request);
+```
+
+In case you need to pass data to the next middleware, you can use request attributes:
+
+```php
+$request = $request->withAttribute('answer', 42);
+return $next->handle();
+``` 
+
+To get it in the next middleware:
+
+```php
+$answer = $request->getAttribute('answer');
 ```
 
 ### Capturing response to manipulate it
