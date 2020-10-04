@@ -78,7 +78,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ### PSR-18 HTTP client
 
 - [x] Remove our own implementation. At least for now.
-- [ ] Framework packages should depend on interfaces only.
+- [x] Framework packages should depend on interfaces only.
 
 ## Stricter types
 
@@ -111,7 +111,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Development toolkit
 
-- [ ] Release command line tool
+- [x] Release command line tool
 - [x] Development command line tool (symlinks packages into usable application)
 
 ## Console

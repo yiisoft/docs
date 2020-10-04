@@ -1,6 +1,6 @@
 # 000 - Packages
 
-Since version 3.0 Yii is divided into several packages following the following agreements.
+Since Yii 3 framework is divided into several packages with the following agreements.
 
 For all packages GitHub repository name exactly matches Packagist package name.
 
@@ -32,3 +32,6 @@ The following applies to both Yii-specific packages and general purpose packages
 - Package may have "config-plugin" in "extra" section of `composer.json`.  
 - Package must not have dependencies in `require` section of `composer.json` that are used in `config` only.
   
+## Versions
+
+All packages are versioned according to SemVer starting with 1.0.0.
