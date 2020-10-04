@@ -35,3 +35,7 @@ The following applies to both Yii-specific packages and general purpose packages
 ## Versions
 
 All packages are versioned according to SemVer starting with 1.0.0.
+
+## PHP versions support
+
+Initial release is meant to support PHP 7.4+. We may drop old version support in a major release.
