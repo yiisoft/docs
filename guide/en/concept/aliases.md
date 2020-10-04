@@ -5,7 +5,7 @@ project. An alias must start with the `@` character to be differentiated from no
 without leading `@` will be prefixed with `@` character.
 
 Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@src` represents
-the installation path of application `src` directory; `@web` represents the base URL for the currently running Web application.
+the installation path of application `src` directory; `@baseUrl` represents the base URL for the currently running Web application.
 
 ## Defining Aliases <span id="defining-aliases"></span>
 
@@ -104,7 +104,7 @@ If `@foo/bar` is not defined as a root alias, the last statement would display `
 - `@vendor` - Composer's `vendor` directory.
 - `@public` - application's publicly accessible directory that contains `index.php`.
 - `@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`.
-- `@web` - the base URL of the currently running Web application. Defaults to `/`.
+- `@baseUrl` - the base URL of the currently running Web application. Defaults to `/`.
 - `@resources` - directory where views, assets sources and other resources are located.
 - `@views` - application view templates base directory.
 
