@@ -19,17 +19,17 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 
 ## Sending cookies
 
-Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is `\Yiisoft\Yii\Web\Cookie` class
+Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is `\Yiisoft\Cookies\Cookie` class
 to help with it:
 
 ```php
-$cookie = (new \Yiisoft\Yii\Web\Cookie('cookieName', 'value'))
-    ->path('/')
-    ->domain('yiiframework.com')
-    ->httpOnly(true)
-    ->secure(true)
-    ->sameSite(\Yiisoft\Yii\Web\Cookie::SAME_SITE_STRICT)
-    ->validFor(new \DateInterval('P7D'));
+$cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
+    ->withPath('/')
+    ->withDomain('yiiframework.com')
+    ->withHttpOnly(true)
+    ->withSecure(true)
+    ->withSameSite(\Yiisoft\Cookies\Cookie::SAME_SITE_STRICT)
+    ->withMaxAge(new \DateInterval('P7D'));
 
     return $cookie->addToResponse($response);
 ```
