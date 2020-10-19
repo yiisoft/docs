@@ -14,7 +14,7 @@ Connection: Closed
 Hello!
 ```
 
-Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web applicaiton to represent response.
+Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web application to represent response.
 
 The object should be constructed and returned as a result of execution of controller actions or other middleware.
 Usually the middleware has response factory injected into its constructor.
