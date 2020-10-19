@@ -250,7 +250,7 @@ Let's use some examples to illustrate how named parameters work. Assume we have 
 3. `'post/{id:\d+}'`
 
 - `/posts` match second pattern;
-- `/posts/2014/php` match first pattern. Parametres are the `year` whose value is 2014
+- `/posts/2014/php` match first pattern. Parameters are the `year` whose value is 2014
   and the `category` whose value is `php`;
 - `/post/100` match third pattern. The `id` parameter value is 100;
 - `/posts/php` does not match.
