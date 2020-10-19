@@ -14,7 +14,7 @@ Depending on how stack is configured, application behavior may vary significantl
 ## Using middleware
 
 Any PSR-15 compatible middleware could be used with Yii and there are many. Say, we need to add basic authentication
-one of the application URLs. URL-dependent middeware are configured using router, so we need to modify router factory. 
+one of the application URLs. URL-dependent middleware are configured using router, so we need to modify router factory. 
 
 Authentication middleware is implemented by `middlewares/http-authentication` package so execute
 `composer require middlewares/http-authentication` in the application root directory.
@@ -55,7 +55,7 @@ return [
 ];
 ```
 
-In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middeware consisting of basic
+In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middleware consisting of basic
 authentication, and the action itself. A chain is a special middleware that executes all the middleware it is configured
 with.
 
