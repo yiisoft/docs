@@ -53,7 +53,7 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ### PSR-15 HTTP handlers
 
-- [x] Rewrite HTTP flow to PSR-7 request-reponse + formatting response via emitter.
+- [x] Rewrite HTTP flow to PSR-7 request-response + formatting response via emitter.
 - [x] Provide SAPI emitter out of the box.
 - [x] Make it possible to use alternative emitters such as RoadRunner.
 - [x] Support middleware.
