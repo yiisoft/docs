@@ -200,7 +200,7 @@ Read more about it in ["Routes"](../runtime/routing.md).
 ### Events
 
 Many services emit certain events that you can attach to. That could be done via three config files: `events-web.php`
-for web applicaiton events, `events-console.php` for console events and `events.php` for both.
+for web application events, `events-console.php` for console events and `events.php` for both.
 
 Read more about it in ["Events"](events.md).
 
