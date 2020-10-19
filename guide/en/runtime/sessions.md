@@ -5,7 +5,7 @@ to work with session data.
 
 ## Configuring middleware
 
-In order for session to work properly, ensure that `\Yiisoft\Yii\Web\Session\SessionMiddleware` is registed in application
+In order for session to work properly, ensure that `\Yiisoft\Yii\Web\Session\SessionMiddleware` is registered in application
 middleware stack before request router.
 
 ## Opening and closing session
