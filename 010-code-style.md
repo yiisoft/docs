@@ -53,7 +53,9 @@ class X
 }
 ```
 
-## Immutable methods
+## Methods
+
+### Immutable methods
 
 Immutable method convention is the following:
 
@@ -68,6 +70,32 @@ public function withName(string $name): self
 
 1. Cloned object name is `$new`.
 2. Return type is `self`.
+
+### Boolean check methods
+
+Methods that are there to check if something is true should be named like the following:
+
+```php
+public function isDeleted(): bool;
+public function hasName(): bool;
+public function canDoIt(): bool;
+```
+
+### Flags in methods 
+
+Boolean flags in methods are better to be avoided. It is a sign the method may be doing too much and there
+should be two methods instead of one.
+
+```php
+public function login(bool $refreshPage = true): void;
+```
+
+Is better to be two methods:
+
+```php
+public function login(): void;
+public function refreshPage(): void;
+```
 
 ## Additional conventions
 
