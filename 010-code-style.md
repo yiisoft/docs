@@ -3,14 +3,6 @@
 Code formatting used in Yii 3 packages is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) with additional rules
 added on top of it.
 
-## Property, constant and method placement
-
-Order should be the following:
-
-- Constants
-- Properties
-- Methods
-  
 ## Comments
 
 Inline comments are to be avoided except when code could not be understood without them. A good example is
@@ -22,12 +14,9 @@ Class comment should describe the purpose of the class.
 
 [See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
 
-## Strings
+## Formatting
 
-- When no variables involved, use `'Hello!'`
-- To get variables into string prefer `"Hello, $username!"`
-
-## No alignment
+### No alignment
 
 Property, variable and constant value assignments should not be aligned. Same applies to phpdoc tags.
 The reason is that aligned statements often cause larger diff and even conflicts.
@@ -53,9 +42,28 @@ class X
 }
 ```
 
-## Methods
+## Strings
 
-### Immutable methods
+- When no variables involved, use `'Hello!'`
+- To get variables into string prefer `"Hello, $username!"`
+
+## Classes and interfaces
+
+### Property, constant and method order
+
+Order should be the following:
+
+- Constants
+- Properties
+- Methods
+
+### Abstract classes
+
+Abstract classes *should not* be prefixed or postfixed with `Abstract`.
+
+### Methods
+
+#### Immutable methods
 
 Immutable method convention is the following:
 
@@ -71,7 +79,7 @@ public function withName(string $name): self
 1. Cloned object name is `$new`.
 2. Return type is `self`.
 
-### Boolean check methods
+#### Boolean check methods
 
 Methods that are there to check if something is true should be named like the following:
 
@@ -81,7 +89,7 @@ public function hasName(): bool;
 public function canDoIt(): bool;
 ```
 
-### Flags in methods 
+#### Flags in methods 
 
 Boolean flags in methods are better to be avoided. It is a sign the method may be doing too much and there
 should be two methods instead of one.
