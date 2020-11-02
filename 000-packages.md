@@ -31,6 +31,16 @@ The following applies to both Yii-specific packages and general purpose packages
 - Package may have `config` directory with Yii-specific defaults.
 - Package may have "config-plugin" in "extra" section of `composer.json`.  
 - Package must not have dependencies in `require` section of `composer.json` that are used in `config` only.
+- Parameters should be namespaced with `vendor/package-name`:
+
+```php
+return [
+	'vendor/package-name' => [
+		'param1' => 1,
+        'param2' => 2,
+	],
+];
+```
   
 ## Versions
 
