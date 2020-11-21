@@ -5,13 +5,13 @@ to work with session data.
 
 ## Configuring middleware
 
-In order for session to work properly, ensure that `\Yiisoft\Yii\Web\Session\SessionMiddleware` is registered in application
+In order for session to work properly, ensure that `\Yiisoft\Session\SessionMiddleware` is registered in application
 middleware stack before request router.
 
 ## Opening and closing session
 
 ```php
-public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session)
+public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 {
     // start session if it's not yet started
     $session->open();
@@ -29,7 +29,7 @@ public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session
 There are two more ways to close session:
 
 ```php
-public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session)
+public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 {
     // discard changes and close session
     $session->discard();
@@ -44,7 +44,7 @@ public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session
 Usually you will use the following methods to work with session data:
 
 ```php
-public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session)
+public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 {
     // get a value
     $lastAccessTime = $session->get('lastAccessTime');
@@ -73,11 +73,11 @@ public function actionProfile(\Yiisoft\Yii\Web\Session\SessionInterface $session
 
 ## Custom session storage
 
-When using `Yiisoft\Yii\Web\Session\Session` as session component, you can provide your own storage implementation:
+When using `Yiisoft\Session\Session` as session component, you can provide your own storage implementation:
 
 ```php
 $handler = new MySessionHandler();
-$session = new \Yiisoft\Yii\Web\Session\Session([], $handler);
+$session = new \Yiisoft\Session\Session([], $handler);
 ```
 
 Custom storage must implement `\SessionHandlerInterface`.

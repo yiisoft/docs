@@ -18,12 +18,10 @@ The `Yiisoft\Yii\Web\User\User` application service manages the user authenticat
 which contains the actual authentication logic.
 
 ```php
-use Yiisoft\Yii\Web\Session\Session;
-use Yiisoft\Yii\Web\Session\SessionInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\Session\Session;
+use Yiisoft\Session\SessionInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Psr\Container\ContainerInterface;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 return [
     // ...
@@ -133,14 +131,14 @@ final class IdentityRepository implements IdentityRepositoryInterface
 }
 ```
 
-## Using `\Yiisoft\Yii\Web\User\User` <span id="using-user"></span>
+## Using `\Yiisoft\User\User` <span id="using-user"></span>
 
-`\Yiisoft\Yii\Web\User\User` service can be used to obtain current user identity. As any service, it could be
+`\Yiisoft\User\User` service can be used to obtain current user identity. As any service, it could be
 auto-wired in either action handler constructor or method:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
-use \Yiisoft\Yii\Web\User\User;
+use \Yiisoft\User\User;
 
 class SiteController
 {
@@ -163,7 +161,7 @@ To login a user, you may use the following code:
 ```php
 $identity = $identityRepository->findByEmail($email);
 
-/* @var $user \Yiisoft\Yii\Web\User\User */
+/* @var $user \Yiisoft\User\User */
 $user->login($identity);
 ```
 
@@ -173,7 +171,7 @@ authentication status is maintained.
 To logout a user, simply call
 
 ```php
-/* @var $user \Yiisoft\Yii\Web\User\User */
+/* @var $user \Yiisoft\User\User */
 $user->logout();
 ```
 
@@ -182,13 +180,13 @@ $user->logout();
 The user service raises a few events during the login and logout processes.
 
 
-* `\Yiisoft\Yii\Web\User\Event\BeforeLogin`: raised at the beginning of `login()`.
+* `\Yiisoft\User\Event\BeforeLogin`: raised at the beginning of `login()`.
   If the event handler calls `invalidate()` on event object, the login process will be cancelled.
-* `\Yiisoft\Yii\Web\User\Event\AfterLogin`: raised after a successful login.
-* `\Yiisoft\Yii\Web\User\Event\BeforeLogout`: raised at the beginning of `logout()`.
+* `\Yiisoft\User\Event\AfterLogin`: raised after a successful login.
+* `\Yiisoft\User\Event\BeforeLogout`: raised at the beginning of `logout()`.
   If the event handler calls `invalidate()` on event object, the logout process will be cancelled.
-* `\Yiisoft\Yii\Web\User\Event\AfterLogout`: raised after a successful logout.
+* `\Yiisoft\User\Event\AfterLogout`: raised after a successful logout.
 
 You may respond to these events to implement features such as login audit, online user statistics. For example,
-in the handler for `\Yiisoft\Yii\Web\User\Event\AfterLogin`, you may record the login time and IP
+in the handler for `\Yiisoft\User\Event\AfterLogin`, you may record the login time and IP
 address in the `user` database table.

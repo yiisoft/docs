@@ -4,13 +4,13 @@ Authorization is the process of verifying that a user has enough permission to d
 
 ## Checking for permission
 
-You can check if a user has certain permissions by using `\Yiisoft\Yii\Web\User\User` service:
+You can check if a user has certain permissions by using `\Yiisoft\User\User` service:
 
 ```php
 namespace App\Blog\Post;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\User\User;
 
 class PostController
 {
@@ -367,7 +367,7 @@ The check is done similar to how it was done in the first section of this guide:
 namespace App\Blog\Post;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\User\User;
 
 class PostController
 {

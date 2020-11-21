@@ -37,8 +37,8 @@ or [implementing SessionHandlerInterface](https://www.sitepoint.com/saving-php-s
 session service as follows:
 
 ```php
-\Yiisoft\Yii\Web\Session\SessionInterface::class => [
-    '__class' => \Yiisoft\Yii\Web\Session\Session::class,
+\Yiisoft\Session\SessionInterface::class => [
+    '__class' => \Yiisoft\Session\Session::class,
     '__construct()' => [[], $myCustomSessionHandler],
 ],
 ```

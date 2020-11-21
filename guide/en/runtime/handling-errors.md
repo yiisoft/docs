@@ -1,6 +1,6 @@
 # Handling errors
 
-Yii web includes a built-in [[\Yiisoft\Yii\Web\ErrorHandler\ErrorHandler|error handler]] which makes error handling
+Yii web includes a built-in [[\Yiisoft\ErrorHandler\ErrorHandler|error handler]] which makes error handling
 a much more pleasant experience than before. In particular, the Yii error handler does the following to improve error handling:
 
 * All non-fatal PHP errors (e.g. warnings, notices) are converted into catchable exceptions.
@@ -19,10 +19,10 @@ The error handler is registered by an application and its configuration by defau
 You may configure it in the application configuration, `config/web.php` like the following:
 
 ```php
-use \Yiisoft\Yii\Web\ErrorHandler\ErrorHandler;
-use \Yiisoft\Yii\Web\ErrorHandler\ThrowableRendererInterface;
+use \Yiisoft\ErrorHandler\ErrorHandler;
+use \Yiisoft\ErrorHandler\ThrowableRendererInterface;
 use \Psr\Log\LoggerInterface;
-use \Yiisoft\Yii\Web\ErrorHandler\HtmlRenderer;
+use \Yiisoft\ErrorHandler\HtmlRenderer;
 use Psr\Container\ContainerInterface;
 
 return [
