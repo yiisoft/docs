@@ -105,6 +105,19 @@ public function login(): void;
 public function refreshPage(): void;
 ```
 
+## Imports
+
+Prefer importing classes and functions to using fully qualified names:
+
+```php
+use Yiisoft\Arrays\ArrayHelper;
+use Yiisoft\Validator\DataSetInterface;
+use Yiisoft\Validator\HasValidationErrorMessage;
+use Yiisoft\Validator\Result;
+
+use function is_iterable;
+```
+
 ## Additional conventions
 
 - [Namespaces](004-namespaces.md)
