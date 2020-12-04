@@ -126,7 +126,7 @@ learn how to configure and use them.
 
 In the following, we will describe the features common to all log targets.
 
-  
+
 ### Message Filtering <span id="message-filtering"></span>
 
 For each log target, you can configure its levels and categories to specify,
@@ -229,6 +229,7 @@ $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
 $fileTarget->setCommonContext(['server' => $_SERVER]);
 ```
 
+
 ### Message Trace Level <span id="trace-level"></span>
 
 During development, it is often desirable to see where each log message is coming from. This can be achieved by
@@ -310,14 +311,23 @@ To check whether the log target is enabled, call the `isEnabled()` method.
 You also may pass a callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
 to define a dynamic condition for whether the log target should be enabled or not.
 
+
 ### Creating New Targets <span id="new-targets"></span>
 
 Creating a new log target class is very simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
-method that sends all accumulated log messages to a designated medium. For more details,
-you may refer to any of the log target classes included in the Yii release.
+method that sends all accumulated log messages to a designated medium.
+
+The following protected methods will be available in child targets:
+
+- `getMessages` - Gets a list of log messages ([[\Yii\Log\Message]] instances).
+- `getFormattedMessages` - Gets a list of formatted string log messages.
+- `formatMessages` - Gets formatted all log messages for display as a string.
+- `getCommonContext` - Gets an array with common context data in the `key => value` format.
+
+For more details, you may refer to any of the log target classes included in the Yii release.
 
 > Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
-  as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
+as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
 
 ```php
 /**
