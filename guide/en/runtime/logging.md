@@ -116,6 +116,9 @@ In the above code, two log targets are registered:
 Yii comes with the following built-in log targets. Please refer to the API documentation about these classes to 
 learn how to configure and use them. 
 
+* [[\Yiisoft\Log\PsrTarget]]: passes log messages to another PSR-3 compatible logger.
+* [[\Yiisoft\Log\StreamTarget]]: writes log messages in specified output stream.
+* [[\Yiisoft\Log\Target\Db\DbTarget]]: saves log messages in database.
 * [[\Yiisoft\Log\Target\Email\EmailTarget]]: sends log messages to pre-specified email addresses.
 * [[\Yiisoft\Log\Target\File\FileTarget]]: saves log messages in files.
 * [[\Yiisoft\Log\Target\Syslog\SyslogTarget]]: saves log messages to syslog by calling the PHP function `syslog()`.
@@ -156,47 +159,73 @@ $fileTarget->setExcept(['App\Exceptions\HttpException:404']);
 
 ### Message Formatting <span id="message-formatting"></span>
 
-Log targets export the filtered log messages in a certain format. For example, if you install
-a log target of the class [[\Yiisoft\Log\Target\File\FileTarget]], you may find a log message similar to the following in the
-log file:
+Log targets export the filtered log messages in a certain format.
+For example, if you install a log target of the class [[\Yiisoft\Log\Target\File\FileTarget]],
+then by default the log messages will be formatted as follows:
 
 ```
-2014-10-04 18:10:15 [::1][][-][trace][yii\base\Module::getModule] Loading module: debug
+Timestamp Prifix[Level][Category] Message Context
 ```
 
-By default, log messages will be formatted as follows by the [[\Yiisoft\Log\Target::formatMessage()]]:
-
-```
-Timestamp [IP address][User ID][Session ID][Severity Level][Category] Message Text
-```
-
-You may customize this format by calling `setPrefix()` method, which takes a PHP callable
-returning a customized message prefix. For example, the following code configures a log target to prefix each
-log message with the current user ID (IP address and Session ID are removed for privacy reasons).
+You may customize this format by calling [[\Yiisoft\Log\Target::setFormat|setFormat]] method,
+which takes a PHP callable returning a customized message format.
 
 ```php
-$userId = ...
-
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
-$fileTarget->setPrefix(function (string $message) use ($userId) {
-    return "[$userID]";
+
+$fileTarget->setFormat(static function (\Yiisoft\Log\Message $message) {
+    $category = strtoupper($message->context('category'));
+    return "({$category}) [{$message->level()}] {$message->message()}";
 });
+
+$logger = new \Yiisoft\Log\Logger([$fileTarget]);
+$logger->info('Text message', ['category' => 'app']);
+
+// Result:
+// (APP) [info] Text message
 ```
 
-Besides message prefixes, log targets also append some context information to each batch of log messages.
-By default, the values of these global PHP variables are included: `$_GET`, `$_POST`, `$_FILES`, `$_COOKIE`,
-`$_SESSION` and `$_SERVER`. You may adjust this behavior by calling target `setLogVars()` method
-with the names of the global variables that you want to include by the log target. For example, the following
-log target configuration specifies that only the value of the `$_SERVER` variable will be appended to the log messages.
+In addition, if you are comfortable with the default message format but need to change the timestamp format
+or add custom data to the message, you can call the [[\Yiisoft\Log\Target::setTimestampFormat|setTimestampFormat]]
+and [[\Yiisoft\Log\Target::setPrefix|setPrefix]] methods. For example, the following code changes the timestamp
+format and configures a log target to prefix each log message with the current user ID
+(IP address and Session ID are removed for privacy reasons).
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
-$fileTarget->setLogVars(['_SERVER']);
+$userId = '123e4567-e89b-12d3-a456-426655440000';
+
+// Default: 'Y-m-d H: i: s.u'
+$fileTarget->setTimestampFormat('D d F Y');
+// Default: ''
+$fileTarget->setPrefix(static fn () => "[{$userId}]");
+
+$logger = new \Yiisoft\Log\Logger([$fileTarget]);
+$logger->info('Text', ['category' => 'user']);
+
+// Result:
+// Fri 04 December 2020 [123e4567-e89b-12d3-a456-426655440000][info][user] Text
+// Message context: ...
+// Common context: ...
 ```
 
-You may configure `logVars` to be an empty array to totally disable the inclusion of context information.
-Or if you want to implement your own way of providing context information, you may override the
-`getContextMessage()` method.
+The PHP callable that is passed to the [[\Yiisoft\Log\Target::setFormat|setFormat]]
+and [[\Yiisoft\Log\Target::setPrefix|setPrefix]] methods has the following signature:
+
+```php
+function (\Yiisoft\Log\Message $message, array $commonContext): string;
+```
+
+Besides message prefixes, log targets also append some common context information to each of the log messages.
+You may adjust this behavior by calling target [[\Yiisoft\Log\Target::setCommonContext|setCommonContext]]
+method, passing an array of data in the `key => value` format that you want to include in the by the log target.
+For example, the following log target configuration specifies that only the
+value of the `$_SERVER` variable will be appended to the log messages.
+
+```php
+$fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
+$fileTarget->setCommonContext(['server' => $_SERVER]);
+```
 
 ### Message Trace Level <span id="trace-level"></span>
 
@@ -258,28 +287,30 @@ $logger->setFlushInterval(1);
 
 ### Toggling Log Targets <span id="toggling-log-targets"></span>
 
-You can enable or disable a log target by calling its [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]] method.
+You can enable or disable a log target by calling its [[\Yiisoft\Log\Target::enable()|enable()] ]
+and [[\Yiisoft\Log\Target::disable()|disable()]] methods.
 You may do so via the log target configuration or by the following PHP statement in your code:
 
 ```php
-$logger->getTarget('file')->setEnabled(false);
+$fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
+$logger = new \Yiisoft\Log\Logger([$fileTarget, /*Other targets*/]);
+
+foreach ($logger->getTargets() as $target) {
+    if ($target instanceof \Yiisoft\Log\Target\File\FileTarget) {
+        $target->disable();
+    }
+}
 ```
 
-The above code requires you to name a target as `file`:
-
-```php
-$logger = new \Yiisoft\Log\Logger(['file' => $fileTarget]);
-```
-
-You also may pass a callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]] to
-define a dynamic condition for whether the log target should be enabled or not.
+To check whether the log target is enabled, call the `isEnabled()` method.
+You also may pass a callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
+to define a dynamic condition for whether the log target should be enabled or not.
 
 ### Creating New Targets <span id="new-targets"></span>
 
-Creating a new log target class is very simple. You mainly need to implement the [[\Yii\Log\Target::export()]] method
-sending the content of the [[\Yii\Log\Target::messages]] array to a designated medium. You may call the
-[[\Yii\Log\Target::formatMessage()]] method to format each message. For more details, you may refer to any of the
-log target classes included in the Yii release.
+Creating a new log target class is very simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
+method that sends all accumulated log messages to a designated medium. For more details,
+you may refer to any of the log target classes included in the Yii release.
 
 > Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
   as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
