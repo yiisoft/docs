@@ -318,3 +318,14 @@ you may refer to any of the log target classes included in the Yii release.
 
 > Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
   as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
+
+```php
+/**
+ * @var \Psr\Log\LoggerInterface $psrLogger
+ */
+
+$psrTarget = new \Yiisoft\Log\PsrTarget($psrLogger);
+$logger = new \Yiisoft\Log\Logger([$psrTarget]);
+
+$logger->info('Text message');
+```
