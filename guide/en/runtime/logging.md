@@ -169,7 +169,7 @@ then by default the log messages will be formatted as follows:
 Timestamp Prifix[Level][Category] Message Context
 ```
 
-You may customize this format by calling [[\Yiisoft\Log\Target::setFormat|setFormat]] method,
+You may customize this format by calling [[\Yiisoft\Log\Target::setFormat()|setFormat()]] method,
 which takes a PHP callable returning a customized message format.
 
 ```php
@@ -188,8 +188,8 @@ $logger->info('Text message', ['category' => 'app']);
 ```
 
 In addition, if you are comfortable with the default message format but need to change the timestamp format
-or add custom data to the message, you can call the [[\Yiisoft\Log\Target::setTimestampFormat|setTimestampFormat]]
-and [[\Yiisoft\Log\Target::setPrefix|setPrefix]] methods. For example, the following code changes the timestamp
+or add custom data to the message, you can call the [[\Yiisoft\Log\Target::setTimestampFormat()|setTimestampFormat()]]
+and [[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods. For example, the following code changes the timestamp
 format and configures a log target to prefix each log message with the current user ID
 (IP address and Session ID are removed for privacy reasons).
 
@@ -211,15 +211,15 @@ $logger->info('Text', ['category' => 'user']);
 // Common context: ...
 ```
 
-The PHP callable that is passed to the [[\Yiisoft\Log\Target::setFormat|setFormat]]
-and [[\Yiisoft\Log\Target::setPrefix|setPrefix]] methods has the following signature:
+The PHP callable that is passed to the [[\Yiisoft\Log\Target::setFormat()|setFormat()]]
+and [[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods has the following signature:
 
 ```php
 function (\Yiisoft\Log\Message $message, array $commonContext): string;
 ```
 
 Besides message prefixes, log targets also append some common context information to each of the log messages.
-You may adjust this behavior by calling target [[\Yiisoft\Log\Target::setCommonContext|setCommonContext]]
+You may adjust this behavior by calling target [[\Yiisoft\Log\Target::setCommonContext()|setCommonContext()]]
 method, passing an array of data in the `key => value` format that you want to include in the by the log target.
 For example, the following log target configuration specifies that only the
 value of the `$_SERVER` variable will be appended to the log messages.
@@ -233,7 +233,7 @@ $fileTarget->setCommonContext(['server' => $_SERVER]);
 ### Message Trace Level <span id="trace-level"></span>
 
 During development, it is often desirable to see where each log message is coming from. This can be achieved by
-calling the [[\Yiisoft\Log\Logger::setTraceLevel|setTraceLevel]] method like the following:
+calling the [[\Yiisoft\Log\Logger::setTraceLevel()|setTraceLevel()]] method like the following:
 
 ```php
 $logger = new \Yiisoft\Log\Logger($targets);
@@ -241,7 +241,13 @@ $logger->setTraceLevel(3);
 ```
 
 The above application configuration sets trace level to be 3 so each log message will be appended with at most 3
-levels of the call stack at which the log message is recorded.
+levels of the call stack at which the log message is recorded. You can also set a list of paths to exclude
+from the trace by calling the [[\Yiisoft\Log\Logger::setExcludedTracePaths()|setExcludedTracePaths()]] method.
+
+```php
+$logger = new \Yiisoft\Log\Logger($targets);
+$logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
+```
 
 > Info: Getting call stack information is not trivial. Therefore, you should only use this feature during development
 or when debugging an application.
@@ -315,9 +321,9 @@ to define a dynamic condition for whether the log target should be enabled or no
 ### Creating New Targets <span id="new-targets"></span>
 
 Creating a new log target class is very simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
-method that sends all accumulated log messages to a designated medium.
+abstract method that sends all accumulated log messages to a designated medium.
 
-The following protected methods will be available in child targets:
+The following protected methods will also be available for child targets:
 
 - `getMessages` - Gets a list of log messages ([[\Yii\Log\Message]] instances).
 - `getFormattedMessages` - Gets a list of formatted string log messages.
