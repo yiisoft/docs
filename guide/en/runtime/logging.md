@@ -338,7 +338,7 @@ abstract method that sends all accumulated log messages to a designated medium.
 The following protected methods will also be available for child targets:
 
 - `getMessages` - Gets a list of log messages ([[\Yii\Log\Message]] instances).
-- `getFormattedMessages` - Gets a list of formatted string log messages.
+- `getFormattedMessages` - Get a list of log messages formatted as strings.
 - `formatMessages` - Get all log messages formatted as a string.
 - `getCommonContext` - Get an array with common context data in the `key => value` format.
 
