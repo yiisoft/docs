@@ -118,7 +118,7 @@ Yii comes with the following built-in log targets. Please refer to the API docum
 learn how to configure and use them. 
 
 * [[\Yiisoft\Log\PsrTarget]]: passes log messages to another PSR-3 compatible logger.
-* [[\Yiisoft\Log\StreamTarget]]: writes log messages in specified output stream.
+* [[\Yiisoft\Log\StreamTarget]]: writes log messages into specified output stream.
 * [[\Yiisoft\Log\Target\Db\DbTarget]]: saves log messages in database.
 * [[\Yiisoft\Log\Target\Email\EmailTarget]]: sends log messages to pre-specified email addresses.
 * [[\Yiisoft\Log\Target\File\FileTarget]]: saves log messages in files.
@@ -163,14 +163,26 @@ $fileTarget->setExcept(['App\Exceptions\HttpException:404']);
 
 Log targets export the filtered log messages in a certain format.
 For example, if you install a log target of the class [[\Yiisoft\Log\Target\File\FileTarget]],
-then by default the log messages will be formatted as follows:
+you may find a log message similar to the following in the log file:
 
 ```
-Timestamp Prifix[Level][Category] Message Context
+2020-12-05 09:27:52.223800 [info][application] Some message
+
+Message context:
+
+time: 1607160472.2238
+memory: 4398536
+category: 'application'
+```
+
+By default, log messages will be formatted as follows:
+
+```
+Timestamp Prefix[Level][Category] Message Context
 ```
 
 You may customize this format by calling [[\Yiisoft\Log\Target::setFormat()|setFormat()]] method,
-which takes a PHP callable returning a customized message format.
+which takes a PHP callable returning a custom formatted message.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -327,10 +339,10 @@ The following protected methods will also be available for child targets:
 
 - `getMessages` - Gets a list of log messages ([[\Yii\Log\Message]] instances).
 - `getFormattedMessages` - Gets a list of formatted string log messages.
-- `formatMessages` - Gets formatted all log messages for display as a string.
-- `getCommonContext` - Gets an array with common context data in the `key => value` format.
+- `formatMessages` - Get all log messages formatted as a string.
+- `getCommonContext` - Get an array with common context data in the `key => value` format.
 
-For more details, you may refer to any of the log target classes included in the Yii release.
+For more details, you may refer to any of the log target classes included in the package.
 
 > Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
 as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
