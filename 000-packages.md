@@ -35,10 +35,10 @@ The following applies to both Yii-specific packages and general purpose packages
 
 ```php
 return [
-	'vendor/package-name' => [
-		'param1' => 1,
+    'vendor/package-name' => [
+        'param1' => 1,
         'param2' => 2,
-	],
+    ],
 ];
 ```
   
