@@ -1,6 +1,6 @@
 # 014 - Documentation
 
-Documentation is one of the most important parts of Yii.
+Documentation is one of the most important part of Yii.
 
 ## Package documentation
 
