@@ -9,6 +9,8 @@ either return a response or pass execution to the next middleware.
 
 ![Middleware](img/middleware.svg)
 
+In the above each next middleware wraps the previous middleware.
+
 Depending on how stack is configured, application behavior may vary significantly.
 
 ## Using middleware
@@ -72,39 +74,36 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 
 Basic authentication middleware wrote to request `username` attribute, so we can access the data if needed.
 
-To apply middleware to application overall regardless of URL, adjust `src/Provider/MiddlewareProvider.php`:
+To apply middleware to application overall regardless of URL, adjust `config/application.php`:
 
 ```php
-<?php
-declare(strict_types=1);
-
-namespace App\Provider;
-
-use Psr\Container\ContainerInterface;
-use Yiisoft\Csrf\CsrfMiddleware;
-use Yiisoft\Di\Container;
-use Yiisoft\Di\Support\ServiceProvider;
-use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
-use Yiisoft\Router\Middleware\Router;
-use Yiisoft\ErrorHandler\ErrorCatcher;
-use Yiisoft\Session\SessionMiddleware;use Yiisoft\Yii\Web\Middleware\SubFolder;
-
-final class MiddlewareProvider extends ServiceProvider
-{
-    public function register(Container $container): void
-    {
-        $container->set(MiddlewareDispatcher::class, static function (ContainerInterface $container) {
-            return (new MiddlewareDispatcher($container))
-                ->addMiddleware($container->get(Router::class))
-                ->addMiddleware($container->get(SubFolder::class))
-                ->addMiddleware($container->get(SessionMiddleware::class))
-                ->addMiddleware($container->get(CsrfMiddleware::class))
-                ->addMiddleware($container->get(BasicAuthentication::class))
-                ->addMiddleware($container->get(ErrorCatcher::class));
-        });
-    }
-}
+return [
+    Yiisoft\Yii\Web\Application::class => [
+        '__construct()' => [
+            'dispatcher' => static function (Injector $injector) {
+                return ($injector->make(MiddlewareDispatcher::class))
+                    ->withMiddlewares(
+                        [
+                            Router::class,
+                            CsrfMiddleware::class,
+                            SessionMiddleware::class,
+                            BasicAuthentication::class,
+                            ErrorCatcher::class,
+                        ]
+                    );
+            },
+        ],
+    ],
+];
 ```
+
+The set of middleware above will be executed in the following order:
+
+1. ErrorCatcher
+2. BasicAuthentication
+3. SessionMiddleware
+4. CsrfMiddleware
+5. Router
 
 ## Creating your own middleware
 
