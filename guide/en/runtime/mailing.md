@@ -216,7 +216,7 @@ $message = $message->withAttached(
 ### Embedding images
 
 You can embed images into the message content using `withEmbedded()` method.
-This method is easy to use when [composing message content](#composing-mail-content) via view file:
+This method is easy to use when composing message content via view file:
 
 ```php
 $imageFile = \Yiisoft\Mailer\File::fromPath('/path/to/image.jpg');
