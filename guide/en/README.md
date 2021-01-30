@@ -153,7 +153,7 @@ Special Topics -
 * [Console Applications](tutorial/console-applications.md) +
 * [Docker](tutorial/docker.md) -
 * [Internationalization](tutorial/i18n.md) -
-* [Mailing](tutorial/mailing.md) -
+* [Mailing](tutorial/mailing.md) +
 * [Performance Tuning](tutorial/performance-tuning.md) +
 * [Using Yii with event loop](tutorial/using-with-event-loop.md) +
 * [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +
