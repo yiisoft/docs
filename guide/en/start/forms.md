@@ -78,8 +78,10 @@ class EchoController
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request, EchoForm $form): ResponseInterface
+    public function say(ServerRequestInterface $request): ResponseInterface
     {
+        $form = new EchoForm()
+    
         if ($request->getMethod() === Method::POST) {
             $form->load($request->getParsedBody());
         }
