@@ -22,6 +22,9 @@ Where `App\\` is a root namespace and `src/` is a directory where you have your 
 needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces
 will start loading automatically.
 
+If you need development environment specific autoloading that is not used when executing Composer with `--no-dev` flag,
+add it to `autoload-dev` section instead of `autoload`.
+
 ## References
 
 - [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/).
