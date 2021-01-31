@@ -1,7 +1,19 @@
 # 010 - Code Style
 
-Code formatting used in Yii 3 packages is based on [PSR-12](https://www.php-fig.org/psr/psr-12/) with additional rules
-added on top of it.
+Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and
+[PSR-12](https://www.php-fig.org/psr/psr-12/) with additional rules added on top of it.
+
+## Names
+
+- Use English only.
+- Use shortest possible but explanative name.
+- Never trim or abbreviate name.
+
+## Types
+
+- Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible.
+- [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
+- Use strict typing.
 
 ## Comments
 
@@ -22,22 +34,22 @@ Property, variable and constant value assignments should not be aligned. Same ap
 The reason is that aligned statements often cause larger diff and even conflicts.
 
 ```php
-class X
+final class X
 {
     const A = 'test';
     const BBB = 'test';
     
-    private $property = 42;
-    private $test = 123;
+    private int $property = 42;
+    private int $test = 123;
     
     /**
-     * @param int $number just a number
-     * @param array $options well... options!
+     * @param int $number Just a number.
+     * @param array $options Well... options!
      */
-    public function doit(int $number, array $options)
+    public function doIt(int $number, array $options): void
     {
         $test = 123;
-        $a = 123;
+        $anotherTest = 123;
     }
 }
 ```
@@ -48,6 +60,18 @@ class X
 - To get variables into string prefer `"Hello, $username!"`
 
 ## Classes and interfaces
+
+### Final by default
+
+Classes should be `final` by default.
+
+### Private by default
+
+Constants, properties and methods should be private by default.
+
+### Composition over inheritance
+
+Prefer [composition over inheritance](guide/en/concept/di-container.md).
 
 ### Property, constant and method order
 
@@ -60,8 +84,6 @@ Order should be the following:
 ### Abstract classes
 
 Abstract classes *should not* be prefixed or postfixed with `Abstract`.
-
-### Methods
 
 #### Immutable methods
 

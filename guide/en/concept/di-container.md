@@ -38,7 +38,7 @@ interface CacheInterface
     public function getCachedValue($key);
 }
 
-class Cache implements CacheInterface
+final class Cache implements CacheInterface
 {
     public function getCachedValue($key)
     {
@@ -46,7 +46,7 @@ class Cache implements CacheInterface
     }
 }
 
-class CachedWidget
+final class CachedWidget
 {
     private CacheInterface $cache;
 
@@ -55,7 +55,7 @@ class CachedWidget
         $this->cache = $cache;
     }
     
-    public function render()
+    public function render(): string
     {
         $output = $this->cache->getCachedValue('cachedWidget');
         if ($output !== null) {
@@ -80,7 +80,7 @@ There are multiple ways to perform it:
 ## DI container <span id="di-container"></span>
 
 Injecting basic dependencies is simple and easy. You're choosing a place where you don't care about dependencies,
-which is usually action handler, which you aren't going to unit-test ever, create instances of dependencies needed
+which is usually an action handler, which you aren't going to unit-test ever, create instances of dependencies needed
 and pass these to dependent classes.
 
 It works well when there aren't many dependencies overall and when there are no nested dependencies. When there are
