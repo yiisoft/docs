@@ -80,6 +80,16 @@ $message = $mailer->compose('greetings', [
 ]);
 ```
 
+It is also possible to pass parameters to the layouts:
+
+```php
+$message = $mailer->compose(
+    'view-name', 
+    ['viewParameter' => $viewParameter],
+    ['layoutParameter' => $layoutParameter],
+);
+```
+
 You can specify different view files for HTML and plain text message contents:
 
 ```php
@@ -145,7 +155,7 @@ $mailer = new Mailer($factory, $renderer, $dispatcher, $transport);
 
 > If you specify the layouts as empty strings, the layouts will not be used.
 
-### Adding more data 
+### Adding more data
 
 After the message is created, we can add actual content to it. The message implements `Yiisoft\Mailer\MessageInterface`
 that contains many useful methods for the purpose:
@@ -194,7 +204,6 @@ A number of getters is also available:
 - `getError()` - Returns error represents why send fails, or `null` on a successful send.
 - `__toString()` - Returns string representation of this message.
 
-
 ### Attaching files
 
 You can add attachments to message using the `withAttached()` method:
@@ -216,26 +225,31 @@ $message = $message->withAttached(
 ### Embedding images
 
 You can embed images into the message content using `withEmbedded()` method.
-This method is easy to use when composing message content via view file:
+This method is easy to use when composing message content via view:
 
 ```php
 $imageFile = \Yiisoft\Mailer\File::fromPath('/path/to/image.jpg');
 
+// passing the file to the view
 $mailer->compose('embed-email', ['imageFile' => $imageFile])
+    ->withEmbedded($imageFile)
+    // ...
+;
+
+// passing the file to the layout
+$mailer->compose('embed-email', [], ['imageFile' => $imageFile])
     ->withEmbedded($imageFile)
     // ...
 ;
 ```
 
-Then inside the view file you can use the following code:
+Then inside the view template or layout template you can use the following code:
 
 ```php
 <img src="<?= $imageFile->cid(); ?>">
 ```
 
 The `cid()` method returns the attachment ID, which should be used in `img` tag.
-
-
 
 ### Sending a message
 
