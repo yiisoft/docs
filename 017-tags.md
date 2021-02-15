@@ -1,4 +1,4 @@
-# 017 - Tags and widgets
+# 017 - Tags
 
 Unlike regular classes, tags are used in view templates so syntax is very important. It should be both
 easy to write, easy to read and not too verbose because similar constructs are meant to be used over and over again.
