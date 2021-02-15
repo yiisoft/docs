@@ -21,6 +21,13 @@ Widgets should:
 - Have no state.
 - Be immutable.
 
-## Method names
+## Methods
 
-Unlike other classes, methods that return a clone of the object with some properties modified, are not prefixed.
+### Names
+
+- Unlike other classes, methods that return a clone of the object with some properties modified, are not prefixed.
+- Keep method names as short as possible but do not hurt readability.
+
+### Boolean flags
+
+Method that correspond to boolean attribute should be named after the attribute and accept a boolean flag argument.
