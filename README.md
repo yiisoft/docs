@@ -21,3 +21,5 @@
 - [014 - Documentation](014-docs.md)
 - [015 - PhpStorm metadata](015-phpstorm-meta.md)
 - [016 - Security workflow](016-security-workflow.md)
+- [017 - Tags](017-tags.md)
+- [018 - Widgets](018-widgets.md)
