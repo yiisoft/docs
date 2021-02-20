@@ -18,6 +18,7 @@ Manually an instance could be created as follows:
 
 ```php
 use Yiisoft\Mailer\MessageBodyRenderer;
+use Yiisoft\Mailer\MessageBodyTemplate;
 use Yiisoft\Mailer\MessageFactory;
 use Yiisoft\Mailer\SwiftMailer\Mailer;
 use Yiisoft\Mailer\SwiftMailer\Message;
@@ -29,20 +30,23 @@ use Yiisoft\Mailer\SwiftMailer\Message;
  * @var \Yiisoft\View\View $view
  */
 
+$template = new MessageBodyTemplate('/path/to/directory/of/view-files');
+
 $mailer = new Mailer(
     new MessageFactory(Message::class),
-    new MessageBodyRenderer($view, '/path/to/directory/of/view-files'),
+    new MessageBodyRenderer($view, $template),
     $dispatcher,
     $transport,
     $plugins, // By default, an empty array
 );
 ```
 
-The `Yiisoft\Mailer\MailerInterface` contains 3 methods:
+The `Yiisoft\Mailer\MailerInterface` contains 4 methods:
 
 - `compose()` - Creates a new message instance and optionally composes its body content via view rendering.
 - `send()` - Sends the given email message.
 - `sendMultiple()` - Sends multiple messages at once.
+- `withTemplate()` - Returns a new instance with the specified message body template.
 
 ## Creating a message
 
@@ -134,6 +138,7 @@ which is passed to the mailer constructor.
 
 ```php
 use Yiisoft\Mailer\MessageBodyRenderer;
+use Yiisoft\Mailer\MessageBodyTemplate;
 use Yiisoft\Mailer\SwiftMailer\Mailer;
 
 /**
@@ -142,16 +147,31 @@ use Yiisoft\Mailer\SwiftMailer\Mailer;
  * @var \Yiisoft\View\View $view
  * @var \Yiisoft\Mailer\MessageFactory $factory
  */
-
-$renderer = new MessageBodyRenderer(
-    $view, 
+ 
+$template = new MessageBodyTemplate(
     '/path/to/directory/of/view-files',
     'HTML layout name', // Default to 'layouts/html'
     'Plain text layout name', // Default to 'layouts/text'
-),
+);
+
+$renderer = new MessageBodyRenderer($view, $template);
 
 $mailer = new Mailer($factory, $renderer, $dispatcher, $transport);
 ```
+
+It is also possible to change the layouts and the path of views in runtime.
+
+```php
+$template = new \Yiisoft\Mailer\MessageBodyTemplate(
+    '/path/to/directory/of/view-files',
+    'HTML layout name', // Default to 'layouts/html'
+    'Plain text layout name', // Default to 'layouts/text'
+);
+
+$mailer = $mailer->withTemplate($template);
+```
+
+Note that the `withTemplate()` method returns a new instance of the mailer with the specified message body template.
 
 > If you specify the layouts as empty strings, the layouts will not be used.
 
