@@ -82,8 +82,8 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Stricter types
 
-- [ ] Make sure type hinting is used everywhere.
-- [ ] Make sure types are as definitive as possible. Avoid varying types if possible.
+- [x] Make sure type hinting is used everywhere.
+- [x] Make sure types are as definitive as possible. Avoid varying types if possible.
 
 ## Single application template
 
@@ -155,7 +155,7 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Validators
 
-- [ ] Finish [main package](https://github.com/yiisoft/validator) redesign
+- [x] Finish [main package](https://github.com/yiisoft/validator) redesign
 - [x] Port necessary validators
 
 ## Debug toolbar
@@ -169,7 +169,7 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 ## Infrastructure
 
 - [x] Cover [composer config plugin](https://github.com/yiisoft/composer-config-plugin) with tests.
-- [ ] Release stable [composer config plugin](https://github.com/yiisoft/composer-config-plugin).
+- [ ] Release stable [composer config plugin](https://github.com/yiisoft/config).
 
 ## Others
 
