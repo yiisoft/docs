@@ -20,7 +20,7 @@ For a full list of packages and their build statuses see [status page at yiifram
   
 - can be used outside of Yii Framework
 - named as `yiisoft/something` without yii-prefix
-- titled as "Yii ..." or "Yii ..."
+- titled as "Yii ..."
 - must not have dependencies on any Yii-specific packages
 - should have as fewer dependencies as possible
 
