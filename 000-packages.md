@@ -13,14 +13,14 @@ For a full list of packages and their build statuses see [status page at yiifram
     - themes: `yii-theme-adminlte`, `yii-theme-hyde`
     - widgets: `yii-widget-datepicker`
     - and so on
-- titled as "Yii Framework ... Package"
+- titled as "Yii Framework ..."
 - may have any dependencies and Yii-specific code
 
 ## General purpose packages (Libraries)
   
 - can be used outside of Yii Framework
 - named as `yiisoft/something` without yii-prefix
-- titled as "Yii ... Package" or "Yii ... Helper"
+- titled as "Yii ..." or "Yii ..."
 - must not have dependencies on any Yii-specific packages
 - should have as fewer dependencies as possible
 
