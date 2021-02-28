@@ -1,15 +1,15 @@
 # Handling errors
 
-The [yiisoft/error-handler](https://github.com/yiisoft/error-handler) package makes error handling a much more pleasant
-experience than before. In particular, the Yii error handler does the following to improve error handling:
+Yii has an [yiisoft/error-handler](https://github.com/yiisoft/error-handler) package that makes error handling
+a much more pleasant experience than before. In particular, the Yii error handler provides the following:
 
-- PSR-15 middleware for catching unhandled errors.
+- [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching unhandled errors.
 - PSR-15 middleware for mapping certain exceptions to custom responses.
 - Production and debug modes.
 - Debug mode displays details, stacktrace, has dark and light themes and handy buttons to search for error without typing.
 - Takes PHP settings into account.
 - Handles out of memory errors, fatals, warnings, notices and exceptions.
-- Can use any PSR-3 compatible logger for error logging.
+- Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger for error logging.
 - Detects response format based on mime type of the request.
 - Supports responding with HTML, plain text, JSON, XML and headers out of the box.
 - Has ability to implement your own error rendering for additional types.
@@ -20,12 +20,14 @@ for information about using it separately from Yii, see the [package description
 ## Using error handler
 
 The error handler consists of two parts. One part is `Yiisoft\ErrorHandler\Middleware\ErrorCatcher` middleware that,
-when registered, catches exceptions that appear during middleware stack execution and passes them to the handler.
-Another part is the error handler itself `Yiisoft\ErrorHandler\ErrorHandler` that is catching fatal errors,
-exceptions occurring outside the middleware stack, converts warnings and notices to exceptions and more.
+when registered, catches exceptions that may appear during middleware stack execution and passes them to the handler.
+Another part is the error handler itself, `Yiisoft\ErrorHandler\ErrorHandler`, that is catching exceptions occurring
+outside the middleware stack and fatal errors. The handler also converts warnings and notices to exceptions and does
+more handy things.
 
-The error handler is registered by an application and its configuration by default comes from the container.
-You may configure it in the application configuration, `config/web.php` like the following:
+Error handler is registered in the application itself. Usually it happens in `ApplicationRunner`. By dafault, handler
+configuration comes from the container. You may configure it in the application configuration, 
+`config/web.php` like the following:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -70,7 +72,7 @@ try {
 // execution continues...
 ```
 
-The package contains another middleware, this is `Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.
+The package contains another middleware, `Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.
 This middleware maps certain exceptions to custom responses. Configure it in the application configuration as follows:
 
 ```php
@@ -94,28 +96,29 @@ return [
 ];
 ```
 
-`Yiisoft\ErrorHandler\Middleware\ExceptionResponder` must be placed before
-`Yiisoft\ErrorHandler\Middleware\ErrorCatcher` in the middleware stack.
+Note that when configuring application middleware stack, `Yiisoft\ErrorHandler\Middleware\ExceptionResponder` must
+be placed before `Yiisoft\ErrorHandler\Middleware\ErrorCatcher`.
 
 ## Rendering error data
 
-The following renderers are available out of the box:
+Error data could be rendered into a certain format by one of the renderers. The following renderers are available
+out of the box:
 
-- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renders error into HTTP headers. Is used for HEAD request.
-- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renders error into HTML string.
-- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renders error into JSON string.
-- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renders error into plain text string.
-- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renders error into XML string.
+- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renders error into HTTP headers. It is used for HEAD request.
+- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renders error into HTML.
+- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renders error into JSON.
+- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renders error into plain text.
+- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renders error into XML.
 
-The renderer generates error data depending on whether debug mode is enabled or disabled.
+The renderer produces detailed error data depending on whether debug mode is enabled or disabled.
 
-Example of JSON rendering without debugging mode:
+Example of JSON rendering output with debugging mode turned off:
 
 ```json
 {"message":"An internal server error occurred."}
 ```
 
-Example of JSON rendering with debugging mode:
+Example of JSON rendering output with debugging mode turned on:
 
 ```json
 {
@@ -142,21 +145,21 @@ Example of JSON rendering with debugging mode:
 }
 ```
 
-Example of HTML rendering without debugging mode:
+Example of HTML rendering with debugging mode turned off:
 
 ![View production](../../../images/guide/runtime/handling-errors/view-production.png)
 
-Example of HTML rendering with debugging mode with a light theme:
+Example of HTML rendering with debugging mode on and a light theme:
 
 ![View development with light theme](../../../images/guide/runtime/handling-errors/view-development-light.png)
 
-Example of HTML rendering with debugging mode with a light theme:
+Example of HTML rendering with debugging mode on and a dark theme:
 
 ![View development with dark theme](../../../images/guide/runtime/handling-errors/view-development-dark.png)
 
 The error catcher chooses how to render an exception based on accept HTTP header. If it is `text/html` or any unknown
 content type, it will use the error or exception HTML template to display errors. For other mime types, the error handler will
-choose different rendering that is registered within the error catcher. By default, JSON, XML and plain text are supported.
+choose different renderer that is registered within the error catcher. By default, JSON, XML and plain text are supported.
 
 ### Implementing your own renderer
 
