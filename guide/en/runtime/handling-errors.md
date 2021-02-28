@@ -1,64 +1,219 @@
 # Handling errors
 
-Yii web includes a built-in [[\Yiisoft\ErrorHandler\ErrorHandler|error handler]] which makes error handling
-a much more pleasant experience than before. In particular, the Yii error handler does the following to improve error handling:
+Yii has an [yiisoft/error-handler](https://github.com/yiisoft/error-handler) package that makes error handling
+a much more pleasant experience than before. In particular, the Yii error handler provides the following:
 
-* All non-fatal PHP errors (e.g. warnings, notices) are converted into catchable exceptions.
-* Exceptions and fatal PHP errors, even out of memory ones, are displayed with detailed call stack information
-and source code lines in verbose mode.
-* Supports different error response formats.
+- [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching unhandled errors.
+- PSR-15 middleware for mapping certain exceptions to custom responses.
+- Production and debug modes.
+- Debug mode displays details, stacktrace, has dark and light themes and handy buttons to search for error without typing.
+- Takes PHP settings into account.
+- Handles out of memory errors, fatals, warnings, notices and exceptions.
+- Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger for error logging.
+- Detects response format based on mime type of the request.
+- Supports responding with HTML, plain text, JSON, XML and headers out of the box.
+- Has ability to implement your own error rendering for additional types.
 
-## Using error handler <span id="using-error-handler"></span>
+This guide describes how to use the error handler in the [Yii framework](https://www.yiiframework.com/),
+for information about using it separately from Yii, see the [package description](https://github.com/yiisoft/error-handler).
 
-The error handler consists of two parts. One part is `Yiisoft\Yii\Web\ErrorHandler\ErrorCatcher` middleware that,
-when registered, catches exceptions that appear during middleware stack execution and passes them to the handler.
-Another part is the error handler itself that is catching fatal errors, exceptions occurring outside of the middleware stack,
-converts warnings and notices to exceptions and more.
+## Using error handler
 
-The error handler is registered by an application and its configuration by default comes from the container. 
-You may configure it in the application configuration, `config/web.php` like the following:
+The error handler consists of two parts. One part is `Yiisoft\ErrorHandler\Middleware\ErrorCatcher` middleware that,
+when registered, catches exceptions that may appear during middleware stack execution and passes them to the handler.
+Another part is the error handler itself, `Yiisoft\ErrorHandler\ErrorHandler`, that is catching exceptions occurring
+outside the middleware stack and fatal errors. The handler also converts warnings and notices to exceptions and does
+more handy things.
+
+Error handler is registered in the application itself. Usually it happens in `ApplicationRunner`. By dafault, handler
+configuration comes from the container. You may configure it in the application configuration, 
+`config/web.php` like the following:
 
 ```php
-use \Yiisoft\ErrorHandler\ErrorHandler;
-use \Yiisoft\ErrorHandler\ThrowableRendererInterface;
-use \Psr\Log\LoggerInterface;
-use \Yiisoft\ErrorHandler\HtmlRenderer;
-use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+use Yiisoft\ErrorHandler\ErrorHandler;
+use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
+use Yiisoft\ErrorHandler\ThrowableRendererInterface;
 
 return [
-    
-    ErrorHandler::class => function (ContainerInterface $container) {
-        $logger = $container->get(LoggerInterface::class);
-        $defaultRenderer = $container->get(ThrowableRendererInterface::class);
-        $errorHandler = new ErrorHandler($logger, $defaultRenderer);
+    // ...
+    ErrorHandler::class => static function (LoggerInterface $logger, ThrowableRendererInterface $renderer) {
+        $errorHandler = new ErrorHandler($logger, $renderer);
+        // Set the size of the reserved memory 512KB. Defaults to 256KB.
+        $errorHandler->memoryReserveSize(524_288);
         return $errorHandler;
-
-        // or the following for production environments
-        // return $errorHandler->withoutExposedDetails();
     },
-    HtmlRenderer::class => function (ContainerInterface $container) {
-        return (new HtmlRenderer())
-            ->withMaxSourceLines(20);
+    
+    ThrowableRendererInterface::class => static fn () => new HtmlRenderer([
+        // Defaults to package file "templates/production.php".
+        'template' => '/full/path/to/production/template/file',
+        // Defaults to package file "templates/development.php".
+        'verboseTemplate' => '/full/path/to/development/template/file',
+        // Maximum number of source code lines to be displayed. Defaults to 19.
+        'maxSourceLines' => 20,
+        // Maximum number of trace source code lines to be displayed. Defaults to 13.
+        'maxTraceLines' => 5,
+        // Trace header line with placeholders (file, line, icon) to be be substituted. Defaults to null.
+        'traceHeaderLine' => '<a href="ide://open?file={file}&line={line}">{icon}</a>',
+    ]),
+    // ...
+];
+```
+
+As aforementioned, the error handler turns all non-fatal PHP errors into catchable exceptions
+(`Yiisoft\ErrorHandler\Exception\ErrorException`). This means you can use the following code to deal with PHP errors:
+
+```php
+try {
+    10 / 0;
+} catch (\Yiisoft\ErrorHandler\Exception\ErrorException $e) {
+    // Write log or something else.
+}
+// execution continues...
+```
+
+The package contains another middleware, `Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.
+This middleware maps certain exceptions to custom responses. Configure it in the application configuration as follows:
+
+```php
+use Psr\Http\Message\ResponseFactoryInterface;
+use Yiisoft\ErrorHandler\Middleware\ExceptionResponder;
+use Yiisoft\Injector\Injector;
+
+return [
+    // ...
+    ErrorHandler::class => static function (ResponseFactoryInterface $responseFactory, Injector $injector) {
+        $exceptionMap = [
+            // Status code with which the response will be created by the factory.
+            MyNotFoundException::class => 404,
+            // PHP callable that must return a `Psr\Http\Message\ResponseInterface`.
+            MyHttpException::class => static fn () => new MyResponse(),
+            // ...
+        ],
+        
+        return new ExceptionResponder($exceptionMap, $responseFactory, $injector);
     },
 ];
 ```
 
-With the above configuration, the number of source code lines to be displayed in exception at HTML pages will be up to 20.
+Note that when configuring application middleware stack, `Yiisoft\ErrorHandler\Middleware\ExceptionResponder` must
+be placed before `Yiisoft\ErrorHandler\Middleware\ErrorCatcher`.
 
-As aforementioned, the error handler turns all non-fatal PHP errors into catchable exceptions. This means you can
-use the following code to deal with PHP errors:
+## Rendering error data
 
-```php
-try {
-    10/0;
-} catch (\Exception $e) {
-    Yii::warning("Division by zero.");
-}
+Error data could be rendered into a certain format by one of the renderers. The following renderers are available
+out of the box:
 
-// execution continues...
+- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renders error into HTTP headers. It is used for HEAD request.
+- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renders error into HTML.
+- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renders error into JSON.
+- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renders error into plain text.
+- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renders error into XML.
+
+The renderer produces detailed error data depending on whether debug mode is enabled or disabled.
+
+Example of JSON rendering output with debugging mode turned off:
+
+```json
+{"message":"An internal server error occurred."}
 ```
 
-## Friendly exceptions <span id="customizing-error-display"></span>
+Example of JSON rendering output with debugging mode turned on:
+
+```json
+{
+    "type": "Error",
+    "message": "Call to undefined function App\\Controller\\myFunc()",
+    "code": 0,
+    "file": "/var/www/yii/app/src/Controller/SiteController.php",
+    "line": 21,
+    "trace": [
+        {
+            "function": "index",
+            "class": "App\\Controller\\SiteController",
+            "type": "->"
+        },
+        {
+            "file": "/var/www/yii/app/vendor/yiisoft/injector/src/Injector.php",
+            "line": 63,
+            "function": "invokeArgs",
+            "class": "ReflectionFunction",
+            "type": "->"
+        },
+        ...
+    ]
+}
+```
+
+Example of HTML rendering with debugging mode turned off:
+
+![View production](../../../images/guide/runtime/handling-errors/view-production.png)
+
+Example of HTML rendering with debugging mode on and a light theme:
+
+![View development with light theme](../../../images/guide/runtime/handling-errors/view-development-light.png)
+
+Example of HTML rendering with debugging mode on and a dark theme:
+
+![View development with dark theme](../../../images/guide/runtime/handling-errors/view-development-dark.png)
+
+The error catcher chooses how to render an exception based on accept HTTP header. If it is `text/html` or any unknown
+content type, it will use the error or exception HTML template to display errors. For other mime types, the error handler will
+choose different renderer that is registered within the error catcher. By default, JSON, XML and plain text are supported.
+
+### Implementing your own renderer
+
+You may customize the error response format by providing your own instance of
+`Yiisoft\ErrorHandler\ThrowableRendererInterface` when registering error catcher middleware.
+
+```php
+use Psr\Http\Message\ServerRequestInterface;
+use Yiisoft\ErrorHandler\ErrorData;
+use Yiisoft\ErrorHandler\ThrowableRendererInterface;
+
+final class MyRenderer implements ThrowableRendererInterface
+{
+    public function render(Throwable $t, ServerRequestInterface $request = null): ErrorData
+    {
+        return new ErrorData($t->getMessage());
+    }
+
+    public function renderVerbose(Throwable $t, ServerRequestInterface $request = null): ErrorData
+    {
+        return new ErrorData(
+            $t->getMessage(),
+            ['X-Custom-Header' => 'value-header'], // Headers to be added to the response.
+        );
+    }
+};
+```
+
+You may configure it in the application configuration `config/web.php`:
+
+```php
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Yiisoft\ErrorHandler\ErrorHandler;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+
+return [
+    // ...
+    ErrorCatcher::class => static function (ContainerInterface $container): ErrorCatcher {
+        $errorCatcher = new ErrorCatcher(
+            $container->get(ResponseFactoryInterface::class),
+            $container->get(ErrorHandler::class),
+            $container,
+        );
+        // Returns a new instance without renderers by the specified content types.
+        $errorCatcher = $errorCatcher->withoutRenderers('application/xml', 'text/xml');
+        // Returns a new instance with the specified content type and renderer class.
+        return $errorCatcher->withRenderer('my/format', new MyRenderer());
+    },
+    // ...
+];
+```
+
+## Friendly exceptions
 
 Yii error renderer supports [friendly exceptions](https://github.com/yiisoft/friendly-exception) that allows you to
 make error handling even more pleasant experience for your team. The idea is to provide a readable name and possible
@@ -83,58 +238,4 @@ SOLUTION;
 }
 ```
 
-When such exception is thrown, error renderer would display the name and the solution if verbose mode is turned on.
-
-## Customizing error display <span id="customizing-error-display"></span>
-
-TODO
-
-### Using error actions <span id="using-error-actions"></span>
-
-TODO
-
-
-### Customizing error response format <span id="error-format"></span>
-
-The error catcher chooses how to render an exception based on accept HTTP header. If it is `text/html` or any unknown
-content type, it will use the error or exception view to display errors. For other mime types, the error handler will
-choose different rendering that is registered within the error catcher. By default, JSON, XML and plain text are supported.
-                                                          
-You may customize the error response format by providing your own instance of `Yiisoft\Yii\Web\ErrorHandler\ThrowableRendererInterface`
-when registering error catcher middleware. That is typically done in `MiddlewareProvider` of your application:
-
-```php
-
-declare(strict_types=1);
-
-namespace App\Provider;
-
-use Psr\Container\ContainerInterface;
-use Yiisoft\Di\Container;
-use Yiisoft\Di\Support\ServiceProvider;
-use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
-use Yiisoft\Router\Middleware\Router;
-use Yiisoft\ErrorHandler\ErrorCatcher;
-use Yiisoft\Csrf\CsrfMiddleware;
-use Yiisoft\Yii\Web\Middleware\SubFolder;
-use Yiisoft\Session\SessionMiddleware;
-
-final class MiddlewareProvider extends ServiceProvider
-{
-    public function register(Container $container): void
-    {
-        $container->set(MiddlewareDispatcher::class, static function (ContainerInterface $container) {
-
-            $errorCatcher = $container->get(ErrorCatcher::class);
-            $errorCatcher->withRenderer('application/myformat', new MyFormatErrorRenderer());
-
-            return (new MiddlewareDispatcher($container))
-                ->addMiddleware($container->get(Router::class))
-                ->addMiddleware($container->get(SubFolder::class))
-                ->addMiddleware($container->get(SessionMiddleware::class))
-                ->addMiddleware($container->get(CsrfMiddleware::class))
-                ->addMiddleware($errorCatcher);
-        });
-    }
-}
-```
+When such exception is thrown, error renderer would display the name and the solution if debug mode is turned on.
