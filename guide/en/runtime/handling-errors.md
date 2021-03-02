@@ -112,6 +112,26 @@ out of the box:
 
 The renderer produces detailed error data depending on whether debug mode is enabled or disabled.
 
+Example of headers rendering with debugging mode turned off:
+
+```
+...
+X-Error-Message: An internal server error occurred.
+...
+```
+
+Example of headers rendering with debugging mode turned on:
+
+```
+...
+X-Error-Type: Error
+X-Error-Message: Call to undefined function App\Controller\myFunc()
+X-Error-Code: 0
+X-Error-File: /var/www/yii/app/src/Controller/SiteController.php
+X-Error-Line: 21
+...
+```
+
 Example of JSON rendering output with debugging mode turned off:
 
 ```json
