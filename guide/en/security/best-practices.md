@@ -225,6 +225,6 @@ man-in-the middle type of attacks. Instead, PHP should be configured properly:
 1. Download [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert.pem).
 2. Add the following to your php.ini:
   ```
-  openssl.cafile="/путь/до/cacert.pem"
-  curl.cainfo="/путь/до/cacert.pem".
+  openssl.cafile="/path/to/cacert.pem"
+  curl.cainfo="/path/to/cacert.pem".
   ```
