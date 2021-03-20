@@ -195,7 +195,7 @@ class RbacCommand extends Command
 The command above could be executed from console the following way:
 
 ```
-./vendor/bin/yii rbac/init
+./yii rbac/init
 ```
 
 > If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
@@ -208,7 +208,7 @@ The command above could be executed from console the following way:
 You can use [migrations](db-migrations.md)
 to initialize and modify hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `./vendor/bin/yii migrate/create init_rbac` then implement creating a hierarchy:
+Create new migration using `./yii migrate/create init_rbac` then implement creating a hierarchy:
 
 ```php
 <?php
@@ -262,7 +262,7 @@ class m170124_084304_init_rbac extends Migration
 > If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
   create either UI or console command to manage assignments.
 
-Migration could be applied by using `./vendor/bin/yii migrate`.
+Migration could be applied by using `./yii migrate`.
 
 ## Assigning roles to users
 

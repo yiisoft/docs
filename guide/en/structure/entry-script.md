@@ -8,7 +8,7 @@ Entry scripts for Web applications must be stored under Web accessible directori
 can be accessed by end users. They are often named as `index.php`, but can also use any other names,
 provided Web servers can locate them.
 
-Entry script for console application is `./vendor/bin/yii`.
+Entry script for console application is `./yii`.
 
 Entry scripts mainly perform the following work:
 
