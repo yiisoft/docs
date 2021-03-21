@@ -12,7 +12,7 @@ composer require yiisoft/yii-console
 After it is installed, you can access entry point as
 
 ```
-./vendor/bin/yii
+./yii
 ```
 
 Out of the box only `serve` command is available. It is starting PHP built-in web server to serve the application locally.
@@ -68,7 +68,7 @@ return [
 After it is done, the command could be executed as
 
 ```
-./vendor/bin/yii demo/hello Alice
+./yii demo/hello Alice
 ```
 
 

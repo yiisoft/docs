@@ -1,6 +1,6 @@
 # Running Applications
 
-After installing Yii, you have a working Yii application that can be launched via `./vendor/bin/yii serve` and then
+After installing Yii, you have a working Yii application that can be launched via `./yii serve` and then
 accessed via the URL `http://localhost:8080/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
@@ -35,7 +35,7 @@ This is a useful [debugger tool](https://github.com/yiisoft/yii-debug) provided 
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-Additionally, to the web application, there is a console script accessible via `./vendor/bin/yii`.
+Additionally, to the web application, there is a console script accessible via `./yii`.
 This script can be used to run background and maintenance tasks for the application, which are described
 in the [Console Application Section](../tutorial/console.md).
 
