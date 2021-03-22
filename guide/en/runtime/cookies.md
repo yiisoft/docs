@@ -82,6 +82,71 @@ if ($encryptor->isEncrypted($cookie)) {
 
 It makes sense to sign or encrypt the value of a cookie if you store important data that should not be modified by a user.
 
+### Automating encryption and signing
+
+To automate the encryption/signing and decryption/validation of cookie values, use an instance of
+`Yiisoft\Cookies\CookieMiddleware`, which is a [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware.
+
+This middleware provides the following features:
+
+- Validates and decrypts the cookie parameter values from the request.
+- Excludes the cookie parameter from the request if it was tampered with and logs information about it.
+- Encrypts/signs cookie values and replaces their clean values in the `Set-Cookie` headers in the response.
+
+In order for the middleware to know which values of which cookies need to be encrypted/signed,
+an array of settings must be passed to its constructor. The array keys are cookie name patterns
+and values are constant values of `CookieMiddleware::ENCRYPT` or `CookieMiddleware::SIGN`.
+
+```php
+use Yiisoft\Cookies\CookieMiddleware;
+
+$cookiesSettings = [
+    // Exact match with the name `identity`.
+    'identity' => CookieMiddleware::ENCRYPT,
+    // Matches any number from 1 to 9 after the underscore.
+    'name_[1-9]' => CookieMiddleware::SIGN,
+    // Matches any string after the prefix, including an
+    // empty string, except for the delimiters "/" and "\".
+    'prefix*' => CookieMiddleware::SIGN,
+];
+```
+
+For more information on using the wildcard pattern, see the
+[yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage) package.
+
+Creating and using a middleware:
+
+```php
+/**
+ * @var \Psr\Http\Message\ServerRequestInterface $request
+ * @var \Psr\Http\Server\RequestHandlerInterface $handler
+ * @var \Psr\Log\LoggerInterface $logger
+ */
+
+// The secret key used to sign and validate cookies.
+$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';
+$signer = new \Yiisoft\Cookies\CookieSigner($key);
+$encryptor = new \Yiisoft\Cookies\CookieEncryptor($key);
+
+$cookiesSettings = [
+    'identity' => \Yiisoft\Cookies\CookieMiddleware::ENCRYPT,
+    'session' => \Yiisoft\Cookies\CookieMiddleware::SIGN,
+];
+
+$middleware = new \Yiisoft\Cookies\CookieMiddleware(
+    $logger
+    $encryptor,
+    $signer,
+    $cookiesSettings,
+);
+
+// The cookie parameter values from the request are decrypted/validated.
+// The cookie values are encrypted/signed, and appended to the response.
+$response = $middleware->process($request, $handler);
+```
+
+If the `$cookiesSettings` array is empty, no cookies will be encrypted and signed.
+
 ## Cookies security
 
 Each cookie should be properly configured in order to be secure. In the above code important security settings are:
