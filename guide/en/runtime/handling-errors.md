@@ -87,7 +87,7 @@ return [
             // Status code with which the response will be created by the factory.
             MyNotFoundException::class => 404,
             // PHP callable that must return a `Psr\Http\Message\ResponseInterface`.
-            MyHttpException::class => static fn () => new MyResponse(),
+            MyHttpException::class => static fn (MyHttpException $exception) => new MyResponse($exception),
             // ...
         ],
         
