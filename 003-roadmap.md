@@ -101,12 +101,12 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Best practices and SOLID compliance of all classes/packages
 
-- [ ] Make sure interfaces follow "interface segregation" principle.
+- [x] Make sure interfaces follow "interface segregation" principle.
 - [x] Do not use public properties.
 - [x] Do not use `init()`.
 - [x] Do not inherit from `BaseObject` or `Component`. Remove these.
 - [x] No globals.
-- [ ] No static calls except helpers that are final.
+- [x] No static calls except helpers that are final.
 - [x] Prefer throwing exceptions to fixing input.
 
 ## Development toolkit
@@ -168,8 +168,8 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Infrastructure
 
-- [x] Cover [composer config plugin](https://github.com/yiisoft/composer-config-plugin) with tests.
-- [ ] Release stable [composer config plugin](https://github.com/yiisoft/config).
+- [x] Cover [config](https://github.com/yiisoft/config) with tests.
+- [ ] Release stable [config](https://github.com/yiisoft/config).
 
 ## Others
 
