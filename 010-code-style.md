@@ -127,6 +127,16 @@ public function login(): void;
 public function refreshPage(): void;
 ```
 
+## Variables
+
+Add an underscore (`_`) prefix for unused variables. For example:
+
+```php
+foreach ($items as $key => $_value) {
+    echo $key;
+}
+```
+
 ## Imports
 
 Prefer importing classes and functions to using fully qualified names:
