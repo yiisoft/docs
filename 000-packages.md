@@ -44,7 +44,13 @@ return [
   
 ## Versions
 
-All packages are versioned according to SemVer starting with 1.0.0.
+All packages are versioned according to [SemVer](https://semver.org/):
+
+- `x.*.*` - incompatible API changes.
+- `*.x.*` - add functionality (backwards-compatible).
+- `*.*.x` - bug fixes (backwards-compatible).
+
+First stable version should be 1.0.0.
 
 ## PHP versions support
 
