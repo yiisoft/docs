@@ -27,7 +27,7 @@ return [
     // ...
 
     SessionInterface::class => [
-        '__class' => Session::class,
+        'class' => Session::class,
         '__construct()' => [
             $params['session']['options'] ?? [],
             $params['session']['handler'] ?? null,

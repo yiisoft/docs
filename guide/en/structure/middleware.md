@@ -26,7 +26,7 @@ Now register the middleware in DI container configuration `config/web.php`:
 ```php
 <?php
 \Middlewares\BasicAuthentication::class => [
-    '__class' => \Middlewares\BasicAuthentication::class,
+    'class' => \Middlewares\BasicAuthentication::class,
     '__construct()' => [
         'users' => [
             'foo' => 'bar',
