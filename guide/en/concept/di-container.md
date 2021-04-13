@@ -127,7 +127,7 @@ configuration could be:
 ```php
 return [
     MyServiceInterface::class => [
-        '__class' => MyService::class,
+        'class' => MyService::class,
         '__construct()' => [42],
         'setDiscount()' => [10],
     ],
@@ -150,7 +150,7 @@ return [
 
     // array definition (same as above)
     'full_definition' => [
-        '__class' => EngineMarkOne::class,
+        'class' => EngineMarkOne::class,
         '__construct()' => [42], 
         'propertyName' => 'value',
         'setX()' => [42],

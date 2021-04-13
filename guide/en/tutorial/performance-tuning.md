@@ -38,7 +38,7 @@ session service as follows:
 
 ```php
 \Yiisoft\Session\SessionInterface::class => [
-    '__class' => \Yiisoft\Session\Session::class,
+    'class' => \Yiisoft\Session\Session::class,
     '__construct()' => [[], $myCustomSessionHandler],
 ],
 ```

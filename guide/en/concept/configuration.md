@@ -133,7 +133,7 @@ return [
     // ...
     'yiisoft/yii-web/middleware' => MiddlewareProvider::class,
     'yiisoft/cache/cache' =>  [
-        '__class' => CacheProvider::class,
+        'class' => CacheProvider::class,
         '__construct()' => [
             $params['yiisoft/cache-file']['file-cache']['path'],
         ],
