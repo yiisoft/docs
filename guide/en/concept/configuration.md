@@ -113,6 +113,10 @@ configuration values from it and passing these values to our service.
 The guide on ["Dependency injection and container"](di-container.md) describes
 the configuration format and the concept of dependency injection in detail.
 
+For convenience, there is a naming convention for custom string keys:
+
+1. Prefix package name such as `yiisoft/cache-file/custom-definition`.
+2. In case configuration are for the application itself, skip package prefix, such as `custom-definition`.
 
 ### Service providers
 
