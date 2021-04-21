@@ -282,6 +282,6 @@ For convenience, there is a naming convention about parameters:
 
 1. Group parameters package name such as `yiisoft/cache-file`.
 2. In case parameters are for the application itself, as in `app`, skip package prefix.
-2. In case there are multiple services in the package, such as `file-target` and `file-rotator` in `yiisoft/log-target-file`
+3. In case there are multiple services in the package, such as `file-target` and `file-rotator` in `yiisoft/log-target-file`
    package, group parameters by service name.
-3. In case a service could be disabled or enabled, such as `yiisoft/yii-debug`, use `enabled` as parameter name.
+4. In case a service could be disabled or enabled, such as `yiisoft/yii-debug`, use `enabled` as parameter name.
