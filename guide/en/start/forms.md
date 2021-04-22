@@ -80,7 +80,7 @@ class EchoController
 
     public function say(ServerRequestInterface $request): ResponseInterface
     {
-        $form = new EchoForm()
+        $form = new EchoForm();
     
         if ($request->getMethod() === Method::POST) {
             $form->load($request->getParsedBody());
