@@ -23,21 +23,26 @@ That would download ready to use RoadRunner server `rr` binary.
 
 ## Configuration
 
-First, we need to configure the server itself. Create `./rr.yml` and add the following config:
+First, we need to configure the server itself. Create `./.rr.yaml` and add the following config:
 
 ```yaml
+server:
+  command: "php psr-worker.php"
+
 http:
   address: ":8080"
-  workers:
-    command: "php psr-worker.php"
-    pool:
-      numWorkers: 3
-static:
-  dir:   "public"
-  forbid: [".php", ".htaccess"]
-headers:
+  pool:
+    num_workers: 3
+
+  middleware: ["static", "headers"]
+
+  static:
+    dir:   "public"
+    forbid: [".php", ".htaccess"]
+
+  headers:
     response:
-        "Cache-Control": "no-cache"
+      "Cache-Control": "no-cache"
 ```
 
 We're specifying that entry script is `psr-worker.php`, there should be three workers on port 8080, `public` directory
