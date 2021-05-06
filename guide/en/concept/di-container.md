@@ -69,7 +69,8 @@ final class CachedWidget
 In the above we've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache
 implementation without changing `CachedWidget` so it is becoming more stable.
 
-The process of getting an instance of `CacheInterface` into `CachedWidget` is called dependency injection.
+The `CacheInterface` here is a dependency: an object another object depends on.
+The process of putting an instance of dependency into an object (`CachedWidget`) is called dependency injection.
 There are multiple ways to perform it:
 
 - Constructor injection. Best for mandatory dependencies.

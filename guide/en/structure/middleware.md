@@ -4,14 +4,19 @@ Yii works with HTTP using abstraction layer built around [PSR-7 HTTP message int
 and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/).
 
 The application is composed of one or several middleware. When the URL is requested, the request object is passed to
-the middleware dispatcher that executes middleware from the stack one by one. Each middleware, given the request, can
-either return a response or pass execution to the next middleware. 
+the middleware dispatcher that starts executing middleware. Each middleware, given the request, can:
+
+- Pass request to the next middleware or return a response. 
+- Perform some work before and after next middleware.
+
+Depending on middleware used, application behavior may vary significantly.
 
 ![Middleware](img/middleware.svg)
 
-In the above each next middleware wraps the previous middleware.
+In the above each next middleware wraps the previous middleware. Alternatively, it could be presented
+as follows:
 
-Depending on how stack is configured, application behavior may vary significantly.
+![Middleware](img/middleware_alternative.svg)
 
 ## Using middleware
 
