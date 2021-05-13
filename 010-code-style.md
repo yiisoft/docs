@@ -6,7 +6,7 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 ## Names
 
 - Use English only.
-- Use shortest possible but explanative name.
+- Use the shortest possible, but an explanatory name.
 - Never trim or abbreviate name.
 
 ## Types
@@ -80,6 +80,12 @@ Order should be the following:
 - Constants
 - Properties
 - Methods
+
+Within each category items should be sorted by visibility:
+
+- public
+- protected
+- private
 
 ### Abstract classes
 
