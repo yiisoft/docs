@@ -24,3 +24,4 @@
 - [017 - Tags](017-tags.md)
 - [018 - Widgets](018-widgets.md)
 - [019 - View code style](019-view-code-style.md)
+- [020 - Package release criteria](020-package-release-criteria.md)
