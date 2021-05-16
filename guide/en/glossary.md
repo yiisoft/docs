@@ -16,6 +16,12 @@ Asset refers to a resource file. Typically, it contains JavaScript or CSS code b
 Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
 settings for an object, or a class of objects. Read more in ["Configuration"](concept/configuration.md).
 
+# D
+
+## DI
+
+Dependency Injection is a programming technique where an object inject a dependent object. ["DI"](concept/di-container.md)
+
 # I
 
 ## installation
@@ -47,6 +53,12 @@ Namespace refers to a [PHP language feature](https://secure.php.net/manual/en/la
 
 A package usually refers to [Composer package](https://getcomposer.org/doc/). It is code ready for reuse and
 redistribution installable automatically via package manager.
+
+# Q
+
+## queue
+
+A queue is similar to a stack. Queue follows First-In-First-Out methodology.
 
 # V
 
