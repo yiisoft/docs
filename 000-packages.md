@@ -52,6 +52,12 @@ All packages are versioned according to [SemVer](https://semver.org/):
 
 First stable version should be 1.0.0.
 
+Each package version number does not depend on any other package version or "framework version", only on its own public contract. 
+
+So it is completely normal to use together packages with different major versions, as long as they are compatible.
+
+Framework as a whole will keep naming "Yii 3" so it will be considered version 3, independent of version of its packages.
+
 ## PHP versions support
 
 Initial release is meant to support PHP 7.4+. We may drop old version support in a major release.
