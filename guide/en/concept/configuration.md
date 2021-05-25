@@ -3,51 +3,60 @@
 There are multiple ways to configure your application. We will focus on concepts used in
 the [default project template](https://github.com/yiisoft/app).
 
-## Assembling configs
+Yii3 configs are part of the application. You can modify many aspects of how the application works by editing
+configuration under `config/`.
 
-In the application template [yiisoft/composer-config-plugin](https://github.com/yiisoft/composer-config-plugin) is used.
-What the plugin does is collecting configs specified in all dependencies `composer.json`, `config-plugin` section and
-merging them on `composer dump-autoload`, `composer update` or `composer install`. Then it writes resulting configs
-to a directory that is used by the application in runtime. Usually it is `vendor/yiisoft/composer-config-plugin-output`.
+## Config plugin
 
-Let's take a look at what is in the template by default:
+In the application template [yiisoft/config](https://github.com/yiisoft/config) is used. Since writing all application
+configuration from scratch is tedious process, many packages provide example default configs, and the plugin helps with
+copying these examples into the application.
+
+In order to provide example default configs, `composer.json` of the package has to have `config-plugin` section.
+When installing or updating packages with Composer, the plugin reads `config-plugin` sections for each dependency,
+copies files themselves to application `config/packages/` if they don't yet exist and writes a merge plan to
+`config/packages/merge_plan.php`. The merge plan defines how to merge the configs together into a single big array
+ready to be passed to [DI container](di-container.md).
+
+Let's take a look at what is in the "yiisoft/app" `composer.json` by default:
 
 ```json
-"extra": {
-    "config-plugin": {
-        "common": "config/common.php",
-        "params": [
-            "config/params.php",
-            "?config/params-local.php"
-        ],
-        "web": [
-            "$common",
-            "config/web.php"
-        ],
-        "console": [
-            "$common",
-            "config/console.php"
-        ],
-        "providers": "config/providers.php",
-        "providers-web": [
-            "$providers",
-            "config/providers-web.php"
-        ],
-        "providers-console": [
-            "$providers",
-            "config/providers-console.php"
-        ],
-        "events": "config/events.php",
-        "events-web": [
-            "$events",
-            "config/events-web.php"
-        ],
-        "events-console": [
-            "$events",
-            "config/events-console.php"
-        ],
-        "routes": "config/routes.php"
-    }
+"config-plugin-options": {
+  "output-directory": "config/packages"
+},
+"config-plugin": {
+    "common": "config/common/*.php",
+    "params": [
+        "config/params.php",
+        "?config/params-local.php"
+    ],
+    "web": [
+        "$common",
+        "config/web/*.php"
+    ],
+    "console": [
+        "$common",
+        "config/console/*.php"
+    ],
+    "events": "config/events.php",
+    "events-web": [
+        "$events",
+        "config/events-web.php"
+    ],
+    "events-console": [
+        "$events",
+        "config/events-console.php"
+    ],
+    "providers": "config/providers.php",
+    "providers-web": [
+        "$providers",
+        "config/providers-web.php"
+    ],
+    "providers-console": [
+        "$providers",
+        "config/providers-console.php"
+    ],
+    "routes": "config/routes.php"
 },
 ```
 
@@ -62,48 +71,60 @@ Array means that the plugin will merge multiple files in the order they are spec
 
 `$` at the beginning of the name means a reference to another named config.
 
-`params` config is a bit special because it is reserved for application parameters. These are automatically available
+`params` is a bit special because it is reserved for application parameters. These are automatically available
 as `$params` in all other configuration files.
 
-You can learn more about config plugin features [from its documentation](https://github.com/yiisoft/composer-config-plugin/blob/master/README.md).
+You can learn more about config plugin features [from its documentation](https://github.com/yiisoft/config/blob/master/README.md).
 
 ## Config files
 
-Now as we know how the plugin assembles configs, let's look at what is each file in `config` directory for:
+Now as we know how the plugin assembles configs, let's look at `config` directory:
 
 ```
-common.php
-console.php
+common/
+    application-parameters.php
+    i18n.php
+    router.php
+console/
+packages/
+    yiisoft/
+    dist.lock
+    merge_plan.php
+web/
+    application.php
+    psr17.php
+events.php
 events-console.php
 events-web.php
-events.php
 params.php
+providers.php
 providers-console.php
 providers-web.php
-providers.php
 routes.php
-web.php
 ```
 
 ### Container configuration
 
 The application consists of a set of services registered in [dependency container](di-container.md). The config files
-that responsible for direct dependency container configuration are `common.php`, `console.php` and `web.php`.
-We use web for config specific to web application and console for config specific to console commands. Both web and
-console are sharing common configuration.
+that responsible for direct dependency container configuration are under `common/`, `console/` and `web/` directories.
+We use `web/` for config specific to web application and `console/` for config specific to console commands. Both web and
+console are sharing configuration under `common/`.
 
 ```php
+<?php
+
+declare(strict_types=1);
+
 use App\ApplicationParameters;
 
-/* @var array $params */
+/** @var array $params */
 
 return [
-    ApplicationParameters::class => static function () use ($params) {
-        return (new ApplicationParameters())
-            ->charset($params['app']['charset'])
-            ->language($params['app']['language'])
-            ->name($params['app']['name']);
-    },
+    ApplicationParameters::class => [
+        'class' => ApplicationParameters::class,
+        'charset()' => [$params['app']['charset']],
+        'name()' => [$params['app']['name']],
+    ],
 ];
 ```
 
@@ -195,7 +216,7 @@ use App\Controller\SiteController;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/', [SiteController::class, 'index'])->name('site/index')
+    Route::get('/')->action([SiteController::class, 'index'])->name('site/index')
 ];
 ``` 
 
@@ -204,7 +225,37 @@ Read more about it in ["Routes"](../runtime/routing.md).
 ### Events
 
 Many services emit certain events that you can attach to. That could be done via three config files: `events-web.php`
-for web application events, `events-console.php` for console events and `events.php` for both.
+for web application events, `events-console.php` for console events and `events.php` for both. The configuration is an
+array where keys are event names and values are array of handlers:
+
+```php
+return [
+    EventName::class => [
+        // Just a regular closure, it will be called from the Dispatcher "as is".
+        static fn (EventName $event) => someStuff($event),
+        
+        // A regular closure with additional dependency. All the parameters after the first one (the event itself)
+        // will be resolved from your DI container within `yiisoft/injector`.
+        static fn (EventName $event, DependencyClass $dependency) => someStuff($event),
+        
+        // An example with a regular callable. If the `staticMethodName` method contains some dependencies,
+        // they will be resolved the same way as in the previous example.
+        [SomeClass::class, 'staticMethodName'],
+        
+        // Non-static methods are allowed too. In this case `SomeClass` will be instantiated by your DI container.
+        [SomeClass::class, 'methodName'],
+        
+        // An object of a class with the `__invoke` method implemented
+        new InvokableClass(),
+        
+        // In this case the `InvokableClass` with the `__invoke` method will be instantiated by your DI container
+        InvokableClass::class,
+        
+        // Any definition of an invokable class may be here while your `$container->has('the definition)` 
+        'di-alias'
+    ],
+];
+```
 
 Read more about it in ["Events"](events.md).
 
@@ -224,60 +275,48 @@ Default application `params.php` looks like the following:
 
 declare(strict_types=1);
 
-use Psr\Log\LogLevel;
+use App\Command\Hello;
+use App\ViewInjection\ContentViewInjection;
+use App\ViewInjection\LayoutViewInjection;
+use Yiisoft\Factory\Definition\Reference;
+use Yiisoft\Yii\View\CsrfViewInjection;
 
 return [
-    'aliases' => [
-        '@root' => dirname(__DIR__),
-        '@assets' => '@root/public/assets',
-        '@assetsUrl' => '/assets',
-        '@npm' => '@root/node_modules',
-        '@public' => '@root/public',
-        '@resources' => '@root/resources',
-        '@runtime' => '@root/runtime',
-        '@views' => '@root/resources/views'
-    ],
-
-    'yiisoft/cache-file' => [
-        'file-cache' => [
-            'path' => '@runtime/cache'
-        ],
-    ],
-
-    'yiisoft/log-target-file' => [
-        'file-target' => [
-            'file' => '@runtime/logs/app.log',
-            'levels' => [
-                LogLevel::EMERGENCY,
-                LogLevel::ERROR,
-                LogLevel::WARNING,
-                LogLevel::INFO,
-                LogLevel::DEBUG,
-            ],
-        ],
-        'file-rotator' => [
-            'maxfilesize' => 10,
-            'maxfiles' => 5,
-            'filemode' => null,
-            'rotatebycopy' => null
-        ],
-    ],
-
-    'yiisoft/yii-web' => [
-        'session' => [
-            'options' => ['cookie_secure' => 0],
-            'handler' => null
-        ],
-    ],
-
-    'yiisoft/yii-debug' => [
-        'enabled' => true
-    ],
-
     'app' => [
         'charset' => 'UTF-8',
-        'language' => 'en',
+        'locale' => 'en',
         'name' => 'My Project',
+    ],
+
+    'yiisoft/aliases' => [
+        'aliases' => [
+            '@root' => dirname(__DIR__),
+            '@assets' => '@root/public/assets',
+            '@assetsUrl' => '/assets',
+            '@baseUrl' => '/',
+            '@message' => '@root/resources/message',
+            '@npm' => '@root/node_modules',
+            '@public' => '@root/public',
+            '@resources' => '@root/resources',
+            '@runtime' => '@root/runtime',
+            '@vendor' => '@root/vendor',
+            '@layout' => '@resources/views/layout',
+            '@views' => '@resources/views',
+        ],
+    ],
+
+    'yiisoft/yii-view' => [
+        'injections' => [
+            Reference::to(ContentViewInjection::class),
+            Reference::to(CsrfViewInjection::class),
+            Reference::to(LayoutViewInjection::class),
+        ],
+    ],
+
+    'yiisoft/yii-console' => [
+        'commands' => [
+            'hello' => Hello::class,
+        ],
     ],
 ];
 ```
@@ -289,3 +328,13 @@ For convenience, there is a naming convention about parameters:
 3. In case there are multiple services in the package, such as `file-target` and `file-rotator` in `yiisoft/log-target-file`
    package, group parameters by service name.
 4. In case a service could be disabled or enabled, such as `yiisoft/yii-debug`, use `enabled` as parameter name.
+
+### Package configs
+
+Config plugin described above copies default sample package configurations to `packages/` directory. Once copied you
+own the configs so can adjust these as you like. `yiisoft/` in the default template stands for package vendor. Since
+only `yiisoft` packages are in template, there's a single directory. `merge_plan.php` is used in runtime to get the order
+on how configs are merged together. Note that for config keys there should be a single source of truth, i.e. 
+one config can not override values of another config.
+
+`dist.lock` is used by the plugin to keep track of changes and display diff between current config and example one. 

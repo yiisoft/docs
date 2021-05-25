@@ -34,7 +34,7 @@ Application Structure +
 * [Middleware](structure/middleware.md) +
 * [Packages](structure/package.md) +
 
-Key Concepts -
+Key Concepts +
 ------------
 
 * [Class autoloading](concept/autoloading.md) +
@@ -43,18 +43,15 @@ Key Concepts -
 * [Aliases](concept/aliases.md) +
 * [Events](concept/events.md) +
 
-Handling Requests -
+Handling Requests +
 -----------------
 
-* [Request Handling Overview](runtime/overview.md) -
-* [Bootstrapping](runtime/bootstrapping.md) -
 * [Routing and URL generation](runtime/routing.md) +
 * [Request](runtime/request.md) +
 * [Response](runtime/response.md) +
 * [Sessions](runtime/sessions.md) +
 * [Cookies](runtime/cookies.md) +
-* [Flash messages](runtime/flash-messages.md) -
-* [Handling Errors](runtime/handling-errors.md) !
+* [Handling Errors](runtime/handling-errors.md) +
 * [Logging](runtime/logging.md) +
 
 Views -
@@ -157,7 +154,7 @@ Special Topics -
 * [Performance Tuning](tutorial/performance-tuning.md) +
 * [Using Yii with event loop](tutorial/using-with-event-loop.md) +
 * [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +
-* [Using Yii with Swoole](using-yii-with-swoole.md) +
+* [Using Yii with Swoole](tutorial/using-yii-with-swoole.md) +
 
 Widgets -
 -------
@@ -175,10 +172,10 @@ Widgets -
 Helpers -
 -------
 
-* [Helpers Overview](helper-overview.md)
+* [Helpers Overview](helper/overview.md)
 * [ArrayHelper](helper/array.md)
-* [Html](helper-html.md)
-* [Url](helper-url.md)
+* [Html](helper/html.md)
+* [Url](helper/url.md)
 
 Extras
 ------

@@ -56,7 +56,7 @@ use Middlewares\BasicAuthentication;
 
 return [
     //...
-    Route::get('/basic-auth', [SiteController::class, 'auth'])
+    Route::get('/basic-auth')->([SiteController::class, 'auth'])
         ->name('site/auth')
         ->addMiddleware(BasicAuthentication::class)
 ];
@@ -85,7 +85,7 @@ To apply middleware to application overall regardless of URL, adjust `config/app
 return [
     Yiisoft\Yii\Web\Application::class => [
         '__construct()' => [
-            'dispatcher' => static function (Injector $injector) {
+            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
                 return ($injector->make(MiddlewareDispatcher::class))
                     ->withMiddlewares(
                         [
@@ -96,19 +96,12 @@ return [
                             ErrorCatcher::class,
                         ]
                     );
-            },
+            }),
+            'fallbackHandler' => Reference::to(NotFoundHandler::class),
         ],
     ],
 ];
 ```
-
-The set of middleware above will be executed in the following order:
-
-1. ErrorCatcher
-2. BasicAuthentication
-3. SessionMiddleware
-4. CsrfMiddleware
-5. Router
 
 ## Creating your own middleware
 

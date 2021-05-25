@@ -4,10 +4,8 @@ After installing Yii, you have a working Yii application that can be launched vi
 accessed via the URL `http://localhost:8080/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
-> Info: For simplicity, throughout this "Getting Started" tutorial, it's assumed that you have set `app/public`
-  as the document root of your Web server, and configured the URL for accessing
-  your application to be `http://localhost:8080/` or something similar.
-  For your needs, please adjust the URLs in our descriptions accordingly.
+> Info: For simplicity, throughout this "Getting Started" tutorial we use "serve" command. It should not be used
+> to serve the project in production. When setting up a real server, use `app/public` as the document root.
   
 Note that unlike the framework itself, after you install a project template, it is all yours. You're free to add or delete
 code and overall modify it as you need.
@@ -15,19 +13,8 @@ code and overall modify it as you need.
 
 ## Functionality <span id="functionality"></span>
 
-The application installed contains the following pages:
-
-* the homepage, displayed when you access the URL `http://localhost:8080/`.
-
-<!--
-* the "About" page.
-* the "Contact" page, which displays a contact form that allows end-users to contact you via email.
-* and the "Login" page, which displays a login form that can be used to authenticate end-users. Try logging in
-  with "admin/admin", and you will find the "Login" main menu item will change to "Logout"
--->
-
-These pages share a common header and footer. The header contains the main menu bar to allow navigation
-among different pages.
+The application installed contains only the homepage, displayed when you access the URL `http://localhost:8080/`.
+It shares a common layout that could be reused on further pages.
 
 <!--
 You should also see a toolbar at the bottom of the browser window.
@@ -45,22 +32,40 @@ in the [Console Application Section](../tutorial/console.md).
 The most important directories and files in your application are (assuming the application's root directory is `app`):
 
 ```
-config/             Configuration files.
-docs/               Documentation.
-public/             Files publically accessible from the Internet.
-    assets/         Published assets.
-    index.php       Entry script.
-resources/          Application resources.
-    assets/         Asset bundle resources.
-    layout/         Layout view templates.
-    view/           View templates.
-runtime/            Files generated during runtime.
-src/                Application source code.
-    Asset/          Asset bundle definitions.
-    Controller/     Web controller classes.
-    Provider/       Providers that take configuration and configure services.
-tests/              A set of Codeception tests for the application.
-vendor/             Installed Composer packages.
+config/                   Configuration files.
+    common/               Configs applied to both console and web.
+    console/              Configs applied to console.
+    packages/             Packages configuration.
+    web/                  Configs applied to web.
+    events.php            Event handlers for both console and web.
+    events-console.php    Event handlers for console.
+    events-web.php        Event handlers for web.
+    params.php            Parameters that are passed to configs.
+    providers.php         Service providers for both console and web.
+    providers-console.php Service providers for console.
+    providers-web.php     Service providers for web.
+    routes.php            Defines how URLs are mapped to their handlers.
+docs/                     Documentation.
+public/                   Files publically accessible from the Internet.
+    assets/               Published assets.
+    index.php             Entry script.
+    index-test.php        Entry script for running tests with Codeception.
+resources/                Application resources.
+    assets/               Asset bundle resources.
+    message/              Message translations.
+    views/                View templates.
+      layout/             View layouts.
+runtime/                  Files generated during runtime.
+src/                      Application source code.
+    Asset/                Asset bundle definitions.
+    Command/              Console commands.
+    Controller/           Web controller classes.
+    Handler/              Custom handler for 404.
+    ViewInjection/        Injections that bring additional variables into view templates.
+tests/                    A set of Codeception tests for the application.
+vendor/                   Installed Composer packages.
+ApplicationRunner.php     Contains the process of running the application.
+Installer.php             Additional actions done on Composer commands.
 ```
 
 In general, the files in the application can be divided into two types: those under `app/public` and those
@@ -68,7 +73,7 @@ under other directories. The former can be directly accessed via HTTP (i.e., in 
 and should not be.
 
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
-The entry script is creating an instance an incoming request with the help of one of PSR-7 packages
+The entry script is using application runner to create an instance an incoming request with the help of one of PSR-7 packages
 and passes it to [application](../structure/application.md) instance. An application contains a set of
 middleware that are executed sequentially processing the request. The result is passed further to emitter
 that takes care of sending a response to the browser.
@@ -86,7 +91,8 @@ The following diagram shows how an application handles a request.
 ![Request Lifecycle](img/request-lifecycle.svg)
 
 1. A user makes a request to the [entry script](structure/entry-script.md) `public/index.php`.
-2. The entry script loads the container configuration [configuration](concept/configuration.md) and creates
+2. The entry script with the help of application runner loads
+   the container configuration [configuration](concept/configuration.md) and creates
    an [application](structure/application.md) instance and services necessary to handle the request.
 3. Request factory creates a request object based on raw request that came from a user.
 4. Application passes request object through middleware array configured. One of these is typically a router.

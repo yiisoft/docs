@@ -5,27 +5,27 @@ configured with multiple routes. Each route can be attached a middleware that, g
 a response. Since middleware overall could be chained and can pass actual handling to next middleware,
 we call the middleware actually doing the job an action.
 
-There are multiple ways to describe an action. Simplest one is using a closure:
+There are multiple ways to describe an action. The simplest one is using a closure:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\Route;
 
-Route::get('/', function (ServerRequestInterface $request) use ($responseFactory): ResponseInterface {
+Route::get('/')->action(function (ServerRequestInterface $request) use ($responseFactory): ResponseInterface {
     $response = $responseFactory->createResponse();
     $response->getBody()->write('You are at homepage.');
     return $response;
-}));
+});
 ```
 
-It is fine for simple handling since any more complicated one would require getting dependencies so
+It is fine for simple handling since any more complicated one would require getting dependencies, so
 a good idea would be moving the handling to a class method. Callback middleware could be used for the purpose:
 
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/', [FrontPageAction::class, 'run']),
+Route::get('/')->action([FrontPageAction::class, 'run']),
 ```
 
 The class itself would like:
@@ -49,8 +49,8 @@ For many cases it makes sense to group handling for multiple routes into a singl
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/post/index', [PostController::class, 'actionIndex']),
-Route::get('/post/view/{id:\d+}', [PostController::class, 'actionView']),
+Route::get('/post/index')->action([PostController::class, 'actionIndex']),
+Route::get('/post/view/{id:\d+}')->action([PostController::class, 'actionView']),
 ```
 
 The class itself would look like the following:
@@ -74,7 +74,7 @@ class PostController
 }
 ```
 
-We usually call this class a "controller".
+We usually call such class a "controller".
 
 ## Autowiring
 

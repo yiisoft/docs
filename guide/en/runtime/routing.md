@@ -25,7 +25,9 @@ use App\Controller\SiteController;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/', [SiteController::class, 'index'])->name('site/index')
+    Route::get('/')
+        ->action([SiteController::class, 'index'])
+        ->name('site/index')
 ];
 ```
 
@@ -52,7 +54,9 @@ use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 
 return [
-    Route::methods([Method::GET, Method::POST], '/user/{id}', [SiteController::class, 'user'])->name('site/user')
+    Route::methods([Method::GET, Method::POST], '/user/{id}')
+        ->action([SiteController::class, 'user'])
+        ->name('site/user')
 ];
 ```
 
@@ -106,9 +110,10 @@ use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 
 return [
-    Route::methods([Method::GET], '/download/{id}', [DownloadController::class, 'download'])
+    Route::methods([Method::GET], '/download/{id}')
+        ->action([DownloadController::class, 'download'])
         ->name('download/id')
-        ->addMiddleware(LimitDownloadRate::class)
+        ->middleware(LimitDownloadRate::class)
 ];
 ```
 
@@ -117,16 +122,30 @@ Check ["middleware"](../structure/middleware.md) guide to learn more about how t
 This is especially useful when grouping routes:
 
 ```php
-Group::create('/api', [
-    Route::get('/info/v2', ApiInfo::class)
-        ->addMiddleware(FormatDataResponseAsJson::class)
-        ->name('api/info/v2'),
-    Route::get('/user', [ApiUserController::class, 'index'])
-        ->name('api/user/index'),
-    Route::get('/user/{login}', [ApiUserController::class, 'profile'])
-        ->addMiddleware(FormatDataResponseAsJson::class)
-        ->name('api/user/profile'),
-])->addMiddleware(ApiDataWrapper::class)
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+
+return [
+    Group::create('/api')
+        ->middleware(ApiDataWrapper::class)
+        ->routes(
+            Route::get('/info/v2')
+                ->action(ApiInfo::class)
+                ->name('api/info/v2')
+                ->middleware(FormatDataResponseAsJson::class),            
+            Route::get('/user')
+                ->action([ApiUserController::class, 'index'])
+                ->name('api/user/index'),
+            Route::get('/user/{login}')
+                ->action([ApiUserController::class, 'profile'])
+                ->middleware(FormatDataResponseAsJson::class)
+                ->name('api/user/profile'),
+        )
+];
 ```
 
 In the above `ApiDataWrapper` will be executed before handling any URL starting with `/api`.
@@ -146,7 +165,8 @@ use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 
 return [
-    Route::methods([Method::GET, Method::POST], '/user[/{id}]', [SiteController::class, 'user'])
+    Route::methods([Method::GET, Method::POST], '/user[/{id}]')
+        ->action([SiteController::class, 'user'])
         ->name('site/user')
         ->defaults(['id' => 42])
 ];
@@ -164,7 +184,7 @@ vary, but the basic concept stays the same.
 
 Routes defined in config are matched from top to bottom. If there is a match, further matching is not performed and
 router executes route handler to get the response. If there is no match at all, handling is passed to the next 
-middleware in the [application middleware stack](../structure/middleware.md). 
+middleware in the [application middleware set](../structure/middleware.md). 
 
 ## Generating URLs <span id="generating-urls"></span>
 
@@ -179,8 +199,10 @@ use App\Controller\TestController;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/test', [TestController::class, 'index'])->name('test/index'),
-    Route::post('/test/submit/{id}', [TestController::class, 'submit'])->name('test/submit')
+    Route::get('/test', [TestController::class, 'index'])
+        ->name('test/index'),
+    Route::post('/test/submit/{id}', [TestController::class, 'submit'])
+        ->name('test/submit')
 ];
 ```
 

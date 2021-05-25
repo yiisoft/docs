@@ -23,7 +23,7 @@ all of them.
 
 ### Entity
 
-Entity is an uniquely identifiable object such as user, product, payment etc. When comparing them, you're checking ID,
+Entity is a uniquely identifiable object such as user, product, payment etc. When comparing them, you're checking ID,
 not the attribute values. If there are two objects with different attributes but the same ID, they are considered
 being the same thing.
 

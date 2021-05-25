@@ -10,7 +10,7 @@ forms the response. Then we will improve it to use [view](../structure/views.md)
 
 Through this tutorial, you will learn three things:
 
-1. How to create a handler to respond to requests.
+1. How to create a handler to respond to request.
 2. How to map URL to the handler.
 3. How to create a [view](../structure/view.md) to compose the response's content.
 
@@ -74,17 +74,12 @@ Now to map our handler to URL we need to add a route in `config/routes.php`:
 declare(strict_types=1);
 
 use App\Controller\EchoController;
-use App\Contact\ContactController;
 use App\Controller\SiteController;
 use Yiisoft\Router\Route;
-use Yiisoft\Http\Method;
 
 return [
-    Route::get('/', [SiteController::class, 'index'])->name('site/index'),
-    Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
-    Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
-        ->name('contact/form'),
-    Route::get('/say[/{message}]', [EchoController::class, 'say'])->name('echo/say'),
+    Route::get('/')->action([SiteController::class, 'index'])->name('home'),
+    Route::get('/say[/{message}]')->action([EchoController::class, 'say'])->name('echo/say'),
 ];
 ```
 
@@ -121,7 +116,7 @@ use Yiisoft\Html\Html;
 /* @var string $message */
 ?>
 
-<p><?= Html::encode($message) ?></p>
+<p>The message is: <?= Html::encode($message) ?></p>
 ```
 
 Note that in the above code, the `message` parameter is HTML-encoded

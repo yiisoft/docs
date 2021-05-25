@@ -57,10 +57,10 @@ class PostRepository
 
 ### Separate domain layer from infrastructure
 
-In case you have rich complicated domain, it is a good idea to separate it from infrastructure provided by framework i.e.
-all the business logic has to go to framework-independent classes.
+In case you have rich complicated domain, it is a good idea to separate it from infrastructure provided by framework
+i.e., all the business logic has to go to framework-independent classes.
 
 ### Move more into components
 
-Yii 3 services are conceptually similar to Yii 2 components so it's a good idea to move reusable parts of your application
+Yii 3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application
 into components.

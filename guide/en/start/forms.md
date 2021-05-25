@@ -86,7 +86,7 @@ class EchoController
             $form->load($request->getParsedBody());
         }
 
-        return $this->viewRenderer->withCsrf()->render('say', [
+        return $this->viewRenderer->render('say', [
             'form' => $form,
         ]);
     }
@@ -94,29 +94,23 @@ class EchoController
 ```
 
 Instead of reading from request directly we fill our form with the help of `load()` method if the request
-method is POST and then pass it to our view. Since we are going to submit the form via POST method, we add CSRF
-protection token to ensure that the request originates from the form page and not from another website.
-Omitting it would result in [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
+method is POST and then pass it to our view.
 
-Additionally, to allow POST, we need to adjust our route in `config/routes.php`:
+Now, to allow POST, we need to adjust our route in `config/routes.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\Contact\ContactController;
 use App\Controller\EchoController;
 use App\Controller\SiteController;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/', [SiteController::class, 'index'])->name('site/index'),
-        Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
-        Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
-            ->name('contact/form'),
-    Route::methods([Method::GET, Method::POST], '/say', [EchoController::class, 'say'])->name('echo/say'),
+    Route::get('/')->action([SiteController::class, 'index'])->name('home'),
+    Route::methods([Method::GET, Method::POST], '/say[/{message}]')->action([EchoController::class, 'say'])->name('echo/say'),
 ];
 ```
 
@@ -138,14 +132,17 @@ use Yiisoft\Html\Html;
 
 
 <?php if (!empty($form->getMessage())): ?>
-<div class="notification is-success">
-    The message is: <?= Html::encode($form->getMessage()) ?>
-</div>
+    <div class="notification is-success">
+        The message is: <?= Html::encode($form->getMessage()) ?>
+    </div>
 <?php endif ?>
 
-<?= Form::begin()->action($url->generate('echo/say'))->start() ?>
-
-<?= Html::hiddenInput('_csrf', $csrf) ?>
+<?= Form::widget()
+    ->action($url->generate('echo/say'))
+    ->options([
+        'csrf' => $csrf,
+    ])
+    ->begin() ?>
 
 <?= Field::widget()->config($form, 'message') ?>
 
@@ -157,24 +154,98 @@ use Yiisoft\Html\Html;
 If form has a message set, we are displaying a box with the message. The rest if about rendering the form.
 
 We get the action URL from URL manager service. We access it as `$url` that is a default parameter available in all views.
-It is configured in `config/params.php`:
+This variable and alike ones such as `$csrf` are provided by view injections listed in `config/params.php`:
 
 ```php
-'yiisoft/view' => [
-    'defaultParameters' => [
-        'applicationParameters' => ApplicationParameters::class,
-        'assetManager' => AssetManager::class,
-        'field' => Field::class,
-        'url' => UrlGeneratorInterface::class,
-        'urlMatcher' => UrlMatcherInterface::class,
+'yiisoft/yii-view' => [
+    'injections' => [
+        Reference::to(ContentViewInjection::class),
+        Reference::to(CsrfViewInjection::class),
+        Reference::to(LayoutViewInjection::class),
     ],
 ],
 ```
 
-We render the value of CSRF token as a hidden input. It will be submitted along with POST form data.
+By default, `src\ViewInjection\ContentViewInjection` does not provide `$url` so we need to add it:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\ViewInjection;
+
+use App\ApplicationParameters;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Yii\View\ContentParametersInjectionInterface;
+
+final class ContentViewInjection implements ContentParametersInjectionInterface
+{
+    private ApplicationParameters $applicationParameters;
+    private UrlGeneratorInterface $url;
+
+    public function __construct(
+        ApplicationParameters $applicationParameters,
+        UrlGeneratorInterface $url
+
+    ) {
+        $this->applicationParameters = $applicationParameters;
+        $this->url = $url;
+    }
+
+    public function getContentParameters(): array
+    {
+        return [
+            'applicationParameters' => $this->applicationParameters,
+            'url' => $this->url,
+        ];
+    }
+}
+```
+
+We render the value of CSRF token as a hidden input to ensure that the request originates from the form page and not
+from another website. It will be submitted along with POST form data. Omitting it would result in
+[HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
+
+In order to turn on the CSRF protection we need to add `CsrfMiddleware` to `config/web/application.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Handler\NotFoundHandler;
+use Yiisoft\Csrf\CsrfMiddleware;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+use Yiisoft\Factory\Definition\Reference;
+use Yiisoft\Factory\Definition\DynamicReference;
+use Yiisoft\Injector\Injector;
+use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
+use Yiisoft\Router\Middleware\Router;
+use Yiisoft\Session\SessionMiddleware;
+
+return [
+    Yiisoft\Yii\Web\Application::class => [
+        '__construct()' => [
+            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
+                return ($injector->make(MiddlewareDispatcher::class))
+                    ->withMiddlewares(
+                        [
+                            Router::class,
+                            CsrfMiddleware::class, // <-- here
+                            SessionMiddleware::class,
+                            ErrorCatcher::class,
+                        ]
+                    );
+            }),
+            'fallbackHandler' => Reference::to(NotFoundHandler::class),
+        ],
+    ],
+];
+```
 
 We use `Field` to output "message" field, so it takes case about filling the value, escaping it, rendering field label
-and validation errors we are going to take care of next. 
+and validation errors we are going to take care of next.
 
 ## Adding validation
 
@@ -183,15 +254,14 @@ Right now it is possible to submit empty value. Let's make it required. Modify `
 ```php
 <?php
 
-declare(strict_types=1);
-
 namespace App\Controller;
 
 use App\Form\EchoForm;
-use App\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
+use Yiisoft\Validator\Validator;
+use Yiisoft\Yii\View\ViewRenderer;
 
 class EchoController
 {
@@ -202,21 +272,24 @@ class EchoController
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request, EchoForm $form): ResponseInterface
+    public function say(ServerRequestInterface $request, Validator $validator): ResponseInterface
     {
+        $form = new EchoForm();
+
         if ($request->getMethod() === Method::POST) {
             $form->load($request->getParsedBody());
-            $form->validate();
+            $validator->validate($form);
         }
 
-        return $this->viewRenderer->withCsrf()->render('say', [
+        return $this->viewRenderer->render('say', [
             'form' => $form,
         ]);
     }
 }
+
 ```
 
-The only line we have added is `$form->validate();` that triggers validation of the form. Now we need to add validation
+We have obtained validator instance through type-hinting and used it to validate the form. Now we need to add validation
 rules to `/src/Form/EchoForm.php`:
 
 ```php
@@ -242,7 +315,7 @@ class EchoForm extends FormModel
         ];
     }
 
-    protected function rules(): array
+    public function getRules(): array
     {
         return [
             'message' => [

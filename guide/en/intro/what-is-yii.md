@@ -53,7 +53,7 @@ Yii currently has three major versions available: 1.1, 2.0 and 3.0.
 
 ## Requirements and Prerequisites
 
-Yii 3.0 requires PHP 7.4 or above and runs best with the latest version of PHP 7.
+Yii 3.0 requires PHP 7.4 or above and runs best with the latest version of PHP 8.
 
 Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.
 Yii 3.0 also makes use of the latest features of PHP, such as type declarations and generators. Understanding these

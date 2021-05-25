@@ -146,14 +146,14 @@ There are additional methods of declaring dependencies:
 
 ```php
 return [
-    // declare class for an interface, resolve dependencies automatically
+    // declare a class for an interface, resolve dependencies automatically
     EngineInterface::class => EngineMarkOne::class,
 
     // array definition (same as above)
     'full_definition' => [
         'class' => EngineMarkOne::class,
         '__construct()' => [42], 
-        'propertyName' => 'value',
+        '$propertyName' => 'value',
         'setX()' => [42],
     ],
 

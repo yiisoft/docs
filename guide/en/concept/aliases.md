@@ -4,8 +4,8 @@ You can use aliases to represent file paths or URLs so that you don't have to ha
 project. An alias must start with the `@` character to be differentiated from normal file paths and URLs. Alias defined
 without leading `@` will be prefixed with `@` character.
 
-Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@src` represents
-the installation path of application `src` directory; `@baseUrl` represents the base URL for the currently running Web application.
+Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@public` represents
+the web root path; `@baseUrl` represents the base URL for the currently running Web application.
 
 ## Defining Aliases <span id="defining-aliases"></span>
 
@@ -14,17 +14,21 @@ You can define an alias via application's `config/params.php`:
 ```php
 return [
     // ...
-
-    'aliases' => [
-        // an alias of a file path
-        '@foo' => '/path/to/foo',
     
-        // an alias of a URL
-        '@bar' => 'http://www.example.com',
-    
-        // an alias of a concrete file that contains a \foo\Bar class 
-        '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
-    ]
+    'yiisoft/aliases' => [
+        'aliases' => [
+            // ...
+        
+            // an alias of a file path
+            '@foo' => '/path/to/foo',
+        
+            // an alias of a URL
+            '@bar' => 'http://www.example.com',
+        
+            // an alias of a concrete file that contains a \foo\Bar class 
+            '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
+        ],
+    ],
 ];
 ```
 
@@ -39,7 +43,7 @@ You can define an alias using another alias (either root or derived):
 '@foobar' => '@foo/bar', 
 ```
 
-The `aliases` parameter initializes `Aliases` service from [`yiisoft/aliases` package](https://github.com/yiisoft/aliases).
+The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases` package](https://github.com/yiisoft/aliases).
 You can set additional aliases in runtime by using the service:
 
 ```php
@@ -51,7 +55,28 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Resolving Aliases <span id="resolving-aliases"></span>
+## Using aliases in configuration
+
+It is preferred to resolve aliases at configuration level so services get URLs and paths as ready to use strings: 
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Aliases\Aliases;
+use Yiisoft\Cache\File\FileCache;
+
+/* @var $params array */
+
+return [
+    FileCache::class => static fn (Aliases $aliases) => new FileCache(
+        $aliases->get($params['yiisoft/cache-file']['fileCache']['path'])
+    ),
+];
+```
+
+## Resolving aliases <span id="resolving-aliases"></span>
 
 You can use `Aliases` service to resolve an alias or derived alias into the file path or URL it represents:
 
@@ -99,16 +124,12 @@ If `@foo/bar` is not defined as a root alias, the last statement would display `
 - `@root` - the base directory of the currently running application.
 - `@assets` -  application's public assets directory where assets are published to.
 - `@assetsUrl` - URL of base directory with published assets.
+- `@baseUrl` - the base URL of the currently running Web application. Defaults to `/`.
 - `@npm` - node packages directory.
 - `@bower` - bower packages directory.
 - `@vendor` - Composer's `vendor` directory.
 - `@public` - application's publicly accessible directory that contains `index.php`.
 - `@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`.
-- `@baseUrl` - the base URL of the currently running Web application. Defaults to `/`.
+- `@layout` - the directory where layouts are located.
 - `@resources` - directory where views, assets sources and other resources are located.
 - `@views` - application view templates base directory.
-
-## Package Aliases <span id="package-aliases"></span>
-
-Composer places installed package under `vendor/authorName/packageName` so there is no need for special
-alias for each package. Instead, you can use `@vendor/authorName/packageName` to refer to package directory. 

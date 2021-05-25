@@ -1,12 +1,60 @@
 # Sessions
 
-Sessions allow persisting data between requests without passing them to the client and back. Yii has a special component
-to work with session data.
+Sessions allow persisting data between requests without passing them to the client and back. Yii has
+[a session package](https://github.com/yiisoft/session) to work with session data.
+
+In order to add it to your application, use composer:
+
+```shell
+composer require yiisoft/session --prefer-dist
+```
 
 ## Configuring middleware
 
-In order for session to work properly, ensure that `\Yiisoft\Session\SessionMiddleware` is registered in application
-middleware stack before request router.
+In order to maintain a session between requests you need to add `SessionMiddleware` to your route group or
+application middlewares. Route group should be preferred when you have both API with token-based authentication
+and regular web routes in the same application. Having it this way avoids starting the session for API endpoints.
+
+In order to add a session for a certain group of routes, edit `config/routes.php` like the following:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Router\Group;
+use Yiisoft\Session\SessionMiddleware;
+
+return [
+    Group::create('/blog')
+        ->middleware(SessionMiddleware::class)
+        ->routes(
+            // ...
+        )
+];
+```
+
+To add a session to the whole application, edit `config/application.php` like the following:
+
+```php
+return [
+    Yiisoft\Yii\Web\Application::class => [
+        '__construct()' => [
+            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
+                return ($injector->make(MiddlewareDispatcher::class))
+                    ->withMiddlewares(
+                        [
+                            Router::class,
+                            CsrfMiddleware::class,
+                            SessionMiddleware::class, // <-- add this
+                            ErrorCatcher::class,
+                        ]
+                    );
+            }),
+        ],
+    ],
+];
+```
 
 ## Opening and closing session
 
@@ -69,7 +117,28 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
     // clear session data from runtime
     $session->clear();
 }
-``` 
+```
+
+## Flash messages
+
+In case you need some data to remain in session until read, such as in case with displaying a message on the next page
+flash messages is what you need. A flash message is a special type of data, that is available only in the current request
+and the next request. After that, it will be deleted automatically.
+
+`FlashInteface` usage is the following:
+
+```php
+/** @var Yiisoft\Session\Flash\FlashInterface $flash */
+
+// request 1
+$flash->set('warning', 'Oh no, not again.');
+
+// request 2
+$warning = $flash->get('warning');
+if ($warning !== null) {
+    // do something with it
+}
+```
 
 ## Custom session storage
 

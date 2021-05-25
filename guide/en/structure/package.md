@@ -23,7 +23,7 @@ composer install vendor-name/package-name
 ```
 
 After it is done, Composer modifies `composer.json` and `composer.lock`. The former defines what packages to install,
-and their version constraints the later stores a snapshot of exact versions actually installed.
+and their version constraints the latter stores a snapshot of exact versions actually installed.
 
 Classes from the package will be available immediately via [autoloading](../concept/autoloading.md).
 
@@ -111,7 +111,7 @@ The following example shows the `composer.json` file for the `yiisoft/yii-widget
 
 Each Composer package should have a package name which uniquely identifies the package among all others.
 The format of package names is `vendorName/projectName`. For example, in the package name `yiisoft/yii-queue`,
-the vendor name and the project name are `yiisoft` and `yii-queue`, respectively.
+the vendor name, and the project name are `yiisoft` and `yii-queue`, respectively.
 
 > Warning: Do NOT use `yiisoft` as your vendor name as it is reserved for use by the Yii itself.
 
