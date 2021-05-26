@@ -13,7 +13,7 @@ Getting Started -
 ---------------
 
 * [What do you need to know](start/prerequisites.md) +
-* [Installing Yii](start/installation.md) +
+* [Creating a project](start/installation.md) +
 * [Running Applications](start/workflow.md) +
 * [Saying Hello](start/hello.md) +
 * [Working with Forms](start/forms.md) +
