@@ -1,6 +1,6 @@
-# Installing Yii
+# Creating a Project
 
-You can install Yii using the [Composer](https://getcomposer.org/) package manager.
+You can create Yii project using the [Composer](https://getcomposer.org/) package manager.
 
 We recommend starting with a project template that is a minimal working Yii project implementing some basic features.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
@@ -29,9 +29,9 @@ you have to adjust the example commands accordingly.
 If you had Composer already installed before, make sure you use an up to date version. You can update Composer
 by running `composer self-update`.
 
-## Installing Yii <span id="installing-from-composer"></span>
+## Creating a project
 
-With Composer installed, you can install Yii project template by running the following command
+With Composer installed, you can create Yii project from a template by running the following command
 under a Web-accessible folder:
 
 ```bash
