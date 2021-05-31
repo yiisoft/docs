@@ -105,8 +105,8 @@ Security +-
 Caching -
 -------
 
-* [Caching Overview](caching/overview.md) -
-* [Data Caching](caching/data.md) -
+* [Caching Overview](caching/overview.md) +
+* [Data Caching](caching/data.md) +
 * [Fragment Caching](caching/fragment.md) -
 * [Page Caching](caching/page.md) -
 * [HTTP Caching](caching/http.md) -
