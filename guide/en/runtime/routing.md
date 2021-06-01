@@ -8,7 +8,7 @@ The reverse process of routing is called *URL generation*, which creates a URL f
 and the associated query parameters. When we later request the created URL, the routing process can resolve it
 back into the original route and query parameters.
 
-Routing and URL generation are separate services but they use a common set of routes for both URL matching and
+Routing and URL generation are separate services, but they use a common set of routes for both URL matching and
 URL generation.
 
 ## Configuring routes

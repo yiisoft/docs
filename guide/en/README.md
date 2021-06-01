@@ -180,7 +180,7 @@ Helpers +
 * [VarDumper](https://github.com/yiisoft/var-dumper)
 * [Strings](https://github.com/yiisoft/strings)
 
-Extras
+Extras +
 ------
 
 * [Glossary](glossary.md)
