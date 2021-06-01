@@ -169,13 +169,16 @@ Widgets -
 * [Bootstrap Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
 
 
-Helpers -
+Helpers +
 -------
 
-* [Helpers Overview](helper/overview.md)
-* [ArrayHelper](helper/array.md)
-* [Html](helper/html.md)
-* [Url](helper/url.md)
+* [Arrays](https://github.com/yiisoft/arrays/)
+* [Files](https://github.com/yiisoft/files/)
+* [Html](https://github.com/yiisoft/html/)
+* [Json](https://github.com/yiisoft/json)
+* [Network utilities](https://github.com/yiisoft/network-utilities/)
+* [VarDumper](https://github.com/yiisoft/var-dumper)
+* [Strings](https://github.com/yiisoft/strings)
 
 Extras
 ------
