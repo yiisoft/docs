@@ -64,7 +64,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\EchoForm;
-use App\ViewRenderer;
+use Yiisoft\Yii\View\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
