@@ -319,7 +319,7 @@ class EchoForm extends FormModel
     {
         return [
             'message' => [
-                new Required()
+                Required::rule()
             ]
         ];
     }
