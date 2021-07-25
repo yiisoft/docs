@@ -60,8 +60,6 @@ return [
 ];
 ```
 
-If any method should match, use `anyMethod()`.
-
 All these methods accept route pattern and a handler. Route pattern defines how the URL is matched when routing and
 how URL is generated based on route name and parameters. You will learn about the actual syntax later in this guide.
 A handler could be specified as:
@@ -99,7 +97,7 @@ For handler action and callable typed parameters are automatically injected usin
 injection container passed to the route. Current request and handler could be obtained by
 type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.
 
-Additional handlers could be added to wrap primary one with `addMiddleware()` method:
+Additional handlers could be added to wrap primary one with `middleware()` method:
 
 ```php
 <?php
