@@ -21,7 +21,7 @@ A well configured PHP environment is important. To get maximum performance,
 You can use various caching techniques to significantly improve the performance of your application. For example,
 if your application allows users to enter text in Markdown format, you may consider caching the parsed Markdown
 content to avoid parsing the same Markdown text repeatedly in every request. Please refer to 
-the [Caching](caching/overview.md) section to learn about the caching support provided by Yii.
+the [Caching](../caching/overview.md) section to learn about the caching support provided by Yii.
 
 
 ## Optimizing Session Storage <span id="optimizing-session"></span>
@@ -46,9 +46,9 @@ session service as follows:
 ## Optimizing Databases <span id="optimizing-databases"></span>
 
 Executing DB queries and fetching data from databases are often the main performance bottleneck in
-a Web application. Although using [data caching](caching/data.md) techniques may alleviate the performance hit,
-it does not fully solve the problem. When the database contains enormous amounts of data and the cached data is invalid, 
-fetching the latest data could be prohibitively expensive without proper database and query design.
+a Web application. Although using [data caching](../caching/data.md) techniques may alleviate the performance hit,
+it does not fully solve the problem. When the database contains enormous amounts of data, and the cached data is invalid, 
+fetching the latest data could be prohibitively expensive without a proper database and query design.
 
 A general technique to improve the performance of DB queries is to create indices for table columns that
 need to be filtered by. For example, if you need to look for a user record by `username`, you should create an index
