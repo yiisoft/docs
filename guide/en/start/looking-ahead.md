@@ -16,7 +16,7 @@ This section will summarize the Yii resources available to help you be more prod
     - The Class Reference (to be available later):
       This specifies the usage of every class provided by Yii. It should be mainly used when you are writing
       code and want to understand the usage of a particular class, method, property. Usage of the class reference
-      is the best only after a contextual understanding of the entire framework.
+      is best only after a contextual understanding of the entire framework.
     - [The Wiki Articles](https://www.yiiframework.com/wiki?version=all&tag=yii3):
       The wiki articles are written by Yii users based on their own experiences. Most of them are written
       like cookbook recipes, and show how to solve particular problems using Yii. While the quality of these
