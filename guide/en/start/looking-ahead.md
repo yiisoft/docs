@@ -16,7 +16,7 @@ This section will summarize the Yii resources available to help you be more prod
     - The Class Reference (to be available later):
       This specifies the usage of every class provided by Yii. It should be mainly used when you are writing
       code and want to understand the usage of a particular class, method, property. Usage of the class reference
-      is best only after a contextual understanding of the entire framework.
+      is the best only after a contextual understanding of the entire framework.
     - [The Wiki Articles](https://www.yiiframework.com/wiki?version=all&tag=yii3):
       The wiki articles are written by Yii users based on their own experiences. Most of them are written
       like cookbook recipes, and show how to solve particular problems using Yii. While the quality of these
@@ -29,7 +29,7 @@ This section will summarize the Yii resources available to help you be more prod
 * Community
     - Forum: <http://www.yiiframework.com/forum/>
     - IRC chat: The #yii channel on the freenode network (<irc://irc.freenode.net/yii>)
-    - Slack chanel: <https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA>
+    - Slack channel: <https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA>
     - Gitter chat: <https://gitter.im/yiisoft/app>
     - GitHub: <https://github.com/yiisoft/app>
     - Facebook: <https://www.facebook.com/groups/yiitalk/>
