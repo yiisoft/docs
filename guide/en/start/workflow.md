@@ -90,10 +90,10 @@ The following diagram shows how an application handles a request.
 
 ![Request Lifecycle](img/request-lifecycle.svg)
 
-1. A user makes a request to the [entry script](structure/entry-script.md) `public/index.php`.
+1. A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`.
 2. The entry script with the help of application runner loads
-   the container configuration [configuration](concept/configuration.md) and creates
-   an [application](structure/application.md) instance and services necessary to handle the request.
+   the container [configuration](../concept/configuration.md) and creates
+   an [application](../structure/application.md) instance and services necessary to handle the request.
 3. Request factory creates a request object based on raw request that came from a user.
 4. Application passes request object through middleware array configured. One of these is typically a router.
 5. Router finds out what handler to execute based on request and configuration.
