@@ -82,6 +82,7 @@ while ($request = $psr7->acceptRequest()) {
     $response = $application->handle($request);
     $psr7->respond($response);
     $application->afterEmit($response);
+    $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
     gc_collect_cycles();
 }
 

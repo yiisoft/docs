@@ -40,7 +40,16 @@ in the state of a service made by previous request may affect current request. M
 if data from one user would be available to another user.
 
 There are two ways dealing with it. First, you can avoid having state by making services stateless. Second, you can
-clean up services at the end of the request processing.
+clean up services at the end of the request processing. In this case, a state resetter will help you:
+
+```php
+initializeContext();
+while ($request = getRequest()) {
+   $response = process($request);
+   emit($response);
+   $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
+}
+```
 
 ## Integrations
 

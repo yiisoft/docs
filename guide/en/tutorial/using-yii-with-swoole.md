@@ -66,6 +66,7 @@ $server->on('request', static function (Swoole\Http\Request $request, Swoole\Htt
     $converter = new \Ilex\SwoolePsr7\SwooleResponseConverter($response);
     $converter->send($psr7Response);
     $application->afterEmit($psr7Response);
+    $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
 });
 
 $server->on('shutdown', static function (Swoole\Http\Server $server) use ($application) {
