@@ -52,35 +52,38 @@ Create `/psr-worker.php`:
 
 ```php
 <?php
-/**
- * @var Goridge\RelayInterface $relay
- */
-use Spiral\Goridge;
+
 use Spiral\RoadRunner;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 
 ini_set('display_errors', 'stderr');
 require 'vendor/autoload.php';
 
-$worker = new RoadRunner\Worker(new Goridge\StreamRelay(STDIN, STDOUT));
-$psr7 = new RoadRunner\PSR7Client($worker);
+$worker = RoadRunner\Worker::create();
+$serverRequestFactory = new HttpSoft\Message\ServerRequestFactory();
+$streamFactory = new HttpSoft\Message\StreamFactory();
+$uploadsFactory = new HttpSoft\Message\UploadedFileFactory();
 
-// Don't do it in production, assembling takes it's time
-Builder::rebuild();
+$worker = new RoadRunner\Http\PSR7Worker($worker, $serverRequestFactory, $streamFactory, $uploadsFactory);
 
-$container = new Container(require Builder::path('web'));
+$config = new Config(
+            dirname(__DIR__),
+            '/config/packages', // Configs path.
+        );
 
-require dirname(__DIR__) . '/src/globals.php';
+$container = new Container(
+    $config->get('web'),
+    $config->get('providers-web')
+);
 
-$container->set(Spiral\RoadRunner\PSR7Client::class, $psr7);
 $application = $container->get(Application::class);
 $application->start();
 
-while ($request = $psr7->acceptRequest()) {
+while ($request = $worker->waitRequest()) {
     $response = $application->handle($request);
-    $psr7->respond($response);
+    $worker->respond($response);
     $application->afterEmit($response);
     $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
     gc_collect_cycles();

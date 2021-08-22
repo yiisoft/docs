@@ -33,16 +33,21 @@ use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 
 ini_set('display_errors', 'stderr');
 require 'vendor/autoload.php';
 
-// Don't do it in production, assembling takes it's time
-Builder::rebuild();
 
-$container = new Container(require Builder::path('web'));
+$config = new Config(
+            dirname(__DIR__),
+            '/config/packages', // Configs path.
+        );
 
+$container = new Container(
+    $config->get('web'),
+    $config->get('providers-web')
+);
 $application = $container->get(Application::class);
 
 $serverRequestFactory = new \Ilex\SwoolePsr7\SwooleServerRequestConverter(
