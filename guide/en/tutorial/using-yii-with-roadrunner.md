@@ -109,7 +109,8 @@ while ($request = $worker->waitRequest()) {
         $response = $application->handle($request);
         $worker->respond($response);
     } catch (\Throwable $t) {
-        // TODO: process it    
+        // TODO: render it properly
+        $worker->getWorker()->error((string)$t);            
     } finally {
         $application->afterEmit($response ?? null);
         $resetter->reset(); // We should reset the state of such services every request.
