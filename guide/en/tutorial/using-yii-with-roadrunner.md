@@ -52,37 +52,69 @@ Create `/psr-worker.php`:
 
 ```php
 <?php
-/**
- * @var Goridge\RelayInterface $relay
- */
-use Spiral\Goridge;
+
+declare(strict_types=1);
+
 use Spiral\RoadRunner;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 
 ini_set('display_errors', 'stderr');
-require 'vendor/autoload.php';
 
-$worker = new RoadRunner\Worker(new Goridge\StreamRelay(STDIN, STDOUT));
-$psr7 = new RoadRunner\PSR7Client($worker);
+define('YII_ENV', getenv('env') ?: 'production');
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-// Don't do it in production, assembling takes it's time
-Builder::rebuild();
+$worker = RoadRunner\Worker::create();
+$serverRequestFactory = new HttpSoft\Message\ServerRequestFactory();
+$streamFactory = new HttpSoft\Message\StreamFactory();
+$uploadsFactory = new HttpSoft\Message\UploadedFileFactory();
 
-$container = new Container(require Builder::path('web'));
+$worker = new RoadRunner\Http\PSR7Worker($worker, $serverRequestFactory, $streamFactory, $uploadsFactory);
 
-require dirname(__DIR__) . '/src/globals.php';
+$config = new Config(
+    dirname(__DIR__),
+    '/config/packages',
+    null,
+    [
+        'params',
+        'events',
+        'events-web',
+        'events-console',
+    ]
+);
 
-$container->set(Spiral\RoadRunner\PSR7Client::class, $psr7);
+$container = new Container(
+    $config->get('web'),
+    $config->get('providers-web')
+);
+
+$bootstrapList = $config->get('bootstrap-web');
+foreach ($bootstrapList as $callback) {
+    if (!(is_callable($callback))) {
+        $type = is_object($callback) ? get_class($callback) : gettype($callback);
+
+        throw new \RuntimeException("Bootstrap callback must be callable, $type given.");
+    }
+    $callback($container);
+}
+
+$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 $application = $container->get(Application::class);
 $application->start();
 
-while ($request = $psr7->acceptRequest()) {
-    $response = $application->handle($request);
-    $psr7->respond($response);
-    $application->afterEmit($response);
-    gc_collect_cycles();
+while ($request = $worker->waitRequest()) {
+    $response = null;
+    try {
+        $response = $application->handle($request);
+        $worker->respond($response);
+    } catch (\Throwable $t) {
+        // TODO: process it    
+    } finally {
+        $application->afterEmit($response ?? null);
+        $resetter->reset(); // We should reset the state of such services every request.
+        gc_collect_cycles();
+    }
 }
 
 $application->shutdown();

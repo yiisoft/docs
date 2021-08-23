@@ -27,23 +27,51 @@ Create an entry script, `server.php`:
 
 ```php
 <?php
+
+declare(strict_types=1);
+
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
-use Yiisoft\Composer\Config\Builder;
+use Yiisoft\Config\Config;
 
 ini_set('display_errors', 'stderr');
-require 'vendor/autoload.php';
 
-// Don't do it in production, assembling takes it's time
-Builder::rebuild();
+define('YII_ENV', getenv('env') ?: 'production');
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-$container = new Container(require Builder::path('web'));
+$config = new Config(
+    dirname(__DIR__),
+    '/config/packages',
+    null,
+    [
+        'params',
+        'events',
+        'events-web',
+        'events-console',
+    ]
+);
+
+$container = new Container(
+    $config->get('web'),
+    $config->get('providers-web')
+);
+
+$bootstrapList = $config->get('bootstrap-web');
+foreach ($bootstrapList as $callback) {
+    if (!(is_callable($callback))) {
+        $type = is_object($callback) ? get_class($callback) : gettype($callback);
+
+        throw new \RuntimeException("Bootstrap callback must be callable, $type given.");
+    }
+    $callback($container);
+}
 
 $application = $container->get(Application::class);
+$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 
 $serverRequestFactory = new \Ilex\SwoolePsr7\SwooleServerRequestConverter(
     $container->get(ServerRequestFactoryInterface::class),
@@ -60,12 +88,19 @@ $server->on('start', static function (Swoole\Http\Server $server) use ($applicat
 });
 
 $server->on('request', static function (Swoole\Http\Request $request, Swoole\Http\Response $response) use ($serverRequestFactory, $application) {
-    $psr7Request = $serverRequestFactory->createFromSwoole($request);
-    $psr7Response = $application->handle($psr7Request);
-
-    $converter = new \Ilex\SwoolePsr7\SwooleResponseConverter($response);
-    $converter->send($psr7Response);
-    $application->afterEmit($psr7Response);
+    $psr7Response = null;
+    try { 
+        $psr7Request = $serverRequestFactory->createFromSwoole($request);
+        $psr7Response = $application->handle($psr7Request);
+    
+        $converter = new \Ilex\SwoolePsr7\SwooleResponseConverter($response);
+        $converter->send($psr7Response);
+    } catch (\Throwable $t) {
+        // TODO: process it
+    } finally {
+        $application->afterEmit($psr7Response ?? null);
+        $resetter->reset(); // We should reset the state of such services every request.    
+    }
 });
 
 $server->on('shutdown', static function (Swoole\Http\Server $server) use ($application) {
