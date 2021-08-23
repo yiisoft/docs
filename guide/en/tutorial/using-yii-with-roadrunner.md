@@ -53,13 +53,17 @@ Create `/psr-worker.php`:
 ```php
 <?php
 
+declare(strict_types=1);
+
 use Spiral\RoadRunner;
 use Yiisoft\Di\Container;
 use Yiisoft\Yii\Web\Application;
 use Yiisoft\Config\Config;
 
 ini_set('display_errors', 'stderr');
-require 'vendor/autoload.php';
+
+define('YII_ENV', getenv('env') ?: 'production');
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $worker = RoadRunner\Worker::create();
 $serverRequestFactory = new HttpSoft\Message\ServerRequestFactory();
@@ -69,25 +73,48 @@ $uploadsFactory = new HttpSoft\Message\UploadedFileFactory();
 $worker = new RoadRunner\Http\PSR7Worker($worker, $serverRequestFactory, $streamFactory, $uploadsFactory);
 
 $config = new Config(
-            dirname(__DIR__),
-            '/config/packages', // Configs path.
-        );
+    dirname(__DIR__),
+    '/config/packages',
+    null,
+    [
+        'params',
+        'events',
+        'events-web',
+        'events-console',
+    ]
+);
 
 $container = new Container(
     $config->get('web'),
     $config->get('providers-web')
 );
 
+$bootstrapList = $config->get('bootstrap-web');
+foreach ($bootstrapList as $callback) {
+    if (!(is_callable($callback))) {
+        $type = is_object($callback) ? get_class($callback) : gettype($callback);
+
+        throw new \RuntimeException("Bootstrap callback must be callable, $type given.");
+    }
+    $callback($container);
+}
+
 $resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 $application = $container->get(Application::class);
 $application->start();
 
 while ($request = $worker->waitRequest()) {
-    $response = $application->handle($request);
-    $worker->respond($response);
-    $application->afterEmit($response);
-    $resetter->reset(); // We should reset the state of such services every request.
-    gc_collect_cycles();
+    $response = null;
+    try {
+        $response = $application->handle($request);
+        $worker->respond($response);
+    } catch (\Throwable $t) {
+        // TODO: process it    
+    } finally {
+        $application->afterEmit($response ?? null);
+        $resetter->reset(); // We should reset the state of such services every request.
+        gc_collect_cycles();
+    }
 }
 
 $application->shutdown();
