@@ -87,19 +87,22 @@ $server->on('start', static function (Swoole\Http\Server $server) use ($applicat
     echo "Swoole http server is started at http://127.0.0.1:9501\n";
 });
 
-$server->on('request', static function (Swoole\Http\Request $request, Swoole\Http\Response $response) use ($serverRequestFactory, $application) {
+$server->on('request', static function (Swoole\Http\Request $request, Swoole\Http\Response $response) use ($serverRequestFactory, $application, $container) {
     $psr7Response = null;
-    try { 
+    try {
+        $requestContainer = clone $container;
         $psr7Request = $serverRequestFactory->createFromSwoole($request);
         $psr7Response = $application->handle($psr7Request);
     
         $converter = new \Ilex\SwoolePsr7\SwooleResponseConverter($response);
         $converter->send($psr7Response);
     } catch (\Throwable $t) {
-        // TODO: process it
+        // TODO: render it properly
+        $response->end($t->getMessage());
     } finally {
         $application->afterEmit($psr7Response ?? null);
-        $resetter->reset(); // We should reset the state of such services every request.    
+        $resetter->reset(); // We should reset the state of such services every request.
+        $container = $requestContainer;    
     }
 });
 
