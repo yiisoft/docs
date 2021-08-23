@@ -44,10 +44,11 @@ clean up services at the end of the request processing. In this case, a state re
 
 ```php
 initializeContext();
+$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 while ($request = getRequest()) {
    $response = process($request);
    emit($response);
-   $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
+   $resetter->reset(); // We should reset the state of such services every request.
 }
 ```
 

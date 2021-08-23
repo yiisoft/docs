@@ -78,6 +78,7 @@ $container = new Container(
     $config->get('providers-web')
 );
 
+$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 $application = $container->get(Application::class);
 $application->start();
 
@@ -85,7 +86,7 @@ while ($request = $worker->waitRequest()) {
     $response = $application->handle($request);
     $worker->respond($response);
     $application->afterEmit($response);
-    $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
+    $resetter->reset(); // We should reset the state of such services every request.
     gc_collect_cycles();
 }
 
