@@ -25,12 +25,12 @@ Changelog is written for each version released. The file name is `CHANGELOG.md`.
 There "My package" is the name of the package, `1.0.1` is the version released followed by release date.
 For each version there are number of lines listing the changes. "Bug" refers to change type. The following types are used:
 
-- New - New features.
-- Chg - General changes.
-- Enh - Existing feature enhancements.
 - Bug - Bug fixes.
+- Enh - Existing feature enhancements.
+- Chg - General changes.
+- New - New features.
 
-In the changelog file lines should be ordered as New, Chg, Enh, Bug.
+In the changelog file lines should be ordered as Bug, Enh, Chg, New.
 
 "#42" above is the number of issue or pull request corresponding to the change. "author1" is the GitHub nickname of the
 code author. "author2" is additional author.
