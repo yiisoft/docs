@@ -99,7 +99,6 @@ foreach ($bootstrapList as $callback) {
     $callback($container);
 }
 
-$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 $application = $container->get(Application::class);
 $application->start();
 
@@ -113,7 +112,7 @@ while ($request = $worker->waitRequest()) {
         $worker->getWorker()->error((string)$t);            
     } finally {
         $application->afterEmit($response ?? null);
-        $resetter->reset(); // We should reset the state of such services every request.
+        $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
         gc_collect_cycles();
     }
 }

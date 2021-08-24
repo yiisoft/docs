@@ -71,7 +71,6 @@ foreach ($bootstrapList as $callback) {
 }
 
 $application = $container->get(Application::class);
-$resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 
 $serverRequestFactory = new \Ilex\SwoolePsr7\SwooleServerRequestConverter(
     $container->get(ServerRequestFactoryInterface::class),
@@ -101,7 +100,7 @@ $server->on('request', static function (Swoole\Http\Request $request, Swoole\Htt
         $response->end($t->getMessage());
     } finally {
         $application->afterEmit($psr7Response ?? null);
-        $resetter->reset(); // We should reset the state of such services every request.
+        $container->get(\Yiisoft\Di\StateResetter::class)->reset();
         $container = $requestContainer;    
     }
 });
