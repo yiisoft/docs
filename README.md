@@ -2,6 +2,10 @@
 
 - [English](https://github.com/yiisoft/docs/tree/master/guide/en)
 
+# Yii3 Community Cookbook
+
+- [English](https://github.com/yiisoft/docs/tree/master/cookbook/en)
+
 # Internals
 
 - [000 - Packages](000-packages.md)
