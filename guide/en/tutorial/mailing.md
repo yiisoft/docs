@@ -6,7 +6,7 @@ and a basic interface for sending emails. Out of the box the package provides a 
 actually sending an email, writes its contents into a file. Such default is useful during initial application
 development.
 
-There is also [Swift Mailer](https://github.com/yiisoft/mailer-swiftmailer) and
+There are also [Swift Mailer](https://github.com/yiisoft/mailer-swiftmailer) and
 [Symfony Mailer](https://github.com/yiisoft/mailer-symfony) based official drivers available as a
 separate packages that actually can send emails. In the examples of this guide Symfony Mailer is used.
 
