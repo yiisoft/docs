@@ -6,8 +6,9 @@ and a basic interface for sending emails. Out of the box the package provides a 
 actually sending an email, writes its contents into a file. Such default is useful during initial application
 development.
 
-There is also [SwiftMailer-based official driver available](https://github.com/yiisoft/mailer-swiftmailer) as
-a separate package that actually can send emails. In the examples of this guide this driver is used.
+There are also [Swift Mailer](https://github.com/yiisoft/mailer-swiftmailer) and
+[Symfony Mailer](https://github.com/yiisoft/mailer-symfony) based official drivers available as a
+separate packages that actually can send emails. In the examples of this guide Symfony Mailer is used.
 
 ## Configuring mailer
 
@@ -20,13 +21,12 @@ Manually an instance could be created as follows:
 use Yiisoft\Mailer\MessageBodyRenderer;
 use Yiisoft\Mailer\MessageBodyTemplate;
 use Yiisoft\Mailer\MessageFactory;
-use Yiisoft\Mailer\SwiftMailer\Mailer;
-use Yiisoft\Mailer\SwiftMailer\Message;
+use Yiisoft\Mailer\Symfony\Mailer;
+use Yiisoft\Mailer\Symfony\Message;
 
 /**
  * @var \Psr\EventDispatcher\EventDispatcherInterface $dispatcher
- * @var \Swift_Events_EventListener[] $plugins
- * @var \Swift_Transport $transport
+ * @var \Symfony\Component\Mailer\Transport\TransportInterface $transport
  * @var \Yiisoft\View\View $view
  */
 
@@ -37,7 +37,6 @@ $mailer = new Mailer(
     new MessageBodyRenderer($view, $template),
     $dispatcher,
     $transport,
-    $plugins, // By default, an empty array
 );
 ```
 
@@ -139,11 +138,11 @@ which is passed to the mailer constructor.
 ```php
 use Yiisoft\Mailer\MessageBodyRenderer;
 use Yiisoft\Mailer\MessageBodyTemplate;
-use Yiisoft\Mailer\SwiftMailer\Mailer;
+use Yiisoft\Mailer\Symfony\Mailer;
 
 /**
  * @var \Psr\EventDispatcher\EventDispatcherInterface $dispatcher
- * @var \Swift_Transport $transport
+ * @var \Symfony\Component\Mailer\Transport\TransportInterface $transport
  * @var \Yiisoft\View\View $view
  * @var \Yiisoft\Mailer\MessageFactory $factory
  */
@@ -187,6 +186,10 @@ that contains many useful methods for the purpose:
 - `withCc()` - Returns a new instance with the specified Cc (additional copy receiver) addresses.
 - `withBcc()` - Returns a new instance with the specified Bcc (hidden copy receiver) addresses.
 - `withSubject()` - Returns a new instance with the specified message subject.
+- `withDate()` - Returns a new instance with the specified date when the message was sent.
+- `withPriority()` - Returns a new instance with the specified priority of this message.
+- `withReturnPath()` - Returns a new instance with the specified return-path (the bounce address) of this message.
+- `withSender()` - Returns a new instance with the specified actual sender email address.
 - `withHtmlBody()` - Returns a new instance with the specified message HTML content.
 - `withTextBody()` - Returns a new instance with the specified message plain text content.
 - `withAttached()` - Returns a new instance with the specified attached file.
@@ -218,6 +221,10 @@ A number of getters is also available:
 - `getCc()` - Returns the Cc (additional copy receiver) addresses of this message.
 - `getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this message.
 - `getSubject()` - Returns the message subject.
+- `getDate()` - Returns the date when the message was sent, or null if it was not set.
+- `getPriority()` - Returns the priority of this message.
+- `getReturnPath()` - Returns the return-path (the bounce address) of this message.
+- `getSender()` - Returns the message actual sender email address.
 - `getHtmlBody()` - Returns the message HTML body.
 - `getTextBody()` - Returns the message text body.
 - `getHeader()` - Returns all values for the specified header.
