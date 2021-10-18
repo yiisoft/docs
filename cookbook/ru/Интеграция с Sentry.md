@@ -3,18 +3,18 @@
 ## Оглавление
 0. [Что такое Sentry](#Что-такое-Sentry)
 1. [Установка](#Установка)
-   1. [Установка пакета](#Установка-пакета)
-   2. [Установка http-драйвера](#Установка-http-драйвера)
+   1.1. [Установка пакета](#Установка-пакета)
+   1.2. [Установка HTTP-драйвера](#Установка-HTTP-драйвера)
 2. [Настройка](#Настройка)
-   3. [Получение и сохранение токена](#Получение-и-сохранение-токена)
-   4. [Настройка http-клиента](#Настройка-http-клиента)
+   2.1. [Получение и сохранение токена](#Получение-и-сохранение-токена)
+   2.2. [Настройка HTTP-клиента](#Настройка-HTTP-клиента)
 3. [Интеграция](#Интеграция)
-   1. [Веб](#Веб)
-   2. [Консоль](#Консоль)
+   3.1. [Веб](#Веб)
+   3.2. [Консоль](#Консоль)
 
 ## Что такое Sentry
 
-Sentry – это инструмент мониторинга и отладки производительности и стабильности.
+[Sentry](https://sentry.io/) – это инструмент мониторинга и отладки производительности и стабильности.
 Sentry представляет доступ к событиям, которые вы отправите туда из вашего приложения.
 
 Чаще всего Sentry используется для мониторинга ошибок (исключений). 
@@ -31,22 +31,20 @@ Sentry представляет доступ к событиям, которые
 
 Для установки нужного пакета установите пакет `yiisoft/yii-sentry` следующей командой:
 
-```
-composer require yiisoft/yii-sentry
-```
+```shell
+composer require yiisoft/yii-sentry --prefer-dist
 
-### Установка http-драйвера
+### Установка HTTP-драйвера
 
-Библиотека https://github.com/getsentry/sentry-php требует установки `php-http/httplug` пакета и любого драйвера. 
+Библиотека [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) требует установки `php-http/httplug` пакета и любого HTTP-драйвера. 
 Для примеры используется адаптер `Guzzle`. 
 
 > Список всех адаптеров можно найти на [этой](https://docs.php-http.org/en/latest/clients.html#clients-adapters) странице.
 
 Для установки пакетов выполните в консоли следующую команду.
 
-```
-composer require php-http/httplug php-http/guzzle7-adapter
-```
+```shell
+composer require php-http/httplug php-http/guzzle7-adapter --prefer-dist
 
 ## Настройка
 
@@ -54,9 +52,9 @@ composer require php-http/httplug php-http/guzzle7-adapter
 
 Далее сконфигурируем приложение.
 
-Для начала зарегистрируйтесь в https://sentry.io и создать проект. 
+Для начала зарегистрируйтесь в [Sentry](https://sentry.io) и создайте проект. 
 
-Далее в настройках проекта, на вкладке `General Settings`, найти поле `Security Token` и скопировать оттуда значение.
+Далее в настройках проекта, на вкладке `General Settings`, найдите поле `Security Token` и скопируйте оттуда значение.
 
 Теперь положите этот токен в настройки пакета. По умолчанию конфиг лежит в `config/packages/yiisoft/yii-sentry/config/params.php`.
 Скопированный токен запишите в значение элемента массива по ключу `yiisoft/yii-sentry` => `options` => `dsn`. Пример:
@@ -72,9 +70,9 @@ composer require php-http/httplug php-http/guzzle7-adapter
 ```
 
 
-### Настройка http-клиента
+### Настройка HTTP-клиента
 
-После установки http-клиента, сконфигурируйте его.
+После установки HTTP-клиента, сконфигурируйте его.
 
 Создайте файл `config/common/sentry.php` и положите в него следующий код:
 
@@ -100,7 +98,7 @@ return [
 
 Поддержка Sentry для `web` реализована как `middleware`. 
 
-А это значит, что достаточно будет добавить `SentryMiddleware` в глобальный список `middleware`, в `config/web/application.php`:
+А это значит, что достаточно будет добавить `SentryMiddleware` в глобальный список `middleware` в `config/web/application.php`:
 
 
 ```diff
@@ -127,6 +125,6 @@ return [
 
 ### Консоль
 
-Поддержка Sentry для `console` в виде обработчика события [ConsoleEvents::ERROR](https://symfony.com/doc/current/components/console/events.html#the-consoleevents-error-event).
+Sentry поддерживает `console` в виде обработчика события [ConsoleEvents::ERROR](https://symfony.com/doc/current/components/console/events.html#the-consoleevents-error-event).
 
 Пакет предоставляет конфигурационный файл, который автоматически подписывает приложение на это событие.
