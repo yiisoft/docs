@@ -208,9 +208,9 @@ arguments. That is usually called auto-wiring. It happens for sub-dependencies a
 explicitly, container would check if it has such a dependency first. As a developer it is enough to declare a dependency
 you need, and it would be got from container automatically.
 
-### Lazy dependency <span id="lazy-dependency"></span>
+### Lazy dependencies <span id="lazy-dependencies"></span>
 
-We can define lazy dependency injection, as deferring the creation of an object's dependencies until they are actually used, not before.  
+We can define lazy dependencies injection, as deferring the creation of an object's dependencies until they are actually used, not before.  
 
 ```php
 <?php
