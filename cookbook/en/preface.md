@@ -9,8 +9,8 @@ of Web applications using PHP. Because of its component-based architecture and s
 support, it is especially suitable for developing large-scale applications such as portals, forums, content
 management systems (CMS), e-commerce projects, RESTful Web services, and so on.
 
-Together with a comprehensive set of documentation and a enthusiastic user community Yii can reduce your development
-time in a long run significantly compared with other frameworks.
+Together with a comprehensive set of documentation and an enthusiastic user community Yii can reduce your development
+time in a long run significantly.
 
 ## What's the book about?
 
@@ -24,7 +24,7 @@ grouped by topic, but you are free to read them in any order as there is no depe
 
 ## Prerequisites
 
-- You should have Yii 3.0 installed.
+- You should have Yii3 installed.
 - You should be familiar with the framework basics and the official guide.
 
 ## How to participate

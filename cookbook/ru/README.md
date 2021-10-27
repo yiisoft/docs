@@ -12,5 +12,5 @@
 Оглавление
 ---------------
 
-[Встёпление](preface.md)
+[Вступление](preface.md)
 [Интеграция с Sentry](sentry-integration.md)
