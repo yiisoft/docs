@@ -208,6 +208,32 @@ arguments. That is usually called auto-wiring. It happens for sub-dependencies a
 explicitly, container would check if it has such a dependency first. As a developer it is enough to declare a dependency
 you need, and it would be got from container automatically.
 
+### Lazy dependency <span id="lazy-dependency"></span>
+
+We can define lazy dependency injection, as deferring the creation of an object's dependencies until they are actually used, not before.  
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Definitions\DynamicReference;
+use Yiisoft\Form\Widget\Field;
+
+/** @var array $params */
+
+if ($params['yiisoft/form']['bootstrap5']['enabled'] === true) {
+    return [
+        Field::class => DynamicReference::to(
+            static function () use ($params): Field {
+                return Field::widget($params['yiisoft/form']['bootstrap5']['fieldConfig']);
+            }
+        ),
+    ];
+}
+```
+
+In this example we configure a widget inside a static function with the definition `DinamicReference::to()`, this tells container, which should create the reference when the object is called from the container, thus avoiding the error when trying to create any undefined dependencies, such as the `WidgetFactory` which is initialized after the container is created at bootstraping stage.
 
 ## References <span id="references"></span>
 
