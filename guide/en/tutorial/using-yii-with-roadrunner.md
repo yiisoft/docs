@@ -10,7 +10,7 @@ performance significantly.
 RoadRunner works on Linux, MacOS and Windows. The best way to install it is to use Composer:
 
 ```
-composer require spiral/roadrunner
+composer require yiisoft/yii-runner-roadrunner
 ```
 
 After installation is done, run
@@ -27,100 +27,58 @@ First, we need to configure the server itself. Create `./.rr.yaml` and add the f
 
 ```yaml
 server:
-  command: "php psr-worker.php"
+  command: "php /worker.php"
+
+rpc:
+  listen: tcp://127.0.0.1:6001
 
 http:
-  address: ":8080"
+  address: :8080
   pool:
-    num_workers: 3
-
+    num_workers: 4
+    max_jobs: 64
   middleware: ["static", "headers"]
-
   static:
-    dir:   "public"
+    dir:   "/app/public"
     forbid: [".php", ".htaccess"]
-
   headers:
     response:
       "Cache-Control": "no-cache"
+
+reload:
+  interval: 1s
+  patterns: [ ".php" ]
+  services:
+    http:
+      recursive: true
+      dirs: [ "/app" ]
+
+logs:
+  mode: production
+  level: warn
 ```
 
-We're specifying that entry script is `psr-worker.php`, there should be three workers on port 8080, `public` directory
+We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory
 files are static ones except `.php` and `.htaccess`. Also, we're sending additional header.
 
-Create `/psr-worker.php`:
+Create `/worker.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use Spiral\RoadRunner;
-use Yiisoft\Di\Container;
-use Yiisoft\Yii\Web\Application;
-use Yiisoft\Config\Config;
+
+use Yiisoft\Yii\Runner\RoadRunner\RoadRunnerApplicationRunner;
 
 ini_set('display_errors', 'stderr');
 
-define('YII_ENV', getenv('env') ?: 'production');
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/preload.php';
 
-$worker = RoadRunner\Worker::create();
-$serverRequestFactory = new HttpSoft\Message\ServerRequestFactory();
-$streamFactory = new HttpSoft\Message\StreamFactory();
-$uploadsFactory = new HttpSoft\Message\UploadedFileFactory();
+(new RoadRunnerApplicationRunner($_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();
 
-$worker = new RoadRunner\Http\PSR7Worker($worker, $serverRequestFactory, $streamFactory, $uploadsFactory);
-
-$config = new Config(
-    dirname(__DIR__),
-    '/config/packages',
-    null,
-    [
-        'params',
-        'events',
-        'events-web',
-        'events-console',
-    ]
-);
-
-$container = new Container(
-    $config->get('web'),
-    $config->get('providers-web')
-);
-
-$bootstrapList = $config->get('bootstrap-web');
-foreach ($bootstrapList as $callback) {
-    if (!(is_callable($callback))) {
-        $type = is_object($callback) ? get_class($callback) : gettype($callback);
-
-        throw new \RuntimeException("Bootstrap callback must be callable, $type given.");
-    }
-    $callback($container);
-}
-
-$application = $container->get(Application::class);
-$application->start();
-
-while ($request = $worker->waitRequest()) {
-    $response = null;
-    try {
-        $response = $application->handle($request);
-        $worker->respond($response);
-    } catch (\Throwable $t) {
-        // TODO: render it properly
-        $worker->getWorker()->error((string)$t);            
-    } finally {
-        $application->afterEmit($response ?? null);
-        $container->get(\Yiisoft\Di\StateResetter::class)->reset(); // We should reset the state of such services every request.
-        gc_collect_cycles();
-    }
-}
-
-$application->shutdown();
 ```
-
-We're creating a worker, initializing DI container and then starting to process requests in an event loop. 
 
 ## Starting a server
 
