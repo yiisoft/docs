@@ -23,11 +23,11 @@ That would download ready to use RoadRunner server `rr` binary.
 
 ## Configuration
 
-First, we need to configure the server itself. Create `./.rr.yaml` and add the following config:
+First, we need to configure the server itself. Create `/.rr.yaml` and add the following config:
 
 ```yaml
 server:
-  command: "php /worker.php"
+  command: "php worker.php"
 
 rpc:
   listen: tcp://127.0.0.1:6001
@@ -39,7 +39,7 @@ http:
     max_jobs: 64
   middleware: ["static", "headers"]
   static:
-    dir:   "/app/public"
+    dir:   "public"
     forbid: [".php", ".htaccess"]
   headers:
     response:
@@ -51,7 +51,7 @@ reload:
   services:
     http:
       recursive: true
-      dirs: [ "/app" ]
+      dirs: [ "." ]
 
 logs:
   mode: production
@@ -73,11 +73,9 @@ use Yiisoft\Yii\Runner\RoadRunner\RoadRunnerApplicationRunner;
 
 ini_set('display_errors', 'stderr');
 
-require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/preload.php';
 
-(new RoadRunnerApplicationRunner($_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();
-
+(new RoadRunnerApplicationRunner(__DIR__, $_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();
 ```
 
 ## Starting a server
