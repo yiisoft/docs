@@ -13,7 +13,7 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 
 - Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible.
 - [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
-- Use strict typing.
+- Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`.
 
 ## Comments
 
