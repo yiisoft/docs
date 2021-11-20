@@ -83,17 +83,17 @@ To apply middleware to application overall regardless of URL, adjust `config/app
 
 ```php
 return [
-    Yiisoft\Yii\Web\Application::class => [
+    Yiisoft\Yii\Http\Application::class => [
         '__construct()' => [
             'dispatcher' => DynamicReference::to(static function (Injector $injector) {
                 return ($injector->make(MiddlewareDispatcher::class))
                     ->withMiddlewares(
                         [
-                            Router::class,
-                            CsrfMiddleware::class,
-                            SessionMiddleware::class,
-                            BasicAuthentication::class,
                             ErrorCatcher::class,
+                            BasicAuthentication::class,
+                            SessionMiddleware::class,
+                            CsrfMiddleware::class,
+                            Router::class,
                         ]
                     );
             }),
