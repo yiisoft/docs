@@ -137,8 +137,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Router\CurrentRouteInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 class EchoController
 {
@@ -149,9 +149,9 @@ class EchoController
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(CurrentRouteInterface $route): ResponseInterface
     {
-        $message = $request->getAttribute('message', 'Hello!');
+        $message = $route->getArgument('message', 'Hello!');
 
         return $this->viewRenderer->render('say', [
             'message' => $message,
