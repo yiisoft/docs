@@ -179,4 +179,4 @@ foreach ($files as $file) {
 ## Attributes
 
 Application middleware may set custom request attributes using `withAttribute()` method. These attributes could be
-obtained with `getAttribute()`. For example, router is setting matched route parameters as same-named attributes.  
+obtained with `getAttribute()`.

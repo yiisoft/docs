@@ -7,7 +7,7 @@ It is usually done via autowiring:
 ```php
 public function actionIndex(CurrentRouteInterface $route, MyService $myService): ResponseInterface
 {
-    $id = $request->getArgument('id');
+    $id = $route->getArgument('id');
     
     // ...
     $extraData = $myService->getExtraData($id);
