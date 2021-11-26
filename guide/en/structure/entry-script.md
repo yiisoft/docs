@@ -64,6 +64,7 @@ declare(strict_types=1);
 use Psr\Container\ContainerInterface;
 use Yiisoft\Config\Config;
 use Yiisoft\Di\Container;
+use Yiisoft\Di\ContainerConfig;
 use Yiisoft\Yii\Console\Application;
 use Yiisoft\Yii\Console\Output\ConsoleBufferedOutput;
 
@@ -76,10 +77,12 @@ $config = new Config(
     '/config/packages',
 );
 
-$container = new Container(
-    $config->get('console'),
-    $config->get('providers-console')
-);
+$containerConfig = ContainerConfig::create()
+    ->withDefinitions($config->get('console'))
+    ->withProviders($config->get('providers-console'));
+    
+
+$container = new Container($containerConfig);
 
 /** @var ContainerInterface $container */
 $container = $container->get(ContainerInterface::class);

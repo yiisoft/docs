@@ -35,6 +35,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Yiisoft\Di\Container;
+use Yiisoft\Di\ContainerConfig;
 use Yiisoft\Yii\Web\Application;
 use Yiisoft\Config\Config;
 
@@ -55,10 +56,12 @@ $config = new Config(
     ]
 );
 
-$container = new Container(
-    $config->get('web'),
-    $config->get('providers-web')
-);
+$containerConfig = ContainerConfig::create()
+    ->withDefinitions($config->get('web'))
+    ->withProviders($config->get('providers-web'));
+
+
+$container = new Container($containerConfig);
 
 $bootstrapList = $config->get('bootstrap-web');
 foreach ($bootstrapList as $callback) {
