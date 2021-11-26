@@ -59,8 +59,6 @@ $config = new Config(
 $containerConfig = ContainerConfig::create()
     ->withDefinitions($config->get('web'))
     ->withProviders($config->get('providers-web'));
-
-
 $container = new Container($containerConfig);
 
 $bootstrapList = $config->get('bootstrap-web');

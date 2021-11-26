@@ -80,8 +80,6 @@ $config = new Config(
 $containerConfig = ContainerConfig::create()
     ->withDefinitions($config->get('console'))
     ->withProviders($config->get('providers-console'));
-    
-
 $container = new Container($containerConfig);
 
 /** @var ContainerInterface $container */
