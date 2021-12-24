@@ -170,7 +170,7 @@ return [
 ];
 ```
 
-The configuration above would result in a match with both `/user` and `/user/123`. In both cases `CurrentRouteInterface` service will contain `id` argument filled. In the first case it will be default `42` and in the second case it will be specified `123`.
+The configuration above would result in a match with both `/user` and `/user/123`. In both cases `CurrentRoute` service will contain `id` argument filled. In the first case it will be default `42` and in the second case it will be specified `123`.
 
 In cause URL should be valid for a single host, you can specify it with `host()`. 
 
@@ -285,7 +285,7 @@ echo $url->generate('third', ['id' => '42']);
 ### Optional parts <span id="optional-parts"></span>
 
 Optional pattern parts are wrapped with `[` and `]`. For example, `/posts[/{id}]` pattern would match
-both `http://example.com/posts` and `http://example.com/posts/42`. Router would fill `id` argument of `CurrentRouteInterface` service in the second case only. For this case default value could be specified:
+both `http://example.com/posts` and `http://example.com/posts/42`. Router would fill `id` argument of `CurrentRoute` service in the second case only. For this case default value could be specified:
 
 ```php
 use \Yiisoft\Router\Route;

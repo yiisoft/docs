@@ -9,12 +9,12 @@ You can check if a user has certain permissions by using `\Yiisoft\User\User` se
 ```php
 namespace App\Blog\Post;
 
-use Yiisoft\Router\CurrentRouteInterface;
+use Yiisoft\Router\CurrentRoute;
 use Yiisoft\User\User;
 
 class PostController
 {
-    public function actionEdit(CurrentRouteInterface $route, User $user, PostRepository $postRepository)
+    public function actionEdit(CurrentRoute $route, User $user, PostRepository $postRepository)
     {
         $postId = $route->getArgument('id');
         if ($postId === null) {
