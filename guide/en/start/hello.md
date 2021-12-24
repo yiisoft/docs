@@ -137,7 +137,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Yiisoft\Yii\View\ViewRenderer;
-use Yiisoft\Router\CurrentRouteInterface;
+use Yiisoft\Router\CurrentRoute;
 use Psr\Http\Message\ResponseInterface;
 
 class EchoController
@@ -149,7 +149,7 @@ class EchoController
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(CurrentRouteInterface $route): ResponseInterface
+    public function say(CurrentRoute $route): ResponseInterface
     {
         $message = $route->getArgument('message', 'Hello!');
 
