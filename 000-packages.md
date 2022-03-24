@@ -60,4 +60,12 @@ Framework as a whole will keep naming "Yii 3" so it will be considered version 3
 
 ## PHP versions support
 
-Initial release is meant to support PHP 7.4+. We may drop old version support in a major release.
+The support of PHP versions by packages depends on
+[PHP versions life cycle](https://www.php.net/supported-versions.php).
+
+- Package versions with active support MUST support all PHP versions that have active support.
+- Both packages and application templates MUST have supported versions that receive bug and security fixes.
+  These SHOULD correspond to PHP versions receiving security fixes.
+- Packages and application templates MIGHT have supported versions that work with unsupported PHP versions.
+- Bumping minimal PHP version in a package or an application template is considered a minor change.
+- Exception: PHP 7.4 MIGHT not be considered.
