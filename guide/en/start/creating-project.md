@@ -93,7 +93,7 @@ Yii's requirements by using [yiisoft/requirements package](https://github.com/yi
 
 The application installed according to the above instructions should work out of the box with either
 an [Apache HTTP server](http://httpd.apache.org/) or an [Nginx HTTP server](http://nginx.org/), on
-Windows, Mac OS X, or Linux running PHP 7.4 or higher.
+Windows, Mac OS X, or Linux running PHP 8.0 or higher.
 
 On a production server, we recommend configuring your Web server so that the application can be accessed
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.
