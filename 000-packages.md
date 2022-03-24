@@ -60,7 +60,7 @@ Framework as a whole will keep naming "Yii 3" so it will be considered version 3
 
 ## PHP versions support
 
-The support of PHP versions by packages depends on
+The support of PHP versions supported for a package depends on
 [PHP versions life cycle](https://www.php.net/supported-versions.php).
 
 - Package versions with active support MUST support all PHP versions that have active support.
