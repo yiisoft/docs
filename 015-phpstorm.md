@@ -1,18 +1,20 @@
-# 015 - PhpStorm metadata
+# 015 - PhpStorm metadata and attributes
+
+## PhpStorm metadata
 
 [PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps IDE to understand
 code better in cases when regular types and PHPDoc tags do not help.
 
 We use the following set of coding styles for metadata.
 
-## Metadata location
+### Metadata location
 
 - Metadata should be placed in `/.phpstorm.meta.php` directory.
 - Configuration should be split into files. Each file should be named after a class it configures.
 
 > Note: There is no support for sub-directories in PhpStorm yet.
 
-## Constants 
+### Constants 
 
 All constant dictionaries should be named as `{Class FQN}::{Group name}`. Group name should be short and written in
 capital letters. Use underscore as a word separator i.e. `\Yiisoft\Http\Status::STATUSES`. For example:
@@ -33,4 +35,13 @@ registerArgumentsSet(
   \Yiisoft\Http\Method::HEAD,
   \Yiisoft\Http\Method::OPTIONS,
 );
+```
+
+## PhpStorm attributes
+
+In code CAN use [PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes), but package 
+`jetbrains/phpstorm-attributes` MUST be added as a dev dependency:
+
+```shell
+composer require --dev jetbrains/phpstorm-attributes
 ```
