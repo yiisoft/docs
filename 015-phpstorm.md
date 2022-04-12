@@ -39,7 +39,7 @@ registerArgumentsSet(
 
 ## PhpStorm attributes
 
-In code CAN use [PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes), but package 
+[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN be used in code, but package 
 `jetbrains/phpstorm-attributes` MUST be added as a dev dependency:
 
 ```shell
