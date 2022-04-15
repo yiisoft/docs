@@ -23,7 +23,7 @@ The IP is sent by the proxy in the `X-Forwarded-For` header by default, and the 
 In case your proxies are using different headers you can use the request configuration to adjust these, e.g.:
 
 ```php
-/** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $responseFactory */
+/** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */
 $trustedHostsNetworkResolver = $trustedHostsNetworkResolver
     ->withAddedTrustedHosts(
         ['1.0.2.0/24'],
