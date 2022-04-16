@@ -13,11 +13,8 @@ The following is a request config for an application that runs behind an array o
 which are located in the `10.0.2.0/24` IP network:
 
 ```php
-use Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver;
-
-/** @var \Psr\Http\Message\ResponseFactoryInterface $responseFactory */
-$trustedHostsNetworkResolver = (new TrustedHostsNetworkResolver($responseFactory))
-    ->withAddedTrustedHosts(['1.0.2.0/24']);
+/** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */
+$trustedHostsNetworkResolver = $trustedHostsNetworkResolver->withAddedTrustedHosts(['1.0.2.0/24']);
 ```
 
 The IP is sent by the proxy in the `X-Forwarded-For` header by default, and the protocol (`http` or `https`) is sent in
@@ -26,10 +23,8 @@ The IP is sent by the proxy in the `X-Forwarded-For` header by default, and the 
 In case your proxies are using different headers you can use the request configuration to adjust these, e.g.:
 
 ```php
-use Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver;
-
-/** @var \Psr\Http\Message\ResponseFactoryInterface $responseFactory */
-$trustedHostsNetworkResolver = (new TrustedHostsNetworkResolver($responseFactory))
+/** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */
+$trustedHostsNetworkResolver = $trustedHostsNetworkResolver
     ->withAddedTrustedHosts(
         ['1.0.2.0/24'],
         ['X-ProxyUser-Ip'],
