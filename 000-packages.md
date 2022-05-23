@@ -69,3 +69,7 @@ The support of PHP versions supported for a package depends on
 - Packages and application templates MIGHT have supported versions that work with unsupported PHP versions.
 - Bumping minimal PHP version in a package or an application template is considered a minor change.
 - Exception: PHP 7.4 MIGHT not be considered.
+
+## composer.json
+
+A logical OR operator in version ranges MUST use single pipe (`|`). For example: `"yiisoft/arrays": "^1.0|^2.0"`.   
