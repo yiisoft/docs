@@ -15,7 +15,7 @@ Changelog is written for each version released. The file name is `CHANGELOG.md`.
 
 ## 1.0.1 March 23, 2021
 
-- Bug #42: Short description of the change (author1, author2)
+- Bug #42: Short description of the change (@author1, @author2)
 
 ## 1.0.0 February 02, 2021
 
@@ -33,7 +33,7 @@ For each version there are number of lines listing the changes. "Bug" refers to 
 In the changelog file lines should be ordered as New, Chg, Enh, Bug.
 
 "#42" above is the number of issue or pull request corresponding to the change. "author1" is the GitHub nickname of the
-code author. "author2" is additional author.
+code author. "author2" is additional author. Author nickname MUST be prefixed by `@`.
 
 ## Upgrade
 
