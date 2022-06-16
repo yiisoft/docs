@@ -33,7 +33,7 @@ For each version there are number of lines listing the changes. "Bug" refers to 
 In the changelog file lines should be ordered as New, Chg, Enh, Bug.
 
 "#42" above is the number of issue or pull request corresponding to the change. "author1" is the GitHub nickname of the
-code author. "author2" is additional author. Author nickname MUST be prefixed by `@`.
+code author. "author2" is additional author. An author's nickname MUST be prefixed with `@`.
 
 ## Upgrade
 
