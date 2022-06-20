@@ -15,12 +15,12 @@
 
 ## Release Instruction
 
-Release package via [Yii Development Tool](005-development-tool.md). 
+Release a package via [Yii Development Tool](005-development-tool.md). 
 
 1. Check that sign commits locally (see 
 [Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).
 
-2. Pull last changes of master branch from GIT:
+2. Pull last changes from the `master` branch:
 
 ```shell
 ./yii-dev git/checkout master package-name
@@ -37,6 +37,6 @@ Release package via [Yii Development Tool](005-development-tool.md).
 
 5. Select version type (major, minor or path).
 
-6. On question "Push commits and tags, and release on GitHub?" check diff. If diff is right answer "yes".
+6. On the question "Push commits and tags, and release on GitHub?" check a diff. If the diff is alright, answer "yes".
 
-7. For major and minor releases add entry with release notes on [Yii Framework News](https://www.yiiframework.com/news).
+7. For major and minor releases add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news).
