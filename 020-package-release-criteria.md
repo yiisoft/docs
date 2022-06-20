@@ -29,7 +29,7 @@ Release a package via [Yii Development Tool](005-development-tool.md).
 
 3. Check the package for compliance with the criteria above.
 
-4. Run make release command:
+4. Run `release/make` command:
 
 ```shell
 ./yii-dev release/make package-name
