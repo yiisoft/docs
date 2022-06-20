@@ -1,4 +1,6 @@
-# 020 - Package release criteria
+# 020 - Package Release
+
+## Criteria
 
 - No critical issues.
 - Public API changes aren't likely.
@@ -10,3 +12,31 @@
 - Psalm analysis pass on at least level 2.
 - phpdoc is alright.
 - Public API is alright.
+
+## Release Instruction
+
+Release a package via [Yii Development Tool](005-development-tool.md). 
+
+1. Check that you can sign commits locally (see 
+[Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).
+
+2. Pull last changes from the `master` branch:
+
+```shell
+./yii-dev git/checkout master package-name
+./yii-dev git/pull package-name
+```
+
+3. Check the package for compliance with the criteria above.
+
+4. Run `release/make` command:
+
+```shell
+./yii-dev release/make package-name
+```
+
+5. Select version type (major, minor or path).
+
+6. On the question "Push commits and tags, and release on GitHub?" check a diff. If the diff is alright, answer "yes".
+
+7. For major and minor releases add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news).
