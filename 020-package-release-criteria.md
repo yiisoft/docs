@@ -17,7 +17,7 @@
 
 Release a package via [Yii Development Tool](005-development-tool.md). 
 
-1. Check that sign commits locally (see 
+1. Check that you can sign commits locally (see 
 [Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).
 
 2. Pull last changes from the `master` branch:
