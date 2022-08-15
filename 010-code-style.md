@@ -55,6 +55,26 @@ final class X
 }
 ```
 
+### Chain calls
+
+Chained calls should be formatted for better readability. If it is a long chain that doesn't
+fit line length (120 characters) then each call should on a new line:
+
+```php
+$object
+    ->withName('test')
+    ->withValue(87)
+    ->withStatus(Status::NEW)
+    ->withAuthor($author)
+    ->withDeadline($deadline);
+```
+
+If it is a short chain, it is alright for it to be on a single line:
+
+```php
+$object = $object->withName('test');
+```
+
 ## Strings
 
 - When no variables involved, use `'Hello!'`
