@@ -1,6 +1,6 @@
 # Yii 3.0 权威指南
 
-本教程的发布遵循[Yii 文档使用许可](http://www.yiiframework.com/doc/terms/).
+本教程的发布遵循[Yii 文档使用许可](https://www.yiiframework.com/license#docs).
 
 介绍 +
 ------------

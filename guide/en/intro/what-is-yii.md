@@ -35,7 +35,7 @@ If you're already familiar with another framework, you may appreciate knowing ho
   take advantage of Yii's solid architecture to use or develop redistributable packages.
 - High performance is always a primary goal of Yii.
 
-Yii is backed up by a [strong core developer team](http://www.yiiframework.com/team/) financially backed from an
+Yii is backed up by a [strong core developer team](https://www.yiiframework.com/team/) financially backed from an
 [OpenCollective foundation](https://opencollective.com/yiisoft), as well as a large community of professionals constantly
 contributing to Yii's development. The Yii developer team keeps a close eye on the latest Web development trends and
 on the best practices and features found in other frameworks and projects. The most relevant best practices and features
