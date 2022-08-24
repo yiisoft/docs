@@ -92,7 +92,7 @@ Yii's requirements by using [yiisoft/requirements package](https://github.com/yi
   of deploying it to a production server.
 
 The application installed according to the above instructions should work out of the box with either
-an [Apache HTTP server](http://httpd.apache.org/) or an [Nginx HTTP server](http://nginx.org/), on
+an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
 Windows, Mac OS X, or Linux running PHP 8.0 or higher.
 
 On a production server, we recommend configuring your Web server so that the application can be accessed
@@ -160,7 +160,7 @@ RewriteRule . index.php
 
 ### Nginx <span id="nginx"></span>
 
-To use [Nginx](http://wiki.nginx.org/), you should install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
+To use [Nginx](https://wiki.nginx.org/), you should install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
 You may use the following Nginx configuration, replacing `path/to/app/public` with the actual path for 
 `app/public` and `mysite.test` with the actual hostname to serve.
 
@@ -312,7 +312,7 @@ Also, the following list of Microsoft's official resources could be useful in or
 
 ### lighttpd <span id="lighttpd"></span>
 
-To use [lighttpd](http://www.lighttpd.net/) >= 1.4.24 put `index.php` to webroot and add the following to configuration:
+To use [lighttpd](https://www.lighttpd.net/) >= 1.4.24 put `index.php` to webroot and add the following to configuration:
 
 ```
 url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")

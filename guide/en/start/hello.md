@@ -121,7 +121,7 @@ use Yiisoft\Html\Html;
 
 Note that in the above code, the `message` parameter is HTML-encoded
 before being printed. This is necessary as the parameter comes from an end user, making it vulnerable to
-[cross-site scripting (XSS) attacks](http://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
+[cross-site scripting (XSS) attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
 malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
