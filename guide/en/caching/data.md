@@ -53,7 +53,7 @@ Yii provides the following handlers:
 - [Memcached](https://github.com/yiisoft/cache-memcached) - uses PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)
   extension. This option can be considered as the fastest one when dealing with cache in a distributed applications
   (e.g., with several servers, load balancers, etc.)
-- [Wincache](https://github.com/yiisoft/cache-wincache) - ses PHP [WinCache](http://iis.net/downloads/microsoft/wincache-extension)
+- [Wincache](https://github.com/yiisoft/cache-wincache) - ses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
   ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
 
 [More handlers could be found at packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).

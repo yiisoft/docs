@@ -97,7 +97,7 @@ So it makes sense to:
 That's what dependency containers are for.
 
 A dependency injection (DI) container is an object that knows how to instantiate and configure objects and
-all their dependent objects. [Martin Fowler's article](http://martinfowler.com/articles/injection.html) has well
+all their dependent objects. [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
 explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
 Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and
