@@ -45,7 +45,7 @@ and may contain URL handlers or console commands.
 
 ## namespace
 
-Namespace refers to a [PHP language feature](https://secure.php.net/manual/en/language.namespaces.php).
+Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php).
 
 # P
 
