@@ -31,8 +31,8 @@ In Yii, most probably you'll use [form validation](../input/validation.md) to do
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Data_Validation>
-- <https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet>
+- <https://owasp.org/www-community/vulnerabilities/Improper_Data_Validation>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html>
 
 
 ### Escape output
@@ -176,8 +176,8 @@ details possible. If you absolutely need it check twice that access is properly 
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Exception_Handling>
-- <https://www.owasp.org/index.php/Top_10_2007-Information_Leakage>
+- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
+- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
 
 
 ## Using secure connection over TLS
