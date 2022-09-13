@@ -36,3 +36,4 @@ This section will summarize the Yii resources available to help you be more prod
     - Twitter: <https://twitter.com/yiiframework>
     - LinkedIn: <https://www.linkedin.com/groups/yii-framework-1483367>
     - Stackoverflow: <https://stackoverflow.com/questions/tagged/yii3>
+    - Telegram: <https://t.me/yii3en>
