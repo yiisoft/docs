@@ -1,10 +1,10 @@
 # The Definitive Guide to Yii 3.0
 
-- [English](https://github.com/yiisoft/docs/tree/master/guide/en)
+- [English](guide/en)
 
 # Yii3 Community Cookbook
 
-- [English](https://github.com/yiisoft/docs/tree/master/cookbook/en)
+- [English](cookbook/en)
 
 # Internals
 
