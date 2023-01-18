@@ -5,9 +5,9 @@ Note that this is not naming convention for config files. These are could be any
 
 ## Config group name prefixes
 
-- "web" applies to web only i.e. classic server HTML generation, REST, RPC etc.
-- "console" applies to console
-- "common" applies to both web and console
+- "web" postfix applies to web only i.e. classic server HTML generation, REST, RPC etc.
+- "console" postfix applies to console
+- If there's no postfix, it is "common" and applies to both web and console
 - "web" and "console" may override what is defined in "common"
 
 ## Parameters
