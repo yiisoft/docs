@@ -3,6 +3,8 @@
 This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).
 Note that this is not naming convention for config files. These are could be anything and are mapped to group names via `composer.json`.
 
+## Config group name prefixes
+
 - "web" applies to web only i.e. classic server HTML generation, REST, RPC etc.
 - "console" applies to console
 - "common" applies to both web and console
@@ -10,7 +12,7 @@ Note that this is not naming convention for config files. These are could be any
 
 ## Parameters
 
-Application parameters.
+Application config parameters that are used in all configs.
 
 - `params` — common parameters
 - `params-web` — web application parameters
@@ -54,7 +56,7 @@ Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event).
 
 ## Bootstrap
 
-Application bootstrapping.
+Application bootstrapping for [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner).
 
 - `bootstrap` — common bootstrap
 - `bootstrap-web` — web bootstrap
