@@ -22,27 +22,27 @@ Configuration for [yiisoft/di](https://github.com/yiisoft/di).
 
 ### Definitions
 
-- `container` — common container definitions
-- `container-web` — web container definitions
-- `container-console` — console container definitions
+- `di` — common container definitions
+- `di-web` — web container definitions
+- `di-console` — console container definitions
 
 ### Providers
 
-- `container-providers` — common container providers
-- `container-providers-web` — web container providers
-- `container-providers-console` — console container providers
+- `di-providers` — common container providers
+- `di-providers-web` — web container providers
+- `di-providers-console` — console container providers
 
 ### Delegates
 
-- `container-delegates` — common container delegates
-- `container-delegates-web` — web container delegates
-- `container-delegates-console` — console container delegates
+- `di-delegates` — common container delegates
+- `di-delegates-web` — web container delegates
+- `di-delegates-console` — console container delegates
 
 ### Tags
 
-- `container-tags` — common container tags
-- `container-tags-web` — web container tags
-- `container-tags-console` — console container tags
+- `di-tags` — common container tags
+- `di-tags-web` — web container tags
+- `di-tags-console` — console container tags
 
 ## Events
 
