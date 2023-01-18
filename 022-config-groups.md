@@ -10,30 +10,35 @@ Note that this is not naming convention for config files. These are could be any
 
 ## Parameters
 
+Application parameters.
+
 - `params` — common parameters
 - `params-web` — web application parameters
 - `params-console` — console application parameters
 
-## Container definitions
+## Container
+
+Configuration for [yiisoft/di](https://github.com/yiisoft/di).
+
+### Definitions
 
 - `container` — common container definitions
 - `container-web` — web container definitions
 - `container-console` — console container definitions
 
-## Container providers
+### Providers
 
 - `container-providers` — common container providers
 - `container-providers-web` — web container providers
 - `container-providers-console` — console container providers
 
-## Container delegates
+### Delegates
 
 - `container-delegates` — common container delegates
 - `container-delegates-web` — web container delegates
 - `container-delegates-console` — console container delegates
 
-
-## Container tags
+### Tags
 
 - `container-tags` — common container tags
 - `container-tags-web` — web container tags
@@ -41,11 +46,15 @@ Note that this is not naming convention for config files. These are could be any
 
 ## Events
 
+Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event).
+
 - `events` — common events
 - `events-web` — web events
 - `events-console` — console events
 
 ## Bootstrap
+
+Application bootstrapping.
 
 - `bootstrap` — common bootstrap
 - `bootstrap-web` — web bootstrap
