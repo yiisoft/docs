@@ -53,5 +53,5 @@ Note that this is not naming convention for config files. These are could be any
 
 ## Others
 
-- `routes` — application routes
-- `widgets` — default widgets configuration
+- `routes` — [yiisoft/router](https://github.com/yiisoft/router) routes
+- `widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default widgets configuration
