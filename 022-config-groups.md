@@ -3,7 +3,7 @@
 This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).
 Note that this is not naming convention for config files. These are could be anything and are mapped to group names via `composer.json`.
 
-## Config group name prefixes
+## Config group name postfixes
 
 - "web" postfix applies to web only i.e. classic server HTML generation, REST, RPC etc.
 - "console" postfix applies to console
