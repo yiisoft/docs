@@ -77,7 +77,7 @@ Getting Data from Users -
 -----------------------
 
 * [Creating Forms](input/forms.md) -
-* [Validating Input](input/validation.md) -
+* [Validating Input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +
 * [Uploading Files](input/file-upload.md) -
 * [Collecting Tabular Input](input/tabular-input.md) -
 
