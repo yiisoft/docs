@@ -2,7 +2,6 @@ name: docs
 on:
     push:
     pull_request:
-    workflow_dispatch:
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -14,7 +13,9 @@ jobs:
                 sudo apt install wget unzip
                 wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
                 unzip Microsoft.zip -d .github/styles
-            - name: Check style
+            - name: Check
               uses: errata-ai/vale-action@reviewdog
+              with:
+                reporter: github-check
               env:
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
