@@ -9,7 +9,7 @@ and consider starting new projects on Yii 3 while keeping existing ones on Yii 2
 
 ## PHP requirements
 
-Yii 3 requires PHP 7.4 or above. As a result, there are language features used that were not used in Yii 2:
+Yii3 requires PHP 8.0 or above. As a result, there are language features used that were not used in Yii 2:
 
 - [Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
 - [Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)

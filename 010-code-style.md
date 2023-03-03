@@ -6,14 +6,16 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 ## Names
 
 - Use English only.
+- Use camelCase notation, including abbreviations (e.g., `enableIdn`).
 - Use the shortest possible, but an explanatory name.
 - Never trim or abbreviate name.
+- Classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), *should* be postfixed with `Collection`.
 
 ## Types
 
 - Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible.
 - [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
-- Use strict typing.
+- Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`.
 
 ## Comments
 
@@ -52,6 +54,26 @@ final class X
         $anotherTest = 123;
     }
 }
+```
+
+### Chain calls
+
+Chained calls should be formatted for better readability. If it is a long chain that doesn't
+fit line length (120 characters) then each call should on a new line:
+
+```php
+$object
+    ->withName('test')
+    ->withValue(87)
+    ->withStatus(Status::NEW)
+    ->withAuthor($author)
+    ->withDeadline($deadline);
+```
+
+If it is a short chain, it is alright for it to be on a single line:
+
+```php
+$object = $object->withName('test');
 ```
 
 ## Strings

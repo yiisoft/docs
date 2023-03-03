@@ -4,7 +4,8 @@ Documentation is one of the most important parts of Yii.
 
 ## Package documentation
 
-Documentation for a package could either be in `README.md` or `docs/{language}` where `{language}` is language code.
+Documentation for a package could either be in `README.md` or `docs/{language}/{type}` where `{language}` is
+a language code and `{type}` could be "guide", "cookbook" or something else.
 Usually `docs` is there if the package usage or configuration is not trivial or there's a need for translation.
 
 Some indicators that it is time to create `docs`:

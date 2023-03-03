@@ -1,6 +1,6 @@
 # The Definitive Guide to Yii 3.0
 
-This guide is released under the [Terms of Yii Documentation](http://www.yiiframework.com/doc/terms/).
+This guide is released under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
 
 Introduction +
 ------------
@@ -77,7 +77,7 @@ Getting Data from Users -
 -----------------------
 
 * [Creating Forms](input/forms.md) -
-* [Validating Input](input/validation.md) -
+* [Validating Input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +
 * [Uploading Files](input/file-upload.md) -
 * [Collecting Tabular Input](input/tabular-input.md) -
 

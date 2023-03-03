@@ -31,8 +31,8 @@ In Yii, most probably you'll use [form validation](../input/validation.md) to do
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Data_Validation>
-- <https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet>
+- <https://owasp.org/www-community/vulnerabilities/Improper_Data_Validation>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html>
 
 
 ### Escape output
@@ -44,9 +44,9 @@ contexts.
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Command_Injection>
-- <https://www.owasp.org/index.php/Code_Injection>
-- <https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29>
+- <https://owasp.org/www-community/attacks/Command_Injection>
+- <https://owasp.org/www-community/attacks/Code_Injection>
+- <https://owasp.org/www-community/attacks/xss/>
 
 
 ## Avoiding SQL injections
@@ -86,7 +86,7 @@ function actionList($orderBy = null)
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/SQL_Injection>
+- <https://owasp.org/www-community/attacks/SQL_Injection>
 
 
 ## Avoiding XSS
@@ -114,7 +114,7 @@ Note that HtmlPurifier processing is quite heavy so consider adding caching.
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29>
+- <https://owasp.org/www-community/attacks/xss/>
 
 
 ## Avoiding CSRF
@@ -149,8 +149,8 @@ middleware stack.
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/CSRF>
-- <https://www.owasp.org/index.php/SameSite>
+- <https://owasp.org/www-community/attacks/csrf>
+- <https://owasp.org/www-community/SameSite>
 
 
 ## Avoiding file exposure
@@ -176,8 +176,8 @@ details possible. If you absolutely need it check twice that access is properly 
 
 Further reading on the topic:
 
-- <https://www.owasp.org/index.php/Exception_Handling>
-- <https://www.owasp.org/index.php/Top_10_2007-Information_Leakage>
+- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
+- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
 
 
 ## Using secure connection over TLS
@@ -202,7 +202,7 @@ In such situations you should fix your webserver configuration to serve the site
 
 For more information about the server configuration, please refer to the documentation of your webserver:
 
-- Apache 2: <http://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
+- Apache 2: <https://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
 - Nginx: <https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/>
 
 ### Configuring SSL peer validation

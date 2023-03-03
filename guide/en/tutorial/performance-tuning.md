@@ -91,6 +91,56 @@ is too high, it will introduce high overhead.
 In the push method, you would use a message queue (e.g. RabbitMQ, ActiveMQ, Amazon SQS, etc.) to manage the tasks. 
 Whenever a new task is put on the queue, it will initiate or notify the task handling process to trigger the task processing.
 
+## Using preloading
+
+As of PHP 7.4.0, PHP can be configured to preload scripts into the opcache when the engine starts.
+You can read more in the [documentation](https://www.php.net/manual/en/opcache.preloading.php)
+and the corresponding [RFC](https://wiki.php.net/rfc/preload).
+
+Note that the optimal tradeoff between performance and memory may vary with the application. "Preload everything"
+may be the easiest strategy, but not necessarily the best strategy.
+
+For example, we conducted a simple [yiisoft/app](https://github.com/yiisoft/app) application template benchmark.
+Without preloading and with preloading of the entire composer class map.
+
+### Preloading benchmarks
+
+The application template benchmark includes configuring classes to injected dependencies in the bootstrap script.
+
+For both variants, [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html)
+was used with the following run parameters:
+
+```shell
+ab -n 1000 -c 10 -t 10
+```
+
+Also debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used
+and development dependencies were not used:
+
+```shell
+composer install --optimize-autoloader --no-dev
+```
+
+With preloading enabled, the entire composer class map (825 files) was used:
+
+```php
+$files = require 'vendor/composer/autoload_classmap.php';
+
+foreach (array_unique($files) as $file) {
+    opcache_compile_file($file);
+}
+```
+
+#### Test results
+
+| Benchmark          | Preloaded files | Opcache memory used | Per request memory used | Time per request | Requests per second |
+|--------------------|-----------------|---------------------|-------------------------|------------------|---------------------|
+| Without preloading | 0               | 12.32 mb            | 1.71 mb                 | 27.63 ms         | 36.55 rq/s          |
+| With preloading    | 825             | 17.86 mb            | 1.82 mb                 | 26.21 ms         | 38.42 rq/s          |
+
+As you can see, the test results are not much different, since this is just a clean application template
+that does not contain a large number of classes. More discussion of preloading, including benchmarks,
+can be found in the [composer's issue](https://github.com/composer/composer/issues/7777).
 
 ## Performance Profiling <span id="performance-profiling"></span>
 
@@ -100,4 +150,4 @@ The following profiling tools may be useful:
 - [Yii debug toolbar and debugger](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md)
 - [Blackfire](https://blackfire.io/)
 - [XHProf](https://secure.php.net/manual/en/book.xhprof.php)
-- [XDebug profiler](http://xdebug.org/docs/profiler)
+- [XDebug profiler](https://xdebug.org/docs/profiler)

@@ -35,7 +35,7 @@ If you're already familiar with another framework, you may appreciate knowing ho
   take advantage of Yii's solid architecture to use or develop redistributable packages.
 - High performance is always a primary goal of Yii.
 
-Yii is backed up by a [strong core developer team](http://www.yiiframework.com/team/) financially backed from an
+Yii is backed up by a [strong core developer team](https://www.yiiframework.com/team/) financially backed from an
 [OpenCollective foundation](https://opencollective.com/yiisoft), as well as a large community of professionals constantly
 contributing to Yii's development. The Yii developer team keeps a close eye on the latest Web development trends and
 on the best practices and features found in other frameworks and projects. The most relevant best practices and features
@@ -53,9 +53,9 @@ Yii currently has three major versions available: 1.1, 2.0 and 3.0.
 
 ## Requirements and Prerequisites
 
-Yii 3.0 requires PHP 7.4 or above and runs best with the latest version of PHP 8.
+Yii3 requires PHP 8.0 or above, but some packages also support PHP 7.4.
 
 Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.
-Yii 3.0 also makes use of the latest features of PHP, such as type declarations and generators. Understanding these
-concepts will help you more easily pick up Yii 3.0.
+Yii3 also makes use of the latest features of PHP, such as type declarations and generators. Understanding these
+concepts will help you more easily pick up Yii3.
 

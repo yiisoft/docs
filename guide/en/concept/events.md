@@ -19,7 +19,7 @@ It is available from [yiisoft/event-dispatcher package](https://github.com/yiiso
 
 ## Event Handlers <span id="event-handlers"></span>
 
-An event handler is a [PHP callable](https://secure.php.net/manual/en/language.types.callable.php) that gets executed
+An event handler is a [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed
 when the event it is attached to is triggered.
 
 The signature of an event handler is:

@@ -5,9 +5,9 @@ or infrastructure into service components. They are typically injected into othe
 It is usually done via autowiring:
 
 ```php
-public function actionIndex(ServerRequestInterface $request, MyService $myService): ResponseInterface
+public function actionIndex(CurrentRoute $route, MyService $myService): ResponseInterface
 {
-    $id = $request->getAttribute('id');
+    $id = $route->getArgument('id');
     
     // ...
     $extraData = $myService->getExtraData($id);

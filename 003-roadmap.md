@@ -140,7 +140,7 @@ RBAC is implemented as [framework-independent package](https://github.com/yiisof
 
 View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
-- [ ] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
+- [x] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
 - [x] Port widgets.
 - [x] Rethink and implement active form widgets.
 - [x] Implement caching widgets.
@@ -148,10 +148,10 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 ## Data abstractions and Grid
 
 - [x] Finish [data abstractions](https://github.com/yiisoft/data).
-- [ ] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 
 ## Validators
 
@@ -160,16 +160,16 @@ View is implemented as [framework-independent package](https://github.com/yiisof
 
 ## Debug toolbar
 
-- [ ] Port debug toolbar.
+- [x] Port debug toolbar.
 
 ## Gii
 
-- [ ] Port Gii.
+- [x] Port Gii.
 
 ## Infrastructure
 
 - [x] Cover [config](https://github.com/yiisoft/config) with tests.
-- [ ] Release stable [config](https://github.com/yiisoft/config).
+- [x] Release stable [config](https://github.com/yiisoft/config).
 
 ## Others
 

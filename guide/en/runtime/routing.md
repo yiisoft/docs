@@ -166,12 +166,11 @@ return [
     Route::methods([Method::GET, Method::POST], '/user[/{id}]')
         ->action([SiteController::class, 'user'])
         ->name('site/user')
-        ->defaults(['id' => 42])
+        ->defaults(['id' => '42'])
 ];
 ```
 
-The configuration above would result in a match with both `/user` and `/user/123`. In both cases `$request` will
-have `id` attribute filled. In the first case it will be default `42` and in the second case it will be specified `123`.
+The configuration above would result in a match with both `/user` and `/user/123`. In both cases `CurrentRoute` service will contain `id` argument filled. In the first case it will be default `42` and in the second case it will be specified `123`.
 
 In cause URL should be valid for a single host, you can specify it with `host()`. 
 
@@ -226,7 +225,7 @@ class TestController extends AbstractController
 
     public function index(UrlGeneratorInterface $urlGenerator): ResponseInterface
     {
-        $url = $urlGenerator->generate('test/submit', ['id' => 42]);
+        $url = $urlGenerator->generate('test/submit', ['id' => '42']);
         // ...
     }
 }
@@ -278,21 +277,20 @@ Let's use some examples to illustrate how named parameters work. Assume we have 
 When generating URLs the following parameters should be used:
 
 ```php
-echo $url->generate('first', ['year' => 2020, 'category' => 'Virology']);
+echo $url->generate('first', ['year' => '2020', 'category' => 'Virology']);
 echo $url->generate('second');
-echo $url->generate('third', ['id' => 42]);
+echo $url->generate('third', ['id' => '42']);
 ```
 
 ### Optional parts <span id="optional-parts"></span>
 
 Optional pattern parts are wrapped with `[` and `]`. For example, `/posts[/{id}]` pattern would match
-both `http://example.com/posts` and `http://example.com/posts/42`. Router would fill `id` request attribute 
-in the second case only. For this case default value could be specified:
+both `http://example.com/posts` and `http://example.com/posts/42`. Router would fill `id` argument of `CurrentRoute` service in the second case only. For this case default value could be specified:
 
 ```php
 use \Yiisoft\Router\Route;
 
-Route::get('/posts[/{id}]')->defaults(['id' => 1]);
+Route::get('/posts[/{id}]')->defaults(['id' => '1']);
 ```
 
 Optional parts are only supported in a trailing position, not in the middle of a route.

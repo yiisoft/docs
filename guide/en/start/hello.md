@@ -121,7 +121,7 @@ use Yiisoft\Html\Html;
 
 Note that in the above code, the `message` parameter is HTML-encoded
 before being printed. This is necessary as the parameter comes from an end user, making it vulnerable to
-[cross-site scripting (XSS) attacks](http://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
+[cross-site scripting (XSS) attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
 malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
@@ -137,8 +137,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Router\CurrentRoute;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 class EchoController
 {
@@ -149,9 +149,9 @@ class EchoController
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(CurrentRoute $route): ResponseInterface
     {
-        $message = $request->getAttribute('message', 'Hello!');
+        $message = $route->getArgument('message', 'Hello!');
 
         return $this->viewRenderer->render('say', [
             'message' => $message,

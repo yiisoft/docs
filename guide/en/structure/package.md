@@ -65,43 +65,60 @@ The following example shows the `composer.json` file for the `yiisoft/yii-widget
         "forum": "https://www.yiiframework.com/forum/",
         "wiki": "https://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
+        "chat": "https://t.me/yii3en",
         "source": "https://github.com/yiisoft/yii-widgets"
     },
-    // package dependencies
-    "require": { 
-        "php": "^7.4",
-        "yiisoft/cache": "^3.0@dev",
-        "yiisoft/view": "^3.0@dev",
-        "yiisoft/widget": "^3.0@dev"
+    "funding": [
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/yiisoft"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/yiisoft"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "yiisoft/aliases": "^1.1|^2.0",
+        "yiisoft/cache": "^1.0",
+        "yiisoft/html": "^2.0",
+        "yiisoft/view": "^4.0",
+        "yiisoft/widget": "^1.0"
     },
-    // development depdendencies
     "require-dev": {
-        "yiisoft/composer-config-plugin": "^1.0@dev",
-        "phpunit/phpunit": "^8.4",
-        "phan/phan": "^2.4",
-        "yiisoft/di": "^3.0@dev",
-        "yiisoft/event-dispatcher": "^3.0@dev",
-        "yiisoft/log": "^3.0@dev"
+        "phpunit/phpunit": "^9.5",
+        "roave/infection-static-analysis-plugin": "^1.16",
+        "spatie/phpunit-watcher": "^1.23",
+        "vimeo/psalm": "^4.18",
+        "yiisoft/psr-dummy-provider": "^1.0",
+        "yiisoft/test-support": "^1.3"
     },
-    // class autoloading configuration
     "autoload": {
         "psr-4": {
             "Yiisoft\\Yii\\Widgets\\": "src"
         }
     },
-    // development class autoloading configuration
     "autoload-dev": {
         "psr-4": {
             "Yiisoft\\Yii\\Widgets\\Tests\\": "tests"
         }
     },
     "extra": {
-        "config-plugin": {
-            "tests": "config/tests.php"
+        "branch-alias": {
+            "dev-master": "3.0.x-dev"
         }
     },
+    "scripts": {
+        "test": "phpunit --testdox --no-interaction",
+        "test-watch": "phpunit-watcher watch"
+    },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "composer/package-versions-deprecated": true
+        }
     }
 }
 ```
