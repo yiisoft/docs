@@ -17,5 +17,7 @@ jobs:
               uses: errata-ai/vale-action@reviewdog
               with:
                 reporter: github-check
+                fail_on_error: true
+                filter_mode: nofilter
               env:
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
