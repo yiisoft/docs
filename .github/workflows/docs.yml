@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Fetch styles
-               run: |
+              run: |
                 sudo apt install wget unzip
                 wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
                 unzip Microsoft.zip -d .github/styles
