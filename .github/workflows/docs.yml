@@ -10,7 +10,7 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v2
 
-            -   name: Vale
+            -   name: Check style
                 uses: errata-ai/vale-action@v1.4.2
                 with:
                     debug: true
