@@ -12,7 +12,7 @@ jobs:
               run: |
                 sudo apt install wget unzip
                 wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
-                unzip Microsoft.zip -d .github/styles
+                unzip Microsoft.zip -d "./.github/styles"
             - name: Checkout
               uses: actions/checkout@v3
             - name: Check style
