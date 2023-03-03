@@ -8,6 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: pwd
+            - run: ls -l
             - name: Fetch styles
               run: |
                 sudo apt install wget unzip
