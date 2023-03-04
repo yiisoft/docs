@@ -19,6 +19,6 @@ jobs:
                 reporter: github-check
                 fail_on_error: true
                 filter_mode: nofilter
-                vale_flags: "--glob='!*{LICENSE.md,.github/}*'"
+                vale_flags: "--glob='!(LICENSE.md|.github)'"
               env:
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
