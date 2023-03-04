@@ -6,17 +6,17 @@ In this section we'll review the following security aspects:
 - Encryption and Decryption
 - Confirming Data Integrity
 
-In order to use features above you need to install `yiisoft/security` package:
+To use these features, you need to install `yiisoft/security` package:
 
 ```
 composer install yiisoft/security
 ```
 
-## Generating Pseudorandom Data
+## Generating pseudorandom data
 
-Pseudorandom data is useful in many situations. For example when resetting a password via email you need to generate a
+Pseudorandom data are useful in many situations. For example, when resetting a password via email, you need to generate a
 token, save it to the database, and send it via email to end user which in turn will allow them to prove ownership of
-that account. It is very important that this token be unique and hard to guess, else there is a possibility that attacker
+that account. It's important that this token be unique and hard to guess, else there is a possibility that an attacker 
 can predict the token's value and reset the user's password.
 
 `\Yiisoft\Security\Random` makes generating pseudorandom data simple:
@@ -34,10 +34,11 @@ If you need bytes or integers, use PHP functions directly:
 
 ## Encryption and Decryption
 
-Yii provides convenient helper functions that allow you to encrypt/decrypt data using a secret key. The data is passed
-through the encryption function so that only the person which has the secret key will be able to decrypt it.
-For example, we need to store some information in our database, but we need to make sure only the user who has
-the secret key can view it (even if the application database compromised):
+Yii provides convenient helper functions to encrypt/decrypt data using a secret key.
+The data are passed through the encryption function so that only the person which has the secret key will be able
+to decrypt it.
+For example, you need to store some information in your database, but you need to make sure only
+the user who has the secret key can view it (even if one compromises the application database):
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $password);
@@ -49,13 +50,13 @@ saveData($encryptedData);
 Decrypting it:
 
 ```php
-// obtain encrypted data from database or another storage
+// obtain encrypted data from a database or another storage
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
 ```
 
-Key could be used instead of password:
+You could use a key instead of password:
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
@@ -67,18 +68,18 @@ saveData($encryptedData);
 Decrypting it:
 
 ```php
-// obtain encrypted data from database or another storage
+// obtain encrypted data from a database or another storage
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
 ```
 
-## Confirming Data Integrity
+## Confirming data integrity
 
-There are situations in which you need to verify that your data hasn't been tampered with by a third party or even
+There are situations in which you need to verify that your data haven't been tampered with by a third party or even
 corrupted in some way. Yii provides a way to confirm data integrity by MAC signing.
 
-The `$key` should be present at both sending and receiving sides. At the sending side:
+The `$key` should be present at both sending and receiving sides. On the sending side:
 
 ```php
 $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
@@ -103,13 +104,13 @@ try {
 Masking a token helps to mitigate BREACH attack by randomizing how token outputted on each request.
 A random mask applied to the token making the string always unique.
 
-In order to mask a token:
+To mask a token:
 
 ```php
 $maskedToken = \Yiisoft\Security\TokenMask::apply($token);
 ```
 
-In order to get original value from the masked one:
+To get original value from the masked one:
 
 ```php
 $token = \Yiisoft\Security\TokenMask::remove($maskedToken);

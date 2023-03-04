@@ -1,15 +1,15 @@
 # Using Yii with Swoole
 
-[Swoole](https://www.swoole.co.uk/) is a PHP network framework distributed as PECL extension. It allows you built-in async,
+[Swoole](https://www.swoole.co.uk/) is a PHP network framework distributed as a PECL extension. It allows you built-in async,
 multiple threads I/O modules. Developers can use sync or async, coroutine API to write the applications.
 
 In the context of Yii, it allows running request handlers as workers. Each worker may handle multiple requests.
-Such operation mode is often called [event loop](using-with-event-loop.md) and allows not to re-initialize framework
+Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not to re-initialize a framework
 for each request that improves performance significantly. 
 
 ## Installation
 
-Swoole works on Linux and MacOS and can be installed via pecl:
+Swoole works on Linux and macOS and can be installed via pecl:
 
 ```bash
 pecl install swoole
@@ -17,7 +17,7 @@ pecl install swoole
 
 ## Putting up a server
 
-Since Swoole doesn't have built-in PSR-7 support, we need a package fixing so:
+Since Swoole doesn't have built-in PSR-7 support, you need a package fixing so:
 
 ```php
 composer require ilexn/swoole-convent-psr7
@@ -115,7 +115,7 @@ $server->start();
 
 ## Starting a server
 
-To start a server execute the following command:
+To start a server, execute the following command:
 
 ```
 php server.php

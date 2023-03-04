@@ -32,7 +32,7 @@ return [
 ];
 ```
 
-> Note: The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
+> Note: The file path or URL bein1g aliased may *not* necessarily refer to an existing file or resource.
 
 Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.
 For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias.
@@ -44,7 +44,7 @@ You can define an alias using another alias (either root or derived):
 ```
 
 The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases` package](https://github.com/yiisoft/aliases).
-You can set additional aliases in runtime by using the service:
+You can set extra aliases in runtime by using the service:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -57,7 +57,7 @@ public function actionIndex(Aliases $aliases)
 
 ## Using aliases in configuration
 
-It is preferred to resolve aliases at configuration level so services get URLs and paths as ready to use strings: 
+It's preferred to resolve aliases at configuration level, so services get URLs and paths as ready to use strings: 
 
 ```php
 <?php
@@ -94,7 +94,7 @@ public function actionIndex(Aliases $aliases)
 The path/URL represented by a derived alias is determined by replacing the root alias part with its corresponding
 path/URL in the derived alias.
 
-> Note: The `get()` method does not check whether the resulting path/URL refers to an existing file or resource.
+> Note: The `get()` method doesn't check whether the resulting path/URL refers to an existing file or resource.
 
 
 A root alias may also contain slash `/` characters. The `get()` method
@@ -114,22 +114,22 @@ public function actionIndex(Aliases $aliases)
 } 
 ```
 
-If `@foo/bar` is not defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
+If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
 
 
 ## Predefined Aliases <span id="predefined-aliases"></span>
 
-[Yii application](https://github.com/yiisoft/app) predefines a set of aliases to easily reference commonly used file paths and URLs:
+[Yii application](https://github.com/yiisoft/app) predefines a set of aliases to reference commonly used file paths and URLs:
 
 - `@root` - the base directory of the currently running application.
-- `@assets` -  application's public assets directory where assets are published to.
+- `@assets` - application's public directory where it publishes assets.
 - `@assetsUrl` - URL of base directory with published assets.
 - `@baseUrl` - the base URL of the currently running Web application. Defaults to `/`.
 - `@npm` - node packages directory.
 - `@bower` - bower packages directory.
 - `@vendor` - Composer's `vendor` directory.
-- `@public` - application's publicly accessible directory that contains `index.php`.
+- `@public` - application's publicly accessible directory that with `index.php`.
 - `@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`.
-- `@layout` - the directory where layouts are located.
-- `@resources` - directory where views, assets sources and other resources are located.
+- `@layout` - the directory with layouts.
+- `@resources` - directory with views, asset sources and other resources.
 - `@views` - application view templates base directory.

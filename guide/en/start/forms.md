@@ -1,6 +1,6 @@
 # Working with Forms
 
-This section continues to improve on "Saying Hello". Instead of using URL we will now ask user for a message via form.
+This section continues to improve on "Saying Hello". Instead of using URL, you will now ask user for a message via form.
 
 Through this tutorial, you will learn how to:
 
@@ -10,7 +10,7 @@ Through this tutorial, you will learn how to:
 
 ## Installing form package
 
-In order to install form package, issue the following command in your application directory:
+To install form package, issue the following command in your application directory:
 
 ```
 composer require yiisoft/form
@@ -48,13 +48,13 @@ class EchoForm extends FormModel
 The class extends from a base class provided by Yii, commonly used to
 represent form data.
 
-The `EchoForm` class contains `$message` property and related getter. These are regular data-related code.
-`attributeLabels()` method provides labels that we are going to display in a view.
+The `EchoForm` class has `$message` property and related getter.
+These are regular data-related code. `attributeLabels()` method provides labels that you're going to display in a view.
 
 ## Using the form <span id="using-form"></span> 
 
-Now, that we have a form, let's use it in our action from "[Saying Hello](hello.md)". Here's what we end up with in
-`/src/Controller/EchoController.php`:
+Now, that you have a form, use it in your action from "[Saying Hello](hello.md)".
+Here's what you end up with in `/src/Controller/EchoController.php`:
 
 ```php
 <?php
@@ -93,10 +93,10 @@ class EchoController
 }
 ```
 
-Instead of reading from request directly we fill our form with the help of `load()` method if the request
-method is POST and then pass it to our view.
+Instead of reading from request directly, you fill your form with the help of `load()` method if the request
+method is POST and then pass it to your view.
 
-Now, to allow POST, we need to adjust our route in `config/routes.php`:
+Now, to allow POST, you need to adjust your route in `config/routes.php`:
 
 ```php
 <?php
@@ -116,7 +116,7 @@ return [
 
 ## Adjusting view
 
-In order to render a form we need to modify our view, `resources/views/echo/say.php`:
+To render a form, you need to change your view, `resources/views/echo/say.php`:
 
 ```php
 <?php
@@ -151,9 +151,10 @@ use Yiisoft\Html\Html;
 <?= Form::end() ?>
 ```
 
-If form has a message set, we are displaying a box with the message. The rest if about rendering the form.
+If a form has a message set, you're displaying a box with the message. The rest if about rendering the form.
 
-We get the action URL from URL manager service. We access it as `$url` that is a default parameter available in all views.
+You get the action URL from the URL manager service.
+You access it as `$url` that's a default parameter available in all views.
 This variable and alike ones such as `$csrf` are provided by view injections listed in `config/params.php`:
 
 ```php
@@ -166,7 +167,7 @@ This variable and alike ones such as `$csrf` are provided by view injections lis
 ],
 ```
 
-By default, `src\ViewInjection\ContentViewInjection` does not provide `$url` so we need to add it:
+By default, `src\ViewInjection\ContentViewInjection` doesn't offer `$url` so you need to add it:
 
 ```php
 <?php
@@ -203,11 +204,11 @@ final class ContentViewInjection implements ContentParametersInjectionInterface
 }
 ```
 
-We render the value of CSRF token as a hidden input to ensure that the request originates from the form page and not
+You render the value of CSRF token as a hidden input to ensure that the request originates from the form page and not
 from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-In order to turn on the CSRF protection we need to add `CsrfMiddleware` to `config/web/application.php`:
+To turn on the CSRF protection, you need to add `CsrfMiddleware` to `config/web/application.php`:
 
 ```php
 <?php
@@ -244,12 +245,12 @@ return [
 ];
 ```
 
-We use `Field` to output "message" field, so it takes case about filling the value, escaping it, rendering field label
-and validation errors we are going to take care of next.
+You use `Field` to output "message" field, so it takes case about filling the value, escaping it, rendering field label
+and validation errors you're going to take care of next.
 
 ## Adding validation
 
-Right now it is possible to submit empty value. Let's make it required. Modify `/src/Controller/EchoController.php`:
+Right now it's possible to submit an empty value. Make it required. Modify `/src/Controller/EchoController.php`:
 
 ```php
 <?php
@@ -289,8 +290,8 @@ class EchoController
 
 ```
 
-We have obtained validator instance through type-hinting and used it to validate the form. Now we need to add validation
-rules to `/src/Form/EchoForm.php`:
+You've obtained validator instance through type-hinting and used it to validate the form.
+Now you need to add validation rules to `/src/Form/EchoForm.php`:
 
 ```php
 <?php
@@ -326,7 +327,7 @@ class EchoForm extends FormModel
 }
 ```
 
-Now in case you will submit empty message you will get a validation error: "Value cannot be blank."
+Now, in case you will submit an empty message you will get a validation error: "Value cannot be blank."
 
 ## Trying it Out <span id="trying-it-out"></span>
 
@@ -337,8 +338,8 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page displaying a form an input field that has a label that indicates what data is to be entered. Also,
-there is a submit button labeled "Say". If you click the submit button without entering anything, you will see
+You will see a page displaying a form an input field that has a label that indicates what data are to be entered.
+Also, there is a submit button labeled "Say". If you click the submit button without entering anything, you will see
 an error message displayed next to a problematic input field.
 
 ![Form with a validation error](img/form-error.png)
@@ -350,11 +351,11 @@ displaying the data that you just entered.
 
 ## Summary <span id="summary"></span>
 
-In this section of the guide you have learned how to create a form model class to represent the user data and validate
+In this section of the guide, you've learned how to create a form model class to represent the user data and validate
 said data.
 
-You have also learned how to get data from users and how to display data back in the browser. This is a task that
-could take you a lot of time when developing an application, but Yii provides powerful widgets
-to make this task very easy.
+You've also learned how to get data from users and how to display data back in the browser.
+This is a task that could take you a lot of time when developing an application, but Yii provides powerful widgets
+to make this task easy.
 
 In the next section, you will learn how to work with databases, which are needed in nearly every application.

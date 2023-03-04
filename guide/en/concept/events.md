@@ -1,26 +1,26 @@
 # Events
 
 Events allow you to make custom code executed at certain execution points without modifying existing code.
-You can attach custom code called "handler" to an event so that when the event is triggered, the handler
+You can attach a custom code called "handler" to an event so that when the event is triggered, the handler
 gets executed automatically. 
 
-For example, when a user is signed up you need to send a welcome email. You can do it right in
-the `SignupService` but then when you will additionally need to resize users's avatar image you'll have
-to modify `SignupService` code again. In other words, `SignupService` will be coupled to both code sending
+For example, when a user is signed up, you need to send a welcome email. You can do it right in
+the `SignupService` but then when you will additionally need to resize user's avatar image you'll have
+to change `SignupService` code again. In other words, `SignupService` will be coupled to both code sending
 welcome email and code resizing avatar image.
  
-In order to avoid it, instead of telling what do after signup explicitly we can, instead, raise `UserSignedUp` event
-and then finish signup process. The code sending an email and the code resizing avatar image will attach to the event
-and therefore will be executed. If you'll ever need to do more on signup, you'll be able to attach additional event
+To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event
+and then finish a signup process. The code sending an email and the code resizing avatar image, will attach to the event
+ and, therefore, will be executed. If you'll ever need to do more on signup, you'll be able to attach extra event
 handlers without modifying `SignupService`. 
  
 For raising events and attaching handlers to these events, Yii has a special service called event dispatcher.
-It is available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher).
+It's available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher).
 
 ## Event Handlers <span id="event-handlers"></span>
 
-An event handler is a [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed
-when the event it is attached to is triggered.
+An event handler is [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed
+when the event it's attached to is triggered.
 
 The signature of an event handler is:
 
@@ -61,7 +61,7 @@ will be called in the order that they were attached to the event. In case an eve
 `Psr\EventDispatcher\StoppableEventInterface`, event handler can stop executing the rest of the handlers 
 that follow it if `isPropagationStopped()` returns `true`.
 
-In general, it is better not to rely on the order of event handlers.
+In general, it's better not to rely on the order of event handlers.
 
 ## Raising events <span id="raising-events"></span>
 
@@ -89,8 +89,7 @@ class SignupService
 }
 ```
 
-First, we are creating an event supplying it with data that may be useful for handlers. Then we are dispatching
-the event.
+First, you create an event supplying it with data that may be useful for handlers. Then you dispatch the event.
 
 The event class itself may look like the following:
 
@@ -113,7 +112,7 @@ final class UserSignedUp
 
 ## Events hierarchy
 
-Events do not have any name or wildcard matching on purpose. Event class names and class/interface hierarchy
+Events don't have any name or wildcard matching on purpose. Event class names and class/interface hierarchy
 and composition could be used to achieve great flexibility:
 
 ```php
@@ -130,7 +129,7 @@ class AfterDocumentProcessed implements DocumentEvent
 }
 ```
 
-With the interface above listening to all document-related events could be done as:
+With the interface, you can listen to all document-related events:
 
 
 ```php
