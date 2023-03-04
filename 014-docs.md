@@ -21,6 +21,8 @@ The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/
 aims at covering usage of packages as a whole framework. Unlike package documentation, it is not
 focused on a single package but is covering certain use-cases.
 
+The guide should follow [Microsoft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+
 ## PHPDoc
 
 PHPDoc must not be added if it does not add anything to what it describes. The following is a bad example:
