@@ -1,3 +1,3 @@
-# Generating Code with Gii
+# Generating code with Gii
 
 
