@@ -6,7 +6,7 @@ The process of handing incoming issues is the following:
 
 ## Roles
 
-We have multiple roles:
+We've many roles:
 
 - Process managers - initially triage issues and manage labels.
 - Decision makers - participate in discussions moving them to resolutions.
@@ -18,10 +18,10 @@ A single person may take one or more roles in the issue resolving process.
 
 ## Labels
 
-We label issues in order to mark multiple things: current status, issue type,
+We label issues to mark many things: current status, issue type,
 component affected. Status labels speak for themselves.
 
 ## Milestones
 
-Issues are not assigned to milestones unless they are critical or there is
-a likely good pull request exist.
+Issues aren't assigned to milestones unless they're critical or there is
+a likely good pull request exists.

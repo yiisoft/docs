@@ -1,24 +1,25 @@
 # 000 - Packages
 
-Since Yii 3 framework is divided into several packages with the following agreements.
+Yii3 team divided the framework into several packages that conform to the following agreements.
 
-For all packages GitHub repository name exactly matches Packagist package name.
+For all packages, the GitHub repository name exactly matches the Packagist package name.
 
-For a full list of packages and their build statuses see [status page at yiiframework.com](https://www.yiiframework.com/status/3.0).
+For a full list of packages and their building status,
+see [status page at yiiframework.com](https://www.yiiframework.com/status/3.0).
 
-## Yii-specific packages (Yii Framework and Extensions)
+## Yii-specific packages (framework and extensions)
     
 - named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:
     - modules: `yii-module-users`, `yii-module-pages`
     - themes: `yii-theme-adminlte`, `yii-theme-hyde`
     - widgets: `yii-widget-datepicker`
-    - and so on
+    - ...
 - titled as "Yii Framework ..."
 - may have any dependencies and Yii-specific code
 
-## General purpose packages (Libraries)
+## General purpose packages (libraries)
   
-- can be used outside of Yii Framework
+- you can use these independently of Yii Framework
 - named as `yiisoft/something` without yii-prefix
 - titled as "Yii ..."
 - must not have dependencies on any Yii-specific packages
@@ -30,8 +31,8 @@ The following applies to both Yii-specific packages and general purpose packages
 
 - Package may have `config` directory with Yii-specific defaults.
 - Package may have "config-plugin" in "extra" section of `composer.json`.  
-- Package must not have dependencies in `require` section of `composer.json` that are used in `config` only.
-- Parameters should be namespaced with `vendor/package-name`:
+- Package mustn't have dependencies in `require` section of `composer.json` that are used in `config` only.
+- You should namespace parameters with `vendor/package-name`:
 
 ```php
 return [
@@ -44,19 +45,19 @@ return [
   
 ## Versions
 
-All packages are versioned according to [SemVer](https://semver.org/):
+All packages follow [SemVer](https://semver.org/) versioning:
 
 - `x.*.*` - incompatible API changes.
 - `*.x.*` - add functionality (backwards-compatible).
 - `*.*.x` - bug fixes (backwards-compatible).
 
-First stable version should be 1.0.0.
+The first stable version should be 1.0.0.
 
-Each package version number does not depend on any other package version or "framework version", only on its own public contract. 
+Each package version number doesn't depend on any other package version or framework name/version,
+only on its own public contract.
+The framework as a whole has the "Yii3" name.
 
-So it is completely normal to use together packages with different major versions, as long as they are compatible.
-
-Framework as a whole will keep naming "Yii 3" so it will be considered version 3, independent of version of its packages.
+It's alright to use packages with different major versions together, as long as they're compatible.
 
 ## PHP versions support
 
@@ -67,7 +68,7 @@ The support of PHP versions supported for a package depends on
 - Both packages and application templates MUST have supported versions that receive bug and security fixes.
   These SHOULD correspond to PHP versions receiving security fixes.
 - Packages and application templates MIGHT have supported versions that work with unsupported PHP versions.
-- Bumping minimal PHP version in a package or an application template is considered a minor change.
+- Bumping the minimal PHP version in a package or an application template is a minor change.
 
 ## composer.json
 
