@@ -9,15 +9,15 @@ To get support for console application in your project, get `yiisoft/yii-console
 composer require yiisoft/yii-console
 ```
 
-After it is installed, you can access entry point as
+After it's installed, you can access entry point as
 
 ```
-./vendor/bin/yii
+./yii
 ```
 
-Out of the box only `serve` command is available. It is starting PHP built-in web server to serve the application locally.
+Out of the box only `serve` command is available. It's starting PHP built-in web server to serve the application locally.
 
-Commands are executed with `symfony/console`. To create your own console command you need to define a command:
+Commands are executed with `symfony/console`. To create your own console command, you need to define a command:
 
 ```php
 <?php
@@ -65,10 +65,10 @@ return [
 ];
 ```
 
-After it is done, the command could be executed as
+After it's done, the command could be executed as
 
 ```
-./vendor/bin/yii demo/hello Alice
+./yii demo/hello Alice
 ```
 
 

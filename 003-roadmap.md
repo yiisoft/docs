@@ -78,17 +78,17 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 ### PSR-18 HTTP client
 
 - [x] Remove our own implementation. At least for now.
-- [ ] Framework packages should depend on interfaces only.
+- [x] Framework packages should depend on interfaces only.
 
 ## Stricter types
 
-- [ ] Make sure type hinting is used everywhere.
-- [ ] Make sure types are as definitive as possible. Avoid varying types if possible.
+- [x] Make sure type hinting is used everywhere.
+- [x] Make sure types are as definitive as possible. Avoid varying types if possible.
 
 ## Single application template
 
 - [x] Drop basic/advanced.
-- [ ] Create a [single application template that works out of the box](https://github.com/yiisoft/yii-project-template).
+- [x] Create a [single application template that works out of the box](https://github.com/yiisoft/app).
 
 ## Router
 
@@ -101,17 +101,17 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 ## Best practices and SOLID compliance of all classes/packages
 
-- [ ] Make sure interfaces follow "interface segregation" principle.
-- [ ] Do not use public properties.
+- [x] Make sure interfaces follow "interface segregation" principle.
+- [x] Do not use public properties.
 - [x] Do not use `init()`.
 - [x] Do not inherit from `BaseObject` or `Component`. Remove these.
 - [x] No globals.
-- [ ] No static calls except helpers that are final.
-- [ ] Prefer throwing exceptions to fixing input.
+- [x] No static calls except helpers that are final.
+- [x] Prefer throwing exceptions to fixing input.
 
 ## Development toolkit
 
-- [ ] Release command line tool
+- [x] Release command line tool
 - [x] Development command line tool (symlinks packages into usable application)
 
 ## Console
@@ -132,43 +132,44 @@ Implemented as a [separate package that is not dependent on a framework](https:/
 
 RBAC is implemented as [framework-independent package](https://github.com/yiisoft/rbac).
 
-- [ ] Finish refactoring.
-- [ ] Make sure it follows best practices.
-- [ ] Split drivers into packages.
+- [x] Finish refactoring.
+- [x] Make sure it follows best practices.
+- [x] Split drivers into packages.
 
 ## View
 
 View is implemented as [framework-independent package](https://github.com/yiisoft/view).
 
-- [ ] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
-- [ ] Port widgets.
-- [ ] Rethink and implement active form widgets.
-- [ ] Implement caching widgets.
+- [x] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues)).
+- [x] Port widgets.
+- [x] Rethink and implement active form widgets.
+- [x] Implement caching widgets.
 
 ## Data abstractions and Grid
 
 - [x] Finish [data abstractions](https://github.com/yiisoft/data).
-- [ ] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [ ] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port sort, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port paging, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port grid, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] Port list, make it use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview).
 
 ## Validators
 
-- [ ] Finish [main package](https://github.com/yiisoft/validator) redesign
-- [ ] Port necessary validators
+- [x] Finish [main package](https://github.com/yiisoft/validator) redesign
+- [x] Port necessary validators
 
 ## Debug toolbar
 
-- [ ] Port debug toolbar.
+- [x] Port debug toolbar.
 
 ## Gii
 
-- [ ] Port Gii.
+- [x] Port Gii.
 
 ## Infrastructure
 
-- [ ] Cover [composer config plugin](https://github.com/hiqdev/composer-config-plugin) with tests.
+- [x] Cover [config](https://github.com/yiisoft/config) with tests.
+- [x] Release stable [config](https://github.com/yiisoft/config).
 
 ## Others
 

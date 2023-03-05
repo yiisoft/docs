@@ -1,24 +1,23 @@
-# Entry Scripts
+# Entry scripts
 
 Entry scripts are the first step in the application bootstrapping process. An application (either
 Web application or console application) has a single entry script. End users make requests to
 entry scripts which instantiate application instances and forward the requests to them.
 
 Entry scripts for Web applications must be stored under Web accessible directories so that they
-can be accessed by end users. They are often named as `index.php`, but can also use any other names,
+can be accessed by end users. They're often named as `index.php`, but can also use any other names,
 provided Web servers can locate them.
 
-Entry script for console application is `./vendor/bin/yii`.
+Entry script for console application is `./yii`.
 
-Entry scripts mainly perform the following work:
-
+Entry scripts mainly perform the following work with the help of `ApplicationRunner`:
 
 * Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);
 * Obtain configuration;
 * Use configuration to initialize dependency injection container;
 * Get an instance of request.
 * Pass it to `Application` to handle and get a response from it.
-* With the help of emitter that transform response object into actual HTTP response that is sent to client browser.
+* With the help of emitter that transforms response object into actual HTTP response that's sent to client browser.
 
 ## Web Applications <span id="web-applications"></span>
 
@@ -27,36 +26,28 @@ The following is the code in the entry script for the application template:
 ```php
 <?php
 
-use Yiisoft\Composer\Config\Builder;
-use Psr\Container\ContainerInterface;
-use Yiisoft\Di\Container;
-use Yiisoft\Http\Method;
-use Yiisoft\Yii\Web\Application;
-use Yiisoft\Yii\Web\SapiEmitter;
-use Yiisoft\Yii\Web\ServerRequestFactory;
+declare(strict_types=1);
+
+use App\ApplicationRunner;
+
+// PHP built-in server routing.
+if (PHP_SAPI === 'cli-server') {
+    // Serve static files as is.
+    if (is_file(__DIR__ . $_SERVER['REQUEST_URI'])) {
+        return false;
+    }
+
+    // Explicitly set for URLs with dot.
+    $_SERVER['SCRIPT_NAME'] = '/index.php';
+}
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-// Don't do it in production, assembling takes it's time
-Builder::rebuild();
-
-$container = new Container(require Builder::path('web'), require Builder::path('providers'));
-$container = $container->get(ContainerInterface::class);
-
-require_once dirname(__DIR__) . '/src/globals.php';
-
-$application = $container->get(Application::class);
-
-$request = $container->get(ServerRequestFactory::class)->createFromGlobals();
-
-try {
-    $application->start();
-    $response = $application->handle($request);
-    $emitter = new SapiEmitter();
-    $emitter->emit($response, $request->getMethod() === Method::HEAD);
-} finally {
-    $application->shutdown();
-}
+$runner = new ApplicationRunner();
+// Development mode:
+$runner->debug();
+// Run application:
+$runner->run();
 ```
 
 
@@ -68,46 +59,44 @@ Similarly, the following is the code for the entry script of a console applicati
 #!/usr/bin/env php
 <?php
 
-use Yiisoft\Composer\Config\Builder;
+declare(strict_types=1);
+
+use Psr\Container\ContainerInterface;
+use Yiisoft\Config\Config;
 use Yiisoft\Di\Container;
+use Yiisoft\Di\ContainerConfig;
 use Yiisoft\Yii\Console\Application;
+use Yiisoft\Yii\Console\Output\ConsoleBufferedOutput;
 
-(static function () {
-    $cwd = getcwd();
+define('YII_ENV', getenv('env') ?: 'production');
 
-    $possibleAutoloadPaths = [
-        // running from project root
-        $cwd . '/vendor/autoload.php',
-        // running from project bin
-        dirname($cwd) . '/autoload.php',
-        // local dev repository
-        dirname(__DIR__) . '/vendor/autoload.php',
-        // dependency
-        dirname(__DIR__, 4) . '/vendor/autoload.php',
-    ];
-    $autoloadPath = null;
-    foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
-        if (file_exists($possibleAutoloadPath)) {
-            $autoloadPath = $possibleAutoloadPath;
-            break;
-        }
-    }
+require_once 'vendor/autoload.php';
 
-    if ($autoloadPath === null) {
-        $message = "Unable to find vendor/autoload.php in the following paths:\n\n";
-        $message .= '- ' . implode("\n- ", $possibleAutoloadPaths) . "\n\n";
-        $message .= "Possible fixes:\n";
-        $message .= "- Install yiisoft/console via Composer.\n";
-        $message .= "- Run ./yii either from project root or from vendor/bin.\n";
-        fwrite(STDERR, $message);
-        exit(1);
-    }
-    require_once $autoloadPath;
+$config = new Config(
+    __DIR__,
+    '/config/packages',
+);
 
-    $container = new Container(require Builder::path('console'));
+$containerConfig = ContainerConfig::create()
+    ->withDefinitions($config->get('console'))
+    ->withProviders($config->get('providers-console'));
+$container = new Container($containerConfig);
 
-    $container->get(Application::class)->run();
-})();
+/** @var ContainerInterface $container */
+$container = $container->get(ContainerInterface::class);
+
+$application = $container->get(Application::class);
+$exitCode = 1;
+
+try {
+    $application->start();
+    $exitCode = $application->run(null, new ConsoleBufferedOutput());
+} catch (\Error $error) {
+    $application->renderThrowable($error, new ConsoleBufferedOutput());
+} finally {
+    $application->shutdown($exitCode);
+    exit($exitCode);
+}
 ```
 
 ## Alternative runtimes

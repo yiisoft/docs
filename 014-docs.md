@@ -4,14 +4,24 @@ Documentation is one of the most important parts of Yii.
 
 ## Package documentation
 
-Documentation for a package could either be in `README.md` or `docs/{language}` where `{language}` is language code.
+Documentation for a package could either be in `README.md` or `docs/{language}/{type}` where `{language}` is
+a language code and `{type}` could be "guide", "cookbook" or something else.
 Usually `docs` is there if the package usage or configuration is not trivial or there's a need for translation.
+
+Some indicators that it is time to create `docs`:
+
+1. Need for translation.
+2. Existence of multiple separate topics each of these is big by itself.
+
+If the total length of readme is less than about 200 lines, it is fine to keep documentation in the readme.
 
 ## Definitive guide
 
 The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
 aims at covering usage of packages as a whole framework. Unlike package documentation, it is not
 focused on a single package but is covering certain use-cases.
+
+The guide should follow [Microsoft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
 
 ## PHPDoc
 

@@ -1,6 +1,6 @@
 # Response
 
-HTTP response contains status code and message, a set of headers and a body: 
+HTTP response has status code and message, a set of headers and a body: 
 
 ```
 HTTP/1.1 200 OK
@@ -14,10 +14,10 @@ Connection: Closed
 Hello!
 ```
 
-Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web applicaiton to represent response.
+Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web application to represent response.
 
 The object should be constructed and returned as a result of execution of controller actions or other middleware.
-Usually the middleware has response factory injected into its constructor.
+Usually, the middleware has a response factory injected into its constructor.
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -44,7 +44,7 @@ class PostAction
 
 ## Status code
 
-Setting status code is done like the following:
+You can set status code like the following:
 
 ```php
 use Yiisoft\Http\Status;
@@ -56,7 +56,7 @@ Majority of status codes are available from `Status` class for convenience and r
 
 ## Headers
 
-Headers could be set like this:
+You can set headers like this:
 
 ```php
 $response = $response->withHeader('Content-type', 'application/json');
@@ -78,7 +78,7 @@ $response = $response->withoutHeader('Set-Cookie');
 
 Response body is an object implementing `Psr\Http\Message\StreamInterface`.
 
-Writing to it could be done via the interface itself: 
+You can write to it via the interface itself: 
 
 ```php
 $body = $response->getBody();

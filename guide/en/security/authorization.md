@@ -4,19 +4,19 @@ Authorization is the process of verifying that a user has enough permission to d
 
 ## Checking for permission
 
-You can check if a user has certain permissions by using `\Yiisoft\Yii\Web\User\User` service:
+You can check if a user has certain permissions by using `\Yiisoft\User\User` service:
 
 ```php
 namespace App\Blog\Post;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\Router\CurrentRoute;
+use Yiisoft\User\User;
 
 class PostController
 {
-    public function actionEdit(ServerRequestInterface $request, User $user, PostRepository $postRepository)
+    public function actionEdit(CurrentRoute $route, User $user, PostRepository $postRepository)
     {
-        $postId = $request->getAttribute('id');
+        $postId = $route->getArgument('id');
         if ($postId === null) {
             // respond with 404        
         }
@@ -41,47 +41,49 @@ class PostController
 ```
 
 Behind the scenes, `Yiisoft\Yii\Web\User\User::can()` method calls `\Yiisoft\Access\AccessCheckerInterface::userHasPermission()`
-so an implementation should be provided in dependency container in order for it to work. 
+so you should provide an implementation in dependency container in order for it to work. 
 
 ## Role Based Access Control (RBAC) <span id="rbac"></span>
 
 Role-Based Access Control (RBAC) provides a simple yet powerful centralized access control. Please refer to
-the [Wikipedia](http://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC
+the [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC
 with other more traditional access control schemes.
 
-Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](http://csrc.nist.gov/rbac/sandhu-ferraiolo-kuhn-00.pdf).
+Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
 
 Using RBAC involves two parts of work. The first part is to build up the RBAC authorization data, and the second
-part is to use the authorization data to perform access check in places where it is needed. Since RBAC implements
-`\Yiisoft\Access\AccessCheckerInterface`, using it is similar to using any other implementation of access checker.
+part is to use the authorization data to perform access check in places where it's needed. Since RBAC implements
+`\Yiisoft\Access\AccessCheckerInterface`, using it's similar to using any other implementation of an access checker.
 
-To facilitate our description next, we will first introduce some basic RBAC concepts.
+To ease description next, there are some basic RBAC concepts first.
 
 ### Basic Concepts <span id="basic-concepts"></span>
 
-A role represents a collection of *permissions* (e.g. creating posts, updating posts). A role may be assigned
-to one or multiple users. To check if a user has a specified permission, we may check if the user is assigned
-with a role that contains that permission.
+A role represents a collection of *permissions* (for example, creating posts, updating posts).
+You may assign a role to one or many users.
+To check if a user has a specified permission, you may check if the user has a role with that permission.
 
-Associated with each role or permission, there may be a *rule*. A rule represents a piece of code that will be
-executed during access check to determine if the corresponding role or permission applies to the current user.
+Associated with each role or permission, there may be a *rule*.
+A rule represents a piece of code that access checker
+will execute to decide if the corresponding role or permission applies to the current user.
 For example, the "update post" permission may have a rule that checks if the current user is the post creator.
-During access checking, if the user is NOT the post creator, he/she will be considered not having the "update post" permission.
+During access checking, if the user is NOT the post creator, there's no "update post" permission.
 
-Both roles and permissions can be organized in a hierarchy. In particular, a role may consist of other roles or permissions;
-and a permission may consist of other permissions. Yii implements a *partial order* hierarchy which includes the
-more special *tree* hierarchy. While a role can contain a permission, it is not `true` vice versa.
-
+Both roles and permissions are in a hierarchy.
+In particular, a role may consist of other roles or permissions.
+And a permission may consist of other permissions.
+Yii implements a *partial order* hierarchy which includes the more special *tree* hierarchy.
+While a role can contain a permission, it isn't `true` vice versa.
 
 ### Configuring RBAC <span id="configuring-rbac"></span>
 
-RBAC is available via `yiisoft/rbac` package so we need to require it:
+RBAC is available via `yiisoft/rbac` package, so you need to require it:
 
 ```
 composer require yiisoft/rbac
 ```
 
-Before we set off to define authorization data and perform access checking, we need to configure the
+Before we set off to define authorization data and perform access checking, you need to configure the
 `\Yiisoft\Access\AccessCheckerInterface` in dependency container:
 
 ```php
@@ -97,9 +99,10 @@ return [
 ];
 ```
 
-`\Yiisoft\Rbac\Manager\PhpManager` uses a PHP script files to store authorization data. The files are located under
-`@rbac` alias. Make sure the directory and all the files in it are writable by the Web server process if permissions
-hierarchy needs to be changed online.
+`\Yiisoft\Rbac\Manager\PhpManager` uses a PHP script files to store authorization data.
+The files are under `@rbac` alias.
+Make sure the directory and all the files in it are writable by the Web server process if you want to change permission
+hierarchy online.
 
 ### Building Authorization Data <span id="generating-rbac-data"></span>
 
@@ -111,23 +114,23 @@ Building authorization data is all about the following tasks:
 - associating rules with roles and permissions;
 - assigning roles to users.
 
-Depending on authorization flexibility requirements the tasks above could be done in different ways.
-If your permissions hierarchy is meant to be changed by developers only, you can use either migrations
-or a console command. Migration pro is that it could be executed along with other migrations. Console
-command pro is that you have a good overview of the hierarchy in the code rather than it being scattered
-among multiple migrations.
+Depending on authorization flexibility requirements, you can do the tasks in different ways.
+If only developers change your permission hierarchy, you can use either migrations or a console command.
+Migration advantage is that you could execute it along with other migrations.
+The Console command advantage is that you have a good overview of the hierarchy in the code without a need
+to read many migrations.
 
-Either way in the end you'll get the following RBAC hierarchy:
+Either way, in the end, you'll get the following RBAC hierarchy:
 
 ![Simple RBAC hierarchy](img/rbac-hierarchy-1.svg "Simple RBAC hierarchy")
 
-In case you need permissions hierarchy to be formed dynamically you need a UI or a console command. API used to
-build the hierarchy itself won't be different.
+In case you want to build permission hierarchy dynamically you need a UI or a console command.
+The API used to build the hierarchy itself won't be different.
 
 ### Using console command
 
-If your permissions hierarchy doesn't change at all and you have a fixed number of users you can create a
--[console command](../tutorial/console-applications.md) that will initialize authorization data once via
+If your permission hierarchy doesn't change at all, and you have a fixed number of users, you can create a
+[console command](../tutorial/console-applications.md) that will initialize authorization data once via
 APIs offered by `\Yiisoft\Rbac\ManagerInterface`:
 
 ```php
@@ -195,7 +198,7 @@ class RbacCommand extends Command
 The command above could be executed from console the following way:
 
 ```
-./vendor/bin/yii rbac/init
+./yii rbac/init
 ```
 
 > If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
@@ -206,9 +209,9 @@ The command above could be executed from console the following way:
 **TODO**: finish it when migrations are implemented.
 
 You can use [migrations](db-migrations.md)
-to initialize and modify hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
+to initialize and change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `./vendor/bin/yii migrate/create init_rbac` then impement creating a hierarchy:
+Create new migration using `./yii migrate/create init_rbac` then implement creating a hierarchy:
 
 ```php
 <?php
@@ -262,17 +265,17 @@ class m170124_084304_init_rbac extends Migration
 > If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
   create either UI or console command to manage assignments.
 
-Migration could be applied by using `./vendor/bin/yii migrate`.
+You could apply migration by using `./yii migrate`.
 
 ## Assigning roles to users
 
 TODO: update when signup implemented in demo / template.
 
-Author can create post, admin can update post and do everything author can.
+The author can create a post, admin can update post and do everything the author can.
 
-If your application allows user signup you need to assign roles to these new users once. For example, in order for all
-signed up users to become authors in your advanced project template you need to modify `frontend\models\SignupForm::signup()`
-as follows:
+If your application allows user signup, you need to assign roles to these new users once.
+For example, in order for all signed-up users to become authors in your advanced project template you need
+to change `frontend\models\SignupForm::signup()` as follows:
 
 ```php
 public function signup()
@@ -297,15 +300,17 @@ public function signup()
 }
 ```
 
-For applications that require complex access control with dynamically updated authorization data, special user interfaces
-(i.e. admin panel) may need to be developed using APIs offered by `authManager`.
+For applications that require complex access control with dynamically updated authorization data
+(such as an admin panel), you many need to develop special user interfaces using APIs offered by `authManager`.
 
 
 ### Using Rules <span id="using-rules"></span>
 
-As aforementioned, rules add additional constraint to roles and permissions. A rule is a class extending
-from `\Yiisoft\Rbac\Rule`. It must implement the `execute()` method. In the hierarchy we've
-created previously author cannot edit his own post. Let's fix it. First we need a rule to verify that the user is the post author:
+As aforementioned, rules add extra constraint to roles and permissions.
+A rule is a class extending from `\Yiisoft\Rbac\Rule`.
+It must implement the `execute()` method. 
+In the hierarchy you've created before, the author can't edit his own post.
+Let's fix it. First, you need a rule to verify that the user is the post author:
 
 ```php
 namespace App\User\Rbac;
@@ -331,8 +336,7 @@ class AuthorRule extends Rule
 }
 ```
 
-The rule above checks if the `post` is created by user rule is checked for. We'll create a special permission `updateOwnPost` in the
-command we've used previously:
+The rule checks if user created the `post`. Create a special permission `updateOwnPost` in the command you've used before:
 
 ```php
 /** @var \Yiisoft\Rbac\ManagerInterface $auth */
@@ -354,7 +358,7 @@ $auth->addChild($updateOwnPost, $updatePost);
 $auth->addChild($author, $updateOwnPost);
 ```
 
-Now we have got the following hierarchy:
+Now you've got the following hierarchy:
 
 ![RBAC hierarchy with a rule](img/rbac-hierarchy-2.svg "RBAC hierarchy with a rule")
 
@@ -367,7 +371,7 @@ The check is done similar to how it was done in the first section of this guide:
 namespace App\Blog\Post;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Yii\Web\User\User;
+use Yiisoft\User\User;
 
 class PostController
 {
@@ -399,11 +403,12 @@ class PostController
 
 The difference is that now checking for user's own post is part of the RBAC.
 
-If the current user is Jane with `ID=1` we are starting at `createPost` and trying to get to `Jane`:
+If the current user is Jane with `ID=1` you are starting at `createPost` and trying to get to `Jane`:
 
 ![Access check](img/rbac-access-check-1.svg "Access check")
 
-In order to check if a user can update a post, we need to pass an extra parameter that is required by `AuthorRule` described before:
+To check if a user can update a post,
+you need to pass an extra parameter that's required by `AuthorRule` described before:
 
 ```php
 if ($user->can('updatePost', ['post' => $post])) {
@@ -416,17 +421,18 @@ Here is what happens if the current user is John:
 
 ![Access check](img/rbac-access-check-2.svg "Access check")
 
-We are starting with the `updatePost` and going through `updateOwnPost`. In order to pass the access check, `AuthorRule`
+You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`
 should return `true` from its `execute()` method. The method receives its `$params` from the `can()` method call, so the value is
-`['post' => $post]`. If everything is fine, we will get to `author` which is assigned to John.
+`['post' => $post]`.
+If everything is fine, you will get to `author` assigned to John.
 
-In case of Jane it is a bit simpler since she is an admin:
+In case of Jane it's a bit simpler since she is an admin:
 
 ![Access check](img/rbac-access-check-3.svg "Access check")
 
 ## Implementing your own access checker
 
-In case RBAC does not suit your needs, you can implement your own access checker without changing application code:
+If RBAC doesn't suit your needs, you can implement your own access checker without changing the application code:
 
 
 ```php

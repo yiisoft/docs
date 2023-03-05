@@ -1,6 +1,6 @@
 # Dependency injection and container
 
-## Depdendency injection <span id="dependency-injection"></span>
+## Dependency injection <span id="dependency-injection"></span>
 
 There are two ways of re-using things in OOP: inheritance and composition.
 
@@ -17,9 +17,9 @@ class Cache
 
 class CachedWidget extends Cache
 {
-    public function render()
+    public function render(): string
     {
-        $output = parent::getCachedValue('cachedWidget');
+        $output = $this->getCachedValue('cachedWidget');
         if ($output !== null) {
             return $output;
         }
@@ -30,7 +30,7 @@ class CachedWidget extends Cache
 
 The issue here is that these two are becoming unnecessarily coupled or inter-dependent making them more fragile.
 
-Another way to handle it is composition:
+Another way to handle this is composition:
 
 ```php
 interface CacheInterface
@@ -38,7 +38,7 @@ interface CacheInterface
     public function getCachedValue($key);
 }
 
-class Cache implements CacheInterface
+final class Cache implements CacheInterface
 {
     public function getCachedValue($key)
     {
@@ -46,16 +46,16 @@ class Cache implements CacheInterface
     }
 }
 
-class CachedWidget
+final class CachedWidget
 {
-    private $cache;
+    private CacheInterface $cache;
 
     public function __construct(CacheInterface $cache)
     {
         $this->cache = $cache;
     }
     
-    public function render()
+    public function render(): string
     {
         $output = $this->cache->getCachedValue('cachedWidget');
         if ($output !== null) {
@@ -66,11 +66,12 @@ class CachedWidget
 }
 ```
 
-In the above we've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache
-implementation without changing `CachedWidget` so it is becoming more stable.
+We've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache
+implementation without changing `CachedWidget` so it's becoming more stable.
 
-The process of getting an instance of `CacheInterface` into `CachedWidget` is called dependency injection.
-There are multiple ways to perform it:
+The `CacheInterface` here is a dependency: an object another object depends on.
+The process of putting an instance of dependency into an object (`CachedWidget`) is called dependency injection.
+There are many ways to perform it:
 
 - Constructor injection. Best for mandatory dependencies.
 - Method injection. Best for optional dependencies.
@@ -80,11 +81,11 @@ There are multiple ways to perform it:
 ## DI container <span id="di-container"></span>
 
 Injecting basic dependencies is simple and easy. You're choosing a place where you don't care about dependencies,
-which is usually action handler, which you aren't going to unit-test ever, create instances of dependencies needed
+which is usually an action handler, which you aren't going to unit-test ever, create instances of dependencies needed
 and pass these to dependent classes.
 
 It works well when there aren't many dependencies overall and when there are no nested dependencies. When there are
-many and each dependency has dependencies itself, instantiating the whole hierarchy becomes tedious process, which
+many and each dependency has dependencies itself, instantiating the whole hierarchy becomes a tedious process, which
 requires lots of code and may lead to hard to debug mistakes.
 
 Additionally, lots of dependencies, such as certain third party API wrapper, are the same for any class using it.
@@ -96,7 +97,7 @@ So it makes sense to:
 That's what dependency containers are for.
 
 A dependency injection (DI) container is an object that knows how to instantiate and configure objects and
-all their dependent objects. [Martin Fowler's article](http://martinfowler.com/articles/injection.html) has well
+all their dependent objects. [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
 explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
 Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and
@@ -104,9 +105,8 @@ Yii provides the DI container feature through the [yiisoft/di](https://github.co
 
 ### Configuring container <span id="configuring-container"></span>
 
-Because dependencies are needed when new objects are being created, their registration should be done
-as early as possible. If you are application developer it could be done right in the application configuration,
-`config/web.php`. For the following service:
+Because to create a new object you need its dependencies, you should register them as early as possible.
+You can do it in the application configuration, `config/web.php`. For the following service:
 
 ```php
 class MyService implements MyServiceInterface
@@ -115,7 +115,7 @@ class MyService implements MyServiceInterface
     {
     }
 
-    public function setDiscount(int $discount)
+    public function setDiscount(int $discount): void
     {
     
     }
@@ -127,37 +127,37 @@ configuration could be:
 ```php
 return [
     MyServiceInterface::class => [
-        '__class' => MyService::class,
+        'class' => MyService::class,
         '__construct()' => [42],
         'setDiscount()' => [10],
     ],
 ];
 ```
 
-Which is equivalent to the following:
+That's equal to the following:
 
 ```php
 $myService = new MyService(42);
 $myService->setDiscount(10);
 ```
 
-There are additional methods of declaring dependencies:
+There are extra methods of declaring dependencies:
 
 ```php
 return [
-    // declare class for an interface, resolve dependencies automatically
+    // declare a class for an interface, resolve dependencies automatically
     EngineInterface::class => EngineMarkOne::class,
 
     // array definition (same as above)
     'full_definition' => [
-        '__class' => EngineMarkOne::class,
+        'class' => EngineMarkOne::class,
         '__construct()' => [42], 
-        'propertyName' => 'value',
+        '$propertyName' => 'value',
         'setX()' => [42],
     ],
 
     // closure
-    'closure' => function(ContainerInterface $container) {
+    'closure' => static function(ContainerInterface $container) {
         return new MyClass($container->get('db'));
     },
 
@@ -173,16 +173,18 @@ return [
 
 Directly referencing container in a class is a bad idea since the code becomes non-generic, coupled to container interface
 and, what's worse, dependencies are becoming hidden. Because of that, Yii inverts the control by automatically injecting
-objects from container in some constructors and methods based on method argument types.
+objects from a container in some constructors and methods based on method argument types.
 
 This is primarily done in constructor and handing method of action handlers:
 
 ```php
+use \Yiisoft\Cache\CacheInterface;
+
 class MyController
 {
-    private $cache;
+    private CacheInterface $cache;
 
-    public function __construct(\Yiisoft\Cache\Cache $cache) {
+    public function __construct(CacheInterface $cache) {
         $this->cache = $cache;    
     }
 
@@ -199,11 +201,11 @@ class MyController
 }
 ```
 
-Since action handler is instantiated and called using [yiisoft/injector](https://github.com/yiisoft/injector), it
-would check constructor and method argument types, get dependencies of these types from container and pass them as
-arguments. That is usually called auto-wiring. It happens for sub-dependencies as well i.e., if dependency is not provided
-explicitly, container would check if it has such a dependency first. As a developer it is enough to declare a dependency
-you need, and it would be got from container automatically.
+Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it
+checks the constructor and method argument types, get dependencies of these types from a container and pass them as
+arguments. That's usually called auto-wiring. It happens for sub-dependencies as well, that's if you don't give dependency
+explicitly, container would check if it has such a dependency first.
+It's enough to declare a dependency you need, and it would be got from a container automatically.
 
 
 ## References <span id="references"></span>
