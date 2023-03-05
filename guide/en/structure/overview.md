@@ -2,7 +2,7 @@
 
 Yii applications code is typically grouped into modules by context. In each module there could be grouping by type.
 
-For example, if the application is an online store, contexts could be:
+For example, if the application is an online store, context could be:
 
 - Customer
   - Profile
@@ -41,19 +41,19 @@ App/
       CheckoutController.php
 ```
 
-A context may include sub-contexts. If a class is shared by multiple contexts, it is moved to the ancestor of
+A context may include sub-contexts. If a class is shared by multiple contexts, it's moved to the ancestor of
 both contexts.
 
 A context may have [an entry point known as "action" or "controller"](action.md). Its job is to take [a request
 instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create
-[a response](../runtime/response.md) based on what is returned by domain layer. 
+[a response](../runtime/response.md) based on what's returned by domain layer. 
 
 Besides, Yii applications also have the following:
 
-* [entry scripts](entry-script.md): they are PHP scripts that are directly accessible by end users.
-  They are responsible for starting a request handling cycle. Typically a single entry script is handling
+* [entry scripts](entry-script.md): they're PHP scripts that are directly accessible by end users.
+  They're responsible for starting a request handling cycle. Typically, a single entry script is handling
   whole application.
-* [services](service.md): they are typically stateless objects registered within dependency container and
+* [services](service.md): they're typically stateless objects registered within dependency container and
   provide various action methods.
-* [middleware](middleware.md): they represent code that need to be invoked before and after the actual
+* [middleware](middleware.md): they represent a code that needs to be invoked before and after the actual
   handling of each request by action handlers.

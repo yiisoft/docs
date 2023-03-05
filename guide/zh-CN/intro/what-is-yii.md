@@ -34,7 +34,7 @@ Yii 是一个通用的 Web 编程框架，即可以用于开发各种用 PHP 构
   坚实可靠的扩展架构，使用、再开发或再发布扩展。
 - 高性能始终是 Yii 的首要目标之一。
 
-Yii 由一个 [强大的核心开发团队](http://www.yiiframework.com/team/) 提供支持，
+Yii 由一个 [强大的核心开发团队](https://www.yiiframework.com/team/) 提供支持，
 财政上受 [OpenCollective基金会](https://opencollective.com/yiisoft) 的支持，
 它也有一个庞大的专家社区，持续不断地对 Yii 的开发作出贡献。
 Yii 开发者团队始终对 Web 开发趋势和其他框架及项目中的最佳实践和特性保持密切关注，

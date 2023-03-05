@@ -1,12 +1,12 @@
 # Cookies
 
-Cookies allow persisting data between requests by sending it to the client browser using HTTP headers.
-The data is sent back to server in each request headers thus cookies are handy to store small amounts of data
+Cookies are for persisting data between requests by sending it to the client browser using HTTP headers.
+The client sends data back to server in request headers thus cookies are handy to store small amounts of data, 
 such as tokens or flags.
 
 ## Reading cookies
 
-Cookie values could be obtained from server request that is available as route handler (such as controller action) argument:
+You could obtain Cookie values from server request that's available as route handler (such as controller action) argument:
 
 ```php
 private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request)
@@ -19,8 +19,8 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 
 ## Sending cookies
 
-Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is `\Yiisoft\Cookies\Cookie` class
-to help with it:
+Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is
+`\Yiisoft\Cookies\Cookie` class to help with it:
 
 ```php
 $cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
@@ -66,8 +66,8 @@ $cookie = $signer->validate($signedCookie);
 $cookie = $encryptor->decrypt($encryptedCookie);
 ```
 
-If the cookie value is tampered with or has not been signed/encrypted before, a `\RuntimeException` will be thrown.
-Therefore, if you are not sure that the cookie value was signed/encrypted earlier,
+If the cookie value is tampered with or hasn't been signed/encrypted before, a `\RuntimeException` will be thrown.
+Therefore, if you aren't sure that the cookie value was signed/encrypted earlier,
 first use the `isSigned()` and `isEncrypted()` methods, respectively.
 
 ```php
@@ -80,12 +80,12 @@ if ($encryptor->isEncrypted($cookie)) {
 }
 ```
 
-It makes sense to sign or encrypt the value of a cookie if you store important data that should not be modified by a user.
+It makes sense to sign or encrypt the value of a cookie if you store important data that a user shouldn't change.
 
 ### Automating encryption and signing
 
 To automate the encryption/signing and decryption/validation of cookie values, use an instance of
-`Yiisoft\Cookies\CookieMiddleware`, which is a [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware.
+`Yiisoft\Cookies\CookieMiddleware`, which is [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware.
 
 This middleware provides the following features:
 
@@ -114,7 +114,7 @@ $cookiesSettings = [
 For more information on using the wildcard pattern, see the
 [yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage) package.
 
-Creating and using a middleware:
+Creating and using middleware:
 
 ```php
 /**
@@ -149,11 +149,11 @@ If the `$cookiesSettings` array is empty, no cookies will be encrypted and signe
 
 ## Cookies security
 
-Each cookie should be properly configured in order to be secure. In the above code important security settings are:
+You should configure each cookie to be secure. Important security settings are:
 
 - `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value.
 - `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only.
 - `sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would prevent sending a cookie in cross-site
   browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g. POST, PUT,
-  PATCH etc). `SAME_SITE_STRICT` would prevent cookie sending for all methods.
-- Sign or encrypt the value of the cookie to prevent spoofing of values if the data in the value should not be tampered with.
+  PATCH etc). `SAME_SITE_STRICT` would prevent cookies sending for all methods.
+- Sign or encrypt the value of the cookie to prevent spoofing of values if the data in the value shouldn't be tampered with.

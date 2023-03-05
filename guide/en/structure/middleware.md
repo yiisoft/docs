@@ -1,13 +1,13 @@
 # Middleware
 
-Yii works with HTTP using abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)
+Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)
 and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/).
 
 The application is composed of one or several middleware. When the URL is requested, the request object is passed to
 the middleware dispatcher that starts executing middleware. Each middleware, given the request, can:
 
 - Pass request to the next middleware or return a response. 
-- Perform some work before and after next middleware.
+- Perform some work before and after the next middleware.
 
 Depending on middleware used, application behavior may vary significantly.
 
@@ -20,8 +20,9 @@ as follows:
 
 ## Using middleware
 
-Any PSR-15 compatible middleware could be used with Yii and there are many. Say, we need to add basic authentication
-one of the application URLs. URL-dependent middleware are configured using router, so we need to modify router factory. 
+Any PSR-15 compatible middleware could be used with Yii and there are many.
+Say, you need to add basic authentication
+one of the application URLs. URL-dependent middleware is configured using router, so you need to change router factory. 
 
 Authentication middleware is implemented by `middlewares/http-authentication` package so execute
 `composer require middlewares/http-authentication` in the application root directory.
@@ -62,8 +63,8 @@ return [
 ];
 ```
 
-In the above when configuring routing, we are binding `/basic-auth` URL to a chain of middleware consisting of basic
-authentication, and the action itself. A chain is a special middleware that executes all the middleware it is configured
+When configuring routing, you're binding `/basic-auth` URL to a chain of middleware consisting of basic
+authentication, and the action itself. A chain is a special middleware that executes all the middleware it's configured
 with.
 
 The action itself may be the following:
@@ -77,23 +78,23 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 }
 ```
 
-Basic authentication middleware wrote to request `username` attribute, so we can access the data if needed.
+Basic authentication middleware wrote to request `username` attribute, so you can access the data if needed.
 
 To apply middleware to application overall regardless of URL, adjust `config/application.php`:
 
 ```php
 return [
-    Yiisoft\Yii\Web\Application::class => [
+    Yiisoft\Yii\Http\Application::class => [
         '__construct()' => [
             'dispatcher' => DynamicReference::to(static function (Injector $injector) {
                 return ($injector->make(MiddlewareDispatcher::class))
                     ->withMiddlewares(
                         [
-                            Router::class,
-                            CsrfMiddleware::class,
-                            SessionMiddleware::class,
-                            BasicAuthentication::class,
                             ErrorCatcher::class,
+                            BasicAuthentication::class,
+                            SessionMiddleware::class,
+                            CsrfMiddleware::class,
+                            Router::class,
                         ]
                     );
             }),
@@ -105,17 +106,17 @@ return [
 
 ## Creating your own middleware
 
-To create a middleware you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
+To create middleware, you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
 
 ```php
 public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
 ```
 
-There are multiple ways to handle request and choosing one depends on what the middleware should achieve.
+There are many ways to handle request and choosing one depends on what the middleware should achieve.
 
 ### Forming response directly
 
-To respond directly one needs a response factory passed via constructor:
+To respond directly, one needs a response factory passed via constructor:
 
 ```php
 <?php
@@ -147,8 +148,8 @@ class RespondingMiddleware implements MiddlewareInterface
 
 ### Delegating handling to the next middleware
 
-If middleware either is not intended form response / modify request or cannot do it this time, handling could be
-left to next middleware in the stack:  
+If middleware either isn't intended form response / change request or can't do it this time, handling could be
+left to the next middleware in the stack:  
 
 ```php
 return $next->handle($request);
@@ -169,7 +170,7 @@ $answer = $request->getAttribute('answer');
 
 ### Capturing response to manipulate it
 
-You may want to capture response to manipulate it. It could be useful for adding CORS headers, gzipping content etc.
+You may want to capture response to manipulating it. It could be useful for adding CORS headers, gzipping content etc.
 
 ```php
 $response = $next->handle($request);

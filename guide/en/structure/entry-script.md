@@ -1,11 +1,11 @@
-# Entry Scripts
+# Entry scripts
 
 Entry scripts are the first step in the application bootstrapping process. An application (either
 Web application or console application) has a single entry script. End users make requests to
 entry scripts which instantiate application instances and forward the requests to them.
 
 Entry scripts for Web applications must be stored under Web accessible directories so that they
-can be accessed by end users. They are often named as `index.php`, but can also use any other names,
+can be accessed by end users. They're often named as `index.php`, but can also use any other names,
 provided Web servers can locate them.
 
 Entry script for console application is `./yii`.
@@ -17,7 +17,7 @@ Entry scripts mainly perform the following work with the help of `ApplicationRun
 * Use configuration to initialize dependency injection container;
 * Get an instance of request.
 * Pass it to `Application` to handle and get a response from it.
-* With the help of emitter that transform response object into actual HTTP response that is sent to client browser.
+* With the help of emitter that transforms response object into actual HTTP response that's sent to client browser.
 
 ## Web Applications <span id="web-applications"></span>
 
@@ -64,6 +64,7 @@ declare(strict_types=1);
 use Psr\Container\ContainerInterface;
 use Yiisoft\Config\Config;
 use Yiisoft\Di\Container;
+use Yiisoft\Di\ContainerConfig;
 use Yiisoft\Yii\Console\Application;
 use Yiisoft\Yii\Console\Output\ConsoleBufferedOutput;
 
@@ -76,10 +77,10 @@ $config = new Config(
     '/config/packages',
 );
 
-$container = new Container(
-    $config->get('console'),
-    $config->get('providers-console')
-);
+$containerConfig = ContainerConfig::create()
+    ->withDefinitions($config->get('console'))
+    ->withProviders($config->get('providers-console'));
+$container = new Container($containerConfig);
 
 /** @var ContainerInterface $container */
 $container = $container->get(ContainerInterface::class);

@@ -1,0 +1,24 @@
+name: docs
+on:
+    push:
+    pull_request:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Fetch styles
+              run: |
+                sudo apt install wget unzip
+                wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
+                unzip Microsoft.zip -d .github/styles
+            - name: Check
+              uses: errata-ai/vale-action@reviewdog
+              with:
+                reporter: github-check
+                fail_on_error: true
+                filter_mode: nofilter
+                files: '["cookbook", "guide"]'
+              env:
+                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
