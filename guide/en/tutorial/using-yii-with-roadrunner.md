@@ -1,13 +1,13 @@
 # Using Yii with RoadRunner
 
 [RoadRunner](https://roadrunner.dev/) is a Golang-powered application server that integrates well with PHP. It runs
-it as workers and each worker may handle multiple requests. Such operation mode is often called
-[event loop](using-with-event-loop.md) and allows not to re-initialize framework for each request that improves
+it as workers and each worker may handle multiple requests. Such an operation mode is often called
+[event loop](using-with-event-loop.md) and allows not to re-initialize a framework for each request that improves
 performance significantly.
 
 ## Installation
 
-RoadRunner works on Linux, MacOS and Windows. The best way to install it is to use Composer:
+RoadRunner works on Linux, macOS and Windows. The best way to install it is to use a Composer:
 
 ```
 composer require yiisoft/yii-runner-roadrunner
@@ -80,7 +80,7 @@ require_once __DIR__ . '/preload.php';
 
 ## Starting a server
 
-To start a server execute the following command:
+To start a server, execute the following command:
 
 ```
 ./rr serve -d
@@ -88,6 +88,6 @@ To start a server execute the following command:
 
 ## On worker scope
 
-- Each worker scope is isolated from other workers. Memory is not shared.
+- Each worker's scope is isolated from other workers. Memory isn't shared.
 - A single worker serves multiple requests where scope is shared.
 - At each iteration of event loop every service that depends on state should be reset.

@@ -1,8 +1,8 @@
 # Service components
 
 Application may get complicated, so it makes sense to extract focused parts of business logic
-or infrastructure into service components. They are typically injected into other components or action handler.
-It is usually done via autowiring:
+or infrastructure into service components. They're typically injected into other components or action handlers.
+It's usually done via autowiring:
 
 ```php
 public function actionIndex(CurrentRoute $route, MyService $myService): ResponseInterface
@@ -16,24 +16,24 @@ public function actionIndex(CurrentRoute $route, MyService $myService): Response
 }
 ```
 
-Yii3 does not technically imply any limitations on how you build services. In general, there's no need to extend from
+Yii3 doesn't technically imply any limitations on how you build services. In general, there's no need to extend from
 a base class or implement a certain interface.
 
-Services either perform a task or return data. They are created once, put into DI container and then could be used
-multiple times. Because of that, it is a good idea to keep your services stateless i.e., both service itself and any of
-its dependencies should not hold state.
+Services either perform a task or return data. They're created once, put into DI container and then could be used
+multiple times. Because of that, it's a good idea to keep your services stateless that's both service itself and any of
+its dependencies shouldn't hold state.
 
 ## Service dependencies and configuration
 
 Services should always define all their dependencies on other services via `__construct()`. It both allows you to use
-service right away after it is created and serves as an indicator of a service doing too much if there are too many
+service right away after it's created and serves as an indicator of a service doing too much if there are too many
 dependencies.
 
-- After the service created it should not be re-configured in runtime.
-- DI container instance usually **should not** be injected as a dependency. Prefer concrete interfaces.
-- In case of complicated or "heavy" initialization, try to postpone it until service method called.  
+- After the service created, it shouldn't be re-configured in runtime.
+- DI container instance usually **shouldn't** be injected as a dependency. Prefer concrete interfaces.
+- In case of complicated or "heavy" initialization, try to postpone it until the service method is called.  
 
-The same is valid for configuration values. They should be provided as constructor argument. Related values could be
+The same is valid for configuration values. They should be provided as a constructor argument. Related values could be
 grouped together into value objects. For example, database connection usually requires DSN string, username and password.
 These three could be combined into Dsn class:
 
@@ -79,7 +79,7 @@ class Dsn
 
 ## Service methods
 
-Service method usually does something. It could be a simple thing that is repeated exactly but usually it depends on the
+Service method usually does something. It could be a simple thing that's repeated exactly, but usually it depends on the
 context. For example:
 
 ```php
@@ -99,13 +99,13 @@ class PostPersister
 }
 ```
 
-In the code above we have a service saving posts into permanent storage such as database. An object allowing
-communication with a concrete storage is always the same, so it is injected using constructor while the post saved
-could vary, so it is passed as a method argument.
+There's a service saving posts into permanent storage such as a database. An object allowing
+communication with a concrete storage is always the same, so it's injected using constructor while the post saved
+could vary, so it's passed as a method argument.
 
-## Is everything a service?
+## Is everything a service
 
-In many cases it makes sense to choose another class type to place your code into. Check:
+Often it makes sense to choose another class type to place your code into. Check:
 
 - Repository
 - Widget

@@ -1,6 +1,6 @@
 # Request
 
-HTTP request contains a method, URI, a set of headers and a body:
+HTTP request has a method, URI, a set of headers and a body:
 
 ```
 POST /contact HTTP/1.1
@@ -14,8 +14,10 @@ Accept-Encoding: gzip, deflate
 }
 ```
 
-In the above method is `POST`, URI is `/contact`. Additional headers are specifying host, preferred language
-and encoding. The body could be anything. In this case it is JSON payload. 
+The method is `POST`, URI is `/contact`.
+Extra headers are specifying host, preferred language and encoding.
+The body could be anything.
+In this case, it's JSON payload. 
 
 Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as request representation.
 The object is available in controller actions and other types of middleware:
@@ -35,7 +37,7 @@ The method could be obtained from request object:
 $method = $request->getMethod();
 ```
 
-Usually it is one of the: 
+Usually it's one of the: 
 
 - GET
 - POST
@@ -57,7 +59,7 @@ if ($request->getMethod() === Method::POST) {
 
 ## URI
 
-An URI has:
+A URI has:
 
 - Scheme (`http`, `https`)
 - Host (`yiiframework.com`)
@@ -66,13 +68,13 @@ An URI has:
 - Query string (`page=1&sort=+id`)
 - Fragment (`#anchor`)
 
-An object of `UriInterface` could be obtained from request like the following:
+You can obtain `UriInterface` from request like the following:
 
 ```php
 $uri = $request->getUri();
 ``` 
 
-Then various details could be obtained from its methods:
+Then you can get various details from its methods:
 
 - `getScheme()`
 - `getAuthority()`
@@ -101,8 +103,8 @@ $values = $request->getHeader('Accept-Encoding');
 ```
 
 
-Alternatively value could be obtained as a comma-separated string instead of an array. That is especially handy if
-header contains a single value:
+Also, you could obtain value as a comma-separated string instead of an array.
+That's especially handy if a header has a single value:
 
 ```php
 if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
@@ -111,7 +113,7 @@ if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
 }
 ```
 
-To check if a header present in the request:
+To check if a header is present in the request:
 
 ```php
 if ($request->hasHeader('Accept-Encoding')) {
@@ -121,7 +123,7 @@ if ($request->hasHeader('Accept-Encoding')) {
 
 ## Body
 
-There are two method to obtain body contents. First is getting body as is without parsing:
+There are two methods to obtain body contents. First is getting body as is without parsing:
 
 ```php
 $body = $request->getBody();
@@ -129,13 +131,13 @@ $body = $request->getBody();
 
 The `$body` would be an instance of `Psr\Http\Message\StreamInterface`.
 
-Alternatively, parsed body could be obtained:
+Also, you could obtain a parsed body:
 
 ```php
 $bodyParameters = $request->getParsedBody();
 ```
 
-Parsing depends on PSR-7 implementation and may require a middleware for custom body formats.
+Parsing depends on PSR-7 implementation and may require middleware for custom body formats.
 
 ```php
 <?php
@@ -164,7 +166,7 @@ class JsonBodyParserMiddleware implements MiddlewareInterface
 
 ## File uploads
 
-Uploaded files that were submitted from a form with `enctype` attribute equals to `multipart/form-data` are handled
+Uploaded files that user submitted from a form with `enctype` attribute equals to `multipart/form-data` are handled
 via special request method:
 
 ```php
@@ -178,5 +180,5 @@ foreach ($files as $file) {
 
 ## Attributes
 
-Application middleware may set custom request attributes using `withAttribute()` method. These attributes could be
-obtained with `getAttribute()`.
+Application middleware may set custom request attributes using `withAttribute()` method.
+You can obtain these attributes with `getAttribute()`.

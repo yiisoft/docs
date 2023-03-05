@@ -1,9 +1,9 @@
 # Mailing
 
-Yii makes composition and sending of email messages convenient with the help of
+Yii makes composition and sending email messages convenient with the help of
 [yiisoft/mailer](https://github.com/yiisoft/mailer) package. The package provides content composition functionality,
-and a basic interface for sending emails. Out of the box the package provides a file mailer that, instead of
-actually sending an email, writes its contents into a file. Such default is useful during initial application
+and a basic interface for sending emails. Out of the box, the package provides a file mailer that, instead of
+actually sending an email, writes its contents into a file. Such a default is useful during initial application
 development.
 
 There are also [Swift Mailer](https://github.com/yiisoft/mailer-swiftmailer) and
@@ -12,7 +12,7 @@ separate packages that actually can send emails. In the examples of this guide S
 
 ## Configuring mailer
 
-The mailer service allows to get a message instance and, after it is filled with data, send it.
+The mailer service allows you to get a message instance and, after it's filled with data, send it.
 An instance is usually obtained from DI container as `Yiisoft\Mailer\MailerInterface`.
 
 Manually an instance could be created as follows:
@@ -64,7 +64,7 @@ use Yiisoft\Html\Html;
 echo Html::p(Html::encode($content));
 ```
 
-In order to compose message content via view file simply pass view name to the `compose()` method:
+To compose message content via view file, simply pass view name to the `compose()` method:
 
 ```php
 $message = $mailer->compose('view-name') // A view rendering result becomes the message body.
@@ -74,7 +74,7 @@ $message = $mailer->compose('view-name') // A view rendering result becomes the 
 ;
 ```
 
-You may pass additional view parameters to `compose()` method, which will be available inside the view file:
+You may pass extra view parameters to `compose()` method, which will be available inside the view file:
 
 ```php
 $message = $mailer->compose('greetings', [
@@ -83,7 +83,7 @@ $message = $mailer->compose('greetings', [
 ]);
 ```
 
-It is also possible to pass parameters to the layouts:
+It's also possible to pass parameters to the layouts:
 
 ```php
 $message = $mailer->compose(
@@ -158,7 +158,7 @@ $renderer = new MessageBodyRenderer($view, $template);
 $mailer = new Mailer($factory, $renderer, $dispatcher, $transport);
 ```
 
-It is also possible to change the layouts and the path of views in runtime.
+It's also possible to change the layouts and the path of views in runtime.
 
 ```php
 $template = new \Yiisoft\Mailer\MessageBodyTemplate(
@@ -172,11 +172,11 @@ $mailer = $mailer->withTemplate($template);
 
 Note that the `withTemplate()` method returns a new instance of the mailer with the specified message body template.
 
-> If you specify the layouts as empty strings, the layouts will not be used.
+> If you specify the layouts as empty strings, the layouts won't be used.
 
 ### Adding more data
 
-After the message is created, we can add actual content to it. The message implements `Yiisoft\Mailer\MessageInterface`
+After the message is created, you can add actual content to it. The message implements `Yiisoft\Mailer\MessageInterface`
 that contains many useful methods for the purpose:
 
 - `withCharset()` - Returns a new instance with the specified charset.
@@ -197,9 +197,9 @@ that contains many useful methods for the purpose:
 - `withAddedHeader()` - Returns a new instance with the specified added custom header value.
 - `withHeader()` - Returns a new instance with the specified custom header value.
 - `withHeaders()` - Returns a new instance with the specified custom header values.
-- `withError()` - Returns a new instance with the specified send fails error.
+- `withError()` - Returns a new instance with the specified sending fails error.
 
-Note `with` prefix. It indicates that method is immutable and returns a new instance of the class with the changed data.
+Note `with` prefix. It indicates that the method is immutable and returns a new instance of the class with the changed data.
 You can add data using a chain of methods:
 
 ```php
@@ -221,7 +221,7 @@ A number of getters is also available:
 - `getCc()` - Returns the Cc (additional copy receiver) addresses of this message.
 - `getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this message.
 - `getSubject()` - Returns the message subject.
-- `getDate()` - Returns the date when the message was sent, or null if it was not set.
+- `getDate()` - Returns the date when the message was sent, or null if it wasn't set.
 - `getPriority()` - Returns the priority of this message.
 - `getReturnPath()` - Returns the return-path (the bounce address) of this message.
 - `getSender()` - Returns the message actual sender email address.
@@ -316,8 +316,8 @@ Some particular mail extensions may benefit from this approach, using single net
 
 ## Implementing your own mail driver
 
-In order to create your own custom mail solution, you need to create 2 classes: one for the `Mailer`
+To create your own custom mail solution, you need to create 2 classes: one for the `Mailer`
 and another one for the `Message`. You can use `Yiisoft\Mailer\Mailer` as the base class for your solution.
-This class already contain the basic logic, which is described in this guide. However, their usage is not mandatory,
-it is enough to implement `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface` interfaces.
+This class already contains the basic logic, which is described in this guide. However, their usage isn't mandatory,
+it's enough to implement `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface` interfaces.
 Then you need to implement all the abstract methods to build your solution.

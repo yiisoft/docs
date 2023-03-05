@@ -1,10 +1,11 @@
 # Logging
 
-Yii relies on [PSR-3 interfaces](https://www.php-fig.org/psr/psr-3/) for logging so any PSR-3 compatible logging
-library could be configured to do the actual job.
+Yii relies on [PSR-3 interfaces](https://www.php-fig.org/psr/psr-3/) for logging, so you could configure any PSR-3
+compatible logging library to do the actual job.
 
-Yii provides its own logger that is highly customizable and extensible. Using it, you can easily log various types of
-messages, filter them, and gather them at different targets, such as files or emails.
+Yii provides its own logger that's highly customizable and extensible.
+Using it, you can log various types of messages, filter them,
+and gather them at different targets, such as files or emails.
 
 Using the Yii logging framework involves the following steps:
  
@@ -12,12 +13,12 @@ Using the Yii logging framework involves the following steps:
 * Configure [log targets](#log-targets) in the application configuration to filter and export log messages;
 * Examine the filtered logged messages exported by different targets (e.g. the [Yii debugger](../tool/debugger.md)).
 
-In this section, we will mainly describe the first two steps.
+In this section, the focus in on the first two steps.
 
 ## Log Messages <span id="log-messages"></span>
 
-In order to record log messages you need an instance of PSR-3 logger. A class that writes log messages should receive
-it as dependency:
+To record log messages, you need an instance of PSR-3 logger.
+A class that writes log messages should receive it as dependency:
 
 ```php
 class MyService
@@ -31,23 +32,26 @@ class MyService
 }
 ```
 
-Recording log messages is as simple as calling one of the following logging methods that correspond to log levels:
+Recording log message is as simple as calling one of the following logging methods that correspond to log levels:
 
 - `emergency` - System is unusable.
-- `alert` -  Action must be taken immediately. Example: Entire website down, database unavailable, etc.
+- `alert` - Action must be taken immediately.
+  Example: Entire website down, database unavailable, etc.
   This should trigger the SMS alerts and wake you up.
 - `critical` - Critical conditions. Example: Application component unavailable, unexpected exception.
-- `error` - Runtime errors that do not require immediate action but should typically be logged and monitored.
-- `warning` - Exceptional occurrences that are not errors. Example: Use of deprecated APIs, poor use of an API,
-  undesirable things that are not necessarily wrong.
+- `error` - Runtime errors that don't require immediate action but should typically be logged and monitored.
+- `warning` - Exceptional occurrences that aren't errors. Example: Use of deprecated APIs, poor use of an API,
+  undesirable things that aren't necessarily wrong.
 - `notice` - Normal but significant events.
 - `info` - Interesting events. Example: User logs in, SQL logs.
 - `debug` - Detailed debug information.
 
-Each method has two arguments. First is a message. Second is context array that typically contains structured data that
-doesn't fit message well but still does provide important information. In case exception is provided as context, it
-should be passed in "exception" key. Another special key is "category". Categories are handy to better organize
-and filter log messages.
+Each method has two arguments.
+First is a message.
+The Second is a context array that typically has structured data that
+doesn't fit a message well but still does offer important information.
+In case you provide exception as context, you should pass in "exception" key.
+Another special key is "category". Categories are handy to better organize and filter log messages.
 
 ```php
 class MyService
@@ -72,12 +76,13 @@ is to use the PHP magic constant `__METHOD__` for the category names. This is al
 Yii framework code.
 
 The `__METHOD__` constant evaluates as the name of the method (prefixed with the fully qualified class name) where 
-the constant appears. For example, it is equal to the string `'App\\Service\\MyService::serve'` if 
-the above line of code is called within this method.
+the constant appears.
+For example, it's equal to the string `'App\\Service\\MyService::serve'` if the above line of code is called within
+this method.
 
 > Info: The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
 
-Note that PSR-3 package provides `\Psr\Log\NullLogger` class that provides the same set of methods but does not log
+Note that PSR-3 package provides `\Psr\Log\NullLogger` class that provides the same set of methods but doesn't log
 anything. That means that you don't have to check if logger is configured with `if ($logger !== null)` and, instead,
 can assume that logger is always present.
 
@@ -89,8 +94,7 @@ severity levels and categories and then exports them to some medium. For example
 a [[\Yiisoft\Log\Target\File\FileTarget|file target]]exports the filtered log messages to a file,
 while an [[Yiisoft\Log\Target\Email\EmailTarget|email target]] exports the log messages to specified email addresses.
 
-You can register multiple log targets in an application by configuring
-them through the `\Yiisoft\Log\Logger` constructor:
+You can register many log targets in an application by configuring them through the `\Yiisoft\Log\Logger` constructor:
 
 ```php
 use \Psr\Log\LogLevel;
@@ -144,9 +148,10 @@ both match the pattern `Yiisoft\Cache\*`.
 
 By default, the target will process messages of *any* category.
 
-Besides whitelisting the categories by the `setCategories()` method, you may also
-blacklist certain categories by the `setExcept()` method. If the category of a message
-is found or matches one of the patterns in this property, it will NOT be processed by the target.
+Besides allowing the categories by the `setCategories()` method, you may also
+deny certain categories by the `setExcept()` method.
+If the category of a message is found or matches one of the patterns in this property,
+the target will NOT process it.
  
 The following target configuration specifies that the target should only process error and warning messages
 under the categories whose names match either `Yiisoft\Cache\*` or `App\Exceptions\HttpException:*`,
@@ -175,7 +180,7 @@ memory: 4398536
 category: 'application'
 ```
 
-By default, log messages will be formatted as follows:
+By default, log messages have the following format:
 
 ```
 Timestamp Prefix[Level][Category] Message Context
@@ -199,7 +204,7 @@ $logger->info('Text message', ['category' => 'app']);
 // (APP) [info] Text message
 ```
 
-In addition, if you are comfortable with the default message format but need to change the timestamp format
+In addition, if you're comfortable with the default message format but need to change the timestamp format
 or add custom data to the message, you can call the [[\Yiisoft\Log\Target::setTimestampFormat()|setTimestampFormat()]]
 and [[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods. For example, the following code changes the timestamp
 format and configures a log target to prefix each log message with the current user ID
@@ -223,7 +228,7 @@ $logger->info('Text', ['category' => 'user']);
 // Common context: ...
 ```
 
-The PHP callable that is passed to the [[\Yiisoft\Log\Target::setFormat()|setFormat()]]
+The PHP callable that's passed to the [[\Yiisoft\Log\Target::setFormat()|setFormat()]]
 and [[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods has the following signature:
 
 ```php
@@ -244,15 +249,15 @@ $fileTarget->setCommonContext(['server' => $_SERVER]);
 
 ### Message Trace Level <span id="trace-level"></span>
 
-During development, it is often desirable to see where each log message is coming from. This can be achieved by
-calling the [[\Yiisoft\Log\Logger::setTraceLevel()|setTraceLevel()]] method like the following:
+During development, it's often desirable to see where each log message is coming from.
+You can achieve this by calling the [[\Yiisoft\Log\Logger::setTraceLevel()|setTraceLevel()]] method like the following:
 
 ```php
 $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setTraceLevel(3);
 ```
 
-The above application configuration sets trace level to be 3 so each log message will be appended with at most 3
+This application configuration sets trace level to be 3 so each log message will be appended with at most 3
 levels of the call stack at which the log message is recorded. You can also set a list of paths to exclude
 from the trace by calling the [[\Yiisoft\Log\Logger::setExcludedTracePaths()|setExcludedTracePaths()]] method.
 
@@ -261,13 +266,13 @@ $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
 ```
 
-> Info: Getting call stack information is not trivial. Therefore, you should only use this feature during development
+> Info: Getting call stack information isn't trivial. Therefore, you should only use this feature during development
 or when debugging an application.
 
 
 ### Message Flushing and Exporting <span id="flushing-exporting"></span>
 
-As aforementioned, log messages are maintained in an array by the [[\Yiisoft\Log\Logger|logger object]]. To limit the
+As aforementioned, log messages are maintained in an array by [[\Yiisoft\Log\Logger|logger object]]. To limit the
 memory consumption by this array, the logger will flush the recorded messages to the [log targets](#log-targets)
 each time the array accumulates a certain number of log messages. You can customize this number by calling
 the [[\Yiisoft\Log\Logger::setFlushInterval()]] method:
@@ -282,10 +287,10 @@ $logger->setFlushInterval(100); // default is 1000
 which ensures log targets can receive complete log messages.
 
 When the [[\Yiisoft\Log\Logger|logger object]] flushes log messages to [log targets](#log-targets),
-they do not get exported immediately. Instead, the message exporting only occurs when a log target
-accumulates certain number of the filtered messages. You can customize this number by calling the
+they don't get exported immediately. Instead, the message exporting only occurs when a log target
+ accumulates a certain number of the filtered messages. You can customize this number by calling the
 [[\Yiisoft\Log\Target::setExportInterval()|setExportInterval()]] method of individual
-[log targets](#log-targets), like the following,
+[log targets](#log-targets), like the following:
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -326,13 +331,13 @@ foreach ($logger->getTargets() as $target) {
 ```
 
 To check whether the log target is enabled, call the `isEnabled()` method.
-You also may pass a callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
+You also may pass callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
 to define a dynamic condition for whether the log target should be enabled or not.
 
 
 ### Creating New Targets <span id="new-targets"></span>
 
-Creating a new log target class is very simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
+Creating a new log target class is simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
 abstract method that sends all accumulated log messages to a designated medium.
 
 The following protected methods will also be available for child targets:
@@ -344,7 +349,7 @@ The following protected methods will also be available for child targets:
 
 For more details, you may refer to any of the log target classes included in the package.
 
-> Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
+> Tip: Instead of creating your own loggers, you may try any PSR-3 compatible logger such
 as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
 
 ```php

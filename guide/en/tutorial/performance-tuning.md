@@ -1,19 +1,19 @@
-# Performance Tuning
+# Performance tuning
 
 There are many factors affecting the performance of your application. Some are environmental, some are related 
-with your code, while some others are related with Yii itself. In this section, we will enumerate most of these
+to your code, while some others are related to Yii itself. In this section, we will count most of these
 factors and explain how you can improve your application performance by adjusting these factors.
 
 
 ## Optimizing your PHP Environment <span id="optimizing-php"></span>
 
-A well configured PHP environment is important. To get maximum performance,
+A well-configured PHP environment is important. To get maximum performance:
 
 - Use the latest stable PHP version. Major releases of PHP may bring significant performance improvements.
 - Enable bytecode caching with [Opcache](https://secure.php.net/opcache). 
   Bytecode caching avoids the time spent in parsing and including PHP scripts for every incoming request.
 - [Tune `realpath()` cache](https://github.com/samdark/realpath_cache_tuner).
-- Make sure [XDebug](https://xdebug.org/) is not installed in production environment.
+- Make sure [XDebug](https://xdebug.org/) isn't installed in production environment.
 - Try [PHP 7 preloading](https://wiki.php.net/rfc/preload).
 
 ## Using Caching Techniques <span id="using-caching"></span>
@@ -28,9 +28,9 @@ the [Caching](../caching/overview.md) section to learn about the caching support
 
 By default, session data are stored in files. The implementation is locking a file from opening a session to the point it's
 closed either by `$session->close()` or at the end of request.
-While session file is locked all other requests, which are trying to use the same session are blocked i.e. waiting for the
+While the session file is locked all other requests, which are trying to use the same session are blocked, that's waiting for the
 initial request to release session file. This is fine for development and probably small projects. But when it comes 
-to handling massive concurrent requests, it is better to use more sophisticated storage, such as Redis.
+to handling massive concurrent requests, it's better to use more sophisticated storage, such as Redis.
 
 It could be done either by [configuring PHP via php.ini](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server-as-a-session-handler-for-php-on-ubuntu-14-04)
 or [implementing SessionHandlerInterface](https://www.sitepoint.com/saving-php-sessions-in-redis/) and configuring
@@ -46,15 +46,15 @@ session service as follows:
 ## Optimizing Databases <span id="optimizing-databases"></span>
 
 Executing DB queries and fetching data from databases are often the main performance bottleneck in
-a Web application. Although using [data caching](../caching/data.md) techniques may alleviate the performance hit,
-it does not fully solve the problem. When the database contains enormous amounts of data, and the cached data is invalid, 
+a Web application. Although using [data caching](../caching/data.md) techniques may ease the performance hit,
+it doesn't fully solve the problem. When the database has enormous amounts of data, and the cached data are invalid, 
 fetching the latest data could be prohibitively expensive without a proper database and query design.
 
 A general technique to improve the performance of DB queries is to create indices for table columns that
 need to be filtered by. For example, if you need to look for a user record by `username`, you should create an index
 on `username`. Note that while indexing can make SELECT queries much faster, it will slow down INSERT, UPDATE and DELETE queries.
 
-For complex DB queries, it is recommended that you create database views to save the query parsing and preparation time.
+For complex DB queries, it's recommended that you create database views to save the query parsing and preparation time.
 
 Last but not least, use `LIMIT` in your `SELECT` queries. This avoids fetching an overwhelming amount of data from the database
 and exhausting the memory allocated to PHP.
@@ -83,7 +83,7 @@ in offline mode without having users wait for them to finish.
 There are two methods to process data offline: pull and push. 
 
 In the pull method, whenever a request involves some complex operation, you create a task and save it in a persistent 
-storage, such as database. You then use a separate process (such as a cron job) to pull the tasks and process them.
+storage, such as a database. You then use a separate process (such as a cron job) to pull the tasks and process them.
 This method is easy to implement, but it has some drawbacks. For example, the task process needs to periodically pull
 from the task storage. If the pull frequency is too low, the tasks may be processed with great delay, but if the frequency
 is too high, it will introduce high overhead.
@@ -114,8 +114,8 @@ was used with the following run parameters:
 ab -n 1000 -c 10 -t 10
 ```
 
-Also debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used
-and development dependencies were not used:
+Also, a debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used
+and development dependencies weren't used:
 
 ```shell
 composer install --optimize-autoloader --no-dev
@@ -138,8 +138,8 @@ foreach (array_unique($files) as $file) {
 | Without preloading | 0               | 12.32 mb            | 1.71 mb                 | 27.63 ms         | 36.55 rq/s          |
 | With preloading    | 825             | 17.86 mb            | 1.82 mb                 | 26.21 ms         | 38.42 rq/s          |
 
-As you can see, the test results are not much different, since this is just a clean application template
-that does not contain a large number of classes. More discussion of preloading, including benchmarks,
+As you can see, the test results aren't much different, since this is just a clean application template
+that doesn't contain many classes. More discussion of preloading, including benchmarks,
 can be found in the [composer's issue](https://github.com/composer/composer/issues/7777).
 
 ## Performance Profiling <span id="performance-profiling"></span>

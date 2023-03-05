@@ -1,13 +1,13 @@
-# Creating a Project
+# Creating a project
 
-You can create Yii project using the [Composer](https://getcomposer.org/) package manager.
+You can create a Yii project using the [Composer](https://getcomposer.org/) package manager.
 
-We recommend starting with a project template that is a minimal working Yii project implementing some basic features.
+We recommend starting with a project template that's a minimal working Yii project implementing some basic features.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
 
-## Installing Composer
+## Installing composer
 
-If you do not already have Composer installed, you may do so by following the instructions at
+If you don't already have a Composer installed, you may do so by following the instructions at
 [getcomposer.org](https://getcomposer.org/download/). On Linux and Mac OS X, you'll run the following commands:
 
 ```bash
@@ -17,21 +17,21 @@ sudo mv composer.phar /usr/local/bin/composer
 
 On Windows, you'll download and run [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe).
 
-Please refer to the [Troubleshooting section of the Composer Documentation](https://getcomposer.org/doc/articles/troubleshooting.md)
-if you encounter any problems.
-If you are new to Composer, we also recommend reading at least the [Basic usage section](https://getcomposer.org/doc/01-basic-usage.md)
-of the Composer documentation.
+Please refer to the [Troubleshooting section of the Composer's Documentation](https://getcomposer.org/doc/articles/troubleshooting.md)
+if you meet any problems.
+If you're new to Composer, we also recommend reading at least the [Basic usage section](https://getcomposer.org/doc/01-basic-usage.md)
+of the Composer's documentation.
 
-In this guide, all composer commands assume you have installed composer [globally](https://getcomposer.org/doc/00-intro.md#globally)
-so that it is available as the `composer` command. If you are using the `composer.phar` in the local directory instead,
+In this guide, all composer commands assume you've installed composer [globally](https://getcomposer.org/doc/00-intro.md#globally)
+so that it's available as the `composer` command. If you're using the `composer.phar` in the local directory instead,
 you have to adjust the example commands accordingly.
 
-If you had Composer already installed before, make sure you use an up to date version. You can update Composer
+If you had Composer already installed before, make sure you use an up-to-date version. You can update Composer
 by running `composer self-update`.
 
 ## Creating a project
 
-With Composer installed, you can create Yii project from a template by running the following command
+With Composer installed, you can create a Yii project from a template by running the following command
 under a Web-accessible folder:
 
 ```bash
@@ -49,17 +49,17 @@ You can choose a different directory name if you want.
 > composer create-project --prefer-dist --stability=dev yiisoft/app your_project
 > ```
 >
-> Note that the development version of Yii should not be used for production as it may break your running code.
+> Note that the development version of Yii shouldn't be used for production as it may break your running code.
 -->
 
 ## Using individual packages
 
-Many Yii packages could be used separately from the framework via Composer. Framework-specific ones
-have `yii-` prefix in their name.
+You could use many Yii packages separately from the framework via Composer.
+Framework-specific ones have `yii-` prefix in their name.
 
 ## Verifying the Installation <span id="verifying-installation"></span>
 
-After you finish installation, either configure your web server (see next section) or use the
+After you finish installation, either configure your web server (see the next section) or use the
 [built-in PHP web server](https://secure.php.net/manual/en/features.commandline.webserver.php) by running the following
 console command while in the project root directory:
  
@@ -67,8 +67,8 @@ console command while in the project root directory:
 ./yii serve
 ```
 
-> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use or you wish to 
-serve multiple applications this way, you might want to specify what port to use. Just add the --port argument:
+> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use, or you wish to 
+serve many applications this way, you might want to specify what port to use via the --port argument:
 
 ```bash
 ./yii serve --port=8888
@@ -82,20 +82,20 @@ http://localhost:8080/
 
 ![Successful Installation of Yii](img/app-installed.png)
 
-You should see the above page in your browser. If not, please check if your PHP installation satisfies
+You should see the page in your browser. If not, please check if your PHP installation satisfies
 Yii's requirements by using [yiisoft/requirements package](https://github.com/yiisoft/requirements).
 
 
 ## Configuring Web Servers <span id="configuring-web-servers"></span>
 
-> Info: You may skip this subsection for now if you are just test-driving Yii with no intention
+> Info: You may skip this subsection for now if you're just test-driving Yii with no intention
   of deploying it to a production server.
 
-The application installed according to the above instructions should work out of the box with either
-an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
+The application installed according to the instructions should work out of the box with either
+an [Apache HTTP server](https://httpd.apache.org/) or a [Nginx HTTP server](https://nginx.org/), on
 Windows, Mac OS X, or Linux running PHP 8.0 or higher.
 
-On a production server, we recommend configuring your Web server so that the application can be accessed
+On a production server, we recommend configuring your Web server so that a user can access the application
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.
 Such a configuration requires pointing the document root of your Web server to the `app/public` folder.
 In this subsection, you'll learn how to configure your webserver achieve it.
@@ -104,12 +104,12 @@ In this subsection, you'll learn how to configure your webserver achieve it.
 > your private application code and sensitive data files that are stored in the sibling directories
 > of `app/public`. Denying access to those other folders is a security improvement.
 
-> Info: If your application will run in a shared hosting environment where you do not have permission
-> to modify its Web server configuration, you may still adjust the structure of your application for better security.
+> Info: If your application runs in a shared hosting environment where you don't have permission
+> to change its Web server configuration, you may still adjust the structure of your application for better security.
 > Please refer to the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more details.
 
-> Info: If you are running your Yii application behind a reverse proxy, you might need to configure
-> [Trusted proxies and headers](runtime-requests.md#trusted-proxies) in the request component.
+> Info: If you're running your Yii application behind a reverse proxy, you might need to configure
+> [Trusted proxies and headers](../security/trusted-request.md).
 
 ### Apache <span id="apache"></span>
 
@@ -213,7 +213,7 @@ When using this configuration, you should also set `cgi.fix_pathinfo=0` in the `
 to avoid many unnecessary system `stat()` calls.
 
 Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
-can properly detect if a connection is secure.
+can detect if a connection is secure.
 
 ### NGINX Unit <span id="nginx-unit"></span>
 
@@ -280,7 +280,7 @@ in the same configuration.
 
 When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Web site) where document
 root points to `path/to/app/web` folder and that Web site is configured to run PHP. In that `web` folder you have to
-place a file named `web.config` i.e. `path/to/app/web/web.config`. Content of the file should be the following:
+place a file named `web.config` that's `path/to/app/web/web.config`. Content of the file should be the following:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -305,7 +305,7 @@ place a file named `web.config` i.e. `path/to/app/web/web.config`. Content of th
 </configuration>
 ```
 
-Also, the following list of Microsoft's official resources could be useful in order to configure PHP on IIS:
+Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:
 
  1. [How to set up your first IIS Web site](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
  2. [Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)

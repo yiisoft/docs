@@ -1,9 +1,9 @@
 # Sessions
 
-Sessions allow persisting data between requests without passing them to the client and back. Yii has
-[a session package](https://github.com/yiisoft/session) to work with session data.
+Sessions persist data between requests without passing them to the client and back.
+Yii has [a session package](https://github.com/yiisoft/session) to work with session data.
 
-In order to add it to your application, use composer:
+To add it to your application, use composer:
 
 ```shell
 composer require yiisoft/session --prefer-dist
@@ -11,11 +11,12 @@ composer require yiisoft/session --prefer-dist
 
 ## Configuring middleware
 
-In order to maintain a session between requests you need to add `SessionMiddleware` to your route group or
-application middlewares. Route group should be preferred when you have both API with token-based authentication
+To keep a session between requests, you need to add `SessionMiddleware` to your route group or
+application middlewares.
+You should prefer a route group when you have both API with token-based authentication
 and regular web routes in the same application. Having it this way avoids starting the session for API endpoints.
 
-In order to add a session for a certain group of routes, edit `config/routes.php` like the following:
+To add a session for a certain group of routes, edit `config/routes.php` like the following:
 
 ```php
 <?php
@@ -121,9 +122,10 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 
 ## Flash messages
 
-In case you need some data to remain in session until read, such as in case with displaying a message on the next page
-flash messages is what you need. A flash message is a special type of data, that is available only in the current request
-and the next request. After that, it will be deleted automatically.
+In case you need some data to remain in session until read, such as in case with displaying a message on the next page,
+"flash" messages are what you need.
+A flash message is a special type of data, that's available only in the current request and the next request.
+After that, it will be deleted automatically.
 
 `FlashInteface` usage is the following:
 
@@ -142,7 +144,7 @@ if ($warning !== null) {
 
 ## Custom session storage
 
-When using `Yiisoft\Session\Session` as session component, you can provide your own storage implementation:
+When using `Yiisoft\Session\Session`, you can use your own storage implementation:
 
 ```php
 $handler = new MySessionHandler();

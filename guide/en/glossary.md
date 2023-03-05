@@ -13,32 +13,32 @@ Asset refers to a resource file. Typically, it contains JavaScript or CSS code b
 
 ## configuration
 
-Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
+The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
 settings for an object, or a class of objects. Read more in ["Configuration"](concept/configuration.md).
 
 # D
 
 ## DI
 
-Dependency Injection is a programming technique where an object inject a dependent object. ["DI"](concept/di-container.md)
+Dependency Injection is a programming technique where an object injects a dependent object. ["DI"](concept/di-container.md)
 
 # I
 
 ## installation
 
-Installation is a process of preparing something to work either by following a readme file or by executing specially
-prepared script. In case of Yii it's setting permissions and fulfilling software requirements.
+Installation is a process of preparing something to work either by following a readme file or by executing a specially
+prepared script. In case of Yii, it's setting permissions and fulfilling software requirements.
 
 # M
 
 ## middleware
 
-Middleware is a processor in the request processing stack. Given a request it may either produce a response or do some
+Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some
 action and pass processing to the next middleware. Read more in ["Middleware"](structure/middleware.md).
 
 ## module
 
-Module is a sub-application which groups some code based on use-case. It is typically used within the main application
+The module is a sub-application which groups some code based on use-case. It's typically used within the main application
 and may contain URL handlers or console commands.
 
 # N
@@ -51,7 +51,7 @@ Namespace refers to a [PHP language feature](https://www.php.net/manual/en/langu
 
 ## package
 
-A package usually refers to [Composer package](https://getcomposer.org/doc/). It is code ready for reuse and
+A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and
 redistribution installable automatically via package manager.
 
 # Q
@@ -64,5 +64,5 @@ A queue is similar to a stack. Queue follows First-In-First-Out methodology.
 
 ## vendor
 
-Vendor is an organization or individual developer providing code in form of packages. It also may refer to [Composer's
+A Vendor is an organization or individual developer providing code in the form of packages. It also may refer to [Composer's
 `vendor` directory](https://getcomposer.org/doc/).

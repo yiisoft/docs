@@ -1,7 +1,7 @@
 # Actions
 
-In a web application what is executed is determined by request URL. Matching is made by router that is
-configured with multiple routes. Each route can be attached a middleware that, given request, produces
+In a web application, what's executed is determined by request URL. Matching is made by router that's
+configured with multiple routes. Each route can be attached to a middleware that, given request, produces
 a response. Since middleware overall could be chained and can pass actual handling to next middleware,
 we call the middleware actually doing the job an action.
 
@@ -19,7 +19,7 @@ Route::get('/')->action(function (ServerRequestInterface $request) use ($respons
 });
 ```
 
-It is fine for simple handling since any more complicated one would require getting dependencies, so
+It's fine for simple handling since any more complicated one would require getting dependencies, so
 a good idea would be moving the handling to a class method. Callback middleware could be used for the purpose:
 
 ```php
@@ -43,7 +43,7 @@ class FrontPageAction
 }
 ```
 
-For many cases it makes sense to group handling for multiple routes into a single class:
+For many cases, it makes sense to group handling for many routes into a single class:
 
 
 ```php

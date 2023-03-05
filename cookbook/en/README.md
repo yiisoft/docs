@@ -1,16 +1,19 @@
-# Yii3 Community Cookbook
+# Yii3 community cookbook
 
-Yii3 Community Cookbook is an OpenSource book full of tips and tricks about [Yii3](https://www.yiiframework.com/)
-PHP framework. The book is created by Yii community and curated/edited by Yii core team members.
+Yii3 Community Cookbook is an OpenSource book full of tips and tricks about the [Yii3](https://www.yiiframework.com/)
+PHP framework.
 
-Feel free to pull request your own writings. We'll review it, provide feedback and merge the best possible way.
+- The Yii community creates the cookbook.
+- Yii core team members curate and edit it.
 
-This book is released under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
+Feel free to pull request your own writings. Team members will review it, give feedback and merge the best possible way.
+
+This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
 
 ---
 
 [Preface](preface.md)
 
-Getting Started
+Getting started
 ---------------
 
