@@ -1,11 +1,11 @@
 # 013 - Code Review
 
-Code reviews are essential for success of the project and are as important as contributing code.
+Code reviews are essential for the success of the project and are as important as contributing code.
 
 Reviews are handled via GitHub pull requests. When the request is ready for review "status: code review" label
 added to it.
 
-[Full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A"status%3Acode+review"&state=open&type=Issues)
+[A full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A"status%3Acode+review"&state=open&type=Issues)
 is available at GitHub.
 
 ## Guidelines
@@ -18,7 +18,7 @@ is available at GitHub.
 - Are there security issues?
 - Are there performance issues?
 - When leaving comments be polite.
-- Avoid code formatting comments.
+- Avoid code-formatting comments.
 
 ## Mandatory parts
 

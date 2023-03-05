@@ -1,6 +1,6 @@
 # 021 - Changelog and upgrade
 
-For all released packages we have a detailed changelog and upgrade guide.
+For all released packages, we've a detailed changelog and upgrade guide.
 
 ## Changelog
 
@@ -23,7 +23,9 @@ Changelog is written for each version released. The file name is `CHANGELOG.md`.
 ```
 
 There "My package" is the name of the package, `1.0.1` is the version released followed by release date.
-For each version there are number of lines listing the changes. "Bug" refers to change type. The following types are used:
+For each version there are a number of lines listing the changes.
+"Bug" refers to a change type.
+The following types are used:
 
 - New - New features.
 - Chg - General changes.
@@ -37,8 +39,8 @@ code author. "author2" is additional author. An author's nickname MUST be prefix
 
 ## Upgrade
 
-Upgrade guide is created when there is new major version that is not compatible with the previous one. It describes
-steps necessary to upgrade application code.
+Upgrade guide is created when there is a new major version that isn't compatible with the previous one.
+It describes steps necessary to upgrade application code.
 
 The format is the following:
 

@@ -9,11 +9,11 @@
 - High certainty that public API won't change, or some time passed w/o issues reported that may require API changes.
 - README is alright.
 - Everything is type-hinted unless special cases.
-- Psalm analysis pass on at least level 2.
+- Psalm analysis passes on at least level 2.
 - phpdoc is alright.
 - Public API is alright.
 
-## Release Instruction
+## Release instruction
 
 Release a package via [Yii Development Tool](005-development-tool.md). 
 

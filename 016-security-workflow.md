@@ -1,9 +1,9 @@
 # 016 - Security workflow
 
-Security issues are typically sent via [security form](https://www.yiiframework.com/security).
+Security issues are typically sent via [a security form](https://www.yiiframework.com/security).
 
-In case an issue is reported directly to a public page such as repository issue or a forum topic, get me message
-and delete the issue. Say thanks to the reporter and point to security form for next time.  
+If an issue is reported directly to a public page such as repository issue or a forum topic, get the message
+and delete the issue. Say thanks to the reporter and point to the security form for next time.  
 
 ## Verify
 
@@ -20,7 +20,7 @@ Create draft GitHub security advisory.
 
 ### Give credit to the reporter
 
-Ask reporter if he wants to be credited for finding the issue. If so, point to his GitHub account.
+Ask reporter if he wants a credit for finding the issue. If so, point to his GitHub account.
 
 ## Request a CVE number
 

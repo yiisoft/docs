@@ -1,7 +1,7 @@
 # 010 - Code Style
 
 Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and
-[PSR-12](https://www.php-fig.org/psr/psr-12/) with additional rules added on top of it.
+[PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it.
 
 ## Names
 
@@ -9,7 +9,7 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 - Use camelCase notation, including abbreviations (e.g., `enableIdn`).
 - Use the shortest possible, but an explanatory name.
 - Never trim or abbreviate name.
-- Classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), *should* be postfixed with `Collection`.
+- Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`.
 
 ## Types
 
@@ -19,8 +19,8 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 
 ## Comments
 
-Inline comments are to be avoided except when code could not be understood without them. A good example is
-a workaround for a bug in a certain PHP version.
+Inline comments are to be avoided unless code couldn't be understood without them.
+A good example is a workaround for a bug in a certain PHP version.
 
 Method comment is necessary except it adds nothing to what method name and signature already has.
 
@@ -32,8 +32,8 @@ Class comment should describe the purpose of the class.
 
 ### No alignment
 
-Property, variable and constant value assignments should not be aligned. Same applies to phpdoc tags.
-The reason is that aligned statements often cause larger diff and even conflicts.
+Property, variable and constant value assignments shouldn't be aligned.
+The same applies to phpdoc tags. The reason is that aligned statements often cause larger diff and even conflicts.
 
 ```php
 final class X
@@ -58,8 +58,8 @@ final class X
 
 ### Chain calls
 
-Chained calls should be formatted for better readability. If it is a long chain that doesn't
-fit line length (120 characters) then each call should on a new line:
+Chained calls should be formatted for better readability.
+If it's a long chain that doesn't fit the line length of 120 characters, then each call should on a new line:
 
 ```php
 $object
@@ -70,7 +70,7 @@ $object
     ->withDeadline($deadline);
 ```
 
-If it is a short chain, it is alright for it to be on a single line:
+If it's a short chain, it's alright for it to be on a single line:
 
 ```php
 $object = $object->withName('test');
@@ -93,7 +93,7 @@ Constants, properties and methods should be private by default.
 
 ### Composition over inheritance
 
-Prefer [composition over inheritance](guide/en/concept/di-container.md).
+Prefer [composition to inheritance](guide/en/concept/di-container.md).
 
 ### Property, constant and method order
 
@@ -103,7 +103,7 @@ Order should be the following:
 - Properties
 - Methods
 
-Within each category items should be sorted by visibility:
+Within each category, items should be sorted by visibility:
 
 - public
 - protected
@@ -111,7 +111,7 @@ Within each category items should be sorted by visibility:
 
 ### Abstract classes
 
-Abstract classes *should not* be prefixed or postfixed with `Abstract`.
+Abstract classes *shouldn't* be prefixed or postfixed with `Abstract`.
 
 #### Immutable methods
 
@@ -141,7 +141,7 @@ public function canDoIt(): bool;
 
 #### Flags in methods 
 
-Boolean flags in methods are better to be avoided. It is a sign the method may be doing too much and there
+Boolean flags in methods are better to be avoided. It's a sign the method may be doing too much, and there
 should be two methods instead of one.
 
 ```php
