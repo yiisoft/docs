@@ -54,6 +54,14 @@ Namespace refers to a [PHP language feature](https://www.php.net/manual/en/langu
 A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and
 redistribution installable automatically via package manager.
 
+# R
+
+## rule
+
+The rule usually refers to a validation rule of the [yiisoft/validator](https://github.com/yiisoft/validator) package.
+It holds a set of parameters for checking if a data set is valid.
+"Rule handler" does the actual processing.
+
 # Q
 
 ## queue
