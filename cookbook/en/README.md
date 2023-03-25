@@ -20,4 +20,4 @@ Getting started
 Organizing code
 ---------------
 
-- [Structuring code by use-case with vertical slices](structuring-by-use-case-with-vertical-slices.md)
+- [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
