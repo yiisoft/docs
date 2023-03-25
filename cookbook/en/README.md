@@ -17,3 +17,7 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 Getting started
 ---------------
 
+Organizing code
+---------------
+
+- [Structuring code by use-case with vertical slices](structuring-by-use-case-with-vertical-slices.md)
