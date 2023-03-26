@@ -6,16 +6,16 @@ and a basic interface for sending emails. Out of the box, the package provides a
 actually sending an email, writes its contents into a file. Such a default is useful during initial application
 development.
 
-There are also [Swift Mailer](https://github.com/yiisoft/mailer-swiftmailer) and
-[Symfony Mailer](https://github.com/yiisoft/mailer-symfony) based official drivers available as a
-separate packages that actually can send emails. In the examples of this guide Symfony Mailer is used.
+To actually send emails,
+there is a [Symfony Mailer](https://github.com/yiisoft/mailer-symfony) implementation of mailer.
+It's used in further examples.
 
 ## Configuring mailer
 
 The mailer service allows you to get a message instance and, after it's filled with data, send it.
 An instance is usually obtained from DI container as `Yiisoft\Mailer\MailerInterface`.
 
-Manually an instance could be created as follows:
+Manually you could create an instance as follows:
 
 ```php
 use Yiisoft\Mailer\MessageBodyRenderer;
@@ -40,11 +40,11 @@ $mailer = new Mailer(
 );
 ```
 
-The `Yiisoft\Mailer\MailerInterface` contains 4 methods:
+The `Yiisoft\Mailer\MailerInterface` has 4 methods:
 
 - `compose()` - Creates a new message instance and optionally composes its body content via view rendering.
 - `send()` - Sends the given email message.
-- `sendMultiple()` - Sends multiple messages at once.
+- `sendMultiple()` - Sends many messages at once.
 - `withTemplate()` - Returns a new instance with the specified message body template.
 
 ## Creating a message
@@ -102,13 +102,14 @@ $message = $mailer->compose([
 ]);
 ```
 
-If you specify view name as a string, the rendering result will be used as HTML body,
-while plain text body will be composed by removing all HTML entities from it.
+If you specify view name as a string, mailer will use the rendering result as HTML body,
+while it will compose plain text body by removing all HTML entities from it.
 
 > If you specify view name as `null` the message instance will be returned without body content.
 
-View rendering result can be wrapped into the layout. It will work the same way as layouts in regular web application.
-Layout can be used to set up mail CSS styles or other shared content:
+You can wrap a view rendering result into the layout.
+It will work the same way as layouts in regular web application.
+You can use layout to set up mail CSS styles or other shared content:
 
 ```php
 <?php
@@ -133,7 +134,7 @@ Mailed by Yii
 ```
 
 You can specify the layouts when creating an instance of the `Yiisoft\Mailer\MessageBodyRenderer`,
-which is passed to the mailer constructor.
+which you pass to the mailer constructor.
 
 ```php
 use Yiisoft\Mailer\MessageBodyRenderer;
@@ -172,18 +173,18 @@ $mailer = $mailer->withTemplate($template);
 
 Note that the `withTemplate()` method returns a new instance of the mailer with the specified message body template.
 
-> If you specify the layouts as empty strings, the layouts won't be used.
+> If you specify the layouts as empty strings, mailer won't use the layouts.
 
 ### Adding more data
 
-After the message is created, you can add actual content to it. The message implements `Yiisoft\Mailer\MessageInterface`
-that contains many useful methods for the purpose:
+After you create the message, you can add actual content to it.
+The message implements `Yiisoft\Mailer\MessageInterface` that has many useful methods for the purpose:
 
 - `withCharset()` - Returns a new instance with the specified charset.
 - `withFrom()` - Returns a new instance with the specified sender email address.
 - `withTo()` - Returns a new instance with the specified recipient(s) email address.
 - `withReplyTo()` - Returns a new instance with the specified reply-to address.
-- `withCc()` - Returns a new instance with the specified Cc (additional copy receiver) addresses.
+- `withCc()` - Returns a new instance with the specified Cc (extra copy receiver) addresses.
 - `withBcc()` - Returns a new instance with the specified Bcc (hidden copy receiver) addresses.
 - `withSubject()` - Returns a new instance with the specified message subject.
 - `withDate()` - Returns a new instance with the specified date when the message was sent.
@@ -218,7 +219,7 @@ A number of getters is also available:
 - `getFrom()` - Returns the message sender email address.
 - `getTo()` - Returns the message recipient(s) email address.
 - `getReplyTo()` - Returns the reply-to address of this message.
-- `getCc()` - Returns the Cc (additional copy receiver) addresses of this message.
+- `getCc()` - Returns the Cc (extra copy receiver) addresses of this message.
 - `getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this message.
 - `getSubject()` - Returns the message subject.
 - `getDate()` - Returns the date when the message was sent, or null if it wasn't set.
@@ -305,19 +306,16 @@ foreach ($users as $user) {
     ;
 }
 
-$mailer->sendMultiple($messages);
+$result = $mailer->sendMultiple($messages);
 ```
 
-This method returns an array of failed messages, or an empty array if all messages were sent successfully.
-
-> You can get an error using the `$message->getError()` method.
-
-Some particular mail extensions may benefit from this approach, using single network message etc.
+This method returns an array of failed messages, or an empty array if the mailer sent all messages successfully.
+You can get an error using the `$message->getError()` method.
 
 ## Implementing your own mail driver
 
 To create your own custom mail solution, you need to create 2 classes: one for the `Mailer`
 and another one for the `Message`. You can use `Yiisoft\Mailer\Mailer` as the base class for your solution.
-This class already contains the basic logic, which is described in this guide. However, their usage isn't mandatory,
+This class already has the basic logic, which described in this guide. However, their usage isn't mandatory,
 it's enough to implement `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface` interfaces.
 Then you need to implement all the abstract methods to build your solution.
