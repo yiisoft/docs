@@ -15,7 +15,7 @@ There are two main principles when it comes to security no matter which applicat
 
 ### Filter input
 
-Filter input means that input should never be considered safe, and you should always check if the value you've got is
+Filter input means that you should never consider input safe, and you should always check if the value you've got is
 actually among allowed ones.
 For example, if you know that you sort by three fields `title`, `created_at` and `status`
 and the field came from user input, it's better to check the value you've got right where you're receiving it.
@@ -239,4 +239,12 @@ Instead, PHP should be configured properly:
   curl.cainfo="/path/to/cacert.pem".
   ```
 
-Note that the `cacert.pem` file should be kept up to date.
+Note that you should keep the file up to date.
+
+## References
+
+- [OWASP top 10](https://owasp.org/Top10/)
+- [The Basics of Web Application Security](https://martinfowler.com/articles/web-security-basics.html) by Martin Fowler
+- [PHP manual: security](https://www.php.net/manual/en/security.php)
+- [Information security at STackExchange](https://security.stackexchange.com/)
+
