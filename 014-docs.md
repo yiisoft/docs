@@ -21,7 +21,33 @@ The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/
 aims at covering usage of packages as a whole framework. Unlike package documentation, it isn't
 focused on a single package but is covering certain use-cases.
 
-The guide should follow [Microsoft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+The guide should follow [
+oft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+
+## Blocks
+
+Blocks use the Markdown `> Type: `. There are four block types:
+
+* `Warning`, for bad security things and other problems
+* `Note`, to emphasize key concepts, things to avoid
+* `Info`, general information (an aside); not as strong as a "Note"
+* `Tip`, pro tips, extras, can be useful but may not be needed by everyone all the time
+
+The sentence after the colon should begin with a capital letter.
+
+When translating documentation, these Block indicators should not be translated.
+Keeps them intact as they are and only translate the block content.
+For translating the `Type` word, each guide translation should have a `blocktypes.json` file
+containing the translations. The following shows an example for German:
+
+```json
+{
+    "Warning:": "Achtung:",
+    "Note:": "Hinweis:",
+    "Info:": "Info:",
+    "Tip:": "Tipp:"
+}
+```
 
 ## PHPDoc
 
