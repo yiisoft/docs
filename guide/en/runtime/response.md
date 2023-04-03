@@ -94,7 +94,7 @@ $body->write('Hello');
 use Yiisoft\Http\Status;
 
 return $response
-  ->withStatus(STatus::PERMANENT_REDIRECT)
+  ->withStatus(Status::PERMANENT_REDIRECT)
   ->withHeader('Location', 'https://www.example.com');  
 ```
 
