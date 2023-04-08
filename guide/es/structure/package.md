@@ -64,7 +64,7 @@ The following example shows the `composer.json` file for the `yiisoft/yii-widget
         "issues": "https://github.com/yiisoft/yii-widgets/issues?state=open",
         "forum": "https://www.yiiframework.com/forum/",
         "wiki": "https://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
+        "irc": "ircs://irc.libera.chat:6697/yii",
         "source": "https://github.com/yiisoft/yii-widgets"
     },
     // package dependencies
