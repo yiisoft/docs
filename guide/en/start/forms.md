@@ -36,7 +36,7 @@ class EchoForm extends FormModel
         return $this->message;
     }
 
-    public function attributeLabels(): array
+    public function getAttributeLabels(): array
     {
         return [
             'message' => 'Message',
@@ -121,13 +121,12 @@ To render a form, you need to change your view, `resources/views/echo/say.php`:
 ```php
 <?php
 
-use Yiisoft\Form\Widget\Field;
-use Yiisoft\Form\Widget\Form;
+use Yiisoft\Form\Field;
 use Yiisoft\Html\Html;
 
 /* @var \App\Form\EchoForm $form */
 /* @var string $csrf */
-/* @var \Yiisoft\Router\UrlGeneratorInterface $url */
+/* @var \Yiisoft\Router\UrlGeneratorInterface $urlGenerator */
 ?>
 
 
@@ -137,116 +136,63 @@ use Yiisoft\Html\Html;
     </div>
 <?php endif ?>
 
-<?= Form::widget()
-    ->action($url->generate('echo/say'))
-    ->options([
-        'csrf' => $csrf,
-    ])
-    ->begin() ?>
+<?= Html::form()
+    ->post($urlGenerator->generate('echo/say'))
+    ->csrf($csrf)
+    ->open() ?>
 
-<?= Field::widget()->config($form, 'message') ?>
+<?= Field::text($form, 'message') ?>
 
 <?= Html::submitButton('Say') ?>
 
-<?= Form::end() ?>
+<?= '</form>' ?>
 ```
 
 If a form has a message set, you're displaying a box with the message. The rest if about rendering the form.
 
 You get the action URL from the URL manager service.
-You access it as `$url` that's a default parameter available in all views.
-This variable and alike ones such as `$csrf` are provided by view injections listed in `config/params.php`:
+You access it as `$urlGenerator` that's a default parameter available in all views.
+This variable and alike ones such as `$csrf` are provided by view injections listed in `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view' => [
     'injections' => [
-        Reference::to(ContentViewInjection::class),
+        Reference::to(CommonViewInjection::class),
         Reference::to(CsrfViewInjection::class),
         Reference::to(LayoutViewInjection::class),
     ],
 ],
 ```
 
-By default, `src\ViewInjection\ContentViewInjection` doesn't offer `$url` so you need to add it:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\ViewInjection;
-
-use App\ApplicationParameters;
-use Yiisoft\Router\UrlGeneratorInterface;
-use Yiisoft\Yii\View\ContentParametersInjectionInterface;
-
-final class ContentViewInjection implements ContentParametersInjectionInterface
-{
-    private ApplicationParameters $applicationParameters;
-    private UrlGeneratorInterface $url;
-
-    public function __construct(
-        ApplicationParameters $applicationParameters,
-        UrlGeneratorInterface $url
-
-    ) {
-        $this->applicationParameters = $applicationParameters;
-        $this->url = $url;
-    }
-
-    public function getContentParameters(): array
-    {
-        return [
-            'applicationParameters' => $this->applicationParameters,
-            'url' => $this->url,
-        ];
-    }
-}
-```
-
-You render the value of CSRF token as a hidden input to ensure that the request originates from the form page and not
-from another website. It will be submitted along with POST form data. Omitting it would result in
+You set the value of CSRF token, and it is rendered as a hidden input to ensure that the request originates from 
+the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-To turn on the CSRF protection, you need to add `CsrfMiddleware` to `config/web/application.php`:
+To turn on the CSRF protection, you need to add `CsrfMiddleware` to `config/web/params.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\Handler\NotFoundHandler;
-use Yiisoft\Csrf\CsrfMiddleware;
 use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-use Yiisoft\Definitions\Reference;
-use Yiisoft\Definitions\DynamicReference;
-use Yiisoft\Injector\Injector;
-use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Session\SessionMiddleware;
+use Yiisoft\Csrf\CsrfMiddleware;
 
 return [
-    Yiisoft\Yii\Web\Application::class => [
-        '__construct()' => [
-            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
-                return ($injector->make(MiddlewareDispatcher::class))
-                    ->withMiddlewares(
-                        [
-                            Router::class,
-                            CsrfMiddleware::class, // <-- here
-                            SessionMiddleware::class,
-                            ErrorCatcher::class,
-                        ]
-                    );
-            }),
-            'fallbackHandler' => Reference::to(NotFoundHandler::class),
-        ],
+    'middlewares' => [
+        ErrorCatcher::class,
+        SessionMiddleware::class,
+        CsrfMiddleware::class, // <-- here
+        Router::class,
     ],
-];
+    
+    // ...
 ```
 
-You use `Field` to output "message" field, so it takes case about filling the value, escaping it, rendering field label
-and validation errors you're going to take care of next.
+You use `Field::text()` to output "message" field, so it takes case about filling the value, escaping it,
+rendering field label and validation errors you're going to take care of next.
 
 ## Adding validation
 
@@ -287,7 +233,6 @@ class EchoController
         ]);
     }
 }
-
 ```
 
 You've obtained validator instance through type-hinting and used it to validate the form.
@@ -299,8 +244,9 @@ namespace App\Form;
 
 use Yiisoft\Form\FormModel;
 use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\RulesProviderInterface;
 
-class EchoForm extends FormModel
+class EchoForm extends FormModel implements RulesProviderInterface
 {
     private string $message = '';
 
@@ -309,18 +255,17 @@ class EchoForm extends FormModel
         return $this->message;
     }
 
-    public function attributeLabels(): array
+    public function getAttributeLabels(): array
     {
         return [
             'message' => 'Message',
         ];
     }
-
-    public function getRules(): array
-    {
+    
+    public function getRules() : iterable{
         return [
             'message' => [
-                Required::rule()
+                new Required()
             ]
         ];
     }
