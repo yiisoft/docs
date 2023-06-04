@@ -307,7 +307,7 @@ place a file named `web.config` that's `path/to/app/web/web.config`. Content of 
 
 Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:
 
- 1. [How to set up your first IIS Web site](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
+ 1. [How to set up your first IIS website](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
  2. [Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)
 
 ### lighttpd <span id="lighttpd"></span>

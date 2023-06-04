@@ -24,7 +24,7 @@ debugging information, such as log messages, response statuses, the database que
 
 Additionally, to the web application, there is a console script accessible via `./yii`.
 This script can be used to run background and maintenance tasks for the application, which are described
-in the [Console Application Section](../tutorial/console.md).
+in the [Console Application Section](../tutorial/console-applications.md).
 
 
 ## Application Structure <span id="application-structure"></span>
@@ -34,9 +34,23 @@ The most important directories and files in your application are (assuming the a
 ```
 config/                   Configuration files.
     common/               Configs applied to both console and web.
+        di/               DI container configuration.
+        aliasess.php      Aliases.
+        params.php        Various parameters used in DI configs.
+        routes.php        Application routes.
     console/              Configs applied to console.
-    packages/             Packages configuration.
+        commands.php      Registered console commands.
+        params.php        Various parameters used in DI configs.
     web/                  Configs applied to web.
+       di/                DI container configuration.
+       params.php         Various parameters used in DI configs.
+    environments/         Environment-based configs.
+        dev/              Configs applied in dev environment.
+            params.php    Various parameters used in DI configs.
+        prod/             Configs applied in prod environment.
+            params.php    Various parameters used in DI configs.
+        test/             Configs applied in test environment.
+            params.php    Various parameters used in DI configs.
     events.php            Event handlers for both console and web.
     events-console.php    Event handlers for console.
     events-web.php        Event handlers for web.
@@ -49,7 +63,6 @@ docs/                     Documentation.
 public/                   Files publically accessible from the Internet.
     assets/               Published assets.
     index.php             Entry script.
-    index-test.php        Entry script for running tests with Codeception.
 resources/                Application resources.
     assets/               Asset bundle resources.
     message/              Message translations.
@@ -62,10 +75,11 @@ src/                      Application source code.
     Controller/           Web controller classes.
     Handler/              Custom handler for 404.
     ViewInjection/        Injections that bring additional variables into view templates.
+    Installer.php         Additional actions done on Composer commands.
 tests/                    A set of Codeception tests for the application.
 vendor/                   Installed Composer packages.
-ApplicationRunner.php     Contains the process of running the application.
-Installer.php             Additional actions done on Composer commands.
+configuration.php         Defines how to read application configs.
+yii                       Console application entry point.
 ```
 
 In general, the files in the application can be divided into two types: those under `app/public` and those
@@ -73,10 +87,10 @@ under other directories. The former can be directly accessed via HTTP (i.e., in 
 and shouldn't be.
 
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
-The entry script is using an application runner to create an instance an incoming request with the help of one of PSR-7 packages
-and passes it to [an application](../structure/application.md) instance. An application contains a set of
-middleware that are executed sequentially processing the request. The result is passed further to emitter
-that takes care of sending a response to the browser.
+The entry script is using an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
+an incoming request with the help of one of PSR-7 packages and passes it to [an application](../structure/application.md)
+instance. An application contains a set of middleware that are executed sequentially processing the request.
+The result is passed further to emitter that takes care of sending a response to the browser.
 
 Depending on the middleware used, the application may behave differently. By default, there is a router
 that, based on URL requested and configuration, chooses a handler that's executed to produce a response.

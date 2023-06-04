@@ -32,11 +32,11 @@ namespace App\Controller;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Html\Html;
+use Yiisoft\Router\CurrentRoute;
 
 class EchoController
-{  
+{
     private ResponseFactoryInterface $responseFactory;
 
     public function __construct(ResponseFactoryInterface $responseFactory)
@@ -44,9 +44,9 @@ class EchoController
         $this->responseFactory = $responseFactory;
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(CurrentRoute $currentRoute): ResponseInterface
     {
-        $message = $request->getAttribute('message', 'Hello!');
+        $message = $currentRoute->getArgument('message', 'Hello!');
 
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('The message is: ' . Html::encode($message));
@@ -55,19 +55,16 @@ class EchoController
 }
 ```
 
-The `say` method in your example is given `$request` parameter that you can use to obtain
-a message, whose value defaults to `"Hello"` (in 
-the same way you set a default value for any function or method argument in PHP). When the application
-receives a request and determines that the `say` action is responsible for handling said request, the application will
-populate this parameter with the same named parameter found in the request. In other words, if the request includes
-a `message` parameter with a value of `"Goodbye"`, the `$message` variable within the action will be assigned that value.
+The `say` method in your example is given `$currentRoute` parameter that you can use to obtain
+a message, whose value defaults to `"Hello"`. If the request is made to `/say/Goodbye`,
+the `$message` variable within the action will be assigned that value.
 
 The response returned goes through [middleware stack](../structure/middleware.md) into emitter that outputs response
 to the end user.
 
 ## Configuring router
 
-Now, to map your handler to URL, you need to add a route in `config/routes.php`:
+Now, to map your handler to URL, you need to add a route in `config/common/routes.php`:
 
 ```php
 <?php
