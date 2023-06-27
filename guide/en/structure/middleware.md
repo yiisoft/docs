@@ -170,11 +170,10 @@ $answer = $request->getAttribute('answer');
 
 ### Capturing response to manipulate it
 
-You may want to capture response to manipulating it. It could be useful for adding CORS headers, gzipping content etc.
+You may want to capture response to manipulate it. It could be useful for adding CORS headers, gzipping content etc.
 
 ```php
 $response = $next->handle($request);
 // extra handing
 return $response;
 ```
-
