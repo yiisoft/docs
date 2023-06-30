@@ -72,4 +72,4 @@ The support of PHP versions supported for a package depends on
 
 ## composer.json
 
-A logical OR operator in version ranges MUST use single pipe (`|`). For example: `"yiisoft/arrays": "^1.0|^2.0"`.   
+A logical OR operator in version ranges MUST use double pipe (`||`). For example: `"yiisoft/arrays": "^1.0 || ^2.0"`.   
