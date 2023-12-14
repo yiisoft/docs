@@ -9,14 +9,11 @@ Yii – это универсальный веб-фреймворк.
 Вы можете использовать его для разработки всех типов веб-приложений.
 Благодаря его архитектуре и отличной поддержке кеширования, фреймворк особенно подходит для разработки таких крупных проектов, как порталы, CMS, магазины или RESTful-приложения.
 
-## How does Yii Compare with Other Frameworks
 ## Сравнение Yii с другими фреймворками
 
-If you're already familiar with another framework, you may appreciate knowing how Yii compares:
 Если вы уже знакомы с другими фреймворками, вам наверняка будет интересно сравнить их с Yii:
 
-- Yii takes the [philosophy of being practical and helpful](https://github.com/yiisoft/docs/blob/master/001-yii-values.md) achieving:
-- Yii придерживается [философии практичности и полезности] (https://github.com/yiisoft/docs/blob/master/001-yii-values.md), достигая:
+- Yii придерживается [философии практичности и полезности] (https://github.com/yiisoft/docs/blob/master/001-yii-values.md), достигая следующего:
   - Performance in both development and execution.
   - Convenient customizable defaults.
   - Practice-orientation.
