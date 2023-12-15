@@ -14,25 +14,27 @@ Yii – это универсальный веб-фреймворк.
 Если вы уже знакомы с другими фреймворками, вам наверняка будет интересно сравнить их с Yii:
 
 - Yii придерживается [философии практичности и полезности] (https://github.com/yiisoft/docs/blob/master/001-yii-values.md), достигая следующего:
-  - Performance in both development and execution.
-  - Convenient customizable defaults.
-  - Practice-orientation.
-  - Simplicity.
-  - Explicitness.
-  - Consistency.
+  - Производительность как в разработке, так и во время выполнения.
+  - Удобные изменяемые настройки по-умолчанию.
+  - Практикоориентированность.
+  - Простота.
+  - Ясность.
+  - Согласованность.
   
-  Yii will never try to over-design things mainly for the purpose of following
-  some design patterns.
-- Yii extensively uses PSR interfaces with the ability to reuse what PHP community created and even
-  replace core implementations if needed.
-- Yii is both a set of libraries and a full-stack framework providing many proven and ready-to-use features:
-  caching, logging, template engine, data abstraction, development tools, code generation; and more.
-- Yii is extensible. You can customize or replace every piece of the core's code. You can also
-  take advantage of Yii's solid architecture to use or develop redistributable packages.
-- High performance is always a primary goal of Yii.
+  Yii не усложняет дизайн только ради следования каким-либо шаблонам проектирования..
+- Yii широко использует PSR интерфейсы с возможностью не только повторно использовать то, что создано PHP-сообществм, но и заменять, при необходимости, реализованный в ядре функционал.
+- Yii это одновременно набор библиотек и full-stack фреймворк, предоставляющий множество проверенных и готовых к использованию компонентов:
+  кеширование, логирование, шаблонизатор, абстракция данных, инструменты разработчика, кодогенератор и др.
+- Yii расширяем. Вы можете настроить или заменить практически любую часть основного кода. Используя пакетную архитектуру, легко делиться кодом или использовать код сообщества.
+- Одна из главных целей Yii – производительность.
 
-Yii is backed up by a [strong core developer team](https://www.yiiframework.com/team/) financially backed from an
-[OpenCollective foundation](https://opencollective.com/yiisoft), as well as a large community of professionals constantly
-contributing to Yii's development. The Yii developer team keeps a close eye on the latest Web development trends and
-on the best practices and features found in other frameworks and projects. The most relevant best practices and features
-found elsewhere are regularly incorporated into the core framework and exposed via simple and elegant interfaces.
+Yii разрабатывается [сильной командой разработчиков](https://www.yiiframework.com/team/), финансируемой [фондом OpenCollective](https://opencollective.com/yiisoft), и большим сообществом, которое ей помогает. Авторы фреймворка следят за тенденциями веб-разработки и развитием других проектов. Наиболее подходящие возможности и лучшие практики регулярно внедряются во фреймворк в виде простых и элегантных интерфейсов.
+
+
+## Версии Yii
+
+В настоящее время доступны три основные ветки: 1.1, 2.0 и 3.0.
+
+- Ветка 1.1 является предыдущим поколением и находится в состоянии исправления ошибок и заморозки добавления новой функциональности.
+- Ветка 2.0 - текущая стабильная версия, находится в состоянии исправления ошибок и заморозки добавления новой функциональности.
+- Ветка 3.0 - текущая разрабатываемая версия. Данное руководство именно о версии 3.0.
