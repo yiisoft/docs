@@ -4,8 +4,7 @@
 При установке пакетов он создает [автозагрузчик, совместимый с PSR-4](https://www.php-fig.org/psr/psr-4/).
 Чтобы использовать его, подключите автозагрузчик `/vendor/autoload.php` через `require_once` в ваш файл точки входа`index.php`
 
-You can use autoloader not only for the packages installed, but for your application as well since it's also a package.
-To load classes of a certain namespace, add the following to `composer.json`:
+Вы можете использовать автозагрузчик не только для установленных пакетов, но и для всего вашего приложения, поскольку оно тоже является пакетом. Чтобы загрузить классы определенного пространства имен добавьте в `composer.json`:
 
 ```json
 {
@@ -17,14 +16,11 @@ To load classes of a certain namespace, add the following to `composer.json`:
 }
 ```
 
-Where `App\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if
-needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces
-will start loading automatically.
+Здесь `App\\` это корневое пространство имен, а `src/` - директория, где вы храните ваши классы. При необходимости, вы можете добавить несколько корневых директорий. После изменения `composer.json` выполните `composer dump-autoload` или `composer du` и классы из соответствующих пространств имен начнут загружаться автоматически.
 
-If you need development environment specific autoloading that isn't used when executing Composer with `--no-dev` flag,
-add it to `autoload-dev` section instead of `autoload`.
+Если вам нужна специфичная для разработки автозагрузка, которая не используется при запуске Composer с флагом `--no-dev`, добавьте ее в секцию `autoload-dev` вместо `autoload`.
 
-## References
+## Ссылки
 
 - [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/).
 - [Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading).
