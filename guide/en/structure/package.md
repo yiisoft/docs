@@ -127,8 +127,8 @@ The following example shows the `composer.json` file for the `yiisoft/yii-widget
 #### Package Name <span id="package-name"></span>
 
 Each Composer package should have a package name which uniquely identifies the package among all others.
-The format of package names is `vendorName/projectName`. For example, in the package name `yiisoft/yii-queue`,
-the vendor name, and the project name are `yiisoft` and `yii-queue`, respectively.
+The format of package names is `vendorName/projectName`. For example, in the package name `yiisoft/queue`,
+the vendor name, and the project name are `yiisoft` and `queue`, respectively.
 
 > Warning: Don't use `yiisoft` as your vendor name as it's reserved for use by the Yii itself.
 
