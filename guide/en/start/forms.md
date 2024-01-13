@@ -36,7 +36,7 @@ class EchoForm extends FormModel
         return $this->message;
     }
 
-    public function getAttributeLabels(): array
+    public function getPropertyLabels(): array
     {
         return [
             'message' => 'Message',
@@ -67,6 +67,7 @@ use App\Form\EchoForm;
 use Yiisoft\Yii\View\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Yiisoft\Hydrator\Hydrator;
 use Yiisoft\Http\Method;
 
 class EchoController
@@ -81,9 +82,10 @@ class EchoController
     public function say(ServerRequestInterface $request): ResponseInterface
     {
         $form = new EchoForm();
+        $hydrator = new Hydrator();
     
         if ($request->getMethod() === Method::POST) {
-            $form->load($request->getParsedBody());
+            $hydrator->hydrate($form, $request->getParsedBody()[$form->getFormName()]);
         }
 
         return $this->viewRenderer->render('say', [
@@ -209,6 +211,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
 use Yiisoft\Validator\Validator;
 use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Hydrator\Hydrator;
 
 class EchoController
 {
@@ -222,9 +225,10 @@ class EchoController
     public function say(ServerRequestInterface $request, Validator $validator): ResponseInterface
     {
         $form = new EchoForm();
+        $hydrator = new Hydrator();
 
         if ($request->getMethod() === Method::POST) {
-            $form->load($request->getParsedBody());
+            $hydrator->hydrate($form, $request->getParsedBody()[$form->getFormName()]);
             $validator->validate($form);
         }
 
@@ -255,7 +259,7 @@ class EchoForm extends FormModel implements RulesProviderInterface
         return $this->message;
     }
 
-    public function getAttributeLabels(): array
+    public function getPropertyLabels(): array
     {
         return [
             'message' => 'Message',
