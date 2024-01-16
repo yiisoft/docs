@@ -6,7 +6,7 @@ To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/db-
 composer require yiisoft/db-migration
 ```
 
-### Example config with Yii Console
+### Example usage
 
 First, configure DI container. Create `config/common/db.php` with the following content:
 
@@ -39,7 +39,8 @@ Add the following to `config/params.php`:
 ...
 ```
 
-Not test if it works:
+Now test if it works:
+
 ```shell
 ./yii list migrate
 ```
