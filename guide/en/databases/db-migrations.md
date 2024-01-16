@@ -87,7 +87,7 @@ final class M240115143455CreateMyFirstTableTable implements RevertibleMigrationI
 
 For more information [see](https://github.com/yiisoft/db-migration/tree/master/docs/en)
 
-### Migration from YII2
+### Upgrading from Yii2
 
 Migrations in yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible,
 and the `migration` table is also not
