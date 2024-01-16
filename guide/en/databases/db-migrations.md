@@ -28,7 +28,7 @@ return [
 ];
 ```
 
-Add to `config/params.php`:
+Add the following to `config/params.php`:
 
 ```php
 ...
