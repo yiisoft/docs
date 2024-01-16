@@ -39,6 +39,7 @@ Add the following to `config/params.php`:
 ...
 ```
 
+Not test if it works:
 ```shell
 ./yii list migrate
 ```
