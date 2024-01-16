@@ -51,6 +51,8 @@ To work with migrations, you can use the provided [view](https://github.com/yiis
 ./yii migrate:create my_first_table --command=table --fields=name,example --table-comment=my_first_table
 ```
 
+That would generate the following:
+
 ```php
 <?php
 
