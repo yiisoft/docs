@@ -43,7 +43,7 @@ Add the following to `config/params.php`:
 ./yii list migrate
 ```
 
-### Example create migrate
+### Creating a migration
 
 To work with migrations, you can use the provided [view](https://github.com/yiisoft/db-migration/tree/master/resources/views).
 
