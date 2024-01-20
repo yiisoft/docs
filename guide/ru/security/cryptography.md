@@ -31,43 +31,41 @@ $key = \Yiisoft\Security\Random::string(42);
 - `random_bytes()` для байт. Обратите внимание, что вывод может быть не ASCII.
 - `random_int()` для целых чисел.
 
-## Encryption and Decryption
+## Шифрование и расшифровка
 
-Yii provides convenient helper functions to encrypt/decrypt data using a secret key.
-The data are passed through the encryption function so that only the person which has the secret key will be able
-to decrypt it.
-For example, you need to store some information in your database, but you need to make sure only
-the user who has the secret key can view it (even if one compromises the application database):
+Yii предоставляет удобные вспомогательные функции для шифрования/расшифровки данных с помощью секретного кллюча.
+Данные проходят через функцию шифрования таким образом, что только тот, кто знает секретный ключ, может расшифровать их.
+Например, вам нужно сохранить некоторую информацию в вашей базе данных, но вы должны быть уверены, что только пользователь, который знает секретный ключ, сможет расшифровать их (даже если кто-нибудь скомпрометирует базу данных приложения)
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $password);
 
-// save data to database or another storage
+// сохранение данных в базу данных или другое хранилище
 saveData($encryptedData);
 ```
 
-Decrypting it:
+Расшифровка:
 
 ```php
-// obtain encrypted data from a database or another storage
+// получение зашифрованных данных их базы данных или другого хранилища
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
 ```
 
-You could use a key instead of password:
+Вы можете использовать ключ вместо пароля:
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
 
-// save data to database or another storage
+// сохранение данных в базу данных или другое хранилище
 saveData($encryptedData);
 ```
 
-Decrypting it:
+Расшифровка:
 
 ```php
-// obtain encrypted data from a database or another storage
+// получение зашифрованных данных их базы данных или другого хранилища
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
