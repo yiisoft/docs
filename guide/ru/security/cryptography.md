@@ -1,0 +1,116 @@
+# Криптография
+
+В этом разделе мы рассмотрим следующие аспекты безопасности:
+
+- Генерация случайных данных
+- Шифрование и расшифровка
+- Проверка целостности данных
+
+Для использования этих функций, вам нужно установить пакет `yiisoft/security`:
+
+```
+composer install yiisoft/security
+```
+
+## Генерация псевдослучайных данных
+
+Псевдослучайные данные используются во многих ситуациях.
+Например, при изменении пароля по email, вам необходимо сгенерировать токен, сохранить его в базу данных и отправить по email пользователю, чтобы он с помощью него подтвердил владение аккаунтом.
+Важно чтобы этот токен был уникальным и его было трудно угадать, иначе есть вероятность, что атакующий может предсказать значение токена и сбросить пароль пользователя.
+
+Класс `\Yiisoft\Security\Random` делает генерацию псевдослучайных данных простой:
+
+```php
+$key = \Yiisoft\Security\Random::string(42);
+```
+
+Код выше даст вам случайную строку, включающую 42 символа.
+
+Если вам нужны байты или целые числа, напрямую используйте функции PHP:
+
+- `random_bytes()` для байт. Обратите внимание, что вывод может быть не ASCII.
+- `random_int()` для целых чисел.
+
+## Encryption and Decryption
+
+Yii provides convenient helper functions to encrypt/decrypt data using a secret key.
+The data are passed through the encryption function so that only the person which has the secret key will be able
+to decrypt it.
+For example, you need to store some information in your database, but you need to make sure only
+the user who has the secret key can view it (even if one compromises the application database):
+
+```php
+$encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $password);
+
+// save data to database or another storage
+saveData($encryptedData);
+```
+
+Decrypting it:
+
+```php
+// obtain encrypted data from a database or another storage
+$encryptedData = getEncryptedData();
+
+$data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
+```
+
+You could use a key instead of password:
+
+```php
+$encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
+
+// save data to database or another storage
+saveData($encryptedData);
+```
+
+Decrypting it:
+
+```php
+// obtain encrypted data from a database or another storage
+$encryptedData = getEncryptedData();
+
+$data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
+```
+
+## Confirming data integrity
+
+There are situations in which you need to verify that your data haven't been tampered with by a third party or even
+corrupted in some way. Yii provides a way to confirm data integrity by MAC signing.
+
+The `$key` should be present at both sending and receiving sides. On the sending side:
+
+```php
+$signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
+
+sendMessage($signedMessage);
+```
+
+At the receiving side:
+
+```php
+$signedMessage = receiveMessage($signedMessage);
+
+try {
+    $message = (new \Yiisoft\Security\Mac())->getMessage($signedMessage, $key);
+} catch (\Yiisoft\Security\DataIsTamperedException $e) {
+    // data is tampered
+}
+```
+
+## Masking token length
+
+Masking a token helps to mitigate BREACH attack by randomizing how token outputted on each request.
+A random mask applied to the token making the string always unique.
+
+To mask a token:
+
+```php
+$maskedToken = \Yiisoft\Security\TokenMask::apply($token);
+```
+
+To get original value from the masked one:
+
+```php
+$token = \Yiisoft\Security\TokenMask::remove($maskedToken);
+```
