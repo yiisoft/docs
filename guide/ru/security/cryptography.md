@@ -47,7 +47,7 @@ saveData($encryptedData);
 Расшифровка:
 
 ```php
-// получение зашифрованных данных их базы данных или другого хранилища
+// получение зашифрованных данных из базы данных или другого хранилища
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
@@ -65,18 +65,18 @@ saveData($encryptedData);
 Расшифровка:
 
 ```php
-// получение зашифрованных данных их базы данных или другого хранилища
+// получение зашифрованных данных из базы данных или другого хранилища
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
 ```
 
-## Confirming data integrity
+## Проверка целостности данных
 
-There are situations in which you need to verify that your data haven't been tampered with by a third party or even
-corrupted in some way. Yii provides a way to confirm data integrity by MAC signing.
+Бывают ситуации, когда вам необходимо убедиться, что ваши данные не были подделаны третьей стороной или испорчены каким-то образом.
+Yii предоставляет способ проверить целостность данных по MAC подписи.
 
-The `$key` should be present at both sending and receiving sides. On the sending side:
+Ключ `$key` должен присутствовать как на отправляющей, так и на принимающей стороне. На отправляющей стороне:
 
 ```php
 $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
@@ -84,7 +84,7 @@ $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
 sendMessage($signedMessage);
 ```
 
-At the receiving side:
+На принимающей стороне:
 
 ```php
 $signedMessage = receiveMessage($signedMessage);
@@ -92,7 +92,7 @@ $signedMessage = receiveMessage($signedMessage);
 try {
     $message = (new \Yiisoft\Security\Mac())->getMessage($signedMessage, $key);
 } catch (\Yiisoft\Security\DataIsTamperedException $e) {
-    // data is tampered
+    // данные подделаны
 }
 ```
 
