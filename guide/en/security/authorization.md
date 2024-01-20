@@ -208,10 +208,10 @@ The command above could be executed from console the following way:
 
 **TODO**: finish it when migrations are implemented.
 
-You can use [migrations](db-migrations.md)
+You can use [migrations](../databases/db-migrations.md)
 to initialize and change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `./yii migrate/create init_rbac` then implement creating a hierarchy:
+Create new migration using `./yii migrate:create init_rbac` then implement creating a hierarchy:
 
 ```php
 <?php
