@@ -96,18 +96,17 @@ try {
 }
 ```
 
-## Masking token length
+## Маскировка длины токена
 
-Masking a token helps to mitigate BREACH attack by randomizing how token outputted on each request.
-A random mask applied to the token making the string always unique.
+Маскировка токена помогает смягчить атаку BREACH за счет рандомизации способа вывода токена при каждом запросе. К токену применяется случайная маска, делающая строку всегда уникальной.
 
-To mask a token:
+Для маскировки токена:
 
 ```php
 $maskedToken = \Yiisoft\Security\TokenMask::apply($token);
 ```
 
-To get original value from the masked one:
+Получить исходное начение из замаскированного:
 
 ```php
 $token = \Yiisoft\Security\TokenMask::remove($maskedToken);
