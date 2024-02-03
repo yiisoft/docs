@@ -83,68 +83,59 @@ function actionList($orderBy = null)
 - <https://owasp.org/www-community/attacks/SQL_Injection>
 
 
-## Avoiding XSS
+## Как избежать XSS
 
-XSS or cross-site scripting happens when output isn't escaped properly when outputting HTML to the browser. For example,
-if user can enter his name and instead of `Alexander` he enters `<script>alert('Hello!');</script>`, every page that
-outputs username without escaping it will execute JavaScript `alert('Hello!');` resulting in alert box popping up
-in a browser. Depending on website instead of innocent alert, such a script could send messages using your name or even
-perform bank transactions.
+XSS или кросс-сайтинговый скриптинг становится возможен, когда неэкранированный выходной HTML попадает в браузер. 
+Например, если пользователь должен ввести своё имя, но вместо `Alexander` он вводит `<script>alert('Hello!');</script>` то все страницы, которые его выводят без экранирования, будут выполнять JavaScript `alert('Hello!');`, и в результате будет выводиться окно сообщения в браузере.
+В зависимости от сайта, вместо невинных скриптов с выводом всплывающего hello, злоумышленниками могут быть отправлены скрипты, похищающие личные данные пользователей сайта, либо выполняющие операции от их имени (например, банковские операции).
 
-Avoiding XSS is quite easy in Yii. There are two cases:
+В Yii избежать XSS легко. Существует два варианта:
 
-1. You want to output data as plain text.
-2. You want to output data as HTML.
+1. Вы хотите вывести данные в виде обычного текста.
+2. Вы хотите вывести данные в виде HTML.
 
-If all you need is plain text, then escaping is as easy as following:
-
+Если вам нужно вывести простой текст, то экранировать лучше следующим образом:
 
 ```php
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML you could get some help from [HtmlPurifier](http://htmlpurifier.org/).
-Note that HtmlPurifier processing is quite heavy, so consider adding caching.
+Если нужно вывести HTML, вам лучше воспользоваться [HtmlPurifier](http://htmlpurifier.org/).
+Обратите внимание, что обработка с помощью HtmlPurifier довольно тяжела, поэтому рассмотрите возможность использования кеширования.
 
-Further reading on the topic:
+Дополнительная информация по теме:
 
 - <https://owasp.org/www-community/attacks/xss/>
 
 
-## Avoiding CSRF
+## Как избежать CSRF
 
-CSRF is an abbreviation for cross-site request forgery. The idea is that many applications assume that requests coming
-from a user browser are made by the user themselves. This assumption could be false.
+CSRF - это аббревиатура для межсайтинговой подмены запросов. Идея заключается в том, что многие приложения предполагают, что запросы, приходящие от браузера, отправляются самим пользователем. Это может быть неправдой.
 
-For example, the website `an.example.com` has a `/logout` URL that, when accessed using a simple GET request, logs the user out. As long
-as it's requested by the user themselves everything is OK, but one day bad guys are somehow posting
-`<img src="http://an.example.com/logout">` on a forum the user often visits. The browser doesn't make any difference between
-requesting an image or requesting a page so when the user opens a page with such a manipulated `<img>` tag,
-the browser will send the GET request to that URL and the user will be logged out from `an.example.com`.
+Например, сайт an.example.com имеет URL /logout, который, используя простой GET, разлогинивает пользователя. Пока это запрос выполняется самим пользователем - всё в порядке, но в один прекрасный день злоумышленники размещают код <img src="https://an.example.com/logout"> на форуме с большой посещаемостью. Браузер не делает никаких отличий между запросом изображения и запросом страницы, так что когда пользователь откроет страницу с таким тегом img, браузер отправит GET запрос на указанный адрес, и пользователь будет разлогинен с `an.example.com`.
+ 
+Вот основная идея того, как работает CSRF-атака. 
+Можно сказать, что в разлогировании пользователя нет ничего серьёзного. 
+Однако, это был всего лишь пример.
 
-That's the basic idea of how a CSRF attack works. One can say that logging out a user isn't a serious thing.
-However, this was just an example.
-There are much more things one could do using this approach.
-For example, triggering payments or changing data. Imagine that some website has a URL
-`http://an.example.com/purse/transfer?to=anotherUser&amount=2000`. Accessing it using GET request, causes transfer of $2000
-from an authorized user account to user `anotherUser`.
-You know that the browser will always send GET request to load an image,
-so you can change the code to accept only POST requests on that URL.
-Unfortunately, this won't save you, because an attacker
-can put some JavaScript code instead of `<img>` tag, which allows to send POST requests to that URL as well.
+С помощью этого подхода можно сделать гораздо больше опасных вещей.
+Например, оплату или изменение данных.
+Представьте, что существует страница `http://an.example.com/purse/transfer?to=anotherUser&amount=2000`, обращение к которой с помощью GET запроса, приводит к перечислению 2000 единиц валюты со счета авторизированного пользователя на счет пользователя с логином `anotherUser`. 
+Учитывая, что браузер для загрузки контента отправляет GET запросы, можно подумать, что разрешение на выполнение такой операции только POST запросом на 100% обезопасит от проблем. 
+К сожалению, это не спасет вас, так как вместо тега `<img>`, злоумышленник может внедрить JavaScript код, который будет отправлять нужные POST запросы на этот URL.
 
-For this reason, Yii applies extra mechanisms to protect against CSRF attacks.
+По этой причине Yii применяет дополнительные механизмы защиты от CSRF-атак.
 
-To avoid CSRF, you should always:
+Для того, чтоб избежать CSRF вы должны всегда:
 
-1. Follow HTTP specification. GET shouldn't change the application state.
-   See [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) for more details.
-2. Keep Yii CSRF protection enabled.
+1. Следовать спецификации HTTP. Например, запрос GET не должен менять состояние приложения.
+   Дополнительные сведения см. в [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
+2. Держите защиту CSRF в Yii включенной.
 
-Yii has CSRF protection as `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
-Make sure it's in your application middleware stack.
+Yii имеет защиту от CSRF в middleware `Yiisoft\Yii\Web\Middleware\Csrf`.
+Убедитесь, что он используется в вашем приложении.
 
-Further reading on the topic:
+Дополнительная информация по теме:
 
 - <https://owasp.org/www-community/attacks/csrf>
 - <https://owasp.org/www-community/SameSite>
