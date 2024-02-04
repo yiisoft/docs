@@ -204,7 +204,6 @@ class MyController
 Это происходит и с дополнительными зависимостями - если вы явно не указываете зависимость, контейнер сначала проверит, есть ли у него такая зависимость.
 Достаточно объявить нужную вам зависимость, и она будет получена из контейнера автоматически.
 
-
 ## Полезные ссылки <span id="references"></span>
 
 - [Inversion of Control Containers and the Dependency Injection pattern Мартин Фаулер](https://martinfowler.com/articles/injection.html)
