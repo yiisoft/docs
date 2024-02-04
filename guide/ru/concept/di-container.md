@@ -2,7 +2,7 @@
 
 ## Внедрение зависимостей <span id="dependency-injection"></span>
 
-В ООП существует два способа повторного использования кода: наследование и  композиция.
+В ООП существует два способа повторного использования кода: наследование и композиция.
 
 Наследование - это просто:
 
@@ -206,4 +206,4 @@ class MyController
 
 ## Полезные ссылки <span id="references"></span>
 
-- [Inversion of Control Containers and the Dependency Injection pattern Мартин Фаулер](https://martinfowler.com/articles/injection.html)
+- [Inversion of Control Containers and the Dependency Injection pattern Мартина Фаулера](https://martinfowler.com/articles/injection.html)
