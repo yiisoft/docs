@@ -49,7 +49,7 @@ The class extends from a base class provided by Yii, commonly used to
 represent form data.
 
 The `EchoForm` class has `$message` property and related getter.
-These are regular data-related code. `attributeLabels()` method provides labels that you're going to display in a view.
+These are regular data-related code. `getPropertyLabels()` method provides labels that you're going to display in a view.
 
 ## Using the form <span id="using-form"></span> 
 
