@@ -95,7 +95,7 @@ class EchoController
 }
 ```
 
-Instead of reading from request directly, you fill your form with the help of `load()` method if the request
+Instead of reading from request directly, you fill your form with the help of `Yiisoft\Hydrator\Hydrator::hydrate()` method if the request
 method is POST and then pass it to your view.
 
 Now, to allow POST, you need to adjust your route in `config/routes.php`:
