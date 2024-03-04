@@ -49,7 +49,7 @@ The class extends from a base class provided by Yii, commonly used to
 represent form data.
 
 The `EchoForm` class has `$message` property and related getter.
-These are regular data-related code. `attributeLabels()` method provides labels that you're going to display in a view.
+These are regular data-related code. `getPropertyLabels()` method provides labels that you're going to display in a view.
 
 ## Using the form <span id="using-form"></span> 
 
@@ -95,7 +95,7 @@ class EchoController
 }
 ```
 
-Instead of reading from request directly, you fill your form with the help of `load()` method if the request
+Instead of reading from request directly, you fill your form with the help of `Yiisoft\Hydrator\Hydrator::hydrate()` method if the request
 method is POST and then pass it to your view.
 
 Now, to allow POST, you need to adjust your route in `config/routes.php`:
