@@ -46,3 +46,17 @@ registerArgumentsSet(
 ```shell
 composer require --dev jetbrains/phpstorm-attributes
 ```
+
+### Using with ComposerRequireChecker
+
+When [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) is also used within the same package, 
+add involved attributes' class names to whitelist in config. For example:
+
+```json
+{
+    "symbol-whitelist": [
+        "JetBrains\\PhpStorm\\ExpectedValues",
+        "JetBrains\\PhpStorm\\Pure"
+    ]
+}
+```
