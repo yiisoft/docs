@@ -1,27 +1,26 @@
-# 002 - Issue workflow
+#002 – Resolução de problemas
 
-The process of handing incoming issues is the following:
+O processo de resolução de questões recebidas é o seguinte:
 
-![Issue workflow schema](images/002-issue-workflow.svg)
+![Esquema da resolução de problemas](images/002-issue-workflow.svg)
 
-## Roles
+## Funções
 
-We've many roles:
+Temos muitas funções:
 
-- Process managers - initially triage issues and manage labels.
-- Decision makers - participate in discussions moving them to resolutions.
-- Bug hunters - verifying bugs.
-- Contributors - create code for pull requests.
-- Code reviewers - review pull requests.
+- Gerentes de processos - inicialmente fazem a triagem dos problemas e gerenciam os rótulos.
+- Decisores – participam em discussões levando-os a resoluções.
+- Caçadores de bugs - verificam bugs.
+- Colaboradores - criam código para pull requests.
+- Revisores de código - revisam solicitações pull.
 
-A single person may take one or more roles in the issue resolving process.
+Uma única pessoa pode assumir uma ou mais funções no processo de resolução de problemas.
 
-## Labels
+## Etiquetas
 
-We label issues to mark many things: current status, issue type,
-component affected. Status labels speak for themselves.
+Rotulamos os problemas para marcar muitas coisas: status atual, tipo de problema,
+componente afetado. Os rótulos de status falam por si.
 
 ## Milestones
 
-Issues aren't assigned to milestones unless they're critical or there is
-a likely good pull request exists.
+Os problemas não são atribuídos a milestones, a menos que sejam críticos ou seja uma provável solicitação pull boa.
