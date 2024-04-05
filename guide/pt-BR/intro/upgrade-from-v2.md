@@ -1,43 +1,42 @@
-# Upgrading from Version 2.0
+# Atualizando da versão 2.0
 
-> If you haven't used Yii2, you can skip this section and get directly to "[getting started](../start/installation.md)"
-> section.
+> Se você ainda não usou o Yii2, você pode pular esta seção e ir diretamente para a seção "[primeiros passos](../start/installation.md)".
 
-While sharing some common ideas and values, Yii 3 is conceptually different from Yii 2. There is no easy upgrade
-path, so first [check maintenance policy and end of life dates for Yii 2](https://www.yiiframework.com/release-cycle)
-and consider starting new projects on Yii 3 while keeping existing ones on Yii 2.
+Embora compartilhe algumas ideias e valores comuns, o Yii 3 é conceitualmente diferente do Yii 2. Não existe um caminho para atualização fácil,
+então primeiro [verifique a política de manutenção e as datas de fim de vida do Yii 2](https://www.yiiframework.com/release-cycle)
+e considere iniciar novos projetos no Yii 3 enquanto mantém os existentes no Yii 2.
 
-## PHP requirements
+## Requisitos PHP
 
-Yii3 requires PHP 8.0 or above. As a result, there are language features used that weren't used in Yii 2:
+Yii3 requer PHP 8.0 ou superior. Como resultado, existem recursos de linguagem usados que não foram usados no Yii 2:
 
-- [Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
-- [Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
-- [Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)
-- [Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)
-- [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
-- [Generators](https://www.php.net/manual/en/language.generators.php)
-- [Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
+- [Declarações de tipo](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
+- [Declarações de tipo de retorno](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
+- [Visibilidade constante da classe](https://www.php.net/manual/en/language.oop5.constants.php)
+- [Classes anônimas](https://www.php.net/manual/en/language.oop5.anonymous.php)
+- [::class](https://www.php.net/manual/en/linguagem.oop5.basic.php#linguagem.oop5.basic.class.class)
+- [Geradores](https://www.php.net/manual/en/linguagem.generators.php)
+- [Funções variáveis](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
 
-## Preliminary refactoring
+## Refatoração preliminar
 
-It's a good idea to refactor your Yii 2 project before porting it to Yii 3. That would both make porting easier
-and benefit the project in question while it's not moved to Yii 3 yet.
+É uma boa ideia refatorar seu projeto Yii 2 antes de portá-lo para o Yii 3. Isso tornaria a portabilidade mais fácil
+e beneficia o projeto em questão enquanto ele ainda não foi movido para o Yii 3.
 
-### Use DI instead of service locator
+### Use DI em vez de localizador de serviço
 
-Since Yii 3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using
-service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
+Como o Yii 3 está forçando você a injetar dependências, é uma boa idéia se preparar e deixar de usar
+localizador de serviço (`Yii::$app->`) para [container DI](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
 
-If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller
-actions and widgets and passing dependencies manually from a controller to what needs them.
+Se o uso do contêiner DI for problemático por qualquer motivo, considere mover todas as chamadas de `Yii::$app->` para o controlador de
+ações e widgets e passar dependências manualmente de um controlador para o que precisar deles.
 
-See [Dependency injection and container](../concept/di-container.md) for an explanation of the idea.
+Consulte [Injeção de dependência e contêiner](../concept/di-container.md) para uma explicação da ideia.
 
-### Introduce repositories for getting data
+### Introduzir repositórios para obter dados
 
-Since Active Record isn't the only way to work with a database in Yii 3, consider introducing repositories that would
-hide details of getting data and gather them in a single place you can later re-do: 
+Como o Active Record não é a única maneira de trabalhar com um banco de dados no Yii 3, considere introduzir repositórios que
+oculte detalhes de obtenção de dados e reúna-os em um único lugar que você poderá refazer posteriormente:
 
 ```php
 class PostRepository
@@ -55,12 +54,12 @@ class PostRepository
 }
 ```
 
-### Separate domain layer from infrastructure
+### Separe a camada de domínio da infraestrutura
 
-In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by framework
-that's all the business logic has to go to framework-independent classes.
+Caso você tenha um domínio rico e complicado, é uma boa ideia separá-lo da infraestrutura fornecida pelo framework
+isso é tudo que a lógica de negócios precisa para classes independentes de estrutura.
 
-### Move more into components
+### Mova mais para componentes
 
-Yii 3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application
-into components.
+Os serviços do Yii 3 são conceitualmente semelhantes aos componentes do Yii 2, então é uma boa ideia mover partes reutilizáveis da sua aplicação
+em componentes para os serviços.

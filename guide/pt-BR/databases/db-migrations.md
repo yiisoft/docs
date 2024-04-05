@@ -1,14 +1,14 @@
-# Migrations
+# Migrações
 
-To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package:
+Para usar migrações, instale o pacote [yiisoft/db-migration](https://github.com/yiisoft/db-migration/):
 
 ```shell
 composer require yiisoft/db-migration
 ```
 
-### Example usage
+### Exemplo de uso
 
-First, configure DI container. Create `config/common/db.php` with the following content:
+Primeiro, configure o contêiner DI. Crie `config/common/db.php` com o seguinte conteúdo:
 
 ```php
 <?php
@@ -28,7 +28,7 @@ return [
 ];
 ```
 
-Add the following to `config/params.php`:
+Adicione o seguinte em `config/params.php`:
 
 ```php
 ...
@@ -39,21 +39,21 @@ Add the following to `config/params.php`:
 ...
 ```
 
-Now test if it works:
+Agora teste se funciona:
 
 ```shell
 ./yii list migrate
 ```
 
-### Creating a migration
+### Criando uma migração
 
-To work with migrations, you can use the provided [view](https://github.com/yiisoft/db-migration/tree/master/resources/views).
+Para trabalhar com migrações, você pode usar a [visualização fornecida](https://github.com/yiisoft/db-migration/tree/master/resources/views).
 
 ```shell
 ./yii migrate:create my_first_table --command=table --fields=name,example --table-comment=my_first_table
 ```
 
-That would generate the following:
+Isso geraria o seguinte:
 
 ```php
 <?php
@@ -89,14 +89,13 @@ final class M240115143455CreateMyFirstTableTable implements RevertibleMigrationI
 }
 ```
 
-For more information [see](https://github.com/yiisoft/db-migration/tree/master/docs/en)
+Para obter mais informações [consulte](https://github.com/yiisoft/db-migration/tree/master/docs/en)
 
-### Upgrading from Yii2
+### Atualizando do Yii2
 
-Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible,
-and the `migration` table is also not
-compatible.
-A probable solution is to use structure dumps and rename the old `migration` table. Upon the initial execution of
-migrations, a new `migration` table with new fields will be created. All subsequent changes in the database schema are
-applied using the new `migration` component and recorded in the new migration table.
-
+Migrações no Yii2 e o pacote [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) não são compatíveis,
+e a tabela `migration` também não é
+compatível.
+Uma solução provável é usar dumps de estrutura e renomear a antiga tabela `migration`. Após a execução inicial de
+migrações, uma nova tabela `migration` com novos campos será criada. Todas as alterações subsequentes no esquema do banco de dados são
+aplicado usando o novo componente `migration` e registrado na nova tabela de migração.
