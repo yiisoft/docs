@@ -1,42 +1,42 @@
-# 016 - Security workflow
+#016 - Resolução de falhas de segurança
 
-Security issues are typically sent via [a security form](https://www.yiiframework.com/security).
+Problemas de segurança normalmente são enviados por meio do [formulário de segurança](https://www.yiiframework.com/security).
 
-If an issue is reported directly to a public page such as repository issue or a forum topic, get the message
-and delete the issue. Say thanks to the reporter and point to the security form for next time.  
+Se um problema for relatado diretamente em uma página pública, como um problema de repositório ou um tópico de fórum, receba a mensagem
+e exclua o problema. Agradeça ao usuário e indique o formulário de segurança para a próxima vez.
 
-## Verify
+## Verificar
 
-Verify that the issue is valid. Request more information if needed.
+Verifique se o problema é válido. Solicite mais informações se necessário.
 
-## Add security advisory
+## Adicionar aviso de segurança
 
-Create draft GitHub security advisory.
+Crie um rascunho de comunicado de segurança do GitHub.
 
-### Find out severity
+### Descubra a gravidade
 
-1. Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator).
-2. Choose severity based on the [rating scale](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale).
+1. Obtenha a pontuação CVSS usando a [calculadora NVD](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator).
+2. Escolha a gravidade com base na [escala de classificação](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale).
 
-### Give credit to the reporter
+### Dê crédito ao usuário
 
-Ask reporter if he wants a credit for finding the issue. If so, point to his GitHub account.
+Pergunte ao usuário se ele deseja crédito por encontrar o problema. Em caso afirmativo, aponte para sua conta no GitHub.
 
-## Request a CVE number
+## Solicite um número CVE
 
-When you're ready, request a CVE.
+Quando estiver pronto, solicite um CVE.
 
-## Prepare a patch
+## Prepare um patch
 
-Prepare a pull request fixing the issue. GitHub allows doing it in a private fork.
+Prepare uma solicitação pull corrigindo o problema. O GitHub permite fazer isso em um fork privado.
 
-## Wait till CVE number is allocated 
+## Espere até que o número CVE seja alocado
 
-It usually takes several days.
+Geralmente leva vários dias.
 
-## Release
+## Liberar
 
-- Merge the patch pull request right before tagging next package release.
-- Publish security advisory.
-- Add CVE to [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).
-  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as example.
+- Mescle a solicitação de pull do patch antes de marcar o próximo lançamento do pacote.
+- Publique avisos de segurança.
+- Adicione o CVE [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).
+   Veja [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) como exemplo.
