@@ -8,10 +8,6 @@ The code must contain the logic responsible for formatting the data, but not the
 View file heading is used to place phpdoc describing variables available and to import classes:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 /** @var Post $post */
 /** @var string $name */
 
@@ -39,4 +35,4 @@ Short echo is preferred:
 
 ## Class methods
 
-All class methods used in view files must be public regardless if the view is rendered by the class itself. 
+All class methods used in view files must be public regardless if the view is rendered by the class itself.
