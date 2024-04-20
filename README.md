@@ -1,33 +1,46 @@
 # The definitive guide to Yii 3.0
 
+- [Chinese](docs/guide/zh-CN/README.md)
 - [English](docs/guide/en/README.md)
+- [Indonesian](docs/guide/id/README.md)
+- [Português - Brasil](docs/guide/pt-BR/README.md)
+- [Russian](docs/guide/ru/README.md)
+- [Spanish](docs/guide/es/README.md)
 
-# Yii3 community cookbook
+## Yii3 community cookbook
 
-- [English](docs/cookbook/en)
+- [English](docs/cookbook/en/README.md)
+- [Português - Brasil](docs/cookbook/pt-BR/README.md)
 
-# Internals
+## Documentation
 
-- [000 - Packages](docs/internals/000-packages.md)
-- [001 - Yii goals and values](docs/internals/001-yii-values.md)
-- [002 - Issue workflow](docs/internals/002-issue-workflow.md)
-- [003 - Roadmap](docs/internals/003-roadmap.md)
-- [004 - Namespaces](docs/internals/004-namespaces.md)
-- [005 - Development tool](docs/internals/005-development-tool.md)
-- [006 - Git commit messages](docs/internals/006-git-commit-messages.md)
-- [007 - Exceptions](docs/internals/007-exceptions.md)
-- [008 - Interfaces](docs/internals/008-interfaces.md)
-- [009 - Design decisions](docs/internals/009-design-decisions.md)
-- [010 - Code style](docs/internals/010-code-style.md)
-- [011 - Error correction](docs/internals/011-error-correction.md)
-- [012 - Tests](docs/internals/012-tests.md)
-- [013 - Code review](docs/internals/013-code-review.md)
-- [014 - Documentation](docs/internals/014-docs.md)
-- [015 - PhpStorm metadata and attributes](docs/internals/015-phpstorm.md)
-- [016 - Security workflow](docs/internals/016-security-workflow.md)
-- [017 - Tags](docs/internals/017-tags.md)
-- [018 - Widgets](docs/internals/018-widgets.md)
-- [019 - View code style](docs/internals/019-view-code-style.md)
-- [020 - Package release](docs/internals/020-package-release.md)
-- [021 - Changelog and upgrade](docs/internals/021-changelog-upgrade.md)
-- [022 - Config groups](docs/internals/022-config-groups.md)
+- [Check the yiisoft/db docs](docs/README.md#english) to learn about usage.
+- [Leia a documentação em yiisoft/db](docs/README.md#português---brasil) para aprender como usar.
+
+Testing:
+
+- More information can be found in the [Internals.](docs/internals.md)
+
+## Support
+
+If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
+You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
+
+## Support the project
+
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-sponsor-7eadf1?logo=open%20collective&logoColor=7eadf1&labelColor=555555)](https://opencollective.com/yiisoft)
+
+## Follow updates
+
+[![Official website](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)](https://www.yiiframework.com/)
+[![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/yiiframework)
+[![Telegram](https://img.shields.io/badge/telegram-join-1DA1F2?style=flat&logo=telegram)](https://t.me/yii3en)
+[![Facebook](https://img.shields.io/badge/facebook-join-1DA1F2?style=flat&logo=facebook&logoColor=ffffff)](https://www.facebook.com/groups/yiitalk)
+[![Slack](https://img.shields.io/badge/slack-join-1DA1F2?style=flat&logo=slack)](https://yiiframework.com/go/slack)
+
+## License
+
+The Yii ??????????????????????????????????????????????? is free software. It is released under the terms of the BSD License.
+Please see [`LICENSE`](./LICENSE.md) for more information.
+
+Maintained by [Yii Software](https://www.yiiframework.com/).

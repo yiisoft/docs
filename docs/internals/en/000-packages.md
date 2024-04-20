@@ -8,12 +8,12 @@ For a full list of packages and their building status,
 see [status page at yiiframework.com](https://www.yiiframework.com/status/3.0).
 
 ## Yii-specific packages (framework and extensions)
-    
+
 - named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:
-    - modules: `yii-module-users`, `yii-module-pages`
-    - themes: `yii-theme-adminlte`, `yii-theme-hyde`
-    - widgets: `yii-widget-datepicker`
-    - ...
+  - modules: `yii-module-users`, `yii-module-pages`
+  - themes: `yii-theme-adminlte`, `yii-theme-hyde`
+  - widgets: `yii-widget-datepicker`
+  - ...
 - titled as "Yii Framework ..."
 - may have any dependencies and Yii-specific code
 
@@ -72,4 +72,4 @@ The support of PHP versions supported for a package depends on
 
 ## composer.json
 
-A logical OR operator in version ranges MUST use double pipe (`||`). For example: `"yiisoft/arrays": "^1.0 || ^2.0"`.   
+A logical OR operator in version ranges MUST use double pipe (`||`). For example: `"yiisoft/arrays": "^1.0 || ^2.0"`.
