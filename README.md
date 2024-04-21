@@ -16,10 +16,7 @@
 
 - [Check the yiisoft/db docs](docs/README.md#english) to learn about usage.
 - [Leia a documentação em yiisoft/db](docs/README.md#português---brasil) para aprender como usar.
-
-Testing:
-
-- More information can be found in the [Internals.](docs/internals.md)
+- [Internals](docs/internals.md)
 
 ## Support
 
