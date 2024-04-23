@@ -1,4 +1,4 @@
-# The definitive guide to Yii 3.0
+# The Definitive Guide To Yii 3.0
 
 - [Chinese](docs/guide/zh-CN/README.md)
 - [English](docs/guide/en/README.md)
@@ -37,7 +37,7 @@ You may also check out other [Yii Community Resources](https://www.yiiframework.
 
 ## License
 
-The Yii ??????????????????????????????????????????????? is free software. It is released under the terms of the BSD License.
+The Yii The Definitive Guide To Yii 3.0 is free software. It is released under the terms of the GFDL License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
 
 Maintained by [Yii Software](https://www.yiiframework.com/).

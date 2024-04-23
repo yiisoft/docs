@@ -3,7 +3,7 @@
 ## alias
 
 Alias is a string that's used by Yii to refer to the class or directory such as `@app/vendor`.
-Read more in ["Aliases"](concept/aliases.md).
+Read more in ["Aliases."](concept/aliases.md)
 
 ## asset
 
@@ -14,7 +14,7 @@ Asset refers to a resource file. Typically, it contains JavaScript or CSS code b
 ## configuration
 
 The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
-settings for an object, or a class of objects. Read more in ["Configuration"](concept/configuration.md).
+settings for an object, or a class of objects. Read more in ["Configuration."](concept/configuration.md)
 
 # D
 
@@ -34,7 +34,7 @@ prepared script. In case of Yii, it's setting permissions and fulfilling softwar
 ## middleware
 
 Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some
-action and pass processing to the next middleware. Read more in ["Middleware"](structure/middleware.md).
+action and pass processing to the next middleware. Read more in ["Middleware."](structure/middleware.md)
 
 ## module
 
