@@ -288,7 +288,7 @@ Container<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:
   <data key="d7">
     <y:Resources>
       <y:Resource id="1" xml:space="preserve">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;svg version="1.1" id="Ebene_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px"
+&lt;svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="59px" height="59px" viewBox="0 0 59 59" enable-background="new 0 0 59 59" xml:space="preserve"&gt;
 &lt;g&gt;
 	
