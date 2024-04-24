@@ -111,5 +111,5 @@ use Yiisoft\Yii\Console\Application;
 
 For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:
 
-* [Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)
-* [Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)
+- [Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)
+- [Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)
