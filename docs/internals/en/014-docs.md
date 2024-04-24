@@ -26,7 +26,7 @@ oft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
 
 ## Blocks
 
-Blocks use the Markdown `> Type: `. There are four block types:
+Blocks use the Markdown `> Type:`. There are four block types:
 
 * `Warning`, for bad security things and other problems
 * `Note`, to emphasize key concepts, things to avoid
@@ -83,7 +83,7 @@ final class MyService extends MyServiceBase
         return parent::doit();    
     }
 }
-``` 
+```
 
 PHPDoc, if present, should describe the purpose of the element it's added for.
 
@@ -91,14 +91,14 @@ PHPDoc, if present, should describe the purpose of the element it's added for.
 
 Each package readme should be placed into `README.md` and contain the following:
 
-- [ ] Logo.
-- [ ] Short description of the package. What does it do?
-- [ ] Quality badges (build, code coverage).
-- [ ] Screenshot (if applicable).
-- [ ] Requirements.
-- [ ] Installation. Usually `composer require`.
-- [ ] Getting started. One or two common usage examples demonstrated.
-- [ ] Configuration.
-- [ ] Contributing. Should contain a link to guidelines.
-- [ ] Running tests.
-- [ ] License.
+* [ ] Logo.
+* [ ] Short description of the package. What does it do?
+* [ ] Quality badges (build, code coverage).
+* [ ] Screenshot (if applicable).
+* [ ] Requirements.
+* [ ] Installation. Usually `composer require`.
+* [ ] Getting started. One or two common usage examples demonstrated.
+* [ ] Configuration.
+* [ ] Contributing. Should contain a link to guidelines.
+* [ ] Running tests.
+* [ ] License.
