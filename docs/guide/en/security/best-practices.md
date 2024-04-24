@@ -22,7 +22,7 @@ In terms of basic PHP, that would look like the following:
 ```php
 $sortBy = $_GET['sort'];
 if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
- throw new \InvalidArgumentException('Invalid sort value.');
+    throw new \InvalidArgumentException('Invalid sort value.');
 }
 ```
 

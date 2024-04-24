@@ -2,73 +2,75 @@
 
 ## alias
 
-Alias é uma string usada pelo Yii para se referir à classe ou diretório como `@app/vendor`.
-Leia mais em ["Aliases"](concept/aliases.md).
+Alias is a string that's used by Yii to refer to the class or directory such as `@app/vendor`.
+Read more in ["Aliases"](concept/aliases.md).
 
-## ativo
+## asset
 
-Ativo refere-se a um arquivo de recursos. Normalmente, contém código JavaScript ou CSS, mas pode ser qualquer conteúdo estático acessado via HTTP.
+Asset refers to a resource file. Typically, it contains JavaScript or CSS code but can be any static content accessed via HTTP.
 
 # C
 
-## configuração
+## configuration
 
-A Configuração pode referir-se ao processo de definição de propriedades de um objeto ou a um arquivo de configuração que armazena
-configurações para um objeto ou uma classe de objetos. Leia mais em ["Configuração"](concept/configuration.md).
+The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
+settings for an object, or a class of objects. Read more in ["Configuration"](concept/configuration.md).
 
-#D
+# D
 
 ## DI
 
-Injeção de Dependência é uma técnica de programação em que um objeto injeta um objeto dependente. ["DI"](concept/di-container.md)
+Dependency Injection is a programming technique where an object injects a dependent object. Read more in ["DI"](concept/di-container.md).
 
 # I
 
-## instalação
+## installation
 
-A instalação é um processo de preparação de algo para funcionar, seguindo um arquivo leia-me ou executando um programa especialmente
-roteiro preparado. No caso do Yii, trata-se de definir permissões e cumprir requisitos de software.
+Installation is a process of preparing something to work either by following a readme file or by executing a specially
+prepared script. In case of Yii, it's setting permissions and fulfilling software requirements.
 
 # M
 
-##middleware
+## middleware
 
-Middleware é um processador na pilha de processamento de solicitações. Dada uma solicitação, ele pode produzir uma resposta ou fazer alguma
-ação e passar o processamento para o próximo middleware. Leia mais em ["Middleware"](structure/middleware.md).
+Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some
+action and pass processing to the next middleware. Read more in ["Middleware"](structure/middleware.md).
 
-## módulo
+## module
 
-O módulo é um subaplicativo que agrupa alguns códigos com base em casos de uso. Geralmente é usado no aplicativo principal
-e pode conter manipuladores de URL ou comandos de console.
+The module is a sub-application which groups some code based on use-case. It's typically used within the main application
+and may contain URL handlers or console commands.
 
 # N
 
 ## namespace
 
-Namespace refere-se a um [recurso de linguagem PHP](https://www.php.net/manual/en/language.namespaces.php).
+Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php).
 
 # P
 
 ## package
 
-Um package geralmente se refere ao [pacote do Composer](https://getcomposer.org/doc/). É um código pronto para reutilização e redistribuição instalável automaticamente via gerenciador de pacotes.
+A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and
+redistribution installable automatically via package manager.
 
 # R
 
-## regra
+## rule
 
-A regra geralmente se refere a uma regra de validação do pacote [yiisoft/validator](https://github.com/yiisoft/validator).
-Ele contém um conjunto de parâmetros para verificar se um conjunto de dados é válido.
-"Manipulador de regras" faz o processamento real.
+The rule usually refers to a validation rule of the [yiisoft/validator](https://github.com/yiisoft/validator) package.
+It holds a set of parameters for checking if a data set is valid.
+"Rule handler" does the actual processing.
 
 # Q
 
 ## queue
 
-Uma fila (queue) é semelhante a uma pilha. A fila segue a metodologia First-In-First-Out.
+A queue is similar to a stack. Queue follows First-In-First-Out methodology.
 
 # V
 
 ## vendor
 
-Um vendor é uma organização ou desenvolvedor individual que fornece código na forma de pacotes. Também pode se referir ao [diretório `vendor` do composer](https://getcomposer.org/doc/).
+A Vendor is an organization or individual developer providing code in the form of packages. It also may refer to [Composer's
+`vendor` directory](https://getcomposer.org/doc/).

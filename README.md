@@ -1,16 +1,21 @@
 # The Definitive Guide To Yii 3.0
 
-- [Chinese](docs/guide/zh-CN/README.md)
 - [English](docs/guide/en/README.md)
-- [Indonesian](docs/guide/id/README.md)
+- [中国人](docs/guide/zh-CN/README.md)
+- [Bahasa Indonesia](docs/guide/id/README.md)
 - [Português - Brasil](docs/guide/pt-BR/README.md)
-- [Russian](docs/guide/ru/README.md)
-- [Spanish](docs/guide/es/README.md)
+- [Русский](docs/guide/ru/README.md)
+- [Español](docs/guide/es/README.md)
 
 ## Yii3 community cookbook
 
 - [English](docs/cookbook/en/README.md)
 - [Português - Brasil](docs/cookbook/pt-BR/README.md)
+
+## Internals
+
+- [English](docs/internals/en/README.md)
+- [Português - Brasil](docs/internals/pt-BR/README.md)
 
 ## Documentation
 

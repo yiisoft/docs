@@ -8,15 +8,13 @@ PHP framework.
 
 Feel free to pull request your own writings. Team members will review it, give feedback and merge the best possible way.
 
-This book conforms to the [Terms of Yii Documentation.](https://www.yiiframework.com/license#docs)
+This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
 
 ---
-
-## Documentation
 
 - [Preface](preface.md)
 - Getting started
 
-### Organizing code
+## Organizing code
 
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)

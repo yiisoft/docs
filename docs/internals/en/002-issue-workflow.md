@@ -2,7 +2,7 @@
 
 The process of handing incoming issues is the following:
 
-![Issue workflow schema](docs/images/002-issue-workflow.svg)
+![Issue workflow schema](images/002-issue-workflow.svg)
 
 ## Roles
 
