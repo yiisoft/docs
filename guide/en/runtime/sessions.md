@@ -6,7 +6,7 @@ Yii has [a session package](https://github.com/yiisoft/session) to work with ses
 To add it to your application, use composer:
 
 ```shell
-composer require yiisoft/session --prefer-dist
+composer require yiisoft/session
 ```
 
 ## Configuring middleware

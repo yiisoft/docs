@@ -35,7 +35,7 @@ With Composer installed, you can create a Yii project from a template by running
 under a Web-accessible folder:
 
 ```bash
-composer create-project yiisoft/app --prefer-dist --stability=dev your_project
+composer create-project yiisoft/app --stability=dev your_project
 ```
 
 This will install the latest <!-- stable -->version of Yii project template in a directory named `your_project`.
@@ -46,7 +46,7 @@ You can choose a different directory name if you want.
 > which adds a [stability option](https://getcomposer.org/doc/04-schema.md#minimum-stability):
 >
 > ```bash
-> composer create-project --prefer-dist --stability=dev yiisoft/app your_project
+> composer create-project --stability=dev yiisoft/app your_project
 > ```
 >
 > Note that the development version of Yii shouldn't be used for production as it may break your running code.
