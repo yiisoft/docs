@@ -1,6 +1,6 @@
 # Creating a project
 
-You can create a Yii project using the [Composer](https://getcomposer.org/) package manager.
+You can create a Yii project using the [Composer](https://getcomposer.org) package manager.
 
 We recommend starting with a project template that's a minimal working Yii project implementing some basic features.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
@@ -8,7 +8,7 @@ Its code is organized in a recommended way. Therefore, it can serve as a good st
 ## Installing composer
 
 If you don't already have a Composer installed, you may do so by following the instructions at
-[getcomposer.org](https://getcomposer.org/download/). On Linux and Mac OS X, you'll run the following commands:
+[Composer](https://getcomposer.org). On Linux and Mac OS X, you'll run the following commands:
 
 ```bash
 curl -sS https://getcomposer.org/installer | php

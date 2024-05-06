@@ -1,6 +1,6 @@
 # Class autoloading
 
-Since Yii uses [Composer](https://getcomposer.org/) to manage packages, it automatically loads classes from these packages
+Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages
 without the need to `require` their file explicitly.
 When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).
 To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file. 

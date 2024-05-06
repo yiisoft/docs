@@ -1,6 +1,6 @@
 # Installing Yii
 
-You can install Yii using the [Composer](https://getcomposer.org/) package manager.
+You can install Yii using the [Composer](https://getcomposer.org) package manager.
 
 Standard installations of Yii result in both the framework packages and a project template being downloaded and installed.
 A project template is a working Yii project implementing some basic features, such as login, contact form, etc.
@@ -9,7 +9,7 @@ Its code is organized in a recommended way. Therefore, it can serve as a good st
 ## Installing Composer
 
 If you do not already have Composer installed, you may do so by following the instructions at
-[getcomposer.org](https://getcomposer.org/download/). On Linux and Mac OS X, you'll run the following commands:
+[Composer](https://getcomposer.org). On Linux and Mac OS X, you'll run the following commands:
 
 ```bash
 curl -sS https://getcomposer.org/installer | php
