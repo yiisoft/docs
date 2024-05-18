@@ -1,6 +1,6 @@
 # Autocarga de Clases (Autoloading)
 
-Dado que Yii utiliza [Composer](https://getcomposer.org/) para administar paquetes, las clases de esos paquetes son automaticamente
+Dado que Yii utiliza [Composer](https://getcomposer.org) para administar paquetes, las clases de esos paquetes son automaticamente
 cargados sin la necesidad de ser incluidos utilizando `require` para cada uno de ellos. Cuando los paquetes son instalados,
 un [autocargador compatible con PSR-0](https://www.php-fig.org/psr/psr-4/) es generado. Para usarlo,
 se debe invocar el autocargador `/vendor/autoload.php` con `require_once` en el script de entrada `index.php`.

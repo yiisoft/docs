@@ -1,6 +1,6 @@
 # Installing Yii
 
-You can install Yii using the [Composer](https://getcomposer.org/) package manager.
+You can install Yii using the [Composer](https://getcomposer.org) package manager.
 
 Standard installations of Yii result in both the framework packages and a project template being downloaded and installed.
 A project template is a working Yii project implementing some basic features, such as login, contact form, etc.
@@ -36,7 +36,7 @@ With Composer installed, you can install Yii application template by running the
 under a Web-accessible folder:
 
 ```bash
-composer create-project --prefer-dist yiisoft/yii-demo app
+composer create-project yiisoft/yii-demo app
 ```
 
 This will install the latest stable version of Yii application template in a directory named `app`.
@@ -46,7 +46,7 @@ You can choose a different directory name if you want.
 > which adds a [stability option](https://getcomposer.org/doc/04-schema.md#minimum-stability):
 >
 > ```bash
-> composer create-project --prefer-dist --stability=dev yiisoft/yii-demo app
+> composer create-project --stability=dev yiisoft/yii-demo app
 > ```
 >
 > Note that the development version of Yii should not be used for production as it may break your running code.

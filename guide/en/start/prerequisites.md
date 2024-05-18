@@ -20,7 +20,7 @@ manage that complexity.
 
 ## Command line and Composer
 
-Yii extensively uses the de-facto standard PHP package manager, [Composer](https://getcomposer.org/) so make sure you read
+Yii extensively uses the de-facto standard PHP package manager, [Composer](https://getcomposer.org) so make sure you read
 and understand its [guide](https://getcomposer.org/doc/01-basic-usage.md). If you aren't familiar with using
 the command line, it's time to start trying. Once you learn the basics you'll never want to work without it.
 
