@@ -9,7 +9,7 @@ Its code is organized in a recommended way. Therefore, it can serve as a good st
 ## Installing Composer
 
 If you do not already have Composer installed, you may do so by following the instructions at
-[Composer](https://getcomposer.org). On Linux and Mac OS X, you'll run the following commands:
+[getcomposer.org](https://getcomposer.org/download/). On Linux and Mac OS X, you'll run the following commands:
 
 ```bash
 curl -sS https://getcomposer.org/installer | php
