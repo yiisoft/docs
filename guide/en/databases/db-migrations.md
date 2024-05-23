@@ -89,7 +89,7 @@ final class M240115143455CreateMyFirstTableTable implements RevertibleMigrationI
 }
 ```
 
-For more information [see](https://github.com/yiisoft/db-migration/tree/master/docs/en)
+For more information [see](https://github.com/yiisoft/db-migration/tree/master/docs/guide/en)
 
 ### Upgrading from Yii2
 
