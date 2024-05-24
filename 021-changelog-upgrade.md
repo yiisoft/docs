@@ -54,11 +54,11 @@ application when you upgrade the package from one version to another.
 > to upgrade from version A to version C and there is version B between A and C, you need
 > to following the instructions for both A and B.
 
-## Upgrade from 2.x to 3.x
+## Upgrade from 2.x
 
 - Public method `test()` was removed. Use `perform()` instead.
 
-## Upgrade from 1.x to 2.x
+## Upgrade from 1.x
 
 - Clean up the cache after upgrading. Old cache is not compatible with new code.
 ```
