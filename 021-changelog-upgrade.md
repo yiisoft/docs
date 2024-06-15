@@ -42,7 +42,7 @@ code author. "author2" is additional author. An author's nickname MUST be prefix
 Upgrade guide is created when there is a new major version that isn't compatible with the previous one.
 It describes steps necessary to upgrade application code.
 
-The format is the following:
+The file name is `UPGRADE.md`. The format is the following:
 
 ```markdown
 # Upgrading Instructions for my package
