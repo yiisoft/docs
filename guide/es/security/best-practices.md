@@ -109,7 +109,7 @@ If all you need is plain text then escaping is as easy as the following:
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML we could get some help from [HtmlPurifier](http://htmlpurifier.org/).
+If it should be HTML we could get some help from [HtmlPurifier](https://htmlpurifier.org/).
 Note that HtmlPurifier processing is quite heavy so consider adding caching.
 
 Further reading on the topic:
@@ -202,5 +202,5 @@ In such situations you should fix your webserver configuration to serve the site
 
 For more information about the server configuration, please refer to the documentation of your webserver:
 
-- Apache 2: <http://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
+- Apache 2: <https://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
 - Nginx: <https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/>
