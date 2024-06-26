@@ -1,6 +1,6 @@
 # La Guía Definitiva de Yii 3.0
 
-Esta guía se publica bajo los [Términos de documentación de Yii](http://www.yiiframework.com/doc/terms/).
+Esta guía se publica bajo los [Términos de documentación de Yii](https://www.yiiframework.com/doc/terms/).
 
 Introducción
 ------------

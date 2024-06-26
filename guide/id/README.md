@@ -1,6 +1,6 @@
 # Panduan Definitif untuk Yii 3.0
 
-Panduan ini dirilis di bawah [Ketentuan Dokumentasi Yii](http://www.yiiframework.com/doc/terms/).
+Panduan ini dirilis di bawah [Ketentuan Dokumentasi Yii](https://www.yiiframework.com/doc/terms/).
 
 Pengenalan +
 ------------
