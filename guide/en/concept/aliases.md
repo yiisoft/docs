@@ -32,7 +32,7 @@ return [
 ];
 ```
 
-> Note: The file path or URL bein1g aliased may *not* necessarily refer to an existing file or resource.
+> Note: The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
 
 Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.
 For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias.
