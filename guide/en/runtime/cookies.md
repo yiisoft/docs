@@ -18,16 +18,16 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 ```
 
 In addition to obtaining cookie values directly from the server request, you can also utilize the [yiisoft/request-provider](https://github.com/yiisoft/request-provider)
-package, which provides a more structured way to handle cookies through the `\Yiisoft\RequestProvider\RequestCookies`. This approach can simplify your code and improve readability.
+package, which provides a more structured way to handle cookies through the `\Yiisoft\RequestProvider\RequestCookieProvider`. This approach can simplify your code and improve readability.
 
-Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookies`:
+Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookieProvider`:
 
 ```php
 
 class MyClass
 {
     public function __construct(
-        private \Yiisoft\RequestProvider\RequestCookies $cookies
+        private \Yiisoft\RequestProvider\RequestCookieProvider $cookies
     ) {}
 
     public function go(): void
