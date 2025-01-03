@@ -17,6 +17,36 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 }
 ```
 
+In addition to obtaining cookie values directly from the server request, you can also utilize the [yiisoft/request-provider](https://github.com/yiisoft/request-provider)
+package, which provides a more structured way to handle cookies through the `\Yiisoft\RequestProvider\RequestCookies`. This approach can simplify your code and improve readability.
+
+Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookies`:
+
+```php
+
+class MyClass
+{
+    public function __construct(
+        private \Yiisoft\RequestProvider\RequestCookies $cookies
+    ) {}
+
+    public function go(): void
+    {
+        // Check if a specific cookie exists
+        if ($this->cookies->has('foo')) {
+            // Retrieve the value of the cookie
+            $fooValue = $this->cookies->get('foo');
+            // Do something with the cookie value
+        }
+
+        // Retrieve another cookie value
+        $barValue = $this->cookies->get('bar');
+        // Do something with the bar cookie value
+    }
+}
+
+```
+
 ## Sending cookies
 
 Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is
