@@ -63,6 +63,7 @@ Views -
 * [Working with client scripts](views/client-scripts.md) -
 * [Theming](views/theming.md) -
 * [Template engines](views/template-engines.md) -
+* [View injections](views/view-injections.md) +
 
 
 Working with databases +-
