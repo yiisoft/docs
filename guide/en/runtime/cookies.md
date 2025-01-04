@@ -23,8 +23,7 @@ package, which provides a more structured way to handle cookies through the `\Yi
 Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookieProvider`:
 
 ```php
-
-class MyClass
+final class MyService
 {
     public function __construct(
         private \Yiisoft\RequestProvider\RequestCookieProvider $cookies
@@ -44,8 +43,6 @@ class MyClass
         // Do something with the bar cookie value
     }
 }
-
-```
 
 ## Sending cookies
 

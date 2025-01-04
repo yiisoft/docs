@@ -1,12 +1,14 @@
 # View injections
 
-The view injections is designed to provide a standardized way to pass parameters to the common layer
+The view injections are designed to provide a standardized way to pass parameters to the common layer
+
 of views in an application. Implementing this interface allows developers to manage the data that will be available
 across various views, ensuring flexibility and reusability of code.
 
 ## Configuration
 
-In config `params.php`
+In config `params.php`:
+
 
 ```php
 ...
@@ -28,6 +30,7 @@ class will be responsible for providing the parameters you want to inject into y
 class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface
 {
     // Class properties and methods will go here
+
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
@@ -44,7 +47,7 @@ class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonPar
 }
 ```
 
-Add to config your new Injection in to `params.php`
+Add your new Injection to `params.php`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -61,7 +64,7 @@ If your application has multiple layouts, you can create separate parameter inje
 allows you to tailor the parameters injected into each layout according to its specific needs, enhancing the flexibility
 and maintainability of your application.
 
-Create your custom ViewInjection for specific layout
+Create your custom ViewInjection for specific layout:
 
 ```php
 readonly final class CartViewInjection implements CommonParametersInjectionInterface
@@ -79,7 +82,7 @@ readonly final class CartViewInjection implements CommonParametersInjectionInter
 }
 ```
 
-Add to config your new injection in to `params.php` with name specific layout, in this example part for layout `@layout/cart`
+Add your new injection to `params.php` under specific layout name. In the following example, it is `@layout/cart`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -91,7 +94,8 @@ Add to config your new injection in to `params.php` with name specific layout, i
                     ->get(Cart::class);
 
                 return new LayoutSpecificInjections(
-                    '@layout/cart', // layout name for inject
+                    '@layout/cart', // layout name for injection
+
                     new CartViewInjection($cart)
                 );
             }),
