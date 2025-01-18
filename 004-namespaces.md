@@ -5,6 +5,7 @@ Package namespace rules are the following:
 1. PascalCase is used for namespace parts.
 2. Root vendor namespace is `Yiisoft`.
 3. Package name parts are used in namespace.
+4. Adjective is added to a noun and is a single part.
 
 
 Some examples:
