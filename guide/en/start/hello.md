@@ -134,7 +134,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Yiisoft\Router\CurrentRoute;
 use Psr\Http\Message\ResponseInterface;
 

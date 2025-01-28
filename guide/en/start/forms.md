@@ -41,6 +41,13 @@ The `EchoForm` class has `$message` property and related getter.
 ## Using the form <span id="using-form"></span> 
 
 Now, that you have a form, use it in your action from "[Saying Hello](hello.md)".
+
+You also need to install hydrator package
+
+```
+composer require yiisoft/hydrator
+```
+
 Here's what you end up with in `/src/Controller/EchoController.php`:
 
 ```php
@@ -51,7 +58,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\EchoForm;
-use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Hydrator\Hydrator;
@@ -139,7 +146,7 @@ use Yiisoft\Html\Html;
 
 <?= Html::submitButton('Say') ?>
 
-<?= '</form>' ?>
+<?= Html::form()->close() ?>
 ```
 
 If a form has a message set, you're displaying a box with the message. The rest if about rendering the form.
@@ -215,7 +222,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Method;
 use Yiisoft\Validator\Validator;
-use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Yiisoft\Hydrator\Hydrator;
 
 class EchoController
@@ -267,6 +274,11 @@ class EchoForm
     {
         return $this->message;
     }
+    
+    public function getFormName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 
 }
 ```
@@ -301,7 +313,7 @@ use Yiisoft\Html\Html;
 <?php endif ?>
 
 <?= Html::form()
-    ->post($urlGenerator->generate('print/form'))
+    ->post($urlGenerator->generate('echo/say'))
     ->csrf($csrf)
     ->open() ?>
 
@@ -315,7 +327,7 @@ use Yiisoft\Html\Html;
 
 <?= Html::submitButton('Say') ?>
 
-<?= '</form>' ?>
+<?= Html::form()->close() ?>
 ```
 
 ## Trying it Out <span id="trying-it-out"></span>
