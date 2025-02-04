@@ -25,7 +25,9 @@ saved in the file `/src/Form/EchoForm.php`:
 <?php
 namespace App\Form;
 
-class EchoForm
+use Yiisoft\FormModel\FormModel;
+
+class EchoForm extends FormModel
 {
     private string $message = '';
 
@@ -34,6 +36,12 @@ class EchoForm
         return $this->message;
     }
 }
+```
+
+To inherit from `FormModel` you need to install `form-model` by following commands:
+
+```
+composer require yiisoft/form-model
 ```
 
 The `EchoForm` class has `$message` property and related getter.
@@ -274,12 +282,6 @@ class EchoForm
     {
         return $this->message;
     }
-    
-    public function getFormName()
-    {
-        return (new \ReflectionClass($this))->getShortName();
-    }
-
 }
 ```
 
