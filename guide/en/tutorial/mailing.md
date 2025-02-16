@@ -219,7 +219,7 @@ return (new \Yiisoft\Mailer\Message())
 In your view or layout template, you can reference the embedded image using its CID:
 
 ```php
-<img src="<?= $imageFile->cid(); ?>">
+<img src="<?= $logoCid; ?>">
 ```
 
 ## Sending a Message
