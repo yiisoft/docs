@@ -84,7 +84,7 @@ $message = new \Yiisoft\Mailer\Message(
 
 ### Using Layouts
 
-You can also pass parameters to layouts fro you template message:
+You can also pass parameters to layouts from you template message:
 
 ```php
 /**
