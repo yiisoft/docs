@@ -41,21 +41,23 @@ The `Yiisoft\Mailer\MailerInterface` provides two main methods:
 To create a simple message with a text body, use `Yiisoft\Mailer\Message`:
 
 ```php
-$message = (new \Yiisoft\Mailer\Message())
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Message subject')
-    ->withTextBody('Plain text content');
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Message subject',
+    textBody: 'Plain text content'
+);
 ```
 
 ### Simple HTML Message
 
 ```php
-$message = (new \Yiisoft\Mailer\Message())
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Message subject')
-    ->withHtmlBody('<b>HTML content</b>');
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Message subject',
+    htmlBody: '<b>HTML content</b>'
+);
 ```
 
 ### HTML Message from template
@@ -72,11 +74,12 @@ $content = $view->render('path/to/view.php', [
     'code' => 'code',
 ]);
 
-$message = (new \Yiisoft\Mailer\Message())
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Subject')
-    ->withHtmlBody($content);
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
 ```
 
 ### Using Layouts
@@ -98,11 +101,12 @@ $layoutParameters['content'] = $messageBody;
 
 $content = $view->render('path/to/layout.php', $layoutParameters);
 
-$message = (new \Yiisoft\Mailer\Message())
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Subject')
-    ->withHtmlBody($content);
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
 ```
 
 ### Layout Example
@@ -210,10 +214,13 @@ $htmlBody = $this->view->render(
         'logoCid' => $logo->cid(),
     ],
 );
-
-return (new \Yiisoft\Mailer\Message())
-    ->withHtmlBody($htmlBody)
-    ->withEmbedded($logo);
+return new \Yiisoft\Mailer\Message(
+            from: 'from@domain.com',
+            to: 'to@domain.com',
+            subject: 'Message subject',
+            htmlBody: $htmlBody,
+            embeddings: $logo
+        );
 ```
 
 In your view or layout template, you can reference the embedded image using its CID:
@@ -236,11 +243,12 @@ $content = $view->render('path/to/view.php', [
     'code' => 'code',
 ]);
 
-$message = (new \Yiisoft\Mailer\Message())
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Subject')
-    ->withHtmlBody($content);
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
 
 $mailer->send($message);
 ```
