@@ -1,115 +1,118 @@
 # Mailing
 
-Yii makes composition and sending email messages convenient with the help of
-[yiisoft/mailer](https://github.com/yiisoft/mailer) package. The package provides content composition functionality,
-and a basic interface for sending emails. Out of the box, the package provides a file mailer that, instead of
-actually sending an email, writes its contents into a file. Such a default is useful during initial application
-development.
+Yii simplifies the composition and sending of email messages using
+the [yiisoft/mailer](https://github.com/yiisoft/mailer) package. This package provides
+content composition functionality and a basic interface for sending emails. By default, the package includes a file
+mailer that writes email contents into a file instead of sending them. This is particularly useful during the initial
+stages of application development.
 
-To actually send emails,
-there is a [Symfony Mailer](https://github.com/yiisoft/mailer-symfony) implementation of mailer.
-It's used in further examples.
+To send actual emails, you can use the [Symfony Mailer](https://github.com/yiisoft/mailer-symfony) implementation, which
+is used in the examples below.
 
-## Configuring mailer
+## Configuring the Mailer
 
-The mailer service allows you to get a message instance and, after it's filled with data, send it.
-An instance is usually obtained from DI container as `Yiisoft\Mailer\MailerInterface`.
+The mailer service allows you to create a message instance, populate it with data, and send it. Typically, you obtain an
+instance from the DI container as `Yiisoft\Mailer\MailerInterface`.
 
-Manually you could create an instance as follows:
+You can also create an instance manually as follows:
 
 ```php
-use Yiisoft\Mailer\MessageBodyRenderer;
-use Yiisoft\Mailer\MessageBodyTemplate;
-use Yiisoft\Mailer\MessageFactory;
+
 use Yiisoft\Mailer\Symfony\Mailer;
-use Yiisoft\Mailer\Symfony\Message;
 
 /**
- * @var \Psr\EventDispatcher\EventDispatcherInterface $dispatcher
  * @var \Symfony\Component\Mailer\Transport\TransportInterface $transport
- * @var \Yiisoft\View\View $view
  */
 
-$template = new MessageBodyTemplate('/path/to/directory/of/view-files');
-
-$mailer = new Mailer(
-    new MessageFactory(Message::class),
-    new MessageBodyRenderer($view, $template),
-    $dispatcher,
+$mailer = new \Yiisoft\Mailer\Symfony\Mailer(
     $transport,
 );
 ```
 
-The `Yiisoft\Mailer\MailerInterface` has 4 methods:
+The `Yiisoft\Mailer\MailerInterface` provides two main methods:
 
-- `compose()` - Creates a new message instance and optionally composes its body content via view rendering.
 - `send()` - Sends the given email message.
 - `sendMultiple()` - Sends many messages at once.
-- `withTemplate()` - Returns a new instance with the specified message body template.
 
-## Creating a message
+## Creating a Message
 
-The `compose()` method of the mailer allows composition of the actual mail messages content via special template
-view files such as the following:
+### Simple Text Message
 
-```php
-<?php
-
-declare(strict_types=1);
-
-use Yiisoft\Html\Html;
-
-/* @var string $content */
-
-echo Html::p(Html::encode($content));
-```
-
-To compose message content via view file, simply pass view name to the `compose()` method:
+To create a simple message with a text body, use `Yiisoft\Mailer\Message`:
 
 ```php
-$message = $mailer->compose('view-name') // A view rendering result becomes the message body.
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Message subject')
-;
-```
-
-You may pass extra view parameters to `compose()` method, which will be available inside the view file:
-
-```php
-$message = $mailer->compose('greetings', [
-    'user' => $user,
-    'advertisement' => $advertContent,
-]);
-```
-
-It's also possible to pass parameters to the layouts:
-
-```php
-$message = $mailer->compose(
-    'view-name', 
-    ['viewParameter' => $viewParameter],
-    ['layoutParameter' => $layoutParameter],
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Message subject',
+    textBody: 'Plain text content'
 );
 ```
 
-You can specify different view files for HTML and plain text message contents:
+### Simple HTML Message
 
 ```php
-$message = $mailer->compose([
-    'html' => 'contact-html',
-    'text' => 'contact-text',
-]);
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Message subject',
+    htmlBody: '<b>HTML content</b>'
+);
 ```
 
-If you specify view name as a string, mailer will use the rendering result as HTML body,
-while it will compose plain text body by removing all HTML entities from it.
+### HTML Message from template
 
-> If you specify view name as `null` the message instance will be returned without body content.
+For this example we will use package rendering package [view](https://github.com/yiisoft/view).
 
-You can wrap a view rendering result into the layout.
-It will work the same way as layouts in regular web application.
-You can use layout to set up mail CSS styles or other shared content:
+```php
+/**
+ * @var \Yiisoft\View\View $view
+ */
+
+$content = $view->render('path/to/view.php', [
+    'name' => 'name',
+    'code' => 'code',
+]);
+
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
+```
+
+### Using Layouts
+
+You can also pass parameters to layouts from you template message:
+
+```php
+/**
+ * @var \Yiisoft\View\View $view
+ * @var array $layoutParameters
+ */
+
+$messageBody = $view->render('path/to/view.php', [
+    'name' => 'name',
+    'code' => 'code',
+]);
+
+$layoutParameters['content'] = $messageBody;
+
+$content = $view->render('path/to/layout.php', $layoutParameters);
+
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
+```
+
+### Layout Example
+
+You can wrap the view rendering result in a layout, similar to how layouts work in web applications. This is useful for
+setting up shared content like CSS styles:
 
 ```php
 <?php
@@ -133,52 +136,9 @@ Mailed by Yii
 </html>
 ```
 
-You can specify the layouts when creating an instance of the `Yiisoft\Mailer\MessageBodyRenderer`,
-which you pass to the mailer constructor.
+## Adding More Data
 
-```php
-use Yiisoft\Mailer\MessageBodyRenderer;
-use Yiisoft\Mailer\MessageBodyTemplate;
-use Yiisoft\Mailer\Symfony\Mailer;
-
-/**
- * @var \Psr\EventDispatcher\EventDispatcherInterface $dispatcher
- * @var \Symfony\Component\Mailer\Transport\TransportInterface $transport
- * @var \Yiisoft\View\View $view
- * @var \Yiisoft\Mailer\MessageFactory $factory
- */
- 
-$template = new MessageBodyTemplate(
-    '/path/to/directory/of/view-files',
-    'HTML layout name', // Default to 'layouts/html'
-    'Plain text layout name', // Default to 'layouts/text'
-);
-
-$renderer = new MessageBodyRenderer($view, $template);
-
-$mailer = new Mailer($factory, $renderer, $dispatcher, $transport);
-```
-
-It's also possible to change the layouts and the path of views in runtime.
-
-```php
-$template = new \Yiisoft\Mailer\MessageBodyTemplate(
-    '/path/to/directory/of/view-files',
-    'HTML layout name', // Default to 'layouts/html'
-    'Plain text layout name', // Default to 'layouts/text'
-);
-
-$mailer = $mailer->withTemplate($template);
-```
-
-Note that the `withTemplate()` method returns a new instance of the mailer with the specified message body template.
-
-> If you specify the layouts as empty strings, mailer won't use the layouts.
-
-### Adding more data
-
-After you create the message, you can add actual content to it.
-The message implements `Yiisoft\Mailer\MessageInterface` that has many useful methods for the purpose:
+The `Yiisoft\Mailer\MessageInterface` provides several methods to customize your message:
 
 - `withCharset()` - Returns a new instance with the specified charset.
 - `withFrom()` - Returns a new instance with the specified sender email address.
@@ -193,27 +153,18 @@ The message implements `Yiisoft\Mailer\MessageInterface` that has many useful me
 - `withSender()` - Returns a new instance with the specified actual sender email address.
 - `withHtmlBody()` - Returns a new instance with the specified message HTML content.
 - `withTextBody()` - Returns a new instance with the specified message plain text content.
-- `withAttached()` - Returns a new instance with the specified attached file.
-- `withEmbedded()` - Returns a new instance with the specified embedded file.
 - `withAddedHeader()` - Returns a new instance with the specified added custom header value.
 - `withHeader()` - Returns a new instance with the specified custom header value.
 - `withHeaders()` - Returns a new instance with the specified custom header values.
-- `withError()` - Returns a new instance with the specified sending fails error.
 
-Note `with` prefix. It indicates that the method is immutable and returns a new instance of the class with the changed data.
-You can add data using a chain of methods:
+These methods are immutable, meaning they return a new instance of the message with the updated data.
 
-```php
-$message = $mailer->compose(null)
-    ->withFrom('from@domain.com')
-    ->withTo('to@domain.com')
-    ->withSubject('Message subject')
-    ->withTextBody('Plain text content')
-    ->withHtmlBody('<b>HTML content</b>')
-;
-```
+Note `with` prefix. It indicates that the method is immutable and returns a new instance of the class with the changed
+data.
 
-A number of getters is also available:
+### Getters
+
+The following getters are available to retrieve message data:
 
 - `getCharset()` - Returns the charset of this message.
 - `getFrom()` - Returns the message sender email address.
@@ -229,93 +180,118 @@ A number of getters is also available:
 - `getHtmlBody()` - Returns the message HTML body.
 - `getTextBody()` - Returns the message text body.
 - `getHeader()` - Returns all values for the specified header.
-- `getError()` - Returns error represents why send fails, or `null` on a successful send.
 - `__toString()` - Returns string representation of this message.
 
-### Attaching files
+## Attaching Files
 
-You can add attachments to message using the `withAttached()` method:
+You can attach files to your message using the `withAttached()` method:
 
 ```php
 use Yiisoft\Mailer\File;
 
-// Attach a file from local file system.
+// Attach a file from the local file system
 $message = $message->withAttached(
     File::fromPath('/path/to/source/file.pdf'),
 );
 
-// Create an attachment content on-the-fly.
+// Create an attachment on-the-fly
 $message = $message->withAttached(
-    File::fromContent('Attachment content', 'attach.txt', 'text/plain')),
+    File::fromContent('Attachment content', 'attach.txt', 'text/plain'),
 );
 ```
 
-### Embedding images
+## Embedding Images
 
-You can embed images into the message content using `withEmbedded()` method.
-This method is easy to use when composing message content via view:
+You can embed images into the message content using the `withEmbedded()` method. This is particularly useful when
+composing messages with views:
 
 ```php
-$imageFile = \Yiisoft\Mailer\File::fromPath('/path/to/image.jpg');
-
-// passing the file to the view
-$mailer->compose('embed-email', ['imageFile' => $imageFile])
-    ->withEmbedded($imageFile)
-    // ...
-;
-
-// passing the file to the layout
-$mailer->compose('embed-email', [], ['imageFile' => $imageFile])
-    ->withEmbedded($imageFile)
-    // ...
-;
+$logo = 'path/to/logo';
+$htmlBody = $this->view->render(
+    __DIR__ . 'template.php',
+    [
+        'content' => $content,
+        'logoCid' => $logo->cid(),
+    ],
+);
+return new \Yiisoft\Mailer\Message(
+            from: 'from@domain.com',
+            to: 'to@domain.com',
+            subject: 'Message subject',
+            htmlBody: $htmlBody,
+            embeddings: $logo
+        );
 ```
 
-Then inside the view template or layout template you can use the following code:
+In your view or layout template, you can reference the embedded image using its CID:
 
 ```php
-<img src="<?= $imageFile->cid(); ?>">
+<img src="<?= $logoCid; ?>">
 ```
 
-The `cid()` method returns the attachment ID, which should be used in `img` tag.
+## Sending a Message
 
-### Sending a message
-
-You can use the following code to send an email message:
+To send an email message:
 
 ```php
-$message = $mailer->compose()
-   ->withFrom('from@domain.com')
-   ->withTo('to@domain.com')
-   ->withSubject('Message subject')
-   ->withTextBody('Plain text content')
-   ->withHtmlBody('<b>HTML content</b>')
-;
+/**
+ * @var \Yiisoft\View\View $view
+ */
+
+$content = $view->render('path/to/view.php', [
+    'name' => 'name',
+    'code' => 'code',
+]);
+
+$message = new \Yiisoft\Mailer\Message(
+    from: 'from@domain.com',
+    to: 'to@domain.com',
+    subject: 'Subject',
+    htmlBody: $content
+);
+
 $mailer->send($message);
 ```
 
-You may also send several messages at once:
+## Sending Multiple Messages
+
+You can send multiple messages at once:
 
 ```php
 $messages = [];
 
 foreach ($users as $user) {
-    $messages[] = $mailer->compose()
+    $messages[] = (new \Yiisoft\Mailer\Message())
         // ...
-        ->withTo($user->email)
-    ;
+        ->withTo($user->email);
 }
 
 $result = $mailer->sendMultiple($messages);
 ```
 
-This method returns an array of failed messages, or an empty array if the mailer sent all messages successfully.
-You can get an error using the `$message->getError()` method.
+The `sendMultiple()` method returns a `Yiisoft\Mailer\SendResults` object containing arrays of successfully sent and
+failed
+messages.
 
-## Implementing your own mail driver
+## Implementing Your Own Mail Driver
 
-To create your own custom mail solution, you need to create 2 classes: one for the `Mailer`
-and another one for the `Message`. You can use `Yiisoft\Mailer\Mailer` as the base class for your solution.
-This class already has the basic logic, which described in this guide. However, their usage isn't mandatory,
-it's enough to implement `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface` interfaces.
-Then you need to implement all the abstract methods to build your solution.
+To create a custom mail solution, implement the `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface`
+interfaces.
+
+## For Development
+
+For local or test development, you can use simplified implementations of the mailer that do not actually send emails.
+These implementations are provided by the package:
+
+- `Yiisoft\Mailer\StubMailer` - A simple mailer that stores messages in a local array.
+- `Yiisoft\Mailer\FileMailer` - A mock mailer that saves email messages as files instead of sending them.
+- `Yiisoft\Mailer\NullMailer` - A mailer that discards messages without sending or storing them.
+
+To use one of these mailers, configure it in your development environment file Example: `environments/local/di.php`
+
+```php
+return [
+    Yiisoft\Mailer\MailerInterface::class => Yiisoft\Mailer\StubMailer::class, //or any other
+];
+
+```
