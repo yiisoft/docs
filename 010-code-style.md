@@ -148,7 +148,7 @@ should be two methods instead of one.
 public function login(bool $refreshPage = true): void;
 ```
 
-It Is better to be two methods:
+It is better to be two methods:
 
 ```php
 public function login(): void;
