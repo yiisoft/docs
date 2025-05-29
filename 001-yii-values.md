@@ -1,4 +1,4 @@
-# 001 - Yii goal and values
+# 001 — Yii goal and values
 
 ## Goal
 

@@ -15,7 +15,7 @@ copying these into the application.
 To offer default configs, `composer.json` of the package has to have `config-plugin` section.
 When installing or updating packages with Composer, the plugin reads `config-plugin` sections for each dependency,
 copies files themselves to application `config/packages/` if they don't yet exist and writes a merge plan to
-`config/packages/merge_plan.php`. The merge plan defines how to merge the configs together into a single big array
+`config/packages/merge_plan.php`. The merge plan defines how to merge the configs into a single big array
 ready to be passed to [DI container](di-container.md).
 
 Take a look at what's in the "yiisoft/app" `composer.json` by default:
@@ -235,7 +235,7 @@ return [
         // Just a regular closure, it will be called from the Dispatcher "as is".
         static fn (EventName $event) => someStuff($event),
         
-        // A regular closure with extra dependency. All the parameters after the first one (the event itself)
+        // A regular closure with an extra dependency. All the parameters after the first one (the event itself)
         // will be resolved from your DI container within `yiisoft/injector`.
         static fn (EventName $event, DependencyClass $dependency) => someStuff($event),
         
@@ -335,7 +335,7 @@ For convenience, there is a naming convention about parameters:
 Config plugin described copy default package configurations to `packages/` directory. Once copied you
 own the configs, so you can adjust these as you like. `yiisoft/` in the default template stands for package vendor. Since
 only `yiisoft` packages are in template, there's a single directory. `merge_plan.php` is used in runtime to get the order
-on how configs are merged together.
+on how configs are merged.
 Note that for config keys there should be a single source of truth.
 One config can't override values of another config.
 

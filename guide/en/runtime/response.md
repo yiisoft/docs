@@ -16,7 +16,7 @@ Hello!
 
 Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web application to represent response.
 
-The object should be constructed and returned as a result of execution of controller actions or other middleware.
+The object should be constructed and returned as a result of the execution of controller actions or other middleware.
 Usually, the middleware has a response factory injected into its constructor.
 
 ```php
@@ -44,7 +44,7 @@ class PostAction
 
 ## Status code
 
-You can set status code like the following:
+You can set a status code like the following:
 
 ```php
 use Yiisoft\Http\Status;
@@ -62,7 +62,7 @@ You can set headers like this:
 $response = $response->withHeader('Content-type', 'application/json');
 ```
 
-If there is a need to append a header value to existing header:
+If there is a need to append a header value to the existing header:
 
 ```php
 $response = $response->withAddedHeader('Set-Cookie', 'qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT');

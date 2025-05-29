@@ -4,7 +4,7 @@ After installing Yii, you have a working Yii application that can be launched vi
 accessed via the URL `http://localhost:8080/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
-> Info: For simplicity, throughout this "Getting Started" tutorial use "serve" command. It shouldn't be used
+> Info: For simplicity, throughout this "Getting Started" tutorial use the "serve" command. It shouldn't be used
 > to serve the project in production. When setting up a real server, use `app/public` as the document root.
   
 Note that unlike the framework itself, after you install a project template, it's all yours. You're free to add or delete
@@ -89,8 +89,8 @@ and shouldn't be.
 Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
 The entry script is using an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
 an incoming request with the help of one of PSR-7 packages and passes it to [an application](../structure/application.md)
-instance. An application contains a set of middleware that are executed sequentially processing the request.
-The result is passed further to emitter that takes care of sending a response to the browser.
+instance. An application contains a set of middleware that is executed sequentially processing the request.
+The result is passed further to the emitter that takes care of sending a response to the browser.
 
 Depending on the middleware used, the application may behave differently. By default, there is a router
 that, based on URL requested and configuration, chooses a handler that's executed to produce a response.
@@ -105,10 +105,10 @@ The following diagram shows how an application handles a request.
 ![Request Lifecycle](img/request-lifecycle.svg)
 
 1. A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`.
-2. The entry script with the help of application runner loads
+2. The entry script with the help of the application runner loads
    the container [configuration](../concept/configuration.md) and creates
    an [application](../structure/application.md) instance and services necessary to handle the request.
-3. Request factory creates a request object based on raw request that came from a user.
+3. Request factory creates a request object based on a raw request that came from a user.
 4. Application passes a request object through a middleware array configured. One of these is typically a router.
 5. The Router finds out what handler to execute based on request and configuration.
 6. The handler may load some data, possibly from a database.

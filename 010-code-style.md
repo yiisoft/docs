@@ -1,4 +1,4 @@
-# 010 - Code Style
+# 010 — Code style
 
 Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and
 [PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it.
@@ -8,7 +8,7 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 - Use English only.
 - Use camelCase notation, including abbreviations (e.g., `enableIdn`).
 - Use the shortest possible, but an explanatory name.
-- Never trim or abbreviate name.
+- Never trim or abbreviate a name.
 - Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`.
 
 ## Types
@@ -148,7 +148,7 @@ should be two methods instead of one.
 public function login(bool $refreshPage = true): void;
 ```
 
-Is better to be two methods:
+It Is better to be two methods:
 
 ```php
 public function login(): void;

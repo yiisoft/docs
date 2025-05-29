@@ -4,7 +4,7 @@ Entry scripts are the first step in the application bootstrapping process. An ap
 Web application or console application) has a single entry script. End users make requests to
 entry scripts which instantiate application instances and forward the requests to them.
 
-Entry scripts for Web applications must be stored under Web accessible directories so that they
+Entry scripts for Web applications must be stored under Web-accessible directories so that they
 can be accessed by end users. They're often named as `index.php`, but can also use any other names,
 provided Web servers can locate them.
 
@@ -14,10 +14,10 @@ Entry scripts mainly perform the following work with the help of `ApplicationRun
 
 * Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);
 * Obtain configuration;
-* Use configuration to initialize dependency injection container;
-* Get an instance of request.
+* Use configuration to initialize a dependency injection container;
+* Get an instance of the request.
 * Pass it to `Application` to handle and get a response from it.
-* With the help of emitter that transforms response object into actual HTTP response that's sent to client browser.
+* With the help of an emitter that transforms a response object into an actual HTTP response that's sent to the client browser.
 
 ## Web Applications <span id="web-applications"></span>
 

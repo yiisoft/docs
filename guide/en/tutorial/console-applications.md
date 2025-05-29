@@ -9,7 +9,7 @@ To get support for console application in your project, get `yiisoft/yii-console
 composer require yiisoft/yii-console
 ```
 
-After it's installed, you can access entry point as
+After it's installed, you can access the entry point as
 
 ```
 ./yii

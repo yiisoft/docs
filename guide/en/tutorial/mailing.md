@@ -11,7 +11,7 @@ is used in the examples below.
 
 ## Configuring the Mailer
 
-The mailer service allows you to create a message instance, populate it with data, and send it. Typically, you obtain an
+The mailer service allows you to create a message instance, populate it with data, and send it. Typically, you get an
 instance from the DI container as `Yiisoft\Mailer\MailerInterface`.
 
 You can also create an instance manually as follows:
@@ -62,7 +62,7 @@ $message = new \Yiisoft\Mailer\Message(
 
 ### HTML Message from template
 
-For this example we will use package rendering package [view](https://github.com/yiisoft/view).
+For this example, we will use package rendering package [view](https://github.com/yiisoft/view).
 
 ```php
 /**
@@ -84,7 +84,7 @@ $message = new \Yiisoft\Mailer\Message(
 
 ### Using Layouts
 
-You can also pass parameters to layouts from you template message:
+You can also pass parameters to layouts from your template message:
 
 ```php
 /**
@@ -280,8 +280,8 @@ interfaces.
 
 ## For Development
 
-For local or test development, you can use simplified implementations of the mailer that do not actually send emails.
-These implementations are provided by the package:
+For local or test development, you can use simplified implementations of the mailer that does not send emails.
+The package provides these implementations:
 
 - `Yiisoft\Mailer\StubMailer` - A simple mailer that stores messages in a local array.
 - `Yiisoft\Mailer\FileMailer` - A mock mailer that saves email messages as files instead of sending them.

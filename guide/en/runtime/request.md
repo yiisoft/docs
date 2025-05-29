@@ -17,7 +17,7 @@ Accept-Encoding: gzip, deflate
 The method is `POST`, URI is `/contact`.
 Extra headers are specifying host, preferred language and encoding.
 The body could be anything.
-In this case, it's JSON payload. 
+In this case, it's a JSON payload. 
 
 Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as request representation.
 The object is available in controller actions and other types of middleware:
@@ -31,7 +31,7 @@ public function view(ServerRequestInterface $request): ResponseInterface
 
 ## Method
 
-The method could be obtained from request object:
+The method could be obtained from a request object:
 
 ```php
 $method = $request->getMethod();
@@ -96,19 +96,19 @@ foreach ($headers as $name => $values) {
 }
 ```
 
-To obtain a single header:
+To get a single header:
 
 ```php
 $values = $request->getHeader('Accept-Encoding');
 ```
 
 
-Also, you could obtain value as a comma-separated string instead of an array.
+Also, you could get value as a comma-separated string instead of an array.
 That's especially handy if a header has a single value:
 
 ```php
 if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
-    // This is AJAX request made with jQuery.
+    // This is an AJAX request made with jQuery.
     // Note that header presence and name may vary depending on the library used. 
 }
 ```
@@ -123,7 +123,7 @@ if ($request->hasHeader('Accept-Encoding')) {
 
 ## Body
 
-There are two methods to obtain body contents. First is getting body as is without parsing:
+There are two methods to get body contents. The first is getting the body as it is without parsing:
 
 ```php
 $body = $request->getBody();
@@ -131,7 +131,7 @@ $body = $request->getBody();
 
 The `$body` would be an instance of `Psr\Http\Message\StreamInterface`.
 
-Also, you could obtain a parsed body:
+Also, you could get a parsed body:
 
 ```php
 $bodyParameters = $request->getParsedBody();
@@ -181,4 +181,4 @@ foreach ($files as $file) {
 ## Attributes
 
 Application middleware may set custom request attributes using `withAttribute()` method.
-You can obtain these attributes with `getAttribute()`.
+You can get these attributes with `getAttribute()`.

@@ -1,8 +1,8 @@
-# 015 - PhpStorm metadata and attributes
+# 015 — PhpStorm metadata and attributes
 
 ## PhpStorm metadata
 
-[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps IDE to understand
+[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps the IDE to understand
 code better in cases when regular types and PHPDoc tags don't help.
 
 We use the following set of coding styles for metadata.

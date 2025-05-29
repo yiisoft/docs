@@ -1,6 +1,6 @@
 # Working with Forms
 
-This section continues to improve on "Saying Hello". Instead of using URL, you will now ask user for a message via form.
+This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message via form.
 
 Through this tutorial, you will learn how to:
 
@@ -48,9 +48,9 @@ The `EchoForm` class has `$message` property and related getter.
 
 ## Using the form <span id="using-form"></span> 
 
-Now, that you have a form, use it in your action from "[Saying Hello](hello.md)".
+Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
 
-You also need to install hydrator package
+You also need to install a hydrator package
 
 ```
 composer require yiisoft/hydrator
@@ -157,11 +157,11 @@ use Yiisoft\Html\Html;
 <?= Html::form()->close() ?>
 ```
 
-If a form has a message set, you're displaying a box with the message. The rest if about rendering the form.
+If a form has a message set, you're displaying a box with the message. The rest is about rendering the form.
 
 You get the action URL from the URL manager service.
 You access it as `$urlGenerator` that's a default parameter available in all views.
-This variable and alike ones such as `$csrf` are provided by view injections listed in `config/common/params.php`:
+This variable and similar ones such as `$csrf` are provided by view injections listed in `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view-renderer' => [
@@ -174,7 +174,7 @@ This variable and alike ones such as `$csrf` are provided by view injections lis
 ],
 ```
 
-You set the value of CSRF token, and it is rendered as a hidden input to ensure that the request originates from 
+You set the value of a CSRF token, and it is rendered as a hidden input to ensure that the request originates from 
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
@@ -213,7 +213,7 @@ return [
     // ...
 ```
 
-You use `Text::widget()` to output "message" field, so it takes case about filling the value, escaping it,
+You use `Text::widget()` to output "message" field, so it takes care about filling the value, escaping it,
 rendering field label and validation errors you're going to take care of next.
 
 ## Adding validation
@@ -264,7 +264,7 @@ class EchoController
 }
 ```
 
-You've obtained validator instance through type-hinting and used it to validate the form.
+You've got a validator instance through type-hinting and used it to validate the form.
 Now you need to add validation rules to `/src/Form/EchoForm.php`:
 
 ```php
@@ -285,7 +285,7 @@ class EchoForm
 }
 ```
 
-Now, in case you will submit an empty message you will get a validation error: "Message cannot be blank."
+Now, in case you submit an empty message, you will get a validation error: "Message cannot be blank."
 Also, you can add required attribute to text field in `views/echo/say.php`.
 
 ```php
@@ -341,13 +341,13 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page displaying a form an input field that has a label that indicates what data are to be entered.
-Also, there is a submit button labeled "Say". If you click the submit button without entering anything, you will see
+You will see a page displaying a form input field that has a label that indicates what data are to be entered.
+Also, there is a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
 an error message displayed next to a problematic input field.
 
 ![Form with a validation error](img/form-error.png)
 
-After entering a message and clicking the submit button, you will see a new page
+After entering a message and clicking the "submit" button, you will see a new page
 displaying the data that you just entered.
 
 ![Form with a success message](img/form-success.png)

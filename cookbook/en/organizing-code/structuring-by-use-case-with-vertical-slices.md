@@ -7,11 +7,11 @@ Vertical slices are self-contained pieces of functionality that cover the entire
 the data access layer.
 Developer organizes each slice around a specific use case, such as creating a new user or updating a product.
 
-When structuring code classically by type (such as models, views, controllers, helpers, etc,.), it can be easy to lose
+When structuring code classically by type (such as models, views, controllers, helpers, etc.), it can be easy to lose
 sight of the bigger picture and how different pieces of code interact to support specific features or use cases.
 This can lead to code duplication, tight coupling, and poor maintainability as the application grows.
 
-On the other hand, structuring code by use-case makes developers to focus on a specific feature or workflow and
+On the other hand, structuring code by use-case makes developers focus on a specific feature or workflow and
 understand how different pieces of code work together to support that feature. This approach also helps to keep related
 code together in a single directory, making it easier to navigate and support. Vertical slicing also encourages
 the use of domain-driven design concepts, such as entities, repositories, and services, which can help to promote

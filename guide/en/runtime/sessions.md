@@ -62,7 +62,7 @@ return [
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 {
-    // start session if it's not yet started
+    // start a session if it's not yet started
     $session->open();
 
     // work with session
@@ -73,17 +73,17 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 ``` 
 
 > Note: Closing session as early as possible is a good practice since many session implementations are blocking other
-> requests while session is open.
+> requests while the session is open.
 
-There are two more ways to close session:
+There are two more ways to close a session:
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 {
-    // discard changes and close session
+    // discard changes and close the session
     $session->discard();
 
-    // destroy session completely
+    // destroy the session completely
     $session->destroy();    
 }
 ```
@@ -104,7 +104,7 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
     // set a value
     $session->set('lastAccessTime', time());
 
-    // check if value exists
+    // check if the value exists
     if ($session->has('lastAccessTime')) {
         // ...    
     }
@@ -122,9 +122,9 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 
 ## Flash messages
 
-In case you need some data to remain in session until read, such as in case with displaying a message on the next page,
+In case you need some data to remain in session until read, such as in case of displaying a message on the next page,
 "flash" messages are what you need.
-A flash message is a special type of data, that's available only in the current request and the next request.
+A flash message is a special type of data that's available only in the current request and the next request.
 After that, it will be deleted automatically.
 
 `FlashInteface` usage is the following:

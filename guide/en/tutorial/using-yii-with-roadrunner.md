@@ -2,7 +2,7 @@
 
 [RoadRunner](https://roadrunner.dev/) is a Golang-powered application server that integrates well with PHP. It runs
 it as workers and each worker may handle multiple requests. Such an operation mode is often called
-[event loop](using-with-event-loop.md) and allows not to re-initialize a framework for each request that improves
+[event loop](using-with-event-loop.md) and allows not re-initializing a framework for each request that improves
 performance significantly.
 
 ## Installation
@@ -59,7 +59,7 @@ logs:
 ```
 
 We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory
-files are static ones except `.php` and `.htaccess`. Also, we're sending additional header.
+files are static ones except `.php` and `.htaccess`. Also, we're sending an additional header.
 
 Create `/worker.php`:
 
@@ -89,5 +89,5 @@ To start a server, execute the following command:
 ## On worker scope
 
 - Each worker's scope is isolated from other workers. Memory isn't shared.
-- A single worker serves multiple requests where scope is shared.
-- At each iteration of event loop every service that depends on state should be reset.
+- A single worker serves multiple requests where the scope is shared.
+- At each iteration of the event loop, every service that depends on state should be reset.

@@ -12,7 +12,7 @@ Because of its architecture and sophisticated caching support,
 it's especially suitable for developing large-scale applications such as portals, content management systems,
 e-commerce, REST APIs, etc.
 
-## How does Yii Compare with Other Frameworks
+## How does Yii Compare with Other Frameworks?
 
 If you're already familiar with another framework, you may appreciate knowing how Yii compares:
 
@@ -24,12 +24,11 @@ If you're already familiar with another framework, you may appreciate knowing ho
   - Explicitness.
   - Consistency.
   
-  Yii will never try to over-design things mainly for the purpose of following
-  some design patterns.
+  Yii will never try to over-design things mainly to follow some design patterns.
 - Yii extensively uses PSR interfaces with the ability to reuse what PHP community created and even
   replace core implementations if needed.
 - Yii is both a set of libraries and a full-stack framework providing many proven and ready-to-use features:
-  caching, logging, template engine, data abstraction, development tools, code generation; and more.
+  caching, logging, template engine, data abstraction, development tools, code generation, and more.
 - Yii is extensible. You can customize or replace every piece of the core's code. You can also
   take advantage of Yii's solid architecture to use or develop redistributable packages.
 - High performance is always a primary goal of Yii.
@@ -43,10 +42,10 @@ found elsewhere are regularly incorporated into the core framework and exposed v
 
 ## Yii versions
 
-Yii currently has three major versions available: 1.1, 2.0 and 3.0.
+Yii currently has three major versions available: 1.1, 2.0, and 3.0.
 
 - Version 1.1 is the old generation and is now in the feature freeze bugfix mode.
-- Version 2.0 is a current stable version that's in the feature freeze bugfix mode.
+- Version 2.0 is a current stable version in the feature freeze bugfix mode.
 - Version 3.0 is the current version in development. This guide is mainly about version 3.
 
 
@@ -55,6 +54,6 @@ Yii currently has three major versions available: 1.1, 2.0 and 3.0.
 Yii3 requires PHP 8.0 or above, but some packages also support PHP 7.4.
 
 Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.
-Yii3 also makes use of the latest features of PHP, such as type declarations and generators. Understanding these
+Yii3 also makes use of the latest PHP features, such as type declarations and generators. Understanding these
 concepts will help you pick up Yii3 faster.
 

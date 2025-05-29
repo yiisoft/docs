@@ -1,7 +1,6 @@
 # View injections
 
 The view injections are designed to provide a standardized way to pass parameters to the common layer
-
 of views in an application. Implementing this interface allows developers to manage the data that will be available
 across various views, ensuring flexibility and reusability of code.
 
@@ -64,7 +63,7 @@ If your application has multiple layouts, you can create separate parameter inje
 allows you to tailor the parameters injected into each layout according to its specific needs, enhancing the flexibility
 and maintainability of your application.
 
-Create your custom ViewInjection for specific layout:
+Create your custom ViewInjection for a specific layout:
 
 ```php
 readonly final class CartViewInjection implements CommonParametersInjectionInterface

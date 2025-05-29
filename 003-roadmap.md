@@ -1,15 +1,15 @@
-# 003 - Roadmap
+# 003 — Roadmap
 
 We want Yii 3 to:
 
-- Not limit a developer in choosing architecture. Allow anything from "classic" MVC to DDD.
-- Be based on best practices such as SOLID, GRASP etc. and teach them to community.
+- Not limit a developer to choosing architecture. Allow anything from "classic" MVC to DDD.
+- Be based on the best practices such as SOLID, GRASP, etc. and teach them to the community.
 - Keep the most good things from Yii 2.
 - Be more open to the global PHP community and infrastructure.
 
 ## PSRs compliance
 
-PSR compliance helps with customizability, ability to use general PHP libraries and implement fewer wrappers.
+PSR compliance helps with customizability, the ability to use general PHP libraries and implement fewer wrappers.
 Here's the list of PSRs we want to implement.
 
 ### PSR-3 Logger
@@ -118,7 +118,7 @@ Implemented as a [separate package that isn't dependent on a framework](https://
 
 - [x] Separate web and console application
 - [x] Possibly eliminate base application (still needed)
-- [x] Create interface for console (using Symfony one)
+- [x] Create an interface for the console (using Symfony one)
 - [x] Implementation may be one of the popular ones (using Symfony one)
 - [x] Ensure application can add commands via config
 

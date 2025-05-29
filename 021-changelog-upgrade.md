@@ -1,4 +1,4 @@
-# 021 - Changelog and upgrade
+# 021 — Changelog and upgrade
 
 For all released packages, we've a detailed changelog and upgrade guide.
 
@@ -23,19 +23,19 @@ Changelog is written for each version released. The file name is `CHANGELOG.md`.
 ```
 
 There "My package" is the name of the package, `1.0.1` is the version released followed by release date.
-For each version there are a number of lines listing the changes.
+For each version, there are a number of lines listing the changes.
 "Bug" refers to a change type.
 The following types are used:
 
-- New - New features.
-- Chg - General changes.
-- Enh - Existing feature enhancements.
-- Bug - Bug fixes.
+- New — New features.
+- Chg — General changes.
+- Enh — Existing feature enhancements.
+- Bug — Bug fixes.
 
 In the changelog file lines should be ordered as New, Chg, Enh, Bug.
 
-"#42" above is the number of issue or pull request corresponding to the change. "author1" is the GitHub nickname of the
-code author. "author2" is additional author. An author's nickname MUST be prefixed with `@`.
+"#42" above is the number of issue or pull requests corresponding to the change. "author1" is the GitHub nickname of the
+code author. "author2" is an additional author. An author's nickname MUST be prefixed with `@`.
 
 ## Upgrade
 
@@ -52,7 +52,7 @@ application when you upgrade the package from one version to another.
 
 > **Important!** The following upgrading instructions are cumulative. That is, if you want
 > to upgrade from version A to version C and there is version B between A and C, you need
-> to following the instructions for both A and B.
+> to follow the instructions for both A and B.
 
 ## Upgrade from 2.x
 

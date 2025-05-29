@@ -5,12 +5,12 @@ You can attach a custom code called "handler" to an event so that when the event
 gets executed automatically. 
 
 For example, when a user is signed up, you need to send a welcome email. You can do it right in
-the `SignupService` but then when you will additionally need to resize user's avatar image you'll have
+the `SignupService` but then, when you additionally need to resize user's avatar image, you'll have
 to change `SignupService` code again. In other words, `SignupService` will be coupled to both code sending
 welcome email and code resizing avatar image.
  
 To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event
-and then finish a signup process. The code sending an email and the code resizing avatar image, will attach to the event
+and then finish a signup process. The code sending an email and the code resizing avatar image will attach to the event
  and, therefore, will be executed. If you'll ever need to do more on signup, you'll be able to attach extra event
 handlers without modifying `SignupService`. 
  
@@ -51,7 +51,7 @@ class WelcomeEmailSender
 }
 ```
 
-The `attach()` method is accepting a callback. Based on a type of this callback argument event type is
+The `attach()` method is accepting a callback. Based on the type of this callback argument, the event type is
 determined.
 
 ## Event handlers order

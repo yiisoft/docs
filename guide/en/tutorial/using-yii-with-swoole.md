@@ -123,4 +123,4 @@ php server.php
 
 ## On scope
 
-A scope is shared so at each iteration of event loop every service that depends on state should be reset.
+A scope is shared, so at each iteration of the event loop every service that depends on state should be reset.

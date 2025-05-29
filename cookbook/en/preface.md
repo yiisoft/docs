@@ -11,13 +11,13 @@ it's especially suitable for developing large-scale applications such as portals
 e-commerce, REST APIs, etc.
 
 Together with a comprehensive set of documentation and an enthusiastic user community, Yii can reduce your development
-time in a long run significantly compared with other frameworks.
+time in the long run significantly compared with other frameworks.
 
 ## What's the book about
 
 This book is for you if you're familiar with Yii3, building Yii applications, and read the official Yii3 guide.
 It covers fundamentally important development concepts, application architecture approaches, integrating third party
-services with Yii3 etc.
+services with Yii3, etc.
 
 The book consists of individual recipes gathered from Yii experts that you can apply in your applications.
 These go by topic, but you are free to read them in any order as there is no dependency between them.

@@ -12,7 +12,7 @@ Introduction +
 Getting started -
 ---------------
 
-* [What do you need to know](start/prerequisites.md) +
+* [What do you need to know?](start/prerequisites.md) +
 * [Creating a project](start/creating-project.md) +
 * [Running applications](start/workflow.md) +
 * [Saying hello](start/hello.md) +

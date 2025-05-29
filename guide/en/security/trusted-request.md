@@ -1,6 +1,6 @@
 # Trusted request
 
-Getting user information, like a host and IP address will work out of the box in a normal setup where a single webserver
+Getting user information, like a host and IP address, will work out of the box in a normal setup where a single webserver
 is used to serve the website. If your Yii application, however, runs behind a reverse proxy, you need to add
 configuration to retrieve this information as the direct client is now the proxy, and the user IP address is passed to
 the Yii application by a header set by the proxy.
@@ -20,7 +20,7 @@ $trustedHostsNetworkResolver = $trustedHostsNetworkResolver->withAddedTrustedHos
 The proxy sends the IP in the `X-Forwarded-For` header by default, and the protocol (`http` or `https`) is in
 `X-Forwarded-Proto`.
 
-In case your proxies are using different headers you can use the request configuration to adjust these, e.g.:
+In case your proxies are using different headers, you can use the request configuration to adjust these, e.g.:
 
 ```php
 /** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */

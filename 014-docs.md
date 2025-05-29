@@ -1,4 +1,4 @@
-# 014 - Documentation
+# 014 — Documentation
 
 Documentation is one of the most important parts of Yii.
 
@@ -30,7 +30,7 @@ Blocks use the Markdown `> Type: `. There are four block types:
 * `Warning`, for bad security things and other problems
 * `Note`, to emphasize key concepts, things to avoid
 * `Info`, general information (an aside); not as strong as a "Note"
-* `Tip`, pro tips, extras, can be useful but may not be needed by everyone all the time
+* `Tip`, pro tips, extras. It can be useful but may not be needed by everyone all the time
 
 The sentence after the colon should begin with a capital letter.
 
@@ -96,8 +96,8 @@ Each package readme should be placed into `README.md` and contain the following:
 - [ ] Screenshot (if applicable).
 - [ ] Requirements.
 - [ ] Installation. Usually `composer require`.
-- [ ] Getting started. One or two common usage examples demonstrated.
+- [ ] Getting started. One or two common usage examples are demonstrated.
 - [ ] Configuration.
-- [ ] Contributing. Should contain a link to guidelines.
+- [ ] Contributing. It should contain a link to guidelines.
 - [ ] Running tests.
 - [ ] License.

@@ -23,7 +23,7 @@ return [
             '@foo' => '/path/to/foo',
         
             // an alias of a URL
-            '@bar' => 'http://www.example.com',
+            '@bar' => 'https://www.example.com',
         
             // an alias of a concrete file that contains a \foo\Bar class 
             '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
@@ -57,7 +57,7 @@ public function actionIndex(Aliases $aliases)
 
 ## Using aliases in configuration
 
-It's preferred to resolve aliases at configuration level, so services get URLs and paths as ready to use strings: 
+It's preferred to resolve aliases at the configuration level, so services get URLs and paths as ready to use strings: 
 
 ```php
 <?php
@@ -86,7 +86,7 @@ use \Yiisoft\Aliases\Aliases;
 public function actionIndex(Aliases $aliases)
 {
     $foo = $aliases->get('@foo'); // /path/to/foo
-    $bar = $aliases->get('@bar'); // http://www.example.com
+    $bar = $aliases->get('@bar'); // https://www.example.com
     $file = $aliases->get('@foo/bar/file.php'); // /path/to/foo/bar/file.php
 }
 ```
