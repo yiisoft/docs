@@ -42,7 +42,7 @@ The team adopted some PSRs in Yii 2, such as PSR-4 and PSR-2.
 Interfaces in general weren't, although Yii is part of PHP-FIG.
 Mainly because when Yii 2 was released, these were either in the making or not adopted enough.
 
-Yii 3 benefits from PSRs since there are nowadays many ready-to-use libraries
+Yii3 benefits from PSRs since there are nowadays many ready-to-use libraries
 that one can get via Composer: cache backends, middleware, loggers, DI containers,
 etc.
 
