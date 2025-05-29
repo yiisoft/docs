@@ -31,4 +31,4 @@ Widgets should:
 
 ### Boolean flags
 
-The Method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument.
+The method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument.

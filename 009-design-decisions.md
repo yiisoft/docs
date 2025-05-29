@@ -14,7 +14,7 @@ properties everywhere, thus lack of encapsulation and code fragility.
 ## Remove the service locator
 
 Service locator both Yii 1 and Yii 2 was convenient but was also abused a lot.
-Despite a dependency injection container was available in Yii 2, service locator
+Although a dependency injection container was available in Yii 2, service locator
 was generally preferred to cause both a dependency on the service locator itself,
 high coupling, hard to test code.
 
