@@ -12,7 +12,7 @@ Widgets aren't postfixed or prefixed.
 
 Inheritance is allowed with some restrictions:
 
-- If class isn't abstract, it should be final.
+- If a class isn't abstract, it should be final.
 - Hierarchy should be kept as linear as possible.
 
 ## Immutability
@@ -26,9 +26,9 @@ Widgets should:
 
 ### Names
 
-- Unlike other classes, methods that return a clone of the object with some properties modified, aren't prefixed.
+- Unlike other classes, methods that return a clone of the object with some properties modified aren't prefixed.
 - Keep method names as short as possible but don't hurt readability.
 
 ### Boolean flags
 
-The Method that corresponds to boolean attribute should be named after the attribute and accept a boolean flag argument.
+The method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument.

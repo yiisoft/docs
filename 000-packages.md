@@ -1,4 +1,4 @@
-# 000 - Packages
+# 000 — Packages
 
 Yii3 team divided the framework into several packages that conform to the following agreements.
 

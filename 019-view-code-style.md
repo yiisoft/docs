@@ -1,4 +1,4 @@
-# 019 - View code style
+# 019 — View code style
 
 The PHP code in the view files shouldn't be complicated.
 The code must contain the logic responsible for formatting the data, but not the logic for requesting this data.

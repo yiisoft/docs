@@ -31,7 +31,7 @@ When a user attempts to log in, the submitted password must be verified against 
 
 
 ```php
-// obtain hash from a database or another storage
+// get hash from a database or another storage
 $hash = getHash();
 
 if ((new PasswordHasher())->validate($password, $hash)) {

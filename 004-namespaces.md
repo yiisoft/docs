@@ -1,4 +1,4 @@
-# 004 - Namespaces
+# 004 — Namespaces
 
 Package namespace rules are the following:
 
@@ -10,12 +10,12 @@ Package namespace rules are the following:
 
 Some examples:
 
-| Package                    | Namespace
-|----------------------------|-----------------
-| yiisoft/yii-web            | Yiisoft\Yii\Web
-| yiisoft/di                 | Yiisoft\Di
-| yiisoft/db-mysql           | Yiisoft\Db\Mysql
-| yiisoft/friendly-exception | Yiisoft\FriendlyException
+| Package                    | Namespace                 |
+|----------------------------|---------------------------|
+| yiisoft/yii-web            | Yiisoft\Yii\Web           |
+| yiisoft/di                 | Yiisoft\Di                |
+| yiisoft/db-mysql           | Yiisoft\Db\Mysql          |
+| yiisoft/friendly-exception | Yiisoft\FriendlyException |
 
 ## References
 

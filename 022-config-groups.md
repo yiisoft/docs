@@ -1,12 +1,12 @@
-# 022 - Config groups
+# 022 — Config groups
 
 This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).
-Note that this isn't naming convention for config files.
-These are could be anything and are mapped to group names via `composer.json`.
+Note that this isn't a naming convention for config files.
+These could be anything and are mapped to group names via `composer.json`.
 
 ## Config group name postfixes
 
-- "web" postfix applies to web only that's classic server HTML generation, REST, RPC etc.
+- "web" postfix applies to web only that's classic server HTML generation, REST, RPC, etc.
 - "console" postfix applies to console
 - If there's no postfix, it's "common" and applies to both web and console
 - "web" and "console" may override what's defined in "common"

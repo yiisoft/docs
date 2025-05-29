@@ -1,6 +1,6 @@
 # Saying hello
 
-> Note: This document reflects the current configuration. The Yii team is going to make it simpler before release.
+> Note: This document reflects the current configuration. The Yii team is going to simplify it before release.
 
 This section describes how to create a new "Hello" page in your application.
 It's a simple page that will echo back whatever you pass to it or, if nothing passed, will just say "Hello!".
@@ -11,7 +11,7 @@ Then you will improve it to use [view](../structure/views.md) for building the r
 
 Through this tutorial, you will learn three things:
 
-1. How to create a handler to respond to request.
+1. How to create a handler to respond to a request.
 2. How to map URL to the handler.
 3. How to create a [view](../structure/view.md) to compose the response's content.
 
@@ -55,7 +55,7 @@ class EchoController
 }
 ```
 
-The `say` method in your example is given `$currentRoute` parameter that you can use to obtain
+The `say` method in your example is given `$currentRoute` parameter that you can use to get
 a message, whose value defaults to `"Hello"`. If the request is made to `/say/Goodbye`,
 the `$message` variable within the action will be assigned that value.
 
@@ -123,9 +123,9 @@ before being printed. This is necessary as the parameter comes from an end user,
 malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
-PHP statements. In fact, the `say` view is a PHP script that's executed by the view service.
+PHP statements. In fact, the `say` view is a PHP script executed by the view service.
 
-To use the view you need to change `src/Controller/EchoController.php`:
+To use the view, you need to change `src/Controller/EchoController.php`:
 
 ```php
 <?php
@@ -158,7 +158,7 @@ class EchoController
 }
 ```
 
-Now open your browser and check it again. It should give you similar text but with a layout applied.
+Now open your browser and check it again. It should give you a similar text but with a layout applied.
 
 Also, you've separated the part about how it works and part of how it's presented. In the larger applications, 
 it helps a lot to deal with complexity.
@@ -172,4 +172,4 @@ the `message` parameter.
 
 You've also learned about routing in Yii, which acts as the bridge between user requests and handlers.
 
-In the next section, you will learn how to fetch data, and add a new page containing an HTML form.
+In the next section, you will learn how to fetch data and add a new page containing an HTML form.

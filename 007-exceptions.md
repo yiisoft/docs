@@ -1,4 +1,4 @@
-# 007 - Exceptions
+# 007 — Exceptions
 
 - Throw exceptions instead of returning an error code.
 - Exception class name must be suffixed with `Exception`.

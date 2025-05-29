@@ -1,8 +1,8 @@
 # Caching
 
-Caching is a cheap and effective way to improve the performance of an application. By storing relatively
-static data in cache and serving it from cache when requested, the application saves the time that it otherwise
-would require to generate the data from scratch every time.
+Caching is an inexpensive and effective way to improve the performance of an application.
+By storing relatively static data in cache and serving it from cache when requested,
+the application saves the time that it otherwise would require to generate the data from scratch every time.
 
 Caching can occur at different levels and places in an application. On the server-side, at the lower level,
 cache may be used to store basic data, such as a list of most recent article information fetched from the database;

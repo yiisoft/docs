@@ -67,7 +67,7 @@ console command while in the project root directory:
 ./yii serve
 ```
 
-> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use, or you wish to 
+> Note: By default, the HTTP server will listen to port 8080. However, if that port is already in use, or you wish to 
 serve many applications this way, you might want to specify what port to use via the --port argument:
 
 ```bash
@@ -92,13 +92,13 @@ Yii's requirements by using [yiisoft/requirements package](https://github.com/yi
   of deploying it to a production server.
 
 The application installed according to the instructions should work out of the box with either
-an [Apache HTTP server](https://httpd.apache.org/) or a [Nginx HTTP server](https://nginx.org/), on
+an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
 Windows, Mac OS X, or Linux running PHP 8.0 or higher.
 
 On a production server, we recommend configuring your Web server so that a user can access the application
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.
 Such a configuration requires pointing the document root of your Web server to the `app/public` folder.
-In this subsection, you'll learn how to configure your webserver achieve it.
+In this subsection, you'll learn how to configure your webserver to achieve it.
 
 > Info: By setting `app/public` as the document root, you also prevent end users from accessing
 > your private application code and sensitive data files that are stored in the sibling directories
@@ -278,9 +278,9 @@ in the same configuration.
 
 ### IIS <span id="iss"></span>
 
-When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Web site) where document
-root points to `path/to/app/web` folder and that Web site is configured to run PHP. In that `web` folder you have to
-place a file named `web.config` that's `path/to/app/web/web.config`. Content of the file should be the following:
+When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Website) where document
+root points to `path/to/app/web` folder and that website is configured to run PHP. In that `web` folder you have to
+place a file named `web.config` that's `path/to/app/web/web.config`. The Content of the file should be the following:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -1,4 +1,4 @@
-# 002 - Issue workflow
+# 002 — Issue workflow
 
 The process of handing incoming issues is the following:
 
@@ -14,7 +14,7 @@ We've many roles:
 - Contributors - create code for pull requests.
 - Code reviewers - review pull requests.
 
-A single person may take one or more roles in the issue resolving process.
+A single person may take one or more roles in the issue-resolving process.
 
 ## Labels
 

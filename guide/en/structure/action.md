@@ -1,8 +1,8 @@
 # Actions
 
-In a web application, what's executed is determined by request URL. Matching is made by router that's
+In a web application, the request URL determines what's executed. Matching is made by a router 
 configured with multiple routes. Each route can be attached to a middleware that, given request, produces
-a response. Since middleware overall could be chained and can pass actual handling to next middleware,
+a response. Since middleware overall could be chained and can pass actual handling to the next middleware,
 we call the middleware actually doing the job an action.
 
 There are multiple ways to describe an action. The simplest one is using a closure:
@@ -28,7 +28,7 @@ use Yiisoft\Router\Route;
 Route::get('/')->action([FrontPageAction::class, 'run']),
 ```
 
-The class itself would like:
+The class itself would be like:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -74,12 +74,12 @@ class PostController
 }
 ```
 
-We usually call such class a "controller".
+We usually call such a class "controller."
 
 ## Autowiring
 
 Both constructors of action-classes and action-methods are automatically getting services from
-dependency injection container:
+ the dependency injection container:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;

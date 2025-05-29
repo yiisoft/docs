@@ -1,4 +1,4 @@
-# 008 - Interfaces
+# 008 — Interfaces
 
 - Interface name should be suffixed with `Interface`.
 
