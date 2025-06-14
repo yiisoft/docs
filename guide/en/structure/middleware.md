@@ -3,11 +3,12 @@
 Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)
 and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/).
 
-The application is composed of one or several middleware. When the URL is requested, the request object is passed to
-the middleware dispatcher that starts executing middleware. Each middleware, given the request, can:
+The application is composed of one or several middleware. Middleware runs between request and response. 
+When the URL is requested, the request object is passed to the middleware dispatcher that starts executing middleware one after another.
+Each middleware, given the request, can:
 
-- Pass request to the next middleware or return a response. 
-- Perform some work before and after the next middleware.
+- Pass the request to the next middleware performing some work before / after it.
+- Form the response and return it.
 
 Depending on middleware used, application behavior may vary significantly.
 
@@ -112,7 +113,7 @@ To create middleware, you need to implement a single `process` method of `Psr\Ht
 public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
 ```
 
-There are many ways to handle request and choosing one depends on what the middleware should achieve.
+There are multiple ways to handle request and choosing one depends on what the middleware should achieve.
 
 ### Forming response directly
 
