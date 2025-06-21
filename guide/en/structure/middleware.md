@@ -129,13 +129,12 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class RespondingMiddleware implements MiddlewareInterface
+final readonly class RespondingMiddleware implements MiddlewareInterface
 {
-    private ResponseFactoryInterface $responseFactory;
-
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __construct(
+        private ResponseFactoryInterface $responseFactory
+    )
     {
-        $this->responseFactory = $responseFactory;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface

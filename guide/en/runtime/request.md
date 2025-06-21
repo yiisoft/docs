@@ -146,7 +146,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
-class JsonBodyParserMiddleware implements MiddlewareInterface
+final readonly class JsonBodyParserMiddleware implements MiddlewareInterface
 {
     public function process(Request $request, RequestHandler $next): Response
     {

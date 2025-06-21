@@ -1,4 +1,4 @@
-# Looking Ahead
+# Looking ahead
 
 If you've read through the entire "Getting Started" chapter, you have now created a complete Yii application.
 In the process, you've learned how to implement some commonly necessary features, such as getting data from users

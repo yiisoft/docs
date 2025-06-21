@@ -19,7 +19,7 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
     
     // Try retrieving $data from cache.
     $data = $cache->getOrSet($key, function (\Psr\SimpleCache\CacheInterface $cache) use ($count) {
-        // $data isn't found in the cache, calculate it from scratch.
+        // Can't find $data in cache, calculate it from scratch.
         return getTopProductsFromDatabase($count);
     }, 3600);
     
@@ -27,25 +27,25 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
 }
 ```
 
-When cache has data associated with the `$key`, the cached value will be returned.
-Otherwise, the passed anonymous function will be executed to calculate the value that will be cached and returned.
+When cache has data associated with the `$key`, it returns the cached value.
+Otherwise, it executes the passed anonymous function to calculate the value to cache and return.
 
 If the anonymous function requires some data from the outer scope, you can pass it with the `use` statement.
 
 ## Cache handlers
 
 The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible cache handlers which represent various
-cache storages, such as memory, files, and databases.
+cache storages, such as memory, files, databases.
 
 Yii provides the following handlers:
 
-- `NullCache` — serves as a cache placeholder which does no real caching. The purpose of this handler is to simplify
+- `NullCache` — a cache placeholder which does no real caching. The purpose of this handler is to simplify
   the code that needs to check the availability of cache. For example, during development or if the server doesn't have
   actual cache support, you may configure a cache service to use this handler.
   When you enable actual cache support, you can switch to using the corresponding cache handler.
   In both cases, you may use the same code without extra checks.
 - `ArrayCache` — provides caching for the current request only by storing the values in an array.
-- [APCu](https://github.com/yiisoft/cache-apcu) — uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.
+- [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.
   You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one
   server, no dedicated load balancers, etc.).
 - [Database](https://github.com/yiisoft/cache-db) — uses a database table to store cached data.
@@ -71,8 +71,8 @@ with a different one. You can do it by reconfiguring the application without mod
 
 ### Cache keys
 
-A key uniquely identifies each data item stored in a cache. When you store a data item in a cache,
-you have to specify a key for it. Later, when you retrieve the data item from the cache, you should give
+A key uniquely identifies each data item stored in the cache. When you store a data item,
+you have to specify a key for it. Later, when you retrieve the data item, you should give
 the corresponding key.
 
 You may use a string or an arbitrary value as a cache key. When a key isn't a string, it will be automatically
@@ -106,7 +106,7 @@ The `$ttl` parameter indicates for how many seconds the data item can remain val
 the data item, if it has passed the expiration time, the method will execute the function and set the resulting value
 into cache.
 
-You may set the default TTL for the cache:
+You may set default TTL for the cache:
 
 ```php
 $cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hour
@@ -122,7 +122,7 @@ $cache->remove($key);
 
 Besides the expiration setting, changes of the so-called **invalidation dependencies** may also invalidate cached data item.
 For example, `\Yiisoft\Cache\Dependency\FileDependency` represents the dependency of a file's modification time.
-When this dependency changes, it means something modifying the corresponding file.
+When this dependency changes, it means something modifies the corresponding file.
 As a result, any outdated file content found in the cache should invalidate.
 
 Cache dependencies are objects of `\Yiisoft\Cache\Dependency\Dependency` descendant classes. When you
@@ -155,7 +155,7 @@ Below is a summary of the available cache dependencies:
 
 You may combine many dependencies using `\Yiisoft\Cache\Dependency\AnyDependency` or `\Yiisoft\Cache\Dependency\AllDependencies`.
 
-To implement your own dependency, extend from `\Yiisoft\Cache\Dependency\Dependency`.
+To implement your own dependency extend from `\Yiisoft\Cache\Dependency\Dependency`.
 
 ### Cache stampede prevention
 

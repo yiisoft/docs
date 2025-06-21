@@ -9,7 +9,7 @@ and consider starting new projects on Yii 3 while keeping existing ones on Yii 2
 
 ## PHP requirements
 
-Yii3 requires PHP 8.0 or above. As a result, there are language features used that weren't used in Yii 2:
+Yii3 requires PHP 8.1 or above. As a result, there are language features used that weren't used in Yii 2:
 
 - [Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
 - [Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
@@ -18,6 +18,8 @@ Yii3 requires PHP 8.0 or above. As a result, there are language features used th
 - [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
 - [Generators](https://www.php.net/manual/en/language.generators.php)
 - [Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
+- readonly
+- constructor property propagation
 
 ## Preliminary refactoring
 
@@ -40,7 +42,7 @@ Since Active Record isn't the only way to work with a database in Yii 3, conside
 hide details of getting data and gather them in a single place. You can later redo it: 
 
 ```php
-class PostRepository
+final readonly class PostRepository        
 {
     public function getArchive()
     {
