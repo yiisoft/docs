@@ -13,7 +13,7 @@ solution used.
 To use it, you need to require the package first:
 
 ```
-composer require yiisoft/secrurity
+composer require yiisoft/security
 ```
 
 When a user provides a password for the first time (e.g., upon registration), the password needs to be hashed and

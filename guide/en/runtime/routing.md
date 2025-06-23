@@ -78,7 +78,7 @@ In case of a handler action, a class of type `HandlerClass` is instantiated and 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class HandlerClass
+final readonly class HandlerClass
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -224,7 +224,7 @@ namespace App\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\UrlGeneratorInterface;
 
-class TestController extends AbstractController
+final readonly class TestController extends AbstractController
 {
     protected function name(): string
     {

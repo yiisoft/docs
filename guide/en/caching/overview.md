@@ -7,7 +7,7 @@ the application saves the time that it otherwise would require to generate the d
 Caching can occur at different levels and places in an application. On the server-side, at the lower level,
 cache may be used to store basic data, such as a list of most recent article information fetched from the database;
 and at the higher level, cache may be used to store fragments or whole of Web pages, such as the rendering result
-of the most recent articles. On the client-side, HTTP caching may be used to keep most recently visited page content in
+of the most recent articles. On the client-side, you may use HTTP caching to keep most recently visited page content in
 the browser cache.
 
 Yii supports all these caching mechanisms:

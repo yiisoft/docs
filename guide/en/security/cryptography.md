@@ -32,7 +32,7 @@ If you need bytes or integers, use PHP functions directly:
 - `random_bytes()` for bytes. Note that the output may not be ASCII.
 - `random_int()` for integers.
 
-## Encryption and Decryption
+## Encryption and decryption
 
 Yii provides convenient helper functions to encrypt/decrypt data using a secret key.
 The data is passed through the encryption function so that only the person who has the secret key will be able

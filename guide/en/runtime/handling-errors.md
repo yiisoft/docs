@@ -84,7 +84,7 @@ return [
     // ...
     ErrorHandler::class => static function (ResponseFactoryInterface $responseFactory, Injector $injector) {
         $exceptionMap = [
-            // Status code with which the response will be created by the factory.
+            // Status code with which the factory creates the response.
             MyNotFoundException::class => 404,
             // PHP callable that must return a `Psr\Http\Message\ResponseInterface`.
             MyHttpException::class => static fn (MyHttpException $exception) => new MyResponse($exception),
@@ -192,7 +192,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\ErrorHandler\ErrorData;
 use Yiisoft\ErrorHandler\ThrowableRendererInterface;
 
-final class MyRenderer implements ThrowableRendererInterface
+final readonly class MyRenderer implements ThrowableRendererInterface
 {
     public function render(Throwable $t, ServerRequestInterface $request = null): ErrorData
     {
@@ -243,7 +243,7 @@ solutions to the problem:
 ```php
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
 
-class RequestTimeoutException extends \RuntimeException implements FriendlyExceptionInterface
+final readonly class RequestTimeoutException extends \RuntimeException implements FriendlyExceptionInterface
 {
     public function getName(): string
     {

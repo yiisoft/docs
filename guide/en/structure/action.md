@@ -34,7 +34,7 @@ The class itself would be like:
 use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
 
-class FrontPageAction
+final readonly class FrontPageAction
 {
     public function run(ServerRequestInterface $request): ResponseInterface
     {
@@ -59,7 +59,7 @@ The class itself would look like the following:
 use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
 
-class PostController
+final readonly class PostController
 {
     public function actionIndex(ServerRequestInterface $request): ResponseInterface
     {
@@ -86,13 +86,12 @@ use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-class PostController
+final readonly class PostController
 {
-    private $postRepository;
-
-    public function __construct(PostRepository $postRepository)
+    public function __construct(
+        private PostRepository $postRepository
+    )
     {
-        $this->postRepository = $postRepository;
     }
 
     public function actionIndex(ServerRequestInterface $request, LoggerInterface $logger): ResponseInterface

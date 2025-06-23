@@ -37,7 +37,7 @@ You can attach a handler to an event like the following:
 ```php
 use Yiisoft\EventDispatcher\Provider\Provider;
 
-class WelcomeEmailSender
+final readonly class WelcomeEmailSender
 {
     public function __construct(Provider $provider)
     {
@@ -70,13 +70,12 @@ Events are raised like the following:
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-class SignupService
+final readonly class SignupService
 {
-    private EventDispatcherInterface $eventDispatcher;
-
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(
+        private EventDispatcherInterface $eventDispatcher
+    )
     {
-        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function signup(SignupForm $form)
@@ -94,18 +93,12 @@ First, you create an event supplying it with data that may be useful for handler
 The event class itself may look like the following:
 
 ```php
-final class UserSignedUp
+final readonly class UserSignedUp
 {
-    private SignupForm $form;
-
-    public function __construct(SignupForm $form)
+    public function __construct(
+        public SignupForm $form
+    )
     {
-        $this->form = $form;
-    }
-
-    public function getSignupForm(): SignupForm
-    {
-        return $this->form;
     }
 }
 ```
@@ -120,11 +113,11 @@ interface DocumentEvent
 {
 }
 
-class BeforeDocumentProcessed implements DocumentEvent
+final readonly class BeforeDocumentProcessed implements DocumentEvent
 {
 }
 
-class AfterDocumentProcessed implements DocumentEvent
+final readonly class AfterDocumentProcessed implements DocumentEvent
 {
 }
 ```
@@ -138,7 +131,7 @@ $provider->attach(function (DocumentEvent $event) {
 });
 ``` 
 
-## Detaching Event Handlers <span id="detaching-event-handlers"></span>
+## Detaching event handlers <span id="detaching-event-handlers"></span>
 
 To detach a handler from an event you can call `detach()` method:
 
@@ -149,4 +142,4 @@ $provider->detach(DocmentEvent::class);
 
 ## Configuring application events
 
-Event handlers are usually assigned via application config. See ["Configuration"](configuration.md) for details.
+You usually assign event handlers via application config. See ["Configuration"](configuration.md) for details.

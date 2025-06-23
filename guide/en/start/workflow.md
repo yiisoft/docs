@@ -27,7 +27,7 @@ This script can be used to run background and maintenance tasks for the applicat
 in the [Console Application Section](../tutorial/console-applications.md).
 
 
-## Application Structure <span id="application-structure"></span>
+## Application structure <span id="application-structure"></span>
 
 The most important directories and files in your application are (assuming the application's root directory is `app`):
 

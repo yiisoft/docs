@@ -24,13 +24,12 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class PostAction
+final readonly class PostAction
 {
-    private ResponseFactoryInterface $responseFactory;
-
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __construct(
+        private ResponseFactoryInterface $responseFactory
+    )
     {
-        $this->responseFactory = $responseFactory;
     }
 
     public function view(ServerRequestInterface $request): ResponseInterface

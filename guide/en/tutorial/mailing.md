@@ -273,7 +273,7 @@ The `sendMultiple()` method returns a `Yiisoft\Mailer\SendResults` object contai
 failed
 messages.
 
-## Implementing Your Own Mail Driver
+## Implementing your own mail driver
 
 To create a custom mail solution, implement the `Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface`
 interfaces.

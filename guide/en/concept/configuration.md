@@ -185,11 +185,11 @@ use Yiisoft\Cache\File\FileCache;
 use Yiisoft\Di\Container;
 use Yiisoft\Di\Support\ServiceProvider;
 
-final class CacheProvider extends ServiceProvider
+final readonly class CacheProvider extends ServiceProvider
 {
-    private string $cachePath;
-
-    public function __construct(string $cachePath = '@runtime/cache')
+    public function __construct(
+        private string $cachePath = '@runtime/cache'
+    )
     {
         $this->cachePath = $cachePath;
     }

@@ -58,12 +58,11 @@ namespace App\User;
 
 use Yiisoft\Auth\IdentityInterface;
 
-final class Identity implements IdentityInterface
+final readonly class Identity implements IdentityInterface
 {
-    private string $id;
-
-    public function __construct(string $id) {
-        $this->id = $id;
+    public function __construct(
+        private string $id
+    ) {
     }
 
     public function getId(): string
@@ -93,7 +92,7 @@ use App\User\Identity;
 use \Yiisoft\Auth\IdentityInterface;
 use \Yiisoft\Auth\IdentityRepositoryInterface;
 
-final class IdentityRepository implements IdentityRepositoryInterface
+final readonly class IdentityRepository implements IdentityRepositoryInterface
 {
     private const USERS = [
       [
@@ -139,7 +138,7 @@ As any service, it could be auto wired in either action handler constructor or m
 use \Psr\Http\Message\ServerRequestInterface;
 use \Yiisoft\User\User;
 
-class SiteController
+final readonly class SiteController
 {
     public function actionIndex(ServerRequestInterface $request, User $user)
     {        

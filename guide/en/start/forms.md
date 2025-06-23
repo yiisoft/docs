@@ -1,4 +1,4 @@
-# Working with Forms
+# Working with forms
 
 This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message via form.
 
@@ -27,7 +27,7 @@ namespace App\Form;
 
 use Yiisoft\FormModel\FormModel;
 
-class EchoForm extends FormModel
+final readonly class EchoForm extends FormModel
 {
     private string $message = '';
 
@@ -72,11 +72,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Hydrator\Hydrator;
 use Yiisoft\Http\Method;
 
-class EchoController
+final readonly class EchoController
 {
-    private ViewRenderer $viewRenderer;
-
-    public function __construct(ViewRenderer $viewRenderer)
+    public function __construct(
+        private ViewRenderer $viewRenderer
+    )
     {
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
@@ -233,11 +233,11 @@ use Yiisoft\Validator\Validator;
 use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Yiisoft\Hydrator\Hydrator;
 
-class EchoController
+final readonly class EchoController
 {
-    private ViewRenderer $viewRenderer;
-
-    public function __construct(ViewRenderer $viewRenderer)
+    public function __construct(
+        private ViewRenderer $viewRenderer
+    )
     {
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
@@ -273,9 +273,9 @@ namespace App\Form;
 
 use Yiisoft\Validator\Rule\Required;
 
-class EchoForm
+final readonly class EchoForm
 {
-   #[Required]
+    #[Required]
     private string $message = '';
 
     public function getMessage(): string

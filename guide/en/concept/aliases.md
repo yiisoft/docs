@@ -7,7 +7,7 @@ without leading `@` will be prefixed with `@` character.
 Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@public` represents
 the web root path; `@baseUrl` represents the base URL for the currently running Web application.
 
-## Defining Aliases <span id="defining-aliases"></span>
+## Defining aliases <span id="defining-aliases"></span>
 
 You can define an alias via application's `config/params.php`:
 
@@ -55,7 +55,7 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration
+## Using aliases in configuration <span id="using-aliases-in-configuration"></span>
 
 It's preferred to resolve aliases at the configuration level, so services get URLs and paths as ready to use strings: 
 
@@ -117,7 +117,7 @@ public function actionIndex(Aliases $aliases)
 If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
 
 
-## Predefined Aliases <span id="predefined-aliases"></span>
+## Predefined aliases <span id="predefined-aliases"></span>
 
 [Yii application](https://github.com/yiisoft/app) predefines a set of aliases to reference commonly used file paths and URLs:
 
