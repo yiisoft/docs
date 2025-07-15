@@ -9,17 +9,20 @@ and consider starting new projects on Yii 3 while keeping existing ones on Yii 2
 
 ## PHP requirements
 
-Yii3 requires PHP 8.1 or above. As a result, there are language features used that weren't used in Yii 2:
+Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2:
 
 - [Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
 - [Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
 - [Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)
+- [Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
 - [Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)
 - [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
 - [Generators](https://www.php.net/manual/en/language.generators.php)
 - [Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
-- readonly
-- constructor property propagation
+- [Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)
+- [Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)
+- [Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
+- [Attributes](https://www.php.net/manual/en/language.attributes.php)
 
 ## Preliminary refactoring
 
@@ -42,7 +45,7 @@ Since Active Record isn't the only way to work with a database in Yii 3, conside
 hide details of getting data and gather them in a single place. You can later redo it: 
 
 ```php
-final readonly class PostRepository        
+final readonly class PostRepository
 {
     public function getArchive()
     {
