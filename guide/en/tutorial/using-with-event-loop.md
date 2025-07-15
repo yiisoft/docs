@@ -9,8 +9,8 @@ every request takes time and overall consumes up to 50% of processing resources.
 There is an alternative way of running an application. Event loop. The idea is to initialize everything possible at once
 and then process a number of requests using it. Such an approach is usually called event loop.
 
-There are multiple tools that could be used to achieve it. Notably, [RoadRunner](https://roadrunner.dev/) and
-[Swoole](https://www.swoole.co.uk/).
+There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), 
+[RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/).
 
 ## Event loop implications
 
@@ -39,8 +39,9 @@ Since the context in the event loop is shared between all request-responses proc
 in the state of a service made by the previous request may affect the current request. Moreover, it can be a security problem
 if data from one user is available to another user.
 
-There are two ways of dealing with it. First, you can avoid having state by making services stateless. Second, you can
-clean up services at the end of the request processing. In this case, a state resetter will help you:
+There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly`
+keyword may be handy for it. Second, you can reset services state at the end of the request processing. 
+In this case, a state resetter will help you:
 
 ```php
 initializeContext();

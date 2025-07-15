@@ -35,13 +35,12 @@ use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Html\Html;
 use Yiisoft\Router\CurrentRoute;
 
-class EchoController
+final readonly class EchoController
 {
-    private ResponseFactoryInterface $responseFactory;
-
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __construct(
+        private ResponseFactoryInterface $responseFactory
+    )
     {
-        $this->responseFactory = $responseFactory;
     }
 
     public function say(CurrentRoute $currentRoute): ResponseInterface
@@ -138,11 +137,11 @@ use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Yiisoft\Router\CurrentRoute;
 use Psr\Http\Message\ResponseInterface;
 
-class EchoController
-{
-    private ViewRenderer $viewRenderer;
-    
-    public function __construct(ViewRenderer $viewRenderer)
+final readonly class EchoController
+{   
+    public function __construct(
+        private ViewRenderer $viewRenderer
+    )
     {
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }

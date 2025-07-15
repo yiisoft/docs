@@ -25,7 +25,7 @@ This approach can simplify your code and improve readability.
 Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookieProvider`:
 
 ```php
-final class MyService
+final readonly class MyService
 {
     public function __construct(
         private \Yiisoft\RequestProvider\RequestCookieProvider $cookies
@@ -60,7 +60,7 @@ $cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
     ->withSameSite(\Yiisoft\Cookies\Cookie::SAME_SITE_STRICT)
     ->withMaxAge(new \DateInterval('P7D'));
 
-    return $cookie->addToResponse($response);
+return $cookie->addToResponse($response);
 ```
 
 After forming a cookie call `addToResponse()` passing an instance of `\Psr\Http\Message\ResponseInterface` to add

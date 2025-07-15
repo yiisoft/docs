@@ -1,4 +1,4 @@
-# Working with Databases
+# Working with databases
 
 Yii doesn't dictate using a particular database or storage for your application.
 There are many ways you can work with relational databases:

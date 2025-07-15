@@ -54,13 +54,14 @@ In case you provide an exception as context, you should pass the "exception" key
 Another special key is "category." Categories are handy to better organize and filter log messages.
 
 ```php
-class MyService
+use \Psr\Log\LoggerInterface;
+
+final readonly class MyService
 {
-    private $logger;
-    
-    public function __construct(\Psr\Log\LoggerInterface $logger)
-    {
-        $this->logger = $logger;    
+    public function __construct(
+        private LoggerInterface $logger
+    )
+    {    
     }
 
     public function serve(): void
@@ -87,7 +88,7 @@ anything. That means that you don't have to check if logger is configured with `
 can assume that logger is always present.
 
 
-## Log Targets <span id="log-targets"></span>
+## Log targets <span id="log-targets"></span>
 
 A log target is an instance of a class that extends the [[\Yiisoft\Log\Target]]. It filters the log messages by their
 severity levels and categories and then exports them to some medium. For example,
@@ -187,7 +188,7 @@ Timestamp Prefix[Level][Category] Message Context
 ```
 
 You may customize this format by calling [[\Yiisoft\Log\Target::setFormat()|setFormat()]] method,
-which takes a PHP callable returning a custom formatted message.
+which takes a PHP callable returning a custom-formatted message.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -270,7 +271,7 @@ $logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
 or when debugging an application.
 
 
-### Message Flushing and Exporting <span id="flushing-exporting"></span>
+### Message flushing and exporting <span id="flushing-exporting"></span>
 
 As aforementioned, log messages are maintained in an array by [[\Yiisoft\Log\Logger|logger object]]. To limit the
 memory consumption by this array, the logger will flush the recorded messages to the [log targets](#log-targets)
@@ -313,7 +314,7 @@ $logger->setFlushInterval(1);
 > Note: Frequent message flushing and exporting will degrade the performance of your application.
 
 
-### Toggling Log Targets <span id="toggling-log-targets"></span>
+### Toggling log targets <span id="toggling-log-targets"></span>
 
 You can enable or disable a log target by calling its [[\Yiisoft\Log\Target::enable()|enable()] ]
 and [[\Yiisoft\Log\Target::disable()|disable()]] methods.
@@ -335,7 +336,7 @@ You also may pass callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
 to define a dynamic condition for whether the log target should be enabled or not.
 
 
-### Creating New Targets <span id="new-targets"></span>
+### Creating new targets <span id="new-targets"></span>
 
 Creating a new log target class is straightforward. You mainly need to implement the [[\Yii\Log\Target::export()]]
 abstract method that sends all accumulated log messages to a designated medium.

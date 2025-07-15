@@ -2,7 +2,7 @@
 
 Authorization is the process of verifying that a user has enough permission to do something.
 
-## Checking for permission
+## Checking for permission <span id="checking-for-permission"></span>
 
 You can check if a user has certain permissions by using `\Yiisoft\User\User` service:
 
@@ -12,7 +12,7 @@ namespace App\Blog\Post;
 use Yiisoft\Router\CurrentRoute;
 use Yiisoft\User\User;
 
-class PostController
+final readonly class PostController
 {
     public function actionEdit(CurrentRoute $route, User $user, PostRepository $postRepository)
     {
@@ -43,7 +43,7 @@ class PostController
 Behind the scenes, `Yiisoft\Yii\Web\User\User::can()` method calls `\Yiisoft\Access\AccessCheckerInterface::userHasPermission()`
 so you should provide an implementation in dependency container in order for it to work. 
 
-## Role Based Access Control (RBAC) <span id="rbac"></span>
+## Role-based access control (RBAC) <span id="rbac"></span>
 
 Role-Based Access Control (RBAC) provides a simple yet powerful centralized access control. Please refer to
 the [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC
@@ -52,12 +52,12 @@ with other more traditional access control schemes.
 Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
 
 Using RBAC involves two parts of work. The first part is to build up the RBAC authorization data, and the second
-part is to use the authorization data to perform access check in places where it's needed. Since RBAC implements
+part is to use the authorization data to perform access check in places where it's necessary. Since RBAC implements
 `\Yiisoft\Access\AccessCheckerInterface`, using it's similar to using any other implementation of an access checker.
 
 To ease description next, there are some basic RBAC concepts first.
 
-### Basic Concepts <span id="basic-concepts"></span>
+### Basic concepts <span id="basic-concepts"></span>
 
 A role represents a collection of *permissions* (for example, creating posts, updating posts).
 You may assign a role to one or many users.
@@ -104,12 +104,12 @@ The files are under `@rbac` alias.
 Make sure the directory and all the files in it are writable by the Web server process if you want to change permission
 hierarchy online.
 
-### Building Authorization Data <span id="generating-rbac-data"></span>
+### Building authorization data <span id="generating-rbac-data"></span>
 
 Building authorization data is all about the following tasks:
 
 - defining roles and permissions;
-- establishing relations among roles and permissions;
+- establishing relations between roles and permissions;
 - defining rules;
 - associating rules with roles and permissions;
 - assigning roles to users.
@@ -124,7 +124,7 @@ Either way, in the end, you'll get the following RBAC hierarchy:
 
 ![Simple RBAC hierarchy](img/rbac-hierarchy-1.svg "Simple RBAC hierarchy")
 
-In case you want to build permission hierarchy dynamically you need a UI or a console command.
+In case you want to build permission hierarchy dynamically, you need a UI or a console command.
 The API used to build the hierarchy itself won't be different.
 
 ### Using console command
@@ -137,7 +137,7 @@ APIs offered by `\Yiisoft\Rbac\ManagerInterface`:
 <?php
 namespace App\Command;
 
-use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Attribute\AsCommand;use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Yiisoft\Rbac\ManagerInterface;
@@ -145,20 +145,15 @@ use Yiisoft\Rbac\Permission;
 use Yiisoft\Rbac\Role;
 use Yiisoft\Yii\Console\ExitCode;
 
-class RbacCommand extends Command
-{
-    private ManagerInterface $manager;
-    protected static $defaultName = 'rbac/init';
-    
-    public function __construct(ManagerInterface $manager) {
-        $this->manager = $manager;
-    }
-    
-    public function configure(): void
-    {
-        $this
-            ->setDescription('Builds RBAC hierarchy')
-            ->setHelp('Launch to dump RBAC data');
+#[AsCommand(
+    name: 'rbac:init',
+    description: 'Builds RBAC hierarchy',
+)]
+final readonly class RbacCommand extends Command
+{   
+    public function __construct(
+        private ManagerInterface $manager
+    ) {
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -178,7 +173,7 @@ class RbacCommand extends Command
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
+        // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = new Role('admin');
         $auth->add($admin);
@@ -195,10 +190,10 @@ class RbacCommand extends Command
 }
 ```
  
-The command above could be executed from console the following way:
+You can execute the command above from the console the following way:
 
 ```
-./yii rbac/init
+./yii rbac:init
 ```
 
 > If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
@@ -240,7 +235,7 @@ class m170124_084304_init_rbac extends Migration
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
+        // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = new Role('admin');
         $auth->add($admin);
@@ -304,7 +299,7 @@ For applications that require complex access control with dynamically updated au
 (such as an admin panel), you many need to develop special user interfaces using APIs offered by `authManager`.
 
 
-### Using Rules <span id="using-rules"></span>
+### Using rules <span id="using-rules"></span>
 
 As aforementioned, rules add extra constraint to roles and permissions.
 A rule is a class extending from `\Yiisoft\Rbac\Rule`.
@@ -319,9 +314,9 @@ use Yiisoft\Rbac\Item;
 use \Yiisoft\Rbac\Rule;
 
 /**
- * Checks if authorID matches user passed via params
+ * Checks if authorID matches user passed via params.
  */
-class AuthorRule extends Rule
+final readonly class AuthorRule extends Rule
 {
     private const NAME = 'isAuthor';
 
@@ -363,7 +358,7 @@ Now you've got the following hierarchy:
 ![RBAC hierarchy with a rule](img/rbac-hierarchy-2.svg "RBAC hierarchy with a rule")
 
 
-### Access Check <span id="access-check"></span>
+### Access check <span id="access-check"></span>
 
 The check is done similar to how it was done in the first section of this guide:
 
@@ -373,7 +368,7 @@ namespace App\Blog\Post;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\User\User;
 
-class PostController
+final readonly class PostController
 {
     public function actionEdit(ServerRequestInterface $request, User $user, PostRepository $postRepository)
     {
@@ -426,7 +421,7 @@ should return `true` from its `execute()` method. The method receives its `$para
 `['post' => $post]`.
 If everything is fine, you will get to `author` assigned to John.
 
-In case of Jane it's a bit simpler since she is an admin:
+In the case of Jane, it's a bit simpler since she is an admin:
 
 ![Access check](img/rbac-access-check-3.svg "Access check")
 
@@ -440,7 +435,7 @@ namespace App\User;
 
 use \Yiisoft\Access\AccessCheckerInterface;
 
-class AccessChecker implements AccessCheckerInterface
+final readonly class AccessChecker implements AccessCheckerInterface
 {
     private const PERMISSIONS = [
         [

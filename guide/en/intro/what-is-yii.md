@@ -4,7 +4,7 @@ Yii is a high-performance, package-based PHP framework for developing modern app
 The name Yii (pronounced `Yee` or `[ji:]`) means "simple and evolutionary" in Chinese.
 You can also think about it as an acronym for **Yes It Is**!
 
-## What's Yii Best for
+## What's Yii best for
 
 Yii is a generic Web programming framework.
 You can use it for developing all kinds of Web applications using PHP.
@@ -12,7 +12,7 @@ Because of its architecture and sophisticated caching support,
 it's especially suitable for developing large-scale applications such as portals, content management systems,
 e-commerce, REST APIs, etc.
 
-## How does Yii Compare with Other Frameworks?
+## How does Yii compare with other frameworks?
 
 If you're already familiar with another framework, you may appreciate knowing how Yii compares:
 
@@ -37,7 +37,7 @@ Yii is backed up by a [strong core developer team](https://www.yiiframework.com/
 [OpenCollective foundation](https://opencollective.com/yiisoft), as well as a large community of professionals constantly
 contributing to Yii's development. The Yii developer team keeps a close eye on the latest Web development trends and
 on the best practices and features found in other frameworks and projects. The most relevant best practices and features
-found elsewhere are regularly incorporated into the core framework and exposed via simple and elegant interfaces.
+found elsewhere are incorporated into the core framework and exposed via simple and elegant interfaces.
 
 
 ## Yii versions
@@ -51,7 +51,7 @@ Yii currently has three major versions available: 1.1, 2.0, and 3.0.
 
 ## Requirements and prerequisites
 
-Yii3 requires PHP 8.0 or above, but some packages also support PHP 7.4.
+Yii3 requires PHP 8.2 or above, but some packages also older PHP such as PHP 7.4.
 
 Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.
 Yii3 also makes use of the latest PHP features, such as type declarations and generators. Understanding these

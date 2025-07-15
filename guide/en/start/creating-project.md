@@ -86,14 +86,14 @@ You should see the page in your browser. If not, please check if your PHP instal
 Yii's requirements by using [yiisoft/requirements package](https://github.com/yiisoft/requirements).
 
 
-## Configuring Web Servers <span id="configuring-web-servers"></span>
+## Configuring web servers <span id="configuring-web-servers"></span>
 
 > Info: You may skip this subsection for now if you're just test-driving Yii with no intention
   of deploying it to a production server.
 
 The application installed according to the instructions should work out of the box with either
-an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
-Windows, Mac OS X, or Linux running PHP 8.0 or higher.
+an [Apache HTTP server](https://httpd.apache.org/) or a [Nginx HTTP server](https://nginx.org/), on
+Windows, Mac OS X, or Linux running PHP 8.1 or higher.
 
 On a production server, we recommend configuring your Web server so that a user can access the application
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.

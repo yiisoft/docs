@@ -15,7 +15,7 @@ class Cache
     }
 }
 
-class CachedWidget extends Cache
+final readonly class CachedWidget extends Cache
 {
     public function render(): string
     {
@@ -38,7 +38,7 @@ interface CacheInterface
     public function getCachedValue($key);
 }
 
-final class Cache implements CacheInterface
+final readonly class Cache implements CacheInterface
 {
     public function getCachedValue($key)
     {
@@ -46,13 +46,12 @@ final class Cache implements CacheInterface
     }
 }
 
-final class CachedWidget
+final readonly class CachedWidget
 {
-    private CacheInterface $cache;
-
-    public function __construct(CacheInterface $cache)
+    public function __construct(
+        private CacheInterface $cache
+    )
     {
-        $this->cache = $cache;
     }
     
     public function render(): string
@@ -109,7 +108,7 @@ Because to create a new object you need its dependencies, you should register th
 You can do it in the application configuration, `config/web.php`. For the following service:
 
 ```php
-class MyService implements MyServiceInterface
+final class MyService implements MyServiceInterface
 {
     public function __construct(int $amount)
     {
@@ -180,11 +179,12 @@ This is primarily done in constructor and handing method of action handlers:
 ```php
 use \Yiisoft\Cache\CacheInterface;
 
-class MyController
+final readonly class MyController
 {
-    private CacheInterface $cache;
-
-    public function __construct(CacheInterface $cache) {
+    public function __construct(
+        private CacheInterface $cache
+    )
+    {
         $this->cache = $cache;    
     }
 

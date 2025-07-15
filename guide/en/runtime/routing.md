@@ -78,7 +78,7 @@ In case of a handler action, a class of type `HandlerClass` is instantiated and 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class HandlerClass
+final readonly class HandlerClass
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -98,9 +98,9 @@ static function (ServerRequestInterface $request, RequestHandlerInterface $next)
 ```
 
 For handler action and callable typed parameters are automatically injected using the dependency
-injection container passed to the route. Current request and handler could be obtained by
-type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.
+injection container passed to the route.
 
+Get current request and handler by type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.
 You could add extra handlers to wrap primary one with `middleware()` method:
 
 ```php
@@ -224,7 +224,7 @@ namespace App\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\UrlGeneratorInterface;
 
-class TestController extends AbstractController
+final readonly class TestController extends AbstractController
 {
     protected function name(): string
     {
@@ -245,7 +245,7 @@ In another service, you can get the instance with similar constructor injection.
 In views URL generator is available as `$url`.
 
 Then we use `generate()` method to get actual URL. It accepts a route name and an array of named query parameters.
-The code will return "/test/submit/42". If you need absolute URL, use `generateAbsolute()` instead.
+The code will return "/test/submit/42." If you need absolute URL, use `generateAbsolute()` instead.
 
 ## Route patterns <span id="route-patterns"></span>
 
