@@ -9,8 +9,8 @@ every request takes time and overall consumes up to 50% of processing resources.
 There is an alternative way of running an application. Event loop. The idea is to initialize everything possible at once
 and then process a number of requests using it. Such an approach is usually called event loop.
 
-There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](<LINK HERE>), [RoadRunner](https://roadrunner.dev/) and
-[Swoole](https://www.swoole.co.uk/).
+There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), 
+[RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/).
 
 ## Event loop implications
 
