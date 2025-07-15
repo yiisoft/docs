@@ -1,4 +1,4 @@
-# What do you need to know
+# What do you need to know?
 
 The Yii learning curve isn't as steep as other PHP frameworks, but still, there are some things you should learn before
 starting with Yii.

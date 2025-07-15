@@ -12,7 +12,7 @@ Because of its architecture and sophisticated caching support,
 it's especially suitable for developing large-scale applications such as portals, content management systems,
 e-commerce, REST APIs, etc.
 
-## How does Yii compare with other frameworks
+## How does Yii compare with other frameworks?
 
 If you're already familiar with another framework, you may appreciate knowing how Yii compares:
 

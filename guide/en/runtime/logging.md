@@ -188,7 +188,7 @@ Timestamp Prefix[Level][Category] Message Context
 ```
 
 You may customize this format by calling [[\Yiisoft\Log\Target::setFormat()|setFormat()]] method,
-which takes a PHP callable returning a custom formatted message.
+which takes a PHP callable returning a custom-formatted message.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');

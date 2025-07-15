@@ -35,7 +35,7 @@ If the anonymous function requires some data from the outer scope, you can pass 
 ## Cache handlers
 
 The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible cache handlers which represent various
-cache storages, such as memory, files, databases.
+cache storages, such as memory, files, and databases.
 
 Yii provides the following handlers:
 
@@ -122,7 +122,7 @@ $cache->remove($key);
 
 Besides the expiration setting, changes of the so-called **invalidation dependencies** may also invalidate cached data item.
 For example, `\Yiisoft\Cache\Dependency\FileDependency` represents the dependency of a file's modification time.
-When this dependency changes, it means something modifies the corresponding file.
+When this dependency changes, it means something modifying the corresponding file.
 As a result, any outdated file content found in the cache should invalidate.
 
 Cache dependencies are objects of `\Yiisoft\Cache\Dependency\Dependency` descendant classes. When you
@@ -155,16 +155,19 @@ Below is a summary of the available cache dependencies:
 
 You may combine many dependencies using `\Yiisoft\Cache\Dependency\AnyDependency` or `\Yiisoft\Cache\Dependency\AllDependencies`.
 
-To implement your own dependency extend from `\Yiisoft\Cache\Dependency\Dependency`.
+To implement your own dependency, extend from `\Yiisoft\Cache\Dependency\Dependency`.
 
 ### Cache stampede prevention
 
 [A cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) is a type of cascading failure that can occur when massively
-parallel computing systems with caching mechanisms come under a high load. This behaviour is sometimes also called dog-piling.
+parallel computing systems with caching mechanisms come under a high load.
+This behavior is sometimes also called dog-piling.
+
 The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration" algorithm that prevents cache stampede.
 This algorithm randomly fakes a cache miss for one user while others are still served the cached value.
 You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.
-By default, beta is `1.0`, which is usually enough. The higher the value the earlier cache will be re-created.
+By default, beta is `1.0`, which is usually enough.
+The higher the value the earlier cache will be re-created.
 
 ```php
 /**

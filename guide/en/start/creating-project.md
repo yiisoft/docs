@@ -92,7 +92,7 @@ Yii's requirements by using [yiisoft/requirements package](https://github.com/yi
   of deploying it to a production server.
 
 The application installed according to the instructions should work out of the box with either
-an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
+an [Apache HTTP server](https://httpd.apache.org/) or a [Nginx HTTP server](https://nginx.org/), on
 Windows, Mac OS X, or Linux running PHP 8.1 or higher.
 
 On a production server, we recommend configuring your Web server so that a user can access the application

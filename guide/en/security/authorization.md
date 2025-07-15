@@ -52,7 +52,7 @@ with other more traditional access control schemes.
 Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
 
 Using RBAC involves two parts of work. The first part is to build up the RBAC authorization data, and the second
-part is to use the authorization data to perform access check in places where it's needed. Since RBAC implements
+part is to use the authorization data to perform access check in places where it's necessary. Since RBAC implements
 `\Yiisoft\Access\AccessCheckerInterface`, using it's similar to using any other implementation of an access checker.
 
 To ease description next, there are some basic RBAC concepts first.
@@ -109,7 +109,7 @@ hierarchy online.
 Building authorization data is all about the following tasks:
 
 - defining roles and permissions;
-- establishing relations among roles and permissions;
+- establishing relations between roles and permissions;
 - defining rules;
 - associating rules with roles and permissions;
 - assigning roles to users.
@@ -124,7 +124,7 @@ Either way, in the end, you'll get the following RBAC hierarchy:
 
 ![Simple RBAC hierarchy](img/rbac-hierarchy-1.svg "Simple RBAC hierarchy")
 
-In case you want to build permission hierarchy dynamically you need a UI or a console command.
+In case you want to build permission hierarchy dynamically, you need a UI or a console command.
 The API used to build the hierarchy itself won't be different.
 
 ### Using console command
@@ -173,7 +173,7 @@ final readonly class RbacCommand extends Command
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
+        // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = new Role('admin');
         $auth->add($admin);
@@ -235,7 +235,7 @@ class m170124_084304_init_rbac extends Migration
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
+        // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = new Role('admin');
         $auth->add($admin);
