@@ -28,3 +28,10 @@ the command line, it's time to start trying. Once you learn the basics, you'll n
 
 Since Yii is a web framework and a major part of the web is using HTTP, it's a good idea to
 [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+
+## Docker
+
+The default application template leverages Docker,
+so we recommend you to [read and understand the concepts](https://docs.docker.com/get-started/).
+
+Also, it would be beneficial to get yourself familiar with [twelve-factor app](https://12factor.net/) principles.

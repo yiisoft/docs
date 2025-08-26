@@ -1,19 +1,15 @@
 # Running applications
 
-After installing Yii, you have a working Yii application that can be launched via `./yii serve` and then
-accessed via the URL `http://localhost:8080/`. This section will introduce the application's built-in functionality,
+After installing Yii, you have a working Yii application that can be launched via `make up` and then
+accessed via the URL `http://localhost/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
-> Info: For simplicity, throughout this "Getting Started" tutorial use the "serve" command. It shouldn't be used
-> to serve the project in production. When setting up a real server, use `app/public` as the document root.
-  
-Note that unlike the framework itself, after you install a project template, it's all yours. You're free to add or delete
-code and overall change it as you need.
-
+Note that unlike the framework itself, after you install a project template, it's all yours.
+You're free to add or delete code and overall change it as you need.
 
 ## Functionality <span id="functionality"></span>
 
-The application installed has only the homepage, displayed when you access the URL `http://localhost:8080/`.
+The application installed has only the homepage, displayed when you access the URL `http://localhost/`.
 It shares a common layout that could be reused on further pages.
 
 <!--
@@ -22,7 +18,7 @@ This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-Additionally, to the web application, there is a console script accessible via `./yii`.
+Additionally, to the web application, there is a console script accessible via `make yii`.
 This script can be used to run background and maintenance tasks for the application, which are described
 in the [Console Application Section](../tutorial/console-applications.md).
 
@@ -32,10 +28,13 @@ in the [Console Application Section](../tutorial/console-applications.md).
 The most important directories and files in your application are (assuming the application's root directory is `app`):
 
 ```
-config/                   Configuration files.
+assets/                   Application assets to be published.
+config/                   Configuration.
     common/               Configs applied to both console and web.
         di/               DI container configuration.
         aliasess.php      Aliases.
+        application.php   Application configuration.
+        bootstrap.php     Bootstrap configuration.
         params.php        Various parameters used in DI configs.
         routes.php        Application routes.
     console/              Configs applied to console.
@@ -50,39 +49,48 @@ config/                   Configuration files.
         prod/             Configs applied in prod environment.
             params.php    Various parameters used in DI configs.
         test/             Configs applied in test environment.
-            params.php    Various parameters used in DI configs.
-    events.php            Event handlers for both console and web.
-    events-console.php    Event handlers for console.
-    events-web.php        Event handlers for web.
-    params.php            Parameters that are passed to configs.
-    providers.php         Service providers for both console and web.
-    providers-console.php Service providers for console.
-    providers-web.php     Service providers for web.
-    routes.php            Defines how URLs are mapped to their handlers.
-docs/                     Documentation.
+            params.php    Various parameters used in DI configs.    
+    configuration.php     Defines how to read application configs.
+    .merge-plan.php       Merge plan to assemble configs according to. Build using `configuration.php`.
+docker/                   Docker configuration.
+    dev/                  Dev environment.
+        .env              Environment variables.
+        compose.yml       Services for dev environment.
+    prod/                 Prod environment.
+        .env              Environment variables.
+        compose.yml       Services for prod environment.
+    test/                 Test environment.
+        .env              Environment variables.
+        compose.yml       Services for test environment.
+    .env                  Common environment variables.
+    compose.yml           Common services.
+    Dockerfile            Images to use.
 public/                   Files publically accessible from the Internet.
     assets/               Published assets.
-    index.php             Entry script.
-resources/                Application resources.
-    assets/               Asset bundle resources.
-    message/              Message translations.
-    views/                View templates.
-      layout/             View layouts.
+    index.php             Entry script for web.
 runtime/                  Files generated during runtime.
 src/                      Application source code.
-    Asset/                Asset bundle definitions.
     Command/              Console commands.
-    Controller/           Web controller classes.
+    Controller/           Controllers.
     Handler/              Custom handler for 404.
-    ViewInjection/        Injections that bring additional variables into view templates.
-    Installer.php         Additional actions done on Composer commands.
-tests/                    A set of Codeception tests for the application.
+    Layout/               Layouts.
+    autoload.php          Autoloader.
+    Environment.php       Environment helper.
+tests/                    A set of Codeception tests for the application.  
 vendor/                   Installed Composer packages.
-configuration.php         Defines how to read application configs.
+.gitignore                Files and directories to be ignored by Git.
+.php-cs-fixer.php         PHP Coding Standards Fixer configuration.
+c3.php                    Codeception code coverage script.
+condeception.yml          Codeception configuration.
+composer.json             Composer configuration.
+composer.lock             Composer lock file.
+Makefile                  Makefile with shortcut commands.
+psalm.xml                 Psalm configuration.
+rector.php                Rector configuration.
 yii                       Console application entry point.
 ```
 
-In general, the files in the application can be divided into two types: those under `app/public` and those
+In general, the files in the application can be divided into two groups: those under `app/public` and those
 under other directories. The former can be directly accessed via HTTP (i.e., in a browser), while the latter can't
 and shouldn't be.
 
