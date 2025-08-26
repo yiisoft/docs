@@ -9,8 +9,5 @@
 
 ---
 
-Оглавление
----------------
-
 [Вступление](preface.md)
 [Интеграция с Sentry](sentry-integration.md)
