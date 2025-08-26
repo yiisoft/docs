@@ -12,10 +12,6 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 
 ---
 
-[Preface](preface.md)
-
-## Getting started
-
-## Organizing code
-
+- [Preface](preface.md)
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Sentry integration](sentry-integration.md)

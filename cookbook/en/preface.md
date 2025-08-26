@@ -11,7 +11,7 @@ it's especially suitable for developing large-scale applications such as portals
 e-commerce, REST APIs, etc.
 
 Together with a comprehensive set of documentation and an enthusiastic user community, Yii can reduce your development
-time in the long run significantly compared with other frameworks.
+time in a long run significantly.
 
 ## What's the book about
 
@@ -24,7 +24,7 @@ These go by topic, but you are free to read them in any order as there is no dep
 
 ## Prerequisites
 
-- You should have Yii 3.0 installed.
+- You should have Yii3 installed.
 - You should be familiar with the framework basics and the official guide.
 
 ## How to participate
