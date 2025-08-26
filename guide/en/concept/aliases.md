@@ -7,7 +7,7 @@ without leading `@` will be prefixed with `@` character.
 Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@public` represents
 the web root path; `@baseUrl` represents the base URL for the currently running Web application.
 
-## Defining Aliases <span id="defining-aliases"></span>
+## Defining aliases <span id="defining-aliases"></span>
 
 You can define an alias via application's `config/params.php`:
 
@@ -23,7 +23,7 @@ return [
             '@foo' => '/path/to/foo',
         
             // an alias of a URL
-            '@bar' => 'http://www.example.com',
+            '@bar' => 'https://www.example.com',
         
             // an alias of a concrete file that contains a \foo\Bar class 
             '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
@@ -32,7 +32,7 @@ return [
 ];
 ```
 
-> Note: The file path or URL bein1g aliased may *not* necessarily refer to an existing file or resource.
+> Note: The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
 
 Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.
 For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias.
@@ -55,9 +55,9 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration
+## Using aliases in configuration <span id="using-aliases-in-configuration"></span>
 
-It's preferred to resolve aliases at configuration level, so services get URLs and paths as ready to use strings: 
+It's preferred to resolve aliases at the configuration level, so services get URLs and paths as ready to use strings: 
 
 ```php
 <?php
@@ -86,7 +86,7 @@ use \Yiisoft\Aliases\Aliases;
 public function actionIndex(Aliases $aliases)
 {
     $foo = $aliases->get('@foo'); // /path/to/foo
-    $bar = $aliases->get('@bar'); // http://www.example.com
+    $bar = $aliases->get('@bar'); // https://www.example.com
     $file = $aliases->get('@foo/bar/file.php'); // /path/to/foo/bar/file.php
 }
 ```
@@ -117,7 +117,7 @@ public function actionIndex(Aliases $aliases)
 If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
 
 
-## Predefined Aliases <span id="predefined-aliases"></span>
+## Predefined aliases <span id="predefined-aliases"></span>
 
 [Yii application](https://github.com/yiisoft/app) predefines a set of aliases to reference commonly used file paths and URLs:
 

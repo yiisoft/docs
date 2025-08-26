@@ -9,7 +9,7 @@ To get support for console application in your project, get `yiisoft/yii-console
 composer require yiisoft/yii-console
 ```
 
-After it's installed, you can access entry point as
+After it's installed, you can access the entry point as
 
 ```
 ./yii
@@ -23,6 +23,7 @@ Commands are executed with `symfony/console`. To create your own console command
 <?php
 namespace App\Command\Demo;
 
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,14 +31,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Yiisoft\Yii\Console\ExitCode;
 
-class HelloCommand extends Command
-{
-    protected static $defaultName = 'demo/hello';
+#[AsCommand(
+    name: 'demo:hello',
+    description: 'Echoes hello',
     
+)]
+class HelloCommand extends Command
+{   
     public function configure(): void
     {
-        $this
-            ->setDescription('Echoes hello')
+        $this            
             ->setHelp('This command serves for demo purpose')
             ->addArgument('name', InputArgument::OPTIONAL, 'Name to greet', 'anonymous');
     }
@@ -68,7 +71,7 @@ return [
 After it's done, the command could be executed as
 
 ```
-./yii demo/hello Alice
+./yii demo:hello Alice
 ```
 
 

@@ -1,8 +1,8 @@
 # Routing and URL generation
 
 Usually, a Yii application processes certain requests with certain handlers.
-It selects a handler based on request URL.
-The part of the application that does the job is a router and the process of selecting a handler, instantiating it
+It selects a handler based on the request URL.
+The part of the application that does the job is a router, and the process of selecting a handler, instantiating it
 and running a handler method is *routing*.
 
 The reverse process of routing is *URL generation*, which creates a URL from a given named route
@@ -33,7 +33,7 @@ return [
 ];
 ```
 
-File returns an array of routes. When defining a route, you start with a method corresponding to a certain
+The file returns an array of routes. When defining a route, you start with a method corresponding to a certain
 HTTP request type:
 
 - get
@@ -78,7 +78,7 @@ In case of a handler action, a class of type `HandlerClass` is instantiated and 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class HandlerClass
+final readonly class HandlerClass
 {
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -97,10 +97,10 @@ static function (ServerRequestInterface $request, RequestHandlerInterface $next)
 }
 ```
 
-For handler action and callable typed parameters are automatically injected using dependency
-injection container passed to the route. Current request and handler could be obtained by
-type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.
+For handler action and callable typed parameters are automatically injected using the dependency
+injection container passed to the route.
 
+Get current request and handler by type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.
 You could add extra handlers to wrap primary one with `middleware()` method:
 
 ```php
@@ -152,7 +152,7 @@ return [
 
 Router executes `ApiDataWrapper` before handling any URL starting with `/api`.
 
-You could name a route with a `name()` method. It's a good idea to choose a route name based on handler's name.
+You could name a route with a `name()` method. It's a good idea to choose a route name based on the handler's name.
 
 You can set a default value for a route parameter. For example:
 
@@ -187,7 +187,7 @@ The actual matching algorithm may vary, but the basic idea stays the same.
 
 Router matches routes defined in config from top to bottom.
 If there is a match, further matching isn't performed and
-the router executes route handler to get the response.
+the router executes the route handler to get the response.
 If there is no match at all, router passes handling to the next 
 middleware in the [application middleware set](../structure/middleware.md). 
 
@@ -224,7 +224,7 @@ namespace App\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\UrlGeneratorInterface;
 
-class TestController extends AbstractController
+final readonly class TestController extends AbstractController
 {
     protected function name(): string
     {
@@ -239,18 +239,18 @@ class TestController extends AbstractController
 }
 ```
 
-In the above code we obtain generator instance with the help of [automatic dependency injection](../concept/di-container.md)
+In the above code, we get a generator instance with the help of [automatic dependency injection](../concept/di-container.md)
 that works with action handlers.
-In another service, you can obtain the instance with similar constructor injection.
+In another service, you can get the instance with similar constructor injection.
 In views URL generator is available as `$url`.
 
 Then we use `generate()` method to get actual URL. It accepts a route name and an array of named query parameters.
-The code will return "/test/submit/42". If you need absolute URL, use `generateAbsolute()` instead.
+The code will return "/test/submit/42." If you need absolute URL, use `generateAbsolute()` instead.
 
 ## Route patterns <span id="route-patterns"></span>
 
 Route patterns used depend on the underlying implementation used.
-Default the implementation is [nikic/FastRoute](https://github.com/nikic/FastRoute).
+The default implementation is [nikic/FastRoute](https://github.com/nikic/FastRoute).
 
 Basic patterns are static like `/test`. That means they must match exactly in order for a route match.
 
@@ -261,7 +261,7 @@ of `{ParamName:RegExp}`, where `ParamName` specifies the parameter name and `Reg
 expression used to match parameter values.
 If `RegExp` isn't specified, it means the parameter value should be a string without any slash.
 
-> Note: You can only use regular expressions inside of parameters. The rest of a pattern is considered plain text.
+> Note: You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.
 
 You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid placeholder, because `()` is
 a capturing group. Instead, you can use either `{lang:en|de}` or `{lang:(?:en|de)}`.
@@ -277,7 +277,7 @@ Let's use some examples to illustrate how named parameters work. Assume you've d
 2. `'posts'`
 3. `'post/{id:\d+}'`
 
-- `/posts` match second pattern;
+- `/posts` match the second pattern;
 - `/posts/2014/php` match a first pattern. Parameters are the `year` whose value is 2014
   and the `category` whose value is `php`;
 - `/post/100` match a third pattern. The `id` parameter value is 100;
@@ -297,7 +297,7 @@ You should wrap optional pattern parts with `[` and `]`.
 For example, `/posts[/{id}]` pattern would match
 both `http://example.com/posts` and `http://example.com/posts/42`.
 Router would fill `id` argument of `CurrentRoute` service in the second case only.
-For this case, you could specify default value:
+In this case, you could specify the default value:
 
 ```php
 use \Yiisoft\Router\Route;

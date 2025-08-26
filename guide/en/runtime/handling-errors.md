@@ -8,11 +8,11 @@ a much more pleasant experience than before. In particular, the Yii error handle
 - Production and debug modes.
 - Debug mode displays details, stacktrace, has dark and light themes and handy buttons to search for error without typing.
 - Takes PHP settings into account.
-- Handles out of memory errors, fatal errors, warnings, notices and exceptions.
+- Handles out of memory errors, fatal errors, warnings, notices, and exceptions.
 - Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger for error logging.
 - Detects a response format based on a mime type of the request.
-- Supports responding with HTML, plain text, JSON, XML and headers out of the box.
-- Has ability to implement your own error rendering for extra types.
+- Supports responding with HTML, plain text, JSON, XML, and headers out of the box.
+- You can implement your own error rendering for extra types.
 
 This guide describes how to use the error handler in the [Yii framework](https://www.yiiframework.com/),
 for information about using it separate from Yii, see the [package description](https://github.com/yiisoft/error-handler).
@@ -39,13 +39,13 @@ return [
     // ...
     ErrorHandler::class => static function (LoggerInterface $logger, ThrowableRendererInterface $renderer) {
         $errorHandler = new ErrorHandler($logger, $renderer);
-        // Set the size of the reserved memory 512KB. Defaults to 256KB.
+        // Set the size of the reserved memory to 512 KB. Defaults to 256KB.
         $errorHandler->memoryReserveSize(524_288);
         return $errorHandler;
     },
     
     ThrowableRendererInterface::class => static fn () => new HtmlRenderer([
-        // Defaults to package file "templates/production.php".
+        // Defaults to the package file "templates/production.php".
         'template' => '/full/path/to/production/template/file',
         // Defaults to package file "templates/development.php".
         'verboseTemplate' => '/full/path/to/development/template/file',
@@ -53,7 +53,7 @@ return [
         'maxSourceLines' => 20,
         // Maximum number of trace source code lines to be displayed. Defaults to 13.
         'maxTraceLines' => 5,
-        // Trace header line with placeholders (file, line, icon) to be be substituted. Defaults to null.
+        // Trace the header line with placeholders (file, line, icon) to be substituted. Defaults to `null`.
         'traceHeaderLine' => '<a href="ide://open?file={file}&line={line}">{icon}</a>',
     ]),
     // ...
@@ -67,7 +67,7 @@ As aforementioned, the error handler turns all non-fatal PHP errors into catchab
 try {
     10 / 0;
 } catch (\Yiisoft\ErrorHandler\Exception\ErrorException $e) {
-    // Write log or something else.
+    // Write a log or something else.
 }
 // execution continues...
 ```
@@ -84,7 +84,7 @@ return [
     // ...
     ErrorHandler::class => static function (ResponseFactoryInterface $responseFactory, Injector $injector) {
         $exceptionMap = [
-            // Status code with which the response will be created by the factory.
+            // Status code with which the factory creates the response.
             MyNotFoundException::class => 404,
             // PHP callable that must return a `Psr\Http\Message\ResponseInterface`.
             MyHttpException::class => static fn (MyHttpException $exception) => new MyResponse($exception),
@@ -180,7 +180,7 @@ Example of HTML rendering with debugging mode on and a dark theme:
 The error catcher chooses how to render an exception based on `accept` HTTP header.
 If it's `text/html` or any unknown content type, it will use the error or exception HTML template to display errors.
 For other mime types, the error handler will choose different renderers that you register within the error catcher.
-By default, it supports JSON, XML and plain text.
+By default, it supports JSON, XML, and plain text.
 
 ### Implementing your own renderer
 
@@ -192,7 +192,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\ErrorHandler\ErrorData;
 use Yiisoft\ErrorHandler\ThrowableRendererInterface;
 
-final class MyRenderer implements ThrowableRendererInterface
+final readonly class MyRenderer implements ThrowableRendererInterface
 {
     public function render(Throwable $t, ServerRequestInterface $request = null): ErrorData
     {
@@ -237,13 +237,13 @@ return [
 ## Friendly exceptions
 
 Yii error renderer supports [friendly exceptions](https://github.com/yiisoft/friendly-exception) that make
-error handling even more pleasant experience for your team. The idea is to offer a readable name and possible
+error handling an even more pleasant experience for your team. The idea is to offer a readable name and possible
 solutions to the problem:
 
 ```php
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
 
-class RequestTimeoutException extends \RuntimeException implements FriendlyExceptionInterface
+final readonly class RequestTimeoutException extends \RuntimeException implements FriendlyExceptionInterface
 {
     public function getName(): string
     {
@@ -260,4 +260,4 @@ SOLUTION;
 ```
 
 When the application throws such an exception,
-error renderer would display the name and the solution if the debug mode is on.
+the error renderer would display the name and the solution if the debug mode is on.

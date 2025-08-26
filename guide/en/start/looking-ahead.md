@@ -1,7 +1,7 @@
-# Looking Ahead
+# Looking ahead
 
 If you've read through the entire "Getting Started" chapter, you have now created a complete Yii application.
-In the process, you've learned how to implement some commonly needed features, such as getting data from users
+In the process, you've learned how to implement some commonly necessary features, such as getting data from users
 via an HTML form, fetching data from a database, and displaying data in a paginated fashion. You've also learned how
 to use [Gii](gii.md) to generate code automatically. Using Gii for code generation turns the bulk of your Web development
 process into a task as simple as just filling out some forms. 
@@ -28,7 +28,7 @@ This section will summarize the Yii resources available to help you be more prod
   thereby making your application development even faster and easier.
 * Community
     - Forum: <https://www.yiiframework.com/forum/>
-    - IRC chat: The #yii channel on the freenode network (<irc://irc.freenode.net/yii>)
+    - IRC chat: The #yii channel on the freenode network (<ircs://irc.libera.chat:6697/yii>)
     - Slack channel: <https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA>
     - Gitter chat: <https://gitter.im/yiisoft/app>
     - GitHub: <https://github.com/yiisoft/app>

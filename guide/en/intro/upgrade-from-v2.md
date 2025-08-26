@@ -4,27 +4,32 @@
 > section.
 
 While sharing some common ideas and values, Yii 3 is conceptually different from Yii 2. There is no easy upgrade
-path, so first [check maintenance policy and end of life dates for Yii 2](https://www.yiiframework.com/release-cycle)
+path, so first [check maintenance policy and end-of-life dates for Yii 2](https://www.yiiframework.com/release-cycle)
 and consider starting new projects on Yii 3 while keeping existing ones on Yii 2.
 
 ## PHP requirements
 
-Yii3 requires PHP 8.0 or above. As a result, there are language features used that weren't used in Yii 2:
+Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2:
 
 - [Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
 - [Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
 - [Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)
+- [Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
 - [Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)
 - [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
 - [Generators](https://www.php.net/manual/en/language.generators.php)
 - [Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
+- [Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)
+- [Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)
+- [Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
+- [Attributes](https://www.php.net/manual/en/language.attributes.php)
 
 ## Preliminary refactoring
 
 It's a good idea to refactor your Yii 2 project before porting it to Yii 3. That would both make porting easier
 and benefit the project in question while it's not moved to Yii 3 yet.
 
-### Use DI instead of service locator
+### Use DI instead of the service locator
 
 Since Yii 3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using
 service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
@@ -37,10 +42,10 @@ See [Dependency injection and container](../concept/di-container.md) for an expl
 ### Introduce repositories for getting data
 
 Since Active Record isn't the only way to work with a database in Yii 3, consider introducing repositories that would
-hide details of getting data and gather them in a single place you can later re-do: 
+hide details of getting data and gather them in a single place. You can later redo it: 
 
 ```php
-class PostRepository
+final readonly class PostRepository
 {
     public function getArchive()
     {
@@ -57,7 +62,7 @@ class PostRepository
 
 ### Separate domain layer from infrastructure
 
-In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by framework
+In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by a framework
 that's all the business logic has to go to framework-independent classes.
 
 ### Move more into components

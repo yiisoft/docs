@@ -1,7 +1,7 @@
 # Cookies
 
 Cookies are for persisting data between requests by sending it to the client browser using HTTP headers.
-The client sends data back to server in request headers thus cookies are handy to store small amounts of data, 
+The client sends data back to the server in request headers. Thus, cookies are handy to store small amounts of data, 
 such as tokens or flags.
 
 ## Reading cookies
@@ -17,6 +17,35 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 }
 ```
 
+In addition to getting cookie values directly from the server request,
+you can also use the [yiisoft/request-provider](https://github.com/yiisoft/request-provider)
+package, which provides a more structured way to handle cookies through the `\Yiisoft\RequestProvider\RequestCookieProvider`.
+This approach can simplify your code and improve readability.
+
+Here’s an example of how to work with cookies using the `\Yiisoft\RequestProvider\RequestCookieProvider`:
+
+```php
+final readonly class MyService
+{
+    public function __construct(
+        private \Yiisoft\RequestProvider\RequestCookieProvider $cookies
+    ) {}
+
+    public function go(): void
+    {
+        // Check if a specific cookie exists
+        if ($this->cookies->has('foo')) {
+            // Retrieve the value of the cookie
+            $fooValue = $this->cookies->get('foo');
+            // Do something with the cookie value
+        }
+
+        // Retrieve another cookie value
+        $barValue = $this->cookies->get('bar');
+        // Do something with the bar cookie value
+    }
+}
+
 ## Sending cookies
 
 Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is
@@ -31,7 +60,7 @@ $cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
     ->withSameSite(\Yiisoft\Cookies\Cookie::SAME_SITE_STRICT)
     ->withMaxAge(new \DateInterval('P7D'));
 
-    return $cookie->addToResponse($response);
+return $cookie->addToResponse($response);
 ```
 
 After forming a cookie call `addToResponse()` passing an instance of `\Psr\Http\Message\ResponseInterface` to add
@@ -44,7 +73,7 @@ To prevent the substitution of the cookie value, the package provides two implem
 `Yiisoft\Cookies\CookieSigner` - signs each cookie with a unique prefix hash based on the value of the cookie and a secret key.
 `Yiisoft\Cookies\CookieEncryptor` - encrypts each cookie with a secret key.
 
-Encryption is more secure than signing, but has less performance.
+Encryption is more secure than signing but has lower performance.
 
 ```php
 $cookie = new \Yiisoft\Cookies\Cookie('identity', 'identityValue');
@@ -141,7 +170,7 @@ $middleware = new \Yiisoft\Cookies\CookieMiddleware(
 );
 
 // The cookie parameter values from the request are decrypted/validated.
-// The cookie values are encrypted/signed, and appended to the response.
+// The cookie values are encrypted/signed and appended to the response.
 $response = $middleware->process($request, $handler);
 ```
 
@@ -154,6 +183,6 @@ You should configure each cookie to be secure. Important security settings are:
 - `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value.
 - `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only.
 - `sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would prevent sending a cookie in cross-site
-  browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g. POST, PUT,
-  PATCH etc). `SAME_SITE_STRICT` would prevent cookies sending for all methods.
+  browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g., POST, PUT,
+  PATCH, etc.). `SAME_SITE_STRICT` would prevent cookies sending for all methods.
 - Sign or encrypt the value of the cookie to prevent spoofing of values if the data in the value shouldn't be tampered with.

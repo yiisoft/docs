@@ -15,7 +15,7 @@ There are two main principles when it comes to security no matter which applicat
 
 ### Filter input
 
-Filter input means that input should never be considered safe, and you should always check if the value you've got is
+Filter input means that you should never consider input safe, and you should always check if the value you've got is
 actually among allowed ones.
 For example, if you know that you sort by three fields `title`, `created_at` and `status`
 and the field came from user input, it's better to check the value you've got right where you're receiving it.
@@ -28,7 +28,7 @@ if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
 }
 ```
 
-In Yii, most probably you'll use [form validation](../input/validation.md) to do alike checks.
+In Yii, most probably you'll use [form validation](../input/validation.md) to do similar checks.
 
 Further reading on the topic:
 
@@ -42,7 +42,7 @@ Escape output means that, depending on the context where you're using data,
 you should prepend it with special characters to negate its special meaning.
 In context of HTML you should escape `<`, `>` and alike special characters.
 In the context of JavaScript or SQL, it will be a different set of characters.
-Since it's error-prone to escape manually, Yii provides various tools to perform escaping for different contexts.
+Since it's error-prone to escape manually, Yii provides various tools to perform escaping in different contexts.
 
 Further reading on the topic:
 
@@ -71,7 +71,7 @@ This is a valid query that will search for users with empty username and then wi
 resulting in a broken website and data loss (you've set up regular backups, right?).
 
 Make sure to either use PDO prepared statements directly or ensure that the library you prefer is doing it. 
-In case of prepared statements, it's impossible to manipulate the query as was demonstrated above.
+In the case of prepared statements, it's impossible to manipulate the query as was demonstrated above.
 
 If you use data to specify column names or table names,
 the best thing to do is to allow only a predefined set of values:
@@ -97,7 +97,7 @@ Further reading on the topic:
 XSS or cross-site scripting happens when output isn't escaped properly when outputting HTML to the browser. For example,
 if user can enter his name and instead of `Alexander` he enters `<script>alert('Hello!');</script>`, every page that
 outputs username without escaping it will execute JavaScript `alert('Hello!');` resulting in alert box popping up
-in a browser. Depending on website instead of innocent alert, such a script could send messages using your name or even
+in a browser. Depending on the website instead of innocent alert, such a script could send messages using your name or even
 perform bank transactions.
 
 Avoiding XSS is quite easy in Yii. There are two cases:
@@ -105,14 +105,14 @@ Avoiding XSS is quite easy in Yii. There are two cases:
 1. You want to output data as plain text.
 2. You want to output data as HTML.
 
-If all you need is plain text, then escaping is as easy as following:
+If all you need is plain text, then escaping is as easy as the following:
 
 
 ```php
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML you could get some help from [HtmlPurifier](http://htmlpurifier.org/).
+If it should be HTML, you could get some help from [HtmlPurifier](http://htmlpurifier.org/).
 Note that HtmlPurifier processing is quite heavy, so consider adding caching.
 
 Further reading on the topic:
@@ -133,14 +133,14 @@ the browser will send the GET request to that URL and the user will be logged ou
 
 That's the basic idea of how a CSRF attack works. One can say that logging out a user isn't a serious thing.
 However, this was just an example.
-There are much more things one could do using this approach.
+There are many more things one could do using this approach.
 For example, triggering payments or changing data. Imagine that some website has a URL
 `http://an.example.com/purse/transfer?to=anotherUser&amount=2000`. Accessing it using GET request, causes transfer of $2000
 from an authorized user account to user `anotherUser`.
-You know that the browser will always send GET request to load an image,
+You know that the browser will always send a GET request to load an image,
 so you can change the code to accept only POST requests on that URL.
 Unfortunately, this won't save you, because an attacker
-can put some JavaScript code instead of `<img>` tag, which allows to send POST requests to that URL as well.
+can put some JavaScript code instead of `<img>` tag, which allows sending POST requests to that URL as well.
 
 For this reason, Yii applies extra mechanisms to protect against CSRF attacks.
 
@@ -161,10 +161,10 @@ Further reading on the topic:
 
 ## Avoiding file exposure
 
-By default, server webroot is meant to be pointed to `public` directory where `index.php` is. In case of shared hosting
-environments it could be impossible to achieve, so you'll end up with all the code, configs and logs in server webroot.
+By default, server webroot is meant to be pointed to `public` directory where `index.php` is. In the case of shared hosting
+ environments, it could be impossible to achieve, so you'll end up with all the code, configs and logs in server webroot.
 
-If so, don't forget to deny access to everything except `web`.
+If so, remember to deny access to everything except `web`.
 If it's impossible, consider hosting your application elsewhere.
 
 
@@ -178,7 +178,7 @@ Never run production applications with debugger or Gii accessible to everyone.
 One could use it to get information about database structure,
 code and to simply rewrite code with what's generated by Gii.
 
-You should avoid the debug toolbar at production unless necessary.
+You should avoid the debug toolbar in production unless necessary.
 It exposes all the application and config details possible.
 If you absolutely need it, check twice you restrict access to your IP only.
 
@@ -198,8 +198,8 @@ Nowadays, anyone can get a certificate for free and automatically update it than
 ## Secure server configuration
 
 The purpose of this section is to highlight risks that need to be considered when creating a
-server configuration for serving a Yii based website. Besides the points covered here there may
-be other security related configuration options to be considered, so don't consider this section to
+server configuration for serving a Yii-based website. Besides the points covered here, there may
+be other security-related configuration options to be considered, so don't consider this section to
 be complete.
 
 ### Avoiding `Host`-header attacks
@@ -239,4 +239,12 @@ Instead, PHP should be configured properly:
   curl.cainfo="/path/to/cacert.pem".
   ```
 
-Note that the `cacert.pem` file should be kept up to date.
+Note that you should keep the file up to date.
+
+## References
+
+- [OWASP top 10](https://owasp.org/Top10/)
+- [The Basics of Web Application Security](https://martinfowler.com/articles/web-security-basics.html) by Martin Fowler
+- [PHP manual: security](https://www.php.net/manual/en/security.php)
+- [Information security at STackExchange](https://security.stackexchange.com/)
+

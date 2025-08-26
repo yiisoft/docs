@@ -17,7 +17,7 @@ time in a long run significantly.
 
 This book is for you if you're familiar with Yii3, building Yii applications, and read the official Yii3 guide.
 It covers fundamentally important development concepts, application architecture approaches, integrating third party
-services with Yii3 etc.
+services with Yii3, etc.
 
 The book consists of individual recipes gathered from Yii experts that you can apply in your applications.
 These go by topic, but you are free to read them in any order as there is no dependency between them.

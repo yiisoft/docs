@@ -2,7 +2,7 @@
 
 ## alias
 
-Alias is a string that's used by Yii to refer to the class or directory such as `@app/vendor`.
+Alias is a string used by Yii to refer to the class or directory such as `@app/vendor`.
 Read more in ["Aliases"](concept/aliases.md).
 
 ## asset
@@ -27,7 +27,7 @@ Dependency Injection is a programming technique where an object injects a depend
 ## installation
 
 Installation is a process of preparing something to work either by following a readme file or by executing a specially
-prepared script. In case of Yii, it's setting permissions and fulfilling software requirements.
+prepared script. In the case of Yii, it's setting permissions and fulfilling software requirements.
 
 # M
 
@@ -38,7 +38,7 @@ action and pass processing to the next middleware. Read more in ["Middleware"](s
 
 ## module
 
-The module is a sub-application which groups some code based on use-case. It's typically used within the main application
+The module is a sub-application that groups some code based on a use-case. It's typically used within the main application
 and may contain URL handlers or console commands.
 
 # N
@@ -53,6 +53,14 @@ Namespace refers to a [PHP language feature](https://www.php.net/manual/en/langu
 
 A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and
 redistribution installable automatically via package manager.
+
+# R
+
+## rule
+
+The rule usually refers to a validation rule of the [yiisoft/validator](https://github.com/yiisoft/validator) package.
+It holds a set of parameters for checking if a data set is valid.
+"Rule handler" does the actual processing.
 
 # Q
 

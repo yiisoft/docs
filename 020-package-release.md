@@ -1,19 +1,18 @@
-# 020 - Package Release
+# 020 — Package release
 
 ## Criteria
 
 - No critical issues.
-- Public API changes aren't likely.
+- Public API changes aren't likely. Some time passed w/o issues reported that may require API changes.
 - All dependencies are stable.
-- Close to 100% test coverage with, ideally, 100% MSI score.
-- High certainty that public API won't change, or some time passed w/o issues reported that may require API changes.
+- Close to 100% test coverage with, ideally, a 100% MSI score.
 - README is alright.
 - Everything is type-hinted unless special cases.
-- Psalm analysis pass on at least level 2.
+- Psalm analysis passes on at least level 2.
 - phpdoc is alright.
 - Public API is alright.
 
-## Release Instruction
+## Release instruction
 
 Release a package via [Yii Development Tool](005-development-tool.md). 
 
@@ -35,8 +34,8 @@ Release a package via [Yii Development Tool](005-development-tool.md).
 ./yii-dev release/make package-name
 ```
 
-5. Select version type (major, minor or path).
+5. Select the version type (major, minor or path).
 
-6. On the question "Push commits and tags, and release on GitHub?" check a diff. If the diff is alright, answer "yes".
+6. On the question "Push commits and tags, and release on GitHub?" check a diff. If the diff is alright, answer "yes."
 
-7. For major and minor releases add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news).
+7. For major and minor releases, add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news).

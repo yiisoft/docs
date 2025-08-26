@@ -1,6 +1,6 @@
 # Creating a project
 
-You can create a Yii project using the [Composer](https://getcomposer.org/) package manager.
+You can create a Yii project using the [Composer](https://getcomposer.org) package manager.
 
 We recommend starting with a project template that's a minimal working Yii project implementing some basic features.
 Its code is organized in a recommended way. Therefore, it can serve as a good starting point for your projects.
@@ -35,7 +35,7 @@ With Composer installed, you can create a Yii project from a template by running
 under a Web-accessible folder:
 
 ```bash
-composer create-project yiisoft/app --prefer-dist --stability=dev your_project
+composer create-project yiisoft/app --stability=dev your_project
 ```
 
 This will install the latest <!-- stable -->version of Yii project template in a directory named `your_project`.
@@ -46,7 +46,7 @@ You can choose a different directory name if you want.
 > which adds a [stability option](https://getcomposer.org/doc/04-schema.md#minimum-stability):
 >
 > ```bash
-> composer create-project --prefer-dist --stability=dev yiisoft/app your_project
+> composer create-project --stability=dev yiisoft/app your_project
 > ```
 >
 > Note that the development version of Yii shouldn't be used for production as it may break your running code.
@@ -67,7 +67,7 @@ console command while in the project root directory:
 ./yii serve
 ```
 
-> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use, or you wish to 
+> Note: By default, the HTTP server will listen to port 8080. However, if that port is already in use, or you wish to 
 serve many applications this way, you might want to specify what port to use via the --port argument:
 
 ```bash
@@ -86,19 +86,19 @@ You should see the page in your browser. If not, please check if your PHP instal
 Yii's requirements by using [yiisoft/requirements package](https://github.com/yiisoft/requirements).
 
 
-## Configuring Web Servers <span id="configuring-web-servers"></span>
+## Configuring web servers <span id="configuring-web-servers"></span>
 
 > Info: You may skip this subsection for now if you're just test-driving Yii with no intention
   of deploying it to a production server.
 
 The application installed according to the instructions should work out of the box with either
 an [Apache HTTP server](https://httpd.apache.org/) or a [Nginx HTTP server](https://nginx.org/), on
-Windows, Mac OS X, or Linux running PHP 8.0 or higher.
+Windows, Mac OS X, or Linux running PHP 8.1 or higher.
 
 On a production server, we recommend configuring your Web server so that a user can access the application
 via the URL `http://www.example.com/index.php` instead of `http://www.example.com/app/public/index.php`.
 Such a configuration requires pointing the document root of your Web server to the `app/public` folder.
-In this subsection, you'll learn how to configure your webserver achieve it.
+In this subsection, you'll learn how to configure your webserver to achieve it.
 
 > Info: By setting `app/public` as the document root, you also prevent end users from accessing
 > your private application code and sensitive data files that are stored in the sibling directories
@@ -278,9 +278,9 @@ in the same configuration.
 
 ### IIS <span id="iss"></span>
 
-When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Web site) where document
-root points to `path/to/app/web` folder and that Web site is configured to run PHP. In that `web` folder you have to
-place a file named `web.config` that's `path/to/app/web/web.config`. Content of the file should be the following:
+When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Website) where document
+root points to `path/to/app/web` folder and that website is configured to run PHP. In that `web` folder you have to
+place a file named `web.config` that's `path/to/app/web/web.config`. The Content of the file should be the following:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -307,7 +307,7 @@ place a file named `web.config` that's `path/to/app/web/web.config`. Content of 
 
 Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:
 
- 1. [How to set up your first IIS Web site](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
+ 1. [How to set up your first IIS website](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
  2. [Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)
 
 ### lighttpd <span id="lighttpd"></span>

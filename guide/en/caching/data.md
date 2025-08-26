@@ -1,6 +1,6 @@
 # Data caching
 
-Data caching is about storing some PHP variables in cache and retrieving it later from cache.
+Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.
 It's also the foundation for more advanced caching features, such as [page caching](page.md).
 
 To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache) package:
@@ -19,7 +19,7 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
     
     // Try retrieving $data from cache.
     $data = $cache->getOrSet($key, function (\Psr\SimpleCache\CacheInterface $cache) use ($count) {
-        // $data isn't found in cache, calculate it from scratch.
+        // Can't find $data in cache, calculate it from scratch.
         return getTopProductsFromDatabase($count);
     }, 3600);
     
@@ -27,34 +27,34 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
 }
 ```
 
-When cache has data associated with the `$key`, the cached value will be returned.
-Otherwise, the passed anonymous function will be executed to calculate the value that will be cached and returned.
+When cache has data associated with the `$key`, it returns the cached value.
+Otherwise, it executes the passed anonymous function to calculate the value to cache and return.
 
 If the anonymous function requires some data from the outer scope, you can pass it with the `use` statement.
 
 ## Cache handlers
 
 The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible cache handlers which represent various
-cache storages, such as memory, files, databases.
+cache storages, such as memory, files, and databases.
 
 Yii provides the following handlers:
 
-- `NullCache` - serves as a cache placeholder which does no real caching. The purpose of this handler is to simplify
+- `NullCache` — a cache placeholder which does no real caching. The purpose of this handler is to simplify
   the code that needs to check the availability of cache. For example, during development or if the server doesn't have
   actual cache support, you may configure a cache service to use this handler.
   When you enable actual cache support, you can switch to using the corresponding cache handler.
   In both cases, you may use the same code without extra checks.
-- `ArrayCache` - provides caching for the current request only by storing the values in an array.
+- `ArrayCache` — provides caching for the current request only by storing the values in an array.
 - [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.
   You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one
   server, no dedicated load balancers, etc.).
-- [Database](https://github.com/yiisoft/cache-db) - uses a database table to store cached data.
-- [File](https://github.com/yiisoft/cache-file) - uses standard files to store cached data. This is particularly suitable
-  to cache large chunk of data, such as page content.
-- [Memcached](https://github.com/yiisoft/cache-memcached) - uses a PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)
+- [Database](https://github.com/yiisoft/cache-db) — uses a database table to store cached data.
+- [File](https://github.com/yiisoft/cache-file) — uses standard files to store cached data. This is particularly suitable
+  to cache large chunks of data, such as page content.
+- [Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)
   extension. You can consider this option as the fastest one when dealing with cache in distributed application 
   (e.g., with several servers, load balancers, etc.)
-- [Wincache](https://github.com/yiisoft/cache-wincache) - ses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
+- [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
   ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
 
 [You could find more handlers at packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).
@@ -71,8 +71,8 @@ with a different one. You can do it by reconfiguring the application without mod
 
 ### Cache keys
 
-A key uniquely identifies each data item stored in cache. When you store a data item in cache,
-you have to specify a key for it. Later, when you retrieve the data item from cache, you should give
+A key uniquely identifies each data item stored in the cache. When you store a data item,
+you have to specify a key for it. Later, when you retrieve the data item, you should give
 the corresponding key.
 
 You may use a string or an arbitrary value as a cache key. When a key isn't a string, it will be automatically
@@ -122,7 +122,7 @@ $cache->remove($key);
 
 Besides the expiration setting, changes of the so-called **invalidation dependencies** may also invalidate cached data item.
 For example, `\Yiisoft\Cache\Dependency\FileDependency` represents the dependency of a file's modification time.
-When this dependency changes, it means something modifies the corresponding file.
+When this dependency changes, it means something modifying the corresponding file.
 As a result, any outdated file content found in the cache should invalidate.
 
 Cache dependencies are objects of `\Yiisoft\Cache\Dependency\Dependency` descendant classes. When you
@@ -155,16 +155,19 @@ Below is a summary of the available cache dependencies:
 
 You may combine many dependencies using `\Yiisoft\Cache\Dependency\AnyDependency` or `\Yiisoft\Cache\Dependency\AllDependencies`.
 
-To implement your own dependency extend from `\Yiisoft\Cache\Dependency\Dependency`.
+To implement your own dependency, extend from `\Yiisoft\Cache\Dependency\Dependency`.
 
 ### Cache stampede prevention
 
 [A cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) is a type of cascading failure that can occur when massively
-parallel computing systems with caching mechanisms come under a high load. This behaviour is sometimes also called dog-piling.
+parallel computing systems with caching mechanisms come under a high load.
+This behavior is sometimes also called dog-piling.
+
 The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration" algorithm that prevents cache stampede.
 This algorithm randomly fakes a cache miss for one user while others are still served the cached value.
 You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.
-By default, beta is `1.0`, which is usually enough. The higher the value the earlier cache will be re-created.
+By default, beta is `1.0`, which is usually enough.
+The higher the value the earlier cache will be re-created.
 
 ```php
 /**

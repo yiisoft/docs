@@ -18,7 +18,7 @@ In this section, the focus in on the first two steps.
 ## Log Messages <span id="log-messages"></span>
 
 To record log messages, you need an instance of PSR-3 logger.
-A class that writes log messages should receive it as dependency:
+A class that writes log messages should receive it as a dependency:
 
 ```php
 class MyService
@@ -32,7 +32,7 @@ class MyService
 }
 ```
 
-Recording log message is as simple as calling one of the following logging methods that correspond to log levels:
+Recording a log message is as simple as calling one of the following logging methods that correspond to log levels:
 
 - `emergency` - System is unusable.
 - `alert` - Action must be taken immediately.
@@ -47,20 +47,21 @@ Recording log message is as simple as calling one of the following logging metho
 - `debug` - Detailed debug information.
 
 Each method has two arguments.
-First is a message.
+The first is a message.
 The Second is a context array that typically has structured data that
 doesn't fit a message well but still does offer important information.
-In case you provide exception as context, you should pass in "exception" key.
-Another special key is "category". Categories are handy to better organize and filter log messages.
+In case you provide an exception as context, you should pass the "exception" key.
+Another special key is "category." Categories are handy to better organize and filter log messages.
 
 ```php
-class MyService
+use \Psr\Log\LoggerInterface;
+
+final readonly class MyService
 {
-    private $logger;
-    
-    public function __construct(\Psr\Log\LoggerInterface $logger)
-    {
-        $this->logger = $logger;    
+    public function __construct(
+        private LoggerInterface $logger
+    )
+    {    
     }
 
     public function serve(): void
@@ -87,12 +88,12 @@ anything. That means that you don't have to check if logger is configured with `
 can assume that logger is always present.
 
 
-## Log Targets <span id="log-targets"></span>
+## Log targets <span id="log-targets"></span>
 
 A log target is an instance of a class that extends the [[\Yiisoft\Log\Target]]. It filters the log messages by their
 severity levels and categories and then exports them to some medium. For example,
 a [[\Yiisoft\Log\Target\File\FileTarget|file target]]exports the filtered log messages to a file,
-while an [[Yiisoft\Log\Target\Email\EmailTarget|email target]] exports the log messages to specified email addresses.
+while a [[Yiisoft\Log\Target\Email\EmailTarget|email target]] exports the log messages to specified email addresses.
 
 You can register many log targets in an application by configuring them through the `\Yiisoft\Log\Logger` constructor:
 
@@ -115,14 +116,14 @@ $logger = new \Yiisoft\Log\Logger([
 In the above code, two log targets are registered: 
 
 * the first target selects error and warning messages and writes them to `/path/to/app.log` file;
-* the second target selects emergency, alert and critical messages under the categories whose names start with
+* the second target selects emergency, alert, and critical messages under the categories whose names start with
 `Yiisoft\Cache\`, and sends them in an email to both `admin@example.com` and `developer@example.com`.
 
 Yii comes with the following built-in log targets. Please refer to the API documentation about these classes to 
 learn how to configure and use them. 
 
 * [[\Yiisoft\Log\PsrTarget]]: passes log messages to another PSR-3 compatible logger.
-* [[\Yiisoft\Log\StreamTarget]]: writes log messages into specified output stream.
+* [[\Yiisoft\Log\StreamTarget]]: writes log messages into a specified output stream.
 * [[\Yiisoft\Log\Target\Db\DbTarget]]: saves log messages in database.
 * [[\Yiisoft\Log\Target\Email\EmailTarget]]: sends log messages to pre-specified email addresses.
 * [[\Yiisoft\Log\Target\File\FileTarget]]: saves log messages in files.
@@ -133,7 +134,7 @@ In the following, we will describe the features common to all log targets.
 
 ### Message Filtering <span id="message-filtering"></span>
 
-For each log target, you can configure its levels and categories to specify,
+For each log target, you can configure its levels and categories to specify 
 which severity levels and categories of the messages the target should process.
 
 The target `setLevels()` method takes an array consisting of one or several of `\Psr\Log\LogLevel` constants.
@@ -187,7 +188,7 @@ Timestamp Prefix[Level][Category] Message Context
 ```
 
 You may customize this format by calling [[\Yiisoft\Log\Target::setFormat()|setFormat()]] method,
-which takes a PHP callable returning a custom formatted message.
+which takes a PHP callable returning a custom-formatted message.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -237,7 +238,7 @@ function (\Yiisoft\Log\Message $message, array $commonContext): string;
 
 Besides message prefixes, log targets also append some common context information to each of the log messages.
 You may adjust this behavior by calling target [[\Yiisoft\Log\Target::setCommonContext()|setCommonContext()]]
-method, passing an array of data in the `key => value` format that you want to include in the by the log target.
+method, passing an array of data in the `key => value` format that you want to include.
 For example, the following log target configuration specifies that only the
 value of the `$_SERVER` variable will be appended to the log messages.
 
@@ -257,7 +258,7 @@ $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setTraceLevel(3);
 ```
 
-This application configuration sets trace level to be 3 so each log message will be appended with at most 3
+This application configuration sets the trace level to be 3, so each log message will be appended with at most three
 levels of the call stack at which the log message is recorded. You can also set a list of paths to exclude
 from the trace by calling the [[\Yiisoft\Log\Logger::setExcludedTracePaths()|setExcludedTracePaths()]] method.
 
@@ -270,7 +271,7 @@ $logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
 or when debugging an application.
 
 
-### Message Flushing and Exporting <span id="flushing-exporting"></span>
+### Message flushing and exporting <span id="flushing-exporting"></span>
 
 As aforementioned, log messages are maintained in an array by [[\Yiisoft\Log\Logger|logger object]]. To limit the
 memory consumption by this array, the logger will flush the recorded messages to the [log targets](#log-targets)
@@ -313,7 +314,7 @@ $logger->setFlushInterval(1);
 > Note: Frequent message flushing and exporting will degrade the performance of your application.
 
 
-### Toggling Log Targets <span id="toggling-log-targets"></span>
+### Toggling log targets <span id="toggling-log-targets"></span>
 
 You can enable or disable a log target by calling its [[\Yiisoft\Log\Target::enable()|enable()] ]
 and [[\Yiisoft\Log\Target::disable()|disable()]] methods.
@@ -335,9 +336,9 @@ You also may pass callable to [[\Yiisoft\Log\Target::setEnabled()|setEnabled()]]
 to define a dynamic condition for whether the log target should be enabled or not.
 
 
-### Creating New Targets <span id="new-targets"></span>
+### Creating new targets <span id="new-targets"></span>
 
-Creating a new log target class is simple. You mainly need to implement the [[\Yii\Log\Target::export()]]
+Creating a new log target class is straightforward. You mainly need to implement the [[\Yii\Log\Target::export()]]
 abstract method that sends all accumulated log messages to a designated medium.
 
 The following protected methods will also be available for child targets:

@@ -12,7 +12,7 @@ Introduction +
 Getting started -
 ---------------
 
-* [What do you need to know](start/prerequisites.md) +
+* [What do you need to know?](start/prerequisites.md) +
 * [Creating a project](start/creating-project.md) +
 * [Running applications](start/workflow.md) +
 * [Saying hello](start/hello.md) +
@@ -63,15 +63,16 @@ Views -
 * [Working with client scripts](views/client-scripts.md) -
 * [Theming](views/theming.md) -
 * [Template engines](views/template-engines.md) -
+* [View injections](views/view-injections.md) +
 
 
-Working with databases -
+Working with databases +-
 ----------------------
 
 * [Database access objects](db-dao.md): Connecting to a database, basic queries, transactions, and schema manipulation
 * [Query builder](db-query-builder.md): Querying the database using a simple abstraction layer
 * [Active record](db-active-record.md): The Active Record ORM, retrieving and manipulating records, and defining relations
-* [Migrations](db-migrations.md): Apply version control to your databases in a team development environment
+* [Migrations](databases/db-migrations.md): +
 
 Getting data from users -
 -----------------------

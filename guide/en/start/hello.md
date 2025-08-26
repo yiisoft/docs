@@ -1,6 +1,6 @@
 # Saying hello
 
-> Note: This document reflects the current configuration. The Yii team is going to make it simpler before release.
+> Note: This document reflects the current configuration. The Yii team is going to simplify it before release.
 
 This section describes how to create a new "Hello" page in your application.
 It's a simple page that will echo back whatever you pass to it or, if nothing passed, will just say "Hello!".
@@ -11,7 +11,7 @@ Then you will improve it to use [view](../structure/views.md) for building the r
 
 Through this tutorial, you will learn three things:
 
-1. How to create a handler to respond to request.
+1. How to create a handler to respond to a request.
 2. How to map URL to the handler.
 3. How to create a [view](../structure/view.md) to compose the response's content.
 
@@ -32,21 +32,20 @@ namespace App\Controller;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Html\Html;
+use Yiisoft\Router\CurrentRoute;
 
-class EchoController
-{  
-    private ResponseFactoryInterface $responseFactory;
-
-    public function __construct(ResponseFactoryInterface $responseFactory)
+final readonly class EchoController
+{
+    public function __construct(
+        private ResponseFactoryInterface $responseFactory
+    )
     {
-        $this->responseFactory = $responseFactory;
     }
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function say(CurrentRoute $currentRoute): ResponseInterface
     {
-        $message = $request->getAttribute('message', 'Hello!');
+        $message = $currentRoute->getArgument('message', 'Hello!');
 
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('The message is: ' . Html::encode($message));
@@ -55,19 +54,16 @@ class EchoController
 }
 ```
 
-The `say` method in your example is given `$request` parameter that you can use to obtain
-a message, whose value defaults to `"Hello"` (in 
-the same way you set a default value for any function or method argument in PHP). When the application
-receives a request and determines that the `say` action is responsible for handling said request, the application will
-populate this parameter with the same named parameter found in the request. In other words, if the request includes
-a `message` parameter with a value of `"Goodbye"`, the `$message` variable within the action will be assigned that value.
+The `say` method in your example is given `$currentRoute` parameter that you can use to get
+a message, whose value defaults to `"Hello"`. If the request is made to `/say/Goodbye`,
+the `$message` variable within the action will be assigned that value.
 
 The response returned goes through [middleware stack](../structure/middleware.md) into emitter that outputs response
 to the end user.
 
 ## Configuring router
 
-Now, to map your handler to URL, you need to add a route in `config/routes.php`:
+Now, to map your handler to URL, you need to add a route in `config/common/routes.php`:
 
 ```php
 <?php
@@ -126,9 +122,9 @@ before being printed. This is necessary as the parameter comes from an end user,
 malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
-PHP statements. In fact, the `say` view is a PHP script that's executed by the view service.
+PHP statements. In fact, the `say` view is a PHP script executed by the view service.
 
-To use the view you need to change `src/Controller/EchoController.php`:
+To use the view, you need to change `src/Controller/EchoController.php`:
 
 ```php
 <?php
@@ -137,15 +133,15 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Yiisoft\Yii\View\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Yiisoft\Router\CurrentRoute;
 use Psr\Http\Message\ResponseInterface;
 
-class EchoController
-{
-    private ViewRenderer $viewRenderer;
-    
-    public function __construct(ViewRenderer $viewRenderer)
+final readonly class EchoController
+{   
+    public function __construct(
+        private ViewRenderer $viewRenderer
+    )
     {
         $this->viewRenderer = $viewRenderer->withControllerName('echo');
     }
@@ -161,7 +157,7 @@ class EchoController
 }
 ```
 
-Now open your browser and check it again. It should give you similar text but with a layout applied.
+Now open your browser and check it again. It should give you a similar text but with a layout applied.
 
 Also, you've separated the part about how it works and part of how it's presented. In the larger applications, 
 it helps a lot to deal with complexity.
@@ -175,4 +171,4 @@ the `message` parameter.
 
 You've also learned about routing in Yii, which acts as the bridge between user requests and handlers.
 
-In the next section, you will learn how to fetch data, and add a new page containing an HTML form.
+In the next section, you will learn how to fetch data and add a new page containing an HTML form.

@@ -13,7 +13,7 @@ solution used.
 To use it, you need to require the package first:
 
 ```
-composer require yiisoft/secrurity
+composer require yiisoft/security
 ```
 
 When a user provides a password for the first time (e.g., upon registration), the password needs to be hashed and
@@ -31,7 +31,7 @@ When a user attempts to log in, the submitted password must be verified against 
 
 
 ```php
-// obtain hash from a database or another storage
+// get hash from a database or another storage
 $hash = getHash();
 
 if ((new PasswordHasher())->validate($password, $hash)) {
