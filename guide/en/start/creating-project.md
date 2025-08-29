@@ -27,7 +27,7 @@ You can choose a different directory name if you want.
 
 After you finish installation, run `make up` and open your browser to the URL `http://localhost/`.
 
-> Note: By default, the HTTP server will listen to port 80. However, if that port is already in use, or you wish to 
-serve many applications this way, you might want to specify what port to use via `DEV_PORT` in `docker/.env` file.
+> Note: By default, the HTTP server listens on port 80. If that port is already in use, or you want to 
+serve many applications this way, specify the port via `DEV_PORT` in the `docker/.env` file.
 
 ![Successful Installation of Yii](img/app-installed.png)

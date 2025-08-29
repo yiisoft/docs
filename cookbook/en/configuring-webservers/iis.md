@@ -1,8 +1,7 @@
 # Configuring web servers: IIS
 
-When using [IIS](https://www.iis.net/), we recommend hosting the application in a virtual host (Website) where document
-root points to `path/to/app/public` folder and that website is configured to run PHP. In that `public` folder you have to
-place a file named `web.config` that's `path/to/app/public/web.config`. The Content of the file should be the following:
+When you use [IIS](https://www.iis.net/), host the application in a virtual host (Website) where the document
+root points to the `path/to/app/public` folder and configure the website to run PHP. In that `public` folder, place a file named `web.config` at `path/to/app/public/web.config`. Use the following content:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

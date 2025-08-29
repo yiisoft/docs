@@ -68,24 +68,19 @@ final readonly class Action
 
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
-        $form = new Form();
-        $errors = [];
+        $form = new Form();        
 
-        if ($this->formHydrator->populateFromPostAndValidate($form, $request)) {
-            $errors = $form->getValidationResult()->getErrorMessagesIndexedByProperty();
-        }
-
+        $this->formHydrator->populateFromPostAndValidate($form, $request);
 
         return $this->viewRenderer->render(__DIR__ . '/template', [
             'form' => $form,
-            'errors' => $errors,
         ]);
     }
 }
 ```
 
-Instead of reading from route, you fill your form from request's POST data with the help of `FormHydrator`.
-Then the form is validated, and both the form and validation errors are passed to the view.
+Instead of reading from route, you fill your form from request's POST data and validate it with
+the help of `FormHydrator`. Next you pass the form to the view.
 
 For the form to function we need to allow both GET to render the form and POST to send the data.
 Adjust your route in `config/common/routes.php`:
@@ -146,12 +141,11 @@ $htmlForm = Html::form()
 <?php endif ?>
 ```
 
-If a form is valid, you're displaying a message. The rest is about initializing and rendering the form.
+If the form is valid, you display a message. The rest initializes and renders the form.
 
 First, you initialize `$htmlForm` with the POST type and the action URL generated with the help from the URL generator.
-It is available as `$urlGenerator` in all views. You also need to pass the CSRF token to the form which is also
-available in every view as `$csrf`. This variable and similar ones are provided by view injections listed
-in `config/common/params.php`:
+You can access it as `$urlGenerator` in all views. You also need to pass the CSRF token to the form, which is also
+available in every view as `$csrf` thanks to the view injections listed in `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view-renderer' => [
@@ -161,7 +155,7 @@ in `config/common/params.php`:
 ],
 ```
 
-The value of a CSRF token is rendered as a hidden input to ensure that the request originates from 
+The template renders the CSRF token value as a hidden input to ensure that the request originates from
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
@@ -179,15 +173,14 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page displaying a form input field that has a label that indicates what data are to be entered.
-Also, there is a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
-that the field is required. In case a single character is entered, an error message will be displayed next to
-a problematic input field.
+You will see a page with a form input field and a label that indicates what data to enter.
+Also, the form has a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
+that the field is required. If you enter a single character, the form displays an error message next to
+the problematic input field.
 
 ![Form with a validation error](img/form-error.png)
 
-After entering a valid message and clicking the "submit" button, you will see a new page
-echoing the data that you just entered.
+After you enter a valid message and click the "submit" button, the page echoes the data that you entered.
 
 ![Form with a success message](img/form-success.png)
 

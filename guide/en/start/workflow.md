@@ -1,7 +1,7 @@
 # Running applications
 
 After installing Yii, you have a working Yii application that can be launched via `make up` and then
-accessed via the URL `http://localhost/`. This section will introduce the application's built-in functionality,
+accessed via the URL `http://localhost/`. This section introduces the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
 Note that unlike the framework itself, after you install a project template, it's all yours.
@@ -9,8 +9,8 @@ You're free to add or delete code and overall change it as you need.
 
 ## Functionality <span id="functionality"></span>
 
-The application installed has only the homepage, displayed when you access the URL `http://localhost/`.
-It shares a common layout that could be reused on further pages.
+The installed application has only the homepage, which displays when you access the URL `http://localhost/`.
+It shares a common layout that you can reuse on further pages.
 
 <!--
 You should also see a toolbar at the bottom of the browser window.
@@ -18,9 +18,9 @@ This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-Additionally, to the web application, there is a console script accessible via `make yii`.
-This script can be used to run background and maintenance tasks for the application, which are described
-in the [Console Application Section](../tutorial/console-applications.md).
+In addition to the web application, you can access a console script via `make yii`.
+Use this script to run background and maintenance tasks for the application, which the
+[Console Application Section](../tutorial/console-applications.md) describes.
 
 
 ## Application structure <span id="application-structure"></span>

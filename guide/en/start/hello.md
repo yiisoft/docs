@@ -50,11 +50,11 @@ final readonly class Action
 }
 ```
 
-The `__invoke` method in your example is given `$currentRoute` parameter that you can use to get
+In your example, the `__invoke` method receives the `$currentRoute` parameter that you can use to get
 a message, whose value defaults to `"Hello"`. If the request is made to `/say/Goodbye`,
-the `$message` variable within the action will be assigned "Goodbye" value.
+the action assigns the value "Goodbye" to the `$message` variable.
 
-The response returned goes through [middleware stack](../structure/middleware.md) into emitter that outputs response
+The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that outputs the response
 to the end user.
 
 ## Configuring router
@@ -82,9 +82,7 @@ return [
 ];
 ```
 
-In the above you're mapping `/say[/{message}]` pattern to `\App\Controller\Echo\Action`. For a request its instance will
-be created and `__invoke()` method will be called. The pattern `{message}` part makes anything specified in this place
-to be written to `message` request attribute. `[]` means that this part of the pattern is optional. 
+In the above, you map the `/say[/{message}]` pattern to `\App\Controller\Echo\Action`. For a request, the router creates an instance and calls the `__invoke()` method. The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute. `[]` marks this part of the pattern as optional. 
 
 You also give a `echo/say` name to this route to be able to generate URLs pointing to it.
 
@@ -96,9 +94,9 @@ After creating the action and the view, start a web server with `make up` and fo
 http://localhost/say/Hello+World
 ```
 
-This URL will result in a page displaying "The message is: Hello World".
+This URL displays a page with "The message is: Hello World".
 
-If you omit the `message` parameter in the URL, you would see the page display "The message is: Hello!".
+If you omit the `message` parameter in the URL, the page displays "The message is: Hello!".
 
 ## Creating a View Template <span id="creating-view-template"></span>
 
@@ -118,13 +116,12 @@ use Yiisoft\Html\Html;
 <p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-Note that in the above code, the `message` parameter is HTML-encoded
-before being printed. This is necessary as the parameter comes from an end user, making it vulnerable to
+In the above code, the `message` parameter uses HTML encoding before you print it. You need that because the parameter comes from an end user and is vulnerable to
 [cross-site scripting (XSS) attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
 malicious JavaScript in the parameter.
 
 Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even
-PHP statements. In fact, the `say` view is a PHP script executed by the view service.
+PHP statements. In fact, the view service executes the `say` view as a PHP script.
 
 To use the view, you need to change `src/Controller/Echo/Action.php`:
 
@@ -156,7 +153,7 @@ final readonly class Action
 }
 ```
 
-Now open your browser and check it again. It should give you a similar text but with a layout applied.
+Now open your browser and check it again. You should see similar text but with a layout applied.
 
 Also, you've separated the part about how it works and part of how it's presented. In the larger applications, 
 it helps a lot to deal with complexity.
