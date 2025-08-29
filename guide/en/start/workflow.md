@@ -1,7 +1,7 @@
 # Running applications
 
-After installing Yii, you have a working Yii application that can be launched via `make up` and then
-accessed via the URL `http://localhost/`. This section introduces the application's built-in functionality,
+After installing Yii, you have a working Yii application that you can launch via `make up` and then
+access via the URL `http://localhost/`. This section introduces the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
 Note that unlike the framework itself, after you install a project template, it's all yours.
@@ -90,18 +90,17 @@ rector.php                Rector configuration.
 yii                       Console application entry point.
 ```
 
-In general, the files in the application can be divided into two groups: those under `app/public` and those
-under other directories. The former can be directly accessed via HTTP (i.e., in a browser), while the latter can't
-and shouldn't be.
+In general, the files in the application fall into two groups: those under `app/public` and those
+under other directories. You can access the former directly via HTTP (i.e., in a browser), while you shouldn't expose the latter.
 
-Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
-The entry script is using an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
-an incoming request with the help of one of PSR-7 packages and passes it to [an application](../structure/application.md)
-instance. An application contains a set of middleware that is executed sequentially processing the request.
-The result is passed further to the emitter that takes care of sending a response to the browser.
+Each application has an entry script `public/index.php`, the only web-accessible PHP script in the application.
+The entry script uses an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
+an incoming request with the help of one of PSR-7 packages and passes it to an [application](../structure/application.md)
+instance. The application executes a set of middleware sequentially to process the request.
+It then passes the result to the emitter, which sends the response to the browser.
 
-Depending on the middleware used, the application may behave differently. By default, there is a router
-that, based on URL requested and configuration, chooses a handler that's executed to produce a response.
+Depending on the middleware you use, the application may behave differently. By default, a router
+uses the requested URL and configuration to choose a handler and execute it to produce a response.
 
 You can learn more about the application template from
 the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md).

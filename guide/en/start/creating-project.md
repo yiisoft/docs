@@ -13,7 +13,7 @@ Then run the following command:
 docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
 ```
 
-This will install the latest stable version of Yii project template in a directory named `your_project`.
+This installs the latest stable version of the Yii project template in a directory named `your_project`.
 You can choose a different directory name if you want.
 
 > Tip: If you want to install the latest development version of Yii, you may use the following command instead,
@@ -23,7 +23,7 @@ You can choose a different directory name if you want.
 > docker run --rm -it -v "$(pwd):/app" composer/composer create-project --stability=dev yiisoft/app your_project
 > ```
 >
-> Note that the development version of Yii shouldn't be used for production as it may break your running code.
+> Note: Don't use the development version of Yii for production because it may break your running code.
 
 After you finish installation, run `make up` and open your browser to the URL `http://localhost/`.
 

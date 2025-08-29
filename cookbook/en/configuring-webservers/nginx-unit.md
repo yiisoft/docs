@@ -1,6 +1,6 @@
 # Configuring web servers: NGINX Unit
 
-You can run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.
+Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.
 Here is a sample configuration.
 
 ```json

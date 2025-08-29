@@ -1,7 +1,7 @@
 # Configuring web servers: Nginx
 
-To use [Nginx](https://wiki.nginx.org/), you should install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
-You may use the following Nginx configuration, replacing `path/to/app/public` with the actual path for
+To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
+Use the following Nginx configuration, replacing `path/to/app/public` with the actual path for
 `app/public` and `mysite.test` with the actual hostname to serve.
 
 ```nginx
@@ -49,7 +49,7 @@ server {
 }
 ```
 
-When using this configuration, you should also set `cgi.fix_pathinfo=0` in the `php.ini` file
+When you use this configuration, also set `cgi.fix_pathinfo=0` in the `php.ini` file
 to avoid many unnecessary system `stat()` calls.
 
 Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii

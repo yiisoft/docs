@@ -1,8 +1,7 @@
 # Configuring web servers: General
 
-On a production server, in case you're not using Docker, you should configure your Web server to serve
-the application's public files only. Such a configuration requires pointing the document root of your Web server
-to the `app/public` folder.
+On a production server, if you don't use Docker, configure your web server to serve only the application's public files. 
+Point the document root of your web server to the `app/public` folder.
 
 > Info: If you're running your Yii application behind a reverse proxy, you might need to configure
 > [Trusted proxies and headers](../../../guide/en/security/trusted-request.md).
