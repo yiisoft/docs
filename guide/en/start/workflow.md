@@ -1,7 +1,7 @@
 # Running applications
 
-After installing Yii, you have a working Yii application that you can launch via `make up` and then
-access via the URL `http://localhost/`. This section introduces the application's built-in functionality,
+After installing Yii, you have a working Yii application.
+This section introduces the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
 Note that unlike the framework itself, after you install a project template, it's all yours.
@@ -18,7 +18,7 @@ This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-In addition to the web application, you can access a console script via `make yii`.
+In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.
 Use this script to run background and maintenance tasks for the application, which the
 [Console Application Section](../tutorial/console-applications.md) describes.
 

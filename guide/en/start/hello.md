@@ -88,11 +88,7 @@ You also give a `echo/say` name to this route to be able to generate URLs pointi
 
 ## Trying it out <span id="trying-it-out"></span>
 
-After creating the action and the view, start a web server with `make up` and follow the following URL:
-
-```
-http://localhost/say/Hello+World
-```
+After creating the action and the view open `http://localhost/say/Hello+World` in your browser.
 
 This URL displays a page with "The message is: Hello World".
 

@@ -13,6 +13,12 @@ Through this tutorial, you will learn how to:
 To install form package, issue the following command in your application directory:
 
 ```
+composer require yiisoft/form-model
+```
+
+For Docker that would be:
+
+```
 make composer require yiisoft/form-model
 ```
 
