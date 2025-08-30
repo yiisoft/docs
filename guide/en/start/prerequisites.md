@@ -9,10 +9,10 @@ Yii is a PHP framework, so make sure you [read and understand language reference
 
 ## Object-oriented programming
 
-A basic understanding of object-oriented programming is required. If you're not familiar with it, check one of the many
+You need a basic understanding of object-oriented programming. If you're not familiar with it, check one of the many
 tutorials available such as [the one from tuts+](https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762).
 
-When developing with Yii, you will be writing code in an object-oriented fashion, so make sure you're familiar with
+When you develop with Yii, you write code in an object-oriented fashion, so make sure you're familiar with
 [PHP OOP support](https://www.php.net/manual/en/language.oop5.php).
 
 Note that the more complicated your application is, the more advanced OOP concepts you should learn to successfully
@@ -26,5 +26,12 @@ the command line, it's time to start trying. Once you learn the basics, you'll n
 
 ## HTTP
 
-Since Yii is a web framework and a major part of the web is using HTTP, it's a good idea to
+Since Yii is a web framework and the web largely uses HTTP, it's a good idea to
 [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+
+## Docker
+
+The default application template leverages Docker,
+so we recommend that you [read and understand the concepts](https://docs.docker.com/get-started/).
+
+Also, you will benefit from familiarizing yourself with [twelve-factor app](https://12factor.net/) principles.

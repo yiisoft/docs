@@ -261,7 +261,8 @@ of `{ParamName:RegExp}`, where `ParamName` specifies the parameter name and `Reg
 expression used to match parameter values.
 If `RegExp` isn't specified, it means the parameter value should be a string without any slash.
 
-> Note: You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.
+> [!NOTE]
+> You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.
 
 You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid placeholder, because `()` is
 a capturing group. Instead, you can use either `{lang:en|de}` or `{lang:(?:en|de)}`.

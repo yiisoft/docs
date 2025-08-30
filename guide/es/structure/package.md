@@ -14,7 +14,8 @@ to use it. This is useful if you are developing private packages that you want t
 Packages installed by Composer are stored in the `vendor` directory of your project. 
 Because Composer is a dependency manager, when it installs a package, it will also install all its dependent packages.
 
-> Warning: `vendor` directory of your application should never be modified.
+> [!WARNING]
+> `vendor` directory of your application should never be modified.
 
 A package could be installed with the following command:
 
@@ -113,7 +114,8 @@ Each Composer package should have a package name which uniquely identifies the p
 The format of package names is `vendorName/projectName`. For example, in the package name `yiisoft/queue`,
 the vendor name and the project name are `yiisoft` and `queue`, respectively.
 
-> Warning: Do NOT use `yiisoft` as your vendor name as it is reserved for use by the Yii itself.
+> [!WARNING]
+> Do NOT use `yiisoft` as your vendor name as it is reserved for use by the Yii itself.
 
 We recommend you prefix `yii-` to the project name for packages that are not able to work as general PHP
 packages and require Yii application. This will allow users to more easily tell whether a package is Yii specific.

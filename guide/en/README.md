@@ -1,6 +1,6 @@
 # The definitive guide to Yii 3.0
 
-This guide is released under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
+We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs).
 
 Introduction +
 ------------

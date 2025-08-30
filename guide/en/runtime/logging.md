@@ -81,7 +81,8 @@ the constant appears.
 For example, it's equal to the string `'App\\Service\\MyService::serve'` if the above line of code is called within
 this method.
 
-> Info: The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
+> [!IMPORTANT]
+> The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
 
 Note that PSR-3 package provides `\Psr\Log\NullLogger` class that provides the same set of methods but doesn't log
 anything. That means that you don't have to check if logger is configured with `if ($logger !== null)` and, instead,
@@ -267,7 +268,8 @@ $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
 ```
 
-> Info: Getting call stack information isn't trivial. Therefore, you should only use this feature during development
+> [!IMPORTANT]
+> Getting call stack information isn't trivial. Therefore, you should only use this feature during development
 or when debugging an application.
 
 
@@ -284,7 +286,8 @@ $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setFlushInterval(100); // default is 1000
 ```
 
-> Info: Message flushing also occurs when the application ends,
+> [!IMPORTANT]
+> Message flushing also occurs when the application ends,
 which ensures log targets can receive complete log messages.
 
 When the [[\Yiisoft\Log\Logger|logger object]] flushes log messages to [log targets](#log-targets),
@@ -311,7 +314,8 @@ $logger = new \Yiisoft\Log\Logger([$fileTarget]);
 $logger->setFlushInterval(1);
 ```
 
-> Note: Frequent message flushing and exporting will degrade the performance of your application.
+> [!NOTE]
+> Frequent message flushing and exporting will degrade the performance of your application.
 
 
 ### Toggling log targets <span id="toggling-log-targets"></span>
@@ -350,7 +354,8 @@ The following protected methods will also be available for child targets:
 
 For more details, you may refer to any of the log target classes included in the package.
 
-> Tip: Instead of creating your own loggers, you may try any PSR-3 compatible logger such
+> [!TIP]
+> Instead of creating your own loggers, you may try any PSR-3 compatible logger such
 as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
 
 ```php

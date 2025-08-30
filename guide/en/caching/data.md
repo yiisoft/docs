@@ -59,7 +59,8 @@ Yii provides the following handlers:
 
 [You could find more handlers at packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).
 
-> Tip: You may use different cache storage in the same application. A common strategy is:
+> [!TIP]
+> You may use different cache storage in the same application. A common strategy is:
 > - To use memory-based cache storage to store small but constantly used data (e.g., statistics)
 > - To use file-based or database-based cache storage to store big and less often used data (e.g., page content)
 
