@@ -69,3 +69,18 @@ that's all the business logic has to go to framework-independent classes.
 
 Yii 3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application
 into components.
+
+### Learn Docker
+
+Default application templates are using [Docker](https://www.docker.com/get-started/) to run application.
+It's a good idea to learn how to use it and use it for your own projects since it provides a lot of benefits:
+
+1. Exactly the same environment as in production.
+2. No need to install anything except Docker itself.
+3. Environment is per application, not per server.
+
+### Learn environment variables
+
+Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+to configure pars of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)
+but might be alien to users of Yii 1.1 and Yii 2.
