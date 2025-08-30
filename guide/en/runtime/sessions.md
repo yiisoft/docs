@@ -72,7 +72,8 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 }
 ``` 
 
-> Note: Closing session as early as possible is a good practice since many session implementations are blocking other
+> [!NOTE]
+> Closing session as early as possible is a good practice since many session implementations are blocking other
 > requests while the session is open.
 
 There are two more ways to close a session:

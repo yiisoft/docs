@@ -42,7 +42,8 @@ composer create-project yiisoft/yii-demo app
 This will install the latest stable version of Yii application template in a directory named `app`.
 You can choose a different directory name if you want.
 
-> Tip: If you want to install the latest development version of Yii, you may use the following command instead,
+> [!TIP]
+> If you want to install the latest development version of Yii, you may use the following command instead,
 > which adds a [stability option](https://getcomposer.org/doc/04-schema.md#minimum-stability):
 >
 > ```bash
@@ -71,7 +72,8 @@ console command while in the project `public` directory:
 ../vendor/bin/yii serve
 ```
 
-> Note: By default, the HTTP-server will listen to port 8080. However, if that port is already in use or you wish to 
+> [!NOTE]
+> By default, the HTTP-server will listen to port 8080. However, if that port is already in use or you wish to 
 serve multiple applications this way, you might want to specify what port to use. Just add the --port argument:
 
 ```bash
@@ -91,8 +93,9 @@ You should see the above "Congratulations!" page in your browser.
 
 ## Configuring Web Servers <span id="configuring-web-servers"></span>
 
-> Info: You may skip this subsection for now if you are just test-driving Yii with no intention
-  of deploying it to a production server.
+> [!IMPORTANT]
+> You may skip this subsection for now if you are just test-driving Yii with no intention
+> of deploying it to a production server.
 
 The application installed according to the above instructions should work out of the box with either
 an [Apache HTTP server](https://httpd.apache.org/) or an [Nginx HTTP server](https://nginx.org/), on
@@ -104,15 +107,18 @@ requires pointing the document root of your Web server to the `app/public` folde
 want to hide `index.php` from the URL, as described in the [Routing and URL Creation](runtime-routing.md) section.
 In this subsection, you'll learn how to configure your Apache or Nginx server to achieve these goals.
 
-> Info: By setting `app/public` as the document root, you also prevent end users from accessing
+> [!IMPORTANT]
+> By setting `app/public` as the document root, you also prevent end users from accessing
 your private application code and sensitive data files that are stored in the sibling directories
 of `app/public`. Denying access to those other folders is a security improvement.
 
-> Info: If your application will run in a shared hosting environment where you do not have permission
+> [!IMPORTANT]
+> If your application runs in a shared hosting environment where you do not have permission
 to modify its Web server configuration, you may still adjust the structure of your application for better security. Please refer to
 the [Shared Hosting Environment](tutorial-shared-hosting.md) section for more details.
 
-> Info: If you are running your Yii application behind a reverse proxy, you might need to configure
+> [!IMPORTANT]
+> If you are running your Yii application behind a reverse proxy, you might need to configure
 > [Trusted proxies and headers](runtime-requests.md#trusted-proxies) in the request component.
 
 ### Apache <span id="apache"></span>

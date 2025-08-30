@@ -25,26 +25,37 @@ The guide should follow [Micosoft style guide](https://learn.microsoft.com/en-us
 
 ## Blocks
 
-Blocks use the Markdown `> Type: `. There are four block types:
+Blocks are in the [GitHub Alerts format](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts):
 
-* `Warning`, for bad security things and other problems
-* `Note`, to emphasize key concepts, things to avoid
-* `Info`, general information (an aside); not as strong as a "Note"
-* `Tip`, pro tips, extras. It can be useful but may not be needed by everyone all the time
+```
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
 
-The sentence after the colon should begin with a capital letter.
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+```
 
 When translating documentation, these Block indicators should not be translated.
 Keeps them intact as they are and only translate the block content.
-For translating the `Type` word, each guide translation should have a `blocktypes.json` file
+For translating the label for the block, each guide translation should have a `blocktypes.json` file
 containing the translations. The following shows an example for German:
 
 ```json
 {
-    "Warning:": "Achtung:",
-    "Note:": "Hinweis:",
-    "Info:": "Info:",
-    "Tip:": "Tipp:"
+    "Note": "Hinweis",
+    "Tip": "Tipp",
+    "Important": "Wichtig",
+    "Warning": "Achtung",
+    "Caution": "Vorsicht"
 }
 ```
 

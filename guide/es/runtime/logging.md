@@ -75,7 +75,8 @@ The `__METHOD__` constant evaluates as the name of the method (prefixed with the
 the constant appears. For example, it is equal to the string `'App\\Service\\MyService::serve'` if 
 the above line of code is called within this method.
 
-> Info: The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
+> [!IMPORTANT]
+> The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
 
 Note that PSR-3 package provides `\Psr\Log\NullLogger` class that provides the same set of methods but does not log
 anything. That means that you don't have to check if logger is configured with `if ($logger !== null)` and, instead,
@@ -211,7 +212,8 @@ $logger->setTraceLevel(3);
 The above application configuration sets trace level to be 3 so each log message will be appended with at most 3
 levels of the call stack at which the log message is recorded.
 
-> Info: Getting call stack information is not trivial. Therefore, you should only use this feature during development
+> [!IMPORTANT]
+> Getting call stack information is not trivial. Therefore, you should only use this feature during development
 or when debugging an application.
 
 
@@ -228,7 +230,8 @@ $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setFlushInterval(100); // default is 1000
 ```
 
-> Info: Message flushing also occurs when the application ends, which ensures log targets can receive complete log messages.
+> [!IMPORTANT]
+> Message flushing also occurs when the application ends, which ensures log targets can receive complete log messages.
 
 When the [[\Yiisoft\Log\Logger|logger object]] flushes log messages to [log targets](#log-targets), they do not get exported
 immediately. Instead, the message exporting only occurs when a log target accumulates certain number of the filtered
@@ -253,7 +256,8 @@ $logger = new \Yiisoft\Log\Logger([$fileTarget]);
 $logger->setFlushInterval(1);
 ```
 
-> Note: Frequent message flushing and exporting will degrade the performance of your application.
+> [!NOTE]
+> Frequent message flushing and exporting will degrade the performance of your application.
 
 
 ### Toggling Log Targets <span id="toggling-log-targets"></span>
@@ -281,5 +285,6 @@ sending the content of the [[\Yii\Log\Target::messages]] array to a designated m
 [[\Yii\Log\Target::formatMessage()]] method to format each message. For more details, you may refer to any of the
 log target classes included in the Yii release.
 
-> Tip: Instead of creating your own loggers you may try any PSR-3 compatible logger such
+> [!TIP]
+> Instead of creating your own loggers you may try any PSR-3 compatible logger such
   as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
