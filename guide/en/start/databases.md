@@ -3,8 +3,8 @@
 Yii doesn't dictate using a particular database or storage for your application.
 There are many ways you can work with relational databases:
 
-- [DB](https://github.com/yiisoft/db)
-- [Active Record](https://github.com/yiisoft/active-record)
+- [Yii DB](https://github.com/yiisoft/db)
+- [Yii Active Record](https://github.com/yiisoft/active-record)
 - [Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)
 - [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)
 - [PDO](https://www.php.net/manual/en/book.pdo.php)
