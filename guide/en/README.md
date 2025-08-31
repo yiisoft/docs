@@ -58,13 +58,11 @@ Views -
 -----
 
 * [Views](views/view.md) -
-* [Widgets](views/widget.md) -
-* [Assets](views/asset.md) -
-* [Working with client scripts](views/client-scripts.md) -
-* [Theming](views/theming.md) -
 * [Template engines](views/template-engines.md) -
 * [View injections](views/view-injections.md) +
-
+* [Scripts, styles and metatags](views/script-style-meta.md)
+* [Assets](views/asset.md) -
+* [Widgets](views/widget.md) -
 
 Working with databases +-
 ----------------------
