@@ -12,7 +12,8 @@ We use the following set of coding styles for metadata.
 - Metadata should be placed in `/.phpstorm.meta.php` directory.
 - Configuration should be split into files. Each file should be named after a class it configures.
 
-> Note: There is no support for subdirectories in PhpStorm yet.
+> [!NOTE]
+> There is no support for subdirectories in PhpStorm yet.
 
 ### Constants 
 

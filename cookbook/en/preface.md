@@ -10,8 +10,7 @@ Because of its architecture and sophisticated caching support,
 it's especially suitable for developing large-scale applications such as portals, content management systems,
 e-commerce, REST APIs, etc.
 
-Together with a comprehensive set of documentation and an enthusiastic user community, Yii can reduce your development
-time in a long run significantly.
+With comprehensive documentation and an enthusiastic user community, Yii can significantly reduce your development time in the long run.
 
 ## What's the book about
 

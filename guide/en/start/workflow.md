@@ -1,20 +1,16 @@
 # Running applications
 
-After installing Yii, you have a working Yii application that can be launched via `./yii serve` and then
-accessed via the URL `http://localhost:8080/`. This section will introduce the application's built-in functionality,
+After installing Yii, you have a working Yii application.
+This section introduces the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
-> Info: For simplicity, throughout this "Getting Started" tutorial use the "serve" command. It shouldn't be used
-> to serve the project in production. When setting up a real server, use `app/public` as the document root.
-  
-Note that unlike the framework itself, after you install a project template, it's all yours. You're free to add or delete
-code and overall change it as you need.
-
+Note that unlike the framework itself, after you install a project template, it's all yours.
+You're free to add or delete code and overall change it as you need.
 
 ## Functionality <span id="functionality"></span>
 
-The application installed has only the homepage, displayed when you access the URL `http://localhost:8080/`.
-It shares a common layout that could be reused on further pages.
+The installed application has only the homepage, which displays when you access the URL `http://localhost/`.
+It shares a common layout that you can reuse on further pages.
 
 <!--
 You should also see a toolbar at the bottom of the browser window.
@@ -22,9 +18,9 @@ This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-Additionally, to the web application, there is a console script accessible via `./yii`.
-This script can be used to run background and maintenance tasks for the application, which are described
-in the [Console Application Section](../tutorial/console-applications.md).
+In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.
+Use this script to run background and maintenance tasks for the application, which the
+[Console Application Section](../tutorial/console-applications.md) describes.
 
 
 ## Application structure <span id="application-structure"></span>
@@ -32,10 +28,13 @@ in the [Console Application Section](../tutorial/console-applications.md).
 The most important directories and files in your application are (assuming the application's root directory is `app`):
 
 ```
-config/                   Configuration files.
+assets/                   Application assets to be published.
+config/                   Configuration.
     common/               Configs applied to both console and web.
         di/               DI container configuration.
         aliasess.php      Aliases.
+        application.php   Application configuration.
+        bootstrap.php     Bootstrap configuration.
         params.php        Various parameters used in DI configs.
         routes.php        Application routes.
     console/              Configs applied to console.
@@ -50,50 +49,58 @@ config/                   Configuration files.
         prod/             Configs applied in prod environment.
             params.php    Various parameters used in DI configs.
         test/             Configs applied in test environment.
-            params.php    Various parameters used in DI configs.
-    events.php            Event handlers for both console and web.
-    events-console.php    Event handlers for console.
-    events-web.php        Event handlers for web.
-    params.php            Parameters that are passed to configs.
-    providers.php         Service providers for both console and web.
-    providers-console.php Service providers for console.
-    providers-web.php     Service providers for web.
-    routes.php            Defines how URLs are mapped to their handlers.
-docs/                     Documentation.
+            params.php    Various parameters used in DI configs.    
+    configuration.php     Defines how to read application configs.
+    .merge-plan.php       Merge plan to assemble configs according to. Build using `configuration.php`.
+docker/                   Docker configuration.
+    dev/                  Dev environment.
+        .env              Environment variables.
+        compose.yml       Services for dev environment.
+    prod/                 Prod environment.
+        .env              Environment variables.
+        compose.yml       Services for prod environment.
+    test/                 Test environment.
+        .env              Environment variables.
+        compose.yml       Services for test environment.
+    .env                  Common environment variables.
+    compose.yml           Common services.
+    Dockerfile            Images to use.
 public/                   Files publically accessible from the Internet.
     assets/               Published assets.
-    index.php             Entry script.
-resources/                Application resources.
-    assets/               Asset bundle resources.
-    message/              Message translations.
-    views/                View templates.
-      layout/             View layouts.
+    index.php             Entry script for web.
 runtime/                  Files generated during runtime.
 src/                      Application source code.
-    Asset/                Asset bundle definitions.
     Command/              Console commands.
-    Controller/           Web controller classes.
+    Controller/           Controllers.
     Handler/              Custom handler for 404.
-    ViewInjection/        Injections that bring additional variables into view templates.
-    Installer.php         Additional actions done on Composer commands.
-tests/                    A set of Codeception tests for the application.
+    Layout/               Layouts.
+    autoload.php          Autoloader.
+    Environment.php       Environment helper.
+tests/                    A set of Codeception tests for the application.  
 vendor/                   Installed Composer packages.
-configuration.php         Defines how to read application configs.
+.gitignore                Files and directories to be ignored by Git.
+.php-cs-fixer.php         PHP Coding Standards Fixer configuration.
+c3.php                    Codeception code coverage script.
+condeception.yml          Codeception configuration.
+composer.json             Composer configuration.
+composer.lock             Composer lock file.
+Makefile                  Makefile with shortcut commands.
+psalm.xml                 Psalm configuration.
+rector.php                Rector configuration.
 yii                       Console application entry point.
 ```
 
-In general, the files in the application can be divided into two types: those under `app/public` and those
-under other directories. The former can be directly accessed via HTTP (i.e., in a browser), while the latter can't
-and shouldn't be.
+In general, the files in the application fall into two groups: those under `app/public` and those
+under other directories. You can access the former directly via HTTP (i.e., in a browser), while you shouldn't expose the latter.
 
-Each application has an entry script `public/index.php` which is the only Web accessible PHP script in the application.
-The entry script is using an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
-an incoming request with the help of one of PSR-7 packages and passes it to [an application](../structure/application.md)
-instance. An application contains a set of middleware that is executed sequentially processing the request.
-The result is passed further to the emitter that takes care of sending a response to the browser.
+Each application has an entry script `public/index.php`, the only web-accessible PHP script in the application.
+The entry script uses an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of
+an incoming request with the help of one of PSR-7 packages and passes it to an [application](../structure/application.md)
+instance. The application executes a set of middleware sequentially to process the request.
+It then passes the result to the emitter, which sends the response to the browser.
 
-Depending on the middleware used, the application may behave differently. By default, there is a router
-that, based on URL requested and configuration, chooses a handler that's executed to produce a response.
+Depending on the middleware you use, the application may behave differently. By default, a router
+uses the requested URL and configuration to choose a handler and execute it to produce a response.
 
 You can learn more about the application template from
 the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md).

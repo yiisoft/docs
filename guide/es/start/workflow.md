@@ -4,7 +4,8 @@ After installing Yii, you have a working Yii application that can be accessed vi
 the URL `http://hostname/`. This section will introduce the application's built-in functionality,
 how the code is organized, and how the application handles requests in general.
 
-> Info: For simplicity, throughout this "Getting Started" tutorial, it's assumed that you have set `app/public`
+> [!IMPORTANT]
+> For simplicity, throughout this "Getting Started" tutorial, it's assumed that you have set `app/public`
   as the document root of your Web server, and configured the URL for accessing
   your application to be `http://hostname/index.php` or something similar.
   For your needs, please adjust the URLs in our descriptions accordingly.

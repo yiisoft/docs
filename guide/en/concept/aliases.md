@@ -32,7 +32,8 @@ return [
 ];
 ```
 
-> Note: The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
+> [!NOTE]
+> The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
 
 Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.
 For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias.
@@ -94,7 +95,8 @@ public function actionIndex(Aliases $aliases)
 The path/URL represented by a derived alias is determined by replacing the root alias part with its corresponding
 path/URL in the derived alias.
 
-> Note: The `get()` method doesn't check whether the resulting path/URL refers to an existing file or resource.
+> [!NOTE]
+> The `get()` method doesn't check whether the resulting path/URL refers to an existing file or resource.
 
 
 A root alias may also contain slash `/` characters. The `get()` method

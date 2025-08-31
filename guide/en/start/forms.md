@@ -13,327 +13,165 @@ Through this tutorial, you will learn how to:
 To install form package, issue the following command in your application directory:
 
 ```
-composer require yiisoft/form
+composer require yiisoft/form-model
+```
+
+For Docker that would be:
+
+```
+make composer require yiisoft/form-model
 ```
 
 ## Creating a form <span id="creating-form"></span>
 
-The data to be requested from the user will be represented by an `EchoForm` class as shown below and
-saved in the file `/src/Form/EchoForm.php`:
+The data to be requested from the user will be represented by a `Form` class as shown below and
+saved in the file `/src/App/Controller/Echo/Form.php`:
 
 ```php
 <?php
-namespace App\Form;
+
+namespace App\Controller\Echo;
 
 use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Rule\Length;
 
-final readonly class EchoForm extends FormModel
+final class Form extends FormModel
 {
-    private string $message = '';
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
+    #[Label('The message to be echoed')]
+    #[Length(min: 2)]
+    public string $message = '';
 }
 ```
 
-To inherit from `FormModel` you need to install `form-model` by following commands:
-
-```
-composer require yiisoft/form-model
-```
-
-The `EchoForm` class has `$message` property and related getter.
+In the above example, the `Form` has a single string property `$message` which length should be at least
+of two characters. There's also a custom label for the property.
 
 ## Using the form <span id="using-form"></span> 
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
 
-You also need to install a hydrator package
-
-```
-composer require yiisoft/hydrator
-```
-
-Here's what you end up with in `/src/Controller/EchoController.php`:
+Here's what you end up with in `/src/Controller/Echo/Action.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Echo;
 
-use App\Form\EchoForm;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Hydrator\Hydrator;
-use Yiisoft\Http\Method;
+use Yiisoft\FormModel\FormHydrator;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
 
-final readonly class EchoController
+final readonly class Action
 {
     public function __construct(
-        private ViewRenderer $viewRenderer
-    )
-    {
-        $this->viewRenderer = $viewRenderer->withControllerName('echo');
-    }
+        private ViewRenderer $viewRenderer,
+        private FormHydrator $formHydrator,
+    ) {}
 
-    public function say(ServerRequestInterface $request): ResponseInterface
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
-        $form = new EchoForm();
-        $hydrator = new Hydrator();
-    
-        if ($request->getMethod() === Method::POST) {
-            $hydrator->hydrate($form, $request->getParsedBody()['EchoForm']);
-        }
+        $form = new Form();        
 
-        return $this->viewRenderer->render('say', [
+        $this->formHydrator->populateFromPostAndValidate($form, $request);
+
+        return $this->viewRenderer->render(__DIR__ . '/template', [
             'form' => $form,
         ]);
     }
 }
 ```
 
-Instead of reading from request directly, you fill your form with the help of `Yiisoft\Hydrator\Hydrator::hydrate()` method if the request
-method is POST and then pass it to your view.
+Instead of reading from route, you fill your form from request's POST data and validate it with
+the help of `FormHydrator`. Next you pass the form to the view.
 
-Now, to allow POST, you need to adjust your route in `config/routes.php`:
+For the form to function we need to allow both GET to render the form and POST to send the data.
+Adjust your route in `config/common/routes.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\Controller\EchoController;
-use App\Controller\SiteController;
 use Yiisoft\Http\Method;
+use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/')->action([SiteController::class, 'index'])->name('home'),
-    Route::methods([Method::GET, Method::POST], '/say[/{message}]')->action([EchoController::class, 'say'])->name('echo/say'),
+    Group::create()
+        ->routes(
+            Route::get('/')
+                ->action(\App\Controller\HomePage\Action::class)
+                ->name('home'),
+            Route::methods([Method::GET, Method::POST], '/say')
+                ->action(\App\Controller\Echo\Action::class)
+                ->name('echo/say'),
+        ),
 ];
 ```
 
 ## Adjusting view
 
-To render a form, you need to change your view, `resources/views/echo/say.php`:
+To render a form, you need to change your view, `src/Controller/Echo/template.php`:
 
 ```php
 <?php
-
-use Yiisoft\Form\Field\Text;
+use App\Controller\Echo\Form;
+use Yiisoft\FormModel\Field;
 use Yiisoft\Html\Html;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Yii\View\Renderer\Csrf;
 
-/* @var \App\Form\EchoForm $form */
-/* @var string $csrf */
-/* @var \Yiisoft\Router\UrlGeneratorInterface $urlGenerator */
+/**
+ * @var Form $form
+ * @var string[] $errors
+ * @var UrlGeneratorInterface $urlGenerator
+ * @var Csrf $csrf
+ */
+
+$htmlForm = Html::form()
+    ->post($urlGenerator->generate('echo/say'))
+    ->csrf($csrf);
 ?>
 
+<?= $htmlForm->open() ?>
+    <?= Field::text($form, 'message')->required() ?>
+    <?= Html::submitButton('Say') ?>
+<?= $htmlForm->close() ?>
 
-<?php if (!empty($form->getMessage())): ?>
-    <div class="notification is-success">
-        The message is: <?= Html::encode($form->getMessage()) ?>
-    </div>
+<?php if ($form->isValid()): ?>
+    Echo said: <?= Html::encode($form->message) ?>
 <?php endif ?>
-
-<?= Html::form()
-    ->post($urlGenerator->generate('echo/say'))
-    ->csrf($csrf)
-    ->open() ?>
-
-<?= Text::widget()
-    ->name('EchoForm[message]')
-    ->value($form->getMessage())
-    ->label('Message')
-    ->placeholder('Type your message')
-    ->inputId('echoform-message'); ?>
-
-<?= Html::submitButton('Say') ?>
-
-<?= Html::form()->close() ?>
 ```
 
-If a form has a message set, you're displaying a box with the message. The rest is about rendering the form.
+If the form is valid, you display a message. The rest initializes and renders the form.
 
-You get the action URL from the URL manager service.
-You access it as `$urlGenerator` that's a default parameter available in all views.
-This variable and similar ones such as `$csrf` are provided by view injections listed in `config/common/params.php`:
+First, you initialize `$htmlForm` with the POST type and the action URL generated with the help from the URL generator.
+You can access it as `$urlGenerator` in all views. You also need to pass the CSRF token to the form, which is also
+available in every view as `$csrf` thanks to the view injections listed in `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view-renderer' => [
     'injections' => [
-        Reference::to(CommonViewInjection::class),
         Reference::to(CsrfViewInjection::class),
-        Reference::to(LayoutViewInjection::class),
-        Reference::to(TranslatorViewInjection::class),
     ],
 ],
 ```
 
-You set the value of a CSRF token, and it is rendered as a hidden input to ensure that the request originates from 
+The template renders the CSRF token value as a hidden input to ensure that the request originates from
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-CSRF protection is enabled by default. To turn off the CSRF protection,
-you need to remove using `CsrfMiddleware` or `CsrfTokenMiddleware` to `config/common/di/router.php`:
+You use `Field::text()` to output "message" field, so it takes care about filling the value, escaping it,
+rendering field label and validation errors.
 
-```php
-<?php
-
-declare(strict_types=1);
-
-use Yiisoft\Config\Config;
-use Yiisoft\Csrf\CsrfMiddleware;
-use Yiisoft\DataResponse\Middleware\FormatDataResponse;
-use Yiisoft\Router\Group;
-use Yiisoft\Router\RouteCollection;
-use Yiisoft\Router\RouteCollectionInterface;
-use Yiisoft\Router\RouteCollectorInterface;
-
-/** @var Config $config */
-
-return [
-    RouteCollectionInterface::class => static function (RouteCollectorInterface $collector) use ($config) {
-        $collector
-            ->middleware(CsrfMiddleware::class) // <-- here
-            ->middleware(FormatDataResponse::class)
-            ->addGroup(
-                Group::create()
-                    ->routes(...$config->get('routes'))
-            );
-
-        return new RouteCollection($collector);
-    },
-];
-    
-    // ...
-```
-
-You use `Text::widget()` to output "message" field, so it takes care about filling the value, escaping it,
-rendering field label and validation errors you're going to take care of next.
-
-## Adding validation
-
-Right now it's possible to submit an empty value. Make it required. Modify `/src/Controller/EchoController.php`:
-
-```php
-<?php
-
-namespace App\Controller;
-
-use App\Form\EchoForm;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Http\Method;
-use Yiisoft\Validator\Validator;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
-use Yiisoft\Hydrator\Hydrator;
-
-final readonly class EchoController
-{
-    public function __construct(
-        private ViewRenderer $viewRenderer
-    )
-    {
-        $this->viewRenderer = $viewRenderer->withControllerName('echo');
-    }
-
-    public function say(ServerRequestInterface $request, Validator $validator): ResponseInterface
-    {
-        $form = new EchoForm();
-        $hydrator = new Hydrator();
-        $errors = null;
-
-        if ($request->getMethod() === Method::POST) {
-            $hydrator->hydrate($form, $request->getParsedBody()[$form->getFormName()]);
-            $result = $validator->validate($form);
-            if (!$result->isValid()) {
-                $errors = $result->getErrors();
-            }
-        }
-
-        return $this->viewRenderer->render('say', [
-            'form' => $form,
-            'errors' => $errors,
-        ]);
-    }
-}
-```
-
-You've got a validator instance through type-hinting and used it to validate the form.
-Now you need to add validation rules to `/src/Form/EchoForm.php`:
-
-```php
-<?php
-namespace App\Form;
-
-use Yiisoft\Validator\Rule\Required;
-
-final readonly class EchoForm
-{
-    #[Required]
-    private string $message = '';
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
-}
-```
-
-Now, in case you submit an empty message, you will get a validation error: "Message cannot be blank."
-Also, you can add required attribute to text field in `views/echo/say.php`.
-
-```php
-<?php
-
-use Yiisoft\Form\Field\Text;
-use Yiisoft\Html\Html;
-
-/* @var \App\Form\EchoForm $form */
-/* @var \Yiisoft\Validator\Error[]|null $errors */
-/* @var string $csrf */
-/* @var \Yiisoft\Router\UrlGeneratorInterface $urlGenerator */
-?>
-
-
-<?php if (!empty($form->getMessage())): ?>
-    <div class="notification is-success">
-        The message is: <?= Html::encode($form->getMessage()) ?>
-    </div>
-<?php endif ?>
-<?php if (!empty($errors)): ?>
-    <?php foreach($errors as $error): ?>
-        <div class="notification is-errors">
-            <?= Html::encode($error->getMessage()) ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif ?>
-
-<?= Html::form()
-    ->post($urlGenerator->generate('echo/say'))
-    ->csrf($csrf)
-    ->open() ?>
-
-<?= Text::widget()
-    ->name('EchoForm[message]')
-    ->value($form->getMessage())
-    ->label('Message')
-    ->placeholder('Type your message')
-    ->required(true) // <-- here
-    ->inputId('echoform-message'); ?>
-
-<?= Html::submitButton('Say') ?>
-
-<?= Html::form()->close() ?>
-```
+Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
+at least 2 characters."
 
 ## Trying it Out <span id="trying-it-out"></span>
-
 
 To see how it works, use your browser to access the following URL:
 
@@ -341,14 +179,14 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page displaying a form input field that has a label that indicates what data are to be entered.
-Also, there is a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
-an error message displayed next to a problematic input field.
+You will see a page with a form input field and a label that indicates what data to enter.
+Also, the form has a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
+that the field is required. If you enter a single character, the form displays an error message next to
+the problematic input field.
 
 ![Form with a validation error](img/form-error.png)
 
-After entering a message and clicking the "submit" button, you will see a new page
-displaying the data that you just entered.
+After you enter a valid message and click the "submit" button, the page echoes the data that you entered.
 
 ![Form with a success message](img/form-success.png)
 

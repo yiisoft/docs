@@ -5,7 +5,8 @@ in mind (the problem context), we build an abstraction that consists of entities
 operates these entities. To focus on the complex part of the problem, domain is, ideally, separated from
 infrastructure part of the system (i.e., how to save data into database, how to form HTTP response etc.).
 
-> Note: Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete
+> [!NOTE]
+> Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete
 > for a set of records with not much complex logic it makes no sense to apply complex solution to a simple problem.
 > Individual concepts of domain design below could be applied separately so make sure to check these even if your
 > project isn't that complicated. 

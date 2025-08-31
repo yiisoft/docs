@@ -266,7 +266,8 @@ Read more about it in ["Events"](events.md).
 Parameters, `config/params.php` store configuration values that are used in other config files to configuring services
 and service providers.
 
-> Tip: Don't use parameters, constants or environment variables directly in your application, configure
+> [!TIP]
+> Don't use parameters, constants or environment variables directly in your application, configure
 > services instead.
 
 Default application `params.php` looks like the following:
