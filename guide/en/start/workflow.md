@@ -121,3 +121,7 @@ The following diagram shows how an application handles a request.
 6. The handler may load some data, possibly from a database.
 7. The handler forms a response by using data. Either directly or with the help of the view package.
 8. Emitter receives the response and takes care of sending the response to the user's browser.
+
+> [!NOTE]
+> [← Running applications](workflow.md) |
+> [Working with forms →](forms.md)

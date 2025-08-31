@@ -48,3 +48,8 @@ Open your browser to the URL `http://localhost/`.
 > `DEV_PORT` in the `docker/.env` file.
 
 ![Successful Installation of Yii](img/app-installed.png)
+
+
+> [!NOTE]
+> [← What do you need to know?](prerequisites.md) | 
+> [Running applications →](running-applications.md)

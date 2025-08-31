@@ -200,3 +200,7 @@ This is a task that could take you a lot of time when developing an application,
 to make this task easy.
 
 In the next section, you will learn how to work with databases, which are needed in nearly every application.
+
+> [!NOTE]
+> [← Saying hello](hello.md) |
+> [Working with databases →](databases.md)

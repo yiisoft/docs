@@ -28,3 +28,7 @@ In this guide, we will focus on working with relational databases using Yii DB.
 ## Using data package
 
 ### Pagination
+
+> [!NOTE]
+> [← Working with databases](databases.md) |
+> [Looking ahead →](looking-ahead.md)
