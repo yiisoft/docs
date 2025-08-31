@@ -15,7 +15,7 @@ For non-relational ones, there are usually official libraries available:
 - [Redis](https://redis.io/docs/clients/#php)
 - ...
 
-In this guide, we will focus on working with relational databases using DB.
+In this guide, we will focus on working with relational databases using Yii DB.
 
 ## Configuring connection
 
