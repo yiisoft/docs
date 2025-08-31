@@ -31,7 +31,7 @@ namespace App\Controller\Echo;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Html\Html;
-use Yiisoft\Router\CurrentRoute;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 
 final readonly class Action
 {
@@ -39,10 +39,9 @@ final readonly class Action
         private ResponseFactoryInterface $responseFactory,
     ) {}
 
-    public function __invoke(CurrentRoute $currentRoute): ResponseInterface
+    #[RouteArgument('message')]
+    public function __invoke(string $message = 'Hello!'): ResponseInterface
     {
-        $message = $currentRoute->getArgument('message', 'Hello!');
-
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('The message is: ' . Html::encode($message));
         return $response;
@@ -50,12 +49,12 @@ final readonly class Action
 }
 ```
 
-In your example, the `__invoke` method receives the `$currentRoute` parameter that you can use to get
-a message, whose value defaults to `"Hello"`. If the request is made to `/say/Goodbye`,
+In your example, the `__invoke` method receives the `$message` parameter that with the help of `RouteArgument` attribute
+gets the message from URL. The value defaults to `"Hello!"`. If the request is made to `/say/Goodbye`,
 the action assigns the value "Goodbye" to the `$message` variable.
 
-The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that outputs the response
-to the end user.
+The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that
+outputs the response to the end user.
 
 ## Configuring router
 
@@ -82,7 +81,10 @@ return [
 ];
 ```
 
-In the above, you map the `/say[/{message}]` pattern to `\App\Controller\Echo\Action`. For a request, the router creates an instance and calls the `__invoke()` method. The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute. `[]` marks this part of the pattern as optional. 
+In the above, you map the `/say[/{message}]` pattern to `\App\Controller\Echo\Action`. 
+For a request, the router creates an instance and calls the `__invoke()` method.
+The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute.
+`[]` marks this part of the pattern as optional. 
 
 You also give a `echo/say` name to this route to be able to generate URLs pointing to it.
 
@@ -97,8 +99,7 @@ If you omit the `message` parameter in the URL, the page displays "The message i
 ## Creating a View Template <span id="creating-view-template"></span>
 
 Usually, the task is more complicated than printing out "hello world" and involves rendering some complex
-HTML. For this task, it's handy to use [views templates](../structure/view.md). They're scripts you
-write to generate a response's body.
+HTML. For this task, it's handy to use view templates. They're scripts you write to generate a response's body.
 
 For the "Hello" task, create a `src/Controller/Echo/template.php` template that prints the `message` parameter received
 from the action method:
@@ -129,7 +130,7 @@ declare(strict_types=1);
 namespace App\Controller\Echo;
 
 use Psr\Http\Message\ResponseInterface;
-use Yiisoft\Router\CurrentRoute;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Yiisoft\Yii\View\Renderer\ViewRenderer;
 
 final readonly class Action
@@ -138,10 +139,9 @@ final readonly class Action
         private ViewRenderer $viewRenderer,
     ) {}
 
-    public function __invoke(CurrentRoute $currentRoute): ResponseInterface
+    #[RouteArgument('message')]
+    public function __invoke(string $message = 'Hello!'): ResponseInterface
     {
-        $message = $currentRoute->getArgument('message', 'Hello!');
-
         return $this->viewRenderer->render(__DIR__ . '/template', [
             'message' => $message,
         ]);
@@ -149,7 +149,7 @@ final readonly class Action
 }
 ```
 
-Now open your browser and check it again. You should see similar text but with a layout applied.
+Now open your browser and check it again. You should see the similar text but with a layout applied.
 
 Also, you've separated the part about how it works and part of how it's presented. In the larger applications, 
 it helps a lot to deal with complexity.
