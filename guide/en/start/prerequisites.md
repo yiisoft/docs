@@ -36,5 +36,5 @@ so we recommend that you [read and understand the concepts](https://docs.docker.
 
 Also, you will benefit from familiarizing yourself with [twelve-factor app](https://12factor.net/) principles.
 
-> ![Note]
+> [!NOTE]
 > [Creating a project →](creating-project.md)
