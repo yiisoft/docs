@@ -30,5 +30,5 @@ In this guide, we will focus on working with relational databases using Yii DB.
 ### Pagination
 
 > [!NOTE]
-> [← Working with databases](databases.md) |
-> [Looking ahead →](looking-ahead.md)
+> [← Working with forms](forms.md) |
+> [Generating code with Gii →](gii.md)

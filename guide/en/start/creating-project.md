@@ -52,4 +52,4 @@ Open your browser to the URL `http://localhost/`.
 
 > [!NOTE]
 > [← What do you need to know?](prerequisites.md) | 
-> [Running applications →](running-applications.md)
+> [Running applications →](workflow.md)

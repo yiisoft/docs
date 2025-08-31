@@ -2,5 +2,5 @@
 
 
 > [!NOTE]
-> [← Working with forms](forms.md) |
-> [Generating code with Gii →](gii.md)
+> [← Working with databases](databases.md) |
+> [Looking ahead →](looking-ahead.md)

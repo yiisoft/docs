@@ -123,5 +123,5 @@ The following diagram shows how an application handles a request.
 8. Emitter receives the response and takes care of sending the response to the user's browser.
 
 > [!NOTE]
-> [← Running applications](workflow.md) |
-> [Working with forms →](forms.md)
+> [← Creating a project](creating-project.md) |
+> [Saying hello →](hello.md)
