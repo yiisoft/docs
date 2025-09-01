@@ -21,17 +21,15 @@ $list = $base->orderBy(['created_at' => SORT_DESC])->all();
 
 ## Creating an immutable object in PHP
 
-With modern PHP (8.2+), use `readonly` properties or a `readonly` class. 
-That way, once constructed, properties cannot be reassigned at all. 
-You still provide `with`- methods that return a new instance with changed data if you need to define an interface
-or need validation.
+There is no direct way to modify an instance, but you can use clone to create a new instance with the desired changes.
+That is what `with*` methods do.
 
 ```php
-readonly final class Money
+final class Money
 {
     public function __construct(
-        public int $amount,
-        public string $currency,
+        private int $amount,
+        private string $currency,
     ) {
         $this->validateAmount($amount);
         $this->validateCurrency($currency);
@@ -76,6 +74,16 @@ readonly final class Money
         $clone->currency = $currency;
         return $clone;
     }
+    
+    public function amount(): int 
+    {
+        return $this->amount;
+    }
+    
+    public function currency(): string 
+    {
+        return $this->currency;
+    }
 
     public function add(self $money): self
     {
@@ -91,9 +99,12 @@ $discounted = $price->withAmount(800);
 // $price is still 1000 USD, $discounted is 800 USD
 ```
 
-- `readonly` prevents property reassignment after construction; attempting to do so is a runtime error.
 - We mark the class `final` to prevent subclass mutations; alternatively, design for extension carefully.
 - Validate in the constructor and `with*` methods so every instance is always valid.
+
+> [!TIP]
+> If you define a simple DTO, you can use modern PHP `readonly` and leave properties `public`. The `readonly` keyword
+> would ensure that the properties cannot be modified after the object is created.
 
 ## Using clone (and why it is cheap)
 
@@ -117,7 +128,7 @@ final class Order
 
     public function __clone(): void
     {
-        // Money is immutable in our example, so deep clone is not required.
+        // Money is immutable in our example, so a deep clone is not required.
         // If it were mutable, you could do: $this->total = clone $this->total;
     }
 
