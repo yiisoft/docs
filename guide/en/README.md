@@ -42,6 +42,7 @@ Key concepts +
 * [Configuration](concept/configuration.md) +
 * [Aliases](concept/aliases.md) +
 * [Events](concept/events.md) +
+* [Immutability](concept/immutability.md) +
 
 Handling requests +
 -----------------
