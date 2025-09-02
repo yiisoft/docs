@@ -41,6 +41,9 @@ Here is a sample configuration.
         "yii": {
             "type": "php",
             "user": "www-data",
+            "environment": {
+                "APP_ENV": "dev"
+            },
             "targets": {
                 "direct": {
                     "root": "/path/to/app/public/"
@@ -58,3 +61,6 @@ Here is a sample configuration.
 
 You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini`
 in the same configuration.
+
+In the above, note the usage of `environment`. Since the Yii3 application template is using environment variables,
+this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`.
