@@ -20,6 +20,8 @@ DocumentRoot "path/to/app/public"
     
     # Otherwise forward the request to index.php
     RewriteRule . index.php
+    
+    SetEnv APP_ENV dev
 
     # ...other settings...
 </Directory>
@@ -42,5 +44,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Otherwise forward the request to index.php
 RewriteRule . index.php
 
+SetEnv APP_ENV dev
+
 # ...other settings...
 ```
+
+In the above note usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible
+place to set them. In production environment remember to set `APP_ENV` to `prod`.
