@@ -56,5 +56,5 @@ to avoid many unnecessary system `stat()` calls.
 Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can detect if a connection is secure.
 
-In the above note usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables,
+In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables,
 this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`.
