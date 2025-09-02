@@ -1,0 +1,30 @@
+name: Update docs translation
+
+on:
+  pull_request_target:
+    paths:
+      - 'cookbook/**'
+      - 'guide/**'
+
+jobs:
+  update-docs:
+    name: Update docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.YIISOFT_GITHUB_TOKEN || github.token }}
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Use po4a
+        uses: qwrtln/po4a-action@v1.2
+        with:
+          version: "0.74"
+          config: "po4a.cfg"
+
+      - name: Commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update translation
