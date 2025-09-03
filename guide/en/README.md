@@ -98,21 +98,17 @@ Security +-
 
 * [Security overview](security/overview.md) +
 * [Authentication](security/authentication.md) +
-* [Authorization](security/authorization.md) +-
-* [Working with passwords](security/passwords.md) +
-* [Cryptography](security/cryptography.md) +
-* [Best practices](security/best-practices.md) +
-
-
-Caching +-
--------
-
-* [Caching overview](caching/overview.md) +
-* [Data caching](caching/data.md) +
-* [Fragment caching](caching/fragment.md) -
-* [Page caching](caching/page.md) -
-* [HTTP caching](caching/http.md) -
-
+* [Authorization](security/authorization.md) +-ept/aliases.md $lang:$lang/concept/aliases.md pot=concept_aliases.md
+#[type: markdown] en/concept/autoloading.md $lang:$lang/concept/autoloading.md pot=concept_autoloading.md
+#[type: markdown] en/concept/configuration.md $lang:$lang/concept/configuration.md pot=concept_configuration.md
+#[type: markdown] en/concept/di-container.md $lang:$lang/concept/di-container.md pot=concept_di-container.md
+#[type: markdown] en/concept/events.md $lang:$lang/concept/events.md pot=concept_events.md
+#[type: markdown] en/concept/immutability.md $lang:$lang/concept/immutability.md pot=concept_immutability.md
+#
+#[type: markdown] en/databases/db-migrations.md $lang:$lang/databases/db-migrations.md pot=databases_db-migrations.md
+#
+#[type: markdown] en/intro/upgrade-from-v2.md $lang:$lang/intro/upgrade-from-v2.md pot=intro_upgrade-from-v2.md
+#[type: markdown] en/intro/what-is-yii.md $lang:$lang/intr
 
 REST APIs -
 -----------

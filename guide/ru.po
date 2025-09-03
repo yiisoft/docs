@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-03 18:13+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:2
+#, fuzzy
+msgid "# Aliases"
+msgstr "# Псевдонимы (алиасы)"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:6
+#, fuzzy
+msgid ""
+"You can use aliases to represent file paths or URLs so that you don't have "
+"to hard-code absolute paths or URLs in your project. An alias must start "
+"with the `@` character to be differentiated from normal file paths and "
+"URLs. Alias defined without leading `@` will be prefixed with `@` character."
+msgstr ""
+"Вы можете использовать псевдонимы для представления путей к файлам или "
+"URL-адресов, чтобы вам не приходилось жестко указывать абсолютные пути или "
+"URL-адреса в вашем проекте. Каждый псевдоним должен начинаться с символа "
+"`@`, чтобы отличаться от обычных файловых путей или URL. Алиас, определенный "
+"без предшествующего `@` будет префиксироваться с помощью символа `@`."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:9
+#, fuzzy
+msgid ""
+"Default Yii application has some aliases pre-defined in "
+"`config/params.php`. For example, the alias `@public` represents the web "
+"root path; `@baseUrl` represents the base URL for the currently running Web "
+"application."
+msgstr ""
+"По умолчанию Yii-приложение имеет несколько алисов, предопределенных в "
+"`config/params.php`. Например, алиас `@public` представляет корневой путь "
+"для web; `@baseUrl` представляет базовый URL для запущенного в текущий "
+"момент Web-приложения."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:11
+#, fuzzy
+msgid "## Defining aliases <span id=\"defining-aliases\"></span>"
+msgstr "## Определение псевдонимов <span id=\"defining-aliases\"></span>"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:13
+#, fuzzy
+msgid "You can define an alias via application's `config/params.php`:"
+msgstr ""
+"Вы можете определить какой-либо псевдоним через `config/params.php` "
+"приложения:"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:17
+#, fuzzy, no-wrap
+msgid ""
+"```php\n"
+"return [\n"
+"    // ...\n"
+msgstr ""
+"```php\n"
+"return [\n"
+"    // ...\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:21
+#, fuzzy, no-wrap
+msgid ""
+"    'yiisoft/aliases' => [\n"
+"        'aliases' => [\n"
+"            // ...\n"
+msgstr ""
+"    'yiisoft/aliases' => [\n"
+"        'aliases' => [\n"
+"            // ...\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:24
+#, fuzzy, no-wrap
+msgid ""
+"            // an alias of a file path\n"
+"            '@foo' => '/path/to/foo',\n"
+msgstr ""
+"            // an alias of a file path\n"
+"            '@foo' => '/path/to/foo',\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:27
+#, fuzzy, no-wrap
+msgid ""
+"            // an alias of a URL\n"
+"            '@bar' => 'https://www.example.com',\n"
+msgstr ""
+"            // an alias of a URL\n"
+"            '@bar' => 'http://www.example.com',\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:34
+#, fuzzy, no-wrap
+msgid ""
+"            // an alias of a concrete file that contains a \\foo\\Bar class "
+"\n"
+"            '@foo/Bar.php' => '/definitely/not/foo/Bar.php',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+"```\n"
+msgstr ""
+"            // an alias of a concrete file that contains a \\foo\\Bar class "
+"\n"
+"            '@foo/Bar.php' => '/definitely/not/foo/Bar.php',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+"```\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:37
+#, fuzzy
+msgid ""
+"> [!NOTE] > The file path or URL being aliased may *not* necessarily refer "
+"to an existing file or resource."
+msgstr ""
+"> Примечание: Псевдонимизированный файловый путь или URL *не обязательно* "
+"может ссылаться на существующий файл или > ресурс."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:40
+#, fuzzy
+msgid ""
+"Given a defined alias, you may derive a new alias by appending a slash `/` "
+"followed with one or more path segments.  For example, `@foo` is a root "
+"alias, while `@foo/bar/file.php` is a derived alias."
+msgstr ""
+"Учитывая определенный псевдоним, вы можете создать новый, добавив слэш `/`, "
+"за которым следует один или несколько сегментов пути. Например, `@foo` - это "
+"корневой псевдоним, а `@foo/bar/file.php` - производный псевдоним."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:42
+#, fuzzy
+msgid "You can define an alias using another alias (either root or derived):"
+msgstr ""
+"Вы можете определить псевдоним, используя другой псевдоним (корневой или "
+"производный):"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:46
+#, fuzzy
+msgid "```php '@foobar' => '@foo/bar', ```"
+msgstr "```php '@foobar' => '@foo/bar', ```"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:49
+#, fuzzy
+msgid ""
+"The `yiisoft/aliases` parameter initializes `Aliases` service from "
+"[`yiisoft/aliases` package](https://github.com/yiisoft/aliases).  You can "
+"set extra aliases in runtime by using the service:"
+msgstr ""
+"Параметр `yiisoft/aliases` инициализирует сервис `Aliases` из "
+"[пакета](https://github.com/yiisoft/aliases)  `yiisoft/aliases`. Используя "
+"этот сервис, вы можете установить дополнительные псевдонимы времени "
+"выполнения:"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:52 ./en/concept/aliases.md:86
+#: ./en/concept/aliases.md:108
+#, fuzzy
+msgid "```php use \\Yiisoft\\Aliases\\Aliases;"
+msgstr "```php use \\Yiisoft\\Aliases\\Aliases;"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:58
+#, fuzzy, no-wrap
+msgid ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $aliases->set('@uploads', '@root/uploads');\n"
+"}\n"
+"```\n"
+msgstr ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $aliases->set('@uploads', '@root/uploads');\n"
+"}\n"
+"```\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:60
+#, fuzzy
+msgid ""
+"## Using aliases in configuration <span "
+"id=\"using-aliases-in-configuration\"></span>"
+msgstr "## Использование псевдонимов в конфигурации"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:62
+#, fuzzy
+msgid ""
+"It's preferred to resolve aliases at the configuration level, so services "
+"get URLs and paths as ready to use strings:"
+msgstr ""
+"Предпочтительно разрешать псевдонимы на уровне конфигурации, чтобы сервисы "
+"получали URL-адреса и пути как готовые к использованию строки:"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:65
+#, fuzzy
+msgid "```php <?php"
+msgstr "```php <?php"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:67
+#, fuzzy
+msgid "declare(strict_types=1);"
+msgstr "declare(strict_types=1);"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:70
+#, fuzzy
+msgid "use Yiisoft\\Aliases\\Aliases; use Yiisoft\\Cache\\File\\FileCache;"
+msgstr "use Yiisoft\\Aliases\\Aliases; use Yiisoft\\Cache\\File\\FileCache;"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:72
+#, fuzzy
+msgid "/* @var $params array */"
+msgstr "/* @var $params array */"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:79
+#, fuzzy, no-wrap
+msgid ""
+"return [\n"
+"    FileCache::class => static fn (Aliases $aliases) => new FileCache(\n"
+"        $aliases->get($params['yiisoft/cache-file']['fileCache']['path'])\n"
+"    ),\n"
+"];\n"
+"```\n"
+msgstr ""
+"return [\n"
+"    FileCache::class => static fn (Aliases $aliases) => new FileCache(\n"
+"        $aliases->get($params['yiisoft/cache-file']['fileCache']['path'])\n"
+"    ),\n"
+"];\n"
+"```\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:81
+#, fuzzy
+msgid "## Resolving aliases <span id=\"resolving-aliases\"></span>"
+msgstr "## Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:83
+#, fuzzy
+msgid ""
+"You can use `Aliases` service to resolve an alias or derived alias into the "
+"file path or URL it represents:"
+msgstr ""
+"Вы можете использовать сервис `Aliases`, чтобы преобразовать псевдоним или "
+"производный псевдоним в путь к файлу или URL, который он представляет:"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:94
+#, fuzzy, no-wrap
+msgid ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $foo = $aliases->get('@foo'); // /path/to/foo\n"
+"    $bar = $aliases->get('@bar'); // https://www.example.com\n"
+"    $file = $aliases->get('@foo/bar/file.php'); // "
+"/path/to/foo/bar/file.php\n"
+"}\n"
+"```\n"
+msgstr ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $foo = $aliases->get('@foo'); // /path/to/foo\n"
+"    $bar = $aliases->get('@bar'); // http://www.example.com\n"
+"    $file = $aliases->get('@foo/bar/file.php'); // "
+"/path/to/foo/bar/file.php\n"
+"}\n"
+"```\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:97
+#, fuzzy
+msgid ""
+"The path/URL represented by a derived alias is determined by replacing the "
+"root alias part with its corresponding path/URL in the derived alias."
+msgstr ""
+"Путь/URL, представленный производным псевдонимом, определяется путем замены "
+"части корневого псевдонима на соответствующий путь/URL в производном "
+"псевдониме."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:100
+#, fuzzy
+msgid ""
+"> [!NOTE] > The `get()` method doesn't check whether the resulting path/URL "
+"refers to an existing file or resource."
+msgstr ""
+"> Примечание: Метод `get()` не проверяет, относится ли результирующий "
+"путь/URL-адрес к существующему файлу или ресурсу."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:105
+#, fuzzy
+msgid ""
+"A root alias may also contain slash `/` characters. The `get()` method is "
+"intelligent enough to tell, which part of an alias is a root alias and thus "
+"correctly determines the corresponding file path or URL:"
+msgstr ""
+"Псевдоним root также может содержать символы косой черты `/`. Метод `get()` "
+"достаточно интеллектуален, чтобы определить, какая часть псевдонима является "
+"корневым псевдонимом, и, таким образом, правильно определить путь к "
+"соответствующему файлу или URL-адрес:"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:113
+#, fuzzy, no-wrap
+msgid ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $aliases->set('@foo', '/path/to/foo');\n"
+"    $aliases->set('@foo/bar', '/path2/bar');\n"
+msgstr ""
+"public function actionIndex(Aliases $aliases)\n"
+"{\n"
+"    $aliases->set('@foo', '/path/to/foo');\n"
+"    $aliases->set('@foo/bar', '/path2/bar');\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:118
+#, fuzzy, no-wrap
+msgid ""
+"    $aliases->get('@foo/test/file.php'); // /path/to/foo/test/file.php\n"
+"    $aliases->get('@foo/bar/file.php'); // /path2/bar/file.php\n"
+"} \n"
+"```\n"
+msgstr ""
+"    $aliases->get('@foo/test/file.php'); // /path/to/foo/test/file.php\n"
+"    $aliases->get('@foo/bar/file.php'); // /path2/bar/file.php\n"
+"} \n"
+"```\n"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:120
+#, fuzzy
+msgid ""
+"If `@foo/bar` isn't defined as a root alias, the last statement would "
+"display `/path/to/foo/bar/file.php`."
+msgstr ""
+"Если бы `@foo/bar` не был бы определен как корневой псевдоним, то последний "
+"оператор отобразил бы `/path/to/foo/bar/file.php`."
+
+#. type: Plain text
+#: ./en/concept/aliases.md:123
+#, fuzzy
+msgid "## Predefined aliases <span id=\"predefined-aliases\"></span>"
+msgstr "## Предопределенные псевдонимы <span id=\"predefined-aliases\"></span>"
+
+#. type: Plain text
+#: ./en/concept/aliases.md:125
+#, fuzzy
+msgid ""
+"[Yii application](https://github.com/yiisoft/app) predefines a set of "
+"aliases to reference commonly used file paths and URLs:"
+msgstr ""
+"[Yii приложение](https://github.com/yiisoft/app) предопределяет набор "
+"псевдонимов, чтобы ссылаться на часто используемые файловые пути и "
+"URL-адреса:"
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@root` - the base directory of the currently running application."
+msgstr "`@root` - базовая директория для приложения запущенного в текущий момент."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@assets` - application's public directory where it publishes assets."
+msgstr ""
+"`@assets` - публичная директория приложения, где оно публикует ресурсы "
+"(assets)."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@assetsUrl` - URL of base directory with published assets."
+msgstr "`@assetsUrl` - URL базовой директории с опубликованными ресурсами."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid ""
+"`@baseUrl` - the base URL of the currently running Web application. Defaults "
+"to `/`."
+msgstr ""
+"`@baseUrl` - базовый URL запущенного в текущий момент Web приложения. По "
+"умолчанию - `/`."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@npm` - node packages directory."
+msgstr "`@npm` - директория пакетов Node JS."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@bower` - bower packages directory."
+msgstr "`@bower` - директория пакетов Bower."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@vendor` - Composer's `vendor` directory."
+msgstr "`@vendor` - директория `vendor` Composer'а ."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid ""
+"`@public` - application's publicly accessible directory that with "
+"`index.php`."
+msgstr ""
+"`@public` - публично доступная директория приложения, которая содержит "
+"`index.php`."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid ""
+"`@runtime` - the runtime path of the currently running application. Defaults "
+"to `@root/runtime`."
+msgstr ""
+"`@runtime` - путь времени выполнения текущего запущенного приложения. По "
+"умолчанию - `@root/runtime`."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@layout` - the directory with layouts."
+msgstr "`@layout` - директория с макетами."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@resources` - directory with views, asset sources and other resources."
+msgstr ""
+"`@resources` - директория с представлениями, исходниками ресурсов (asset) и "
+"другими ресурсами."
+
+#. type: Bullet: '- '
+#: ./en/concept/aliases.md:137
+#, fuzzy, markdown-text
+msgid "`@views` - application view templates base directory."
+msgstr "`@views` - базовая директория шаблонов представлений приложения."
