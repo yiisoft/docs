@@ -19,13 +19,10 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
       - name: Use po4a
-        uses: addnab/docker-run-action@v3
+        uses: qwrtln/po4a-action@v1.2
         with:
-            image: arduanovdanil/po4a-fork:v0.73
-            options: -v ${{ github.workspace }}:/src
-            run: |
-                cd docs
-                po4a po4a.cfg
+          version: "0.74"
+          config: "guide/po4a.cfg"
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
