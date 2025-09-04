@@ -2,9 +2,6 @@ name: Update docs translation
 
 on:
   pull_request_target:
-    paths:
-      - 'cookbook/**'
-      - 'guide/**'
 
 jobs:
   update-docs:
