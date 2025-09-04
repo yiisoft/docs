@@ -1,7 +1,7 @@
 name: Update docs translation
 
 on:
-  pull_request_target:
+  pull_request:
     paths:
       - 'cookbook/**'
       - 'guide/**'
