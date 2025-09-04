@@ -22,3 +22,4 @@ vale
 vale_*.tar.gz
 *.zip
 LICENSE
+.github/styles/Microsoft/
