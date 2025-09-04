@@ -1,0 +1,270 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-04 08:34+0500\n"
+"PO-Revision-Date: 2025-09-04 08:44+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: en/security/cryptography.md
+#, no-wrap
+msgid "Cryptography"
+msgstr "Криптография"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "In this section, we'll review the following security aspects:"
+msgstr "В этом разделе мы рассмотрим следующие аспекты безопасности:"
+
+#. type: Bullet: '- '
+#: en/security/cryptography.md
+msgid "Generating random data"
+msgstr "Генерация случайных данных"
+
+#. type: Bullet: '- '
+#: en/security/cryptography.md
+msgid "Encryption and Decryption"
+msgstr "Шифрование и расшифровка"
+
+#. type: Bullet: '- '
+#: en/security/cryptography.md
+msgid "Confirming Data Integrity"
+msgstr "Проверка целостности данных"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "To use these features, you need to install `yiisoft/security` package:"
+msgstr "Для использования этих функций, вам нужно установить пакет `yiisoft/security`:"
+
+#. type: Fenced code block
+#: en/security/cryptography.md
+#, no-wrap
+msgid "composer install yiisoft/security\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Title ##
+#: en/security/cryptography.md
+#, no-wrap
+msgid "Generating pseudorandom data"
+msgstr "Генерация псевдослучайных данных"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "Pseudorandom data are useful in many situations. For example, when resetting a password via email, you need to generate a token, save it to the database, and send it via email to the end user, which in turn will allow them to prove ownership of that account. It's important that this token be unique and hard to guess, else there is a possibility that an attacker can predict the token's value and reset the user's password."
+msgstr ""
+"Псевдослучайные данные используются во многих ситуациях.\n"
+"Например, при изменении пароля по email, вам необходимо сгенерировать токен, сохранить его в базу данных и отправить \n"
+"по email пользователю, чтобы он с помощью него подтвердил владение аккаунтом.\n"
+"Важно, чтобы этот токен был уникальным и его было трудно угадать, иначе есть вероятность, что атакующий может \n"
+"предсказать значение токена и сбросить пароль пользователя."
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "`\\Yiisoft\\Security\\Random` makes generating pseudorandom data simple:"
+msgstr "Класс `\\Yiisoft\\Security\\Random` делает генерацию псевдослучайных данных простой:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid "$key = \\Yiisoft\\Security\\Random::string(42);\n"
+msgstr "$key = \\Yiisoft\\Security\\Random::string(42);\n"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "The code above would give you a random string consisting of 42 characters."
+msgstr "Код выше даст вам случайную строку, включающую 42 символа."
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "If you need bytes or integers, use PHP functions directly:"
+msgstr "Если вам нужны байты или целые числа, напрямую используйте функции PHP:"
+
+#. type: Bullet: '- '
+#: en/security/cryptography.md
+msgid "`random_bytes()` for bytes. Note that the output may not be ASCII."
+msgstr "`random_bytes()` для генерации байт. Обратите внимание, что вывод может быть не ASCII."
+
+#. type: Bullet: '- '
+#: en/security/cryptography.md
+msgid "`random_int()` for integers."
+msgstr "`random_int()` для генерации целых чисел."
+
+#. type: Title ##
+#: en/security/cryptography.md
+#, no-wrap
+msgid "Encryption and decryption"
+msgstr "Шифрование и расшифровка"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "Yii provides convenient helper functions to encrypt/decrypt data using a secret key.  The data is passed through the encryption function so that only the person who has the secret key will be able to decrypt it.  For example, you need to store some information in your database, but you need to make sure only the user who has the secret key can view it (even if one compromises the application database):"
+msgstr ""
+"Yii предоставляет удобные вспомогательные функции для шифрования/расшифровки данных с помощью секретного ключа.\n"
+"Данные проходят через функцию шифрования таким образом, что только тот, кто знает секретный ключ, может расшифровать их.\n"
+"Например, вам нужно сохранить некоторую информацию в вашей базе данных, но вы должны быть уверены, что только пользователь, который знает секретный ключ, сможет расшифровать их (даже если кто-нибудь скомпрометирует базу данных приложения):"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"$encryptedData = (new \\Yiisoft\\Security\\Crypt())->encryptByPassword($data, $password);\n"
+"\n"
+"// save data to a database or another storage\n"
+"saveData($encryptedData);\n"
+msgstr ""
+"$encryptedData = (new \\Yiisoft\\Security\\Crypt())->encryptByPassword($data, $password);\n"
+"\n"
+"// сохранение данных в базу данных или другое хранилище\n"
+"saveData($encryptedData);\n"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "Decrypting it:"
+msgstr "Расшифровка:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"// collect encrypted data from a database or another storage\n"
+"$encryptedData = getEncryptedData();\n"
+"\n"
+"$data = (new \\Yiisoft\\Security\\Crypt())->decryptByPassword($encryptedData, $password);\n"
+msgstr ""
+"// получение зашифрованных данных из базы данных или другого хранилища\n"
+"$encryptedData = getEncryptedData();\n"
+"\n"
+"$data = (new \\Yiisoft\\Security\\Crypt())->decryptByPassword($encryptedData, $password);\n"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "You could use a key instead of a password:"
+msgstr "Вы можете использовать ключ вместо пароля:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"$encryptedData = (new \\Yiisoft\\Security\\Crypt())->encryptByKey($data, $key);\n"
+"\n"
+"// save data to a database or another storage\n"
+"saveData($encryptedData);\n"
+msgstr ""
+"$encryptedData = (new \\Yiisoft\\Security\\Crypt())->encryptByKey($data, $key);\n"
+"\n"
+"// сохранение данных в базу данных или другое хранилище\n"
+"saveData($encryptedData);\n"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"// collect encrypted data from a database or another storage\n"
+"$encryptedData = getEncryptedData();\n"
+"\n"
+"$data = (new \\Yiisoft\\Security\\Crypt())->decryptByKey($encryptedData, $key);\n"
+msgstr ""
+"// получение зашифрованных данных из базы данных или другого хранилища\n"
+"$encryptedData = getEncryptedData();\n"
+"\n"
+"$data = (new \\Yiisoft\\Security\\Crypt())->decryptByKey($encryptedData, $key);\n"
+
+#. type: Title ##
+#: en/security/cryptography.md
+#, no-wrap
+msgid "Confirming data integrity"
+msgstr "Проверка целостности данных"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "There are situations in which you need to verify that your data hasn't been tampered with by a third party or even corrupted in some way. Yii provides a way to confirm data integrity by MAC signing."
+msgstr ""
+"Бывают ситуации, когда вам необходимо убедиться, что ваши данные не были подделаны третьей стороной или испорчены каким-то образом.\n"
+"Yii предоставляет способ проверить целостность данных по MAC подписи."
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "The `$key` should be present at both sending and receiving sides. On the sending side:"
+msgstr "Ключ `$key` должен присутствовать как на отправляющей, так и на принимающей стороне. На отправляющей стороне:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"$signedMessage = (new \\Yiisoft\\Security\\Mac())->sign($message, $key);\n"
+"\n"
+"sendMessage($signedMessage);\n"
+msgstr ""
+"$signedMessage = (new \\Yiisoft\\Security\\Mac())->sign($message, $key);\n"
+"\n"
+"sendMessage($signedMessage);\n"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "On the receiving side:"
+msgstr "На принимающей стороне:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid ""
+"$signedMessage = receiveMessage($signedMessage);\n"
+"\n"
+"try {\n"
+"    $message = (new \\Yiisoft\\Security\\Mac())->getMessage($signedMessage, $key);\n"
+"} catch (\\Yiisoft\\Security\\DataIsTamperedException $e) {\n"
+"    // data is tampered\n"
+"}\n"
+msgstr ""
+"$signedMessage = receiveMessage($signedMessage);\n"
+"\n"
+"try {\n"
+"    $message = (new \\Yiisoft\\Security\\Mac())->getMessage($signedMessage, $key);\n"
+"} catch (\\Yiisoft\\Security\\DataIsTamperedException $e) {\n"
+"    // данные подделаны\n"
+"}\n"
+
+#. type: Title ##
+#: en/security/cryptography.md
+#, no-wrap
+msgid "Masking token length"
+msgstr "Маскировка длины токена"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "Masking a token helps to mitigate a BREACH attack by randomizing how the token outputted on each request.  A random mask is applied to the token, making the string always unique."
+msgstr "Маскировка токена помогает смягчить атаку BREACH за счет рандомизации способа вывода токена при каждом запросе. К токену применяется случайная маска, делающая строку всегда уникальной."
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "To mask a token:"
+msgstr "Для маскировки токена:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid "$maskedToken = \\Yiisoft\\Security\\TokenMask::apply($token);\n"
+msgstr "$maskedToken = \\Yiisoft\\Security\\TokenMask::apply($token);\n"
+
+#. type: Plain text
+#: en/security/cryptography.md
+msgid "To get the original value from the masked one:"
+msgstr "Получить исходное значение из замаскированного:"
+
+#. type: Fenced code block (php)
+#: en/security/cryptography.md
+#, no-wrap
+msgid "$token = \\Yiisoft\\Security\\TokenMask::remove($maskedToken);\n"
+msgstr "$token = \\Yiisoft\\Security\\TokenMask::remove($maskedToken);\n"
