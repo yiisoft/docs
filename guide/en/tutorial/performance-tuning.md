@@ -15,6 +15,12 @@ A well-configured PHP environment is important. To get maximum performance:
 - [Tune `realpath()` cache](https://github.com/samdark/realpath_cache_tuner).
 - Make sure [XDebug](https://xdebug.org/) isn't installed in the production environment.
 - Try [PHP 7 preloading](https://wiki.php.net/rfc/preload).
+- Use fully qualified function names with leading backslashes to optimize opcache performance.
+  When calling global functions from within a namespace, PHP first searches in the current namespace
+  before falling back to the global namespace. Adding a leading backslash (e.g., `\count()` instead of `count()`)
+  tells PHP to directly use the global function, avoiding the namespace lookup and improving opcache efficiency.
+  This optimization is best implemented automatically using tools like [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) 
+  with the `native_function_invocation` rule.
 
 ## Using caching techniques <span id="using-caching-techniques"></span>
 
