@@ -17,6 +17,3 @@ Thumbs.db
 
 # po4a .mo files
 *.mo
-
-# Vale temporary styles
-.github/styles/Microsoft/
