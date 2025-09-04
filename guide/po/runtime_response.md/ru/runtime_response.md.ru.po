@@ -14,8 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title ##
 #: en/runtime/request.md en/runtime/response.md
@@ -57,17 +56,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/response.md
-msgid ""
-"Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web "
-"application to represent response."
+msgid "Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web application to represent response."
 msgstr ""
 
 #. type: Plain text
 #: en/runtime/response.md
-msgid ""
-"The object should be constructed and returned as a result of the execution "
-"of controller actions or other middleware.  Usually, the middleware has a "
-"response factory injected into its constructor."
+msgid "The object should be constructed and returned as a result of the execution of controller actions or other middleware.  Usually, the middleware has a response factory injected into its constructor."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -117,9 +111,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/response.md
-msgid ""
-"Majority of status codes are available from `Status` class for convenience "
-"and readability."
+msgid "Majority of status codes are available from `Status` class for convenience and readability."
 msgstr ""
 
 #. type: Plain text
@@ -157,9 +149,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/response.md
-msgid ""
-"Response body is an object implementing "
-"`Psr\\Http\\Message\\StreamInterface`."
+msgid "Response body is an object implementing `Psr\\Http\\Message\\StreamInterface`."
 msgstr ""
 
 #. type: Plain text

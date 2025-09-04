@@ -20,7 +20,6 @@ msgstr ""
 #: en/concept/configuration.md en/tutorial/using-yii-with-roadrunner.md
 #: en/views/view-injections.md
 #, fuzzy, no-wrap
-#| msgid "configuration could be:"
 msgid "Configuration"
 msgstr "конфигурация может быть:"
 

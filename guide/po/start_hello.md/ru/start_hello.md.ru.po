@@ -19,7 +19,6 @@ msgstr ""
 #. type: Title ##
 #: en/start/forms.md en/start/hello.md
 #, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
 msgid "Summary <span id=\"summary\"></span>"
 msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
 
