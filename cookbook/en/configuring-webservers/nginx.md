@@ -41,6 +41,7 @@ server {
         fastcgi_pass 127.0.0.1:9000;
         #fastcgi_pass unix:/var/run/php8-fpm.sock;
         try_files $uri =404;
+        fastcgi_param APP_ENV "dev";
     }
 
     location ~* /\. {
@@ -54,3 +55,6 @@ to avoid many unnecessary system `stat()` calls.
 
 Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can detect if a connection is secure.
+
+In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables,
+this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`.
