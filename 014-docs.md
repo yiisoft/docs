@@ -33,7 +33,8 @@ Translation algorithm:
 - Translate necessary strings and push the changes
 - Open pull request to main repository
 
-> Warning: Do not change the translation in files in `/guide/{lang}` manually
+> [!CAUTION]
+> Do not change the translation in files in `/guide/{lang}` manually.
 
 If you have changed English documentation:
 - Open pull request to main repository
