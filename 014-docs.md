@@ -23,6 +23,25 @@ focused on a single package but is covering certain use-cases.
 
 The guide should follow [Micosoft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
 
+### Translation
+
+The definitive guide uses [po4a](https://github.com/mquinson/po4a) in Github Action for translations.  
+Translation algorithm:
+- Install an application for working with `.po` translation files. For example, [Poedit](https://poedit.net/), [Lokalize](https://apps.kde.org/ru/lokalize/), [Gtranslator](https://wiki.gnome.org/Apps/Gtranslator) or another.
+- Find folder with the name of the file you want to translate in `/guide/po`. Note that if the source file is in a subfolder, the subfolder name is appended to the folder and separated by an underscore, for example: for translating `guide/en/concept/aliases.md` file find `guide/po/concept_aliases.md` folder.
+- Open the file with the `.po` extension in `Poedit` from the folder with the desired localization, for example `guide/po/intro_what-is-yii.md/ru/intro_what-is-yii.md.ru.po`. If there is no localization yet, create an issue.
+- Translate necessary strings and push the changes
+- Open pull request to main repository
+
+> [!CAUTION]
+> Do not change the translation in files in `/guide/{lang}` manually.
+
+If you have changed English documentation:
+- Open pull request to main repository
+- Pull updated branch after successful completion of workflow `Update docs translation` in Github Action
+- Update translation in `.po` files by `Poedit`
+- Push changes
+
 ## Blocks
 
 Blocks are in the [GitHub Alerts format](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts):
