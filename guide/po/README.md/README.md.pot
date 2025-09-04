@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-03 20:21+0500\n"
+"POT-Creation-Date: 2025-09-04 10:36+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -352,21 +352,54 @@ msgstr ""
 msgid "[Authentication](security/authentication.md) +"
 msgstr ""
 
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Authorization](security/authorization.md) +-"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Working with passwords](security/passwords.md) +"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Cryptography](security/cryptography.md) +"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Best practices](security/best-practices.md) +"
+msgstr ""
+
 #. type: Plain text
 #: en/README.md
-#, no-wrap
-msgid ""
-"* [Authorization](security/authorization.md) +-ept/aliases.md $lang:$lang/concept/aliases.md pot=concept_aliases.md\n"
-"#[type: markdown] en/concept/autoloading.md $lang:$lang/concept/autoloading.md pot=concept_autoloading.md\n"
-"#[type: markdown] en/concept/configuration.md $lang:$lang/concept/configuration.md pot=concept_configuration.md\n"
-"#[type: markdown] en/concept/di-container.md $lang:$lang/concept/di-container.md pot=concept_di-container.md\n"
-"#[type: markdown] en/concept/events.md $lang:$lang/concept/events.md pot=concept_events.md\n"
-"#[type: markdown] en/concept/immutability.md $lang:$lang/concept/immutability.md pot=concept_immutability.md\n"
-"#\n"
-"#[type: markdown] en/databases/db-migrations.md $lang:$lang/databases/db-migrations.md pot=databases_db-migrations.md\n"
-"#\n"
-"#[type: markdown] en/intro/upgrade-from-v2.md $lang:$lang/intro/upgrade-from-v2.md pot=intro_upgrade-from-v2.md\n"
-"#[type: markdown] en/intro/what-is-yii.md $lang:$lang/intr\n"
+msgid "Caching +-"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Caching overview](caching/overview.md) +"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Data caching](caching/data.md) +"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Fragment caching](caching/fragment.md) -"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Page caching](caching/page.md) -"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[HTTP caching](caching/http.md) -"
 msgstr ""
 
 #. type: Title -
