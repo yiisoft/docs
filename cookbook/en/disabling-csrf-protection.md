@@ -10,18 +10,13 @@ For a comprehensive understanding of CSRF attacks and protection mechanisms, see
 
 While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might need to disable it:
 
-### External APIs
+### When external systems cannot provide CSRF tokens
 
-When building REST APIs or web services that are consumed by external applications, CSRF protection can interfere with legitimate requests:
+When building APIs or handling automated requests from external systems, CSRF protection can interfere with legitimate requests since these systems cannot provide valid CSRF tokens:
 
 - **Third-party integrations**: External services cannot provide valid CSRF tokens
 - **Mobile applications**: Native mobile apps typically don't use cookies or sessions in the same way as web browsers
 - **Server-to-server communication**: API endpoints designed for machine-to-machine communication
-
-### Webhooks
-
-Webhook endpoints receive automated requests from external services and cannot provide CSRF tokens:
-
 - **Payment processors**: PayPal, Stripe, and other payment systems send webhook notifications
 - **Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines
 - **Social media platforms**: Twitter, Facebook webhook notifications
