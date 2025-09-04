@@ -1,0 +1,83 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-04 07:25+0500\n"
+"PO-Revision-Date: 2025-09-04 07:29+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: en/concept/autoloading.md
+#, no-wrap
+msgid "Class autoloading"
+msgstr "Автозагрузка класоов"
+
+#. type: Plain text
+#: en/concept/autoloading.md
+msgid "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages without the need to `require` their file explicitly.  When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file."
+msgstr ""
+"Поскольку Yii использует [Composer](https://getcomposer.org) для управления пакетами, он автоматически загружает классы из пакетов без необходимости явно подключать их через `require`.\n"
+"При установке пакетов он создает [автозагрузчик, совместимый с PSR-4](https://www.php-fig.org/psr/psr-4/).\n"
+"Чтобы использовать его, подключите `/vendor/autoload.php` через `require_once` в ваш входной скрипт `index.php`."
+
+#. type: Plain text
+#: en/concept/autoloading.md
+msgid "You can use autoloader not only for the packages installed, but for your application as well since it's also a package.  To load classes of a certain namespace, add the following to `composer.json`:"
+msgstr "Вы можете использовать автозагрузчик не только для установленных пакетов, но и для всего вашего приложения, поскольку оно тоже является пакетом. Чтобы загрузить классы определенного пространства имен, добавьте в `composer.json`:"
+
+#. type: Fenced code block (json)
+#: en/concept/autoloading.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"App\\\\\": \"src/\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"App\\\\\": \"src/\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: en/concept/autoloading.md
+msgid "Where `App\\\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces will start loading automatically."
+msgstr "Здесь `App\\\\` это корневое пространство имен, а `src/` - директория, где вы храните ваши классы. При необходимости, вы можете добавить несколько корневых директорий. После изменения `composer.json` выполните `composer dump-autoload` или `composer du` и классы из соответствующих пространств имен начнут загружаться автоматически."
+
+#. type: Plain text
+#: en/concept/autoloading.md
+msgid "If you need development-environment-specific autoloading that isn't used when executing Composer with `--no-dev` flag, add it to `autoload-dev` section instead of `autoload`."
+msgstr "Если вам нужна специфичная для разработки автозагрузка, которая не используется при запуске Composer с флагом `--no-dev`, добавьте ее в секцию `autoload-dev` вместо `autoload`."
+
+#. type: Title ##
+#: en/concept/autoloading.md
+#, no-wrap
+msgid "References"
+msgstr "Ссылки"
+
+#. type: Bullet: '- '
+#: en/concept/autoloading.md
+msgid "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
+msgstr "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
+
+#. type: Bullet: '- '
+#: en/concept/autoloading.md
+msgid "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
+msgstr "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
