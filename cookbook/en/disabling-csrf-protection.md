@@ -1,0 +1,202 @@
+# Disabling CSRF protection
+
+## What is CSRF protection?
+
+Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
+
+For a comprehensive understanding of CSRF attacks and protection mechanisms, see the [Security best practices](../../guide/en/security/best-practices.md#avoiding-csrf) section in the main guide.
+
+## When to disable CSRF protection
+
+While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might need to disable it:
+
+### External APIs
+
+When building REST APIs or web services that are consumed by external applications, CSRF protection can interfere with legitimate requests:
+
+- **Third-party integrations**: External services cannot provide valid CSRF tokens
+- **Mobile applications**: Native mobile apps typically don't use cookies or sessions in the same way as web browsers
+- **Server-to-server communication**: API endpoints designed for machine-to-machine communication
+
+### Webhooks
+
+Webhook endpoints receive automated requests from external services and cannot provide CSRF tokens:
+
+- **Payment processors**: PayPal, Stripe, and other payment systems send webhook notifications
+- **Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines
+- **Social media platforms**: Twitter, Facebook webhook notifications
+- **Communication services**: Slack, Discord bot integrations
+
+## How to disable CSRF protection
+
+### Option 1: Remove CSRF middleware globally
+
+If your entire application serves as an API without web forms, you can remove the CSRF middleware from your application configuration.
+
+In `config/web/application.php`, remove `CsrfMiddleware::class` from the middleware stack:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Yii\Web\Application;
+use Yiisoft\Yii\Web\Middleware\Dispatcher\MiddlewareDispatcher;
+use Yiisoft\Router\Middleware\Router;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+use Yiisoft\Session\SessionMiddleware;
+
+return [
+    Application::class => [
+        '__construct()' => [
+            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
+                return ($injector->make(MiddlewareDispatcher::class))
+                    ->withMiddlewares([
+                        ErrorCatcher::class,
+                        SessionMiddleware::class,
+                        // CsrfMiddleware::class, // <- Remove this line
+                        Router::class,
+                    ]);
+            }),
+            // ... other configuration
+        ],
+    ],
+];
+```
+
+### Option 2: Selective disabling for specific routes
+
+For applications that mix web pages and API endpoints, you can selectively disable CSRF protection for specific routes using middleware groups.
+
+Create separate middleware stacks in `config/web/application.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+use Yiisoft\Yii\Web\Middleware\Csrf as CsrfMiddleware;
+
+// In your routing configuration
+return [
+    // Web routes with CSRF protection
+    Group::create('/web')
+        ->middleware(CsrfMiddleware::class)
+        ->routes(
+            Route::get('/', [SiteController::class, 'index']),
+            Route::methods(['GET', 'POST'], '/contact', [SiteController::class, 'contact']),
+            // ... other web routes
+        ),
+    
+    // API routes without CSRF protection
+    Group::create('/api')
+        ->routes(
+            Route::get('/users', [UserApiController::class, 'index']),
+            Route::post('/webhooks/payment', [WebhookController::class, 'payment']),
+            // ... other API routes
+        ),
+];
+```
+
+### Option 3: Custom middleware for conditional CSRF
+
+Create a custom middleware that conditionally applies CSRF protection based on request characteristics:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Yiisoft\Yii\Web\Middleware\Csrf as CsrfMiddleware;
+
+final class ConditionalCsrfMiddleware implements MiddlewareInterface
+{
+    public function __construct(private CsrfMiddleware $csrfMiddleware)
+    {
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $uri = $request->getUri()->getPath();
+        
+        // Skip CSRF for API routes and webhooks
+        if (str_starts_with($uri, '/api/') || str_starts_with($uri, '/webhooks/')) {
+            return $handler->handle($request);
+        }
+        
+        // Apply CSRF protection for other routes
+        return $this->csrfMiddleware->process($request, $handler);
+    }
+}
+```
+
+## Security considerations
+
+When disabling CSRF protection, keep these security considerations in mind:
+
+### Alternative authentication methods
+
+For API endpoints, implement proper authentication mechanisms:
+
+- **API keys**: Require API keys for authentication
+- **Bearer tokens**: Use JWT or similar token-based authentication
+- **OAuth 2.0**: Implement OAuth 2.0 for third-party access
+- **IP whitelisting**: Restrict access to known IP addresses for webhooks
+
+### Request validation
+
+Implement additional validation for requests without CSRF protection:
+
+- **Signature verification**: Verify webhook signatures (e.g., GitHub's X-Hub-Signature)
+- **Timestamp validation**: Check request timestamps to prevent replay attacks
+- **Rate limiting**: Implement rate limiting to prevent abuse
+- **Input validation**: Strictly validate all input parameters
+
+### Example: Webhook signature verification
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+final class WebhookController
+{
+    public function payment(ServerRequestInterface $request): ResponseInterface
+    {
+        // Verify webhook signature
+        $signature = $request->getHeaderLine('X-Webhook-Signature');
+        $payload = (string) $request->getBody();
+        $expectedSignature = hash_hmac('sha256', $payload, $this->webhookSecret);
+        
+        if (!hash_equals($signature, $expectedSignature)) {
+            throw new \RuntimeException('Invalid webhook signature');
+        }
+        
+        // Process webhook payload
+        // ...
+    }
+}
+```
+
+## Best practices
+
+1. **Minimize exposure**: Only disable CSRF protection where absolutely necessary
+2. **Use HTTPS**: Always use HTTPS for API endpoints and webhooks
+3. **Monitor logs**: Log all requests to API endpoints for security monitoring
+4. **Regular security audits**: Periodically review your API endpoints and their security measures
+5. **Documentation**: Clearly document which endpoints have CSRF protection disabled and why
+
+## Conclusion
+
+While CSRF protection is crucial for web applications, there are legitimate scenarios where it needs to be disabled, particularly for external APIs and webhooks. When disabling CSRF protection, always implement alternative security measures and follow security best practices to maintain the overall security of your application.
+
+Remember that disabling CSRF protection increases security risks, so careful consideration and proper implementation of alternative security measures are essential.
