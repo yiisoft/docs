@@ -1,33 +1,24 @@
 # Making HTTP requests
 
-When building modern web applications, you often need to make HTTP requests to external APIs, microservices, or third-party services. This article demonstrates how to make HTTP requests in Yii3 applications using Guzzle with PSR (PHP Standards Recommendations) interfaces.
+When building modern applications, you often need to make HTTP requests to external APIs. This article demonstrates how to make HTTP requests in Yii3 applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/psr/).
 
 ## What are PSR interfaces for HTTP
 
 The PHP-FIG (PHP Framework Interoperability Group) has defined several PSR standards for HTTP handling:
 
 - **PSR-7**: HTTP message interfaces for requests and responses
-- **PSR-18**: HTTP client interface for sending PSR-7 requests and returning PSR-7 responses
 - **PSR-17**: HTTP factory interfaces for creating PSR-7 message objects
+- **PSR-18**: HTTP client interface for sending PSR-7 requests and returning PSR-7 responses
 
 Using these interfaces ensures your code is framework-agnostic and follows established PHP standards.
 
 ## Installation
 
-### Install Guzzle HTTP client
-
-Install the Guzzle HTTP client with PSR-18 support:
+Install the Guzzle HTTP client with PSR-18 support and PSR-17 factories:
 
 ```shell
-composer require guzzlehttp/guzzle --prefer-dist
-```
-
-### Install PSR factories (optional)
-
-For creating PSR-7 requests and responses manually, you can install PSR-17 factories:
-
-```shell
-composer require guzzlehttp/psr7 --prefer-dist
+composer require guzzlehttp/guzzle
+composer require guzzlehttp/psr7
 ```
 
 ## Basic usage
@@ -41,7 +32,6 @@ Here's how to make a basic GET request using PSR-18 interfaces:
 
 declare(strict_types=1);
 
-use GuzzleHttp\Client;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -58,7 +48,7 @@ class ApiService
     {
         $request = $this->requestFactory->createRequest(
             'GET',
-            "https://jsonplaceholder.typicode.com/users/{$userId}"
+            "https://example.com/users/{$userId}"
         );
 
         return $this->httpClient->sendRequest($request);
@@ -94,7 +84,7 @@ class UserService
         $jsonData = json_encode($userData, JSON_THROW_ON_ERROR);
         $stream = $this->streamFactory->createStream($jsonData);
 
-        $request = $this->requestFactory->createRequest('POST', 'https://jsonplaceholder.typicode.com/users')
+        $request = $this->requestFactory->createRequest('POST', 'https://example.com/users')
             ->withHeader('Content-Type', 'application/json')
             ->withHeader('Accept', 'application/json')
             ->withBody($stream);
@@ -118,7 +108,6 @@ declare(strict_types=1);
 // config/common/http-client.php
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\HttpFactory;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -136,10 +125,19 @@ return [
         ],
     ],
     
-    RequestFactoryInterface::class => HttpFactory::class,
-    ResponseFactoryInterface::class => HttpFactory::class,
-    StreamFactoryInterface::class => HttpFactory::class,
-    UriFactoryInterface::class => HttpFactory::class,
+    // Configure PSR-17 factories - these will depend on your chosen PSR-7 implementation
+    RequestFactoryInterface::class => static function (): RequestFactoryInterface {
+        return new \GuzzleHttp\Psr7\HttpFactory();
+    },
+    ResponseFactoryInterface::class => static function (): ResponseFactoryInterface {
+        return new \GuzzleHttp\Psr7\HttpFactory();
+    },
+    StreamFactoryInterface::class => static function (): StreamFactoryInterface {
+        return new \GuzzleHttp\Psr7\HttpFactory();
+    },
+    UriFactoryInterface::class => static function (): UriFactoryInterface {
+        return new \GuzzleHttp\Psr7\HttpFactory();
+    },
 ];
 ```
 
@@ -259,6 +257,8 @@ class HttpClientFactory
 
 For better performance when making multiple requests, you can use asynchronous requests:
 
+> **Note**: Async functionality is not part of PSR interfaces, so this code depends on Guzzle explicitly.
+
 ```php
 <?php
 
@@ -285,7 +285,7 @@ class BatchApiService
         
         foreach ($userIds as $userId) {
             $promises[$userId] = $this->httpClient->getAsync(
-                "https://jsonplaceholder.typicode.com/users/{$userId}"
+                "https://example.com/users/{$userId}"
             );
         }
 
