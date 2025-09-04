@@ -68,6 +68,23 @@ final readonly class CachedWidget
 We've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache
 implementation without changing `CachedWidget` so it's becoming more stable.
 
+### Why use private properties <span id="why-private-properties"></span>
+
+In the composition example above, note that the `$cache` property is declared as `private`. This design choice 
+supports composition by providing several benefits:
+
+- **Encapsulation**: Private properties with getters/setters allow you to control access and make future changes 
+  without breaking existing code.
+- **Data integrity**: Setters can validate, normalize, or format values before storing them, ensuring properties 
+  contain valid data.
+- **Immutability**: Private properties enable immutable object patterns where setters return new instances rather 
+  than modifying the current one.
+- **Flexibility**: You can easily create read-only or write-only properties, or add additional logic to property 
+  access later.
+
+This approach embraces composition by ensuring objects have well-defined interfaces for interaction rather than 
+direct property access, making the code more maintainable and less prone to certain types of mistakes.
+
 The `CacheInterface` here is a dependency: an object another object depends on.
 The process of putting an instance of dependency into an object (`CachedWidget`) is called dependency injection.
 There are many ways to perform it:
