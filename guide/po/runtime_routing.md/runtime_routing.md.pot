@@ -1,0 +1,596 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Routing and URL generation"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Usually, a Yii application processes certain requests with certain "
+"handlers.  It selects a handler based on the request URL.  The part of the "
+"application that does the job is a router, and the process of selecting a "
+"handler, instantiating it and running a handler method is *routing*."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"The reverse process of routing is *URL generation*, which creates a URL from "
+"a given named route and the associated query parameters.  When you later "
+"request the created URL, the routing process can resolve it back into the "
+"original route and query parameters."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Routing and URL generation are separate services, but they use a common set "
+"of routes for both URL matching and URL generation."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Configuring routes"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"By configuring routes, you can let your application recognize arbitrary URL "
+"formats without modifying your existing application code. You can configure "
+"routes in `/config/routes.php`. The structure of the file is the following:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Controller\\SiteController;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::get('/')\n"
+"        ->action([SiteController::class, 'index'])\n"
+"        ->name('site/index')\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"The file returns an array of routes. When defining a route, you start with a "
+"method corresponding to a certain HTTP request type:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "get"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "post"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "put"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "delete"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "patch"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "head"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "options"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "If you need many methods, you can use `methods()`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Controller\\SiteController;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::methods([Method::GET, Method::POST], '/user/{id}')\n"
+"        ->action([SiteController::class, 'user'])\n"
+"        ->name('site/user')\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"All these methods accept a route pattern and a handler.  The route pattern "
+"defines how the router matches the URL when routing and how it generates URL "
+"based on route name and parameters.  You will learn about the actual syntax "
+"later in this guide.  You could specify a handler as:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "[Middleware](../structure/middleware.md) class name."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "Handler action (an array of [HandlerClass, handlerMethod])."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "A callable."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"In case of a handler action, a class of type `HandlerClass` is instantiated "
+"and its `handlerMethod` is called:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"final readonly class HandlerClass\n"
+"{\n"
+"    public function handle(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "The callable is called as is:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"static function (ServerRequestInterface $request, RequestHandlerInterface $next) use ($responseFactory) {\n"
+"    $response = $responseFactory->createResponse();\n"
+"    $response->getBody()->write('You are at homepage.');\n"
+"    return $response;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"For handler action and callable typed parameters are automatically injected "
+"using the dependency injection container passed to the route."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Get current request and handler by type-hinting for `ServerRequestInterface` "
+"and `RequestHandlerInterface`.  You could add extra handlers to wrap primary "
+"one with `middleware()` method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::methods([Method::GET], '/download/{id}')\n"
+"        ->action([DownloadController::class, 'download'])\n"
+"        ->name('download/id')\n"
+"        ->middleware(LimitDownloadRate::class)\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Check [\"the middleware\"](../structure/middleware.md) guide to learn more "
+"about how to implement middleware."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "This is especially useful when grouping routes:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/api')\n"
+"        ->middleware(ApiDataWrapper::class)\n"
+"        ->routes(\n"
+"            Route::get('/info/v2')\n"
+"                ->action(ApiInfo::class)\n"
+"                ->name('api/info/v2')\n"
+"                ->middleware(FormatDataResponseAsJson::class),            \n"
+"            Route::get('/user')\n"
+"                ->action([ApiUserController::class, 'index'])\n"
+"                ->name('api/user/index'),\n"
+"            Route::get('/user/{login}')\n"
+"                ->action([ApiUserController::class, 'profile'])\n"
+"                ->middleware(FormatDataResponseAsJson::class)\n"
+"                ->name('api/user/profile'),\n"
+"        )\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Router executes `ApiDataWrapper` before handling any URL starting with `/"
+"api`."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"You could name a route with a `name()` method. It's a good idea to choose a "
+"route name based on the handler's name."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "You can set a default value for a route parameter. For example:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Controller\\SiteController;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::methods([Method::GET, Method::POST], '/user[/{id}]')\n"
+"        ->action([SiteController::class, 'user'])\n"
+"        ->name('site/user')\n"
+"        ->defaults(['id' => '42'])\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"This configuration would result in a match with both `/user` and `/"
+"user/123`.  In both cases `CurrentRoute` service will contain `id` argument "
+"filled.  In the first case it will be default `42` and in the second case it "
+"will be `123`."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"In cause URL should be valid for a single host, you can specify it with "
+"`host()`."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Routing <span id=\"routing\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Yii routing is flexible, and internally it may use different routing "
+"implementations.  The actual matching algorithm may vary, but the basic idea "
+"stays the same."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Router matches routes defined in config from top to bottom.  If there is a "
+"match, further matching isn't performed and the router executes the route "
+"handler to get the response.  If there is no match at all, router passes "
+"handling to the next middleware in the [application middleware set](../"
+"structure/middleware.md)."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Generating URLs <span id=\"generating-urls\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "To generate URL based on a route, a route should have a name:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Controller\\TestController;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::get('/test', [TestController::class, 'index'])\n"
+"        ->name('test/index'),\n"
+"    Route::post('/test/submit/{id}', [TestController::class, 'submit'])\n"
+"        ->name('test/submit')\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "The generation looks like the following:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Controller;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"final readonly class TestController extends AbstractController\n"
+"{\n"
+"    protected function name(): string\n"
+"    {\n"
+"        return 'test';\n"
+"    }\n"
+"\n"
+"    public function index(UrlGeneratorInterface $urlGenerator): ResponseInterface\n"
+"    {\n"
+"        $url = $urlGenerator->generate('test/submit', ['id' => '42']);\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"In the above code, we get a generator instance with the help of [automatic "
+"dependency injection](../concept/di-container.md)  that works with action "
+"handlers.  In another service, you can get the instance with similar "
+"constructor injection.  In views URL generator is available as `$url`."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Then we use `generate()` method to get actual URL. It accepts a route name "
+"and an array of named query parameters.  The code will return \"/test/"
+"submit/42.\" If you need absolute URL, use `generateAbsolute()` instead."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Route patterns <span id=\"route-patterns\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Route patterns used depend on the underlying implementation used.  The "
+"default implementation is [nikic/FastRoute](https://github.com/nikic/"
+"FastRoute)."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Basic patterns are static like `/test`. That means they must match exactly "
+"in order for a route match."
+msgstr ""
+
+#. type: Title ###
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Named Parameters <span id=\"named-parameters\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"A pattern can include one or more named parameters which are specified in "
+"the pattern in the format of `{ParamName:RegExp}`, where `ParamName` "
+"specifies the parameter name and `RegExp` is an optional regular expression "
+"used to match parameter values.  If `RegExp` isn't specified, it means the "
+"parameter value should be a string without any slash."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid "
+"placeholder, because `()` is a capturing group. Instead, you can use either "
+"`{lang:en|de}` or `{lang:(?:en|de)}`."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"On a route match router fills the associated request attributes with values "
+"matching the corresponding parts of the URL.  When you use the rule to "
+"create a URL, it will take the values of the provided parameters and insert "
+"them at the places where the parameters are declared."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Let's use some examples to illustrate how named parameters work. Assume "
+"you've declared the following three patterns:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: en/runtime/routing.md
+msgid "`'posts/{year:\\d{4}}/{category}`"
+msgstr ""
+
+#. type: Bullet: '2. '
+#: en/runtime/routing.md
+msgid "`'posts'`"
+msgstr ""
+
+#. type: Bullet: '3. '
+#: en/runtime/routing.md
+msgid "`'post/{id:\\d+}'`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "`/posts` match the second pattern;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid ""
+"`/posts/2014/php` match a first pattern. Parameters are the `year` whose "
+"value is 2014 and the `category` whose value is `php`;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "`/post/100` match a third pattern. The `id` parameter value is 100;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/routing.md
+msgid "`/posts/php` doesn't match."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid "When generating URLs, you should use the following parameters:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"echo $url->generate('first', ['year' => '2020', 'category' => 'Virology']);\n"
+"echo $url->generate('second');\n"
+"echo $url->generate('third', ['id' => '42']);\n"
+msgstr ""
+
+#. type: Title ###
+#: en/runtime/routing.md
+#, no-wrap
+msgid "Optional parts <span id=\"optional-parts\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"You should wrap optional pattern parts with `[` and `]`.  For example, `/"
+"posts[/{id}]` pattern would match both `http://example.com/posts` and "
+"`http://example.com/posts/42`.  Router would fill `id` argument of "
+"`CurrentRoute` service in the second case only.  In this case, you could "
+"specify the default value:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/routing.md
+#, no-wrap
+msgid ""
+"use \\Yiisoft\\Router\\Route;\n"
+"\n"
+"Route::get('/posts[/{id}]')->defaults(['id' => '1']);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/routing.md
+msgid ""
+"Optional parts are only supported in a trailing position, not in the middle "
+"of a route."
+msgstr ""

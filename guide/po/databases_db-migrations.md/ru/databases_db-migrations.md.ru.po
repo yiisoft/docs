@@ -1,0 +1,174 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "Migrations"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: en/databases/db-migrations.md
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "composer require yiisoft/db-migration\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Title ###
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "Example usage"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "First, configure DI container. Create `config/common/db.php` with the following content:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Sqlite\\Connection as SqliteConnection;\n"
+"\n"
+"return [\n"
+"    ConnectionInterface::class => [\n"
+"        'class' => SqliteConnection::class,\n"
+"        '__construct()' => [\n"
+"            'dsn' => 'sqlite:' . __DIR__ . '/Data/yiitest.sq3'\n"
+"        ]\n"
+"    ]\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+#, fuzzy
+#| msgid "Add the following to your php.ini:"
+msgid "Add the following to `config/params.php`:"
+msgstr "Добавьте в свой php.ini следующее:"
+
+#. type: Fenced code block (php)
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid ""
+"...\n"
+"'yiisoft/db-migration' => [\n"
+"    'newMigrationNamespace' => 'App\\\\Migration',\n"
+"    'sourceNamespaces' => ['App\\\\Migration'],\n"
+"],\n"
+"...\n"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "Now test if it works:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "./yii list migrate\n"
+msgstr ""
+
+#. type: Title ###
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "Creating a migration"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "To work with migrations, you can use the provided [view](https://github.com/yiisoft/db-migration/tree/master/resources/views)."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "./yii migrate:create my_first_table --command=table --fields=name,example --table-comment=my_first_table\n"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+#, fuzzy
+#| msgid "That's equal to the following:"
+msgid "That would generate the following:"
+msgstr "Это соответствует:"
+
+#. type: Fenced code block (php)
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Migration;\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
+"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
+"use Yiisoft\\Db\\Migration\\TransactionalMigrationInterface;\n"
+"\n"
+"/**\n"
+" * Handles the creation of table `my_first_table`.\n"
+" */\n"
+"final class M240115143455CreateMyFirstTableTable implements RevertibleMigrationInterface, TransactionalMigrationInterface\n"
+"{\n"
+"    public function up(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->createTable('my_first_table', [\n"
+"            'id' => $b->primaryKey(),\n"
+"            'name',\n"
+"            'example',\n"
+"        ]);\n"
+"        \n"
+"        $b->addCommentOnTable('my_first_table', 'dest');\n"
+"    }\n"
+"\n"
+"    public function down(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->dropTable('my_first_table');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "For more information [see](https://github.com/yiisoft/db-migration/tree/master/docs/guide/en)"
+msgstr ""
+
+#. type: Title ###
+#: en/databases/db-migrations.md
+#, no-wrap
+msgid "Upgrading from Yii2"
+msgstr ""
+
+#. type: Plain text
+#: en/databases/db-migrations.md
+msgid "Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible, and the `migration` table is also not compatible.  A probable solution is to use structure dumps and rename the old `migration` table. Upon the initial execution of migrations, a new `migration` table with new fields will be created. All subsequent changes in the database schema are applied using the new `migration` component and recorded in the new migration table."
+msgstr ""

@@ -1,0 +1,96 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: en/security/trusted-request.md
+#, no-wrap
+msgid "Trusted request"
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"Getting user information, like a host and IP address, will work out of the "
+"box in a normal setup where a single webserver is used to serve the website. "
+"If your Yii application, however, runs behind a reverse proxy, you need to "
+"add configuration to retrieve this information as the direct client is now "
+"the proxy, and the user IP address is passed to the Yii application by a "
+"header set by the proxy."
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"You shouldn't blindly trust headers provided by proxies unless you "
+"explicitly trust the proxy.  Yii supports configuring trusted proxies via "
+"the `Yiisoft\\Yii\\Web\\Middleware\\TrustedHostsNetworkResolver`.  You "
+"should add it to [middleware stack](../structure/middleware.md)."
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"The following is a request config for an application that runs behind an "
+"array of reverse proxies, which are located in the `10.0.2.0/24` IP network:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/security/trusted-request.md
+#, no-wrap
+msgid ""
+"/** @var \\Yiisoft\\Yii\\Web\\Middleware\\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */\n"
+"$trustedHostsNetworkResolver = $trustedHostsNetworkResolver->withAddedTrustedHosts(['1.0.2.0/24']);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"The proxy sends the IP in the `X-Forwarded-For` header by default, and the "
+"protocol (`http` or `https`) is in `X-Forwarded-Proto`."
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"In case your proxies are using different headers, you can use the request "
+"configuration to adjust these, e.g.:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/security/trusted-request.md
+#, no-wrap
+msgid ""
+"/** @var \\Yiisoft\\Yii\\Web\\Middleware\\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */\n"
+"$trustedHostsNetworkResolver = $trustedHostsNetworkResolver\n"
+"    ->withAddedTrustedHosts(\n"
+"        ['1.0.2.0/24'],\n"
+"        ['X-ProxyUser-Ip'],\n"
+"        ['Front-End-Https'],\n"
+"        [],\n"
+"        [],\n"
+"        ['X-Proxy-User-Ip']\n"
+"    );\n"
+msgstr ""
+
+#. type: Plain text
+#: en/security/trusted-request.md
+msgid ""
+"With the above configuration, `X-ProxyUser-Ip` and `Front-End-Https` headers "
+"are used to get user IP and protocol."
+msgstr ""

@@ -1,0 +1,685 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Mailing"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"Yii simplifies the composition and sending of email messages using the "
+"[yiisoft/mailer](https://github.com/yiisoft/mailer) package. This package "
+"provides content composition functionality and a basic interface for sending "
+"emails. By default, the package includes a file mailer that writes email "
+"contents into a file instead of sending them. This is particularly useful "
+"during the initial stages of application development."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"To send actual emails, you can use the [Symfony Mailer](https://github.com/"
+"yiisoft/mailer-symfony) implementation, which is used in the examples below."
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Configuring the Mailer"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"The mailer service allows you to create a message instance, populate it with "
+"data, and send it. Typically, you get an instance from the DI container as "
+"`Yiisoft\\Mailer\\MailerInterface`."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "You can also create an instance manually as follows:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"\n"
+"use Yiisoft\\Mailer\\Symfony\\Mailer;\n"
+"\n"
+"/**\n"
+" * @var \\Symfony\\Component\\Mailer\\Transport\\TransportInterface $transport\n"
+" */\n"
+"\n"
+"$mailer = new \\Yiisoft\\Mailer\\Symfony\\Mailer(\n"
+"    $transport,\n"
+");\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "The `Yiisoft\\Mailer\\MailerInterface` provides two main methods:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`send()` - Sends the given email message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`sendMultiple()` - Sends many messages at once."
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Creating a Message"
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Simple Text Message"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"To create a simple message with a text body, use `Yiisoft\\Mailer\\Message`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"$message = new \\Yiisoft\\Mailer\\Message(\n"
+"    from: 'from@domain.com',\n"
+"    to: 'to@domain.com',\n"
+"    subject: 'Message subject',\n"
+"    textBody: 'Plain text content'\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Simple HTML Message"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"$message = new \\Yiisoft\\Mailer\\Message(\n"
+"    from: 'from@domain.com',\n"
+"    to: 'to@domain.com',\n"
+"    subject: 'Message subject',\n"
+"    htmlBody: '<b>HTML content</b>'\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "HTML Message from template"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"For this example, we will use package rendering package [view](https://"
+"github.com/yiisoft/view)."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Yiisoft\\View\\View $view\n"
+" */\n"
+"\n"
+"$content = $view->render('path/to/view.php', [\n"
+"    'name' => 'name',\n"
+"    'code' => 'code',\n"
+"]);\n"
+"\n"
+"$message = new \\Yiisoft\\Mailer\\Message(\n"
+"    from: 'from@domain.com',\n"
+"    to: 'to@domain.com',\n"
+"    subject: 'Subject',\n"
+"    htmlBody: $content\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Using Layouts"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "You can also pass parameters to layouts from your template message:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Yiisoft\\View\\View $view\n"
+" * @var array $layoutParameters\n"
+" */\n"
+"\n"
+"$messageBody = $view->render('path/to/view.php', [\n"
+"    'name' => 'name',\n"
+"    'code' => 'code',\n"
+"]);\n"
+"\n"
+"$layoutParameters['content'] = $messageBody;\n"
+"\n"
+"$content = $view->render('path/to/layout.php', $layoutParameters);\n"
+"\n"
+"$message = new \\Yiisoft\\Mailer\\Message(\n"
+"    from: 'from@domain.com',\n"
+"    to: 'to@domain.com',\n"
+"    subject: 'Subject',\n"
+"    htmlBody: $content\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Layout Example"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"You can wrap the view rendering result in a layout, similar to how layouts "
+"work in web applications. This is useful for setting up shared content like "
+"CSS styles:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"/* @var $content string Mail contents as view render result */\n"
+"?>\n"
+"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
+"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+"<head>\n"
+"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n"
+"</head>\n"
+"<body>\n"
+"\n"
+"<?= $content ?>\n"
+"\n"
+"<footer style=\"margin-top: 5em\">\n"
+"-- <br>\n"
+"Mailed by Yii\n"
+"</footer>\n"
+"\n"
+"</body>\n"
+"</html>\n"
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Adding More Data"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"The `Yiisoft\\Mailer\\MessageInterface` provides several methods to "
+"customize your message:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`withCharset()` - Returns a new instance with the specified charset."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withFrom()` - Returns a new instance with the specified sender email "
+"address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withTo()` - Returns a new instance with the specified recipient(s) email "
+"address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withReplyTo()` - Returns a new instance with the specified reply-to address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withCc()` - Returns a new instance with the specified Cc (extra copy "
+"receiver) addresses."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withBcc()` - Returns a new instance with the specified Bcc (hidden copy "
+"receiver) addresses."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withSubject()` - Returns a new instance with the specified message subject."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withDate()` - Returns a new instance with the specified date when the "
+"message was sent."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withPriority()` - Returns a new instance with the specified priority of "
+"this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withReturnPath()` - Returns a new instance with the specified return-path "
+"(the bounce address) of this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withSender()` - Returns a new instance with the specified actual sender "
+"email address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withHtmlBody()` - Returns a new instance with the specified message HTML "
+"content."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withTextBody()` - Returns a new instance with the specified message plain "
+"text content."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withAddedHeader()` - Returns a new instance with the specified added custom "
+"header value."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withHeader()` - Returns a new instance with the specified custom header "
+"value."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`withHeaders()` - Returns a new instance with the specified custom header "
+"values."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"These methods are immutable, meaning they return a new instance of the "
+"message with the updated data."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"Note `with` prefix. It indicates that the method is immutable and returns a "
+"new instance of the class with the changed data."
+msgstr ""
+
+#. type: Title ###
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Getters"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "The following getters are available to retrieve message data:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getCharset()` - Returns the charset of this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getFrom()` - Returns the message sender email address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getTo()` - Returns the message recipient(s) email address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getReplyTo()` - Returns the reply-to address of this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`getCc()` - Returns the Cc (extra copy receiver) addresses of this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this "
+"message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getSubject()` - Returns the message subject."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`getDate()` - Returns the date when the message was sent, or null if it "
+"wasn't set."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getPriority()` - Returns the priority of this message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`getReturnPath()` - Returns the return-path (the bounce address) of this "
+"message."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getSender()` - Returns the message actual sender email address."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getHtmlBody()` - Returns the message HTML body."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getTextBody()` - Returns the message text body."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`getHeader()` - Returns all values for the specified header."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid "`__toString()` - Returns string representation of this message."
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Attaching Files"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "You can attach files to your message using the `withAttached()` method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Mailer\\File;\n"
+"\n"
+"// Attach a file from the local file system\n"
+"$message = $message->withAttached(\n"
+"    File::fromPath('/path/to/source/file.pdf'),\n"
+");\n"
+"\n"
+"// Create an attachment on-the-fly\n"
+"$message = $message->withAttached(\n"
+"    File::fromContent('Attachment content', 'attach.txt', 'text/plain'),\n"
+");\n"
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Embedding Images"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"You can embed images into the message content using the `withEmbedded()` "
+"method. This is particularly useful when composing messages with views:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"$logo = 'path/to/logo';\n"
+"$htmlBody = $this->view->render(\n"
+"    __DIR__ . 'template.php',\n"
+"    [\n"
+"        'content' => $content,\n"
+"        'logoCid' => $logo->cid(),\n"
+"    ],\n"
+");\n"
+"return new \\Yiisoft\\Mailer\\Message(\n"
+"            from: 'from@domain.com',\n"
+"            to: 'to@domain.com',\n"
+"            subject: 'Message subject',\n"
+"            htmlBody: $htmlBody,\n"
+"            embeddings: $logo\n"
+"        );\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"In your view or layout template, you can reference the embedded image using "
+"its CID:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "<img src=\"<?= $logoCid; ?>\">\n"
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Sending a Message"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "To send an email message:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Yiisoft\\View\\View $view\n"
+" */\n"
+"\n"
+"$content = $view->render('path/to/view.php', [\n"
+"    'name' => 'name',\n"
+"    'code' => 'code',\n"
+"]);\n"
+"\n"
+"$message = new \\Yiisoft\\Mailer\\Message(\n"
+"    from: 'from@domain.com',\n"
+"    to: 'to@domain.com',\n"
+"    subject: 'Subject',\n"
+"    htmlBody: $content\n"
+");\n"
+"\n"
+"$mailer->send($message);\n"
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Sending Multiple Messages"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid "You can send multiple messages at once:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"$messages = [];\n"
+"\n"
+"foreach ($users as $user) {\n"
+"    $messages[] = (new \\Yiisoft\\Mailer\\Message())\n"
+"        // ...\n"
+"        ->withTo($user->email);\n"
+"}\n"
+"\n"
+"$result = $mailer->sendMultiple($messages);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"The `sendMultiple()` method returns a `Yiisoft\\Mailer\\SendResults` object "
+"containing arrays of successfully sent and failed messages."
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "Implementing your own mail driver"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"To create a custom mail solution, implement the "
+"`Yiisoft\\Mailer\\MailerInterface` and `Yiisoft\\Mailer\\MessageInterface` "
+"interfaces."
+msgstr ""
+
+#. type: Title ##
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid "For Development"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"For local or test development, you can use simplified implementations of the "
+"mailer that does not send emails.  The package provides these "
+"implementations:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`Yiisoft\\Mailer\\StubMailer` - A simple mailer that stores messages in a "
+"local array."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`Yiisoft\\Mailer\\FileMailer` - A mock mailer that saves email messages as "
+"files instead of sending them."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/mailing.md
+msgid ""
+"`Yiisoft\\Mailer\\NullMailer` - A mailer that discards messages without "
+"sending or storing them."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/mailing.md
+msgid ""
+"To use one of these mailers, configure it in your development environment "
+"file Example: `environments/local/di.php`"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/mailing.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    Yiisoft\\Mailer\\MailerInterface::class => Yiisoft\\Mailer\\StubMailer::class, //or any other\n"
+"];\n"
+"\n"
+msgstr ""

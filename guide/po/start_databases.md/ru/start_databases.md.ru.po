@@ -1,0 +1,126 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: en/start/databases.md
+#, no-wrap
+msgid "Working with databases"
+msgstr ""
+
+#. type: Plain text
+#: en/start/databases.md
+msgid "Yii doesn't dictate using a particular database or storage for your application.  There are many ways you can work with relational databases:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[Yii DB](https://github.com/yiisoft/db)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[Yii Active Record](https://github.com/yiisoft/active-record)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+#, fuzzy
+#| msgid "[PHP manual: security](https://www.php.net/manual/en/security.php)"
+msgid "[PDO](https://www.php.net/manual/en/book.pdo.php)"
+msgstr "[Руководство по PHP: безопасность](https://www.php.net/manual/en/security.php)"
+
+#. type: Plain text
+#: en/start/databases.md
+msgid "For non-relational ones, there are usually official libraries available:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[ElasticSearch](https://github.com/elastic/elasticsearch-php)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "[Redis](https://redis.io/docs/clients/#php)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/start/databases.md
+msgid "..."
+msgstr ""
+
+#. type: Plain text
+#: en/start/databases.md
+msgid "In this guide, we will focus on working with relational databases using Yii DB."
+msgstr ""
+
+#. type: Title ##
+#: en/start/databases.md
+#, fuzzy, no-wrap
+#| msgid "Configuring SSL peer validation"
+msgid "Configuring connection"
+msgstr "Настройка проверки SSL-сертификата"
+
+#. type: Title ##
+#: en/start/databases.md
+#, no-wrap
+msgid "Creating and applying migration"
+msgstr ""
+
+#. type: Title ##
+#: en/start/databases.md
+#, no-wrap
+msgid "Inserting"
+msgstr ""
+
+#. type: Title ##
+#: en/start/databases.md
+#, no-wrap
+msgid "Selecting"
+msgstr ""
+
+#. type: Title ##
+#: en/start/databases.md
+#, no-wrap
+msgid "Using data package"
+msgstr ""
+
+#. type: Title ###
+#: en/start/databases.md
+#, no-wrap
+msgid "Pagination"
+msgstr ""
+
+#. type: Plain text
+#: en/start/databases.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> [← Working with forms](forms.md) |\n"
+"> [Generating code with Gii →](gii.md)\n"
+msgstr ""

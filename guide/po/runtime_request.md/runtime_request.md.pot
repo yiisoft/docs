@@ -1,0 +1,416 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/runtime/request.md
+#, no-wrap
+msgid "Request"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "HTTP request has a method, URI, a set of headers and a body:"
+msgstr ""
+
+#. type: Fenced code block
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"POST /contact HTTP/1.1\n"
+"Host: example.org\n"
+"Accept-Language: en-us\n"
+"Accept-Encoding: gzip, deflate\n"
+"\n"
+"{\n"
+"    \"subject\": \"Hello\",\n"
+"    \"body\": \"Hello there, we need to build Yii application together!\"\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"The method is `POST`, URI is `/contact`.  Extra headers are specifying host, "
+"preferred language and encoding.  The body could be anything.  In this case, "
+"it's a JSON payload."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as "
+"request representation.  The object is available in controller actions and "
+"other types of middleware:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"public function view(ServerRequestInterface $request): ResponseInterface\n"
+"{\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md
+#, no-wrap
+msgid "Method"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "The method could be obtained from a request object:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid "$method = $request->getMethod();\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "Usually it's one of the:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "GET"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "POST"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "PUT"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "DELETE"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "HEAD"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "PATCH"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "OPTIONS"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"In case you want to make sure the request method is of a certain type, there "
+"is a special class with method names:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Http\\Method;\n"
+"\n"
+"if ($request->getMethod() === Method::POST) {\n"
+"    // method is POST\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md
+#, no-wrap
+msgid "URI"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "A URI has:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Scheme (`http`, `https`)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Host (`yiiframework.com`)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Port (`80`, `443`)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Path (`/posts/1`)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Query string (`page=1&sort=+id`)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "Fragment (`#anchor`)"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "You can obtain `UriInterface` from request like the following:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid "$uri = $request->getUri();\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "Then you can get various details from its methods:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getScheme()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getAuthority()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getUserInfo()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getHost()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getPort()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getPath()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getQuery()`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/request.md
+msgid "`getFragment()`"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md en/runtime/response.md
+#, no-wrap
+msgid "Headers"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"There are various methods to inspect request headers. To get all headers as "
+"an array:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"$headers = $request->getHeaders();\n"
+"foreach ($headers as $name => $values) {\n"
+"   // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "To get a single header:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid "$values = $request->getHeader('Accept-Encoding');\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"Also, you could get value as a comma-separated string instead of an array.  "
+"That's especially handy if a header has a single value:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {\n"
+"    // This is an AJAX request made with jQuery.\n"
+"    // Note that header presence and name may vary depending on the library used. \n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "To check if a header is present in the request:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"if ($request->hasHeader('Accept-Encoding')) {\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md en/runtime/response.md
+#, no-wrap
+msgid "Body"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"There are two methods to get body contents. The first is getting the body as "
+"it is without parsing:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid "$body = $request->getBody();\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"The `$body` would be an instance of `Psr\\Http\\Message\\StreamInterface`."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid "Also, you could get a parsed body:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid "$bodyParameters = $request->getParsedBody();\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"Parsing depends on PSR-7 implementation and may require middleware for "
+"custom body formats."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use Psr\\Http\\Message\\ServerRequestInterface as Request;\n"
+"use Psr\\Http\\Message\\ResponseInterface as Response;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface as RequestHandler;\n"
+"\n"
+"final readonly class JsonBodyParserMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    public function process(Request $request, RequestHandler $next): Response\n"
+"    {\n"
+"        $contentType = $request->getHeaderLine('Content-Type');\n"
+"\n"
+"        if (strpos($contentType, 'application/json') !== false) {\n"
+"            $body = $request->getBody();\n"
+"            $parsedBody = $this->parse($body);\n"
+"            $request = $request->withParsedBody($parsedBody);\n"
+"            \n"
+"        }\n"
+"\n"
+"        return $next->handle($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md
+#, no-wrap
+msgid "File uploads"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"Uploaded files that user submitted from a form with `enctype` attribute "
+"equals to `multipart/form-data` are handled via special request method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/request.md
+#, no-wrap
+msgid ""
+"$files = $request->getUploadedFiles();\n"
+"foreach ($files as $file) {\n"
+"    if ($file->getError() === UPLOAD_ERR_OK) {\n"
+"        $file->moveTo('path/to/uploads/new_filename.ext');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/request.md
+#, no-wrap
+msgid "Attributes"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/request.md
+msgid ""
+"Application middleware may set custom request attributes using "
+"`withAttribute()` method.  You can get these attributes with "
+"`getAttribute()`."
+msgstr ""

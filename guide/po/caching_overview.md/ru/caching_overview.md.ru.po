@@ -1,0 +1,70 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: en/caching/overview.md
+#, no-wrap
+msgid "Caching"
+msgstr ""
+
+#. type: Plain text
+#: en/caching/overview.md
+msgid ""
+"Caching is an inexpensive and effective way to improve the performance of an "
+"application.  By storing relatively static data in cache and serving it from "
+"cache when requested, the application saves the time that it otherwise would "
+"require to generate the data from scratch every time."
+msgstr ""
+
+#. type: Plain text
+#: en/caching/overview.md
+msgid ""
+"Caching can occur at different levels and places in an application. On the "
+"server-side, at the lower level, cache may be used to store basic data, such "
+"as a list of most recent article information fetched from the database; and "
+"at the higher level, cache may be used to store fragments or whole of Web "
+"pages, such as the rendering result of the most recent articles. On the "
+"client-side, you may use HTTP caching to keep most recently visited page "
+"content in the browser cache."
+msgstr ""
+
+#. type: Plain text
+#: en/caching/overview.md
+msgid "Yii supports all these caching mechanisms:"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/caching/overview.md
+msgid "[Data caching](data.md)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/caching/overview.md
+msgid "[Fragment caching](fragment.md)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/caching/overview.md
+msgid "[Page caching](page.md)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/caching/overview.md
+msgid "[HTTP caching](http.md)"
+msgstr ""

@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/structure/application.md
+#, no-wrap
+msgid "Application"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/application.md
+msgid ""
+"The primary purpose of the web application and its runner in Yii 3 is to "
+"process requests to get responses."
+msgstr ""
+
+#. type: Plain text
+#: en/structure/application.md
+msgid "Typically, the runtime consists of:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: en/structure/application.md
+msgid ""
+"Startup. Get config, create an instance of container and do additional "
+"environment initialization such as registering error handler, so it can "
+"handle errors occurring. Fire `ApplicationStartup` event."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: en/structure/application.md
+msgid ""
+"Handle requests via passing request objects to middleware dispatcher to "
+"execute [middleware stack](middleware.md) and get a response object. In "
+"usual PHP applications, it's done once. In [environments such as RoadRunner]"
+"(../tutorial/using-with-event-loop.md), it could be done multiple times with "
+"the same application instance. Response object is converted into an actual "
+"HTTP response by using emitter.  Fire `AfterEmit` event."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: en/structure/application.md
+msgid "Shutdown. Fire `ApplicationShutdown` event."
+msgstr ""
