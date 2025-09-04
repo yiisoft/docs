@@ -17,9 +17,3 @@ Thumbs.db
 
 # po4a .mo files
 *.mo
-# Vale binaries and temporary files
-vale
-vale_*.tar.gz
-*.zip
-LICENSE
-.github/styles/Microsoft/
