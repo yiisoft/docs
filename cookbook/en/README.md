@@ -14,5 +14,6 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 
 - [Preface](preface.md)
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Making HTTP requests](making-http-requests.md)
 - [Sentry integration](sentry-integration.md)
 - [Configuring webservers](configuring-webservers/general.md)
