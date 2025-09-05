@@ -1,11 +1,15 @@
 # Aliases
 
-Anda dapat menggunakan alias untuk merepresentasikan path file atau URL sehingga Anda tidak perlu menulis path absolut atau URL secara hard-code di
-proyek Anda. Sebuah alias harus diawali karakter `@` agar dapat dibedakan dari path file dan URL biasa. Alias yang
+Anda dapat menggunakan alias untuk merepresentasikan path file atau URL
+sehingga Anda tidak perlu menulis path absolut atau URL secara hard-code di
+proyek Anda. Sebuah alias harus diawali karakter `@` agar dapat dibedakan
+dari path file dan URL biasa. Alias yang
 didefinisikan tanpa `@` di awal akan diprefiks otomatis dengan karakter `@`.
 
-Aplikasi Yii bawaan memiliki beberapa alias yang sudah didefinisikan di `config/params.php`. Misalnya, alias `@public` merepresentasikan
-path web root; `@baseUrl` merepresentasikan URL dasar untuk aplikasi Web yang sedang berjalan.
+Aplikasi Yii bawaan memiliki beberapa alias yang sudah didefinisikan di
+`config/params.php`. Misalnya, alias `@public` merepresentasikan
+path web root; `@baseUrl` merepresentasikan URL dasar untuk aplikasi Web
+yang sedang berjalan.
 
 ## Defining aliases <span id="defining-aliases"></span>
 
@@ -35,18 +39,22 @@ return [
 > [!NOTE]
 > Path file atau URL yang dialias tidak harus selalu merujuk pada file atau sumber daya yang benar-benar ada.
 
-Dengan alias yang telah didefinisikan, Anda dapat menurunkan alias baru dengan menambahkan garis miring `/` diikuti satu atau beberapa segmen path.
-Sebagai contoh, `@foo` adalah alias akar (root), sedangkan `@foo/bar/file.php` adalah alias turunan.
+Dengan alias yang telah didefinisikan, Anda dapat menurunkan alias baru
+dengan menambahkan garis miring `/` diikuti satu atau beberapa segmen path.
+Sebagai contoh, `@foo` adalah alias akar (root), sedangkan
+`@foo/bar/file.php` adalah alias turunan.
 
-Anda dapat mendefinisikan sebuah alias menggunakan alias lain (baik alias akar maupun turunan):
-
+Anda dapat mendefinisikan sebuah alias menggunakan alias lain (baik alias
+akar maupun turunan):
 
 ```php
-'@foobar' => '@foo/bar', 
+'@foobar' => '@foo/bar',
 ```
 
-Parameter `yiisoft/aliases` menginisialisasi layanan `Aliases` dari [paket `yiisoft/aliases`](https://github.com/yiisoft/aliases).
-Anda dapat menyetel alias tambahan saat runtime menggunakan layanan tersebut:
+Parameter `yiisoft/aliases` menginisialisasi layanan `Aliases` dari [paket
+`yiisoft/aliases`](https://github.com/yiisoft/aliases).
+Anda dapat menyetel alias tambahan saat runtime menggunakan layanan
+tersebut:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -59,7 +67,8 @@ public function actionIndex(Aliases $aliases)
 
 ## Menggunakan aliases di konfigurasi <span id="using-aliases-in-configuration"></span>
 
-Disarankan untuk me-resolve alias pada level konfigurasi, sehingga service menerima URL dan path sebagai string siap pakai:
+Disarankan untuk me-resolve alias pada level konfigurasi, sehingga service
+menerima URL dan path sebagai string siap pakai:
 
 ```php
 <?php
@@ -80,7 +89,7 @@ return [
 
 ## Me-resolve alias <span id="resolving-aliases"></span>
 
-Anda dapat menggunakan layanan `Aliases`
+Anda dapat menggunakan layanan `Aliases`:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -93,15 +102,18 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-Path/URL yang direpresentasikan oleh alias turunan ditentukan dengan mengganti bagian alias akar dengan path/URL yang sesuai
+Path/URL yang direpresentasikan oleh alias turunan ditentukan dengan
+mengganti bagian alias akar dengan path/URL yang sesuai
 pada alias turunan tersebut.
 
 > [!NOTE]
 > Metode `get()` tidak memeriksa apakah path/URL hasilnya merujuk pada file atau sumber daya yang ada.
 
 
-Alias akar juga dapat berisi karakter garis miring `/`. Metode `get()` cukup cerdas untuk menentukan bagian mana
-dari sebuah alias yang merupakan alias akar, sehingga dapat menentukan path file atau URL yang sesuai dengan benar:
+Alias akar juga dapat berisi karakter garis miring `/`. Metode `get()` cukup
+cerdas untuk menentukan bagian mana
+dari sebuah alias yang merupakan alias akar, sehingga dapat menentukan path
+file atau URL yang sesuai dengan benar:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -116,15 +128,14 @@ public function actionIndex(Aliases $aliases)
 } 
 ```
 
-If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`.
-
-
-Jika `@foo/bar` tidak didefinisikan sebagai alias akar, pernyataan terakhir akan menghasilkan `/path/to/foo/bar/file.php`.
+Jika `@foo/bar` tidak didefinisikan sebagai alias akar, pernyataan terakhir
+akan menghasilkan `/path/to/foo/bar/file.php`.
 
 
 ## Alias bawaan <span id="predefined-aliases"></span>
 
-[Aplikasi Yii](https://github.com/yiisoft/app) mendefinisikan serangkaian alias untuk mereferensikan path file dan URL yang umum digunakan:
+[Aplikasi Yii](https://github.com/yiisoft/app) mendefinisikan serangkaian
+alias untuk mereferensikan path file dan URL yang umum digunakan:
 
 - `@root` - direktori dasar dari aplikasi yang sedang berjalan.
 - `@assets` - direktori publik aplikasi tempat aset dipublikasikan.
@@ -134,8 +145,9 @@ Jika `@foo/bar` tidak didefinisikan sebagai alias akar, pernyataan terakhir akan
 - `@bower` - direktori paket bower.
 - `@vendor` - direktori `vendor` milik Composer.
 - `@public` - direktori publik aplikasi yang berisi `index.php`.
-- `@runtime` - path runtime aplikasi yang sedang berjalan. Bawaannya `@root/runtime`.
+- `@runtime` - path runtime aplikasi yang sedang berjalan. Bawaannya
+  `@root/runtime`.
 - `@layout` - direktori berkas layout.
-- `@resources` - direktori yang berisi view, sumber aset, dan sumber daya lainnya.
+- `@resources` - direktori yang berisi view, sumber aset, dan sumber daya
+  lainnya.
 - `@views` - direktori dasar template view aplikasi.
-
