@@ -85,25 +85,45 @@ final class CachedWidget
 - Через свойство. Лучше избегать использования в PHP, за исключением, может
   быть, объектов передачи данных (DTO)
 
+### Why use private properties <span id="why-private-properties"></span>
+
+In the composition example above, note that the `$cache` property is
+declared as `private`.
+
+This approach embraces composition by ensuring objects have well-defined
+interfaces for interaction rather than direct property access, making the
+code more maintainable and less prone to certain types of mistakes.
+
+This design choice provides several benefits:
+
+- **Encapsulation**: Private properties with getters/setters allow you to
+  control access and make future changes without breaking existing code.
+- **Data integrity**: Setters can validate, normalize, or format values
+  before storing them, ensuring properties contain valid data.
+- **Immutability**: Private properties enable immutable object patterns
+  where setter `with*()` methods return new instances rather than modifying
+  the current one.
+- **Flexibility**: You can create read-only or write-only properties or add
+  additional logic to property access later.
+
 
 ## Контейнер внедрения зависимостей <span id="di-container"></span>
 
-Внедрять базовые зависимости просто и легко.
-Вы выбираете место, где вас не волнуют зависимости, которые обычно являются
-обработчиками действий и которые вы не собираетесь тестировать, создаете
-экземпляры необходимых зависимостей и передаете их в зависимые классы.
+Injecting basic dependencies is straightforward. You're choosing a place
+where you don't care about dependencies, which is usually an action handler,
+which you aren't going to unit-test ever, create instances of dependencies
+needed and pass these to dependent classes.
 
-Это хорошо работает, когда в целом зависимостей немного и нет вложенных
-зависимостей.
-Когда их много, и каждая зависимость сама имеет зависимости, создание всей
-иерархии становится утомительным процессом, который требует большого
-количества кода и может привести к трудно отлаживаемым ошибкам.
+It works well when there are few dependencies overall and when there are no
+nested dependencies. When there are many and each dependency has
+dependencies itself, instantiating the whole hierarchy becomes a tedious
+process, which requires lots of code and may lead to hardly debuggable
+mistakes.
 
-Кроме того, многие зависимости, такие как некоторые сторонние обертки API,
-одинаковы для любого класса, использующего его.
-Поэтому имеет смысл:
+Additionally, lots of dependencies, such as certain third-party API
+wrappers, are the same for any class using it.  So it makes sense to:
 
-- Определить, как создать экземпляр такой обертки API один раз.
+- Define how to instantiate such an API wrapper.
 - Создавать его экземпляр при необходимости и только один раз за запрос.
 
 Именно для этого нужны контейнеры зависимостей.
@@ -188,11 +208,11 @@ return [
 
 ### Внедрение зависимостей <span id="injecting-dependencies"></span>
 
-Непосредственное обращение к контейнеру в классе — плохая идея, так как код
-становится не универсальным, сопряжен с интерфейсом контейнера и, что еще
-хуже, зависимости становятся скрытыми. Поэтому Yii инвертирует управление,
-автоматически вводя объекты из контейнера в конструкторы и методы,
-основываясь на типах аргументов.
+Directly referencing a container in a class is a bad idea since the code
+becomes non-generic, coupled to the container interface and, what's worse,
+dependencies are becoming hidden.  Because of that, Yii inverts the control
+by automatically injecting objects from a container in some constructors and
+methods based on method argument types.
 
 В основном это делается в конструкторе и методе, обрабатывающем действие:
 
@@ -220,16 +240,14 @@ class MyController
 }
 ```
 
-Поскольку именно [yiisoft/injector](https://github.com/yiisoft/injector)
-создает экземпляр и вызывает обработчик действий - он проверяет типы
-аргументов конструктора и метода, получает зависимости этих типов из
-контейнера и передает их как аргументы.
-Обычно это называется автоматическим разрешением зависимостей.
-Это происходит и с дополнительными зависимостями - если вы явно не
-указываете зависимость, контейнер сначала проверит, есть ли у него такая
-зависимость.
-Достаточно объявить нужную вам зависимость, и она будет получена из
-контейнера автоматически.
+Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that
+instantiates and calls action handler, it checks the constructor and method
+argument types, gets dependencies of these types from a container and passes
+them as arguments. That's usually called auto-wiring. It happens for
+sub-dependencies as well, that's if you don't give dependency explicitly,
+the container would check if it has such a dependency first.  It's enough to
+declare a dependency you need, and it would be got from a container
+automatically.
 
 
 ## Полезные ссылки <span id="references"></span>
