@@ -20,12 +20,21 @@ A well-configured PHP environment is important. To get maximum performance:
 
 Beyond environment configuration, there are code-level optimizations that can improve your application's performance:
 
+- Look out for [algorithm complexity](https://en.wikipedia.org/wiki/Time_complexity).
+  Especially give attention to `foreach` within `foreach` loops but look out for using
+  [heavy PHP functions](https://stackoverflow.com/questions/2473989/list-of-big-o-for-php-functions) in loops as well.
+- [Speeding up array_merge()](https://www.exakat.io/speeding-up-array_merge/)
+- [Move that foreach() inside the method](https://www.exakat.io/move-that-foreach-inside-the-method/)
+- [Array, classes and anonymous classes memory usage](https://www.exakat.io/array-classes-and-anonymous-memory-usage/)
 - Use fully qualified function names with leading backslashes to optimize opcache performance.
-  When calling global functions from within a namespace, PHP first searches in the current namespace
-  before falling back to the global namespace. Adding a leading backslash (e.g., `\count()` instead of `count()`)
-  tells PHP to directly use the global function, avoiding the namespace lookup and improving opcache efficiency.
-  This optimization is best implemented automatically using tools like [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) 
-  with the `native_function_invocation` rule.
+  When calling [certain global functions](https://github.com/php/php-src/blob/944b6b6bbd6f05ad905f5f4ad07445792bee4027/Zend/zend_compile.c#L4291-L4353) 
+  from within a namespace, PHP first searches in the current namespace before falling back to the global namespace.
+  Adding a leading backslash (e.g., `\count()` instead of `count()`) tells PHP to directly use the global function,
+  avoiding the namespace lookup and improving opcache efficiency. This optimization is best implemented automatically
+  using tools like [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) with the `native_function_invocation` rule.
+
+The above optimizations would give you a significant performance boost only if the code in question is executed
+frequently. That is usually the case for big loops or batch processing.
 
 ## Using caching techniques <span id="using-caching-techniques"></span>
 
