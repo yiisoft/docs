@@ -1,0 +1,639 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-04 10:36+0500\n"
+"PO-Revision-Date: 2025-09-05 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: en/README.md
+#, no-wrap
+msgid "The definitive guide to Yii 3.0"
+msgstr "Panduan Definitif untuk Yii 3.0"
+
+#. type: Plain text
+#: en/README.md
+msgid "We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
+msgstr "Panduan ini dirilis di bawah [Ketentuan Dokumentasi Yii](https://www.yiiframework.com/license#docs)."
+
+#. type: Plain text
+#: en/README.md
+msgid "Introduction +"
+msgstr "Pengenalan +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[About Yii](intro/what-is-yii.md) +"
+msgstr "[Tentang Yii](intro/what-is-yii.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md) +"
+msgstr "[Memutakhirkan dari versi 2.0](intro/upgrade-from-v2.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Getting started -"
+msgstr "Mulai -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[What do you need to know?](start/prerequisites.md) +"
+msgstr "[Apa yang perlu kamu ketahui](start/prerequisites.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Creating a project](start/creating-project.md) +"
+msgstr "[Membuat proyek](start/creating-project.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Running applications](start/workflow.md) +"
+msgstr "[Menjalankan Aplikasi](start/workflow.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Saying hello](start/hello.md) +"
+msgstr "[Mengucapkan halo](start/hello.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Working with forms](start/forms.md) +"
+msgstr "[Bekerja Dengan Formulir](start/forms.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Working with databases](start/databases.md) !"
+msgstr "[Bekerja Dengan Basis Data](start/databases.md) !"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Generating code with Gii](start/gii.md) -"
+msgstr "[Menghasilkan Kode dengan Gii](start/gii.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Looking ahead](start/looking-ahead.md) +"
+msgstr "[Melihat ke depan](start/looking-ahead.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Application structure +"
+msgstr "Struktur Aplikasi +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Application structure overview](structure/overview.md) +"
+msgstr "[Application Structure Overview](structure/overview.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Entry scripts](structure/entry-script.md) +"
+msgstr "[Entry Scripts](structure/entry-script.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Application](structure/application.md) +"
+msgstr "[Application](structure/application.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Service components](structure/service.md) +"
+msgstr "[Service components](structure/service.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Actions](structure/action.md) +"
+msgstr "[Actions](structure/action.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Domain](structure/domain.md) +"
+msgstr "[Domain](structure/domain.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Middleware](structure/middleware.md) +"
+msgstr "[Middleware](structure/middleware.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Packages](structure/package.md) +"
+msgstr "[Packages](structure/package.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Key concepts +"
+msgstr "Konsep Dasar -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Class autoloading](concept/autoloading.md) +"
+msgstr "[Class autoloading](concept/autoloading.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Dependency injection container](concept/di-container.md) +"
+msgstr "[Dependency Injection Container](concept/di-container.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Configuration](concept/configuration.md) +"
+msgstr "[Configuration](concept/configuration.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Aliases](concept/aliases.md) +"
+msgstr "[Aliases](concept/aliases.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Events](concept/events.md) +"
+msgstr "[Events](concept/events.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Immutability](concept/immutability.md) +"
+msgstr ""
+
+#. type: Plain text
+#: en/README.md
+msgid "Handling requests +"
+msgstr "Menangani Permintaan -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Routing and URL generation](runtime/routing.md) +"
+msgstr "[Routing and URL generation](runtime/routing.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Request](runtime/request.md) +"
+msgstr "[Request](runtime/request.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Response](runtime/response.md) +"
+msgstr "[Response](runtime/response.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Sessions](runtime/sessions.md) +"
+msgstr "[Sessions](runtime/sessions.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Cookies](runtime/cookies.md) +"
+msgstr "[Cookies](runtime/cookies.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Handling errors](runtime/handling-errors.md) +"
+msgstr "[Handling errors](runtime/handling-errors.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Logging](runtime/logging.md) +"
+msgstr "[Logging](runtime/logging.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Views -"
+msgstr "Tampilan -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Views](views/view.md) -"
+msgstr "[Views](views/view.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Widgets](views/widget.md) -"
+msgstr "[Widgets](views/widget.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Assets](views/asset.md) -"
+msgstr "[Assets](views/asset.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Working with client scripts](views/client-scripts.md) -"
+msgstr "[Bekerja dengan Skrip Klien](views/client-scripts.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Theming](views/theming.md) -"
+msgstr "[Theming](views/theming.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Template engines](views/template-engines.md) -"
+msgstr "[Template Engines](views/template-engines.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[View injections](views/view-injections.md) +"
+msgstr ""
+
+#. type: Plain text
+#: en/README.md
+msgid "Working with databases +-"
+msgstr "Bekerja Dengan Basis Data +-"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Database access objects](db-dao.md): Connecting to a database, basic queries, transactions, and schema manipulation"
+msgstr "[Database Access Objects](db-dao.md): Menghubungkan ke basis data, permintaan dasar,transaksi, dan manipulasi skema"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Query builder](db-query-builder.md): Querying the database using a simple abstraction layer"
+msgstr "[Query Builder](db-query-builder.md): Meminta basis data menggunakan lapisan abstraksi sederhana"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Active record](db-active-record.md): The Active Record ORM, retrieving and manipulating records, and defining relations"
+msgstr "[Active Record](db-active-record.md): Active Record ORM, mengambil dan memanipulasi catatan, dan mendefinisikan hubungan"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Migrations](databases/db-migrations.md): +"
+msgstr "[Migrations](db-migrations.md): +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Getting data from users -"
+msgstr "Mendapatkan Data dari Pengguna -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Creating forms](input/forms.md) -"
+msgstr "[Membuat Formulir](input/forms.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgstr "[Memvalidasi Input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Uploading files](input/file-upload.md) -"
+msgstr "[Mengunggah File](input/file-upload.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Collecting tabular input](input/tabular-input.md) -"
+msgstr "[Mengumpulkan Input Tabular](input/tabular-input.md) -"
+
+#. type: Plain text
+#: en/README.md
+msgid "Displaying data -"
+msgstr "Menampilkan Data -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Data formatting](output/formatting.md) -"
+msgstr "[Data Formatting](output/formatting.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Pagination](output/pagination.md) -"
+msgstr "[Pagination](output/pagination.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Sorting](output/sorting.md) -"
+msgstr "[Sorting](output/sorting.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Data providers](output/data-providers.md) -"
+msgstr "[Data Providers](output/data-providers.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Data widgets](output/data-widgets.md) -"
+msgstr "[Data Widgets](output/data-widgets.md) -"
+
+#. type: Plain text
+#: en/README.md
+msgid "Security +-"
+msgstr "Keamanan +-"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Security overview](security/overview.md) +"
+msgstr "[Ikhtisar Overview](security/overview.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Authentication](security/authentication.md) +"
+msgstr "[Autentikasi](security/authentication.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Authorization](security/authorization.md) +-"
+msgstr "[Otorisasi](security/authorization.md) +-"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Working with passwords](security/passwords.md) +"
+msgstr "[Bekerja dengan Kata Sandi](security/passwords.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Cryptography](security/cryptography.md) +"
+msgstr "[Kriptografi](security/cryptography.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Best practices](security/best-practices.md) +"
+msgstr "[Praktik terbaik](security/best-practices.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Caching +-"
+msgstr "Caching +-"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Caching overview](caching/overview.md) +"
+msgstr "[Ikhtisar Caching](caching/overview.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Data caching](caching/data.md) +"
+msgstr "[Data Caching](caching/data.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Fragment caching](caching/fragment.md) -"
+msgstr "[Fragment Caching](caching/fragment.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Page caching](caching/page.md) -"
+msgstr "[Page Caching](caching/page.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[HTTP caching](caching/http.md) -"
+msgstr "[HTTP caching](caching/http.md) -"
+
+#. type: Title -
+#: en/README.md
+#, no-wrap
+msgid "REST APIs -"
+msgstr "RESTful Web Services -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Quick start](rest/quick-start.md)"
+msgstr "[Mulai cepat](rest/quick-start.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Resources](rest/resources.md)"
+msgstr "[Resources](rest/resources.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Controllers](rest/controllers.md)"
+msgstr "[Controllers](rest/controllers.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Routing](rest/routing.md)"
+msgstr "[Routing](rest/routing.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Authentication](rest/authentication.md)"
+msgstr "[Authentication](rest/authentication.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Rate limiting](rest/rate-limiting.md)"
+msgstr "[Rate Limiting](rest/rate-limiting.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Versioning](rest/versioning.md)"
+msgstr "[Versioning](rest/versioning.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Error handling](rest/error-handling.md)"
+msgstr "[Error Handling](rest/error-handling.md)"
+
+#. type: Plain text
+#: en/README.md
+msgid "Development tools -"
+msgstr "Alat Pengembangan -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "Debug toolbar and debugger"
+msgstr "Debug Toolbar and Debugger"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "Generating code using Gii"
+msgstr "Membuat Kode menggunakan Gii"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "Generating API documentation"
+msgstr "Membuat Dokumentasi API"
+
+#. type: Plain text
+#: en/README.md
+msgid "Testing -"
+msgstr "Pengujian -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Testing overview](testing/overview.md)"
+msgstr "[Ikhtisar Pengujian](testing/overview.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Testing environment setup](testing/environment-setup.md)"
+msgstr "[Pengaturan lingkungan pengujian](testing/environment-setup.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Unit tests](testing/unit.md)"
+msgstr "[Unit Tests](testing/unit.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Functional tests](testing/functional.md)"
+msgstr "[Functional Tests](testing/functional.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Acceptance tests](testing/acceptance.md)"
+msgstr "[Acceptance Tests](testing/acceptance.md)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Fixtures](testing/fixtures.md)"
+msgstr "[Fixtures](testing/fixtures.md)"
+
+#. type: Plain text
+#: en/README.md
+msgid "Special topics -"
+msgstr "Topik Khusus -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Building application from scratch](tutorial/start-from-scratch.md) -"
+msgstr "[Membangun Aplikasi dari Awal](tutorial/start-from-scratch.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Console applications](tutorial/console-applications.md) +"
+msgstr "[Aplikasi Konsol](tutorial/console-applications.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Docker](tutorial/docker.md) -"
+msgstr "[Docker](tutorial/docker.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Internationalization](tutorial/i18n.md) -"
+msgstr "[Penginternasionalan](tutorial/i18n.md) -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Mailing](tutorial/mailing.md) +"
+msgstr "[Mailing](tutorial/mailing.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Performance tuning](tutorial/performance-tuning.md) +"
+msgstr "[Penyesuaian Kinerja](tutorial/performance-tuning.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md) +"
+msgstr "[Menggunakan Yii dengan event loop](tutorial/using-with-event-loop.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +"
+msgstr "[Menggunakan Yii dengan RoadRunner](tutorial/using-yii-with-roadrunner.md) +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md) +"
+msgstr "[Menggunakan Yii dengan Swoole](using-yii-with-swoole.md) +"
+
+#. type: Plain text
+#: en/README.md
+msgid "Widgets -"
+msgstr "Widgets -"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[GridView](https://www.yiiframework.com/doc-2.0/yii-grid-gridview.html)"
+msgstr "[GridView](https://www.yiiframework.com/doc-2.0/yii-grid-gridview.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[ListView](https://www.yiiframework.com/doc-2.0/yii-widgets-listview.html)"
+msgstr "[ListView](https://www.yiiframework.com/doc-2.0/yii-widgets-listview.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[DetailView](https://www.yiiframework.com/doc-2.0/yii-widgets-detailview.html)"
+msgstr "[DetailView](https://www.yiiframework.com/doc-2.0/yii-widgets-detailview.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[ActiveForm](https://www.yiiframework.com/doc-2.0/guide-input-forms.html#activerecord-based-forms-activeform)"
+msgstr "[ActiveForm](https://www.yiiframework.com/doc-2.0/guide-input-forms.html#activerecord-based-forms-activeform)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)"
+msgstr "[Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)"
+msgstr "[LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)"
+msgstr "[LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Bootstrap widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)"
+msgstr "[Bootstrap Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)"
+
+#. type: Plain text
+#: en/README.md
+msgid "Helpers +"
+msgstr "Helpers +"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Arrays](https://github.com/yiisoft/arrays/)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Files](https://github.com/yiisoft/files/)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Html](https://github.com/yiisoft/html/)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Json](https://github.com/yiisoft/json)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Network utilities](https://github.com/yiisoft/network-utilities/)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[VarDumper](https://github.com/yiisoft/var-dumper)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Strings](https://github.com/yiisoft/strings)"
+msgstr ""
+
+#. type: Plain text
+#: en/README.md
+msgid "Extras +"
+msgstr "Lainnya+"
+
+#. type: Bullet: '* '
+#: en/README.md
+msgid "[Glossary](glossary.md)"
+msgstr "[Glosarium](glossary.md)"
