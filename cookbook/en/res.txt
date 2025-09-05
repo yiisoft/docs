@@ -1,0 +1,7 @@
+[type: markdown] en/configuring-webservers/apache.md $lang:$lang/configuring-webservers/apache.md pot=configuring-webservers_apache.md
+[type: markdown] en/configuring-webservers/general.md $lang:$lang/configuring-webservers/general.md pot=configuring-webservers_general.md
+[type: markdown] en/configuring-webservers/iis.md $lang:$lang/configuring-webservers/iis.md pot=configuring-webservers_iis.md
+[type: markdown] en/configuring-webservers/lighttpd.md $lang:$lang/configuring-webservers/lighttpd.md pot=configuring-webservers_lighttpd.md
+[type: markdown] en/configuring-webservers/nginx-unit.md $lang:$lang/configuring-webservers/nginx-unit.md pot=configuring-webservers_nginx-unit.md
+[type: markdown] en/configuring-webservers/nginx.md $lang:$lang/configuring-webservers/nginx.md pot=configuring-webservers_nginx.md
+[type: markdown] en/organizing-code/structuring-by-use-case-with-vertical-slices.md $lang:$lang/organizing-code/structuring-by-use-case-with-vertical-slices.md pot=organizing-code_structuring-by-use-case-with-vertical-slices.md
