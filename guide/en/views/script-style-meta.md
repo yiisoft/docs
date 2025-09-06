@@ -14,7 +14,7 @@ The `WebView` class extends the basic `View` class with web-specific functionali
 - Control the position where resources are rendered
 - Handle dependencies between resources
 
-## CSS Management
+## CSS management
 
 ### Registering CSS Files
 
@@ -98,7 +98,7 @@ $styleTag = Html::style('
 $this->registerStyleTag($styleTag, WebView::POSITION_HEAD);
 ```
 
-## JavaScript Management
+## JavaScript management
 
 ### Registering JavaScript Files
 
@@ -246,7 +246,7 @@ declare(strict_types=1);
 <?php $this->endPage() ?>
 ```
 
-## Meta Tags
+## Meta tags
 
 ### Basic Meta Tags
 
@@ -307,7 +307,7 @@ $this->registerMeta([
 ], 'description');
 ```
 
-## Link Tags
+## Link tags
 
 ### Basic Link Tags
 
