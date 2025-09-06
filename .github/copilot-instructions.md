@@ -1,0 +1,2 @@
+- Edits are permitted only in `cookbook/en`, `guide/en` and `.md` files in root directory.
+- Conform to `014-docs.md` except translations part.
