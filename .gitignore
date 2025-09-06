@@ -1,4 +1,19 @@
-# Temporary files
-vale*
-*.tar.gz
-*.zip
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
+
+# po4a .mo files
+*.mo
