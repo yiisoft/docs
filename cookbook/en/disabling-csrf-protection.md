@@ -2,17 +2,22 @@
 
 ## What is CSRF protection?
 
-Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
+Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making 
+unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through 
+the `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
 
-For a comprehensive understanding of CSRF attacks and protection mechanisms, see the [Security best practices](../../guide/en/security/best-practices.md#avoiding-csrf) section in the main guide.
+For a comprehensive understanding of CSRF attacks and protection mechanisms, see
+the [Security best practices](../../guide/en/security/best-practices.md#avoiding-csrf) section in the main guide.
 
 ## When to disable CSRF protection
 
-While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might need to disable it:
+While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might 
+need to disable it:
 
 ### When external systems cannot provide CSRF tokens
 
-When building APIs or handling automated requests from external systems, CSRF protection can interfere with legitimate requests since these systems cannot provide valid CSRF tokens:
+When building APIs or handling automated requests from external systems, CSRF protection can interfere with legitimate
+requests since these systems cannot provide valid CSRF tokens:
 
 - **Third-party integrations**: External services cannot provide valid CSRF tokens
 - **Mobile applications**: Native mobile apps typically don't use cookies or sessions in the same way as web browsers
@@ -24,112 +29,40 @@ When building APIs or handling automated requests from external systems, CSRF pr
 
 ## How to disable CSRF protection
 
-### Option 1: Remove CSRF middleware globally
-
-If your entire application serves as an API without web forms, you can remove the CSRF middleware from your application configuration.
-
-In `config/web/application.php`, remove `CsrfMiddleware::class` from the middleware stack:
+First, you need to remove CSRF middleware from your main application middleware list in `config/web/di/application.php`:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-use Yiisoft\Yii\Web\Application;
-use Yiisoft\Yii\Web\Middleware\Dispatcher\MiddlewareDispatcher;
-use Yiisoft\Router\Middleware\Router;
-use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-use Yiisoft\Session\SessionMiddleware;
-
 return [
     Application::class => [
         '__construct()' => [
-            'dispatcher' => DynamicReference::to(static function (Injector $injector) {
-                return ($injector->make(MiddlewareDispatcher::class))
-                    ->withMiddlewares([
+            'dispatcher' => DynamicReference::to([
+                'class' => MiddlewareDispatcher::class,
+                'withMiddlewares()' => [
+                    [
                         ErrorCatcher::class,
                         SessionMiddleware::class,
-                        // CsrfMiddleware::class, // <- Remove this line
-                        Router::class,
-                    ]);
-            }),
-            // ... other configuration
-        ],
-    ],
-];
+                        CsrfTokenMiddleware::class, // <- Remove this line                        
 ```
 
-### Option 2: Selective disabling for specific routes
-
-For applications that mix web pages and API endpoints, you can selectively disable CSRF protection for specific routes using middleware groups.
-
-Create separate middleware stacks in `config/web/application.php`:
+Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` 
+middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-use Yiisoft\Router\Group;
-use Yiisoft\Router\Route;
-use Yiisoft\Yii\Web\Middleware\Csrf as CsrfMiddleware;
-
-// In your routing configuration
 return [
-    // Web routes with CSRF protection
-    Group::create('/web')
-        ->middleware(CsrfMiddleware::class)
+    Group::create()
+        ->middleware(CsrfTokenMiddleware::class)
         ->routes(
-            Route::get('/', [SiteController::class, 'index']),
-            Route::methods(['GET', 'POST'], '/contact', [SiteController::class, 'contact']),
-            // ... other web routes
-        ),
-    
-    // API routes without CSRF protection
-    Group::create('/api')
-        ->routes(
-            Route::get('/users', [UserApiController::class, 'index']),
-            Route::post('/webhooks/payment', [WebhookController::class, 'payment']),
-            // ... other API routes
-        ),
-];
 ```
 
-### Option 3: Custom middleware for conditional CSRF
-
-Create a custom middleware that conditionally applies CSRF protection based on request characteristics:
+For a single route, you can add the middleware directly to the route:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Yiisoft\Yii\Web\Middleware\Csrf as CsrfMiddleware;
-
-final class ConditionalCsrfMiddleware implements MiddlewareInterface
-{
-    public function __construct(private CsrfMiddleware $csrfMiddleware)
-    {
-    }
-
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        $uri = $request->getUri()->getPath();
-        
-        // Skip CSRF for API routes and webhooks
-        if (str_starts_with($uri, '/api/') || str_starts_with($uri, '/webhooks/')) {
-            return $handler->handle($request);
-        }
-        
-        // Apply CSRF protection for other routes
-        return $this->csrfMiddleware->process($request, $handler);
-    }
-}
+Route::methods([Method::GET, Method::POST], '/say[/{test}]')
+    ->action(\App\Controller\Echo\Action::class)
+    ->name('echo/say')
+    ->middleware(CsrfTokenMiddleware::class)
 ```
+
 
 ## Security considerations
 
@@ -192,6 +125,9 @@ final class WebhookController
 
 ## Conclusion
 
-While CSRF protection is crucial for web applications, there are legitimate scenarios where it needs to be disabled, particularly for external APIs and webhooks. When disabling CSRF protection, always implement alternative security measures and follow security best practices to maintain the overall security of your application.
+While CSRF protection is crucial for web applications, there are legitimate scenarios where it needs to be disabled,
+particularly for external APIs and webhooks. When disabling CSRF protection, always implement alternative security 
+measures and follow security best practices to maintain the overall security of your application.
 
-Remember that disabling CSRF protection increases security risks, so careful consideration and proper implementation of alternative security measures are essential.
+Remember that disabling CSRF protection increases security risks, so careful consideration and proper implementation
+of alternative security measures are essential.
