@@ -4,7 +4,7 @@
 multiple threads I/O modules. Developers can use sync or async, coroutine API to write the applications.
 
 In the context of Yii, it allows running request handlers as workers. Each worker may handle multiple requests.
-Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not to re-initialize a framework
+Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not re-initializing a framework
 for each request that improves performance significantly. 
 
 ## Installation

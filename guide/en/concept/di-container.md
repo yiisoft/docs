@@ -28,7 +28,7 @@ final readonly class CachedWidget extends Cache
 }
 ```
 
-The issue here is that these two are becoming unnecessarily coupled or inter-dependent making them more fragile.
+The issue here is that these two are becoming unnecessarily coupled or inter-dependent, making them more fragile.
 
 Another way to handle this is composition:
 
