@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2025-09-11 10:15+0500\n"
-"PO-Revision-Date: 2025-09-04 07:58+0500\n"
+"PO-Revision-Date: 2025-09-11 10:24+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -150,10 +150,8 @@ msgstr "Требования к ПО и знаниям"
 
 #. type: Plain text
 #: ../../guide/en/intro/what-is-yii.md
-#, fuzzy
-#| msgid "Yii3 requires PHP 8.2 or above, but some packages also older PHP such as PHP 7.4."
 msgid "Yii3 requires PHP 8.2 or above, but some packages work with older PHP, such as PHP 7.4."
-msgstr "Yii3 требует PHP 8.2 или выше, но некоторые пакеты также поддерживают PHP 7.4."
+msgstr "Yii3 требует PHP 8.2 или выше, но некоторые пакеты работают со старыми версиями PHP, такими как PHP 7.4."
 
 #. type: Plain text
 #: ../../guide/en/intro/what-is-yii.md
