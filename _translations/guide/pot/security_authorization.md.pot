@@ -1,0 +1,769 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Authorization"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Authorization is the process of verifying that a user has enough permission "
+"to do something."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Checking for permission <span id=\"checking-for-permission\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"You can check if a user has certain permissions by using "
+"`\\Yiisoft\\User\\User` service:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"namespace App\\Blog\\Post;\n"
+"\n"
+"use Yiisoft\\Router\\CurrentRoute;\n"
+"use Yiisoft\\User\\User;\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function actionEdit(CurrentRoute $route, User $user, PostRepository $postRepository)\n"
+"    {\n"
+"        $postId = $route->getArgument('id');\n"
+"        if ($postId === null) {\n"
+"            // respond with 404        \n"
+"        }\n"
+"        \n"
+"        $post = $postRepository->findByPK($postId);\n"
+"        if ($post === null) {\n"
+"            // respond with 404        \n"
+"        }\n"
+"\n"
+"        if (!$this->canEditPost($user, $post)) {\n"
+"            // respond with 403        \n"
+"        }\n"
+"        \n"
+"        // continue with editing a post\n"
+"    }\n"
+"    \n"
+"    private function canEditPost(User $user, Post $post): bool\n"
+"    {\n"
+"        return $post->getAuthorId() === $user->getId() || $user->can('updatePost');    \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Behind the scenes, `Yiisoft\\Yii\\Web\\User\\User::can()` method calls "
+"`\\Yiisoft\\Access\\AccessCheckerInterface::userHasPermission()` so you "
+"should provide an implementation in dependency container in order for it to "
+"work."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Role-based access control (RBAC) <span id=\"rbac\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Role-Based Access Control (RBAC) provides a simple yet powerful centralized "
+"access control. Please refer to the [Wikipedia](https://en.wikipedia.org/"
+"wiki/Role-based_access_control) for details about comparing RBAC with other "
+"more traditional access control schemes."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Yii implements a General Hierarchical RBAC, following the [NIST RBAC model]"
+"(https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/"
+"the-nist-model-for-role-based-access-control-towards-a-unified-/documents/"
+"sandhu-ferraiolo-kuhn-00.pdf)."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Using RBAC involves two parts of work. The first part is to build up the "
+"RBAC authorization data, and the second part is to use the authorization "
+"data to perform access check in places where it's necessary. Since RBAC "
+"implements `\\Yiisoft\\Access\\AccessCheckerInterface`, using it's similar "
+"to using any other implementation of an access checker."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "To ease description next, there are some basic RBAC concepts first."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Basic concepts <span id=\"basic-concepts\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"A role represents a collection of *permissions* (for example, creating "
+"posts, updating posts).  You may assign a role to one or many users.  To "
+"check if a user has a specified permission, you may check if the user has a "
+"role with that permission."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Associated with each role or permission, there may be a *rule*.  A rule "
+"represents a piece of code that an access checker will execute to decide if "
+"the corresponding role or permission applies to the current user.  For "
+"example, the \"update post\" permission may have a rule that checks if the "
+"current user is the post creator.  During access checking, if the user is "
+"NOT the post creator, there's no \"update post\" permission."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Both roles and permissions are in a hierarchy.  In particular, a role may "
+"consist of other roles or permissions.  And a permission may consist of "
+"other permissions.  Yii implements a *partial order* hierarchy which "
+"includes the more special *tree* hierarchy.  While a role can contain a "
+"permission, it isn't `true` vice versa."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Configuring RBAC <span id=\"configuring-rbac\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"RBAC is available via `yiisoft/rbac` package, so you need to require it:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "composer require yiisoft/rbac\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Before we set off to define authorization data and perform access checking, "
+"you need to configure the `\\Yiisoft\\Access\\AccessCheckerInterface` in "
+"dependency container:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"use \\Psr\\Container\\ContainerInterface;\n"
+"use Yiisoft\\Rbac\\Manager\\PhpManager;\n"
+"use Yiisoft\\Rbac\\RuleFactory\\ClassNameRuleFactory;\n"
+"\n"
+"return [\n"
+"    \\Yiisoft\\Access\\AccessCheckerInterface::class => static function (ContainerInterface $container) {\n"
+"        $aliases = $container->get(\\Yiisoft\\Aliases\\Aliases::class);\n"
+"        return new PhpManager(new ClassNameRuleFactory(), $aliases->get('@rbac'));\n"
+"    }\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"`\\Yiisoft\\Rbac\\Manager\\PhpManager` uses PHP script files to store "
+"authorization data.  The files are under `@rbac` alias.  Make sure the "
+"directory and all the files in it are writable by the Web server process if "
+"you want to change permission hierarchy online."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Building authorization data <span id=\"generating-rbac-data\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "Building authorization data is all about the following tasks:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/security/authorization.md
+msgid "defining roles and permissions;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/security/authorization.md
+msgid "establishing relations between roles and permissions;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/security/authorization.md
+msgid "defining rules;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/security/authorization.md
+msgid "associating rules with roles and permissions;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/security/authorization.md
+msgid "assigning roles to users."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Depending on authorization flexibility requirements, you can do the tasks in "
+"different ways.  If only developers change your permission hierarchy, you "
+"can use either migrations or a console command.  Migration advantage is that "
+"you could execute it along with other migrations.  The Console command "
+"advantage is that you have a good overview of the hierarchy in the code "
+"without a need to read many migrations."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "Either way, in the end, you'll get the following RBAC hierarchy:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"![Simple RBAC hierarchy](img/rbac-hierarchy-1.svg \"Simple RBAC hierarchy\")"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"In case you want to build permission hierarchy dynamically, you need a UI or "
+"a console command.  The API used to build the hierarchy itself won't be "
+"different."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Using console command"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"If your permission hierarchy doesn't change at all, and you have a fixed "
+"number of users, you can create a [console command](../tutorial/console-"
+"applications.md) that will initialize authorization data once via APIs "
+"offered by `\\Yiisoft\\Rbac\\ManagerInterface`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"namespace App\\Command;\n"
+"\n"
+"use Symfony\\Component\\Console\\Attribute\\AsCommand;use Symfony\\Component\\Console\\Command\\Command;\n"
+"use Symfony\\Component\\Console\\Input\\InputInterface;\n"
+"use Symfony\\Component\\Console\\Output\\OutputInterface;\n"
+"use Yiisoft\\Rbac\\ManagerInterface;\n"
+"use Yiisoft\\Rbac\\Permission;\n"
+"use Yiisoft\\Rbac\\Role;\n"
+"use Yiisoft\\Yii\\Console\\ExitCode;\n"
+"\n"
+"#[AsCommand(\n"
+"    name: 'rbac:init',\n"
+"    description: 'Builds RBAC hierarchy',\n"
+")]\n"
+"final readonly class RbacCommand extends Command\n"
+"{   \n"
+"    public function __construct(\n"
+"        private ManagerInterface $manager\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    protected function execute(InputInterface $input, OutputInterface $output): int\n"
+"    {\n"
+"        $auth = $this->manager;\n"
+"\n"
+"        $auth->removeAll();                \n"
+"        \n"
+"        $createPost = (new Permission('createPost'))->withDescription('Create a post');        \n"
+"        $auth->add($createPost);\n"
+"\n"
+"        $updatePost = (new Permission('updatePost'))->withDescription('Update post');\n"
+"        $auth->add($updatePost);\n"
+"\n"
+"        // add the \"author\" role and give this role the \"createPost\" permission\n"
+"        $author = new Role('author');\n"
+"        $auth->add($author);\n"
+"        $auth->addChild($author, $createPost);\n"
+"\n"
+"        // add the \"admin\" role and give this role the \"updatePost\" permission\n"
+"        // as well as the permissions of the \"author\" role\n"
+"        $admin = new Role('admin');\n"
+"        $auth->add($admin);\n"
+"        $auth->addChild($admin, $updatePost);\n"
+"        $auth->addChild($admin, $author);\n"
+"\n"
+"        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()\n"
+"        // usually implemented in your User model.\n"
+"        $auth->assign($author, 2);\n"
+"        $auth->assign($admin, 1);\n"
+"        \n"
+"        return ExitCode::OK;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "You can execute the command above from the console the following way:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "./yii rbac:init\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"> If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,\n"
+"  create either UI or console command to manage assignments.\n"
+msgstr ""
+
+#. type: Title ####
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Using migrations"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "**TODO**: finish it when migrations are implemented.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"You can use [migrations](../databases/db-migrations.md)  to initialize and "
+"change hierarchy via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"Create new migration using `./yii migrate:create init_rbac` then implement "
+"creating a hierarchy:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use yii\\db\\Migration;\n"
+"\n"
+"use Yiisoft\\Rbac\\ManagerInterface;\n"
+"use Yiisoft\\Rbac\\Permission;\n"
+"use Yiisoft\\Rbac\\Role;\n"
+"\n"
+"class m170124_084304_init_rbac extends Migration\n"
+"{\n"
+"    public function up()\n"
+"    {\n"
+"        $auth = /* obtain auth */;\n"
+"\n"
+"        $auth->removeAll();                \n"
+"                \n"
+"        $createPost = (new Permission('createPost'))->withDescription('Create a post');        \n"
+"        $auth->add($createPost);\n"
+"\n"
+"        $updatePost = (new Permission('updatePost'))->withDescription('Update post');\n"
+"        $auth->add($updatePost);\n"
+"\n"
+"        // add the \"author\" role and give this role the \"createPost\" permission\n"
+"        $author = new Role('author');\n"
+"        $auth->add($author);\n"
+"        $auth->addChild($author, $createPost);\n"
+"\n"
+"        // add the \"admin\" role and give this role the \"updatePost\" permission\n"
+"        // as well as the permissions of the \"author\" role\n"
+"        $admin = new Role('admin');\n"
+"        $auth->add($admin);\n"
+"        $auth->addChild($admin, $updatePost);\n"
+"        $auth->addChild($admin, $author);\n"
+"\n"
+"        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()\n"
+"        // usually implemented in your User model.\n"
+"        $auth->assign($author, 2);\n"
+"        $auth->assign($admin, 1);\n"
+"    }\n"
+"    \n"
+"    public function down()\n"
+"    {\n"
+"        $auth = /* obtain auth */;\n"
+"\n"
+"        $auth->removeAll();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"> If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,\n"
+"  create either UI or console command to manage assignments.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "You could apply migration by using `./yii migrate`."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Assigning roles to users"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "TODO: update when signup implemented in demo / template.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"The author can create a post, admin can update the post and do everything "
+"the author can."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"If your application allows user signup, you need to assign roles to these "
+"new users at once.  For example, in order for all signed-up users to become "
+"authors in your advanced project template, you need to change "
+"`frontend\\models\\SignupForm::signup()` as follows:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"public function signup()\n"
+"{\n"
+"    if ($this->validate()) {\n"
+"        $user = new User();\n"
+"        $user->username = $this->username;\n"
+"        $user->email = $this->email;\n"
+"        $user->setPassword($this->password);\n"
+"        $user->generateAuthKey();\n"
+"        $user->save(false);\n"
+"\n"
+"        // the following three lines were added:\n"
+"        $auth = \\Yii::$app->authManager;\n"
+"        $authorRole = $auth->getRole('author');\n"
+"        $auth->assign($authorRole, $user->getId());\n"
+"\n"
+"        return $user;\n"
+"    }\n"
+"\n"
+"    return null;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"For applications that require complex access control with dynamically "
+"updated authorization data (such as an admin panel), you many need to "
+"develop special user interfaces using APIs offered by `authManager`."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Using rules <span id=\"using-rules\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"As aforementioned, rules add extra constraint to roles and permissions.  A "
+"rule is a class extending from `\\Yiisoft\\Rbac\\Rule`.  It must implement "
+"the `execute()` method.  In the hierarchy you've created before, the author "
+"can't edit his own post.  Let's fix it. First, you need a rule to verify "
+"that the user is the post author:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"namespace App\\User\\Rbac;\n"
+"\n"
+"use Yiisoft\\Rbac\\Item;\n"
+"use \\Yiisoft\\Rbac\\Rule;\n"
+"\n"
+"/**\n"
+" * Checks if the authorID matches user passed via params.\n"
+" */\n"
+"final readonly class AuthorRule extends Rule\n"
+"{\n"
+"    private const NAME = 'isAuthor';\n"
+"\n"
+"    public function __construct() {\n"
+"        parent::__construct(self::NAME);\n"
+"    }\n"
+"\n"
+"    public function execute(string $userId, Item $item, array $parameters = []): bool\n"
+"    {\n"
+"        return isset($params['post']) ? $params['post']->getAuthorId() == $userId : false;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"The rule checks if user created the `post`. Create a special permission "
+"`updateOwnPost` in the command you've used before:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"/** @var \\Yiisoft\\Rbac\\ManagerInterface $auth */\n"
+"\n"
+"// add the rule\n"
+"$rule = new AuthorRule();\n"
+"$auth->add($rule);\n"
+"\n"
+"// add the \"updateOwnPost\" permission and associate the rule with it.\n"
+"$updateOwnPost = (new \\Yiisoft\\Rbac\\Permission('updateOwnPost'))\n"
+"    ->withDescription('Update own post')\n"
+"    ->withRuleName($rule->getName());\n"
+"$auth->add($updateOwnPost);\n"
+"\n"
+"// \"updateOwnPost\" will be used from \"updatePost\"\n"
+"$auth->addChild($updateOwnPost, $updatePost);\n"
+"\n"
+"// allow \"author\" to update their own posts\n"
+"$auth->addChild($author, $updateOwnPost);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "Now you've got the following hierarchy:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"![RBAC hierarchy with a rule](img/rbac-hierarchy-2.svg \"RBAC hierarchy with "
+"a rule\")"
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Access check <span id=\"access-check\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"The check is done similarly to how it was done in the first section of this "
+"guide:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"namespace App\\Blog\\Post;\n"
+"\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\User\\User;\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function actionEdit(ServerRequestInterface $request, User $user, PostRepository $postRepository)\n"
+"    {\n"
+"        $postId = $request->getAttribute('id');\n"
+"        if ($postId === null) {\n"
+"            // respond with 404        \n"
+"        }\n"
+"        \n"
+"        $post = $postRepository->findByPK($postId);\n"
+"        if ($post === null) {\n"
+"            // respond with 404        \n"
+"        }\n"
+"\n"
+"        if (!$this->canEditPost($user, $post)) {\n"
+"            // respond with 403        \n"
+"        }\n"
+"        \n"
+"        // continue with editing a post\n"
+"    }\n"
+"    \n"
+"    private function canEditPost(User $user, Post $post): bool\n"
+"    {\n"
+"        return $user->can('updatePost', ['post' => $post]);    \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"The difference is that now checking for a user's own post is part of the "
+"RBAC."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"If the current user is Jane with `ID=1` you are starting at `createPost` and "
+"trying to get to `Jane`:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "![Access check](img/rbac-access-check-1.svg \"Access check\")"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"To check if a user can update a post, you need to pass an extra parameter "
+"that's required by `AuthorRule` described before:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"if ($user->can('updatePost', ['post' => $post])) {\n"
+"    // update post\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "Here is what happens if the current user is John:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "![Access check](img/rbac-access-check-2.svg \"Access check\")"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`\n"
+"should return `true` from its `execute()` method. The method receives its `$params` from the `can()` method call, so the value is\n"
+"`['post' => $post]`.\n"
+"If everything is fine, you will get to `author` assigned to John.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "In the case of Jane, it's a bit simpler since she is an admin:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid "![Access check](img/rbac-access-check-3.svg \"Access check\")"
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid "Implementing your own access checker"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/security/authorization.md
+msgid ""
+"If RBAC doesn't suit your needs, you can implement your own access checker "
+"without changing the application code:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/security/authorization.md
+#, no-wrap
+msgid ""
+"namespace App\\User;\n"
+"\n"
+"use \\Yiisoft\\Access\\AccessCheckerInterface;\n"
+"\n"
+"final readonly class AccessChecker implements AccessCheckerInterface\n"
+"{\n"
+"    private const PERMISSIONS = [\n"
+"        [\n"
+"            1 => ['editPost'],\n"
+"            42 => ['editPost', 'deletePost'],\n"
+"        ],\n"
+"    ];\n"
+"\n"
+"    public function userHasPermission($userId, string $permissionName, array $parameters = []) : bool\n"
+"    {\n"
+"        if (!array_key_exists($userId, self::PERMISSIONS)) {\n"
+"            return false;\n"
+"        }\n"
+"\n"
+"        return in_array($permissionName, self::PERMISSIONS[$userId], true); \n"
+"    }\n"
+"}\n"
+msgstr ""

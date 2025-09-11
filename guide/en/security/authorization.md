@@ -64,7 +64,7 @@ You may assign a role to one or many users.
 To check if a user has a specified permission, you may check if the user has a role with that permission.
 
 Associated with each role or permission, there may be a *rule*.
-A rule represents a piece of code that access checker
+A rule represents a piece of code that an access checker
 will execute to decide if the corresponding role or permission applies to the current user.
 For example, the "update post" permission may have a rule that checks if the current user is the post creator.
 During access checking, if the user is NOT the post creator, there's no "update post" permission.
@@ -99,7 +99,7 @@ return [
 ];
 ```
 
-`\Yiisoft\Rbac\Manager\PhpManager` uses a PHP script files to store authorization data.
+`\Yiisoft\Rbac\Manager\PhpManager` uses PHP script files to store authorization data.
 The files are under `@rbac` alias.
 Make sure the directory and all the files in it are writable by the Web server process if you want to change permission
 hierarchy online.
@@ -168,7 +168,7 @@ final readonly class RbacCommand extends Command
         $updatePost = (new Permission('updatePost'))->withDescription('Update post');
         $auth->add($updatePost);
 
-        // add "author" role and give this role the "createPost" permission
+        // add the "author" role and give this role the "createPost" permission
         $author = new Role('author');
         $auth->add($author);
         $auth->addChild($author, $createPost);
@@ -230,7 +230,7 @@ class m170124_084304_init_rbac extends Migration
         $updatePost = (new Permission('updatePost'))->withDescription('Update post');
         $auth->add($updatePost);
 
-        // add "author" role and give this role the "createPost" permission
+        // add the "author" role and give this role the "createPost" permission
         $author = new Role('author');
         $auth->add($author);
         $auth->addChild($author, $createPost);
@@ -266,10 +266,10 @@ You could apply migration by using `./yii migrate`.
 
 TODO: update when signup implemented in demo / template.
 
-The author can create a post, admin can update post and do everything the author can.
+The author can create a post, admin can update the post and do everything the author can.
 
-If your application allows user signup, you need to assign roles to these new users once.
-For example, in order for all signed-up users to become authors in your advanced project template you need
+If your application allows user signup, you need to assign roles to these new users at once.
+For example, in order for all signed-up users to become authors in your advanced project template, you need
 to change `frontend\models\SignupForm::signup()` as follows:
 
 ```php
@@ -314,7 +314,7 @@ use Yiisoft\Rbac\Item;
 use \Yiisoft\Rbac\Rule;
 
 /**
- * Checks if authorID matches user passed via params.
+ * Checks if the authorID matches user passed via params.
  */
 final readonly class AuthorRule extends Rule
 {
@@ -360,7 +360,7 @@ Now you've got the following hierarchy:
 
 ### Access check <span id="access-check"></span>
 
-The check is done similar to how it was done in the first section of this guide:
+The check is done similarly to how it was done in the first section of this guide:
 
 ```php
 namespace App\Blog\Post;
@@ -396,7 +396,7 @@ final readonly class PostController
 }
 ```
 
-The difference is that now checking for user's own post is part of the RBAC.
+The difference is that now checking for a user's own post is part of the RBAC.
 
 If the current user is Jane with `ID=1` you are starting at `createPost` and trying to get to `Jane`:
 

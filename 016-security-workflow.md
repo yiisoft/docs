@@ -39,4 +39,4 @@ It usually takes several days.
 - Merge the patch pull request right before tagging the next package release.
 - Publish security advisory.
 - Add CVE to [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).
-  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as example.
+  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as an example.
