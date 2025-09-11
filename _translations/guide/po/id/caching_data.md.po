@@ -1,0 +1,460 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"PO-Revision-Date: 2025-09-05 10:07+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Data caching"
+msgstr "Caching data"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.  It's also the foundation for more advanced caching features, such as [page caching](page.md)."
+msgstr ""
+"Caching data adalah tentang menyimpan beberapa variabel PHP ke dalam cache dan mengambilnya kembali dari cache.\n"
+"Ini juga menjadi fondasi untuk fitur caching yang lebih lanjut, seperti [caching halaman](page.md)."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache) package:"
+msgstr "Untuk menggunakan cache, pasang paket [yiisoft/cache](https://github.com/yiisoft/cache):"
+
+#. type: Fenced code block (shell)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "composer require yiisoft/cache\n"
+msgstr "composer require yiisoft/cache\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "The following code is a typical usage pattern of data caching, where `$cache` refers to a `Cache` instance from the package:"
+msgstr ""
+"Kode berikut adalah pola penggunaan umum caching data, di mana `$cache` merujuk ke\n"
+"instance `Cache` dari paket tersebut:"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "public function getTopProducts(\\Yiisoft\\Cache\\CacheInterface $cache): array\n"
+#| "{\n"
+#| "    $key = ['top-products', $count = 10];\n"
+#| "    \n"
+#| "    // Try retrieving $data from cache.\n"
+#| "    $data = $cache->getOrSet($key, function (\\Psr\\SimpleCache\\CacheInterface $cache) use ($count) {\n"
+#| "        // Can't find $data in cache, calculate it from scratch.\n"
+#| "        return getTopProductsFromDatabase($count);\n"
+#| "    }, 3600);\n"
+#| "    \n"
+#| "    return $data;\n"
+#| "}\n"
+msgid ""
+"public function getTopProducts(\\Yiisoft\\Cache\\CacheInterface $cache): array\n"
+"{\n"
+"    $key = ['top-products', $count = 10];\n"
+"    \n"
+"    // Try retrieving $data from cache.\n"
+"    $data = $cache->getOrSet($key, function (\\Psr\\SimpleCache\\CacheInterface $cache) use ($count) {\n"
+"        // Can't find $data in a cache, calculate it from scratch.\n"
+"        return getTopProductsFromDatabase($count);\n"
+"    }, 3600);\n"
+"    \n"
+"    return $data;\n"
+"}\n"
+msgstr ""
+"public function getTopProducts(\\Yiisoft\\Cache\\CacheInterface $cache): array\n"
+"{\n"
+"    $key = ['top-products', $count = 10];\n"
+"    \n"
+"    // Try retrieving $data from cache.\n"
+"    $data = $cache->getOrSet($key, function (\\Psr\\SimpleCache\\CacheInterface $cache) use ($count) {\n"
+"        // Can't find $data in cache, calculate it from scratch.\n"
+"        return getTopProductsFromDatabase($count);\n"
+"    }, 3600);\n"
+"    \n"
+"    return $data;\n"
+"}\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "When cache has data associated with the `$key`, it returns the cached value.  Otherwise, it executes the passed anonymous function to calculate the value to cache and return."
+msgstr ""
+"Ketika cache memiliki data yang terkait dengan `$key`, ia akan mengembalikan nilai yang di-cache.\n"
+"Jika tidak, ia akan mengeksekusi fungsi anonim yang diberikan untuk menghitung nilai yang akan di-cache dan dikembalikan."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "If the anonymous function requires some data from the outer scope, you can pass it with the `use` statement."
+msgstr "Jika fungsi anonim membutuhkan beberapa data dari scope luar, Anda dapat meneruskannya menggunakan pernyataan `use`."
+
+#. type: Title ##
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Cache handlers"
+msgstr "Cache handlers"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible cache handlers which represent various cache storages, such as memory, files, and databases."
+msgstr ""
+"Layanan cache menggunakan handler cache yang kompatibel dengan [PSR-16](https://www.php-fig.org/psr/psr-16/) yang merepresentasikan berbagai\n"
+"penyimpanan cache, seperti memori, berkas, dan basis data."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Yii provides the following handlers:"
+msgstr "Yii menyediakan handler berikut:"
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`NullCache` — a cache placeholder which does no real caching. The purpose of this handler is to simplify the code that needs to check the availability of cache. For example, during development or if the server doesn't have actual cache support, you may configure a cache service to use this handler.  When you enable actual cache support, you can switch to using the corresponding cache handler.  In both cases, you may use the same code without extra checks."
+msgstr ""
+"`NullCache` — placeholder cache yang tidak melakukan caching nyata. Tujuan handler ini adalah menyederhanakan\n"
+"  kode yang perlu memeriksa ketersediaan cache. Misalnya, selama pengembangan atau jika server tidak memiliki\n"
+"  dukungan cache, Anda dapat mengonfigurasi layanan cache untuk menggunakan handler ini.\n"
+"  Saat Anda mengaktifkan dukungan cache nyata, Anda dapat beralih menggunakan handler cache yang sesuai.\n"
+"  Pada kedua kasus, Anda dapat menggunakan kode yang sama tanpa pemeriksaan tambahan."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`ArrayCache` — provides caching for the current request only by storing the values in an array."
+msgstr "`ArrayCache` — menyediakan caching hanya untuk permintaan saat ini dengan menyimpan nilai dalam sebuah array."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "[APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.  You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one server, no dedicated load balancers, etc.)."
+msgstr ""
+"[APCu](https://github.com/yiisoft/cache-apcu) — menggunakan ekstensi PHP [APC](https://secure.php.net/manual/en/book.apc.php).\n"
+"  Ini bisa dianggap sebagai opsi tercepat saat berurusan dengan cache untuk aplikasi terpusat (mis., satu\n"
+"  server, tanpa load balancer khusus, dll.)."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "[Database](https://github.com/yiisoft/cache-db) — uses a database table to store cached data."
+msgstr "[Database](https://github.com/yiisoft/cache-db) — menggunakan tabel basis data untuk menyimpan data yang di-cache."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "[File](https://github.com/yiisoft/cache-file) — uses standard files to store cached data. This is particularly suitable to cache large chunks of data, such as page content."
+msgstr ""
+"[File](https://github.com/yiisoft/cache-file) — menggunakan berkas standar untuk menyimpan data yang di-cache. Ini sangat cocok\n"
+"  untuk menyimpan potongan data besar, seperti konten halaman."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+#, fuzzy
+#| msgid "[Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)  extension. You can consider this option as the fastest one when dealing with cache in distributed application (e.g., with several servers, load balancers, etc.)"
+msgid "[Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)  extension. You can consider this option as the fastest one when dealing with cache in a distributed application"
+msgstr ""
+"[Memcached](https://github.com/yiisoft/cache-memcached) — menggunakan ekstensi PHP [memcached](https://secure.php.net/manual/en/book.memcached.php).\n"
+"  Ini bisa dianggap sebagai opsi tercepat saat berurusan dengan cache di aplikasi terdistribusi\n"
+"  (mis., beberapa server, load balancer, dll.)"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+#, fuzzy, no-wrap
+#| msgid "[Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)  ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension."
+msgid ""
+"  (e.g., with several servers, load balancers, etc.)\n"
+"- [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)\n"
+"  ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.\n"
+msgstr ""
+"[Wincache](https://github.com/yiisoft/cache-wincache) — menggunakan ekstensi PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)\n"
+"  ([lihat juga](https://secure.php.net/manual/en/book.wincache.php))."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "[You could find more handlers at packagist.org](https://packagist.org/providers/psr/simple-cache-implementation)."
+msgstr "[Anda dapat menemukan lebih banyak handler di packagist.org](https://packagist.org/providers/psr/simple-cache-implementation)."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> You may use different cache storage in the same application. A common strategy is:\n"
+"> - To use memory-based cache storage to store small but constantly used data (e.g., statistics)\n"
+"> - To use file-based or database-based cache storage to store big and less often used data (e.g., page content)\n"
+msgstr ""
+"> [!TIP]\n"
+"> Anda dapat menggunakan penyimpanan cache yang berbeda dalam aplikasi yang sama. Strategi umum adalah:\n"
+"> - Gunakan penyimpanan cache berbasis memori untuk menyimpan data kecil tetapi sering digunakan (mis., statistik)\n"
+"> - Gunakan penyimpanan cache berbasis berkas atau basis data untuk menyimpan data besar dan jarang digunakan (mis., konten halaman)\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Cache handlers are usually set up in a [dependency injection container](../concept/di-container.md) so that they can be globally configurable and accessible."
+msgstr ""
+"Handler cache biasanya disetel dalam [dependency injection container](../concept/di-container.md) sehingga dapat\n"
+"dikonfigurasi dan diakses secara global."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Because all cache handlers support the same set of APIs, you can swap the underlying cache handler with a different one. You can do it by reconfiguring the application without modifying the code that uses the cache."
+msgstr ""
+"Karena semua handler cache mendukung kumpulan API yang sama, Anda dapat menukar handler cache yang digunakan\n"
+"dengan yang lain. Anda dapat melakukannya dengan mengonfigurasi ulang aplikasi tanpa mengubah kode yang menggunakan cache."
+
+#. type: Title ###
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Cache keys"
+msgstr "Cache keys"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "A key uniquely identifies each data item stored in the cache. When you store a data item, you have to specify a key for it. Later, when you retrieve the data item, you should give the corresponding key."
+msgstr ""
+"Sebuah kunci mengidentifikasi secara unik setiap item data yang disimpan di cache. Saat Anda menyimpan sebuah item data,\n"
+"Anda harus menentukan kunci untuknya. Nantinya, ketika Anda mengambil item data tersebut, Anda perlu memberikan\n"
+"kunci yang sesuai."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "You may use a string or an arbitrary value as a cache key. When a key isn't a string, it will be automatically serialized into a string."
+msgstr ""
+"Anda dapat menggunakan string atau nilai arbitrer sebagai kunci cache. Ketika kunci bukan string, ia akan\n"
+"diserialisasi menjadi string secara otomatis."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "A common strategy of defining a cache key is to include all determining factors in terms of an array."
+msgstr "Strategi umum dalam mendefinisikan kunci cache adalah menyertakan semua faktor penentu dalam bentuk array."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "When different applications use the same cache storage, you should specify a unique cache key prefix for each application to avoid conflicts of cache keys.  You can do this by using `\\Yiisoft\\Cache\\PrefixedCache` decorator:"
+msgstr ""
+"Ketika aplikasi yang berbeda menggunakan penyimpanan cache yang sama, Anda harus menentukan prefiks kunci cache yang unik\n"
+"untuk setiap aplikasi guna menghindari konflik kunci cache.\n"
+"Anda dapat melakukannya dengan menggunakan dekorator `\\Yiisoft\\Cache\\PrefixedCache`:"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid ""
+"$arrayCacheWithPrefix = new \\Yiisoft\\Cache\\PrefixedCache(new \\Yiisoft\\Cache\\ArrayCache(), 'myapp_');\n"
+"$cache = new \\Yiisoft\\Cache\\Cache($arrayCacheWithPrefix);\n"
+msgstr ""
+"$arrayCacheWithPrefix = new \\Yiisoft\\Cache\\PrefixedCache(new \\Yiisoft\\Cache\\ArrayCache(), 'myapp_');\n"
+"$cache = new \\Yiisoft\\Cache\\Cache($arrayCacheWithPrefix);\n"
+
+#. type: Title ###
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Cache expiration"
+msgstr "Cache expiration"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "A data item stored in a cache will remain there forever unless it's removed because of some caching policy enforcement. For example, caching space is full and cache storage removes the oldest data.  To change this behavior, you can set a TTL parameter when calling a method to store a data item:"
+msgstr ""
+"Item data yang disimpan di cache akan tetap di sana selamanya kecuali dihapus karena beberapa kebijakan\n"
+"caching. Misalnya, ruang cache penuh dan penyimpanan cache menghapus data tertua.\n"
+"Untuk mengubah perilaku ini, Anda dapat menyetel parameter TTL saat memanggil metode untuk menyimpan item data:"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid ""
+"$ttl = 3600;\n"
+"$data = $cache->getOrSet($key, function (\\Psr\\SimpleCache\\CacheInterface $cache) use ($count) {\n"
+"return getTopProductsFromDatabase($count);\n"
+"}, $ttl);\n"
+msgstr ""
+"$ttl = 3600;\n"
+"$data = $cache->getOrSet($key, function (\\Psr\\SimpleCache\\CacheInterface $cache) use ($count) {\n"
+"return getTopProductsFromDatabase($count);\n"
+"}, $ttl);\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "The `$ttl` parameter indicates for how many seconds the data item can remain valid in the cache. When you retrieve the data item, if it has passed the expiration time, the method will execute the function and set the resulting value into cache."
+msgstr ""
+"Parameter `$ttl` menunjukkan berapa detik item data dapat tetap valid di cache. Ketika Anda mengambil\n"
+"item data tersebut, jika waktu kedaluwarsanya telah lewat, metode akan mengeksekusi fungsi dan menyetel nilai yang dihasilkan\n"
+"ke dalam cache."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+#, fuzzy
+#| msgid "You may set default TTL for the cache:"
+msgid "You may set the default TTL for the cache:"
+msgstr "Anda dapat menyetel TTL bawaan untuk cache:"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "$cache = new \\Yiisoft\\Cache\\Cache($arrayCache, 60 * 60); // 1 hour\n"
+msgstr "$cache = new \\Yiisoft\\Cache\\Cache($arrayCache, 60 * 60); // 1 hour\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Additionally, you can invalidate a cache key explicitly:"
+msgstr "Selain itu, Anda dapat menginvalidasi kunci cache secara eksplisit:"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "$cache->remove($key);\n"
+msgstr "$cache->remove($key);\n"
+
+#. type: Title ###
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Invalidation dependencies"
+msgstr "Invalidation dependencies"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Besides the expiration setting, changes of the so-called **invalidation dependencies** may also invalidate cached data item.  For example, `\\Yiisoft\\Cache\\Dependency\\FileDependency` represents the dependency of a file's modification time.  When this dependency changes, it means something modifying the corresponding file.  As a result, any outdated file content found in the cache should invalidate."
+msgstr ""
+"Selain pengaturan kedaluwarsa, perubahan pada yang disebut sebagai **ketergantungan invalidasi** juga dapat menginvalidasi item data yang di-cache.\n"
+"Misalnya, `\\Yiisoft\\Cache\\Dependency\\FileDependency` merepresentasikan ketergantungan pada waktu modifikasi sebuah berkas.\n"
+"Ketika ketergantungan ini berubah, itu berarti ada sesuatu yang memodifikasi berkas terkait.\n"
+"Akibatnya, konten berkas yang usang yang ditemukan di cache harus diinvalidasi."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Cache dependencies are objects of `\\Yiisoft\\Cache\\Dependency\\Dependency` descendant classes. When you store a data item in the cache, you can pass along an associated cache dependency object. For example,"
+msgstr ""
+"Ketergantungan cache adalah objek dari kelas turunan `\\Yiisoft\\Cache\\Dependency\\Dependency`. Ketika Anda\n"
+"menyimpan sebuah item data ke cache, Anda dapat menyertakan objek ketergantungan cache terkait. Contohnya,"
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var callable $callable\n"
+" * @var \\Yiisoft\\Cache\\CacheInterface $cache\n"
+" */\n"
+"\n"
+"use Yiisoft\\Cache\\Dependency\\TagDependency;\n"
+"\n"
+"// Set many cache values marking both with a tag.\n"
+"$cache->getOrSet('item_42_price', $callable, null, new TagDependency('item_42'));\n"
+"$cache->getOrSet('item_42_total', $callable, 3600, new TagDependency('item_42'));\n"
+"\n"
+"// Trigger invalidation by tag.\n"
+"TagDependency::invalidate($cache, 'item_42');\n"
+msgstr ""
+"/**\n"
+" * @var callable $callable\n"
+" * @var \\Yiisoft\\Cache\\CacheInterface $cache\n"
+" */\n"
+"\n"
+"use Yiisoft\\Cache\\Dependency\\TagDependency;\n"
+"\n"
+"// Set many cache values marking both with a tag.\n"
+"$cache->getOrSet('item_42_price', $callable, null, new TagDependency('item_42'));\n"
+"$cache->getOrSet('item_42_total', $callable, 3600, new TagDependency('item_42'));\n"
+"\n"
+"// Trigger invalidation by tag.\n"
+"TagDependency::invalidate($cache, 'item_42');\n"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "Below is a summary of the available cache dependencies:"
+msgstr "Berikut ringkasan ketergantungan cache yang tersedia:"
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`\\Yiisoft\\Cache\\Dependency\\ValueDependency`: invalidates the cache when specified value changes."
+msgstr "`\\Yiisoft\\Cache\\Dependency\\ValueDependency`: menginvalidasi cache ketika nilai yang ditentukan berubah."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`\\Yiisoft\\Cache\\Dependency\\CallbackDependency`: invalidates the cache when the result of the specified PHP callback is different."
+msgstr ""
+"`\\Yiisoft\\Cache\\Dependency\\CallbackDependency`: menginvalidasi cache ketika hasil dari callback PHP yang ditentukan\n"
+"  berbeda."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`\\Yiisoft\\Cache\\Dependency\\FileDependency`: invalidates the cache when the file's last modification time is different."
+msgstr "`\\Yiisoft\\Cache\\Dependency\\FileDependency`: menginvalidasi cache ketika waktu modifikasi terakhir berkas berbeda."
+
+#. type: Bullet: '- '
+#: ../../guide/en/caching/data.md
+msgid "`\\Yiisoft\\Cache\\Dependency\\TagDependency`: associates a cached data item with one or many tags. You may invalidate the cached data items with the specified tag(s) by calling `TagDependency::invalidate()`."
+msgstr ""
+"`\\Yiisoft\\Cache\\Dependency\\TagDependency`: mengaitkan item data yang di-cache dengan satu atau banyak tag. Anda dapat menginvalidasi\n"
+"  item data yang di-cache dengan tag tertentu dengan memanggil `TagDependency::invalidate()`."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "You may combine many dependencies using `\\Yiisoft\\Cache\\Dependency\\AnyDependency` or `\\Yiisoft\\Cache\\Dependency\\AllDependencies`."
+msgstr "Anda dapat mengombinasikan banyak ketergantungan menggunakan `\\Yiisoft\\Cache\\Dependency\\AnyDependency` atau `\\Yiisoft\\Cache\\Dependency\\AllDependencies`."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "To implement your own dependency, extend from `\\Yiisoft\\Cache\\Dependency\\Dependency`."
+msgstr "Untuk mengimplementasikan ketergantungan Anda sendiri, turunkan dari `\\Yiisoft\\Cache\\Dependency\\Dependency`."
+
+#. type: Title ###
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid "Cache stampede prevention"
+msgstr "Cache stampede prevention"
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+msgid "[A cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) is a type of cascading failure that can occur when massively parallel computing systems with caching mechanisms come under a high load.  This behavior is sometimes also called dog-piling."
+msgstr ""
+"[Cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) adalah jenis kegagalan berantai yang dapat terjadi ketika sistem komputasi paralel masif\n"
+"dengan mekanisme cache berada di bawah beban tinggi.\n"
+"Perilaku ini terkadang juga disebut dog-piling."
+
+#. type: Plain text
+#: ../../guide/en/caching/data.md
+#, fuzzy
+#| msgid "The `\\Yiisoft\\Cache\\Cache` uses a built-in \"Probably early expiration\" algorithm that prevents cache stampede.  This algorithm randomly fakes a cache miss for one user while others are still served the cached value.  You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.  By default, beta is `1.0`, which is usually enough.  The higher the value the earlier cache will be re-created."
+msgid "The `\\Yiisoft\\Cache\\Cache` uses a built-in \"Probably early expiration\" algorithm that prevents cache stampede.  This algorithm randomly fakes a cache miss for one user while others are still served the cached value.  You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.  By default, beta is `1.0`, which is usually enough.  The higher the value, the earlier cache will be re-created."
+msgstr ""
+"`\\Yiisoft\\Cache\\Cache` menggunakan algoritma bawaan \"Probably early expiration\" yang mencegah cache stampede.\n"
+"Algoritma ini secara acak memalsukan cache miss untuk satu pengguna sementara yang lain masih dilayani nilai dari cache.\n"
+"Anda dapat mengontrol perilakunya dengan parameter opsional kelima dari `getOrSet()`, yaitu nilai float bernama `$beta`.\n"
+"Secara bawaan, beta adalah `1.0`, yang biasanya sudah cukup.\n"
+"Semakin tinggi nilainya, semakin awal cache akan dibuat ulang."
+
+#. type: Fenced code block (php)
+#: ../../guide/en/caching/data.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var mixed $key\n"
+" * @var callable $callable\n"
+" * @var \\DateInterval $ttl\n"
+" * @var \\Yiisoft\\Cache\\CacheInterface $cache\n"
+" * @var \\Yiisoft\\Cache\\Dependency\\Dependency $dependency\n"
+" */\n"
+"\n"
+"$beta = 2.0;\n"
+"$cache->getOrSet($key, $callable, $ttl, $dependency, $beta);\n"
+msgstr ""
+"/**\n"
+" * @var mixed $key\n"
+" * @var callable $callable\n"
+" * @var \\DateInterval $ttl\n"
+" * @var \\Yiisoft\\Cache\\CacheInterface $cache\n"
+" * @var \\Yiisoft\\Cache\\Dependency\\Dependency $dependency\n"
+" */\n"
+"\n"
+"$beta = 2.0;\n"
+"$cache->getOrSet($key, $callable, $ttl, $dependency, $beta);\n"

@@ -60,13 +60,11 @@ Tampilan -
 -----
 
 * [Views](views/view.md) -
-* [Widgets](views/widget.md) -
-* [Assets](views/asset.md) -
-* [Bekerja dengan Skrip Klien](views/client-scripts.md) -
-* [Theming](views/theming.md) -
 * [Template Engines](views/template-engines.md) -
 * [View injections](views/view-injections.md) +
-
+* [Scripts, styles and metatags](views/script-style-meta.md)
+* [Assets](views/asset.md) -
+* [Widgets](views/widget.md) -
 
 Bekerja Dengan Basis Data +-
 ----------------------

@@ -23,7 +23,7 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
     
     // Try retrieving $data from cache.
     $data = $cache->getOrSet($key, function (\Psr\SimpleCache\CacheInterface $cache) use ($count) {
-        // Can't find $data in cache, calculate it from scratch.
+        // Can't find $data in a cache, calculate it from scratch.
         return getTopProductsFromDatabase($count);
     }, 3600);
     
@@ -70,16 +70,13 @@ Yii menyediakan handler berikut:
 - [File](https://github.com/yiisoft/cache-file) — menggunakan berkas standar
   untuk menyimpan data yang di-cache. Ini sangat cocok
     untuk menyimpan potongan data besar, seperti konten halaman.
-- [Memcached](https://github.com/yiisoft/cache-memcached) — menggunakan
-  ekstensi PHP
-  [memcached](https://secure.php.net/manual/en/book.memcached.php).
-    Ini bisa dianggap sebagai opsi tercepat saat berurusan dengan cache di
-  aplikasi terdistribusi
-    (mis., beberapa server, load balancer, dll.)
-- [Wincache](https://github.com/yiisoft/cache-wincache) — menggunakan
-  ekstensi PHP
-  [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
-    ([lihat juga](https://secure.php.net/manual/en/book.wincache.php)).
+- [Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP
+  [memcached](https://secure.php.net/manual/en/book.memcached.php)
+  extension. You can consider this option as the fastest one when dealing
+  with cache in a distributed application
+  (e.g., with several servers, load balancers, etc.)
+- [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
+  ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
 
 [Anda dapat menemukan lebih banyak handler di
 packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).
@@ -146,7 +143,7 @@ item data tersebut, jika waktu kedaluwarsanya telah lewat, metode akan
 mengeksekusi fungsi dan menyetel nilai yang dihasilkan
 ke dalam cache.
 
-Anda dapat menyetel TTL bawaan untuk cache:
+You may set the default TTL for the cache:
 
 ```php
 $cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hour
@@ -219,14 +216,12 @@ kegagalan berantai yang dapat terjadi ketika sistem komputasi paralel masif
 dengan mekanisme cache berada di bawah beban tinggi.
 Perilaku ini terkadang juga disebut dog-piling.
 
-`\Yiisoft\Cache\Cache` menggunakan algoritma bawaan "Probably early
-expiration" yang mencegah cache stampede.
-Algoritma ini secara acak memalsukan cache miss untuk satu pengguna
-sementara yang lain masih dilayani nilai dari cache.
-Anda dapat mengontrol perilakunya dengan parameter opsional kelima dari
-`getOrSet()`, yaitu nilai float bernama `$beta`.
-Secara bawaan, beta adalah `1.0`, yang biasanya sudah cukup.
-Semakin tinggi nilainya, semakin awal cache akan dibuat ulang.
+The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration"
+algorithm that prevents cache stampede.  This algorithm randomly fakes a
+cache miss for one user while others are still served the cached value.  You
+can control its behavior with the fifth optional parameter of `getOrSet()`,
+which is a float value called `$beta`.  By default, beta is `1.0`, which is
+usually enough.  The higher the value, the earlier cache will be re-created.
 
 ```php
 /**

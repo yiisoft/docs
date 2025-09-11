@@ -1,0 +1,186 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: en/concept/autoloading.md en/security/best-practices.md
+#: en/structure/domain.md en/tutorial/console-applications.md
+#, no-wrap
+msgid "References"
+msgstr "Referencias"
+
+#. type: Title #
+#: en/structure/domain.md
+#, no-wrap
+msgid "Domain"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+#, no-wrap
+msgid ""
+"The Domain or domain model is what makes the project unique. With requirements and terminology of the problem being solved\n"
+"in mind (the problem context), you build an abstraction that consists of entities, their relationships, and logic that\n"
+"operates these entities. To focus on the complex part of the problem, domain is, ideally, separated from\n"
+" the infrastructure part of the system (that's how to save data into a database, how to form HTTP response, etc.).\n"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete\n"
+"> for a set of records with not much complex logic, it makes no sense to apply a complex solution to a simple problem.\n"
+"> The individual concepts of domain design below could be applied separately, so make sure to check these even if your\n"
+"> project isn't that complicated. \n"
+msgstr ""
+
+#. type: Title ##
+#: en/structure/domain.md
+#, no-wrap
+msgid "Bounded context"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "It's nearly impossible to build a model that solves multiple problems that aren't too complicated by itself. Therefore, it's a good practice to divide the domain into several use-cases and have a separate model for each use-case.  Such separated models are called \"bounded contexts.\""
+msgstr ""
+
+#. type: Title ##
+#: en/structure/domain.md
+#, no-wrap
+msgid "Building blocks"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "There are various building blocks that are typically used when describing domain models. It isn't mandatory to use them all."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/structure/domain.md en/structure/service.md
+#, no-wrap
+msgid "Entity"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Entity is a uniquely identifiable object such as user, product, payment, etc. When comparing them, you're checking ID, not the attribute values. If there are two objects with different attributes but the same ID, they're considered being the same thing."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Value object"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Value object describes an object by its characteristics. For example, a price that consists of value and currency. When comparing such objects, you're checking actual values. If they match, an object is considered to be the same."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Aggregate"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Aggregate is a set of domain objects such as entities and value objects and additional data that could be treated as a single unit. It usually represents a compound object from a domain model such as shop order or HR person dossier."
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "One of the components of an aggregate is called a root. The root identifies an aggregate as a whole and should be used to access it."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Domain event"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "An aggregate, while processed, may raise events. For example, when order is confirmed, `OrderConfirmed` event would be risen so other parts of the system may react on these."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Data transfer object"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Data transfer object or DTO is an object whose only purpose is to hold data as it is. It's commonly used to pass data between different services."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Service"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Service is a class that contains a standalone operation within the context of your domain model. See \"[service components](service.md)\"."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/structure/domain.md en/structure/service.md
+#, no-wrap
+msgid "Repository"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "The repository task is to abstract away how domain objects are obtained. These are usually separated into two parts: an interface that stays in the domain layer and an implementation that's situated in the infrastructure layer. In such a way, domain doesn't care how data is obtained and saved and may be focused around the complicated business logic instead."
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Repository is usually implemented as a service."
+msgstr ""
+
+#. type: Title ###
+#: en/structure/domain.md
+#, no-wrap
+msgid "Instantiating building blocks"
+msgstr ""
+
+#. type: Plain text
+#: en/structure/domain.md
+msgid "Entity, value object, aggregate, and domain events aren't services and shouldn't be instantiated through DI container.  Using `new` is the way to go with these."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/structure/domain.md
+msgid "[BoundedContext by Martin Fowler](https://martinfowler.com/bliki/BoundedContext.html)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/structure/domain.md
+msgid "[ValueObject by Martin Fowler](https://martinfowler.com/bliki/ValueObject.html)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/structure/domain.md
+msgid "[Aggregate by Marting Fowler](https://martinfowler.com/bliki/DDD_Aggregate.html)"
+msgstr ""
