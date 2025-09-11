@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Installation"
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Starting a server"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid "To start a server, execute the following command:"
 msgstr ""
 
 #. type: Title #
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Using Yii with Swoole"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid ""
 "[Swoole](https://www.swoole.co.uk/) is a PHP network framework distributed as a PECL extension. It allows you built-in async,\n"
@@ -51,51 +51,51 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid ""
 "In the context of Yii, it allows running request handlers as workers. Each "
 "worker may handle multiple requests.  Such an operation mode is often called "
-"[event loop](using-with-event-loop.md) and allows not to re-initialize a "
+"[event loop](using-with-event-loop.md) and allows not re-initializing a "
 "framework for each request that improves performance significantly."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid "Swoole works on Linux and macOS and can be installed via pecl:"
 msgstr ""
 
 #. type: Fenced code block (bash)
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "pecl install swoole\n"
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Putting up a server"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid ""
 "Since Swoole doesn't have built-in PSR-7 support, you need a package fixing "
 "so:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "composer require ilexn/swoole-convent-psr7\n"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid "Create an entry script, `server.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -186,19 +186,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "php server.php\n"
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "On scope"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-swoole.md
+#: ../../guide/en/tutorial/using-yii-with-swoole.md
 msgid ""
 "A scope is shared, so at each iteration of the event loop every service that "
 "depends on state should be reset."

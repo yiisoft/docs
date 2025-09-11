@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Using Yii with event loop"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "A normal PHP web request execution cycle consists of setting up an environment, getting a request, processing it to form a response\n"
@@ -34,28 +34,28 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "There is an alternative way of running an application. Event loop. The idea is to initialize everything possible at once and then process a number of requests using it. Such an approach is usually called event loop."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/)."
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Event loop implications"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "Event loop worker basically looks like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "initializeContext();\n"
@@ -66,44 +66,44 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "Usually, there are multiple workers processing requests at the same time as with traditional php-fpm."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "That means that there's more to consider when developing applications."
 msgstr ""
 
 #. type: Title ###
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Processing is blocking"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "Worker process requests one by one that's current processing is blocking processing next request. That means that long-running processes, same as in general PHP applications, should be put into a background via using a queue."
 msgstr ""
 
 #. type: Title ###
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Services and state"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "Since the context in the event loop is shared between all request-responses processed by a single worker, all changes in the state of a service made by the previous request may affect the current request. Moreover, it can be a security problem if data from one user is available to another user."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-with-event-loop.md
-msgid "There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly` keyword may be handy for it. Second, you can reset services state at the end of the request processing.  In this case, a state resetter will help you:"
+#: ../../guide/en/tutorial/using-with-event-loop.md
+msgid "There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly` keyword may be handy for it. Second, you can reset the services' state at the end of the request processing.  In this case, a state resetter will help you:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "initializeContext();\n"
@@ -116,17 +116,17 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Integrations"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "[RoadRunner](using-yii-with-roadrunner.md)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/tutorial/using-with-event-loop.md
+#: ../../guide/en/tutorial/using-with-event-loop.md
 msgid "[Swoole](using-yii-with-swoole.md)"
 msgstr ""

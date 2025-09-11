@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 10:36+0500\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
 "PO-Revision-Date: 2025-09-03 17:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,623 +17,618 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/README.md
+#: ../../guide/en/README.md
 #, no-wrap
 msgid "The definitive guide to Yii 3.0"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Introduction +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[About Yii](intro/what-is-yii.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Getting started -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[What do you need to know?](start/prerequisites.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Creating a project](start/creating-project.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Running applications](start/workflow.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Saying hello](start/hello.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Working with forms](start/forms.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Working with databases](start/databases.md) !"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Generating code with Gii](start/gii.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Looking ahead](start/looking-ahead.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Application structure +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Application structure overview](structure/overview.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Entry scripts](structure/entry-script.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Application](structure/application.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Service components](structure/service.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Actions](structure/action.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Domain](structure/domain.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Middleware](structure/middleware.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Packages](structure/package.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Key concepts +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Class autoloading](concept/autoloading.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Dependency injection container](concept/di-container.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Configuration](concept/configuration.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Aliases](concept/aliases.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Events](concept/events.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Immutability](concept/immutability.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Handling requests +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Routing and URL generation](runtime/routing.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Request](runtime/request.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Response](runtime/response.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Sessions](runtime/sessions.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Cookies](runtime/cookies.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Handling errors](runtime/handling-errors.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Logging](runtime/logging.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Views -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Views](views/view.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
-msgid "[Widgets](views/widget.md) -"
-msgstr ""
-
-#. type: Bullet: '* '
-#: en/README.md
-msgid "[Assets](views/asset.md) -"
-msgstr ""
-
-#. type: Bullet: '* '
-#: en/README.md
-msgid "[Working with client scripts](views/client-scripts.md) -"
-msgstr ""
-
-#. type: Bullet: '* '
-#: en/README.md
-msgid "[Theming](views/theming.md) -"
-msgstr ""
-
-#. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Template engines](views/template-engines.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[View injections](views/view-injections.md) +"
 msgstr ""
 
+#. type: Bullet: '* '
+#: ../../guide/en/README.md
+msgid "[Scripts, styles and metatags](views/script-style-meta.md)"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../../guide/en/README.md
+msgid "[Assets](views/asset.md) -"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../../guide/en/README.md
+msgid "[Widgets](views/widget.md) -"
+msgstr ""
+
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Working with databases +-"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Database access objects](db-dao.md): Connecting to a database, basic queries, transactions, and schema manipulation"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Query builder](db-query-builder.md): Querying the database using a simple abstraction layer"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Active record](db-active-record.md): The Active Record ORM, retrieving and manipulating records, and defining relations"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Migrations](databases/db-migrations.md): +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Getting data from users -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Creating forms](input/forms.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Uploading files](input/file-upload.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Collecting tabular input](input/tabular-input.md) -"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Displaying data -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Data formatting](output/formatting.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Pagination](output/pagination.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Sorting](output/sorting.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Data providers](output/data-providers.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Data widgets](output/data-widgets.md) -"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Security +-"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Security overview](security/overview.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Authentication](security/authentication.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Authorization](security/authorization.md) +-"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Working with passwords](security/passwords.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Cryptography](security/cryptography.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Best practices](security/best-practices.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Caching +-"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Caching overview](caching/overview.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Data caching](caching/data.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Fragment caching](caching/fragment.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Page caching](caching/page.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[HTTP caching](caching/http.md) -"
 msgstr ""
 
 #. type: Title -
-#: en/README.md
+#: ../../guide/en/README.md
 #, no-wrap
 msgid "REST APIs -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Quick start](rest/quick-start.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Resources](rest/resources.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Controllers](rest/controllers.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Routing](rest/routing.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Authentication](rest/authentication.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Rate limiting](rest/rate-limiting.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Versioning](rest/versioning.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Error handling](rest/error-handling.md)"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Development tools -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Debug toolbar and debugger"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Generating code using Gii"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Generating API documentation"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Testing -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Testing overview](testing/overview.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Testing environment setup](testing/environment-setup.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Unit tests](testing/unit.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Functional tests](testing/functional.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Acceptance tests](testing/acceptance.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Fixtures](testing/fixtures.md)"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Special topics -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Building application from scratch](tutorial/start-from-scratch.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Console applications](tutorial/console-applications.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Docker](tutorial/docker.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Internationalization](tutorial/i18n.md) -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Mailing](tutorial/mailing.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Performance tuning](tutorial/performance-tuning.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md) +"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Widgets -"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[GridView](https://www.yiiframework.com/doc-2.0/yii-grid-gridview.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[ListView](https://www.yiiframework.com/doc-2.0/yii-widgets-listview.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[DetailView](https://www.yiiframework.com/doc-2.0/yii-widgets-detailview.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[ActiveForm](https://www.yiiframework.com/doc-2.0/guide-input-forms.html#activerecord-based-forms-activeform)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Bootstrap widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Helpers +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Arrays](https://github.com/yiisoft/arrays/)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Files](https://github.com/yiisoft/files/)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Html](https://github.com/yiisoft/html/)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Json](https://github.com/yiisoft/json)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Network utilities](https://github.com/yiisoft/network-utilities/)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[VarDumper](https://github.com/yiisoft/var-dumper)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Strings](https://github.com/yiisoft/strings)"
 msgstr ""
 
 #. type: Plain text
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "Extras +"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/README.md
+#: ../../guide/en/README.md
 msgid "[Glossary](glossary.md)"
 msgstr ""

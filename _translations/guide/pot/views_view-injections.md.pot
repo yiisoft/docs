@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: en/concept/configuration.md en/tutorial/using-yii-with-roadrunner.md
-#: en/views/view-injections.md
+#: ../../guide/en/concept/configuration.md
+#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
 msgstr ""
 
 #. type: Title #
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid "View injections"
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid ""
 "The view injections are designed to provide a standardized way to pass "
-"parameters to the common layer of views in an application. Implementing this "
-"interface allows developers to manage the data that will be available across "
-"various views, ensuring flexibility and reusability of code."
+"parameters to the common layer of views in an application. It allows "
+"developers to manage the data that will be available across various views, "
+"ensuring flexibility and reusability of code."
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
+msgid ""
+"The view injections could be used if you require `yiisoft/yii-view-renderer` "
+"package:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../../guide/en/views/view-injections.md
+#, no-wrap
+msgid "composer require yiisoft/yii-view-renderer\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/views/view-injections.md
 msgid "In config `params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid ""
 "...\n"
@@ -58,13 +72,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid "New injections"
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid ""
 "Start by defining a class that will implement the "
 "`Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface`. This "
@@ -73,7 +87,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid ""
 "class MyCustomParametersInjection implements Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface\n"
@@ -97,12 +111,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid "Add your new Injection to `params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid ""
 "'yiisoft/yii-view' => [\n"
@@ -114,13 +128,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid "Using Separate Injections for Different Layouts"
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid ""
 "If your application has multiple layouts, you can create separate parameter "
 "injections for each layout. This approach allows you to tailor the "
@@ -129,12 +143,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid "Create your custom ViewInjection for a specific layout:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid ""
 "readonly final class CartViewInjection implements CommonParametersInjectionInterface\n"
@@ -153,14 +167,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 msgid ""
 "Add your new injection to `params.php` under specific layout name. In the "
 "following example, it is `@layout/cart`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/views/view-injections.md
+#: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid ""
 "'yiisoft/yii-view' => [\n"
@@ -179,4 +193,13 @@ msgid ""
 "            }),\n"
 "        ],\n"
 "    ],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/views/view-injections.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> [← Template engines](template-engines.md) |\n"
+"> [Scripts, styles and metatags →](script-style-meta.md)\n"
 msgstr ""
