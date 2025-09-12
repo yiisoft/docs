@@ -11,7 +11,7 @@ A well-configured PHP environment is important. To get maximum performance:
 
 - Use the latest stable PHP version. Major releases of PHP may bring significant performance improvements.
 - Enable bytecode caching with [Opcache](https://secure.php.net/opcache). 
-  Bytecode caching avoids the time spent in parsing and including PHP scripts for every incoming request.
+  Bytecode caching avoids the time spent on parsing and including PHP scripts for every incoming request.
 - [Tune `realpath()` cache](https://github.com/samdark/realpath_cache_tuner).
 - Make sure [XDebug](https://xdebug.org/) isn't installed in the production environment.
 - Try [PHP 7 preloading](https://wiki.php.net/rfc/preload).
@@ -134,7 +134,7 @@ was used with the following run parameters:
 ab -n 1000 -c 10 -t 10
 ```
 
-Also, the debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used
+Also, the debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used, 
 and development dependencies weren't used:
 
 ```shell

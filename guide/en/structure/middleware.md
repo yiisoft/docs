@@ -21,9 +21,9 @@ as follows:
 
 ## Using middleware
 
-Any PSR-15 compatible middleware could be used with Yii and there are many.
-Say, you need to add basic authentication
-one of the application URLs. URL-dependent middleware is configured using router, so you need to change router factory. 
+Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware could be used with Yii, and there are many.
+Say, you need to add basic authentication to one of the application URLs. 
+URL-dependent middleware is configured using router, so you need to change the router factory. 
 
 Authentication middleware is implemented by `middlewares/http-authentication` package so execute
 `composer require middlewares/http-authentication` in the application root directory.
@@ -68,7 +68,7 @@ When configuring routing, you're binding `/basic-auth` URL to a chain of middlew
 authentication, and the action itself. A chain is a special middleware that executes all the middleware it's configured
 with.
 
-The action itself may be the following:
+The action itself could be the following:
 
 ```php
 public function auth(ServerRequestInterface $request): ResponseInterface
@@ -113,9 +113,9 @@ To create middleware, you need to implement a single `process` method of `Psr\Ht
 public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
 ```
 
-There are multiple ways to handle request and choosing one depends on what the middleware should achieve.
+There are multiple ways to handle a request, and choosing one depends on what the middleware should achieve.
 
-### Forming response directly
+### Forming a response directly
 
 To respond directly, one needs a response factory passed via constructor:
 
@@ -148,8 +148,8 @@ final readonly class RespondingMiddleware implements MiddlewareInterface
 
 ### Delegating handling to the next middleware
 
-If middleware either isn't intended form response / change request or can't do it this time, handling could be
-left to the next middleware in the stack:  
+If middleware either isn't intended to form a response or change the request or can't do anything this time,
+handling could be left to the next middleware in the stack:  
 
 ```php
 return $next->handle($request);
@@ -170,7 +170,7 @@ $answer = $request->getAttribute('answer');
 
 ### Capturing response to manipulate it
 
-You may want to capture response to manipulate it. It could be useful for adding CORS headers, gzipping content etc.
+You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc.
 
 ```php
 $response = $next->handle($request);

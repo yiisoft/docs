@@ -24,7 +24,7 @@ jobs:
             image: arduanovdanil/po4a-fork:v0.73
             options: -v ${{ github.workspace }}:/src
             run: |
-                cd guide
+                cd _translations/guide
                 po4a po4a.cfg
                 cd .. && cd cookbook
                 po4a po4a.cfg
@@ -33,4 +33,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update translation
-          file_pattern: 'guide cookbook'
+          file_pattern: '_translations guide cookbook'

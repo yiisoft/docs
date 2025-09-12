@@ -106,7 +106,7 @@ $discounted = $price->withAmount(800);
 > If you define a simple DTO, you can use modern PHP `readonly` and leave properties `public`. The `readonly` keyword
 > would ensure that the properties cannot be modified after the object is created.
 
-## Using clone (and why it is cheap)
+## Using clone (and why it is inexpensive)
 
 PHP's clone performs a shallow copy of the object. For immutable value objects that contain only scalars 
 or other immutable objects, shallow cloning is enough and fast. In modern PHP, cloning small value objects is 
