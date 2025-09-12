@@ -17,5 +17,6 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Вступление](preface.md)
 - [Structuring code by use-case with vertical
   slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Интеграция с Sentry](sentry-integration.md)
 - [Конфигурирование веб-серверов](configuring-webservers/general.md)
