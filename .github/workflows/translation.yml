@@ -26,9 +26,10 @@ jobs:
             run: |
                 cd _translations/guide
                 po4a po4a.cfg
-
+                cd ../cookbook
+                po4a po4a.cfg
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update translation
-          file_pattern: '_translations guide'
+          file_pattern: '_translations guide cookbook'
