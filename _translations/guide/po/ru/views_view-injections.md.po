@@ -20,9 +20,9 @@ msgstr ""
 #: ../../guide/en/concept/configuration.md
 #: ../../guide/en/tutorial/using-yii-with-roadrunner.md
 #: ../../guide/en/views/view-injections.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Configuration"
-msgstr "конфигурация может быть:"
+msgstr "Конфигурация"
 
 #. type: Title #
 #: ../../guide/en/views/view-injections.md

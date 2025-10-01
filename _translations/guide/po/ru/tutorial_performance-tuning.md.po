@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-09-12 04:50+0000\n"
+"PO-Revision-Date: 2025-09-12 04:50+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -29,9 +29,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../../guide/en/tutorial/performance-tuning.md
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Optimizing your PHP Environment <span id=\"optimizing-php\"></span>"
-msgstr ""
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
 #: ../../guide/en/tutorial/performance-tuning.md
@@ -66,9 +67,9 @@ msgstr ""
 #. type: Title ##
 #: ../../guide/en/tutorial/performance-tuning.md
 #, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
+#| msgid "DI container <span id=\"di-container\"></span>"
 msgid "Optimizing your code <span id=\"optimizing-code\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
+msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
 
 #. type: Plain text
 #: ../../guide/en/tutorial/performance-tuning.md
@@ -108,51 +109,9 @@ msgstr ""
 #. type: Title ##
 #: ../../guide/en/tutorial/performance-tuning.md
 #, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgid "Optimizing your code <span id=\"optimizing-code\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
-
-#. type: Plain text
-#: en/tutorial/performance-tuning.md
-msgid "Beyond environment configuration, there are code-level optimizations that can improve your application's performance:"
-msgstr ""
-
-#. type: Bullet: '- '
-#: en/tutorial/performance-tuning.md
-msgid "Look out for [algorithm complexity](https://en.wikipedia.org/wiki/Time_complexity).  Especially give attention to `foreach` within `foreach` loops but look out for using [heavy PHP functions](https://stackoverflow.com/questions/2473989/list-of-big-o-for-php-functions) in loops as well."
-msgstr ""
-
-#. type: Bullet: '- '
-#: en/tutorial/performance-tuning.md
-msgid "[Speeding up array_merge()](https://www.exakat.io/speeding-up-array_merge/)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: en/tutorial/performance-tuning.md
-msgid "[Move that foreach() inside the method](https://www.exakat.io/move-that-foreach-inside-the-method/)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: en/tutorial/performance-tuning.md
-msgid "[Array, classes and anonymous classes memory usage](https://www.exakat.io/array-classes-and-anonymous-memory-usage/)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: en/tutorial/performance-tuning.md
-msgid "Use fully qualified function names with leading backslashes to optimize opcache performance.  When calling [certain global functions](https://github.com/php/php-src/blob/944b6b6bbd6f05ad905f5f4ad07445792bee4027/Zend/zend_compile.c#L4291-L4353)  from within a namespace, PHP first searches in the current namespace before falling back to the global namespace.  Adding a leading backslash (e.g., `\\count()` instead of `count()`) tells PHP to directly use the global function, avoiding the namespace lookup and improving opcache efficiency. This optimization is best implemented automatically using tools like [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) with the `native_function_invocation` rule."
-msgstr ""
-
-#. type: Plain text
-#: en/tutorial/performance-tuning.md
-msgid "The above optimizations would give you a significant performance boost only if the code in question is executed frequently. That is usually the case for big loops or batch processing."
-msgstr ""
-
-#. type: Title ##
-#: en/tutorial/performance-tuning.md
-#, fuzzy, no-wrap
-#| msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Using caching techniques <span id=\"using-caching-techniques\"></span>"
-msgstr "Внедрение зависимостей <span id=\"injecting-dependencies\"></span>"
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
 #: ../../guide/en/tutorial/performance-tuning.md
@@ -162,9 +121,9 @@ msgstr ""
 #. type: Title ##
 #: ../../guide/en/tutorial/performance-tuning.md
 #, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Optimizing session storage <span id=\"optimizing-session-storage\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
 #: ../../guide/en/tutorial/performance-tuning.md
@@ -237,9 +196,9 @@ msgstr ""
 #. type: Title ##
 #: ../../guide/en/tutorial/performance-tuning.md
 #, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Optimizing composer autoloader <span id=\"optimizing-autoloader\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
 #: ../../guide/en/tutorial/performance-tuning.md
