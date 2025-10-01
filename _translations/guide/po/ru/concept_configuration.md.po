@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2025-09-04 11:19+0500\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-10-01 13:33+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,44 +15,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
 
 #. type: Title ##
 #: en/concept/configuration.md en/tutorial/using-yii-with-roadrunner.md
 #: en/views/view-injections.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Configuration"
-msgstr "конфигурация может быть:"
+msgstr "Конфигурация"
 
 #. type: Plain text
 #: en/concept/configuration.md
 msgid "There are many ways to configure your application. We will focus on concepts used in the [default project template](https://github.com/yiisoft/app)."
-msgstr ""
+msgstr "Существует множество способов настройки приложения. Мы сосредоточимся на концепциях, используемых в [шаблоне проекта по умолчанию](https://github.com/yiisoft/app)."
 
 #. type: Plain text
 #: en/concept/configuration.md
 msgid "Yii3 configs are part of the application. You can change many aspects of how the application works by editing configuration under `config/`."
-msgstr ""
+msgstr "Конфигурации Yii3 являются частью приложения. Вы можете изменить многие аспекты работы приложения, отредактировав конфигурацию в папке `config/`."
 
 #. type: Title ##
 #: en/concept/configuration.md
 #, no-wrap
 msgid "Config plugin"
-msgstr ""
+msgstr "Плагин конфигурации"
 
 #. type: Plain text
 #: en/concept/configuration.md
 msgid "In the application template [yiisoft/config](https://github.com/yiisoft/config) is used. Since writing all application configurations from scratch is a tedious process, many packages offer default configs, and the plugin helps with copying these into the application."
-msgstr ""
+msgstr "В шаблоне приложения используется плагин [yiisoft/config](https://github.com/yiisoft/config). Поскольку написание всех конфигураций приложения с нуля - утомительный процесс, многие пакеты предлагают готовые конфигурации по умолчанию, а плагин помогает скопировать их в приложение."
 
 #. type: Plain text
 #: en/concept/configuration.md
 msgid "To offer default configs, `composer.json` of the package has to have `config-plugin` section.  When installing or updating packages with Composer, the plugin reads `config-plugin` sections for each dependency, copies files themselves to application `config/packages/` if they don't yet exist and writes a merge plan to `config/packages/merge_plan.php`. The merge plan defines how to merge the configs into a single big array ready to be passed to [DI container](di-container.md)."
-msgstr ""
+msgstr "Чтобы предлагать конфигурации по умолчанию, файл `composer.json` пакета должен содержать раздел `config-plugin`. При установке или обновлении пакетов с помощью Composer плагин считывает разделы `config-plugin` для каждой зависимости, копирует сами файлы в папку `config/packages/` приложения, если они ещё не существуют, и записывает план слияния в `config/packages/merge_plan.php`. План слияния определяет, как объединить конфигурации в один большой массив, готовый к передаче в [DI-контейнер] (di-container.md)."
 
 #. type: Plain text
 #: en/concept/configuration.md
 msgid "Take a look at what's in the \"yiisoft/app\" `composer.json` by default:"
-msgstr ""
+msgstr "Посмотрите, что находится в `composer.json` \"yiisoft/app\" по умолчанию:"
 
 #. type: Fenced code block (json)
 #: en/concept/configuration.md
@@ -96,6 +97,43 @@ msgid ""
 "    \"routes\": \"config/routes.php\"\n"
 "},\n"
 msgstr ""
+"\"config-plugin-options\": {\n"
+"  \"output-directory\": \"config/packages\"\n"
+"},\n"
+"\"config-plugin\": {\n"
+"    \"common\": \"config/common/*.php\",\n"
+"    \"params\": [\n"
+"        \"config/params.php\",\n"
+"        \"?config/params-local.php\"\n"
+"    ],\n"
+"    \"web\": [\n"
+"        \"$common\",\n"
+"        \"config/web/*.php\"\n"
+"    ],\n"
+"    \"console\": [\n"
+"        \"$common\",\n"
+"        \"config/console/*.php\"\n"
+"    ],\n"
+"    \"events\": \"config/events.php\",\n"
+"    \"events-web\": [\n"
+"        \"$events\",\n"
+"        \"config/events-web.php\"\n"
+"    ],\n"
+"    \"events-console\": [\n"
+"        \"$events\",\n"
+"        \"config/events-console.php\"\n"
+"    ],\n"
+"    \"providers\": \"config/providers.php\",\n"
+"    \"providers-web\": [\n"
+"        \"$providers\",\n"
+"        \"config/providers-web.php\"\n"
+"    ],\n"
+"    \"providers-console\": [\n"
+"        \"$providers\",\n"
+"        \"config/providers-console.php\"\n"
+"    ],\n"
+"    \"routes\": \"config/routes.php\"\n"
+"},\n"
 
 #. type: Plain text
 #: en/concept/configuration.md
@@ -171,10 +209,9 @@ msgstr ""
 
 #. type: Title ###
 #: en/concept/configuration.md
-#, fuzzy, no-wrap
-#| msgid "Secure server configuration"
+#, no-wrap
 msgid "Container configuration"
-msgstr "Безопасная конфигурация сервера"
+msgstr "Конфигурация контейнера"
 
 #. type: Plain text
 #: en/concept/configuration.md
