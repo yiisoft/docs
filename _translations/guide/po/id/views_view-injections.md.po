@@ -21,7 +21,7 @@ msgstr ""
 #: ../../guide/en/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "Konfigurasi"
 
 #. type: Title #
 #: ../../guide/en/views/view-injections.md

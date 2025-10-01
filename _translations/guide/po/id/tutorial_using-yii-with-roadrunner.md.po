@@ -20,7 +20,7 @@ msgstr ""
 #: en/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "Konfigurasi"
 
 #. type: Title #
 #: en/tutorial/using-yii-with-roadrunner.md

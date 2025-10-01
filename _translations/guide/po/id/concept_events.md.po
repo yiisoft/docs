@@ -19,7 +19,7 @@ msgstr ""
 #: en/concept/configuration.md en/concept/events.md
 #, no-wrap
 msgid "Events"
-msgstr ""
+msgstr "Event"
 
 #. type: Plain text
 #: en/concept/events.md
