@@ -245,7 +245,7 @@ return [
 
 Read more about it in ["Routes"](../runtime/routing.md).
 
-### Events
+### Eventos
 
 Many services emit certain events that you can attach to.  You could do that
 via three config files: `events-web.php` for web application events,
