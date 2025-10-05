@@ -1,4 +1,4 @@
-# Events
+# Event
 
 Events allow you to make custom code executed at certain execution points
 without modifying existing code.  You can attach a custom code called

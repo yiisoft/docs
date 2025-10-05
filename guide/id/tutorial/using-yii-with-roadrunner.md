@@ -22,7 +22,7 @@ After installation is done, run
 
 That would download ready to use RoadRunner server `rr` binary.
 
-## Configuration
+## Konfigurasi
 
 First, we need to configure the server itself. Create `/.rr.yaml` and add
 the following config:

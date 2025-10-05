@@ -1,28 +1,30 @@
-# Configuration
+# Konfigurasi
 
-There are many ways to configure your application. We will focus on concepts
-used in the [default project template](https://github.com/yiisoft/app).
+Ada banyak cara untuk mengonfigurasi aplikasi Anda. Kita akan fokus pada
+konsep yang digunakan dalam [template proyek
+default](https://github.com/yiisoft/app).
 
-Yii3 configs are part of the application. You can change many aspects of how
-the application works by editing configuration under `config/`.
+Konfigurasi Yii3 adalah bagian dari aplikasi. Anda dapat mengubah banyak
+aspek cara kerja aplikasi dengan mengedit konfigurasi di bawah `config/`.
 
-## Config plugin
+## Plugin konfigurasi
 
-In the application template
-[yiisoft/config](https://github.com/yiisoft/config) is used. Since writing
-all application configurations from scratch is a tedious process, many
-packages offer default configs, and the plugin helps with copying these into
-the application.
+Dalam template aplikasi digunakan
+[yiisoft/config](https://github.com/yiisoft/config). Karena menulis semua
+konfigurasi aplikasi dari awal adalah proses yang melelahkan, banyak paket
+menyediakan konfigurasi default, dan plugin ini membantu menyalin
+konfigurasi tersebut ke dalam aplikasi.
 
-To offer default configs, `composer.json` of the package has to have
-`config-plugin` section.  When installing or updating packages with
-Composer, the plugin reads `config-plugin` sections for each dependency,
-copies files themselves to application `config/packages/` if they don't yet
-exist and writes a merge plan to `config/packages/merge_plan.php`. The merge
-plan defines how to merge the configs into a single big array ready to be
-passed to [DI container](di-container.md).
+Untuk menawarkan konfigurasi default, `composer.json` paket harus memiliki
+bagian `config-plugin`. Saat menginstal atau memperbarui paket dengan
+Composer, plugin membaca bagian `config-plugin` untuk setiap dependensi,
+menyalin berkas-berkas tersebut ke `config/packages/` aplikasi jika belum
+ada, dan menulis rencana penggabungan ke
+`config/packages/merge_plan.php`. Rencana penggabungan mendefinisikan
+bagaimana menggabungkan konfigurasi menjadi satu array besar yang siap
+diteruskan ke [DI container](di-container.md).
 
-Take a look at what's in the "yiisoft/app" `composer.json` by default:
+Lihat apa yang ada di `composer.json` bawaan "yiisoft/app":
 
 ```json
 "config-plugin-options": {
@@ -64,32 +66,33 @@ Take a look at what's in the "yiisoft/app" `composer.json` by default:
 },
 ```
 
-There are many named configs defined. For each name, there is a
-configuration.
+Terdapat banyak konfigurasi bernama yang didefinisikan. Untuk setiap nama,
+ada sebuah konfigurasi.
 
-A string means that the plugin takes config as is and merges it with
-same-named configs from packages you require.  That happens if these
-packages have `config-plugin` in their `composer.json`.
+Sebuah string berarti plugin mengambil konfigurasi apa adanya dan
+menggabungkannya dengan konfigurasi bernama sama dari paket yang Anda
+butuhkan. Hal ini terjadi jika paket-paket tersebut memiliki `config-plugin`
+di `composer.json` mereka.
 
-The array means that the plugin will merge many files in the order they're
-specified.
+Array berarti plugin akan menggabungkan banyak berkas sesuai urutan yang
+ditentukan.
 
-`?` at the beginning of the file path indicated that the file may be
-absent. In this case, it's skipped.
+`?` di awal path berkas menunjukkan bahwa berkas tersebut mungkin tidak
+ada. Dalam kasus ini, berkas akan dilewati.
 
-`$` at the beginning of the name means a reference to another named config.
+`$` di awal nama berarti referensi ke konfigurasi bernama lain.
 
-`params` is a bit special because it's reserved for application
-parameters. These are automatically available as `$params` in all other
-configuration files.
+`params` agak istimewa karena dicadangkan untuk parameter
+aplikasi. Nilai-nilai ini otomatis tersedia sebagai `$params` di semua
+berkas konfigurasi lainnya.
 
-You can learn more about config plugin features [from its
-documentation](https://github.com/yiisoft/config/blob/master/README.md).
+Anda dapat mempelajari lebih lanjut tentang fitur plugin konfigurasi [dari
+dokumentasinya](https://github.com/yiisoft/config/blob/master/README.md).
 
-## Config files
+## Berkas konfigurasi
 
-Now, as you know how the plugin assembles configs, look at `config`
-directory:
+Sekarang, setelah Anda tahu bagaimana plugin merangkai konfigurasi, lihat
+direktori `config`:
 
 ```
 common/
@@ -114,14 +117,14 @@ providers-web.php
 routes.php
 ```
 
-### Container configuration
+### Konfigurasi container
 
-The application consists of a set of services registered in a [dependency
-container](di-container.md). The config files that responsible for direct
-dependency container configuration are under `common/`, `console/` and
-`web/` directories.  We use `web/` for config specific to web application
-and `console/` for config specific to console commands. Both web and console
-are sharing configuration under `common/`.
+Aplikasi terdiri dari sekumpulan layanan yang terdaftar di [dependency
+container](di-container.md). Berkas konfigurasi yang bertanggung jawab atas
+konfigurasi langsung dependency container berada di bawah direktori
+`common/`, `console/` dan `web/`. Kita menggunakan `web/` untuk konfigurasi
+khusus aplikasi web dan `console/` untuk konfigurasi khusus perintah
+konsol. Baik web maupun console berbagi konfigurasi di bawah `common/`.
 
 ```php
 <?php
@@ -141,27 +144,28 @@ return [
 ];
 ```
 
-Config plugin passes special `$params` variable to all config files.  The
-code passes its values to the service.
+Plugin konfigurasi meneruskan variabel khusus `$params` ke semua berkas
+konfigurasi. Potongan kode di atas meneruskan nilainya ke layanan.
 
-The guide on ["Dependency injection and container"](di-container.md)
-describes the configuration format and the idea of dependency injection in
-detail.
+Panduan tentang ["Dependency injection and container"](di-container.md)
+menjelaskan format konfigurasi dan gagasan dependency injection secara
+rinci.
 
-For convenience, there is a naming convention for custom string keys:
+Untuk kenyamanan, ada konvensi penamaan untuk kunci string kustom:
 
-1. Prefix package name such as `yiisoft/cache-file/custom-definition`.
-2. In case configuration are for the application itself, skip package
-   prefix, such as `custom-definition`.
+1. Awali dengan nama paket seperti `yiisoft/cache-file/custom-definition`.
+2. Jika konfigurasi untuk aplikasi itu sendiri, lewati prefiks paket,
+   mis. `custom-definition`.
 
-### Service providers
+### Service provider
 
-As an alternative to registering dependencies directly, you can use service
-providers. Basically, these are classes that given parameters are
-configuring and registering services within the container. Similar to three
-dependency configuration files described, there are three configs for
-specifying service providers: `providers-console.php` for console commands,
-`providers-web.php` for web application and `providers.php` for both:
+Sebagai alternatif untuk mendaftarkan dependensi secara langsung, Anda dapat
+menggunakan service provider. Pada dasarnya, ini adalah kelas yang, dengan
+parameter tertentu, mengonfigurasi dan mendaftarkan layanan dalam
+container. Mirip dengan tiga berkas konfigurasi dependency yang dijelaskan
+sebelumnya, ada tiga konfigurasi untuk menentukan service provider:
+`providers-console.php` untuk perintah konsol, `providers-web.php` untuk
+aplikasi web dan `providers.php` untuk keduanya:
 
 ```php
 /* @var array $params */
@@ -183,19 +187,19 @@ return [
     // ...
 ```
 
-In this config keys are provider names. By convention these are
-`vendor/package-name/provider-name`. Values are provider class names. These
-classes could be either created in the project itself or provided by a
-package.
+Dalam konfigurasi ini kunci adalah nama provider. Menurut konvensi ini
+berupa `vendor/package-name/provider-name`. Nilainya adalah nama kelas
+provider. Kelas-kelas ini bisa dibuat di proyek itu sendiri atau disediakan
+oleh paket.
 
-If you need to configure some options for a service, similar to direct
-container configuration, take values from `$params` and pass them to
-providers.
+Jika Anda perlu mengonfigurasi beberapa opsi untuk sebuah layanan, mirip
+dengan konfigurasi container langsung, ambil nilai dari `$params` dan
+teruskan ke provider.
 
-Provider should implement a single method, `public function
-register(Container $container): void`. In this method you need to add a
-service to container using `set()` method. Below is a provider for a cache
-service:
+Provider harus mengimplementasikan satu metode, `public function
+register(Container $container): void`. Dalam metode ini Anda perlu
+menambahkan layanan ke container menggunakan metode `set()`. Di bawah ini
+contoh provider untuk layanan cache:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -229,9 +233,9 @@ final readonly class CacheProvider extends ServiceProvider
 }
 ```
 
-### Routes
+### Rute
 
-You can configure how web application responds to certain URLs in
+Anda dapat mengonfigurasi bagaimana aplikasi web merespons URL tertentu di
 `config/routes.php`:
 
 ```php
@@ -243,15 +247,15 @@ return [
 ];
 ``` 
 
-Read more about it in ["Routes"](../runtime/routing.md).
+Baca lebih lanjut tentang ini di ["Routes"](../runtime/routing.md).
 
-### Events
+### Event
 
-Many services emit certain events that you can attach to.  You could do that
-via three config files: `events-web.php` for web application events,
-`events-console.php` for console events and `events.php` for both.  The
-configuration is an array where keys are event names and values are an array
-of handlers:
+Banyak layanan memancarkan event tertentu yang dapat Anda kaitkan. Anda
+dapat melakukannya melalui tiga berkas konfigurasi: `events-web.php` untuk
+event aplikasi web, `events-console.php` untuk event konsol dan `events.php`
+untuk keduanya. Konfigurasinya berupa array di mana kunci adalah nama event
+dan nilainya adalah array handler:
 
 ```php
 return [
@@ -282,19 +286,20 @@ return [
 ];
 ```
 
-Read more about it in ["Events"](events.md).
+Baca lebih lanjut di ["Events"](events.md).
 
 
-### Parameters
+### Parameter
 
-Parameters, `config/params.php` store configuration values that are used in
-other config files to configuring services and service providers.
+Parameter di `config/params.php` menyimpan nilai konfigurasi yang digunakan
+dalam berkas konfigurasi lain untuk mengonfigurasi layanan dan service
+provider.
 
 > [!TIP]
-> Don't use parameters, constants or environment variables directly in your application, configure
-> services instead.
+> Jangan gunakan parameter, konstanta, atau variabel lingkungan secara langsung dalam aplikasi Anda, konfigurasikan
+> layanan sebagai gantinya.
 
-Default application `params.php` looks like the following:
+`params.php` aplikasi bawaan terlihat seperti berikut:
 
 ```php
 <?php
@@ -347,26 +352,28 @@ return [
 ];
 ```
 
-For convenience, there is a naming convention about parameters:
+Untuk kenyamanan, ada konvensi penamaan mengenai parameter:
 
-1. Group parameters package name such as `yiisoft/cache-file`.
-2. In case parameters are for the application itself, as in `app`, skip
-   package prefix.
-3. In case there are many services in the package, such as `file-target` and
-   `file-rotator` in `yiisoft/log-target-file` package, group parameters by
-   service name.
-4. Use `enabled` as parameter name to be able to disable or enable a
-   service, such as `yiisoft/yii-debug`.
+1. Kelompokkan parameter berdasarkan nama paket seperti
+   `yiisoft/cache-file`.
+2. Jika parameter untuk aplikasi itu sendiri, seperti pada `app`, lewati
+   prefiks paket.
+3. Jika ada banyak layanan dalam paket, seperti `file-target` dan
+   `file-rotator` dalam paket `yiisoft/log-target-file`, kelompokkan
+   parameter berdasarkan nama layanan.
+4. Gunakan `enabled` sebagai nama parameter agar Anda dapat menonaktifkan
+   atau mengaktifkan layanan, mis. `yiisoft/yii-debug`.
 
-### Package configs
+### Konfigurasi paket
 
-Config plugin described copy default package configurations to `packages/`
-directory. Once copied you own the configs, so you can adjust these as you
-like. `yiisoft/` in the default template stands for package vendor. Since
-only `yiisoft` packages are in template, there's a single
-directory. `merge_plan.php` is used in runtime to get the order on how
-configs are merged.  Note that for config keys there should be a single
-source of truth.  One config can't override values of another config.
+Plugin konfigurasi yang dijelaskan menyalin konfigurasi paket default ke
+direktori `packages/`. Setelah disalin, Anda memiliki konfigurasi tersebut,
+sehingga Anda dapat menyesuaikannya sesuka hati. `yiisoft/` pada template
+default mewakili vendor paket. Karena hanya paket `yiisoft` yang ada di
+template, ada satu direktori. `merge_plan.php` digunakan saat runtime untuk
+mendapatkan urutan bagaimana konfigurasi digabungkan. Perlu dicatat bahwa
+untuk kunci konfigurasi harus ada satu sumber kebenaran. Satu konfigurasi
+tidak dapat menimpa nilai konfigurasi lain.
 
-`dist.lock` is used by the plugin to keep track of changes and display diff
-between current config and example one.
+`dist.lock` digunakan oleh plugin untuk melacak perubahan dan menampilkan
+diff antara konfigurasi saat ini dan contoh konfigurasi.
