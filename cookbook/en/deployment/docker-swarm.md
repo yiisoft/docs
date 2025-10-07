@@ -1,6 +1,6 @@
 # Deploying Yii applications to Docker Swarm
 
-This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Traefik as a reverse proxy and a Git-based container registry (Forgejo, Gitea, or GitLab).
+This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Caddy as a reverse proxy and a Git-based container registry (Forgejo, Gitea, or GitLab).
 
 ## Prerequisites
 
@@ -16,25 +16,21 @@ This guide walks you through deploying a Yii application to Docker Swarm from a 
 Connect to your server via SSH and install Docker Engine:
 
 ```bash
-# Update package index
+# Add Docker's official GPG key:
 sudo apt-get update
-
-# Install required packages
-sudo apt-get install -y ca-certificates curl gnupg
-
-# Add Docker's official GPG key
+sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-# Set up the repository
+# Add the repository to Apt sources:
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Docker Engine
 sudo apt-get update
+
+# Install Docker packages
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
@@ -50,7 +46,7 @@ Replace `<YOUR_SERVER_IP>` with your server's public IP address.
 
 ### Set up the Caddy network
 
-Create a dedicated overlay network for Traefik or Caddy to communicate with your services:
+Create a dedicated overlay network for Caddy to communicate with your services:
 
 ```bash
 docker network create --driver=overlay caddy_public
