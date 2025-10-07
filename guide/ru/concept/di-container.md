@@ -29,8 +29,8 @@ class CachedWidget extends Cache
 }
 ```
 
-Проблема здесь в том, что эти два класса становятся излишне сопряженными или
-взаимозависимыми, что делает их более хрупкими.
+The issue here is that these two are becoming unnecessarily coupled or
+inter-dependent, making them more fragile.
 
 Есть способ справиться с этой проблемой — композиция:
 

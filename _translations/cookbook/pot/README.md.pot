@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-12 09:45+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../../cookbook/en/README.md
+#, no-wrap
+msgid "Yii3 community cookbook"
+msgstr ""
+
+#. type: Plain text
+#: ../../cookbook/en/README.md
+msgid ""
+"Yii3 Community Cookbook is an OpenSource book full of tips and tricks about "
+"the [Yii3](https://www.yiiframework.com/)  PHP framework."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "The Yii community creates the cookbook."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "Yii core team members curate and edit it."
+msgstr ""
+
+#. type: Plain text
+#: ../../cookbook/en/README.md
+msgid ""
+"Feel free to pull-request your own writings. Team members will review it, "
+"give feedback and merge the best possible way."
+msgstr ""
+
+#. type: Plain text
+#: ../../cookbook/en/README.md
+msgid ""
+"This book conforms to the [Terms of Yii Documentation](https://www."
+"yiiframework.com/license#docs)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Preface](preface.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid ""
+"[Structuring code by use-case with vertical slices](organizing-code/"
+"structuring-by-use-case-with-vertical-slices.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Disabling CSRF protection](disabling-csrf-protection.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Sentry integration](sentry-integration.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr ""
