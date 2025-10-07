@@ -1,6 +1,6 @@
 # Deploying Yii applications to Docker Swarm
 
-This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Caddy as a reverse proxy and a Git-based container registry (Forgejo, Gitea, or GitLab).
+This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Caddy as a reverse proxy and a container registry (Forgejo or Gitea).
 
 ## Prerequisites
 
@@ -13,26 +13,7 @@ This guide walks you through deploying a Yii application to Docker Swarm from a 
 
 ### Install Docker
 
-Connect to your server via SSH and install Docker Engine:
-
-```bash
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-
-# Install Docker packages
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+For installation instructions, see the [official Docker documentation](https://docs.docker.com/engine/install/ubuntu/).
 
 ### Initialize Docker Swarm
 
@@ -52,30 +33,45 @@ Create a dedicated overlay network for Caddy to communicate with your services:
 docker network create --driver=overlay caddy_public
 ```
 
-> [!NOTE]
-> The Yii application template uses Caddy labels by default. If you prefer Traefik, you'll need to adjust the labels in the deployment configuration.
-
 ## Setting up a container registry
 
 You need a container registry to store your Docker images. Choose one of the following options.
 
 ### Option 1: Using Forgejo
 
-Deploy Forgejo as a container registry:
+Deploy Forgejo as a container registry.
+
+Create a file `forgejo-stack.yml`:
+
+```yaml
+version: '3.8'
+
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:1.21
+    ports:
+      - "3000:3000"
+    volumes:
+      - forgejo_data:/data
+    networks:
+      - caddy_public
+    deploy:
+      labels:
+        - "caddy=git.example.com"
+        - "caddy.reverse_proxy={{upstreams 3000}}"
+
+volumes:
+  forgejo_data:
+
+networks:
+  caddy_public:
+    external: true
+```
+
+Deploy Forgejo:
 
 ```bash
-# Create a directory for Forgejo data
-mkdir -p /var/lib/forgejo
-
-# Run Forgejo
-docker service create \
-  --name forgejo \
-  --publish 3000:3000 \
-  --mount type=bind,source=/var/lib/forgejo,target=/data \
-  --network caddy_public \
-  --label "caddy=git.example.com" \
-  --label "caddy.reverse_proxy={{upstreams 3000}}" \
-  codeberg.org/forgejo/forgejo:1.21
+docker stack deploy -c forgejo-stack.yml forgejo
 ```
 
 Replace `git.example.com` with your desired subdomain.
@@ -84,83 +80,78 @@ After deployment, access Forgejo at `https://git.example.com` and complete the i
 
 ### Option 2: Using Gitea
 
-Deploy Gitea as a container registry:
+Deploy Gitea as a container registry.
 
-```bash
-# Create a directory for Gitea data
-mkdir -p /var/lib/gitea
-
-# Run Gitea
-docker service create \
-  --name gitea \
-  --publish 3000:3000 \
-  --mount type=bind,source=/var/lib/gitea,target=/data \
-  --network caddy_public \
-  --label "caddy=git.example.com" \
-  --label "caddy.reverse_proxy={{upstreams 3000}}" \
-  gitea/gitea:latest
-```
-
-Replace `git.example.com` with your desired subdomain.
-
-### Option 3: Using GitLab
-
-For GitLab, due to its complexity, we recommend using Docker Compose converted to a Swarm stack:
-
-Create a file `gitlab-stack.yml`:
+Create a file `gitea-stack.yml`:
 
 ```yaml
 version: '3.8'
 
 services:
-  gitlab:
-    image: gitlab/gitlab-ce:latest
-    hostname: git.example.com
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://git.example.com'
-        registry_external_url 'https://registry.example.com'
+  gitea:
+    image: gitea/gitea:latest
     ports:
-      - '22:22'
+      - "3000:3000"
     volumes:
-      - gitlab_config:/etc/gitlab
-      - gitlab_logs:/var/log/gitlab
-      - gitlab_data:/var/opt/gitlab
+      - gitea_data:/data
     networks:
       - caddy_public
     deploy:
       labels:
         - "caddy=git.example.com"
-        - "caddy.reverse_proxy={{upstreams 80}}"
+        - "caddy.reverse_proxy={{upstreams 3000}}"
 
 volumes:
-  gitlab_config:
-  gitlab_logs:
-  gitlab_data:
+  gitea_data:
 
 networks:
   caddy_public:
     external: true
 ```
 
-Deploy GitLab:
+Deploy Gitea:
 
 ```bash
-docker stack deploy -c gitlab-stack.yml gitlab
+docker stack deploy -c gitea-stack.yml gitea
 ```
+
+Replace `git.example.com` with your desired subdomain.
+
+After deployment, access Gitea at `https://git.example.com` and complete the initial setup. Make sure to enable the container registry in the settings.
 
 ## Setting up Caddy as reverse proxy
 
-The Yii application template includes Caddy labels by default. Deploy Caddy with automatic HTTPS:
+The Yii application template includes Caddy labels by default. Deploy Caddy with automatic HTTPS.
+
+Create a file `caddy-stack.yml`:
+
+```yaml
+version: '3.8'
+
+services:
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - caddy_data:/data
+    networks:
+      - caddy_public
+
+volumes:
+  caddy_data:
+
+networks:
+  caddy_public:
+    external: true
+```
+
+Deploy Caddy:
 
 ```bash
-docker service create \
-  --name caddy \
-  --publish 80:80 \
-  --publish 443:443 \
-  --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
-  --network caddy_public \
-  lucaslorentz/caddy-docker-proxy:ci-alpine
+docker stack deploy -c caddy-stack.yml caddy
 ```
 
 Caddy automatically discovers services with Caddy labels and sets up HTTPS using Let's Encrypt.
@@ -219,6 +210,18 @@ docker stack deploy -c traefik-stack.yml traefik
 ```
 
 If using Traefik, you'll need to modify the Yii application's `docker/prod/compose.yml` to use Traefik labels instead of Caddy labels.
+
+Example Traefik labels for your application:
+
+```yaml
+deploy:
+  labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.app.rule=Host(`app.example.com`)"
+    - "traefik.http.routers.app.entrypoints=websecure"
+    - "traefik.http.routers.app.tls.certresolver=letsencrypt"
+    - "traefik.http.services.app.loadbalancer.server.port=80"
+```
 
 ## Configuring your Yii application
 
@@ -358,11 +361,7 @@ echo "your_secure_password" | docker secret create db_password -
 Configure Docker to authenticate with your container registry:
 
 ```bash
-# For Forgejo/Gitea
 docker login git.example.com
-
-# For GitLab
-docker login registry.example.com
 ```
 
 Enter your username and password when prompted.
@@ -465,78 +464,6 @@ View logs:
 
 ```bash
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
-```
-
-## Pointing your domain name
-
-### DNS configuration
-
-Configure your domain's DNS records to point to your server:
-
-1. Go to your domain registrar or DNS provider
-2. Add an A record:
-   - **Name**: `@` (for root domain) or `app` (for subdomain)
-   - **Type**: A
-   - **Value**: Your server's IP address
-   - **TTL**: 3600 (or default)
-
-3. For the container registry subdomain, add another A record:
-   - **Name**: `git`
-   - **Type**: A
-   - **Value**: Your server's IP address
-   - **TTL**: 3600
-
-### Verify DNS propagation
-
-Wait for DNS propagation (usually a few minutes to an hour) and verify:
-
-```bash
-# Check if the domain resolves correctly
-dig app.example.com +short
-dig git.example.com +short
-
-# Or use nslookup
-nslookup app.example.com
-nslookup git.example.com
-```
-
-Once DNS is properly configured, Caddy or Traefik will automatically obtain SSL certificates from Let's Encrypt.
-
-## Updating your application
-
-### Zero-downtime updates
-
-The production configuration uses a rolling update strategy. To deploy updates:
-
-1. Build and push a new image:
-   ```bash
-   make prod-build
-   make prod-push
-   ```
-
-2. Update the service:
-   ```bash
-   docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app
-   ```
-
-Or simply run:
-
-```bash
-make prod-deploy
-```
-
-The update process:
-- Starts new containers with the updated image
-- Waits for them to be healthy
-- Removes old containers
-- Automatically rolls back if the new version fails
-
-### Rollback
-
-If you need to manually roll back to a previous version:
-
-```bash
-docker -H ssh://docker-web service rollback ${STACK_NAME}_app
 ```
 
 ## Monitoring and maintenance
@@ -685,11 +612,10 @@ docker -H ssh://docker-web pull git.example.com/username/myapp:latest
 ## Summary
 
 You've successfully deployed a Yii application to Docker Swarm with:
-- A container registry (Forgejo, Gitea, or GitLab)
+- A container registry (Forgejo or Gitea)
 - Automatic HTTPS via Caddy or Traefik
 - Zero-downtime deployments with rolling updates
 - High availability with multiple replicas
-- Proper domain configuration
 
 The Makefile commands simplify the deployment workflow:
 - `make prod-build` - Build the production image
