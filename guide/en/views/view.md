@@ -25,10 +25,11 @@ These packages are included by default in the `yiisoft/app` application template
 
 ### View Files
 
-A view file is a PHP script that contains presentation logic. View files are typically stored in the `views`
-directory of your application. Here's a simple view file example:
+A view file is a PHP script that contains presentation logic. In the `yiisoft/app` template, view files are typically 
+stored alongside their controllers (e.g., `src/Web/HomePage/template.php` or `src/Controller/Echo/template.php`). 
+Here's a simple view file example:
 
-**views/site/about.php**
+**src/Web/About/template.php**
 ```php
 <?php
 
@@ -81,13 +82,13 @@ final class SiteController
 
 ### View Context and Paths
 
-The ViewRenderer automatically determines view paths based on your controller structure. For a controller named
-`SiteController`, views are looked for in the `views/site/` directory.
+In the `yiisoft/app` template, view files are typically stored alongside their controllers. When using `ViewRenderer`, 
+you can specify the view path relative to the controller directory or use absolute paths:
 
 You can also specify absolute paths or use different path formats:
 
 ```php
-// Relative to controller views directory
+// Relative to current controller directory
 $this->viewRenderer->render('about');
 
 // Absolute path from views root
@@ -105,14 +106,14 @@ $this->viewRenderer->render('../shared/header');
 ### Default Layout
 
 Most web applications use a common layout for all pages. In the `yiisoft/app` template,
-layouts are stored in `views/layout/` directory. You can set a default layout:
+layouts are stored in `src/Web/Shared/Layout/Main/` directory. You can set a default layout:
 
-**config/web/params.php**
+**config/common/params.php**
 ```php
 return [
     'yiisoft/yii-view-renderer' => [
-        'viewPath' => '@views',
-        'layout' => '@views/layout/main.php',
+        'viewPath' => null,
+        'layout' => '@src/Web/Shared/Layout/Main/layout.php',
     ],
 ];
 ```
@@ -121,7 +122,7 @@ return [
 
 A typical layout file looks like this:
 
-**views/layout/main.php**
+**src/Web/Shared/Layout/Main/layout.php**
 ```php
 <?php
 
@@ -265,7 +266,7 @@ declare(strict_types=1);
 </div>
 ```
 
-**views/site/_post_item.php**
+**src/Web/Post/_item.php**
 ```php
 <?php
 
@@ -382,28 +383,27 @@ $cleanHtml = Html::sanitize($untrustedHtml, [
 
 ## View File Organization
 
-Organize your view files following these conventions:
+In the `yiisoft/app` template, organize your view files following these conventions:
 
 ```
-views/
-├── layout/
-│   ├── main.php           # Main layout
-│   ├── admin.php          # Admin layout
-│   └── email.php          # Email layout
-├── site/
-│   ├── index.php          # Homepage
-│   ├── about.php          # About page
-│   └── contact.php        # Contact page
-├── user/
-│   ├── profile.php        # User profile
-│   ├── edit.php           # Edit profile
-│   └── _form.php          # Partial: user form
-├── admin/
-│   └── dashboard.php      # Admin dashboard
-└── shared/
-    ├── _header.php        # Shared header
-    ├── _footer.php        # Shared footer
-    └── _navigation.php    # Shared navigation
+src/
+├── Web/
+│   ├── Shared/
+│   │   └── Layout/
+│   │       └── Main/
+│   │           ├── layout.php      # Main layout
+│   │           └── MainAsset.php   # Layout assets
+│   ├── HomePage/
+│   │   └── template.php            # Homepage view
+│   ├── About/
+│   │   └── template.php            # About page view
+│   ├── Contact/
+│   │   └── template.php            # Contact page view
+│   └── User/
+│       ├── Profile/
+│       │   └── template.php        # User profile view
+│       └── Edit/
+│           └── template.php        # Edit profile view
 ```
 
 Use underscore prefix (`_`) for partial views that are intended to be rendered from within other views.
