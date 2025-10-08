@@ -157,7 +157,7 @@ docker stack deploy -c caddy-stack.yml caddy
 Caddy automatically discovers services with Caddy labels and sets up HTTPS using Let's Encrypt.
 
 > [!IMPORTANT]
-> Make sure your domain DNS records are properly configured and pointing to your server before deploying services with Caddy labels, as Let's Encrypt requires domain validation.
+> Make sure your domain DNS records are configured and pointing to your server before deploying services with Caddy labels, as Let's Encrypt requires domain validation.
 
 ## Alternative: Using Traefik as reverse proxy
 
