@@ -2,6 +2,19 @@
 
 This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Caddy as a reverse proxy and a container registry (Forgejo or Gitea).
 
+```mermaid
+graph LR
+    A[Internet] --> B[Reverse Proxy: Caddy or Traefik]
+    B --> C[app1.example.com]
+    B --> D[app2.example.com]
+    
+    subgraph Docker Swarm Cluster
+        B
+        C
+        D
+    end
+```
+
 ## Prerequisites
 
 - A server with a fresh installation of a Linux distribution (Ubuntu 22.04 LTS or later recommended)
