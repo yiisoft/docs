@@ -88,7 +88,7 @@ readonly final class CartViewInjection implements CommonParametersInjectionInter
 }
 ```
 
-Add your new injection to `params.php` under specific layout name. In the following example, it is `@layout/cart`:
+Add your new injection to `params.php` under specific layout name. In the following example, it's `@layout/cart`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -111,4 +111,4 @@ Add your new injection to `params.php` under specific layout name. In the follow
 
 > [!NOTE]
 > [← Template engines](template-engines.md) |
-> [Scripts, styles and metatags →](script-style-meta.md)
+> [Scripts, styles and meta tags →](script-style-meta.md)
