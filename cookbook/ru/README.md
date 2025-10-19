@@ -20,3 +20,4 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Интеграция с Sentry](sentry-integration.md)
 - [Конфигурирование веб-серверов](configuring-webservers/general.md)
+- [Deploying to Docker Swarm](deployment/docker-swarm.md)

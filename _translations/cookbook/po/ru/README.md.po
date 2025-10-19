@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-09-12 09:45+0500\n"
+"POT-Creation-Date: 2025-10-08 11:47+0000\n"
 "PO-Revision-Date: 2025-09-05 15:05+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -73,3 +73,8 @@ msgstr "[Интеграция с Sentry](sentry-integration.md)"
 #: ../../cookbook/en/README.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
 msgstr "[Конфигурирование веб-серверов](configuring-webservers/general.md)"
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr ""

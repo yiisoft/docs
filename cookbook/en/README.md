@@ -17,3 +17,4 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
 - [Configuring webservers](configuring-webservers/general.md)
+- [Deploying to Docker Swarm](deployment/docker-swarm.md)

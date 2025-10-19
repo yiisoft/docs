@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-12 09:45+0500\n"
+"POT-Creation-Date: 2025-10-08 11:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,4 +78,9 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../../cookbook/en/README.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../cookbook/en/README.md
+msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
 msgstr ""
