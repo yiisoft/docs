@@ -55,17 +55,15 @@ Handling requests +
 * [Handling errors](runtime/handling-errors.md) +
 * [Logging](runtime/logging.md) +
 
-Views -
+Views +
 -----
 
-* [Views](views/view.md) -
-* [Widgets](views/widget.md) -
-* [Assets](views/asset.md) -
-* [Working with client scripts](views/client-scripts.md) -
-* [Theming](views/theming.md) -
-* [Template engines](views/template-engines.md) -
+* [View](views/view.md) +
+* [Template engines](views/template-engines.md) +- TODO: verify!
 * [View injections](views/view-injections.md) +
-
+* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO: verify!
+* [Assets](views/asset.md) +- TODO: verify!
+* [Widgets](views/widget.md) +- TODO: verify!
 
 Working with databases +-
 ----------------------

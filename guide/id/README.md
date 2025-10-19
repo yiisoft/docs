@@ -1,6 +1,7 @@
 # Panduan Definitif untuk Yii 3.0
 
-Panduan ini dirilis di bawah [Ketentuan Dokumentasi Yii](https://www.yiiframework.com/doc/terms/).
+Panduan ini dirilis di bawah [Ketentuan Dokumentasi
+Yii](https://www.yiiframework.com/license#docs).
 
 Pengenalan +
 ------------
@@ -13,7 +14,7 @@ Mulai -
 ---------------
 
 * [Apa yang perlu kamu ketahui](start/prerequisites.md) +
-* [Menginstal Yii](start/installation.md) +
+* [Membuat proyek](start/creating-project.md) +
 * [Menjalankan Aplikasi](start/workflow.md) +
 * [Mengucapkan halo](start/hello.md) +
 * [Bekerja Dengan Formulir](start/forms.md) +
@@ -42,45 +43,48 @@ Konsep Dasar -
 * [Configuration](concept/configuration.md) +
 * [Aliases](concept/aliases.md) +
 * [Events](concept/events.md) +
+* [Immutability](concept/immutability.md) +
 
 Menangani Permintaan -
 -----------------
 
-* [Request Handling Overview](runtime/overview.md) -
-* [Bootstrapping](runtime/bootstrapping.md) -
 * [Routing and URL generation](runtime/routing.md) +
 * [Request](runtime/request.md) +
 * [Response](runtime/response.md) +
 * [Sessions](runtime/sessions.md) +
 * [Cookies](runtime/cookies.md) +
-* [Flash messages](runtime/flash-messages.md) -
-* [Handling Errors](runtime/handling-errors.md) !
+* [Handling errors](runtime/handling-errors.md) +
 * [Logging](runtime/logging.md) +
 
-Tampilan -
+Views +
 -----
 
-* [Views](views/view.md) -
-* [Widgets](views/widget.md) -
-* [Assets](views/asset.md) -
-* [Bekerja dengan Skrip Klien](views/client-scripts.md) -
-* [Theming](views/theming.md) -
-* [Template Engines](views/template-engines.md) -
+* [View](views/view.md) +
+* [Template engines](views/template-engines.md) +- TODO: verify!
+* [View injections](views/view-injections.md) +
+* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO:
+  verify!
+* [Assets](views/asset.md) +- TODO: verify!
+* [Widgets](views/widget.md) +- TODO: verify!
 
-
-Bekerja Dengan Basis Data -
+Bekerja Dengan Basis Data +-
 ----------------------
 
-* [Database Access Objects](db-dao.md): Menghubungkan ke basis data, permintaan dasar,transaksi, dan manipulasi skema
-* [Query Builder](db-query-builder.md): Meminta basis data menggunakan lapisan abstraksi sederhana
-* [Active Record](db-active-record.md): Active Record ORM, mengambil dan memanipulasi catatan, dan mendefinisikan hubungan
-* [Migrations](db-migrations.md): Terapkan versi kontrol ke basis data Anda di lingkungan pengembangan tim
+* [Database Access Objects](db-dao.md): Menghubungkan ke basis data,
+  permintaan dasar,transaksi, dan manipulasi skema
+* [Query Builder](db-query-builder.md): Meminta basis data menggunakan
+  lapisan abstraksi sederhana
+* [Active Record](db-active-record.md): Active Record ORM, mengambil dan
+  memanipulasi catatan, dan mendefinisikan hubungan
+* [Migrations](db-migrations.md): +
 
 Mendapatkan Data dari Pengguna -
 -----------------------
 
 * [Membuat Formulir](input/forms.md) -
-* [Memvalidasi Input](input/validation.md) -
+* [Memvalidasi
+  Input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
+  +
 * [Mengunggah File](input/file-upload.md) -
 * [Mengumpulkan Input Tabular](input/tabular-input.md) -
 
@@ -105,18 +109,18 @@ Keamanan +-
 * [Praktik terbaik](security/best-practices.md) +
 
 
-Caching -
+Caching +-
 -------
 
-* [Ikhtisar Caching](caching/overview.md) -
-* [Data Caching](caching/data.md) -
+* [Ikhtisar Caching](caching/overview.md) +
+* [Data Caching](caching/data.md) +
 * [Fragment Caching](caching/fragment.md) -
 * [Page Caching](caching/page.md) -
-* [HTTP Caching](caching/http.md) -
+* [HTTP caching](caching/http.md) -
 
 
 RESTful Web Services -
---------------------
+----------------------
 
 * [Mulai cepat](rest/quick-start.md)
 * [Resources](rest/resources.md)
@@ -153,10 +157,11 @@ Topik Khusus -
 * [Aplikasi Konsol](tutorial/console-applications.md) +
 * [Docker](tutorial/docker.md) -
 * [Penginternasionalan](tutorial/i18n.md) -
-* [Mailing](tutorial/mailing.md) -
+* [Mailing](tutorial/mailing.md) +
 * [Penyesuaian Kinerja](tutorial/performance-tuning.md) +
 * [Menggunakan Yii dengan event loop](tutorial/using-with-event-loop.md) +
-* [Menggunakan Yii dengan RoadRunner](tutorial/using-yii-with-roadrunner.md) +
+* [Menggunakan Yii dengan RoadRunner](tutorial/using-yii-with-roadrunner.md)
+  +
 * [Menggunakan Yii dengan Swoole](using-yii-with-swoole.md) +
 
 Widgets -
@@ -169,18 +174,22 @@ Widgets -
 * [Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)
 * [LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)
 * [LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)
-* [Bootstrap Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
+* [Bootstrap
+  Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
 
 
-Helpers -
+Helpers +
 -------
 
-* [Helpers Overview](helper-overview.md)
-* [ArrayHelper](helper/array.md)
-* [Html](helper-html.md)
-* [Url](helper-url.md)
+* [Arrays](https://github.com/yiisoft/arrays/)
+* [Files](https://github.com/yiisoft/files/)
+* [Html](https://github.com/yiisoft/html/)
+* [Json](https://github.com/yiisoft/json)
+* [Network utilities](https://github.com/yiisoft/network-utilities/)
+* [VarDumper](https://github.com/yiisoft/var-dumper)
+* [Strings](https://github.com/yiisoft/strings)
 
-Lainnya
+Lainnya+
 ------
 
 * [Glosarium](glossary.md)

@@ -1,8 +1,15 @@
 # View injections
 
 The view injections are designed to provide a standardized way to pass parameters to the common layer
-of views in an application. Implementing this interface allows developers to manage the data that will be available
+of views in an application. It allows developers to manage the data that will be available
 across various views, ensuring flexibility and reusability of code.
+
+The view injections could be used if you require `yiisoft/yii-view-renderer` package:
+
+
+```sh
+composer require yiisoft/yii-view-renderer
+```
 
 ## Configuration
 
@@ -81,7 +88,7 @@ readonly final class CartViewInjection implements CommonParametersInjectionInter
 }
 ```
 
-Add your new injection to `params.php` under specific layout name. In the following example, it is `@layout/cart`:
+Add your new injection to `params.php` under specific layout name. In the following example, it's `@layout/cart`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -101,3 +108,7 @@ Add your new injection to `params.php` under specific layout name. In the follow
         ],
     ],
 ```
+
+> [!NOTE]
+> [← Template engines](template-engines.md) |
+> [Scripts, styles and meta tags →](script-style-meta.md)

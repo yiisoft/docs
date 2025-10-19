@@ -40,7 +40,7 @@ in the state of a service made by the previous request may affect the current re
 if data from one user is available to another user.
 
 There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly`
-keyword may be handy for it. Second, you can reset services state at the end of the request processing. 
+keyword may be handy for it. Second, you can reset the services' state at the end of the request processing. 
 In this case, a state resetter will help you:
 
 ```php

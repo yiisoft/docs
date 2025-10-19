@@ -32,7 +32,7 @@ We seek a balance between flexibility, discipline and simplicity that meets comm
 
 We prefer practice to theory. For example:
 
-- Solutions for known use cases should avoid excess complexity by providing only needed flexibility.
+- Solutions for known use cases should avoid excess complexity by providing only necessary flexibility.
 - Standard implementations should take practical use into account.
 - Experience is at least as useful as theory in guiding design.
 - Context is critical in determining appropriateness.
@@ -43,7 +43,7 @@ This value guides technical decisions as well as community activity.
 Consideration of how software features help users should guide development.
 Community-wise, we value any helpful contribution, be it a pull request or an answer in the forum.
 
-When the other principles could conflict, we choose a solution that's more helpful to the community.
+When the other principles conflict, we choose a solution that's more helpful to the community.
 
 ### Be simple
 
@@ -57,7 +57,7 @@ Solutions should be simple and expressive:
 
 We prefer explicit, obvious solutions and code. Solutions should clearly express exactly what they do. For example:
 
-- A straightforward solution is better than an abstract one unless the abstraction has practical purpose.
+- A straightforward solution is better than an abstract one unless the abstraction has a practical purpose.
 - Loud fails are better than silent fails or masking errors.
 - Explicit casts are better than PHP type juggling, type hints are good.
 - No magic unless necessary.

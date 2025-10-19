@@ -19,7 +19,7 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
     
     // Try retrieving $data from cache.
     $data = $cache->getOrSet($key, function (\Psr\SimpleCache\CacheInterface $cache) use ($count) {
-        // Can't find $data in cache, calculate it from scratch.
+        // Can't find $data in a cache, calculate it from scratch.
         return getTopProductsFromDatabase($count);
     }, 3600);
     
@@ -52,7 +52,7 @@ Yii provides the following handlers:
 - [File](https://github.com/yiisoft/cache-file) — uses standard files to store cached data. This is particularly suitable
   to cache large chunks of data, such as page content.
 - [Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP [memcached](https://secure.php.net/manual/en/book.memcached.php)
-  extension. You can consider this option as the fastest one when dealing with cache in distributed application 
+  extension. You can consider this option as the fastest one when dealing with cache in a distributed application  
   (e.g., with several servers, load balancers, etc.)
 - [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
   ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
@@ -107,7 +107,7 @@ The `$ttl` parameter indicates for how many seconds the data item can remain val
 the data item, if it has passed the expiration time, the method will execute the function and set the resulting value
 into cache.
 
-You may set default TTL for the cache:
+You may set the default TTL for the cache:
 
 ```php
 $cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hour
@@ -168,7 +168,7 @@ The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration" algorithm
 This algorithm randomly fakes a cache miss for one user while others are still served the cached value.
 You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.
 By default, beta is `1.0`, which is usually enough.
-The higher the value the earlier cache will be re-created.
+The higher the value, the earlier cache will be re-created.
 
 ```php
 /**

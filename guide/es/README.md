@@ -1,6 +1,7 @@
 # La Guía Definitiva de Yii 3.0
 
-Esta guía se publica bajo los [Términos de documentación de Yii](https://www.yiiframework.com/doc/terms/).
+Esta guía se publica bajo los [Términos de documentación de
+Yii](https://www.yiiframework.com/license#docs)).
 
 Introducción
 ------------
@@ -13,7 +14,7 @@ Primeros Pasos
 ---------------
 
 * [Qué Necesitas Saber](start/prerequisites.md)
-* [Instalación de Yii](start/installation.md)
+* [Creating a project](start/creating-project.md) +
 * [Ejecutando Aplicaciones](start/workflow.md)
 * [Hola Mundo](start/hello.md)
 * [Trabajar con Formularios](start/forms.md)
@@ -25,7 +26,8 @@ Primeros Pasos
 Estructura De Una Aplicación
 ---------------------
 
-* [Información General de Estructura de Una Aplicación](structure/overview.md)
+* [Información General de Estructura de Una
+  Aplicación](structure/overview.md)
 * [Scripts de Entrada](structure/entry-script.md)
 * [Applicación](structure/application.md)
 * [Componentes de Servicios](structure/service.md)
@@ -42,47 +44,50 @@ Conceptos Clave
 * [Configuración](concept/configuration.md)
 * [Alias](concept/aliases.md)
 * [Eventos](concept/events.md)
+* [Immutability](concept/immutability.md) +
 
 Gestión de las Peticiones
 -----------------
 
-* [Información General de Gestión de las Peticiones](runtime/overview.md)
-* [Bootstrapping](runtime/bootstrapping.md)
 * [Enrutamiento y Creación de las URL](runtime/routing.md)
 * [Peticiones (Requests)](runtime/request.md)
 * [Respuestas (Responses)](runtime/response.md)
 * [Sesiones (Sessions)](runtime/sessions.md)
 * [Cookies](runtime/cookies.md)
-* [Mensajes Flash](runtime/flash-messages.md)
 * [Manejo de Errores](runtime/handling-errors.md)
 * [Registros (logs)](runtime/logging.md)
 
-Vistas
+Views +
 -----
 
-* [Vistas](views/view.md)
-* [Widgets](views/widget.md)
-* [Assets](views/asset.md)
-* [Trabajando con Scripts de Cliente](views/client-scripts.md)
-* [Temas](views/theming.md)
-* [Motores de Plantillas](views/template-engines.md)
-
+* [View](views/view.md) +
+* [Template engines](views/template-engines.md) +- TODO: verify!
+* [View injections](views/view-injections.md) +
+* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO:
+  verify!
+* [Assets](views/asset.md) +- TODO: verify!
+* [Widgets](views/widget.md) +- TODO: verify!
 
 Trabajar con Bases de Datos
 ----------------------
 
-* [Objeto de Acceso a Datos](db-dao.md): Conexión a una base de datos, consultas básicas, transacciones y manipulación de esquemas
-* [Constructor de Consultas](db-query-builder.md): Consulta de la base de datos utilizando una capa simple de abstracción
-* [Active Record](db-active-record.md): ORM Active Record, recuperación y manipulación de registros y definición de relaciones
-* [Migraciones](db-migrations.md): Control de versiones de bases de datos en el entorno de desarrollo en equipo
+* [Objeto de Acceso a Datos](db-dao.md): Conexión a una base de datos,
+  consultas básicas, transacciones y manipulación de esquemas
+* [Constructor de Consultas](db-query-builder.md): Consulta de la base de
+  datos utilizando una capa simple de abstracción
+* [Active Record](db-active-record.md): ORM Active Record, recuperación y
+  manipulación de registros y definición de relaciones
+* [Migraciones](db-migrations.md)
 
 Obtener Datos de los Usuarios
 -----------------------
 
 * [Crear Formularios](input/forms.md)
-* [Validar Datos](input/validation.md)
+* [Validar
+  Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
 * [Carga de Archivos](input/file-upload.md)
-* [Obtener Datos de Formularios Tabulados (Tabular Input)](input/tabular-input.md)
+* [Obtener Datos de Formularios Tabulados (Tabular
+  Input)](input/tabular-input.md)
 
 
 Visualizar Datos
@@ -94,12 +99,12 @@ Visualizar Datos
 * [Proveedores de Datos](output/data-providers.md)
 * [Widgets de Datos](output/data-widgets.md)
 
-Seguridad-
+Seguridad
 --------
 
 * [Información General de Seguridad](security/overview.md)
 * [Autenticación](security/authentication.md)
-* [Autorización](security/authorization.md)-
+* [Autorización](security/authorization.md)
 * [Trabajar con Contraseñas](security/passwords.md)
 * [Criptografía](security/cryptography.md)
 * [Buenas Prácticas](security/best-practices.md)
@@ -115,8 +120,8 @@ Caché
 * [Caché HTTP](caching/http.md)
 
 
-Servicios Web RESTful
---------------------
+REST APIs -
+-----------
 
 * [Inicio Rápido](rest/quick-start.md)
 * [Recursos](rest/resources.md)
@@ -130,9 +135,9 @@ Servicios Web RESTful
 Herramientas de Desarrollo
 -----------------
 
-* [Depurador y Barra de Herramientas de Depuración](https://www.yiiframework.com/extension/yiisoft/yii2-debug/doc/guide)
-* [Generación de Código con Gii](https://www.yiiframework.com/extension/yiisoft/yii2-gii/doc/guide)
-* [Generación de Documentación de API](https://www.yiiframework.com/extension/yiisoft/yii2-apidoc)
+* Depurador y Barra de Herramientas de Depuración
+* Generación de Código con Gii
+* Generación de Documentación de API
 
 
 Pruebas (Testing)
@@ -157,6 +162,7 @@ Temas Especiales
 * [Ajustes de Rendimiento](tutorial/performance-tuning.md)
 * [Utilizar Yii con Bucle de Eventos](tutorial/using-with-event-loop.md)
 * [Utilizar Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)
+* [Using Yii with Swoole](tutorial/using-yii-with-swoole.md) +
 
 Widgets
 -------
@@ -168,13 +174,22 @@ Widgets
 * [Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)
 * [LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)
 * [LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)
-* [Bootstrap Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
+* [Bootstrap
+  widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
 
 
 Clases Auxiliares
 -------
 
-* [Información General de Clases Auxiliares](helper-overview.md)
-* [ArrayHelper](helper/array.md)
-* [Html](helper-html.md)
-* [Url](helper-url.md)
+* [Arrays](https://github.com/yiisoft/arrays/)
+* [Files](https://github.com/yiisoft/files/)
+* [Html](https://github.com/yiisoft/html/)
+* [Json](https://github.com/yiisoft/json)
+* [Network utilities](https://github.com/yiisoft/network-utilities/)
+* [VarDumper](https://github.com/yiisoft/var-dumper)
+* [Strings](https://github.com/yiisoft/strings)
+
+Extras +
+------
+
+* [Glossary](glossary.md)

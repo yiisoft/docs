@@ -1,0 +1,162 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"PO-Revision-Date: 2025-09-11 10:24+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid "What is Yii"
+msgstr "Что такое Yii?"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii is a high-performance, package-based PHP framework for developing modern applications.  The name Yii (pronounced `Yee` or `[ji:]`) means \"simple and evolutionary\" in Chinese.  You can also think about it as an acronym for **Yes It Is**!"
+msgstr ""
+"Yii – это высокопроизводительный пакетный PHP фреймворк, предназначенный для разработки современных веб-приложений. \n"
+"Слово Yii (произносится как `Йии` или `[ji:]`) в китайском языке означает «простой и эволюционирующий». \n"
+"Также Yii может расшифровываться как акроним **Yes It Is**!"
+
+#. type: Title ##
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid "What's Yii best for"
+msgstr "Для каких задач больше всего подходит Yii?"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii is a generic Web programming framework.  You can use it for developing all kinds of Web applications using PHP.  Because of its architecture and sophisticated caching support, it's especially suitable for developing large-scale applications such as portals, content management systems, e-commerce, REST APIs, etc."
+msgstr ""
+"Yii – это универсальный веб-фреймворк.\n"
+"Вы можете использовать его для разработки всех типов веб-приложений.\n"
+"Благодаря его архитектуре и отличной поддержке кеширования, фреймворк особенно подходит для разработки таких крупных проектов, как порталы, CMS, магазины или RESTful-приложения."
+
+#. type: Title ##
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid "How does Yii compare with other frameworks?"
+msgstr "Сравнение Yii с другими фреймворками"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "If you're already familiar with another framework, you may appreciate knowing how Yii compares:"
+msgstr "Если вы уже знакомы с другими фреймворками, вам наверняка будет интересно сравнить их с Yii:"
+
+#. type: Bullet: '- '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii takes the [philosophy of being practical and helpful](https://github.com/yiisoft/docs/blob/master/001-yii-values.md) achieving:"
+msgstr "Yii придерживается [философии практичности и полезности] (https://github.com/yiisoft/docs/blob/master/001-yii-values.md), достигая следующего:"
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Performance in both development and execution."
+msgstr "Производительность как в разработке, так и во время выполнения."
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Convenient customizable defaults."
+msgstr "Удобные изменяемые настройки по-умолчанию."
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Practice-orientation."
+msgstr "Практикоориентированность."
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Simplicity."
+msgstr "Простота."
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Explicitness."
+msgstr "Ясность."
+
+#. type: Bullet: '  - '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Consistency."
+msgstr "Согласованность."
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid ""
+"  Yii will never try to over-design things mainly to follow some design patterns.\n"
+"- Yii extensively uses PSR interfaces with the ability to reuse what PHP community created and even\n"
+"  replace core implementations if needed.\n"
+"- Yii is both a set of libraries and a full-stack framework providing many proven and ready-to-use features:\n"
+"  caching, logging, template engine, data abstraction, development tools, code generation, and more.\n"
+"- Yii is extensible. You can customize or replace every piece of the core's code. You can also\n"
+"  take advantage of Yii's solid architecture to use or develop redistributable packages.\n"
+"- High performance is always a primary goal of Yii.\n"
+msgstr ""
+"  Yii не усложняет дизайн только ради следования каким-либо шаблонам проектирования.\n"
+"- Yii широко использует PSR интерфейсы с возможностью не только повторно использовать то, что создано PHP-сообществм, но и заменять, при необходимости, реализованный в ядре функционал.\n"
+"- Yii это одновременно набор библиотек и full-stack фреймворк, предоставляющий множество проверенных и готовых к использованию компонентов:\n"
+"  кеширование, логирование, шаблонизатор, абстракция данных, инструменты разработчика, кодогенератор и др.\n"
+"- Yii расширяем. Вы можете настроить или заменить практически любую часть основного кода. Используя пакетную архитектуру, легко делиться кодом или использовать код сообщества.\n"
+"- Одна из главных целей Yii – производительность.\n"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii is backed up by a [strong core developer team](https://www.yiiframework.com/team/) financially backed from an [OpenCollective foundation](https://opencollective.com/yiisoft), as well as a large community of professionals constantly contributing to Yii's development. The Yii developer team keeps a close eye on the latest Web development trends and on the best practices and features found in other frameworks and projects. The most relevant best practices and features found elsewhere are incorporated into the core framework and exposed via simple and elegant interfaces."
+msgstr "Yii разрабатывается [сильной командой разработчиков](https://www.yiiframework.com/team/), финансируемой [фондом OpenCollective](https://opencollective.com/yiisoft), и большим сообществом, которое ей помогает. Авторы фреймворка следят за тенденциями веб-разработки и развитием других проектов. Наиболее подходящие возможности и лучшие практики регулярно внедряются во фреймворк в виде простых и элегантных интерфейсов."
+
+#. type: Title ##
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid "Yii versions"
+msgstr "Версии Yii"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii currently has three major versions available: 1.1, 2.0, and 3.0."
+msgstr "В настоящее время доступны три основные ветки: 1.1, 2.0 и 3.0."
+
+#. type: Bullet: '- '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Version 1.1 is the old generation and is now in the feature freeze bugfix mode."
+msgstr "Ветка 1.1 является предыдущим поколением и находится в состоянии исправления ошибок и заморозки добавления новой функциональности."
+
+#. type: Bullet: '- '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Version 2.0 is a current stable version in the feature freeze bugfix mode."
+msgstr "Ветка 2.0 — текущая стабильная версия. Находится в состоянии исправления ошибок и заморозки добавления новой функциональности."
+
+#. type: Bullet: '- '
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Version 3.0 is the current version in development. This guide is mainly about version 3."
+msgstr "Ветка 3.0 — текущая разрабатываемая версия. Данное руководство именно о версии 3.0."
+
+#. type: Title ##
+#: ../../guide/en/intro/what-is-yii.md
+#, no-wrap
+msgid "Requirements and prerequisites"
+msgstr "Требования к ПО и знаниям"
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Yii3 requires PHP 8.2 or above, but some packages work with older PHP, such as PHP 7.4."
+msgstr "Yii3 требует PHP 8.2 или выше, но некоторые пакеты работают со старыми версиями PHP, такими как PHP 7.4."
+
+#. type: Plain text
+#: ../../guide/en/intro/what-is-yii.md
+msgid "Using Yii requires basic knowledge of object-oriented programming (OOP), as Yii is a pure OOP-based framework.  Yii3 also makes use of the latest PHP features, such as type declarations and generators. Understanding these concepts will help you pick up Yii3 faster."
+msgstr ""
+"Для разработки на Yii потребуется общее понимание объектно-ориентированного программирования (ООП), так как фреймворк\n"
+"полностью следует этой парадигме. Yii3 также использует новейшие возможности PHP, такие, как декларация типов и генераторы.\n"
+"Понимание этих концепций поможет вам быстрее разобраться с Yii3."

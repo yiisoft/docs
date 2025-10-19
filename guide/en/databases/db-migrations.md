@@ -8,7 +8,7 @@ composer require yiisoft/db-migration
 
 ### Example usage
 
-First, configure DI container. Create `config/common/db.php` with the following content:
+First, configure a DI container. Create `config/common/db.php` with the following content:
 
 ```php
 <?php
@@ -67,7 +67,7 @@ use Yiisoft\Db\Migration\RevertibleMigrationInterface;
 use Yiisoft\Db\Migration\TransactionalMigrationInterface;
 
 /**
- * Handles the creation of table `my_first_table`.
+ * Handles the creation of a table `my_first_table`.
  */
 final class M240115143455CreateMyFirstTableTable implements RevertibleMigrationInterface, TransactionalMigrationInterface
 {
@@ -97,6 +97,6 @@ Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/db-
 and the `migration` table is also not
 compatible.
 A probable solution is to use structure dumps and rename the old `migration` table. Upon the initial execution of
-migrations, a new `migration` table with new fields will be created. All subsequent changes in the database schema are
+migrations, a new `migration` table with new fields will be created. All further changes in the database schema are
 applied using the new `migration` component and recorded in the new migration table.
 

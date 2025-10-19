@@ -1,0 +1,375 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"PO-Revision-Date: 2025-09-04 07:37+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "Dependency injection and container"
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "Dependency injection <span id=\"dependency-injection\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "There are two ways of re-using things in OOP: inheritance and composition."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Inheritance is simple:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"class Cache\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget extends Cache\n"
+"{\n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "The issue here is that these two are becoming unnecessarily coupled or inter-dependent, making them more fragile."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Another way to handle this is composition:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"interface CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key);\n"
+"}\n"
+"\n"
+"final readonly class Cache implements CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"    \n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->cache->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "We've avoided unnecessary inheritance and used interface to reduce coupling. You can replace cache implementation without changing `CachedWidget` so it's becoming more stable."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "The `CacheInterface` here is a dependency: an object another object depends on.  The process of putting an instance of dependency into an object (`CachedWidget`) is called dependency injection.  There are many ways to perform it:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "Constructor injection. Best for mandatory dependencies."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "Method injection. Best for optional dependencies."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "Property injection. Better to be avoided in PHP except maybe data transfer objects."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "Why use private properties <span id=\"why-private-properties\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "In the composition example above, note that the `$cache` property is declared as `private`."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "This approach embraces composition by ensuring objects have well-defined interfaces for interaction rather than direct property access, making the code more maintainable and less prone to certain types of mistakes."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "This design choice provides several benefits:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "**Encapsulation**: Private properties with getters/setters allow you to control access and make future changes without breaking existing code."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "**Data integrity**: Setters can validate, normalize, or format values before storing them, ensuring properties contain valid data."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "**Immutability**: Private properties enable immutable object patterns where setter `with*()` methods return new instances rather than modifying the current one."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "**Flexibility**: You can create read-only or write-only properties or add additional logic to property access later."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "DI container <span id=\"di-container\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Injecting basic dependencies is straightforward. You're choosing a place where you don't care about dependencies, which is usually an action handler, which you aren't going to unit-test ever, create instances of dependencies needed and pass these to dependent classes."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "It works well when there are few dependencies overall and when there are no nested dependencies. When there are many and each dependency has dependencies itself, instantiating the whole hierarchy becomes a tedious process, which requires lots of code and may lead to hardly debuggable mistakes."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Additionally, lots of dependencies, such as certain third-party API wrappers, are the same for any class using it.  So it makes sense to:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "Define how to instantiate such an API wrapper."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "Instantiate it when required and only once per request."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "That's what dependency containers are for."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "A dependency injection (DI) container is an object that knows how to instantiate and configure objects and all their dependent objects. [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and [yiisoft/injector](https://github.com/yiisoft/injector) package."
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "Configuring container <span id=\"configuring-container\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Because to create a new object you need its dependencies, you should register them as early as possible.  You can do it in the application configuration, `config/web.php`. For the following service:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "configuration could be:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => [42],\n"
+"        'setDiscount()' => [10],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "That's equal to the following:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"$myService = new MyService(42);\n"
+"$myService->setDiscount(10);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "There are extra methods of declaring dependencies:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    // declare a class for an interface, resolve dependencies automatically\n"
+"    EngineInterface::class => EngineMarkOne::class,\n"
+"\n"
+"    // array definition (same as above)\n"
+"    'full_definition' => [\n"
+"        'class' => EngineMarkOne::class,\n"
+"        '__construct()' => [42], \n"
+"        '$propertyName' => 'value',\n"
+"        'setX()' => [42],\n"
+"    ],\n"
+"\n"
+"    // closure\n"
+"    'closure' => static function(ContainerInterface $container) {\n"
+"        return new MyClass($container->get('db'));\n"
+"    },\n"
+"\n"
+"    // static call\n"
+"    'static_call' => [MyFactory::class, 'create'],\n"
+"\n"
+"    // instance of an object\n"
+"    'object' => new MyClass(),\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Directly referencing a container in a class is a bad idea since the code becomes non-generic, coupled to the container interface and, what's worse, dependencies are becoming hidden.  Because of that, Yii inverts the control by automatically injecting objects from a container in some constructors and methods based on method argument types."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "This is primarily done in constructor and handing method of action handlers:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid ""
+"use \\Yiisoft\\Cache\\CacheInterface;\n"
+"\n"
+"final readonly class MyController\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"        $this->cache = $cache;    \n"
+"    }\n"
+"\n"
+"    public function actionDashboard(RevenueReport $report)\n"
+"    {\n"
+"        $reportData = $this->cache->getOrSet('revenue_report', function() use ($report) {\n"
+"            return $report->getData();               \n"
+"        });\n"
+"\n"
+"        return $this->render('dashboard', [\n"
+"           'reportData' => $reportData,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/concept/di-container.md
+msgid "Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it checks the constructor and method argument types, gets dependencies of these types from a container and passes them as arguments. That's usually called auto-wiring. It happens for sub-dependencies as well, that's if you don't give dependency explicitly, the container would check if it has such a dependency first.  It's enough to declare a dependency you need, and it would be got from a container automatically."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/concept/di-container.md
+#, no-wrap
+msgid "References <span id=\"references\"></span>"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/concept/di-container.md
+msgid "[Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler](https://martinfowler.com/articles/injection.html)"
+msgstr ""

@@ -37,7 +37,7 @@ return [
     
     // User:
     IdentityRepositoryInterface::class => static function (ContainerInterface $container) {
-        // instead of Cycle-based repository, you can use any implementation
+        // instead of a Cycle-based repository, you can use any implementation
         return $container->get(\Cycle\ORM\ORMInterface::class)->getRepository(\App\Entity\User::class);
     },
 ];
@@ -49,7 +49,7 @@ The identity class must implement the `\Yiisoft\Auth\IdentityInterface` which ha
 
 * [[yii\web\IdentityInterface::getId()|getId()]]: it returns the ID of the user represented by this identity instance.
 
-In the following example, an identity class implemented as a pure PHP object.
+In the following example, an identity class is implemented as a pure PHP object.
 
 ```php
 <?php
@@ -131,8 +131,8 @@ final readonly class IdentityRepository implements IdentityRepositoryInterface
 
 ## Using `\Yiisoft\User\User` <span id="using-user"></span>
 
-You can use `\Yiisoft\User\User` service to obtain current user identity.
-As any service, it could be auto wired in either action handler constructor or method:
+You can use `\Yiisoft\User\User` service to get current user identity.
+As any service, it could be auto-wired in either action handler constructor or method:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -166,7 +166,7 @@ $user->login($identity);
 The `login()` method sets the identity to the User service.
 It stores identity into session so user authentication status is maintained.
 
-To logout a user, simply call
+To log out a user, call
 
 ```php
 /* @var $user \Yiisoft\User\User */

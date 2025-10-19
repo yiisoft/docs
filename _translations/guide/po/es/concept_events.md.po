@@ -1,0 +1,334 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-05 12:44+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. type: Title #
+#: en/concept/configuration.md en/concept/events.md
+#, no-wrap
+msgid "Events"
+msgstr "Eventos"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "Events allow you to make custom code executed at certain execution points without modifying existing code.  You can attach a custom code called \"handler\" to an event so that when the event is triggered, the handler gets executed automatically."
+msgstr ""
+"Los eventos permiten ejecutar código personalizado en ciertos puntos de ejecución sin modificar el código existente.\n"
+"A un evento se le puede acoplar un código especial llamado gestor (handler), de manera que una vez que el evento se dispare (triggered),\n"
+"el código se ejecuta de manera automática."
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "For example, when a user is signed up, you need to send a welcome email. You can do it right in the `SignupService` but then, when you additionally need to resize user's avatar image, you'll have to change `SignupService` code again. In other words, `SignupService` will be coupled to both code sending welcome email and code resizing avatar image."
+msgstr ""
+"Por ejemplo, cuando un usuario se registra debes enviarle un correo electrónico de bienvenida. Puedes realizar esto directamente en `RegistroService`,\n"
+"pero luego adicionalmente debes redimensionar la imagen del avatar del usuario, y tendrás que modificar nuevamente `RegistroService`.\n"
+"En otras palabras, a `RegistroService` se le acoplan el codigo de enviar un correo de bienvenida y redimensionar la imagen del avatar."
+
+#. type: Plain text
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event\n"
+"and then finish a signup process. The code sending an email and the code resizing avatar image will attach to the event\n"
+" and, therefore, will be executed. If you'll ever need to do more on signup, you'll be able to attach extra event\n"
+"handlers without modifying `SignupService`. \n"
+msgstr ""
+"Para evitar todo eso, en vez de decir explicitamente qué hacer despues de un registro, podemos levantar el evento `UsuarioRegistrado`\n"
+"y luego finalizar el proceso de registro. El código que envía el correo y el código que redimensiona la imagen de avatar se adjuntan al evento\n"
+"y por lo tanto serán ejecutados cuando el evento se dispara. Si alguna vez se necesita hacer más cosas en el proceso de registro, puedes añadir distintos gestores de\n"
+"eventos sin necesidad de modificar `RegistroService`.\n"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "For raising events and attaching handlers to these events, Yii has a special service called event dispatcher.  It's available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher)."
+msgstr ""
+"Para levantar eventos y acoplar gestores a esos eventos, Yii tiene un servicio especial llamado despachador de eventos.\n"
+"Se encuentra disponible en el [paquete yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher)."
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Event Handlers <span id=\"event-handlers\"></span>"
+msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+
+#. type: Plain text
+#: en/concept/events.md
+#, fuzzy
+msgid "An event handler is [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed when the event it's attached to is triggered."
+msgstr ""
+"Un gestor de eventos es una [llamada de retorno PHP (PHP callback)](https://www.php.net/manual/en/language.types.callable.php) que se ejecuta cuando se\n"
+"lanza el evento al que corresponde."
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "The signature of an event handler is:"
+msgstr "La firma de un gestor de eventos es:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"function (EventClass $event) {\n"
+"    // handle it\n"
+"}\n"
+msgstr ""
+"function (EventClass $event) {\n"
+"    // gestionar evento\n"
+"}\n"
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Attaching event handlers <span id=\"attaching-event-handlers\"></span>"
+msgstr "Acoplar Gestores de Eventos <span id=\"attaching-event-handlers\"></span>"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "You can attach a handler to an event like the following:"
+msgstr "Puedes acoplar un gestor a un evento como se demuestra a continuación:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"final readonly class WelcomeEmailSender\n"
+"{\n"
+"    public function __construct(Provider $provider)\n"
+"    {\n"
+"        $provider->attach([$this, 'handleUserSignup']);\n"
+"    }\n"
+"\n"
+"    public function handleUserSignup(UserSignedUp $event)\n"
+"    {\n"
+"        // handle it    \n"
+"    }\n"
+"}\n"
+msgstr ""
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"class WelcomeEmailSender\n"
+"{\n"
+"    public function __construct(Provider $provider)\n"
+"    {\n"
+"        $provider->attach([$this, 'handleUserSignup']);\n"
+"    }\n"
+"\n"
+"    public function handleUserSignup(UserSignedUp $event)\n"
+"    {\n"
+"        // gestionar evento\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "The `attach()` method is accepting a callback. Based on the type of this callback argument, the event type is determined."
+msgstr ""
+"El método `attach()` acepta funciones de retorno (callbacks). Dependiendo del argumento de la función de retorno\n"
+"se determina el tipo de evento."
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Event handlers order"
+msgstr "Orden de Gestores de Eventos"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "You may attach one or more handlers to a single event. When an event is triggered, the attached handlers will be called in the order that they were attached to the event. In case an event implements `Psr\\EventDispatcher\\StoppableEventInterface`, event handler can stop executing the rest of the handlers that follow it if `isPropagationStopped()` returns `true`."
+msgstr ""
+"Se puede acoplar uno o más gestores a un único evento. Cuando se lanza un evento, se ejecutarán los gestores adjuntos\n"
+"en el orden que se hayan añadido al evento. En el caso que un evento implemente `Psr\\EventDispatcher\\StoppableEventInterface`,\n"
+"el gestor de eventos puede detener la ejecución del resto de los gestores que le siguen si `isPropagationStopped()` devuelve `true`."
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "In general, it's better not to rely on the order of event handlers."
+msgstr "En general, lo mejor es no depender del orden de los gestores de eventos."
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Raising events <span id=\"raising-events\"></span>"
+msgstr "Lanzamiento de Eventos <span id=\"raising-events\"></span>"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "Events are raised like the following:"
+msgstr "Los eventos se lanzan de la siguiente forma:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
+"\n"
+"final readonly class SignupService\n"
+"{\n"
+"    public function __construct(\n"
+"        private EventDispatcherInterface $eventDispatcher\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function signup(SignupForm $form)\n"
+"    {\n"
+"        // handle signup\n"
+"\n"
+"        $event = new UserSignedUp($form);\n"
+"        $this->eventDispatcher->dispatch($event);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
+"\n"
+"final readonly class SignupService\n"
+"{\n"
+"    public function __construct(\n"
+"        private EventDispatcherInterface $eventDispatcher\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function signup(SignupForm $form)\n"
+"    {\n"
+"        // handle signup\n"
+"\n"
+"        $event = new UserSignedUp($form);\n"
+"        $this->eventDispatcher->dispatch($event);\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "First, you create an event supplying it with data that may be useful for handlers. Then you dispatch the event."
+msgstr "Primero, estamos creando un evento entregandole datos que pueden ser útiles para los gestores. Luego, se lanza el evento."
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "The event class itself may look like the following:"
+msgstr "La clase del evento en sí se podría ver como esto:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"final readonly class UserSignedUp\n"
+"{\n"
+"    public function __construct(\n"
+"        public SignupForm $form\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"}\n"
+msgstr ""
+"final readonly class UserSignedUp\n"
+"{\n"
+"    public function __construct(\n"
+"        public SignupForm $form\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"}\n"
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Events hierarchy"
+msgstr "Jerarquía de Eventos"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "Events don't have any name or wildcard matching on purpose. Event class names and class/interface hierarchy and composition could be used to achieve great flexibility:"
+msgstr ""
+"Los eventos no tienen nombre o wildcard matching por una razón. Los nombres de clases de los eventos y la jerarquía de clases/interfaces\n"
+"y composición se puede utilizar para obtener mayor flexibilidad:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"interface DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class BeforeDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class AfterDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+msgstr ""
+"interface DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class BeforeDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class AfterDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "With the interface, you can listen to all document-related events:"
+msgstr "Para que la interface de arriba escuche todos los eventos relacionados con documentos, se puede realizar de la siguiente forma:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid ""
+"$provider->attach(function (DocumentEvent $event) {\n"
+"    // log events here\n"
+"});\n"
+msgstr ""
+"$provider->attach(function (DocumentEvent $event) {\n"
+"    // log events here\n"
+"});\n"
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Detaching event handlers <span id=\"detaching-event-handlers\"></span>"
+msgstr "Desacoplar Gestores de Eventos <span id=\"detaching-event-handlers\"></span>"
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "To detach a handler from an event you can call `detach()` method:"
+msgstr "Para desacoplar un gestor de eventos puedes llamar al método `detach()`:"
+
+#. type: Fenced code block (php)
+#: en/concept/events.md
+#, no-wrap
+msgid "$provider->detach(DocmentEvent::class);\n"
+msgstr "$provider->detach(DocmentEvent::class);\n"
+
+#. type: Title ##
+#: en/concept/events.md
+#, no-wrap
+msgid "Configuring application events"
+msgstr ""
+
+#. type: Plain text
+#: en/concept/events.md
+msgid "You usually assign event handlers via application config. See [\"Configuration\"](configuration.md) for details."
+msgstr ""
