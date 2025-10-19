@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-10-19 11:32+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,84 +17,84 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid "Working with forms"
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "This section continues to improve on \"Saying Hello.\" Instead of using URL, you will now ask a user for a message via form."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Through this tutorial, you will learn how to:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Create a form model to represent the data entered by a user through a form."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Declare rules to validate the data entered."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Build an HTML form in a view."
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid "Installing form package"
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "To install form package, issue the following command in your application directory:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "composer install yiisoft/security\n"
 msgid "composer require yiisoft/form-model\n"
 msgstr "composer install yiisoft/security\n"
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "For Docker that would be:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid "make composer require yiisoft/form-model\n"
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
 msgid "Creating a form <span id=\"creating-form\"></span>"
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
-#: en/start/forms.md
-msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/App/Controller/Echo/Form.php`:"
+#: ../../guide/en/start/forms.md
+msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/App/Web/Echo/Form.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "<?php\n"
 "\n"
-"namespace App\\Controller\\Echo;\n"
+"namespace App\\Web\\Echo;\n"
 "\n"
 "use Yiisoft\\FormModel\\FormModel;\n"
 "use Yiisoft\\Validator\\Label;\n"
@@ -109,36 +109,36 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "In the above example, the `Form` has a single string property `$message` which length should be at least of two characters. There's also a custom label for the property."
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
 msgid "Using the form <span id=\"using-form\"></span> "
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Now that you have a form, use it in your action from \"[Saying Hello](hello.md)\"."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
-msgid "Here's what you end up with in `/src/Controller/Echo/Action.php`:"
+#: ../../guide/en/start/forms.md
+msgid "Here's what you end up with in `/src/Web/Echo/Action.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "<?php\n"
 "\n"
 "declare(strict_types=1);\n"
 "\n"
-"namespace App\\Controller\\Echo;\n"
+"namespace App\\Web\\Echo;\n"
 "\n"
 "use Psr\\Http\\Message\\ResponseInterface;\n"
 "use Psr\\Http\\Message\\ServerRequestInterface;\n"
@@ -166,23 +166,24 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Instead of reading from route, you fill your form from request's POST data and validate it with the help of `FormHydrator`. Next you pass the form to the view."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "For the form to function we need to allow both GET to render the form and POST to send the data.  Adjust your route in `config/common/routes.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "<?php\n"
 "\n"
 "declare(strict_types=1);\n"
 "\n"
+"use App\\Web;\n"
 "use Yiisoft\\Http\\Method;\n"
 "use Yiisoft\\Router\\Group;\n"
 "use Yiisoft\\Router\\Route;\n"
@@ -191,32 +192,32 @@ msgid ""
 "    Group::create()\n"
 "        ->routes(\n"
 "            Route::get('/')\n"
-"                ->action(\\App\\Controller\\HomePage\\Action::class)\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
 "                ->name('home'),\n"
 "            Route::methods([Method::GET, Method::POST], '/say')\n"
-"                ->action(\\App\\Controller\\Echo\\Action::class)\n"
+"                ->action(Web\\Echo\\Action::class)\n"
 "                ->name('echo/say'),\n"
 "        ),\n"
 "];\n"
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid "Adjusting view"
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
-msgid "To render a form, you need to change your view, `src/Controller/Echo/template.php`:"
+#: ../../guide/en/start/forms.md
+msgid "To render a form, you need to change your view, `src/Web/Echo/template.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "<?php\n"
-"use App\\Controller\\Echo\\Form;\n"
+"use App\\Web\\Echo\\Form;\n"
 "use Yiisoft\\FormModel\\Field;\n"
 "use Yiisoft\\Html\\Html;\n"
 "use Yiisoft\\Router\\UrlGeneratorInterface;\n"
@@ -245,17 +246,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "If the form is valid, you display a message. The rest initializes and renders the form."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "First, you initialize `$htmlForm` with the POST type and the action URL generated with the help from the URL generator.  You can access it as `$urlGenerator` in all views. You also need to pass the CSRF token to the form, which is also available in every view as `$csrf` thanks to the view injections listed in `config/common/params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "'yiisoft/yii-view-renderer' => [\n"
@@ -266,81 +267,81 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "The template renders the CSRF token value as a hidden input to ensure that the request originates from the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2)."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "You use `Field::text()` to output \"message\" field, so it takes care about filling the value, escaping it, rendering field label and validation errors."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "Now, in case you submit an empty message, you will get a validation error: \"The message to be echoed must contain at least 2 characters.\""
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Trying it Out <span id=\"trying-it-out\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "To see how it works, use your browser to access the following URL:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid "http://localhost:8080/say\n"
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "You will see a page with a form input field and a label that indicates what data to enter.  Also, the form has a \"submit\" button labeled \"Say\". If you click the \"submit\" button without entering anything, you will see that the field is required. If you enter a single character, the form displays an error message next to the problematic input field."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "![Form with a validation error](img/form-error.png)"
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "After you enter a valid message and click the \"submit\" button, the page echoes the data that you entered."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "![Form with a success message](img/form-success.png)"
 msgstr ""
 
 #. type: Title ##
-#: en/start/forms.md en/start/hello.md
+#: ../../guide/en/start/forms.md ../../guide/en/start/hello.md
 #, fuzzy, no-wrap
 msgid "Summary <span id=\"summary\"></span>"
 msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "In this section of the guide, you've learned how to create a form model class to represent the user data and validate said data."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "You've also learned how to get data from users and how to display data back in the browser.  This is a task that could take you a lot of time when developing an application, but Yii provides powerful widgets to make this task easy."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 msgid "In the next section, you will learn how to work with databases, which are needed in nearly every application."
 msgstr ""
 
 #. type: Plain text
-#: en/start/forms.md
+#: ../../guide/en/start/forms.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"

@@ -1,68 +1,202 @@
 # Template engines
 
-Yii views support multiple template engines as well as custom engines. By default, Yii uses the PHP engine.
-Additionally, [Twig](https://twig.symfony.com/) is available.
+Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the
+template engine, but you can easily add support for other engines like Twig or create your own custom renderers.
 
-## PHP
+PHP templates were described in the "[View](view.md)" guide section. 
 
-PHP engine is available by default. The following is the basic template syntax:
+## Twig Template Engine
+
+Twig is a modern template engine that provides a more designer-friendly syntax. To use Twig in your Yii3 application,
+you need to install the Twig extension.
+
+```bash
+composer require yiisoft/view-twig
+```
+
+Now you can use `.twig` templates. For example, `views/site/about.twig`:
+
+```twig
+{# Variable type hints for IDE support #}
+{# @var user \App\Entity\User #}
+{# @var posts \App\Entity\Post[] #}
+
+<div class="user-profile">
+    <h1>{{ user.name }}</h1>
+    <p>Email: {{ user.email }}</p>
+    
+    {% if posts is not empty %}
+        <h2>Recent Posts</h2>
+        <ul class="posts">
+            {% for post in posts %}
+                <li>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt }}</p>
+                    <time>{{ post.publishedAt|date('F j, Y') }}</time>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+</div>
+```
+
+### Twig Features
+
+**Automatic Escaping**: Twig automatically escapes variables for HTML context:
+
+```twig
+{# Automatically escaped #}
+<h1>{{ title }}</h1>
+
+{# Raw output (use carefully) #}
+<div>{{ content|raw }}</div>
+```
+
+**Filters and Functions**: Twig provides many built-in filters and functions:
+
+```twig
+{# Date formatting #}
+<time>{{ post.createdAt|date('Y-m-d H:i') }}</time>
+
+{# String manipulation #}
+<p>{{ description|truncate(100) }}</p>
+
+{# URL generation #}
+<a href="{{ path('user.profile', {'id': user.id}) }}">Profile</a>
+```
+
+**Template Inheritance**: Twig supports template inheritance:
+
+**views/layout/main.twig**
+```twig
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Default Title{% endblock %}</title>
+</head>
+<body>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
+```
+
+**views/site/about.twig**
+```twig
+{% extends "layout/main.twig" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+    <h1>About Our Company</h1>
+    <p>Welcome to our website!</p>
+{% endblock %}
+```
+
+### Rendering Twig Templates
+
+Use Twig templates the same way as PHP templates:
+
+```php
+// In your controller
+public function about(): ResponseInterface
+{
+    return $this->viewRenderer->render('about.twig', [
+        'user' => $this->getCurrentUser(),
+        'posts' => $this->getRecentPosts(),
+    ]);
+}
+```
+
+## Custom Template Engines
+
+You can create custom template engines by implementing the `TemplateRendererInterface`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use Yiisoft\Html\Html;
+namespace App\View;
 
-/**
- * @var App\Blog\Post[] $posts 
- */
-?>
+use Yiisoft\View\TemplateRendererInterface;
 
-Posts:
+final class MarkdownRenderer implements TemplateRendererInterface
+{
+    public function __construct(
+        private MarkdownParserInterface $parser,
+    ) {}
 
-<dl>
-<?php foreach ($posts as $post): ?>
-    <dt>Title: <?= Html::encode($post->getTitle()) ?></dt>
-    <dd>Description: <?= Html::encode($post->getDescription()) ?></dd>
-<?php endforeach; ?>
-</dl>
+    public function render(string $template, array $parameters = []): string
+    {
+        $content = file_get_contents($template);
+        
+        // Replace placeholders with parameters
+        foreach ($parameters as $key => $value) {
+            $content = str_replace("{{$key}}", (string) $value, $content);
+        }
+        
+        return $this->parser->parse($content);
+    }
+}
 ```
 
-At the very top of the template, you can define "uses" for classes to use and declare the type of variables 
-so the IDE understands them. The rest is the PHP code.
-
-> [!WARNING]
-> `<?=` or `echo` doesn't automatically encode variables for safe use with HTML and you should take care of it by using
-> `Html::encode()`.
-
-If you need a sub-view, you can use it like this:
+Register your custom renderer:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
-/** 
- * @var Yiisoft\View\View $this
- * @var App\Blog\Post[] $posts 
- */
-?>
-
-Title
-
-<?= $this->render('blog/posts', ['posts' => $posts]) ?>
+// In configuration
+'yiisoft/view' => [
+    'renderers' => [
+        'md' => App\View\MarkdownRenderer::class,
+    ],
+],
 ```
 
-### See also
+Now you can use `.md` template files:
 
-- [yiisoft/view docs](https://github.com/yiisoft/view/blob/master/docs/guide/en/README.md).
-- 
+**views/content/help.md**
+```markdown
+# Help: {{title}}
 
-## Twig
+Welcome, {{username}}!
 
-To use Twig, you need to install the [yiisoft/yii-twig](https://github.com/yiisoft/yii-twig).
+This is a markdown template with **bold** and *italic* text.
 
+- Feature 1
+- Feature 2
+- Feature 3
+```
+
+## Choosing the Right Template Engine
+
+**Use PHP templates when:**
+- You need maximum flexibility and performance
+- Your team is comfortable with PHP
+- You want to leverage existing PHP knowledge
+- You need complex logic in templates (though this should be minimized)
+
+**Use Twig templates when:**
+- You want stricter separation between logic and presentation
+- You work with designers who prefer cleaner syntax
+- You need automatic escaping and security features
+- You want template inheritance and advanced features
+
+**Use custom templates when:**
+- You have specific requirements not met by PHP or Twig
+- You're working with specialized content formats
+- You need integration with external template systems
+
+## Best Practices
+
+1. **Keep templates simple**: Move complex logic to controllers or services
+2. **Always escape output**: Prevent XSS attacks by properly escaping variables
+3. **Use meaningful names**: Name your templates and variables clearly
+4. **Organize templates**: Group related templates in subdirectories
+5. **Document variables**: Always add type hints for better IDE support
+6. **Avoid business logic**: Keep business logic in models and services
 
 > [!NOTE]
 > [← Views](view.md) |

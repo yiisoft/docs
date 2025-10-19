@@ -25,12 +25,12 @@ make composer require yiisoft/form-model
 ## Creating a form <span id="creating-form"></span>
 
 The data to be requested from the user will be represented by a `Form` class as shown below and
-saved in the file `/src/App/Controller/Echo/Form.php`:
+saved in the file `/src/App/Web/Echo/Form.php`:
 
 ```php
 <?php
 
-namespace App\Controller\Echo;
+namespace App\Web\Echo;
 
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Label;
@@ -51,14 +51,14 @@ of two characters. There's also a custom label for the property.
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
 
-Here's what you end up with in `/src/Controller/Echo/Action.php`:
+Here's what you end up with in `/src/Web/Echo/Action.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Controller\Echo;
+namespace App\Web\Echo;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -96,6 +96,7 @@ Adjust your route in `config/common/routes.php`:
 
 declare(strict_types=1);
 
+use App\Web;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
@@ -104,10 +105,10 @@ return [
     Group::create()
         ->routes(
             Route::get('/')
-                ->action(\App\Controller\HomePage\Action::class)
+                ->action(Web\HomePage\Action::class)
                 ->name('home'),
             Route::methods([Method::GET, Method::POST], '/say')
-                ->action(\App\Controller\Echo\Action::class)
+                ->action(Web\Echo\Action::class)
                 ->name('echo/say'),
         ),
 ];
@@ -115,11 +116,11 @@ return [
 
 ## Adjusting view
 
-To render a form, you need to change your view, `src/Controller/Echo/template.php`:
+To render a form, you need to change your view, `src/Web/Echo/template.php`:
 
 ```php
 <?php
-use App\Controller\Echo\Form;
+use App\Web\Echo\Form;
 use Yiisoft\FormModel\Field;
 use Yiisoft\Html\Html;
 use Yiisoft\Router\UrlGeneratorInterface;

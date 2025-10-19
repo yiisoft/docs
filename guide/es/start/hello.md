@@ -6,15 +6,14 @@ or, if nothing passed, will just say "Hello!".
 
 To achieve this goal, you will define a route and create [a
 handler](../structure/handler.md) that does the job and forms the response.
-Then you will improve it to use [view](../structure/views.md) for building
-the response.
+Then you will improve it to use [view](../views/view.md) for building the
+response.
 
 Through this tutorial, you will learn three things:
 
 1. How to create a handler to respond to a request.
 2. How to map URL to the handler.
-3. How to create a [view](../structure/view.md) to compose the response's
-   content.
+3. How to use [view](../views/view.md) to compose the response's content.
 
 ## Creating a handler <span id="creating-handler"></span>
 
@@ -23,14 +22,14 @@ parameter from the request and displays that message back to the user. If
 the request doesn't provide a `message` parameter, the action will display
 the default "Hello" message.
 
-Create `src/Controller/Echo/Action.php`:
+Create `src/Web/Echo/Action.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Controller\Echo;
+namespace App\Web\Echo;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -73,6 +72,7 @@ Now, to map your handler to URL, you need to add a route in
 
 declare(strict_types=1);
 
+use App\Web;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 
@@ -80,20 +80,20 @@ return [
     Group::create()
         ->routes(
             Route::get('/')
-                ->action(\App\Controller\HomePage\Action::class)
+                ->action(Web\HomePage\Action::class)
                 ->name('home'),
             Route::get('/say[/{message}]')
-                ->action(\App\Controller\Echo\Action::class)
+                ->action(Web\Echo\Action::class)
                 ->name('echo/say'),
         ),
 ];
 ```
 
 In the above, you map the `/say[/{message}]` pattern to
-`\App\Controller\Echo\Action`.  For a request, the router creates an
-instance and calls the `__invoke()` method.  The `{message}` part of the
-pattern writes anything specified in this place to the `message` request
-attribute.  `[]` marks this part of the pattern as optional.
+`\App\Web\Echo\Action`.  For a request, the router creates an instance and
+calls the `__invoke()` method.  The `{message}` part of the pattern writes
+anything specified in this place to the `message` request attribute.  `[]`
+marks this part of the pattern as optional.
 
 You also give a `echo/say` name to this route to be able to generate URLs
 pointing to it.
@@ -114,8 +114,8 @@ Usually, the task is more complicated than printing out "hello world" and
 involves rendering some complex HTML. For this task, it's handy to use view
 templates. They're scripts you write to generate a response's body.
 
-For the "Hello" task, create a `src/Controller/Echo/template.php` template
-that prints the `message` parameter received from the action method:
+For the "Hello" task, create a `src/Web/Echo/template.php` template that
+prints the `message` parameter received from the action method:
 
 ```php
 <?php
@@ -136,14 +136,14 @@ Naturally, you may put more content in the `say` view. The content can
 consist of HTML tags, plain text, and even PHP statements. In fact, the view
 service executes the `say` view as a PHP script.
 
-To use the view, you need to change `src/Controller/Echo/Action.php`:
+To use the view, you need to change `src/Web/Echo/Action.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Controller\Echo;
+namespace App\Web\Echo;
 
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;

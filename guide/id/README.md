@@ -56,15 +56,16 @@ Menangani Permintaan -
 * [Handling errors](runtime/handling-errors.md) +
 * [Logging](runtime/logging.md) +
 
-Tampilan -
+Views +
 -----
 
-* [Views](views/view.md) -
-* [Template Engines](views/template-engines.md) -
+* [View](views/view.md) +
+* [Template engines](views/template-engines.md) +- TODO: verify!
 * [View injections](views/view-injections.md) +
-* [Scripts, styles and metatags](views/script-style-meta.md)
-* [Assets](views/asset.md) -
-* [Widgets](views/widget.md) -
+* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO:
+  verify!
+* [Assets](views/asset.md) +- TODO: verify!
+* [Widgets](views/widget.md) +- TODO: verify!
 
 Bekerja Dengan Basis Data +-
 ----------------------
