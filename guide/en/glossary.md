@@ -8,19 +8,22 @@ Read more in ["Aliases"](concept/aliases.md).
 ## asset
 
 Asset refers to a resource file. Typically, it contains JavaScript or CSS code but can be any static content accessed via HTTP.
+Read more in ["Assets"](views/asset.md).
 
 # C
 
 ## configuration
 
 The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores
-settings for an object, or a class of objects. Read more in ["Configuration"](concept/configuration.md).
+settings for an object, or a class of objects. 
+Read more in ["Configuration"](concept/configuration.md).
 
 # D
 
 ## DI
 
-Dependency Injection is a programming technique where an object injects a dependent object. ["DI"](concept/di-container.md)
+Dependency Injection is a programming technique where an object injects a dependent object.
+Read more in ["Dependency injection and container"](concept/di-container.md).
 
 # I
 
@@ -34,18 +37,20 @@ prepared script. In the case of Yii, it's setting permissions and fulfilling sof
 ## middleware
 
 Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some
-action and pass processing to the next middleware. Read more in ["Middleware"](structure/middleware.md).
+action and pass processing to the next middleware. 
+Read more in ["Middleware"](structure/middleware.md).
 
 ## module
 
-The module is a sub-application that groups some code based on a use-case. It's typically used within the main application
-and may contain URL handlers or console commands.
+The module is a namespace that groups some code based on a use-case. It's typically used within the main application
+and may contain any source code, define additional URL handlers or console commands.
 
 # N
 
 ## namespace
 
-Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php).
+Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php) to group
+multiple classes under a certain name.
 
 # P
 
@@ -67,10 +72,11 @@ It holds a set of parameters for checking if a data set is valid.
 ## queue
 
 A queue is similar to a stack. Queue follows First-In-First-Out methodology.
+Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package.
 
 # V
 
 ## vendor
 
-A Vendor is an organization or individual developer providing code in the form of packages. It also may refer to [Composer's
-`vendor` directory](https://getcomposer.org/doc/).
+A Vendor is an organization or individual developer providing code in the form of packages. 
+It also may refer to [Composer's `vendor` directory](https://getcomposer.org/doc/).
