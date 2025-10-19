@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2025-10-19 11:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -211,17 +211,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/README.md
-msgid "Views -"
+msgid "Views +"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../../guide/en/README.md
-msgid "[Views](views/view.md) -"
+msgid "[View](views/view.md) +"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../../guide/en/README.md
-msgid "[Template engines](views/template-engines.md) -"
+msgid "[Template engines](views/template-engines.md) +- TODO: verify!"
 msgstr ""
 
 #. type: Bullet: '* '
@@ -231,17 +231,18 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../../guide/en/README.md
-msgid "[Scripts, styles and metatags](views/script-style-meta.md)"
+msgid ""
+"[Scripts, styles and metatags](views/script-style-meta.md) +- TODO: verify!"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../../guide/en/README.md
-msgid "[Assets](views/asset.md) -"
+msgid "[Assets](views/asset.md) +- TODO: verify!"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../../guide/en/README.md
-msgid "[Widgets](views/widget.md) -"
+msgid "[Widgets](views/widget.md) +- TODO: verify!"
 msgstr ""
 
 #. type: Plain text

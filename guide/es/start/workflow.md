@@ -32,66 +32,32 @@ The most important directories and files in your application are (assuming
 the application's root directory is `app`):
 
 ```
-assets/                   Application assets to be published.
-config/                   Configuration.
-    common/               Configs applied to both console and web.
-        di/               DI container configuration.
-        aliasess.php      Aliases.
-        application.php   Application configuration.
-        bootstrap.php     Bootstrap configuration.
-        params.php        Various parameters used in DI configs.
-        routes.php        Application routes.
-    console/              Configs applied to console.
-        commands.php      Registered console commands.
-        params.php        Various parameters used in DI configs.
-    web/                  Configs applied to web.
-       di/                DI container configuration.
-       params.php         Various parameters used in DI configs.
-    environments/         Environment-based configs.
-        dev/              Configs applied in dev environment.
-            params.php    Various parameters used in DI configs.
-        prod/             Configs applied in prod environment.
-            params.php    Various parameters used in DI configs.
-        test/             Configs applied in test environment.
-            params.php    Various parameters used in DI configs.    
-    configuration.php     Defines how to read application configs.
-    .merge-plan.php       Merge plan to assemble configs according to. Build using `configuration.php`.
-docker/                   Docker configuration.
-    dev/                  Dev environment.
-        .env              Environment variables.
-        compose.yml       Services for dev environment.
-    prod/                 Prod environment.
-        .env              Environment variables.
-        compose.yml       Services for prod environment.
-    test/                 Test environment.
-        .env              Environment variables.
-        compose.yml       Services for test environment.
-    .env                  Common environment variables.
-    compose.yml           Common services.
-    Dockerfile            Images to use.
-public/                   Files publically accessible from the Internet.
-    assets/               Published assets.
-    index.php             Entry script for web.
-runtime/                  Files generated during runtime.
-src/                      Application source code.
-    Command/              Console commands.
-    Controller/           Controllers.
-    Handler/              Custom handler for 404.
-    Layout/               Layouts.
-    autoload.php          Autoloader.
-    Environment.php       Environment helper.
-tests/                    A set of Codeception tests for the application.  
-vendor/                   Installed Composer packages.
-.gitignore                Files and directories to be ignored by Git.
-.php-cs-fixer.php         PHP Coding Standards Fixer configuration.
-c3.php                    Codeception code coverage script.
-condeception.yml          Codeception configuration.
-composer.json             Composer configuration.
-composer.lock             Composer lock file.
-Makefile                  Makefile with shortcut commands.
-psalm.xml                 Psalm configuration.
-rector.php                Rector configuration.
-yii                       Console application entry point.
+assets/                 Asset bundle source files.
+config/                 Configuration files.
+    common/             Common configuration and DI definitions.
+    console/            Console-specific configuration.
+    environments/       Environment-specific configuration (dev/test/prod).
+    web/                Web-specific configuration.
+docker/                 Docker-specific files.
+public/                 Files publically accessible from the Internet.
+    assets/             Published/compiled assets.
+    index.php           Entry script.
+runtime/                Files generated during runtime.
+src/                    Application source code.
+    Console/            Console commands.
+    Shared/             Code shared between web and console applications.
+    Web/                Web-specific code (actions, handlers, layout).
+        Shared/         Shared web components.
+            Layout/     Layout components and templates.
+    Environment.php     Environment configuration class.
+tests/                  A set of Codeception tests for the application.
+    Console/            Console command tests.
+    Functional/         Functional tests.
+    Unit/               Unit tests.
+    Web/                Web actions tests.
+vendor/                 Installed Composer packages.
+Makefile                Config for make command.
+yii                     Console application entry point.
 ```
 
 In general, the files in the application fall into two groups: those under

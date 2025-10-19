@@ -57,15 +57,16 @@ Gestión de las Peticiones
 * [Manejo de Errores](runtime/handling-errors.md)
 * [Registros (logs)](runtime/logging.md)
 
-Vistas
+Views +
 -----
 
-* [Vistas](views/view.md)
-* [Motores de Plantillas](views/template-engines.md)
+* [View](views/view.md) +
+* [Template engines](views/template-engines.md) +- TODO: verify!
 * [View injections](views/view-injections.md) +
-* [Scripts, styles and metatags](views/script-style-meta.md)
-* [Assets](views/asset.md)
-* [Widgets](views/widget.md)
+* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO:
+  verify!
+* [Assets](views/asset.md) +- TODO: verify!
+* [Widgets](views/widget.md) +- TODO: verify!
 
 Trabajar con Bases de Datos
 ----------------------
