@@ -1,8 +1,20 @@
 # Views
 
-Views are responsible for presenting data to end users. In Yii3, views are typically PHP files that contain
-presentation logic and HTML markup. The view system provides a flexible way to organize your presentation layer
-and supports features like layouts, partial views, and template engines.
+View is responsible for presenting data to end users. You give it a template with some placeholders and presentation
+logic and some data. The view is passing data to the template executing template logic. The end result is
+ready to be passed to end user, be it a browser, a file to download, an email to send or something else.
+
+```mermaid
+flowchart LR
+  A[Data] --> V[View]
+  B[Template] --> V
+  V --> C[HTML]
+  C --> D[Browser]
+```
+
+In Yii3 views are typically PHP files that contain presentation logic and HTML markup. The view system provides
+a flexible way to organize your presentation layer and supports features like layouts and partial views. Instead of
+using plain PHP templates, you can leverage [one of the template engines such as Twig](template-engines.md).
 
 ## Installation
 
@@ -13,7 +25,7 @@ composer require yiisoft/view
 ```
 
 For web applications, you should also install the `yiisoft/yii-view-renderer` package which provides
-PSR-7 compatibility and web-specific features:
+[PSR-7](https://www.php-fig.org/psr/psr-7/) compatibility and web-specific features:
 
 ```sh
 composer require yiisoft/yii-view-renderer
@@ -23,92 +35,58 @@ These packages are included by default in the `yiisoft/app` application template
 
 ## Basic Concepts
 
-### View Files
+A view template file contains presentation logic. 
+In the `yiisoft/app` template, view files are typically stored alongside their controllers
+(e.g., `src/Web/Echo/Action.php`). Here's a simple view file example, `src/Web/Echo/template.php`:
 
-A view file is a PHP script that contains presentation logic. In the `yiisoft/app` template, view files are typically 
-stored alongside their controllers (e.g., `src/Web/HomePage/template.php` or `src/Controller/Echo/template.php`). 
-Here's a simple view file example:
-
-**src/Web/About/template.php**
 ```php
 <?php
-
-declare(strict_types=1);
-
 use Yiisoft\Html\Html;
-
-/**
- * @var \Yiisoft\View\WebView $this
- * @var string $title
- * @var string $content
- */
+/* @var string $message */
 ?>
-<h1><?= Html::encode($title) ?></h1>
-<div class="content">
-    <?= Html::encode($content) ?>
-</div>
+
+<p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-### ViewRenderer in Controllers
-
-In a typical web application using the `yiisoft/app` template, you use the `ViewRenderer` class to render views
-from your controllers:
+Here `$message` is a view data that is passed when you render a template with the help of  `ViewRenderer`. For
+example, `src/Web/Echo/Action.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Web\Echo;
 
 use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Yiisoft\Yii\View\Renderer\ViewRenderer;
 
-final class SiteController
+final readonly class Action
 {
     public function __construct(
         private ViewRenderer $viewRenderer,
     ) {}
 
-    public function about(): ResponseInterface
+    #[RouteArgument('message')]
+    public function __invoke(string $message = 'Hello!'): ResponseInterface
     {
-        return $this->viewRenderer->render('about', [
-            'title' => 'About Us',
-            'content' => 'Welcome to our website!',
+        return $this->viewRenderer->render(__DIR__ . '/template', [
+            'message' => $message,
         ]);
     }
 }
 ```
 
-### View Context and Paths
+First argument of the `render()` method is a path to the template file. In the `yiisoft/app`, template files
+are typically stored alongside their actions. The result is ready to be rendered to the browser so we return it
+immediately.
 
-In the `yiisoft/app` template, view files are typically stored alongside their controllers. When using `ViewRenderer`, 
-you can specify the view path relative to the controller directory or use absolute paths:
-
-You can also specify absolute paths or use different path formats:
-
-```php
-// Relative to current controller directory
-$this->viewRenderer->render('about');
-
-// Absolute path from views root
-$this->viewRenderer->render('//site/about');
-
-// Relative to current view (when rendering from within another view)
-$this->viewRenderer->render('./partial');
-
-// Parent directory
-$this->viewRenderer->render('../shared/header');
-```
-
-## Working with Layouts
-
-### Default Layout
+## Working with layouts
 
 Most web applications use a common layout for all pages. In the `yiisoft/app` template,
-layouts are stored in `src/Web/Shared/Layout/Main/` directory. You can set a default layout:
+layouts are stored in `src/Web/Shared/Layout/Main/` directory. You can set a default layout in `config/common/params.php`:
 
-**config/common/params.php**
 ```php
 return [
     'yiisoft/yii-view-renderer' => [
@@ -118,55 +96,87 @@ return [
 ];
 ```
 
-### Layout Structure
+A typical layout file such as `src/Web/Shared/Layout/Main/layout.php` looks like this:
 
-A typical layout file looks like this:
-
-**src/Web/Shared/Layout/Main/layout.php**
 ```php
 <?php
 
 declare(strict_types=1);
 
+use App\Web\Shared\Layout\Main\MainAsset;
 use Yiisoft\Html\Html;
 
 /**
- * @var \Yiisoft\View\WebView $this
+ * @var \App\Shared\ApplicationParams $applicationParams
+ * @var Yiisoft\Aliases\Aliases $aliases
+ * @var Yiisoft\Assets\AssetManager $assetManager
  * @var string $content
- * @var string $title
+ * @var string|null $csrf
+ * @var Yiisoft\View\WebView $this
+ * @var Yiisoft\Router\CurrentRoute $currentRoute
+ * @var Yiisoft\Router\UrlGeneratorInterface $urlGenerator
  */
+
+$assetManager->register(MainAsset::class);
+
+$this->addCssFiles($assetManager->getCssFiles());
+$this->addCssStrings($assetManager->getCssStrings());
+$this->addJsFiles($assetManager->getJsFiles());
+$this->addJsStrings($assetManager->getJsStrings());
+$this->addJsVars($assetManager->getJsVars());
+
+$this->beginPage()
 ?>
-<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Html::encode($applicationParams->locale) ?>">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="<?= Html::encode($applicationParams->charset) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= Html::encode($title) ?></title>
+    <link rel="icon" href="<?= $aliases->get('@baseUrl/favicon.svg') ?>" type="image/svg+xml">
+    <title><?= Html::encode($this->getTitle()) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
-    <?php $this->beginBody() ?>
-    <header>
-        <nav>
-            <!-- Navigation menu -->
-        </nav>
-    </header>
-    
-    <main>
-        <?= $content ?>
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 My Application</p>
-    </footer>
-    <?php $this->endBody() ?>
+<?php $this->beginBody() ?>
+
+<div class="header">
+    <a href="/">
+        <?= Html::encode($applicationParams->name) ?>
+    </a>
+</div>
+
+<div class="content">    
+    <?= $content ?>
+</div>
+
+<div class="footer">
+    © <?= date('Y') ?>  <?= Html::encode($applicationParams->name) ?>    
+</div>
+
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
 ```
 
-### Rendering Without Layout
+In the template above `$applicationParams` is an array of parameters from `config/common/application.php`. 
+
+`$aliases` refers to [aliases component](../concept/aliases.md) that is used to get the base URL of
+the application at the server for URLs. 
+
+`$this` is an instance of the view that we use to get page title and output assets. Both standard and custom. 
+
+With `$assetManager->register(MainAsset::class);` we register an asset that defines `css` to include to the page. It is
+automatically copied to `public/assets` on first use. It is not very useful for a single CSS file but becomes handy as
+the number of assets grows.
+
+> [!IMPORTANT]
+> No output in plain PHP templates is encoded you should not forget to use `Html::encode()` to prevent
+XSS security vulnerabilities.
+
+More about what's available in layout could be read in [yiisoft/view](https://github.com/yiisoft/view) documentation.
+
+### Rendering without layout
 
 Sometimes you need to render a view without a layout (for example, for AJAX responses):
 
@@ -182,64 +192,6 @@ public function ajaxContent(): ResponseInterface
 public function ajaxContent(): ResponseInterface
 {
     return $this->viewRenderer->renderPartial('ajax-content', ['data' => $data]);
-}
-```
-
-## Passing Data to Views
-
-### View Parameters
-
-Data is passed to views through an associative array as the second parameter to the render method:
-
-```php
-return $this->viewRenderer->render('user/profile', [
-    'user' => $user,
-    'posts' => $posts,
-    'isAdmin' => $currentUser->isAdmin(),
-]);
-```
-
-In the view, these become regular PHP variables:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-/**
- * @var \Yiisoft\View\WebView $this
- * @var \App\Entity\User $user
- * @var \App\Entity\Post[] $posts
- * @var bool $isAdmin
- */
-?>
-<h1>Profile: <?= Html::encode($user->getName()) ?></h1>
-<?php if ($isAdmin): ?>
-    <p>Admin panel available</p>
-<?php endif; ?>
-```
-
-### View Injections
-
-View injections allow you to automatically inject common data into all views. This is useful for site-wide
-data like user information, navigation menus, or configuration values.
-
-```php
-final class CommonViewInjection implements CommonParametersInjectionInterface
-{
-    public function __construct(
-        private UserService $userService,
-        private ConfigService $config,
-    ) {}
-
-    public function getCommonParameters(): array
-    {
-        return [
-            'currentUser' => $this->userService->getCurrentUser(),
-            'siteName' => $this->config->get('site.name'),
-            'version' => $this->config->get('app.version'),
-        ];
-    }
 }
 ```
 
@@ -297,7 +249,7 @@ Blocks allow you to define content in one view and display it in another, typica
 // In the layout file
 <?php if ($this->hasBlock('sidebar')): ?>
     <aside><?= $this->getBlock('sidebar') ?></aside>
-<?php endif; ?>
+<?php endif ?>
 ```
 
 ## Rendering as String
@@ -342,71 +294,6 @@ final class ViewEventListener
     }
 }
 ```
-
-## Security Considerations
-
-Always escape output to prevent XSS attacks:
-
-```php
-<?php
-
-use Yiisoft\Html\Html;
-
-/**
- * @var string $userInput
- * @var string $trustedHtml
- */
-?>
-
-<!-- Escape user input -->
-<p><?= Html::encode($userInput) ?></p>
-
-<!-- For trusted HTML, use without encoding -->
-<div><?= $trustedHtml ?></div>
-
-<!-- For URLs -->
-<a href="<?= Html::encode($url) ?>">Link</a>
-
-<!-- For attributes -->
-<input type="text" value="<?= Html::encode($value) ?>">
-```
-
-For HTML content that needs to allow some tags, consider using HTML Purifier:
-
-```php
-use Yiisoft\Html\Html;
-
-$cleanHtml = Html::sanitize($untrustedHtml, [
-    'allowed_tags' => ['p', 'br', 'strong', 'em'],
-]);
-```
-
-## View File Organization
-
-In the `yiisoft/app` template, organize your view files following these conventions:
-
-```
-src/
-├── Web/
-│   ├── Shared/
-│   │   └── Layout/
-│   │       └── Main/
-│   │           ├── layout.php      # Main layout
-│   │           └── MainAsset.php   # Layout assets
-│   ├── HomePage/
-│   │   └── template.php            # Homepage view
-│   ├── About/
-│   │   └── template.php            # About page view
-│   ├── Contact/
-│   │   └── template.php            # Contact page view
-│   └── User/
-│       ├── Profile/
-│       │   └── template.php        # User profile view
-│       └── Edit/
-│           └── template.php        # Edit profile view
-```
-
-Use underscore prefix (`_`) for partial views that are intended to be rendered from within other views.
 
 > [!NOTE]
 > [Template engines →](template-engines.md) |
