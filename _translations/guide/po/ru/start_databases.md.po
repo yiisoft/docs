@@ -25,7 +25,6 @@ msgstr ""
 #. type: Fenced code block (sh)
 #: ../../guide/en/databases/db-migrations.md ../../guide/en/start/databases.md
 #, fuzzy, no-wrap
-#| msgid "composer install yiisoft/security\n"
 msgid "composer require yiisoft/db-migration\n"
 msgstr "composer install yiisoft/security\n"
 
