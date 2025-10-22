@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-10-22 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,113 +17,334 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/start/databases.md
+#: ../../guide/en/README.md ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Working with databases"
 msgstr ""
 
+#. type: Fenced code block (sh)
+#: ../../guide/en/databases/db-migrations.md ../../guide/en/start/databases.md
+#, no-wrap
+msgid "composer require yiisoft/db-migration\n"
+msgstr ""
+
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "Yii doesn't dictate using a particular database or storage for your "
 "application.  There are many ways you can work with relational databases:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Yii DB](https://github.com/yiisoft/db)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Yii Active Record](https://github.com/yiisoft/active-record)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/"
 "yiisoft/yii-cycle)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package]"
 "(https://github.com/stargazer-team/yii-doctrine)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[PDO](https://www.php.net/manual/en/book.pdo.php)"
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "For non-relational ones, there are usually official libraries available:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[ElasticSearch](https://github.com/elastic/elasticsearch-php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Redis](https://redis.io/docs/clients/#php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "..."
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "In this guide, we will focus on working with relational databases using Yii "
-"DB."
+"DB. We'll use PostgreSQL to implement a simple CRUD (create read update "
+"delete)."
 msgstr ""
 
 #. type: Title ##
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "Installing PostgreSQL"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"You need to install PostgreSQL. If you prefer not to use Docker, [get the "
+"installer from official website](https://www.postgresql.org/download/), "
+"install it and create a database."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"services:\n"
+"    app:\n"
+"        build:\n"
+"            dockerfile: docker/Dockerfile\n"
+"            context: ..\n"
+"            target: dev\n"
+"            args:\n"
+"                USER_ID: ${UID}\n"
+"                GROUP_ID: ${GID}\n"
+"        env_file:\n"
+"            - path: ./dev/.env\n"
+"            - path: ./dev/override.env\n"
+"              required: false\n"
+"        ports:\n"
+"            - \"${DEV_PORT:-80}:80\"\n"
+"        volumes:\n"
+"            - ../:/app\n"
+"            - ../runtime:/app/runtime\n"
+"            - caddy_data:/data\n"
+"            - caddy_config:/config\n"
+"        tty: true\n"
+"        depends_on:\n"
+"          db:\n"
+"            condition: service_healthy\n"
+"\n"
+"    db:\n"
+"        image: postgres:${POSTGRES_VERSION:-15}-alpine\n"
+"        environment:\n"
+"          POSTGRES_DB: app\n"
+"          POSTGRES_PASSWORD: password\n"
+"          POSTGRES_USER: user\n"
+"        volumes:\n"
+"          - ./runtime/db:/var/lib/postgresql/data:rw\n"
+"        ports:\n"
+"          - \"${DEV_DB_PORT:-5432}:5432\"\n"
+"        healthcheck:\n"
+"          test: [ \"CMD-SHELL\", \"pg_isready -U user -d app\" ]\n"
+"          interval: 5s\n"
+"          timeout: 5s\n"
+"          retries: 5\n"
+"\n"
+"volumes:\n"
+"  db:\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Note that we add `depends_on` so application waits for database to be up."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You "
+"can enable it locally in `php.ini`.  If you use Docker, check `docker/"
+"Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then "
+"rebuild PHP image with `make build && make down && make up`."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Configuring connection"
 msgstr ""
 
-#. type: Title ##
-#: en/start/databases.md
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Now that we have the database, it's time to define the connection. We need a "
+"package to be installed first:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../../guide/en/start/databases.md
 #, no-wrap
-msgid "Creating and applying migration"
+msgid "composer require yiisoft/db-pgsql\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now create `config/common/di/db-pgsql.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Pgsql\\Connection;\n"
+"use Yiisoft\\Db\\Pgsql\\Driver;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    ConnectionInterface::class => [\n"
+"        'class' => Connection::class,\n"
+"        '__construct()' => [\n"
+"            'driver' => new Driver(\n"
+"                $params['yiisoft/db-pgsql']['dsn'],\n"
+"                $params['yiisoft/db-pgsql']['username'],\n"
+"                $params['yiisoft/db-pgsql']['password'],\n"
+"            ),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"And define parameters in `config/common/params.php`. For Docker that would "
+"be:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Db\\Pgsql\\Dsn;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'yiisoft/db-pgsql' => [\n"
+"        'dsn' => (new Dsn('pgsql', 'db', 'app', '5432'))->asString(),\n"
+"        'username' => 'user',\n"
+"        'password' => 'password',\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "`db` host is resolved automatically within the Docker network."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"For local installation without Docker the host in Dsn would be `localhost`. "
+"You'll have to adjust the rest to match how you configured the database."
 msgstr ""
 
 #. type: Title ##
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "Creating and applying migrations"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"For the initial state of the application and for further database changes, "
+"it is a good idea to use migrations. These are files creating changes to be "
+"applied to the database. Which are applied is tracked in the same database "
+"so we always know which state is it now and what is to be applied."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "To use migrations we need another package installed:"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"And a directory to store migrations such as `migrations` right in the "
+"project root."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Now you can use `yii migrate:create user` to create a new migration. For our "
+"example we need a `page` table with some columns:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"\n"
+"public function up(MigrationBuilder $b): void\n"
+"{\n"
+"    $b->createTable('page', [\n"
+"        'id' => $b->primaryKey(),\n"
+"        'title' => $b->string()->notNull(),\n"
+"        'text' => $b->text()->notNull(),\n"
+"        'created_at' => $b->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),\n"
+"        'updated_at' => $b->dateTime(),\n"
+"        'deleted_at' => $b->dateTime(),\n"
+"    ]);\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Apply it with `yii migrate:up`."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Inserting"
 msgstr ""
 
 #. type: Title ##
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Selecting"
 msgstr ""
 
 #. type: Title ##
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Using data package"
 msgstr ""
 
 #. type: Title ###
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Pagination"
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"

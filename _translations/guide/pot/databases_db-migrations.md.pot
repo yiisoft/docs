@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2025-10-22 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,8 @@ msgid ""
 "db-migration/) package:"
 msgstr ""
 
-#. type: Fenced code block (shell)
-#: ../../guide/en/databases/db-migrations.md
+#. type: Fenced code block (sh)
+#: ../../guide/en/databases/db-migrations.md ../../guide/en/start/databases.md
 #, no-wrap
 msgid "composer require yiisoft/db-migration\n"
 msgstr ""

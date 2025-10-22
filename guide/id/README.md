@@ -3,193 +3,153 @@
 Panduan ini dirilis di bawah [Ketentuan Dokumentasi
 Yii](https://www.yiiframework.com/license#docs).
 
-Pengenalan +
-------------
+## Introduction
 
-* [Tentang Yii](intro/what-is-yii.md) +
-* [Memutakhirkan dari versi 2.0](intro/upgrade-from-v2.md) +
+- [About Yii](intro/what-is-yii.md)
+- [Upgrading from version 2.0](intro/upgrade-from-v2.md)
 
+## Getting started
 
-Mulai -
----------------
+- [What do you need to know?](start/prerequisites.md)
+- [Creating a project](start/creating-project.md)
+- [Running applications](start/workflow.md)
+- [Saying hello](start/hello.md)
+- [Working with forms](start/forms.md)
+- [Working with databases](start/databases.md) TODO
+- [Generating code with Gii](start/gii.md) TODO
+- [Looking ahead](start/looking-ahead.md)
 
-* [Apa yang perlu kamu ketahui](start/prerequisites.md) +
-* [Membuat proyek](start/creating-project.md) +
-* [Menjalankan Aplikasi](start/workflow.md) +
-* [Mengucapkan halo](start/hello.md) +
-* [Bekerja Dengan Formulir](start/forms.md) +
-* [Bekerja Dengan Basis Data](start/databases.md) !
-* [Menghasilkan Kode dengan Gii](start/gii.md) -
-* [Melihat ke depan](start/looking-ahead.md) +
+## Application structure
 
+- [Application structure overview](structure/overview.md)
+- [Entry scripts](structure/entry-script.md)
+- [Application](structure/application.md)
+- [Service components](structure/service.md)
+- [Actions](structure/action.md)
+- [Domain](structure/domain.md)
+- [Middleware](structure/middleware.md)
+- [Packages](structure/package.md)
 
-Struktur Aplikasi +
----------------------
+## Key concepts
 
-* [Application Structure Overview](structure/overview.md) +
-* [Entry Scripts](structure/entry-script.md) +
-* [Application](structure/application.md) +
-* [Service components](structure/service.md) +
-* [Actions](structure/action.md) +
-* [Domain](structure/domain.md) +
-* [Middleware](structure/middleware.md) +
-* [Packages](structure/package.md) +
+- [Class autoloading](concept/autoloading.md)
+- [Dependency injection container](concept/di-container.md)
+- [Configuration](concept/configuration.md)
+- [Aliases](concept/aliases.md)
+- [Events](concept/events.md)
+- [Immutability](concept/immutability.md)
 
-Konsep Dasar -
-------------
+## Handling requests
 
-* [Class autoloading](concept/autoloading.md) +
-* [Dependency Injection Container](concept/di-container.md) +
-* [Configuration](concept/configuration.md) +
-* [Aliases](concept/aliases.md) +
-* [Events](concept/events.md) +
-* [Immutability](concept/immutability.md) +
+- [Routing and URL generation](runtime/routing.md)
+- [Request](runtime/request.md)
+- [Response](runtime/response.md)
+- [Sessions](runtime/sessions.md)
+- [Cookies](runtime/cookies.md)
+- [Handling errors](runtime/handling-errors.md)
+- [Logging](runtime/logging.md)
 
-Menangani Permintaan -
------------------
+## Views
 
-* [Routing and URL generation](runtime/routing.md) +
-* [Request](runtime/request.md) +
-* [Response](runtime/response.md) +
-* [Sessions](runtime/sessions.md) +
-* [Cookies](runtime/cookies.md) +
-* [Handling errors](runtime/handling-errors.md) +
-* [Logging](runtime/logging.md) +
+- [View](views/view.md)
+- [Template engines](views/template-engines.md) TODO: verify!
+- [View injections](views/view-injections.md)
+- [Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!
+- [Assets](views/asset.md) TODO: verify!
+- [Widgets](views/widget.md) TODO: verify!
 
-Views +
------
+## Working with databases
 
-* [View](views/view.md) +
-* [Template engines](views/template-engines.md) +- TODO: verify!
-* [View injections](views/view-injections.md) +
-* [Scripts, styles and metatags](views/script-style-meta.md) +- TODO:
-  verify!
-* [Assets](views/asset.md) +- TODO: verify!
-* [Widgets](views/widget.md) +- TODO: verify!
+- [Yii
+  DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)
+- [Active
+  Record](https://github.com/yiisoft/active-record/blob/master/README.md)
+- [Migrations](databases/db-migrations.md) TODO: verify/update!
 
-Bekerja Dengan Basis Data +-
-----------------------
+## Getting data from users
 
-* [Database Access Objects](db-dao.md): Menghubungkan ke basis data,
-  permintaan dasar,transaksi, dan manipulasi skema
-* [Query Builder](db-query-builder.md): Meminta basis data menggunakan
-  lapisan abstraksi sederhana
-* [Active Record](db-active-record.md): Active Record ORM, mengambil dan
-  memanipulasi catatan, dan mendefinisikan hubungan
-* [Migrations](db-migrations.md): +
+- [Creating forms](input/forms.md) TODO
+- [Validating
+  input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
+- [Uploading files](input/file-upload.md) TODO
+- [Collecting tabular input](input/tabular-input.md) TODO
 
-Mendapatkan Data dari Pengguna -
------------------------
+## Displaying data
 
-* [Membuat Formulir](input/forms.md) -
-* [Memvalidasi
-  Input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-  +
-* [Mengunggah File](input/file-upload.md) -
-* [Mengumpulkan Input Tabular](input/tabular-input.md) -
+- [Data formatting](output/formatting.md) TODO
+- [Pagination](output/pagination.md) TODO
+- [Sorting](output/sorting.md) TODO
+- [Data providers](output/data-providers.md) TODO
+- [Data widgets](output/data-widgets.md) TODO
 
+## Security
 
-Menampilkan Data -
----------------
-
-* [Data Formatting](output/formatting.md) -
-* [Pagination](output/pagination.md) -
-* [Sorting](output/sorting.md) -
-* [Data Providers](output/data-providers.md) -
-* [Data Widgets](output/data-widgets.md) -
-
-Keamanan +-
---------
-
-* [Ikhtisar Overview](security/overview.md) +
-* [Autentikasi](security/authentication.md) +
-* [Otorisasi](security/authorization.md) +-
-* [Bekerja dengan Kata Sandi](security/passwords.md) +
-* [Kriptografi](security/cryptography.md) +
-* [Praktik terbaik](security/best-practices.md) +
+- [Security overview](security/overview.md)
+- [Authentication](security/authentication.md)
+- [Authorization](security/authorization.md) TODO: verify and complete!
+- [Working with passwords](security/passwords.md)
+- [Cryptography](security/cryptography.md)
+- [Best practices](security/best-practices.md)
 
 
-Caching +-
--------
+## Caching
 
-* [Ikhtisar Caching](caching/overview.md) +
-* [Data Caching](caching/data.md) +
-* [Fragment Caching](caching/fragment.md) -
-* [Page Caching](caching/page.md) -
-* [HTTP caching](caching/http.md) -
-
-
-RESTful Web Services -
-----------------------
-
-* [Mulai cepat](rest/quick-start.md)
-* [Resources](rest/resources.md)
-* [Controllers](rest/controllers.md)
-* [Routing](rest/routing.md)
-* [Authentication](rest/authentication.md)
-* [Rate Limiting](rest/rate-limiting.md)
-* [Versioning](rest/versioning.md)
-* [Error Handling](rest/error-handling.md)
-
-Alat Pengembangan -
------------------
-
-* Debug Toolbar and Debugger
-* Membuat Kode menggunakan Gii
-* Membuat Dokumentasi API
+- [Caching overview](caching/overview.md)
+- [Data caching](caching/data.md)
+- [Fragment caching](caching/fragment.md) TODO
+- [Page caching](caching/page.md) TODO
+- [HTTP caching](caching/http.md) TODO
 
 
-Pengujian -
--------
+## REST APIs
 
-* [Ikhtisar Pengujian](testing/overview.md)
-* [Pengaturan lingkungan pengujian](testing/environment-setup.md)
-* [Unit Tests](testing/unit.md)
-* [Functional Tests](testing/functional.md)
-* [Acceptance Tests](testing/acceptance.md)
-* [Fixtures](testing/fixtures.md)
+- [Quick start](rest/quick-start.md) TODO
+- [Resources](rest/resources.md) TODO
+- [Controllers](rest/controllers.md) TODO
+- [Routing](rest/routing.md) TODO
+- [Authentication](rest/authentication.md) TODO
+- [Rate limiting](rest/rate-limiting.md) TODO
+- [Versioning](rest/versioning.md) TODO
+- [Error handling](rest/error-handling.md) TODO
 
+## Development tools
 
-Topik Khusus -
---------------
-
-* [Membangun Aplikasi dari Awal](tutorial/start-from-scratch.md) -
-* [Aplikasi Konsol](tutorial/console-applications.md) +
-* [Docker](tutorial/docker.md) -
-* [Penginternasionalan](tutorial/i18n.md) -
-* [Mailing](tutorial/mailing.md) +
-* [Penyesuaian Kinerja](tutorial/performance-tuning.md) +
-* [Menggunakan Yii dengan event loop](tutorial/using-with-event-loop.md) +
-* [Menggunakan Yii dengan RoadRunner](tutorial/using-yii-with-roadrunner.md)
-  +
-* [Menggunakan Yii dengan Swoole](using-yii-with-swoole.md) +
-
-Widgets -
--------
-
-* [GridView](https://www.yiiframework.com/doc-2.0/yii-grid-gridview.html)
-* [ListView](https://www.yiiframework.com/doc-2.0/yii-widgets-listview.html)
-* [DetailView](https://www.yiiframework.com/doc-2.0/yii-widgets-detailview.html)
-* [ActiveForm](https://www.yiiframework.com/doc-2.0/guide-input-forms.html#activerecord-based-forms-activeform)
-* [Menu](https://www.yiiframework.com/doc-2.0/yii-widgets-menu.html)
-* [LinkPager](https://www.yiiframework.com/doc-2.0/yii-widgets-linkpager.html)
-* [LinkSorter](https://www.yiiframework.com/doc-2.0/yii-widgets-linksorter.html)
-* [Bootstrap
-  Widgets](https://www.yiiframework.com/extension/yiisoft/yii2-bootstrap/doc/guide)
+- Debug Toolbar and Debugger
+- Membuat Kode menggunakan Gii
+- Membuat Dokumentasi API
 
 
-Helpers +
--------
+## Testing
 
-* [Arrays](https://github.com/yiisoft/arrays/)
-* [Files](https://github.com/yiisoft/files/)
-* [Html](https://github.com/yiisoft/html/)
-* [Json](https://github.com/yiisoft/json)
-* [Network utilities](https://github.com/yiisoft/network-utilities/)
-* [VarDumper](https://github.com/yiisoft/var-dumper)
-* [Strings](https://github.com/yiisoft/strings)
+- [Testing overview](testing/overview.md) TODO
+- [Testing environment setup](testing/environment-setup.md) TODO
+- [Unit tests](testing/unit.md) TODO
+- [Functional tests](testing/functional.md) TODO
+- [Acceptance tests](testing/acceptance.md) TODO
+- [Fixtures](testing/fixtures.md) TODO
 
-Lainnya+
-------
 
-* [Glosarium](glossary.md)
+## Special topics
+
+- [Console applications](tutorial/console-applications.md)
+- [Internationalization](tutorial/i18n.md) TODO
+- [Mailing](tutorial/mailing.md)
+- [Performance tuning](tutorial/performance-tuning.md)
+- [Using Yii with event loop](tutorial/using-with-event-loop.md)
+- [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
+- [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
+
+## Helpers
+
+- [Arrays](https://github.com/yiisoft/arrays/)
+- [Files](https://github.com/yiisoft/files/)
+- [Html](https://github.com/yiisoft/html/)
+- [Json](https://github.com/yiisoft/json)
+- [Network utilities](https://github.com/yiisoft/network-utilities/)
+- [VarDumper](https://github.com/yiisoft/var-dumper)
+- [Strings](https://github.com/yiisoft/strings)
+
+## Extras
+
+- [Cookbook](../../cookbook/en/README.md)
+- [Glosarium](glossary.md)
