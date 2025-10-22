@@ -126,7 +126,7 @@ use Yiisoft\Db\Pgsql\Dsn;
 return [
     // ...
     'yiisoft/db-pgsql' => [
-        'dsn' => (new Dsn('pgsql', 'db', 'app', '5432'))->asString(),
+        'dsn' => new Dsn('pgsql', 'db', 'app', '5432'),
         'username' => 'user',
         'password' => 'password',
     ],
@@ -142,9 +142,9 @@ database.
 ## Creating and applying migrations
 
 For the initial state of the application and for further database changes,
-it is a good idea to use migrations. These are files creating changes to be
-applied to the database. Which are applied is tracked in the same database
-so we always know which state is it now and what is to be applied.
+it is a good idea to use migrations.  These are files that create database
+changes. Applied migrations are tracked in the database, allowing us to know
+the current state and which migrations remain to be applied.
 
 To use migrations we need another package installed:
 
@@ -155,20 +155,22 @@ composer require yiisoft/db-migration
 And a directory to store migrations such as `migrations` right in the
 project root.
 
-Now you can use `yii migrate:create user` to create a new migration. For our
+Now you can use `yii migrate:create page` to create a new migration. For our
 example we need a `page` table with some columns:
 
 ```php
 
 public function up(MigrationBuilder $b): void
 {
+    $cb = $b->columnBuilder();
+
     $b->createTable('page', [
-        'id' => $b->primaryKey(),
-        'title' => $b->string()->notNull(),
-        'text' => $b->text()->notNull(),
-        'created_at' => $b->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
-        'updated_at' => $b->dateTime(),
-        'deleted_at' => $b->dateTime(),
+        'id' => $cb->primaryKey(),
+        'title' => $cb->string()->notNull(),
+        'text' => $cb->text()->notNull(),
+        'created_at' => $cb->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+        'updated_at' => $cb->dateTime(),
+        'deleted_at' => $cb->dateTime(),
     ]);
 }
 ```

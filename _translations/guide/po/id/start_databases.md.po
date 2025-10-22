@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-22 11:35+0000\n"
+"POT-Creation-Date: 2025-10-22 20:13+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -220,7 +220,7 @@ msgid ""
 "return [\n"
 "    // ...\n"
 "    'yiisoft/db-pgsql' => [\n"
-"        'dsn' => (new Dsn('pgsql', 'db', 'app', '5432'))->asString(),\n"
+"        'dsn' => new Dsn('pgsql', 'db', 'app', '5432'),\n"
 "        'username' => 'user',\n"
 "        'password' => 'password',\n"
 "    ],\n"
@@ -245,7 +245,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "For the initial state of the application and for further database changes, it is a good idea to use migrations. These are files creating changes to be applied to the database. Which are applied is tracked in the same database so we always know which state is it now and what is to be applied."
+msgid "For the initial state of the application and for further database changes, it is a good idea to use migrations.  These are files that create database changes. Applied migrations are tracked in the database, allowing us to know the current state and which migrations remain to be applied."
 msgstr ""
 
 #. type: Plain text
@@ -260,7 +260,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "Now you can use `yii migrate:create user` to create a new migration. For our example we need a `page` table with some columns:"
+msgid "Now you can use `yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -270,13 +270,15 @@ msgid ""
 "\n"
 "public function up(MigrationBuilder $b): void\n"
 "{\n"
+"    $cb = $b->columnBuilder();\n"
+"\n"
 "    $b->createTable('page', [\n"
-"        'id' => $b->primaryKey(),\n"
-"        'title' => $b->string()->notNull(),\n"
-"        'text' => $b->text()->notNull(),\n"
-"        'created_at' => $b->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),\n"
-"        'updated_at' => $b->dateTime(),\n"
-"        'deleted_at' => $b->dateTime(),\n"
+"        'id' => $cb->primaryKey(),\n"
+"        'title' => $cb->string()->notNull(),\n"
+"        'text' => $cb->text()->notNull(),\n"
+"        'created_at' => $cb->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),\n"
+"        'updated_at' => $cb->dateTime(),\n"
+"        'deleted_at' => $cb->dateTime(),\n"
 "    ]);\n"
 "}\n"
 msgstr ""
