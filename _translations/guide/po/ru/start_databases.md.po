@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-11-02 16:25+0000\n"
+"POT-Creation-Date: 2025-11-02 17:16+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -370,53 +370,6 @@ msgid ""
 "}\n"
 msgstr ""
 
-#. type: Title ##
-#: ../../guide/en/start/databases.md
-#, no-wrap
-msgid "Collection"
-msgstr ""
-
-#. type: Plain text
-#: ../../guide/en/start/databases.md
-msgid "You need to select both single pages and page collection. Let's make the collection typed.  Create `src/Web/Page/PageCollection.php`:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../../guide/en/start/databases.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"namespace App\\Web\\Page;\n"
-"\n"
-"use ArrayIterator;\n"
-"use IteratorAggregate;\n"
-"use Traversable;\n"
-"\n"
-"final class PageCollection implements IteratorAggregate\n"
-"{\n"
-"    private array $pages;\n"
-"\n"
-"    public function __construct(Page... $pages)\n"
-"    {\n"
-"        $this->pages = $pages;\n"
-"    }\n"
-"\n"
-"    public function add(Page $page): void\n"
-"    {\n"
-"        $this->pages[] = $page;\n"
-"    }\n"
-"\n"
-"    /**\n"
-"     * @return Traversable<Page>\n"
-"     */\n"
-"    public function getIterator(): Traversable\n"
-"    {\n"
-"        return new ArrayIterator($this->pages);\n"
-"    }\n"
-"}\n"
-msgstr ""
-
 #. type: Bullet: '- '
 #: ../../guide/en/start/databases.md ../../guide/en/structure/domain.md
 #: ../../guide/en/structure/service.md
@@ -426,7 +379,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "Now that we have entity and collection, we need a place for methods to save an entity, delete it and select either a single page or page collection."
+msgid "Now that we have entity, we need a place for methods to save an entity, delete it and select either a single page or multiple pages."
 msgstr ""
 
 #. type: Plain text
@@ -480,9 +433,11 @@ msgid ""
 "        return $this->createPage($data);\n"
 "    }\n"
 "\n"
-"    public function findAll(): PageCollection\n"
+"    /**\n"
+"    * @return iterable<Page>\n"
+"    */\n"
+"    public function findAll(): iterable\n"
 "    {\n"
-"        $collection = new PageCollection();\n"
 "\n"
 "        $data = (new Query($this->connection))\n"
 "            ->select('*')\n"
@@ -490,10 +445,8 @@ msgid ""
 "            ->all();\n"
 "\n"
 "        foreach ($data as $page) {\n"
-"            $collection->add($this->createPage($page));\n"
+"            yield $this->createPage($page);\n"
 "        }\n"
-"\n"
-"        return $collection;\n"
 "    }\n"
 "\n"
 "    private function createPage(array $data): Page\n"
