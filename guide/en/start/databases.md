@@ -232,48 +232,10 @@ final readonly class Page
 }
 ```
 
-## Collection
-
-You need to select both single pages and page collection. Let's make the collection typed.
-Create `src/Web/Page/PageCollection.php`:
-
-```php
-<?php
-
-namespace App\Web\Page;
-
-use ArrayIterator;
-use IteratorAggregate;
-use Traversable;
-
-final class PageCollection implements IteratorAggregate
-{
-    private array $pages;
-
-    public function __construct(Page... $pages)
-    {
-        $this->pages = $pages;
-    }
-
-    public function add(Page $page): void
-    {
-        $this->pages[] = $page;
-    }
-
-    /**
-     * @return Traversable<Page>
-     */
-    public function getIterator(): Traversable
-    {
-        return new ArrayIterator($this->pages);
-    }
-}
-```
-
 ## Repository
 
-Now that we have entity and collection, we need a place for methods to save an entity, delete it and select either
-a single page or page collection.
+Now that we have entity, we need a place for methods to save an entity, delete it and select either
+a single page or multiple pages.
 
 Create `src/Web/Page/PageRepository.php`:
 
@@ -320,9 +282,11 @@ final readonly class PageRepository
         return $this->createPage($data);
     }
 
-    public function findAll(): PageCollection
+    /**
+    * @return iterable<Page>
+    */
+    public function findAll(): iterable
     {
-        $collection = new PageCollection();
 
         $data = (new Query($this->connection))
             ->select('*')
@@ -330,10 +294,8 @@ final readonly class PageRepository
             ->all();
 
         foreach ($data as $page) {
-            $collection->add($this->createPage($page));
+            yield $this->createPage($page);
         }
-
-        return $collection;
     }
 
     private function createPage(array $data): Page
