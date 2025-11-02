@@ -83,7 +83,7 @@ PHP image with `make build && make down && make up`.
 Now that we have the database, it's time to define the connection. We need a package to be installed first:
 
 ```sh
-composer require yiisoft/db-pgsql
+make composer require yiisoft/db-pgsql
 ```
 
 Now create `config/common/di/db-pgsql.php`:
@@ -143,37 +143,229 @@ To use migrations we need another package installed:
 composer require yiisoft/db-migration
 ```
 
-And a directory to store migrations such as `migrations` right in the project root.
-
-Now you can use `yii migrate:create page` to create a new migration. For our example we need a `page` table with some
-columns:
+Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to
+`config/common/params.php`:
 
 ```php
+'yiisoft/db-migration' => [
+    'newMigrationNamespace' => 'App\\Migration',
+    'sourceNamespaces' => ['App\\Migration'],
+],
+```
 
-public function up(MigrationBuilder $b): void
+Now you can use `make yii migrate:create page` to create a new migration. For our example we need a `page` table
+with some columns:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Migration;
+
+use Yiisoft\Db\Migration\MigrationBuilder;
+use Yiisoft\Db\Migration\RevertibleMigrationInterface;
+
+/**
+ * Class M251102141707Page
+ */
+final class M251102141707Page implements RevertibleMigrationInterface
 {
-    $cb = $b->columnBuilder();
+    public function up(MigrationBuilder $b): void
+    {
+        $b->createTable('page', [
+            'id' => $b->uuidPrimaryKey(),
+            'title' => $b->string()->notNull(),
+            'slug' => $b->string()->notNull(),
+            'text' => $b->text()->notNull(),
+            'created_at' => $b->dateTime()->notNull(),
+            'updated_at' => $b->dateTime(),
+            'deleted_at' => $b->dateTime(),
+        ]);
+    }
 
-    $b->createTable('page', [
-        'id' => $cb->primaryKey(),
-        'title' => $cb->string()->notNull(),
-        'text' => $cb->text()->notNull(),
-        'created_at' => $cb->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
-        'updated_at' => $cb->dateTime(),
-        'deleted_at' => $cb->dateTime(),
-    ]);
+    public function down(MigrationBuilder $b): void
+    {
+        $b->dropTable('page');
+    }
 }
 ```
 
-Apply it with `yii migrate:up`.
+Note that we use UUID as the primary key. While the storage space is a bit bigger than using int, the workflow with
+such IDs is beneficial. You generate the ID yourself so you can define a set of related data and save it in a single
+transaction. The entities that define this set of data in the code are often called an "aggregate".
 
-## Inserting
+Apply it with `make yii migrate:up`.
 
-## Selecting
+## An entity
 
-## Using data package
+Now that you have a table it is time to define an entity in the code. Create `src/Web/Page/Page.php`:
 
-### Pagination
+```php
+<?php
+
+namespace App\Web\Page;
+
+use DateTimeImmutable;
+use Yiisoft\Strings\Inflector;
+
+final readonly class Page
+{
+    public function __construct(
+        public string $id,
+        public string $title,
+        public string $text,
+        public DateTimeImmutable $createdAt = new DateTimeImmutable(),
+        public DateTimeImmutable $updatedAt = new DateTimeImmutable(),
+        public ?DateTimeImmutable $deletedAt = null,
+    ) {}
+
+    public function getSlug(): string
+    {
+        return (new Inflector())->toSlug($this->title);
+    }
+
+    public function isDeleted(): bool
+    {
+        return $this->deletedAt !== null;
+    }
+}
+```
+
+## Collection
+
+You need to select both single pages and page collection. Let's make the collection typed.
+Create `src/Web/Page/PageCollection.php`:
+
+```php
+<?php
+
+namespace App\Web\Page;
+
+use ArrayIterator;
+use IteratorAggregate;
+use Traversable;
+
+final class PageCollection implements IteratorAggregate
+{
+    private array $pages;
+
+    public function __construct(Page... $pages)
+    {
+        $this->pages = $pages;
+    }
+
+    public function add(Page $page): void
+    {
+        $this->pages[] = $page;
+    }
+
+    /**
+     * @return Traversable<Page>
+     */
+    public function getIterator(): Traversable
+    {
+        return new ArrayIterator($this->pages);
+    }
+}
+```
+
+## Repository
+
+Now that we have entity and collection, we need a place for methods to save an entity, delete it and select either
+a single page or page collection.
+
+Create `src/Web/Page/PageRepository.php`:
+
+```php
+<?php
+
+namespace App\Web\Page;
+
+use DateTimeImmutable;
+use Yiisoft\Db\Connection\ConnectionInterface;
+use Yiisoft\Db\Query\Query;
+
+final readonly class PageRepository
+{
+    public function __construct(
+        private ConnectionInterface $connection,
+    ) {}
+
+    public function save(Page $page): void
+    {
+        $this->connection->createCommand()->upsert('{{%page}}', [
+            'id' => $page->id,
+            'title' => $page->title,
+            'slug' => $page->getSlug(),
+            'text' => $page->text,
+            'created_at' => $page->createdAt,
+            'updated_at' => $page->updatedAt,
+            'deleted_at' => $page->deletedAt,
+        ])->execute();
+    }
+
+    public function findOneBySlug(string $slug): ?Page
+    {
+        $data = (new Query($this->connection))
+            ->select('*')
+            ->from('{{%page}}')
+            ->where('slug = :slug')
+            ->one();
+
+        if ($data === null) {
+            return null;
+        }
+
+        return $this->createPage($data);
+    }
+
+    public function findAll(): PageCollection
+    {
+        $collection = new PageCollection();
+
+        $data = (new Query($this->connection))
+            ->select('*')
+            ->from('{{%page}}')
+            ->all();
+
+        foreach ($data as $page) {
+            $collection->add($this->createPage($page));
+        }
+
+        return $collection;
+    }
+
+    private function createPage(array $data): Page
+    {
+        return new Page(
+            id: $data['id'],
+            title: $data['title'],
+            text: $data['text'],
+            createdAt: new DateTimeImmutable($data['createdAt']),
+            updatedAt: new DateTimeImmutable($data['updatedAt']),
+            deletedAt: $data['deletedAt'] ? new DateTimeImmutable($data['deletedAt']) : null,
+        );
+    }
+
+    public function delete(string $id): void
+    {
+        $this->connection->createCommand()->delete('{{%page}}', ['id' => $id])->execute();
+    }
+}
+```
+
+## Actions and routes
+
+You need actions to:
+
+1. List all pages.
+2. View a page.
+3. Delete a page.
+4. Create a page.
+5. Edit a page.
+
+
 
 > [!NOTE]
 > [← Working with forms](forms.md) |
