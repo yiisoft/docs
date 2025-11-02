@@ -294,7 +294,7 @@ final readonly class PageRepository
         return $this->createPage($data);
     }
 
-    /**
+   /**
     * @return iterable<Page>
     */
     public function findAll(): iterable
