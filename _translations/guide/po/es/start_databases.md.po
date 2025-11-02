@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-22 20:13+0000\n"
+"POT-Creation-Date: 2025-11-02 16:25+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -172,7 +172,7 @@ msgstr ""
 #. type: Fenced code block (sh)
 #: ../../guide/en/start/databases.md
 #, no-wrap
-msgid "composer require yiisoft/db-pgsql\n"
+msgid "make composer require yiisoft/db-pgsql\n"
 msgstr ""
 
 #. type: Plain text
@@ -255,61 +255,296 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "And a directory to store migrations such as `migrations` right in the project root."
-msgstr ""
-
-#. type: Plain text
-#: ../../guide/en/start/databases.md
-msgid "Now you can use `yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
+msgid "Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to `config/common/params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
 #: ../../guide/en/start/databases.md
 #, no-wrap
 msgid ""
+"'yiisoft/db-migration' => [\n"
+"    'newMigrationNamespace' => 'App\\\\Migration',\n"
+"    'sourceNamespaces' => ['App\\\\Migration'],\n"
+"],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now you can use `make yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
 "\n"
-"public function up(MigrationBuilder $b): void\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Migration;\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
+"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
+"\n"
+"/**\n"
+" * Class M251102141707Page\n"
+" */\n"
+"final class M251102141707Page implements RevertibleMigrationInterface\n"
 "{\n"
-"    $cb = $b->columnBuilder();\n"
+"    public function up(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->createTable('page', [\n"
+"            'id' => $b->uuidPrimaryKey(),\n"
+"            'title' => $b->string()->notNull(),\n"
+"            'slug' => $b->string()->notNull(),\n"
+"            'text' => $b->text()->notNull(),\n"
+"            'created_at' => $b->dateTime()->notNull(),\n"
+"            'updated_at' => $b->dateTime(),\n"
+"            'deleted_at' => $b->dateTime(),\n"
+"        ]);\n"
+"    }\n"
 "\n"
-"    $b->createTable('page', [\n"
-"        'id' => $cb->primaryKey(),\n"
-"        'title' => $cb->string()->notNull(),\n"
-"        'text' => $cb->text()->notNull(),\n"
-"        'created_at' => $cb->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),\n"
-"        'updated_at' => $cb->dateTime(),\n"
-"        'deleted_at' => $cb->dateTime(),\n"
-"    ]);\n"
+"    public function down(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->dropTable('page');\n"
+"    }\n"
 "}\n"
 msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "Apply it with `yii migrate:up`."
+msgid "Note that we use UUID as the primary key. While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. You generate the ID yourself so you can define a set of related data and save it in a single transaction. The entities that define this set of data in the code are often called an \"aggregate\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Apply it with `make yii migrate:up`."
 msgstr ""
 
 #. type: Title ##
 #: ../../guide/en/start/databases.md
 #, no-wrap
-msgid "Inserting"
+msgid "An entity"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now that you have a table it is time to define an entity in the code. Create `src/Web/Page/Page.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Strings\\Inflector;\n"
+"\n"
+"final readonly class Page\n"
+"{\n"
+"    public function __construct(\n"
+"        public string $id,\n"
+"        public string $title,\n"
+"        public string $text,\n"
+"        public DateTimeImmutable $createdAt = new DateTimeImmutable(),\n"
+"        public DateTimeImmutable $updatedAt = new DateTimeImmutable(),\n"
+"        public ?DateTimeImmutable $deletedAt = null,\n"
+"    ) {}\n"
+"\n"
+"    public function getSlug(): string\n"
+"    {\n"
+"        return (new Inflector())->toSlug($this->title);\n"
+"    }\n"
+"\n"
+"    public function isDeleted(): bool\n"
+"    {\n"
+"        return $this->deletedAt !== null;\n"
+"    }\n"
+"}\n"
 msgstr ""
 
 #. type: Title ##
 #: ../../guide/en/start/databases.md
 #, no-wrap
-msgid "Selecting"
+msgid "Collection"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "You need to select both single pages and page collection. Let's make the collection typed.  Create `src/Web/Page/PageCollection.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use ArrayIterator;\n"
+"use IteratorAggregate;\n"
+"use Traversable;\n"
+"\n"
+"final class PageCollection implements IteratorAggregate\n"
+"{\n"
+"    private array $pages;\n"
+"\n"
+"    public function __construct(Page... $pages)\n"
+"    {\n"
+"        $this->pages = $pages;\n"
+"    }\n"
+"\n"
+"    public function add(Page $page): void\n"
+"    {\n"
+"        $this->pages[] = $page;\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @return Traversable<Page>\n"
+"     */\n"
+"    public function getIterator(): Traversable\n"
+"    {\n"
+"        return new ArrayIterator($this->pages);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/start/databases.md ../../guide/en/structure/domain.md
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Repository"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now that we have entity and collection, we need a place for methods to save an entity, delete it and select either a single page or page collection."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Create `src/Web/Page/PageRepository.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Query\\Query;\n"
+"\n"
+"final readonly class PageRepository\n"
+"{\n"
+"    public function __construct(\n"
+"        private ConnectionInterface $connection,\n"
+"    ) {}\n"
+"\n"
+"    public function save(Page $page): void\n"
+"    {\n"
+"        $this->connection->createCommand()->upsert('{{%page}}', [\n"
+"            'id' => $page->id,\n"
+"            'title' => $page->title,\n"
+"            'slug' => $page->getSlug(),\n"
+"            'text' => $page->text,\n"
+"            'created_at' => $page->createdAt,\n"
+"            'updated_at' => $page->updatedAt,\n"
+"            'deleted_at' => $page->deletedAt,\n"
+"        ])->execute();\n"
+"    }\n"
+"\n"
+"    public function findOneBySlug(string $slug): ?Page\n"
+"    {\n"
+"        $data = (new Query($this->connection))\n"
+"            ->select('*')\n"
+"            ->from('{{%page}}')\n"
+"            ->where('slug = :slug')\n"
+"            ->one();\n"
+"\n"
+"        if ($data === null) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $this->createPage($data);\n"
+"    }\n"
+"\n"
+"    public function findAll(): PageCollection\n"
+"    {\n"
+"        $collection = new PageCollection();\n"
+"\n"
+"        $data = (new Query($this->connection))\n"
+"            ->select('*')\n"
+"            ->from('{{%page}}')\n"
+"            ->all();\n"
+"\n"
+"        foreach ($data as $page) {\n"
+"            $collection->add($this->createPage($page));\n"
+"        }\n"
+"\n"
+"        return $collection;\n"
+"    }\n"
+"\n"
+"    private function createPage(array $data): Page\n"
+"    {\n"
+"        return new Page(\n"
+"            id: $data['id'],\n"
+"            title: $data['title'],\n"
+"            text: $data['text'],\n"
+"            createdAt: new DateTimeImmutable($data['createdAt']),\n"
+"            updatedAt: new DateTimeImmutable($data['updatedAt']),\n"
+"            deletedAt: $data['deletedAt'] ? new DateTimeImmutable($data['deletedAt']) : null,\n"
+"        );\n"
+"    }\n"
+"\n"
+"    public function delete(string $id): void\n"
+"    {\n"
+"        $this->connection->createCommand()->delete('{{%page}}', ['id' => $id])->execute();\n"
+"    }\n"
+"}\n"
 msgstr ""
 
 #. type: Title ##
 #: ../../guide/en/start/databases.md
 #, no-wrap
-msgid "Using data package"
+msgid "Actions and routes"
 msgstr ""
 
-#. type: Title ###
+#. type: Plain text
 #: ../../guide/en/start/databases.md
-#, no-wrap
-msgid "Pagination"
+msgid "You need actions to:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../../guide/en/start/databases.md
+msgid "List all pages."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../../guide/en/start/databases.md
+msgid "View a page."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../../guide/en/start/databases.md
+msgid "Delete a page."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../../guide/en/start/databases.md
+msgid "Create a page."
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../../guide/en/start/databases.md
+msgid "Edit a page."
 msgstr ""
 
 #. type: Plain text
