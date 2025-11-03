@@ -7,7 +7,7 @@ application.  There are many ways you can work with relational databases:
 - [Yii Active Record](https://github.com/yiisoft/active-record)
 - [Cycle](https://github.com/cycle) via [Yii Cycle
   package](https://github.com/yiisoft/yii-cycle)
-- [Doctrine](https://www.doctrine-project.org/)  via [Yii Doctrine
+- [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine
   package](https://github.com/stargazer-team/yii-doctrine)
 - [PDO](https://www.php.net/manual/en/book.pdo.php)
 
@@ -84,11 +84,15 @@ list. Then rebuild PHP image with `make build && make down && make up`.
 
 ## Configuring connection
 
-Now that we have the database, it's time to define the connection. We need a
-package to be installed first:
+Now that we have the database, it's time to define the connection.
+
+Let's use latest versions to be released. Change your `minumum-stability` to
+`dev` in `composer.json` first.
+
+Then we need a package to be installed:
 
 ```sh
-make composer require yiisoft/db-pgsql
+make composer require yiisoft/db-pgsql dev-master
 ```
 
 Now create `config/common/di/db-pgsql.php`:
@@ -148,7 +152,7 @@ the current state and which migrations remain to be applied.
 To use migrations we need another package installed:
 
 ```sh
-composer require yiisoft/db-migration
+composer require yiisoft/db-migration dev-master
 ```
 
 Create a directory to store migrations `src/Migration` right in the project
@@ -181,14 +185,16 @@ final class M251102141707Page implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
     {
+        $cb = $b->columnBuilder();
+
         $b->createTable('page', [
-            'id' => $b->uuidPrimaryKey(),
-            'title' => $b->string()->notNull(),
-            'slug' => $b->string()->notNull(),
-            'text' => $b->text()->notNull(),
-            'created_at' => $b->dateTime()->notNull(),
-            'updated_at' => $b->dateTime(),
-            'deleted_at' => $b->dateTime(),
+            'id' => $cb::uuidPrimaryKey(),
+            'title' => $cb::string()->notNull(),
+            'slug' => $cb::string()->notNull(),
+            'text' => $cb::text()->notNull(),
+            'created_at' => $cb::dateTime(),
+            'updated_at' => $cb::dateTime(),
+            'deleted_at' => $cb::dateTime(),
         ]);
     }
 
@@ -222,14 +228,32 @@ use Yiisoft\Strings\Inflector;
 
 final readonly class Page
 {
-    public function __construct(
+    private function __construct(
         public string $id,
         public string $title,
         public string $text,
-        public DateTimeImmutable $createdAt = new DateTimeImmutable(),
-        public DateTimeImmutable $updatedAt = new DateTimeImmutable(),
+        public DateTimeImmutable $createdAt,
+        public DateTimeImmutable $updatedAt,
         public ?DateTimeImmutable $deletedAt = null,
     ) {}
+
+    public static function create(
+        string $id,
+        string $title,
+        string $text,
+        ?DateTimeImmutable $createdAt = null,
+        ?DateTimeImmutable $updatedAt = null,
+        ?DateTimeImmutable $deletedAt = null,
+    ): self {
+        return new self(
+            id: $id,
+            title: $title,
+            text: $text,
+            createdAt: $createdAt ?? new DateTimeImmutable(),
+            updatedAt: $updatedAt ?? new DateTimeImmutable(),
+            deletedAt: $deletedAt,
+        );
+    }
 
     public function getSlug(): string
     {
@@ -310,7 +334,7 @@ final readonly class PageRepository
 
     private function createPage(array $data): Page
     {
-        return new Page(
+        return Page::create(
             id: $data['id'],
             title: $data['title'],
             text: $data['text'],

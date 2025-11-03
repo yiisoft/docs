@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-11-03 07:09+0000\n"
+"POT-Creation-Date: 2025-11-03 12:48+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -19,12 +19,6 @@ msgstr ""
 #: ../../guide/en/README.md ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Working with databases"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../../guide/en/databases/db-migrations.md ../../guide/en/start/databases.md
-#, no-wrap
-msgid "composer require yiisoft/db-migration\n"
 msgstr ""
 
 #. type: Plain text
@@ -49,7 +43,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../../guide/en/start/databases.md
-msgid "[Doctrine](https://www.doctrine-project.org/)  via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
+msgid "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -165,14 +159,24 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/start/databases.md
-msgid "Now that we have the database, it's time to define the connection. We need a package to be installed first:"
+msgid "Now that we have the database, it's time to define the connection."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Let's use latest versions to be released. Change your `minumum-stability` to `dev` in `composer.json` first."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Then we need a package to be installed:"
 msgstr ""
 
 #. type: Fenced code block (sh)
 #: ../../guide/en/start/databases.md
 #, fuzzy, no-wrap
 #| msgid "composer require yiisoft/cache\n"
-msgid "make composer require yiisoft/db-pgsql\n"
+msgid "make composer require yiisoft/db-pgsql dev-master\n"
 msgstr "composer require yiisoft/cache\n"
 
 #. type: Plain text
@@ -253,6 +257,13 @@ msgstr ""
 msgid "To use migrations we need another package installed:"
 msgstr ""
 
+#. type: Fenced code block (sh)
+#: ../../guide/en/start/databases.md
+#, fuzzy, no-wrap
+#| msgid "composer require yiisoft/cache\n"
+msgid "composer require yiisoft/db-migration dev-master\n"
+msgstr "composer require yiisoft/cache\n"
+
 #. type: Plain text
 #: ../../guide/en/start/databases.md
 msgid "Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to `config/common/params.php`:"
@@ -293,14 +304,16 @@ msgid ""
 "{\n"
 "    public function up(MigrationBuilder $b): void\n"
 "    {\n"
+"        $cb = $b->columnBuilder();\n"
+"\n"
 "        $b->createTable('page', [\n"
-"            'id' => $b->uuidPrimaryKey(),\n"
-"            'title' => $b->string()->notNull(),\n"
-"            'slug' => $b->string()->notNull(),\n"
-"            'text' => $b->text()->notNull(),\n"
-"            'created_at' => $b->dateTime()->notNull(),\n"
-"            'updated_at' => $b->dateTime(),\n"
-"            'deleted_at' => $b->dateTime(),\n"
+"            'id' => $cb::uuidPrimaryKey(),\n"
+"            'title' => $cb::string()->notNull(),\n"
+"            'slug' => $cb::string()->notNull(),\n"
+"            'text' => $cb::text()->notNull(),\n"
+"            'created_at' => $cb::dateTime(),\n"
+"            'updated_at' => $cb::dateTime(),\n"
+"            'deleted_at' => $cb::dateTime(),\n"
 "        ]);\n"
 "    }\n"
 "\n"
@@ -345,14 +358,32 @@ msgid ""
 "\n"
 "final readonly class Page\n"
 "{\n"
-"    public function __construct(\n"
+"    private function __construct(\n"
 "        public string $id,\n"
 "        public string $title,\n"
 "        public string $text,\n"
-"        public DateTimeImmutable $createdAt = new DateTimeImmutable(),\n"
-"        public DateTimeImmutable $updatedAt = new DateTimeImmutable(),\n"
+"        public DateTimeImmutable $createdAt,\n"
+"        public DateTimeImmutable $updatedAt,\n"
 "        public ?DateTimeImmutable $deletedAt = null,\n"
 "    ) {}\n"
+"\n"
+"    public static function create(\n"
+"        string $id,\n"
+"        string $title,\n"
+"        string $text,\n"
+"        ?DateTimeImmutable $createdAt = null,\n"
+"        ?DateTimeImmutable $updatedAt = null,\n"
+"        ?DateTimeImmutable $deletedAt = null,\n"
+"    ): self {\n"
+"        return new self(\n"
+"            id: $id,\n"
+"            title: $title,\n"
+"            text: $text,\n"
+"            createdAt: $createdAt ?? new DateTimeImmutable(),\n"
+"            updatedAt: $updatedAt ?? new DateTimeImmutable(),\n"
+"            deletedAt: $deletedAt,\n"
+"        );\n"
+"    }\n"
 "\n"
 "    public function getSlug(): string\n"
 "    {\n"
@@ -446,7 +477,7 @@ msgid ""
 "\n"
 "    private function createPage(array $data): Page\n"
 "    {\n"
-"        return new Page(\n"
+"        return Page::create(\n"
 "            id: $data['id'],\n"
 "            title: $data['title'],\n"
 "            text: $data['text'],\n"
