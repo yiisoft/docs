@@ -80,10 +80,14 @@ PHP image with `make build && make down && make up`.
 
 ## Configuring connection
 
-Now that we have the database, it's time to define the connection. We need a package to be installed first:
+Now that we have the database, it's time to define the connection.
+
+Let's use latest versions to be released. Change your `minumum-stability` to `dev` in `composer.json` first.
+
+Then we need a package to be installed:
 
 ```sh
-make composer require yiisoft/db-pgsql
+make composer require yiisoft/db-pgsql dev-master
 ```
 
 Now create `config/common/di/db-pgsql.php`:
@@ -140,7 +144,7 @@ the current state and which migrations remain to be applied.
 To use migrations we need another package installed:
 
 ```sh
-composer require yiisoft/db-migration
+composer require yiisoft/db-migration dev-master
 ```
 
 Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to
@@ -173,14 +177,16 @@ final class M251102141707Page implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
     {
+        $cb = $b->columnBuilder();
+
         $b->createTable('page', [
-            'id' => $b->uuidPrimaryKey(),
-            'title' => $b->string()->notNull(),
-            'slug' => $b->string()->notNull(),
-            'text' => $b->text()->notNull(),
-            'created_at' => $b->dateTime()->notNull(),
-            'updated_at' => $b->dateTime(),
-            'deleted_at' => $b->dateTime(),
+            'id' => $cb::uuidPrimaryKey(),
+            'title' => $cb::string()->notNull(),
+            'slug' => $cb::string()->notNull(),
+            'text' => $cb::text()->notNull(),
+            'created_at' => $cb::dateTime(),
+            'updated_at' => $cb::dateTime(),
+            'deleted_at' => $cb::dateTime(),
         ]);
     }
 
