@@ -6,8 +6,7 @@ There are many ways you can work with relational databases:
 - [Yii DB](https://github.com/yiisoft/db)
 - [Yii Active Record](https://github.com/yiisoft/active-record)
 - [Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)
-- [Doctrine](https://www.doctrine-project.org/)
-  via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)
+- [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)
 - [PDO](https://www.php.net/manual/en/book.pdo.php)
 
 For non-relational ones, there are usually official libraries available:
@@ -217,14 +216,32 @@ use Yiisoft\Strings\Inflector;
 
 final readonly class Page
 {
-    public function __construct(
+    private function __construct(
         public string $id,
         public string $title,
         public string $text,
-        public DateTimeImmutable $createdAt = new DateTimeImmutable(),
-        public DateTimeImmutable $updatedAt = new DateTimeImmutable(),
+        public DateTimeImmutable $createdAt,
+        public DateTimeImmutable $updatedAt,
         public ?DateTimeImmutable $deletedAt = null,
     ) {}
+
+    public static function create(
+        string $id,
+        string $title,
+        string $text,
+        ?DateTimeImmutable $createdAt = null,
+        ?DateTimeImmutable $updatedAt = null,
+        ?DateTimeImmutable $deletedAt = null,
+    ): self {
+        return new self(
+            id: $id,
+            title: $title,
+            text: $text,
+            createdAt: $createdAt ?? new DateTimeImmutable(),
+            updatedAt: $updatedAt ?? new DateTimeImmutable(),
+            deletedAt: $deletedAt,
+        );
+    }
 
     public function getSlug(): string
     {
@@ -305,7 +322,7 @@ final readonly class PageRepository
 
     private function createPage(array $data): Page
     {
-        return new Page(
+        return Page::create(
             id: $data['id'],
             title: $data['title'],
             text: $data['text'],
