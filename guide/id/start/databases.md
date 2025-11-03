@@ -7,7 +7,7 @@ application.  There are many ways you can work with relational databases:
 - [Yii Active Record](https://github.com/yiisoft/active-record)
 - [Cycle](https://github.com/cycle) via [Yii Cycle
   package](https://github.com/yiisoft/yii-cycle)
-- [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine
+- [Doctrine](https://www.doctrine-project.org/)  via [Yii Doctrine
   package](https://github.com/stargazer-team/yii-doctrine)
 - [PDO](https://www.php.net/manual/en/book.pdo.php)
 
@@ -29,7 +29,6 @@ install it and create a database.
 
 If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:
 
-
 ```yaml
 services:
     app:
@@ -41,9 +40,9 @@ services:
                 USER_ID: ${UID}
                 GROUP_ID: ${GID}
         env_file:
-            - path: ./dev/.env
-            - path: ./dev/override.env
-              required: false
+            -   path: ./dev/.env
+            -   path: ./dev/override.env
+                required: false
         ports:
             - "${DEV_PORT:-80}:80"
         volumes:
@@ -53,27 +52,27 @@ services:
             - caddy_config:/config
         tty: true
         depends_on:
-          db:
-            condition: service_healthy
+            db:
+                condition: service_healthy
 
     db:
         image: postgres:${POSTGRES_VERSION:-15}-alpine
         environment:
-          POSTGRES_DB: app
-          POSTGRES_PASSWORD: password
-          POSTGRES_USER: user
+            POSTGRES_DB: app
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: user
         volumes:
-          - ./runtime/db:/var/lib/postgresql/data:rw
+            - ./runtime/db:/var/lib/postgresql/data:rw
         ports:
-          - "${DEV_DB_PORT:-5432}:5432"
+            - "${DEV_DB_PORT:-5432}:5432"
         healthcheck:
-          test: [ "CMD-SHELL", "pg_isready -U user -d app" ]
-          interval: 5s
-          timeout: 5s
-          retries: 5
+            test: [ "CMD-SHELL", "pg_isready -U user -d app" ]
+            interval: 5s
+            timeout: 5s
+            retries: 5
 
 volumes:
-  db:
+    db:
 ```
 
 Note that we add `depends_on` so application waits for database to be up.
@@ -284,7 +283,7 @@ final readonly class PageRepository
         $data = (new Query($this->connection))
             ->select('*')
             ->from('{{%page}}')
-            ->where('slug = :slug')
+            ->where('slug = :slug', ['slug' => $slug])
             ->one();
 
         if ($data === null) {
@@ -294,12 +293,11 @@ final readonly class PageRepository
         return $this->createPage($data);
     }
 
-   /**
-    * @return iterable<Page>
-    */
+    /**
+     * @return iterable<Page>
+     */
     public function findAll(): iterable
     {
-
         $data = (new Query($this->connection))
             ->select('*')
             ->from('{{%page}}')
@@ -316,9 +314,9 @@ final readonly class PageRepository
             id: $data['id'],
             title: $data['title'],
             text: $data['text'],
-            createdAt: new DateTimeImmutable($data['createdAt']),
-            updatedAt: new DateTimeImmutable($data['updatedAt']),
-            deletedAt: $data['deletedAt'] ? new DateTimeImmutable($data['deletedAt']) : null,
+            createdAt: new DateTimeImmutable($data['created_at']),
+            updatedAt: new DateTimeImmutable($data['updated_at']),
+            deletedAt: $data['deleted_at'] ? new DateTimeImmutable($data['deleted_at']) : null,
         );
     }
 
@@ -338,8 +336,6 @@ You need actions to:
 3. Delete a page.
 4. Create a page.
 5. Edit a page.
-
-
 
 > [!NOTE]
 > [← Working with forms](forms.md) |
