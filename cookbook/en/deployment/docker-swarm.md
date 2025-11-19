@@ -301,7 +301,9 @@ services:
     env_file:
       - path: ./prod/.env
       - path: ./prod/override.env
-        required: false
+        required: false\
+    environment:
+      CADDY_EXTRA_CONFIG: 'auto_https off'
     deploy:
       replicas: 2
       update_config:
@@ -326,7 +328,9 @@ services:
 This configuration:
 - Runs 2 replicas for high availability
 - Uses a rolling update strategy with automatic rollback on failure
-- Configures Caddy labels for automatic HTTPS
+- Configures `labels` for automatic HTTPS on the reverse proxy
+- Disables obtaining of HTTPs certificates on the container itself
+  since proxy communicates with the container via HTTP. That is `auto_https off`.
 
 If you need a database, add it to the stack:
 
