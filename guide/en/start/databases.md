@@ -81,7 +81,7 @@ PHP image with `make build && make down && make up`.
 
 Now that we have the database, it's time to define the connection.
 
-Let's use latest versions to be released. Change your `minumum-stability` to `dev` in `composer.json` first.
+Let's use latest versions to be released. Change your `minimum-stability` to `dev` in `composer.json` first.
 
 Then we need a package to be installed:
 
