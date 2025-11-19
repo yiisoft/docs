@@ -58,7 +58,7 @@ services:
             POSTGRES_PASSWORD: password
             POSTGRES_USER: user
         volumes:
-            - ./runtime/db:/var/lib/postgresql/data:rw
+            - ../runtime/db:/var/lib/postgresql/data:rw
         ports:
             - "${DEV_DB_PORT:-5432}:5432"
         healthcheck:
