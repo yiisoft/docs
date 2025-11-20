@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-11-19 06:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,113 +17,562 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/start/databases.md
+#: ../../guide/en/README.md ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Working with databases"
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "Yii doesn't dictate using a particular database or storage for your "
 "application.  There are many ways you can work with relational databases:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Yii DB](https://github.com/yiisoft/db)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Yii Active Record](https://github.com/yiisoft/active-record)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/"
 "yiisoft/yii-cycle)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package]"
 "(https://github.com/stargazer-team/yii-doctrine)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[PDO](https://www.php.net/manual/en/book.pdo.php)"
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "For non-relational ones, there are usually official libraries available:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[ElasticSearch](https://github.com/elastic/elasticsearch-php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "[Redis](https://redis.io/docs/clients/#php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid "..."
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
 msgid ""
 "In this guide, we will focus on working with relational databases using Yii "
-"DB."
+"DB. We'll use PostgreSQL to implement a simple CRUD (create read update "
+"delete)."
 msgstr ""
 
 #. type: Title ##
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "Installing PostgreSQL"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"You need to install PostgreSQL. If you prefer not to use Docker, [get the "
+"installer from official website](https://www.postgresql.org/download/), "
+"install it and create a database."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"services:\n"
+"    app:\n"
+"        build:\n"
+"            dockerfile: docker/Dockerfile\n"
+"            context: ..\n"
+"            target: dev\n"
+"            args:\n"
+"                USER_ID: ${UID}\n"
+"                GROUP_ID: ${GID}\n"
+"        env_file:\n"
+"            -   path: ./dev/.env\n"
+"            -   path: ./dev/override.env\n"
+"                required: false\n"
+"        ports:\n"
+"            - \"${DEV_PORT:-80}:80\"\n"
+"        volumes:\n"
+"            - ../:/app\n"
+"            - ../runtime:/app/runtime\n"
+"            - caddy_data:/data\n"
+"            - caddy_config:/config\n"
+"        tty: true\n"
+"        depends_on:\n"
+"            db:\n"
+"                condition: service_healthy\n"
+"\n"
+"    db:\n"
+"        image: postgres:${POSTGRES_VERSION:-15}-alpine\n"
+"        environment:\n"
+"            POSTGRES_DB: app\n"
+"            POSTGRES_PASSWORD: password\n"
+"            POSTGRES_USER: user\n"
+"        volumes:\n"
+"            - ../runtime/db:/var/lib/postgresql/data:rw\n"
+"        ports:\n"
+"            - \"${DEV_DB_PORT:-5432}:5432\"\n"
+"        healthcheck:\n"
+"            test: [ \"CMD-SHELL\", \"pg_isready -U user -d app\" ]\n"
+"            interval: 5s\n"
+"            timeout: 5s\n"
+"            retries: 5\n"
+"\n"
+"volumes:\n"
+"    db:\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Note that we add `depends_on` so application waits for database to be up."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You "
+"can enable it locally in `php.ini`.  If you use Docker, check `docker/"
+"Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then "
+"rebuild PHP image with `make build && make down && make up`."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid "Configuring connection"
 msgstr ""
 
-#. type: Title ##
-#: en/start/databases.md
-#, no-wrap
-msgid "Creating and applying migration"
-msgstr ""
-
-#. type: Title ##
-#: en/start/databases.md
-#, no-wrap
-msgid "Inserting"
-msgstr ""
-
-#. type: Title ##
-#: en/start/databases.md
-#, no-wrap
-msgid "Selecting"
-msgstr ""
-
-#. type: Title ##
-#: en/start/databases.md
-#, no-wrap
-msgid "Using data package"
-msgstr ""
-
-#. type: Title ###
-#: en/start/databases.md
-#, no-wrap
-msgid "Pagination"
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now that we have the database, it's time to define the connection."
 msgstr ""
 
 #. type: Plain text
-#: en/start/databases.md
+#: ../../guide/en/start/databases.md
+msgid ""
+"Let's use latest versions to be released. Change your `minimum-stability` to "
+"`dev` in `composer.json` first."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Then we need a package to be installed:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "make composer require yiisoft/db-pgsql dev-master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Now create `config/common/di/db-pgsql.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Pgsql\\Connection;\n"
+"use Yiisoft\\Db\\Pgsql\\Driver;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    ConnectionInterface::class => [\n"
+"        'class' => Connection::class,\n"
+"        '__construct()' => [\n"
+"            'driver' => new Driver(\n"
+"                $params['yiisoft/db-pgsql']['dsn'],\n"
+"                $params['yiisoft/db-pgsql']['username'],\n"
+"                $params['yiisoft/db-pgsql']['password'],\n"
+"            ),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"And define parameters in `config/common/params.php`. For Docker that would "
+"be:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Db\\Pgsql\\Dsn;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'yiisoft/db-pgsql' => [\n"
+"        'dsn' => new Dsn('pgsql', 'db', 'app', '5432'),\n"
+"        'username' => 'user',\n"
+"        'password' => 'password',\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "`db` host is resolved automatically within the Docker network."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"For local installation without Docker the host in Dsn would be `localhost`. "
+"You'll have to adjust the rest to match how you configured the database."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "Creating and applying migrations"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"For the initial state of the application and for further database changes, "
+"it is a good idea to use migrations.  These are files that create database "
+"changes. Applied migrations are tracked in the database, allowing us to know "
+"the current state and which migrations remain to be applied."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "To use migrations we need another package installed:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "composer require yiisoft/db-migration dev-master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Create a directory to store migrations `src/Migration` right in the project "
+"root. Add the following configuration to `config/common/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"'yiisoft/db-migration' => [\n"
+"    'newMigrationNamespace' => 'App\\\\Migration',\n"
+"    'sourceNamespaces' => ['App\\\\Migration'],\n"
+"],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Now you can use `make yii migrate:create page` to create a new migration. "
+"For our example we need a `page` table with some columns:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Migration;\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
+"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
+"\n"
+"/**\n"
+" * Class M251102141707Page\n"
+" */\n"
+"final class M251102141707Page implements RevertibleMigrationInterface\n"
+"{\n"
+"    public function up(MigrationBuilder $b): void\n"
+"    {\n"
+"        $cb = $b->columnBuilder();\n"
+"\n"
+"        $b->createTable('page', [\n"
+"            'id' => $cb::uuidPrimaryKey(),\n"
+"            'title' => $cb::string()->notNull(),\n"
+"            'slug' => $cb::string()->notNull(),\n"
+"            'text' => $cb::text()->notNull(),\n"
+"            'created_at' => $cb::dateTime(),\n"
+"            'updated_at' => $cb::dateTime(),\n"
+"            'deleted_at' => $cb::dateTime(),\n"
+"        ]);\n"
+"    }\n"
+"\n"
+"    public function down(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->dropTable('page');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Note that we use UUID as the primary key. While the storage space is a bit "
+"bigger than using int, the workflow with such IDs is beneficial. You "
+"generate the ID yourself so you can define a set of related data and save it "
+"in a single transaction. The entities that define this set of data in the "
+"code are often called an \"aggregate\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Apply it with `make yii migrate:up`."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "An entity"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Now that you have a table it is time to define an entity in the code. Create "
+"`src/Web/Page/Page.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Strings\\Inflector;\n"
+"\n"
+"final readonly class Page\n"
+"{\n"
+"    private function __construct(\n"
+"        public string $id,\n"
+"        public string $title,\n"
+"        public string $text,\n"
+"        public DateTimeImmutable $createdAt,\n"
+"        public DateTimeImmutable $updatedAt,\n"
+"        public ?DateTimeImmutable $deletedAt = null,\n"
+"    ) {}\n"
+"\n"
+"    public static function create(\n"
+"        string $id,\n"
+"        string $title,\n"
+"        string $text,\n"
+"        ?DateTimeImmutable $createdAt = null,\n"
+"        ?DateTimeImmutable $updatedAt = null,\n"
+"        ?DateTimeImmutable $deletedAt = null,\n"
+"    ): self {\n"
+"        return new self(\n"
+"            id: $id,\n"
+"            title: $title,\n"
+"            text: $text,\n"
+"            createdAt: $createdAt ?? new DateTimeImmutable(),\n"
+"            updatedAt: $updatedAt ?? new DateTimeImmutable(),\n"
+"            deletedAt: $deletedAt,\n"
+"        );\n"
+"    }\n"
+"\n"
+"    public function getSlug(): string\n"
+"    {\n"
+"        return (new Inflector())->toSlug($this->title);\n"
+"    }\n"
+"\n"
+"    public function isDeleted(): bool\n"
+"    {\n"
+"        return $this->deletedAt !== null;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/start/databases.md ../../guide/en/structure/domain.md
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Repository"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid ""
+"Now that we have entity, we need a place for methods to save an entity, "
+"delete it and select either a single page or multiple pages."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "Create `src/Web/Page/PageRepository.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Query\\Query;\n"
+"\n"
+"final readonly class PageRepository\n"
+"{\n"
+"    public function __construct(\n"
+"        private ConnectionInterface $connection,\n"
+"    ) {}\n"
+"\n"
+"    public function save(Page $page): void\n"
+"    {\n"
+"        $this->connection->createCommand()->upsert('{{%page}}', [\n"
+"            'id' => $page->id,\n"
+"            'title' => $page->title,\n"
+"            'slug' => $page->getSlug(),\n"
+"            'text' => $page->text,\n"
+"            'created_at' => $page->createdAt,\n"
+"            'updated_at' => $page->updatedAt,\n"
+"            'deleted_at' => $page->deletedAt,\n"
+"        ])->execute();\n"
+"    }\n"
+"\n"
+"    public function findOneBySlug(string $slug): ?Page\n"
+"    {\n"
+"        $data = (new Query($this->connection))\n"
+"            ->select('*')\n"
+"            ->from('{{%page}}')\n"
+"            ->where('slug = :slug', ['slug' => $slug])\n"
+"            ->one();\n"
+"\n"
+"        if ($data === null) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $this->createPage($data);\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @return iterable<Page>\n"
+"     */\n"
+"    public function findAll(): iterable\n"
+"    {\n"
+"        $data = (new Query($this->connection))\n"
+"            ->select('*')\n"
+"            ->from('{{%page}}')\n"
+"            ->all();\n"
+"\n"
+"        foreach ($data as $page) {\n"
+"            yield $this->createPage($page);\n"
+"        }\n"
+"    }\n"
+"\n"
+"    private function createPage(array $data): Page\n"
+"    {\n"
+"        return Page::create(\n"
+"            id: $data['id'],\n"
+"            title: $data['title'],\n"
+"            text: $data['text'],\n"
+"            createdAt: new DateTimeImmutable($data['created_at']),\n"
+"            updatedAt: new DateTimeImmutable($data['updated_at']),\n"
+"            deletedAt: $data['deleted_at'] ? new DateTimeImmutable($data['deleted_at']) : null,\n"
+"        );\n"
+"    }\n"
+"\n"
+"    public function delete(string $id): void\n"
+"    {\n"
+"        $this->connection->createCommand()->delete('{{%page}}', ['id' => $id])->execute();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/start/databases.md
+#, no-wrap
+msgid "Actions and routes"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
+msgid "You need actions to:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../../guide/en/start/databases.md
+msgid "List all pages."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../../guide/en/start/databases.md
+msgid "View a page."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../../guide/en/start/databases.md
+msgid "Delete a page."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../../guide/en/start/databases.md
+msgid "Create a page."
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../../guide/en/start/databases.md
+msgid "Edit a page."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/start/databases.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"

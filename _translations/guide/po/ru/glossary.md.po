@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2025-10-22 11:35+0000\n"
 "PO-Revision-Date: 2025-09-11 10:15+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "Asset refers to a resource file. Typically, it contains JavaScript or CSS code but can be any static content accessed via HTTP."
+msgid "Asset refers to a resource file. Typically, it contains JavaScript or CSS code but can be any static content accessed via HTTP.  Read more in [\"Assets\"](views/asset.md)."
 msgstr ""
 
 #. type: Title #
@@ -59,7 +59,7 @@ msgstr "конфигурация может быть:"
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores settings for an object, or a class of objects. Read more in [\"Configuration\"](concept/configuration.md)."
+msgid "The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores settings for an object, or a class of objects.  Read more in [\"Configuration\"](concept/configuration.md)."
 msgstr ""
 
 #. type: Title #
@@ -76,7 +76,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "Dependency Injection is a programming technique where an object injects a dependent object. [\"DI\"](concept/di-container.md)"
+msgid "Dependency Injection is a programming technique where an object injects a dependent object.  Read more in [\"Dependency injection and container\"](concept/di-container.md)."
 msgstr ""
 
 #. type: Title #
@@ -110,7 +110,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some action and pass processing to the next middleware. Read more in [\"Middleware\"](structure/middleware.md)."
+msgid "Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some action and pass processing to the next middleware.  Read more in [\"Middleware\"](structure/middleware.md)."
 msgstr ""
 
 #. type: Title ##
@@ -121,7 +121,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "The module is a sub-application that groups some code based on a use-case. It's typically used within the main application and may contain URL handlers or console commands."
+msgid "The module is a namespace that groups some code based on a use-case. It's typically used within the main application and may contain any source code, define additional URL handlers or console commands."
 msgstr ""
 
 #. type: Title #
@@ -140,7 +140,7 @@ msgstr ""
 #: ../../guide/en/glossary.md
 #, fuzzy
 #| msgid "[PHP manual: security](https://www.php.net/manual/en/security.php)"
-msgid "Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php)."
+msgid "Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php) to group multiple classes under a certain name."
 msgstr "[Руководство по PHP: безопасность](https://www.php.net/manual/en/security.php)"
 
 #. type: Title #
@@ -191,7 +191,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "A queue is similar to a stack. Queue follows First-In-First-Out methodology."
+msgid "A queue is similar to a stack. Queue follows First-In-First-Out methodology.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package."
 msgstr ""
 
 #. type: Title #
@@ -208,5 +208,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/glossary.md
-msgid "A Vendor is an organization or individual developer providing code in the form of packages. It also may refer to [Composer's `vendor` directory](https://getcomposer.org/doc/)."
+msgid "A Vendor is an organization or individual developer providing code in the form of packages.  It also may refer to [Composer's `vendor` directory](https://getcomposer.org/doc/)."
 msgstr ""
