@@ -9,7 +9,7 @@ You're free to add or delete code and overall change it as you need.
 
 ## Functionality <span id="functionality"></span>
 
-The installed application has only the homepage, which displays when you access the URL `http://localhost/`.
+The installed application contains only one page, accessible at `http://localhost/`.
 It shares a common layout that you can reuse on further pages.
 
 <!--
@@ -75,7 +75,22 @@ the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/mast
 
 The following diagram shows how an application handles a request.
 
-![Request Lifecycle](img/request-lifecycle.svg)
+```mermaid
+flowchart LR
+  user[User's client] --> index
+  index[index.php] --> DI[Initialize Dependency Container]
+  config[configs] -.-> DI
+  DI --> RequestFactory[RequestFactory]
+  RequestFactory -->|Request| app[Application]
+  app -->|Request| middleware[Middleware]
+  middleware -->|Request| router[Router]
+  router -->|Request| action[Action Handler]
+  action -->|Response| emitter[SapiEmitter]
+  router -->|Response| emitter
+  middleware -->|Response| emitter
+  app -->|Response| emitter
+  emitter --> user
+```
 
 1. A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`.
 2. The entry script with the help of the application runner loads
