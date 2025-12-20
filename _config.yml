@@ -3,6 +3,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+baseurl: "/docs"
 theme: minima
 relative_links:
   enabled: true
