@@ -1,7 +1,3 @@
----
-render_with_liquid: false
----
-
 # Template engines
 
 Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the
@@ -60,6 +56,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 
 **Filters and Functions**: Twig provides many built-in filters and functions:
 
+{% raw %}
 ```twig
 {# Date formatting #}
 <time>{{ post.createdAt|date('Y-m-d H:i') }}</time>
@@ -70,6 +67,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {# URL generation #}
 <a href="{{ path('user.profile', {'id': user.id}) }}">Profile</a>
 ```
+{% endraw %}
 
 **Template Inheritance**: Twig supports template inheritance:
 
