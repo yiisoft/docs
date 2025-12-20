@@ -1,3 +1,7 @@
+---
+render_with_liquid: false
+---
+
 # Template engines
 
 Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the
@@ -16,7 +20,6 @@ composer require yiisoft/view-twig
 
 Now you can use `.twig` templates. For example, `views/site/about.twig`:
 
-{% raw %}
 ```twig
 {# Variable type hints for IDE support #}
 {# @var user \App\Entity\User #}
@@ -42,13 +45,11 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
     {% endif %}
 </div>
 ```
-{% endraw %}
 
 ### Twig Features
 
 **Automatic Escaping**: Twig automatically escapes variables for HTML context:
 
-{% raw %}
 ```twig
 {# Automatically escaped #}
 <h1>{{ title }}</h1>
@@ -56,11 +57,9 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {# Raw output (use carefully) #}
 <div>{{ content|raw }}</div>
 ```
-{% endraw %}
 
 **Filters and Functions**: Twig provides many built-in filters and functions:
 
-{% raw %}
 ```twig
 {# Date formatting #}
 <time>{{ post.createdAt|date('Y-m-d H:i') }}</time>
@@ -71,12 +70,10 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {# URL generation #}
 <a href="{{ path('user.profile', {'id': user.id}) }}">Profile</a>
 ```
-{% endraw %}
 
 **Template Inheritance**: Twig supports template inheritance:
 
 **views/layout/main.twig**
-{% raw %}
 ```twig
 <!DOCTYPE html>
 <html>
@@ -90,10 +87,8 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 </body>
 </html>
 ```
-{% endraw %}
 
 **views/site/about.twig**
-{% raw %}
 ```twig
 {% extends "layout/main.twig" %}
 
@@ -104,7 +99,6 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
     <p>Welcome to our website!</p>
 {% endblock %}
 ```
-{% endraw %}
 
 ### Rendering Twig Templates
 
