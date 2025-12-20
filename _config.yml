@@ -3,7 +3,6 @@ defaults:
       path: ""
     values:
       layout: "base"
+theme: minima
 relative_links:
   enabled: true
-exclude:
-  - "**/*.md"
