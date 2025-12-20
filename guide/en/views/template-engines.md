@@ -72,6 +72,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 **Template Inheritance**: Twig supports template inheritance:
 
 **views/layout/main.twig**
+{% raw %}
 ```twig
 <!DOCTYPE html>
 <html>
@@ -85,8 +86,10 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 </body>
 </html>
 ```
+{% endraw %}
 
 **views/site/about.twig**
+{% raw %}
 ```twig
 {% extends "layout/main.twig" %}
 
@@ -97,6 +100,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
     <p>Welcome to our website!</p>
 {% endblock %}
 ```
+{% endraw %}
 
 ### Rendering Twig Templates
 
