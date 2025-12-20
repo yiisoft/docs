@@ -56,6 +56,7 @@ Deploy Forgejo as a container registry.
 
 Create a file `forgejo-stack.yml`:
 
+{% raw %}
 ```yaml
 version: '3.8'
 
@@ -80,6 +81,7 @@ networks:
   caddy_public:
     external: true
 ```
+{% endraw %}
 
 Deploy Forgejo:
 
@@ -97,6 +99,7 @@ Deploy Gitea as a container registry.
 
 Create a file `gitea-stack.yml`:
 
+{% raw %}
 ```yaml
 version: '3.8'
 
@@ -121,6 +124,7 @@ networks:
   caddy_public:
     external: true
 ```
+{% endraw %}
 
 Deploy Gitea:
 
