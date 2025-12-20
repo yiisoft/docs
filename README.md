@@ -13,7 +13,7 @@ modern web applications.
 
 ### The Definitive Guide
 
-The comprehensive guide covering all aspects of framework.
+The comprehensive guide covering all aspects of the framework.
 
 - [English](guide/en)
 - [Español (Spanish)](guide/es)
