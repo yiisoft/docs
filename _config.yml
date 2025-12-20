@@ -1,5 +1,4 @@
 defaults:
   - scope:
       path: ""
-    values:
-      layout: null
+    values: {}

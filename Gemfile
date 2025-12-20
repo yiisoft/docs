@@ -7,4 +7,5 @@ gem "minima", "~> 2.5.2"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag", "~> 2.8.0"
+  gem "jekyll-optional-front-matter", "~> 0.3.2"
 end
