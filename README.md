@@ -1,4 +1,10 @@
-# Yii3 Documentation
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px" alt="Yii">
+    </a>
+    <h1 align="center">Yii3 Documentation</h1>
+    <br>
+</p>
 
 This repository contains the official documentation for Yii3 Framework, a high-performance PHP framework for building 
 modern web applications.
@@ -9,8 +15,6 @@ modern web applications.
 
 The comprehensive guide covering all aspects of framework.
 
-**Available Languages:**
-
 - [English](guide/en)
 - [Español (Spanish)](guide/es)
 - [Bahasa Indonesia](guide/id)
@@ -20,8 +24,6 @@ The comprehensive guide covering all aspects of framework.
 ### Community Cookbook
 
 A collection of community-contributed tips, tricks, and solutions for common Yii development tasks.
-
-**Available Languages:**
 
 - [English](cookbook/en)
 - [Русский (Russian)](cookbook/ru)
