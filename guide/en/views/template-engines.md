@@ -16,6 +16,7 @@ composer require yiisoft/view-twig
 
 Now you can use `.twig` templates. For example, `views/site/about.twig`:
 
+{% raw %}
 ```twig
 {# Variable type hints for IDE support #}
 {# @var user \App\Entity\User #}
@@ -41,11 +42,13 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
     {% endif %}
 </div>
 ```
+{% endraw %}
 
 ### Twig Features
 
 **Automatic Escaping**: Twig automatically escapes variables for HTML context:
 
+{% raw %}
 ```twig
 {# Automatically escaped #}
 <h1>{{ title }}</h1>
@@ -53,6 +56,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {# Raw output (use carefully) #}
 <div>{{ content|raw }}</div>
 ```
+{% endraw %}
 
 **Filters and Functions**: Twig provides many built-in filters and functions:
 
