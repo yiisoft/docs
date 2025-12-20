@@ -2,7 +2,7 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: "default"
+      layout: "base"
 relative_links:
   enabled: true
 exclude:
