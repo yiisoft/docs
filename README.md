@@ -37,7 +37,7 @@ practices.
 
 ## Contributing
 
-We welcome contributions to improve the documentation, including translation.
+We welcome contributions to improve the documentation, including translations.
 Please see the [Documentation Guidelines](internals/014-docs.md) for information on how to contribute.
 
 ## License
