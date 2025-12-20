@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-19 11:32+0000\n"
+"POT-Creation-Date: 2025-12-20 13:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,9 +47,8 @@ msgstr ""
 #. type: Plain text
 #: ../../guide/en/start/workflow.md
 msgid ""
-"The installed application has only the homepage, which displays when you "
-"access the URL `http://localhost/`.  It shares a common layout that you can "
-"reuse on further pages."
+"The installed application contains only one page, accessible at `http://"
+"localhost/`.  It shares a common layout that you can reuse on further pages."
 msgstr ""
 
 #. type: Plain text
@@ -165,9 +164,24 @@ msgstr ""
 msgid "The following diagram shows how an application handles a request."
 msgstr ""
 
-#. type: Plain text
+#. type: Fenced code block (mermaid)
 #: ../../guide/en/start/workflow.md
-msgid "![Request Lifecycle](img/request-lifecycle.svg)"
+#, no-wrap
+msgid ""
+"flowchart LR\n"
+"  user[User's client] --> index\n"
+"  index[index.php] --> DI[Initialize Dependency Container]\n"
+"  config[configs] -.-> DI\n"
+"  DI --> RequestFactory[RequestFactory]\n"
+"  RequestFactory -->|Request| app[Application]\n"
+"  app -->|Request| middleware[Middleware]\n"
+"  middleware -->|Request| router[Router]\n"
+"  router -->|Request| action[Action Handler]\n"
+"  action -->|Response| emitter[SapiEmitter]\n"
+"  router -->|Response| emitter\n"
+"  middleware -->|Response| emitter\n"
+"  app -->|Response| emitter\n"
+"  emitter --> user\n"
 msgstr ""
 
 #. type: Bullet: '1. '
