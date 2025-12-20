@@ -1,5 +1,3 @@
 defaults:
-    - scope:
-          path: ""
-      values:
-          render_with_liquid: false
+  - scope:
+      path: ""
