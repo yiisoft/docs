@@ -28,6 +28,7 @@ jobs:
             --user $(id -u):$(id -g) \
             -v "${{ github.workspace }}:/srv/jekyll" \
             -w /srv/jekyll \
+            -e BUNDLE_PATH=/srv/jekyll/vendor/bundle \
             jekyll/jekyll:4.2.2 \
             bundle install
 
@@ -37,8 +38,9 @@ jobs:
             --user $(id -u):$(id -g) \
             -v "${{ github.workspace }}:/srv/jekyll" \
             -w /srv/jekyll \
+            -e BUNDLE_PATH=/srv/jekyll/vendor/bundle \
             jekyll/jekyll:4.2.2 \
-            jekyll build -d ./_site
+            bundle exec jekyll build -d ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
