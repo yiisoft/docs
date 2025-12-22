@@ -25,6 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           docker run --rm \
+            --user $(id -u):$(id -g) \
             -v "${{ github.workspace }}:/srv/jekyll" \
             -w /srv/jekyll \
             jekyll/jekyll:4.2.2 \
@@ -33,6 +34,7 @@ jobs:
       - name: Build site
         run: |
           docker run --rm \
+            --user $(id -u):$(id -g) \
             -v "${{ github.workspace }}:/srv/jekyll" \
             -w /srv/jekyll \
             jekyll/jekyll:4.2.2 \
