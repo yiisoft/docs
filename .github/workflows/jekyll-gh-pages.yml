@@ -18,17 +18,25 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: jekyll/jekyll:4.2.2
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
       - name: Install dependencies
-        run: bundle install
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -w /srv/jekyll \
+            jekyll/jekyll:4.2.2 \
+            bundle install
 
       - name: Build site
-        run: jekyll build -d ./_site
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -w /srv/jekyll \
+            jekyll/jekyll:4.2.2 \
+            jekyll build -d ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
