@@ -17,3 +17,7 @@ Thumbs.db
 
 # po4a .mo files
 *.mo
+
+# Jekyll
+/.jekyll-cache/
+/_site/
