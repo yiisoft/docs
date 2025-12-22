@@ -1,7 +1,3 @@
----
-render_with_liquid: false
----
-
 # Working with databases
 
 Yii doesn't dictate using a particular database or storage for your application.

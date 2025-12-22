@@ -1,7 +1,3 @@
----
-render_with_liquid: false
----
-
 # Template engines
 
 Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the

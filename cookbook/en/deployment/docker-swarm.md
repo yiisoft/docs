@@ -1,7 +1,3 @@
----
-render_with_liquid: false
----
-
 # Deploying Yii applications to Docker Swarm
 
 This guide walks you through deploying a Yii application to Docker Swarm from a blank server, using Caddy as a reverse proxy and a container registry (Forgejo or Gitea).
