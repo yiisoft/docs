@@ -1,4 +1,4 @@
-name: Update docs translation
+name: Update translations
 
 on:
   pull_request:
