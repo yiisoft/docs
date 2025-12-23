@@ -1,0 +1,14 @@
+{
+  "name": "yii-docs",
+  "version": "1.0.0",
+  "description": "Yii Documentation",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev"
+  },
+  "devDependencies": {
+    "mermaid": "^11.12.2",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  }
+}
