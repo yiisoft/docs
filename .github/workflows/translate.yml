@@ -26,7 +26,7 @@ jobs:
         with:
             image: arduanovdanil/po4a-fork:v0.73
             options: -v ${{ github.workspace }}:/src -w /src/_translations
-            run: po4a.conf
+            run: po4a po4a.conf
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
