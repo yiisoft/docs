@@ -4,7 +4,7 @@ export default withMermaid({
     base: '/docs/',
     title: 'Yii3 Documentation',
     ignoreDeadLinks: true,
-    head: [['link', {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'}]],
+    head: [['link', {rel: 'icon', href: '/docs/favicon.svg', type: 'image/svg+xml'}]],
     themeConfig: {
         logo: '/images/yii_logo.svg',
         lastUpdated: true,
