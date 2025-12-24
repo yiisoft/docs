@@ -18,14 +18,16 @@ jobs:
           ref: ${{ github.head_ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
+      - name: Prepare po4a configuration
+        run: _translations/prepare-config.sh
+
       - name: Use po4a
         uses: addnab/docker-run-action@v3
         with:
             image: arduanovdanil/po4a-fork:v0.73
-            options: -v ${{ github.workspace }}:/src
-            run: |
-                cd _translations
-                po4a po4a.cfg
+            options: -v ${{ github.workspace }}:/src -w /src/_translations
+            run: po4a.conf
+
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
