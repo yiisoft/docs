@@ -21,7 +21,7 @@ hero:
   class: homeHero2
   image:
     alt: Yii
-    src: /assets/logo-icon.svg
+    src: /images/yii_logo.svg
   name: 'Yii3 Framework'
   tagline: "A simple, powerful and fast framework. Meet the modern, definitive guide to Yii you've always wanted."
   text: Documentation

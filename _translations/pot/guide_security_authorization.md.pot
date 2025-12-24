@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 09:42+0000\n"
+"POT-Creation-Date: 2025-12-24 10:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,7 +269,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"![Simple RBAC hierarchy](/assets/guide/security/rbac-hierarchy-1.svg "
+"![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg "
 "\"Simple RBAC hierarchy\")"
 msgstr ""
 
@@ -609,7 +609,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"![RBAC hierarchy with a rule](/assets/guide/security/rbac-hierarchy-2.svg "
+"![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg "
 "\"RBAC hierarchy with a rule\")"
 msgstr ""
 
@@ -680,7 +680,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"![Access check](/assets/guide/security/rbac-access-check-1.svg \"Access "
+"![Access check](/images/guide/security/rbac-access-check-1.svg \"Access "
 "check\")"
 msgstr ""
 
@@ -708,7 +708,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"![Access check](/assets/guide/security/rbac-access-check-2.svg \"Access "
+"![Access check](/images/guide/security/rbac-access-check-2.svg \"Access "
 "check\")"
 msgstr ""
 
@@ -730,7 +730,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"![Access check](/assets/guide/security/rbac-access-check-3.svg \"Access "
+"![Access check](/images/guide/security/rbac-access-check-3.svg \"Access "
 "check\")"
 msgstr ""
 

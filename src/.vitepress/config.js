@@ -6,7 +6,7 @@ export default withMermaid({
     ignoreDeadLinks: true,
     head: [['link', {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'}]],
     themeConfig: {
-        logo: '/assets/logo-icon.svg',
+        logo: '/images/yii_logo.svg',
         lastUpdated: true,
         search: {
             provider: 'local'

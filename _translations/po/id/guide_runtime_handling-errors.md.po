@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 09:43+0000\n"
+"POT-Creation-Date: 2025-12-24 10:12+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -306,7 +306,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid "![View production](/assets/guide/runtime/view-production.png)"
+msgid "![View production](/images/guide/runtime/view-production.png)"
 msgstr ""
 
 #. type: Plain text
@@ -316,7 +316,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid "![View development with light theme](/assets/guide/runtime/view-development-light.png)"
+msgid "![View development with light theme](/images/guide/runtime/view-development-light.png)"
 msgstr ""
 
 #. type: Plain text
@@ -326,7 +326,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid "![View development with dark theme](/assets/guide/runtime/view-development-dark.png)"
+msgid "![View development with dark theme](/images/guide/runtime/view-development-dark.png)"
 msgstr ""
 
 #. type: Plain text

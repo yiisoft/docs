@@ -134,7 +134,7 @@ without a need to read many migrations.
 
 Either way, in the end, you'll get the following RBAC hierarchy:
 
-![Simple RBAC hierarchy](/assets/guide/security/rbac-hierarchy-1.svg "Simple
+![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg "Simple
 RBAC hierarchy")
 
 In case you want to build permission hierarchy dynamically, you need a UI or
@@ -376,7 +376,7 @@ $auth->addChild($author, $updateOwnPost);
 
 Now you've got the following hierarchy:
 
-![RBAC hierarchy with a rule](/assets/guide/security/rbac-hierarchy-2.svg
+![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg
 "RBAC hierarchy with a rule")
 
 
@@ -425,7 +425,7 @@ RBAC.
 If the current user is Jane with `ID=1` you are starting at `createPost` and
 trying to get to `Jane`:
 
-![Access check](/assets/guide/security/rbac-access-check-1.svg "Access
+![Access check](/images/guide/security/rbac-access-check-1.svg "Access
 check")
 
 To check if a user can update a post, you need to pass an extra parameter
@@ -440,7 +440,7 @@ if ($user->can('updatePost', ['post' => $post])) {
 Here is what happens if the current user is John:
 
 
-![Access check](/assets/guide/security/rbac-access-check-2.svg "Access
+![Access check](/images/guide/security/rbac-access-check-2.svg "Access
 check")
 
 You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`
@@ -450,7 +450,7 @@ If everything is fine, you will get to `author` assigned to John.
 
 In the case of Jane, it's a bit simpler since she is an admin:
 
-![Access check](/assets/guide/security/rbac-access-check-3.svg "Access
+![Access check](/images/guide/security/rbac-access-check-3.svg "Access
 check")
 
 ## Implementing your own access checker

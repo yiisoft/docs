@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 09:37+0000\n"
+"POT-Creation-Date: 2025-12-24 10:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid "![Middleware](/assets/guide/middleware.svg)"
+msgid "![Middleware](/images/guide/middleware.svg)"
 msgstr ""
 
 #. type: Plain text
@@ -71,7 +71,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid "![Middleware](/assets/guide/middleware_alternative.svg)"
+msgid "![Middleware](/images/guide/middleware_alternative.svg)"
 msgstr ""
 
 #. type: Title ##

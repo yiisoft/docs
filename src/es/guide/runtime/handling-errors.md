@@ -185,17 +185,17 @@ An Example of JSON rendering output with debugging mode turned on:
 
 Example of HTML rendering with debugging mode turned off:
 
-![View production](/assets/guide/runtime/view-production.png)
+![View production](/images/guide/runtime/view-production.png)
 
 Example of HTML rendering with debugging mode on and a light theme:
 
 ![View development with light
-theme](/assets/guide/runtime/view-development-light.png)
+theme](/images/guide/runtime/view-development-light.png)
 
 Example of HTML rendering with debugging mode on and a dark theme:
 
 ![View development with dark
-theme](/assets/guide/runtime/view-development-dark.png)
+theme](/images/guide/runtime/view-development-dark.png)
 
 The error catcher chooses how to render an exception based on `accept` HTTP
 header.  If it's `text/html` or any unknown content type, it will use the

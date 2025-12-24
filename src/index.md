@@ -11,7 +11,7 @@ hero:
       text: Get Started
       link: /guide/intro/what-is-yii.html
   image:
-    src: /assets/logo-icon.svg
+    src: /images/yii_logo.svg
     alt: Yii
 
 features:

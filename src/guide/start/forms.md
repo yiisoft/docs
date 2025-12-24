@@ -185,11 +185,11 @@ Also, the form has a "submit" button labeled "Say". If you click the "submit" bu
 that the field is required. If you enter a single character, the form displays an error message next to
 the problematic input field.
 
-![Form with a validation error](/assets/guide/start/form-error.png)
+![Form with a validation error](/images/guide/start/form-error.png)
 
 After you enter a valid message and click the "submit" button, the page echoes the data that you entered.
 
-![Form with a success message](/assets/guide/start/form-success.png)
+![Form with a success message](/images/guide/start/form-success.png)
 
 ## Summary <span id="summary"></span>
 

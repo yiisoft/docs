@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 09:40+0000\n"
+"POT-Creation-Date: 2025-12-24 10:12+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -301,7 +301,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
-msgid "![Form with a validation error](/assets/guide/start/form-error.png)"
+msgid "![Form with a validation error](/images/guide/start/form-error.png)"
 msgstr ""
 
 #. type: Plain text
@@ -311,7 +311,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
-msgid "![Form with a success message](/assets/guide/start/form-success.png)"
+msgid "![Form with a success message](/images/guide/start/form-success.png)"
 msgstr ""
 
 #. type: Title ##
