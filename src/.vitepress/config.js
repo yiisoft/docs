@@ -1,6 +1,4 @@
-import {withMermaid} from "vitepress-plugin-mermaid";
-
-export default withMermaid({
+export default {
     base: '/docs/',
     title: 'Yii3 Documentation',
     ignoreDeadLinks: true,
@@ -779,4 +777,4 @@ export default withMermaid({
             }
         }
     }
-})
+}
