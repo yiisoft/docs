@@ -21,7 +21,7 @@ export default {
             lang: 'en',
             themeConfig: {
                 editLink: {
-                    pattern: 'https://github.com/yiisoft/docs/edit/main/docs/:path'
+                    pattern: 'https://github.com/yiisoft/docs/edit/master/src/:path'
                 },
                 nav: [
                     {text: 'Guide', link: '/guide'},
