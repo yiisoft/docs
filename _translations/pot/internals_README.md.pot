@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/README.md
+#, no-wrap
+msgid "Yii Framework Internals"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/README.md
+msgid ""
+"This section contains documentation for developers contributing to the Yii "
+"framework itself.  It covers guidelines, workflows, and best practices for "
+"maintaining and developing Yii packages."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/README.md
+#, no-wrap
+msgid "Table of Contents"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[000 — Packages](000-packages.md) - Package structure and naming conventions"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[001 — Yii goal and values](001-yii-values.md) - Project goals and core "
+"values"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[002 — Issue workflow](002-issue-workflow.md) - How to handle issues"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[003 — Roadmap](003-roadmap.md) - Development roadmap and future plans"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[004 — Namespaces](004-namespaces.md) - Namespace conventions"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[005 — Yii development tool](005-development-tool.md) - Development tools "
+"for Yii packages"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[006 — Git commit messages](006-git-commit-messages.md) - Commit message "
+"format"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[007 — Exceptions](007-exceptions.md) - Exception handling guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[008 — Interfaces](008-interfaces.md) - Interface design principles"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[009 — Design Decisions](009-design-decisions.md) - Architectural and design "
+"decisions"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[010 — Code style](010-code-style.md) - PHP code style guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[011 — Error correction](011-error-correction.md) - Error handling and "
+"correction"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[012 — Tests](012-tests.md) - Testing guidelines and practices"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[013 — Code review](013-code-review.md) - Code review process and guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[014 — Documentation](014-docs.md) - Documentation writing guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[015 — PhpStorm metadata and attributes](015-phpstorm.md) - PhpStorm "
+"integration"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[016 — Security workflow](016-security-workflow.md) - Security issue handling"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[017 — Tags](017-tags.md) - Git tagging conventions"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid "[018 — Widgets](018-widgets.md) - Widget development guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[019 — View code style](019-view-code-style.md) - Code style for view "
+"templates"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[020 — Package release](020-package-release.md) - Release process for "
+"packages"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[021 — Changelog and upgrade](021-changelog-upgrade.md) - Maintaining "
+"changelogs and upgrade notes"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/README.md
+msgid ""
+"[022 — Config groups](022-config-groups.md) - Configuration group "
+"organization"
+msgstr ""

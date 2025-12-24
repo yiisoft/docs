@@ -1,0 +1,237 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Bullet: '    - '
+#: ../src/en/guide/start/databases.md ../src/en/internals/000-packages.md
+msgid "..."
+msgstr ""
+
+#. type: Title #
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "000 — Packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "Yii3 team divided the framework into several packages that conform to the following agreements."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "For all packages, the GitHub repository name exactly matches the Packagist package name."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "For a full list of packages and their building status, see [status page at yiiframework.com](https://www.yiiframework.com/status/3.0)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "Yii-specific packages (framework and extensions)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/000-packages.md
+msgid "modules: `yii-module-users`, `yii-module-pages`"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/000-packages.md
+msgid "themes: `yii-theme-adminlte`, `yii-theme-hyde`"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/000-packages.md
+msgid "widgets: `yii-widget-datepicker`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "titled as \"Yii Framework ...\""
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "may have any dependencies and Yii-specific code"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "General purpose packages (libraries)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "you can use these independently of Yii Framework"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "named as `yiisoft/something` without yii-prefix"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "titled as \"Yii ...\""
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "must not have dependencies on any Yii-specific packages"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "should have as fewer dependencies as possible"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "Configs and defaults"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "The following applies to both Yii-specific packages and general purpose packages:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Package may have `config` directory with Yii-specific defaults."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Package may have \"config-plugin\" in \"extra\" section of `composer.json`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Package mustn't have dependencies in `require` section of `composer.json` that are used in `config` only."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "You should namespace parameters with `vendor/package-name`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    'vendor/package-name' => [\n"
+"        'param1' => 1,\n"
+"        'param2' => 2,\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "Versions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "All packages follow [SemVer](https://semver.org/) versioning:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "`x.*.*` - incompatible API changes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "`*.x.*` - add functionality (backwards-compatible)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "`*.*.x` - bug fixes (backwards-compatible)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "The first stable version should be 1.0.0."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "Each package version number doesn't depend on any other package version or framework name/version, only on its own public contract.  The framework as a whole has the \"Yii3\" name."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "It's alright to use packages with different major versions together, as long as they're compatible."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "PHP versions support"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+msgid "The support of PHP versions supported for a package depends on [PHP versions life cycle](https://www.php.net/supported-versions.php)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Package versions with active support MUST support all PHP versions that have active support."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Both packages and application templates MUST have supported versions that receive bug and security fixes.  These SHOULD correspond to PHP versions receiving security fixes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Packages and application templates MIGHT have supported versions that work with unsupported PHP versions."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/000-packages.md
+msgid "Bumping the minimal PHP version in a package or an application template is a minor change."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "composer.json"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/000-packages.md
+#, no-wrap
+msgid "A logical OR operator in version ranges MUST use double pipe (`||`). For example: `\"yiisoft/arrays\": \"^1.0 || ^2.0\"`.   \n"
+msgstr ""

@@ -1,0 +1,84 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/en/guide/concept/autoloading.md
+#: ../src/en/guide/security/best-practices.md
+#: ../src/en/guide/structure/domain.md
+#: ../src/en/guide/tutorial/console-applications.md
+#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Ссылки"
+
+#. type: Title #
+#: ../src/en/internals/004-namespaces.md
+#, no-wrap
+msgid "004 — Namespaces"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/004-namespaces.md
+#, fuzzy
+#| msgid "That's equal to the following:"
+msgid "Package namespace rules are the following:"
+msgstr "Это соответствует:"
+
+#. type: Bullet: '1. '
+#: ../src/en/internals/004-namespaces.md
+msgid "PascalCase is used for namespace parts."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/internals/004-namespaces.md
+msgid "Root vendor namespace is `Yiisoft`."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/en/internals/004-namespaces.md
+msgid "Package name parts are used in namespace."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/en/internals/004-namespaces.md
+msgid "Adjective is added to a noun and is a single part."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/004-namespaces.md
+msgid "Some examples:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/004-namespaces.md
+#, no-wrap
+msgid ""
+"| Package                    | Namespace                 |\n"
+"|----------------------------|---------------------------|\n"
+"| yiisoft/yii-web            | Yiisoft\\Yii\\Web           |\n"
+"| yiisoft/di                 | Yiisoft\\Di                |\n"
+"| yiisoft/db-mysql           | Yiisoft\\Db\\Mysql          |\n"
+"| yiisoft/friendly-exception | Yiisoft\\FriendlyException |\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/004-namespaces.md
+msgid "[International forum discussion](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)"
+msgstr ""

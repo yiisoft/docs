@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-19 11:32+0000\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid "Running applications"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "After installing Yii, you have a working Yii application.  This section "
 "introduces the application's built-in functionality, how the code is "
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Note that unlike the framework itself, after you install a project template, "
 "it's all yours.  You're free to add or delete code and overall change it as "
@@ -39,21 +39,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid "Functionality <span id=\"functionality\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
-"The installed application has only the homepage, which displays when you "
-"access the URL `http://localhost/`.  It shares a common layout that you can "
-"reuse on further pages."
+"The installed application contains only one page, accessible at `http://"
+"localhost/`.  It shares a common layout that you can reuse on further pages."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "<!--\n"
@@ -64,7 +63,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "In addition to the web application, you can access a console script via "
 "`APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to "
@@ -73,20 +72,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid "Application structure <span id=\"application-structure\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "The most important directories and files in your application are (assuming "
 "the application's root directory is `app`):"
 msgstr ""
 
 #. type: Fenced code block
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "assets/                 Asset bundle source files.\n"
@@ -118,7 +117,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "In general, the files in the application fall into two groups: those under "
 "`app/public` and those under other directories. You can access the former "
@@ -127,7 +126,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Each application has an entry script `public/index.php`, the only web-"
 "accessible PHP script in the application.  The entry script uses an "
@@ -140,7 +139,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Depending on the middleware you use, the application may behave differently. "
 "By default, a router uses the requested URL and configuration to choose a "
@@ -148,37 +147,52 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "You can learn more about the application template from the [yiisoft/app "
 "package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid "The following diagram shows how an application handles a request."
 msgstr ""
 
-#. type: Plain text
-#: ../../guide/en/start/workflow.md
-msgid "![Request Lifecycle](img/request-lifecycle.svg)"
+#. type: Fenced code block (mermaid)
+#: ../src/en/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"flowchart LR\n"
+"  user[User's client] --> index\n"
+"  index[index.php] --> DI[Initialize Dependency Container]\n"
+"  config[configs] -.-> DI\n"
+"  DI --> RequestFactory[RequestFactory]\n"
+"  RequestFactory -->|Request| app[Application]\n"
+"  app -->|Request| middleware[Middleware]\n"
+"  middleware -->|Request| router[Router]\n"
+"  router -->|Request| action[Action Handler]\n"
+"  action -->|Response| emitter[SapiEmitter]\n"
+"  router -->|Response| emitter\n"
+"  middleware -->|Response| emitter\n"
+"  app -->|Response| emitter\n"
+"  emitter --> user\n"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "A user makes a request to the [entry script](../structure/entry-script.md) "
 "`public/index.php`."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "The entry script with the help of the application runner loads the container "
 "[configuration](../concept/configuration.md) and creates an [application](../"
@@ -187,47 +201,47 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Request factory creates a request object based on a raw request that came "
 "from a user."
 msgstr ""
 
 #. type: Bullet: '4. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Application passes a request object through a middleware array configured. "
 "One of these is typically a router."
 msgstr ""
 
 #. type: Bullet: '5. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "The Router finds out what handler to execute based on request and "
 "configuration."
 msgstr ""
 
 #. type: Bullet: '6. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid "The handler may load some data, possibly from a database."
 msgstr ""
 
 #. type: Bullet: '7. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "The handler forms a response by using data. Either directly or with the help "
 "of the view package."
 msgstr ""
 
 #. type: Bullet: '8. '
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 msgid ""
 "Emitter receives the response and takes care of sending the response to the "
 "user's browser."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/start/workflow.md
+#: ../src/en/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,25 +15,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Title #
-#: ../../guide/en/concept/immutability.md
+#. type: Title ##
+#: ../src/en/guide/concept/immutability.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Immutability"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "Immutability means an object's state cannot change after it has been created.  Instead of modifying an instance, you create a new instance with the desired changes.  This approach is common for value objects such as Money, IDs, and DTOs. It helps to avoid accidental side effects: methods cannot silently change shared state, which makes code easier to reason about."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Mutable pitfalls (what we avoid)"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid ""
 "// A shared base query built once and reused:\n"
@@ -48,18 +49,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Creating an immutable object in PHP"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "There is no direct way to modify an instance, but you can use clone to create a new instance with the desired changes.  That is what `with*` methods do."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid ""
 "final class Money\n"
@@ -137,17 +138,17 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "We mark the class `final` to prevent subclass mutations; alternatively, design for extension carefully."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "Validate in the constructor and `with*` methods so every instance is always valid."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid ""
 "> [!TIP]\n"
@@ -156,23 +157,23 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Using clone (and why it is inexpensive)"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "PHP's clone performs a shallow copy of the object. For immutable value objects that contain only scalars or other immutable objects, shallow cloning is enough and fast. In modern PHP, cloning small value objects is inexpensive in both time and memory."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "If your object holds mutable sub-objects that must also be copied, implement `__clone` to deep-clone them:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid ""
 "final class Order\n"
@@ -202,22 +203,22 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Usage style"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "Build a value object once and pass it around. If you need a change, use a `with*` method that returns a new instance."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "Prefer scalar/immutable fields inside immutable objects; if a field can mutate, isolate it and deep-clone in `__clone` when needed."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/concept/immutability.md
+#: ../src/en/guide/concept/immutability.md
 msgid "Immutability aligns well with Yii's preference for predictable, side-effect-free code and makes services, caching, and configuration more robust."
 msgstr ""

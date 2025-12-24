@@ -42,7 +42,6 @@ msgstr ""
 #. type: Fenced code block (sh)
 #: ../../guide/en/views/view-injections.md
 #, fuzzy, no-wrap
-#| msgid "composer require yiisoft/cache\n"
 msgid "composer require yiisoft/yii-view-renderer\n"
 msgstr "composer require yiisoft/cache\n"
 

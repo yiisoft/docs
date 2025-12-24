@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,24 +16,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. type: Title #
-#: en/concept/configuration.md en/concept/events.md
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md
+#: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "Events allow you to make custom code executed at certain execution points without modifying existing code.  You can attach a custom code called \"handler\" to an event so that when the event is triggered, the handler gets executed automatically."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "For example, when a user is signed up, you need to send a welcome email. You can do it right in the `SignupService` but then, when you additionally need to resize user's avatar image, you'll have to change `SignupService` code again. In other words, `SignupService` will be coupled to both code sending welcome email and code resizing avatar image."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event\n"
@@ -43,29 +44,29 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "For raising events and attaching handlers to these events, Yii has a special service called event dispatcher.  It's available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher)."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid "DI container <span id=\"di-container\"></span>"
 msgid "Event Handlers <span id=\"event-handlers\"></span>"
 msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "An event handler is [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed when the event it's attached to is triggered."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "The signature of an event handler is:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "function (EventClass $event) {\n"
@@ -74,19 +75,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
 msgid "Attaching event handlers <span id=\"attaching-event-handlers\"></span>"
 msgstr "Внедрение зависимостей <span id=\"injecting-dependencies\"></span>"
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "You can attach a handler to an event like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
@@ -106,42 +107,42 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "The `attach()` method is accepting a callback. Based on the type of this callback argument, the event type is determined."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid "Event handlers order"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "You may attach one or more handlers to a single event. When an event is triggered, the attached handlers will be called in the order that they were attached to the event. In case an event implements `Psr\\EventDispatcher\\StoppableEventInterface`, event handler can stop executing the rest of the handlers that follow it if `isPropagationStopped()` returns `true`."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "In general, it's better not to rely on the order of event handlers."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Raising events <span id=\"raising-events\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy
 #| msgid "That's equal to the following:"
 msgid "Events are raised like the following:"
 msgstr "Это соответствует:"
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
@@ -165,17 +166,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "First, you create an event supplying it with data that may be useful for handlers. Then you dispatch the event."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "The event class itself may look like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid ""
 #| "final class MyService implements MyServiceInterface\n"
@@ -211,18 +212,18 @@ msgstr ""
 "    }\n"
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid "Events hierarchy"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "Events don't have any name or wildcard matching on purpose. Event class names and class/interface hierarchy and composition could be used to achieve great flexibility:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "interface DocumentEvent\n"
@@ -239,12 +240,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "With the interface, you can listen to all document-related events:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid ""
 "$provider->attach(function (DocumentEvent $event) {\n"
@@ -253,31 +254,31 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
 msgid "Detaching event handlers <span id=\"detaching-event-handlers\"></span>"
 msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "To detach a handler from an event you can call `detach()` method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, no-wrap
 msgid "$provider->detach(DocmentEvent::class);\n"
 msgstr ""
 
 #. type: Title ##
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 #, fuzzy, no-wrap
 #| msgid "Configuring SSL peer validation"
 msgid "Configuring application events"
 msgstr "Настройка проверки SSL-сертификата"
 
 #. type: Plain text
-#: en/concept/events.md
+#: ../src/en/guide/concept/events.md
 msgid "You usually assign event handlers via application config. See [\"Configuration\"](configuration.md) for details."
 msgstr ""

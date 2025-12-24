@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-09-04 07:25+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-09-05 12:25+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,14 +17,26 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.7\n"
 
+#. type: Title ##
+#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/en/guide/concept/autoloading.md
+#: ../src/en/guide/security/best-practices.md
+#: ../src/en/guide/structure/domain.md
+#: ../src/en/guide/tutorial/console-applications.md
+#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Referencias"
+
 #. type: Title #
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 #, no-wrap
 msgid "Class autoloading"
 msgstr "Autocarga de Clases (Autoloading)"
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages without the need to `require` their file explicitly.  When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file."
 msgstr ""
 "Dado que Yii utiliza [Composer](https://getcomposer.org) para administar paquetes, las clases de esos paquetes son automaticamente\n"
@@ -33,14 +45,14 @@ msgstr ""
 "se debe invocar el autocargador `/vendor/autoload.php` con `require_once` en el script de entrada `index.php`."
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "You can use autoloader not only for the packages installed, but for your application as well since it's also a package.  To load classes of a certain namespace, add the following to `composer.json`:"
 msgstr ""
 "El autocargador no se utiliza solamente para los paquetes que se instalan, tambien se utiliza para su aplicación que también es un paquete.\n"
 "Para cargar clases desde cierto espacio de nombres (namespaces), lo siguiente debe ser añadido a `composer.json`:"
 
 #. type: Fenced code block (json)
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -60,29 +72,23 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "Where `App\\\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces will start loading automatically."
 msgstr ""
 "Donde `App\\\\` es el espacio de nombre raiz (namespace), y `src/` es la carpeta donde se ubican las clases. Se pueden añadir distintos namespaces y carpetas si es necesario.\n"
 "Una vez listo, ejecuta `composer dump-autoload` y las clases de los espacios de nombres serán cargados automaticamente."
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "If you need development-environment-specific autoloading that isn't used when executing Composer with `--no-dev` flag, add it to `autoload-dev` section instead of `autoload`."
 msgstr ""
 
-#. type: Title ##
-#: en/concept/autoloading.md
-#, no-wrap
-msgid "References"
-msgstr "Referencias"
-
 #. type: Bullet: '- '
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
 msgstr "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
 
 #. type: Bullet: '- '
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
 msgstr "[Guía de Composer sobre autocarga](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."

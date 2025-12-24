@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-09-04 07:25+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-09-05 10:51+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,14 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.7\n"
 
+#. type: Title ##
+#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/en/guide/concept/autoloading.md
+#: ../src/en/guide/security/best-practices.md
+#: ../src/en/guide/structure/domain.md
+#: ../src/en/guide/tutorial/console-applications.md
+#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Referensi"
+
 #. type: Title #
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 #, no-wrap
 msgid "Class autoloading"
 msgstr "Class autoloading"
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages without the need to `require` their file explicitly.  When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file."
 msgstr ""
 "Karena Yii menggunakan [Composer](https://getcomposer.org) untuk mengelola paket, Yii secara otomatis memuat kelas dari paket-paket tersebut\n"
@@ -32,14 +44,14 @@ msgstr ""
 "Untuk menggunakannya, lakukan `require_once` terhadap autoloader `/vendor/autoload.php` di file entry point `index.php` Anda."
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "You can use autoloader not only for the packages installed, but for your application as well since it's also a package.  To load classes of a certain namespace, add the following to `composer.json`:"
 msgstr ""
 "Anda dapat menggunakan autoloader tidak hanya untuk paket yang diinstal, tetapi juga untuk aplikasi Anda sendiri karena aplikasi Anda juga merupakan sebuah paket.\n"
 "Untuk memuat kelas-kelas dari namespace tertentu, tambahkan berikut ini ke `composer.json`:"
 
 #. type: Fenced code block (json)
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -59,7 +71,7 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "Where `App\\\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces will start loading automatically."
 msgstr ""
 "Di mana `App\\\\` adalah namespace akar dan `src/` adalah direktori tempat kelas-kelas Anda berada. Anda dapat menambahkan lebih banyak sumber (source roots) jika\n"
@@ -67,24 +79,18 @@ msgstr ""
 "akan mulai dimuat secara otomatis."
 
 #. type: Plain text
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "If you need development-environment-specific autoloading that isn't used when executing Composer with `--no-dev` flag, add it to `autoload-dev` section instead of `autoload`."
 msgstr ""
 "Jika Anda membutuhkan autoloading khusus lingkungan pengembangan yang tidak digunakan saat menjalankan Composer dengan flag `--no-dev`,\n"
 "tambahkan ke bagian `autoload-dev` alih-alih `autoload`."
 
-#. type: Title ##
-#: en/concept/autoloading.md
-#, no-wrap
-msgid "References"
-msgstr "Referensi"
-
 #. type: Bullet: '- '
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
 msgstr "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
 
 #. type: Bullet: '- '
-#: en/concept/autoloading.md
+#: ../src/en/guide/concept/autoloading.md
 msgid "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
 msgstr "[Panduan Composer tentang autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."

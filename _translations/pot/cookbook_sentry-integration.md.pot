@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:52+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-swoole.md
+#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
+#: ../src/en/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
 #. type: Title #
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Sentry integration"
 msgstr ""
 
 #. type: Title ##
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "What is Sentry"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid ""
 "[Sentry](https://sentry.io/) is a tool for monitoring and debugging application stability and performance.\n"
@@ -37,7 +48,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "Most often, Sentry is used for monitoring errors (exceptions).  You can "
 "enrich errors with context to better understand the problem: - Request "
@@ -46,44 +57,38 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "You can find the full list of features on the official website: https://"
 "sentry.io/welcome/"
 msgstr ""
 
-#. type: Title ##
-#: en/sentry-integration.md
-#, no-wrap
-msgid "Installation"
-msgstr ""
-
 #. type: Title ###
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Install the package"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "Install the required package `yiisoft/yii-sentry` with the following command:"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "composer require yiisoft/yii-sentry --prefer-dist\n"
 msgstr ""
 
 #. type: Title ###
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Install an HTTP driver"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "The [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) "
 "library requires the `php-http/httplug` package and any HTTP driver.  In the "
@@ -91,53 +96,56 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "> You can find the list of all adapters on [this page](https://docs.php-http.org/en/latest/clients.html#clients-adapters).\n"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid "To install the packages, run the following command:"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "composer require php-http/httplug php-http/guzzle7-adapter --prefer-dist\n"
 msgstr ""
 
 #. type: Title ##
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
 msgstr ""
 
 #. type: Title ###
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Get and store the token"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid "Next, configure the application."
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid "First, register at [Sentry](https://sentry.io) and create a project."
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "Then, in the project settings on the “General Settings” tab, find the "
 "“Security Token” field and copy its value."
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid ""
 "Now put this token into the package configuration. By default, the config is located at `config/packages/yiisoft/yii-sentry/config/params.php`.\n"
@@ -145,7 +153,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (diff)
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid ""
 "'yiisoft/yii-sentry' => [\n"
@@ -158,25 +166,25 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Configure the HTTP client"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid "After installing the HTTP client, configure it."
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "Create the file `config/common/sentry.php` and put the following code into "
 "it:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -195,31 +203,31 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Integration"
 msgstr ""
 
 #. type: Title ###
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid "Web"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid "Sentry support for `web` is implemented as middleware."
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "That means you only need to add `SentryMiddleware` to the global middleware "
 "list in `config/web/application.php`:"
 msgstr ""
 
 #. type: Fenced code block (diff)
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -242,14 +250,14 @@ msgid ""
 "];\n"
 msgstr ""
 
-#. type: Title ###
-#: en/sentry-integration.md
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md ../src/en/internals/003-roadmap.md
 #, no-wrap
 msgid "Console"
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "Sentry supports `console` via a handler for the [ConsoleEvents::ERROR]"
 "(https://symfony.com/doc/current/components/console/events.html#the-"
@@ -257,7 +265,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/sentry-integration.md
+#: ../src/en/cookbook/sentry-integration.md
 msgid ""
 "The package provides a configuration file that automatically subscribes the "
 "application to this event."

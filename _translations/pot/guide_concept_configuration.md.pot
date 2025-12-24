@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,35 +16,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Container configuration"
+msgstr ""
+
 #. type: Title ##
-#: en/concept/configuration.md en/tutorial/using-yii-with-roadrunner.md
-#: en/views/view-injections.md
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "There are many ways to configure your application. We will focus on concepts "
 "used in the [default project template](https://github.com/yiisoft/app)."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Yii3 configs are part of the application. You can change many aspects of how "
 "the application works by editing configuration under `config/`."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Config plugin"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "In the application template [yiisoft/config](https://github.com/yiisoft/"
 "config) is used. Since writing all application configurations from scratch "
@@ -53,7 +62,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "To offer default configs, `composer.json` of the package has to have `config-"
 "plugin` section.  When installing or updating packages with Composer, the "
@@ -65,13 +74,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Take a look at what's in the \"yiisoft/app\" `composer.json` by default:"
 msgstr ""
 
 #. type: Fenced code block (json)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "\"config-plugin-options\": {\n"
@@ -114,14 +123,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "There are many named configs defined. For each name, there is a "
 "configuration."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "A string means that the plugin takes config as is and merges it with same-"
 "named configs from packages you require.  That happens if these packages "
@@ -129,27 +138,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "The array means that the plugin will merge many files in the order they're "
 "specified."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "`?` at the beginning of the file path indicated that the file may be absent. "
 "In this case, it's skipped."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "`$` at the beginning of the name means a reference to another named config."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "`params` is a bit special because it's reserved for application parameters. "
 "These are automatically available as `$params` in all other configuration "
@@ -157,27 +166,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "You can learn more about config plugin features [from its documentation]"
 "(https://github.com/yiisoft/config/blob/master/README.md)."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Config files"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Now, as you know how the plugin assembles configs, look at `config` "
 "directory:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "common/\n"
@@ -202,14 +211,8 @@ msgid ""
 "routes.php\n"
 msgstr ""
 
-#. type: Title ###
-#: en/concept/configuration.md
-#, no-wrap
-msgid "Container configuration"
-msgstr ""
-
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "The application consists of a set of services registered in a [dependency "
 "container](di-container.md). The config files that responsible for direct "
@@ -220,7 +223,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -241,14 +244,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Config plugin passes special `$params` variable to all config files.  The "
 "code passes its values to the service."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "The guide on [\"Dependency injection and container\"](di-container.md) "
 "describes the configuration format and the idea of dependency injection in "
@@ -256,30 +259,30 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "For convenience, there is a naming convention for custom string keys:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "Prefix package name such as `yiisoft/cache-file/custom-definition`."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "In case configuration are for the application itself, skip package prefix, "
 "such as `custom-definition`."
 msgstr ""
 
 #. type: Title ###
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Service providers"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "As an alternative to registering dependencies directly, you can use service "
 "providers. Basically, these are classes that given parameters are "
@@ -290,7 +293,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "/* @var array $params */\n"
@@ -313,7 +316,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "In this config keys are provider names. By convention these are `vendor/"
 "package-name/provider-name`. Values are provider class names. These classes "
@@ -321,7 +324,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "If you need to configure some options for a service, similar to direct "
 "container configuration, take values from `$params` and pass them to "
@@ -329,7 +332,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Provider should implement a single method, `public function "
 "register(Container $container): void`. In this method you need to add a "
@@ -338,7 +341,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "use Psr\\Container\\ContainerInterface;\n"
@@ -373,20 +376,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Routes"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "You can configure how web application responds to certain URLs in `config/"
 "routes.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "use App\\Controller\\SiteController;\n"
@@ -398,18 +401,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "Read more about it in [\"Routes\"](../runtime/routing.md)."
 msgstr ""
 
-#. type: Title #
-#: en/concept/configuration.md en/concept/events.md
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md
+#: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Many services emit certain events that you can attach to.  You could do that "
 "via three config files: `events-web.php` for web application events, `events-"
@@ -419,7 +423,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -451,25 +455,26 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "Read more about it in [\"Events\"](events.md)."
 msgstr ""
 
-#. type: Title ###
-#: en/concept/configuration.md
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Parameters, `config/params.php` store configuration values that are used in "
 "other config files to configuring services and service providers."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "> [!TIP]\n"
@@ -478,12 +483,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "Default application `params.php` looks like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -537,24 +542,24 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "For convenience, there is a naming convention about parameters:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid "Group parameters package name such as `yiisoft/cache-file`."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "In case parameters are for the application itself, as in `app`, skip package "
 "prefix."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "In case there are many services in the package, such as `file-target` and "
 "`file-rotator` in `yiisoft/log-target-file` package, group parameters by "
@@ -562,20 +567,20 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '4. '
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Use `enabled` as parameter name to be able to disable or enable a service, "
 "such as `yiisoft/yii-debug`."
 msgstr ""
 
 #. type: Title ###
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Package configs"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "Config plugin described copy default package configurations to `packages/` "
 "directory. Once copied you own the configs, so you can adjust these as you "
@@ -587,7 +592,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/configuration.md
+#: ../src/en/guide/concept/configuration.md
 msgid ""
 "`dist.lock` is used by the plugin to keep track of changes and display diff "
 "between current config and example one."

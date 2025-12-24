@@ -1,0 +1,70 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"PO-Revision-Date: 2025-09-05 14:50+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: en/configuring-webservers/general.md
+#, no-wrap
+msgid "Configuring web servers: General"
+msgstr ""
+
+#. type: Plain text
+#: en/configuring-webservers/general.md
+msgid "On a production server, if you don't use Docker, configure your web server to serve only the application's public files.  Point the document root of your web server to the `app/public` folder."
+msgstr ""
+
+#. type: Plain text
+#: en/configuring-webservers/general.md
+#, no-wrap
+msgid ""
+"> [!IMPORTANT]\n"
+"> If you're running your Yii application behind a reverse proxy, you might need to configure\n"
+"> [Trusted proxies and headers](../../../guide/en/security/trusted-request.md).\n"
+msgstr ""
+
+#. type: Title ##
+#: en/configuring-webservers/general.md
+#, no-wrap
+msgid "Specific server configurations"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/configuring-webservers/general.md
+#, fuzzy
+#| msgid "[Logging](runtime/logging.md) +"
+msgid "[Nginx](nginx.md)"
+msgstr "[Registros (logs)](runtime/logging.md)"
+
+#. type: Bullet: '- '
+#: en/configuring-webservers/general.md
+msgid "[Apache](apache.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/configuring-webservers/general.md
+msgid "[Lighttpd](lighttpd.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/configuring-webservers/general.md
+msgid "[Nginx Unit](nginx-unit.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/configuring-webservers/general.md
+msgid "[IIS](iis.md)"
+msgstr ""

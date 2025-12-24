@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/en/guide/concept/autoloading.md
+#: ../src/en/guide/security/best-practices.md
+#: ../src/en/guide/structure/domain.md
+#: ../src/en/guide/tutorial/console-applications.md
+#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr ""
+
+#. type: Title #
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "008 — Interfaces"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/008-interfaces.md
+msgid "Interface name should be suffixed with `Interface`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/008-interfaces.md
+msgid ""
+"[International community discussion and poll](https://forum.yiiframework.com/"
+"t/naming-interfaces/126612/5)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/008-interfaces.md
+msgid ""
+"[Russian community discussion and poll](https://yiiframework.ru/forum/"
+"viewtopic.php?f=39&t=51289)"
+msgstr ""

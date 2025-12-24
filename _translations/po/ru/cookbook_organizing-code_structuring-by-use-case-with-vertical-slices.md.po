@@ -106,7 +106,7 @@ msgstr ""
 #: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "Ссылки"
 
 #. type: Bullet: '- '
 #: en/organizing-code/structuring-by-use-case-with-vertical-slices.md

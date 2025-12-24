@@ -1,0 +1,451 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "010 — Code style"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Names"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Use English only."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Use camelCase notation, including abbreviations (e.g., `enableIdn`)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Use the shortest possible, but an explanatory name."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Never trim or abbreviate a name."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Types"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "[Use types for properties](https://wiki.php.net/rfc/typed_properties_v2)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Comments"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Inline comments are to be avoided unless code couldn't be understood without them.  A good example is a workaround for a bug in a certain PHP version."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Method comment is necessary except it adds nothing to what method name and signature already has."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Class comment should describe the purpose of the class."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Formatting"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "No alignment"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Property, variable and constant value assignments shouldn't be aligned.  The same applies to phpdoc tags. The reason is that aligned statements often cause larger diff and even conflicts."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"final class X\n"
+"{\n"
+"    const A = 'test';\n"
+"    const BBB = 'test';\n"
+"    \n"
+"    private int $property = 42;\n"
+"    private int $test = 123;\n"
+"    \n"
+"    /**\n"
+"     * @param int $number Just a number.\n"
+"     * @param array $options Well... options!\n"
+"     */\n"
+"    public function doIt(int $number, array $options): void\n"
+"    {\n"
+"        $test = 123;\n"
+"        $anotherTest = 123;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Chain calls"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Chained calls should be formatted for better readability.  If it's a long chain that doesn't fit the line length of 120 characters, then each call should on a new line:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"$object\n"
+"    ->withName('test')\n"
+"    ->withValue(87)\n"
+"    ->withStatus(Status::NEW)\n"
+"    ->withAuthor($author)\n"
+"    ->withDeadline($deadline);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "If it's a short chain, it's alright for it to be on a single line:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "$object = $object->withName('test');\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Strings"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "When no variables involved, use `'Hello!'`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "To get variables into string prefer `\"Hello, $username!\"`"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Classes and interfaces"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Final by default"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Classes should be `final` by default."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Private by default"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Constants, properties and methods should be private by default."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Composition over inheritance"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+#, fuzzy
+#| msgid "Dependency injection and container"
+msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
+msgstr "Внедрение зависимостей и контейнер внедрения зависимостей"
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Property, constant and method order"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+#, fuzzy
+#| msgid "That's equal to the following:"
+msgid "Order should be the following:"
+msgstr "Это соответствует:"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Constants"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "Properties"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Methods"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Within each category, items should be sorted by visibility:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "public"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "protected"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "private"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Abstract classes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Abstract classes *shouldn't* be prefixed or postfixed with `Abstract`."
+msgstr ""
+
+#. type: Title ####
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Immutable methods"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+#, fuzzy
+#| msgid "That's equal to the following:"
+msgid "Immutable method convention is the following:"
+msgstr "Это соответствует:"
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"public function withName(string $name): self\n"
+"{\n"
+"    $new = clone $this;\n"
+"    $new->name = $name;\n"
+"    return $new; \n"
+"}\n"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/en/internals/010-code-style.md
+msgid "Cloned object name is `$new`."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/internals/010-code-style.md
+msgid "Return type is `self`."
+msgstr ""
+
+#. type: Title ####
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Boolean check methods"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Methods that are there to check if something is true should be named like the following:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"public function isDeleted(): bool;\n"
+"public function hasName(): bool;\n"
+"public function canDoIt(): bool;\n"
+msgstr ""
+
+#. type: Title ####
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Flags in methods "
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Boolean flags in methods are better to be avoided. It's a sign the method may be doing too much, and there should be two methods instead of one."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "public function login(bool $refreshPage = true): void;\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "It is better to be two methods:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"public function login(): void;\n"
+"public function refreshPage(): void;\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Variables"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Add an underscore (`_`) prefix for unused variables. For example:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"foreach ($items as $key => $_value) {\n"
+"    echo $key;\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Imports"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/010-code-style.md
+msgid "Prefer importing classes and functions to using fully qualified names:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Arrays\\ArrayHelper;\n"
+"use Yiisoft\\Validator\\DataSetInterface;\n"
+"use Yiisoft\\Validator\\HasValidationErrorMessage;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"\n"
+"use function is_iterable;\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md
+#, no-wrap
+msgid "Additional conventions"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "[Namespaces](004-namespaces.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+msgid "[Exceptions](007-exceptions.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/010-code-style.md
+#, fuzzy
+#| msgid "[Preface](preface.md)"
+msgid "[Interfaces](008-interfaces.md)"
+msgstr "[Вступление](preface.md)"

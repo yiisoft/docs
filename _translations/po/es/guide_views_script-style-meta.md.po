@@ -1,0 +1,794 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/en/guide/structure/overview.md
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Overview"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/asset.md ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Practical Examples"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/asset.md ../src/en/guide/views/script-style-meta.md
+#: ../src/en/guide/views/template-engines.md
+#, no-wrap
+msgid "Best Practices"
+msgstr ""
+
+#. type: Title #
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Scripts, styles and meta tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Modern web applications require careful management of CSS styles, JavaScript code, and HTML meta tags.  Yii3 provides a comprehensive system for registering and organizing these resources through the `WebView` class, which is part of the `yiisoft/view` package."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "The `WebView` class extends the basic `View` class with web-specific functionality, allowing you to:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Register CSS files and inline styles"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Register JavaScript files and inline scripts"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Manage HTML meta tags and link tags"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Control the position where resources are rendered"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Handle dependencies between resources"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "CSS management"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Registering CSS Files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "You can register CSS files to be included in your HTML pages:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" */\n"
+"\n"
+"// Register a CSS file\n"
+"$this->registerCssFile('/css/styles.css');\n"
+"\n"
+"// Register CSS file with attributes\n"
+"$this->registerCssFile('/css/print.css', WebView::POSITION_HEAD, [\n"
+"    'media' => 'print',\n"
+"]);\n"
+"\n"
+"// Register CSS file with custom key to avoid duplicates\n"
+"$this->registerCssFile('/css/theme.css', WebView::POSITION_HEAD, [], 'theme-css');\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Registering Inline CSS"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "For inline CSS styles, use the `registerCss()` method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register inline CSS\n"
+"$this->registerCss('\n"
+"    .highlight {\n"
+"        background-color: yellow;\n"
+"        font-weight: bold;\n"
+"    }\n"
+"    .error {\n"
+"        color: red;\n"
+"        border: 1px solid red;\n"
+"    }\n"
+"', WebView::POSITION_HEAD);\n"
+"\n"
+"// With custom attributes\n"
+"$this->registerCss('\n"
+"    @media print {\n"
+"        .no-print { display: none; }\n"
+"    }\n"
+"', WebView::POSITION_HEAD, ['id' => 'print-styles']);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "CSS from Files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "You can also register CSS content from external files:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Read CSS from a file and register as inline CSS\n"
+"$this->registerCssFromFile('/path/to/dynamic-styles.css', WebView::POSITION_HEAD, [\n"
+"    'id' => 'dynamic-styles',\n"
+"]);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Using Style Tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "For more control, you can use HTML style tags directly:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"$styleTag = Html::style('\n"
+"    .custom-button {\n"
+"        background: linear-gradient(45deg, #blue, #purple);\n"
+"        border: none;\n"
+"        color: white;\n"
+"        padding: 10px 20px;\n"
+"    }\n"
+"', ['id' => 'custom-button-styles']);\n"
+"\n"
+"$this->registerStyleTag($styleTag, WebView::POSITION_HEAD);\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "JavaScript management"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Registering JavaScript Files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Include external JavaScript files using `registerJsFile()`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register a JavaScript file\n"
+"$this->registerJsFile('/js/main.js');\n"
+"\n"
+"// Register with attributes (async loading)\n"
+"$this->registerJsFile('/js/analytics.js', WebView::POSITION_END, [\n"
+"    'async' => true,\n"
+"]);\n"
+"\n"
+"// Register with defer attribute\n"
+"$this->registerJsFile('/js/interactive.js', WebView::POSITION_END, [\n"
+"    'defer' => true,\n"
+"]);\n"
+"\n"
+"// Register from CDN\n"
+"$this->registerJsFile('https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js', \n"
+"    WebView::POSITION_END, [], 'jquery');\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Registering Inline JavaScript"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Add inline JavaScript code with `registerJs()`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register inline JavaScript\n"
+"$this->registerJs('\n"
+"    document.addEventListener(\"DOMContentLoaded\", function() {\n"
+"        console.log(\"Page loaded!\");\n"
+"        initializeComponents();\n"
+"    });\n"
+"', WebView::POSITION_END);\n"
+"\n"
+"// Register JavaScript that should run when DOM is ready\n"
+"$this->registerJs('\n"
+"    function showAlert(message) {\n"
+"        alert(message);\n"
+"    }\n"
+"', WebView::POSITION_READY);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "JavaScript Variables"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Pass PHP data to JavaScript using `registerJsVar()`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register JavaScript variables\n"
+"$this->registerJsVar('apiUrl', 'https://api.example.com');\n"
+"$this->registerJsVar('currentUser', [\n"
+"    'id' => $user->getId(),\n"
+"    'name' => $user->getName(),\n"
+"    'isAdmin' => $user->isAdmin(),\n"
+"]);\n"
+"$this->registerJsVar('config', [\n"
+"    'debug' => $this->isDebugMode(),\n"
+"    'locale' => $this->getLocale(),\n"
+"]);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "This generates JavaScript code like:"
+msgstr ""
+
+#. type: Fenced code block (html)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"<script>\n"
+"var apiUrl = \"https://api.example.com\";\n"
+"var currentUser = {\"id\":123,\"name\":\"John Doe\",\"isAdmin\":false};\n"
+"var config = {\"debug\":true,\"locale\":\"en-US\"};\n"
+"</script>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Using Script Tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "For more control over script tags:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"$scriptTag = Html::script('\n"
+"    window.myApp = {\n"
+"        init: function() {\n"
+"            console.log(\"App initialized\");\n"
+"        }\n"
+"    };\n"
+"', ['type' => 'module']);\n"
+"\n"
+"$this->registerScriptTag($scriptTag, WebView::POSITION_END);\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Position Constants"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Resources can be positioned at different locations in the HTML document:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"// In the <head> section\n"
+"WebView::POSITION_HEAD\n"
+"\n"
+"// At the beginning of <body>\n"
+"WebView::POSITION_BEGIN  \n"
+"\n"
+"// At the end of <body> (before </body>)\n"
+"WebView::POSITION_END\n"
+"\n"
+"// When DOM is ready (jQuery document.ready equivalent)\n"
+"WebView::POSITION_READY\n"
+"\n"
+"// When page is fully loaded (window.onload equivalent)\n"
+"WebView::POSITION_LOAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Example layout showing where each position is rendered:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" */\n"
+"?>\n"
+"<?php $this->beginPage() ?>\n"
+"<!DOCTYPE html>\n"
+"<html>\n"
+"<head>\n"
+"    <!-- POSITION_HEAD resources rendered here -->\n"
+"    <?php $this->head() ?>\n"
+"</head>\n"
+"<body>\n"
+"    <!-- POSITION_BEGIN resources rendered here -->\n"
+"    <?php $this->beginBody() ?>\n"
+"    \n"
+"    <main>\n"
+"        <?= $content ?>\n"
+"    </main>\n"
+"    \n"
+"    <!-- POSITION_END, POSITION_READY, POSITION_LOAD resources rendered here -->\n"
+"    <?php $this->endBody() ?>\n"
+"</body>\n"
+"</html>\n"
+"<?php $this->endPage() ?>\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Meta tags"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Basic Meta Tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Register meta tags for SEO and page information:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register meta tags using array syntax\n"
+"$this->registerMeta(['name' => 'description', 'content' => 'Page description']);\n"
+"$this->registerMeta(['name' => 'keywords', 'content' => 'yii, php, framework']);\n"
+"$this->registerMeta(['name' => 'author', 'content' => 'John Doe']);\n"
+"$this->registerMeta(['name' => 'robots', 'content' => 'index, follow']);\n"
+"\n"
+"// Viewport for responsive design\n"
+"$this->registerMeta(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']);\n"
+"\n"
+"// Open Graph tags for social media\n"
+"$this->registerMeta(['property' => 'og:title', 'content' => 'Page Title']);\n"
+"$this->registerMeta(['property' => 'og:description', 'content' => 'Page description']);\n"
+"$this->registerMeta(['property' => 'og:image', 'content' => 'https://example.com/image.jpg']);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Using Meta Tag Objects"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "For more control, use the `Html::meta()` helper:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"// Create meta tags with the Html helper\n"
+"$this->registerMetaTag(\n"
+"    Html::meta()\n"
+"        ->name('description')\n"
+"        ->content('This is a comprehensive guide to Yii3 views')\n"
+");\n"
+"\n"
+"$this->registerMetaTag(\n"
+"    Html::meta()\n"
+"        ->httpEquiv('refresh')\n"
+"        ->content('300') // Refresh every 5 minutes\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Preventing Duplicate Meta Tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Use keys to prevent duplicate meta tags:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// First registration\n"
+"$this->registerMeta([\n"
+"    'name' => 'description',\n"
+"    'content' => 'Original description'\n"
+"], 'description');\n"
+"\n"
+"// This will override the previous one\n"
+"$this->registerMeta([\n"
+"    'name' => 'description', \n"
+"    'content' => 'Updated description'\n"
+"], 'description');\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Link tags"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Basic Link Tags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Register various types of link tags:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Favicon\n"
+"$this->registerLink([\n"
+"    'rel' => 'icon',\n"
+"    'type' => 'image/png',\n"
+"    'href' => '/favicon.png',\n"
+"]);\n"
+"\n"
+"// RSS feed\n"
+"$this->registerLink([\n"
+"    'rel' => 'alternate',\n"
+"    'type' => 'application/rss+xml',\n"
+"    'title' => 'RSS Feed',\n"
+"    'href' => '/feed.rss',\n"
+"]);\n"
+"\n"
+"// Canonical URL\n"
+"$this->registerLink([\n"
+"    'rel' => 'canonical',\n"
+"    'href' => 'https://example.com/canonical-url',\n"
+"]);\n"
+"\n"
+"// Preload resources\n"
+"$this->registerLink([\n"
+"    'rel' => 'preload',\n"
+"    'href' => '/fonts/main.woff2',\n"
+"    'as' => 'font',\n"
+"    'type' => 'font/woff2',\n"
+"    'crossorigin' => 'anonymous',\n"
+"]);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Using Link Tag Objects"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"// CSS stylesheet\n"
+"$this->registerLinkTag(\n"
+"    Html::link('/css/main.css', [\n"
+"        'rel' => 'stylesheet',\n"
+"    ])\n"
+");\n"
+"\n"
+"// DNS prefetch\n"
+"$this->registerLinkTag(\n"
+"    Html::link('https://fonts.googleapis.com', [\n"
+"        'rel' => 'dns-prefetch',\n"
+"    ])\n"
+");\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Complete Page Setup"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Here's how you might set up a complete page with all types of resources:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" * @var string $title\n"
+" * @var string $description\n"
+" * @var array $product\n"
+" */\n"
+"\n"
+"// Set page title\n"
+"$this->setTitle($title);\n"
+"\n"
+"// Meta tags\n"
+"$this->registerMeta(['name' => 'description', 'content' => $description]);\n"
+"$this->registerMeta(['name' => 'keywords', 'content' => 'ecommerce, products, online shop']);\n"
+"\n"
+"// Open Graph tags\n"
+"$this->registerMeta(['property' => 'og:title', 'content' => $title]);\n"
+"$this->registerMeta(['property' => 'og:description', 'content' => $description]);\n"
+"$this->registerMeta(['property' => 'og:image', 'content' => $product['image']]);\n"
+"\n"
+"// CSS files\n"
+"$this->registerCssFile('/css/product.css');\n"
+"$this->registerCssFile('/css/responsive.css', WebView::POSITION_HEAD, [\n"
+"    'media' => 'screen and (max-width: 768px)',\n"
+"]);\n"
+"\n"
+"// JavaScript files\n"
+"$this->registerJsFile('/js/product-gallery.js', WebView::POSITION_END);\n"
+"$this->registerJsFile('/js/shopping-cart.js', WebView::POSITION_END);\n"
+"\n"
+"// JavaScript variables\n"
+"$this->registerJsVar('productData', $product);\n"
+"$this->registerJsVar('cartApiUrl', '/api/cart');\n"
+"\n"
+"// Inline JavaScript\n"
+"$this->registerJs('\n"
+"    document.addEventListener(\"DOMContentLoaded\", function() {\n"
+"        initProductGallery();\n"
+"        initShoppingCart();\n"
+"    });\n"
+"', WebView::POSITION_END);\n"
+"\n"
+"// Page-specific styles\n"
+"$this->registerCss('\n"
+"    .product-special {\n"
+"        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);\n"
+"        padding: 20px;\n"
+"        border-radius: 10px;\n"
+"    }\n"
+"', WebView::POSITION_HEAD);\n"
+"?>\n"
+"\n"
+"<div class=\"product-page\">\n"
+"    <!-- Your page content here -->\n"
+"</div>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Conditional Resource Loading"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "Load resources based on conditions:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" * @var bool $isDarkMode\n"
+" * @var bool $isAdmin\n"
+" * @var string $userRole\n"
+" */\n"
+"\n"
+"// Load theme-specific CSS\n"
+"if ($isDarkMode) {\n"
+"    $this->registerCssFile('/css/dark-theme.css');\n"
+"} else {\n"
+"    $this->registerCssFile('/css/light-theme.css');\n"
+"}\n"
+"\n"
+"// Admin-specific resources\n"
+"if ($isAdmin) {\n"
+"    $this->registerCssFile('/css/admin-toolbar.css');\n"
+"    $this->registerJsFile('/js/admin-functions.js');\n"
+"}\n"
+"\n"
+"// Role-based JavaScript configuration\n"
+"$this->registerJsVar('userPermissions', [\n"
+"    'canEdit' => in_array($userRole, ['admin', 'editor']),\n"
+"    'canDelete' => $userRole === 'admin',\n"
+"    'canPublish' => in_array($userRole, ['admin', 'publisher']),\n"
+"]);\n"
+"?>\n"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript at `POSITION_END`"
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Minimize inline resources**: Prefer external files for better caching"
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Use keys for duplicates**: Prevent duplicate resources with meaningful keys"
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Optimize loading**: Use `async` and `defer` attributes for non-critical JavaScript"
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Group related resources**: Keep related CSS and JS files together"
+msgstr ""
+
+#. type: Bullet: '6. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Use CDNs wisely**: Balance performance with reliability"
+msgstr ""
+
+#. type: Bullet: '7. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Validate meta tags**: Ensure proper SEO meta tags are set"
+msgstr ""
+
+#. type: Bullet: '8. '
+#: ../src/en/guide/views/script-style-meta.md
+msgid "**Consider security**: Be careful with inline scripts and CSP policies"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Working with Asset Bundles"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+msgid "For more complex asset management, consider using asset bundles:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"// Register an asset bundle (covered in detail in the Assets guide)\n"
+"$assetBundle = $this->assetManager->register(MainAsset::class);\n"
+"\n"
+"// Add all CSS files from the bundle\n"
+"$this->addCssFiles($this->assetManager->getCssFiles());\n"
+"\n"
+"// Add all JavaScript files from the bundle  \n"
+"$this->addJsFiles($this->assetManager->getJsFiles());\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/views/script-style-meta.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> [← View injections](view-injections.md) |\n"
+"> [Assets →](asset.md)\n"
+msgstr ""

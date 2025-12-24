@@ -1,0 +1,573 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/disabling-csrf-protection.md
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Best practices"
+msgstr ""
+
+#. type: Title #
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Making HTTP requests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"When building modern applications, you often need to make HTTP requests to "
+"external APIs. This article demonstrates how to make HTTP requests in Yii3 "
+"applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/"
+"psr/)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "What are PSR interfaces for HTTP"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"The PHP-FIG (PHP Framework Interoperability Group) has defined several PSR "
+"standards for HTTP handling:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/cookbook/making-http-requests.md
+msgid "**PSR-7**: HTTP message interfaces for requests and responses"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/cookbook/making-http-requests.md
+msgid "**PSR-17**: HTTP factory interfaces for creating PSR-7 message objects"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**PSR-18**: HTTP client interface for sending PSR-7 requests and returning "
+"PSR-7 responses"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"Using these interfaces ensures your code is framework-agnostic and follows "
+"established PHP standards."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-swoole.md
+#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
+#: ../src/en/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"Install the Guzzle HTTP client with PSR-18 support and PSR-17 factories:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"composer require guzzlehttp/guzzle\n"
+"composer require guzzlehttp/psr7\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Basic usage"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Simple GET request"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid "Here's how to make a basic GET request using PSR-18 interfaces:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"class ApiService\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClientInterface $httpClient,\n"
+"        private RequestFactoryInterface $requestFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function fetchUserData(int $userId): ResponseInterface\n"
+"    {\n"
+"        $request = $this->requestFactory->createRequest(\n"
+"            'GET',\n"
+"            \"https://example.com/users/{$userId}\"\n"
+"        );\n"
+"\n"
+"        return $this->httpClient->sendRequest($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "POST request with JSON data"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid "Here's an example of making a POST request with JSON payload:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"class UserService\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClientInterface $httpClient,\n"
+"        private RequestFactoryInterface $requestFactory,\n"
+"        private StreamFactoryInterface $streamFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function createUser(array $userData): ResponseInterface\n"
+"    {\n"
+"        $jsonData = json_encode($userData, JSON_THROW_ON_ERROR);\n"
+"        $stream = $this->streamFactory->createStream($jsonData);\n"
+"\n"
+"        $request = $this->requestFactory->createRequest('POST', 'https://example.com/users')\n"
+"            ->withHeader('Content-Type', 'application/json')\n"
+"            ->withHeader('Accept', 'application/json')\n"
+"            ->withBody($stream);\n"
+"\n"
+"        return $this->httpClient->sendRequest($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Configuration in Yii3"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Container configuration"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid "Configure the HTTP client and PSR factories in your DI container:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"// config/common/http-client.php\n"
+"\n"
+"use GuzzleHttp\\Client;\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"use Psr\\Http\\Message\\UriFactoryInterface;\n"
+"\n"
+"return [\n"
+"    ClientInterface::class => [\n"
+"        'class' => Client::class,\n"
+"        '__construct()' => [\n"
+"            'config' => [\n"
+"                'timeout' => 30,\n"
+"                'connect_timeout' => 10,\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"    \n"
+"    // Configure PSR-17 factories - these will depend on your chosen PSR-7 implementation\n"
+"    RequestFactoryInterface::class => static function (): RequestFactoryInterface {\n"
+"        return new \\GuzzleHttp\\Psr7\\HttpFactory();\n"
+"    },\n"
+"    ResponseFactoryInterface::class => static function (): ResponseFactoryInterface {\n"
+"        return new \\GuzzleHttp\\Psr7\\HttpFactory();\n"
+"    },\n"
+"    StreamFactoryInterface::class => static function (): StreamFactoryInterface {\n"
+"        return new \\GuzzleHttp\\Psr7\\HttpFactory();\n"
+"    },\n"
+"    UriFactoryInterface::class => static function (): UriFactoryInterface {\n"
+"        return new \\GuzzleHttp\\Psr7\\HttpFactory();\n"
+"    },\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Service with error handling"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid "Here's a more robust service example with proper error handling:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Client\\ClientExceptionInterface;\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"\n"
+"class WeatherService\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClientInterface $httpClient,\n"
+"        private RequestFactoryInterface $requestFactory,\n"
+"        private StreamFactoryInterface $streamFactory,\n"
+"        private LoggerInterface $logger,\n"
+"        private string $apiKey,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function getCurrentWeather(string $city): ?array\n"
+"    {\n"
+"        try {\n"
+"            $request = $this->requestFactory->createRequest(\n"
+"                'GET',\n"
+"                \"https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$this->apiKey}&units=metric\"\n"
+"            );\n"
+"\n"
+"            $response = $this->httpClient->sendRequest($request);\n"
+"\n"
+"            if ($response->getStatusCode() !== 200) {\n"
+"                $this->logger->warning('Weather API returned non-200 status', [\n"
+"                    'status_code' => $response->getStatusCode(),\n"
+"                    'city' => $city,\n"
+"                ]);\n"
+"                return null;\n"
+"            }\n"
+"\n"
+"            $data = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);\n"
+"            return $data;\n"
+"        } catch (ClientExceptionInterface $e) {\n"
+"            $this->logger->error('HTTP client error when fetching weather data', [\n"
+"                'city' => $city,\n"
+"                'error' => $e->getMessage(),\n"
+"            ]);\n"
+"            return null;\n"
+"        } catch (\\JsonException $e) {\n"
+"            $this->logger->error('Failed to decode weather API response', [\n"
+"                'city' => $city,\n"
+"                'error' => $e->getMessage(),\n"
+"            ]);\n"
+"            return null;\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Advanced usage"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Using middlewares"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"Guzzle supports middleware for cross-cutting concerns like authentication, "
+"logging, or retrying:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use GuzzleHttp\\Client;\n"
+"use GuzzleHttp\\HandlerStack;\n"
+"use GuzzleHttp\\Middleware;\n"
+"use Psr\\Http\\Message\\RequestInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"\n"
+"class HttpClientFactory\n"
+"{\n"
+"    public function __construct(\n"
+"        private LoggerInterface $logger,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function createClient(): Client\n"
+"    {\n"
+"        $stack = HandlerStack::create();\n"
+"        \n"
+"        // Add request/response logging middleware\n"
+"        $stack->push(Middleware::log(\n"
+"            $this->logger,\n"
+"            new \\GuzzleHttp\\MessageFormatter('HTTP {method} {uri} - {code} {phrase}')\n"
+"        ));\n"
+"        \n"
+"        // Add retry middleware\n"
+"        $stack->push(Middleware::retry(\n"
+"            function (int $retries, RequestInterface $request) {\n"
+"                return $retries < 3;\n"
+"            }\n"
+"        ));\n"
+"\n"
+"        return new Client([\n"
+"            'handler' => $stack,\n"
+"            'timeout' => 30,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Async requests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"For better performance when making multiple requests, you can use "
+"asynchronous requests:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "> **Note**: Async functionality is not part of PSR interfaces, so this code depends on Guzzle explicitly.\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use GuzzleHttp\\Client;\n"
+"use GuzzleHttp\\Promise\\PromiseInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"class BatchApiService\n"
+"{\n"
+"    public function __construct(\n"
+"        private Client $httpClient,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @param array<int> $userIds\n"
+"     * @return array<ResponseInterface>\n"
+"     */\n"
+"    public function fetchMultipleUsers(array $userIds): array\n"
+"    {\n"
+"        $promises = [];\n"
+"        \n"
+"        foreach ($userIds as $userId) {\n"
+"            $promises[$userId] = $this->httpClient->getAsync(\n"
+"                \"https://example.com/users/{$userId}\"\n"
+"            );\n"
+"        }\n"
+"\n"
+"        // Wait for all requests to complete\n"
+"        $responses = \\GuzzleHttp\\Promise\\settle($promises)->wait();\n"
+"        \n"
+"        $results = [];\n"
+"        foreach ($responses as $userId => $response) {\n"
+"            if ($response['state'] === PromiseInterface::FULFILLED) {\n"
+"                $results[$userId] = $response['value'];\n"
+"            }\n"
+"        }\n"
+"        \n"
+"        return $results;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Testing HTTP clients"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"When testing services that make HTTP requests, you can use Guzzle's "
+"MockHandler:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use GuzzleHttp\\Client;\n"
+"use GuzzleHttp\\Handler\\MockHandler;\n"
+"use GuzzleHttp\\HandlerStack;\n"
+"use GuzzleHttp\\Psr7\\Response;\n"
+"use PHPUnit\\Framework\\TestCase;\n"
+"\n"
+"class WeatherServiceTest extends TestCase\n"
+"{\n"
+"    public function testGetCurrentWeatherSuccess(): void\n"
+"    {\n"
+"        $mockHandler = new MockHandler([\n"
+"            new Response(200, [], json_encode([\n"
+"                'name' => 'London',\n"
+"                'main' => ['temp' => 20.5],\n"
+"            ])),\n"
+"        ]);\n"
+"\n"
+"        $handlerStack = HandlerStack::create($mockHandler);\n"
+"        $client = new Client(['handler' => $handlerStack]);\n"
+"        \n"
+"        $service = new WeatherService(\n"
+"            $client,\n"
+"            new \\GuzzleHttp\\Psr7\\HttpFactory(),\n"
+"            new \\GuzzleHttp\\Psr7\\HttpFactory(),\n"
+"            $this->createMock(\\Psr\\Log\\LoggerInterface::class),\n"
+"            'test-api-key'\n"
+"        );\n"
+"\n"
+"        $result = $service->getCurrentWeather('London');\n"
+"        \n"
+"        $this->assertNotNull($result);\n"
+"        $this->assertSame('London', $result['name']);\n"
+"        $this->assertSame(20.5, $result['main']['temp']);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Use PSR interfaces**: Always type-hint against PSR interfaces rather than "
+"concrete implementations for better testability and flexibility."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Handle errors gracefully**: Always wrap HTTP requests in try-catch blocks "
+"and handle network failures appropriately."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Configure timeouts**: Set reasonable connection and request timeouts to "
+"prevent hanging requests."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Log requests**: Use middleware or manual logging to track API calls for "
+"debugging and monitoring."
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Use dependency injection**: Inject HTTP clients and factories through your "
+"DI container rather than creating them directly."
+msgstr ""
+
+#. type: Bullet: '6. '
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"**Mock in tests**: Use Guzzle's MockHandler or similar tools to test your "
+"HTTP client code without making real network requests."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/cookbook/making-http-requests.md
+msgid ""
+"By following these patterns and using PSR interfaces, you'll create "
+"maintainable, testable, and interoperable HTTP client code in your Yii3 "
+"applications."
+msgstr ""

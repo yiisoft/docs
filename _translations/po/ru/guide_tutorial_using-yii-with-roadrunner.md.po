@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,20 +17,33 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title ##
-#: en/concept/configuration.md en/tutorial/using-yii-with-roadrunner.md
-#: en/views/view-injections.md
-#, fuzzy, no-wrap
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-swoole.md
+#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
+#: ../src/en/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr "Установка"
+
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/views/view-injections.md
+#, no-wrap
 msgid "Configuration"
-msgstr "конфигурация может быть:"
+msgstr "Настройка"
 
 #. type: Title #
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "Using Yii with RoadRunner"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid ""
 "[RoadRunner](https://roadrunner.dev/) is a Golang-powered application server that integrates well with PHP. It runs\n"
@@ -39,47 +52,40 @@ msgid ""
 "performance significantly.\n"
 msgstr ""
 
-#. type: Title ##
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
-#, no-wrap
-msgid "Installation"
-msgstr ""
-
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "RoadRunner works on Linux, macOS and Windows. The best way to install it is to use a Composer:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "composer require yiisoft/yii-runner-roadrunner\n"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "After installation is done, run"
 msgstr ""
 
 #. type: Fenced code block
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "./vendor/bin/rr get\n"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "That would download ready to use RoadRunner server `rr` binary."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "First, we need to configure the server itself. Create `/.rr.yaml` and add the following config:"
 msgstr ""
 
 #. type: Fenced code block (yaml)
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid ""
 "server:\n"
@@ -115,17 +121,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory files are static ones except `.php` and `.htaccess`. Also, we're sending an additional header."
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Create `/worker.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -143,41 +149,41 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Starting a server"
 msgstr ""
 
 #. type: Plain text
-#: en/tutorial/using-yii-with-roadrunner.md
-#: en/tutorial/using-yii-with-swoole.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-swoole.md
 msgid "To start a server, execute the following command:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "./rr serve -d\n"
 msgstr ""
 
 #. type: Title ##
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "On worker scope"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Each worker's scope is isolated from other workers. Memory isn't shared."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "A single worker serves multiple requests where the scope is shared."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
 msgid "At each iteration of the event loop, every service that depends on state should be reset."
 msgstr ""

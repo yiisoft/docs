@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Title #
-#: ../../guide/en/intro/what-is-yii.md
-#, no-wrap
-msgid "What is Yii"
-msgstr ""
-
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/cookbook/preface.md ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Yii is a high-performance, package-based PHP framework for developing modern "
 "applications.  The name Yii (pronounced `Yee` or `[ji:]`) means \"simple and "
@@ -31,14 +25,8 @@ msgid ""
 "**Yes It Is**!"
 msgstr ""
 
-#. type: Title ##
-#: ../../guide/en/intro/what-is-yii.md
-#, no-wrap
-msgid "What's Yii best for"
-msgstr ""
-
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/cookbook/preface.md ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Yii is a generic Web programming framework.  You can use it for developing "
 "all kinds of Web applications using PHP.  Because of its architecture and "
@@ -47,58 +35,70 @@ msgid ""
 "REST APIs, etc."
 msgstr ""
 
+#. type: Title #
+#: ../src/en/guide/intro/what-is-yii.md
+#, no-wrap
+msgid "What is Yii"
+msgstr ""
+
 #. type: Title ##
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
+#, no-wrap
+msgid "What's Yii best for"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/guide/intro/what-is-yii.md
 #, no-wrap
 msgid "How does Yii compare with other frameworks?"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "If you're already familiar with another framework, you may appreciate "
 "knowing how Yii compares:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Yii takes the [philosophy of being practical and helpful](https://github.com/"
 "yiisoft/docs/blob/master/001-yii-values.md) achieving:"
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Performance in both development and execution."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Convenient customizable defaults."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Practice-orientation."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Simplicity."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Explicitness."
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Consistency."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 #, no-wrap
 msgid ""
 "  Yii will never try to over-design things mainly to follow some design patterns.\n"
@@ -112,7 +112,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Yii is backed up by a [strong core developer team](https://www.yiiframework."
 "com/team/) financially backed from an [OpenCollective foundation](https://"
@@ -125,51 +125,51 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 #, no-wrap
 msgid "Yii versions"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid "Yii currently has three major versions available: 1.1, 2.0, and 3.0."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Version 1.1 is the old generation and is now in the feature freeze bugfix "
 "mode."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Version 2.0 is a current stable version in the feature freeze bugfix mode."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Version 3.0 is the current version in development. This guide is mainly "
 "about version 3."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 #, no-wrap
 msgid "Requirements and prerequisites"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Yii3 requires PHP 8.2 or above, but some packages work with older PHP, such "
 "as PHP 7.4."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/what-is-yii.md
+#: ../src/en/guide/intro/what-is-yii.md
 msgid ""
 "Using Yii requires basic knowledge of object-oriented programming (OOP), as "
 "Yii is a pure OOP-based framework.  Yii3 also makes use of the latest PHP "

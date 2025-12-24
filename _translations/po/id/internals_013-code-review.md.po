@@ -1,0 +1,119 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "013 — Code review"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "Code reviews are essential for the success of the project and are as important as contributing code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "Reviews are handled via GitHub pull requests. When the request is ready for review, the \"status: code review\" label is added to it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "[A full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  is available at GitHub."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "Guidelines"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Check out the pull request branch, open the project in the IDE, get a big picture."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Does the pull request make sense overall?"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Run tests and/or application using code from the pull request. Are these OK?"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Read all lines of code in the pull request."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Could it be done simpler?"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Are there security issues?"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Are there performance issues?"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "When leaving comments, be polite."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Avoid code-formatting comments."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "Mandatory parts"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Tests that fail without code and pass with code."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Type hints."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] `declare(strict_types=1)`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Documentation: phpdoc, yiisoft/docs."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Changelog entry (if package is stable)."
+msgstr ""
