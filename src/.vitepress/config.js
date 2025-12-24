@@ -14,7 +14,7 @@ export default withMermaid({
         socialLinks: [
             {icon: 'github', link: 'https://github.com/yiisoft'},
             {icon: 'x', link: 'https://twitter.com/yiiframework'},
-            {icon: 'slack', link: 'https://yii.slack.com'}
+            {icon: 'telegram', link: 'https://t.me/yii3en'}
         ]
     },
     locales: {
@@ -770,7 +770,12 @@ export default withMermaid({
                 footer: {
                     message: 'Выпущено под <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">лицензией BSD-3-Clause</a>.',
                     copyright: 'Copyright © 2008-2025 <a href="https://www.yiiframework.com/">Yii</a>'
-                }
+                },
+                socialLinks: [
+                    {icon: 'github', link: 'https://github.com/yiisoft'},
+                    {icon: 'x', link: 'https://twitter.com/yiiframework'},
+                    {icon: 'telegram', link: 'https://t.me/yii3ru'}
+                ],
             }
         }
     }
