@@ -215,7 +215,3 @@ task easy.
 
 In the next section, you will learn how to work with databases, which are
 needed in nearly every application.
-
-> [!NOTE]
-> [← Saying hello](hello.md) |
-> [Working with databases →](databases.md)

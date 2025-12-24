@@ -114,7 +114,3 @@ following example, it's `@layout/cart`:
         ],
     ],
 ```
-
-> [!NOTE]
-> [← Template engines](template-engines.md) |
-> [Scripts, styles and meta tags →](script-style-meta.md)

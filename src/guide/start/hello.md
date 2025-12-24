@@ -165,7 +165,3 @@ the `message` parameter.
 You've also learned about routing in Yii, which acts as the bridge between user requests and handlers.
 
 In the next section, you will learn how to fetch data and add a new page containing an HTML form.
-
-> [!NOTE]
-> [← Running applications](workflow.md) |
-> [Working with forms →](forms.md)

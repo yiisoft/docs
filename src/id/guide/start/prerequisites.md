@@ -42,6 +42,3 @@ The default application template leverages Docker, so we recommend that you
 
 Also, you will benefit from familiarizing yourself with [twelve-factor
 app](https://12factor.net/) principles.
-
-> [!NOTE]
-> [Creating a project →](creating-project.md)

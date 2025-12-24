@@ -185,7 +185,3 @@ user requests and handlers.
 
 In the next section, you will learn how to fetch data and add a new page
 containing an HTML form.
-
-> [!NOTE]
-> [← Running applications](workflow.md) |
-> [Working with forms →](forms.md)

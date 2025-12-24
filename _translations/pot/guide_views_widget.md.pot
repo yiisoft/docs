@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/cookbook/making-http-requests.md
-#: ../src/en/cookbook/sentry-integration.md
-#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/en/guide/tutorial/using-yii-with-swoole.md
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
-#: ../src/en/guide/views/widget.md
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/asset.md ../src/guide/views/view.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Basic Concepts"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md ../src/en/guide/views/widget.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
 msgid ""
 "These packages are included by default in the `yiisoft/app` application "
 "template."
 msgstr ""
 
 #. type: Title #
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widgets"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "Widgets are reusable, self-contained components that encapsulate complex "
 "HTML generation logic.  They provide a clean way to create configurable UI "
@@ -57,86 +56,86 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "The widget functionality is provided by the `yiisoft/widget` package:"
 msgstr ""
 
 #. type: Fenced code block (bash)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "composer require yiisoft/widget\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "For ready-made widgets (like forms, navigation, etc.), you can also install:"
 msgstr ""
 
 #. type: Fenced code block (bash)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "composer require yiisoft/yii-widgets\n"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Class"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "A widget is a PHP class that extends the abstract `Widget` class and "
 "implements a `render()` method that returns HTML content as a string."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Factory"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "The `WidgetFactory` is responsible for creating widget instances and can "
 "inject dependencies through the DI container."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Configuration"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "Widgets can be configured with properties and methods, making them highly "
 "customizable and reusable across different contexts."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Creating Custom Widgets"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Simple Widget"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Here's a basic widget that displays an alert message:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -203,13 +202,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Using the Widget"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -236,18 +235,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget with Dependencies"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Widgets can use dependency injection for services:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -318,30 +317,30 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Factory Setup"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Bootstrap Configuration"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Initialize the widget factory in your application bootstrap:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "**config/bootstrap.php**\n"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -369,19 +368,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "DI Container Configuration"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "**config/web/di.php**\n"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "use App\\Widget\\AlertWidget;\n"
@@ -399,24 +398,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Advanced Widget Examples"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Data List Widget"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "A widget that displays a list of items with pagination:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -499,12 +498,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Usage:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -526,18 +525,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Form Widget"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "A widget that simplifies form rendering:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -639,18 +638,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Breadcrumb Widget"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "A widget for navigation breadcrumbs:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -733,24 +732,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Best Practices"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Configuration Pattern"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Use immutable configuration methods:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "public function someProperty($value): self\n"
@@ -762,18 +761,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Validation"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Validate widget configuration in the render method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "protected function render(): string\n"
@@ -787,18 +786,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "HTML Encoding"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Always encode user data:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "protected function render(): string\n"
@@ -810,18 +809,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Asset Management"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Register widget-specific assets:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -852,24 +851,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Using Widgets in Layouts"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Widgets are particularly useful in layouts for common UI elements:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "**views/layout/main.php**\n"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -908,24 +907,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Testing Widgets"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Unit Testing"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid "Test widget rendering logic:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -962,19 +961,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Common Widget Patterns"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Conditional Rendering"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "protected function render(): string\n"
@@ -993,13 +992,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Template-based Rendering"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "protected function render(): string\n"
@@ -1018,13 +1017,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Event Integration"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 #, no-wrap
 msgid ""
 "protected function render(): string\n"
@@ -1042,17 +1041,9 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/widget.md
 msgid ""
 "Widgets provide a powerful way to create reusable, configurable UI "
 "components in Yii3 applications.  They help maintain clean separation of "
 "concerns and make your views more maintainable and testable."
-msgstr ""
-
-#. type: Plain text
-#: ../src/en/guide/views/widget.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Assets](asset.md)\n"
 msgstr ""

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/start/looking-ahead.md
+#: ../src/guide/start/looking-ahead.md
 #, no-wrap
 msgid "Looking ahead"
 msgstr ""
 
 #. type: Plain text
-#: en/start/looking-ahead.md
+#: ../src/guide/start/looking-ahead.md
 msgid ""
 "If you've read through the entire \"Getting Started\" chapter, you have now "
 "created a complete Yii application.  In the process, you've learned how to "
@@ -32,12 +32,4 @@ msgid ""
 "paginated fashion. You've also learned how to use [Gii](gii.md) to generate "
 "code automatically. Using Gii for code generation turns the bulk of your Web "
 "development process into a task as simple as just filling out some forms."
-msgstr ""
-
-#. type: Plain text
-#: en/start/looking-ahead.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Generating code with Gii](gii.md)\n"
 msgstr ""

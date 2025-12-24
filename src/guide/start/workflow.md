@@ -102,7 +102,3 @@ flowchart LR
 6. The handler may load some data, possibly from a database.
 7. The handler forms a response by using data. Either directly or with the help of the view package.
 8. Emitter receives the response and takes care of sending the response to the user's browser.
-
-> [!NOTE]
-> [← Creating a project](creating-project.md) |
-> [Saying hello →](hello.md)

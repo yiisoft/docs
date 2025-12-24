@@ -503,7 +503,3 @@ $this->addCssFiles($this->assetManager->getCssFiles());
 // Add all JavaScript files from the bundle  
 $this->addJsFiles($this->assetManager->getJsFiles());
 ```
-
-> [!NOTE]
-> [← View injections](view-injections.md) |
-> [Assets →](asset.md)

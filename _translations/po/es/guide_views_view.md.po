@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,24 +17,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title ##
-#: ../src/en/cookbook/making-http-requests.md
-#: ../src/en/cookbook/sentry-integration.md
-#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/en/guide/tutorial/using-yii-with-swoole.md
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
-#: ../src/en/guide/views/widget.md
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
 msgstr ""
 
 #. type: Title #
-#: ../src/en/guide/README.md ../src/en/guide/views/view.md
+#: ../src/guide/index.md ../src/guide/views/view.md
 #, fuzzy, no-wrap
 msgid "Views"
 msgstr "Vistas"
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/hello.md ../src/en/guide/views/view.md
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -46,7 +45,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/hello.md ../src/en/guide/views/view.md
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -76,25 +75,25 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/view.md
-#: ../src/en/guide/views/widget.md
+#: ../src/guide/views/asset.md ../src/guide/views/view.md
+#: ../src/guide/views/widget.md
 #, fuzzy, no-wrap
 msgid "Basic Concepts"
 msgstr "Conceptos Clave"
 
 #. type: Fenced code block (sh)
-#: ../src/en/guide/views/view-injections.md ../src/en/guide/views/view.md
+#: ../src/guide/views/view-injections.md ../src/guide/views/view.md
 #, no-wrap
 msgid "composer require yiisoft/yii-view-renderer\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "View is responsible for presenting data to end users. You give it a template with some placeholders and presentation logic and some data. The view is passing data to the template executing template logic. The end result is ready to be passed to end user, be it a browser, a file to download, an email to send or something else."
 msgstr ""
 
 #. type: Fenced code block (mermaid)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "flowchart LR\n"
@@ -105,59 +104,59 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "In Yii3 views are typically PHP files that contain presentation logic and HTML markup. The view system provides a flexible way to organize your presentation layer and supports features like layouts and partial views. Instead of using plain PHP templates, you can leverage [one of the template engines such as Twig](template-engines.md)."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "For basic view functionality, you need the `yiisoft/view` package:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "composer require yiisoft/view\n"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "For web applications, you should also install the `yiisoft/yii-view-renderer` package which provides [PSR-7](https://www.php-fig.org/psr/psr-7/) compatibility and web-specific features:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md ../src/en/guide/views/widget.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
 msgid "These packages are included by default in the `yiisoft/app` application template."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "A view template file contains presentation logic.  In the `yiisoft/app` template, view files are typically stored alongside their controllers (e.g., `src/Web/Echo/Action.php`). Here's a simple view file example, `src/Web/Echo/template.php`:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "Here `$message` is a view data that is passed when you render a template with the help of `ViewRenderer`. For example, `src/Web/Echo/Action.php`:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "First argument of the `render()` method is a path to the template file. In the `yiisoft/app`, template files are typically stored alongside their actions. The result is ready to be rendered to the browser so we return it immediately."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Working with layouts"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "Most web applications use a common layout for all pages. In the `yiisoft/app` template, layouts are stored in `src/Web/Shared/Layout/Main/` directory. You can set a default layout in `config/common/params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -169,12 +168,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "A typical layout file such as `src/Web/Shared/Layout/Main/layout.php` looks like this:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -238,22 +237,22 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "In the template above `$applicationParams` is an array of parameters from `config/common/application.php`."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "`$aliases` refers to [aliases component](../concept/aliases.md) that is used to get the base URL of the application at the server for URLs."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "`$this` is an instance of the view that we use to get page title and output assets. Both standard and custom."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "With `$assetManager->register(MainAsset::class);` we register an asset that defines `css` to include to the page. It is\n"
@@ -262,7 +261,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "> [!IMPORTANT]\n"
@@ -271,23 +270,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "More about what's available in layout could be read in [yiisoft/view](https://github.com/yiisoft/view) documentation."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering without layout"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "Sometimes you need to render a view without a layout (for example, for AJAX responses):"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "public function ajaxContent(): ResponseInterface\n"
@@ -305,25 +304,25 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Nested Views and Partials"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering Sub-views"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "You can render other views from within a view using the `$this->render()` method:\n"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -343,13 +342,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "**src/Web/Post/_item.php**\n"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -371,18 +370,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Using Blocks"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "Blocks allow you to define content in one view and display it in another, typically in layouts:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "// In a view file\n"
@@ -395,18 +394,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering as String"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "If you need the rendered content as a string instead of a PSR-7 response:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "public function getEmailContent(): string\n"
@@ -418,19 +417,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, fuzzy, no-wrap
 #| msgid "Events"
 msgid "View Events"
 msgstr "Eventos"
 
 #. type: Plain text
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 msgid "The view system triggers events during the rendering process that you can listen to:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/view.md
+#: ../src/guide/views/view.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\View\\Event\\WebView\\BeforeRender;\n"
@@ -456,13 +455,4 @@ msgid ""
 "        ]);\n"
 "    }\n"
 "}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/en/guide/views/view.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [Template engines →](template-engines.md) |\n"
-"> [View injections →](view-injections.md)\n"
 msgstr ""

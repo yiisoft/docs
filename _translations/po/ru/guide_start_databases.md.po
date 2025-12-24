@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,86 +17,86 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: ../src/en/guide/README.md ../src/en/guide/start/databases.md
+#: ../src/guide/index.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Working with databases"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Yii doesn't dictate using a particular database or storage for your application.  There are many ways you can work with relational databases:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[Yii DB](https://github.com/yiisoft/db)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[Yii Active Record](https://github.com/yiisoft/active-record)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, fuzzy
 #| msgid "[PHP manual: security](https://www.php.net/manual/en/security.php)"
 msgid "[PDO](https://www.php.net/manual/en/book.pdo.php)"
 msgstr "[Руководство по PHP: безопасность](https://www.php.net/manual/en/security.php)"
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "For non-relational ones, there are usually official libraries available:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[ElasticSearch](https://github.com/elastic/elasticsearch-php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "[Redis](https://redis.io/docs/clients/#php)"
 msgstr ""
 
 #. type: Bullet: '    - '
-#: ../src/en/guide/start/databases.md ../src/en/internals/000-packages.md
+#: ../src/guide/start/databases.md ../src/internals/000-packages.md
 msgid "..."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "In this guide, we will focus on working with relational databases using Yii DB. We'll use PostgreSQL to implement a simple CRUD (create read update delete)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid "Installing PostgreSQL"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "You need to install PostgreSQL. If you prefer not to use Docker, [get the installer from official website](https://www.postgresql.org/download/), install it and create a database."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
 msgstr ""
 
 #. type: Fenced code block (yaml)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "services:\n"
@@ -145,51 +145,51 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Note that we add `depends_on` so application waits for database to be up."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.  If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then rebuild PHP image with `make build && make down && make up`."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, fuzzy, no-wrap
 #| msgid "Configuring SSL peer validation"
 msgid "Configuring connection"
 msgstr "Настройка проверки SSL-сертификата"
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Now that we have the database, it's time to define the connection."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Let's use latest versions to be released. Change your `minimum-stability` to `dev` in `composer.json` first."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Then we need a package to be installed:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, fuzzy, no-wrap
 #| msgid "composer install yiisoft/security\n"
 msgid "make composer require yiisoft/db-pgsql dev-master\n"
 msgstr "composer install yiisoft/security\n"
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Now create `config/common/di/db-pgsql.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -215,12 +215,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "And define parameters in `config/common/params.php`. For Docker that would be:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Db\\Pgsql\\Dsn;\n"
@@ -236,44 +236,44 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "`db` host is resolved automatically within the Docker network."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "For local installation without Docker the host in Dsn would be `localhost`. You'll have to adjust the rest to match how you configured the database."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid "Creating and applying migrations"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "For the initial state of the application and for further database changes, it is a good idea to use migrations.  These are files that create database changes. Applied migrations are tracked in the database, allowing us to know the current state and which migrations remain to be applied."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "To use migrations we need another package installed:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, fuzzy, no-wrap
 msgid "composer require yiisoft/db-migration dev-master\n"
 msgstr "composer install yiisoft/security\n"
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to `config/common/params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "'yiisoft/db-migration' => [\n"
@@ -283,12 +283,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Now you can use `make yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -328,28 +328,28 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Note that we use UUID as the primary key. While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. You generate the ID yourself so you can define a set of related data and save it in a single transaction. The entities that define this set of data in the code are often called an \"aggregate\"."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Apply it with `make yii migrate:up`."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid "An entity"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Now that you have a table it is time to define an entity in the code. Create `src/Web/Page/Page.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -401,24 +401,24 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/start/databases.md ../src/en/guide/structure/domain.md
-#: ../src/en/guide/structure/service.md
+#: ../src/guide/start/databases.md ../src/guide/structure/domain.md
+#: ../src/guide/structure/service.md
 #, no-wrap
 msgid "Repository"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Now that we have entity, we need a place for methods to save an entity, delete it and select either a single page or multiple pages."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Create `src/Web/Page/PageRepository.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -498,46 +498,37 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 #, no-wrap
 msgid "Actions and routes"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "You need actions to:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "List all pages."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "View a page."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Delete a page."
 msgstr ""
 
 #. type: Bullet: '4. '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Create a page."
 msgstr ""
 
 #. type: Bullet: '5. '
-#: ../src/en/guide/start/databases.md
+#: ../src/guide/start/databases.md
 msgid "Edit a page."
-msgstr ""
-
-#. type: Plain text
-#: ../src/en/guide/start/databases.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Working with forms](forms.md) |\n"
-"> [Generating code with Gii →](gii.md)\n"
 msgstr ""

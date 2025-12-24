@@ -7,6 +7,3 @@ via an HTML form, fetching data from a database, and displaying data in a
 paginated fashion. You've also learned how to use [Gii](gii.md) to generate
 code automatically. Using Gii for code generation turns the bulk of your Web
 development process into a task as simple as just filling out some forms.
-
-> [!NOTE]
-> [← Generating code with Gii](gii.md)

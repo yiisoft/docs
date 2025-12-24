@@ -22,7 +22,7 @@ done
 
 for sourceDir in "${sourceDirs[@]}"; do
     if [ -d "$srcDir/$sourceDir" ]; then
-        find "$srcDir/$sourceDir" -name "*.md" -type f | sort | while read -r file; do
+        find "$srcDir/$sourceDir" -name "*.md" -type f | LC_ALL=C sort | while read -r file; do
             relPath="${file#$srcDir/}"
             potPath=$(echo "$relPath" | tr '/' '_')
             echo "[type: markdown] ../src/$relPath \$lang:../src/\$lang/$relPath pot=$potPath" >> "$outputConfig"

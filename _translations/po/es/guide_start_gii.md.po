@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,16 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title #
-#: en/start/gii.md
+#: ../src/guide/start/gii.md
 #, no-wrap
 msgid "Generating code with Gii"
-msgstr ""
-
-#. type: Plain text
-#: en/start/gii.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Working with databases](databases.md) |\n"
-"> [Looking ahead →](looking-ahead.md)\n"
 msgstr ""

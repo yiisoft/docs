@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, no-wrap
 msgid "Running applications"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "After installing Yii, you have a working Yii application.  This section introduces the application's built-in functionality, how the code is organized, and how the application handles requests in general."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Note that unlike the framework itself, after you install a project template, it's all yours.  You're free to add or delete code and overall change it as you need."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, fuzzy, no-wrap
 #| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
 msgid "Functionality <span id=\"functionality\"></span>"
 msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The installed application contains only one page, accessible at `http://localhost/`.  It shares a common layout that you can reuse on further pages."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "<!--\n"
@@ -56,23 +56,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, no-wrap
 msgid "Application structure <span id=\"application-structure\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The most important directories and files in your application are (assuming the application's root directory is `app`):"
 msgstr ""
 
 #. type: Fenced code block
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "assets/                 Asset bundle source files.\n"
@@ -104,39 +104,39 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "In general, the files in the application fall into two groups: those under `app/public` and those under other directories. You can access the former directly via HTTP (i.e., in a browser), while you shouldn't expose the latter."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Each application has an entry script `public/index.php`, the only web-accessible PHP script in the application.  The entry script uses an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of an incoming request with the help of one of PSR-7 packages and passes it to an [application](../structure/application.md)  instance. The application executes a set of middleware sequentially to process the request.  It then passes the result to the emitter, which sends the response to the browser."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Depending on the middleware you use, the application may behave differently. By default, a router uses the requested URL and configuration to choose a handler and execute it to produce a response."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, fuzzy, no-wrap
 #| msgid "References <span id=\"references\"></span>"
 msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
 msgstr "Полезные ссылки <span id=\"references\"></span>"
 
 #. type: Plain text
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The following diagram shows how an application handles a request."
 msgstr ""
 
 #. type: Fenced code block (mermaid)
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 #, no-wrap
 msgid ""
 "flowchart LR\n"
@@ -156,50 +156,41 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The entry script with the help of the application runner loads the container [configuration](../concept/configuration.md) and creates an [application](../structure/application.md) instance and services necessary to handle the request."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Request factory creates a request object based on a raw request that came from a user."
 msgstr ""
 
 #. type: Bullet: '4. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Application passes a request object through a middleware array configured. One of these is typically a router."
 msgstr ""
 
 #. type: Bullet: '5. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The Router finds out what handler to execute based on request and configuration."
 msgstr ""
 
 #. type: Bullet: '6. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The handler may load some data, possibly from a database."
 msgstr ""
 
 #. type: Bullet: '7. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "The handler forms a response by using data. Either directly or with the help of the view package."
 msgstr ""
 
 #. type: Bullet: '8. '
-#: ../src/en/guide/start/workflow.md
+#: ../src/guide/start/workflow.md
 msgid "Emitter receives the response and takes care of sending the response to the user's browser."
-msgstr ""
-
-#. type: Plain text
-#: ../src/en/guide/start/workflow.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Creating a project](creating-project.md) |\n"
-"> [Saying hello →](hello.md)\n"
 msgstr ""

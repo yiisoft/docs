@@ -311,7 +311,3 @@ final class ViewEventListener
     }
 }
 ```
-
-> [!NOTE]
-> [Template engines →](template-engines.md) |
-> [View injections →](view-injections.md)

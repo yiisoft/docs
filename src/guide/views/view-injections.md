@@ -108,7 +108,3 @@ Add your new injection to `params.php` under specific layout name. In the follow
         ],
     ],
 ```
-
-> [!NOTE]
-> [← Template engines](template-engines.md) |
-> [Scripts, styles and meta tags →](script-style-meta.md)

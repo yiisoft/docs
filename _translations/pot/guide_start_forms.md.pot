@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 10:12+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -382,13 +382,4 @@ msgstr ""
 msgid ""
 "In the next section, you will learn how to work with databases, which are "
 "needed in nearly every application."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/start/forms.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← Saying hello](hello.md) |\n"
-"> [Working with databases →](databases.md)\n"
 msgstr ""

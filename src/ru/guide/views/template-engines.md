@@ -201,7 +201,3 @@ This is a markdown template with **bold** and *italic* text.
 4. **Organize templates**: Group related templates in subdirectories
 5. **Document variables**: Always add type hints for better IDE support
 6. **Avoid business logic**: Keep business logic in models and services
-
-> [!NOTE]
-> [← Views](view.md) |
-> [View injections →](view-injections.md)

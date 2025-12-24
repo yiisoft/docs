@@ -656,7 +656,3 @@ final class MobileAsset extends AssetBundle
 **Permission issues:**
 - Check that the web server has write permissions to the assets directory
 - Verify the published assets directory is web-accessible
-
-> [!NOTE]
-> [← Scripts, styles and meta tags](script-style-meta.md) |
-> [Widgets →](widget.md)

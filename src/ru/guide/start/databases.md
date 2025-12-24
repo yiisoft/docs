@@ -360,7 +360,3 @@ You need actions to:
 3. Delete a page.
 4. Create a page.
 5. Edit a page.
-
-> [!NOTE]
-> [← Working with forms](forms.md) |
-> [Generating code with Gii →](gii.md)

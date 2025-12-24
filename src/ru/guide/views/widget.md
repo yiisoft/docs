@@ -765,6 +765,3 @@ protected function render(): string
 Widgets provide a powerful way to create reusable, configurable UI
 components in Yii3 applications.  They help maintain clean separation of
 concerns and make your views more maintainable and testable.
-
-> [!NOTE]
-> [← Assets](asset.md)

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/guide/structure/overview.md
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/structure/overview.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Overview"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Practical Examples"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/asset.md ../src/en/guide/views/script-style-meta.md
-#: ../src/en/guide/views/template-engines.md
+#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
+#: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Best Practices"
 msgstr ""
 
 #. type: Title #
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Scripts, styles and meta tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "Modern web applications require careful management of CSS styles, JavaScript "
 "code, and HTML meta tags.  Yii3 provides a comprehensive system for "
@@ -52,56 +51,56 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "The `WebView` class extends the basic `View` class with web-specific "
 "functionality, allowing you to:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Register CSS files and inline styles"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Register JavaScript files and inline scripts"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Manage HTML meta tags and link tags"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Control the position where resources are rendered"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Handle dependencies between resources"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "CSS management"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering CSS Files"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "You can register CSS files to be included in your HTML pages:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -127,18 +126,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering Inline CSS"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "For inline CSS styles, use the `registerCss()` method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register inline CSS\n"
@@ -162,18 +161,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "CSS from Files"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "You can also register CSS content from external files:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Read CSS from a file and register as inline CSS\n"
@@ -183,18 +182,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Style Tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "For more control, you can use HTML style tags directly:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Html\\Html;\n"
@@ -212,24 +211,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "JavaScript management"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering JavaScript Files"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Include external JavaScript files using `registerJsFile()`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register a JavaScript file\n"
@@ -251,18 +250,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering Inline JavaScript"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Add inline JavaScript code with `registerJs()`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register inline JavaScript\n"
@@ -282,18 +281,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "JavaScript Variables"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Pass PHP data to JavaScript using `registerJsVar()`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register JavaScript variables\n"
@@ -310,12 +309,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "This generates JavaScript code like:"
 msgstr ""
 
 #. type: Fenced code block (html)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "<script>\n"
@@ -326,18 +325,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Script Tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "For more control over script tags:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Html\\Html;\n"
@@ -354,19 +353,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Position Constants"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "Resources can be positioned at different locations in the HTML document:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\View\\WebView;\n"
@@ -388,12 +387,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Example layout showing where each position is rendered:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -427,24 +426,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Meta tags"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Basic Meta Tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Register meta tags for SEO and page information:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register meta tags using array syntax\n"
@@ -463,18 +462,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Meta Tag Objects"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "For more control, use the `Html::meta()` helper:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Html\\Html;\n"
@@ -494,18 +493,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Preventing Duplicate Meta Tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Use keys to prevent duplicate meta tags:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// First registration\n"
@@ -522,24 +521,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Link tags"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Basic Link Tags"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Register various types of link tags:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Favicon\n"
@@ -574,13 +573,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Link Tag Objects"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Html\\Html;\n"
@@ -601,19 +600,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Complete Page Setup"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "Here's how you might set up a complete page with all types of resources:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -680,18 +679,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Conditional Resource Loading"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "Load resources based on conditions:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -728,63 +727,63 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "**Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript at "
 "`POSITION_END`"
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "**Minimize inline resources**: Prefer external files for better caching"
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "**Use keys for duplicates**: Prevent duplicate resources with meaningful keys"
 msgstr ""
 
 #. type: Bullet: '4. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid ""
 "**Optimize loading**: Use `async` and `defer` attributes for non-critical "
 "JavaScript"
 msgstr ""
 
 #. type: Bullet: '5. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "**Group related resources**: Keep related CSS and JS files together"
 msgstr ""
 
 #. type: Bullet: '6. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "**Use CDNs wisely**: Balance performance with reliability"
 msgstr ""
 
 #. type: Bullet: '7. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "**Validate meta tags**: Ensure proper SEO meta tags are set"
 msgstr ""
 
 #. type: Bullet: '8. '
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "**Consider security**: Be careful with inline scripts and CSP policies"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Working with Asset Bundles"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 msgid "For more complex asset management, consider using asset bundles:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid ""
 "// Register an asset bundle (covered in detail in the Assets guide)\n"
@@ -795,13 +794,4 @@ msgid ""
 "\n"
 "// Add all JavaScript files from the bundle  \n"
 "$this->addJsFiles($this->assetManager->getJsFiles());\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/en/guide/views/script-style-meta.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> [← View injections](view-injections.md) |\n"
-"> [Assets →](asset.md)\n"
 msgstr ""
