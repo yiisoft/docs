@@ -20,6 +20,9 @@ export default {
             label: 'English',
             lang: 'en',
             themeConfig: {
+                editLink: {
+                    pattern: 'https://github.com/yiisoft/docs/edit/main/docs/:path'
+                },
                 nav: [
                     {text: 'Guide', link: '/guide'},
                     {text: 'Cookbook', link: '/cookbook'},
@@ -113,7 +116,12 @@ export default {
                         {
                             text: 'Views',
                             items: [
-                                {text: 'View Injections', link: '/guide/views/view-injections'}
+                                {text: 'Views', link: '/guide/views/view'},
+                                {text: 'Assets', link: '/guide/views/asset'},
+                                {text: 'Scripts, Styles and Meta Tags', link: '/guide/views/script-style-meta'},
+                                {text: 'Template Engines', link: '/guide/views/template-engines'},
+                                {text: 'View Injections', link: '/guide/views/view-injections'},
+                                {text: 'Widgets', link: '/guide/views/widget'}
                             ]
                         },
                         {
@@ -302,7 +310,12 @@ export default {
                         {
                             text: 'Vistas',
                             items: [
-                                {text: 'Inyecciones de vista', link: '/es/guide/views/view-injections'}
+                                {text: 'Vistas', link: '/es/guide/views/view'},
+                                {text: 'Assets', link: '/es/guide/views/asset'},
+                                {text: 'Scripts, estilos y meta tags', link: '/es/guide/views/script-style-meta'},
+                                {text: 'Motores de plantillas', link: '/es/guide/views/template-engines'},
+                                {text: 'Inyecciones de vista', link: '/es/guide/views/view-injections'},
+                                {text: 'Widgets', link: '/es/guide/views/widget'}
                             ]
                         },
                         {
@@ -491,7 +504,12 @@ export default {
                         {
                             text: 'Views',
                             items: [
-                                {text: 'View Injections', link: '/id/guide/views/view-injections'}
+                                {text: 'Views', link: '/id/guide/views/view'},
+                                {text: 'Assets', link: '/id/guide/views/asset'},
+                                {text: 'Scripts, styles dan meta tags', link: '/id/guide/views/script-style-meta'},
+                                {text: 'Template engines', link: '/id/guide/views/template-engines'},
+                                {text: 'View Injections', link: '/id/guide/views/view-injections'},
+                                {text: 'Widgets', link: '/id/guide/views/widget'}
                             ]
                         },
                         {
@@ -680,7 +698,12 @@ export default {
                         {
                             text: 'Представления',
                             items: [
-                                {text: 'Инъекции представлений', link: '/ru/guide/views/view-injections'}
+                                {text: 'Представления', link: '/ru/guide/views/view'},
+                                {text: 'Ресурсы', link: '/ru/guide/views/asset'},
+                                {text: 'Скрипты, стили и мета-теги', link: '/ru/guide/views/script-style-meta'},
+                                {text: 'Шаблонизаторы', link: '/ru/guide/views/template-engines'},
+                                {text: 'Инъекции представлений', link: '/ru/guide/views/view-injections'},
+                                {text: 'Виджеты', link: '/ru/guide/views/widget'}
                             ]
                         },
                         {
