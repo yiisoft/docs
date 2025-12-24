@@ -1,3 +1,5 @@
+import taskLists from 'markdown-it-task-lists'
+
 export default {
     base: '/docs/',
     title: 'Yii3 Documentation',
@@ -14,6 +16,11 @@ export default {
             {icon: 'x', link: 'https://twitter.com/yiiframework'},
             {icon: 'telegram', link: 'https://t.me/yii3en'}
         ]
+    },
+    markdown: {
+        config: (md) => {
+            md.use(taskLists)
+        }
     },
     locales: {
         root: {
