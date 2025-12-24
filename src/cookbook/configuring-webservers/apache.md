@@ -3,7 +3,7 @@
 Use the following configuration in Apache's `httpd.conf` file or within a virtual host configuration. Note that you
 should replace `path/to/app/public` with the actual path for `app/public`.
 
-```apacheconfig
+```apache
 # Set document root to be "app/public"
 DocumentRoot "path/to/app/public"
 
@@ -30,7 +30,7 @@ DocumentRoot "path/to/app/public"
 In case you have `AllowOverride All` you can add `.htaccess` file with the following configuration instead of
 using `httpd.conf`:
 
-```apacheconfig
+```apache
 # use mod_rewrite for pretty URL support
 RewriteEngine on
 

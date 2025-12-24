@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2025-12-24 09:13+0000\n"
 "PO-Revision-Date: 2025-09-05 14:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/apache.md
 #, no-wrap
 msgid "Configuring web servers: Apache"
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/apache.md
 msgid "Use the following configuration in Apache's `httpd.conf` file or within a virtual host configuration. Note that you should replace `path/to/app/public` with the actual path for `app/public`."
 msgstr ""
 
-#. type: Fenced code block (apacheconfig)
-#: en/configuring-webservers/apache.md
+#. type: Fenced code block (apache)
+#: ../src/cookbook/configuring-webservers/apache.md
 #, no-wrap
 msgid ""
 "# Set document root to be \"app/public\"\n"
@@ -55,12 +55,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/apache.md
 msgid "In case you have `AllowOverride All` you can add `.htaccess` file with the following configuration instead of using `httpd.conf`:"
 msgstr ""
 
-#. type: Fenced code block (apacheconfig)
-#: en/configuring-webservers/apache.md
+#. type: Fenced code block (apache)
+#: ../src/cookbook/configuring-webservers/apache.md
 #, no-wrap
 msgid ""
 "# use mod_rewrite for pretty URL support\n"
@@ -82,6 +82,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/apache.md
 msgid "In the above, note the usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
 msgstr ""
