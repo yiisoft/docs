@@ -1,0 +1,91 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:23+0000\n"
+"PO-Revision-Date: 2025-12-24 08:23+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../src/cookbook/index.md
+#, no-wrap
+msgid "Yii3 community cookbook"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/index.md
+msgid ""
+"Yii3 Community Cookbook is an OpenSource book full of tips and tricks about "
+"the [Yii3](https://www.yiiframework.com/)  PHP framework."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "The Yii community creates the cookbook."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "Yii core team members curate and edit it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/index.md
+msgid ""
+"Feel free to pull-request your own writings. Team members will review it, "
+"give feedback and merge the best possible way."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/index.md
+msgid ""
+"This book conforms to the [Terms of Yii Documentation](https://www."
+"yiiframework.com/license#docs)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Preface](preface.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid ""
+"[Structuring code by use-case with vertical slices](organizing-code/"
+"structuring-by-use-case-with-vertical-slices.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Making HTTP requests](making-http-requests.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Disabling CSRF protection](disabling-csrf-protection.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Sentry integration](sentry-integration.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr ""

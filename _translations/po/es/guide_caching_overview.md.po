@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 08:23+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,43 +16,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. type: Title #
-#: en/caching/overview.md
+#. type: Title ##
+#: ../src/guide/caching/overview.md ../src/guide/index.md
 #, no-wrap
 msgid "Caching"
 msgstr ""
 
 #. type: Plain text
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "Caching is an inexpensive and effective way to improve the performance of an application.  By storing relatively static data in cache and serving it from cache when requested, the application saves the time that it otherwise would require to generate the data from scratch every time."
 msgstr ""
 
 #. type: Plain text
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "Caching can occur at different levels and places in an application. On the server-side, at the lower level, cache may be used to store basic data, such as a list of most recent article information fetched from the database; and at the higher level, cache may be used to store fragments or whole of Web pages, such as the rendering result of the most recent articles. On the client-side, you may use HTTP caching to keep most recently visited page content in the browser cache."
 msgstr ""
 
 #. type: Plain text
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "Yii supports all these caching mechanisms:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "[Data caching](data.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "[Fragment caching](fragment.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "[Page caching](page.md)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/caching/overview.md
+#: ../src/guide/caching/overview.md
 msgid "[HTTP caching](http.md)"
 msgstr ""
