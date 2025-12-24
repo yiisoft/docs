@@ -6,7 +6,7 @@ your web server to the `app/public` folder.
 
 > [!IMPORTANT]
 > If you're running your Yii application behind a reverse proxy, you might need to configure
-> [Trusted proxies and headers](../../../guide/en/security/trusted-request.md).
+> [Trusted proxies and headers](../../guide/security/trusted-request.md).
 
 ## Specific server configurations
 
