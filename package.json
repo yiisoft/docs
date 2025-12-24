@@ -4,7 +4,9 @@
   "description": "Yii Documentation",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev src"
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "preview": "vitepress preview src"
   },
   "devDependencies": {
     "mermaid": "^11.12.2",

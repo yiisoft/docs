@@ -12,12 +12,12 @@ Each middleware, given the request, can:
 
 Depending on middleware used, application behavior may vary significantly.
 
-![Middleware](img/middleware.svg)
+![Middleware](/assets/guide/middleware.svg)
 
 In the above each next middleware wraps the previous middleware. Alternatively, it could be presented
 as follows:
 
-![Middleware](img/middleware_alternative.svg)
+![Middleware](/assets/guide/middleware_alternative.svg)
 
 ## Using middleware
 

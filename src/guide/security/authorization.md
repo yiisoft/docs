@@ -122,7 +122,7 @@ to read many migrations.
 
 Either way, in the end, you'll get the following RBAC hierarchy:
 
-![Simple RBAC hierarchy](img/rbac-hierarchy-1.svg "Simple RBAC hierarchy")
+![Simple RBAC hierarchy](/assets/guide/security/rbac-hierarchy-1.svg "Simple RBAC hierarchy")
 
 In case you want to build permission hierarchy dynamically, you need a UI or a console command.
 The API used to build the hierarchy itself won't be different.
@@ -355,7 +355,7 @@ $auth->addChild($author, $updateOwnPost);
 
 Now you've got the following hierarchy:
 
-![RBAC hierarchy with a rule](img/rbac-hierarchy-2.svg "RBAC hierarchy with a rule")
+![RBAC hierarchy with a rule](/assets/guide/security/rbac-hierarchy-2.svg "RBAC hierarchy with a rule")
 
 
 ### Access check <span id="access-check"></span>
@@ -400,7 +400,7 @@ The difference is that now checking for a user's own post is part of the RBAC.
 
 If the current user is Jane with `ID=1` you are starting at `createPost` and trying to get to `Jane`:
 
-![Access check](img/rbac-access-check-1.svg "Access check")
+![Access check](/assets/guide/security/rbac-access-check-1.svg "Access check")
 
 To check if a user can update a post,
 you need to pass an extra parameter that's required by `AuthorRule` described before:
@@ -414,7 +414,7 @@ if ($user->can('updatePost', ['post' => $post])) {
 Here is what happens if the current user is John:
 
 
-![Access check](img/rbac-access-check-2.svg "Access check")
+![Access check](/assets/guide/security/rbac-access-check-2.svg "Access check")
 
 You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`
 should return `true` from its `execute()` method. The method receives its `$params` from the `can()` method call, so the value is
@@ -423,7 +423,7 @@ If everything is fine, you will get to `author` assigned to John.
 
 In the case of Jane, it's a bit simpler since she is an admin:
 
-![Access check](img/rbac-access-check-3.svg "Access check")
+![Access check](/assets/guide/security/rbac-access-check-3.svg "Access check")
 
 ## Implementing your own access checker
 

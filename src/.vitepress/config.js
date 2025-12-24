@@ -2,6 +2,7 @@ import {withMermaid} from "vitepress-plugin-mermaid";
 
 export default withMermaid({
     title: 'Yii3 Documentation',
+    ignoreDeadLinks: true,
     head: [['link', {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'}]],
     themeConfig: {
         logo: '/assets/logo-icon.svg',

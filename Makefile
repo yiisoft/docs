@@ -1,7 +1,13 @@
 init:
 	npm install
 
-up:
+build:
+	npm run build
+
+preview:
+	npm run preview
+
+dev:
 	npm run dev
 
 po4a:

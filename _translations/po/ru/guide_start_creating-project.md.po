@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-24 09:41+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "Creating a project"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "In this guide we'll provide commands for both [Docker](https://docs.docker.com/get-started/get-docker/) and the built-in dev server with everything installed locally."
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -37,39 +37,39 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "We recommend starting with a project template that's a minimal working Yii project implementing some basic features.  It can serve as a good starting point for your projects."
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "You can create a new project from a template using the [Composer](https://getcomposer.org) package manager:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "composer create-project yiisoft/app your_project\n"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "Docker users can run the following command:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "docker run --rm -it -v \"$(pwd):/app\" composer/composer create-project yiisoft/app your_project\n"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "This installs the latest stable version of the Yii project template in a directory named `your_project`.  You can choose a different directory name if you want."
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid ""
 "> [!TIP]\n"
@@ -78,34 +78,34 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "Go into the newly created directory and run:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "APP_ENV=dev ./yii serve --port=80\n"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "For Docker users, run:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "make up\n"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 msgid "Open your browser to the URL `http://localhost/`."
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -114,12 +114,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
-msgid "![Successful Installation of Yii](img/app-installed.png)"
+#: ../src/guide/start/creating-project.md
+msgid "![Successful Installation of Yii](/assets/guide/start/app-installed.png)"
 msgstr ""
 
 #. type: Plain text
-#: en/start/creating-project.md
+#: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"

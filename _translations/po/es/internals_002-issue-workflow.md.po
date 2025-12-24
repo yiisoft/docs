@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2025-12-24 09:37+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,80 +17,80 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title #
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "002 — Issue workflow"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "The process of handing incoming issues is the following:"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
-msgid "![Issue workflow schema](../../assets/internals/002-issue-workflow.svg)"
+#: ../src/internals/002-issue-workflow.md
+msgid "![Issue workflow schema](/assets/internals/002-issue-workflow.svg)"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Roles"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "We've many roles:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Process managers - initially triage issues and manage labels."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Decision makers - participate in discussions moving them to resolutions."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Bug hunters - verifying bugs."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Contributors - create code for pull requests."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Code reviewers - review pull requests."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "A single person may take one or more roles in the issue-resolving process."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Labels"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "We label issues to mark many things: current status, issue type, component affected. Status labels speak for themselves."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Milestones"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/002-issue-workflow.md
+#: ../src/internals/002-issue-workflow.md
 msgid "Issues aren't assigned to milestones unless they're critical or there is a likely good pull request exists."
 msgstr ""

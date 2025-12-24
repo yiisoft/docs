@@ -47,7 +47,7 @@ Open your browser to the URL `http://localhost/`.
 > The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,
 > `DEV_PORT` in the `docker/.env` file.
 
-![Successful Installation of Yii](img/app-installed.png)
+![Successful Installation of Yii](/assets/guide/start/app-installed.png)
 
 
 > [!NOTE]
