@@ -1,7 +1,7 @@
 name: Deploy VitePress with GitHub Pages
 
 on:
-  pull_request_target:
+  pull_request:
   push:
     branches: ["master"]
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
           path: src/.vitepress/dist
 
   deploy:
-    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+   #  if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
