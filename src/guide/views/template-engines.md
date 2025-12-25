@@ -147,10 +147,12 @@ final class MarkdownRenderer implements TemplateRendererInterface
 Register your custom renderer:
 
 ```php
+use Yiisoft\Container\Reference;
+
 // In configuration
 'yiisoft/view' => [
     'renderers' => [
-        'md' => App\View\MarkdownRenderer::class,
+        'md' => Reference::to(App\View\MarkdownRenderer::class),
     ],
 ],
 ```
@@ -163,7 +165,7 @@ Now you can use `.md` template files:
 
 Welcome, {{username}}!
 
-This is a markdown template with **bold** and *italic* text.
+This is a Markdown template with **bold** and *italic* text.
 
 - Feature 1
 - Feature 2
