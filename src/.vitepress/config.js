@@ -3,6 +3,7 @@ import taskLists from 'markdown-it-task-lists'
 export default {
     base: '/docs/',
     title: 'Yii3 Documentation',
+    description: 'Official documentation for Yii3 Framework, a high-performance PHP framework for building modern web applications.',
     ignoreDeadLinks: true,
     head: [['link', {rel: 'icon', href: '/docs/favicon.svg', type: 'image/svg+xml'}]],
     vite: {
