@@ -40,3 +40,13 @@
     top: 20%;
     right: 25%;
 }
+
+/* GLightbox styles */
+.vp-doc .glightbox img {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.vp-doc .glightbox img:hover {
+    opacity: 0.9;
+}
