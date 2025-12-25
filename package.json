@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src",
-    "preview": "vitepress preview src"
+    "preview": "vitepress preview src",
+    "test": "npm run build"
   },
   "devDependencies": {
     "glightbox": "^3.3.1",
