@@ -39,8 +39,10 @@ final readonly class Action
         private ResponseFactoryInterface $responseFactory,
     ) {}
 
-    #[RouteArgument('message')]
-    public function __invoke(string $message = 'Hello!'): ResponseInterface
+    public function __invoke(
+        #[RouteArgument('message')]
+        string $message = 'Hello!'
+    ): ResponseInterface
     {
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('The message is: ' . Html::encode($message));
@@ -140,8 +142,10 @@ final readonly class Action
         private ViewRenderer $viewRenderer,
     ) {}
 
-    #[RouteArgument('message')]
-    public function __invoke(string $message = 'Hello!'): ResponseInterface
+    public function __invoke(
+        #[RouteArgument('message')]
+        string $message = 'Hello!'
+    ): ResponseInterface
     {
         return $this->viewRenderer->render(__DIR__ . '/template', [
             'message' => $message,

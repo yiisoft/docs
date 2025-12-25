@@ -81,12 +81,10 @@ PHP image with `make build && make down && make up`.
 
 Now that we have the database, it's time to define the connection.
 
-Let's use latest versions to be released. Change your `minimum-stability` to `dev` in `composer.json` first.
-
-Then we need a package to be installed:
+First we need a package to be installed:
 
 ```sh
-make composer require yiisoft/db-pgsql dev-master
+make composer require yiisoft/db-pgsql
 ```
 
 Now create `config/common/di/db-pgsql.php`:
@@ -143,7 +141,7 @@ the current state and which migrations remain to be applied.
 To use migrations we need another package installed:
 
 ```sh
-composer require yiisoft/db-migration dev-master
+make composer require yiisoft/db-migration
 ```
 
 Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to
@@ -169,9 +167,6 @@ namespace App\Migration;
 use Yiisoft\Db\Migration\MigrationBuilder;
 use Yiisoft\Db\Migration\RevertibleMigrationInterface;
 
-/**
- * Class M251102141707Page
- */
 final class M251102141707Page implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
@@ -208,6 +203,8 @@ Now that you have a table it is time to define an entity in the code. Create `sr
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace App\Web\Page;
 
@@ -264,6 +261,8 @@ Create `src/Web/Page/PageRepository.php`:
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace App\Web\Page;
 
