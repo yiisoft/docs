@@ -9,7 +9,6 @@
     "preview": "vitepress preview src"
   },
   "devDependencies": {
-    "@miletorix/vitepress-image-viewer": "^1.1.4",
     "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^11.12.2",
     "vitepress": "^1.6.4",

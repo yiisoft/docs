@@ -4,14 +4,8 @@ import { useData } from "vitepress";
 import { createMermaidRenderer } from "vitepress-mermaid-renderer";
 import './style.css'
 
-import ImageViewerP from '@miletorix/vitepress-image-viewer'
-import '@miletorix/vitepress-image-viewer/style.css'
-
 export default {
     extends: DefaultTheme,
-    enhanceApp(ctx) {
-        ImageViewerP(ctx.app)
-    },
     Layout() {
         const { isDark } = useData();
 
