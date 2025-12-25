@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:23+0000\n"
+"POT-Creation-Date: 2025-12-25 07:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/index.md
 #, no-wrap
-msgid "The definitive guide to Yii 3.0"
+msgid "The definitive guide to Yii3"
 msgstr ""
 
 #. type: Plain text
