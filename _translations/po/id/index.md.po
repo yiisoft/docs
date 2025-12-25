@@ -1,0 +1,55 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 09:13+0000\n"
+"PO-Revision-Date: 2025-12-24 08:23+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Fast"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Secure"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Efficient"
+msgstr ""
+
+#. type: Plain text
+#: ../src/index.md
+#, no-wrap
+msgid "<br><br>\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[The Definitive Guide](guide) — the comprehensive guide covering all aspects of the framework."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[Community Cookbook](cookbook) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[Internals](internals) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
+msgstr ""

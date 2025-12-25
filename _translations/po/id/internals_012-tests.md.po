@@ -1,0 +1,72 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/012-tests.md
+#, no-wrap
+msgid "012 — Tests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/012-tests.md
+msgid "For each package, we're adding unit-tests that are run via [PHPUnit](https://phpunit.de/).  When designing tests, the following guidelines should be taken into account."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Test class should be marked as `final` by default."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "`@test` annotation must not be used, prefix methods with `test`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "The test method name must reflect the purpose of the test."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "\"should\" must not be used in the test method name."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "If necessary, the test method phpdoc may describe the desired behavior."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "The test must follow AAA: first arrange the necessary preconditions, then act, then assert expected results."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "There must be one test case per test method that's a single AAA."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Test must use public API.  Private properties or methods shouldn't be accessed, assumptions on internals of the class tested shouldn't be made."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Tests shouldn't rely on composer-config-plugin and DI container unless necessary."
+msgstr ""

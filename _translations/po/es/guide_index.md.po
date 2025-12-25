@@ -1,0 +1,642 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-25 07:27+0000\n"
+"PO-Revision-Date: 2025-12-24 08:23+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/guide/caching/overview.md ../src/guide/index.md
+#, no-wrap
+msgid "Caching"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+#| msgid "The definitive guide to Yii 3.0"
+msgid "The definitive guide to Yii3"
+msgstr "La Guía Definitiva de Yii 3.0"
+
+#. type: Plain text
+#: ../src/guide/index.md
+msgid "We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Introduction"
+msgstr "Introducción"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[About Yii](intro/what-is-yii.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Getting started"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[What do you need to know?](start/prerequisites.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Creating a project](start/creating-project.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Running applications](start/workflow.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Saying hello](start/hello.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Working with forms](start/forms.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Working with databases](start/databases.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Generating code with Gii](start/gii.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Looking ahead](start/looking-ahead.md)"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
+#, no-wrap
+msgid "Application structure"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Application structure overview](structure/overview.md) +"
+msgid "[Application structure overview](structure/overview.md)"
+msgstr "[Información General de Estructura de Una Aplicación](structure/overview.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Entry scripts](structure/entry-script.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Application](structure/application.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Service components](structure/service.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Actions](structure/action.md) +"
+msgid "[Actions](structure/action.md)"
+msgstr "[Acciones](structure/action.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Domain](structure/domain.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Middleware](structure/middleware.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Packages](structure/package.md)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+msgid "Key concepts"
+msgstr "Conceptos Clave"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Class autoloading](concept/autoloading.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Dependency injection container](concept/di-container.md) +"
+msgid "[Dependency injection container](concept/di-container.md)"
+msgstr "[Contenedor de Inyección de Dependencia](concept/di-container.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Configuration](concept/configuration.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Aliases](concept/aliases.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Events](concept/events.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Immutability](concept/immutability.md)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+#| msgid "Handling requests +"
+msgid "Handling requests"
+msgstr "Gestión de las Peticiones"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Routing and URL generation](runtime/routing.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Request](runtime/request.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Response](runtime/response.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Sessions](runtime/sessions.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Cookies](runtime/cookies.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Handling errors](runtime/handling-errors.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Logging](runtime/logging.md) +"
+msgid "[Logging](runtime/logging.md)"
+msgstr "[Registros (logs)](runtime/logging.md)"
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/views/view.md
+#, fuzzy, no-wrap
+msgid "Views"
+msgstr "Vistas"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View](views/view.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Views](views/view.md) -"
+msgid "[View injections](views/view-injections.md)"
+msgstr "[Vistas](views/view.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Assets](views/asset.md) -"
+msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgstr "[Assets](views/asset.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Assets](views/asset.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Widgets](views/widget.md) TODO: verify!"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "Working with databases"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Migrations](databases/db-migrations.md) TODO: verify/update!"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Getting data from users"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Creating forms](input/forms.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Application structure overview](structure/overview.md) +"
+msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+msgstr "[Información General de Estructura de Una Aplicación](structure/overview.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Uploading files](input/file-upload.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Collecting tabular input](input/tabular-input.md) TODO"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Displaying data"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data formatting](output/formatting.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Pagination](output/pagination.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Sorting](output/sorting.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data providers](output/data-providers.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data widgets](output/data-widgets.md) TODO"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/security/overview.md
+#, no-wrap
+msgid "Security"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Security overview](security/overview.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Authentication](security/authentication.md) +"
+msgid "[Authentication](security/authentication.md)"
+msgstr "[Autenticación](security/authentication.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Working with passwords](security/passwords.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Cryptography](security/cryptography.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Best practices](security/best-practices.md) +"
+msgid "[Best practices](security/best-practices.md)"
+msgstr "[Buenas Prácticas](security/best-practices.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Caching overview](caching/overview.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data caching](caching/data.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Fragment caching](caching/fragment.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Page caching](caching/page.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[HTTP caching](caching/http.md) TODO"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "REST APIs"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Quick start](rest/quick-start.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Resources](rest/resources.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Controllers](rest/controllers.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Routing](rest/routing.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Authentication](security/authentication.md) +"
+msgid "[Authentication](rest/authentication.md) TODO"
+msgstr "[Autenticación](security/authentication.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Rate limiting](rest/rate-limiting.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Versioning](rest/versioning.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Error handling](rest/error-handling.md) TODO"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+#| msgid "Development tools -"
+msgid "Development tools"
+msgstr "Herramientas de Desarrollo"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "Debug toolbar and debugger"
+msgid "Debug toolbar and debugger"
+msgstr "Depurador y Barra de Herramientas de Depuración"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "Generating code using Gii"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "Generating API documentation"
+msgid "Generating API documentation"
+msgstr "Generación de Documentación de API"
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+#| msgid "Testing -"
+msgid "Testing"
+msgstr "Pruebas (Testing)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Testing overview](testing/overview.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Testing environment setup](testing/environment-setup.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Unit tests](testing/unit.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Functional tests](testing/functional.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Acceptance tests](testing/acceptance.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Fixtures](testing/fixtures.md) TODO"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Special topics"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Console applications](tutorial/console-applications.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Internationalization](tutorial/i18n.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Mailing](tutorial/mailing.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Performance tuning](tutorial/performance-tuning.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Helpers"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Arrays](https://github.com/yiisoft/arrays/)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Files](https://github.com/yiisoft/files/)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Html](https://github.com/yiisoft/html/)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Json](https://github.com/yiisoft/json)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Network utilities](https://github.com/yiisoft/network-utilities/)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[VarDumper](https://github.com/yiisoft/var-dumper)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md) +"
+msgid "[Strings](https://github.com/yiisoft/strings)"
+msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Extras"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Cookbook](../../cookbook/en/README.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Glossary](glossary.md)"
+msgstr ""

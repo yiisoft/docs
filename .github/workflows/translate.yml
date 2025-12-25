@@ -1,0 +1,35 @@
+name: Update translations
+
+on:
+  pull_request:
+    paths:
+      - '_translations/**'
+      - 'src/**'
+
+jobs:
+  update-docs:
+    name: Update docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.YIISOFT_GITHUB_TOKEN || github.token }}
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Prepare po4a configuration
+        run: _translations/prepare-config.sh
+
+      - name: Use po4a
+        uses: addnab/docker-run-action@v3
+        with:
+            image: arduanovdanil/po4a-fork:v0.73
+            options: -v ${{ github.workspace }}:/src -w /src/_translations
+            run: po4a po4a.conf && po4a po4a.conf
+
+      - name: Commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update translation
+          file_pattern: '_translations src'

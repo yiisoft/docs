@@ -1,0 +1,52 @@
+:root {
+    --vp-c-brand-1: #40B3D8;
+    --vp-c-brand-2: #83C933;
+    --vp-c-brand-3: #F18A2A;
+}
+
+.VPHomeHero .image-bg::before {
+    content: '';
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    background-color: rgb(139 195 74 / 38%);
+    border-radius: 50em;
+    filter: blur(5.5rem);
+    z-index: 1;
+    top: 2%;
+    right: 55%;
+}
+.VPHomeHero .image-bg::after {
+    content: '';
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    background-color: hsl(28.94deg 87.67% 55.49% / 76%);
+    border-radius: 50em;
+    filter: blur(5.5rem);
+    z-index: 1;
+    top: -10%;
+    right: -6%;
+}
+.VPHomeHero .image::after {
+    content: '';
+    position: absolute;
+    width: 24%;
+    height: 39%;
+    background-color: rgb(74 92 195 / 23%);
+    border-radius: 50em;
+    filter: blur(5.5rem);
+    z-index: 0;
+    top: 20%;
+    right: 25%;
+}
+
+/* GLightbox styles */
+.vp-doc .glightbox img {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.vp-doc .glightbox img:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,502 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/views/view.md
+#, no-wrap
+msgid "Views"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use Yiisoft\\Html\\Html;\n"
+"/* @var string $message */\n"
+"?>\n"
+"\n"
+"<p>The message is: <?= Html::encode($message) ?></p>\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"    ) {}\n"
+"\n"
+"    #[RouteArgument('message')]\n"
+"    public function __invoke(string $message = 'Hello!'): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'message' => $message,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md ../src/guide/views/view.md
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Basic Concepts"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/views/view-injections.md ../src/guide/views/view.md
+#, no-wrap
+msgid "composer require yiisoft/yii-view-renderer\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"View is responsible for presenting data to end users. You give it a template "
+"with some placeholders and presentation logic and some data. The view is "
+"passing data to the template executing template logic. The end result is "
+"ready to be passed to end user, be it a browser, a file to download, an "
+"email to send or something else."
+msgstr ""
+
+#. type: Fenced code block (mermaid)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"flowchart LR\n"
+"  A[Data] --> V[View]\n"
+"  B[Template] --> V\n"
+"  V --> C[HTML]\n"
+"  C --> D[Browser]\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"In Yii3 views are typically PHP files that contain presentation logic and "
+"HTML markup. The view system provides a flexible way to organize your "
+"presentation layer and supports features like layouts and partial views. "
+"Instead of using plain PHP templates, you can leverage [one of the template "
+"engines such as Twig](template-engines.md)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid "For basic view functionality, you need the `yiisoft/view` package:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "composer require yiisoft/view\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"For web applications, you should also install the `yiisoft/yii-view-"
+"renderer` package which provides [PSR-7](https://www.php-fig.org/psr/psr-7/) "
+"compatibility and web-specific features:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+msgid ""
+"These packages are included by default in the `yiisoft/app` application "
+"template."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"A view template file contains presentation logic.  In the `yiisoft/app` "
+"template, view files are typically stored alongside their controllers (e.g., "
+"`src/Web/Echo/Action.php`). Here's a simple view file example, `src/Web/Echo/"
+"template.php`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"Here `$message` is a view data that is passed when you render a template "
+"with the help of `ViewRenderer`. For example, `src/Web/Echo/Action.php`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"First argument of the `render()` method is a path to the template file. In "
+"the `yiisoft/app`, template files are typically stored alongside their "
+"actions. The result is ready to be rendered to the browser so we return it "
+"immediately."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Working with layouts"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"Most web applications use a common layout for all pages. In the `yiisoft/"
+"app` template, layouts are stored in `src/Web/Shared/Layout/Main/` "
+"directory. You can set a default layout in `config/common/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    'yiisoft/yii-view-renderer' => [\n"
+"        'viewPath' => null,\n"
+"        'layout' => '@src/Web/Shared/Layout/Main/layout.php',\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"A typical layout file such as `src/Web/Shared/Layout/Main/layout.php` looks "
+"like this:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web\\Shared\\Layout\\Main\\MainAsset;\n"
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"/**\n"
+" * @var \\App\\Shared\\ApplicationParams $applicationParams\n"
+" * @var Yiisoft\\Aliases\\Aliases $aliases\n"
+" * @var Yiisoft\\Assets\\AssetManager $assetManager\n"
+" * @var string $content\n"
+" * @var string|null $csrf\n"
+" * @var Yiisoft\\View\\WebView $this\n"
+" * @var Yiisoft\\Router\\CurrentRoute $currentRoute\n"
+" * @var Yiisoft\\Router\\UrlGeneratorInterface $urlGenerator\n"
+" */\n"
+"\n"
+"$assetManager->register(MainAsset::class);\n"
+"\n"
+"$this->addCssFiles($assetManager->getCssFiles());\n"
+"$this->addCssStrings($assetManager->getCssStrings());\n"
+"$this->addJsFiles($assetManager->getJsFiles());\n"
+"$this->addJsStrings($assetManager->getJsStrings());\n"
+"$this->addJsVars($assetManager->getJsVars());\n"
+"\n"
+"$this->beginPage()\n"
+"?>\n"
+"<!DOCTYPE html>\n"
+"<html lang=\"<?= Html::encode($applicationParams->locale) ?>\">\n"
+"<head>\n"
+"    <meta charset=\"<?= Html::encode($applicationParams->charset) ?>\">\n"
+"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+"    <link rel=\"icon\" href=\"<?= $aliases->get('@baseUrl/favicon.svg') ?>\" type=\"image/svg+xml\">\n"
+"    <title><?= Html::encode($this->getTitle()) ?></title>\n"
+"    <?php $this->head() ?>\n"
+"</head>\n"
+"<body>\n"
+"<?php $this->beginBody() ?>\n"
+"\n"
+"<div class=\"header\">\n"
+"    <a href=\"/\">\n"
+"        <?= Html::encode($applicationParams->name) ?>\n"
+"    </a>\n"
+"</div>\n"
+"\n"
+"<div class=\"content\">    \n"
+"    <?= $content ?>\n"
+"</div>\n"
+"\n"
+"<div class=\"footer\">\n"
+"    © <?= date('Y') ?>  <?= Html::encode($applicationParams->name) ?>    \n"
+"</div>\n"
+"\n"
+"<?php $this->endBody() ?>\n"
+"</body>\n"
+"</html>\n"
+"<?php $this->endPage() ?>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"In the template above `$applicationParams` is an array of parameters from "
+"`config/common/application.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"`$aliases` refers to [aliases component](../concept/aliases.md) that is used "
+"to get the base URL of the application at the server for URLs."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"`$this` is an instance of the view that we use to get page title and output "
+"assets. Both standard and custom."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"With `$assetManager->register(MainAsset::class);` we register an asset that defines `css` to include to the page. It is\n"
+"automatically copied to `public/assets` on first use. It is not very useful for a single CSS file but becomes handy as\n"
+"the number of assets grows.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"> [!IMPORTANT]\n"
+"> No output in plain PHP templates is encoded you should not forget to use `Html::encode()` to prevent\n"
+"XSS security vulnerabilities.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"More about what's available in layout could be read in [yiisoft/view]"
+"(https://github.com/yiisoft/view) documentation."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Rendering without layout"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"Sometimes you need to render a view without a layout (for example, for AJAX "
+"responses):"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"public function ajaxContent(): ResponseInterface\n"
+"{\n"
+"    return $this->viewRenderer\n"
+"        ->withLayout(null)\n"
+"        ->render('ajax-content', ['data' => $data]);\n"
+"}\n"
+"\n"
+"// Or use the renderPartial method\n"
+"public function ajaxContent(): ResponseInterface\n"
+"{\n"
+"    return $this->viewRenderer->renderPartial('ajax-content', ['data' => $data]);\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Nested Views and Partials"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Rendering Sub-views"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "You can render other views from within a view using the `$this->render()` method:\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" * @var \\App\\Entity\\Post[] $posts\n"
+" */\n"
+"?>\n"
+"<div class=\"posts\">\n"
+"    <?php foreach ($posts as $post): ?>\n"
+"        <?= $this->render('_post_item', ['post' => $post]) ?>\n"
+"    <?php endforeach; ?>\n"
+"</div>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "**src/Web/Post/_item.php**\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" * @var \\App\\Entity\\Post $post\n"
+" */\n"
+"?>\n"
+"<article class=\"post\">\n"
+"    <h2><?= Html::encode($post->getTitle()) ?></h2>\n"
+"    <p><?= Html::encode($post->getExcerpt()) ?></p>\n"
+"    <time><?= $post->getCreatedAt()->format('Y-m-d') ?></time>\n"
+"</article>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Using Blocks"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"Blocks allow you to define content in one view and display it in another, "
+"typically in layouts:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"// In a view file\n"
+"<?php $this->setBlock('sidebar', $this->render('_sidebar', ['items' => $sidebarItems])) ?>\n"
+"\n"
+"// In the layout file\n"
+"<?php if ($this->hasBlock('sidebar')): ?>\n"
+"    <aside><?= $this->getBlock('sidebar') ?></aside>\n"
+"<?php endif ?>\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "Rendering as String"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"If you need the rendered content as a string instead of a PSR-7 response:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"public function getEmailContent(): string\n"
+"{\n"
+"    return $this->viewRenderer->renderAsString('email/welcome', [\n"
+"        'user' => $user,\n"
+"    ]);\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid "View Events"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/view.md
+msgid ""
+"The view system triggers events during the rendering process that you can "
+"listen to:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\View\\Event\\WebView\\BeforeRender;\n"
+"use Yiisoft\\View\\Event\\WebView\\AfterRender;\n"
+"\n"
+"// Example event listener\n"
+"final class ViewEventListener\n"
+"{\n"
+"    public function onBeforeRender(BeforeRender $event): void\n"
+"    {\n"
+"        // Add global CSS class based on view name\n"
+"        if (str_contains($event->getFile(), 'admin/')) {\n"
+"            $event->getView()->registerCssClass('admin-view');\n"
+"        }\n"
+"    }\n"
+"\n"
+"    public function onAfterRender(AfterRender $event): void\n"
+"    {\n"
+"        // Log rendering time\n"
+"        $this->logger->info('View rendered', [\n"
+"            'view' => $event->getFile(),\n"
+"            'time' => $event->getRenderTime(),\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""

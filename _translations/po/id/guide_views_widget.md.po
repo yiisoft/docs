@@ -1,0 +1,1041 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md ../src/guide/views/view.md
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+msgid "Basic Concepts"
+msgstr "Konsep Dasar -"
+
+#. type: Plain text
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+msgid "These packages are included by default in the `yiisoft/app` application template."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Widgets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Widgets are reusable, self-contained components that encapsulate complex HTML generation logic.  They provide a clean way to create configurable UI elements that can be used across different views and applications. Yii3 provides a flexible widget system through the `yiisoft/widget` package."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "The widget functionality is provided by the `yiisoft/widget` package:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "composer require yiisoft/cache\n"
+msgid "composer require yiisoft/widget\n"
+msgstr "composer require yiisoft/cache\n"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "For ready-made widgets (like forms, navigation, etc.), you can also install:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "composer require yiisoft/cache\n"
+msgid "composer require yiisoft/yii-widgets\n"
+msgstr "composer require yiisoft/cache\n"
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Widget Class"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "A widget is a PHP class that extends the abstract `Widget` class and implements a `render()` method that returns HTML content as a string."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Widget Factory"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "The `WidgetFactory` is responsible for creating widget instances and can inject dependencies through the DI container."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Widget Configuration"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Widgets can be configured with properties and methods, making them highly customizable and reusable across different contexts."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Creating Custom Widgets"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Simple Widget"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Here's a basic widget that displays an alert message:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class AlertWidget extends Widget\n"
+"{\n"
+"    private string $message = '';\n"
+"    private string $type = 'info';\n"
+"    private bool $closeable = false;\n"
+"\n"
+"    public function message(string $message): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->message = $message;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function type(string $type): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->type = $type;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function closeable(bool $closeable = true): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->closeable = $closeable;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        if (empty($this->message)) {\n"
+"            return '';\n"
+"        }\n"
+"\n"
+"        $classes = ['alert', 'alert-' . $this->type];\n"
+"        \n"
+"        if ($this->closeable) {\n"
+"            $classes[] = 'alert-dismissible';\n"
+"        }\n"
+"\n"
+"        $content = Html::encode($this->message);\n"
+"        \n"
+"        if ($this->closeable) {\n"
+"            $content .= Html::button('×', [\n"
+"                'type' => 'button',\n"
+"                'class' => 'btn-close',\n"
+"                'data-bs-dismiss' => 'alert',\n"
+"            ]);\n"
+"        }\n"
+"\n"
+"        return Html::div($content, ['class' => implode(' ', $classes)]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Using the Widget"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Widget\\AlertWidget;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" */\n"
+"?>\n"
+"\n"
+"<div class=\"page-content\">\n"
+"    <?= AlertWidget::widget()\n"
+"        ->message('Operation completed successfully!')\n"
+"        ->type('success')\n"
+"        ->closeable() ?>\n"
+"    \n"
+"    <?= AlertWidget::widget()\n"
+"        ->message('Please review the form errors below.')\n"
+"        ->type('danger') ?>\n"
+"</div>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Invalidation dependencies"
+msgid "Widget with Dependencies"
+msgstr "Invalidation dependencies"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Widgets can use dependency injection for services:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use App\\Service\\UserService;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class UserMenuWidget extends Widget\n"
+"{\n"
+"    public function __construct(\n"
+"        private UserService $userService,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {}\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        $currentUser = $this->userService->getCurrentUser();\n"
+"        \n"
+"        if ($currentUser === null) {\n"
+"            return $this->renderLoginLink();\n"
+"        }\n"
+"\n"
+"        return $this->renderUserMenu($currentUser);\n"
+"    }\n"
+"\n"
+"    private function renderLoginLink(): string\n"
+"    {\n"
+"        return Html::a('Login', $this->urlGenerator->generate('login'), [\n"
+"            'class' => 'btn btn-primary',\n"
+"        ]);\n"
+"    }\n"
+"\n"
+"    private function renderUserMenu($user): string\n"
+"    {\n"
+"        $items = [\n"
+"            Html::a('Profile', $this->urlGenerator->generate('user.profile'), [\n"
+"                'class' => 'dropdown-item',\n"
+"            ]),\n"
+"            Html::a('Settings', $this->urlGenerator->generate('user.settings'), [\n"
+"                'class' => 'dropdown-item',\n"
+"            ]),\n"
+"            '<div class=\"dropdown-divider\"></div>',\n"
+"            Html::a('Logout', $this->urlGenerator->generate('logout'), [\n"
+"                'class' => 'dropdown-item',\n"
+"            ]),\n"
+"        ];\n"
+"\n"
+"        return Html::div(\n"
+"            Html::button(\n"
+"                Html::encode($user->getName()) . ' <span class=\"caret\"></span>',\n"
+"                [\n"
+"                    'class' => 'btn btn-secondary dropdown-toggle',\n"
+"                    'type' => 'button',\n"
+"                    'data-bs-toggle' => 'dropdown',\n"
+"                ]\n"
+"            ) .\n"
+"            Html::div(implode('', $items), ['class' => 'dropdown-menu']),\n"
+"            ['class' => 'dropdown']\n"
+"        );\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Widget Factory Setup"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Bootstrap Configuration"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Initialize the widget factory in your application bootstrap:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "**config/bootstrap.php**\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Widget\\WidgetFactory;\n"
+"\n"
+"/**\n"
+" * @var \\Psr\\Container\\ContainerInterface $container\n"
+" */\n"
+"\n"
+"// Widget factory defaults\n"
+"$widgetDefaults = [\n"
+"    App\\Widget\\AlertWidget::class => [\n"
+"        'type()' => ['info'],\n"
+"        'closeable()' => [true],\n"
+"    ],\n"
+"    App\\Widget\\CardWidget::class => [\n"
+"        'headerClass()' => ['card-header bg-primary text-white'],\n"
+"    ],\n"
+"];\n"
+"\n"
+"WidgetFactory::initialize($container, $widgetDefaults);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "DI Container Configuration"
+msgstr "Konfigurasi container"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "**config/web/di.php**\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"use App\\Widget\\AlertWidget;\n"
+"use App\\Widget\\UserMenuWidget;\n"
+"\n"
+"return [\n"
+"    // Widget configurations can be defined here if needed\n"
+"    AlertWidget::class => static fn() => new AlertWidget(),\n"
+"    \n"
+"    UserMenuWidget::class => static fn(\n"
+"        App\\Service\\UserService $userService,\n"
+"        Yiisoft\\Router\\UrlGeneratorInterface $urlGenerator\n"
+"    ) => new UserMenuWidget($userService, $urlGenerator),\n"
+"];\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Advanced Widget Examples"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Data List Widget"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "A widget that displays a list of items with pagination:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use Yiisoft\\Data\\Paginator\\PaginatorInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class DataListWidget extends Widget\n"
+"{\n"
+"    private ?PaginatorInterface $paginator = null;\n"
+"    private ?callable $itemRenderer = null;\n"
+"    private string $containerClass = 'data-list';\n"
+"    private string $itemClass = 'data-item';\n"
+"    private string $emptyText = 'No items found.';\n"
+"\n"
+"    public function paginator(PaginatorInterface $paginator): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->paginator = $paginator;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function itemRenderer(callable $renderer): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->itemRenderer = $renderer;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function containerClass(string $class): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->containerClass = $class;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function itemClass(string $class): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->itemClass = $class;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function emptyText(string $text): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->emptyText = $text;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        if ($this->paginator === null) {\n"
+"            return '';\n"
+"        }\n"
+"\n"
+"        $items = $this->paginator->read();\n"
+"        \n"
+"        if (empty($items)) {\n"
+"            return Html::div($this->emptyText, ['class' => 'empty-message']);\n"
+"        }\n"
+"\n"
+"        $itemsHtml = '';\n"
+"        foreach ($items as $item) {\n"
+"            $content = $this->itemRenderer \n"
+"                ? ($this->itemRenderer)($item)\n"
+"                : Html::encode((string) $item);\n"
+"                \n"
+"            $itemsHtml .= Html::div($content, ['class' => $this->itemClass]);\n"
+"        }\n"
+"\n"
+"        return Html::div($itemsHtml, ['class' => $this->containerClass]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Usage:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"use App\\Widget\\DataListWidget;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\Data\\Paginator\\PaginatorInterface $postPaginator\n"
+" */\n"
+"?>\n"
+"\n"
+"<?= DataListWidget::widget()\n"
+"    ->paginator($postPaginator)\n"
+"    ->containerClass('posts-list row')\n"
+"    ->itemClass('col-md-4 mb-3')\n"
+"    ->itemRenderer(function ($post) {\n"
+"        return $this->render('_post_card', ['post' => $post]);\n"
+"    }) ?>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Form Widget"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "A widget that simplifies form rendering:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use Yiisoft\\Form\\FormModelInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class FormWidget extends Widget\n"
+"{\n"
+"    private ?FormModelInterface $model = null;\n"
+"    private string $action = '';\n"
+"    private string $method = 'POST';\n"
+"    private array $options = [];\n"
+"    private array $fields = [];\n"
+"\n"
+"    public function model(FormModelInterface $model): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->model = $model;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function action(string $action): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->action = $action;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function method(string $method): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->method = $method;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function options(array $options): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->options = $options;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function field(string $attribute, array $options = []): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->fields[$attribute] = $options;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        if ($this->model === null) {\n"
+"            return '';\n"
+"        }\n"
+"\n"
+"        $formOptions = array_merge([\n"
+"            'action' => $this->action,\n"
+"            'method' => $this->method,\n"
+"            'class' => 'form',\n"
+"        ], $this->options);\n"
+"\n"
+"        $content = '';\n"
+"        foreach ($this->fields as $attribute => $options) {\n"
+"            $content .= $this->renderField($attribute, $options);\n"
+"        }\n"
+"\n"
+"        return Html::form($content, $formOptions);\n"
+"    }\n"
+"\n"
+"    private function renderField(string $attribute, array $options): string\n"
+"    {\n"
+"        $label = $options['label'] ?? ucfirst($attribute);\n"
+"        $type = $options['type'] ?? 'text';\n"
+"        $class = $options['class'] ?? 'form-control';\n"
+"\n"
+"        $field = Html::div(\n"
+"            Html::label($label, null, ['class' => 'form-label']) .\n"
+"            Html::input($type, $attribute, $this->getModelValue($attribute), [\n"
+"                'class' => $class,\n"
+"                'id' => $attribute,\n"
+"            ]),\n"
+"            ['class' => 'mb-3']\n"
+"        );\n"
+"\n"
+"        return $field;\n"
+"    }\n"
+"\n"
+"    private function getModelValue(string $attribute): mixed\n"
+"    {\n"
+"        return $this->model->getAttributeValue($attribute);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Breadcrumb Widget"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "A widget for navigation breadcrumbs:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class BreadcrumbWidget extends Widget\n"
+"{\n"
+"    private array $items = [];\n"
+"    private string $separator = '';\n"
+"    private array $options = [];\n"
+"\n"
+"    public function __construct(\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {}\n"
+"\n"
+"    public function items(array $items): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->items = $items;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function separator(string $separator): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->separator = $separator;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    public function options(array $options): self\n"
+"    {\n"
+"        $new = clone $this;\n"
+"        $new->options = $options;\n"
+"        return $new;\n"
+"    }\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        if (empty($this->items)) {\n"
+"            return '';\n"
+"        }\n"
+"\n"
+"        $links = [];\n"
+"        $itemCount = count($this->items);\n"
+"        \n"
+"        foreach ($this->items as $index => $item) {\n"
+"            if ($index === $itemCount - 1) {\n"
+"                // Last item (current page) - no link\n"
+"                $links[] = Html::span($item['label'], ['class' => 'breadcrumb-item active']);\n"
+"            } else {\n"
+"                // Regular breadcrumb item with link\n"
+"                $url = isset($item['url']) \n"
+"                    ? (is_array($item['url']) \n"
+"                        ? $this->urlGenerator->generate($item['url'][0], $item['url'][1] ?? [])\n"
+"                        : $item['url'])\n"
+"                    : '#';\n"
+"                    \n"
+"                $links[] = Html::span(\n"
+"                    Html::a($item['label'], $url),\n"
+"                    ['class' => 'breadcrumb-item']\n"
+"                );\n"
+"            }\n"
+"        }\n"
+"\n"
+"        $options = array_merge(['class' => 'breadcrumb'], $this->options);\n"
+"\n"
+"        return Html::nav(\n"
+"            Html::ol(implode('', $links), ['class' => 'breadcrumb']),\n"
+"            $options\n"
+"        );\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Widget Best Practices"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Configuration Pattern"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Use immutable configuration methods:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"public function someProperty($value): self\n"
+"{\n"
+"    $new = clone $this;\n"
+"    $new->someProperty = $value;\n"
+"    return $new;\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Validation"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Validate widget configuration in the render method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"protected function render(): string\n"
+"{\n"
+"    if (empty($this->items)) {\n"
+"        throw new InvalidArgumentException('Items cannot be empty.');\n"
+"    }\n"
+"    \n"
+"    // ... render logic\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "HTML Encoding"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Always encode user data:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"protected function render(): string\n"
+"{\n"
+"    return Html::div(Html::encode($this->userContent), [\n"
+"        'class' => 'user-content',\n"
+"    ]);\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Asset Management"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Register widget-specific assets:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Widget;\n"
+"\n"
+"use App\\Asset\\ChartWidgetAsset;\n"
+"use Yiisoft\\Assets\\AssetManager;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"\n"
+"final class ChartWidget extends Widget\n"
+"{\n"
+"    public function __construct(\n"
+"        private AssetManager $assetManager,\n"
+"    ) {}\n"
+"\n"
+"    protected function render(): string\n"
+"    {\n"
+"        // Register required assets\n"
+"        $this->assetManager->register(ChartWidgetAsset::class);\n"
+"        \n"
+"        // Render widget content\n"
+"        return $this->renderChart();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Using Widgets in Layouts"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Widgets are particularly useful in layouts for common UI elements:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "**views/layout/main.php**\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Widget\\NavigationWidget;\n"
+"use App\\Widget\\FooterWidget;\n"
+"use App\\Widget\\UserMenuWidget;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" * @var string $content\n"
+" */\n"
+"?>\n"
+"<!DOCTYPE html>\n"
+"<html>\n"
+"<head>\n"
+"    <!-- head content -->\n"
+"</head>\n"
+"<body>\n"
+"    <header>\n"
+"        <?= NavigationWidget::widget() ?>\n"
+"        <?= UserMenuWidget::widget() ?>\n"
+"    </header>\n"
+"    \n"
+"    <main>\n"
+"        <?= $content ?>\n"
+"    </main>\n"
+"    \n"
+"    <footer>\n"
+"        <?= FooterWidget::widget() ?>\n"
+"    </footer>\n"
+"</body>\n"
+"</html>\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Testing -"
+msgid "Testing Widgets"
+msgstr "Pengujian -"
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+#| msgid "Testing -"
+msgid "Unit Testing"
+msgstr "Pengujian -"
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Test widget rendering logic:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Widget;\n"
+"\n"
+"use App\\Widget\\AlertWidget;\n"
+"use PHPUnit\\Framework\\TestCase;\n"
+"\n"
+"final class AlertWidgetTest extends TestCase\n"
+"{\n"
+"    public function testRenderWithMessage(): void\n"
+"    {\n"
+"        $widget = AlertWidget::widget()\n"
+"            ->message('Test message')\n"
+"            ->type('success');\n"
+"            \n"
+"        $output = $widget->render();\n"
+"        \n"
+"        $this->assertStringContainsString('Test message', $output);\n"
+"        $this->assertStringContainsString('alert-success', $output);\n"
+"    }\n"
+"    \n"
+"    public function testRenderEmpty(): void\n"
+"    {\n"
+"        $widget = AlertWidget::widget();\n"
+"        $output = $widget->render();\n"
+"        \n"
+"        $this->assertEmpty($output);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Common Widget Patterns"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Conditional Rendering"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"protected function render(): string\n"
+"{\n"
+"    if (!$this->shouldRender()) {\n"
+"        return '';\n"
+"    }\n"
+"    \n"
+"    return $this->doRender();\n"
+"}\n"
+"\n"
+"private function shouldRender(): bool\n"
+"{\n"
+"    return !empty($this->items) && $this->isVisible;\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Template-based Rendering"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"protected function render(): string\n"
+"{\n"
+"    return $this->renderTemplate('widget-template', [\n"
+"        'items' => $this->items,\n"
+"        'options' => $this->options,\n"
+"    ]);\n"
+"}\n"
+"\n"
+"private function renderTemplate(string $template, array $data): string\n"
+"{\n"
+"    // Use a view renderer to render template files\n"
+"    return $this->viewRenderer->renderPartialAsString($template, $data);\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid "Event Integration"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/widget.md
+#, no-wrap
+msgid ""
+"protected function render(): string\n"
+"{\n"
+"    $event = new BeforeWidgetRender($this);\n"
+"    $this->eventDispatcher->dispatch($event);\n"
+"    \n"
+"    $content = $this->doRender();\n"
+"    \n"
+"    $afterEvent = new AfterWidgetRender($this, $content);\n"
+"    $this->eventDispatcher->dispatch($afterEvent);\n"
+"    \n"
+"    return $afterEvent->getContent();\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/widget.md
+msgid "Widgets provide a powerful way to create reusable, configurable UI components in Yii3 applications.  They help maintain clean separation of concerns and make your views more maintainable and testable."
+msgstr ""

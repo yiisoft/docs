@@ -1,0 +1,514 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ###
+#: ../src/en/cookbook/making-http-requests.md
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Container configuration"
+msgstr "Konfigurasi container"
+
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/en/guide/views/view-injections.md
+#, no-wrap
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "There are many ways to configure your application. We will focus on concepts used in the [default project template](https://github.com/yiisoft/app)."
+msgstr "Ada banyak cara untuk mengonfigurasi aplikasi Anda. Kita akan fokus pada konsep yang digunakan dalam [template proyek default](https://github.com/yiisoft/app)."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Yii3 configs are part of the application. You can change many aspects of how the application works by editing configuration under `config/`."
+msgstr "Konfigurasi Yii3 adalah bagian dari aplikasi. Anda dapat mengubah banyak aspek cara kerja aplikasi dengan mengedit konfigurasi di bawah `config/`."
+
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Config plugin"
+msgstr "Plugin konfigurasi"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "In the application template [yiisoft/config](https://github.com/yiisoft/config) is used. Since writing all application configurations from scratch is a tedious process, many packages offer default configs, and the plugin helps with copying these into the application."
+msgstr "Dalam template aplikasi digunakan [yiisoft/config](https://github.com/yiisoft/config). Karena menulis semua konfigurasi aplikasi dari awal adalah proses yang melelahkan, banyak paket menyediakan konfigurasi default, dan plugin ini membantu menyalin konfigurasi tersebut ke dalam aplikasi."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "To offer default configs, `composer.json` of the package has to have `config-plugin` section.  When installing or updating packages with Composer, the plugin reads `config-plugin` sections for each dependency, copies files themselves to application `config/packages/` if they don't yet exist and writes a merge plan to `config/packages/merge_plan.php`. The merge plan defines how to merge the configs into a single big array ready to be passed to [DI container](di-container.md)."
+msgstr "Untuk menawarkan konfigurasi default, `composer.json` paket harus memiliki bagian `config-plugin`. Saat menginstal atau memperbarui paket dengan Composer, plugin membaca bagian `config-plugin` untuk setiap dependensi, menyalin berkas-berkas tersebut ke `config/packages/` aplikasi jika belum ada, dan menulis rencana penggabungan ke `config/packages/merge_plan.php`. Rencana penggabungan mendefinisikan bagaimana menggabungkan konfigurasi menjadi satu array besar yang siap diteruskan ke [DI container](di-container.md)."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Take a look at what's in the \"yiisoft/app\" `composer.json` by default:"
+msgstr "Lihat apa yang ada di `composer.json` bawaan \"yiisoft/app\":"
+
+#. type: Fenced code block (json)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"\"config-plugin-options\": {\n"
+"  \"output-directory\": \"config/packages\"\n"
+"},\n"
+"\"config-plugin\": {\n"
+"    \"common\": \"config/common/*.php\",\n"
+"    \"params\": [\n"
+"        \"config/params.php\",\n"
+"        \"?config/params-local.php\"\n"
+"    ],\n"
+"    \"web\": [\n"
+"        \"$common\",\n"
+"        \"config/web/*.php\"\n"
+"    ],\n"
+"    \"console\": [\n"
+"        \"$common\",\n"
+"        \"config/console/*.php\"\n"
+"    ],\n"
+"    \"events\": \"config/events.php\",\n"
+"    \"events-web\": [\n"
+"        \"$events\",\n"
+"        \"config/events-web.php\"\n"
+"    ],\n"
+"    \"events-console\": [\n"
+"        \"$events\",\n"
+"        \"config/events-console.php\"\n"
+"    ],\n"
+"    \"providers\": \"config/providers.php\",\n"
+"    \"providers-web\": [\n"
+"        \"$providers\",\n"
+"        \"config/providers-web.php\"\n"
+"    ],\n"
+"    \"providers-console\": [\n"
+"        \"$providers\",\n"
+"        \"config/providers-console.php\"\n"
+"    ],\n"
+"    \"routes\": \"config/routes.php\"\n"
+"},\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "There are many named configs defined. For each name, there is a configuration."
+msgstr "Terdapat banyak konfigurasi bernama yang didefinisikan. Untuk setiap nama, ada sebuah konfigurasi."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "A string means that the plugin takes config as is and merges it with same-named configs from packages you require.  That happens if these packages have `config-plugin` in their `composer.json`."
+msgstr "Sebuah string berarti plugin mengambil konfigurasi apa adanya dan menggabungkannya dengan konfigurasi bernama sama dari paket yang Anda butuhkan. Hal ini terjadi jika paket-paket tersebut memiliki `config-plugin` di `composer.json` mereka."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "The array means that the plugin will merge many files in the order they're specified."
+msgstr "Array berarti plugin akan menggabungkan banyak berkas sesuai urutan yang ditentukan."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "`?` at the beginning of the file path indicated that the file may be absent. In this case, it's skipped."
+msgstr "`?` di awal path berkas menunjukkan bahwa berkas tersebut mungkin tidak ada. Dalam kasus ini, berkas akan dilewati."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "`$` at the beginning of the name means a reference to another named config."
+msgstr "`$` di awal nama berarti referensi ke konfigurasi bernama lain."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "`params` is a bit special because it's reserved for application parameters. These are automatically available as `$params` in all other configuration files."
+msgstr "`params` agak istimewa karena dicadangkan untuk parameter aplikasi. Nilai-nilai ini otomatis tersedia sebagai `$params` di semua berkas konfigurasi lainnya."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "You can learn more about config plugin features [from its documentation](https://github.com/yiisoft/config/blob/master/README.md)."
+msgstr "Anda dapat mempelajari lebih lanjut tentang fitur plugin konfigurasi [dari dokumentasinya](https://github.com/yiisoft/config/blob/master/README.md)."
+
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Config files"
+msgstr "Berkas konfigurasi"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Now, as you know how the plugin assembles configs, look at `config` directory:"
+msgstr "Sekarang, setelah Anda tahu bagaimana plugin merangkai konfigurasi, lihat direktori `config`:"
+
+#. type: Fenced code block
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"common/\n"
+"    application-parameters.php\n"
+"    i18n.php\n"
+"    router.php\n"
+"console/\n"
+"packages/\n"
+"    yiisoft/\n"
+"    dist.lock\n"
+"    merge_plan.php\n"
+"web/\n"
+"    application.php\n"
+"    psr17.php\n"
+"events.php\n"
+"events-console.php\n"
+"events-web.php\n"
+"params.php\n"
+"providers.php\n"
+"providers-console.php\n"
+"providers-web.php\n"
+"routes.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "The application consists of a set of services registered in a [dependency container](di-container.md). The config files that responsible for direct dependency container configuration are under `common/`, `console/` and `web/` directories.  We use `web/` for config specific to web application and `console/` for config specific to console commands. Both web and console are sharing configuration under `common/`."
+msgstr "Aplikasi terdiri dari sekumpulan layanan yang terdaftar di [dependency container](di-container.md). Berkas konfigurasi yang bertanggung jawab atas konfigurasi langsung dependency container berada di bawah direktori `common/`, `console/` dan `web/`. Kita menggunakan `web/` untuk konfigurasi khusus aplikasi web dan `console/` untuk konfigurasi khusus perintah konsol. Baik web maupun console berbagi konfigurasi di bawah `common/`."
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\ApplicationParameters;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    ApplicationParameters::class => [\n"
+"        'class' => ApplicationParameters::class,\n"
+"        'charset()' => [$params['app']['charset']],\n"
+"        'name()' => [$params['app']['name']],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Config plugin passes special `$params` variable to all config files.  The code passes its values to the service."
+msgstr "Plugin konfigurasi meneruskan variabel khusus `$params` ke semua berkas konfigurasi. Potongan kode di atas meneruskan nilainya ke layanan."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "The guide on [\"Dependency injection and container\"](di-container.md) describes the configuration format and the idea of dependency injection in detail."
+msgstr "Panduan tentang [\"Dependency injection and container\"](di-container.md) menjelaskan format konfigurasi dan gagasan dependency injection secara rinci."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "For convenience, there is a naming convention for custom string keys:"
+msgstr "Untuk kenyamanan, ada konvensi penamaan untuk kunci string kustom:"
+
+#. type: Bullet: '1. '
+#: ../src/en/guide/concept/configuration.md
+msgid "Prefix package name such as `yiisoft/cache-file/custom-definition`."
+msgstr "Awali dengan nama paket seperti `yiisoft/cache-file/custom-definition`."
+
+#. type: Bullet: '2. '
+#: ../src/en/guide/concept/configuration.md
+msgid "In case configuration are for the application itself, skip package prefix, such as `custom-definition`."
+msgstr "Jika konfigurasi untuk aplikasi itu sendiri, lewati prefiks paket, mis. `custom-definition`."
+
+#. type: Title ###
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Service providers"
+msgstr "Service provider"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "As an alternative to registering dependencies directly, you can use service providers. Basically, these are classes that given parameters are configuring and registering services within the container. Similar to three dependency configuration files described, there are three configs for specifying service providers: `providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both:"
+msgstr "Sebagai alternatif untuk mendaftarkan dependensi secara langsung, Anda dapat menggunakan service provider. Pada dasarnya, ini adalah kelas yang, dengan parameter tertentu, mengonfigurasi dan mendaftarkan layanan dalam container. Mirip dengan tiga berkas konfigurasi dependency yang dijelaskan sebelumnya, ada tiga konfigurasi untuk menentukan service provider: `providers-console.php` untuk perintah konsol, `providers-web.php` untuk aplikasi web dan `providers.php` untuk keduanya:"
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"/* @var array $params */\n"
+"\n"
+"// ...\n"
+"use App\\Provider\\CacheProvider;\n"
+"use App\\Provider\\MiddlewareProvider;\n"
+"// ...\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'yiisoft/yii-web/middleware' => MiddlewareProvider::class,\n"
+"    'yiisoft/cache/cache' =>  [\n"
+"        'class' => CacheProvider::class,\n"
+"        '__construct()' => [\n"
+"            $params['yiisoft/cache-file']['file-cache']['path'],\n"
+"        ],\n"
+"    ],\n"
+"    // ...\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "In this config keys are provider names. By convention these are `vendor/package-name/provider-name`. Values are provider class names. These classes could be either created in the project itself or provided by a package."
+msgstr "Dalam konfigurasi ini kunci adalah nama provider. Menurut konvensi ini berupa `vendor/package-name/provider-name`. Nilainya adalah nama kelas provider. Kelas-kelas ini bisa dibuat di proyek itu sendiri atau disediakan oleh paket."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "If you need to configure some options for a service, similar to direct container configuration, take values from `$params` and pass them to providers."
+msgstr "Jika Anda perlu mengonfigurasi beberapa opsi untuk sebuah layanan, mirip dengan konfigurasi container langsung, ambil nilai dari `$params` dan teruskan ke provider."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Provider should implement a single method, `public function register(Container $container): void`. In this method you need to add a service to container using `set()` method. Below is a provider for a cache service:"
+msgstr "Provider harus mengimplementasikan satu metode, `public function register(Container $container): void`. Dalam metode ini Anda perlu menambahkan layanan ke container menggunakan metode `set()`. Di bawah ini contoh provider untuk layanan cache:"
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"use Psr\\Container\\ContainerInterface;\n"
+"use Psr\\SimpleCache\\CacheInterface;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Cache\\Cache;\n"
+"use Yiisoft\\Cache\\CacheInterface as YiiCacheInterface;\n"
+"use Yiisoft\\Cache\\File\\FileCache;\n"
+"use Yiisoft\\Di\\Container;\n"
+"use Yiisoft\\Di\\Support\\ServiceProvider;\n"
+"\n"
+"final readonly class CacheProvider extends ServiceProvider\n"
+"{\n"
+"    public function __construct(\n"
+"        private string $cachePath = '@runtime/cache'\n"
+"    )\n"
+"    {\n"
+"        $this->cachePath = $cachePath;\n"
+"    }\n"
+"\n"
+"    public function register(Container $container): void\n"
+"    {\n"
+"        $container->set(CacheInterface::class, function (ContainerInterface $container) {\n"
+"            $aliases = $container->get(Aliases::class);\n"
+"\n"
+"            return new FileCache($aliases->get($this->cachePath));\n"
+"        });\n"
+"\n"
+"        $container->set(YiiCacheInterface::class, Cache::class);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Routes"
+msgstr "Rute"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "You can configure how web application responds to certain URLs in `config/routes.php`:"
+msgstr "Anda dapat mengonfigurasi bagaimana aplikasi web merespons URL tertentu di `config/routes.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"use App\\Controller\\SiteController;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::get('/')->action([SiteController::class, 'index'])->name('site/index')\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Read more about it in [\"Routes\"](../runtime/routing.md)."
+msgstr "Baca lebih lanjut tentang ini di [\"Routes\"](../runtime/routing.md)."
+
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md
+#: ../src/en/internals/022-config-groups.md
+#, no-wrap
+msgid "Events"
+msgstr "Event"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Many services emit certain events that you can attach to.  You could do that via three config files: `events-web.php` for web application events, `events-console.php` for console events and `events.php` for both.  The configuration is an array where keys are event names and values are an array of handlers:"
+msgstr "Banyak layanan memancarkan event tertentu yang dapat Anda kaitkan. Anda dapat melakukannya melalui tiga berkas konfigurasi: `events-web.php` untuk event aplikasi web, `events-console.php` untuk event konsol dan `events.php` untuk keduanya. Konfigurasinya berupa array di mana kunci adalah nama event dan nilainya adalah array handler:"
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    EventName::class => [\n"
+"        // Just a regular closure, it will be called from the Dispatcher \"as is\".\n"
+"        static fn (EventName $event) => someStuff($event),\n"
+"        \n"
+"        // A regular closure with an extra dependency. All the parameters after the first one (the event itself)\n"
+"        // will be resolved from your DI container within `yiisoft/injector`.\n"
+"        static fn (EventName $event, DependencyClass $dependency) => someStuff($event),\n"
+"        \n"
+"        // An example with a regular callable. If the `staticMethodName` method has some dependencies,\n"
+"        // they will be resolved the same way as in the earlier example.\n"
+"        [SomeClass::class, 'staticMethodName'],\n"
+"        \n"
+"        // Non-static methods are allowed too. In this case, `SomeClass` will be instantiated by your DI container.\n"
+"        [SomeClass::class, 'methodName'],\n"
+"        \n"
+"        // An object of a class with the `__invoke` method implemented\n"
+"        new InvokableClass(),\n"
+"        \n"
+"        // In this case, the `InvokableClass` with the `__invoke` method will be instantiated by your DI container\n"
+"        InvokableClass::class,\n"
+"        \n"
+"        // Any definition of an invokable class may be here while your `$container->has('the definition)` \n"
+"        'di-alias'\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Read more about it in [\"Events\"](events.md)."
+msgstr "Baca lebih lanjut di [\"Events\"](events.md)."
+
+#. type: Title ##
+#: ../src/en/guide/concept/configuration.md
+#: ../src/en/internals/022-config-groups.md
+#, no-wrap
+msgid "Parameters"
+msgstr "Parameter"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Parameters, `config/params.php` store configuration values that are used in other config files to configuring services and service providers."
+msgstr "Parameter di `config/params.php` menyimpan nilai konfigurasi yang digunakan dalam berkas konfigurasi lain untuk mengonfigurasi layanan dan service provider."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> Don't use parameters, constants or environment variables directly in your application, configure\n"
+"> services instead.\n"
+msgstr ""
+"> [!TIP]\n"
+"> Jangan gunakan parameter, konstanta, atau variabel lingkungan secara langsung dalam aplikasi Anda, konfigurasikan\n"
+"> layanan sebagai gantinya.\n"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Default application `params.php` looks like the following:"
+msgstr "`params.php` aplikasi bawaan terlihat seperti berikut:"
+
+#. type: Fenced code block (php)
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Command\\Hello;\n"
+"use App\\ViewInjection\\ContentViewInjection;\n"
+"use App\\ViewInjection\\LayoutViewInjection;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"use Yiisoft\\Yii\\View\\CsrfViewInjection;\n"
+"\n"
+"return [\n"
+"    'app' => [\n"
+"        'charset' => 'UTF-8',\n"
+"        'locale' => 'en',\n"
+"        'name' => 'My Project',\n"
+"    ],\n"
+"\n"
+"    'yiisoft/aliases' => [\n"
+"        'aliases' => [\n"
+"            '@root' => dirname(__DIR__),\n"
+"            '@assets' => '@root/public/assets',\n"
+"            '@assetsUrl' => '/assets',\n"
+"            '@baseUrl' => '/',\n"
+"            '@message' => '@root/resources/message',\n"
+"            '@npm' => '@root/node_modules',\n"
+"            '@public' => '@root/public',\n"
+"            '@resources' => '@root/resources',\n"
+"            '@runtime' => '@root/runtime',\n"
+"            '@vendor' => '@root/vendor',\n"
+"            '@layout' => '@resources/views/layout',\n"
+"            '@views' => '@resources/views',\n"
+"        ],\n"
+"    ],\n"
+"\n"
+"    'yiisoft/yii-view' => [\n"
+"        'injections' => [\n"
+"            Reference::to(ContentViewInjection::class),\n"
+"            Reference::to(CsrfViewInjection::class),\n"
+"            Reference::to(LayoutViewInjection::class),\n"
+"        ],\n"
+"    ],\n"
+"\n"
+"    'yiisoft/yii-console' => [\n"
+"        'commands' => [\n"
+"            'hello' => Hello::class,\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "For convenience, there is a naming convention about parameters:"
+msgstr "Untuk kenyamanan, ada konvensi penamaan mengenai parameter:"
+
+#. type: Bullet: '1. '
+#: ../src/en/guide/concept/configuration.md
+msgid "Group parameters package name such as `yiisoft/cache-file`."
+msgstr "Kelompokkan parameter berdasarkan nama paket seperti `yiisoft/cache-file`."
+
+#. type: Bullet: '2. '
+#: ../src/en/guide/concept/configuration.md
+msgid "In case parameters are for the application itself, as in `app`, skip package prefix."
+msgstr "Jika parameter untuk aplikasi itu sendiri, seperti pada `app`, lewati prefiks paket."
+
+#. type: Bullet: '3. '
+#: ../src/en/guide/concept/configuration.md
+msgid "In case there are many services in the package, such as `file-target` and `file-rotator` in `yiisoft/log-target-file` package, group parameters by service name."
+msgstr "Jika ada banyak layanan dalam paket, seperti `file-target` dan `file-rotator` dalam paket `yiisoft/log-target-file`, kelompokkan parameter berdasarkan nama layanan."
+
+#. type: Bullet: '4. '
+#: ../src/en/guide/concept/configuration.md
+msgid "Use `enabled` as parameter name to be able to disable or enable a service, such as `yiisoft/yii-debug`."
+msgstr "Gunakan `enabled` sebagai nama parameter agar Anda dapat menonaktifkan atau mengaktifkan layanan, mis. `yiisoft/yii-debug`."
+
+#. type: Title ###
+#: ../src/en/guide/concept/configuration.md
+#, no-wrap
+msgid "Package configs"
+msgstr "Konfigurasi paket"
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "Config plugin described copy default package configurations to `packages/` directory. Once copied you own the configs, so you can adjust these as you like. `yiisoft/` in the default template stands for package vendor. Since only `yiisoft` packages are in template, there's a single directory. `merge_plan.php` is used in runtime to get the order on how configs are merged.  Note that for config keys there should be a single source of truth.  One config can't override values of another config."
+msgstr "Plugin konfigurasi yang dijelaskan menyalin konfigurasi paket default ke direktori `packages/`. Setelah disalin, Anda memiliki konfigurasi tersebut, sehingga Anda dapat menyesuaikannya sesuka hati. `yiisoft/` pada template default mewakili vendor paket. Karena hanya paket `yiisoft` yang ada di template, ada satu direktori. `merge_plan.php` digunakan saat runtime untuk mendapatkan urutan bagaimana konfigurasi digabungkan. Perlu dicatat bahwa untuk kunci konfigurasi harus ada satu sumber kebenaran. Satu konfigurasi tidak dapat menimpa nilai konfigurasi lain."
+
+#. type: Plain text
+#: ../src/en/guide/concept/configuration.md
+msgid "`dist.lock` is used by the plugin to keep track of changes and display diff between current config and example one."
+msgstr "`dist.lock` digunakan oleh plugin untuk melacak perubahan dan menampilkan diff antara konfigurasi saat ini dan contoh konfigurasi."

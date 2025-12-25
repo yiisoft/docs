@@ -19,6 +19,6 @@ jobs:
                 reporter: github-check
                 fail_on_error: false
                 filter_mode: nofilter
-                files: '["cookbook", "guide"]'
+                files: '["src/en"]'
               env:
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

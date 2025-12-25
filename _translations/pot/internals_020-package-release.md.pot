@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid "020 — Package release"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid "Criteria"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "No critical issues."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid ""
+"Public API changes aren't likely. Some time passed w/o issues reported that "
+"may require API changes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "All dependencies are stable."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "Close to 100% test coverage with, ideally, a 100% MSI score."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "README is alright."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "Everything is type-hinted unless special cases."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "Psalm analysis passes on at least level 2."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "phpdoc is alright."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/020-package-release.md
+msgid "Public API is alright."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid "Release instruction"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/020-package-release.md
+msgid "Release a package via [Yii Development Tool](005-development-tool.md)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid ""
+"1. Check that you can sign commits locally (see \n"
+"[Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).\n"
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/internals/020-package-release.md
+msgid "Pull last changes from the `master` branch:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid ""
+"./yii-dev git/checkout master package-name\n"
+"./yii-dev git/pull package-name\n"
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/en/internals/020-package-release.md
+msgid "Check the package for compliance with the criteria above."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/en/internals/020-package-release.md
+msgid "Run `release/make` command:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/en/internals/020-package-release.md
+#, no-wrap
+msgid "./yii-dev release/make package-name\n"
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/en/internals/020-package-release.md
+msgid "Select the version type (major, minor or path)."
+msgstr ""
+
+#. type: Bullet: '6. '
+#: ../src/en/internals/020-package-release.md
+msgid ""
+"On the question \"Push commits and tags, and release on GitHub?\" check a "
+"diff. If the diff is alright, answer \"yes.\""
+msgstr ""
+
+#. type: Bullet: '7. '
+#: ../src/en/internals/020-package-release.md
+msgid ""
+"For major and minor releases, add a record with release notes on [Yii "
+"Framework News](https://www.yiiframework.com/news)."
+msgstr ""
