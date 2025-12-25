@@ -2,7 +2,6 @@ import { h, nextTick, watch, onMounted } from "vue";
 import DefaultTheme from 'vitepress/theme-without-fonts'
 import { useData, useRoute } from "vitepress";
 import { createMermaidRenderer } from "vitepress-mermaid-renderer";
-import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.css';
 import './style.css'
 
@@ -31,7 +30,9 @@ export default {
         const route = useRoute();
         let lightbox = null;
 
-        const initGLightbox = () => {
+        const initGLightbox = async () => {
+            const GLightbox = (await import('glightbox')).default;
+
             if (lightbox) {
                 lightbox.destroy();
             }

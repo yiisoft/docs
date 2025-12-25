@@ -5,6 +5,11 @@ export default {
     title: 'Yii3 Documentation',
     ignoreDeadLinks: true,
     head: [['link', {rel: 'icon', href: '/docs/favicon.svg', type: 'image/svg+xml'}]],
+    vite: {
+        build: {
+            chunkSizeWarningLimit: 1000
+        }
+    },
     themeConfig: {
         logo: '/images/yii_logo.svg',
         lastUpdated: true,
