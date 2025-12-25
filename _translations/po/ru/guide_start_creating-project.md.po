@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2025-12-25 22:40+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid ""
 "> [!NOTE]\n"
 "> If you want to use another web server,\n"
-"> see [\"Configuring web servers\"](../../../cookbook/en/configuring-webservers/general.md).\n"
+"> see [\"Configuring web servers\"](../../cookbook/configuring-webservers/general.md).\n"
 msgstr ""
 
 #. type: Plain text
@@ -54,13 +54,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid "Docker users can run the following command:"
-msgstr ""
+#, fuzzy
+#| msgid "To install the packages, run the following command:"
+msgid "Docker users can run the following commands:"
+msgstr "Для установки пакетов выполните в консоли следующую команду:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
 #, no-wrap
-msgid "docker run --rm -it -v \"$(pwd):/app\" composer/composer create-project yiisoft/app your_project\n"
+msgid ""
+"docker run --rm -it -v \"$(pwd):/app\" composer/composer create-project yiisoft/app your_project\n"
+"sudo chown -R $(id -u):$(id -g) your_project\n"
 msgstr ""
 
 #. type: Plain text
