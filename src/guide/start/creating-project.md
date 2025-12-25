@@ -12,7 +12,7 @@ It can serve as a good starting point for your projects.
 
 You can create a new project from a template using the [Composer](https://getcomposer.org) package manager:
 
-```
+```sh
 composer create-project yiisoft/app your_project
 ```
 
@@ -38,7 +38,7 @@ APP_ENV=dev ./yii serve --port=80
 
 For Docker users, run:
 
-```
+```sh
 make up
 ```
 
