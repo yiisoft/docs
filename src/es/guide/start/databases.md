@@ -86,13 +86,10 @@ list. Then rebuild PHP image with `make build && make down && make up`.
 
 Now that we have the database, it's time to define the connection.
 
-Let's use latest versions to be released. Change your `minimum-stability` to
-`dev` in `composer.json` first.
-
-Then we need a package to be installed:
+First we need a package to be installed:
 
 ```sh
-make composer require yiisoft/db-pgsql dev-master
+make composer require yiisoft/db-pgsql
 ```
 
 Now create `config/common/di/db-pgsql.php`:
@@ -152,7 +149,7 @@ the current state and which migrations remain to be applied.
 To use migrations we need another package installed:
 
 ```sh
-composer require yiisoft/db-migration dev-master
+make composer require yiisoft/db-migration
 ```
 
 Create a directory to store migrations `src/Migration` right in the project
@@ -178,9 +175,6 @@ namespace App\Migration;
 use Yiisoft\Db\Migration\MigrationBuilder;
 use Yiisoft\Db\Migration\RevertibleMigrationInterface;
 
-/**
- * Class M251102141707Page
- */
 final class M251102141707Page implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
@@ -220,6 +214,8 @@ Now that you have a table it is time to define an entity in the code. Create
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace App\Web\Page;
 
@@ -276,6 +272,8 @@ Create `src/Web/Page/PageRepository.php`:
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace App\Web\Page;
 
@@ -344,19 +342,175 @@ final readonly class PageRepository
         );
     }
 
-    public function delete(string $id): void
+    public function deleteBySlug(string $slug): void
     {
-        $this->connection->createCommand()->delete('{{%page}}', ['id' => $id])->execute();
+        $this->connection->createCommand()->delete('{{%page}}', ['slug' => $slug])->execute();
     }
 }
 ```
 
 ## Actions and routes
 
-You need actions to:
+You need to be able to:
 
 1. List all pages.
 2. View a page.
 3. Delete a page.
 4. Create a page.
 5. Edit a page.
+
+Let's tackle these one by one.
+
+
+### List all pages
+
+Create `src/Web/Page/ListAction.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
+
+final readonly class ListAction
+{
+    public function __construct(
+        private ViewRenderer $viewRenderer,
+        private PageRepository $pageRepository,
+    )
+    {
+    }
+
+    public function __invoke(): ResponseInterface
+    {
+        return $this->viewRenderer->render(__DIR__ . '/list', [
+            'pages' => $this->pageRepository->findAll(),
+        ]);
+    }
+}
+```
+
+Define list view in `src/Web/Page/list.php`:
+
+```php
+<?php
+use App\Web\Page\Page;
+use Yiisoft\Html\Html;
+
+/** @var iterable<Page> $pages */
+?>
+
+<ul>
+    <?php foreach ($pages as $page): ?>
+    <li>
+        <?= Html::a($page->title, $this->urlGenerator->generate('page/view', ['slug' => $page->slug])) ?>
+    </li>
+    <?php endforeach ?>
+</ul>
+```
+
+### View a page
+
+Create `src/Web/Page/ViewAction.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Http\Status;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
+
+final readonly class ViewAction
+{
+    public function __construct(
+        private ViewRenderer $viewRenderer,
+        private PageRepository $pageRepository,
+        private ResponseFactoryInterface $responseFactory
+    )
+    {
+    }
+
+    public function __invoke(
+        #[RouteArgument('slug')]
+        string $slug
+    ): ResponseInterface
+    {
+        $page = $this->pageRepository->findOneBySlug($slug);
+        if ($page === null || $page->isDeleted()) {
+            return $this->responseFactory->createResponse(Status::NOT_FOUND);
+        }
+
+        return $this->viewRenderer->render(__DIR__ . '/view', [
+            'page' => $page,
+        ]);
+    }
+}
+```
+
+Now, a template in `src/Web/Page/view.php`:
+
+```php
+<?php
+use App\Web\Page\Page;
+use Yiisoft\Html\Html;
+
+/** @var Page $page */
+?>
+
+<h1><?= Html::encode($page->title) ?></h1>
+
+<p>
+    <?= Html::encode($page->text) ?>
+</p>
+```
+
+### Delete a page
+
+Create `src/Web/Page/DeleteAction.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Http\Status;
+use Yiisoft\Router\UrlGeneratorInterface;
+
+final readonly class DeleteAction
+{
+    public function __construct(
+        private PageRepository $pageRepository,
+        private ResponseFactoryInterface $responseFactory,
+        private UrlGeneratorInterface $urlGenerator,
+    )
+    {}
+
+    public function __invoke(string $slug): ResponseInterface
+    {
+        $this->pageRepository->deleteBySlug($slug);
+
+        return $this->responseFactory
+            ->createResponse()
+            ->withStatus(Status::PERMANENT_REDIRECT)
+            ->withHeader('Location', $this->urlGenerator->generate('page/list'));
+    }
+}
+```
+
+### Create a page
+
+

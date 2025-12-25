@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2025-12-25 21:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,20 +184,13 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Let's use latest versions to be released. Change your `minimum-stability` to "
-"`dev` in `composer.json` first."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/start/databases.md
-msgid "Then we need a package to be installed:"
+msgid "First we need a package to be installed:"
 msgstr ""
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
 #, no-wrap
-msgid "make composer require yiisoft/db-pgsql dev-master\n"
+msgid "make composer require yiisoft/db-pgsql\n"
 msgstr ""
 
 #. type: Plain text
@@ -289,7 +282,7 @@ msgstr ""
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
 #, no-wrap
-msgid "composer require yiisoft/db-migration dev-master\n"
+msgid "make composer require yiisoft/db-migration\n"
 msgstr ""
 
 #. type: Plain text
@@ -329,9 +322,6 @@ msgid ""
 "use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
 "use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
 "\n"
-"/**\n"
-" * Class M251102141707Page\n"
-" */\n"
 "final class M251102141707Page implements RevertibleMigrationInterface\n"
 "{\n"
 "    public function up(MigrationBuilder $b): void\n"
@@ -389,6 +379,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "<?php\n"
+"\n"
+"declare(strict_types=1);\n"
 "\n"
 "namespace App\\Web\\Page;\n"
 "\n"
@@ -461,6 +453,8 @@ msgstr ""
 msgid ""
 "<?php\n"
 "\n"
+"declare(strict_types=1);\n"
+"\n"
 "namespace App\\Web\\Page;\n"
 "\n"
 "use DateTimeImmutable;\n"
@@ -528,9 +522,9 @@ msgid ""
 "        );\n"
 "    }\n"
 "\n"
-"    public function delete(string $id): void\n"
+"    public function deleteBySlug(string $slug): void\n"
 "    {\n"
-"        $this->connection->createCommand()->delete('{{%page}}', ['id' => $id])->execute();\n"
+"        $this->connection->createCommand()->delete('{{%page}}', ['slug' => $slug])->execute();\n"
 "    }\n"
 "}\n"
 msgstr ""
@@ -543,7 +537,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid "You need actions to:"
+msgid "You need to be able to:"
 msgstr ""
 
 #. type: Bullet: '1. '
@@ -569,4 +563,206 @@ msgstr ""
 #. type: Bullet: '5. '
 #: ../src/guide/start/databases.md
 msgid "Edit a page."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Let's tackle these one by one."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "List all pages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/ListAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class ListAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private PageRepository $pageRepository,\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/list', [\n"
+"            'pages' => $this->pageRepository->findAll(),\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Define list view in `src/Web/Page/list.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Page\\Page;\n"
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"/** @var iterable<Page> $pages */\n"
+"?>\n"
+"\n"
+"<ul>\n"
+"    <?php foreach ($pages as $page): ?>\n"
+"    <li>\n"
+"        <?= Html::a($page->title, $this->urlGenerator->generate('page/view', ['slug' => $page->slug])) ?>\n"
+"    </li>\n"
+"    <?php endforeach ?>\n"
+"</ul>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "View a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/ViewAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class ViewAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private PageRepository $pageRepository,\n"
+"        private ResponseFactoryInterface $responseFactory\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('slug')]\n"
+"        string $slug\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $page = $this->pageRepository->findOneBySlug($slug);\n"
+"        if ($page === null || $page->isDeleted()) {\n"
+"            return $this->responseFactory->createResponse(Status::NOT_FOUND);\n"
+"        }\n"
+"\n"
+"        return $this->viewRenderer->render(__DIR__ . '/view', [\n"
+"            'page' => $page,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now, a template in `src/Web/Page/view.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Page\\Page;\n"
+"use Yiisoft\\Html\\Html;\n"
+"\n"
+"/** @var Page $page */\n"
+"?>\n"
+"\n"
+"<h1><?= Html::encode($page->title) ?></h1>\n"
+"\n"
+"<p>\n"
+"    <?= Html::encode($page->text) ?>\n"
+"</p>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Delete a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/DeleteAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"final readonly class DeleteAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private PageRepository $pageRepository,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    )\n"
+"    {}\n"
+"\n"
+"    public function __invoke(string $slug): ResponseInterface\n"
+"    {\n"
+"        $this->pageRepository->deleteBySlug($slug);\n"
+"\n"
+"        return $this->responseFactory\n"
+"            ->createResponse()\n"
+"            ->withStatus(Status::PERMANENT_REDIRECT)\n"
+"            ->withHeader('Location', $this->urlGenerator->generate('page/list'));\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Create a page"
 msgstr ""
