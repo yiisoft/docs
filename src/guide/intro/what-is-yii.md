@@ -16,7 +16,7 @@ e-commerce, REST APIs, etc.
 
 If you're already familiar with another framework, you may appreciate knowing how Yii compares:
 
-- Yii takes the [philosophy of being practical and helpful](https://github.com/yiisoft/docs/blob/master/001-yii-values.md) achieving:
+- Yii takes the [philosophy of being practical and helpful](../../internals/001-yii-values.md) achieving:
   - Performance in both development and execution.
   - Convenient customizable defaults.
   - Practice-orientation.
