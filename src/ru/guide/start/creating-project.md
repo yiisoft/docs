@@ -6,7 +6,7 @@ dev server with everything installed locally.
 
 > [!NOTE]
 > If you want to use another web server,
-> see ["Configuring web servers"](../../../cookbook/en/configuring-webservers/general.md).
+> see ["Configuring web servers"](../../cookbook/configuring-webservers/general.md).
 
 We recommend starting with a project template that's a minimal working Yii
 project implementing some basic features.  It can serve as a good starting
@@ -19,10 +19,11 @@ You can create a new project from a template using the
 composer create-project yiisoft/app your_project
 ```
 
-Docker users can run the following command:
-
+Docker users can run the following commands:
+ 
 ```sh
 docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
+sudo chown -R $(id -u):$(id -g) your_project
 ```
 
 This installs the latest stable version of the Yii project template in a

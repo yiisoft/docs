@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2025-12-26 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,20 +184,13 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Let's use latest versions to be released. Change your `minimum-stability` to "
-"`dev` in `composer.json` first."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/start/databases.md
-msgid "Then we need a package to be installed:"
+msgid "First we need a package to be installed:"
 msgstr ""
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
 #, no-wrap
-msgid "make composer require yiisoft/db-pgsql dev-master\n"
+msgid "make composer require yiisoft/db-pgsql\n"
 msgstr ""
 
 #. type: Plain text
@@ -289,7 +282,7 @@ msgstr ""
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
 #, no-wrap
-msgid "composer require yiisoft/db-migration dev-master\n"
+msgid "make composer require yiisoft/db-migration\n"
 msgstr ""
 
 #. type: Plain text
@@ -329,9 +322,6 @@ msgid ""
 "use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
 "use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
 "\n"
-"/**\n"
-" * Class M251102141707Page\n"
-" */\n"
 "final class M251102141707Page implements RevertibleMigrationInterface\n"
 "{\n"
 "    public function up(MigrationBuilder $b): void\n"
@@ -389,6 +379,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "<?php\n"
+"\n"
+"declare(strict_types=1);\n"
 "\n"
 "namespace App\\Web\\Page;\n"
 "\n"
@@ -460,6 +452,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "<?php\n"
+"\n"
+"declare(strict_types=1);\n"
 "\n"
 "namespace App\\Web\\Page;\n"
 "\n"
