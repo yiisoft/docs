@@ -100,9 +100,20 @@ return $response
   ->withHeader('Location', 'https://www.example.com');  
 ```
 
+Note that there are different statuses used for redirection:
+
+| Code | Usage                        | What is it for                                                                                                                                                          |
+|------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 301  | `Status::MOVED_PERMANENTLY`  | Permanently changed a URL structure. Search engines update their indexes, and browsers cache it.                                                                        |
+| 308  | `Status::PERMANENT_REDIRECT` | Like 301, but guarantees the HTTP method won't change.                                                                                                                  |
+| 302  | `Status::FOUND`              | Temporary changes like maintenance pages. Original URL should still be used for future requests. Search engines typically don't update their indexes.                   |
+| 307  | `Status::TEMPORARY_REDIRECT` | Like 302, but guarantees the HTTP method won't change.                                                                                                                  |
+| 303  | `Status::SEE_OTHER`          | After form submissions to prevent duplicate submissions if the user refreshes. Explicitly tells to use `GET` for the redirect, even if the original request was `POST`. |
+
 ### Responding with JSON
 
 ```php
+use Yiisoft\Http\Status;
 use Yiisoft\Json\Json;
 
 $data = [
@@ -112,6 +123,6 @@ $data = [
 
 $response->getBody()->write(Json::encode($data));
 return $response
-          ->withStatus(200)
-          ->withHeader('Content-Type', 'application/json');
+    ->withStatus(Status::OK)
+    ->withHeader('Content-Type', 'application/json');
 ``` 
