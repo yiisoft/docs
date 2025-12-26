@@ -21,6 +21,7 @@ Docker users can run the following commands:
 ```sh
 docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
 sudo chown -R $(id -u):$(id -g) your_project
+make composer update
 ```
 
 This installs the latest stable version of the Yii project template in a directory named `your_project`.
