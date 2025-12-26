@@ -147,5 +147,5 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 ## Extras
 
-- [Cookbook](../../cookbook/en/README.md)
+- [Cookbook](../cookbook/index.md)
 - [Glossary](glossary.md)

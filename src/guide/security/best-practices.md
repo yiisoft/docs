@@ -28,7 +28,7 @@ if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
 }
 ```
 
-In Yii, most probably you'll use [form validation](../input/validation.md) to do similar checks.
+In Yii, most probably you'll use form validation to do similar checks.
 
 Further reading on the topic:
 

@@ -1,6 +1,6 @@
 # Upgrading from Version 2.0
 
-> If you haven't used Yii2, you can skip this section and get directly to "[getting started](../start/installation.md)"
+> If you haven't used Yii2, you can skip this section and get directly to "[getting started](../start/prerequisites.md)"
 > section.
 
 While sharing some common ideas and values, Yii 3 is conceptually different from Yii 2. There is no easy upgrade
