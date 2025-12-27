@@ -12,7 +12,7 @@ There are many ways you can work with relational databases:
 For non-relational ones, there are usually official libraries available:
 
 - [ElasticSearch](https://github.com/elastic/elasticsearch-php)
-- [Redis](https://redis.io/docs/clients/#php)
+- [Redis](https://redis.io/docs/latest/develop/clients/php/)
 - ...
 
 In this guide, we will focus on working with relational databases using Yii DB. We'll use PostgreSQL to implement a
