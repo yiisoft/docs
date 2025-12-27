@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 07:55+0000\n"
+"POT-Creation-Date: 2025-12-27 08:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1151,17 +1151,17 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "Upgrading from Yii2"
+msgid "Upgrading from Yii 2.0"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
 msgid ""
-"Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/"
-"db-migration/) package are not compatible, and the `migration` table is also "
-"not compatible.  A probable solution is to use structure dumps and rename "
-"the old `migration` table. Upon the initial execution of migrations, a new "
-"`migration` table with new fields will be created. All further changes in "
-"the database schema are applied using the new `migration` component and "
+"Migrations in Yii 2.0 and the [yiisoft/db-migration](https://github.com/"
+"yiisoft/db-migration/) package are not compatible, and the `migration` table "
+"is also not compatible.  A probable solution is to use structure dumps and "
+"rename the old `migration` table. Upon the initial execution of migrations, "
+"a new `migration` table with new fields will be created. All further changes "
+"in the database schema are applied using the new `migration` component and "
 "recorded in the new migration table."
 msgstr ""
