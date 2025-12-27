@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 07:40+0000\n"
+"POT-Creation-Date: 2025-12-27 03:24+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -31,13 +31,13 @@ msgstr ""
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
-"> If you haven't used Yii 2.0, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
+"> If you haven't used Yii2, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
 "> section.\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "While sharing some common ideas and values, Yii3 is conceptually different from Yii 2.0. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii3 while keeping existing ones on Yii 2.0."
+msgid "While sharing some common ideas and values, Yii3 is conceptually different from Yii 2. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii3 while keeping existing ones on Yii 2."
 msgstr ""
 
 #. type: Title ##
@@ -48,7 +48,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2.0:"
+msgid "Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -119,7 +119,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "It's a good idea to refactor your Yii 2.0 project before porting it to Yii3. That would both make porting easier and benefit the project in question while it's not moved to Yii3 yet."
+msgid "It's a good idea to refactor your Yii 2 project before porting it to Yii3. That would both make porting easier and benefit the project in question while it's not moved to Yii3 yet."
 msgstr ""
 
 #. type: Title ###
@@ -198,7 +198,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Yii3 services are conceptually similar to Yii 2.0 components, so it's a good idea to move reusable parts of your application into components."
+msgid "Yii3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application into components."
 msgstr ""
 
 #. type: Title ##
@@ -241,7 +241,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
+msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2."
 msgstr ""
 
 #. type: Title ###
@@ -252,15 +252,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Unlike Yii 2.0, Yii3 doesn't have controllers concept. Instead, it uses [handlers](../structure/handler.md) which are similar to controllers but different."
+msgid "Unlike Yii2, Yii3 doesn't have controllers per se. Instead, it uses [handlers](../structure/handler.md) which are similar to controllers but different."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Suggested Yii3 application structure is different from Yii 2.0.  It's described in [application structure](../structure/overview.md)."
+msgid "Suggested Yii3 application structure is different from Yii 2.  It's described in [application structure](../structure/overview.md)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2.0 with Yii3."
+msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2 with Yii3."
 msgstr ""

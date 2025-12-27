@@ -14,7 +14,7 @@ application.  There are many ways you can work with relational databases:
 For non-relational ones, there are usually official libraries available:
 
 - [ElasticSearch](https://github.com/elastic/elasticsearch-php)
-- [Redis](https://redis.io/docs/clients/#php)
+- [Redis](https://redis.io/docs/latest/develop/clients/php/)
 - ...
 
 In this guide, we will focus on working with relational databases using Yii
@@ -305,8 +305,8 @@ final readonly class PageRepository
 
     public function findOneBySlug(string $slug): ?Page
     {
-        $query =  (new Query($this->connection))
-            ->select('*')
+        $query = $this->connection
+            ->select()
             ->from('{{%page}}')
             ->where('slug = :slug', ['slug' => $slug]);
 
@@ -318,8 +318,8 @@ final readonly class PageRepository
      */
     public function findAll(): iterable
     {
-        $data = (new Query($this->connection))
-            ->select('*')
+        $data = $this->connection
+            ->select()
             ->from('{{%page}}')
             ->all();
 
