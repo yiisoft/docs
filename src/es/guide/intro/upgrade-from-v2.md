@@ -38,9 +38,9 @@ used that weren't used in Yii 2.0:
 
 ## Preliminary refactoring
 
-It's a good idea to refactor your Yii 2 project before porting it to Yii
-3. That would both make porting easier and benefit the project in question
-while it's not moved to Yii 3 yet.
+It's a good idea to refactor your Yii 2.0 project before porting it to
+Yii3. That would both make porting easier and benefit the project in
+question while it's not moved to Yii3 yet.
 
 ### Use DI instead of the service locator
 
@@ -109,7 +109,7 @@ and Yii 2.0.
 
 ### Handlers
 
-Unlike Yii 2.0, Yii3 doesn't have controllers concept. Instead, it uses
+Unlike Yii 2.0, Yii3 doesn't use controllers. Instead, it uses
 [handlers](../structure/handler.md) which are similar to controllers but
 different.
 

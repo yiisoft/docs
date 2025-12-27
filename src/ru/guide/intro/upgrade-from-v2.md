@@ -109,7 +109,7 @@ and Yii 2.0.
 
 ### Handlers
 
-Unlike Yii 2.0, Yii3 doesn't have controllers concept. Instead, it uses
+Unlike Yii 2.0, Yii3 doesn't use controllers. Instead, it uses
 [handlers](../structure/handler.md) which are similar to controllers but
 different.
 
