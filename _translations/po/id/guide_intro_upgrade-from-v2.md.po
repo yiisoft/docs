@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-22 11:35+0000\n"
+"POT-Creation-Date: 2025-12-27 02:09+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,128 +16,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ###
-#: ../../guide/en/README.md ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Application structure"
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Upgrading from Version 2.0"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
-"> If you haven't used Yii2, you can skip this section and get directly to \"[getting started](../start/installation.md)\"\n"
+"> If you haven't used Yii2, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
 "> section.\n"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "While sharing some common ideas and values, Yii 3 is conceptually different from Yii 2. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii 3 while keeping existing ones on Yii 2."
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "While sharing some common ideas and values, Yii3 is conceptually different from Yii 2. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii3 while keeping existing ones on Yii 2."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "PHP requirements"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Generators](https://www.php.net/manual/en/language.generators.php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Attributes](https://www.php.net/manual/en/language.attributes.php)"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Preliminary refactoring"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "It's a good idea to refactor your Yii 2 project before porting it to Yii 3. That would both make porting easier and benefit the project in question while it's not moved to Yii 3 yet."
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "It's a good idea to refactor your Yii 2 project before porting it to Yii3. That would both make porting easier and benefit the project in question while it's not moved to Yii3 yet."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Use DI instead of the service locator"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
-"Since Yii 3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using\n"
+"Since Yii3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using\n"
 "service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).\n"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
 "If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller\n"
@@ -145,23 +145,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Dependency injection and container](../concept/di-container.md) for an explanation of the idea."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Introduce repositories for getting data"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "Since Active Record isn't the only way to work with a database in Yii 3, consider introducing repositories that would hide details of getting data and gather them in a single place. You can later redo it:"
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "Since Active Record isn't the only way to work with a database in Yii3, consider introducing repositories that would hide details of getting data and gather them in a single place. You can later redo it:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
 "final readonly class PostRepository\n"
@@ -180,88 +180,87 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Separate domain layer from infrastructure"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by a framework that's all the business logic has to go to framework-independent classes."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Move more into components"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "Yii 3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application into components."
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "Yii3 services are conceptually similar to Yii 2 components, so it's a good idea to move reusable parts of your application into components."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Things to learn"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/intro/upgrade-from-v2.md
-#: ../../guide/en/start/prerequisites.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/start/prerequisites.md
 #, no-wrap
 msgid "Docker"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Default application templates are using [Docker](https://www.docker.com/get-started/) to run application.  It's a good idea to learn how to use it and use it for your own projects since it provides a lot of benefits:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Exactly the same environment as in production."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "No need to install anything except Docker itself."
 msgstr ""
 
 #. type: Bullet: '3. '
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Environment is per application, not per server."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Environment variables"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure pars of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2."
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Handlers"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Unlike Yii2, Yii3 doesn't have controllers per se. Instead, it uses [handlers](../structure/handler.md) which are similar to controllers but different."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
+#: ../src/guide/intro/upgrade-from-v2.md
 msgid "Suggested Yii3 application structure is different from Yii 2.  It's described in [application structure](../structure/overview.md)."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/intro/upgrade-from-v2.md
-msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2 with Yii 3."
+#: ../src/guide/intro/upgrade-from-v2.md
+msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2 with Yii3."
 msgstr ""
