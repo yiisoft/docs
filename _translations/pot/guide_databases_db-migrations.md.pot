@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-25 22:40+0000\n"
+"POT-Creation-Date: 2025-12-27 07:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,186 +25,76 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
 msgid ""
-"During the course of developing and maintaining a database-driven "
-"application, the structure of the database being used evolves just like the "
-"source code does. For example, during the development of an application, a "
-"new table may be found necessary; after the application is deployed to "
-"production, it may be discovered that an index should be created to improve "
-"the query performance; and so on. Because a database structure change often "
-"requires some source code changes, Yii supports the so-called *database "
-"migration* feature that allows you to keep track of database changes in "
-"terms of *database migrations* which are version-controlled together with "
-"the source code."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The following steps show how database migration can be used by a team during "
-"development:"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Tim creates a new migration (e.g. creates a new table, changes a column "
-"definition, etc.)."
-msgstr ""
-
-#. type: Bullet: '2. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Tim commits the new migration into the source control system (e.g. Git, "
-"Mercurial)."
-msgstr ""
-
-#. type: Bullet: '3. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Doug updates his repository from the source control system and receives the "
-"new migration."
-msgstr ""
-
-#. type: Bullet: '4. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Doug applies the migration to his local development database, thereby "
-"synchronizing his database to reflect the changes that Tim has made."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"And the following steps show how to deploy a new release with database "
-"migrations to production:"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott creates a release tag for the project repository that contains some "
-"new database migrations."
-msgstr ""
-
-#. type: Bullet: '2. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott updates the source code on the production server to the release tag."
-msgstr ""
-
-#. type: Bullet: '3. '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott applies any accumulated database migrations to the production database."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid "Yii provides a set of migration command line tools that allow you to:"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid "create new migrations;"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid "apply migrations;"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid "revert migrations;"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid "re-apply migrations;"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid "show migration history and status."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"All these tools are accessible through the command `yii migrate`. In this "
-"section we will describe in detail how to accomplish various tasks using "
-"these tools."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> [!TIP]\n"
-"> Migrations could affect not only database schema but adjust existing data to fit new schema, create RBAC\n"
-"hierarchy or clean up cache.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> When manipulating data using a migration you may find that using your Active Record or entity classes\n"
-"> for this might be useful because some of the logic is already implemented there. Keep in mind however, that in contrast\n"
-"> to code written in the migrations, whose nature is to stay constant forever, application logic is subject to change.\n"
-"> So when using Active Record or entity classes in migration code, changes to the logic in the source code\n"
-"> may accidentally break the existing migrations. For this reason migration code should be kept independent of other\n"
-"> application logic such.\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Initial configuration"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
 "To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/"
 "db-migration/) package:"
 msgstr ""
 
-#. type: Fenced code block (sh)
-#: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
+#. type: Fenced code block (shell)
+#: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "make composer require yiisoft/db-migration\n"
+msgid "composer require yiisoft/db-migration\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/databases/db-migrations.md
+#, no-wrap
+msgid "Example usage"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
 msgid ""
-"Create a directory to store migrations `src/Migration` right in the project "
-"root."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid "Add the following configuration to `config/common/params.php`:"
+"First, configure a DI container. Create `config/common/db.php` with the "
+"following content:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
+#: ../src/guide/databases/db-migrations.md
 #, no-wrap
 msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Sqlite\\Connection as SqliteConnection;\n"
+"\n"
+"return [\n"
+"    ConnectionInterface::class => [\n"
+"        'class' => SqliteConnection::class,\n"
+"        '__construct()' => [\n"
+"            'dsn' => 'sqlite:' . __DIR__ . '/Data/yiitest.sq3'\n"
+"        ]\n"
+"    ]\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/databases/db-migrations.md
+msgid "Add the following to `config/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/databases/db-migrations.md
+#, no-wrap
+msgid ""
+"...\n"
 "'yiisoft/db-migration' => [\n"
 "    'newMigrationNamespace' => 'App\\\\Migration',\n"
 "    'sourceNamespaces' => ['App\\\\Migration'],\n"
 "],\n"
+"...\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"You need a database connection configured as well. See [Working with "
-"databases](../start/databases.md) for an example of configuring it for "
-"PostgreSQL."
+msgid "Now test if it works:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/databases/db-migrations.md
+#, no-wrap
+msgid "./yii list migrate\n"
 msgstr ""
 
 #. type: Title ###
@@ -215,362 +105,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid "To create a new empty migration, run the following command:"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "make yii migrate:create <name>\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
 msgid ""
-"The required `name` argument gives a brief description about the new "
-"migration. For example, if the migration is about creating a new table named "
-"*news*, you may use the name `create_news_table` and run the following "
-"command:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "make yii migrate:create create_news_table\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> Because the `name` argument will be used as part of the generated migration class name,\n"
-"> it should only contain letters, digits, and/or underscore characters.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The above command will create a new PHP class file named `src/Migration/"
-"M251225221906CreateNewsTable.php`.  The file contains the following code "
-"which mainly declares a migration class with the skeleton code:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"declare(strict_types=1);\n"
-"\n"
-"namespace App\\Migration;\n"
-"\n"
-"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
-"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
-"\n"
-"final class M251225221906CreateNewsTable implements RevertibleMigrationInterface\n"
-"{\n"
-"    public function up(MigrationBuilder $b): void\n"
-"    {\n"
-"        // TODO: Implement the logic to apply the migration.\n"
-"    }\n"
-"\n"
-"    public function down(MigrationBuilder $b): void\n"
-"    {\n"
-"        // TODO: Implement the logic to revert the migration.\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"In the migration class, you are expected to write code in the `up()` method "
-"that makes changes to the database structure.  You may also want to write "
-"code in the `down()` method to revert the changes made by `up()`. The `up()` "
-"method is invoked when you upgrade the database with this migration, while "
-"the `down()` method is invoked when you downgrade the database.  The "
-"following code shows how you may implement the migration class to create a "
-"`news` table:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"declare(strict_types=1);\n"
-"\n"
-"namespace App\\Migration;\n"
-"\n"
-"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
-"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
-"\n"
-"final class M251225221906CreateNewsTable implements RevertibleMigrationInterface\n"
-"{\n"
-"    public function up(MigrationBuilder $b): void\n"
-"    {\n"
-"        $cb = $b->columnBuilder();\n"
-"\n"
-"        $b->createTable('news', [\n"
-"            'id' => $cb::uuidPrimaryKey(),\n"
-"            'title' => $cb::string()->notNull(),\n"
-"            'content' => $cb::text(),\n"
-"        ]);\n"
-"    }\n"
-"\n"
-"    public function down(MigrationBuilder $b): void\n"
-"    {\n"
-"        $b->dropTable('news');\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"TODO: explain $b and $qb\n"
-"Below is the list of all these database accessing methods:\n"
-msgstr ""
-
-#. type: Title ###
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Irreversible migrations"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Not all migrations are reversible. For example, if the `up()` method deletes "
-"a row of a table, you may not be able to recover this row in the `down()` "
-"method. Sometimes, you may be just too lazy to implement the `down()`, "
-"because it is not very common to revert database migrations. In this case, "
-"you should implement `Yiisoft\\Db\\Migration\\MigrationInterface` that has "
-"`up()` only."
-msgstr ""
-
-#. type: Title ###
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Transactional migrations (TODO: update!!!)"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"While performing complex DB migrations, it is important to ensure each "
-"migration to either succeed or fail as a whole so that the database can "
-"maintain integrity and consistency. To achieve this goal, it is recommended "
-"that you enclose the DB operations of each migration in a [transaction](db-"
-"dao.md#performing-transactions)."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"An even easier way of implementing transactional migrations is to put "
-"migration code in the `safeUp()` and `safeDown()` methods. These two methods "
-"differ from `up()` and `down()` in that they are enclosed implicitly in a "
-"transaction.  As a result, if any operation in these methods fails, all "
-"prior operations will be rolled back automatically."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"In the following example, besides creating the `news` table we also insert "
-"an initial row into this table."
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"use yii\\db\\Migration;\n"
-"\n"
-"class m150101_185401_create_news_table extends Migration\n"
-"{\n"
-"    public function safeUp()\n"
-"    {\n"
-"        $this->createTable('news', [\n"
-"            'id' => $this->primaryKey(),\n"
-"            'title' => $this->string()->notNull(),\n"
-"            'content' => $this->text(),\n"
-"        ]);\n"
-"\n"
-"        $this->insert('news', [\n"
-"            'title' => 'test 1',\n"
-"            'content' => 'content 1',\n"
-"        ]);\n"
-"    }\n"
-"\n"
-"    public function safeDown()\n"
-"    {\n"
-"        $this->delete('news', ['id' => 1]);\n"
-"        $this->dropTable('news');\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Note that usually when you perform multiple DB operations in `safeUp()`, you "
-"should reverse their execution order in `safeDown()`. In the above example "
-"we first create the table and then insert a row in `safeUp()`; while in "
-"`safeDown()` we first delete the row and then drop the table."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Note: Not all DBMS support transactions. And some DB queries cannot be put into a transaction. For some examples,\n"
-"please refer to [implicit commit](https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html). If this is the case,\n"
-"you should still implement `up()` and `down()`, instead.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "TODO: TransactionalMigrationInterface\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "TODO: update"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The base migration class [[yii\\db\\Migration]] exposes a database "
-"connection via the [[yii\\db\\Migration::db|db]] property. You can use it to "
-"manipulate the database schema using the methods as described in [Working "
-"with Database Schema](db-dao.md#database-schema)."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"Rather than using physical types, when creating a table or column you should use *abstract types*\n"
-"so that your migrations are independent of specific DBMS. The [[yii\\db\\Schema]] class defines\n"
-"a set of constants to represent the supported abstract types. These constants are named in the format\n"
-"of `TYPE_<Name>`. For example, `TYPE_PK` refers to auto-incremental primary key type; `TYPE_STRING`\n"
-"refers to a string type. When a migration is applied to a particular database, the abstract types\n"
-"will be translated into the corresponding physical types. In the case of MySQL, `TYPE_PK` will be turned\n"
-"into `int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY`, while `TYPE_STRING` becomes `varchar(255)`.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"You can append additional constraints when using abstract types. In the "
-"above example, ` NOT NULL` is appended to `Schema::TYPE_STRING` to specify "
-"that the column cannot be `null`."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Info: The mapping between abstract types and physical types is specified by\n"
-"the [[yii\\db\\QueryBuilder::$typeMap|$typeMap]] property in each concrete `QueryBuilder` class.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Since version 2.0.6, you can make use of the newly introduced schema builder "
-"which provides more convenient way of defining column schema.  So the "
-"migration above could be written like the following:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"use yii\\db\\Migration;\n"
-"\n"
-"class m150101_185401_create_news_table extends Migration\n"
-"{\n"
-"    public function up()\n"
-"    {\n"
-"        $this->createTable('news', [\n"
-"            'id' => $this->primaryKey(),\n"
-"            'title' => $this->string()->notNull(),\n"
-"            'content' => $this->text(),\n"
-"        ]);\n"
-"    }\n"
-"\n"
-"    public function down()\n"
-"    {\n"
-"        $this->dropTable('news');\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"A list of all available methods for defining the column types is available "
-"in the API documentation of [[yii\\db\\SchemaBuilderTrait]]."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Info: The generated file permissions and ownership will be determined by the current environment. This might lead to\n"
-"inaccessible files. This could, for example, happen when the migration is created within a docker container\n"
-"and the files are edited on the host. In this case the `newFileMode` and/or `newFileOwnership` of the MigrateController\n"
-"can be changed. E.g. in the application config:\n"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"  <?php\n"
-"  return [\n"
-"      'controllerMap' => [\n"
-"          'migrate' => [\n"
-"              'class' => 'yii\\console\\controllers\\MigrateController',\n"
-"              'newFileOwnership' => '1000:1000', # Default WSL user id\n"
-"              'newFileMode' => 0660,\n"
-"          ],\n"
-"      ],\n"
-"  ];\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Generating Migrations (TODO: likely is OK but...)"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The command provides a convenient way to create migrations using the "
-"provided [view](https://github.com/yiisoft/db-migration/tree/master/"
-"resources/views):"
+"To work with migrations, you can use the provided [view](https://github.com/"
+"yiisoft/db-migration/tree/master/resources/views)."
 msgstr ""
 
 #. type: Fenced code block (shell)
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "make yii migrate:create my_first_table --command=table --fields=name,example --table-comment=my_first_table\n"
+msgid "./yii migrate:create my_first_table --command=table --fields=name,example --table-comment=my_first_table\n"
 msgstr ""
 
 #. type: Plain text
@@ -622,546 +165,20 @@ msgid ""
 "master/docs/guide/en)"
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Applying Migrations"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"To upgrade a database to its latest structure, you should apply all "
-"available new migrations using the following command:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "yii migrate\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"This command will list all migrations that have not been applied so far. If "
-"you confirm that you want to apply these migrations, it will run the `up()` "
-"or `safeUp()` method in every new migration class, one after another, in the "
-"order of their timestamp values. If any of the migrations fails, the command "
-"will quit without applying the rest of the migrations."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Tip: In case you don't have command line at your server you may try [web shell](https://github.com/samdark/yii2-webshell)\n"
-"> extension.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"For each migration that has been successfully applied, the command will "
-"insert a row into a database table named `migration` to record the "
-"successful application of the migration. This will allow the migration tool "
-"to identify which migrations have been applied and which have not."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Info: The migration tool will automatically create the `migration` table in the database specified by\n"
-"the [[yii\\console\\controllers\\MigrateController::db|db]] option of the command. By default, the database\n"
-"is specified by the `db` [application component](structure-application-components.md).\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Sometimes, you may only want to apply one or a few new migrations, instead "
-"of all available migrations.  You can do so by specifying the number of "
-"migrations that you want to apply when running the command.  For example, "
-"the following command will try to apply the next three available migrations:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "yii migrate 3\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"You can also explicitly specify a particular migration to which the database "
-"should be migrated by using the `migrate/to` command in one of the following "
-"formats:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate/to 150101_185401                      # using timestamp to specify the migration\n"
-"yii migrate/to \"2015-01-01 18:54:01\"              # using a string that can be parsed by strtotime()\n"
-"yii migrate/to m150101_185401_create_news_table   # using full name\n"
-"yii migrate/to 1392853618                         # using UNIX timestamp\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"If there are any unapplied migrations earlier than the specified one, they "
-"will all be applied before the specified migration is applied."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"If the specified migration has already been applied before, any later "
-"applied migrations will be reverted."
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Reverting Migrations <span id=\"reverting-migrations\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"To revert (undo) one or multiple migrations that have been applied before, "
-"you can run the following command:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate/down     # revert the most recently applied migration\n"
-"yii migrate/down 3   # revert the most 3 recently applied migrations\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Note: Not all migrations are reversible. Trying to revert such migrations will cause an error and stop the\n"
-"entire reverting process.\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Redoing Migrations <span id=\"redoing-migrations\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Redoing migrations means first reverting the specified migrations and then "
-"applying again. This can be done as follows:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate/redo        # redo the last applied migration\n"
-"yii migrate/redo 3      # redo the last 3 applied migrations\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "> Note: If a migration is not reversible, you will not be able to redo it.\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Refreshing Migrations <span id=\"refreshing-migrations\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Since Yii 2.0.13 you can delete all tables and foreign keys from the "
-"database and apply all migrations from the beginning."
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "yii migrate/fresh       # truncate the database and apply all migrations from the beginning\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Listing Migrations <span id=\"listing-migrations\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"To list which migrations have been applied and which are not, you may use "
-"the following commands:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate/history     # showing the last 10 applied migrations\n"
-"yii migrate/history 5   # showing the last 5 applied migrations\n"
-"yii migrate/history all # showing all applied migrations\n"
-"\n"
-"yii migrate/new         # showing the first 10 new migrations\n"
-"yii migrate/new 5       # showing the first 5 new migrations\n"
-"yii migrate/new all     # showing all new migrations\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Modifying Migration History <span id=\"modifying-migration-history\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Instead of actually applying or reverting migrations, sometimes you may "
-"simply want to mark that your database has been upgraded to a particular "
-"migration. This often happens when you manually change the database to a "
-"particular state and you do not want the migration(s) for that change to be "
-"re-applied later. You can achieve this goal with the following command:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate/mark 150101_185401                      # using timestamp to specify the migration\n"
-"yii migrate/mark \"2015-01-01 18:54:01\"              # using a string that can be parsed by strtotime()\n"
-"yii migrate/mark m150101_185401_create_news_table   # using full name\n"
-"yii migrate/mark 1392853618                         # using UNIX timestamp\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The command will modify the `migration` table by adding or deleting certain "
-"rows to indicate that the database has been applied migrations to the "
-"specified one. No migrations will be applied or reverted by this command."
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Customizing Migrations <span id=\"customizing-migrations\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid "There are several ways to customize the migration command."
-msgstr ""
-
 #. type: Title ###
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "Using Command Line Options <span id=\"using-command-line-options\"></span>"
+msgid "Upgrading from Yii 2.0"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
 msgid ""
-"The migration command comes with a few command-line options that can be used "
-"to customize its behaviors:"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`interactive`: boolean (defaults to `true`), specifies whether to perform "
-"migrations in an interactive mode.  When this is `true`, the user will be "
-"prompted before the command performs certain actions.  You may want to set "
-"this to `false` if the command is being used in a background process."
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`migrationPath`: string|array (defaults to `@app/migrations`), specifies the "
-"directory storing all migration class files. This can be specified as either "
-"a directory path or a path [alias](concept-aliases.md).  Note that the "
-"directory must exist, or the command may trigger an error. Since version "
-"2.0.12 an array can be specified for loading migrations from multiple "
-"sources."
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`migrationTable`: string (defaults to `migration`), specifies the name of "
-"the database table for storing migration history information. The table will "
-"be automatically created by the command if it does not exist.  You may also "
-"manually create it using the structure `version varchar(255) primary key, "
-"apply_time integer`."
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`db`: string (defaults to `db`), specifies the ID of the database "
-"[application component](structure-application-components.md).  It represents "
-"the database that will be migrated using this command."
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`templateFile`: string (defaults to `@yii/views/migration.php`), specifies "
-"the path of the template file that is used for generating skeleton migration "
-"class files. This can be specified as either a file path or a path [alias]"
-"(concept-aliases.md). The template file is a PHP script in which you can use "
-"a predefined variable named `$className` to get the migration class name."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"* `generatorTemplateFiles`: array (defaults to `[\n"
-"        'create_table' => '@yii/views/createTableMigration.php',\n"
-"        'drop_table' => '@yii/views/dropTableMigration.php',\n"
-"        'add_column' => '@yii/views/addColumnMigration.php',\n"
-"        'drop_column' => '@yii/views/dropColumnMigration.php',\n"
-"        'create_junction' => '@yii/views/createTableMigration.php'\n"
-"  ]`), specifies template files for generating migration code. See \"[Generating Migrations](#generating-migrations)\"\n"
-"  for more details.\n"
-msgstr ""
-
-#. type: Bullet: '* '
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"`fields`: array of column definition strings used for creating migration "
-"code. Defaults to `[]`. The format of each definition is `COLUMN_NAME:"
-"COLUMN_TYPE:COLUMN_DECORATOR`. For example, `--fields=name:string(12):"
-"notNull` produces a string column of size 12 which is not `null`."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid "The following example shows how you can use these options."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"For example, if we want to migrate a `forum` module whose migration files "
-"are located within the module's `migrations` directory, we can use the "
-"following command:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"# migrate the migrations in a forum module non-interactively\n"
-"yii migrate --migrationPath=@app/modules/forum/migrations --interactive=0\n"
-msgstr ""
-
-#. type: Title ###
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Separated Migrations"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Sometimes using single migration history for all project migrations is not "
-"desirable. For example: you may install some 'blog' extension, which "
-"contains fully separated functionality and contain its own migrations, which "
-"should not affect the ones dedicated to main project functionality."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"If you want several migrations to be applied and tracked down completely "
-"separated from each other, you can configure multiple migration commands "
-"which will use different namespaces and migration history tables:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"return [\n"
-"    'controllerMap' => [\n"
-"        // Common migrations for the whole application\n"
-"        'migrate-app' => [\n"
-"            'class' => 'yii\\console\\controllers\\MigrateController',\n"
-"            'migrationNamespaces' => ['app\\migrations'],\n"
-"            'migrationTable' => 'migration_app',\n"
-"            'migrationPath' => null,\n"
-"        ],\n"
-"        // Migrations for the specific project's module\n"
-"        'migrate-module' => [\n"
-"            'class' => 'yii\\console\\controllers\\MigrateController',\n"
-"            'migrationNamespaces' => ['module\\migrations'],\n"
-"            'migrationTable' => 'migration_module',\n"
-"            'migrationPath' => null,\n"
-"        ],\n"
-"        // Migrations for the specific extension\n"
-"        'migrate-rbac' => [\n"
-"            'class' => 'yii\\console\\controllers\\MigrateController',\n"
-"            'migrationPath' => '@yii/rbac/migrations',\n"
-"            'migrationTable' => 'migration_rbac',\n"
-"        ],\n"
-"    ],\n"
-"];\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Note that to synchronize database you now need to run multiple commands "
-"instead of one:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate-app\n"
-"yii migrate-module\n"
-"yii migrate-rbac\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Migrating Multiple Databases <span id=\"migrating-multiple-databases\"></span>"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"By default, migrations are applied to the same database specified by the "
-"`db` [application component](structure-application-components.md).  If you "
-"want them to be applied to a different database, you may specify the `db` "
-"command-line option like shown below,"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "yii migrate --db=db2\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid "The above command will apply migrations to the `db2` database."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Sometimes it may happen that you want to apply *some* of the migrations to "
-"one database, while some others to another database. To achieve this goal, "
-"when implementing a migration class you should explicitly specify the DB "
-"component ID that the migration would use, like the following:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"<?php\n"
-"\n"
-"use yii\\db\\Migration;\n"
-"\n"
-"class m150101_185401_create_news_table extends Migration\n"
-"{\n"
-"    public function init()\n"
-"    {\n"
-"        $this->db = 'db2';\n"
-"        parent::init();\n"
-"    }\n"
-"}\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The above migration will be applied to `db2`, even if you specify a "
-"different database through the `db` command-line option. Note that the "
-"migration history will still be recorded in the database specified by the "
-"`db` command-line option."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"If you have multiple migrations that use the same database, it is "
-"recommended that you create a base migration class with the above `init()` "
-"code. Then each migration class can extend from this base class."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"> Tip: Besides setting the [[yii\\db\\Migration::db|db]] property, you can also operate on different databases\n"
-"by creating new database connections to them in your migration classes. You then use the [DAO methods](db-dao.md)\n"
-"with these connections to manipulate different databases.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Another strategy that you can take to migrate multiple databases is to keep "
-"migrations for different databases in different migration paths. Then you "
-"can migrate these databases in separate commands like the following:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid ""
-"yii migrate --migrationPath=@app/migrations/db1 --db=db1\n"
-"yii migrate --migrationPath=@app/migrations/db2 --db=db2\n"
-"...\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"The first command will apply migrations in `@app/migrations/db1` to the "
-"`db1` database, the second command will apply migrations in `@app/migrations/"
-"db2` to `db2`, and so on."
-msgstr ""
-
-#. type: Title ###
-#: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Upgrading from Yii2"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/databases/db-migrations.md
-msgid ""
-"Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/"
-"db-migration/) package are not compatible, and the `migration` table is also "
-"not compatible.  A probable solution is to use structure dumps and rename "
-"the old `migration` table. Upon the initial execution of migrations, a new "
-"`migration` table with new fields will be created. All further changes in "
-"the database schema are applied using the new `migration` component and "
+"Migrations in Yii 2.0 and the [yiisoft/db-migration](https://github.com/"
+"yiisoft/db-migration/) package are not compatible, and the `migration` table "
+"is also not compatible.  A probable solution is to use structure dumps and "
+"rename the old `migration` table. Upon the initial execution of migrations, "
+"a new `migration` table with new fields will be created. All further changes "
+"in the database schema are applied using the new `migration` component and "
 "recorded in the new migration table."
 msgstr ""
