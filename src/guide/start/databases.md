@@ -294,7 +294,7 @@ final readonly class PageRepository
 
     public function findOneBySlug(string $slug): ?Page
     {
-        $query =  $this->connection
+        $query = $this->connection
             ->select()
             ->from('{{%page}}')
             ->where('slug = :slug', ['slug' => $slug]);
