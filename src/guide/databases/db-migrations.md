@@ -593,9 +593,9 @@ yii migrate --migrationPath=@app/migrations/db2 --db=db2
 The first command will apply migrations in `@app/migrations/db1` to the `db1` database, the second command
 will apply migrations in `@app/migrations/db2` to `db2`, and so on.
 
-### Upgrading from Yii2
+### Upgrading from Yii 2.0
 
-Migrations in Yii2 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible,
+Migrations in Yii 2.0 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible,
 and the `migration` table is also not
 compatible.
 A probable solution is to use structure dumps and rename the old `migration` table. Upon the initial execution of
