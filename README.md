@@ -6,39 +6,26 @@
     <br>
 </p>
 
-This repository contains the official documentation for Yii3 Framework, a high-performance PHP framework for building 
-modern web applications.
+This repository contains source and translations for the official documentation for Yii3 Framework,
+a high-performance PHP framework for building modern web applications.
 
-## Documentation Sections
+Rendered version could be viewed at [https://yiisoft.github.io/docs/](https://yiisoft.github.io/docs/).
 
-### The Definitive Guide
+Documentation is logically divided into three big pieces:
 
-The comprehensive guide covering all aspects of the framework.
+- The Definitive Guide, under the `src/guide` which contains primary documentation about using Yii3 as a whole.
+- Community Cookbook, under `src/cookbook` which contains various recipes like "how to do X with Yii3".
+- Internals, under `src/internals` which are Yii3 team guidelines that are useful to check if you want to understand
+  framework more or contribute to it.
 
-- [English](guide/en)
-- [Español (Spanish)](guide/es)
-- [Bahasa Indonesia](guide/id)
-- [Русский (Russian)](guide/ru)
-- [简体中文 (Simplified Chinese)](guide/zh-CN)
-
-### Community Cookbook
-
-A collection of community-contributed tips, tricks, and solutions for common Yii development tasks.
-
-- [English](cookbook/en)
-- [Русский (Russian)](cookbook/ru)
-
-### Internals
-
-Documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best
-practices.
-
-- [Internals Documentation](internals)
+Additionally, there are translations under `src/{language code}` for multiple languages. These should not be edited
+directly.
 
 ## Contributing
 
 We welcome contributions to improve the documentation, including translations.
-Please see the [Documentation Guidelines](internals/014-docs.md) for information on how to contribute.
+Please see the [Documentation Guidelines](https://yiisoft.github.io/docs/internals/014-docs.html) for information
+on how to contribute.
 
 ## License
 

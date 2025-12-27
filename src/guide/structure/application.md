@@ -1,6 +1,6 @@
 # Application
 
-The primary purpose of the web application and its runner in Yii 3 is to process requests to get responses.
+The primary purpose of the web application and its runner in Yii3 is to process requests to get responses.
 
 Typically, the runtime consists of:
 

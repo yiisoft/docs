@@ -30,6 +30,8 @@ saved in the file `/src/App/Web/Echo/Form.php`:
 ```php
 <?php
 
+declare(strict_types=1);
+
 namespace App\Web\Echo;
 
 use Yiisoft\FormModel\FormModel;

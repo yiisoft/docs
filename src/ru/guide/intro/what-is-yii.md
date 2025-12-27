@@ -18,9 +18,8 @@ e-commerce, REST APIs, etc.
 Если вы уже знакомы с другими фреймворками, вам наверняка будет интересно
 сравнить их с Yii:
 
-- Yii придерживается [философии практичности и полезности]
-  (https://github.com/yiisoft/docs/blob/master/001-yii-values.md), достигая
-  следующего:
+- Yii takes the [philosophy of being practical and
+  helpful](../../internals/001-yii-values.md) achieving:
   - Производительность как в разработке, так и во время выполнения.
   - Удобные изменяемые настройки по-умолчанию.
   - Практикоориентированность.

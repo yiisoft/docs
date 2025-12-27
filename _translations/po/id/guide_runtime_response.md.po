@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-26 22:37+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,30 +16,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: en/runtime/request.md en/runtime/response.md
+#: ../src/guide/runtime/request.md ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Headers"
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/request.md en/runtime/response.md
+#: ../src/guide/runtime/request.md ../src/guide/runtime/response.md
+#: ../src/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "Body"
 msgstr ""
 
 #. type: Title #
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Response"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "HTTP response has status code and message, a set of headers and a body:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
 "HTTP/1.1 200 OK\n"
@@ -54,17 +55,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web application to represent response."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "The object should be constructed and returned as a result of the execution of controller actions or other middleware.  Usually, the middleware has a response factory injected into its constructor."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
 "use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
@@ -89,18 +90,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Status code"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "You can set a status code like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Http\\Status;\n"
@@ -109,55 +110,55 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "Majority of status codes are available from `Status` class for convenience and readability."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "You can set headers like this:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "$response = $response->withHeader('Content-type', 'application/json');\n"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "If there is a need to append a header value to the existing header:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "$response = $response->withAddedHeader('Set-Cookie', 'qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT');\n"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "And, if needed, headers could be removed:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "$response = $response->withoutHeader('Set-Cookie');\n"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "Response body is an object implementing `Psr\\Http\\Message\\StreamInterface`."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 msgid "You can write to it via the interface itself:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
 "$body = $response->getBody();\n"
@@ -165,19 +166,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Examples"
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Redirecting"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Http\\Status;\n"
@@ -187,16 +188,35 @@ msgid ""
 "  ->withHeader('Location', 'https://www.example.com');  \n"
 msgstr ""
 
+#. type: Plain text
+#: ../src/guide/runtime/response.md
+msgid "Note that there are different statuses used for redirection:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/response.md
+#, no-wrap
+msgid ""
+"| Code | Usage                        | What is it for                                                                                                                                                          |\n"
+"|------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n"
+"| 301  | `Status::MOVED_PERMANENTLY`  | Permanently changed a URL structure. Search engines update their indexes, and browsers cache it.                                                                        |\n"
+"| 308  | `Status::PERMANENT_REDIRECT` | Like 301, but guarantees the HTTP method won't change.                                                                                                                  |\n"
+"| 302  | `Status::FOUND`              | Temporary changes like maintenance pages. Original URL should still be used for future requests. Search engines typically don't update their indexes.                   |\n"
+"| 307  | `Status::TEMPORARY_REDIRECT` | Like 302, but guarantees the HTTP method won't change.                                                                                                                  |\n"
+"| 303  | `Status::SEE_OTHER`          | After form submissions to prevent duplicate submissions if the user refreshes. Explicitly tells to use `GET` for the redirect, even if the original request was `POST`. |\n"
+msgstr ""
+
 #. type: Title ###
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Responding with JSON"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/response.md
+#: ../src/guide/runtime/response.md
 #, no-wrap
 msgid ""
+"use Yiisoft\\Http\\Status;\n"
 "use Yiisoft\\Json\\Json;\n"
 "\n"
 "$data = [\n"
@@ -206,6 +226,6 @@ msgid ""
 "\n"
 "$response->getBody()->write(Json::encode($data));\n"
 "return $response\n"
-"          ->withStatus(200)\n"
-"          ->withHeader('Content-Type', 'application/json');\n"
+"    ->withStatus(Status::OK)\n"
+"    ->withHeader('Content-Type', 'application/json');\n"
 msgstr ""

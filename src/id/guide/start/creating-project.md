@@ -15,7 +15,7 @@ point for your projects.
 You can create a new project from a template using the
 [Composer](https://getcomposer.org) package manager:
 
-```
+```sh
 composer create-project yiisoft/app your_project
 ```
 
@@ -24,6 +24,7 @@ Docker users can run the following commands:
 ```sh
 docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
 sudo chown -R $(id -u):$(id -g) your_project
+make composer update
 ```
 
 This installs the latest stable version of the Yii project template in a
@@ -42,7 +43,7 @@ APP_ENV=dev ./yii serve --port=80
 
 For Docker users, run:
 
-```
+```sh
 make up
 ```
 

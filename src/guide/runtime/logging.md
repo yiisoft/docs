@@ -11,7 +11,7 @@ Using the Yii logging framework involves the following steps:
  
 * Record [log messages](#log-messages) at various places in your code;
 * Configure [log targets](#log-targets) in the application configuration to filter and export log messages;
-* Examine the filtered logged messages exported by different targets (e.g. the [Yii debugger](../tool/debugger.md)).
+* Examine the filtered logged messages exported by different targets (e.g. the Yii debugger).
 
 In this section, the focus in on the first two steps.
 
