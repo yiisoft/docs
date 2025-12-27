@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-27 07:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 #, no-wrap
 msgid "Application"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 msgid ""
-"The primary purpose of the web application and its runner in Yii 3 is to "
+"The primary purpose of the web application and its runner in Yii3 is to "
 "process requests to get responses."
 msgstr ""
 
 #. type: Plain text
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 msgid "Typically, the runtime consists of:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 msgid ""
 "Startup. Get config, create an instance of container and do additional "
 "environment initialization such as registering error handler, so it can "
@@ -43,7 +43,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 msgid ""
 "Handle requests via passing request objects to middleware dispatcher to "
 "execute [middleware stack](middleware.md) and get a response object. In "
@@ -54,6 +54,6 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '3. '
-#: en/structure/application.md
+#: ../src/guide/structure/application.md
 msgid "Shutdown. Fire `ApplicationShutdown` event."
 msgstr ""

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 08:00+0500\n"
+"POT-Creation-Date: 2025-12-27 07:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: en/concept/autoloading.md en/security/best-practices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
+#: ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr ""
 
 #. type: Title #
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Security best practices"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Below, we'll review common security principles and describe how to avoid "
 "threats when developing applications using Yii.  Most of these principles "
@@ -39,36 +44,36 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Basic principles"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "There are two main principles when it comes to security no matter which "
 "application is being developed:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Filter input."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Escape output."
 msgstr ""
 
 #. type: Title ###
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Filter input"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Filter input means that you should never consider input safe, and you should "
 "always check if the value you've got is actually among allowed ones.  For "
@@ -79,7 +84,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "$sortBy = $_GET['sort'];\n"
@@ -89,38 +94,36 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
-msgid ""
-"In Yii, most probably you'll use [form validation](../input/validation.md) "
-"to do similar checks."
+#: ../src/guide/security/best-practices.md
+msgid "In Yii, most probably you'll use form validation to do similar checks."
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Further reading on the topic:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "<https://owasp.org/www-community/vulnerabilities/Improper_Data_Validation>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "<https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet."
 "html>"
 msgstr ""
 
 #. type: Title ###
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Escape output"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "Escape output means that, depending on the context where you're using data,\n"
@@ -131,35 +134,35 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/attacks/Command_Injection>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/attacks/Code_Injection>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/attacks/xss/>"
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding SQL injections"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "SQL injection happens when you form a query text by concatenating unescaped "
 "strings such as the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "$username = $_GET['username'];\n"
@@ -167,7 +170,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Instead of supplying correct username attacker could give your applications "
 "something like `'; DROP TABLE user; --`.  The Resulting SQL will be the "
@@ -175,13 +178,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (sql)
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "SELECT * FROM user WHERE username = ''; DROP TABLE user; --'\n"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "This is a valid query that will search for users with empty username and "
 "then will drop `user` table most probably resulting in a broken website and "
@@ -189,7 +192,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Make sure to either use PDO prepared statements directly or ensure that the "
 "library you prefer is doing it.  In the case of prepared statements, it's "
@@ -197,14 +200,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "If you use data to specify column names or table names, the best thing to do "
 "is to allow only a predefined set of values:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "function actionList($orderBy = null)\n"
@@ -218,18 +221,18 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/attacks/SQL_Injection>"
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding XSS"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "XSS or cross-site scripting happens when output isn't escaped properly when outputting HTML to the browser. For example,\n"
@@ -240,34 +243,34 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Avoiding XSS is quite easy in Yii. There are two cases:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "You want to output data as plain text."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "You want to output data as HTML."
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "If all you need is plain text, then escaping is as easy as the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "<?= \\Yiisoft\\Html\\Html::encode($username) ?>\n"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "If it should be HTML, you could get some help from [HtmlPurifier](http://"
 "htmlpurifier.org/).  Note that HtmlPurifier processing is quite heavy, so "
@@ -275,13 +278,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding CSRF"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "CSRF is an abbreviation for cross-site request forgery. The idea is that "
 "many applications assume that requests coming from a user browser are made "
@@ -289,7 +292,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "For example, the website `an.example.com` has a `/logout` URL that, when accessed using a simple GET request, logs the user out. As long\n"
@@ -300,7 +303,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "That's the basic idea of how a CSRF attack works. One can say that logging out a user isn't a serious thing.\n"
@@ -316,19 +319,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "For this reason, Yii applies extra mechanisms to protect against CSRF "
 "attacks."
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "To avoid CSRF, you should always:"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Follow HTTP specification. GET shouldn't change the application state.  See "
 "[RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) for more "
@@ -336,35 +339,35 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Keep Yii CSRF protection enabled."
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Yii has CSRF protection as `Yiisoft\\Yii\\Web\\Middleware\\Csrf` "
 "middleware.  Make sure it's in your application middleware stack."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/attacks/csrf>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-community/SameSite>"
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding file exposure"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "By default, server webroot is meant to be pointed to `public` directory where `index.php` is. In the case of shared hosting\n"
@@ -372,20 +375,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "If so, remember to deny access to everything except `web`.  If it's "
 "impossible, consider hosting your application elsewhere."
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding debug info and tools in production"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "In debug mode, Yii shows quite verbose errors which are certainly helpful "
 "for development.  The thing is that these verbose errors are handy for "
@@ -394,7 +397,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Never run production applications with debugger or Gii accessible to "
 "everyone.  One could use it to get information about database structure, "
@@ -402,7 +405,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "You should avoid the debug toolbar in production unless necessary.  It "
 "exposes all the application and config details possible.  If you absolutely "
@@ -410,23 +413,23 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-project-.net/articles/Exception_Handling.md>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "<https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>"
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Using secure connection over TLS"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Yii provides features that rely on cookies and/or PHP sessions. These can be "
 "vulnerable in case your connection is compromised. The risk is reduced if "
@@ -435,20 +438,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Nowadays, anyone can get a certificate for free and automatically update it "
 "thanks to [Let's Encrypt](https://letsencrypt.org/)."
 msgstr ""
 
 #. type: Title ##
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Secure server configuration"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "The purpose of this section is to highlight risks that need to be considered "
 "when creating a server configuration for serving a Yii-based website. "
@@ -458,13 +461,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Avoiding `Host`-header attacks"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "If the webserver is configured to serve the same site independent of the "
 "value of the `Host` header, this information mayn't be reliable and [may be "
@@ -474,58 +477,58 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "For more information about the server configuration, please refer to the "
 "documentation of your webserver:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Apache 2: <https://httpd.apache.org/docs/trunk/vhosts/examples."
 "html#defaultallports>"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Nginx: <https://www.nginx.com/resources/wiki/start/topics/examples/"
 "server_blocks/>"
 msgstr ""
 
 #. type: Title ###
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "Configuring SSL peer validation"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "There is a typical misconception about how to solve SSL certificate "
 "validation issues such as:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "cURL error 60: SSL certificate problem: unable to get local issuer certificate\n"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "or"
 msgstr ""
 
 #. type: Fenced code block
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid "stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages: error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed\n"
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Many sources wrongly suggest disabling SSL peer verification.  That "
 "shouldn't be ever done since it enables man-in-the middle type of attacks.  "
@@ -533,19 +536,19 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "Download [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert."
 "pem)."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Add the following to your php.ini:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 #, no-wrap
 msgid ""
 "  openssl.cafile=\"/path/to/cacert.pem\"\n"
@@ -553,29 +556,29 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "Note that you should keep the file up to date."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "[OWASP top 10](https://owasp.org/Top10/)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "[The Basics of Web Application Security](https://martinfowler.com/articles/"
 "web-security-basics.html) by Martin Fowler"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid "[PHP manual: security](https://www.php.net/manual/en/security.php)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/security/best-practices.md
+#: ../src/guide/security/best-practices.md
 msgid ""
 "[Information security at STackExchange](https://security.stackexchange.com/)"
 msgstr ""
