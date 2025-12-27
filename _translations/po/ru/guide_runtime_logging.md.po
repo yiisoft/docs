@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2025-12-27 03:24+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,60 +17,60 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid "Logging"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Yii relies on [PSR-3 interfaces](https://www.php-fig.org/psr/psr-3/) for logging, so you could configure any PSR-3 compatible logging library to do the actual job."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Yii provides its own logger that's highly customizable and extensible.  Using it, you can log various types of messages, filter them, and gather them at different targets, such as files or emails."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Using the Yii logging framework involves the following steps:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Record [log messages](#log-messages) at various places in your code;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Configure [log targets](#log-targets) in the application configuration to filter and export log messages;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
-msgid "Examine the filtered logged messages exported by different targets (e.g. the [Yii debugger](../tool/debugger.md))."
+#: ../src/guide/runtime/logging.md
+msgid "Examine the filtered logged messages exported by different targets (e.g. the Yii debugger)."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "In this section, the focus in on the first two steps."
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Log Messages <span id=\"log-messages\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "To record log messages, you need an instance of PSR-3 logger.  A class that writes log messages should receive it as a dependency:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "class MyService\n"
@@ -85,57 +85,57 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Recording a log message is as simple as calling one of the following logging methods that correspond to log levels:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`emergency` - System is unusable."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`alert` - Action must be taken immediately.  Example: Entire website down, database unavailable, etc.  This should trigger the SMS alerts and wake you up."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`critical` - Critical conditions. Example: Application component unavailable, unexpected exception."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`error` - Runtime errors that don't require immediate action but should typically be logged and monitored."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`warning` - Exceptional occurrences that aren't errors. Example: Use of deprecated APIs, poor use of an API, undesirable things that aren't necessarily wrong."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`notice` - Normal but significant events."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`info` - Interesting events. Example: User logs in, SQL logs."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`debug` - Detailed debug information."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Each method has two arguments.  The first is a message.  The Second is a context array that typically has structured data that doesn't fit a message well but still does offer important information.  In case you provide an exception as context, you should pass the \"exception\" key.  Another special key is \"category.\" Categories are handy to better organize and filter log messages."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Log\\LoggerInterface;\n"
@@ -156,17 +156,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "When deciding on a category for a message, you may choose a hierarchical naming scheme, which will make it easier for [log targets](#log-targets) to filter messages based on their categories. A simple yet effective naming scheme is to use the PHP magic constant `__METHOD__` for the category names. This is also the approach used in the core Yii framework code."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The `__METHOD__` constant evaluates as the name of the method (prefixed with the fully qualified class name) where the constant appears.  For example, it's equal to the string `'App\\\\Service\\\\MyService::serve'` if the above line of code is called within this method."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "> [!IMPORTANT]\n"
@@ -174,29 +174,29 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Note that PSR-3 package provides `\\Psr\\Log\\NullLogger` class that provides the same set of methods but doesn't log anything. That means that you don't have to check if logger is configured with `if ($logger !== null)` and, instead, can assume that logger is always present."
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Log targets <span id=\"log-targets\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "A log target is an instance of a class that extends the [[\\Yiisoft\\Log\\Target]]. It filters the log messages by their severity levels and categories and then exports them to some medium. For example, a [[\\Yiisoft\\Log\\Target\\File\\FileTarget|file target]]exports the filtered log messages to a file, while a [[Yiisoft\\Log\\Target\\Email\\EmailTarget|email target]] exports the log messages to specified email addresses."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "You can register many log targets in an application by configuring them through the `\\Yiisoft\\Log\\Logger` constructor:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Log\\LogLevel;\n"
@@ -215,17 +215,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "In the above code, two log targets are registered:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "the first target selects error and warning messages and writes them to `/path/to/app.log` file;"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "* the second target selects emergency, alert, and critical messages under the categories whose names start with\n"
@@ -233,89 +233,89 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Yii comes with the following built-in log targets. Please refer to the API documentation about these classes to learn how to configure and use them."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\PsrTarget]]: passes log messages to another PSR-3 compatible logger."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\StreamTarget]]: writes log messages into a specified output stream."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\Target\\Db\\DbTarget]]: saves log messages in database."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\Target\\Email\\EmailTarget]]: sends log messages to pre-specified email addresses."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\Target\\File\\FileTarget]]: saves log messages in files."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\Target\\Syslog\\SyslogTarget]]: saves log messages to syslog by calling the PHP function `syslog()`."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "In the following, we will describe the features common to all log targets."
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "References <span id=\"references\"></span>"
 msgid "Message Filtering <span id=\"message-filtering\"></span>"
 msgstr "Полезные ссылки <span id=\"references\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "For each log target, you can configure its levels and categories to specify which severity levels and categories of the messages the target should process."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The target `setLevels()` method takes an array consisting of one or several of `\\Psr\\Log\\LogLevel` constants."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "By default, the target will process messages of *any* severity level."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The target `setCategories()` method takes an array consisting of message category names or patterns.  A target will only process messages whose category can be found or match one of the patterns in this array.  A category pattern is a category name prefix with an asterisk `*` at its end. A category name matches a category pattern if it starts with the same prefix of the pattern. For example, `Yiisoft\\Cache\\Cache::set` and `Yiisoft\\Cache\\Cache::get` both match the pattern `Yiisoft\\Cache\\*`."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "By default, the target will process messages of *any* category."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Besides allowing the categories by the `setCategories()` method, you may also deny certain categories by the `setExcept()` method.  If the category of a message is found or matches one of the patterns in this property, the target will NOT process it."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The following target configuration specifies that the target should only process error and warning messages under the categories whose names match either `Yiisoft\\Cache\\*` or `App\\Exceptions\\HttpException:*`, but not `App\\Exceptions\\HttpException:404`."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -325,19 +325,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "DI container <span id=\"di-container\"></span>"
 msgid "Message Formatting <span id=\"message-formatting\"></span>"
 msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Log targets export the filtered log messages in a certain format.  For example, if you install a log target of the class [[\\Yiisoft\\Log\\Target\\File\\FileTarget]], you may find a log message similar to the following in the log file:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "2020-12-05 09:27:52.223800 [info][application] Some message\n"
@@ -350,23 +350,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "By default, log messages have the following format:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid "Timestamp Prefix[Level][Category] Message Context\n"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "You may customize this format by calling [[\\Yiisoft\\Log\\Target::setFormat()|setFormat()]] method, which takes a PHP callable returning a custom-formatted message."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -384,12 +384,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "In addition, if you're comfortable with the default message format but need to change the timestamp format or add custom data to the message, you can call the [[\\Yiisoft\\Log\\Target::setTimestampFormat()|setTimestampFormat()]] and [[\\Yiisoft\\Log\\Target::setPrefix()|setPrefix()]] methods. For example, the following code changes the timestamp format and configures a log target to prefix each log message with the current user ID (IP address and Session ID are removed for privacy reasons)."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -410,18 +410,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The PHP callable that's passed to the [[\\Yiisoft\\Log\\Target::setFormat()|setFormat()]] and [[\\Yiisoft\\Log\\Target::setPrefix()|setPrefix()]] methods has the following signature:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid "function (\\Yiisoft\\Log\\Message $message, array $commonContext): string;\n"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "Besides message prefixes, log targets also append some common context information to each of the log messages.\n"
@@ -432,7 +432,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -440,19 +440,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "References <span id=\"references\"></span>"
 msgid "Message Trace Level <span id=\"trace-level\"></span>"
 msgstr "Полезные ссылки <span id=\"references\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "During development, it's often desirable to see where each log message is coming from.  You can achieve this by calling the [[\\Yiisoft\\Log\\Logger::setTraceLevel()|setTraceLevel()]] method like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$logger = new \\Yiisoft\\Log\\Logger($targets);\n"
@@ -460,12 +460,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "This application configuration sets the trace level to be 3, so each log message will be appended with at most three levels of the call stack at which the log message is recorded. You can also set a list of paths to exclude from the trace by calling the [[\\Yiisoft\\Log\\Logger::setExcludedTracePaths()|setExcludedTracePaths()]] method."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$logger = new \\Yiisoft\\Log\\Logger($targets);\n"
@@ -473,7 +473,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "> [!IMPORTANT]\n"
@@ -482,19 +482,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
 msgid "Message flushing and exporting <span id=\"flushing-exporting\"></span>"
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "As aforementioned, log messages are maintained in an array by [[\\Yiisoft\\Log\\Logger|logger object]]. To limit the memory consumption by this array, the logger will flush the recorded messages to the [log targets](#log-targets)  each time the array accumulates a certain number of log messages. You can customize this number by calling the [[\\Yiisoft\\Log\\Logger::setFlushInterval()]] method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$logger = new \\Yiisoft\\Log\\Logger($targets);\n"
@@ -502,7 +502,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "> [!IMPORTANT]\n"
@@ -511,7 +511,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "When the [[\\Yiisoft\\Log\\Logger|logger object]] flushes log messages to [log targets](#log-targets),\n"
@@ -522,7 +522,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -530,12 +530,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Because of the flushing and exporting level setting, by default when you call any logging method, you will NOT see the log message immediately in the log targets. This could be a problem for some long-running console applications. To make each log message appear immediately in the log targets, you should set both flush interval and export interval to be 1, as shown below:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -546,7 +546,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -554,19 +554,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Toggling log targets <span id=\"toggling-log-targets\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "You can enable or disable a log target by calling its [[\\Yiisoft\\Log\\Target::enable()|enable()] ] and [[\\Yiisoft\\Log\\Target::disable()|disable()]] methods.  You may do so via the log target configuration or by the following PHP statement in your code:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "$fileTarget = new \\Yiisoft\\Log\\Target\\File\\FileTarget('/path/to/app.log');\n"
@@ -580,54 +580,54 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "To check whether the log target is enabled, call the `isEnabled()` method.  You also may pass callable to [[\\Yiisoft\\Log\\Target::setEnabled()|setEnabled()]] to define a dynamic condition for whether the log target should be enabled or not."
 msgstr ""
 
 #. type: Title ###
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
 msgid "Creating new targets <span id=\"new-targets\"></span>"
 msgstr "Предопределенные псевдонимы <span id=\"predefined-aliases\"></span>"
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "Creating a new log target class is straightforward. You mainly need to implement the [[\\Yii\\Log\\Target::export()]] abstract method that sends all accumulated log messages to a designated medium."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "The following protected methods will also be available for child targets:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`getMessages` - Get a list of log messages ([[\\Yii\\Log\\Message]] instances)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`getFormattedMessages` - Get a list of log messages formatted as strings."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`formatMessages` - Get all log messages formatted as a string."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "`getCommonContext` - Get an array with common context data in the `key => value` format."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 msgid "For more details, you may refer to any of the log target classes included in the package."
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "> [!TIP]\n"
@@ -636,7 +636,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/logging.md
+#: ../src/guide/runtime/logging.md
 #, no-wrap
 msgid ""
 "/**\n"

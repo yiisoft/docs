@@ -15,7 +15,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Running applications](start/workflow.md)
 - [Saying hello](start/hello.md)
 - [Working with forms](start/forms.md)
-- [Working with databases](start/databases.md) TODO
+- [Working with databases](start/databases.md)
 - [Generating code with Gii](start/gii.md) TODO
 - [Looking ahead](start/looking-ahead.md)
 
@@ -151,5 +151,5 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 ## Extras
 
-- [Cookbook](../../cookbook/en/README.md)
+- [Cookbook](../cookbook/index.md)
 - [Glossary](glossary.md)

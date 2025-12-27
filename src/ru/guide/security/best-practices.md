@@ -33,8 +33,7 @@ if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
 }
 ```
 
-В Yii, вы, скорее всего, будете использовать [валидацию
-форм](../input/validation.md), чтобы делать такие проверки.
+In Yii, most probably you'll use form validation to do similar checks.
 
 Дополнительная информация по теме:
 

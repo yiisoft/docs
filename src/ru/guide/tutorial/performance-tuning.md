@@ -212,8 +212,8 @@ You should profile your code to find out the performance bottlenecks and
 take appropriate measures accordingly.  The following profiling tools may be
 useful:
 
-- [Yii debug toolbar and
-  debugger](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md)
+<!-- - [Yii debug toolbar and debugger](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md) -->
+
 - [Blackfire](https://blackfire.io/)
 - [XHProf](https://secure.php.net/manual/en/book.xhprof.php)
 - [XDebug profiler](https://xdebug.org/docs/profiler)
