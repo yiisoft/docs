@@ -294,8 +294,8 @@ final readonly class PageRepository
 
     public function findOneBySlug(string $slug): ?Page
     {
-        $query =  (new Query($this->connection))
-            ->select('*')
+        $query = $this->connection
+            ->select()
             ->from('{{%page}}')
             ->where('slug = :slug', ['slug' => $slug]);
 
@@ -307,8 +307,8 @@ final readonly class PageRepository
      */
     public function findAll(): iterable
     {
-        $data = (new Query($this->connection))
-            ->select('*')
+        $data = $this->connection
+            ->select()
             ->from('{{%page}}')
             ->all();
 
