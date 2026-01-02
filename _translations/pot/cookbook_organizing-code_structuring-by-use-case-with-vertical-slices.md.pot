@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2026-01-02 23:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 #, no-wrap
 msgid "Structuring code by use-case with vertical slices"
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "When building an application, it's important to organize the code in a way "
 "that makes it easy to understand, support, and scale. One popular approach "
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "Vertical slices are self-contained pieces of functionality that cover the "
 "entire stack, from the user interface to the data access layer.  Developer "
@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "When structuring code classically by type (such as models, views, "
 "controllers, helpers, etc.), it can be easy to lose sight of the bigger "
@@ -50,7 +50,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "On the other hand, structuring code by use-case makes developers focus on a "
 "specific feature or workflow and understand how different pieces of code "
@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "Additionally, structuring code by use-case can make it easier to test and "
 "debug the application since use-case namespace encapsulates each feature or "
@@ -71,14 +71,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "Here's an example directory structure for a PHP application organized using "
 "vertical slices:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 #, no-wrap
 msgid ""
 "src/\n"
@@ -118,14 +118,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "Each vertical slice has its own directory, which has code associated with "
 "the use case."
 msgstr ""
 
 #. type: Plain text
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid ""
 "The use-case subdirectories and their respective classes are organized by "
 "type within each directory, omitting a directory if there's a single class "
@@ -134,14 +134,17 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
+#: ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/organizing-code/structuring-by-use-case-with-vertical-slices.md
-msgid ""
-"[Application structure overview](https://github.com/yiisoft/docs/blob/master/"
-"guide/en/structure/overview.md)"
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+msgid "[Application structure overview](../../guide/structure/overview.md)"
 msgstr ""
