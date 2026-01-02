@@ -1,0 +1,1102 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-02 23:54+0000\n"
+"PO-Revision-Date: 2026-01-02 23:54+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/cookbook/preface.md
+#, no-wrap
+msgid "Prerequisites"
+msgstr "Что понадобится перед чтением?"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "A server with a fresh installation of a Linux distribution (Ubuntu 22.04 LTS or later recommended)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "A domain name pointing to your server's IP address"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "SSH access to your server"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Basic knowledge of Docker and command-line tools"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Server preparation"
+msgstr "Интеграция с Sentry"
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Install Docker"
+msgstr "Установка пакета"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "For installation instructions, see the [official Docker documentation](https://docs.docker.com/engine/install/ubuntu/)."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Initialize Docker Swarm"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Initialize your server as a Docker Swarm manager:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker swarm init --advertise-addr <YOUR_SERVER_IP>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Replace `<YOUR_SERVER_IP>` with your server's public IP address.\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Set up the reverse proxy network"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Create a dedicated overlay network for reverse proxy to communicate with your services:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker network create --driver=overlay reverse_proxy_public\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Setting up a container registry"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "You need a container registry to store your Docker images. Choose one of the following options."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Option 1: Using Forgejo"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "To deploy Forgejo create a file `forgejo-stack.yml`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Deploy Forgejo:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker stack deploy -c forgejo-stack.yml forgejo\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Replace `git.example.com` with your desired subdomain."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Option 2: Using Gitea"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "To deploy Gitea create a file `gitea-stack.yml`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Deploy Gitea:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker stack deploy -c gitea-stack.yml gitea\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "After deployment, access Gitea at `https://git.example.com` and complete the initial setup.  Make sure to enable the container registry in the settings."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Configuring your Yii application"
+msgstr "Настройка проверки SSL-сертификата"
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Update the Makefile configuration"
+msgstr "Безопасная конфигурация сервера"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy
+msgid "The [Yii application template](https://github.com/yiisoft/app) includes a Makefile with deployment commands. Update the `docker/.env` file in your project:"
+msgstr ""
+"[Yii приложение](https://github.com/yiisoft/app) предопределяет набор псевдонимов, чтобы ссылаться на часто используемые\n"
+"файловые пути и URL-адреса:"
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"STACK_NAME=myapp\n"
+"\n"
+"#\n"
+"# Production\n"
+"#\n"
+"\n"
+"PROD_HOST=app.example.com\n"
+"PROD_SSH=\"ssh://user@your-server-ip\"\n"
+"\n"
+"IMAGE=git.example.com/username/myapp\n"
+"IMAGE_TAG=latest\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Replace the values: - `STACK_NAME`: A unique name for your application stack - `PROD_HOST`: The domain name where your app will be accessible - `PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)  - `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`: Image tag, typically `latest` or a version number"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Configure the production environment"
+msgstr "Настройка проверки SSL-сертификата"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Update `docker/prod/.env` with your production environment variables:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"APP_ENV=prod\n"
+"YII_DEBUG=false\n"
+"YII_ENV=prod\n"
+"\n"
+"# Database configuration\n"
+"DB_HOST=db\n"
+"DB_NAME=myapp\n"
+"DB_USER=myapp\n"
+"DB_PASSWORD=secure_password_here\n"
+"\n"
+"# Add other environment-specific variables\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"> [!WARNING]\n"
+"> Never commit sensitive credentials to version control. Use `docker/prod/override.env` for sensitive values and add it to `.gitignore`.\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Review the production Docker Compose configuration"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"This configuration:\n"
+"- Runs 2 replicas for high availability\n"
+"- Uses a rolling update strategy with automatic rollback on failure\n"
+"- Configures `labels` for automatic HTTPS on the reverse proxy\n"
+"- Disables obtaining of HTTPs certificates on the container itself\n"
+"  since proxy communicates with the container via HTTP. That is `auto_https off`.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "If you need a database, add it to the stack:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    # ... existing configuration ...\n"
+"    \n"
+"  db:\n"
+"    image: postgres:15-alpine\n"
+"    environment:\n"
+"      POSTGRES_DB: myapp\n"
+"      POSTGRES_USER: myapp\n"
+"      POSTGRES_PASSWORD_FILE: /run/secrets/db_password\n"
+"    volumes:\n"
+"      - db_data:/var/lib/postgresql/data\n"
+"    networks:\n"
+"      - reverse_proxy_public\n"
+"    deploy:\n"
+"      placement:\n"
+"        constraints:\n"
+"          - node.role == manager\n"
+"    secrets:\n"
+"      - db_password\n"
+"\n"
+"volumes:\n"
+"  runtime:\n"
+"  db_data:\n"
+"\n"
+"secrets:\n"
+"  db_password:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Create the database password secret on the server:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "echo \"your_secure_password\" | docker secret create db_password -\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Building and pushing the image"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Set up Docker login on your local machine"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Configure Docker to authenticate with your container registry:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker login git.example.com\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Enter your username and password when prompted."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Build the production image"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Use the Makefile to build your production image:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "make prod-build\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "This runs the command defined in the Makefile:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker build --file docker/Dockerfile --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies in a builder stage 2. Creates a minimal production image with only the necessary files 3. Runs as a non-root user (`www-data`)"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Push the image to the registry"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Push your built image to the container registry:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "make prod-push\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "This executes:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker push ${IMAGE}:${IMAGE_TAG}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Deploying to Docker Swarm"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Configure SSH access"
+msgstr "Настройка HTTP-клиента"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Set up SSH key-based authentication to your server:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# Generate SSH key (if you don't have one)\n"
+"ssh-keygen -t ed25519 -C \"your_email@example.com\"\n"
+"\n"
+"# Copy the key to your server\n"
+"ssh-copy-id user@your-server-ip\n"
+"\n"
+"# Add the SSH host to your SSH config (~/.ssh/config)\n"
+"cat >> ~/.ssh/config << EOF\n"
+"Host docker-web\n"
+"    HostName your-server-ip\n"
+"    User user\n"
+"    IdentityFile ~/.ssh/id_ed25519\n"
+"EOF\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Set up Docker context"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Create a Docker context for remote deployment:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker context create swarm-prod --docker \"host=ssh://docker-web\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Alternatively, configure the `DOCKER_HOST` environment variable:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "export DOCKER_HOST=ssh://docker-web\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Deploy the application"
+msgstr "Далее сконфигурируем приложение."
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Deploy your application stack to Docker Swarm:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "make prod-deploy\n"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker -H ${PROD_SSH} stack deploy --prune --detach=false --with-registry-auth -c docker/compose.yml -c docker/prod/compose.yml ${STACK_NAME}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "The `--with-registry-auth` flag ensures the Swarm nodes can pull images from your private registry."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Verify the deployment"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Check the status of your services:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"docker -H ssh://docker-web service ls\n"
+"docker -H ssh://docker-web service ps ${STACK_NAME}_app\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "View logs:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker -H ssh://docker-web service logs ${STACK_NAME}_app\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Monitoring and maintenance"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "View service logs"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# View all logs\n"
+"docker -H ssh://docker-web service logs -f ${STACK_NAME}_app\n"
+"\n"
+"# View logs from the last 100 lines\n"
+"docker -H ssh://docker-web service logs --tail 100 ${STACK_NAME}_app\n"
+"\n"
+"# View logs with timestamps\n"
+"docker -H ssh://docker-web service logs -t ${STACK_NAME}_app\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, fuzzy, no-wrap
+msgid "Scale the application"
+msgstr "Далее сконфигурируем приложение."
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Adjust the number of replicas:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker -H ssh://docker-web service scale ${STACK_NAME}_app=3\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Or update the `replicas` value in `docker/prod/compose.yml` and redeploy."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Resource limits"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Add resource limits to prevent containers from consuming all server resources. Update `docker/prod/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    # ... existing configuration ...\n"
+"    deploy:\n"
+"      resources:\n"
+"        limits:\n"
+"          cpus: '0.5'\n"
+"          memory: 512M\n"
+"        reservations:\n"
+"          cpus: '0.25'\n"
+"          memory: 256M\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/cookbook/disabling-csrf-protection.md
+#, fuzzy, no-wrap
+msgid "Security considerations"
+msgstr "Интеграция с Sentry"
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Use Docker secrets for sensitive data"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Instead of environment variables, use Docker secrets for sensitive information:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# Create secrets\n"
+"echo \"database_password\" | docker secret create db_password -\n"
+"echo \"api_key\" | docker secret create api_key -\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Update `docker/prod/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    secrets:\n"
+"      - db_password\n"
+"      - api_key\n"
+"\n"
+"secrets:\n"
+"  db_password:\n"
+"    external: true\n"
+"  api_key:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Access secrets in your application at `/run/secrets/secret_name`."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Set up a firewall"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Configure UFW (Uncomplicated Firewall) on your server:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# Allow SSH\n"
+"sudo ufw allow 22/tcp\n"
+"\n"
+"# Allow HTTP and HTTPS\n"
+"sudo ufw allow 80/tcp\n"
+"sudo ufw allow 443/tcp\n"
+"\n"
+"# Allow Docker Swarm ports (if you plan to add more nodes)\n"
+"sudo ufw allow 2377/tcp\n"
+"sudo ufw allow 7946/tcp\n"
+"sudo ufw allow 7946/udp\n"
+"sudo ufw allow 4789/udp\n"
+"\n"
+"# Enable the firewall\n"
+"sudo ufw enable\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Keep the system updated"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Regularly update your server and Docker:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# Update system packages\n"
+"sudo apt-get update && sudo apt-get upgrade -y\n"
+"\n"
+"# Update Docker images\n"
+"docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Troubleshooting"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Service won't start"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Check service events and logs:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"docker -H ssh://docker-web service ps ${STACK_NAME}_app --no-trunc\n"
+"docker -H ssh://docker-web service logs ${STACK_NAME}_app\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Common issues: - **Image pull errors**: Verify registry authentication with `docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other services are using ports 80/443 - **Resource constraints**: Check available resources with `docker -H ssh://docker-web node ls`"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "SSL certificate issues"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Container registry connection issues"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Test registry connectivity:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"# From your local machine\n"
+"docker pull git.example.com/username/myapp:latest\n"
+"\n"
+"# From the server\n"
+"docker -H ssh://docker-web pull git.example.com/username/myapp:latest\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Summary"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "The Makefile commands simplify the deployment workflow: - `make prod-build` - Build the production image - `make prod-push` - Push to the registry - `make prod-deploy` - Deploy to Docker Swarm"
+msgstr ""
+
+#. type: Title #
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Deploying Yii applications to Docker Swarm and Traefik"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "This guide walks you through deploying a Yii application to [Docker Swarm](https://docs.docker.com/engine/swarm/)  starting from a blank server, using [Traefik](https://traefik.io/traefik) as a reverse proxy and deploying from a container registry ([Forgejo](https://forgejo.org/) or [Gitea](https://about.gitea.com/))."
+msgstr ""
+
+#. type: Fenced code block (mermaid)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"graph LR\n"
+"    A[Internet] --> B[Reverse Proxy: Traefik]\n"
+"    B --> C[app1.example.com]\n"
+"    B --> D[app2.example.com]\n"
+"    \n"
+"    subgraph Docker Swarm Cluster\n"
+"        B\n"
+"        C\n"
+"        D\n"
+"    end\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "Setting up Traefik as reverse proxy"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "To deploy Traefik as reverse proxy create a file `traefik-stack.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  traefik:\n"
+"    image: traefik:v2.10\n"
+"    command:\n"
+"      - \"--api.insecure=true\"\n"
+"      - \"--providers.docker=true\"\n"
+"      - \"--providers.docker.swarmMode=true\"\n"
+"      - \"--providers.docker.exposedbydefault=false\"\n"
+"      - \"--entrypoints.web.address=:80\"\n"
+"      - \"--entrypoints.websecure.address=:443\"\n"
+"      - \"--certificatesresolvers.letsencrypt.acme.tlschallenge=true\"\n"
+"      - \"--certificatesresolvers.letsencrypt.acme.email=admin@example.com\"\n"
+"      - \"--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json\"\n"
+"    ports:\n"
+"      - \"80:80\"\n"
+"      - \"443:443\"\n"
+"      - \"8080:8080\"\n"
+"    volumes:\n"
+"      - \"/var/run/docker.sock:/var/run/docker.sock:ro\"\n"
+"      - \"traefik_certificates:/letsencrypt\"\n"
+"    networks:\n"
+"      - reverse_proxy_public\n"
+"    deploy:\n"
+"      placement:\n"
+"        constraints:\n"
+"          - node.role == manager\n"
+"\n"
+"volumes:\n"
+"  traefik_certificates:\n"
+"\n"
+"networks:\n"
+"  reverse_proxy_public:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "Deploy Traefik:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid "docker stack deploy -c traefik-stack.yml traefik\n"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  forgejo:\n"
+"    image: codeberg.org/forgejo/forgejo:1.21\n"
+"    ports:\n"
+"      - \"3000:3000\"\n"
+"    volumes:\n"
+"      - forgejo_data:/data\n"
+"    networks:\n"
+"      - reverse_proxy_public\n"
+"    deploy:\n"
+"      labels:\n"
+"        - \"traefik.enable=true\"\n"
+"        - \"traefik.http.routers.app.rule=Host(`git.example.com`)\"\n"
+"        - \"traefik.http.routers.app.entrypoints=websecure\"\n"
+"        - \"traefik.http.routers.app.tls.certresolver=letsencrypt\"\n"
+"        - \"traefik.http.services.app.loadbalancer.server.port=3000\"        \n"
+"\n"
+"volumes:\n"
+"  forgejo_data:\n"
+"\n"
+"networks:\n"
+"  reverse_proxy_public:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "After deployment, access Forgejo at `https://git.example.com` and complete the initial setup.  Make sure to enable the container registry in the settings."
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  gitea:\n"
+"    image: gitea/gitea:latest\n"
+"    ports:\n"
+"      - \"3000:3000\"\n"
+"    volumes:\n"
+"      - gitea_data:/data\n"
+"    networks:\n"
+"      - reverse_proxy_public\n"
+"    deploy:\n"
+"      labels:\n"
+"        - \"traefik.enable=true\"\n"
+"        - \"traefik.http.routers.app.rule=Host(`git.example.com`)\"\n"
+"        - \"traefik.http.routers.app.entrypoints=websecure\"\n"
+"        - \"traefik.http.routers.app.tls.certresolver=letsencrypt\"\n"
+"        - \"traefik.http.services.app.loadbalancer.server.port=3000\"        \n"
+"\n"
+"volumes:\n"
+"  gitea_data:\n"
+"\n"
+"networks:\n"
+"  reverse_proxy_public:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "When using Traefik, you'll need to modify the Yii application's `docker/prod/compose.yml` to use Traefik labels instead of Caddy labels:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    image: ${IMAGE}:${IMAGE_TAG}\n"
+"    networks:\n"
+"      - reverse_proxy_public\n"
+"    volumes:\n"
+"      - runtime:/app/runtime\n"
+"      - caddy_data:/data\n"
+"      - caddy_config:/config\n"
+"    env_file:\n"
+"      - path: ./prod/.env\n"
+"      - path: ./prod/override.env\n"
+"        required: false\\\n"
+"    environment:\n"
+"      CADDY_EXTRA_CONFIG: 'auto_https off'\n"
+"    deploy:\n"
+"      replicas: 2\n"
+"      update_config:\n"
+"        delay: 10s\n"
+"        parallelism: 1\n"
+"        order: start-first\n"
+"        failure_action: rollback\n"
+"        monitor: 10s\n"
+"      rollback_config:\n"
+"        parallelism: 0\n"
+"        order: stop-first\n"
+"      restart_policy:\n"
+"        condition: on-failure\n"
+"        delay: 5s\n"
+"        max_attempts: 3\n"
+"        window: 120s\n"
+"      labels:\n"
+"        - \"traefik.enable=true\"\n"
+"        - \"traefik.http.routers.app.rule=Host(`${PROD_HOST:-app.example.com}`)\"\n"
+"        - \"traefik.http.routers.app.entrypoints=websecure\"\n"
+"        - \"traefik.http.routers.app.tls.certresolver=letsencrypt\"\n"
+"        - \"traefik.http.services.app.loadbalancer.server.port=80\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "If Traefik can't obtain certificates: - Verify DNS is pointing to your server - Check that ports 80 and 443 are accessible from the internet - Ensure the email in the Let's Encrypt configuration is valid - Check logs: `docker -H ssh://docker-web service logs traefik_traefik`"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "You've successfully deployed a Yii application to Docker Swarm with: - A container registry (Forgejo or Gitea)  - Automatic HTTPS via Traefik - Zero-downtime deployments with rolling updates - High availability with multiple replicas"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+msgid "For more information, see: - [Yii Application Template](https://github.com/yiisoft/app)  - [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)  - [Traefik Documentation](https://doc.traefik.io/traefik/)"
+msgstr ""

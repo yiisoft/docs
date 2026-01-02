@@ -78,5 +78,4 @@ level up such as `Model` or `Service`.
 
 ## Referencias
 
-- [Application structure
-  overview](https://github.com/yiisoft/docs/blob/master/guide/en/structure/overview.md)
+- [Application structure overview](../../guide/structure/overview.md)

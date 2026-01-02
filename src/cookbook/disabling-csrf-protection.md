@@ -7,7 +7,7 @@ unauthorized requests on behalf of authenticated users. Yii3 includes built-in C
 the `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
 
 For a comprehensive understanding of CSRF attacks and protection mechanisms, see
-the [Security best practices](../../guide/en/security/best-practices.md#avoiding-csrf) section in the main guide.
+the [Security best practices](../guide/security/best-practices.md#avoiding-csrf) section in the main guide.
 
 ## When to disable CSRF protection
 
