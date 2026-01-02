@@ -67,4 +67,4 @@ it's moved one level up such as `Model` or `Service`.
 
 ## References
 
-- [Application structure overview](https://github.com/yiisoft/docs/blob/master/guide/en/structure/overview.md)
+- [Application structure overview](../../guide/structure/overview.md)

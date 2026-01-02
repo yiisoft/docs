@@ -1,6 +1,7 @@
 # Making HTTP requests
 
-When building modern applications, you often need to make HTTP requests to external APIs. This article demonstrates how to make HTTP requests in Yii3 applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/psr/).
+When building modern applications, you often need to make HTTP requests to external APIs. This article demonstrates
+how to make HTTP requests in Yii3 applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/psr/).
 
 ## What are PSR interfaces for HTTP
 
