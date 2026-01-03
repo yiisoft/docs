@@ -566,6 +566,7 @@ declare(strict_types=1);
 
 namespace App\Web\Page;
 
+use App\Web\Page\EditForm;
 use DateTimeImmutable;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -595,7 +596,7 @@ final readonly class EditAction
     {
         $isNew = $slug === 'new';
 
-        $form = new Form();
+        $form = new EditForm();
 
         if (!$isNew) {
             $page = $pageRepository->findOneBySlug($slug);
@@ -673,6 +674,35 @@ $htmlForm = Html::form()
     <?= Field::textarea($form, 'text')->required() ?>
     <?= Html::submitButton('Save') ?>
 <?= $htmlForm->close() ?>
+```
+
+This is EditForm example in `srs/Web/Page/EditForm.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Rule\Length;
+
+final class EditForm extends FormModel
+{
+    #[Label('Enter the Id:')]
+    public ?string $id = null;
+
+    #[Label('Enter the Title:')]
+    #[Length(max:255)]
+    public ?string $title = null;
+
+    #[Label('Enter the Text:')]
+    #[Length(max:255)]
+    public ?string $text = null;
+}
+
 ```
 
 ### Routing
