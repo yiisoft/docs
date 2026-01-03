@@ -139,12 +139,10 @@ final class M251225221906CreateNewsTable implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
     {
-        $cb = $b->columnBuilder();
-
         $b->createTable('news', [
-            'id' => $cb::uuidPrimaryKey(),
-            'title' => $cb::string()->notNull(),
-            'content' => $cb::text(),
+            'id' => $b->uuidPrimaryKey(),
+            'title' => $b->string()->notNull(),
+            'content' => $b->text(),
         ]);
     }
 
@@ -283,10 +281,8 @@ final class M251227095006CreateMyFirstTableTable implements RevertibleMigrationI
 {
     public function up(MigrationBuilder $b): void
     {
-        $columnBuilder = $b->columnBuilder();
-
         $b->createTable('my_first_table', [
-            'id' => $columnBuilder::primaryKey(),
+            'id' => $b->primaryKey(),
             'name',
             'example',
         ]);
