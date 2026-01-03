@@ -198,7 +198,7 @@ make composer require ramsey/uuid
 ```
 
 While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. Since you generate
-the ID yourself so you can define a set of related data and save it in a single transaction. 
+the ID yourself so you can define a set of related data and save it in a single transaction.
 The entities that define this set of data in the code are often called an "aggregate".
 
 Apply the migration with `make yii migrate:up`.
@@ -497,7 +497,7 @@ use Yiisoft\Yii\View\Renderer\Csrf;
 ```
 
 In this view we have a form that submits a request for page deletion. Handing it with `GET` is common as well,
-but it is very wrong. Since deletion changes data, it needs to be handled by one of the non-idempotent HTTP methods. 
+but it is very wrong. Since deletion changes data, it needs to be handled by one of the non-idempotent HTTP methods.
 We use POST and a form in our example, but it could be `DELETE` and async request made with JavaScript.
 The button could be later styled properly to look similar to the "Edit".
 
@@ -551,6 +551,7 @@ declare(strict_types=1);
 
 namespace App\Web\Page;
 
+use App\Web\Page\EditForm;
 use DateTimeImmutable;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -580,7 +581,7 @@ final readonly class EditAction
     {
         $isNew = $slug === 'new';
 
-        $form = new Form();
+        $form = new EditForm();
 
         if (!$isNew) {
             $page = $pageRepository->findOneBySlug($slug);
@@ -625,7 +626,7 @@ final readonly class EditAction
 
 In the above we use a special slug in the URL for new pages so the URL looks like `http://localhost/pages/new`. If the
 page isn't new, we pre-fill the form with the data from the database. Similar to how we did in [Working with forms](forms.md),
-we handle the form submission. After successful save we redirect to the page view. 
+we handle the form submission. After successful save we redirect to the page view.
 
 Now, a template in `src/Web/Page/edit.php`:
 
@@ -656,6 +657,35 @@ $htmlForm = Html::form()
     <?= Field::textarea($form, 'text')->required() ?>
     <?= Html::submitButton('Save') ?>
 <?= $htmlForm->close() ?>
+```
+
+This is EditForm example in `srs/Web/Page/EditForm.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Rule\Length;
+
+final class EditForm extends FormModel
+{
+    #[Label('Enter the Id:')]
+    public ?string $id = null;
+
+    #[Label('Enter the Title:')]
+    #[Length(max:255)]
+    public ?string $title = null;
+
+    #[Label('Enter the Text:')]
+    #[Length(max:255)]
+    public ?string $text = null;
+}
+
 ```
 
 ### Routing
