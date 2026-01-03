@@ -5,9 +5,9 @@ The project is the source of truth for Yii3 documentation and tips. It is mainta
 The documentation is written in GitHub flavor Markdown format.
 
 ```
-cookbook/en/ - cookbook containing individual recipes about doing things with Yii3.
-guide/en/ - guide containing step-by-step instructions for learning Yii3 and covering some conceptual topics.
-*.md - some internal docs and top level policies.
+src/cookbook/ - cookbook containing individual recipes about doing things with Yii3.
+src/guide/ - guide containing step-by-step instructions for learning Yii3 and covering some conceptual topics.
+src/internals - framework team internal guidelines.
 ```
 
 Yii3 consists of [multiple packages and respective repositories](https://github.com/topics/yii3). 
@@ -19,6 +19,6 @@ are available after the action is completed.
 
 Rules are:
 
-- Edits are permitted only in `cookbook/en`, `guide/en` and `.md` files in root directory.
-- Conform to `014-docs.md` except translations part.
+- Edits are permitted only in `src/cookbook`, `src/guide` and `src/internals`.
+- Conform to `src/internals/014-docs.md` except translations part.
 - Follow individual package documentation when possible.
