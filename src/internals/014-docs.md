@@ -86,9 +86,40 @@ containing the translations. The following shows an example for German:
 }
 ```
 
-## PHPDoc
+## Code comments and PHPDoc
 
-PHPDoc mustn't be added if it doesn't add anything to what it describes. The following is a bad example:
+PHPDoc should not be added if it doesn't provide any additional value.
+In the example below, comments add real value by explaining what the code does and why:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+final class WebhookController
+{
+    public function payment(ServerRequestInterface $request): ResponseInterface
+    {
+        // Verify webhook signature
+        $signature = $request->getHeaderLine('X-Webhook-Signature');
+        $payload = (string) $request->getBody();
+        $expectedSignature = hash_hmac('sha256', $payload, $this->webhookSecret);
+        
+        if (!hash_equals($signature, $expectedSignature)) {
+            throw new \RuntimeException('Invalid webhook signature');
+        }
+        
+        // Process webhook payload
+        // ...
+    }
+}
+```
+
+PHPDoc, if present, should describe the purpose of the element it's added for.
+The following is a bad example:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -120,9 +151,7 @@ final class MyService extends MyServiceBase
         return parent::doit();    
     }
 }
-``` 
-
-PHPDoc, if present, should describe the purpose of the element it's added for.
+```
 
 ## Readme checklist
 
