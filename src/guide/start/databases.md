@@ -542,7 +542,32 @@ final readonly class DeleteAction
 
 ### Create or update a page
 
-Create `src/Web/Page/EditAction.php`:
+First of all, we need a form at `src/Web/Page/Form.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Page;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Rule\Length;
+
+final class Form extends FormModel
+{
+    #[Label('Title')]
+    #[Length(min: 2)]
+    public string $title = '';
+
+    #[Label('Text')]
+    #[Length(min: 2)]
+    public string $text = '';
+}
+```
+
+Then an action. Create `src/Web/Page/EditAction.php`:
 
 ```php
 <?php
