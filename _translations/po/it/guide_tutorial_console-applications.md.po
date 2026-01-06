@@ -1,0 +1,141 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: en/concept/autoloading.md en/security/best-practices.md
+#: en/structure/domain.md en/tutorial/console-applications.md
+#, no-wrap
+msgid "References"
+msgstr ""
+
+#. type: Title #
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid "Console applications"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "Console applications are mainly used to create utility, background processing and maintenance tasks."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "To get support for console application in your project, get `yiisoft/yii-console` via composer:"
+msgstr ""
+
+#. type: Fenced code block
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid "composer require yiisoft/yii-console\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "After it's installed, you can access the entry point as"
+msgstr ""
+
+#. type: Fenced code block
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid "./yii\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "Out of the box only `serve` command is available. It's starting PHP built-in web server to serve the application locally."
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "Commands are executed with `symfony/console`. To create your own console command, you need to define a command:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"namespace App\\Command\\Demo;\n"
+"\n"
+"use Symfony\\Component\\Console\\Attribute\\AsCommand;\n"
+"use Symfony\\Component\\Console\\Command\\Command;\n"
+"use Symfony\\Component\\Console\\Input\\InputArgument;\n"
+"use Symfony\\Component\\Console\\Input\\InputInterface;\n"
+"use Symfony\\Component\\Console\\Output\\OutputInterface;\n"
+"use Symfony\\Component\\Console\\Style\\SymfonyStyle;\n"
+"use Yiisoft\\Yii\\Console\\ExitCode;\n"
+"\n"
+"#[AsCommand(\n"
+"    name: 'demo:hello',\n"
+"    description: 'Echoes hello',\n"
+"    \n"
+")]\n"
+"class HelloCommand extends Command\n"
+"{   \n"
+"    public function configure(): void\n"
+"    {\n"
+"        $this            \n"
+"            ->setHelp('This command serves for demo purpose')\n"
+"            ->addArgument('name', InputArgument::OPTIONAL, 'Name to greet', 'anonymous');\n"
+"    }\n"
+"\n"
+"    protected function execute(InputInterface $input, OutputInterface $output): int\n"
+"    {\n"
+"        $io = new SymfonyStyle($input, $output);\n"
+"\n"
+"        $name = $input->getArgument('name');\n"
+"        $io->success(\"Hello, $name!\");\n"
+"        return ExitCode::OK;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "Now register the command in `config/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    'console' => [\n"
+"        'commands' => [\n"
+"            'demo/hello' => App\\Demo\\HelloCommand::class,\n"
+"        ],\n"
+"    ],    \n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/tutorial/console-applications.md
+msgid "After it's done, the command could be executed as"
+msgstr ""
+
+#. type: Fenced code block
+#: en/tutorial/console-applications.md
+#, no-wrap
+msgid "./yii demo:hello Alice\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/tutorial/console-applications.md
+msgid "[Symfony Console component guide](https://symfony.com/doc/current/components/console.html)"
+msgstr ""

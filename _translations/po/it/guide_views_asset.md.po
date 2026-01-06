@@ -1,0 +1,992 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"PO-Revision-Date: 2025-12-24 13:00+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm.md ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+msgid "Troubleshooting"
+msgstr "Testing"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Assets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Asset management is crucial for modern web applications. Assets include CSS stylesheets, JavaScript files, images, fonts, and other static resources. Yii3 provides a comprehensive asset management system through the `yiisoft/assets` package that handles dependencies, optimization, and deployment of these resources."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "The asset management functionality is provided by the `yiisoft/assets` package:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "composer require yiisoft/assets\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "This package is included by default in the `yiisoft/app` application template."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md ../src/guide/views/view.md
+#: ../src/guide/views/widget.md
+#, fuzzy, no-wrap
+msgid "Basic Concepts"
+msgstr "Concetti chiave"
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Bundles"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "An asset bundle is a collection of related asset files (CSS, JavaScript, images) that are logically grouped together.  Asset bundles can depend on other bundles, allowing for proper dependency management."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Manager"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "The Asset Manager is responsible for: - Resolving asset bundle dependencies - Publishing assets from protected directories to web-accessible locations - Combining and minifying assets (when configured)  - Generating proper URLs for assets"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Creating Asset Bundles"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Basic Asset Bundle"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Here's a simple asset bundle definition:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class MainAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'css/main.css',\n"
+"        'css/responsive.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'js/main.js',\n"
+"        'js/utils.js',\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        BootstrapAsset::class,\n"
+"        JqueryAsset::class,\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Bundle Properties"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Path Configuration:**\n"
+"- `$basePath` - Physical path where asset files are located\n"
+"- `$baseUrl` - Web-accessible URL path for assets\n"
+"- `$sourcePath` - Source directory for assets that need to be published\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Asset Files:**\n"
+"- `$css` - Array of CSS files\n"
+"- `$js` - Array of JavaScript files  \n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Dependencies:**\n"
+"- `$depends` - Array of other asset bundles this bundle depends on\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Options:**\n"
+"- `$jsOptions` - HTML attributes for JavaScript tags\n"
+"- `$cssOptions` - HTML attributes for CSS link tags\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Advanced Asset Bundle"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class AdminAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    // CSS files with media queries\n"
+"    public array $css = [\n"
+"        'css/admin/main.css',\n"
+"        ['css/admin/print.css', 'media' => 'print'],\n"
+"        ['css/admin/mobile.css', 'media' => 'screen and (max-width: 768px)'],\n"
+"    ];\n"
+"    \n"
+"    // JavaScript files with attributes\n"
+"    public array $js = [\n"
+"        'js/admin/core.js',\n"
+"        ['js/admin/charts.js', 'defer' => true],\n"
+"        ['js/admin/analytics.js', 'async' => true],\n"
+"    ];\n"
+"    \n"
+"    // Global options for all JS files in this bundle\n"
+"    public array $jsOptions = [\n"
+"        'data-admin' => 'true',\n"
+"    ];\n"
+"    \n"
+"    // Global options for all CSS files in this bundle\n"
+"    public array $cssOptions = [\n"
+"        'data-bundle' => 'admin',\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        MainAsset::class,\n"
+"        ChartJsAsset::class,\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Using Asset Bundles"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "In Controllers"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Register asset bundles in your controllers or views:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Controller;\n"
+"\n"
+"use App\\Asset\\MainAsset;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Assets\\AssetManager;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final class SiteController\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private AssetManager $assetManager,\n"
+"    ) {}\n"
+"\n"
+"    public function index(): ResponseInterface\n"
+"    {\n"
+"        // Register the asset bundle\n"
+"        $this->assetManager->register(MainAsset::class);\n"
+"        \n"
+"        return $this->viewRenderer->render('index', [\n"
+"            'title' => 'Home Page',\n"
+"        ]);\n"
+"    }\n"
+"    \n"
+"    public function admin(): ResponseInterface\n"
+"    {\n"
+"        // Register multiple asset bundles\n"
+"        $this->assetManager->register([\n"
+"            MainAsset::class,\n"
+"            AdminAsset::class,\n"
+"        ]);\n"
+"        \n"
+"        return $this->viewRenderer->render('admin/dashboard');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+#| msgid "Views"
+msgid "In Views"
+msgstr "Viste"
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "You can also register assets directly in views:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Asset\\ProductAsset;\n"
+"use Yiisoft\\Assets\\AssetManager;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" * @var AssetManager $assetManager\n"
+" * @var array $product\n"
+" */\n"
+"\n"
+"// Register product-specific assets\n"
+"$assetManager->register(ProductAsset::class);\n"
+"?>\n"
+"\n"
+"<div class=\"product-page\">\n"
+"    <h1><?= Html::encode($product['name']) ?></h1>\n"
+"    <!-- Product content -->\n"
+"</div>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "With WebView Integration"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "The recommended approach is to integrate with WebView for automatic asset rendering:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Asset\\MainAsset;\n"
+"\n"
+"/**\n"
+" * @var \\Yiisoft\\View\\WebView $this\n"
+" * @var \\Yiisoft\\Assets\\AssetManager $assetManager\n"
+" */\n"
+"\n"
+"// Register assets\n"
+"$assetManager->register(MainAsset::class);\n"
+"\n"
+"// Add all registered assets to the view\n"
+"$this->addCssFiles($assetManager->getCssFiles());\n"
+"$this->addCssStrings($assetManager->getCssStrings());\n"
+"$this->addJsFiles($assetManager->getJsFiles());\n"
+"$this->addJsStrings($assetManager->getJsStrings());\n"
+"$this->addJsVars($assetManager->getJsVars());\n"
+"?>\n"
+"\n"
+"<div class=\"page-content\">\n"
+"    <!-- Your page content -->\n"
+"</div>\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Publishing"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Source Path Publishing"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "When assets are located in non-web-accessible directories (like vendor packages), they need to be published:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class VendorAsset extends AssetBundle\n"
+"{\n"
+"    // Source directory (not web accessible)\n"
+"    public string $sourcePath = '@vendor/company/package/assets';\n"
+"    \n"
+"    // Will be published to web-accessible directory\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'styles.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'script.js',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Custom Publishing"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "You can also manually publish directories:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Yiisoft\\Assets\\AssetManager $assetManager\n"
+" */\n"
+"\n"
+"// Publish a directory\n"
+"$publishedPath = $assetManager->publish('@vendor/company/package/assets');\n"
+"\n"
+"// Get the published URL\n"
+"$publishedUrl = $assetManager->getPublishedUrl('@vendor/company/package/assets');\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Third-party Library Assets"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "jQuery Asset Bundle"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class JqueryAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $js = [\n"
+"        'js/jquery-3.6.0.min.js',\n"
+"    ];\n"
+"    \n"
+"    // Or use CDN\n"
+"    public array $jsOptions = [\n"
+"        'integrity' => 'sha256-...',\n"
+"        'crossorigin' => 'anonymous',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Bootstrap Asset Bundle"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class BootstrapAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'css/bootstrap.min.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'js/bootstrap.bundle.min.js',\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        JqueryAsset::class, // Bootstrap requires jQuery\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "CDN Assets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "For CDN-hosted assets, you can specify full URLs:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class CdnAsset extends AssetBundle\n"
+"{\n"
+"    public array $css = [\n"
+"        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',\n"
+"    ];\n"
+"    \n"
+"    public array $jsOptions = [\n"
+"        'integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p',\n"
+"        'crossorigin' => 'anonymous',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Configuration"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+#| msgid "Application structure"
+msgid "Application Configuration"
+msgstr "Struttura applicativa"
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Configure asset management in your application configuration:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "**config/web/params.php**\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    'yiisoft/assets' => [\n"
+"        // Base path for published assets\n"
+"        'basePath' => '@webroot/assets',\n"
+"        \n"
+"        // Base URL for assets\n"
+"        'baseUrl' => '@web/assets',\n"
+"        \n"
+"        // Asset converter configuration\n"
+"        'converter' => [\n"
+"            'commands' => [\n"
+"                'scss' => ['sass', '{from}', '{to}', '--style=compressed'],\n"
+"                'ts' => ['tsc', '{from}', '--outFile', '{to}'],\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Environment-specific Assets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Configure different assets for different environments:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class MainAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [];\n"
+"    public array $js = [];\n"
+"    \n"
+"    public function __construct()\n"
+"    {\n"
+"        if (YII_ENV_DEV) {\n"
+"            // Development assets (unminified)\n"
+"            $this->css = ['css/main.css', 'css/debug.css'];\n"
+"            $this->js = ['js/main.js', 'js/debug.js'];\n"
+"        } else {\n"
+"            // Production assets (minified)\n"
+"            $this->css = ['css/main.min.css'];\n"
+"            $this->js = ['js/main.min.js'];\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Optimization"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Combination"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Combine multiple CSS or JavaScript files into single files:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Yiisoft\\Assets\\AssetManager $assetManager\n"
+" */\n"
+"\n"
+"// Enable asset combination\n"
+"$assetManager->setCombine(true);\n"
+"\n"
+"// Set combination options\n"
+"$assetManager->setCombineOptions([\n"
+"    'css' => true,  // Combine CSS files\n"
+"    'js' => true,   // Combine JavaScript files\n"
+"]);\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Asset Compression"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+msgid "Configure asset compression for production:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"// In your asset manager configuration\n"
+"'converter' => [\n"
+"    'commands' => [\n"
+"        'css' => ['cleancss', '{from}', '-o', '{to}'],\n"
+"        'js' => ['uglifyjs', '{from}', '-o', '{to}', '--compress', '--mangle'],\n"
+"    ],\n"
+"],\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+#| msgid "Working with databases"
+msgid "Working with Asset Converter"
+msgstr "Lavorare con i database"
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "SCSS/SASS Compilation"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class ScssAsset extends AssetBundle\n"
+"{\n"
+"    public string $sourcePath = '@app/assets/scss';\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'main.scss', // Will be converted to main.css\n"
+"        'components.scss',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "TypeScript Compilation"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class TypeScriptAsset extends AssetBundle\n"
+"{\n"
+"    public string $sourcePath = '@app/assets/ts';\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $js = [\n"
+"        'main.ts', // Will be converted to main.js\n"
+"        'utils.ts',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
+#, no-wrap
+msgid "Practical Examples"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+#| msgid "Application structure"
+msgid "Complete Application Asset Structure"
+msgstr "Struttura applicativa"
+
+#. type: Fenced code block
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"assets/\n"
+"├── css/\n"
+"│   ├── main.css           # Main application styles\n"
+"│   ├── admin.css          # Admin-specific styles\n"
+"│   └── mobile.css         # Mobile-specific styles\n"
+"├── js/\n"
+"│   ├── main.js            # Main application JavaScript\n"
+"│   ├── admin.js           # Admin functionality\n"
+"│   └── vendor/            # Third-party libraries\n"
+"│       ├── jquery.min.js\n"
+"│       └── bootstrap.min.js\n"
+"├── images/\n"
+"│   ├── logo.png\n"
+"│   └── icons/\n"
+"└── fonts/\n"
+"    ├── main.woff2\n"
+"    └── main.woff\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Complete Asset Bundle Setup"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"// Base asset bundle\n"
+"final class AppAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'css/main.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'js/main.js',\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        JqueryAsset::class,\n"
+"    ];\n"
+"}\n"
+"\n"
+"// Admin-specific bundle\n"
+"final class AdminAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        'css/admin.css',\n"
+"    ];\n"
+"    \n"
+"    public array $js = [\n"
+"        'js/admin.js',\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        AppAsset::class,\n"
+"        BootstrapAsset::class,\n"
+"    ];\n"
+"}\n"
+"\n"
+"// Mobile-specific bundle  \n"
+"final class MobileAsset extends AssetBundle\n"
+"{\n"
+"    public string $basePath = '@assets';\n"
+"    public string $baseUrl = '@assetsUrl';\n"
+"    \n"
+"    public array $css = [\n"
+"        ['css/mobile.css', 'media' => 'screen and (max-width: 768px)'],\n"
+"    ];\n"
+"    \n"
+"    public array $depends = [\n"
+"        AppAsset::class,\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
+#: ../src/guide/views/template-engines.md
+#, no-wrap
+msgid "Best Practices"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/guide/views/asset.md
+msgid "**Organize by functionality**: Group related assets into logical bundles"
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/guide/views/asset.md
+msgid "**Manage dependencies**: Properly declare dependencies between bundles"
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/guide/views/asset.md
+msgid "**Use meaningful names**: Name your asset bundles clearly"
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/guide/views/asset.md
+msgid "**Environment optimization**: Use minified assets in production"
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/guide/views/asset.md
+msgid "**CDN consideration**: Use CDN for popular libraries when appropriate"
+msgstr ""
+
+#. type: Bullet: '6. '
+#: ../src/guide/views/asset.md
+msgid "**Version your assets**: Include version numbers in filenames for cache busting"
+msgstr ""
+
+#. type: Bullet: '7. '
+#: ../src/guide/views/asset.md
+msgid "**Minimize HTTP requests**: Combine related assets when possible"
+msgstr ""
+
+#. type: Bullet: '8. '
+#: ../src/guide/views/asset.md
+msgid "**Optimize file sizes**: Compress and minify assets for production"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Common Issues"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Asset not found:**\n"
+"- Check that the asset file exists in the specified path\n"
+"- Verify `$basePath` and `$baseUrl` are configured correctly\n"
+"- Ensure assets are published if using `$sourcePath`\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Dependencies not loading:**\n"
+"- Verify the dependency bundles are properly registered\n"
+"- Check for circular dependencies\n"
+"- Ensure dependency bundles are correctly configured\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Assets not appearing in HTML:**\n"
+"- Make sure you're calling `$this->addCssFiles()` and `$this->addJsFiles()` in your layout\n"
+"- Verify that `$this->head()`, `$this->beginBody()`, and `$this->endBody()` are called in the layout\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid ""
+"**Permission issues:**\n"
+"- Check that the web server has write permissions to the assets directory\n"
+"- Verify the published assets directory is web-accessible\n"
+msgstr ""

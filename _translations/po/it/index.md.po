@@ -1,0 +1,99 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-01-13 11:06+0000\n"
+"PO-Revision-Date: 2026-01-17 21:03+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Yii gives you the maximum functionality by adding the least possible overhead."
+msgstr "Yii offre la massima funzionalità aggiungendo il minor overhead possibile."
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Fast"
+msgstr "Veloce"
+
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Sane defaults and built-in tools helps you write solid and secure code."
+msgstr "Le impostazioni predefinite e gli strumenti integrati ti aiutano a scrivere codice solido e sicuro."
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Secure"
+msgstr "Sicuro"
+
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Write more code in less time with simple, yet powerful APIs and code generation."
+msgstr "Scrivi più codice in meno tempo con API semplici ma potenti e la generazione di codice."
+
+#. type: Yaml Front Matter Hash Value: features title
+#: ../src/index.md
+#, no-wrap
+msgid "Efficient"
+msgstr "Efficiente"
+
+#. type: Yaml Front Matter Hash Value: hero actions text
+#: ../src/index.md
+#, no-wrap
+msgid "Get Started"
+msgstr "Per iniziare"
+
+#. type: Yaml Front Matter Hash Value: hero name
+#: ../src/index.md
+#, no-wrap
+msgid "Yii3 Framework"
+msgstr "Yii3 Framework"
+
+#. type: Yaml Front Matter Hash Value: hero tagline
+#: ../src/index.md
+#, no-wrap
+msgid "A simple, powerful and fast framework. Meet the modern, definitive guide to Yii you've always wanted."
+msgstr "Un framework semplice, potente e veloce. Scopri la guida moderna e definitiva a Yii che hai sempre desiderato."
+
+#. type: Title ##
+#: ../src/index.md ../src/internals/003-roadmap.md
+#, no-wrap
+msgid "Documentation"
+msgstr "Documentazione"
+
+#. type: Plain text
+#: ../src/index.md
+#, no-wrap
+msgid "<br><br>\n"
+msgstr "<br><br>\n"
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[The Definitive Guide](guide/) — the comprehensive guide covering all aspects of the framework."
+msgstr "[La guida definitiva](guide/) — la guida completa che copre tutti gli aspetti del framework."
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[Community Cookbook](cookbook/) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
+msgstr "[Ricettario della comunità](cookbook/) — una raccolta di suggerimenti, trucchi e soluzioni forniti dalla comunità per le attività di sviluppo Yii più comuni."
+
+#. type: Bullet: '- '
+#: ../src/index.md
+msgid "[Internals](internals/) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
+msgstr "[Internals](internals/) — documentazione per gli sviluppatori che contribuiscono al framework Yii stesso, comprese linee guida, flussi di lavoro e best practice."
