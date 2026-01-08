@@ -1,17 +1,9 @@
-# Replicating Yii2 basic app structure with Yii3
+# Implementing Yii2 basic app structure with Yii3
 
-This guide explains how to replicate the [Yii2 basic application template](https://github.com/yiisoft/yii2-app-basic) structure and features using Yii3. If you're migrating from Yii2 or want to implement a similar simple application structure, this recipe is for you.
+This guide shows how to implement a [Yii2 basic application template](https://github.com/yiisoft/yii2-app-basic) style structure in Yii3. This approach is useful if you prefer the familiar, simple organization of Yii2 basic app: controllers in a `Controller` directory, models in a `Model` directory, and so on.
 
-## Understanding the differences
-
-Yii3 is a complete rewrite of Yii2 with a modern architecture. Key differences include:
-
-- **Package-based**: Yii3 is split into multiple packages instead of a monolithic framework
-- **PSR compliance**: Full support for PSR-7, PSR-11, PSR-15, and other PHP-FIG standards
-- **Dependency injection**: Built-in DI container with constructor injection
-- **Immutability**: Configuration and services are immutable by design
-- **Middleware**: Request handling uses PSR-15 middleware instead of filters
-- **No static methods**: No global state or static framework methods
+> [!NOTE]
+> This recipe demonstrates one way to structure a Yii3 application. Yii3's flexible architecture supports many organizational patterns. For alternative approaches, see [Structuring code by use-case with vertical slices](/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md).
 
 ## Prerequisites
 
@@ -58,35 +50,34 @@ docker-compose up -d
 
 Access your application at `http://localhost:8080`.
 
-## Directory structure comparison
+## Target directory structure
 
-Here's how Yii2 basic app directories map to Yii3:
+We'll organize the Yii3 application similar to Yii2 basic app:
 
-| Yii2 Basic | Yii3 | Notes |
-|------------|------|-------|
-| `web/` | `public/` | Entry point and web assets |
-| `views/` | `resources/views/` | View templates |
-| `assets/` | `resources/asset/` | Asset bundles |
-| `controllers/` | `src/Controller/` | Controller classes |
-| `models/` | `src/` | Domain classes (not just "models") |
-| `commands/` | `src/Command/` | Console commands |
-| `config/` | `config/` | Configuration files |
-| `runtime/` | `runtime/` | Generated files and logs |
-| `mail/` | `resources/mail/` | Email view templates |
+```
+config/                  Configuration files
+public/                  Web root (entry point, assets)
+resources/
+  ├── asset/            Asset bundles
+  ├── mail/             Email templates
+  └── views/            View templates
+      └── layout/       Layout files
+runtime/                 Generated files and logs
+src/
+  ├── Command/          Console commands
+  ├── Controller/       Web controllers
+  ├── Form/             Form models
+  └── Model/            Business logic and data models
+tests/                   Tests
+vendor/                  Dependencies
+```
 
-## Replicating Yii2 basic app features
+## Implementation guide
 
 ### 1. Entry script
 
-**Yii2** (`web/index.php`):
-```php
-<?php
-require __DIR__ . '/../vendor/autoload.php';
-$config = require __DIR__ . '/../config/web.php';
-(new yii\web\Application($config))->run();
-```
+The entry script in `public/index.php` bootstraps the application:
 
-**Yii3** (`public/index.php`):
 ```php
 <?php
 declare(strict_types=1);
@@ -104,27 +95,12 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 ))->run();
 ```
 
-The Yii3 runner handles configuration loading automatically from the `config/` directory.
+The runner automatically loads configuration from the `config/` directory.
 
 ### 2. Controllers
 
-**Yii2** style:
-```php
-<?php
-namespace app\controllers;
+Controllers handle HTTP requests and live in `src/Controller/`:
 
-use yii\web\Controller;
-
-class SiteController extends Controller
-{
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-}
-```
-
-**Yii3** equivalent (`src/Controller/SiteController.php`):
 ```php
 <?php
 declare(strict_types=1);
@@ -148,30 +124,25 @@ final class SiteController
     {
         return $this->viewRenderer->render('index');
     }
+
+    public function about(): ResponseInterface
+    {
+        return $this->viewRenderer->render('about');
+    }
+
+    public function contact(): ResponseInterface
+    {
+        return $this->viewRenderer->render('contact');
+    }
 }
 ```
 
-Key differences:
-- No base controller class required
-- Services are injected via constructor
-- Methods return PSR-7 `ResponseInterface`
-- No `action` prefix needed
+Controllers are plain PHP classes that receive dependencies through constructor injection.
 
 ### 3. Routing
 
-**Yii2** uses URL rules in configuration:
-```php
-'urlManager' => [
-    'enablePrettyUrl' => true,
-    'showScriptName' => false,
-    'rules' => [
-        '' => 'site/index',
-        'about' => 'site/about',
-    ],
-],
-```
+Define routes in `config/routes.php`:
 
-**Yii3** uses route configuration files (`config/routes.php`):
 ```php
 <?php
 declare(strict_types=1);
@@ -186,23 +157,17 @@ return [
     Route::get('/about')
         ->action([SiteController::class, 'about'])
         ->name('site/about'),
+    Route::methods(['GET', 'POST'], '/contact')
+        ->action([SiteController::class, 'contact'])
+        ->name('site/contact'),
 ];
 ```
 
 ### 4. Views
 
-Views in Yii3 are similar to Yii2 but located in `resources/views/`.
+Views are stored in `resources/views/` with the same organization as Yii2:
 
-**Yii2** (`views/site/index.php`):
-```php
-<?php
-use yii\helpers\Html;
-$this->title = 'Home';
-?>
-<h1><?= Html::encode($this->title) ?></h1>
-```
-
-**Yii3** (`resources/views/site/index.php`):
+`resources/views/site/index.php`:
 ```php
 <?php
 declare(strict_types=1);
@@ -211,47 +176,107 @@ use Yiisoft\Html\Html;
 
 /**
  * @var \Yiisoft\View\WebView $this
- * @var string $title
  */
 
 $this->setTitle('Home');
 ?>
-<h1><?= Html::encode($this->getTitle()) ?></h1>
+
+<div class="site-index">
+    <div class="jumbotron">
+        <h1>Congratulations!</h1>
+        <p class="lead">You have successfully created your Yii3 application.</p>
+    </div>
+
+    <div class="body-content">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2>Heading</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 
-### 5. Forms and models
+### 5. Layouts
 
-**Yii2** ActiveRecord model:
-```php
-<?php
-namespace app\models;
+Main layout in `resources/views/layout/main.php`:
 
-use yii\db\ActiveRecord;
-
-class User extends ActiveRecord
-{
-    public static function tableName()
-    {
-        return 'user';
-    }
-}
-```
-
-**Yii3** separates concerns:
-
-Entity (`src/Entity/User.php`):
 ```php
 <?php
 declare(strict_types=1);
 
-namespace App\Entity;
+use Yiisoft\Html\Html;
+
+/**
+ * @var \Yiisoft\View\WebView $this
+ * @var \Yiisoft\Assets\AssetManager $assetManager
+ * @var string $content
+ */
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= Html::encode($this->getTitle()) ?></title>
+    <?php $this->head() ?>
+</head>
+<body>
+<?php $this->beginBody() ?>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">My Application</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <?= $content ?>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">&copy; My Company <?= date('Y') ?></p>
+    </div>
+</footer>
+
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
+```
+
+### 6. Models
+
+Business logic and data models go in `src/Model/`:
+
+`src/Model/User.php`:
+```php
+<?php
+declare(strict_types=1);
+
+namespace App\Model;
 
 final class User
 {
     public function __construct(
         private ?int $id,
         private string $username,
-        private string $email
+        private string $email,
+        private string $status
     ) {
     }
 
@@ -270,63 +295,63 @@ final class User
         return $this->email;
     }
 
-    public function withEmail(string $email): self
+    public function getStatus(): string
     {
-        $new = clone $this;
-        $new->email = $email;
-        return $new;
+        return $this->status;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === 'active';
     }
 }
 ```
 
-Repository (`src/Repository/UserRepository.php`):
+For data access, create repository classes in `src/Model/`:
+
+`src/Model/UserRepository.php`:
 ```php
 <?php
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Model;
 
-use App\Entity\User;
-use Cycle\ORM\EntityManagerInterface;
-use Cycle\ORM\RepositoryInterface;
-use Cycle\ORM\Select;
+use Yiisoft\Db\Connection\ConnectionInterface;
 
 final class UserRepository
 {
-    private RepositoryInterface $repository;
-
     public function __construct(
-        private EntityManagerInterface $entityManager
+        private ConnectionInterface $db
     ) {
-        $this->repository = $this->entityManager
-            ->getRepository(User::class);
     }
 
     public function findAll(): array
     {
-        return $this->repository
-            ->select()
-            ->fetchAll();
+        return $this->db
+            ->createCommand('SELECT * FROM {{%user}}')
+            ->queryAll();
     }
 
-    public function findByUsername(string $username): ?User
+    public function findByUsername(string $username): ?array
     {
-        return $this->repository
-            ->select()
-            ->where('username', $username)
-            ->fetchOne();
+        return $this->db
+            ->createCommand('SELECT * FROM {{%user}} WHERE username = :username')
+            ->bindValues([':username' => $username])
+            ->queryOne() ?: null;
     }
 
     public function save(User $user): void
     {
-        $this->entityManager->persist($user);
-        $this->entityManager->run();
+        // Implementation for saving user
     }
 }
 ```
 
-For form handling, use `yiisoft/form`:
+### 7. Form models
 
+Form models for handling user input go in `src/Form/`:
+
+`src/Form/ContactForm.php`:
 ```php
 <?php
 declare(strict_types=1);
@@ -386,81 +411,40 @@ final class ContactForm extends FormModel
 }
 ```
 
-### 6. Layouts
+Use the form in a controller:
 
-**Yii2** (`views/layouts/main.php`):
 ```php
-<?php
-use yii\helpers\Html;
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <?php $this->head() ?>
-    <title><?= Html::encode($this->title) ?></title>
-</head>
-<body>
-<?php $this->beginBody() ?>
-    <?= $content ?>
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
-```
-
-**Yii3** (`resources/views/layout/main.php`):
-```php
-<?php
-declare(strict_types=1);
-
-use Yiisoft\Html\Html;
-
-/**
- * @var \Yiisoft\View\WebView $this
- * @var \Yiisoft\Assets\AssetManager $assetManager
- * @var string $content
- */
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= Html::encode($this->getTitle()) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
-<div class="container">
-    <?= $content ?>
-</div>
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
-```
-
-### 7. Console commands
-
-**Yii2** (`commands/HelloController.php`):
-```php
-<?php
-namespace app\commands;
-
-use yii\console\Controller;
-
-class HelloController extends Controller
-{
-    public function actionIndex($message = 'hello world')
-    {
-        echo $message . "\n";
+public function contact(
+    ServerRequestInterface $request,
+    ValidatorInterface $validator,
+    FormHydrator $formHydrator
+): ResponseInterface {
+    $form = new ContactForm();
+    
+    if ($request->getMethod() === 'POST') {
+        $formHydrator->populate($form, $request->getParsedBody());
+        $result = $validator->validate($form);
+        
+        if ($result->isValid()) {
+            // Process the form data
+            // Send email, save to database, etc.
+            
+            return $this->responseFactory
+                ->createResponse('Form submitted successfully!');
+        }
     }
+    
+    return $this->viewRenderer->render('contact', [
+        'form' => $form,
+    ]);
 }
 ```
 
-**Yii3** (`src/Command/HelloCommand.php`):
+### 8. Console commands
+
+Console commands live in `src/Command/`:
+
+`src/Command/HelloCommand.php`:
 ```php
 <?php
 declare(strict_types=1);
@@ -479,12 +463,12 @@ final class HelloCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Says hello')
+            ->setDescription('Displays a greeting message')
             ->addArgument(
                 'message',
                 InputArgument::OPTIONAL,
                 'Message to display',
-                'hello world'
+                'Hello, World!'
             );
     }
 
@@ -501,6 +485,7 @@ final class HelloCommand extends Command
 ```
 
 Register the command in `config/console/commands.php`:
+
 ```php
 <?php
 declare(strict_types=1);
@@ -510,162 +495,178 @@ return [
 ];
 ```
 
-Run with: `./yii hello "Hello Yii3"`
+Run with: `./yii hello "Hello from Yii3"`
 
-### 8. Configuration
+### 9. Configuration
 
-**Yii2** uses a single configuration file with components:
-```php
-<?php
-return [
-    'id' => 'basic',
-    'basePath' => dirname(__DIR__),
-    'components' => [
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-            'username' => 'root',
-            'password' => '',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-        ],
-    ],
-];
+Configuration files are organized in `config/`:
+
+```
+config/
+  ├── common/           # Shared configuration
+  │   ├── params.php
+  │   └── di.php
+  ├── web/             # Web-specific configuration
+  │   └── application.php
+  ├── console/         # Console-specific configuration
+  │   └── commands.php
+  └── routes.php       # Route definitions
 ```
 
-**Yii3** uses multiple configuration files organized by purpose:
-
-`config/common/params.php` - Parameters:
+`config/common/params.php` - Application parameters:
 ```php
 <?php
 declare(strict_types=1);
 
 return [
+    'app' => [
+        'name' => 'My Application',
+        'charset' => 'UTF-8',
+    ],
     'yiisoft/db-mysql' => [
-        'dsn' => 'mysql:host=localhost;dbname=yii3app',
+        'dsn' => 'mysql:host=localhost;dbname=myapp',
         'username' => 'root',
         'password' => '',
     ],
-    'app' => [
-        'name' => 'My Application',
-    ],
 ];
 ```
 
-`config/common/di.php` - Service definitions:
+`config/common/di.php` - Dependency injection configuration:
 ```php
 <?php
 declare(strict_types=1);
 
+use App\Model\UserRepository;
 use Psr\Container\ContainerInterface;
-use Cycle\Database\Config\DatabaseConfig;
-use Cycle\Database\DatabaseManager;
 
 return [
-    DatabaseManager::class => static function (ContainerInterface $container) {
-        $params = $container->get('params');
-        $config = new DatabaseConfig([
-            'default' => 'default',
-            'databases' => [
-                'default' => ['connection' => 'mysql'],
-            ],
-            'connections' => [
-                'mysql' => $params['yiisoft/db-mysql'],
-            ],
-        ]);
-        return new DatabaseManager($config);
+    UserRepository::class => static function (ContainerInterface $container) {
+        return new UserRepository(
+            $container->get(ConnectionInterface::class)
+        );
     },
 ];
 ```
 
-### 9. Database access
+### 10. Database access
 
-**Yii2** uses ActiveRecord:
-```php
-<?php
-use app\models\User;
+Access the database through dependency injection:
 
-$users = User::find()->all();
-$user = User::findOne(['username' => 'admin']);
-$user->email = 'newemail@example.com';
-$user->save();
-```
-
-**Yii3** uses Cycle ORM or database abstraction:
-
-With Cycle ORM:
 ```php
 <?php
 declare(strict_types=1);
 
-use App\Repository\UserRepository;
+namespace App\Controller;
 
-final class UserService
+use App\Model\UserRepository;
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Yii\View\Renderer\ViewRenderer;
+
+final class UserController
 {
     public function __construct(
+        private ViewRenderer $viewRenderer,
         private UserRepository $userRepository
     ) {
+        $this->viewRenderer = $viewRenderer->withController($this);
     }
 
-    public function getAllUsers(): array
+    public function index(): ResponseInterface
     {
-        return $this->userRepository->findAll();
-    }
+        $users = $this->userRepository->findAll();
 
-    public function updateEmail(string $username, string $email): void
-    {
-        $user = $this->userRepository->findByUsername($username);
-        if ($user !== null) {
-            $updatedUser = $user->withEmail($email);
-            $this->userRepository->save($updatedUser);
-        }
+        return $this->viewRenderer->render('index', [
+            'users' => $users,
+        ]);
     }
 }
 ```
 
-With database abstraction:
+### 11. Assets
+
+Asset bundles go in `resources/asset/`:
+
+`resources/asset/AppAsset.php`:
 ```php
 <?php
 declare(strict_types=1);
 
-use Yiisoft\Db\Connection\ConnectionInterface;
+namespace App\Asset;
 
-final class UserService
+use Yiisoft\Assets\AssetBundle;
+
+final class AppAsset extends AssetBundle
 {
-    public function __construct(
-        private ConnectionInterface $db
-    ) {
-    }
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
 
-    public function getAllUsers(): array
-    {
-        return $this->db
-            ->createCommand('SELECT * FROM user')
-            ->queryAll();
-    }
+    public array $css = [
+        'css/site.css',
+    ];
+
+    public array $js = [
+        'js/app.js',
+    ];
+
+    public array $depends = [
+        // Add dependencies like Bootstrap here
+    ];
 }
 ```
 
-### 10. Authentication and authorization
+Register assets in your layout:
 
-**Yii2** uses built-in user component:
 ```php
 <?php
-if (Yii::$app->user->isGuest) {
-    // User is not logged in
-}
-Yii::$app->user->login($user);
+use App\Asset\AppAsset;
+
+$assetManager->register(AppAsset::class);
+?>
 ```
 
-**Yii3** uses `yiisoft/user` package:
+Place CSS and JavaScript files in `public/assets/` for direct access, or let the asset manager publish them from `resources/asset/`.
 
-Install the package:
+### 12. Authentication
+
+For user authentication, use the `yiisoft/user` package:
+
 ```shell
 composer require yiisoft/user
 ```
 
-Implementation:
+Create an identity class in `src/Model/`:
+
+`src/Model/UserIdentity.php`:
+```php
+<?php
+declare(strict_types=1);
+
+namespace App\Model;
+
+use Yiisoft\User\Login\IdentityInterface;
+
+final class UserIdentity implements IdentityInterface
+{
+    public function __construct(
+        private string $id,
+        private string $username
+    ) {
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+}
+```
+
+Use it in controllers:
+
 ```php
 <?php
 declare(strict_types=1);
@@ -688,7 +689,7 @@ final class ProfileController
     public function index(): ResponseInterface
     {
         if ($this->currentUser->isGuest()) {
-            // Redirect to login
+            // Redirect to login page
         }
 
         return $this->viewRenderer->render('profile', [
@@ -698,208 +699,131 @@ final class ProfileController
 }
 ```
 
-### 11. Session and cookies
+## Complete example structure
 
-**Yii2** accesses session via component:
-```php
-<?php
-$session = Yii::$app->session;
-$session->set('key', 'value');
-$value = $session->get('key');
+Here's what a complete Yii2-style structured Yii3 application looks like:
+
+```
+my-project/
+├── config/
+│   ├── common/
+│   │   ├── di.php              # Service definitions
+│   │   └── params.php          # Application parameters
+│   ├── console/
+│   │   └── commands.php        # Console command list
+│   ├── web/
+│   │   └── application.php     # Web application config
+│   └── routes.php              # Route definitions
+├── public/
+│   ├── assets/                 # Published assets
+│   ├── css/
+│   │   └── site.css
+│   ├── js/
+│   │   └── app.js
+│   └── index.php               # Entry script
+├── resources/
+│   ├── asset/
+│   │   └── AppAsset.php        # Asset bundle
+│   ├── mail/                   # Email templates
+│   └── views/
+│       ├── layout/
+│       │   └── main.php        # Main layout
+│       └── site/
+│           ├── index.php       # Home page
+│           ├── about.php       # About page
+│           └── contact.php     # Contact page
+├── runtime/                    # Generated files, logs
+├── src/
+│   ├── Command/
+│   │   └── HelloCommand.php   # Console command
+│   ├── Controller/
+│   │   └── SiteController.php # Web controller
+│   ├── Form/
+│   │   └── ContactForm.php    # Form model
+│   └── Model/
+│       ├── User.php            # Business model
+│       └── UserRepository.php # Data access
+├── tests/                      # Test files
+├── vendor/                     # Dependencies
+├── composer.json
+└── yii                         # Console entry point
 ```
 
-**Yii3** uses PSR-7 server request:
+## Tips for organizing code
+
+### Keep controllers thin
+
+Controllers should only handle HTTP concerns:
+- Receive request data
+- Validate input using form models
+- Call business logic in model classes
+- Render views or return responses
+
+### Use form models for validation
+
+Separate form models (`src/Form/`) from business models (`src/Model/`). Form models handle user input validation, while business models contain domain logic.
+
+### Organize views by controller
+
+Mirror the controller structure in views:
+- `src/Controller/SiteController.php` → `resources/views/site/`
+- `src/Controller/UserController.php` → `resources/views/user/`
+
+### Group related functionality
+
+For larger applications, group related controllers and models:
+
+```
+src/
+├── Blog/
+│   ├── Controller/
+│   │   ├── PostController.php
+│   │   └── CommentController.php
+│   ├── Model/
+│   │   ├── Post.php
+│   │   └── Comment.php
+│   └── Form/
+│       └── PostForm.php
+└── User/
+    ├── Controller/
+    │   └── ProfileController.php
+    └── Model/
+        └── User.php
+```
+
+## Key concepts
+
+### Dependency injection
+
+Instead of accessing global components, inject dependencies through constructors:
+
 ```php
-<?php
-declare(strict_types=1);
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Session\SessionInterface;
-
-final class SessionController
-{
-    public function __construct(
-        private SessionInterface $session
-    ) {
-    }
-
-    public function index(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->session->set('key', 'value');
-        $value = $this->session->get('key');
-
-        // ...
-    }
+public function __construct(
+    private ViewRenderer $viewRenderer,
+    private UserRepository $userRepository,
+    private SessionInterface $session
+) {
 }
 ```
 
-For cookies:
+### PSR-7 HTTP messages
+
+All HTTP handling uses PSR-7 interfaces:
+- `ServerRequestInterface` for requests
+- `ResponseInterface` for responses
+
+### Immutability
+
+Configuration and services are immutable. To modify an object, create a new instance:
+
 ```php
-<?php
-declare(strict_types=1);
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Cookies\Cookie;
-use Yiisoft\Cookies\CookieCollection;
-
-final class CookieController
-{
-    public function index(ServerRequestInterface $request): ResponseInterface
-    {
-        $cookies = CookieCollection::fromArray(
-            $request->getCookieParams()
-        );
-        $value = $cookies->get('name')?->getValue();
-
-        $response = // ... create response
-        return $response->withAddedHeader(
-            'Set-Cookie',
-            (string) (new Cookie('name', 'value'))
-        );
-    }
-}
+$newRenderer = $this->viewRenderer->withViewPath('/new/path');
 ```
-
-### 12. Error handling
-
-**Yii2** uses error handler component:
-```php
-<?php
-'components' => [
-    'errorHandler' => [
-        'errorAction' => 'site/error',
-    ],
-],
-```
-
-**Yii3** uses middleware:
-```php
-<?php
-declare(strict_types=1);
-
-namespace App\Middleware;
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
-
-// ErrorCatcher is already included in the default middleware stack
-// in config/web/application.php
-
-// For custom error pages, create a handler:
-
-use Yiisoft\ErrorHandler\ErrorHandler;
-use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
-
-final class CustomErrorHandler
-{
-    public function __construct(
-        private ViewRenderer $viewRenderer
-    ) {
-    }
-
-    public function handle(\Throwable $throwable): ResponseInterface
-    {
-        return $this->viewRenderer->render('error', [
-            'exception' => $throwable,
-        ]);
-    }
-}
-```
-
-### 13. Assets
-
-**Yii2** asset bundles:
-```php
-<?php
-namespace app\assets;
-
-use yii\web\AssetBundle;
-
-class AppAsset extends AssetBundle
-{
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = ['css/site.css'];
-    public $js = [];
-}
-```
-
-**Yii3** asset bundles (`src/Asset/AppAsset.php`):
-```php
-<?php
-declare(strict_types=1);
-
-namespace App\Asset;
-
-use Yiisoft\Assets\AssetBundle;
-
-final class AppAsset extends AssetBundle
-{
-    public ?string $basePath = '@assets';
-    public ?string $baseUrl = '@assetsUrl';
-
-    public array $css = [
-        'css/site.css',
-    ];
-
-    public array $js = [
-        'js/app.js',
-    ];
-}
-```
-
-Register in a view:
-```php
-<?php
-use App\Asset\AppAsset;
-
-$assetManager->register(AppAsset::class);
-?>
-```
-
-## Migration checklist
-
-When migrating from Yii2 basic app to Yii3:
-
-- [ ] Set up a new Yii3 project with `yiisoft/app`
-- [ ] Map directory structure from Yii2 to Yii3
-- [ ] Convert controllers to use dependency injection
-- [ ] Update routing from URL rules to route configuration
-- [ ] Move views to `resources/views/` directory
-- [ ] Separate data access logic into repositories
-- [ ] Convert models to entities and form models
-- [ ] Update console commands to use Symfony Console
-- [ ] Reorganize configuration into multiple files
-- [ ] Replace ActiveRecord with Cycle ORM or database abstraction
-- [ ] Update authentication to use `yiisoft/user` package
-- [ ] Convert session/cookie handling to PSR-7
-- [ ] Update error handling to use middleware
-- [ ] Convert asset bundles to Yii3 format
-- [ ] Test all functionality thoroughly
-
-## Key takeaways
-
-Yii3 introduces several modern concepts:
-
-1. **Explicit dependencies**: Use constructor injection instead of accessing global components
-2. **Immutability**: Configuration and objects are immutable by design
-3. **PSR compliance**: Follow PHP-FIG standards for interoperability
-4. **Separation of concerns**: Split models into entities, repositories, and form models
-5. **Middleware-based**: Use PSR-15 middleware for request processing
-6. **Type safety**: Full type declarations for better IDE support and error detection
-
-While Yii2 basic app was simpler for beginners, Yii3's architecture provides better scalability, testability, and maintainability for modern applications.
 
 ## See also
 
 - [Yii3 official guide](/guide)
-- [Upgrading from Yii2](/guide/intro/upgrade-from-v2)
 - [Application structure](/guide/structure/overview)
 - [Dependency injection](/guide/concept/di-container)
+- [Structuring code with vertical slices](/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices)
 - [yiisoft/app template](https://github.com/yiisoft/app)
