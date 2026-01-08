@@ -269,6 +269,13 @@ final class User
     {
         return $this->email;
     }
+
+    public function withEmail(string $email): self
+    {
+        $new = clone $this;
+        $new->email = $email;
+        return $new;
+    }
 }
 ```
 
@@ -610,12 +617,8 @@ final class UserService
     {
         $user = $this->userRepository->findByUsername($username);
         if ($user !== null) {
-            $user = new User(
-                $user->getId(),
-                $user->getUsername(),
-                $email
-            );
-            $this->userRepository->save($user);
+            $updatedUser = $user->withEmail($email);
+            $this->userRepository->save($updatedUser);
         }
     }
 }
