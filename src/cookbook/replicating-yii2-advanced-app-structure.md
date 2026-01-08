@@ -561,7 +561,7 @@ final class AdminAuthMiddleware implements MiddlewareInterface
         }
 
         return $this->responseFactory
-            ->createResponse(403)
+            ->createResponse(302)
             ->withHeader('Location', '/login');
     }
 }
