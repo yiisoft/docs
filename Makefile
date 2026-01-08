@@ -16,5 +16,6 @@ po4a:
 		--user $(shell id -u):$(shell id -g) \
 		-v $(PWD):/src \
 		-w /src/_translations \
-		arduanovdanil/po4a-fork:v0.73 \
+		--init \
+		ghcr.io/yiisoft-contrib/po4a:0.74 \
 		po4a.conf
