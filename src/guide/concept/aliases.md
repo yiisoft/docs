@@ -44,7 +44,7 @@ You can define an alias using another alias (either root or derived):
 '@foobar' => '@foo/bar', 
 ```
 
-The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases` package](https://github.com/yiisoft/aliases).
+The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.
 You can set extra aliases in runtime by using the service:
 
 ```php
