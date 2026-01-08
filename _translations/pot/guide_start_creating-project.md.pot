@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-26 18:30+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,9 +25,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid ""
-"In this guide we'll provide commands for both [Docker](https://docs.docker."
-"com/get-started/get-docker/) and the built-in dev server with everything "
-"installed locally."
+"In this guide we'll provide commands for both [Docker](https://"
+"docs.docker.com/get-started/get-docker/) and the built-in dev server with "
+"everything installed locally."
 msgstr ""
 
 #. type: Plain text

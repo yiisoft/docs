@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-22 11:35+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "A"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "alias"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Alias is a string used by Yii to refer to the class or directory such as "
 "`@app/vendor`.  Read more in [\"Aliases\"](concept/aliases.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "asset"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Asset refers to a resource file. Typically, it contains JavaScript or CSS "
 "code but can be any static content accessed via HTTP.  Read more in "
@@ -50,40 +50,40 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "C"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "configuration"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "The Configuration may refer either to the process of setting properties of "
 "an object or to a configuration file that stores settings for an object, or "
-"a class of objects.  Read more in [\"Configuration\"](concept/configuration."
-"md)."
+"a class of objects.  Read more in [\"Configuration\"](concept/"
+"configuration.md)."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "D"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "DI"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Dependency Injection is a programming technique where an object injects a "
 "dependent object.  Read more in [\"Dependency injection and container\"]"
@@ -91,19 +91,19 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "I"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "installation"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Installation is a process of preparing something to work either by following "
 "a readme file or by executing a specially prepared script. In the case of "
@@ -111,19 +111,19 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "M"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "middleware"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Middleware is a processor in the request processing stack. Given a request, "
 "it may either produce a response or do some action and pass processing to "
@@ -131,13 +131,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "module"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "The module is a namespace that groups some code based on a use-case. It's "
 "typically used within the main application and may contain any source code, "
@@ -145,38 +145,38 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "N"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "namespace"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "Namespace refers to a [PHP language feature](https://www.php.net/manual/en/"
 "language.namespaces.php) to group multiple classes under a certain name."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "P"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "package"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "A package usually refers to [Composer package](https://getcomposer.org/"
 "doc/). It's code ready for reuse and redistribution installable "
@@ -184,19 +184,19 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "R"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "rule"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "The rule usually refers to a validation rule of the [yiisoft/validator]"
 "(https://github.com/yiisoft/validator) package.  It holds a set of "
@@ -205,19 +205,19 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "Q"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "queue"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "A queue is similar to a stack. Queue follows First-In-First-Out "
 "methodology.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) "
@@ -225,19 +225,19 @@ msgid ""
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "V"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "vendor"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid ""
 "A Vendor is an organization or individual developer providing code in the "
 "form of packages.  It also may refer to [Composer's `vendor` directory]"

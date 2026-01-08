@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:23+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,8 +49,8 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/index.md
 msgid ""
-"This book conforms to the [Terms of Yii Documentation](https://www."
-"yiiframework.com/license#docs)."
+"This book conforms to the [Terms of Yii Documentation](https://"
+"www.yiiframework.com/license#docs)."
 msgstr ""
 
 #. type: Bullet: '- '

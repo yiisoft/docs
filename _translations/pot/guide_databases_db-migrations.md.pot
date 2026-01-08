@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 10:28+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -820,9 +820,9 @@ msgstr ""
 #: ../src/guide/databases/db-migrations.md
 msgid ""
 "table - creating a table. Use `--fields` specify a list of fields to use. "
-"Types could be specified as well such as `id:primaryKey,name:string:"
-"defaultValue(\"Alex\"),user_id:integer:foreignKey,category_id2:integer:"
-"foreignKey(category id2)`."
+"Types could be specified as well such as "
+"`id:primaryKey,name:string:defaultValue(\"Alex\"),user_id:integer:foreignKey,category_id2:integer:foreignKey(category "
+"id2)`."
 msgstr ""
 
 #. type: Bullet: '- '

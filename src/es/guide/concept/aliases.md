@@ -47,9 +47,9 @@ derivado):
 '@foobar' => '@foo/bar',
 ```
 
-El parámetro `aliases` inicializa el servicio `Aliases` desde el [paquete
-`yiisoft/aliases`](https://github.com/yiisoft/aliases).
-Puedes agregar alias adicionales en tiempo de ejecución usando el servicio:
+The `yiisoft/aliases` parameter initializes `Aliases` service from
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
+set extra aliases in runtime by using the service:
 
 ```php
 use \Yiisoft\Aliases\Aliases;

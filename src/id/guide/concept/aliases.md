@@ -51,10 +51,9 @@ akar maupun turunan):
 '@foobar' => '@foo/bar',
 ```
 
-Parameter `yiisoft/aliases` menginisialisasi layanan `Aliases` dari [paket
-`yiisoft/aliases`](https://github.com/yiisoft/aliases).
-Anda dapat menyetel alias tambahan saat runtime menggunakan layanan
-tersebut:
+The `yiisoft/aliases` parameter initializes `Aliases` service from
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
+set extra aliases in runtime by using the service:
 
 ```php
 use \Yiisoft\Aliases\Aliases;

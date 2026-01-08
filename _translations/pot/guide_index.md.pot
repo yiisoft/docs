@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,8 +31,8 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/index.md
 msgid ""
-"We release this guide under the [Terms of Yii Documentation](https://www."
-"yiiframework.com/license#docs)."
+"We release this guide under the [Terms of Yii Documentation](https://"
+"www.yiiframework.com/license#docs)."
 msgstr ""
 
 #. type: Title ##
@@ -272,8 +272,8 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid ""
-"[Active Record](https://github.com/yiisoft/active-record/blob/master/README."
-"md)"
+"[Active Record](https://github.com/yiisoft/active-record/blob/master/"
+"README.md)"
 msgstr ""
 
 #. type: Bullet: '- '

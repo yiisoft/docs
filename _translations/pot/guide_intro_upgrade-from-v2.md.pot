@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 07:50+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,8 +62,8 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Type declarations](https://www.php.net/manual/en/functions.arguments."
-"php#functions.arguments.type-declaration)"
+"[Type declarations](https://www.php.net/manual/en/"
+"functions.arguments.php#functions.arguments.type-declaration)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -76,29 +76,29 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Class constant visibility](https://www.php.net/manual/en/language.oop5."
-"constants.php)"
+"[Class constant visibility](https://www.php.net/manual/en/"
+"language.oop5.constants.php)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Named arguments](https://www.php.net/manual/en/functions.arguments."
-"php#functions.named-arguments)"
+"[Named arguments](https://www.php.net/manual/en/"
+"functions.arguments.php#functions.named-arguments)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous."
-"php)"
+"[Anonymous classes](https://www.php.net/manual/en/"
+"language.oop5.anonymous.php)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[::class](https://www.php.net/manual/en/language.oop5.basic.php#language."
-"oop5.basic.class.class)"
+"[::class](https://www.php.net/manual/en/"
+"language.oop5.basic.php#language.oop5.basic.class.class)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -109,29 +109,29 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Variadic functions](https://www.php.net/manual/en/functions.arguments."
-"php#functions.variable-arg-list)"
+"[Variadic functions](https://www.php.net/manual/en/"
+"functions.arguments.php#functions.variable-arg-list)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Readonly properties](https://www.php.net/manual/en/language.oop5.properties."
-"php#language.oop5.properties.readonly-properties)"
+"[Readonly properties](https://www.php.net/manual/en/"
+"language.oop5.properties.php#language.oop5.properties.readonly-properties)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Readonly classes](https://www.php.net/manual/en/language.oop5.basic."
-"php#language.oop5.basic.class.readonly)"
+"[Readonly classes](https://www.php.net/manual/en/"
+"language.oop5.basic.php#language.oop5.basic.class.readonly)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"[Constructor property promotion](https://www.php.net/manual/en/language.oop5."
-"decon.php#language.oop5.decon.constructor.promotion)"
+"[Constructor property promotion](https://www.php.net/manual/en/"
+"language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -286,10 +286,10 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid ""
-"Yii3 application templates are using [environment variables](https://en."
-"wikipedia.org/wiki/Environment_variable)  to configure parts of the "
-"application. The concept is [very handy for Dockerized applications]"
-"(https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
+"Yii3 application templates are using [environment variables](https://"
+"en.wikipedia.org/wiki/Environment_variable)  to configure parts of the "
+"application. The concept is [very handy for Dockerized applications](https://"
+"12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
 msgstr ""
 
 #. type: Title ###

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "016 — Security workflow"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
-"Security issues are typically sent via [a security form](https://www."
-"yiiframework.com/security)."
+"Security issues are typically sent via [a security form](https://"
+"www.yiiframework.com/security)."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid ""
 "If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message\n"
@@ -38,114 +38,114 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Verify"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid "Verify that the issue is valid. Request more information if needed."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Add security advisory"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid "Create a draft GitHub security advisory."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Find out severity"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/"
 "v3-calculator)."
 msgstr ""
 
 #. type: Bullet: '2. '
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Choose severity based on the [rating scale](https://www.first.org/cvss/"
 "specification-document#Qualitative-Severity-Rating-Scale)."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Give credit to the reporter"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Ask the reporter if he wants a credit for finding the issue. If so, point to "
 "his GitHub account."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Request a CVE number"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid "When you're ready, request a CVE."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Prepare a patch"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Prepare a pull request fixing the issue. GitHub allows doing it in a private "
 "fork."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Wait till the CVE number is allocated "
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid "It usually takes several days."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Release"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Merge the patch pull request right before tagging the next package release."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid "Publish security advisory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/016-security-workflow.md
+#: ../src/internals/016-security-workflow.md
 msgid ""
 "Add CVE to [FriendsOfPHP/security-advisories](https://github.com/"
 "FriendsOfPHP/security-advisories).  See [#488](https://github.com/"

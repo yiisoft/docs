@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Packages"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
-"Reusable code could be released as [a Composer package](https://getcomposer."
-"org/doc/05-repositories.md#package).  It could be an infrastructure library, "
-"a module representing one of the application contexts or, basically, any "
-"reusable code."
+"Reusable code could be released as [a Composer package](https://"
+"getcomposer.org/doc/05-repositories.md#package).  It could be an "
+"infrastructure library, a module representing one of the application "
+"contexts or, basically, any reusable code."
 msgstr ""
 
 #. type: Title ##
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Using packages <span id=\"using-packages\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "By default, Composer installs packages registered on [Packagist](https://"
 "packagist.org/) — the biggest repository for open source PHP packages. You "
@@ -49,7 +49,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Packages installed by Composer are stored in the `vendor` directory of your "
 "project.  Because the Composer is a dependency manager, when it installs a "
@@ -57,7 +57,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid ""
 "> [!WARNING]\n"
@@ -65,18 +65,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid "A package could be installed with the following command:"
 msgstr ""
 
 #. type: Fenced code block
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "composer install vendor-name/package-name\n"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "After it's done, Composer modifies `composer.json` and `composer.lock`. The "
 "former defines what packages to install, and their version constraints the "
@@ -84,20 +84,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Classes from the package will be available immediately via [autoloading](../"
 "concept/autoloading.md)."
 msgstr ""
 
 #. type: Title ##
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Creating packages <span id=\"creating-packages\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "You may consider creating a package when you feel the need to share with "
 "other people your great code.  A package can contain any code you like, such "
@@ -105,12 +105,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid "Below are the basic steps you may follow."
 msgstr ""
 
 #. type: Bullet: '1. '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Create a project for your package and host it on a VCS repository, such as "
 "[GitHub.com](https://github.com).  The development and maintenance work for "
@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '2. '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Under the root directory of the project, create a file named `composer.json` "
 "as required by Composer. Please refer to the next subsection for more "
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '3. '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Register your package with a Composer repository, such as [Packagist]"
 "(https://packagist.org/), so that other users can find and install your "
@@ -134,13 +134,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "`composer.json` <span id=\"composer-json\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Each Composer package must have a `composer.json` file in its root "
 "directory. The file contains the metadata about the package. You may find "
@@ -151,7 +151,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (json)
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -228,13 +228,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Package Name <span id=\"package-name\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Each Composer package should have a package name which uniquely identifies "
 "the package among all others.  The format of package names is `vendorName/"
@@ -243,7 +243,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid ""
 "> [!WARNING]\n"
@@ -251,7 +251,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "We recommend you prefix `yii-` to the project name for packages that aren't "
 "able to work as general PHP packages and require Yii application. This will "
@@ -259,13 +259,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Dependencies <span id=\"dependencies\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "If your extension depends on other packages, you should list them in "
 "`require` section of `composer.json`.  Make sure you also list appropriate "
@@ -274,20 +274,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Class Autoloading <span id=\"class-autoloading\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "In order for your classes to be autoloaded, you should specify the "
 "`autoload` entry in the `composer.json` file, like shown below:"
 msgstr ""
 
 #. type: Fenced code block (json)
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -302,20 +302,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "You may list one or multiple root namespaces and their corresponding file "
 "paths."
 msgstr ""
 
 #. type: Title ###
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Recommended Practices <span id=\"recommended-practices\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Because packages are meant to be used by other people, you often need to "
 "make an extra effort during development.  Below, we introduce some common "
@@ -323,13 +323,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Testing <span id=\"testing\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "You want your package to run flawlessly without bringing problems to other "
 "people. To reach this goal, you should test your extension before releasing "
@@ -337,7 +337,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "It's recommended that you create various test cases to cover your extension "
 "code rather than relying on manual tests.  Each time before you release a "
@@ -347,34 +347,34 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Versioning <span id=\"versioning\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "You should give each release of your extension a version number (e.g. "
-"`1.0.1`). We recommend you follow the [semantic versioning](https://semver."
-"org) practice when determining what version numbers should be used."
+"`1.0.1`). We recommend you follow the [semantic versioning](https://"
+"semver.org) practice when determining what version numbers should be used."
 msgstr ""
 
 #. type: Title ####
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Releasing <span id=\"releasing\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "To let other people know about your package, you need to release it to the "
 "public."
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "If it's the first time you're releasing a package, you should register it in "
 "a Composer repository, such as [Packagist](https://packagist.org/).  After "
@@ -385,7 +385,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "In the release of your package, in addition to code files, you should also "
 "consider including the following to help other people learn about and use "
@@ -393,7 +393,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "A readme file in the package root directory: it describes what your "
 "extension does and how to install and use it.  We recommend you write it in "
@@ -402,7 +402,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "A changelog file in the package root directory: it lists what changes are "
 "made in each release. The file may be written in Markdown format and named "
@@ -410,7 +410,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "An upgrade file in the package root directory: it gives the instructions on "
 "how to upgrade from older releases of the extension. The file may be written "
@@ -418,14 +418,14 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "Tutorials, demos, screenshots, etc.: these are needed if your extension "
 "provides many features that can't be fully covered in the readme file."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/package.md
+#: ../src/guide/structure/package.md
 msgid ""
 "API documentation: your code should be well-documented to allow other people "
 "to more easily read and understand it."

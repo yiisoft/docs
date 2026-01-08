@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 #, no-wrap
 msgid "Configuring web servers: Nginx"
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 msgid ""
 "To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI]"
 "(https://secure.php.net/install.fpm).  Use the following Nginx "
@@ -32,7 +32,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (nginx)
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 #, no-wrap
 msgid ""
 "server {\n"
@@ -81,21 +81,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 msgid ""
-"When you use this configuration, also set `cgi.fix_pathinfo=0` in the `php."
-"ini` file to avoid many unnecessary system `stat()` calls."
+"When you use this configuration, also set `cgi.fix_pathinfo=0` in the "
+"`php.ini` file to avoid many unnecessary system `stat()` calls."
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 msgid ""
 "Also, note that when running an HTTPS server, you need to add `fastcgi_param "
 "HTTPS on;` so that Yii can detect if a connection is secure."
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/nginx.md
+#: ../src/cookbook/configuring-webservers/nginx.md
 msgid ""
 "In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 "
 "application template is using environment variables, this is a possible "

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md
-#: ../src/en/internals/022-config-groups.md
+#: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "Events allow you to make custom code executed at certain execution points "
 "without modifying existing code.  You can attach a custom code called "
@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "For example, when a user is signed up, you need to send a welcome email. You "
 "can do it right in the `SignupService` but then, when you additionally need "
@@ -43,7 +43,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event\n"
@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "For raising events and attaching handlers to these events, Yii has a special "
 "service called event dispatcher.  It's available from [yiisoft/event-"
@@ -61,26 +61,26 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Event Handlers <span id=\"event-handlers\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
-"An event handler is [PHP callable](https://www.php.net/manual/en/language."
-"types.callable.php) that gets executed when the event it's attached to is "
-"triggered."
+"An event handler is [PHP callable](https://www.php.net/manual/en/"
+"language.types.callable.php) that gets executed when the event it's attached "
+"to is triggered."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "The signature of an event handler is:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "function (EventClass $event) {\n"
@@ -89,18 +89,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Attaching event handlers <span id=\"attaching-event-handlers\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "You can attach a handler to an event like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
@@ -120,20 +120,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "The `attach()` method is accepting a callback. Based on the type of this "
 "callback argument, the event type is determined."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Event handlers order"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "You may attach one or more handlers to a single event. When an event is "
 "triggered, the attached handlers will be called in the order that they were "
@@ -144,23 +144,23 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "In general, it's better not to rely on the order of event handlers."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Raising events <span id=\"raising-events\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "Events are raised like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
@@ -184,19 +184,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "First, you create an event supplying it with data that may be useful for "
 "handlers. Then you dispatch the event."
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "The event class itself may look like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "final readonly class UserSignedUp\n"
@@ -210,13 +210,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Events hierarchy"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "Events don't have any name or wildcard matching on purpose. Event class "
 "names and class/interface hierarchy and composition could be used to achieve "
@@ -224,7 +224,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "interface DocumentEvent\n"
@@ -241,12 +241,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "With the interface, you can listen to all document-related events:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid ""
 "$provider->attach(function (DocumentEvent $event) {\n"
@@ -255,30 +255,30 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Detaching event handlers <span id=\"detaching-event-handlers\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid "To detach a handler from an event you can call `detach()` method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "$provider->detach(DocmentEvent::class);\n"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 #, no-wrap
 msgid "Configuring application events"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/events.md
+#: ../src/guide/concept/events.md
 msgid ""
 "You usually assign event handlers via application config. See "
 "[\"Configuration\"](configuration.md) for details."

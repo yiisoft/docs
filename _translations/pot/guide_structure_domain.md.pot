@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-11-02 16:25+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../../guide/en/concept/autoloading.md
-#: ../../guide/en/security/best-practices.md ../../guide/en/structure/domain.md
-#: ../../guide/en/tutorial/console-applications.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
+#: ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/start/databases.md ../../guide/en/structure/domain.md
-#: ../../guide/en/structure/service.md
+#: ../src/guide/start/databases.md ../src/guide/structure/domain.md
+#: ../src/guide/structure/service.md
 #, no-wrap
 msgid "Repository"
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Domain"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid ""
 "The Domain or domain model is what makes the project unique. With requirements and terminology of the problem being solved\n"
@@ -48,7 +51,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -59,13 +62,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Bounded context"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "It's nearly impossible to build a model that solves multiple problems that "
 "aren't too complicated by itself. Therefore, it's a good practice to divide "
@@ -74,26 +77,26 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Building blocks"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "There are various building blocks that are typically used when describing "
 "domain models. It isn't mandatory to use them all."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/structure/domain.md ../../guide/en/structure/service.md
+#: ../src/guide/structure/domain.md ../src/guide/structure/service.md
 #, no-wrap
 msgid "Entity"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Entity is a uniquely identifiable object such as user, product, payment, "
 "etc. When comparing them, you're checking ID, not the attribute values. If "
@@ -102,13 +105,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Value object"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Value object describes an object by its characteristics. For example, a "
 "price that consists of value and currency. When comparing such objects, "
@@ -117,13 +120,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Aggregate"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Aggregate is a set of domain objects such as entities and value objects and "
 "additional data that could be treated as a single unit. It usually "
@@ -132,20 +135,20 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "One of the components of an aggregate is called a root. The root identifies "
 "an aggregate as a whole and should be used to access it."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Domain event"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "An aggregate, while processed, may raise events. For example, when order is "
 "confirmed, `OrderConfirmed` event would be risen so other parts of the "
@@ -153,33 +156,33 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Data transfer object"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Data transfer object or DTO is an object whose only purpose is to hold data "
 "as it is. It's commonly used to pass data between different services."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Service"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Service is a class that contains a standalone operation within the context "
 "of your domain model. See \"[service components](service.md)\"."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "The repository task is to abstract away how domain objects are obtained. "
 "These are usually separated into two parts: an interface that stays in the "
@@ -189,18 +192,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid "Repository is usually implemented as a service."
 msgstr ""
 
 #. type: Title ###
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 #, no-wrap
 msgid "Instantiating building blocks"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "Entity, value object, aggregate, and domain events aren't services and "
 "shouldn't be instantiated through DI container.  Using `new` is the way to "
@@ -208,22 +211,22 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
 "[BoundedContext by Martin Fowler](https://martinfowler.com/bliki/"
 "BoundedContext.html)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
-"[ValueObject by Martin Fowler](https://martinfowler.com/bliki/ValueObject."
-"html)"
+"[ValueObject by Martin Fowler](https://martinfowler.com/bliki/"
+"ValueObject.html)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/structure/domain.md
+#: ../src/guide/structure/domain.md
 msgid ""
-"[Aggregate by Marting Fowler](https://martinfowler.com/bliki/DDD_Aggregate."
-"html)"
+"[Aggregate by Marting Fowler](https://martinfowler.com/bliki/"
+"DDD_Aggregate.html)"
 msgstr ""

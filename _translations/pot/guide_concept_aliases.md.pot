@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-03 17:50+0500\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "Aliases"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "You can use aliases to represent file paths or URLs so that you don't have "
 "to hard-code absolute paths or URLs in your project. An alias must start "
@@ -32,7 +32,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "Default Yii application has some aliases pre-defined in `config/params.php`. "
 "For example, the alias `@public` represents the web root path; `@baseUrl` "
@@ -40,18 +40,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "Defining aliases <span id=\"defining-aliases\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "You can define an alias via application's `config/params.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "Given a defined alias, you may derive a new alias by appending a slash `/` "
 "followed with one or more path segments.  For example, `@foo` is a root "
@@ -91,26 +91,26 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "You can define an alias using another alias (either root or derived):"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "'@foobar' => '@foo/bar', \n"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/"
-"aliases` package](https://github.com/yiisoft/aliases).  You can set extra "
+"aliases`](https://github.com/yiisoft/aliases) package.  You can set extra "
 "aliases in runtime by using the service:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "use \\Yiisoft\\Aliases\\Aliases;\n"
@@ -122,20 +122,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "It's preferred to resolve aliases at the configuration level, so services "
 "get URLs and paths as ready to use strings:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -155,20 +155,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "You can use `Aliases` service to resolve an alias or derived alias into the "
 "file path or URL it represents:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "use \\Yiisoft\\Aliases\\Aliases;\n"
@@ -182,14 +182,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "The path/URL represented by a derived alias is determined by replacing the "
 "root alias part with its corresponding path/URL in the derived alias."
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -197,7 +197,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "A root alias may also contain slash `/` characters. The `get()` method is "
 "intelligent enough to tell, which part of an alias is a root alias and thus "
@@ -205,7 +205,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid ""
 "use \\Yiisoft\\Aliases\\Aliases;\n"
@@ -221,87 +221,87 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "If `@foo/bar` isn't defined as a root alias, the last statement would "
 "display `/path/to/foo/bar/file.php`."
 msgstr ""
 
 #. type: Title ##
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 #, no-wrap
 msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "[Yii application](https://github.com/yiisoft/app) predefines a set of "
 "aliases to reference commonly used file paths and URLs:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@root` - the base directory of the currently running application."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@assets` - application's public directory where it publishes assets."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@assetsUrl` - URL of base directory with published assets."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "`@baseUrl` - the base URL of the currently running Web application. Defaults "
 "to `/`."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@npm` - node packages directory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@bower` - bower packages directory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@vendor` - Composer's `vendor` directory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
-"`@public` - application's publicly accessible directory that with `index."
-"php`."
+"`@public` - application's publicly accessible directory that with "
+"`index.php`."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid ""
 "`@runtime` - the runtime path of the currently running application. Defaults "
 "to `@root/runtime`."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@layout` - the directory with layouts."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@resources` - directory with views, asset sources and other resources."
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/concept/aliases.md
+#: ../src/guide/concept/aliases.md
 msgid "`@views` - application view templates base directory."
 msgstr ""

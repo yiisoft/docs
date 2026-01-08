@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -449,9 +449,9 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
 msgid ""
-"You may customize this format by calling [[\\Yiisoft\\Log\\Target::"
-"setFormat()|setFormat()]] method, which takes a PHP callable returning a "
-"custom-formatted message."
+"You may customize this format by calling "
+"[[\\Yiisoft\\Log\\Target::setFormat()|setFormat()]] method, which takes a "
+"PHP callable returning a custom-formatted message."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -548,8 +548,9 @@ msgstr ""
 #: ../src/guide/runtime/logging.md
 msgid ""
 "During development, it's often desirable to see where each log message is "
-"coming from.  You can achieve this by calling the [[\\Yiisoft\\Log\\Logger::"
-"setTraceLevel()|setTraceLevel()]] method like the following:"
+"coming from.  You can achieve this by calling the "
+"[[\\Yiisoft\\Log\\Logger::setTraceLevel()|setTraceLevel()]] method like the "
+"following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -566,8 +567,9 @@ msgid ""
 "This application configuration sets the trace level to be 3, so each log "
 "message will be appended with at most three levels of the call stack at "
 "which the log message is recorded. You can also set a list of paths to "
-"exclude from the trace by calling the [[\\Yiisoft\\Log\\Logger::"
-"setExcludedTracePaths()|setExcludedTracePaths()]] method."
+"exclude from the trace by calling the "
+"[[\\Yiisoft\\Log\\Logger::setExcludedTracePaths()|setExcludedTracePaths()]] "
+"method."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -680,9 +682,9 @@ msgstr ""
 #: ../src/guide/runtime/logging.md
 msgid ""
 "You can enable or disable a log target by calling its "
-"[[\\Yiisoft\\Log\\Target::enable()|enable()] ] and [[\\Yiisoft\\Log\\Target::"
-"disable()|disable()]] methods.  You may do so via the log target "
-"configuration or by the following PHP statement in your code:"
+"[[\\Yiisoft\\Log\\Target::enable()|enable()] ] and "
+"[[\\Yiisoft\\Log\\Target::disable()|disable()]] methods.  You may do so via "
+"the log target configuration or by the following PHP statement in your code:"
 msgstr ""
 
 #. type: Fenced code block (php)

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,8 +112,8 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
 msgid ""
-"<https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet."
-"html>"
+"<https://cheatsheetseries.owasp.org/cheatsheets/"
+"Input_Validation_Cheat_Sheet.html>"
 msgstr ""
 
 #. type: Title ###
@@ -486,8 +486,8 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
 msgid ""
-"Apache 2: <https://httpd.apache.org/docs/trunk/vhosts/examples."
-"html#defaultallports>"
+"Apache 2: <https://httpd.apache.org/docs/trunk/vhosts/"
+"examples.html#defaultallports>"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -538,8 +538,8 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/guide/security/best-practices.md
 msgid ""
-"Download [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert."
-"pem)."
+"Download [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/"
+"cacert.pem)."
 msgstr ""
 
 #. type: Bullet: '2. '

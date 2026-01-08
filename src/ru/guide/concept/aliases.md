@@ -52,10 +52,9 @@ return [
 '@foobar' => '@foo/bar', 
 ```
 
-Параметр `yiisoft/aliases` инициализирует сервис `Aliases` из
-[пакета](https://github.com/yiisoft/aliases)
-`yiisoft/aliases`. Используя этот сервис, вы можете установить
-дополнительные псевдонимы времени выполнения:
+The `yiisoft/aliases` parameter initializes `Aliases` service from
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
+set extra aliases in runtime by using the service:
 
 ```php
 use \Yiisoft\Aliases\Aliases;

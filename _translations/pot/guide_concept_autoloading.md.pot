@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/en/guide/concept/autoloading.md
-#: ../src/en/guide/security/best-practices.md
-#: ../src/en/guide/structure/domain.md
-#: ../src/en/guide/tutorial/console-applications.md
-#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
-#: ../src/en/internals/008-interfaces.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
+#: ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr ""
 
 #. type: Title #
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 #, no-wrap
 msgid "Class autoloading"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid ""
 "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it "
 "automatically loads classes from these packages without the need to "
@@ -46,7 +45,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid ""
 "You can use autoloader not only for the packages installed, but for your "
 "application as well since it's also a package.  To load classes of a certain "
@@ -54,7 +53,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (json)
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -67,7 +66,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid ""
 "Where `App\\\\` is a root namespace and `src/` is a directory where you have "
 "your classes. You can add more source roots if needed. When done, execute "
@@ -76,7 +75,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid ""
 "If you need development-environment-specific autoloading that isn't used "
 "when executing Composer with `--no-dev` flag, add it to `autoload-dev` "
@@ -84,13 +83,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/guide/concept/autoloading.md
+#: ../src/guide/concept/autoloading.md
 msgid ""
-"[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage."
-"md#autoloading)."
+"[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-"
+"usage.md#autoloading)."
 msgstr ""

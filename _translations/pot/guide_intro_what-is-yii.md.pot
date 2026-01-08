@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,8 +63,8 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/intro/what-is-yii.md
 msgid ""
-"Yii takes the [philosophy of being practical and helpful](../../"
-"internals/001-yii-values.md) achieving:"
+"Yii takes the [philosophy of being practical and helpful](../../internals/"
+"001-yii-values.md) achieving:"
 msgstr ""
 
 #. type: Bullet: '  - '
@@ -114,14 +114,15 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/intro/what-is-yii.md
 msgid ""
-"Yii is backed up by a [strong core developer team](https://www.yiiframework."
-"com/team/) financially backed from an [OpenCollective foundation](https://"
-"opencollective.com/yiisoft), as well as a large community of professionals "
-"constantly contributing to Yii's development. The Yii developer team keeps a "
-"close eye on the latest Web development trends and on the best practices and "
-"features found in other frameworks and projects. The most relevant best "
-"practices and features found elsewhere are incorporated into the core "
-"framework and exposed via simple and elegant interfaces."
+"Yii is backed up by a [strong core developer team](https://"
+"www.yiiframework.com/team/) financially backed from an [OpenCollective "
+"foundation](https://opencollective.com/yiisoft), as well as a large "
+"community of professionals constantly contributing to Yii's development. The "
+"Yii developer team keeps a close eye on the latest Web development trends "
+"and on the best practices and features found in other frameworks and "
+"projects. The most relevant best practices and features found elsewhere are "
+"incorporated into the core framework and exposed via simple and elegant "
+"interfaces."
 msgstr ""
 
 #. type: Title ##
