@@ -1,24 +1,34 @@
 name: docs
+
 on:
-    push:
-    pull_request:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+  checks: write
+
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Fetch styles
-              run: |
-                sudo apt install wget unzip
-                wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
-                unzip Microsoft.zip -d .github/styles
-            - name: Check
-              uses: errata-ai/vale-action@reviewdog
-              with:
-                reporter: github-check
-                fail_on_error: false
-                filter_mode: nofilter
-                files: '["src/en"]'
-              env:
-                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Fetch styles
+        run: |
+          sudo apt install wget unzip
+          wget https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
+          unzip Microsoft.zip -d .github/styles
+
+      - name: Check
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          reporter: github-check
+          fail_on_error: false
+          filter_mode: nofilter
+          files: '["src/en"]'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
