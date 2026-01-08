@@ -373,6 +373,11 @@ final class User
         return $this->role;
     }
 
+    public function getPasswordHash(): string
+    {
+        return $this->passwordHash;
+    }
+
     public function isActive(): bool
     {
         return $this->status === 1;
@@ -549,7 +554,9 @@ final class AdminAuthMiddleware implements MiddlewareInterface
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        if (!$this->currentUser->isGuest() && $this->currentUser->getIdentity()->getRole() === 'admin') {
+        $identity = $this->currentUser->getIdentity();
+        
+        if (!$this->currentUser->isGuest() && $identity !== null && $identity->getRole() === 'admin') {
             return $handler->handle($request);
         }
 
@@ -571,8 +578,12 @@ declare(strict_types=1);
 
 use App\Admin\Middleware\AdminAuthMiddleware;
 use Yiisoft\Definitions\DynamicReference;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
+use Yiisoft\Router\Middleware\Router;
+use Yiisoft\Session\SessionMiddleware;
 use Yiisoft\Yii\Http\Application;
+use Yiisoft\Yii\Middleware\CsrfTokenMiddleware;
 
 /** @var array $params */
 
@@ -871,7 +882,9 @@ Create `config/api/di/application.php`:
 declare(strict_types=1);
 
 use Yiisoft\Definitions\DynamicReference;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
+use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Yii\Http\Application;
 
 /** @var array $params */
