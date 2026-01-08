@@ -15,8 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 46.0\n"
 
 #. type: Title #
@@ -27,29 +26,13 @@ msgstr "Псевдонимы (алиасы)"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"You can use aliases to represent file paths or URLs so that you don't have "
-"to hard-code absolute paths or URLs in your project. An alias must start "
-"with the `@` character to be differentiated from normal file paths and URLs. "
-"Alias defined without leading `@` will be prefixed with `@` character."
-msgstr ""
-"Вы можете использовать псевдонимы для представления путей к файлам или URL-"
-"адресов, чтобы вам не приходилось жестко указывать абсолютные пути или URL-"
-"адреса в вашем проекте. Каждый псевдоним должен начинаться с символа `@`, "
-"чтобы отличаться от обычных файловых путей или URL. Алиас, определенный без "
-"предшествующего `@` будет префиксироваться с помощью символа `@`."
+msgid "You can use aliases to represent file paths or URLs so that you don't have to hard-code absolute paths or URLs in your project. An alias must start with the `@` character to be differentiated from normal file paths and URLs. Alias defined without leading `@` will be prefixed with `@` character."
+msgstr "Вы можете использовать псевдонимы для представления путей к файлам или URL-адресов, чтобы вам не приходилось жестко указывать абсолютные пути или URL-адреса в вашем проекте. Каждый псевдоним должен начинаться с символа `@`, чтобы отличаться от обычных файловых путей или URL. Алиас, определенный без предшествующего `@` будет префиксироваться с помощью символа `@`."
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"Default Yii application has some aliases pre-defined in `config/params.php`. "
-"For example, the alias `@public` represents the web root path; `@baseUrl` "
-"represents the base URL for the currently running Web application."
-msgstr ""
-"По умолчанию Yii-приложение имеет несколько алисов, предопределенных в "
-"`config/params.php`. Например, алиас `@public` представляет корневой путь "
-"для web; `@baseUrl` представляет базовый URL для запущенного в текущий "
-"момент Web-приложения."
+msgid "Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@public` represents the web root path; `@baseUrl` represents the base URL for the currently running Web application."
+msgstr "По умолчанию Yii-приложение имеет несколько алисов, предопределенных в `config/params.php`. Например, алиас `@public` представляет корневой путь для web; `@baseUrl` представляет базовый URL для запущенного в текущий момент Web-приложения."
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
@@ -60,9 +43,7 @@ msgstr "Определение псевдонимов <span id=\"defining-aliase
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
 msgid "You can define an alias via application's `config/params.php`:"
-msgstr ""
-"Вы можете определить какой-либо псевдоним через `config/params.php` "
-"приложения:"
+msgstr "Вы можете определить какой-либо псевдоним через `config/params.php` приложения:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/aliases.md
@@ -118,22 +99,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"Given a defined alias, you may derive a new alias by appending a slash `/` "
-"followed with one or more path segments.  For example, `@foo` is a root "
-"alias, while `@foo/bar/file.php` is a derived alias."
+msgid "Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.  For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias."
 msgstr ""
-"Учитывая определенный псевдоним, вы можете создать новый, добавив слэш `/`, "
-"за которым следует один или несколько \n"
-"сегментов пути. Например, `@foo` - это корневой псевдоним, а `@foo/bar/file."
-"php` - производный псевдоним."
+"Учитывая определенный псевдоним, вы можете создать новый, добавив слэш `/`, за которым следует один или несколько \n"
+"сегментов пути. Например, `@foo` - это корневой псевдоним, а `@foo/bar/file.php` - производный псевдоним."
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
 msgid "You can define an alias using another alias (either root or derived):"
-msgstr ""
-"Вы можете определить псевдоним, используя другой псевдоним (корневой или "
-"производный):"
+msgstr "Вы можете определить псевдоним, используя другой псевдоним (корневой или производный):"
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/aliases.md
@@ -143,15 +117,8 @@ msgstr "'@foobar' => '@foo/bar', \n"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/"
-"aliases`](https://github.com/yiisoft/aliases) package.  You can set extra "
-"aliases in runtime by using the service:"
-msgstr ""
-"Параметр `yiisoft/aliases` инициализирует сервис `Aliases` из пакета "
-"[`yiisoft/aliases`](https://github.com/yiisoft/aliases). Используя этот "
-"сервис, вы можете установить дополнительные псевдонимы во время работы "
-"приложения:"
+msgid "The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can set extra aliases in runtime by using the service:"
+msgstr "Параметр `yiisoft/aliases` инициализирует сервис `Aliases` из пакета [`yiisoft/aliases`](https://github.com/yiisoft/aliases). Используя этот сервис, вы можете установить дополнительные псевдонимы во время работы приложения:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/aliases.md
@@ -179,12 +146,9 @@ msgstr "Использование псевдонимов в конфигура�
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"It's preferred to resolve aliases at the configuration level, so services "
-"get URLs and paths as ready to use strings:"
+msgid "It's preferred to resolve aliases at the configuration level, so services get URLs and paths as ready to use strings:"
 msgstr ""
-"Предпочтительно разрешать псевдонимы на уровне конфигурации, чтобы сервисы "
-"получали URL-адреса и пути как готовые к \n"
+"Предпочтительно разрешать псевдонимы на уровне конфигурации, чтобы сервисы получали URL-адреса и пути как готовые к \n"
 "использованию строки:"
 
 #. type: Fenced code block (php)
@@ -229,12 +193,9 @@ msgstr "Разрешение псевдонимов <span id=\"resolving-aliases
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"You can use `Aliases` service to resolve an alias or derived alias into the "
-"file path or URL it represents:"
+msgid "You can use `Aliases` service to resolve an alias or derived alias into the file path or URL it represents:"
 msgstr ""
-"Вы можете использовать сервис `Aliases`, чтобы преобразовать псевдоним или "
-"производный псевдоним в путь к файлу или URL,\n"
+"Вы можете использовать сервис `Aliases`, чтобы преобразовать псевдоним или производный псевдоним в путь к файлу или URL,\n"
 "который он представляет:"
 
 #. type: Fenced code block (php)
@@ -261,12 +222,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"The path/URL represented by a derived alias is determined by replacing the "
-"root alias part with its corresponding path/URL in the derived alias."
+msgid "The path/URL represented by a derived alias is determined by replacing the root alias part with its corresponding path/URL in the derived alias."
 msgstr ""
-"Путь/URL, представленный производным псевдонимом, определяется путем замены "
-"части корневого псевдонима на \n"
+"Путь/URL, представленный производным псевдонимом, определяется путем замены части корневого псевдонима на \n"
 "соответствующий путь/URL в производном псевдониме."
 
 #. type: Plain text
@@ -279,15 +237,10 @@ msgstr "> Примечание: Метод `get()` не проверяет, от
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"A root alias may also contain slash `/` characters. The `get()` method is "
-"intelligent enough to tell, which part of an alias is a root alias and thus "
-"correctly determines the corresponding file path or URL:"
+msgid "A root alias may also contain slash `/` characters. The `get()` method is intelligent enough to tell, which part of an alias is a root alias and thus correctly determines the corresponding file path or URL:"
 msgstr ""
-"Псевдоним root также может содержать символы косой черты `/`. Метод `get()` "
-"достаточно интеллектуален, чтобы определить, \n"
-"какая часть псевдонима является корневым псевдонимом, и, таким образом, "
-"правильно определить путь к соответствующему \n"
+"Псевдоним root также может содержать символы косой черты `/`. Метод `get()` достаточно интеллектуален, чтобы определить, \n"
+"какая часть псевдонима является корневым псевдонимом, и, таким образом, правильно определить путь к соответствующему \n"
 "файлу или URL-адрес:"
 
 #. type: Fenced code block (php)
@@ -318,12 +271,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"If `@foo/bar` isn't defined as a root alias, the last statement would "
-"display `/path/to/foo/bar/file.php`."
+msgid "If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`."
 msgstr ""
-"Если бы `@foo/bar` не был бы определен как корневой псевдоним, то последний "
-"оператор отобразил бы \n"
+"Если бы `@foo/bar` не был бы определен как корневой псевдоним, то последний оператор отобразил бы \n"
 "`/path/to/foo/bar/file.php`."
 
 #. type: Title ##
@@ -334,26 +284,20 @@ msgstr "Предопределенные псевдонимы <span id=\"predefi
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"[Yii application](https://github.com/yiisoft/app) predefines a set of "
-"aliases to reference commonly used file paths and URLs:"
+msgid "[Yii application](https://github.com/yiisoft/app) predefines a set of aliases to reference commonly used file paths and URLs:"
 msgstr ""
-"[Yii приложение](https://github.com/yiisoft/app) предопределяет набор "
-"псевдонимов, чтобы ссылаться на часто используемые\n"
+"[Yii приложение](https://github.com/yiisoft/app) предопределяет набор псевдонимов, чтобы ссылаться на часто используемые\n"
 "файловые пути и URL-адреса:"
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
 msgid "`@root` - the base directory of the currently running application."
-msgstr ""
-"`@root` - базовая директория для приложения запущенного в текущий момент."
+msgstr "`@root` - базовая директория для приложения запущенного в текущий момент."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
 msgid "`@assets` - application's public directory where it publishes assets."
-msgstr ""
-"`@assets` - публичная директория приложения, где оно публикует ресурсы "
-"(assets)."
+msgstr "`@assets` - публичная директория приложения, где оно публикует ресурсы (assets)."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
@@ -362,12 +306,8 @@ msgstr "`@assetsUrl` - URL базовой директории с опублик
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@baseUrl` - the base URL of the currently running Web application. Defaults "
-"to `/`."
-msgstr ""
-"`@baseUrl` - базовый URL запущенного в текущий момент Web приложения. По "
-"умолчанию - `/`."
+msgid "`@baseUrl` - the base URL of the currently running Web application. Defaults to `/`."
+msgstr "`@baseUrl` - базовый URL запущенного в текущий момент Web приложения. По умолчанию - `/`."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
@@ -386,21 +326,13 @@ msgstr "`@vendor` - директория `vendor` Composer'а ."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@public` - application's publicly accessible directory that with `index."
-"php`."
-msgstr ""
-"`@public` - публично доступная директория приложения, которая содержит "
-"`index.php`."
+msgid "`@public` - application's publicly accessible directory that with `index.php`."
+msgstr "`@public` - публично доступная директория приложения, которая содержит `index.php`."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@runtime` - the runtime path of the currently running application. Defaults "
-"to `@root/runtime`."
-msgstr ""
-"`@runtime` - путь времени выполнения текущего запущенного приложения. По "
-"умолчанию - `@root/runtime`."
+msgid "`@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`."
+msgstr "`@runtime` - путь времени выполнения текущего запущенного приложения. По умолчанию - `@root/runtime`."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
@@ -410,9 +342,7 @@ msgstr "`@layout` - директория с макетами."
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
 msgid "`@resources` - directory with views, asset sources and other resources."
-msgstr ""
-"`@resources` - директория с представлениями, исходниками ресурсов (asset) и "
-"другими ресурсами."
+msgstr "`@resources` - директория с представлениями, исходниками ресурсов (asset) и другими ресурсами."
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
