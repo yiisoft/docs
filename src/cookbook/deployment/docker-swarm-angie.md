@@ -112,6 +112,7 @@ configs:
           resolver_timeout 5s;
 
           # ACME client configuration
+          # Replace admin@example.com with your actual email address
           acme_client letsencrypt https://acme-v02.api.letsencrypt.org/directory
                       email=admin@example.com;
 
@@ -157,7 +158,7 @@ You need a container registry to store your Docker images. Choose one of the fol
 
 ### Option 1: Using Forgejo
 
-To deploy Forgejo create a file `forgejo-stack.yml`:
+To deploy Forgejo, first replace `git.example.com` with your desired subdomain, then create a file `forgejo-stack.yml`:
 
 ```yaml
 services:
@@ -185,13 +186,51 @@ Deploy Forgejo:
 docker stack deploy -c forgejo-stack.yml forgejo
 ```
 
-Replace `git.example.com` with your desired subdomain.
+After deployment, you need to add a server block to the Angie configuration to handle requests to your Forgejo instance.
+Update the `angie-stack.yml` to include:
 
-After deployment, access Forgejo at `https://git.example.com` and complete the initial setup. Make sure to enable the container registry in the settings.
+```yaml
+configs:
+  angie_main_config:
+    content: |
+      # ... previous configuration ...
+
+      http {
+          # ... previous configuration ...
+
+          # Upstream for Forgejo
+          upstream forgejo {
+              zone forgejo_zone 64k;
+              # Docker module will automatically add container IPs here
+          }
+
+          # Server block for Forgejo
+          server {
+              listen 443 ssl;
+              listen [::]:443 ssl;
+              server_name git.example.com;
+
+              acme letsencrypt;
+
+              ssl_certificate $acme_cert;
+              ssl_certificate_key $acme_cert_key;
+
+              location / {
+                  proxy_pass http://forgejo;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+              }
+          }
+      }
+```
+
+Access Forgejo at `https://git.example.com` and complete the initial setup. Make sure to enable the container registry in the settings.
 
 ### Option 2: Using Gitea
 
-To deploy Gitea create a file `gitea-stack.yml`:
+To deploy Gitea, first replace `git.example.com` with your desired subdomain, then create a file `gitea-stack.yml`:
 
 ```yaml
 services:
@@ -219,9 +258,47 @@ Deploy Gitea:
 docker stack deploy -c gitea-stack.yml gitea
 ```
 
-Replace `git.example.com` with your desired subdomain.
+After deployment, you need to add a server block to the Angie configuration to handle requests to your Gitea instance.
+Update the `angie-stack.yml` to include:
 
-After deployment, access Gitea at `https://git.example.com` and complete the initial setup. 
+```yaml
+configs:
+  angie_main_config:
+    content: |
+      # ... previous configuration ...
+
+      http {
+          # ... previous configuration ...
+
+          # Upstream for Gitea
+          upstream gitea {
+              zone gitea_zone 64k;
+              # Docker module will automatically add container IPs here
+          }
+
+          # Server block for Gitea
+          server {
+              listen 443 ssl;
+              listen [::]:443 ssl;
+              server_name git.example.com;
+
+              acme letsencrypt;
+
+              ssl_certificate $acme_cert;
+              ssl_certificate_key $acme_cert_key;
+
+              location / {
+                  proxy_pass http://gitea;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+              }
+          }
+      }
+```
+
+Access Gitea at `https://git.example.com` and complete the initial setup. 
 Make sure to enable the container registry in the settings.
 
 ## Configuring your Yii application
@@ -285,14 +362,10 @@ services:
       - reverse_proxy_public
     volumes:
       - runtime:/app/runtime
-      - caddy_data:/data
-      - caddy_config:/config
     env_file:
       - path: ./prod/.env
       - path: ./prod/override.env
         required: false
-    environment:
-      CADDY_EXTRA_CONFIG: 'auto_https off'
     deploy:
       replicas: 2
       update_config:
@@ -314,8 +387,6 @@ services:
 
 volumes:
   runtime:
-  caddy_data:
-  caddy_config:
 
 networks:
   reverse_proxy_public:
@@ -326,8 +397,6 @@ This configuration:
 - Runs 2 replicas for high availability
 - Uses a rolling update strategy with automatic rollback on failure
 - Configures Docker labels for automatic service discovery by Angie
-- Disables obtaining of HTTPS certificates on the container itself
-  since proxy communicates with the container via HTTP. That is `auto_https off`.
 
 > [!NOTE]
 > The label `angie.http.upstreams.myapp.port=80` tells Angie to add this container to the `myapp` upstream group
