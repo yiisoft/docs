@@ -157,6 +157,7 @@ export default {
                             text: 'Cookbook',
                             items: [
                                 {text: 'Preface', link: '/cookbook/preface'},
+                                {text: 'Replicating Yii2 Advanced App Structure', link: '/cookbook/replicating-yii2-advanced-app-structure'},
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
