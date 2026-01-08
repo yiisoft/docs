@@ -154,9 +154,7 @@ Example of a valid code:
 final class Example
 {
     public const SOME_CONST = '';
-
     public int $prop;
-
     public function doSomething(): void {}
 }
 ```
