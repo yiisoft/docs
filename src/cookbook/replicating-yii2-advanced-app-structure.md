@@ -1,55 +1,45 @@
-# Replicating Yii2 advanced app structure with Yii3
+# Implementing advanced app structure with Yii3
 
-In Yii2, the [advanced application template](https://github.com/yiisoft/yii2-app-advanced) provided a structure for applications that require multiple entry points, such as frontend, backend, console, and API applications. This recipe explains how to achieve a similar structure in Yii3.
+This recipe shows how to structure a Yii3 application with multiple entry points for frontend, backend, console, and API applications, similar to the advanced application template pattern.
 
-## Understanding the differences
+## Application structure
 
-Yii3 takes a fundamentally different approach to application structure compared to Yii2:
-
-### Yii2 advanced template structure
-
-The Yii2 advanced template was organized around multiple application directories:
-
-```
-yii2-app-advanced/
-├── backend/          # Administration panel application
-├── frontend/         # Public-facing application
-├── console/          # Console commands
-├── api/              # API application (optional)
-├── common/           # Shared code between applications
-│   ├── models/
-│   ├── config/
-│   └── mail/
-├── environments/     # Environment-specific configurations
-└── vendor/
-```
-
-### Yii3 approach
-
-Yii3 uses a package-based architecture with a single application that can have multiple entry points:
+The structure uses multiple entry points with separate configurations for each application section:
 
 ```
 yii3-app/
 ├── config/           # Configuration files
 │   ├── common/       # Shared configuration
-│   ├── web/          # Web application config
+│   ├── web/          # Frontend application config
+│   ├── admin/        # Backend application config
+│   ├── api/          # API application config
 │   └── console/      # Console application config
 ├── public/           # Web root with entry scripts
-│   └── index.php
+│   ├── index.php     # Frontend entry point
+│   ├── admin.php     # Backend entry point
+│   └── api.php       # API entry point
 ├── src/              # Application source code
-│   ├── Web/          # Web-specific code
+│   ├── Frontend/     # Frontend-specific code
+│   ├── Admin/        # Backend-specific code
+│   ├── Api/          # API-specific code
 │   ├── Console/      # Console-specific code
-│   └── Shared/       # Shared code
+│   └── Shared/       # Shared code between applications
 ├── resources/        # Views, assets, translations
+│   ├── views/
+│   │   ├── frontend/
+│   │   └── admin/
+│   └── assets/
+│       ├── frontend/
+│       └── admin/
 └── vendor/
 ```
 
-Instead of separate applications, Yii3 encourages:
+This structure provides:
 
-1. **Single codebase** with different entry points
-2. **Configuration-based separation** between web and console
-3. **Route-based access control** for admin vs. public areas
-4. **Middleware-based logic** for different application sections
+1. **Multiple entry points** - Separate entry scripts for each application
+2. **Configuration-based separation** - Each application has its own config
+3. **Shared code organization** - Common code in a dedicated namespace
+4. **Middleware-based logic** - Different middleware stacks per application
 
 ## Setting up multiple entry points
 
@@ -1018,29 +1008,6 @@ final class DashboardControllerTest extends TestCase
 }
 ```
 
-## Migration from Yii2
-
-### Key differences to consider
-
-When migrating from Yii2 advanced template to Yii3:
-
-1. **No separate application classes**: Yii3 uses a single application with different entry points
-2. **Configuration-driven**: Separation is achieved through configuration rather than directory structure
-3. **PSR compliance**: All components follow PSR standards (PSR-7, PSR-11, PSR-15, etc.)
-4. **Dependency injection**: Everything is configured through the DI container
-5. **No global state**: No `Yii::$app` or similar global accessors
-
-### Migration steps
-
-1. **Identify shared code**: Move common models, services, and repositories to `src/Shared/`
-2. **Separate application logic**: Organize frontend and backend code in respective directories
-3. **Configure entry points**: Create separate entry scripts for each application
-4. **Update routing**: Convert Yii2 routes to Yii3 route configuration
-5. **Refactor controllers**: Update controllers to use PSR-7 request/response
-6. **Update views**: Adapt view rendering to Yii3 view system
-7. **Configure middleware**: Set up middleware stacks for each application
-8. **Test thoroughly**: Ensure all functionality works in the new structure
-
 ## Best practices
 
 1. **Keep shared code truly shared**: Only place code in `src/Shared/` if it's genuinely used by multiple applications
@@ -1052,16 +1019,16 @@ When migrating from Yii2 advanced template to Yii3:
 7. **Implement proper access control**: Use middleware and RBAC for securing admin areas
 8. **Test each application separately**: Write tests that verify each application section works independently
 
-## Conclusion
+## Summary
 
-While Yii3 doesn't have a direct equivalent to the Yii2 advanced template, you can achieve the same level of separation and organization through:
+This structure provides clear separation between different application sections while maintaining a single codebase:
 
 - Multiple entry scripts with different configuration sets
 - Organized source code structure separating frontend, backend, API, and shared code
 - Configuration-based application setup
 - Middleware-based access control and request handling
 
-This approach provides more flexibility and follows modern PHP practices while maintaining clear separation between different parts of your application.
+The pattern allows you to maintain separate concerns for different parts of your application while sharing common code and resources efficiently.
 
 ## References
 
