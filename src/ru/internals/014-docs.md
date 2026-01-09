@@ -135,10 +135,46 @@ final class MyService extends MyServiceBase
         return parent::doit();    
     }
 }
-``` 
+```
 
 PHPDoc, if present, should describe the purpose of the element it's added
 for.
+
+The `@see` tags must explicitly refer to class methods, properties, and
+constants. This is necessary for the correct display of links in IDEs, as
+well as for the correct display of links in API documentation.
+
+Example of incorrect code:
+
+```php
+/**
+ * @see SOME_CONST
+ * @see $prop
+ * @see doSomething()
+ */
+final class Example
+{
+    public const SOME_CONST = '';
+    public int $prop;
+    public function doSomething(): void {}
+}
+```
+
+Example of a valid code:
+
+```php
+/**
+ * @see Example::SOME_CONST
+ * @see Example::$prop
+ * @see Example::doSomething()
+ */
+final class Example
+{
+    public const SOME_CONST = '';
+    public int $prop;
+    public function doSomething(): void {}
+}
+```
 
 ## Readme checklist
 

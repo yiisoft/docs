@@ -20,10 +20,19 @@ composer create-project yiisoft/app your_project
 ```
 
 Docker users can run the following commands:
+
+```sh
+docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
+sudo chown -R $(id -u):$(id -g) your_project
+cd your_project
+```
+
+If you want development version instead of release one:
  
 ```sh
-docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
-sudo chown -R $(id -u):$(id -g) your_project
+git clone https://github.com/yiisoft/app.git --depth 1 your_project && \
+cd your_project && \
+rm -rf .git && \
 make composer update
 ```
 

@@ -58,9 +58,10 @@ use Middlewares\BasicAuthentication;
 
 return [
     //...
-    Route::get('/basic-auth')->([SiteController::class, 'auth'])
+    Route::get('/basic-auth')
+        ->action([SiteController::class, 'auth'])
         ->name('site/auth')
-        ->addMiddleware(BasicAuthentication::class)
+        ->prependMiddleware(BasicAuthentication::class)
 ];
 ```
 
