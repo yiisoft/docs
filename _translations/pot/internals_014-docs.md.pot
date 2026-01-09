@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-01-09 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,6 +281,58 @@ msgstr ""
 msgid ""
 "PHPDoc, if present, should describe the purpose of the element it's added "
 "for."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/014-docs.md
+msgid ""
+"The `@see` tags must explicitly refer to class methods, properties, and "
+"constants. This is necessary for the correct display of links in IDEs, as "
+"well as for the correct display of links in API documentation."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/014-docs.md
+msgid "Example of incorrect code:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/internals/014-docs.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @see SOME_CONST\n"
+" * @see $prop\n"
+" * @see doSomething()\n"
+" */\n"
+"final class Example\n"
+"{\n"
+"    public const SOME_CONST = '';\n"
+"    public int $prop;\n"
+"    public function doSomething(): void {}\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/014-docs.md
+msgid "Example of a valid code:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/internals/014-docs.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @see Example::SOME_CONST\n"
+" * @see Example::$prop\n"
+" * @see Example::doSomething()\n"
+" */\n"
+"final class Example\n"
+"{\n"
+"    public const SOME_CONST = '';\n"
+"    public int $prop;\n"
+"    public function doSomething(): void {}\n"
+"}\n"
 msgstr ""
 
 #. type: Title ##

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-01-09 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,23 @@ msgstr ""
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid ""
-"docker run --rm -it -v \"$(pwd):/app\" composer/composer create-project yiisoft/app your_project\n"
+"docker run --rm -it -v \"$(pwd):/app\" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project\n"
 "sudo chown -R $(id -u):$(id -g) your_project\n"
+"cd your_project\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "If you want development version instead of release one:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"git clone https://github.com/yiisoft/app.git --depth 1 your_project && \\\n"
+"cd your_project && \\\n"
+"rm -rf .git && \\\n"
 "make composer update\n"
 msgstr ""
 
