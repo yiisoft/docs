@@ -65,7 +65,7 @@ return [
     //...
     Route::get('/basic-auth')->([SiteController::class, 'auth'])
         ->name('site/auth')
-        ->addMiddleware(BasicAuthentication::class)
+        ->middleware(BasicAuthentication::class)
 ];
 ```
 
