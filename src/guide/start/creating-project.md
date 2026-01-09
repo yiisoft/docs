@@ -21,6 +21,7 @@ Docker users can run the following commands:
 ```sh
 docker run --rm -it -v "$(pwd):/app" composer/composer create-project yiisoft/app your_project
 sudo chown -R $(id -u):$(id -g) your_project
+cd your_project
 make composer update
 ```
 
