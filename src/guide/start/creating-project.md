@@ -19,7 +19,7 @@ composer create-project yiisoft/app your_project
 Docker users can run the following commands: 
  
 ```sh
-git clone git@github.com:yiisoft/app.git your_project
+git clone https://github.com/yiisoft/app.git your_project
 cd your_project
 make composer update
 ```
