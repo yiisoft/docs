@@ -110,7 +110,7 @@ return [
 To create middleware, you need to implement a single `process` method of `Psr\Http\Server\MiddlewareInterface`:
 
 ```php
-public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
 ```
 
 There are multiple ways to handle a request, and choosing one depends on what the middleware should achieve.
@@ -137,7 +137,7 @@ final readonly class RespondingMiddleware implements MiddlewareInterface
     {
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $this->responseFactory->createResponse();
         $response->getBody()->write('Hello!');
@@ -152,14 +152,24 @@ If middleware either isn't intended to form a response or change the request or 
 handling could be left to the next middleware in the stack:  
 
 ```php
-return $next->handle($request);
+//...
+final readonly class RespondingMiddleware implements MiddlewareInterface
+{
+//...
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        //...
+        return $handler->handle($request);    
+    }
+    //...
+}
 ```
 
 In case you need to pass data to the next middleware, you can use request attributes:
 
 ```php
 $request = $request->withAttribute('answer', 42);
-return $next->handle();
+return $handler->handle($request);
 ``` 
 
 To get it in the next middleware:
@@ -173,7 +183,7 @@ $answer = $request->getAttribute('answer');
 You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc.
 
 ```php
-$response = $next->handle($request);
+$response = $handler->handle($request);
 // extra handing
 return $response;
 ```
