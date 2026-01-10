@@ -137,7 +137,7 @@ framework](https://github.com/yiisoft/router).
 - [x] Implementation may be one of the popular ones (using Symfony one)
 - [x] Ensure application can add commands via config
 
-## Documentation
+## Документация
 
 - [ ] Follow best practices.
 - [ ] Don't use the "MVC" term.
