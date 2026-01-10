@@ -15,7 +15,7 @@ features:
 hero:
   actions:
     - 
-      link: /guide/intro/what-is-yii.html
+      link: guide/intro/what-is-yii.html
       text: Начать
       theme: brand
   class: homeHero2
