@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/intro/what-is-yii.html
+      link: guide/intro/what-is-yii.html
   image:
     src: /images/yii_logo.svg
     alt: Yii
