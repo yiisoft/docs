@@ -152,16 +152,9 @@ If middleware either isn't intended to form a response or change the request or 
 handling could be left to the next middleware in the stack:  
 
 ```php
-//...
-final readonly class RespondingMiddleware implements MiddlewareInterface
+public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
 {
-//...
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        //...
-        return $handler->handle($request);    
-    }
-    //...
+    return $handler->handle($request);    
 }
 ```
 
