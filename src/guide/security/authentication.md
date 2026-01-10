@@ -7,13 +7,19 @@ if the user is the one whom he claims as. Authentication is the basis of the log
 Yii provides an authentication framework which wires up various components to support login. To use this framework,
 you mainly need to do the following work:
 
-* Configure the `Yiisoft\Yii\Web\User\User` service;
+* Configure the `Yiisoft\User\CurrentUser` service;
 * Create a class implementing the `\Yiisoft\Auth\IdentityInterface` interface;
 * Create a class implementing the `\Yiisoft\Auth\IdentityRepositoryInterface` interface;
 
-## Configuring `Yiisoft\Yii\Web\User\User` <span id="configuring-user"></span>
+To use the `Yiisoft\User\CurrentUser` service, install [yiisoft/user](https://github.com/yiisoft/user) package:
 
-The `Yiisoft\Yii\Web\User\User` application service manages the user authentication status. It depends on
+```shell
+composer require yiisoft/user
+```
+
+## Configuring `Yiisoft\User\CurrentUser` <span id="configuring-user"></span>
+
+The `Yiisoft\User\CurrentUser` application service manages the user authentication status. It depends on
 `Yiisoft\Auth\IdentityRepositoryInterface` that should return an instance of `\Yiisoft\Auth\IdentityInterface`
 which has the actual authentication logic.
 
@@ -21,7 +27,7 @@ which has the actual authentication logic.
 use Yiisoft\Session\Session;
 use Yiisoft\Session\SessionInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use Psr\Container\ContainerInterface;
+use Yiisoft\Definitions\Reference;
 
 return [
     // ...
@@ -33,13 +39,10 @@ return [
             $params['session']['handler'] ?? null,
         ],
     ],
-    
-    
-    // User:
-    IdentityRepositoryInterface::class => static function (ContainerInterface $container) {
-        // instead of a Cycle-based repository, you can use any implementation
-        return $container->get(\Cycle\ORM\ORMInterface::class)->getRepository(\App\Entity\User::class);
-    },
+    IdentityRepositoryInterface::class => IdentityRepository::class,
+    CurrentUser::class => [
+        'withSession()' => [Reference::to(SessionInterface::class)]
+    ],
 ];
 ```
 
@@ -129,18 +132,18 @@ final readonly class IdentityRepository implements IdentityRepositoryInterface
 }
 ```
 
-## Using `\Yiisoft\User\User` <span id="using-user"></span>
+## Using `\Yiisoft\User\CurrentUser` <span id="using-user"></span>
 
-You can use `\Yiisoft\User\User` service to get current user identity.
+You can use `\Yiisoft\User\CurrentUser` service to get current user identity.
 As any service, it could be auto-wired in either action handler constructor or method:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
-use \Yiisoft\User\User;
+use \Yiisoft\User\CurrentUser;
 
 final readonly class SiteController
 {
-    public function actionIndex(ServerRequestInterface $request, User $user)
+    public function actionIndex(ServerRequestInterface $request, CurrentUser $user)
     {        
         if ($user->isGuest()) {
             // user is guest
@@ -159,7 +162,7 @@ To log in a user, you may use the following code:
 ```php
 $identity = $identityRepository->findByEmail($email);
 
-/* @var $user \Yiisoft\User\User */
+/* @var $user \Yiisoft\User\CurrentUser */
 $user->login($identity);
 ```
 
@@ -169,7 +172,7 @@ It stores identity into session so user authentication status is maintained.
 To log out a user, call
 
 ```php
-/* @var $user \Yiisoft\User\User */
+/* @var $user \Yiisoft\User\CurrentUser */
 $user->logout();
 ```
 
