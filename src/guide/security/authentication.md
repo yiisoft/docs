@@ -132,7 +132,7 @@ final readonly class IdentityRepository implements IdentityRepositoryInterface
 }
 ```
 
-## Using `\Yiisoft\User\CurrentUser` <span id="using-user"></span>
+## Using `\Yiisoft\User\CurrentUser`
 
 You can use `\Yiisoft\User\CurrentUser` service to get current user identity.
 As any service, it could be auto-wired in either action handler constructor or method:
