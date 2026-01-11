@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-09 11:54+0000\n"
+"POT-Creation-Date: 2026-01-10 14:31+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -200,7 +200,7 @@ msgstr ""
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
 #, no-wrap
-msgid "public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface;\n"
+msgid "public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;\n"
 msgstr ""
 
 #. type: Plain text
@@ -240,7 +240,7 @@ msgid ""
 "    {\n"
 "    }\n"
 "\n"
-"    public function process(ServerRequestInterface $request, RequestHandlerInterface $next): ResponseInterface\n"
+"    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
 "    {\n"
 "        $response = $this->responseFactory->createResponse();\n"
 "        $response->getBody()->write('Hello!');\n"
@@ -266,7 +266,11 @@ msgstr ""
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
 #, no-wrap
-msgid "return $next->handle($request);\n"
+msgid ""
+"public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
+"{\n"
+"    return $handler->handle($request);    \n"
+"}\n"
 msgstr ""
 
 #. type: Plain text
@@ -279,7 +283,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "$request = $request->withAttribute('answer', 42);\n"
-"return $next->handle();\n"
+"return $handler->handle($request);\n"
 msgstr ""
 
 #. type: Plain text
@@ -308,7 +312,7 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid ""
-"$response = $next->handle($request);\n"
+"$response = $handler->handle($request);\n"
 "// extra handing\n"
 "return $response;\n"
 msgstr ""
