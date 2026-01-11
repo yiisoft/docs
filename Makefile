@@ -1,3 +1,13 @@
+help:
+	@echo ""
+	@echo "Available commands:"
+	@echo "  make init     Install dependencies"
+	@echo "  make build    Build the documentation"
+	@echo "  make preview  Preview the build"
+	@echo "  make dev      Run development server"
+	@echo "  make po4a     Run translation tools"
+	@echo ""
+
 init:
 	npm install
 
