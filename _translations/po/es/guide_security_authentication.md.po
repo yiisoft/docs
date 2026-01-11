@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2026-01-11 19:34+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,55 +17,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title #
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Authentication"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "Authentication is the process of verifying the identity of a user. It usually uses an identifier (for example, a username or an email address) and a secret token (such as a password or an access token) to judge if the user is the one whom he claims as. Authentication is the basis of the login feature."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "Yii provides an authentication framework which wires up various components to support login. To use this framework, you mainly need to do the following work:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
-msgid "Configure the `Yiisoft\\Yii\\Web\\User\\User` service;"
+#: ../src/guide/security/authentication.md
+msgid "Configure the `Yiisoft\\User\\CurrentUser` service;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityInterface` interface;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` interface;"
 msgstr ""
 
-#. type: Title ##
-#: ../../guide/en/security/authentication.md
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "To use the `Yiisoft\\User\\CurrentUser` service, install [yiisoft/user](https://github.com/yiisoft/user) package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/security/authentication.md
 #, no-wrap
-msgid "Configuring `Yiisoft\\Yii\\Web\\User\\User` <span id=\"configuring-user\"></span>"
+msgid "composer require yiisoft/user\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Configuring `Yiisoft\\User\\CurrentUser`"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
-msgid "The `Yiisoft\\Yii\\Web\\User\\User` application service manages the user authentication status. It depends on `Yiisoft\\Auth\\IdentityRepositoryInterface` that should return an instance of `\\Yiisoft\\Auth\\IdentityInterface` which has the actual authentication logic."
+#: ../src/guide/security/authentication.md
+msgid "The `Yiisoft\\User\\CurrentUser` application service manages the user authentication status. It depends on `Yiisoft\\Auth\\IdentityRepositoryInterface` that should return an instance of `\\Yiisoft\\Auth\\IdentityInterface` which has the actual authentication logic."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Session\\Session;\n"
 "use Yiisoft\\Session\\SessionInterface;\n"
 "use Yiisoft\\Auth\\IdentityRepositoryInterface;\n"
-"use Psr\\Container\\ContainerInterface;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
 "\n"
 "return [\n"
 "    // ...\n"
@@ -77,39 +88,36 @@ msgid ""
 "            $params['session']['handler'] ?? null,\n"
 "        ],\n"
 "    ],\n"
-"    \n"
-"    \n"
-"    // User:\n"
-"    IdentityRepositoryInterface::class => static function (ContainerInterface $container) {\n"
-"        // instead of a Cycle-based repository, you can use any implementation\n"
-"        return $container->get(\\Cycle\\ORM\\ORMInterface::class)->getRepository(\\App\\Entity\\User::class);\n"
-"    },\n"
+"    IdentityRepositoryInterface::class => IdentityRepository::class,\n"
+"    CurrentUser::class => [\n"
+"        'withSession()' => [Reference::to(SessionInterface::class)]\n"
+"    ],\n"
 "];\n"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "The identity class must implement the `\\Yiisoft\\Auth\\IdentityInterface` which has a single method:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "[[yii\\web\\IdentityInterface::getId()|getId()]]: it returns the ID of the user represented by this identity instance."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "In the following example, an identity class is implemented as a pure PHP object."
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -133,33 +141,33 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "The identity repository class must implement the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` which has the following methods:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`findIdentity(string $id): ?IdentityInterface`: it looks for an instance of the identity class using the specified ID. This method is used when you need to keep the login status via session."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`findIdentityByToken(string $token, string $type): ?IdentityInterface`: it looks for an instance of the identity class using the specified access token. This method is used when you need to authenticate a user by a single secret token (for example, in a stateless REST API)."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "A dummy implementation may look like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
 "namespace App\\User;\n"
@@ -206,26 +214,26 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
-msgid "Using `\\Yiisoft\\User\\User` <span id=\"using-user\"></span>"
+msgid "Using `\\Yiisoft\\User\\CurrentUser`"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
-msgid "You can use `\\Yiisoft\\User\\User` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
+#: ../src/guide/security/authentication.md
+msgid "You can use `\\Yiisoft\\User\\CurrentUser` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
-"use \\Yiisoft\\User\\User;\n"
+"use \\Yiisoft\\User\\CurrentUser;\n"
 "\n"
 "final readonly class SiteController\n"
 "{\n"
-"    public function actionIndex(ServerRequestInterface $request, User $user)\n"
+"    public function actionIndex(ServerRequestInterface $request, CurrentUser $user)\n"
 "    {        \n"
 "        if ($user->isGuest()) {\n"
 "            // user is guest\n"
@@ -238,75 +246,75 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`isGuest()` determines if user is logged in or not. `getIdentity()` returns an instance of identity."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "To log in a user, you may use the following code:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
 "$identity = $identityRepository->findByEmail($email);\n"
 "\n"
-"/* @var $user \\Yiisoft\\User\\User */\n"
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
 "$user->login($identity);\n"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "The `login()` method sets the identity to the User service.  It stores identity into session so user authentication status is maintained."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "To log out a user, call"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
-"/* @var $user \\Yiisoft\\User\\User */\n"
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
 "$user->logout();\n"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Authentication Events <span id=\"auth-events\"></span>"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "The user service raises a few events during the login and logout processes."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\BeforeLogin`: raised at the beginning of `login()`.  If the event handler calls `invalidate()` on an event object, the login process will be cancelled."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\AfterLogin`: raised after a successful login."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\BeforeLogout`: raised at the beginning of `logout()`.  If the event handler calls `invalidate()` on an event object, the logout process will be cancelled."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\AfterLogout`: raised after a successful logout."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/security/authentication.md
+#: ../src/guide/security/authentication.md
 msgid "You may respond to these events to implement features such as login audit, online user statistics. For example, in the handler for `\\Yiisoft\\User\\Event\\AfterLogin`, you may record the login time and IP address in the `user` database table."
 msgstr ""
