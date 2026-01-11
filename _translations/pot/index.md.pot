@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 09:13+0000\n"
+"POT-Creation-Date: 2026-01-10 15:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Yii gives you the maximum functionality by adding the least possible overhead."
+msgstr ""
+
 #. type: Yaml Front Matter Hash Value: features title
 #: ../src/index.md
 #, no-wrap
 msgid "Fast"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Sane defaults and built-in tools helps you write solid and secure code."
 msgstr ""
 
 #. type: Yaml Front Matter Hash Value: features title
@@ -28,10 +40,40 @@ msgstr ""
 msgid "Secure"
 msgstr ""
 
+#. type: Yaml Front Matter Hash Value: features details
+#: ../src/index.md
+#, no-wrap
+msgid "Write more code in less time with simple, yet powerful APIs and code generation."
+msgstr ""
+
 #. type: Yaml Front Matter Hash Value: features title
 #: ../src/index.md
 #, no-wrap
 msgid "Efficient"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: hero actions text
+#: ../src/index.md
+#, no-wrap
+msgid "Get Started"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: hero name
+#: ../src/index.md
+#, no-wrap
+msgid "Yii3 Framework"
+msgstr ""
+
+#. type: Yaml Front Matter Hash Value: hero tagline
+#: ../src/index.md
+#, no-wrap
+msgid "A simple, powerful and fast framework. Meet the modern, definitive guide to Yii you've always wanted."
+msgstr ""
+
+#. type: Title ##
+#: ../src/index.md ../src/internals/003-roadmap.md
+#, no-wrap
+msgid "Documentation"
 msgstr ""
 
 #. type: Plain text

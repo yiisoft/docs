@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"POT-Creation-Date: 2026-01-10 15:51+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,590 +17,590 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title ##
-#: ../src/en/cookbook/sentry-integration.md ../src/en/internals/003-roadmap.md
+#: ../src/index.md ../src/internals/003-roadmap.md
+#, no-wrap
+msgid "Documentation"
+msgstr "Документация"
+
+#. type: Title ##
+#: ../src/cookbook/sentry-integration.md ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Console"
 msgstr "Консоль"
 
 #. type: Title #
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "003 — Roadmap"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "We want Yii 3 to:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Not limit a developer to choosing architecture. Allow anything from \"classic\" MVC to DDD."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Be based on the best practices such as SOLID, GRASP, etc. and teach them to the community."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Keep the most good things from Yii 2."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Be more open to the global PHP community and infrastructure."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSRs compliance"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "PSR compliance helps with customizability, the ability to use general PHP libraries and implement fewer wrappers.  Here's the list of PSRs we want to implement."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-3 Logger"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/log)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages should depend on interface only."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Split drivers into packages."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Clean-up code."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Fix email target](https://github.com/yiisoft/log-target-email)."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, fuzzy, no-wrap
 #| msgid "Class autoloading"
 msgid "PSR-4 Autoloading"
 msgstr "Автозагрузка класоов"
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Autoloading is fine already."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Document on how it works."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-7 HTTP message"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Remove our own implementation. At least for now."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages should depend on interfaces only."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-11 Container"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/di)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages shouldn't use container directly. One should be able to instantiate everything manually."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Finish refactoring."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Remove all framework-specific implementations from the package. Move to a framework."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)"
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-12 Code style"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make sure the code follows it."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Automate fixing style before release."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-14 Event dispatcher"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Use in other packages."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Polish."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-15 HTTP handlers"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Rewrite HTTP flow to PSR-7 request-response + formatting response via emitter."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Offer SAPI emitter out of the box."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make it possible to use alternative emitters such as RoadRunner."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Support middleware."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Implement filters as middleware:"
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)"
 msgstr ""
 
 #. type: Bullet: '  - '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Authentication](https://github.com/yiisoft/yii-web/issues/114)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Re-implement router w/ middleware support for route groups."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Filters should be middlewares."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-16 Simple cache"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/cache)."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-17 HTTP factories"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Use PSR factories."
 msgstr ""
 
 #. type: Title ###
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-18 HTTP client"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Stricter types"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make sure type hinting is used everywhere."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make sure types are as definitive as possible. Avoid varying types if possible."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, fuzzy, no-wrap
 #| msgid "Configuring SSL peer validation"
 msgid "Single application template"
 msgstr "Настройка проверки SSL-сертификата"
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Drop basic/advanced."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Create a [single application template that works out of the box](https://github.com/yiisoft/app)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Router"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/router)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, fuzzy
 msgid "[x] DSL for configuration."
 msgstr "конфигурация может быть:"
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Ability to route to any callable."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Named routes."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Route groups w/ middleware support."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Best practices and SOLID compliance of all classes/packages"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make sure interfaces follow the \"interface segregation\" principle."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Don't use public properties."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Don't use `init()`."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Don't inherit from `BaseObject` or `Component`. Remove these."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] No globals."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] No static calls except helpers that are final."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Prefer throwing exceptions to fixing input."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Development toolkit"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Release command line tool"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Development command line tool (symlinks packages into usable application)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Separate web and console application"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Possibly eliminate base application (still needed)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Create an interface for the console (using Symfony one)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Implementation may be one of the popular ones (using Symfony one)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Ensure application can add commands via config"
 msgstr ""
 
-#. type: Title ##
-#: ../src/en/internals/003-roadmap.md
-#, no-wrap
-msgid "Documentation"
-msgstr ""
-
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, fuzzy
 #| msgid "Security best practices"
 msgid "[ ] Follow best practices."
 msgstr "Лучшие практики безопасности"
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[ ] Don't use the \"MVC\" term."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[ ] Upgrading from Yii 2."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "RBAC"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "RBAC is implemented as [a framework-independent package](https://github.com/yiisoft/rbac)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, fuzzy
 #| msgid "Security best practices"
 msgid "[x] Make sure it follows best practices."
 msgstr "Лучшие практики безопасности"
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "View"
 msgstr ""
 
 #. type: Plain text
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "View is implemented as [framework-independent package](https://github.com/yiisoft/view)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues))."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port widgets."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Rethink and implement active form widgets."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Implement caching widgets."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Data abstractions and grid"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Finish [data abstractions](https://github.com/yiisoft/data)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port sort, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port paging, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port grid, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port list, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Validators"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Finish [the main package](https://github.com/yiisoft/validator) redesign"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port necessary validators"
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Debug toolbar"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port debug toolbar."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Gii"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Port Gii."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Infrastructure"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Cover [config](https://github.com/yiisoft/config) with tests."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Release stable [config](https://github.com/yiisoft/config)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/en/internals/003-roadmap.md ../src/en/internals/022-config-groups.md
+#: ../src/internals/003-roadmap.md ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Others"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52)."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure the error handler catches fatals and is using response."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] Make validators independent of models to allow reusing them in handlers."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/en/internals/003-roadmap.md
+#: ../src/internals/003-roadmap.md
 msgid "[x] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)."
 msgstr ""
