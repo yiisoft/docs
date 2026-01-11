@@ -1,31 +1,30 @@
-help:
-	@echo ""
-	@echo "Available commands:"
-	@echo "  make init     Install dependencies"
-	@echo "  make build    Build the documentation"
-	@echo "  make preview  Preview the build"
-	@echo "  make dev      Run development server"
-	@echo "  make po4a     Run translation tools"
-	@echo ""
+.DEFAULT_GOAL := help
 
-init:
+.PHONY: help init build preview dev po4a
+
+help: ## Show available commands
+	@echo "Available commands:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	| awk 'BEGIN {FS = ":.*?## "}; {printf "  %-20s %s\n", $$1, $$2}'
+
+init: ## Install dependencies
 	npm install
 
-build:
+build: ## Build the documentation
 	npm run build
 
-preview:
+preview: ## Preview the build
 	npm run preview
 
-dev:
+dev: ## Run development server
 	npm run dev
 
-po4a:
+po4a: ## Run translation tools
 	./_translations/prepare-config.sh && \
 	docker run --rm \
-		--user $(shell id -u):$(shell id -g) \
-		-v $(PWD):/src \
-		-w /src/_translations \
-		--init \
-		ghcr.io/yiisoft-contrib/po4a:0.74 \
-		po4a.conf
+	--user $(shell id -u):$(shell id -g) \
+	-v $(PWD):/src \
+	-w /src/_translations \
+	--init \
+	ghcr.io/yiisoft-contrib/po4a:0.74 \
+	po4a.conf
