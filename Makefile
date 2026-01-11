@@ -1,7 +1,5 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help init build preview dev po4a
-
 help: ## Show available commands
 	@echo "Available commands:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
