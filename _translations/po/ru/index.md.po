@@ -91,7 +91,7 @@ msgstr "[Полное руководство](guide) — подробное ру
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid "[Community Cookbook](cookbook) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
-msgstr "[Кулинарная книга сообщества](cookbook) — подборка советов, приёмов и решений от сообщества для распространённых задач разработки на Yii."
+msgstr "[Рецепты от сообщества](cookbook) — подборка советов, приёмов и решений от сообщества для распространённых задач разработки на Yii."
 
 #. type: Bullet: '- '
 #: ../src/index.md
