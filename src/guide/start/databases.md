@@ -171,15 +171,15 @@ final class M251102141707Page implements RevertibleMigrationInterface
 {
     public function up(MigrationBuilder $b): void
     {
-        $cb = $b->columnBuilder();
+        $column = $b->columnBuilder();
 
         $b->createTable('page', [
-            'id' => $cb::uuidPrimaryKey(),
-            'title' => $cb::string()->notNull(),
-            'slug' => $cb::string()->notNull()->unique(),
-            'text' => $cb::text()->notNull(),
-            'created_at' => $cb::dateTime(),
-            'updated_at' => $cb::dateTime(),
+            'id' => $column::uuidPrimaryKey(),
+            'title' => $column::string()->notNull(),
+            'slug' => $column::string()->notNull()->unique(),
+            'text' => $column::text()->notNull(),
+            'created_at' => $column::dateTime(),
+            'updated_at' => $column::dateTime(),
         ]);
     }
 
@@ -189,6 +189,8 @@ final class M251102141707Page implements RevertibleMigrationInterface
     }
 }
 ```
+
+The name of the migration class is generated so replace `M251102141707Page` with the actual file name.
 
 Note that we use UUID as the primary key. We are going to generate these IDs ourselves instead of relying on database
 so we'll need an extra compose package for that.
@@ -647,6 +649,8 @@ final readonly class EditAction
     }
 }
 ```
+
+Note that `Uuid::uuid7()->toString()` won't work for MySQL and you'll need bytes instead, `Uuid::uuid7()->getBytes()`.
 
 In the above we use a special slug in the URL for new pages so the URL looks like `http://localhost/pages/new`. If the
 page isn't new, we pre-fill the form with the data from the database. Similar to how we did in [Working with forms](forms.md),
