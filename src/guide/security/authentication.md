@@ -17,7 +17,7 @@ To use the `Yiisoft\User\CurrentUser` service, install [yiisoft/user](https://gi
 composer require yiisoft/user
 ```
 
-## Configuring `Yiisoft\User\CurrentUser` <span id="configuring-user"></span>
+## Configuring `Yiisoft\User\CurrentUser`
 
 The `Yiisoft\User\CurrentUser` application service manages the user authentication status. It depends on
 `Yiisoft\Auth\IdentityRepositoryInterface` that should return an instance of `\Yiisoft\Auth\IdentityInterface`
