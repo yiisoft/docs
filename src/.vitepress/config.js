@@ -1,5 +1,7 @@
 import taskLists from 'markdown-it-task-lists'
 
+let currentYear = new Date().getFullYear();
+
 export default {
     base: '/docs/',
     title: 'Yii3 Documentation',
@@ -220,7 +222,7 @@ export default {
                 },
                 footer: {
                     message: 'Released under the <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">BSD-3-Clause License</a>.',
-                    copyright: 'Copyright © 2008-2025 <a href="https://www.yiiframework.com/">Yii</a>'
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
                 }
             }
         },
@@ -414,7 +416,7 @@ export default {
                 },
                 footer: {
                     message: 'Publicado bajo la <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">Licencia BSD-3-Clause</a>.',
-                    copyright: 'Copyright © 2008-2025 <a href="https://www.yiiframework.com/">Yii</a>'
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
                 }
             }
         },
@@ -608,7 +610,7 @@ export default {
                 },
                 footer: {
                     message: 'Dirilis di bawah <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">Lisensi BSD-3-Clause</a>.',
-                    copyright: 'Copyright © 2008-2025 <a href="https://www.yiiframework.com/">Yii</a>'
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
                 }
             }
         },
@@ -802,7 +804,7 @@ export default {
                 },
                 footer: {
                     message: 'Выпущено под <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">лицензией BSD-3-Clause</a>.',
-                    copyright: 'Copyright © 2008-2025 <a href="https://www.yiiframework.com/">Yii</a>'
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
                 },
                 socialLinks: [
                     {icon: 'github', link: 'https://github.com/yiisoft'},
