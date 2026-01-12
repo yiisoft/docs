@@ -188,7 +188,6 @@ use Yiisoft\User\Method\WebAuth;
 
 return [
     // ...
-
     AuthenticationMethodInterface::class => WebAuth::class,
 ];
 ```
