@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-05 10:34+0000\n"
+"POT-Creation-Date: 2026-01-12 12:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -326,15 +326,15 @@ msgid ""
 "{\n"
 "    public function up(MigrationBuilder $b): void\n"
 "    {\n"
-"        $cb = $b->columnBuilder();\n"
+"        $column = $b->columnBuilder();\n"
 "\n"
 "        $b->createTable('page', [\n"
-"            'id' => $cb::uuidPrimaryKey(),\n"
-"            'title' => $cb::string()->notNull(),\n"
-"            'slug' => $cb::string()->notNull()->unique(),\n"
-"            'text' => $cb::text()->notNull(),\n"
-"            'created_at' => $cb::dateTime(),\n"
-"            'updated_at' => $cb::dateTime(),\n"
+"            'id' => $column::uuidPrimaryKey(),\n"
+"            'title' => $column::string()->notNull(),\n"
+"            'slug' => $column::string()->notNull()->unique(),\n"
+"            'text' => $column::text()->notNull(),\n"
+"            'created_at' => $column::dateTime(),\n"
+"            'updated_at' => $column::dateTime(),\n"
 "        ]);\n"
 "    }\n"
 "\n"
@@ -343,6 +343,14 @@ msgid ""
 "        $b->dropTable('page');\n"
 "    }\n"
 "}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid ""
+"The `M251102141707Page` name of the migration class is generated so replace "
+"the `Page` suffix with the actual migration name. The `M251102141707` prefix "
+"is needed to find and sort migrations in the order they were added."
 msgstr ""
 
 #. type: Plain text
@@ -945,6 +953,12 @@ msgid ""
 "        ]);\n"
 "    }\n"
 "}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Note that `Uuid::uuid7()->toString()` won't work for MySQL and you'll need bytes instead, `Uuid::uuid7()->getBytes()`.\n"
 msgstr ""
 
 #. type: Plain text
