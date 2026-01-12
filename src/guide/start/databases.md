@@ -190,7 +190,7 @@ final class M251102141707Page implements RevertibleMigrationInterface
 }
 ```
 
-The name of the migration class is generated so replace `M251102141707Page` with the actual file name.
+The `M251102141707Page` name of the migration class is generated so replace the `Page` suffix with the actual migration name. The `M251102141707` prefix is needed to find and sort migrations in the order they were added.
 
 Note that we use UUID as the primary key. We are going to generate these IDs ourselves instead of relying on database
 so we'll need an extra compose package for that.
