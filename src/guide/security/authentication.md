@@ -176,6 +176,50 @@ To log out a user, call
 $user->logout();
 ```
 
+## Protecting Routes
+
+The `Yiisoft\Auth\Middleware\Authentication` middleware can be used to restrict access to a given route to authenticated users only.
+
+First, configure the `Yiisoft\Auth\AuthenticationMethodInterface`:
+
+```php
+use Yiisoft\Auth\AuthenticationMethodInterface;
+use Yiisoft\User\Method\WebAuth;
+
+return [
+    // ...
+    AuthenticationMethodInterface::class => WebAuth::class,
+];
+```
+
+Then, apply the `Yiisoft\Auth\Middleware\Authentication` middleware to a route:
+ 
+```php
+use Yiisoft\Auth\Middleware\Authentication;
+ 
+Route::post('/create')
+        ->middleware(Authentication::class)
+        ->action([SiteController::class, 'create'])
+        ->name('site/create')
+```
+
+ Or to a group of routes:
+
+```php
+use Yiisoft\Auth\Middleware\Authentication;
+
+Group::create()
+        ->middleware(Authentication::class)
+        ->routes(
+            Route::post('/create')
+                ->action([SiteController::class, 'create'])
+                ->name('site/create'),
+            Route::put('/update/{id}')
+                ->action([SiteController::class, 'update'])
+                ->name('site/update')
+        )
+```
+
 ## Authentication Events <span id="auth-events"></span>
 
 The user service raises a few events during the login and logout processes.
