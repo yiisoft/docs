@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-11 19:34+0000\n"
+"POT-Creation-Date: 2026-01-12 19:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,6 +323,80 @@ msgstr ""
 msgid ""
 "/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
 "$user->logout();\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Protecting Routes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid ""
+"The `Yiisoft\\Auth\\Middleware\\Authentication` middleware can be used to "
+"restrict access to a given route to authenticated users only."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "First, configure the `Yiisoft\\Auth\\AuthenticationMethodInterface`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\AuthenticationMethodInterface;\n"
+"use Yiisoft\\User\\Method\\WebAuth;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    AuthenticationMethodInterface::class => WebAuth::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid ""
+"Then, apply the `Yiisoft\\Auth\\Middleware\\Authentication` middleware to a "
+"route:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+" \n"
+"Route::post('/create')\n"
+"        ->middleware(Authentication::class)\n"
+"        ->action([SiteController::class, 'create'])\n"
+"        ->name('site/create')\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid " Or to a group of routes:\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+"\n"
+"Group::create()\n"
+"        ->middleware(Authentication::class)\n"
+"        ->routes(\n"
+"            Route::post('/create')\n"
+"                ->action([SiteController::class, 'create'])\n"
+"                ->name('site/create'),\n"
+"            Route::put('/update/{id}')\n"
+"                ->action([SiteController::class, 'update'])\n"
+"                ->name('site/update')\n"
+"        )\n"
 msgstr ""
 
 #. type: Title ##
