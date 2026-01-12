@@ -203,7 +203,7 @@ Route::post('/create')
         ->name('site/create')
 ```
 
- -  A group of routes:
+ Or to a group of routes:
 
 ```php
 use Yiisoft\Auth\Middleware\Authentication;
