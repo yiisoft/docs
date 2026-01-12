@@ -192,9 +192,7 @@ return [
 ];
 ```
 
-Then, apply the `Yiisoft\Auth\Middleware\Authentication` middleware to:
-
- - A route:
+Then, apply the `Yiisoft\Auth\Middleware\Authentication` middleware to a route:
  
 ```php
 use Yiisoft\Auth\Middleware\Authentication;
