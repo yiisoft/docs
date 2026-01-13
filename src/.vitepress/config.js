@@ -38,9 +38,9 @@ export default {
                     pattern: 'https://github.com/yiisoft/docs/edit/master/src/:path'
                 },
                 nav: [
-                    {text: 'Guide', link: '/guide'},
-                    {text: 'Cookbook', link: '/cookbook'},
-                    {text: 'Internals', link: '/internals'},
+                    {text: 'Guide', link: '/guide/'},
+                    {text: 'Cookbook', link: '/cookbook/'},
+                    {text: 'Internals', link: '/internals/'},
                     {text: 'Site', link: 'https://www.yiiframework.com'}
                 ],
                 sidebar: {
@@ -232,9 +232,9 @@ export default {
             link: '/es/',
             themeConfig: {
                 nav: [
-                    {text: 'Guía', link: '/es/guide'},
-                    {text: 'Recetario', link: '/es/cookbook'},
-                    {text: 'Internos', link: '/es/internals'},
+                    {text: 'Guía', link: '/es/guide/'},
+                    {text: 'Recetario', link: '/es/cookbook/'},
+                    {text: 'Internos', link: '/es/internals/'},
                     {text: 'Sitio', link: 'https://www.yiiframework.com'}
                 ],
                 sidebar: {
@@ -426,9 +426,9 @@ export default {
             link: '/id/',
             themeConfig: {
                 nav: [
-                    {text: 'Panduan', link: '/id/guide'},
-                    {text: 'Cookbook', link: '/id/cookbook'},
-                    {text: 'Internal', link: '/id/internals'},
+                    {text: 'Panduan', link: '/id/guide/'},
+                    {text: 'Cookbook', link: '/id/cookbook/'},
+                    {text: 'Internal', link: '/id/internals/'},
                     {text: 'Situs', link: 'https://www.yiiframework.com'}
                 ],
                 sidebar: {
@@ -620,9 +620,9 @@ export default {
             link: '/ru/',
             themeConfig: {
                 nav: [
-                    {text: 'Руководство', link: '/ru/guide'},
-                    {text: 'Рецепты', link: '/ru/cookbook'},
-                    {text: 'Внутренности', link: '/ru/internals'},
+                    {text: 'Руководство', link: '/ru/guide/'},
+                    {text: 'Рецепты', link: '/ru/cookbook/'},
+                    {text: 'Внутренности', link: '/ru/internals/'},
                     {text: 'Сайт', link: 'https://www.yiiframework.com'}
                 ],
                 sidebar: {
