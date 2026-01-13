@@ -376,8 +376,8 @@ use Psr\Http\Message\ResponseInterface;
 final class PostController
 {
     public function __construct(
-        private PostRepositoryInterface  $postRepository,
-        private CurrentUser              $user
+        private PostRepositoryInterface $postRepository,
+        private CurrentUser $user
     )
     {
     }
