@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2025-12-24 08:02+0000\n"
-"PO-Revision-Date: 2025-09-05 15:08+0500\n"
+"PO-Revision-Date: 2026-01-12 19:40+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title ##
 #: ../src/en/cookbook/deployment/docker-swarm.md ../src/en/cookbook/preface.md
@@ -31,14 +31,8 @@ msgstr "Вступление"
 
 #. type: Plain text
 #: ../src/en/cookbook/preface.md ../src/en/guide/intro/what-is-yii.md
-#, fuzzy
 msgid "Yii is a high-performance, package-based PHP framework for developing modern applications.  The name Yii (pronounced `Yee` or `[ji:]`) means \"simple and evolutionary\" in Chinese.  You can also think about it as an acronym for **Yes It Is**!"
 msgstr ""
-"#-#-#-#-#  cookbook_preface.md.po  #-#-#-#-#\n"
-"Yii — высокопроизводительный компонентный PHP фреймворк для быстрой разработки современных веб-приложений.\n"
-"Имя Yii (произносится как `Yee` или `[ji:]`) означает \"простой и эволюционирующий\" по-китайски. Также оно может\n"
-"расшифровываться как акроним **Yes It Is**!\n"
-"#-#-#-#-#  guide_intro_what-is-yii.md.po  #-#-#-#-#\n"
 "Yii – это высокопроизводительный пакетный PHP фреймворк, предназначенный для разработки современных веб-приложений. \n"
 "Слово Yii (произносится как `Йии` или `[ji:]`) в китайском языке означает «простой и эволюционирующий». \n"
 "Также Yii может расшифровываться как акроним **Yes It Is**!"
@@ -49,13 +43,13 @@ msgstr ""
 msgid "Yii is a generic Web programming framework.  You can use it for developing all kinds of Web applications using PHP.  Because of its architecture and sophisticated caching support, it's especially suitable for developing large-scale applications such as portals, content management systems, e-commerce, REST APIs, etc."
 msgstr ""
 "#-#-#-#-#  cookbook_preface.md.po  #-#-#-#-#\n"
-"Yii является веб-фреймворком общего назначения. Он может использоваться для разработки любых типов приложений.\n"
-"Благодаря компонентной архитектуре и хорошей поддержке кеширования, фреймворк отлично подходит для разработки\n"
-"масштабных приложений, таких как порталы, форумы, CMS, магазины, REST API и так далее.\n"
+"Yii – это универсальный веб-фреймворк.\n"
+"Вы можете использовать его для разработки всех типов веб-приложений на PHP.\n"
+"Благодаря своей архитектуре и отличной поддержке кэширования он особенно хорошо подходит для создания крупных приложений, таких как порталы, CMS, e-commerce приложений, REST API и т.д.\n"
 "#-#-#-#-#  guide_intro_what-is-yii.md.po  #-#-#-#-#\n"
 "Yii – это универсальный веб-фреймворк.\n"
-"Вы можете использовать его для разработки всех типов веб-приложений.\n"
-"Благодаря его архитектуре и отличной поддержке кеширования, фреймворк особенно подходит для разработки таких крупных проектов, как порталы, CMS, магазины или RESTful-приложения."
+"Вы можете использовать его для разработки всех типов веб-приложений на PHP.\n"
+"Благодаря своей архитектуре и отличной поддержке кэширования он особенно хорошо подходит для создания крупных приложений, таких как порталы, CMS, e-commerce приложения, REST API и т.д."
 
 #. type: Plain text
 #: ../src/en/cookbook/preface.md
