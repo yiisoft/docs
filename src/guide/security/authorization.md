@@ -13,7 +13,7 @@ use Yiisoft\User\CurrentUser;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Psr\Http\Message\ResponseInterface;
 
-final class PostController
+final readonly class PostController
 {
     public function __construct(
         private PostRepositoryInterface $postRepository,
@@ -373,7 +373,7 @@ use Yiisoft\User\CurrentUser;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Psr\Http\Message\ResponseInterface;
 
-final class PostController
+final readonly class PostController
 {
     public function __construct(
         private PostRepositoryInterface $postRepository,
