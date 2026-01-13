@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-10 15:51+0000\n"
+"POT-Creation-Date: 2026-01-13 11:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,20 +85,20 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid ""
-"[The Definitive Guide](guide) — the comprehensive guide covering all aspects "
-"of the framework."
+"[The Definitive Guide](guide/) — the comprehensive guide covering all "
+"aspects of the framework."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid ""
-"[Community Cookbook](cookbook) — a collection of community-contributed tips, "
-"tricks, and solutions for common Yii development tasks."
+"[Community Cookbook](cookbook/) — a collection of community-contributed "
+"tips, tricks, and solutions for common Yii development tasks."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid ""
-"[Internals](internals) — documentation for developers contributing to the "
+"[Internals](internals/) — documentation for developers contributing to the "
 "Yii framework itself, including guidelines, workflows, and best practices."
 msgstr ""

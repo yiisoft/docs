@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-01-10 15:51+0000\n"
+"POT-Creation-Date: 2026-01-13 11:06+0000\n"
 "PO-Revision-Date: 2026-01-10 22:57+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -85,15 +85,21 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid "[The Definitive Guide](guide) — the comprehensive guide covering all aspects of the framework."
+#, fuzzy
+#| msgid "[The Definitive Guide](guide) — the comprehensive guide covering all aspects of the framework."
+msgid "[The Definitive Guide](guide/) — the comprehensive guide covering all aspects of the framework."
 msgstr "[Полное руководство](guide) — подробное руководство, охватывающее все аспекты фреймворка."
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid "[Community Cookbook](cookbook) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
+#, fuzzy
+#| msgid "[Community Cookbook](cookbook) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
+msgid "[Community Cookbook](cookbook/) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
 msgstr "[Рецепты от сообщества](cookbook) — подборка советов, приёмов и решений от сообщества для распространённых задач разработки на Yii."
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid "[Internals](internals) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
+#, fuzzy
+#| msgid "[Internals](internals) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
+msgid "[Internals](internals/) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
 msgstr "[Внутреннее устройство](internals) — документация для тех, кто вносит вклад в развитие Yii: правила, процессы и лучшие практики."

@@ -30,9 +30,9 @@ layout: home
 
 <br><br>
 
-- [The Definitive Guide](guide) — the comprehensive guide covering all
+- [The Definitive Guide](guide/) — the comprehensive guide covering all
   aspects of the framework.
-- [Community Cookbook](cookbook) — a collection of community-contributed
+- [Community Cookbook](cookbook/) — a collection of community-contributed
   tips, tricks, and solutions for common Yii development tasks.
-- [Internals](internals) — documentation for developers contributing to the
+- [Internals](internals/) — documentation for developers contributing to the
   Yii framework itself, including guidelines, workflows, and best practices.
