@@ -25,7 +25,7 @@ a good idea would be moving the handling to a class method. Callback middleware 
 ```php
 use Yiisoft\Router\Route;
 
-Route::get('/')->action([FrontPageAction::class, 'run']),
+Route::get('/')->action(FrontPageAction::class),
 ```
 
 The class itself would be like:
@@ -36,7 +36,7 @@ use \Psr\Http\Message\ResponseInterface;
 
 final readonly class FrontPageAction
 {
-    public function run(ServerRequestInterface $request): ResponseInterface
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         // build response for a front page    
     }

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2026-01-13 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid ""
 "In a web application, the request URL determines what's executed. Matching "
 "is made by a router configured with multiple routes. Each route can be "
@@ -33,14 +33,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid ""
 "There are multiple ways to describe an action. The simplest one is using a "
 "closure:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
@@ -55,7 +55,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid ""
 "It's fine for simple handling since any more complicated one would require "
 "getting dependencies, so a good idea would be moving the handling to a class "
@@ -63,21 +63,21 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Router\\Route;\n"
 "\n"
-"Route::get('/')->action([FrontPageAction::class, 'run']),\n"
+"Route::get('/')->action(FrontPageAction::class),\n"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid "The class itself would be like:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
@@ -85,7 +85,7 @@ msgid ""
 "\n"
 "final readonly class FrontPageAction\n"
 "{\n"
-"    public function run(ServerRequestInterface $request): ResponseInterface\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
 "    {\n"
 "        // build response for a front page    \n"
 "    }\n"
@@ -93,14 +93,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid ""
 "For many cases, it makes sense to group handling for many routes into a "
 "single class:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use Yiisoft\\Router\\Route;\n"
@@ -110,12 +110,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid "The class itself would look like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
@@ -137,18 +137,18 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid "We usually call such a class \"controller.\""
 msgstr ""
 
 #. type: Title ##
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid "Autowiring"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "Both constructors of action-classes and action-methods are automatically getting services from\n"
@@ -156,7 +156,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 #, no-wrap
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
@@ -186,7 +186,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/structure/action.md
+#: ../src/guide/structure/action.md
 msgid ""
 "In the above example `PostRepository` is injected automatically via "
 "constructor. That means it is available in every action. Logger is injected "
