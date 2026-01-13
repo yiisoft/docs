@@ -8,11 +8,11 @@ Yii – это высокопроизводительный пакетный PHP
 
 ## Для каких задач больше всего подходит Yii?
 
-Yii – это универсальный веб-фреймворк.
-Вы можете использовать его для разработки всех типов веб-приложений на PHP.
-Благодаря своей архитектуре и отличной поддержке кэширования он особенно
-хорошо подходит для создания крупных приложений, таких как порталы, CMS,
-e-commerce приложения, REST API и т.д.
+Yii is a generic Web programming framework.  You can use it for developing
+all kinds of Web applications using PHP.  Because of its architecture and
+sophisticated caching support, it's especially suitable for developing
+large-scale applications such as portals, content management systems,
+e-commerce, REST APIs, etc.
 
 ## Сравнение Yii с другими фреймворками
 
