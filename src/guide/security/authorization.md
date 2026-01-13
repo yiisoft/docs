@@ -398,7 +398,7 @@ final class PostController
 
     private function canCurrentUserUpdatePost(Post $post): bool
     {
-        return  $this->user->can('updatePost', ['post' => $post]);
+        return $this->user->can('updatePost', ['post' => $post]);
     }
 }
 ```
