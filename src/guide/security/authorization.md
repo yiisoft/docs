@@ -4,43 +4,47 @@ Authorization is the process of verifying that a user has enough permission to d
 
 ## Checking for permission <span id="checking-for-permission"></span>
 
-You can check if a user has certain permissions by using `\Yiisoft\User\User` service:
+You can check if a user has certain permissions by using `\Yiisoft\User\CurrentUser` service:
 
 ```php
 namespace App\Blog\Post;
 
-use Yiisoft\Router\CurrentRoute;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
+use Psr\Http\Message\ResponseInterface;
 
 final readonly class PostController
 {
-    public function actionEdit(CurrentRoute $route, User $user, PostRepository $postRepository)
+    public function __construct(
+        private PostRepositoryInterface $postRepository,
+        private CurrentUser $user
+    )
     {
-        $postId = $route->getArgument('id');
-        if ($postId === null) {
-            // respond with 404        
-        }
-        
-        $post = $postRepository->findByPK($postId);
+    }
+
+    public function update(#[RouteArgument('id')] int $id): ResponseInterface
+    {
+        $post = $this->postRepository->findByPK($id);
         if ($post === null) {
-            // respond with 404        
+            // respond with 404
         }
 
-        if (!$this->canEditPost($user, $post)) {
-            // respond with 403        
+        if (!$this->canCurrentUserUpdatePost($post)) {
+            // respond with 403
         }
-        
-        // continue with editing a post
+
+        // continue with updating the post
     }
-    
-    private function canEditPost(User $user, Post $post): bool
+
+    private function canCurrentUserUpdatePost(Post $post): bool
     {
-        return $post->getAuthorId() === $user->getId() || $user->can('updatePost');    
+        return $post->getAuthorId() === $this->user->getId() &&
+            $this->user->can('updatePost');
     }
 }
 ```
 
-Behind the scenes, `Yiisoft\Yii\Web\User\User::can()` method calls `\Yiisoft\Access\AccessCheckerInterface::userHasPermission()`
+Behind the scenes, `Yiisoft\User\CurrentUser::can()` method calls `Yiisoft\Access\AccessCheckerInterface::userHasPermission()`
 so you should provide an implementation in dependency container in order for it to work. 
 
 ## Role-based access control (RBAC) <span id="rbac"></span>
@@ -365,33 +369,36 @@ The check is done similarly to how it was done in the first section of this guid
 ```php
 namespace App\Blog\Post;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
+use Psr\Http\Message\ResponseInterface;
 
 final readonly class PostController
 {
-    public function actionEdit(ServerRequestInterface $request, User $user, PostRepository $postRepository)
+    public function __construct(
+        private PostRepositoryInterface $postRepository,
+        private CurrentUser $user
+    )
     {
-        $postId = $request->getAttribute('id');
-        if ($postId === null) {
-            // respond with 404        
-        }
-        
-        $post = $postRepository->findByPK($postId);
+    }
+
+    public function update(#[RouteArgument('id')] int $id): ResponseInterface
+    {
+        $post = $this->postRepository->findByPK($id);
         if ($post === null) {
-            // respond with 404        
+            // respond with 404
         }
 
-        if (!$this->canEditPost($user, $post)) {
-            // respond with 403        
+        if (!$this->canCurrentUserUpdatePost($post)) {
+            // respond with 403
         }
-        
-        // continue with editing a post
+
+        // continue with updating the post
     }
-    
-    private function canEditPost(User $user, Post $post): bool
+
+    private function canCurrentUserUpdatePost(Post $post): bool
     {
-        return $user->can('updatePost', ['post' => $post]);    
+        return $this->user->can('updatePost', ['post' => $post]);
     }
 }
 ```
