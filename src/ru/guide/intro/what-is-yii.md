@@ -1,29 +1,30 @@
 # Что такое Yii?
 
-Yii is a high-performance, package-based PHP framework for developing modern
-applications.  The name Yii (pronounced `Yee` or `[ji:]`) means "simple and
-evolutionary" in Chinese.  You can also think about it as an acronym for
-**Yes It Is**!
+Yii – это высокопроизводительный пакетный PHP фреймворк, предназначенный для
+разработки современных веб-приложений.
+Слово Yii (произносится как `Йии` или `[ji:]`) в китайском языке означает
+«простой и эволюционирующий».
+Также Yii может расшифровываться как акроним **Yes It Is**!
 
 ## Для каких задач больше всего подходит Yii?
 
-Yii is a generic Web programming framework.  You can use it for developing
-all kinds of Web applications using PHP.  Because of its architecture and
-sophisticated caching support, it's especially suitable for developing
-large-scale applications such as portals, content management systems,
-e-commerce, REST APIs, etc.
+Yii – это универсальный веб-фреймворк.
+Вы можете использовать его для разработки всех типов веб-приложений на PHP.
+Благодаря своей архитектуре и отличной поддержке кэширования он особенно
+хорошо подходит для создания крупных приложений, таких как порталы, CMS,
+e-commerce приложений, REST API и т.д.
 
 ## Сравнение Yii с другими фреймворками
 
 Если вы уже знакомы с другими фреймворками, вам наверняка будет интересно
 сравнить их с Yii:
 
-- Yii takes the [philosophy of being practical and
-  helpful](../../internals/001-yii-values.md) achieving:
-  - Производительность как в разработке, так и во время выполнения.
-  - Удобные изменяемые настройки по-умолчанию.
-  - Практикоориентированность.
-  - Простота.
+- Yii следует [философии практичности и
+  полезности](../../internals/001-yii-values.md) и предлагает:
+  - Высокую производительность во время разработки и работы приложения.
+  - Удобные и гибкие настройки по умолчанию.
+  - Ориентацию на практическое применение.
+  - Простоту.
   - Ясность.
   - Согласованность.
   
