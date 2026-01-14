@@ -87,10 +87,10 @@ Yii3 application templates are using [environment variables](https://en.wikipedi
 to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)
 but might be alien to users of Yii 1.1 and Yii 2.0.
 
-### Handlers
+### Actions
 
-Unlike Yii 2.0, Yii3 doesn't use controllers. Instead, it uses [handlers](../structure/handler.md) which
-are similar to controllers but different.
+Unlike Yii 2.0, Yii3 doesn't have to have controllers. Instead, it uses [actions](../structure/action.md) which
+are any callables. You can organize these into controllers similar to Yii 2, but it's not required.
 
 ### Application structure
 
