@@ -313,53 +313,61 @@ APP_ENV=dev ./yii rbac:init
 You can use [migrations](../databases/db-migrations.md)
 to initialize and change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `./yii migrate:create init_rbac` then implement creating a hierarchy:
+Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:
 
 ```php
 <?php
-use yii\db\Migration;
+namespace App\Migration;
 
+use Yiisoft\Db\Migration\MigrationBuilder;
+use Yiisoft\Db\Migration\RevertibleMigrationInterface;
 use Yiisoft\Rbac\ManagerInterface;
 use Yiisoft\Rbac\Permission;
 use Yiisoft\Rbac\Role;
 
-class m170124_084304_init_rbac extends Migration
+/**
+ * Class M260112125812InitRbac
+ */
+final class M260112125812InitRbac implements RevertibleMigrationInterface
 {
-    public function up()
+    private $createPostPermission = 'createPost';
+    private $updatePostPermission = 'updatePost';
+    private $roleAuthor = 'author';
+    private $roleAdmin = 'admin';
+
+    public function __construct(private ManagerInterface $manager) {}
+
+    public function up(MigrationBuilder $b): void
     {
-        $auth = /* obtain auth */;
-
-        $auth->removeAll();                
-                
-        $createPost = (new Permission('createPost'))->withDescription('Create a post');        
-        $auth->add($createPost);
-
-        $updatePost = (new Permission('updatePost'))->withDescription('Update post');
-        $auth->add($updatePost);
+        $this->manager->addPermission((new Permission($this->createPostPermission))->withDescription('Create a post'));
+        $this->manager->addPermission((new Permission($this->updatePostPermission))->withDescription('Update post'));
 
         // add the "author" role and give this role the "createPost" permission
-        $author = new Role('author');
-        $auth->add($author);
-        $auth->addChild($author, $createPost);
+        $this->manager->addRole(new Role($this->roleAuthor));
+        $this->manager->addChild($this->roleAuthor, $this->createPostPermission);
 
         // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
-        $admin = new Role('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $updatePost);
-        $auth->addChild($admin, $author);
+        $this->manager->addRole(new Role($this->roleAdmin));
+        $this->manager->addChild($this->roleAdmin, $this->updatePostPermission);
+        $this->manager->addChild($this->roleAdmin, $this->roleAuthor);
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $auth->assign($author, 2);
-        $auth->assign($admin, 1);
+        $this->manager->assign($this->roleAuthor, 2);
+        $this->manager->assign($this->roleAdmin, 1);
     }
-    
-    public function down()
-    {
-        $auth = /* obtain auth */;
 
-        $auth->removeAll();
+    public function down(MigrationBuilder $b): void
+    {
+        $this->manager->revokeAll(2);
+        $this->manager->revokeAll(1);
+
+        $this->manager->removeRole($this->roleAdmin);
+        $this->manager->removeRole($this->roleAuthor);
+
+        $this->manager->removePermission($this->createPostPermission);
+        $this->manager->removePermission($this->updatePostPermission);
     }
 }
 ```
@@ -367,7 +375,7 @@ class m170124_084304_init_rbac extends Migration
 > If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
   create either UI or console command to manage assignments.
 
-You could apply migration by using `./yii migrate`.
+You could apply migration by using `APP_ENV=dev ./yii migrate:up`.
 
 ## Assigning roles to users
 
