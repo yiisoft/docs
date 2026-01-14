@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-13 16:53+0000\n"
+"POT-Creation-Date: 2026-01-14 10:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,21 +174,63 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
+msgid "Yii RBAC requires storage to be provided."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid "One of the following storages could be installed:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/security/authorization.md
+msgid "[PHP storage](https://github.com/yiisoft/rbac-php) - PHP file storage;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/security/authorization.md
 msgid ""
-"RBAC is available via `yiisoft/rbac` package, so you need to require it:"
+"[DB storage](https://github.com/yiisoft/rbac-db) - database storage based on "
+"[Yii DB](https://github.com/yiisoft/db);"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/security/authorization.md
+msgid ""
+"[Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database "
+"storage based on [Cycle DBAL](https://github.com/cycle/database)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid ""
+"You can also provide your own storage using the [yiisoft/rbac](https://"
+"github.com/yiisoft/rbac) package."
+msgstr ""
+
+#. type: Title ####
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id=\"configuring-rbac-php\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid ""
+"Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:"
 msgstr ""
 
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "composer require yiisoft/rbac\n"
+msgid "composer require yiisoft/rbac-php\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
 "Before we set off to define authorization data and perform access checking, "
-"you need to configure the `\\Yiisoft\\Access\\AccessCheckerInterface` in "
+"you need to configure the `Yiisoft\\Access\\AccessCheckerInterface` in "
 "dependency container:"
 msgstr ""
 
@@ -196,25 +238,125 @@ msgstr ""
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid ""
-"use \\Psr\\Container\\ContainerInterface;\n"
-"use Yiisoft\\Rbac\\Manager\\PhpManager;\n"
-"use Yiisoft\\Rbac\\RuleFactory\\ClassNameRuleFactory;\n"
+"use Yiisoft\\Rbac\\ItemsStorageInterface;\n"
+"use Yiisoft\\Rbac\\AssignmentsStorageInterface;\n"
+"use Yiisoft\\Rbac\\ManagerInterface;\n"
+"use Yiisoft\\Rbac\\Php\\ItemsStorage;\n"
+"use Yiisoft\\Rbac\\Php\\AssignmentsStorage;\n"
+"use Yiisoft\\Access\\AccessCheckerInterface;\n"
 "\n"
 "return [\n"
-"    \\Yiisoft\\Access\\AccessCheckerInterface::class => static function (ContainerInterface $container) {\n"
-"        $aliases = $container->get(\\Yiisoft\\Aliases\\Aliases::class);\n"
-"        return new PhpManager(new ClassNameRuleFactory(), $aliases->get('@rbac'));\n"
-"    }\n"
+"    // ...\n"
+"    ItemsStorageInterface::class => [\n"
+"        'class' => ItemsStorage::class,\n"
+"        '__construct()' => [\n"
+"            'filePath' => $params['rbacItemsStorageFilePath']\n"
+"        ]\n"
+"    ],\n"
+"    AssignmentsStorageInterface::class => [\n"
+"        'class' => AssignmentsStorage::class,\n"
+"        '__construct()' => [\n"
+"            'filePath' => $params['rbacAssignmentsStorageFilePath']\n"
+"        ]\n"
+"    ],\n"
+"    AccessCheckerInterface::class => ManagerInterface::class,\n"
 "];\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid ""
-"`\\Yiisoft\\Rbac\\Manager\\PhpManager` uses PHP script files to store "
-"authorization data.  The files are under `@rbac` alias.  Make sure the "
-"directory and all the files in it are writable by the Web server process if "
-"you want to change permission hierarchy online."
+"`Yiisoft\\Rbac\\Manager` uses PHP script files to store authorization data.  "
+"Make sure the directory and all the files in it are writable by the Web "
+"server process if you want to change permission hierarchy online."
+msgstr ""
+
+#. type: Title ####
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id=\"configuring-rbac-db\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid "Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "composer require yiisoft/rbac-db\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid ""
+"Install one of the following drivers:\n"
+"  - [SQLite](https://github.com/yiisoft/db-sqlite) (minimal required version is 3.8.3)\n"
+"  - [MySQL](https://github.com/yiisoft/db-mysql)\n"
+"  - [PostgreSQL](https://github.com/yiisoft/db-pgsql)\n"
+"  - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)\n"
+"  - [Oracle](https://github.com/yiisoft/db-oracle)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid ""
+"[Configure connection](https://yiisoft.github.io/docs/guide/start/"
+"databases.html#configuring-connection)."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Rbac\\ItemsStorageInterface;\n"
+"use Yiisoft\\Rbac\\AssignmentsStorageInterface;\n"
+"use Yiisoft\\Rbac\\ManagerInterface;\n"
+"use Yiisoft\\Rbac\\Db\\ItemsStorage;\n"
+"use Yiisoft\\Rbac\\Db\\AssignmentsStorage;\n"
+"use Yiisoft\\Access\\AccessCheckerInterface;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    ItemsStorageInterface::class => ItemsStorage::class,\n"
+"    AssignmentsStorageInterface::class => AssignmentsStorage::class,\n"
+"    AccessCheckerInterface::class => ManagerInterface::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid ""
+"Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration "
+"paths to params.php:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    // ...\n"
+"    'yiisoft/db-migration' => [\n"
+"        'sourcePaths' => [\n"
+"             __DIR__ . '/../../vendor/yiisoft/rbac-db/migrations/items',\n"
+"             __DIR__ . '/../../vendor/yiisoft/rbac-db/migrations/assignments',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/security/authorization.md
+msgid "Apply migrations:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "APP_ENV=dev ./yii migrate:up\n"
 msgstr ""
 
 #. type: Title ###

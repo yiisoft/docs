@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 07:50+0000\n"
+"POT-Creation-Date: 2026-01-14 10:30+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -245,15 +245,15 @@ msgstr ""
 msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
 msgstr ""
 
-#. type: Title ###
-#: ../src/guide/intro/upgrade-from-v2.md
+#. type: Title #
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
 #, no-wrap
-msgid "Handlers"
+msgid "Actions"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid "Unlike Yii 2.0, Yii3 doesn't use controllers. Instead, it uses [handlers](../structure/handler.md) which are similar to controllers but different."
+msgid "Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses [actions](../structure/action.md), which are any callables. You can organize these into controllers similar to Yii 2, but it's not required."
 msgstr ""
 
 #. type: Plain text
