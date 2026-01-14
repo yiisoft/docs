@@ -89,7 +89,7 @@ but might be alien to users of Yii 1.1 and Yii 2.0.
 
 ### Actions
 
-Unlike Yii 2.0, Yii3 doesn't have to have controllers. Instead, it uses [actions](../structure/action.md) which
+Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses [actions](../structure/action.md), which
 are any callables. You can organize these into controllers similar to Yii 2, but it's not required.
 
 ### Application structure
