@@ -220,9 +220,10 @@ APIs offered by `\Yiisoft\Rbac\ManagerInterface`:
 
 ```php
 <?php
-namespace App\Command;
+namespace App\Console;
 
-use Symfony\Component\Console\Attribute\AsCommand;use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Yiisoft\Rbac\ManagerInterface;
@@ -234,51 +235,72 @@ use Yiisoft\Yii\Console\ExitCode;
     name: 'rbac:init',
     description: 'Builds RBAC hierarchy',
 )]
-final readonly class RbacCommand extends Command
-{   
-    public function __construct(
-        private ManagerInterface $manager
-    ) {
+final class RbacCommand extends Command
+{
+    private $createPostPermission = 'createPost';
+    private $updatePostPermission = 'updatePost';
+    private $roleAuthor = 'author';
+    private $roleAdmin = 'admin';
+
+    public function __construct(private ManagerInterface $manager)
+    {
+        parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $auth = $this->manager;
+        $this->removeAll();
 
-        $auth->removeAll();                
-        
-        $createPost = (new Permission('createPost'))->withDescription('Create a post');        
-        $auth->add($createPost);
-
-        $updatePost = (new Permission('updatePost'))->withDescription('Update post');
-        $auth->add($updatePost);
+        $this->manager->addPermission((new Permission($this->createPostPermission))->withDescription('Create a post'));
+        $this->manager->addPermission((new Permission($this->updatePostPermission))->withDescription('Update post'));
 
         // add the "author" role and give this role the "createPost" permission
-        $author = new Role('author');
-        $auth->add($author);
-        $auth->addChild($author, $createPost);
+        $this->manager->addRole(new Role($this->roleAuthor));
+        $this->manager->addChild($this->roleAuthor, $this->createPostPermission);
 
         // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
-        $admin = new Role('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $updatePost);
-        $auth->addChild($admin, $author);
+        $this->manager->addRole(new Role($this->roleAdmin));
+        $this->manager->addChild($this->roleAdmin, $this->updatePostPermission);
+        $this->manager->addChild($this->roleAdmin, $this->roleAuthor);
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $auth->assign($author, 2);
-        $auth->assign($admin, 1);
-        
+        $this->manager->assign($this->roleAuthor, 2);
+        $this->manager->assign($this->roleAdmin, 1);
+
         return ExitCode::OK;
     }
+
+    private function removeAll(): void
+    {
+        $this->manager->revokeAll(2);
+        $this->manager->revokeAll(1);
+
+        $this->manager->removeRole($this->roleAdmin);
+        $this->manager->removeRole($this->roleAuthor);
+
+        $this->manager->removePermission($this->createPostPermission);
+        $this->manager->removePermission($this->updatePostPermission);
+    }
 }
+```
+
+Add the command to `config/console/commands.php`:
+
+```php
+use App\Console;
+
+return [ 
+    // ...
+    'rbac:init' => Console\RbacCommand::class
+];
 ```
  
 You can execute the command above from the console the following way:
 
 ```
-./yii rbac:init
+APP_ENV=dev ./yii rbac:init
 ```
 
 > If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
