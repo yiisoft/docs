@@ -81,32 +81,113 @@ While a role can contain a permission, it isn't `true` vice versa.
 
 ### Configuring RBAC <span id="configuring-rbac"></span>
 
-RBAC is available via `yiisoft/rbac` package, so you need to require it:
+Yii RBAC requires storage to be provided.
+
+One of the following storages could be installed:
+
+- [PHP storage](https://github.com/yiisoft/rbac-php) - PHP file storage;
+- [DB storage](https://github.com/yiisoft/rbac-db) - database storage based on [Yii DB](https://github.com/yiisoft/db);
+- [Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database storage based on
+  [Cycle DBAL](https://github.com/cycle/database).
+  
+You can also provide your own storage using the [yiisoft/rbac](https://github.com/yiisoft/rbac) package.
+  
+#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id="configuring-rbac-php"></span>
+
+Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:
 
 ```
-composer require yiisoft/rbac
+composer require yiisoft/rbac-php
 ```
 
 Before we set off to define authorization data and perform access checking, you need to configure the
-`\Yiisoft\Access\AccessCheckerInterface` in dependency container:
+`Yiisoft\Access\AccessCheckerInterface` in dependency container:
 
 ```php
-use \Psr\Container\ContainerInterface;
-use Yiisoft\Rbac\Manager\PhpManager;
-use Yiisoft\Rbac\RuleFactory\ClassNameRuleFactory;
+use Yiisoft\Rbac\ItemsStorageInterface;
+use Yiisoft\Rbac\AssignmentsStorageInterface;
+use Yiisoft\Rbac\ManagerInterface;
+use Yiisoft\Rbac\Php\ItemsStorage;
+use Yiisoft\Rbac\Php\AssignmentsStorage;
+use Yiisoft\Access\AccessCheckerInterface;
 
 return [
-    \Yiisoft\Access\AccessCheckerInterface::class => static function (ContainerInterface $container) {
-        $aliases = $container->get(\Yiisoft\Aliases\Aliases::class);
-        return new PhpManager(new ClassNameRuleFactory(), $aliases->get('@rbac'));
-    }
+    // ...
+    ItemsStorageInterface::class => [
+        'class' => ItemsStorage::class,
+        '__construct()' => [
+            'filePath' => $params['rbacItemsStorageFilePath']
+        ]
+    ],
+    AssignmentsStorageInterface::class => [
+        'class' => AssignmentsStorage::class,
+        '__construct()' => [
+            'filePath' => $params['rbacAssignmentsStorageFilePath']
+        ]
+    ],
+    AccessCheckerInterface::class => ManagerInterface::class,
 ];
 ```
 
-`\Yiisoft\Rbac\Manager\PhpManager` uses PHP script files to store authorization data.
-The files are under `@rbac` alias.
+`Yiisoft\Rbac\Manager` uses PHP script files to store authorization data.
 Make sure the directory and all the files in it are writable by the Web server process if you want to change permission
 hierarchy online.
+
+#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id="configuring-rbac-db"></span>
+
+Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:
+
+```
+composer require yiisoft/rbac-db
+```
+
+Install one of the following drivers:
+  - [SQLite](https://github.com/yiisoft/db-sqlite) (minimal required version is 3.8.3)
+  - [MySQL](https://github.com/yiisoft/db-mysql)
+  - [PostgreSQL](https://github.com/yiisoft/db-pgsql)
+  - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)
+  - [Oracle](https://github.com/yiisoft/db-oracle)
+  
+[Configure connection](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection).
+
+Before we set off to define authorization data and perform access checking, you need to configure the
+`Yiisoft\Access\AccessCheckerInterface` in dependency container:
+
+```php
+use Yiisoft\Rbac\ItemsStorageInterface;
+use Yiisoft\Rbac\AssignmentsStorageInterface;
+use Yiisoft\Rbac\ManagerInterface;
+use Yiisoft\Rbac\Db\ItemsStorage;
+use Yiisoft\Rbac\Db\AssignmentsStorage;
+use Yiisoft\Access\AccessCheckerInterface;
+
+return [
+    // ...
+    ItemsStorageInterface::class => ItemsStorage::class,
+    AssignmentsStorageInterface::class => AssignmentsStorage::class,
+    AccessCheckerInterface::class => ManagerInterface::class,
+];
+```
+
+Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration paths to params.php:
+
+```php
+return [
+    // ...
+    'yiisoft/db-migration' => [
+        'sourcePaths' => [
+             __DIR__ . '/../../vendor/yiisoft/rbac-db/migrations/items',
+             __DIR__ . '/../../vendor/yiisoft/rbac-db/migrations/assignments',
+        ],
+    ],
+];
+```
+
+Apply migrations:
+
+```
+APP_ENV=dev ./yii migrate:up
+```
 
 ### Building authorization data <span id="generating-rbac-data"></span>
 
