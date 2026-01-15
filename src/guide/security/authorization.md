@@ -220,7 +220,7 @@ APIs offered by `\Yiisoft\Rbac\ManagerInterface`:
 
 ```php
 <?php
-namespace App\Console;
+namespace App\Command;
 
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -237,10 +237,10 @@ use Yiisoft\Yii\Console\ExitCode;
 )]
 final class RbacCommand extends Command
 {
-    private $createPostPermission = 'createPost';
-    private $updatePostPermission = 'updatePost';
-    private $roleAuthor = 'author';
-    private $roleAdmin = 'admin';
+    private const CREATE_POST_PERMISSION = 'createPost';
+    private const UPDATE_POST_PERMISSION = 'updatePost';
+    private const ROLE_AUTHOR = 'author';
+    private const ROLE_ADMIN = 'admin';
 
     public function __construct(private ManagerInterface $manager)
     {
@@ -251,23 +251,23 @@ final class RbacCommand extends Command
     {
         $this->removeAll();
 
-        $this->manager->addPermission((new Permission($this->createPostPermission))->withDescription('Create a post'));
-        $this->manager->addPermission((new Permission($this->updatePostPermission))->withDescription('Update post'));
+        $this->manager->addPermission((new Permission(RbacCommand::CREATE_POST_PERMISSION))->withDescription('Create a post'));
+        $this->manager->addPermission((new Permission(RbacCommand::UPDATE_POST_PERMISSION))->withDescription('Update post'));
 
         // add the "author" role and give this role the "createPost" permission
-        $this->manager->addRole(new Role($this->roleAuthor));
-        $this->manager->addChild($this->roleAuthor, $this->createPostPermission);
+        $this->manager->addRole(new Role(RbacCommand::ROLE_AUTHOR));
+        $this->manager->addChild(RbacCommand::ROLE_AUTHOR, RbacCommand::CREATE_POST_PERMISSION);
 
         // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
-        $this->manager->addRole(new Role($this->roleAdmin));
-        $this->manager->addChild($this->roleAdmin, $this->updatePostPermission);
-        $this->manager->addChild($this->roleAdmin, $this->roleAuthor);
+        $this->manager->addRole(new Role(RbacCommand::ROLE_ADMIN));
+        $this->manager->addChild(RbacCommand::ROLE_ADMIN, RbacCommand::UPDATE_POST_PERMISSION);
+        $this->manager->addChild(RbacCommand::ROLE_ADMIN, RbacCommand::ROLE_AUTHOR);
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $this->manager->assign($this->roleAuthor, 2);
-        $this->manager->assign($this->roleAdmin, 1);
+        $this->manager->assign(RbacCommand::ROLE_AUTHOR, 2);
+        $this->manager->assign(RbacCommand::ROLE_ADMIN, 1);
 
         return ExitCode::OK;
     }
@@ -277,11 +277,11 @@ final class RbacCommand extends Command
         $this->manager->revokeAll(2);
         $this->manager->revokeAll(1);
 
-        $this->manager->removeRole($this->roleAdmin);
-        $this->manager->removeRole($this->roleAuthor);
+        $this->manager->removeRole(RbacCommand::ROLE_ADMIN);
+        $this->manager->removeRole(RbacCommand::ROLE_AUTHOR);
 
-        $this->manager->removePermission($this->createPostPermission);
-        $this->manager->removePermission($this->updatePostPermission);
+        $this->manager->removePermission(RbacCommand::CREATE_POST_PERMISSION);
+        $this->manager->removePermission(RbacCommand::UPDATE_POST_PERMISSION);
     }
 }
 ```
@@ -289,11 +289,9 @@ final class RbacCommand extends Command
 Add the command to `config/console/commands.php`:
 
 ```php
-use App\Console;
-
 return [ 
     // ...
-    'rbac:init' => Console\RbacCommand::class
+    'rbac:init' => App\Command\RbacCommand::class
 ];
 ```
  
@@ -325,37 +323,36 @@ use Yiisoft\Rbac\ManagerInterface;
 use Yiisoft\Rbac\Permission;
 use Yiisoft\Rbac\Role;
 
-/**
- * Class M260112125812InitRbac
- */
 final class M260112125812InitRbac implements RevertibleMigrationInterface
 {
-    private $createPostPermission = 'createPost';
-    private $updatePostPermission = 'updatePost';
-    private $roleAuthor = 'author';
-    private $roleAdmin = 'admin';
+    private const CREATE_POST_PERMISSION = 'createPost';
+    private const UPDATE_POST_PERMISSION = 'updatePost';
+    private const ROLE_AUTHOR = 'author';
+    private const ROLE_ADMIN = 'admin';
 
-    public function __construct(private ManagerInterface $manager) {}
+    public function __construct(private ManagerInterface $manager)
+    {
+    }
 
     public function up(MigrationBuilder $b): void
     {
-        $this->manager->addPermission((new Permission($this->createPostPermission))->withDescription('Create a post'));
-        $this->manager->addPermission((new Permission($this->updatePostPermission))->withDescription('Update post'));
+        $this->manager->addPermission((new Permission(M260112125812InitRbac::CREATE_POST_PERMISSION))->withDescription('Create a post'));
+        $this->manager->addPermission((new Permission(M260112125812InitRbac::UPDATE_POST_PERMISSION))->withDescription('Update post'));
 
         // add the "author" role and give this role the "createPost" permission
-        $this->manager->addRole(new Role($this->roleAuthor));
-        $this->manager->addChild($this->roleAuthor, $this->createPostPermission);
+        $this->manager->addRole(new Role(M260112125812InitRbac::ROLE_AUTHOR));
+        $this->manager->addChild(M260112125812InitRbac::ROLE_AUTHOR, M260112125812InitRbac::CREATE_POST_PERMISSION);
 
         // add the "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
-        $this->manager->addRole(new Role($this->roleAdmin));
-        $this->manager->addChild($this->roleAdmin, $this->updatePostPermission);
-        $this->manager->addChild($this->roleAdmin, $this->roleAuthor);
+        $this->manager->addRole(new Role(M260112125812InitRbac::ROLE_ADMIN));
+        $this->manager->addChild(M260112125812InitRbac::ROLE_ADMIN, M260112125812InitRbac::UPDATE_POST_PERMISSION);
+        $this->manager->addChild(M260112125812InitRbac::ROLE_ADMIN, M260112125812InitRbac::ROLE_AUTHOR);
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $this->manager->assign($this->roleAuthor, 2);
-        $this->manager->assign($this->roleAdmin, 1);
+        $this->manager->assign(M260112125812InitRbac::ROLE_AUTHOR, 2);
+        $this->manager->assign(M260112125812InitRbac::ROLE_ADMIN, 1);
     }
 
     public function down(MigrationBuilder $b): void
@@ -363,11 +360,11 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
         $this->manager->revokeAll(2);
         $this->manager->revokeAll(1);
 
-        $this->manager->removeRole($this->roleAdmin);
-        $this->manager->removeRole($this->roleAuthor);
+        $this->manager->removeRole(M260112125812InitRbac::ROLE_ADMIN);
+        $this->manager->removeRole(M260112125812InitRbac::ROLE_AUTHOR);
 
-        $this->manager->removePermission($this->createPostPermission);
-        $this->manager->removePermission($this->updatePostPermission);
+        $this->manager->removePermission(M260112125812InitRbac::CREATE_POST_PERMISSION);
+        $this->manager->removePermission(M260112125812InitRbac::UPDATE_POST_PERMISSION);
     }
 }
 ```
