@@ -257,7 +257,7 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-Additionally, to `ContainerInterface` you can get any service by requesting it as an argument:
+In addition to `ContainerInterface`, you can get any service by requesting it as an argument:
 
 ```php
 MyServiceInterface::class => static function(ConnectionInterface $db) {
