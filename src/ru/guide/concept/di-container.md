@@ -135,6 +135,9 @@ wrappers, are the same for any class using it.  So it makes sense to:
 Здесь мы в основном поясним использование DI-контейнера, предоставляемого
 Yii.
 
+> [!NOTE]
+> The container contains only shared instances. If you need a factory, use the dedicated [yiisoft/factory](https://github.com/yiisoft/factory) package.
+
 Yii реализует DI-контейнер через пакет
 [yiisoft/di](https://github.com/yiisoft/di) и
 [yiisoft/injector](https://github.com/yiisoft/injector).

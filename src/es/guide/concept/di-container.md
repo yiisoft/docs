@@ -129,6 +129,9 @@ Fowler's article](https://martinfowler.com/articles/injection.html) has well
 explained why DI container is useful. Here we will mainly explain the usage
 of the DI container provided by Yii.
 
+> [!NOTE]
+> The container contains only shared instances. If you need a factory, use the dedicated [yiisoft/factory](https://github.com/yiisoft/factory) package.
+
 Yii provides the DI container feature through the
 [yiisoft/di](https://github.com/yiisoft/di) package and
 [yiisoft/injector](https://github.com/yiisoft/injector) package.
