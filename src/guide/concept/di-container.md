@@ -69,7 +69,7 @@ We've avoided unnecessary inheritance and used `CacheInterface` in the `CacheWid
 You can replace cache implementation without changing `CachedWidget` so it's becoming more stable. The less
 edits are made to the code, the less chance of breaking it.
 
-The `CacheInterface` here is a dependency: a contract our object needs to function. In another word, out object
+The `CacheInterface` here is a dependency: a contract our object needs to function. In other words, our object
 depends on the contract.
 
 The process of putting an instance of a contract into an object (`CachedWidget`) is called dependency injection.
@@ -256,16 +256,19 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 
 As an argument, a container is passed to a closure. It can be used to resolve dependencies.
 
-It's possible to use a static method call or an instance of an object as well:
+It's possible to use a static method call:
 
 ```php
 MyServiceInterface::class => [MyFactory::class, 'create'],
-
-MyServiceInterface::class => new MyService(),
-];
 ```
 
-### Injecting dependencies properly
+Or an instance of an object:
+
+```php
+MyServiceInterface::class => new MyService(),
+```
+
+### Injecting dependencies properly <span id="injecting-dependencies"></span>
 
 Directly referencing a container in a class is a bad idea since the code becomes non-generic,
 coupled to the container interface and, what's worse, dependencies are becoming hidden. 
