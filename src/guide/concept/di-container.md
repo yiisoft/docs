@@ -257,7 +257,13 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-As an argument, a container is passed to a closure. It can be used to resolve dependencies.
+Additionally, to `ContainerInterface` you can get any service by requesting it as an argument:
+
+```php
+MyServiceInterface::class => static function(ConnectionInterface $db) {
+    return new MyService($db);
+},
+```
 
 It's possible to use a static method call:
 
