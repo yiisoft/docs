@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 07:58+0000\n"
+"POT-Creation-Date: 2026-01-16 10:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,16 +115,23 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
 msgid ""
-"We've avoided unnecessary inheritance and used interface to reduce coupling. "
-"You can replace cache implementation without changing `CachedWidget` so it's "
-"becoming more stable."
+"We've avoided unnecessary inheritance and used `CacheInterface` in the "
+"`CacheWidget` to reduce coupling.  You can replace cache implementation "
+"without changing `CachedWidget` so it's becoming more stable. The less edits "
+"are made to the code, the less chance of breaking it."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
 msgid ""
-"The `CacheInterface` here is a dependency: an object another object depends "
-"on.  The process of putting an instance of dependency into an object "
+"The `CacheInterface` here is a dependency: a contract our object needs to "
+"function. In other words, our object depends on the contract."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"The process of putting an instance of a contract into an object "
 "(`CachedWidget`) is called dependency injection.  There are many ways to "
 "perform it:"
 msgstr ""
@@ -235,12 +242,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/di-container.md
-msgid "Define how to instantiate such an API wrapper."
+msgid "Define how to instantiate such common dependencies."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/di-container.md
-msgid "Instantiate it when required and only once per request."
+msgid "Instantiate them when required and only once per request."
 msgstr ""
 
 #. type: Plain text
@@ -252,10 +259,7 @@ msgstr ""
 #: ../src/guide/concept/di-container.md
 msgid ""
 "A dependency injection (DI) container is an object that knows how to "
-"instantiate and configure objects and all their dependent objects. [Martin "
-"Fowler's article](https://martinfowler.com/articles/injection.html) has well "
-"explained why DI container is useful. Here we will mainly explain the usage "
-"of the DI container provided by Yii."
+"instantiate and configure objects and all objects they depend on."
 msgstr ""
 
 #. type: Plain text
@@ -272,6 +276,24 @@ msgid ""
 "Yii provides the DI container feature through the [yiisoft/di](https://"
 "github.com/yiisoft/di) package and [yiisoft/injector](https://github.com/"
 "yiisoft/injector) package."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> The container contains only shared instances. If you need a factory, use the dedicated\n"
+"> [yiisoft/factory](https://github.com/yiisoft/factory) package.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well\n"
+"> explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.\n"
 msgstr ""
 
 #. type: Title ###
@@ -338,7 +360,83 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
-msgid "There are extra methods of declaring dependencies:"
+msgid "You can provide arguments with names as well:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => ['amount' => 42],\n"
+"        'setDiscount()' => ['discount' => 10],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"That's basically it. You define a map of interfaces to classes and define "
+"how to configure them. When an interface is requested in constructor or "
+"elsewhere, container creates an instance of a class and configures it as per "
+"the configuration:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class MyAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private readonly MyServiceInterface $myService\n"
+"    ) {\n"
+"    }\n"
+"    \n"
+"    public function __invoke() \n"
+"    {\n"
+"        $this->myService->doSomething();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "There are extra methods of declaring dependency configuration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"For simplest cases where there are no custom values needed and all the "
+"constructor dependencies could be obtained from a container, you can use a "
+"class name as a value."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"interface EngineInterface\n"
+"{\n"
+"    \n"
+"}\n"
+"\n"
+"final class EngineMarkOne implements EngineInterface\n"
+"{\n"
+"    public function __construct(CacheInterface $cache) {\n"
+"    }   \n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"In the above example, if we already have cache defined in the container, "
+"nothing besides the class name is needed:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -348,32 +446,97 @@ msgid ""
 "return [\n"
 "    // declare a class for an interface, resolve dependencies automatically\n"
 "    EngineInterface::class => EngineMarkOne::class,\n"
-"\n"
-"    // array definition (same as above)\n"
-"    'full_definition' => [\n"
-"        'class' => EngineMarkOne::class,\n"
-"        '__construct()' => [42], \n"
-"        '$propertyName' => 'value',\n"
-"        'setX()' => [42],\n"
-"    ],\n"
-"\n"
-"    // closure\n"
-"    'closure' => static function(ContainerInterface $container) {\n"
-"        return new MyClass($container->get('db'));\n"
-"    },\n"
-"\n"
-"    // static call\n"
-"    'static_call' => [MyFactory::class, 'create'],\n"
-"\n"
-"    // instance of an object\n"
-"    'object' => new MyClass(),\n"
 "];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"If you have a dependency that has public properties, you can configure it as "
+"well."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class NameProvider\n"
+"{\n"
+"    public string $name;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Here's how to do it for the example above:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"NameProvider::class => [\n"
+"    'class' => NameProvider::class, \n"
+"    '$name' => 'Alex',\n"
+"],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"In this example, you may notice `NameProvider` specified twice. The key is "
+"what you may request as dependency and the value is how to create it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"If the configuration is tricky and requires some logic, a closure can be "
+"used:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"MyServiceInterface::class => static function(ContainerInterface $container) {\n"
+"    return new MyService($container->get('db'));\n"
+"},\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid ""
+"As an argument, a container is passed to a closure. It can be used to "
+"resolve dependencies."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "It's possible to use a static method call:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "MyServiceInterface::class => [MyFactory::class, 'create'],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Or an instance of an object:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "MyServiceInterface::class => new MyService(),\n"
 msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
+msgid "Injecting dependencies properly <span id=\"injecting-dependencies\"></span>"
 msgstr ""
 
 #. type: Plain text
