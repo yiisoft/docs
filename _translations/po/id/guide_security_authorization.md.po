@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-15 23:03+0000\n"
+"POT-Creation-Date: 2026-01-16 21:14+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -623,9 +623,10 @@ msgid ""
 "        $user->save(false);\n"
 "\n"
 "        // the following three lines were added:\n"
-"        $auth = \\Yii::$app->authManager;\n"
-"        $authorRole = $auth->getRole('author');\n"
-"        $auth->assign($authorRole, $user->getId());\n"
+"        $authorRole = $this->manager->getRole('author');\n"
+"        if ($authorRole !== null) {\n"
+"            $this->manager->assign($authorRole->getName(), $user->getId());\n"
+"        }\n"
 "\n"
 "        return $user;\n"
 "    }\n"
@@ -636,7 +637,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid "For applications that require complex access control with dynamically updated authorization data (such as an admin panel), you many need to develop special user interfaces using APIs offered by `authManager`."
+msgid "For applications that require complex access control with dynamically updated authorization data (such as an admin panel), you many need to develop special user interfaces using APIs offered by `Yiisoft\\Rbac\\Manager`."
 msgstr ""
 
 #. type: Title ###
