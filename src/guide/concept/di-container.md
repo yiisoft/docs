@@ -257,7 +257,8 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-In addition to `ContainerInterface`, you can get any service by requesting it as an argument:
+Additionally, to `ContainerInterface`, you can request any registered service directly as a closure parameter.
+The injector will automatically resolve and inject these:
 
 ```php
 MyServiceInterface::class => static function(ConnectionInterface $db) {
