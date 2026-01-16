@@ -66,12 +66,15 @@ final readonly class CachedWidget
 }
 ```
 
-We've avoided unnecessary inheritance and used interface to reduce
-coupling. You can replace cache implementation without changing
-`CachedWidget` so it's becoming more stable.
+We've avoided unnecessary inheritance and used `CacheInterface` in the
+`CacheWidget` to reduce coupling.  You can replace cache implementation
+without changing `CachedWidget` so it's becoming more stable. The less edits
+are made to the code, the less chance of breaking it.
 
-The `CacheInterface` here is a dependency: an object another object depends
-on.  The process of putting an instance of dependency into an object
+The `CacheInterface` here is a dependency: a contract our object needs to
+function. In other words, our object depends on the contract.
+
+The process of putting an instance of a contract into an object
 (`CachedWidget`) is called dependency injection.  There are many ways to
 perform it:
 
@@ -118,20 +121,25 @@ mistakes.
 Additionally, lots of dependencies, such as certain third-party API
 wrappers, are the same for any class using it.  So it makes sense to:
 
-- Define how to instantiate such an API wrapper.
-- Instantiate it when required and only once per request.
+- Define how to instantiate such common dependencies.
+- Instantiate them when required and only once per request.
 
 That's what dependency containers are for.
 
 A dependency injection (DI) container is an object that knows how to
-instantiate and configure objects and all their dependent objects. [Martin
-Fowler's article](https://martinfowler.com/articles/injection.html) has well
-explained why DI container is useful. Here we will mainly explain the usage
-of the DI container provided by Yii.
+instantiate and configure objects and all objects they depend on.
 
 Yii provides the DI container feature through the
 [yiisoft/di](https://github.com/yiisoft/di) package and
 [yiisoft/injector](https://github.com/yiisoft/injector) package.
+
+> [!NOTE]
+> The container contains only shared instances. If you need a factory, use the dedicated
+> [yiisoft/factory](https://github.com/yiisoft/factory) package.
+
+> [!TIP]
+> [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
+> explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
 ### Configuring container <span id="configuring-container"></span>
 
@@ -172,35 +180,122 @@ $myService = new MyService(42);
 $myService->setDiscount(10);
 ```
 
-There are extra methods of declaring dependencies:
+You can provide arguments with names as well:
+
+```php
+return [
+    MyServiceInterface::class => [
+        'class' => MyService::class,
+        '__construct()' => ['amount' => 42],
+        'setDiscount()' => ['discount' => 10],
+    ],
+];
+```
+
+That's basically it. You define a map of interfaces to classes and define
+how to configure them. When an interface is requested in constructor or
+elsewhere, container creates an instance of a class and configures it as per
+the configuration:
+
+```php
+final class MyAction
+{
+    public function __construct(
+        private readonly MyServiceInterface $myService
+    ) {
+    }
+    
+    public function __invoke() 
+    {
+        $this->myService->doSomething();
+    }
+}
+```
+
+There are extra methods of declaring dependency configuration.
+
+For simplest cases where there are no custom values needed and all the
+constructor dependencies could be obtained from a container, you can use a
+class name as a value.
+
+```php
+interface EngineInterface
+{
+    
+}
+
+final class EngineMarkOne implements EngineInterface
+{
+    public function __construct(CacheInterface $cache) {
+    }   
+}
+```
+
+In the above example, if we already have cache defined in the container,
+nothing besides the class name is needed:
 
 ```php
 return [
     // declare a class for an interface, resolve dependencies automatically
     EngineInterface::class => EngineMarkOne::class,
-
-    // array definition (same as above)
-    'full_definition' => [
-        'class' => EngineMarkOne::class,
-        '__construct()' => [42], 
-        '$propertyName' => 'value',
-        'setX()' => [42],
-    ],
-
-    // closure
-    'closure' => static function(ContainerInterface $container) {
-        return new MyClass($container->get('db'));
-    },
-
-    // static call
-    'static_call' => [MyFactory::class, 'create'],
-
-    // instance of an object
-    'object' => new MyClass(),
 ];
 ```
 
-### Injecting dependencies <span id="injecting-dependencies"></span>
+If you have a dependency that has public properties, you can configure it as
+well.
+
+
+```php
+final class NameProvider
+{
+    public string $name;
+}
+```
+
+Here's how to do it for the example above:
+
+```php
+NameProvider::class => [
+    'class' => NameProvider::class, 
+    '$name' => 'Alex',
+],
+```
+
+In this example, you may notice `NameProvider` specified twice. The key is
+what you may request as dependency and the value is how to create it.
+
+If the configuration is tricky and requires some logic, a closure can be
+used:
+
+```php
+MyServiceInterface::class => static function(ContainerInterface $container) {
+    return new MyService($container->get('db'));
+},
+```
+
+Additionally, to `ContainerInterface`, you can request any registered
+service directly as a closure parameter.  The injector will automatically
+resolve and inject these:
+
+```php
+MyServiceInterface::class => static function(ConnectionInterface $db) {
+    return new MyService($db);
+},
+```
+
+It's possible to use a static method call:
+
+```php
+MyServiceInterface::class => [MyFactory::class, 'create'],
+```
+
+Or an instance of an object:
+
+```php
+MyServiceInterface::class => new MyService(),
+```
+
+### Injecting dependencies properly <span id="injecting-dependencies"></span>
 
 Directly referencing a container in a class is a bad idea since the code
 becomes non-generic, coupled to the container interface and, what's worse,
