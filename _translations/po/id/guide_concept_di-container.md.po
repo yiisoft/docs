@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 10:36+0000\n"
+"POT-Creation-Date: 2026-01-16 11:13+0000\n"
 "PO-Revision-Date: 2025-09-04 07:37+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -219,15 +219,6 @@ msgstr ""
 #: ../src/guide/concept/di-container.md
 msgid "A dependency injection (DI) container is an object that knows how to instantiate and configure objects and all objects they depend on."
 msgstr ""
-
-#. type: Plain text
-#: ../src/guide/concept/di-container.md
-#, fuzzy, no-wrap
-#| msgid "To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache) package:"
-msgid ""
-"> [!NOTE]\n"
-"> The container contains only shared instances. If you need a factory, use the dedicated [yiisoft/factory](https://github.com/yiisoft/factory) package.\n"
-msgstr "Untuk menggunakan cache, pasang paket [yiisoft/cache](https://github.com/yiisoft/cache):"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -447,7 +438,16 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
-msgid "As an argument, a container is passed to a closure. It can be used to resolve dependencies."
+msgid "Additionally, to `ContainerInterface`, you can request any registered service directly as a closure parameter.  The injector will automatically resolve and inject these:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"MyServiceInterface::class => static function(ConnectionInterface $db) {\n"
+"    return new MyService($db);\n"
+"},\n"
 msgstr ""
 
 #. type: Plain text

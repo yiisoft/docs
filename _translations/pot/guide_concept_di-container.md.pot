@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 10:36+0000\n"
+"POT-Creation-Date: 2026-01-16 11:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,14 +264,6 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid ""
-"> [!NOTE]\n"
-"> The container contains only shared instances. If you need a factory, use the dedicated [yiisoft/factory](https://github.com/yiisoft/factory) package.\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/concept/di-container.md
 msgid ""
 "Yii provides the DI container feature through the [yiisoft/di](https://"
 "github.com/yiisoft/di) package and [yiisoft/injector](https://github.com/"
@@ -507,8 +499,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
 msgid ""
-"As an argument, a container is passed to a closure. It can be used to "
-"resolve dependencies."
+"Additionally, to `ContainerInterface`, you can request any registered "
+"service directly as a closure parameter.  The injector will automatically "
+"resolve and inject these:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"MyServiceInterface::class => static function(ConnectionInterface $db) {\n"
+"    return new MyService($db);\n"
+"},\n"
 msgstr ""
 
 #. type: Plain text

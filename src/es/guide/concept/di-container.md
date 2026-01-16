@@ -129,9 +129,6 @@ That's what dependency containers are for.
 A dependency injection (DI) container is an object that knows how to
 instantiate and configure objects and all objects they depend on.
 
-> [!NOTE]
-> The container contains only shared instances. If you need a factory, use the dedicated [yiisoft/factory](https://github.com/yiisoft/factory) package.
-
 Yii provides the DI container feature through the
 [yiisoft/di](https://github.com/yiisoft/di) package and
 [yiisoft/injector](https://github.com/yiisoft/injector) package.
@@ -276,8 +273,15 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-As an argument, a container is passed to a closure. It can be used to
-resolve dependencies.
+Additionally, to `ContainerInterface`, you can request any registered
+service directly as a closure parameter.  The injector will automatically
+resolve and inject these:
+
+```php
+MyServiceInterface::class => static function(ConnectionInterface $db) {
+    return new MyService($db);
+},
+```
 
 It's possible to use a static method call:
 
