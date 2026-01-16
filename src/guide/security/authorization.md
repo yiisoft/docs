@@ -409,7 +409,7 @@ public function signup()
 ```
 
 For applications that require complex access control with dynamically updated authorization data
-(such as an admin panel), you many need to develop special user interfaces using APIs offered by `authManager`.
+(such as an admin panel), you many need to develop special user interfaces using APIs offered by `Yiisoft\Rbac\Manager`.
 
 
 ### Using rules <span id="using-rules"></span>
