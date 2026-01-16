@@ -396,9 +396,10 @@ public function signup()
         $user->save(false);
 
         // the following three lines were added:
-        $auth = \Yii::$app->authManager;
-        $authorRole = $auth->getRole('author');
-        $auth->assign($authorRole, $user->getId());
+        $authorRole = $this->manager->getRole('author');
+        if ($authorRole !== null) {
+            $this->manager->assign($authorRole->getName(), $user->getId());
+        }
 
         return $user;
     }
