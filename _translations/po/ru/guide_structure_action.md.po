@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md

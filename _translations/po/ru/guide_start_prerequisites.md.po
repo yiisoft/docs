@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/guide/intro/upgrade-from-v2.md ../src/guide/start/prerequisites.md
 #, no-wrap
 msgid "Docker"
-msgstr ""
+msgstr "Docker"
 
 #. type: Title #
 #: ../src/guide/start/prerequisites.md
