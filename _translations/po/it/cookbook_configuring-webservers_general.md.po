@@ -1,0 +1,70 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 20:05+0000\n"
+"PO-Revision-Date: 2025-12-24 20:05+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../src/cookbook/configuring-webservers/general.md
+#, no-wrap
+msgid "Configuring web servers: General"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "On a production server, if you don't use Docker, configure your web server to serve only the application's public files.  Point the document root of your web server to the `app/public` folder."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/general.md
+#, no-wrap
+msgid ""
+"> [!IMPORTANT]\n"
+"> If you're running your Yii application behind a reverse proxy, you might need to configure\n"
+"> [Trusted proxies and headers](../../guide/security/trusted-request.md).\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-webservers/general.md
+#, no-wrap
+msgid "Specific server configurations"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-webservers/general.md
+#, fuzzy
+#| msgid "[Logging](runtime/logging.md)"
+msgid "[Nginx](nginx.md)"
+msgstr "[Logging](runtime/logging.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "[Apache](apache.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "[Lighttpd](lighttpd.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "[Nginx Unit](nginx-unit.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "[IIS](iis.md)"
+msgstr ""

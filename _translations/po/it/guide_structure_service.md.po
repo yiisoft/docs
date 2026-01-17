@@ -1,0 +1,199 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-11-02 16:25+0000\n"
+"PO-Revision-Date: 2025-11-02 16:25+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Bullet: '- '
+#: ../../guide/en/start/databases.md ../../guide/en/structure/domain.md
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Repository"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/domain.md ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Entity"
+msgstr ""
+
+#. type: Title #
+#: ../../guide/en/structure/service.md
+#, fuzzy, no-wrap
+#| msgid "[Service components](structure/service.md)"
+msgid "Service components"
+msgstr "[Componenti di servizio](structure/service.md)"
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Application may get complicated, so it makes sense to extract focused parts of business logic or infrastructure into service components. They're typically injected into other components or action handlers.  It's usually done via autowiring:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid ""
+"public function actionIndex(CurrentRoute $route, MyService $myService): ResponseInterface\n"
+"{\n"
+"    $id = $route->getArgument('id');\n"
+"    \n"
+"    // ...\n"
+"    $extraData = $myService->getExtraData($id);\n"
+"    \n"
+"    // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Yii3 doesn't technically imply any limitations on how you build services. In general, there's no need to extend from a base class or implement a certain interface:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid ""
+"final readonly class MyService\n"
+"{\n"
+"    public function __construct(\n"
+"        private ExtraDataStorage $extraDataStorage\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function getExtraData(string $id): array\n"
+"    {\n"
+"        return $this->extraDataStorage->get($id);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Services either perform a task or return data. They're created once, put into a DI container and then could be used multiple times. Because of that, it's a good idea to keep your services stateless that's both service itself and any of its dependencies shouldn't hold state. You can ensure it by using `readonly` PHP keyword at class level."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Service dependencies and configuration"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Services should always define all their dependencies on other services via `__construct()`. It both allows you to use a service right away after it's created and serves as an indicator of a service doing too much if there are too many dependencies."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/service.md
+msgid "After the service is created, it shouldn't be re-configured in runtime."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/service.md
+msgid "DI container instance usually **shouldn't** be injected as a dependency. Prefer concrete interfaces."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/service.md
+msgid "In case of complicated or \"heavy\" initialization, try to postpone it until the service method is called."
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "The same is valid for configuration values. They should be provided as a constructor argument. Related values could be grouped together into value objects. For example, database connection usually requires DSN string, username and password.  These three could be combined into Dsn class:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid ""
+"final readonly class Dsn\n"
+"{\n"
+"    public function __construct(\n"
+"        public string $dsn,\n"
+"        public string $username,\n"
+"        public string $password\n"
+"    )\n"
+"    {\n"
+"        if (!$this->isValidDsn($dsn)) {\n"
+"            throw new \\InvalidArgumentException('DSN provided is not valid.');\n"
+"        }\n"
+"    }\n"
+"    \n"
+"    private function isValidDsn(string $dsn): bool\n"
+"    {\n"
+"        // check DSN validity    \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Service methods"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Service method usually does something. It could be a simple thing repeated exactly, but usually it depends on the context. For example:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid ""
+"final readonly class PostPersister\n"
+"{\n"
+"    public function __construct(\n"
+"        private Storage $db\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"    \n"
+"    public function persist(Post $post)\n"
+"    {\n"
+"        $this->db->insertOrUpdate('post', $post);    \n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "There's a service that is saving posts into permanent storage such as a database. An object allowing communication with a concrete storage is always the same, so it's injected using constructor while the post saved could vary, so it's passed as a method argument."
+msgstr ""
+
+#. type: Title ##
+#: ../../guide/en/structure/service.md
+#, no-wrap
+msgid "Is everything a service?"
+msgstr ""
+
+#. type: Plain text
+#: ../../guide/en/structure/service.md
+msgid "Often it makes sense to choose another class type to place your code into. Check:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/service.md
+msgid "Widget"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../../guide/en/structure/service.md
+#, fuzzy
+#| msgid "[Middleware](structure/middleware.md)"
+msgid "[Middleware](middleware.md)"
+msgstr "[Middleware](structure/middleware.md)"
