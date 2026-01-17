@@ -19,7 +19,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Generating code with Gii](start/gii.md) TODO
 - [Looking ahead](start/looking-ahead.md)
 
-## Application structure
+## Структура приложения
 
 - [Application structure overview](structure/overview.md)
 - [Entry scripts](structure/entry-script.md)

@@ -1,63 +1,62 @@
-# Upgrading from Version 2.0
+# Обновление с версии 2.0
 
-> If you haven't used Yii 2.0, you can skip this section and get directly to "[getting started](../start/prerequisites.md)"
-> section.
+> Если вы ещё не работали с Yii 2.0, этот раздел можно пропустить и сразу перейти к разделу "[Начало работы](../start/prerequisites.md)".
 
-While sharing some common ideas and values, Yii3 is conceptually different
-from Yii 2.0. There is no easy upgrade path, so first [check maintenance
-policy and end-of-life dates for Yii
-2.0](https://www.yiiframework.com/release-cycle)  and consider starting new
-projects on Yii3 while keeping existing ones on Yii 2.0.
+Несмотря на общие идеи и ценности, Yii3 концептуально отличается от Yii
+2.0. Простого пути обновления нет, поэтому сначала [ознакомьтесь с политикой
+поддержки и сроками окончания жизненного цикла Yii
+2.0](https://www.yiiframework.com/release-cycle) и подумайте о том, чтобы
+начинать новые проекты на Yii3, продолжая поддерживать существующие на Yii
+2.0.
 
-## PHP requirements
+## Требования к PHP
 
-Yii3 requires PHP 8.2 or above. As a result, there are language features
-used that weren't used in Yii 2.0:
+Yii3 требует PHP версии 8.2 или выше. В связи с этим в фреймворке
+используются языковые возможности, отсутствовавшие в Yii 2.0:
 
-- [Type
-  declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
-- [Return type
-  declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
-- [Class constant
-  visibility](https://www.php.net/manual/en/language.oop5.constants.php)
-- [Named
-  arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
-- [Anonymous
-  classes](https://www.php.net/manual/en/language.oop5.anonymous.php)
-- [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
-- [Generators](https://www.php.net/manual/en/language.generators.php)
-- [Variadic
-  functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
-- [Readonly
-  properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)
-- [Readonly
-  classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)
-- [Constructor property
-  promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
-- [Attributes](https://www.php.net/manual/en/language.attributes.php)
+- [Объявления
+  типов](https://www.php.net/manual/ru/functions.arguments.php#functions.arguments.type-declaration)
+- [Объявления типов возвращаемых
+  значений](https://www.php.net/manual/ru/functions.returning-values.php#functions.returning-values.type-declaration)
+- [Видимость констант
+  класса](https://www.php.net/manual/ru/language.oop5.constants.php)
+- [Именованные
+  аргументы](https://www.php.net/manual/ru/functions.arguments.php#functions.named-arguments)
+- [Анонимные
+  классы](https://www.php.net/manual/ru/language.oop5.anonymous.php)
+- [::class](https://www.php.net/manual/ru/language.oop5.basic.php#language.oop5.basic.class.class)
+- [Генераторы](https://www.php.net/manual/ru/language.generators.php)
+- [Функции с переменным числом
+  аргументов](https://www.php.net/manual/ru/functions.arguments.php#functions.variable-arg-list)
+- [Readonly-свойства](https://www.php.net/manual/ru/language.oop5.properties.php#language.oop5.properties.readonly-properties)
+- [Readonly-классы](https://www.php.net/manual/ru/language.oop5.basic.php#language.oop5.basic.class.readonly)
+- [Продвижение свойств из
+  конструктора](https://www.php.net/manual/ru/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
+- [Атрибуты](https://www.php.net/manual/ru/language.attributes.php)
 
-## Preliminary refactoring
+## Предварительный рефакторинг
 
-It's a good idea to refactor your Yii 2.0 project before porting it to
-Yii3. That would both make porting easier and benefit the project in
-question while it's not moved to Yii3 yet.
+Перед переносом проекта с Yii 2.0 на Yii3 рекомендуется выполнить
+рефакторинг. Это упростит процесс переноса и принесёт пользу проекту на
+этапе, когда он ещё не переведён на Yii3.
 
-### Use DI instead of the service locator
+### Используйте DI вместо сервис-локатора
 
-Since Yii3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using
-service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
+Поскольку Yii3 требует явного внедрения зависимостей, рекомендуется заранее подготовиться и перейти от использования 
+сервис-локатора (`Yii::$app->`) к использованию [DI-контейнера](https://www.yiiframework.com/doc/guide/2.0/ru/concept-di-container).
 
-If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller
-actions and widgets and passing dependencies manually from a controller to what needs them.
+Если использование DI-контейнера по какой-либо причине затруднено, рассмотрите возможность переноса всех вызовов `Yii::$app->` в контроллеры и 
+виджеты, передавая зависимости вручную от контроллера к объектам, которые их используют.
 
-See [Dependency injection and container](../concept/di-container.md) for an
-explanation of the idea.
+Подробное объяснение концепции представлено в [Внедрение зависимостей и
+контейнер внедрения зависимостей](../concept/di-container.md).
 
-### Introduce repositories for getting data
+### Используйте репозитории для получения данных
 
-Since Active Record isn't the only way to work with a database in Yii3,
-consider introducing repositories that would hide details of getting data
-and gather them in a single place. You can later redo it:
+Поскольку Active Record не является единственным способом работы с базой
+данных в Yii3, рекомендуется внедрить репозитории, которые будут скрывать
+детали получения данных и объединять их в одном месте. Впоследствии их можно
+будет переработать:
 
 ```php
 final readonly class PostRepository
@@ -75,48 +74,50 @@ final readonly class PostRepository
 }
 ```
 
-### Separate domain layer from infrastructure
+### Отделите доменный слой от инфраструктуры
 
-In case you have a rich complicated domain, it's a good idea to separate it
-from infrastructure provided by a framework that's all the business logic
-has to go to framework-independent classes.
+Если у вас сложная предметная область, рекомендуется отделить её от
+инфраструктуры, предоставляемой фреймворком, чтобы вся бизнес-логика
+находилась во фреймворк-независимых классах.
 
-### Move more into components
+### Перенесите больше в компоненты
 
-Yii3 services are conceptually similar to Yii 2.0 components, so it's a good
-idea to move reusable parts of your application into components.
+Сервисы Yii3 концептуально похожи на компоненты Yii 2.0, поэтому
+рекомендуется перемещать повторно используемые части приложения в
+компоненты.
 
-## Things to learn
+## Что стоит изучить
 
 ### Docker
 
-Default application templates are using
-[Docker](https://www.docker.com/get-started/) to run application.  It's a
-good idea to learn how to use it and use it for your own projects since it
-provides a lot of benefits:
+Шаблоны приложений по умолчанию используют
+[Docker](https://www.docker.com/get-started/) для запуска. Рекомендуется
+изучить как с ним работать, и применять его в своих проектах, поскольку он
+даёт множество преимуществ:
 
-1. Exactly the same environment as in production.
-2. No need to install anything except Docker itself.
-3. Environment is per application, not per server.
+1. Точно такое же окружение, как и в продакшене.
+2. Не нужно устанавливать ничего, кроме самого Docker.
+3. Окружение — на уровне приложения, а не сервера.
 
-### Environment variables
+### Переменные окружения
 
-Yii3 application templates are using [environment
-variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure
-parts of the application. The concept is [very handy for Dockerized
-applications](https://12factor.net/)  but might be alien to users of Yii 1.1
-and Yii 2.0.
+Шаблоны приложений Yii3 используют [переменные
+окружения](https://en.wikipedia.org/wiki/Environment_variable) для настройки
+частей приложения. Эта концепция [очень удобна для приложений, работающих в
+Docker](https://12factor.net/), но может быть непривычна пользователям Yii
+1.1 и Yii 2.0.
 
-### Actions
+### Действия
 
-Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses
-[actions](../structure/action.md), which are any callables. You can organize
-these into controllers similar to Yii 2, but it's not required.
+В отличие от Yii 2.0, Yii3 не требует контроллеров. Вместо них используются
+[Действия](../structure/action.md), которые могут быть любыми вызываемыми
+объектами. Их можно организовать в контроллеры, как в Yii 2, но это не
+обязательно.
 
-### Application structure
+### Структура приложения
 
-Suggested Yii3 application structure is different from Yii 2.0.  It's
-described in [application structure](../structure/overview.md).
+Предлагаемая структура приложения Yii3 отличается от Yii 2.0. Она описана в
+разделе [структура приложения](../structure/overview.md).
 
-Despite that, Yii3 is flexible, so it's still possible to use a structure
-similar to Yii 2.0 with Yii3.
+Несмотря на это, Yii3 остаётся гибким, поэтому всё ещё возможно использовать
+структуру, аналогичную Yii 2.0.
