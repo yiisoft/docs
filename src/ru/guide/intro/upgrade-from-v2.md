@@ -104,8 +104,8 @@ final readonly class PostRepository
 Шаблоны приложений Yii3 используют [переменные
 окружения](https://en.wikipedia.org/wiki/Environment_variable) для настройки
 частей приложения. Эта концепция [очень удобна для приложений, работающих в
-Docker](https://12factor.net/), но может быть непривычна пользователям Yii
-1.1 и Yii 2.0.
+Docker](https://12factor.net/ru/), но может быть непривычна пользователям
+Yii 1.1 и Yii 2.0.
 
 ### Действия
 
