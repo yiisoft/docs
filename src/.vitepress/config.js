@@ -611,6 +611,222 @@ export default {
                 }
             }
         },
+        it: {
+            title: 'Documentazione Yii3',
+            label: 'Italiano',
+            lang: 'it',
+            themeConfig: {
+                nav: [
+                    {text: 'Guida', link: '/it/guide/'},
+                    {text: 'Ricettario', link: '/it/cookbook/'},
+                    {text: 'Interni', link: '/it/internals/'},
+                    {text: 'Sito', link: 'https://www.yiiframework.com'}
+                ],
+                sidebar: {
+                    '/it/guide/': [
+                        {
+                            text: 'Introduzione',
+                            items: [
+                                {text: 'Informazioni su Yii', link: '/it/guide/intro/what-is-yii'},
+                                {text: 'Aggiornamento dalla versione 2', link: '/it/guide/intro/upgrade-from-v2'}
+                            ]
+                        },
+                        {
+                            text: 'Per iniziare',
+                            items: [
+                                {text: 'Requisiti', link: '/it/guide/start/prerequisites'},
+                                {text: 'Creazione di un progetto', link: '/it/guide/start/creating-project'},
+                                {text: 'Dire ciao', link: '/it/guide/start/hello'},
+                                {text: 'Lavorare con i moduli', link: '/it/guide/start/forms'},
+                                {text: 'Lavorare con i database', link: '/it/guide/start/databases'},
+                                {text: 'Generazione di codice con Gii', link: '/it/guide/start/gii'},
+                                {text: 'Prossimi passi', link: '/it/guide/start/looking-ahead'},
+                                {text: 'Flusso applicativo', link: '/it/guide/start/workflow'}
+                            ]
+                        },
+                        {
+                            text: 'Concetti chiave',
+                            items: [
+                                {text: 'Alias', link: '/it/guide/concept/aliases'},
+                                {text: 'Autoloading', link: '/it/guide/concept/autoloading'},
+                                {text: 'Configurazione', link: '/it/guide/concept/configuration'},
+                                {text: 'Contenitore DI', link: '/it/guide/concept/di-container'},
+                                {text: 'Eventi', link: '/it/guide/concept/events'},
+                                {text: 'Immutabilità', link: '/it/guide/concept/immutability'}
+                            ]
+                        },
+                        {
+                            text: 'Struttura applicativa',
+                            items: [
+                                {text: 'Panoramica', link: '/it/guide/structure/overview'},
+                                {text: 'Script di ingresso', link: '/it/guide/structure/entry-script'},
+                                {text: 'Applicazione', link: '/it/guide/structure/application'},
+                                {text: 'Gestori di richieste', link: '/it/guide/structure/handler'},
+                                {text: 'Azioni', link: '/it/guide/structure/action'},
+                                {text: 'Middleware', link: '/it/guide/structure/middleware'},
+                                {text: 'Dominio', link: '/it/guide/structure/domain'},
+                                {text: 'Servizio', link: '/it/guide/structure/service'},
+                                {text: 'Pacchetto', link: '/it/guide/structure/package'}
+                            ]
+                        },
+                        {
+                            text: 'Gestione delle richieste',
+                            items: [
+                                {text: 'Routing', link: '/it/guide/runtime/routing'},
+                                {text: 'Richieste', link: '/it/guide/runtime/request'},
+                                {text: 'Risposte', link: '/it/guide/runtime/response'},
+                                {text: 'Sessioni', link: '/it/guide/runtime/sessions'},
+                                {text: 'Cookie', link: '/it/guide/runtime/cookies'},
+                                {text: 'Gestione degli errori', link: '/it/guide/runtime/handling-errors'},
+                                {text: 'Logging', link: '/it/guide/runtime/logging'}
+                            ]
+                        },
+                        {
+                            text: 'Sicurezza',
+                            items: [
+                                {text: 'Panoramica', link: '/it/guide/security/overview'},
+                                {text: 'Autenticazione', link: '/it/guide/security/authentication'},
+                                {text: 'Autorizzazioni', link: '/it/guide/security/authorization'},
+                                {text: 'Lavorare con le password', link: '/it/guide/security/passwords'},
+                                {text: 'Crittografia', link: '/it/guide/security/cryptography'},
+                                {text: 'Richieste attendibili', link: '/it/guide/security/trusted-request'},
+                                {text: 'Migliori prassi', link: '/it/guide/security/best-practices'}
+                            ]
+                        },
+                        {
+                            text: 'Caching',
+                            items: [
+                                {text: 'Panoramica', link: '/it/guide/caching/overview'},
+                                {text: 'Caching dei dati', link: '/it/guide/caching/data'}
+                            ]
+                        },
+                        {
+                            text: 'Lavorare con i database',
+                            items: [
+                                {text: 'Migrazioni del database', link: '/it/guide/databases/db-migrations'}
+                            ]
+                        },
+                        {
+                            text: 'Viste',
+                            items: [
+                                {text: 'Viste', link: '/it/guide/views/view'},
+                                {text: 'Risorse', link: '/it/guide/views/asset'},
+                                {text: 'Script, stili e meta tag', link: '/it/guide/views/script-style-meta'},
+                                {text: 'Motori di template', link: '/it/guide/views/template-engines'},
+                                {text: 'Iniezione di parametri nella vista', link: '/it/guide/views/view-injections'},
+                                {text: 'Widget', link: '/it/guide/views/widget'}
+                            ]
+                        },
+                        {
+                            text: 'Tutorial',
+                            items: [
+                                {text: 'Applicazioni console', link: '/it/guide/tutorial/console-applications'},
+                                {text: 'Mailing', link: '/it/guide/tutorial/mailing'},
+                                {text: 'Motori di template', link: '/it/guide/tutorial/performance-tuning'},
+                                {text: 'Usare Yii con event loop', link: '/it/guide/tutorial/using-with-event-loop'},
+                                {
+                                    text: 'Usare Yii con RoadRunner',
+                                    link: '/it/guide/tutorial/using-yii-with-roadrunner'
+                                },
+                                {text: 'Usare Yii con Swoole', link: '/it/guide/tutorial/using-yii-with-swoole'}
+                            ]
+                        },
+                        {
+                            text: 'Glossario',
+                            link: '/it/guide/glossary'
+                        }
+                    ],
+                    '/it/cookbook/': [
+                        {
+                            text: 'Ricettario',
+                            items: [
+                                {text: 'Prefazione', link: '/it/cookbook/preface'},
+                                {text: 'Effettuare richieste HTTP', link: '/it/cookbook/making-http-requests'},
+                                {
+                                    text: 'Disattivazione della protezione CSRF',
+                                    link: '/it/cookbook/disabling-csrf-protection'
+                                },
+                                {text: 'Integrazione Sentry', link: '/it/cookbook/sentry-integration'}
+                            ]
+                        },
+                        {
+                            text: 'Configurazione dei server Web',
+                            collapsed: false,
+                            items: [
+                                {text: 'Generale', link: '/it/cookbook/configuring-webservers/general'},
+                                {text: 'Apache', link: '/it/cookbook/configuring-webservers/apache'},
+                                {text: 'Nginx', link: '/it/cookbook/configuring-webservers/nginx'},
+                                {text: 'Nginx Unit', link: '/it/cookbook/configuring-webservers/nginx-unit'},
+                                {text: 'IIS', link: '/it/cookbook/configuring-webservers/iis'},
+                                {text: 'Lighttpd', link: '/it/cookbook/configuring-webservers/lighttpd'}
+                            ]
+                        },
+                        {
+                            text: 'Organizzare il codice',
+                            items: [
+                                {
+                                    text: 'Sezioni verticali',
+                                    link: '/it/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'
+                                }
+                            ]
+                        },
+                        {
+                            text: 'Distribuzione',
+                            items: [
+                                {text: 'Docker Swarm', link: '/it/cookbook/deployment/docker-swarm'}
+                            ]
+                        }
+                    ],
+                    '/it/internals/': [
+                        {
+                            text: 'Internals',
+                            items: [
+                                {text: 'Pacchetti', link: '/it/internals/000-packages'},
+                                {text: 'I valori di Yii', link: '/it/internals/001-yii-values'},
+                                {text: 'Flusso di lavoro dei problemi', link: '/it/internals/002-issue-workflow'},
+                                {text: 'Roadmap', link: '/it/internals/003-roadmap'},
+                                {text: 'Namespace', link: '/it/internals/004-namespaces'},
+                                {text: 'Strumenti di sviluppo', link: '/it/internals/005-development-tool'},
+                                {text: 'Messaggi di commit Git', link: '/it/internals/006-git-commit-messages'},
+                                {text: 'Eccezioni', link: '/it/internals/007-exceptions'},
+                                {text: 'Interfacce', link: '/it/internals/008-interfaces'},
+                                {text: 'Decisioni di progettazione', link: '/it/internals/009-design-decisions'},
+                                {text: 'Stile del codice', link: '/it/internals/010-code-style'},
+                                {text: 'Correzione degli errori', link: '/it/internals/011-error-correction'},
+                                {text: 'Test', link: '/it/internals/012-tests'},
+                                {text: 'Revisione del codice', link: '/it/internals/013-code-review'},
+                                {text: 'Documentazione', link: '/it/internals/014-docs'},
+                                {text: 'PHPStorm', link: '/it/internals/015-phpstorm'},
+                                {
+                                    text: 'Flusso di lavoro della sicurezza',
+                                    link: '/it/internals/016-security-workflow'
+                                },
+                                {text: 'Tag', link: '/it/internals/017-tags'},
+                                {text: 'Widget', link: '/it/internals/018-widgets'},
+                                {text: 'Stile del codice nelle viste', link: '/it/internals/019-view-code-style'},
+                                {text: 'Rilascio dei pacchetti', link: '/it/internals/020-package-release'},
+                                {
+                                    text: 'Registro delle modifiche e aggiornamenti',
+                                    link: '/it/internals/021-changelog-upgrade'
+                                },
+                                {text: 'Gruppi di configurazione', link: '/it/internals/022-config-groups'}
+                            ]
+                        }
+                    ]
+                },
+                footer: {
+                    message: 'Rilasciato sotto licenza <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">BSD-3-Clause</a>.',
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
+                },
+                docFooter: {
+                    prev: 'Pagina precedente',
+                    next: 'Pagina successiva',
+                },
+                outline: {
+                    label: 'In questa pagina'
+                },
+            }
+        },
         ru: {
             label: 'Русский',
             lang: 'ru',

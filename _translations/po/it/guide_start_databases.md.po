@@ -1,0 +1,1024 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-12 12:47+0000\n"
+"PO-Revision-Date: 2025-12-27 06:16+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "make composer require yiisoft/db-migration\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"'yiisoft/db-migration' => [\n"
+"    'newMigrationNamespace' => 'App\\\\Migration',\n"
+"    'sourceNamespaces' => ['App\\\\Migration'],\n"
+"],\n"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "Working with databases"
+msgstr "Lavorare con i database"
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Yii doesn't dictate using a particular database or storage for your application.  There are many ways you can work with relational databases:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+#, fuzzy
+#| msgid "[Json](https://github.com/yiisoft/json)"
+msgid "[Yii DB](https://github.com/yiisoft/db)"
+msgstr "[Json](https://github.com/yiisoft/json)"
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+#, fuzzy
+#| msgid "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
+msgid "[Yii Active Record](https://github.com/yiisoft/active-record)"
+msgstr "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+msgid "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+msgid "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+msgid "[PDO](https://www.php.net/manual/en/book.pdo.php)"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "For non-relational ones, there are usually official libraries available:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+#, fuzzy
+#| msgid "[Strings](https://github.com/yiisoft/strings)"
+msgid "[ElasticSearch](https://github.com/elastic/elasticsearch-php)"
+msgstr "[Stringhe](https://github.com/yiisoft/strings)"
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md
+msgid "[Redis](https://redis.io/docs/latest/develop/clients/php/)"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/guide/start/databases.md ../src/internals/000-packages.md
+msgid "..."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "In this guide, we will focus on working with relational databases using Yii DB. We'll use PostgreSQL to implement a simple CRUD (create read update delete)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Installing PostgreSQL"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "You need to install PostgreSQL. If you prefer not to use Docker, [get the installer from official website](https://www.postgresql.org/download/), install it and create a database."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"services:\n"
+"    app:\n"
+"        build:\n"
+"            dockerfile: docker/Dockerfile\n"
+"            context: ..\n"
+"            target: dev\n"
+"            args:\n"
+"                USER_ID: ${UID}\n"
+"                GROUP_ID: ${GID}\n"
+"        env_file:\n"
+"            -   path: ./dev/.env\n"
+"            -   path: ./dev/override.env\n"
+"                required: false\n"
+"        ports:\n"
+"            - \"${DEV_PORT:-80}:80\"\n"
+"        volumes:\n"
+"            - ../:/app\n"
+"            - ../runtime:/app/runtime\n"
+"            - caddy_data:/data\n"
+"            - caddy_config:/config\n"
+"        tty: true\n"
+"        depends_on:\n"
+"            db:\n"
+"                condition: service_healthy\n"
+"\n"
+"    db:\n"
+"        image: postgres:${POSTGRES_VERSION:-15}-alpine\n"
+"        environment:\n"
+"            POSTGRES_DB: app\n"
+"            POSTGRES_PASSWORD: password\n"
+"            POSTGRES_USER: user\n"
+"        volumes:\n"
+"            - ../runtime/db:/var/lib/postgresql/data:rw\n"
+"        ports:\n"
+"            - \"${DEV_DB_PORT:-5432}:5432\"\n"
+"        healthcheck:\n"
+"            test: [ \"CMD-SHELL\", \"pg_isready -U user -d app\" ]\n"
+"            interval: 5s\n"
+"            timeout: 5s\n"
+"            retries: 5\n"
+"\n"
+"volumes:\n"
+"    db:\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Note that we add `depends_on` so application waits for database to be up."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.  If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then rebuild PHP image with `make build && make down && make up`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, fuzzy, no-wrap
+#| msgid "[Configuration](concept/configuration.md)"
+msgid "Configuring connection"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now that we have the database, it's time to define the connection."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "First we need a package to be installed:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "make composer require yiisoft/db-pgsql\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now create `config/common/di/db-pgsql.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Pgsql\\Connection;\n"
+"use Yiisoft\\Db\\Pgsql\\Driver;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    ConnectionInterface::class => [\n"
+"        'class' => Connection::class,\n"
+"        '__construct()' => [\n"
+"            'driver' => new Driver(\n"
+"                $params['yiisoft/db-pgsql']['dsn'],\n"
+"                $params['yiisoft/db-pgsql']['username'],\n"
+"                $params['yiisoft/db-pgsql']['password'],\n"
+"            ),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "And define parameters in `config/common/params.php`. For Docker that would be:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Db\\Pgsql\\Dsn;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'yiisoft/db-pgsql' => [\n"
+"        'dsn' => new Dsn('pgsql', 'db', 'app', '5432'),\n"
+"        'username' => 'user',\n"
+"        'password' => 'password',\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "`db` host is resolved automatically within the Docker network."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "For local installation without Docker the host in Dsn would be `localhost`. You'll have to adjust the rest to match how you configured the database."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Creating and applying migrations"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "For the initial state of the application and for further database changes, it is a good idea to use migrations.  These are files that create database changes. Applied migrations are tracked in the database, allowing us to know the current state and which migrations remain to be applied."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "To use migrations we need another package installed:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to `config/common/params.php`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now you can use `make yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Migration;\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
+"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
+"\n"
+"final class M251102141707Page implements RevertibleMigrationInterface\n"
+"{\n"
+"    public function up(MigrationBuilder $b): void\n"
+"    {\n"
+"        $column = $b->columnBuilder();\n"
+"\n"
+"        $b->createTable('page', [\n"
+"            'id' => $column::uuidPrimaryKey(),\n"
+"            'title' => $column::string()->notNull(),\n"
+"            'slug' => $column::string()->notNull()->unique(),\n"
+"            'text' => $column::text()->notNull(),\n"
+"            'created_at' => $column::dateTime(),\n"
+"            'updated_at' => $column::dateTime(),\n"
+"        ]);\n"
+"    }\n"
+"\n"
+"    public function down(MigrationBuilder $b): void\n"
+"    {\n"
+"        $b->dropTable('page');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "The `M251102141707Page` name of the migration class is generated so replace the `Page` suffix with the actual migration name. The `M251102141707` prefix is needed to find and sort migrations in the order they were added."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Note that we use UUID as the primary key. We are going to generate these IDs ourselves instead of relying on database so we'll need an extra compose package for that."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "make composer require ramsey/uuid\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. Since you generate the ID yourself so you can define a set of related data and save it in a single transaction.  The entities that define this set of data in the code are often called an \"aggregate\"."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Apply the migration with `make yii migrate:up`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "An entity"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now that you have a table it is time to define an entity in the code. Create `src/Web/Page/Page.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Strings\\Inflector;\n"
+"\n"
+"final readonly class Page\n"
+"{\n"
+"    private function __construct(\n"
+"        public string $id,\n"
+"        public string $title,\n"
+"        public string $text,\n"
+"        public DateTimeImmutable $createdAt,\n"
+"        public DateTimeImmutable $updatedAt,\n"
+"    ) {}\n"
+"\n"
+"    public static function create(\n"
+"        string $id,\n"
+"        string $title,\n"
+"        string $text,\n"
+"        ?DateTimeImmutable $createdAt = null,\n"
+"        ?DateTimeImmutable $updatedAt = null,\n"
+"    ): self {\n"
+"        return new self(\n"
+"            id: $id,\n"
+"            title: $title,\n"
+"            text: $text,\n"
+"            createdAt: $createdAt ?? new DateTimeImmutable(),\n"
+"            updatedAt: $updatedAt ?? new DateTimeImmutable(),\n"
+"        );\n"
+"    }\n"
+"\n"
+"    public function getSlug(): string\n"
+"    {\n"
+"        return (new Inflector())->toSlug($this->title);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/start/databases.md ../src/guide/structure/domain.md
+#: ../src/guide/structure/service.md
+#, no-wrap
+msgid "Repository"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now that we have entity, we need a place for methods to save an entity, delete it and select either a single page or multiple pages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/PageRepository.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Db\\Query\\Query;\n"
+"\n"
+"final readonly class PageRepository\n"
+"{\n"
+"    public function __construct(\n"
+"        private ConnectionInterface $connection,\n"
+"    ) {}\n"
+"\n"
+"    public function save(Page $page): void\n"
+"    {\n"
+"        $data = [\n"
+"            'id' => $page->id,\n"
+"            'title' => $page->title,\n"
+"            'slug' => $page->getSlug(),\n"
+"            'text' => $page->text,\n"
+"            'created_at' => $page->createdAt,\n"
+"            'updated_at' => $page->updatedAt,\n"
+"        ];\n"
+"\n"
+"        if ($this->exists($page->id)) {\n"
+"            $this->connection->createCommand()->update('{{%page}}', $data, ['id' => $page->id])->execute();\n"
+"        } else {\n"
+"            $this->connection->createCommand()->insert('{{%page}}', $data)->execute();\n"
+"        }\n"
+"    }\n"
+"\n"
+"    public function findOneBySlug(string $slug): ?Page\n"
+"    {\n"
+"        $query = $this->connection\n"
+"            ->select()\n"
+"            ->from('{{%page}}')\n"
+"            ->where('slug = :slug', ['slug' => $slug]);\n"
+"\n"
+"        return $this->createPage($query->one());\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @return iterable<Page>\n"
+"     */\n"
+"    public function findAll(): iterable\n"
+"    {\n"
+"        $data = $this->connection\n"
+"            ->select()\n"
+"            ->from('{{%page}}')\n"
+"            ->all();\n"
+"\n"
+"        foreach ($data as $page) {\n"
+"            yield $this->createPage($page);\n"
+"        }\n"
+"    }\n"
+"\n"
+"    private function createPage(?array $data): ?Page\n"
+"    {\n"
+"        if ($data === null) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return Page::create(\n"
+"            id: $data['id'],\n"
+"            title: $data['title'],\n"
+"            text: $data['text'],\n"
+"            createdAt: new DateTimeImmutable($data['created_at']),\n"
+"            updatedAt: new DateTimeImmutable($data['updated_at']),\n"
+"        );\n"
+"    }\n"
+"\n"
+"    public function deleteBySlug(string $slug): void\n"
+"    {\n"
+"        $this->connection->createCommand()->delete(\n"
+"            '{{%page}}',\n"
+"            ['slug' => $slug],\n"
+"        )->execute();\n"
+"    }\n"
+"\n"
+"    public function exists(string $id): bool\n"
+"    {\n"
+"        return $this->connection->createQuery()\n"
+"            ->from('{{%page}}')\n"
+"            ->where(['id' => $id])\n"
+"            ->exists();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "In this repository there are both methods to get data and `save()` to do insert or update. DB returns raw data as arrays but our repository automatically creates entities from this raw data so later we operate typed data."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Actions and routes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "We need some actions to:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/guide/start/databases.md
+msgid "List all pages."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/guide/start/databases.md
+msgid "View a page."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/guide/start/databases.md
+msgid "Delete a page."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/guide/start/databases.md
+msgid "Create a page."
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/guide/start/databases.md
+msgid "Update a page."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Then we need routing for all these."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Let's tackle these one by one."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "List all pages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/ListAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class ListAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private PageRepository $pageRepository,\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/list', [\n"
+"            'pages' => $this->pageRepository->findAll(),\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Define list view in `src/Web/Page/list.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Page\\Page;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"/** @var iterable<Page> $pages */\n"
+"/** @var UrlGeneratorInterface $urlGenerator */\n"
+"?>\n"
+"\n"
+"<ul>\n"
+"    <?php foreach ($pages as $page): ?>\n"
+"    <li>\n"
+"        <?= Html::a($page->title, $urlGenerator->generate('page/view', ['slug' => $page->getSlug()])) ?>\n"
+"    </li>\n"
+"    <?php endforeach ?>\n"
+"</ul>\n"
+"\n"
+"<?= Html::a('Create', $urlGenerator->generate('page/edit', ['slug' => 'new'])) ?>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "View a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/ViewAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class ViewAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private PageRepository $pageRepository,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('slug')]\n"
+"        string $slug,\n"
+"    ): ResponseInterface {\n"
+"        $page = $this->pageRepository->findOneBySlug($slug);\n"
+"        if ($page === null) {\n"
+"            return $this->responseFactory->createResponse(Status::NOT_FOUND);\n"
+"        }\n"
+"\n"
+"        return $this->viewRenderer->render(__DIR__ . '/view', [\n"
+"            'page' => $page,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now, a template in `src/Web/Page/view.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Page\\Page;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\Csrf;\n"
+"\n"
+"/** @var Page $page */\n"
+"/** @var UrlGeneratorInterface $urlGenerator */\n"
+"/* @var Csrf $csrf */\n"
+"?>\n"
+"\n"
+"<h1><?= Html::a('Pages', $urlGenerator->generate('page/list')) ?> → <?= Html::encode($page->title) ?></h1>\n"
+"\n"
+"<p>\n"
+"    <?= Html::encode($page->text) ?>\n"
+"</p>\n"
+"\n"
+"<?= Html::a('Edit', $urlGenerator->generate('page/edit', ['slug' => $page->getSlug()])) ?> |\n"
+"\n"
+"\n"
+"<?php\n"
+"    $deleteForm = Html::form()\n"
+"        ->post($urlGenerator->generate('page/delete', ['slug' => $page->getSlug()]))\n"
+"        ->csrf($csrf);\n"
+"?>\n"
+"<?= $deleteForm->open() ?>\n"
+"    <?= Html::submitButton('Delete') ?>\n"
+"<?= $deleteForm->close() ?>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "In this view we have a form that submits a request for page deletion. Handing it with `GET` is common as well, but it is very wrong. Since deletion changes data, it needs to be handled by one of the non-idempotent HTTP methods.  We use POST and a form in our example, but it could be `DELETE` and async request made with JavaScript.  The button could be later styled properly to look similar to the \"Edit\"."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Delete a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Create `src/Web/Page/DeleteAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"final readonly class DeleteAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private PageRepository $pageRepository,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('slug')]\n"
+"        string $slug\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $this->pageRepository->deleteBySlug($slug);\n"
+"\n"
+"        return $this->responseFactory\n"
+"            ->createResponse(Status::SEE_OTHER)\n"
+"            ->withHeader('Location', $this->urlGenerator->generate('page/list'));\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Create or update a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "First of all, we need a form at `src/Web/Page/Form.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('Title')]\n"
+"    #[Length(min: 2)]\n"
+"    public string $title = '';\n"
+"\n"
+"    #[Label('Text')]\n"
+"    #[Length(min: 2)]\n"
+"    public string $text = '';\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Then an action. Create `src/Web/Page/EditAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Page;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Ramsey\\Uuid\\Uuid;\n"
+"use Yiisoft\\FormModel\\FormHydrator;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class EditAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"        private FormHydrator $formHydrator,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('slug')]\n"
+"        string $slug,\n"
+"        ServerRequestInterface $request,\n"
+"        PageRepository $pageRepository,\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $isNew = $slug === 'new';\n"
+"\n"
+"        $form = new Form();\n"
+"\n"
+"        if (!$isNew) {\n"
+"            $page = $pageRepository->findOneBySlug($slug);\n"
+"            if ($page === null) {\n"
+"                return $this->responseFactory->createResponse(Status::NOT_FOUND);\n"
+"            }\n"
+"\n"
+"            $form->title = $page->title;\n"
+"            $form->text = $page->text;\n"
+"        }\n"
+"\n"
+"        $this->formHydrator->populateFromPostAndValidate($form, $request);\n"
+"\n"
+"        if ($form->isValid()) {\n"
+"            $id = $isNew ? Uuid::uuid7()->toString() : $page->id;\n"
+"\n"
+"            $page = Page::create(\n"
+"                id: $id,\n"
+"                title: $form->title,\n"
+"                text: $form->text,\n"
+"                updatedAt: new DateTimeImmutable(),\n"
+"            );\n"
+"\n"
+"            $pageRepository->save($page);\n"
+"\n"
+"            return $this->responseFactory\n"
+"                ->createResponse(Status::SEE_OTHER)\n"
+"                ->withHeader(\n"
+"                    'Location',\n"
+"                    $this->urlGenerator->generate('page/view', ['slug' => $page->getSlug()]),\n"
+"                );\n"
+"        }\n"
+"\n"
+"        return $this->viewRenderer->render(__DIR__ . '/edit', [\n"
+"            'form' => $form,\n"
+"            'isNew' => $isNew,\n"
+"            'slug' => $slug,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Note that `Uuid::uuid7()->toString()` won't work for MySQL and you'll need bytes instead, `Uuid::uuid7()->getBytes()`.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "In the above we use a special slug in the URL for new pages so the URL looks like `http://localhost/pages/new`. If the page isn't new, we pre-fill the form with the data from the database. Similar to how we did in [Working with forms](forms.md), we handle the form submission. After successful save we redirect to the page view."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now, a template in `src/Web/Page/edit.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Page\\Form;\n"
+"use Yiisoft\\FormModel\\Field;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\Csrf;\n"
+"\n"
+"/**\n"
+" * @var Form $form\n"
+" * @var string[] $errors\n"
+" * @var UrlGeneratorInterface $urlGenerator\n"
+" * @var Csrf $csrf\n"
+" * @var bool $isNew\n"
+" * @var string $slug\n"
+" */\n"
+"\n"
+"$htmlForm = Html::form()\n"
+"    ->post($urlGenerator->generate('page/edit', ['slug' => $slug]))\n"
+"    ->csrf($csrf);\n"
+"?>\n"
+"\n"
+"<?= $htmlForm->open() ?>\n"
+"    <?= Field::text($form, 'title')->required() ?>\n"
+"    <?= Field::textarea($form, 'text')->required() ?>\n"
+"    <?= Html::submitButton('Save') ?>\n"
+"<?= $htmlForm->close() ?>\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Routing"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Adjust `config/common/routes.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::methods([Method::GET, Method::POST], '/say')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"\n"
+"            Group::create('/pages')->routes(\n"
+"                Route::get('')\n"
+"                    ->action(Web\\Page\\ListAction::class)\n"
+"                    ->name('page/list'),\n"
+"                Route::get('/{slug}')\n"
+"                    ->action(Web\\Page\\ViewAction::class)\n"
+"                    ->name('page/view'),\n"
+"                Route::methods([Method::GET, Method::POST], '/{slug}/edit')\n"
+"                    ->action(Web\\Page\\EditAction::class)\n"
+"                    ->name('page/edit'),\n"
+"                Route::post('/{slug}/delete')\n"
+"                    ->action(Web\\Page\\DeleteAction::class)\n"
+"                    ->name('page/delete'),\n"
+"            ),\n"
+"        ),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Note that we've grouped all page-related routes with a group under `/pages` prefix. That is a convenient way to both not to repeat yourself and add some extra middleware, such as authentication, to the whole group."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "Trying it out"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Now try it out by opening `http://localhost/pages` in your browser."
+msgstr ""

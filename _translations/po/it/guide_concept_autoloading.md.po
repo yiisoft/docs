@@ -1,0 +1,78 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/en/guide/concept/autoloading.md
+#: ../src/en/guide/security/best-practices.md
+#: ../src/en/guide/structure/domain.md
+#: ../src/en/guide/tutorial/console-applications.md
+#: ../src/en/internals/004-namespaces.md ../src/en/internals/007-exceptions.md
+#: ../src/en/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr ""
+
+#. type: Title #
+#: ../src/en/guide/concept/autoloading.md
+#, no-wrap
+msgid "Class autoloading"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/autoloading.md
+msgid "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages without the need to `require` their file explicitly.  When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/autoloading.md
+msgid "You can use autoloader not only for the packages installed, but for your application as well since it's also a package.  To load classes of a certain namespace, add the following to `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/en/guide/concept/autoloading.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"App\\\\\": \"src/\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/autoloading.md
+msgid "Where `App\\\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces will start loading automatically."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/guide/concept/autoloading.md
+msgid "If you need development-environment-specific autoloading that isn't used when executing Composer with `--no-dev` flag, add it to `autoload-dev` section instead of `autoload`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/concept/autoloading.md
+msgid "[PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/guide/concept/autoloading.md
+msgid "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
+msgstr ""
