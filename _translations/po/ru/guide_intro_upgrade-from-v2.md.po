@@ -248,7 +248,7 @@ msgstr "Переменные окружения"
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
-msgstr "Шаблоны приложений Yii3 используют [переменные окружения](https://en.wikipedia.org/wiki/Environment_variable) для настройки частей приложения. Эта концепция [очень удобна для приложений, работающих в Docker](https://12factor.net/), но может быть непривычна пользователям Yii 1.1 и Yii 2.0."
+msgstr "Шаблоны приложений Yii3 используют [переменные окружения](https://en.wikipedia.org/wiki/Environment_variable) для настройки частей приложения. Эта концепция [очень удобна для приложений, работающих в Docker](https://12factor.net/ru/), но может быть непривычна пользователям Yii 1.1 и Yii 2.0."
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
