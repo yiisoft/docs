@@ -145,9 +145,8 @@ final readonly class SiteController
 {
     public function __construct(
         private ServerRequestInterface $request,
-        private CurrentUser            $user)
-    {
-    }
+        private CurrentUser $user,
+    ) {}
 
     public function index()
     {
