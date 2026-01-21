@@ -148,7 +148,7 @@ final readonly class SiteController
         private CurrentUser $user,
     ) {}
 
-    public function index()
+    public function index(): ResponseInterface
     {
         if ($this->user->isGuest()) {
             // user is guest
