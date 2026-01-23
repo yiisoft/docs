@@ -26,7 +26,7 @@ aims at covering usage of packages as a whole framework. Unlike package
 documentation, it isn't focused on a single package but is covering certain
 use-cases.
 
-The guide should follow [Micosoft style
+The guide should follow [Microsoft style
 guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
 
 ### Translation
