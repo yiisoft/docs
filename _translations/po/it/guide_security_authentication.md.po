@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-12 19:52+0000\n"
+"POT-Creation-Date: 2026-01-24 08:55+0000\n"
 "PO-Revision-Date: 2025-09-11 10:15+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -219,32 +219,38 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/security/authentication.md
-#, no-wrap
-msgid "Using `\\Yiisoft\\User\\CurrentUser`"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Configuring router"
+msgid "Using `Yiisoft\\User\\CurrentUser`"
+msgstr "Configurazione del router"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
-msgid "You can use `\\Yiisoft\\User\\CurrentUser` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
+msgid "You can use `Yiisoft\\User\\CurrentUser` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
 msgstr ""
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid ""
-"use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
-"use \\Yiisoft\\User\\CurrentUser;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\User\\CurrentUser;\n"
 "\n"
 "final readonly class SiteController\n"
 "{\n"
-"    public function actionIndex(ServerRequestInterface $request, CurrentUser $user)\n"
-"    {        \n"
-"        if ($user->isGuest()) {\n"
+"    public function __construct(\n"
+"        private ServerRequestInterface $request,\n"
+"        private CurrentUser $user,\n"
+"    ) {}\n"
+"\n"
+"    public function index(): ResponseInterface\n"
+"    {\n"
+"        if ($this->user->isGuest()) {\n"
 "            // user is guest\n"
 "        } else {\n"
-"            $identity = $user->getIdentity();\n"
+"            $identity = $this->user->getIdentity();\n"
 "            // do something based on identity\n"
-"        }        \n"
+"        }\n"
 "    }\n"
 "}\n"
 msgstr ""
