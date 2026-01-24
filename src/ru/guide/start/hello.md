@@ -1,28 +1,29 @@
-# Saying hello
+# Говорим «Привет»
 
-This section describes how to create a new "Hello" page in your
-application.  It's a simple page that will echo back whatever you pass to it
-or, if nothing passed, will just say "Hello!".
+В этом разделе описывается, как создать в приложении новую страницу
+«Hello». Это простая страница: она выводит то, что вы ей передадите, а если
+ничего не передано — просто говорит «Hello!».
 
-To achieve this goal, you will define a route and create [a
-handler](../structure/handler.md) that does the job and forms the response.
-Then you will improve it to use [view](../views/view.md) for building the
-response.
+Чтобы этого добиться, вы определите маршрут и создадите
+[обработчик](../structure/handler.md), который выполнит задачу и сформирует
+ответ. Затем вы улучшите решение, используя [представление
+(view)](../views/view.md) для построения ответа.
 
-Through this tutorial, you will learn three things:
+В этом руководстве вы узнаете три вещи:
 
-1. How to create a handler to respond to a request.
-2. How to map URL to the handler.
-3. How to use [view](../views/view.md) to compose the response's content.
+1. Как создать обработчик, который отвечает на запрос.
+2. Как связать URL с обработчиком.
+3. Как использовать [представление (view)](../views/view.md), чтобы
+   формировать содержимое ответа.
 
-## Creating a handler <span id="creating-handler"></span>
+## Создание обработчика <span id="creating-handler"></span>
 
-For the "Hello" task, you will create a handler class that reads a `message`
-parameter from the request and displays that message back to the user. If
-the request doesn't provide a `message` parameter, the action will display
-the default "Hello" message.
+В рамках задания «Hello» вы создадите класс-обработчик, который читает
+параметр `message` из запроса и выводит это сообщение пользователю. Если
+параметр `message` не передан, будет показано сообщение по умолчанию —
+«Hello».
 
-Create `src/Web/Echo/Action.php`:
+Создайте файл `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -54,19 +55,18 @@ final readonly class Action
 }
 ```
 
-In your example, the `__invoke` method receives the `$message` parameter
-that with the help of `RouteArgument` attribute gets the message from
-URL. The value defaults to `"Hello!"`. If the request is made to
-`/say/Goodbye`, the action assigns the value "Goodbye" to the `$message`
-variable.
+В этом примере метод `__invoke` принимает параметр `$message`, который с
+помощью атрибута `RouteArgument` получает значение из URL. По умолчанию
+используется `"Hello!"`. Если запрос сделан к `/say/Goodbye`, обработчик
+присвоит переменной `$message` значение «Goodbye».
 
-The application passes the response through the [middleware
-stack](../structure/middleware.md) to the emitter that outputs the response
-to the end user.
+Приложение пропускает ответ через [стек
+middleware](../structure/middleware.md), после чего emitter отправляет его
+конечному пользователю.
 
-## Configuring router
+## Настройка роутера
 
-Now, to map your handler to URL, you need to add a route in
+Теперь, чтобы связать ваш обработчик с URL, добавьте маршрут в
 `config/common/routes.php`:
 
 ```php
@@ -91,33 +91,34 @@ return [
 ];
 ```
 
-In the above, you map the `/say[/{message}]` pattern to
-`\App\Web\Echo\Action`.  For a request, the router creates an instance and
-calls the `__invoke()` method.  The `{message}` part of the pattern writes
-anything specified in this place to the `message` request attribute.  `[]`
-marks this part of the pattern as optional.
+В примере выше вы связываете шаблон `/say[/{message}]` с
+`\App\Web\Echo\Action`. При обработке запроса роутер создаёт экземпляр и
+вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в
+этом месте, в атрибут запроса `message`. Квадратные скобки `[]` помечают эту
+часть шаблона как необязательную.
 
-You also give a `echo/say` name to this route to be able to generate URLs
-pointing to it.
+Также вы задаёте этому маршруту имя `echo/say`, чтобы затем можно было
+генерировать URL, ведущие на него.
 
-## Trying it out <span id="trying-it-out"></span>
+## Пробуем в деле <span id="trying-it-out"></span>
 
-After creating the action and the view open
-`http://localhost/say/Hello+World` in your browser.
+После того как вы создадите обработчик и представление, откройте в браузере
+`http://localhost/say/Hello+World`.
 
-This URL displays a page with "The message is: Hello World".
+По этому адресу откроется страница с текстом “The message is: Hello World”.
 
-If you omit the `message` parameter in the URL, the page displays "The
-message is: Hello!".
+Если не указывать параметр `message` в URL, страница покажет “The message
+is: Hello!”.
 
-## Creating a View Template <span id="creating-view-template"></span>
+## Создание шаблона представления <span id="creating-view-template"></span>
 
-Usually, the task is more complicated than printing out "hello world" and
-involves rendering some complex HTML. For this task, it's handy to use view
-templates. They're scripts you write to generate a response's body.
+Обычно задача сложнее, чем просто вывести «hello world» требует рендеринга
+более сложного HTML. В таких случаях удобно использовать шаблоны
+представления: это скрипты, которые вы пишете, чтобы сформировать тело
+ответа.
 
-For the "Hello" task, create a `src/Web/Echo/template.php` template that
-prints the `message` parameter received from the action method:
+Для задания «Hello» создайте шаблон `src/Web/Echo/template.php`, который
+выводит параметр `message`, полученный из метода обработчика:
 
 ```php
 <?php
@@ -128,17 +129,17 @@ use Yiisoft\Html\Html;
 <p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-In the above code, the `message` parameter uses HTML encoding before you
-print it. You need that because the parameter comes from an end user and is
-vulnerable to [cross-site scripting (XSS)
-attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
-malicious JavaScript in the parameter.
+В примере выше параметр `message` перед выводом проходит
+HTML-экранирование. Это нужно, потому что значение приходит от пользователя,
+и без экранирования его можно использовать для [XSS-атак (cross-site
+scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting), внедрив в
+параметр вредоносный JavaScript.
 
-Naturally, you may put more content in the `say` view. The content can
-consist of HTML tags, plain text, and even PHP statements. In fact, the view
-service executes the `say` view as a PHP script.
+Разумеется, в представление `say` можно добавить больше содержимого. Оно
+может состоять из HTML-тегов, обычного текста и даже PHP-кода. Фактически,
+сервис представлений выполняет `say` как PHP-скрипт.
 
-To use the view, you need to change `src/Web/Echo/Action.php`:
+Чтобы использовать представление, измените `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -169,23 +170,23 @@ final readonly class Action
 }
 ```
 
-Now open your browser and check it again. You should see the similar text
-but with a layout applied.
+Теперь снова откройте страницу в браузере. Вы увидите похожий текст, но уже
+с применённым шаблоном.
 
-Also, you've separated the part about how it works and part of how it's
-presented. In the larger applications, it helps a lot to deal with
-complexity.
+Кроме того, вы разделили логику (как это работает) и представление (как это
+выглядит). В больших приложениях это очень помогает справляться со
+сложностью.
 
-## Summary <span id="summary"></span>
+## Краткое содержание <span id="summary"></span>
 
-In this section, you've touched the handler and template parts of the
-typical web application.  You created a handler as part of a class to handle
-a specific request. You also created a view to compose the response's
-content. In this simple example, no data source was involved as the only
-data used was the `message` parameter.
+В этом разделе вы познакомились с обработчиками и шаблонами — типичными
+частями веб‑приложения. Вы создали обработчик (класс), который отвечает за
+конкретный запрос, и представление, которое формирует содержимое ответа. В
+этом простом примере источник данных не нужен: используются только значения
+параметра `message`.
 
-You've also learned about routing in Yii, which acts as the bridge between
-user requests and handlers.
+Вы также познакомились с маршрутизацией в Yii — она служит мостом между
+пользовательскими запросами и обработчиками.
 
-In the next section, you will learn how to fetch data and add a new page
-containing an HTML form.
+В следующем разделе вы узнаете, как получать данные и добавить новую
+страницу с HTML-формой.
