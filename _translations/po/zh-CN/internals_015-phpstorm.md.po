@@ -1,0 +1,148 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "015 — PhpStorm metadata and attributes"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "PhpStorm metadata"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid ""
+"[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-"
+"metadata.html) helps the IDE to understand code better in cases when regular "
+"types and PHPDoc tags don't help."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "We use the following set of coding styles for metadata."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Metadata location"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/015-phpstorm.md
+msgid "Metadata should be placed in `/.phpstorm.meta.php` directory."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/015-phpstorm.md
+msgid ""
+"Configuration should be split into files. Each file should be named after a "
+"class it configures."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> There is no support for subdirectories in PhpStorm yet.\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Constants "
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid ""
+"All constant dictionaries should be named as `{Class FQN}::{Group name}`. "
+"Group name should be short and written in capital letters.  Use underscore "
+"as a word separator that's `\\Yiisoft\\Http\\Status::STATUSES`. For example:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"expectedReturnValues(\n"
+"  \\Psr\\Http\\Message\\RequestInterface::getMethod(),\n"
+"  argumentsSet('\\Yiisoft\\Http\\Method::METHODS'),\n"
+");\n"
+"\n"
+"registerArgumentsSet(\n"
+"  '\\Yiisoft\\Http\\Method::METHODS',\n"
+"  \\Yiisoft\\Http\\Method::GET,\n"
+"  \\Yiisoft\\Http\\Method::POST,\n"
+"  \\Yiisoft\\Http\\Method::PUT,\n"
+"  \\Yiisoft\\Http\\Method::DELETE,\n"
+"  \\Yiisoft\\Http\\Method::PATCH,\n"
+"  \\Yiisoft\\Http\\Method::HEAD,\n"
+"  \\Yiisoft\\Http\\Method::OPTIONS,\n"
+");\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "PhpStorm attributes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid ""
+"[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN "
+"be used in code, but package `jetbrains/phpstorm-attributes` MUST be added "
+"as a dev dependency:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "composer require --dev jetbrains/phpstorm-attributes\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Using with ComposerRequireChecker"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid ""
+"When [ComposerRequireChecker](https://github.com/maglnet/"
+"ComposerRequireChecker) is also used within the same package, add involved "
+"attributes' class names to whitelist in config. For example:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"symbol-whitelist\": [\n"
+"        \"JetBrains\\\\PhpStorm\\\\ExpectedValues\",\n"
+"        \"JetBrains\\\\PhpStorm\\\\Pure\"\n"
+"    ]\n"
+"}\n"
+msgstr ""

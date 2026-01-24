@@ -1,0 +1,123 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/en/guide/concept/immutability.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Immutability"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Names"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Methods"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Class names"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Inheritance"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Inheritance is allowed with some restrictions:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "If a class isn't abstract, it should be final."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Hierarchy should be kept as linear as possible."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Have no state."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid ""
+"Unlike other classes, methods that return a clone of the object with some "
+"properties modified aren't prefixed."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Keep method names as short as possible but don't hurt readability."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Boolean flags"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid ""
+"The method that corresponds to the boolean attribute should be named after "
+"the attribute and accept a boolean flag argument."
+msgstr ""
+
+#. type: Title #
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "018 - Widgets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid ""
+"Unlike regular classes, widgets are used in view templates, so syntax is "
+"important.  It should be both easy to write, easy to read and not too "
+"verbose because similar constructs are meant to be used over and over again."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid "Widgets aren't postfixed or prefixed."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid "Widgets should:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/018-widgets.md
+msgid "Be immutable."
+msgstr ""

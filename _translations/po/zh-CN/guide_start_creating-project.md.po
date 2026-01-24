@@ -1,0 +1,148 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-09 11:54+0000\n"
+"PO-Revision-Date: 2026-01-09 11:54+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid "Creating a project"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid ""
+"In this guide we'll provide commands for both [Docker](https://"
+"docs.docker.com/get-started/get-docker/) and the built-in dev server with "
+"everything installed locally."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> If you want to use another web server,\n"
+"> see [\"Configuring web servers\"](../../cookbook/configuring-webservers/general.md).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid ""
+"We recommend starting with a project template that's a minimal working Yii "
+"project implementing some basic features.  It can serve as a good starting "
+"point for your projects."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid ""
+"You can create a new project from a template using the [Composer](https://"
+"getcomposer.org) package manager:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid "composer create-project yiisoft/app your_project\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "Docker users can run the following commands:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"docker run --rm -it -v \"$(pwd):/app\" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project\n"
+"sudo chown -R $(id -u):$(id -g) your_project\n"
+"cd your_project\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "If you want development version instead of release one:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"git clone https://github.com/yiisoft/app.git --depth 1 your_project && \\\n"
+"cd your_project && \\\n"
+"rm -rf .git && \\\n"
+"make composer update\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid ""
+"This installs the latest stable version of the Yii project template in a "
+"directory named `your_project`.  You can choose a different directory name "
+"if you want."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.\n"
+"> Don't use the development version of Yii for production because it may break your running code.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "Go into the newly created directory and run:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid "APP_ENV=dev ./yii serve --port=80\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "For Docker users, run:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid "make up\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "Open your browser to the URL `http://localhost/`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
+"> `DEV_PORT` in the `docker/.env` file.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid ""
+"![Successful Installation of Yii](/images/guide/start/app-installed.png)"
+msgstr ""

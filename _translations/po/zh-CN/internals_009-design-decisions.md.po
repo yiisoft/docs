@@ -1,0 +1,239 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "009 — Design Decisions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"In this document, we list important design decisions taken during Yii3 "
+"development."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Remove magic properties"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"Magic properties in Yii 2 were an interesting idea that allowed a developer "
+"to start with public property and then seamlessly migrate to using getter/"
+"setter called via magic methods without changing the code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"The main reason for removal in Yii 3 is that it resulted in using public "
+"properties everywhere, thus lack of encapsulation and code fragility."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Remove the service locator"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"Service locator both Yii 1 and Yii 2 was convenient but was also abused a "
+"lot.  Although a dependency injection container was available in Yii 2, "
+"service locator was generally preferred to cause both a dependency on the "
+"service locator itself, high coupling, hard to test code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"Yii 3 relies on dependency injection only lowering coupling significantly "
+"and making code way more testable."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Extract general packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"Yii 1 and Yii 2 were fully closed communities. All the code we had wasn't "
+"useful outside Yii, and most of the \"external\" code wasn't useful in Yii "
+"without wrappers. It was noted many times by communities external to Yii "
+"that many parts of Yii are well-designed and unique, and they'd use these if "
+"these were available as standalone packages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"As part of Yii 3 packages such as cache, RBAC, view, etc. were extracted "
+"into framework-independent packages. Benefits are:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "Increased usage and contribution"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "Yii team could delegate maintenance"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "Independent releases are possible"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Adopt PSRs"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"The team adopted some PSRs in Yii 2, such as PSR-4 and PSR-2.  Interfaces in "
+"general weren't, although Yii is part of PHP-FIG.  Mainly because when Yii 2 "
+"was released, these were either in the making or not adopted enough."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"Yii3 benefits from PSRs since there are nowadays many ready-to-use libraries "
+"that one can get via Composer: cache backends, middleware, loggers, DI "
+"containers, etc."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"By implementing PSRs in general packages, we allow these to be used in more "
+"projects, thus raising the contribution level."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Improve DI container"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"The problem with the Yii 2 container was that it's tailored to be used with "
+"Yii 2 components.  API isn't well-designed to be used with general PHP "
+"classes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"In Yii3, we ensured that container can be used to conveniently configure any "
+"PHP class."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"That should result in the absence of Yii-specific wrapper packages and more "
+"direct usages of Composer packages."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Adopt strict types"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid "Strict types were introduced because:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "PHP 7 is now mainstream"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"While they solve no significant Yii 2 problems, they help to avoid many day-"
+"to-day development issues"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Adopt SemVer"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid "Yii 2 has its own version policy. Problems:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "It wasn't standard"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid "Composer relies on SemVer"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"It's hard to support a framework built on top of packages if the versioning "
+"policy isn't strict"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/009-design-decisions.md
+#, no-wrap
+msgid "Prevent validators mutating data"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"In Yii 1 and Yii 2, validators such as \"date\" were mutating data.  It was "
+"confusing for a validation process not initially meant to mutate data it "
+"validates."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/009-design-decisions.md
+msgid ""
+"[See related discussion](https://forum.yiiframework.com/t/saving-or-killing-"
+"non-validation-in-validators/126086)."
+msgstr ""

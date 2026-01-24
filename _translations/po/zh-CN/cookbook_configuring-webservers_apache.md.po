@@ -1,0 +1,94 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 09:13+0000\n"
+"PO-Revision-Date: 2025-12-24 09:13+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/configuring-webservers/apache.md
+#, no-wrap
+msgid "Configuring web servers: Apache"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+msgid ""
+"Use the following configuration in Apache's `httpd.conf` file or within a "
+"virtual host configuration. Note that you should replace `path/to/app/"
+"public` with the actual path for `app/public`."
+msgstr ""
+
+#. type: Fenced code block (apache)
+#: ../src/cookbook/configuring-webservers/apache.md
+#, no-wrap
+msgid ""
+"# Set document root to be \"app/public\"\n"
+"DocumentRoot \"path/to/app/public\"\n"
+"\n"
+"<Directory \"path/to/app/public\">\n"
+"    # use mod_rewrite for pretty URL support\n"
+"    RewriteEngine on\n"
+"    \n"
+"    # if $showScriptName is false in UrlManager, do not allow accessing URLs with script name\n"
+"    RewriteRule ^index.php/ - [L,R=404]\n"
+"    \n"
+"    # If a directory or a file exists, use the request directly\n"
+"    RewriteCond %{REQUEST_FILENAME} !-f\n"
+"    RewriteCond %{REQUEST_FILENAME} !-d\n"
+"    \n"
+"    # Otherwise forward the request to index.php\n"
+"    RewriteRule . index.php\n"
+"    \n"
+"    SetEnv APP_ENV dev\n"
+"\n"
+"    # ...other settings...\n"
+"</Directory>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+msgid ""
+"In case you have `AllowOverride All` you can add `.htaccess` file with the "
+"following configuration instead of using `httpd.conf`:"
+msgstr ""
+
+#. type: Fenced code block (apache)
+#: ../src/cookbook/configuring-webservers/apache.md
+#, no-wrap
+msgid ""
+"# use mod_rewrite for pretty URL support\n"
+"RewriteEngine on\n"
+"\n"
+"# if $showScriptName is false in UrlManager, do not allow accessing URLs with script name\n"
+"RewriteRule ^index.php/ - [L,R=404]\n"
+"\n"
+"# If a directory or a file exists, use the request directly\n"
+"RewriteCond %{REQUEST_FILENAME} !-f\n"
+"RewriteCond %{REQUEST_FILENAME} !-d\n"
+"\n"
+"# Otherwise forward the request to index.php\n"
+"RewriteRule . index.php\n"
+"\n"
+"SetEnv APP_ENV dev\n"
+"\n"
+"# ...other settings...\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+msgid ""
+"In the above, note the usage of `SetEnv`. Since the Yii3 application "
+"template is using environment variables, this is a possible place to set "
+"them. In production environment remember to set `APP_ENV` to `prod`."
+msgstr ""

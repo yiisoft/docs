@@ -1,0 +1,100 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/005-development-tool.md
+#, no-wrap
+msgid "005 — Yii development tool"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"For Yii3, the number of packages increased significantly to achieve more "
+"reusability and independent releases.  To ease development of the framework "
+"itself, we've created a special tool available from [yiisoft/yii-dev-tool]"
+"(https://github.com/yiisoft/yii-dev-tool)."
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/en/internals/005-development-tool.md
+#, no-wrap
+msgid ""
+"$ ./yii-dev\n"
+"  _   _  _  _\n"
+" | | | |(_)(_)  Development Tool\n"
+" | |_| || || |\n"
+"  \\__, ||_||_|  for Yii 3.0\n"
+"  |___/\n"
+"\n"
+"This tool helps with setting up a development environment for Yii 3 packages.\n"
+"\n"
+"Usage:\n"
+"  command [options] [arguments]\n"
+"\n"
+"Options:\n"
+"  -h, --help  Display this help message\n"
+"\n"
+"Available commands:\n"
+"  checkout-branch  Creates, if not exists, and checkout a git branch\n"
+"  commit           Add and commit changes into each package repository\n"
+"  install          Install packages\n"
+"  lint             Check packages according to PSR12 standard\n"
+"  pull             Pull changes from package repositories\n"
+"  push             Push changes into package repositories\n"
+"  replicate        Copy files specified in replicate.php into each package\n"
+"  status           Show git status of packages\n"
+"  update           Update packages\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"There are many commands available. The most important ones are `install` and "
+"`update`. What it does is:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"Install/update all packages listed in [`packages.php`](https://github.com/"
+"yiisoft/yii-dev-tool/blob/master/packages.php)  or individual package from "
+"that list if specified."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"For every package installed check `vendor` directory for packages listed in "
+"`packages.php`.  If there is any, replace the package directory with a "
+"symlink to another package source."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"As a result, you will have many packages using each other, so there is no "
+"need to `git push` and `composer install` / `composer update` during "
+"development."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/005-development-tool.md
+msgid ""
+"A [detailed example](https://github.com/yiisoft/yii-dev-tool#usage-example) "
+"of using the tool is available in its README."
+msgstr ""

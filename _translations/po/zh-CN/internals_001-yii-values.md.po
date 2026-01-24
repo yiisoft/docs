@@ -1,0 +1,261 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "001 — Yii goal and values"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Goal"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"The Yii project aims to build and support _practical_ and _helpful_ tools "
+"and community."
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Values"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid "The values we express in our work support the goal. We try to"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be practical"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[High performance](#high-performance)"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[Sensible defaults and flexibility](#sensible-defaults-and-flexibility)"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[Be practice-oriented](#be-practice-oriented)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be helpful"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[Be simple](#be-simple)"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[Be explicit](#be-explicit)"
+msgstr ""
+
+#. type: Bullet: '    - '
+#: ../src/en/internals/001-yii-values.md
+msgid "[Be consistent](#be-consistent)"
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "High performance"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"Performance is a necessary condition of practicality. Software shouldn't "
+"waste machine resources or human resources."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Sensible defaults and flexibility"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"We prefer sensible defaults and conventions that users can customize.  We "
+"seek a balance between flexibility, discipline and simplicity that meets "
+"common needs."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be practice-oriented"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid "We prefer practice to theory. For example:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"Solutions for known use cases should avoid excess complexity by providing "
+"only necessary flexibility."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Standard implementations should take practical use into account."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Experience is at least as useful as theory in guiding design."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Context is critical in determining appropriateness."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"This value guides technical decisions as well as community activity.  "
+"Consideration of how software features help users should guide development.  "
+"Community-wise, we value any helpful contribution, be it a pull request or "
+"an answer in the forum."
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"When the other principles conflict, we choose a solution that's more helpful "
+"to the community."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be simple"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid "Solutions should be simple and expressive:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "We use as much complexity as needed and no more."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "We avoid ugly solutions unless there is no alternative."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Fewer rules are better than more rules."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be Explicit"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"We prefer explicit, obvious solutions and code. Solutions should clearly "
+"express exactly what they do. For example:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid ""
+"A straightforward solution is better than an abstract one unless the "
+"abstraction has a practical purpose."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Loud fails are better than silent fails or masking errors."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Explicit casts are better than PHP type juggling, type hints are good."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "No magic unless necessary."
+msgstr ""
+
+#. type: Title ###
+#: ../src/en/internals/001-yii-values.md
+#, no-wrap
+msgid "Be consistent"
+msgstr ""
+
+#. type: Plain text
+#: ../src/en/internals/001-yii-values.md
+msgid "We try to be consistent in:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Code style"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Naming"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Design"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Structure"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/en/internals/001-yii-values.md
+msgid "Values and goals"
+msgstr ""
