@@ -66,9 +66,6 @@ services:
             interval: 5s
             timeout: 5s
             retries: 5
-
-volumes:
-    db:
 ```
 
 Note that we add `depends_on` so application waits for database to be up.
