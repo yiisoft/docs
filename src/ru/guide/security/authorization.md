@@ -450,22 +450,18 @@ that the user is the post author:
 namespace App\User\Rbac;
 
 use Yiisoft\Rbac\Item;
-use \Yiisoft\Rbac\Rule;
+use Yiisoft\Rbac\RuleContext;
+use Yiisoft\Rbac\RuleInterface;
 
 /**
  * Checks if the authorID matches user passed via params.
  */
-final readonly class AuthorRule extends Rule
+final readonly class AuthorRule implements RuleInterface
 {
-    private const NAME = 'isAuthor';
-
-    public function __construct() {
-        parent::__construct(self::NAME);
-    }
-
-    public function execute(string $userId, Item $item, array $parameters = []): bool
+    public function execute(?string $userId, Item $item, RuleContext $context): bool
     {
-        return isset($params['post']) ? $params['post']->getAuthorId() == $userId : false;
+        $post = $context->getParameterValue('post');
+        return $post !== null && $post->getAuthorId() == $userId;
     }
 }
 ```
@@ -474,23 +470,23 @@ The rule checks if user created the `post`. Create a special permission
 `updateOwnPost` in the command you've used before:
 
 ```php
-/** @var \Yiisoft\Rbac\ManagerInterface $auth */
-
-// add the rule
-$rule = new AuthorRule();
-$auth->add($rule);
+use Yiisoft\Rbac\Permission;
+use Yiisoft\Rbac\ManagerInterface;
 
 // add the "updateOwnPost" permission and associate the rule with it.
-$updateOwnPost = (new \Yiisoft\Rbac\Permission('updateOwnPost'))
+$updateOwnPost = (new Permission('updateOwnPost'))
     ->withDescription('Update own post')
-    ->withRuleName($rule->getName());
-$auth->add($updateOwnPost);
+    ->withRuleName(AuthorRule::class);
+$this->manager->addPermission($updateOwnPost);
 
 // "updateOwnPost" will be used from "updatePost"
-$auth->addChild($updateOwnPost, $updatePost);
+$this->manager->addChild($updateOwnPost->getName(), $updatePost->getName());
 
 // allow "author" to update their own posts
-$auth->addChild($author, $updateOwnPost);
+$this->manager->addChild($authorRole->getName(), $updateOwnPost->getName());
+
+// Remove this line since we don't want the AuthorRule to be applied to the 'admin' role
+$this->manager->addChild('admin', 'author');
 ```
 
 Now you've got the following hierarchy:

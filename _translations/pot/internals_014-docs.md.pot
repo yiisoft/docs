@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-09 11:54+0000\n"
+"POT-Creation-Date: 2026-01-23 12:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/internals/014-docs.md
 msgid ""
-"The guide should follow [Micosoft style guide](https://learn.microsoft.com/"
+"The guide should follow [Microsoft style guide](https://learn.microsoft.com/"
 "en-us/style-guide/welcome/)."
 msgstr ""
 
