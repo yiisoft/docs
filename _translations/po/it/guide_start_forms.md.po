@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-26 22:37+0000\n"
+"POT-Creation-Date: 2026-01-25 06:24+0000\n"
 "PO-Revision-Date: 2025-12-26 22:37+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -84,7 +84,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
-msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/App/Web/Echo/Form.php`:"
+msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/Web/Echo/Form.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
