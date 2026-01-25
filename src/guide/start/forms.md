@@ -25,7 +25,7 @@ make composer require yiisoft/form-model
 ## Creating a form <span id="creating-form"></span>
 
 The data to be requested from the user will be represented by a `Form` class as shown below and
-saved in the file `/src/App/Web/Echo/Form.php`:
+saved in the file `/src/Web/Echo/Form.php`:
 
 ```php
 <?php
