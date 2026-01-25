@@ -1,34 +1,34 @@
-# Working with forms
+# Работа с формами
 
-This section continues to improve on "Saying Hello." Instead of using URL,
-you will now ask a user for a message via form.
+Этот раздел улучшает пример "Говорим «Привет»". Вместо использования URL,
+теперь вы запросите сообщение от пользователя через форму.
 
-Through this tutorial, you will learn how to:
+В этом руководстве вы узнаете, как:
 
-* Create a form model to represent the data entered by a user through a
-  form.
-* Declare rules to validate the data entered.
-* Build an HTML form in a view.
+* Создать модель формы для представления данных, введенных пользователем
+  через форму.
+* Объявить правила для проверки введённых данных.
+* Построить HTML-форму в представлении.
 
-## Installing form package
+## Установка пакет форм
 
-To install form package, issue the following command in your application
-directory:
+Чтобы установить пакет для работы с формами, выполните следующую команду в
+директории вашего приложения:
 
 ```
 composer require yiisoft/form-model
 ```
 
-For Docker that would be:
+Для Docker это будет:
 
 ```
 make composer require yiisoft/form-model
 ```
 
-## Creating a form <span id="creating-form"></span>
+## Создание формы <span id="creating-form"></span>
 
-The data to be requested from the user will be represented by a `Form` class
-as shown below and saved in the file `/src/Web/Echo/Form.php`:
+Данные, которые будут запрошены у пользователя, будут представлены классом
+`Form`, как показано ниже, и сохранены в файле `/src/Web/Echo/Form.php`:
 
 ```php
 <?php
@@ -49,16 +49,16 @@ final class Form extends FormModel
 }
 ```
 
-In the above example, the `Form` has a single string property `$message`
-which length should be at least of two characters. There's also a custom
-label for the property.
+В приведенном выше примере класс `Form` имеет одно строковое свойство
+`$message`, длина которого должна быть не менее двух символов. Также для
+свойства задана пользовательская метка.
 
-## Using the form <span id="using-form"></span> 
+## Использование формы <span id="using-form"></span> 
 
-Now that you have a form, use it in your action from "[Saying
-Hello](hello.md)".
+Теперь, когда у вас есть форма, используйте её в вашем обработчике из
+раздела "[Говорим «Привет»](hello.md)".
 
-Here's what you end up with in `/src/Web/Echo/Action.php`:
+Вот что у вас получится в файле `/src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -92,12 +92,13 @@ final readonly class Action
 }
 ```
 
-Instead of reading from route, you fill your form from request's POST data
-and validate it with the help of `FormHydrator`. Next you pass the form to
-the view.
+Вместо чтения из роута вы заполняете форму из данных POST запроса и
+проверяете её с помощью `FormHydrator`. Затем вы передаёте форму в
+представление.
 
-For the form to function we need to allow both GET to render the form and
-POST to send the data.  Adjust your route in `config/common/routes.php`:
+Чтобы форма работала, нужно разрешить GET-запросы для отображения формы и
+POST-запросы для отправки данных. Настройте ваш роут в
+`config/common/routes.php`:
 
 ```php
 <?php
@@ -122,9 +123,10 @@ return [
 ];
 ```
 
-## Adjusting view
+## Настройка представления
 
-To render a form, you need to change your view, `src/Web/Echo/template.php`:
+Для отображения формы необходимо изменить ваше представление
+`src/Web/Echo/template.php`:
 
 ```php
 <?php
@@ -156,14 +158,13 @@ $htmlForm = Html::form()
 <?php endif ?>
 ```
 
-If the form is valid, you display a message. The rest initializes and
-renders the form.
+Если форма валидна, вы отобразите сообщение. Остальной код инициализирует и
+отображает форму.
 
-First, you initialize `$htmlForm` with the POST type and the action URL
-generated with the help from the URL generator.  You can access it as
-`$urlGenerator` in all views. You also need to pass the CSRF token to the
-form, which is also available in every view as `$csrf` thanks to the view
-injections listed in `config/common/params.php`:
+Инициализируйте `$htmlForm` с типом POST и URL обработчика, используя URL
+генератор. Вы можете получить к нему доступ как `$urlGenerator` во всех
+представлениях. Передайте в форму CSRF-токен `$csrf`, который доступен в
+представлениях благодаря инъекция из `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view-renderer' => [
@@ -173,47 +174,45 @@ injections listed in `config/common/params.php`:
 ],
 ```
 
-The template renders the CSRF token value as a hidden input to ensure that
-the request originates from the form page and not from another website. It
-will be submitted along with POST form data. Omitting it would result in
-[HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
+Шаблон отображает значение CSRF-токена как скрытое поле, чтобы убедиться,
+что запрос исходит со страницы формы, а не с другого веб-сайта. Он будет
+отправлен вместе с POST-данными формы. Его отсутствие приведёт к [HTTP-коду
+ответа 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-You use `Field::text()` to output "message" field, so it takes care about
-filling the value, escaping it, rendering field label and validation errors.
+`Field::text()` выводит поле \"message\" и автоматически заполняет значение,
+экранирует его, отображает метку и ошибки валидации.
 
-Now, in case you submit an empty message, you will get a validation error:
+Теперь, если вы отправите пустое сообщение, вы получите ошибку валидации:
 "The message to be echoed must contain at least 2 characters."
 
-## Trying it Out <span id="trying-it-out"></span>
+## Проверка работы <span id="trying-it-out"></span>
 
-To see how it works, use your browser to access the following URL:
+Чтобы увидеть, как это работает, откройте в браузере следующий URL:
 
 ```
 http://localhost:8080/say
 ```
 
-You will see a page with a form input field and a label that indicates what
-data to enter.  Also, the form has a "submit" button labeled "Say". If you
-click the "submit" button without entering anything, you will see that the
-field is required. If you enter a single character, the form displays an
-error message next to the problematic input field.
+Вы увидите страницу с полем ввода и меткой, указывающей, какие данные нужно
+ввести. Также есть кнопка отправки с надписью \"Say\". Если нажать её без
+ввода данных, появится сообщение о том, что поле обязательно для
+заполнения. Если ввести один символ, отобразится ошибка валидации.
 
-![Form with a validation error](/images/guide/start/form-error.png)
+![Форма с ошибкой валидации](/images/guide/start/form-error.png)
 
-After you enter a valid message and click the "submit" button, the page
-echoes the data that you entered.
+После того как вы введёте корректное сообщение и нажмёте кнопку отправки,
+страница отобразит введённые вами данные.
 
-![Form with a success message](/images/guide/start/form-success.png)
+![Успешная отправка формы](/images/guide/start/form-success.png)
 
 ## Краткое содержание <span id="summary"></span>
 
-In this section of the guide, you've learned how to create a form model
-class to represent the user data and validate said data.
+В этом разделе руководства вы узнали, как создать класс модели формы для
+представления данных пользователя и валидации этих данных.
 
-You've also learned how to get data from users and how to display data back
-in the browser.  This is a task that could take you a lot of time when
-developing an application, but Yii provides powerful widgets to make this
-task easy.
+Вы также узнали, как получать информацию от пользователей и показывать её в
+браузере. Обычно на это уходит много времени при разработке приложения, но
+виджеты Yii значительно упрощают работу.
 
-In the next section, you will learn how to work with databases, which are
-needed in nearly every application.
+В следующем разделе вы узнаете, как работать с базами данных, которые
+необходимы почти в каждом приложении.

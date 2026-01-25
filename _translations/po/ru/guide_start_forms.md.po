@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2026-01-25 06:24+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-01-25 14:50+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,60 +15,60 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title #
 #: ../src/guide/start/forms.md
 #, no-wrap
 msgid "Working with forms"
-msgstr ""
+msgstr "Работа с формами"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "This section continues to improve on \"Saying Hello.\" Instead of using URL, you will now ask a user for a message via form."
-msgstr ""
+msgstr "Этот раздел улучшает пример \"Говорим «Привет»\". Вместо использования URL, теперь вы запросите сообщение от пользователя через форму."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Through this tutorial, you will learn how to:"
-msgstr ""
+msgstr "В этом руководстве вы узнаете, как:"
 
 #. type: Bullet: '* '
 #: ../src/guide/start/forms.md
 msgid "Create a form model to represent the data entered by a user through a form."
-msgstr ""
+msgstr "Создать модель формы для представления данных, введенных пользователем через форму."
 
 #. type: Bullet: '* '
 #: ../src/guide/start/forms.md
 msgid "Declare rules to validate the data entered."
-msgstr ""
+msgstr "Объявить правила для проверки введённых данных."
 
 #. type: Bullet: '* '
 #: ../src/guide/start/forms.md
 msgid "Build an HTML form in a view."
-msgstr ""
+msgstr "Построить HTML-форму в представлении."
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
 #, no-wrap
 msgid "Installing form package"
-msgstr ""
+msgstr "Установка пакет форм"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "To install form package, issue the following command in your application directory:"
-msgstr ""
+msgstr "Чтобы установить пакет для работы с формами, выполните следующую команду в директории вашего приложения:"
 
 #. type: Fenced code block
 #: ../src/guide/start/forms.md
-#, fuzzy, no-wrap
-#| msgid "composer install yiisoft/security\n"
+#, no-wrap
 msgid "composer require yiisoft/form-model\n"
-msgstr "composer install yiisoft/security\n"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "For Docker that would be:"
-msgstr ""
+msgstr "Для Docker это будет:"
 
 #. type: Fenced code block
 #: ../src/guide/start/forms.md
@@ -78,15 +78,14 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
+#, no-wrap
 msgid "Creating a form <span id=\"creating-form\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+msgstr "Создание формы <span id=\"creating-form\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/Web/Echo/Form.php`:"
-msgstr ""
+msgstr "Данные, которые будут запрошены у пользователя, будут представлены классом `Form`, как показано ниже, и сохранены в файле `/src/Web/Echo/Form.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/forms.md
@@ -113,24 +112,23 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "In the above example, the `Form` has a single string property `$message` which length should be at least of two characters. There's also a custom label for the property."
-msgstr ""
+msgstr "В приведенном выше примере класс `Form` имеет одно строковое свойство `$message`, длина которого должна быть не менее двух символов. Также для свойства задана пользовательская метка."
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
+#, no-wrap
 msgid "Using the form <span id=\"using-form\"></span> "
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+msgstr "Использование формы <span id=\"using-form\"></span> "
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Now that you have a form, use it in your action from \"[Saying Hello](hello.md)\"."
-msgstr ""
+msgstr "Теперь, когда у вас есть форма, используйте её в вашем обработчике из раздела \"[Говорим «Привет»](hello.md)\"."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Here's what you end up with in `/src/Web/Echo/Action.php`:"
-msgstr ""
+msgstr "Вот что у вас получится в файле `/src/Web/Echo/Action.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/forms.md
@@ -170,12 +168,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Instead of reading from route, you fill your form from request's POST data and validate it with the help of `FormHydrator`. Next you pass the form to the view."
-msgstr ""
+msgstr "Вместо чтения из роута вы заполняете форму из данных POST запроса и проверяете её с помощью `FormHydrator`. Затем вы передаёте форму в представление."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "For the form to function we need to allow both GET to render the form and POST to send the data.  Adjust your route in `config/common/routes.php`:"
-msgstr ""
+msgstr "Чтобы форма работала, нужно разрешить GET-запросы для отображения формы и POST-запросы для отправки данных. Настройте ваш роут в `config/common/routes.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/forms.md
@@ -207,12 +205,12 @@ msgstr ""
 #: ../src/guide/start/forms.md
 #, no-wrap
 msgid "Adjusting view"
-msgstr ""
+msgstr "Настройка представления"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "To render a form, you need to change your view, `src/Web/Echo/template.php`:"
-msgstr ""
+msgstr "Для отображения формы необходимо изменить ваше представление `src/Web/Echo/template.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/forms.md
@@ -250,12 +248,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "If the form is valid, you display a message. The rest initializes and renders the form."
-msgstr ""
+msgstr "Если форма валидна, вы отобразите сообщение. Остальной код инициализирует и отображает форму."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "First, you initialize `$htmlForm` with the POST type and the action URL generated with the help from the URL generator.  You can access it as `$urlGenerator` in all views. You also need to pass the CSRF token to the form, which is also available in every view as `$csrf` thanks to the view injections listed in `config/common/params.php`:"
-msgstr ""
+msgstr "Инициализируйте `$htmlForm` с типом POST и URL обработчика, используя URL генератор. Вы можете получить к нему доступ как `$urlGenerator` во всех представлениях. Передайте в форму CSRF-токен `$csrf`, который доступен в представлениях благодаря инъекция из `config/common/params.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/forms.md
@@ -271,29 +269,28 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "The template renders the CSRF token value as a hidden input to ensure that the request originates from the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2)."
-msgstr ""
+msgstr "Шаблон отображает значение CSRF-токена как скрытое поле, чтобы убедиться, что запрос исходит со страницы формы, а не с другого веб-сайта. Он будет отправлен вместе с POST-данными формы. Его отсутствие приведёт к [HTTP-коду ответа 422](https://tools.ietf.org/html/rfc4918#section-11.2)."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "You use `Field::text()` to output \"message\" field, so it takes care about filling the value, escaping it, rendering field label and validation errors."
-msgstr ""
+msgstr "`Field::text()` выводит поле \\\"message\\\" и автоматически заполняет значение, экранирует его, отображает метку и ошибки валидации."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Now, in case you submit an empty message, you will get a validation error: \"The message to be echoed must contain at least 2 characters.\""
-msgstr ""
+msgstr "Теперь, если вы отправите пустое сообщение, вы получите ошибку валидации: \"The message to be echoed must contain at least 2 characters.\""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
+#, no-wrap
 msgid "Trying it Out <span id=\"trying-it-out\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+msgstr "Проверка работы <span id=\"trying-it-out\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "To see how it works, use your browser to access the following URL:"
-msgstr ""
+msgstr "Чтобы увидеть, как это работает, откройте в браузере следующий URL:"
 
 #. type: Fenced code block
 #: ../src/guide/start/forms.md
@@ -304,22 +301,22 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "You will see a page with a form input field and a label that indicates what data to enter.  Also, the form has a \"submit\" button labeled \"Say\". If you click the \"submit\" button without entering anything, you will see that the field is required. If you enter a single character, the form displays an error message next to the problematic input field."
-msgstr ""
+msgstr "Вы увидите страницу с полем ввода и меткой, указывающей, какие данные нужно ввести. Также есть кнопка отправки с надписью \\\"Say\\\". Если нажать её без ввода данных, появится сообщение о том, что поле обязательно для заполнения. Если ввести один символ, отобразится ошибка валидации."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "![Form with a validation error](/images/guide/start/form-error.png)"
-msgstr ""
+msgstr "![Форма с ошибкой валидации](/images/guide/start/form-error.png)"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "After you enter a valid message and click the \"submit\" button, the page echoes the data that you entered."
-msgstr ""
+msgstr "После того как вы введёте корректное сообщение и нажмёте кнопку отправки, страница отобразит введённые вами данные."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "![Form with a success message](/images/guide/start/form-success.png)"
-msgstr ""
+msgstr "![Успешная отправка формы](/images/guide/start/form-success.png)"
 
 #. type: Title ##
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
@@ -330,14 +327,14 @@ msgstr "Краткое содержание <span id=\"summary\"></span>"
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "In this section of the guide, you've learned how to create a form model class to represent the user data and validate said data."
-msgstr ""
+msgstr "В этом разделе руководства вы узнали, как создать класс модели формы для представления данных пользователя и валидации этих данных."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "You've also learned how to get data from users and how to display data back in the browser.  This is a task that could take you a lot of time when developing an application, but Yii provides powerful widgets to make this task easy."
-msgstr ""
+msgstr "Вы также узнали, как получать информацию от пользователей и показывать её в браузере. Обычно на это уходит много времени при разработке приложения, но виджеты Yii значительно упрощают работу."
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "In the next section, you will learn how to work with databases, which are needed in nearly every application."
-msgstr ""
+msgstr "В следующем разделе вы узнаете, как работать с базами данных, которые необходимы почти в каждом приложении."
