@@ -205,7 +205,7 @@ echoes the data that you entered.
 
 ![Form with a success message](/images/guide/start/form-success.png)
 
-## Summary <span id="summary"></span>
+## Краткое содержание <span id="summary"></span>
 
 In this section of the guide, you've learned how to create a form model
 class to represent the user data and validate said data.

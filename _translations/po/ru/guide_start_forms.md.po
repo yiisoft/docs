@@ -323,9 +323,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Summary <span id=\"summary\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+msgstr "Краткое содержание <span id=\"summary\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2025-12-25 21:55+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-01-24 19:48+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,65 +15,65 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title ##
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Summary <span id=\"summary\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+msgstr "Краткое содержание <span id=\"summary\"></span>"
 
 #. type: Title #
 #: ../src/guide/start/hello.md
 #, no-wrap
 msgid "Saying hello"
-msgstr ""
+msgstr "Говорим «Привет»"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "This section describes how to create a new \"Hello\" page in your application.  It's a simple page that will echo back whatever you pass to it or, if nothing passed, will just say \"Hello!\"."
-msgstr ""
+msgstr "В этом разделе описывается, как создать в приложении новую страницу «Hello». Это простая страница: она выводит то, что вы ей передадите, а если ничего не передано — просто говорит «Hello!»."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "To achieve this goal, you will define a route and create [a handler](../structure/handler.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
-msgstr ""
+msgstr "Чтобы этого добиться, вы определите маршрут и создадите [обработчик](../structure/handler.md), который выполнит задачу и сформирует ответ. Затем вы улучшите решение, используя [представление](../views/view.md) для построения ответа."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Through this tutorial, you will learn three things:"
-msgstr ""
+msgstr "В этом руководстве вы узнаете три вещи:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/start/hello.md
 msgid "How to create a handler to respond to a request."
-msgstr ""
+msgstr "Как создать обработчик, который отвечает на запрос."
 
 #. type: Bullet: '2. '
 #: ../src/guide/start/hello.md
 msgid "How to map URL to the handler."
-msgstr ""
+msgstr "Как связать URL с обработчиком."
 
 #. type: Bullet: '3. '
 #: ../src/guide/start/hello.md
 msgid "How to use [view](../views/view.md) to compose the response's content."
-msgstr ""
+msgstr "Как использовать [представление (view)](../views/view.md), чтобы формировать содержимое ответа."
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
+#, no-wrap
 msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+msgstr "Создание обработчика <span id=\"creating-handler\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "For the \"Hello\" task, you will create a handler class that reads a `message` parameter from the request and displays that message back to the user. If the request doesn't provide a `message` parameter, the action will display the default \"Hello\" message."
-msgstr ""
+msgstr "В рамках задания «Hello» вы создадите класс-обработчик, который читает параметр `message` из запроса и выводит это сообщение пользователю. Если параметр `message` не передан, будет показано сообщение по умолчанию — «Hello»."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Create `src/Web/Echo/Action.php`:"
-msgstr ""
+msgstr "Создайте файл `src/Web/Echo/Action.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md
@@ -111,24 +111,23 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In your example, the `__invoke` method receives the `$message` parameter that with the help of `RouteArgument` attribute gets the message from URL. The value defaults to `\"Hello!\"`. If the request is made to `/say/Goodbye`, the action assigns the value \"Goodbye\" to the `$message` variable."
-msgstr ""
+msgstr "В этом примере метод `__invoke` принимает параметр `$message`, который с помощью атрибута `RouteArgument` получает значение из URL. По умолчанию используется `\"Hello!\"`. Если запрос сделан к `/say/Goodbye`, обработчик присвоит переменной `$message` значение «Goodbye»."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that outputs the response to the end user."
-msgstr ""
+msgstr "Приложение пропускает ответ через [стек middleware](../structure/middleware.md), после чего эмиттер отправляет его конечному пользователю."
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "configuration could be:"
+#, no-wrap
 msgid "Configuring router"
-msgstr "конфигурация может быть:"
+msgstr "Настройка роутера"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Now, to map your handler to URL, you need to add a route in `config/common/routes.php`:"
-msgstr ""
+msgstr "Теперь, чтобы связать ваш обработчик с URL, добавьте маршрут в `config/common/routes.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md
@@ -158,51 +157,49 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute.  `[]` marks this part of the pattern as optional."
-msgstr ""
+msgstr "В примере выше вы связываете шаблон `/say[/{message}]` с `\\App\\Web\\Echo\\Action`. При обработке запроса роутер создаёт экземпляр и вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в этом месте, в атрибут запроса `message`. Квадратные скобки `[]` помечают эту часть шаблона как необязательную."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "You also give a `echo/say` name to this route to be able to generate URLs pointing to it."
-msgstr ""
+msgstr "Также вы задаёте этому маршруту имя `echo/say`, чтобы затем можно было генерировать URL, ведущие на него."
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
+#, no-wrap
 msgid "Trying it out <span id=\"trying-it-out\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+msgstr "Пробуем в деле <span id=\"trying-it-out\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "After creating the action and the view open `http://localhost/say/Hello+World` in your browser."
-msgstr ""
+msgstr "После того как вы создадите обработчик и представление, откройте в браузере `http://localhost/say/Hello+World`."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "This URL displays a page with \"The message is: Hello World\"."
-msgstr ""
+msgstr "По этому адресу откроется страница с текстом “The message is: Hello World”."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "If you omit the `message` parameter in the URL, the page displays \"The message is: Hello!\"."
-msgstr ""
+msgstr "Если не указывать параметр `message` в URL, страница покажет “The message is: Hello!”."
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
+#, no-wrap
 msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+msgstr "Создание шаблона представления <span id=\"creating-view-template\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Usually, the task is more complicated than printing out \"hello world\" and involves rendering some complex HTML. For this task, it's handy to use view templates. They're scripts you write to generate a response's body."
-msgstr ""
+msgstr "Обычно задача сложнее, чем просто вывести «hello world» требует рендеринга более сложного HTML. В таких случаях удобно использовать шаблоны представления: это скрипты, которые вы пишете, чтобы сформировать тело ответа."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "For the \"Hello\" task, create a `src/Web/Echo/template.php` template that prints the `message` parameter received from the action method:"
-msgstr ""
+msgstr "Для задания «Hello» создайте шаблон `src/Web/Echo/template.php`, который выводит параметр `message`, полученный из метода обработчика:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md ../src/guide/views/view.md
@@ -219,17 +216,17 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In the above code, the `message` parameter uses HTML encoding before you print it. You need that because the parameter comes from an end user and is vulnerable to [cross-site scripting (XSS) attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding malicious JavaScript in the parameter."
-msgstr ""
+msgstr "В примере выше параметр `message` перед выводом проходит HTML-экранирование. Это нужно, потому что значение приходит от пользователя, и без экранирования его можно использовать для [XSS-атак (cross-site scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting), внедрив в параметр вредоносный JavaScript."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even PHP statements. In fact, the view service executes the `say` view as a PHP script."
-msgstr ""
+msgstr "Разумеется, в представление `say` можно добавить больше содержимого. Оно может состоять из HTML-тегов, обычного текста и даже PHP-кода. Фактически, сервис представлений выполняет `say` как PHP-скрипт."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "To use the view, you need to change `src/Web/Echo/Action.php`:"
-msgstr ""
+msgstr "Чтобы использовать представление, измените `src/Web/Echo/Action.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md
@@ -266,24 +263,24 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Now open your browser and check it again. You should see the similar text but with a layout applied."
-msgstr ""
+msgstr "Теперь снова откройте страницу в браузере. Вы увидите похожий текст, но уже с применённым шаблоном."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Also, you've separated the part about how it works and part of how it's presented. In the larger applications, it helps a lot to deal with complexity."
-msgstr ""
+msgstr "Кроме того, вы разделили логику (как это работает) и представление (как это выглядит). В больших приложениях это очень помогает справляться со сложностью."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In this section, you've touched the handler and template parts of the typical web application.  You created a handler as part of a class to handle a specific request. You also created a view to compose the response's content. In this simple example, no data source was involved as the only data used was the `message` parameter."
-msgstr ""
+msgstr "В этом разделе вы познакомились с обработчиками и шаблонами — типичными частями веб‑приложения. Вы создали обработчик (класс), который отвечает за конкретный запрос, и представление, которое формирует содержимое ответа. В этом простом примере источник данных не нужен: используются только значения параметра `message`."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "You've also learned about routing in Yii, which acts as the bridge between user requests and handlers."
-msgstr ""
+msgstr "Вы также познакомились с маршрутизацией в Yii — она служит мостом между пользовательскими запросами и обработчиками."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In the next section, you will learn how to fetch data and add a new page containing an HTML form."
-msgstr ""
+msgstr "В следующем разделе вы узнаете, как получать данные и добавить новую страницу с HTML-формой."
