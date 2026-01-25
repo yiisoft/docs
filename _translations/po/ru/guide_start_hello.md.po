@@ -116,7 +116,7 @@ msgstr "В этом примере метод `__invoke` принимает па
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that outputs the response to the end user."
-msgstr "Приложение пропускает ответ через [стек middleware](../structure/middleware.md), после чего emitter отправляет его конечному пользователю."
+msgstr "Приложение пропускает ответ через [стек middleware](../structure/middleware.md), после чего эмиттер отправляет его конечному пользователю."
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
