@@ -132,25 +132,30 @@ final readonly class IdentityRepository implements IdentityRepositoryInterface
 }
 ```
 
-## Using `\Yiisoft\User\CurrentUser`
+## Using `Yiisoft\User\CurrentUser`
 
-You can use `\Yiisoft\User\CurrentUser` service to get current user identity.
+You can use `Yiisoft\User\CurrentUser` service to get current user identity.
 As any service, it could be auto-wired in either action handler constructor or method:
 
 ```php
-use \Psr\Http\Message\ServerRequestInterface;
-use \Yiisoft\User\CurrentUser;
+use Psr\Http\Message\ServerRequestInterface;
+use Yiisoft\User\CurrentUser;
 
 final readonly class SiteController
 {
-    public function actionIndex(ServerRequestInterface $request, CurrentUser $user)
-    {        
-        if ($user->isGuest()) {
+    public function __construct(
+        private ServerRequestInterface $request,
+        private CurrentUser $user,
+    ) {}
+
+    public function index(): ResponseInterface
+    {
+        if ($this->user->isGuest()) {
             // user is guest
         } else {
-            $identity = $user->getIdentity();
+            $identity = $this->user->getIdentity();
             // do something based on identity
-        }        
+        }
     }
 }
 ```

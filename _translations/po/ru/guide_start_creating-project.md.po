@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2026-01-09 11:54+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-01-21 22:40+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,17 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title #
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "Creating a project"
-msgstr ""
+msgstr "Создание проекта"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "In this guide we'll provide commands for both [Docker](https://docs.docker.com/get-started/get-docker/) and the built-in dev server with everything installed locally."
-msgstr ""
+msgstr "В этом руководстве мы приведём команды как для [Docker](https://docs.docker.com/get-started/get-docker/), так и для встроенного dev‑сервера, если всё необходимое установлено локально."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -35,16 +36,19 @@ msgid ""
 "> If you want to use another web server,\n"
 "> see [\"Configuring web servers\"](../../cookbook/configuring-webservers/general.md).\n"
 msgstr ""
+"> [!NOTE]\n"
+"> Если вы хотите использовать другой веб‑сервер,\n"
+"> см. [\"Настройка веб‑серверов\"](../../cookbook/configuring-webservers/general.md).\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "We recommend starting with a project template that's a minimal working Yii project implementing some basic features.  It can serve as a good starting point for your projects."
-msgstr ""
+msgstr "Рекомендуем начать с шаблона проекта: это минимальный рабочий проект Yii с базовой функциональностью. Он может стать хорошей отправной точкой для ваших проектов."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "You can create a new project from a template using the [Composer](https://getcomposer.org) package manager:"
-msgstr ""
+msgstr "Создать новый проект из шаблона можно с помощью [Composer](https://getcomposer.org):"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -54,10 +58,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy
-#| msgid "To install the packages, run the following command:"
 msgid "Docker users can run the following commands:"
-msgstr "Для установки пакетов выполните в консоли следующую команду:"
+msgstr "Пользователи Docker могут выполнить следующие команды:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -71,7 +73,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "If you want development version instead of release one:"
-msgstr ""
+msgstr "Если вам нужна dev-версия вместо релизной:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -86,7 +88,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "This installs the latest stable version of the Yii project template in a directory named `your_project`.  You can choose a different directory name if you want."
-msgstr ""
+msgstr "Команда установит последнюю стабильную версию шаблона проекта Yii в директорию `your_project`. При желании можете выбрать другое имя директории."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -96,11 +98,14 @@ msgid ""
 "> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.\n"
 "> Don't use the development version of Yii for production because it may break your running code.\n"
 msgstr ""
+"> [!TIP]\n"
+"> Если хотите установить самую свежую dev-версию Yii, добавьте к команде `--stability=dev`.\n"
+"> Не используйте dev-версию Yii в продакшене: она может сломать работающее приложение.\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "Go into the newly created directory and run:"
-msgstr ""
+msgstr "Перейдите в созданную директорию и выполните:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -111,7 +116,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "For Docker users, run:"
-msgstr ""
+msgstr "Если вы используете Docker, выполните:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -122,7 +127,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "Open your browser to the URL `http://localhost/`."
-msgstr ""
+msgstr "Откройте в браузере адрес `http://localhost/`."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -132,8 +137,11 @@ msgid ""
 "> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
 "> `DEV_PORT` in the `docker/.env` file.\n"
 msgstr ""
+"> [!NOTE]\n"
+"> HTTP-сервер слушает порт 80. Если он уже занят, укажите порт через `--port` или, в случае Docker,\n"
+"> через `DEV_PORT` в файле `docker/.env`.\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "![Successful Installation of Yii](/images/guide/start/app-installed.png)"
-msgstr ""
+msgstr "![Yii успешно установлен](/images/guide/start/app-installed.png)"

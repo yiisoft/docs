@@ -1,25 +1,25 @@
-# Creating a project
+# Создание проекта
 
-In this guide we'll provide commands for both
-[Docker](https://docs.docker.com/get-started/get-docker/) and the built-in
-dev server with everything installed locally.
+В этом руководстве мы приведём команды как для
+[Docker](https://docs.docker.com/get-started/get-docker/), так и для
+встроенного dev‑сервера, если всё необходимое установлено локально.
 
 > [!NOTE]
-> If you want to use another web server,
-> see ["Configuring web servers"](../../cookbook/configuring-webservers/general.md).
+> Если вы хотите использовать другой веб‑сервер,
+> см. ["Настройка веб‑серверов"](../../cookbook/configuring-webservers/general.md).
 
-We recommend starting with a project template that's a minimal working Yii
-project implementing some basic features.  It can serve as a good starting
-point for your projects.
+Рекомендуем начать с шаблона проекта: это минимальный рабочий проект Yii с
+базовой функциональностью. Он может стать хорошей отправной точкой для ваших
+проектов.
 
-You can create a new project from a template using the
-[Composer](https://getcomposer.org) package manager:
+Создать новый проект из шаблона можно с помощью
+[Composer](https://getcomposer.org):
 
 ```sh
 composer create-project yiisoft/app your_project
 ```
 
-Docker users can run the following commands:
+Пользователи Docker могут выполнить следующие команды:
 
 ```sh
 docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
@@ -27,7 +27,7 @@ sudo chown -R $(id -u):$(id -g) your_project
 cd your_project
 ```
 
-If you want development version instead of release one:
+Если вам нужна dev-версия вместо релизной:
  
 ```sh
 git clone https://github.com/yiisoft/app.git --depth 1 your_project && \
@@ -36,30 +36,29 @@ rm -rf .git && \
 make composer update
 ```
 
-This installs the latest stable version of the Yii project template in a
-directory named `your_project`.  You can choose a different directory name
-if you want.
+Команда установит последнюю стабильную версию шаблона проекта Yii в
+директорию `your_project`. При желании можете выбрать другое имя директории.
 
 > [!TIP]
-> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.
-> Don't use the development version of Yii for production because it may break your running code.
+> Если хотите установить самую свежую dev-версию Yii, добавьте к команде `--stability=dev`.
+> Не используйте dev-версию Yii в продакшене: она может сломать работающее приложение.
 
-Go into the newly created directory and run:
+Перейдите в созданную директорию и выполните:
 
 ```sh
 APP_ENV=dev ./yii serve --port=80
 ```
 
-For Docker users, run:
+Если вы используете Docker, выполните:
 
 ```sh
 make up
 ```
 
-Open your browser to the URL `http://localhost/`.
+Откройте в браузере адрес `http://localhost/`.
 
 > [!NOTE]
-> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,
-> `DEV_PORT` in the `docker/.env` file.
+> HTTP-сервер слушает порт 80. Если он уже занят, укажите порт через `--port` или, в случае Docker,
+> через `DEV_PORT` в файле `docker/.env`.
 
-![Successful Installation of Yii](/images/guide/start/app-installed.png)
+![Yii успешно установлен](/images/guide/start/app-installed.png)
