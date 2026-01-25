@@ -37,7 +37,7 @@ msgstr "В этом разделе описывается, как создать
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "To achieve this goal, you will define a route and create [a handler](../structure/handler.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
-msgstr "Чтобы этого добиться, вы определите маршрут и создадите [обработчик](../structure/handler.md), который выполнит задачу и сформирует ответ. Затем вы улучшите решение, используя [представление (view)](../views/view.md) для построения ответа."
+msgstr "Чтобы этого добиться, вы определите маршрут и создадите [обработчик](../structure/handler.md), который выполнит задачу и сформирует ответ. Затем вы улучшите решение, используя [представление](../views/view.md) для построения ответа."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
