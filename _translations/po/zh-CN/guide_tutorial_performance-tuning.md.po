@@ -1,0 +1,344 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"PO-Revision-Date: 2026-01-08 08:54+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Performance tuning"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "There are many factors affecting the performance of your application. Some are environmental, some are related to your code, while some others are related to Yii itself. In this section, we will count most of these factors and explain how you can improve your application performance by adjusting these factors."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Optimizing your PHP Environment <span id=\"optimizing-php\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "A well-configured PHP environment is important. To get maximum performance:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Use the latest stable PHP version. Major releases of PHP may bring significant performance improvements."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Enable bytecode caching with [Opcache](https://secure.php.net/opcache).  Bytecode caching avoids the time spent on parsing and including PHP scripts for every incoming request."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[Tune `realpath()` cache](https://github.com/samdark/realpath_cache_tuner)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Make sure [XDebug](https://xdebug.org/) isn't installed in the production environment."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Try [PHP 7 preloading](https://wiki.php.net/rfc/preload)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Optimizing your code <span id=\"optimizing-code\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Beyond environment configuration, there are code-level optimizations that can improve your application's performance:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Look out for [algorithm complexity](https://en.wikipedia.org/wiki/Time_complexity).  Especially give attention to `foreach` within `foreach` loops but look out for using [heavy PHP functions](https://stackoverflow.com/questions/2473989/list-of-big-o-for-php-functions) in loops as well."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[Speeding up array_merge()](https://www.exakat.io/speeding-up-array_merge/)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[Move that foreach() inside the method](https://www.exakat.io/move-that-foreach-inside-the-method/)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[Array, classes and anonymous classes memory usage](https://www.exakat.io/array-classes-and-anonymous-memory-usage/)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Use fully qualified function names with leading backslashes to optimize opcache performance.  When calling [certain global functions](https://github.com/php/php-src/blob/944b6b6bbd6f05ad905f5f4ad07445792bee4027/Zend/zend_compile.c#L4291-L4353)  from within a namespace, PHP first searches in the current namespace before falling back to the global namespace.  Adding a leading backslash (e.g., `\\count()` instead of `count()`) tells PHP to directly use the global function, avoiding the namespace lookup and improving opcache efficiency. This optimization is best implemented automatically using tools like [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) with the `native_function_invocation` rule."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "The above optimizations would give you a significant performance boost only if the code in question is executed frequently. That is usually the case for big loops or batch processing."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Using caching techniques <span id=\"using-caching-techniques\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "You can use various caching techniques to significantly improve the performance of your application. For example, if your application allows users to enter text in Markdown format, you may consider caching the parsed Markdown content to avoid parsing the same Markdown text repeatedly in every request. Please refer to the [Caching](../caching/overview.md) section to learn about the caching support provided by Yii."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Optimizing session storage <span id=\"optimizing-session-storage\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid ""
+"By default, session data is stored in files. The implementation is locking a file from opening a session to the point it's\n"
+"closed either by `$session->close()` or at the end of request.\n"
+"While the session file is locked, all other requests that are trying to use the same session are blocked. That's waiting for the\n"
+"initial request to release a session file. This is fine for development and probably small projects. But when it comes \n"
+"to handling massive concurrent requests, it's better to use more sophisticated storage, such as Redis.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "It could be done either by [configuring PHP via php.ini](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server-as-a-session-handler-for-php-on-ubuntu-14-04)  or [implementing SessionHandlerInterface](https://www.sitepoint.com/saving-php-sessions-in-redis/) and configuring session service as follows:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid ""
+"\\Yiisoft\\Session\\SessionInterface::class => [\n"
+"    'class' => \\Yiisoft\\Session\\Session::class,\n"
+"    '__construct()' => [[], $myCustomSessionHandler],\n"
+"],\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Optimizing databases <span id=\"optimizing-databases\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Executing DB queries and fetching data from databases are often the main performance bottleneck in a Web application. Although using [data caching](../caching/data.md) techniques may ease the performance hit, it doesn't fully solve the problem. When the database has enormous amounts of data and the cached data are invalid, fetching the latest data could be prohibitively expensive without a proper database and query design."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "A general technique to improve the performance of DB queries is to create indices for table columns that need to be filtered by. For example, if you need to look for a user record by `username`, you should create an index on `username`. Note that while indexing can make SELECT queries much faster, it will slow down INSERT, UPDATE and DELETE queries."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "For complex DB queries, it's recommended that you create database views to save the query parsing and preparation time."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Last but not least, use `LIMIT` in your `SELECT` queries. This avoids fetching an overwhelming amount of data from the database and exhausting the memory allocated to PHP."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Optimizing composer autoloader <span id=\"optimizing-autoloader\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Because Composer autoloader is used to include most third-party class files, you should consider optimizing it by executing the following command:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "composer dumpautoload -o\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Additionally, you may consider using [authoritative class maps](https://getcomposer.org/doc/articles/autoloader-optimization.md#optimization-level-2-a-authoritative-class-maps)  and [APCu cache](https://getcomposer.org/doc/articles/autoloader-optimization.md#optimization-level-2-b-apcu-cache).  Note that both optimizations may or may not be suitable for your particular case."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Processing data offline <span id=\"processing-data-offline\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "When a request involves some resource-intensive operations, you should think of ways to perform those operations in offline mode without having users wait for them to finish."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "There are two methods to process data offline: pull and push."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "In the pull method, whenever a request involves some complex operation, you create a task and save it in a persistent storage, such as a database. You then use a separate process (such as a cron job) to pull the tasks and process them.  This method is straightforward to implement, but it has some drawbacks. For example, the task process needs to periodically pull from the task storage. If the pull frequency is too low, the tasks may be processed with great delay, but if the frequency is too high, it will introduce high overhead."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "In the push method, you would use a message queue (e.g., RabbitMQ, ActiveMQ, Amazon SQS, etc.) to manage the tasks.  Whenever a new task is put in the queue, it will initiate or notify the task handling process to trigger the task processing."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Using preloading"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "As of PHP 7.4.0, PHP can be configured to preload scripts into the opcache when the engine starts.  You can read more in the [documentation](https://www.php.net/manual/en/opcache.preloading.php)  and the corresponding [RFC](https://wiki.php.net/rfc/preload)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Note that the optimal tradeoff between performance and memory may vary with the application. \"Preload everything\" may be the easiest strategy, but not necessarily the best strategy."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "For example, we conducted a simple [yiisoft/app](https://github.com/yiisoft/app) application template benchmark.  Without preloading and with preloading of the entire composer class map."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Preloading benchmarks"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "The application template benchmark includes configuring classes to injected dependencies in the bootstrap script."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "For both variants, [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html)  was used with the following run parameters:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "ab -n 1000 -c 10 -t 10\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "Also, the debug mode was disabled. And an optimized autoloader of the [Composer](https://getcomposer.org) was used, and development dependencies weren't used:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "composer install --optimize-autoloader --no-dev\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "With preloading enabled, the entire composer class map (825 files) was used:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid ""
+"$files = require 'vendor/composer/autoload_classmap.php';\n"
+"\n"
+"foreach (array_unique($files) as $file) {\n"
+"    opcache_compile_file($file);\n"
+"}\n"
+msgstr ""
+
+#. type: Title ####
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Test results"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid ""
+"| Benchmark          | Preloaded files | Opcache memory used | Per request memory used | Time per request | Requests per second |\n"
+"|--------------------|-----------------|---------------------|-------------------------|------------------|---------------------|\n"
+"| Without preloading | 0               | 12.32 mb            | 1.71 mb                 | 27.63 ms         | 36.55 rq/s          |\n"
+"| With preloading    | 825             | 17.86 mb            | 1.82 mb                 | 26.21 ms         | 38.42 rq/s          |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "As you can see, the test results aren't much different, since this is just a clean application template that contains a few classes. More discussion of preloading, including benchmarks, can be found in the [composer's issue](https://github.com/composer/composer/issues/7777)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "Performance profiling <span id=\"performance-profiling\"></span>"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "You should profile your code to find out the performance bottlenecks and take appropriate measures accordingly.  The following profiling tools may be useful:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/performance-tuning.md
+#, no-wrap
+msgid "<!-- - [Yii debug toolbar and debugger](https://github.com/yiisoft/yii2-debug/blob/master/docs/guide/README.md) -->\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[Blackfire](https://blackfire.io/)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[XHProf](https://secure.php.net/manual/en/book.xhprof.php)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/performance-tuning.md
+msgid "[XDebug profiler](https://xdebug.org/docs/profiler)"
+msgstr ""

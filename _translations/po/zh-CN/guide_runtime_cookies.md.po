@@ -1,0 +1,311 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Cookies"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Cookies are for persisting data between requests by sending it to the client browser using HTTP headers.  The client sends data back to the server in request headers. Thus, cookies are handy to store small amounts of data, such as tokens or flags."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Reading cookies"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "You could obtain Cookie values from server request that's available as route handler (such as controller action) argument:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"private function actionProfile(\\Psr\\Http\\Message\\ServerRequestInterface $request)\n"
+"{\n"
+"    $cookieValues = $request->getCookieParams();\n"
+"    $cookieValue = $cookieValues['cookieName'] ?? null;\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "In addition to getting cookie values directly from the server request, you can also use the [yiisoft/request-provider](https://github.com/yiisoft/request-provider)  package, which provides a more structured way to handle cookies through the `\\Yiisoft\\RequestProvider\\RequestCookieProvider`.  This approach can simplify your code and improve readability."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Here’s an example of how to work with cookies using the `\\Yiisoft\\RequestProvider\\RequestCookieProvider`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"final readonly class MyService\n"
+"{\n"
+"    public function __construct(\n"
+"        private \\Yiisoft\\RequestProvider\\RequestCookieProvider $cookies\n"
+"    ) {}\n"
+"\n"
+"    public function go(): void\n"
+"    {\n"
+"        // Check if a specific cookie exists\n"
+"        if ($this->cookies->has('foo')) {\n"
+"            // Retrieve the value of the cookie\n"
+"            $fooValue = $this->cookies->get('foo');\n"
+"            // Do something with the cookie value\n"
+"        }\n"
+"\n"
+"        // Retrieve another cookie value\n"
+"        $barValue = $this->cookies->get('bar');\n"
+"        // Do something with the bar cookie value\n"
+"    }\n"
+"}\n"
+"\n"
+"## Sending cookies\n"
+"\n"
+"Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is\n"
+"`\\Yiisoft\\Cookies\\Cookie` class to help with it:\n"
+"\n"
+"```php\n"
+"$cookie = (new \\Yiisoft\\Cookies\\Cookie('cookieName', 'value'))\n"
+"    ->withPath('/')\n"
+"    ->withDomain('yiiframework.com')\n"
+"    ->withHttpOnly(true)\n"
+"    ->withSecure(true)\n"
+"    ->withSameSite(\\Yiisoft\\Cookies\\Cookie::SAME_SITE_STRICT)\n"
+"    ->withMaxAge(new \\DateInterval('P7D'));\n"
+"\n"
+"return $cookie->addToResponse($response);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "After forming a cookie call `addToResponse()` passing an instance of `\\Psr\\Http\\Message\\ResponseInterface` to add corresponding HTTP headers to it."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Signing and encrypting cookies"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To prevent the substitution of the cookie value, the package provides two implementations:"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "`Yiisoft\\Cookies\\CookieSigner` - signs each cookie with a unique prefix hash based on the value of the cookie and a secret key.  `Yiisoft\\Cookies\\CookieEncryptor` - encrypts each cookie with a secret key."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Encryption is more secure than signing but has lower performance."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"$cookie = new \\Yiisoft\\Cookies\\Cookie('identity', 'identityValue');\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$signedCookie = $signer->sign($cookie);\n"
+"$encryptedCookie = $encryptor->encrypt($cookie);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To validate and get back the pure value, use the `validate()` and `decrypt()` method."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"$cookie = $signer->validate($signedCookie);\n"
+"$cookie = $encryptor->decrypt($encryptedCookie);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "If the cookie value is tampered with or hasn't been signed/encrypted before, a `\\RuntimeException` will be thrown.  Therefore, if you aren't sure that the cookie value was signed/encrypted earlier, first use the `isSigned()` and `isEncrypted()` methods, respectively."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"if ($signer->isSigned($cookie)) {\n"
+"    $cookie = $signer->validate($cookie);\n"
+"}\n"
+"\n"
+"if ($encryptor->isEncrypted($cookie)) {\n"
+"    $cookie = $encryptor->decrypt($cookie);\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "It makes sense to sign or encrypt the value of a cookie if you store important data that a user shouldn't change."
+msgstr ""
+
+#. type: Title ###
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Automating encryption and signing"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To automate the encryption/signing and decryption/validation of cookie values, use an instance of `Yiisoft\\Cookies\\CookieMiddleware`, which is [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "This middleware provides the following features:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Validates and decrypts the cookie parameter values from the request."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Excludes the cookie parameter from the request if it was tampered with and logs information about it."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Encrypts/signs cookie values and replaces their clean values in the `Set-Cookie` headers in the response."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "In order for the middleware to know which values of which cookies need to be encrypted/signed, an array of settings must be passed to its constructor. The array keys are cookie name patterns and values are constant values of `CookieMiddleware::ENCRYPT` or `CookieMiddleware::SIGN`."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Cookies\\CookieMiddleware;\n"
+"\n"
+"$cookiesSettings = [\n"
+"    // Exact match with the name `identity`.\n"
+"    'identity' => CookieMiddleware::ENCRYPT,\n"
+"    // Matches any number from 1 to 9 after the underscore.\n"
+"    'name_[1-9]' => CookieMiddleware::SIGN,\n"
+"    // Matches any string after the prefix, including an\n"
+"    // empty string, except for the delimiters \"/\" and \"\\\".\n"
+"    'prefix*' => CookieMiddleware::SIGN,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "For more information on using the wildcard pattern, see the [yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage) package."
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Creating and using middleware:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Psr\\Http\\Message\\ServerRequestInterface $request\n"
+" * @var \\Psr\\Http\\Server\\RequestHandlerInterface $handler\n"
+" * @var \\Psr\\Log\\LoggerInterface $logger\n"
+" */\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$cookiesSettings = [\n"
+"    'identity' => \\Yiisoft\\Cookies\\CookieMiddleware::ENCRYPT,\n"
+"    'session' => \\Yiisoft\\Cookies\\CookieMiddleware::SIGN,\n"
+"];\n"
+"\n"
+"$middleware = new \\Yiisoft\\Cookies\\CookieMiddleware(\n"
+"    $logger\n"
+"    $encryptor,\n"
+"    $signer,\n"
+"    $cookiesSettings,\n"
+");\n"
+"\n"
+"// The cookie parameter values from the request are decrypted/validated.\n"
+"// The cookie values are encrypted/signed and appended to the response.\n"
+"$response = $middleware->process($request, $handler);\n"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "If the `$cookiesSettings` array is empty, no cookies will be encrypted and signed."
+msgstr ""
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Cookies security"
+msgstr ""
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "You should configure each cookie to be secure. Important security settings are:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would prevent sending a cookie in cross-site browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g., POST, PUT, PATCH, etc.). `SAME_SITE_STRICT` would prevent cookies sending for all methods."
+msgstr ""
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Sign or encrypt the value of the cookie to prevent spoofing of values if the data in the value shouldn't be tampered with."
+msgstr ""
