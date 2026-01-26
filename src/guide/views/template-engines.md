@@ -1,7 +1,8 @@
 # Template engines
 
 Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the
-template engine, but you can easily add support for other engines like Twig or create your own custom renderers.
+template engine, but you can easily add support for other engines like Twig or [Blade](https://github.com/lee-to/yii-blade)
+or create your own custom renderers.
 
 PHP templates were described in the "[View](view.md)" guide section. 
 
