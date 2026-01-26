@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-25 21:55+0000\n"
+"POT-Creation-Date: 2026-01-26 18:48+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
-msgid "Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the template engine, but you can easily add support for other engines like Twig or create your own custom renderers."
+msgid "Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the template engine, but you can easily add support for other engines like Twig and [Blade](https://github.com/lee-to/yii-blade), or create your own custom renderers."
 msgstr ""
 
 #. type: Plain text
