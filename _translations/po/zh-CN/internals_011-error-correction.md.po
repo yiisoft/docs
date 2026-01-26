@@ -23,8 +23,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/011-error-correction.md
-msgid ""
-"If it's unambiguous within a class what the developer who incorrectly used "
-"the class meant, it's OK to correct the error.  Otherwise, the error MUST "
-"NOT be corrected."
+msgid "If it's unambiguous within a class what the developer who incorrectly used the class meant, it's OK to correct the error.  Otherwise, the error MUST NOT be corrected."
 msgstr ""

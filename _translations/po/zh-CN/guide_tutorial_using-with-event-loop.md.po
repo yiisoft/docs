@@ -34,18 +34,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"There is an alternative way of running an application. Event loop. The idea "
-"is to initialize everything possible at once and then process a number of "
-"requests using it. Such an approach is usually called event loop."
+msgid "There is an alternative way of running an application. Event loop. The idea is to initialize everything possible at once and then process a number of requests using it. Such an approach is usually called event loop."
 msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"There are multiple tools that could be used to achieve it. Notably, "
-"[FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) "
-"and [Swoole](https://www.swoole.co.uk/)."
+msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/)."
 msgstr ""
 
 #. type: Title ##
@@ -72,9 +66,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"Usually, there are multiple workers processing requests at the same time as "
-"with traditional php-fpm."
+msgid "Usually, there are multiple workers processing requests at the same time as with traditional php-fpm."
 msgstr ""
 
 #. type: Plain text
@@ -90,10 +82,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"Worker process requests one by one that's current processing is blocking "
-"processing next request. That means that long-running processes, same as in "
-"general PHP applications, should be put into a background via using a queue."
+msgid "Worker process requests one by one that's current processing is blocking processing next request. That means that long-running processes, same as in general PHP applications, should be put into a background via using a queue."
 msgstr ""
 
 #. type: Title ###
@@ -104,20 +93,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"Since the context in the event loop is shared between all request-responses "
-"processed by a single worker, all changes in the state of a service made by "
-"the previous request may affect the current request. Moreover, it can be a "
-"security problem if data from one user is available to another user."
+msgid "Since the context in the event loop is shared between all request-responses processed by a single worker, all changes in the state of a service made by the previous request may affect the current request. Moreover, it can be a security problem if data from one user is available to another user."
 msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-with-event-loop.md
-msgid ""
-"There are two ways of dealing with it. First, you can avoid having state by "
-"making services stateless. PHP's `readonly` keyword may be handy for it. "
-"Second, you can reset the services' state at the end of the request "
-"processing.  In this case, a state resetter will help you:"
+msgid "There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly` keyword may be handy for it. Second, you can reset the services' state at the end of the request processing.  In this case, a state resetter will help you:"
 msgstr ""
 
 #. type: Fenced code block (php)

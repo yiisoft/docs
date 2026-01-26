@@ -23,11 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"For Yii3, the number of packages increased significantly to achieve more "
-"reusability and independent releases.  To ease development of the framework "
-"itself, we've created a special tool available from [yiisoft/yii-dev-tool]"
-"(https://github.com/yiisoft/yii-dev-tool)."
+msgid "For Yii3, the number of packages increased significantly to achieve more reusability and independent releases.  To ease development of the framework itself, we've created a special tool available from [yiisoft/yii-dev-tool](https://github.com/yiisoft/yii-dev-tool)."
 msgstr ""
 
 #. type: Fenced code block
@@ -63,38 +59,25 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"There are many commands available. The most important ones are `install` and "
-"`update`. What it does is:"
+msgid "There are many commands available. The most important ones are `install` and `update`. What it does is:"
 msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"Install/update all packages listed in [`packages.php`](https://github.com/"
-"yiisoft/yii-dev-tool/blob/master/packages.php)  or individual package from "
-"that list if specified."
+msgid "Install/update all packages listed in [`packages.php`](https://github.com/yiisoft/yii-dev-tool/blob/master/packages.php)  or individual package from that list if specified."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"For every package installed check `vendor` directory for packages listed in "
-"`packages.php`.  If there is any, replace the package directory with a "
-"symlink to another package source."
+msgid "For every package installed check `vendor` directory for packages listed in `packages.php`.  If there is any, replace the package directory with a symlink to another package source."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"As a result, you will have many packages using each other, so there is no "
-"need to `git push` and `composer install` / `composer update` during "
-"development."
+msgid "As a result, you will have many packages using each other, so there is no need to `git push` and `composer install` / `composer update` during development."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/005-development-tool.md
-msgid ""
-"A [detailed example](https://github.com/yiisoft/yii-dev-tool#usage-example) "
-"of using the tool is available in its README."
+msgid "A [detailed example](https://github.com/yiisoft/yii-dev-tool#usage-example) of using the tool is available in its README."
 msgstr ""

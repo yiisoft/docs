@@ -42,18 +42,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"Modern web applications require careful management of CSS styles, JavaScript "
-"code, and HTML meta tags.  Yii3 provides a comprehensive system for "
-"registering and organizing these resources through the `WebView` class, "
-"which is part of the `yiisoft/view` package."
+msgid "Modern web applications require careful management of CSS styles, JavaScript code, and HTML meta tags.  Yii3 provides a comprehensive system for registering and organizing these resources through the `WebView` class, which is part of the `yiisoft/view` package."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"The `WebView` class extends the basic `View` class with web-specific "
-"functionality, allowing you to:"
+msgid "The `WebView` class extends the basic `View` class with web-specific functionality, allowing you to:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -359,8 +353,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"Resources can be positioned at different locations in the HTML document:"
+msgid "Resources can be positioned at different locations in the HTML document:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -606,8 +599,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"Here's how you might set up a complete page with all types of resources:"
+msgid "Here's how you might set up a complete page with all types of resources:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -727,9 +719,7 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"**Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript at "
-"`POSITION_END`"
+msgid "**Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript at `POSITION_END`"
 msgstr ""
 
 #. type: Bullet: '2. '
@@ -739,15 +729,12 @@ msgstr ""
 
 #. type: Bullet: '3. '
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"**Use keys for duplicates**: Prevent duplicate resources with meaningful keys"
+msgid "**Use keys for duplicates**: Prevent duplicate resources with meaningful keys"
 msgstr ""
 
 #. type: Bullet: '4. '
 #: ../src/guide/views/script-style-meta.md
-msgid ""
-"**Optimize loading**: Use `async` and `defer` attributes for non-critical "
-"JavaScript"
+msgid "**Optimize loading**: Use `async` and `defer` attributes for non-critical JavaScript"
 msgstr ""
 
 #. type: Bullet: '5. '

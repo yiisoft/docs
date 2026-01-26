@@ -23,24 +23,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
-msgid ""
-"Code reviews are essential for the success of the project and are as "
-"important as contributing code."
+msgid "Code reviews are essential for the success of the project and are as important as contributing code."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
-msgid ""
-"Reviews are handled via GitHub pull requests. When the request is ready for "
-"review, the \"status: code review\" label is added to it."
+msgid "Reviews are handled via GitHub pull requests. When the request is ready for review, the \"status: code review\" label is added to it."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
-msgid ""
-"[A full list of pull requests that need review](https://github.com/search?"
-"q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  is "
-"available at GitHub."
+msgid "[A full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  is available at GitHub."
 msgstr ""
 
 #. type: Title ##
@@ -51,9 +44,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
-msgid ""
-"Check out the pull request branch, open the project in the IDE, get a big "
-"picture."
+msgid "Check out the pull request branch, open the project in the IDE, get a big picture."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -63,8 +54,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
-msgid ""
-"Run tests and/or application using code from the pull request. Are these OK?"
+msgid "Run tests and/or application using code from the pull request. Are these OK?"
 msgstr ""
 
 #. type: Bullet: '- '

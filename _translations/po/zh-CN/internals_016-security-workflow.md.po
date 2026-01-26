@@ -23,9 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Security issues are typically sent via [a security form](https://"
-"www.yiiframework.com/security)."
+msgid "Security issues are typically sent via [a security form](https://www.yiiframework.com/security)."
 msgstr ""
 
 #. type: Plain text
@@ -66,16 +64,12 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/"
-"v3-calculator)."
+msgid "Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Choose severity based on the [rating scale](https://www.first.org/cvss/"
-"specification-document#Qualitative-Severity-Rating-Scale)."
+msgid "Choose severity based on the [rating scale](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale)."
 msgstr ""
 
 #. type: Title ###
@@ -86,9 +80,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Ask the reporter if he wants a credit for finding the issue. If so, point to "
-"his GitHub account."
+msgid "Ask the reporter if he wants a credit for finding the issue. If so, point to his GitHub account."
 msgstr ""
 
 #. type: Title ##
@@ -110,9 +102,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Prepare a pull request fixing the issue. GitHub allows doing it in a private "
-"fork."
+msgid "Prepare a pull request fixing the issue. GitHub allows doing it in a private fork."
 msgstr ""
 
 #. type: Title ##
@@ -134,8 +124,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Merge the patch pull request right before tagging the next package release."
+msgid "Merge the patch pull request right before tagging the next package release."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -145,8 +134,5 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/016-security-workflow.md
-msgid ""
-"Add CVE to [FriendsOfPHP/security-advisories](https://github.com/"
-"FriendsOfPHP/security-advisories).  See [#488](https://github.com/"
-"FriendsOfPHP/security-advisories/pull/488) as an example."
+msgid "Add CVE to [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as an example."
 msgstr ""

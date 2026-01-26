@@ -39,19 +39,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"Asset management is crucial for modern web applications. Assets include CSS "
-"stylesheets, JavaScript files, images, fonts, and other static resources. "
-"Yii3 provides a comprehensive asset management system through the `yiisoft/"
-"assets` package that handles dependencies, optimization, and deployment of "
-"these resources."
+msgid "Asset management is crucial for modern web applications. Assets include CSS stylesheets, JavaScript files, images, fonts, and other static resources. Yii3 provides a comprehensive asset management system through the `yiisoft/assets` package that handles dependencies, optimization, and deployment of these resources."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"The asset management functionality is provided by the `yiisoft/assets` "
-"package:"
+msgid "The asset management functionality is provided by the `yiisoft/assets` package:"
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -62,9 +55,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"This package is included by default in the `yiisoft/app` application "
-"template."
+msgid "This package is included by default in the `yiisoft/app` application template."
 msgstr ""
 
 #. type: Title ##
@@ -82,10 +73,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"An asset bundle is a collection of related asset files (CSS, JavaScript, "
-"images) that are logically grouped together.  Asset bundles can depend on "
-"other bundles, allowing for proper dependency management."
+msgid "An asset bundle is a collection of related asset files (CSS, JavaScript, images) that are logically grouped together.  Asset bundles can depend on other bundles, allowing for proper dependency management."
 msgstr ""
 
 #. type: Title ###
@@ -96,11 +84,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"The Asset Manager is responsible for: - Resolving asset bundle dependencies "
-"- Publishing assets from protected directories to web-accessible locations - "
-"Combining and minifying assets (when configured)  - Generating proper URLs "
-"for assets"
+msgid "The Asset Manager is responsible for: - Resolving asset bundle dependencies - Publishing assets from protected directories to web-accessible locations - Combining and minifying assets (when configured)  - Generating proper URLs for assets"
 msgstr ""
 
 #. type: Title ##
@@ -358,9 +342,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"The recommended approach is to integrate with WebView for automatic asset "
-"rendering:"
+msgid "The recommended approach is to integrate with WebView for automatic asset rendering:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -408,9 +390,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
-msgid ""
-"When assets are located in non-web-accessible directories (like vendor "
-"packages), they need to be published:"
+msgid "When assets are located in non-web-accessible directories (like vendor packages), they need to be published:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -924,8 +904,7 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/views/asset.md
-msgid ""
-"**Organize by functionality**: Group related assets into logical bundles"
+msgid "**Organize by functionality**: Group related assets into logical bundles"
 msgstr ""
 
 #. type: Bullet: '2. '
@@ -950,9 +929,7 @@ msgstr ""
 
 #. type: Bullet: '6. '
 #: ../src/guide/views/asset.md
-msgid ""
-"**Version your assets**: Include version numbers in filenames for cache "
-"busting"
+msgid "**Version your assets**: Include version numbers in filenames for cache busting"
 msgstr ""
 
 #. type: Bullet: '7. '

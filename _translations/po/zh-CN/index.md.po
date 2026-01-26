@@ -83,21 +83,15 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid ""
-"[The Definitive Guide](guide/) — the comprehensive guide covering all "
-"aspects of the framework."
+msgid "[The Definitive Guide](guide/) — the comprehensive guide covering all aspects of the framework."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid ""
-"[Community Cookbook](cookbook/) — a collection of community-contributed "
-"tips, tricks, and solutions for common Yii development tasks."
+msgid "[Community Cookbook](cookbook/) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/index.md
-msgid ""
-"[Internals](internals/) — documentation for developers contributing to the "
-"Yii framework itself, including guidelines, workflows, and best practices."
+msgid "[Internals](internals/) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
 msgstr ""

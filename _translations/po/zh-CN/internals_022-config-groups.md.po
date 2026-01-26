@@ -43,11 +43,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"This document defines naming convention for the framework groups used with "
-"[yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a "
-"naming convention for config files.  These could be anything and are mapped "
-"to group names via `composer.json`."
+msgid "This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a naming convention for config files.  These could be anything and are mapped to group names via `composer.json`."
 msgstr ""
 
 #. type: Title ##
@@ -58,9 +54,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"\"web\" postfix applies to web only that's classic server HTML generation, "
-"REST, RPC, etc."
+msgid "\"web\" postfix applies to web only that's classic server HTML generation, REST, RPC, etc."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -70,8 +64,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"If there's no postfix, it's \"common\" and applies to both web and console"
+msgid "If there's no postfix, it's \"common\" and applies to both web and console"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -196,8 +189,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event)."
+msgid "Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -223,9 +215,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"Application bootstrapping for [yiisoft/yii-runner](https://github.com/"
-"yiisoft/yii-runner)."
+msgid "Application bootstrapping for [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -250,7 +240,5 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
-msgid ""
-"`widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default "
-"widgets configuration"
+msgid "`widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default widgets configuration"
 msgstr ""

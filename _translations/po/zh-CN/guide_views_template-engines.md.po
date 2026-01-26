@@ -30,10 +30,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
-msgid ""
-"Yii3 supports multiple template engines through a flexible renderer system. "
-"By default, PHP is used as the template engine, but you can easily add "
-"support for other engines like Twig or create your own custom renderers."
+msgid "Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the template engine, but you can easily add support for other engines like Twig or create your own custom renderers."
 msgstr ""
 
 #. type: Plain text
@@ -49,10 +46,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
-msgid ""
-"Twig is a modern template engine that provides a more designer-friendly "
-"syntax. To use Twig in your Yii3 application, you need to install the Twig "
-"extension."
+msgid "Twig is a modern template engine that provides a more designer-friendly syntax. To use Twig in your Yii3 application, you need to install the Twig extension."
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -63,8 +57,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
-msgid ""
-"Now you can use `.twig` templates. For example, `views/site/about.twig`:"
+msgid "Now you can use `.twig` templates. For example, `views/site/about.twig`:"
 msgstr ""
 
 #. type: Fenced code block (twig)
@@ -221,9 +214,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
-msgid ""
-"You can create custom template engines by implementing the "
-"`TemplateRendererInterface`:"
+msgid "You can create custom template engines by implementing the `TemplateRendererInterface`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -343,14 +334,12 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/views/template-engines.md
-msgid ""
-"**Keep templates simple**: Move complex logic to controllers or services"
+msgid "**Keep templates simple**: Move complex logic to controllers or services"
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/guide/views/template-engines.md
-msgid ""
-"**Always escape output**: Prevent XSS attacks by properly escaping variables"
+msgid "**Always escape output**: Prevent XSS attacks by properly escaping variables"
 msgstr ""
 
 #. type: Bullet: '3. '

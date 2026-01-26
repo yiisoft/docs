@@ -23,9 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Authorization is the process of verifying that a user has enough permission "
-"to do something."
+msgid "Authorization is the process of verifying that a user has enough permission to do something."
 msgstr ""
 
 #. type: Title ##
@@ -36,9 +34,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"You can check if a user has certain permissions by using "
-"`\\Yiisoft\\User\\CurrentUser` service:"
+msgid "You can check if a user has certain permissions by using `\\Yiisoft\\User\\CurrentUser` service:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -84,10 +80,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Behind the scenes, `Yiisoft\\User\\CurrentUser::can()` method calls "
-"`Yiisoft\\Access\\AccessCheckerInterface::userHasPermission()` so you should "
-"provide an implementation in dependency container in order for it to work."
+msgid "Behind the scenes, `Yiisoft\\User\\CurrentUser::can()` method calls `Yiisoft\\Access\\AccessCheckerInterface::userHasPermission()` so you should provide an implementation in dependency container in order for it to work."
 msgstr ""
 
 #. type: Title ##
@@ -98,30 +91,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Role-Based Access Control (RBAC) provides a simple yet powerful centralized "
-"access control. Please refer to the [Wikipedia](https://en.wikipedia.org/"
-"wiki/Role-based_access_control) for details about comparing RBAC with other "
-"more traditional access control schemes."
+msgid "Role-Based Access Control (RBAC) provides a simple yet powerful centralized access control. Please refer to the [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC with other more traditional access control schemes."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Yii implements a General Hierarchical RBAC, following the [NIST RBAC model]"
-"(https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/"
-"the-nist-model-for-role-based-access-control-towards-a-unified-/documents/"
-"sandhu-ferraiolo-kuhn-00.pdf)."
+msgid "Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Using RBAC involves two parts of work. The first part is to build up the "
-"RBAC authorization data, and the second part is to use the authorization "
-"data to perform access check in places where it's necessary. Since RBAC "
-"implements `\\Yiisoft\\Access\\AccessCheckerInterface`, using it's similar "
-"to using any other implementation of an access checker."
+msgid "Using RBAC involves two parts of work. The first part is to build up the RBAC authorization data, and the second part is to use the authorization data to perform access check in places where it's necessary. Since RBAC implements `\\Yiisoft\\Access\\AccessCheckerInterface`, using it's similar to using any other implementation of an access checker."
 msgstr ""
 
 #. type: Plain text
@@ -137,32 +117,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"A role represents a collection of *permissions* (for example, creating "
-"posts, updating posts).  You may assign a role to one or many users.  To "
-"check if a user has a specified permission, you may check if the user has a "
-"role with that permission."
+msgid "A role represents a collection of *permissions* (for example, creating posts, updating posts).  You may assign a role to one or many users.  To check if a user has a specified permission, you may check if the user has a role with that permission."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Associated with each role or permission, there may be a *rule*.  A rule "
-"represents a piece of code that an access checker will execute to decide if "
-"the corresponding role or permission applies to the current user.  For "
-"example, the \"update post\" permission may have a rule that checks if the "
-"current user is the post creator.  During access checking, if the user is "
-"NOT the post creator, there's no \"update post\" permission."
+msgid "Associated with each role or permission, there may be a *rule*.  A rule represents a piece of code that an access checker will execute to decide if the corresponding role or permission applies to the current user.  For example, the \"update post\" permission may have a rule that checks if the current user is the post creator.  During access checking, if the user is NOT the post creator, there's no \"update post\" permission."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Both roles and permissions are in a hierarchy.  In particular, a role may "
-"consist of other roles or permissions.  And a permission may consist of "
-"other permissions.  Yii implements a *partial order* hierarchy which "
-"includes the more special *tree* hierarchy.  While a role can contain a "
-"permission, it isn't `true` vice versa."
+msgid "Both roles and permissions are in a hierarchy.  In particular, a role may consist of other roles or permissions.  And a permission may consist of other permissions.  Yii implements a *partial order* hierarchy which includes the more special *tree* hierarchy.  While a role can contain a permission, it isn't `true` vice versa."
 msgstr ""
 
 #. type: Title ###
@@ -188,23 +153,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
-msgid ""
-"[DB storage](https://github.com/yiisoft/rbac-db) - database storage based on "
-"[Yii DB](https://github.com/yiisoft/db);"
+msgid "[DB storage](https://github.com/yiisoft/rbac-db) - database storage based on [Yii DB](https://github.com/yiisoft/db);"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
-msgid ""
-"[Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database "
-"storage based on [Cycle DBAL](https://github.com/cycle/database)."
+msgid "[Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database storage based on [Cycle DBAL](https://github.com/cycle/database)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"You can also provide your own storage using the [yiisoft/rbac](https://"
-"github.com/yiisoft/rbac) package."
+msgid "You can also provide your own storage using the [yiisoft/rbac](https://github.com/yiisoft/rbac) package."
 msgstr ""
 
 #. type: Title ####
@@ -215,8 +174,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:"
+msgid "Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:"
 msgstr ""
 
 #. type: Fenced code block
@@ -227,10 +185,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Before we set off to define authorization data and perform access checking, "
-"you need to configure the `Yiisoft\\Access\\AccessCheckerInterface` in "
-"dependency container:"
+msgid "Before we set off to define authorization data and perform access checking, you need to configure the `Yiisoft\\Access\\AccessCheckerInterface` in dependency container:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -264,10 +219,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"`Yiisoft\\Rbac\\Manager` uses PHP script files to store authorization data.  "
-"Make sure the directory and all the files in it are writable by the Web "
-"server process if you want to change permission hierarchy online."
+msgid "`Yiisoft\\Rbac\\Manager` uses PHP script files to store authorization data.  Make sure the directory and all the files in it are writable by the Web server process if you want to change permission hierarchy online."
 msgstr ""
 
 #. type: Title ####
@@ -301,9 +253,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"[Configure connection](https://yiisoft.github.io/docs/guide/start/"
-"databases.html#configuring-connection)."
+msgid "[Configure connection](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection)."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -327,9 +277,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration "
-"paths to params.php:"
+msgid "Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration paths to params.php:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -396,13 +344,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Depending on authorization flexibility requirements, you can do the tasks in "
-"different ways.  If only developers change your permission hierarchy, you "
-"can use either migrations or a console command.  Migration advantage is that "
-"you could execute it along with other migrations.  The Console command "
-"advantage is that you have a good overview of the hierarchy in the code "
-"without a need to read many migrations."
+msgid "Depending on authorization flexibility requirements, you can do the tasks in different ways.  If only developers change your permission hierarchy, you can use either migrations or a console command.  Migration advantage is that you could execute it along with other migrations.  The Console command advantage is that you have a good overview of the hierarchy in the code without a need to read many migrations."
 msgstr ""
 
 #. type: Plain text
@@ -412,17 +354,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg "
-"\"Simple RBAC hierarchy\")"
+msgid "![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg \"Simple RBAC hierarchy\")"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"In case you want to build permission hierarchy dynamically, you need a UI or "
-"a console command.  The API used to build the hierarchy itself won't be "
-"different."
+msgid "In case you want to build permission hierarchy dynamically, you need a UI or a console command.  The API used to build the hierarchy itself won't be different."
 msgstr ""
 
 #. type: Title ###
@@ -433,11 +370,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"If your permission hierarchy doesn't change at all, and you have a fixed "
-"number of users, you can create a [console command](../tutorial/console-"
-"applications.md) that will initialize authorization data once via APIs "
-"offered by `\\Yiisoft\\Rbac\\ManagerInterface`:"
+msgid "If your permission hierarchy doesn't change at all, and you have a fixed number of users, you can create a [console command](../tutorial/console-applications.md) that will initialize authorization data once via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -559,16 +492,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"You can use [migrations](../databases/db-migrations.md)  to initialize and "
-"change hierarchy via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`."
+msgid "You can use [migrations](../databases/db-migrations.md)  to initialize and change hierarchy via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then "
-"implement creating a hierarchy:"
+msgid "Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -657,18 +586,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"The author can create a post, admin can update the post and do everything "
-"the author can."
+msgid "The author can create a post, admin can update the post and do everything the author can."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"If your application allows user signup, you need to assign roles to these "
-"new users at once.  For example, in order for all signed-up users to become "
-"authors in your advanced project template, you need to change "
-"`frontend\\models\\SignupForm::signup()` as follows:"
+msgid "If your application allows user signup, you need to assign roles to these new users at once.  For example, in order for all signed-up users to become authors in your advanced project template, you need to change `frontend\\models\\SignupForm::signup()` as follows:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -700,11 +623,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"For applications that require complex access control with dynamically "
-"updated authorization data (such as an admin panel), you many need to "
-"develop special user interfaces using APIs offered by "
-"`Yiisoft\\Rbac\\Manager`."
+msgid "For applications that require complex access control with dynamically updated authorization data (such as an admin panel), you many need to develop special user interfaces using APIs offered by `Yiisoft\\Rbac\\Manager`."
 msgstr ""
 
 #. type: Title ###
@@ -715,12 +634,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"As aforementioned, rules add extra constraint to roles and permissions.  A "
-"rule is a class extending from `\\Yiisoft\\Rbac\\Rule`.  It must implement "
-"the `execute()` method.  In the hierarchy you've created before, the author "
-"can't edit his own post.  Let's fix it. First, you need a rule to verify "
-"that the user is the post author:"
+msgid "As aforementioned, rules add extra constraint to roles and permissions.  A rule is a class extending from `\\Yiisoft\\Rbac\\Rule`.  It must implement the `execute()` method.  In the hierarchy you've created before, the author can't edit his own post.  Let's fix it. First, you need a rule to verify that the user is the post author:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -748,9 +662,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"The rule checks if user created the `post`. Create a special permission "
-"`updateOwnPost` in the command you've used before:"
+msgid "The rule checks if user created the `post`. Create a special permission `updateOwnPost` in the command you've used before:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -783,9 +695,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg "
-"\"RBAC hierarchy with a rule\")"
+msgid "![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg \"RBAC hierarchy with a rule\")"
 msgstr ""
 
 #. type: Title ###
@@ -796,9 +706,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"The check is done similarly to how it was done in the first section of this "
-"guide:"
+msgid "The check is done similarly to how it was done in the first section of this guide:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -843,30 +751,22 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"The difference is that now checking for a user's own post is part of the "
-"RBAC."
+msgid "The difference is that now checking for a user's own post is part of the RBAC."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"If the current user is Jane with `ID=1` you are starting at `createPost` and "
-"trying to get to `Jane`:"
+msgid "If the current user is Jane with `ID=1` you are starting at `createPost` and trying to get to `Jane`:"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"![Access check](/images/guide/security/rbac-access-check-1.svg \"Access "
-"check\")"
+msgid "![Access check](/images/guide/security/rbac-access-check-1.svg \"Access check\")"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"To check if a user can update a post, you need to pass an extra parameter "
-"that's required by `AuthorRule` described before:"
+msgid "To check if a user can update a post, you need to pass an extra parameter that's required by `AuthorRule` described before:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -885,9 +785,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"![Access check](/images/guide/security/rbac-access-check-2.svg \"Access "
-"check\")"
+msgid "![Access check](/images/guide/security/rbac-access-check-2.svg \"Access check\")"
 msgstr ""
 
 #. type: Plain text
@@ -907,9 +805,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"![Access check](/images/guide/security/rbac-access-check-3.svg \"Access "
-"check\")"
+msgid "![Access check](/images/guide/security/rbac-access-check-3.svg \"Access check\")"
 msgstr ""
 
 #. type: Title ##
@@ -920,9 +816,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid ""
-"If RBAC doesn't suit your needs, you can implement your own access checker "
-"without changing the application code:"
+msgid "If RBAC doesn't suit your needs, you can implement your own access checker without changing the application code:"
 msgstr ""
 
 #. type: Fenced code block (php)

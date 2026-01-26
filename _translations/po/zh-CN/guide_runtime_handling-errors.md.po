@@ -23,17 +23,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Yii has a [yiisoft/error-handler](https://github.com/yiisoft/error-handler) "
-"package that makes error handling a much more pleasant experience than "
-"before. In particular, the Yii error handler provides the following:"
+msgid "Yii has a [yiisoft/error-handler](https://github.com/yiisoft/error-handler) package that makes error handling a much more pleasant experience than before. In particular, the Yii error handler provides the following:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"[PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching "
-"unhandled errors."
+msgid "[PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching unhandled errors."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -48,9 +43,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Debug mode displays details, stacktrace, has dark and light themes and handy "
-"buttons to search for error without typing."
+msgid "Debug mode displays details, stacktrace, has dark and light themes and handy buttons to search for error without typing."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -60,16 +53,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Handles out of memory errors, fatal errors, warnings, notices, and "
-"exceptions."
+msgid "Handles out of memory errors, fatal errors, warnings, notices, and exceptions."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger "
-"for error logging."
+msgid "Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger for error logging."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -79,9 +68,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Supports responding with HTML, plain text, JSON, XML, and headers out of the "
-"box."
+msgid "Supports responding with HTML, plain text, JSON, XML, and headers out of the box."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -91,11 +78,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"This guide describes how to use the error handler in the [Yii framework]"
-"(https://www.yiiframework.com/), for information about using it separate "
-"from Yii, see the [package description](https://github.com/yiisoft/error-"
-"handler)."
+msgid "This guide describes how to use the error handler in the [Yii framework](https://www.yiiframework.com/), for information about using it separate from Yii, see the [package description](https://github.com/yiisoft/error-handler)."
 msgstr ""
 
 #. type: Title ##
@@ -106,23 +89,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"The error handler consists of two parts. One part is "
-"`Yiisoft\\ErrorHandler\\Middleware\\ErrorCatcher` middleware that, when "
-"registered, catches exceptions that may appear during middleware stack "
-"execution and passes them to the handler.  Another part is the error handler "
-"itself, `Yiisoft\\ErrorHandler\\ErrorHandler`, that's catching exceptions "
-"occurring outside the middleware stack and fatal errors. The handler also "
-"converts warnings and notices to exceptions and does more handy things."
+msgid "The error handler consists of two parts. One part is `Yiisoft\\ErrorHandler\\Middleware\\ErrorCatcher` middleware that, when registered, catches exceptions that may appear during middleware stack execution and passes them to the handler.  Another part is the error handler itself, `Yiisoft\\ErrorHandler\\ErrorHandler`, that's catching exceptions occurring outside the middleware stack and fatal errors. The handler also converts warnings and notices to exceptions and does more handy things."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Error handler is registered in the application itself. Usually it happens in "
-"`ApplicationRunner`. By default, the handler configuration comes from the "
-"container. You may configure it in the application configuration, `config/"
-"web.php` like the following:"
+msgid "Error handler is registered in the application itself. Usually it happens in `ApplicationRunner`. By default, the handler configuration comes from the container. You may configure it in the application configuration, `config/web.php` like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -161,10 +133,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"As aforementioned, the error handler turns all non-fatal PHP errors into "
-"catchable exceptions (`Yiisoft\\ErrorHandler\\Exception\\ErrorException`). "
-"This means you can use the following code to deal with PHP errors:"
+msgid "As aforementioned, the error handler turns all non-fatal PHP errors into catchable exceptions (`Yiisoft\\ErrorHandler\\Exception\\ErrorException`). This means you can use the following code to deal with PHP errors:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -181,11 +150,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"The package has another middleware, "
-"`Yiisoft\\ErrorHandler\\Middleware\\ExceptionResponder`.  This middleware "
-"maps certain exceptions to custom responses. Configure it in the application "
-"configuration as follows:"
+msgid "The package has another middleware, `Yiisoft\\ErrorHandler\\Middleware\\ExceptionResponder`.  This middleware maps certain exceptions to custom responses. Configure it in the application configuration as follows:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -214,10 +179,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Note that when configuring application middleware stack, you must place "
-"`Yiisoft\\ErrorHandler\\Middleware\\ExceptionResponder` before "
-"`Yiisoft\\ErrorHandler\\Middleware\\ErrorCatcher`."
+msgid "Note that when configuring application middleware stack, you must place `Yiisoft\\ErrorHandler\\Middleware\\ExceptionResponder` before `Yiisoft\\ErrorHandler\\Middleware\\ErrorCatcher`."
 msgstr ""
 
 #. type: Title ##
@@ -228,48 +190,37 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"One of the renderers could render error data into a certain format.  The "
-"following renderers are available out of the box:"
+msgid "One of the renderers could render error data into a certain format.  The following renderers are available out of the box:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"`Yiisoft\\ErrorHandler\\Renderer\\HeaderRenderer` - Renders error into HTTP "
-"headers. It's used for `HEAD` request."
+msgid "`Yiisoft\\ErrorHandler\\Renderer\\HeaderRenderer` - Renders error into HTTP headers. It's used for `HEAD` request."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"`Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer` - Renders error into HTML."
+msgid "`Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer` - Renders error into HTML."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"`Yiisoft\\ErrorHandler\\Renderer\\JsonRenderer` - Renders error into JSON."
+msgid "`Yiisoft\\ErrorHandler\\Renderer\\JsonRenderer` - Renders error into JSON."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"`Yiisoft\\ErrorHandler\\Renderer\\PlainTextRenderer` - Renders error into "
-"plain text."
+msgid "`Yiisoft\\ErrorHandler\\Renderer\\PlainTextRenderer` - Renders error into plain text."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"`Yiisoft\\ErrorHandler\\Renderer\\XmlRenderer` - Renders error into XML."
+msgid "`Yiisoft\\ErrorHandler\\Renderer\\XmlRenderer` - Renders error into XML."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"The renderer produces detailed error data depending on whether debug mode is "
-"enabled or disabled."
+msgid "The renderer produces detailed error data depending on whether debug mode is enabled or disabled."
 msgstr ""
 
 #. type: Plain text
@@ -365,9 +316,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"![View development with light theme](/images/guide/runtime/view-development-"
-"light.png)"
+msgid "![View development with light theme](/images/guide/runtime/view-development-light.png)"
 msgstr ""
 
 #. type: Plain text
@@ -377,19 +326,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"![View development with dark theme](/images/guide/runtime/view-development-"
-"dark.png)"
+msgid "![View development with dark theme](/images/guide/runtime/view-development-dark.png)"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"The error catcher chooses how to render an exception based on `accept` HTTP "
-"header.  If it's `text/html` or any unknown content type, it will use the "
-"error or exception HTML template to display errors.  For other mime types, "
-"the error handler will choose different renderers that you register within "
-"the error catcher.  By default, it supports JSON, XML, and plain text."
+msgid "The error catcher chooses how to render an exception based on `accept` HTTP header.  If it's `text/html` or any unknown content type, it will use the error or exception HTML template to display errors.  For other mime types, the error handler will choose different renderers that you register within the error catcher.  By default, it supports JSON, XML, and plain text."
 msgstr ""
 
 #. type: Title ###
@@ -400,10 +342,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"You may customize the error response format by providing your own instance "
-"of `Yiisoft\\ErrorHandler\\ThrowableRendererInterface` when registering "
-"error catcher middleware."
+msgid "You may customize the error response format by providing your own instance of `Yiisoft\\ErrorHandler\\ThrowableRendererInterface` when registering error catcher middleware."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -470,11 +409,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"Yii error renderer supports [friendly exceptions](https://github.com/yiisoft/"
-"friendly-exception) that make error handling an even more pleasant "
-"experience for your team. The idea is to offer a readable name and possible "
-"solutions to the problem:"
+msgid "Yii error renderer supports [friendly exceptions](https://github.com/yiisoft/friendly-exception) that make error handling an even more pleasant experience for your team. The idea is to offer a readable name and possible solutions to the problem:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -501,7 +436,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/handling-errors.md
-msgid ""
-"When the application throws such an exception, the error renderer would "
-"display the name and the solution if the debug mode is on."
+msgid "When the application throws such an exception, the error renderer would display the name and the solution if the debug mode is on."
 msgstr ""

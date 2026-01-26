@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/apache.md
-msgid ""
-"Use the following configuration in Apache's `httpd.conf` file or within a "
-"virtual host configuration. Note that you should replace `path/to/app/"
-"public` with the actual path for `app/public`."
+msgid "Use the following configuration in Apache's `httpd.conf` file or within a virtual host configuration. Note that you should replace `path/to/app/public` with the actual path for `app/public`."
 msgstr ""
 
 #. type: Fenced code block (apache)
@@ -58,9 +55,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/apache.md
-msgid ""
-"In case you have `AllowOverride All` you can add `.htaccess` file with the "
-"following configuration instead of using `httpd.conf`:"
+msgid "In case you have `AllowOverride All` you can add `.htaccess` file with the following configuration instead of using `httpd.conf`:"
 msgstr ""
 
 #. type: Fenced code block (apache)
@@ -87,8 +82,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/apache.md
-msgid ""
-"In the above, note the usage of `SetEnv`. Since the Yii3 application "
-"template is using environment variables, this is a possible place to set "
-"them. In production environment remember to set `APP_ENV` to `prod`."
+msgid "In the above, note the usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
 msgstr ""

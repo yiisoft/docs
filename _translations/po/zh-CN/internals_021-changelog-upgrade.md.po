@@ -23,8 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/021-changelog-upgrade.md
-msgid ""
-"For all released packages, we've a detailed changelog and upgrade guide."
+msgid "For all released packages, we've a detailed changelog and upgrade guide."
 msgstr ""
 
 #. type: Title ##
@@ -35,9 +34,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/021-changelog-upgrade.md
-msgid ""
-"Changelog is written for each version released. The file name is "
-"`CHANGELOG.md`. The format is the following:"
+msgid "Changelog is written for each version released. The file name is `CHANGELOG.md`. The format is the following:"
 msgstr ""
 
 #. type: Fenced code block (markdown)
@@ -61,11 +58,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/021-changelog-upgrade.md
-msgid ""
-"There \"My package\" is the name of the package, `1.0.1` is the version "
-"released followed by release date.  For each version, there are a number of "
-"lines listing the changes.  \"Bug\" refers to a change type.  The following "
-"types are used:"
+msgid "There \"My package\" is the name of the package, `1.0.1` is the version released followed by release date.  For each version, there are a number of lines listing the changes.  \"Bug\" refers to a change type.  The following types are used:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -95,10 +88,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/021-changelog-upgrade.md
-msgid ""
-"\"#42\" above is the number of issue or pull requests corresponding to the "
-"change. \"author1\" is the GitHub nickname of the code author. \"author2\" "
-"is an additional author. An author's nickname MUST be prefixed with `@`."
+msgid "\"#42\" above is the number of issue or pull requests corresponding to the change. \"author1\" is the GitHub nickname of the code author. \"author2\" is an additional author. An author's nickname MUST be prefixed with `@`."
 msgstr ""
 
 #. type: Title ##
@@ -109,10 +99,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/021-changelog-upgrade.md
-msgid ""
-"Upgrade guide is created when there is a new major version that isn't "
-"compatible with the previous one.  It describes steps necessary to upgrade "
-"application code."
+msgid "Upgrade guide is created when there is a new major version that isn't compatible with the previous one.  It describes steps necessary to upgrade application code."
 msgstr ""
 
 #. type: Plain text

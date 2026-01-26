@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid ""
-"In this guide we'll provide commands for both [Docker](https://"
-"docs.docker.com/get-started/get-docker/) and the built-in dev server with "
-"everything installed locally."
+msgid "In this guide we'll provide commands for both [Docker](https://docs.docker.com/get-started/get-docker/) and the built-in dev server with everything installed locally."
 msgstr ""
 
 #. type: Plain text
@@ -40,17 +37,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid ""
-"We recommend starting with a project template that's a minimal working Yii "
-"project implementing some basic features.  It can serve as a good starting "
-"point for your projects."
+msgid "We recommend starting with a project template that's a minimal working Yii project implementing some basic features.  It can serve as a good starting point for your projects."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid ""
-"You can create a new project from a template using the [Composer](https://"
-"getcomposer.org) package manager:"
+msgid "You can create a new project from a template using the [Composer](https://getcomposer.org) package manager:"
 msgstr ""
 
 #. type: Fenced code block (sh)
@@ -90,10 +82,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid ""
-"This installs the latest stable version of the Yii project template in a "
-"directory named `your_project`.  You can choose a different directory name "
-"if you want."
+msgid "This installs the latest stable version of the Yii project template in a directory named `your_project`.  You can choose a different directory name if you want."
 msgstr ""
 
 #. type: Plain text
@@ -143,6 +132,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid ""
-"![Successful Installation of Yii](/images/guide/start/app-installed.png)"
+msgid "![Successful Installation of Yii](/images/guide/start/app-installed.png)"
 msgstr ""

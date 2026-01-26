@@ -34,9 +34,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
-msgid ""
-"Public API changes aren't likely. Some time passed w/o issues reported that "
-"may require API changes."
+msgid "Public API changes aren't likely. Some time passed w/o issues reported that may require API changes."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -129,14 +127,10 @@ msgstr ""
 
 #. type: Bullet: '6. '
 #: ../src/en/internals/020-package-release.md
-msgid ""
-"On the question \"Push commits and tags, and release on GitHub?\" check a "
-"diff. If the diff is alright, answer \"yes.\""
+msgid "On the question \"Push commits and tags, and release on GitHub?\" check a diff. If the diff is alright, answer \"yes.\""
 msgstr ""
 
 #. type: Bullet: '7. '
 #: ../src/en/internals/020-package-release.md
-msgid ""
-"For major and minor releases, add a record with release notes on [Yii "
-"Framework News](https://www.yiiframework.com/news)."
+msgid "For major and minor releases, add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news)."
 msgstr ""

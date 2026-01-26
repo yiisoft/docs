@@ -40,14 +40,10 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/008-interfaces.md
-msgid ""
-"[International community discussion and poll](https://forum.yiiframework.com/"
-"t/naming-interfaces/126612/5)"
+msgid "[International community discussion and poll](https://forum.yiiframework.com/t/naming-interfaces/126612/5)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/008-interfaces.md
-msgid ""
-"[Russian community discussion and poll](https://yiiframework.ru/forum/"
-"viewtopic.php?f=39&t=51289)"
+msgid "[Russian community discussion and poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)"
 msgstr ""

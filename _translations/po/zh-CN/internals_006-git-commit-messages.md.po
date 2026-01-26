@@ -66,9 +66,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/006-git-commit-messages.md
-msgid ""
-"Use the message body **if** you need an extra explanation. Explain why, not "
-"how."
+msgid "Use the message body **if** you need an extra explanation. Explain why, not how."
 msgstr ""
 
 #. type: Bullet: '- '

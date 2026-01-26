@@ -23,9 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/application.md
-msgid ""
-"The primary purpose of the web application and its runner in Yii3 is to "
-"process requests to get responses."
+msgid "The primary purpose of the web application and its runner in Yii3 is to process requests to get responses."
 msgstr ""
 
 #. type: Plain text
@@ -35,21 +33,12 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/structure/application.md
-msgid ""
-"Startup. Get config, create an instance of container and do additional "
-"environment initialization such as registering error handler, so it can "
-"handle errors occurring. Fire `ApplicationStartup` event."
+msgid "Startup. Get config, create an instance of container and do additional environment initialization such as registering error handler, so it can handle errors occurring. Fire `ApplicationStartup` event."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/guide/structure/application.md
-msgid ""
-"Handle requests via passing request objects to middleware dispatcher to "
-"execute [middleware stack](middleware.md) and get a response object. In "
-"usual PHP applications, it's done once. In [environments such as RoadRunner]"
-"(../tutorial/using-with-event-loop.md), it could be done multiple times with "
-"the same application instance. Response object is converted into an actual "
-"HTTP response by using emitter.  Fire `AfterEmit` event."
+msgid "Handle requests via passing request objects to middleware dispatcher to execute [middleware stack](middleware.md) and get a response object. In usual PHP applications, it's done once. In [environments such as RoadRunner](../tutorial/using-with-event-loop.md), it could be done multiple times with the same application instance. Response object is converted into an actual HTTP response by using emitter.  Fire `AfterEmit` event."
 msgstr ""
 
 #. type: Bullet: '3. '

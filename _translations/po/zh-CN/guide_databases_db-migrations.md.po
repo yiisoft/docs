@@ -23,78 +23,52 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"During the course of developing and maintaining a database-driven "
-"application, the structure of the database being used evolves just like the "
-"source code does. For example, during the development of an application, a "
-"new table may be found necessary; after the application is deployed to "
-"production, it may be discovered that an index should be created to improve "
-"the query performance; and so on. Because a database structure change often "
-"requires some source code changes, Yii supports the so-called *database "
-"migration* feature that allows you to keep track of database changes in "
-"terms of *database migrations* which are version-controlled together with "
-"the source code."
+msgid "During the course of developing and maintaining a database-driven application, the structure of the database being used evolves just like the source code does. For example, during the development of an application, a new table may be found necessary; after the application is deployed to production, it may be discovered that an index should be created to improve the query performance; and so on. Because a database structure change often requires some source code changes, Yii supports the so-called *database migration* feature that allows you to keep track of database changes in terms of *database migrations* which are version-controlled together with the source code."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"The following steps show how database migration can be used by a team during "
-"development:"
+msgid "The following steps show how database migration can be used by a team during development:"
 msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Tim creates a new migration (e.g. creates a new table, changes a column "
-"definition, etc.)."
+msgid "Tim creates a new migration (e.g. creates a new table, changes a column definition, etc.)."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Tim commits the new migration into the source control system (e.g. Git, "
-"Mercurial)."
+msgid "Tim commits the new migration into the source control system (e.g. Git, Mercurial)."
 msgstr ""
 
 #. type: Bullet: '3. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Doug updates his repository from the source control system and receives the "
-"new migration."
+msgid "Doug updates his repository from the source control system and receives the new migration."
 msgstr ""
 
 #. type: Bullet: '4. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Doug applies the migration to his local development database, thereby "
-"synchronizing his database to reflect the changes that Tim has made."
+msgid "Doug applies the migration to his local development database, thereby synchronizing his database to reflect the changes that Tim has made."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"And the following steps show how to deploy a new release with database "
-"migrations to production:"
+msgid "And the following steps show how to deploy a new release with database migrations to production:"
 msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott creates a release tag for the project repository that contains some "
-"new database migrations."
+msgid "Scott creates a release tag for the project repository that contains some new database migrations."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott updates the source code on the production server to the release tag."
+msgid "Scott updates the source code on the production server to the release tag."
 msgstr ""
 
 #. type: Bullet: '3. '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Scott applies any accumulated database migrations to the production database."
+msgid "Scott applies any accumulated database migrations to the production database."
 msgstr ""
 
 #. type: Plain text
@@ -129,10 +103,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"All these tools are accessible through the command `yii migrate`. In this "
-"section we will describe in detail how to accomplish various tasks using "
-"these tools."
+msgid "All these tools are accessible through the command `yii migrate`. In this section we will describe in detail how to accomplish various tasks using these tools."
 msgstr ""
 
 #. type: Plain text
@@ -165,9 +136,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/"
-"db-migration/) package:"
+msgid "To use migrations, install [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package:"
 msgstr ""
 
 #. type: Fenced code block (sh)
@@ -178,9 +147,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Create a directory to store migrations `src/Migration` right in the project "
-"root."
+msgid "Create a directory to store migrations `src/Migration` right in the project root."
 msgstr ""
 
 #. type: Plain text
@@ -200,19 +167,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"If you want to place migrations elsewhere, you can define the path in "
-"`newMigrationPath`. If your migrations to be applied are from multiple "
-"sources, such as external modules, `sourcePaths` could be used to define "
-"these."
+msgid "If you want to place migrations elsewhere, you can define the path in `newMigrationPath`. If your migrations to be applied are from multiple sources, such as external modules, `sourcePaths` could be used to define these."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"You need a database connection configured as well. See [Working with "
-"databases](../start/databases.md) for an example of configuring it for "
-"PostgreSQL."
+msgid "You need a database connection configured as well. See [Working with databases](../start/databases.md) for an example of configuring it for PostgreSQL."
 msgstr ""
 
 #. type: Title ##
@@ -236,11 +196,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"The required `name` argument gives a brief description about the new "
-"migration. For example, if the migration is about creating a new table named "
-"*news*, you may use the name `create_news_table` and run the following "
-"command:"
+msgid "The required `name` argument gives a brief description about the new migration. For example, if the migration is about creating a new table named *news*, you may use the name `create_news_table` and run the following command:"
 msgstr ""
 
 #. type: Fenced code block
@@ -262,10 +218,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"The above command will create a new PHP class file named `src/Migration/"
-"M251225221906CreateNewsTable.php`.  The file contains the following code "
-"which mainly declares a migration class with the skeleton code:"
+msgid "The above command will create a new PHP class file named `src/Migration/M251225221906CreateNewsTable.php`.  The file contains the following code which mainly declares a migration class with the skeleton code:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -297,14 +250,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"In the migration class, you are expected to write code in the `up()` method "
-"that makes changes to the database structure.  You may also want to write "
-"code in the `down()` method to revert the changes made by `up()`. The `up()` "
-"method is invoked when you upgrade the database with this migration, while "
-"the `down()` method is invoked when you downgrade the database.  The "
-"following code shows how you may implement the migration class to create a "
-"`news` table:"
+msgid "In the migration class, you are expected to write code in the `up()` method that makes changes to the database structure.  You may also want to write code in the `down()` method to revert the changes made by `up()`. The `up()` method is invoked when you upgrade the database with this migration, while the `down()` method is invoked when you downgrade the database.  The following code shows how you may implement the migration class to create a `news` table:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -342,12 +288,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Migration builder `$b` in the above manages database schema while the column "
-"builder `$cb` manages column types. Both allow using *abstract types*. When "
-"a migration is applied to a particular database, the abstract types will be "
-"translated into the corresponding database physical types and corresponding "
-"SQL to define them."
+msgid "Migration builder `$b` in the above manages database schema while the column builder `$cb` manages column types. Both allow using *abstract types*. When a migration is applied to a particular database, the abstract types will be translated into the corresponding database physical types and corresponding SQL to define them."
 msgstr ""
 
 #. type: Plain text
@@ -452,10 +393,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Additionally, there's a `columnBuilder()` which is used to obtain a column "
-"builder as in example above. The builder has static methods that define "
-"various column types:"
+msgid "Additionally, there's a `columnBuilder()` which is used to obtain a column builder as in example above. The builder has static methods that define various column types:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -636,9 +574,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"All the above methods create a base type which could be adjusted with "
-"additional methods:"
+msgid "All the above methods create a base type which could be adjusted with additional methods:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -699,13 +635,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Not all migrations are reversible. For example, if the `up()` method deletes "
-"a row of a table, you may not be able to recover this row in the `down()` "
-"method. Sometimes, you may be just too lazy to implement the `down()`, "
-"because it is not very common to revert database migrations. In this case, "
-"you should implement `Yiisoft\\Db\\Migration\\MigrationInterface` that has "
-"`up()` only."
+msgid "Not all migrations are reversible. For example, if the `up()` method deletes a row of a table, you may not be able to recover this row in the `down()` method. Sometimes, you may be just too lazy to implement the `down()`, because it is not very common to revert database migrations. In this case, you should implement `Yiisoft\\Db\\Migration\\MigrationInterface` that has `up()` only."
 msgstr ""
 
 #. type: Title ###
@@ -716,20 +646,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"While performing complex DB migrations, it is important to ensure each "
-"migration to either succeed or fail as a whole so that the database can "
-"maintain integrity and consistency. To achieve this goal, it is recommended "
-"that you may enclose the DB operations of each migration in a transaction "
-"automatically by adding `TransactionalMigrationInterface` to `implements` of "
-"your migration."
+msgid "While performing complex DB migrations, it is important to ensure each migration to either succeed or fail as a whole so that the database can maintain integrity and consistency. To achieve this goal, it is recommended that you may enclose the DB operations of each migration in a transaction automatically by adding `TransactionalMigrationInterface` to `implements` of your migration."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"As a result, if any operation in the `up()` or `down()` method fails, all "
-"prior operations will be rolled back automatically."
+msgid "As a result, if any operation in the `up()` or `down()` method fails, all prior operations will be rolled back automatically."
 msgstr ""
 
 #. type: Plain text
@@ -748,9 +670,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Instead of writing migrations by hand, the command provides a convenient way "
-"generate some of the code."
+msgid "Instead of writing migrations by hand, the command provides a convenient way generate some of the code."
 msgstr ""
 
 #. type: Fenced code block (shell)
@@ -817,11 +737,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"table - creating a table. Use `--fields` specify a list of fields to use. "
-"Types could be specified as well such as "
-"`id:primaryKey,name:string:defaultValue(\"Alex\"),user_id:integer:foreignKey,category_id2:integer:foreignKey(category "
-"id2)`."
+msgid "table - creating a table. Use `--fields` specify a list of fields to use. Types could be specified as well such as `id:primaryKey,name:string:defaultValue(\"Alex\"),user_id:integer:foreignKey,category_id2:integer:foreignKey(category id2)`."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -841,8 +757,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"junction - creating a junction table. Use `--and` specify a second table."
+msgid "junction - creating a junction table. Use `--and` specify a second table."
 msgstr ""
 
 #. type: Title ##
@@ -853,9 +768,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"To upgrade a database to its latest structure, you should apply all "
-"available new migrations using the following command:"
+msgid "To upgrade a database to its latest structure, you should apply all available new migrations using the following command:"
 msgstr ""
 
 #. type: Fenced code block
@@ -866,30 +779,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"This command will list all migrations that have not been applied so far. If "
-"you confirm that you want to apply these migrations, it will run the `up()` "
-"method in every new migration class, one after another, in the order of "
-"their timestamp values. If any of the migrations fails, the command will "
-"quit without applying the rest of the migrations."
+msgid "This command will list all migrations that have not been applied so far. If you confirm that you want to apply these migrations, it will run the `up()` method in every new migration class, one after another, in the order of their timestamp values. If any of the migrations fails, the command will quit without applying the rest of the migrations."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"For each migration that has been successfully applied, the command will "
-"insert a row into a database table named `migration` to record the "
-"successful application of the migration. This will allow the migration tool "
-"to identify which migrations have been applied and which have not."
+msgid "For each migration that has been successfully applied, the command will insert a row into a database table named `migration` to record the successful application of the migration. This will allow the migration tool to identify which migrations have been applied and which have not."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Sometimes, you may only want to apply one or a few new migrations, instead "
-"of all available migrations.  You can do so by specifying the number of "
-"migrations that you want to apply when running the command.  For example, "
-"the following command will try to apply the next three available migrations:"
+msgid "Sometimes, you may only want to apply one or a few new migrations, instead of all available migrations.  You can do so by specifying the number of migrations that you want to apply when running the command.  For example, the following command will try to apply the next three available migrations:"
 msgstr ""
 
 #. type: Fenced code block
@@ -906,9 +806,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"To revert (undo) one or multiple migrations that have been applied before, "
-"you can run the following command:"
+msgid "To revert (undo) one or multiple migrations that have been applied before, you can run the following command:"
 msgstr ""
 
 #. type: Fenced code block
@@ -936,9 +834,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Redoing migrations means first reverting the specified migrations and then "
-"applying again. This can be done as follows:"
+msgid "Redoing migrations means first reverting the specified migrations and then applying again. This can be done as follows:"
 msgstr ""
 
 #. type: Fenced code block
@@ -964,9 +860,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"To list which migrations have been applied and which are not, you may use "
-"the following commands:"
+msgid "To list which migrations have been applied and which are not, you may use the following commands:"
 msgstr ""
 
 #. type: Fenced code block
@@ -990,18 +884,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"Migrations in Yii 2.0 and the [yiisoft/db-migration](https://github.com/"
-"yiisoft/db-migration/) package are not compatible, and the `migration` table "
-"is also not compatible."
+msgid "Migrations in Yii 2.0 and the [yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are not compatible, and the `migration` table is also not compatible."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
-msgid ""
-"A probable solution is to use structure dumps and rename the old `migration` "
-"table. Upon the initial execution of migrations, a new `migration` table "
-"with new fields will be created. All further changes in the database schema "
-"are applied using the new `migration` component and recorded in the new "
-"migration table."
+msgid "A probable solution is to use structure dumps and rename the old `migration` table. Upon the initial execution of migrations, a new `migration` table with new fields will be created. All further changes in the database schema are applied using the new `migration` component and recorded in the new migration table."
 msgstr ""

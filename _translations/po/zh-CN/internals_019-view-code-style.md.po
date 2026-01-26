@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/019-view-code-style.md
-msgid ""
-"The PHP code in the view files shouldn't be complicated.  The code must "
-"contain the logic responsible for formatting the data, but not the logic for "
-"requesting this data."
+msgid "The PHP code in the view files shouldn't be complicated.  The code must contain the logic responsible for formatting the data, but not the logic for requesting this data."
 msgstr ""
 
 #. type: Title ##
@@ -37,9 +34,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/019-view-code-style.md
-msgid ""
-"View file heading is used to place phpdoc describing variables available and "
-"to import classes:"
+msgid "View file heading is used to place phpdoc describing variables available and to import classes:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -64,9 +59,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/019-view-code-style.md
-msgid ""
-"Alternative syntax for control structures such as `foreach` and `if` is "
-"preferred:"
+msgid "Alternative syntax for control structures such as `foreach` and `if` is preferred:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -104,7 +97,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/019-view-code-style.md
-msgid ""
-"All class methods used in view files must be public regardless if the view "
-"is rendered by the class itself."
+msgid "All class methods used in view files must be public regardless if the view is rendered by the class itself."
 msgstr ""

@@ -23,9 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/configuring-webservers/nginx-unit.md
-msgid ""
-"Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP "
-"language module.  Here is a sample configuration."
+msgid "Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.  Here is a sample configuration."
 msgstr ""
 
 #. type: Fenced code block (json)
@@ -89,15 +87,10 @@ msgstr ""
 
 #. type: Plain text
 #: en/configuring-webservers/nginx-unit.md
-msgid ""
-"You can also [set up](https://unit.nginx.org/configuration/#php) your PHP "
-"environment or supply a custom `php.ini` in the same configuration."
+msgid "You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini` in the same configuration."
 msgstr ""
 
 #. type: Plain text
 #: en/configuring-webservers/nginx-unit.md
-msgid ""
-"In the above, note the usage of `environment`. Since the Yii3 application "
-"template is using environment variables, this is a possible place to set "
-"them. In production environment remember to set `APP_ENV` to `prod`."
+msgid "In the above, note the usage of `environment`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
 msgstr ""

@@ -34,9 +34,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
-msgid ""
-"These packages are included by default in the `yiisoft/app` application "
-"template."
+msgid "These packages are included by default in the `yiisoft/app` application template."
 msgstr ""
 
 #. type: Title #
@@ -47,11 +45,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"Widgets are reusable, self-contained components that encapsulate complex "
-"HTML generation logic.  They provide a clean way to create configurable UI "
-"elements that can be used across different views and applications. Yii3 "
-"provides a flexible widget system through the `yiisoft/widget` package."
+msgid "Widgets are reusable, self-contained components that encapsulate complex HTML generation logic.  They provide a clean way to create configurable UI elements that can be used across different views and applications. Yii3 provides a flexible widget system through the `yiisoft/widget` package."
 msgstr ""
 
 #. type: Plain text
@@ -67,8 +61,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"For ready-made widgets (like forms, navigation, etc.), you can also install:"
+msgid "For ready-made widgets (like forms, navigation, etc.), you can also install:"
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -85,9 +78,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"A widget is a PHP class that extends the abstract `Widget` class and "
-"implements a `render()` method that returns HTML content as a string."
+msgid "A widget is a PHP class that extends the abstract `Widget` class and implements a `render()` method that returns HTML content as a string."
 msgstr ""
 
 #. type: Title ###
@@ -98,9 +89,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"The `WidgetFactory` is responsible for creating widget instances and can "
-"inject dependencies through the DI container."
+msgid "The `WidgetFactory` is responsible for creating widget instances and can inject dependencies through the DI container."
 msgstr ""
 
 #. type: Title ###
@@ -111,9 +100,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"Widgets can be configured with properties and methods, making them highly "
-"customizable and reusable across different contexts."
+msgid "Widgets can be configured with properties and methods, making them highly customizable and reusable across different contexts."
 msgstr ""
 
 #. type: Title ##
@@ -1041,8 +1028,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
-msgid ""
-"Widgets provide a powerful way to create reusable, configurable UI "
-"components in Yii3 applications.  They help maintain clean separation of "
-"concerns and make your views more maintainable and testable."
+msgid "Widgets provide a powerful way to create reusable, configurable UI components in Yii3 applications.  They help maintain clean separation of concerns and make your views more maintainable and testable."
 msgstr ""

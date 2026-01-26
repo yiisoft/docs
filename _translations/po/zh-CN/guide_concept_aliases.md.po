@@ -23,19 +23,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"You can use aliases to represent file paths or URLs so that you don't have "
-"to hard-code absolute paths or URLs in your project. An alias must start "
-"with the `@` character to be differentiated from normal file paths and URLs. "
-"Alias defined without leading `@` will be prefixed with `@` character."
+msgid "You can use aliases to represent file paths or URLs so that you don't have to hard-code absolute paths or URLs in your project. An alias must start with the `@` character to be differentiated from normal file paths and URLs. Alias defined without leading `@` will be prefixed with `@` character."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"Default Yii application has some aliases pre-defined in `config/params.php`. "
-"For example, the alias `@public` represents the web root path; `@baseUrl` "
-"represents the base URL for the currently running Web application."
+msgid "Default Yii application has some aliases pre-defined in `config/params.php`. For example, the alias `@public` represents the web root path; `@baseUrl` represents the base URL for the currently running Web application."
 msgstr ""
 
 #. type: Title ##
@@ -83,10 +76,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"Given a defined alias, you may derive a new alias by appending a slash `/` "
-"followed with one or more path segments.  For example, `@foo` is a root "
-"alias, while `@foo/bar/file.php` is a derived alias."
+msgid "Given a defined alias, you may derive a new alias by appending a slash `/` followed with one or more path segments.  For example, `@foo` is a root alias, while `@foo/bar/file.php` is a derived alias."
 msgstr ""
 
 #. type: Plain text
@@ -102,10 +92,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/"
-"aliases`](https://github.com/yiisoft/aliases) package.  You can set extra "
-"aliases in runtime by using the service:"
+msgid "The `yiisoft/aliases` parameter initializes `Aliases` service from [`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can set extra aliases in runtime by using the service:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -128,9 +115,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"It's preferred to resolve aliases at the configuration level, so services "
-"get URLs and paths as ready to use strings:"
+msgid "It's preferred to resolve aliases at the configuration level, so services get URLs and paths as ready to use strings:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -161,9 +146,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"You can use `Aliases` service to resolve an alias or derived alias into the "
-"file path or URL it represents:"
+msgid "You can use `Aliases` service to resolve an alias or derived alias into the file path or URL it represents:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -182,9 +165,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"The path/URL represented by a derived alias is determined by replacing the "
-"root alias part with its corresponding path/URL in the derived alias."
+msgid "The path/URL represented by a derived alias is determined by replacing the root alias part with its corresponding path/URL in the derived alias."
 msgstr ""
 
 #. type: Plain text
@@ -197,10 +178,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"A root alias may also contain slash `/` characters. The `get()` method is "
-"intelligent enough to tell, which part of an alias is a root alias and thus "
-"correctly determines the corresponding file path or URL:"
+msgid "A root alias may also contain slash `/` characters. The `get()` method is intelligent enough to tell, which part of an alias is a root alias and thus correctly determines the corresponding file path or URL:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -221,9 +199,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"If `@foo/bar` isn't defined as a root alias, the last statement would "
-"display `/path/to/foo/bar/file.php`."
+msgid "If `@foo/bar` isn't defined as a root alias, the last statement would display `/path/to/foo/bar/file.php`."
 msgstr ""
 
 #. type: Title ##
@@ -234,9 +210,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
-msgid ""
-"[Yii application](https://github.com/yiisoft/app) predefines a set of "
-"aliases to reference commonly used file paths and URLs:"
+msgid "[Yii application](https://github.com/yiisoft/app) predefines a set of aliases to reference commonly used file paths and URLs:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -256,9 +230,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@baseUrl` - the base URL of the currently running Web application. Defaults "
-"to `/`."
+msgid "`@baseUrl` - the base URL of the currently running Web application. Defaults to `/`."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -278,16 +250,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@public` - application's publicly accessible directory that with "
-"`index.php`."
+msgid "`@public` - application's publicly accessible directory that with `index.php`."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/aliases.md
-msgid ""
-"`@runtime` - the runtime path of the currently running application. Defaults "
-"to `@root/runtime`."
+msgid "`@runtime` - the runtime path of the currently running application. Defaults to `@root/runtime`."
 msgstr ""
 
 #. type: Bullet: '- '

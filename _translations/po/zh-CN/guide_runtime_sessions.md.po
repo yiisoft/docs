@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"Sessions persist data between requests without passing them to the client "
-"and back.  Yii has [a session package](https://github.com/yiisoft/session) "
-"to work with session data."
+msgid "Sessions persist data between requests without passing them to the client and back.  Yii has [a session package](https://github.com/yiisoft/session) to work with session data."
 msgstr ""
 
 #. type: Plain text
@@ -48,19 +45,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"To keep a session between requests, you need to add `SessionMiddleware` to "
-"your route group or application middlewares.  You should prefer a route "
-"group when you have both API with token-based authentication and regular web "
-"routes in the same application. Having it this way avoids starting the "
-"session for API endpoints."
+msgid "To keep a session between requests, you need to add `SessionMiddleware` to your route group or application middlewares.  You should prefer a route group when you have both API with token-based authentication and regular web routes in the same application. Having it this way avoids starting the session for API endpoints."
 msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"To add a session for a certain group of routes, edit `config/routes.php` "
-"like the following:"
+msgid "To add a session for a certain group of routes, edit `config/routes.php` like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -85,9 +75,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"To add a session to the whole application, edit `config/application.php` "
-"like the following:"
+msgid "To add a session to the whole application, edit `config/application.php` like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -213,12 +201,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"In case you need some data to remain in session until read, such as in case "
-"of displaying a message on the next page, \"flash\" messages are what you "
-"need.  A flash message is a special type of data that's available only in "
-"the current request and the next request.  After that, it will be deleted "
-"automatically."
+msgid "In case you need some data to remain in session until read, such as in case of displaying a message on the next page, \"flash\" messages are what you need.  A flash message is a special type of data that's available only in the current request and the next request.  After that, it will be deleted automatically."
 msgstr ""
 
 #. type: Plain text
@@ -250,9 +233,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/sessions.md
-msgid ""
-"When using `Yiisoft\\Session\\Session`, you can use your own storage "
-"implementation:"
+msgid "When using `Yiisoft\\Session\\Session`, you can use your own storage implementation:"
 msgstr ""
 
 #. type: Fenced code block (php)

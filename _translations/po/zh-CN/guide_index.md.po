@@ -29,9 +29,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/index.md
-msgid ""
-"We release this guide under the [Terms of Yii Documentation](https://"
-"www.yiiframework.com/license#docs)."
+msgid "We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
 msgstr ""
 
 #. type: Title ##
@@ -242,8 +240,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid ""
-"[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -264,15 +261,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid ""
-"[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
+msgid "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid ""
-"[Active Record](https://github.com/yiisoft/active-record/blob/master/"
-"README.md)"
+msgid "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -293,9 +287,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid ""
-"[Validating input](https://github.com/yiisoft/validator/blob/master/docs/"
-"guide/en/README.md)"
+msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
 msgstr ""
 
 #. type: Bullet: '- '

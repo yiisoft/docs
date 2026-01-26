@@ -23,11 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx.md
-msgid ""
-"To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI]"
-"(https://secure.php.net/install.fpm).  Use the following Nginx "
-"configuration, replacing `path/to/app/public` with the actual path for `app/"
-"public` and `mysite.test` with the actual hostname to serve."
+msgid "To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).  Use the following Nginx configuration, replacing `path/to/app/public` with the actual path for `app/public` and `mysite.test` with the actual hostname to serve."
 msgstr ""
 
 #. type: Fenced code block (nginx)
@@ -81,23 +77,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx.md
-msgid ""
-"When you use this configuration, also set `cgi.fix_pathinfo=0` in the "
-"`php.ini` file to avoid many unnecessary system `stat()` calls."
+msgid "When you use this configuration, also set `cgi.fix_pathinfo=0` in the `php.ini` file to avoid many unnecessary system `stat()` calls."
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx.md
-msgid ""
-"Also, note that when running an HTTPS server, you need to add `fastcgi_param "
-"HTTPS on;` so that Yii can detect if a connection is secure."
+msgid "Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii can detect if a connection is secure."
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx.md
-msgid ""
-"In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 "
-"application template is using environment variables, this is a possible "
-"place to set them. In production environment remember to set `APP_ENV` to "
-"`prod`."
+msgid "In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
 msgstr ""

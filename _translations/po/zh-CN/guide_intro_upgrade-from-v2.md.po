@@ -37,12 +37,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"While sharing some common ideas and values, Yii3 is conceptually different "
-"from Yii 2.0. There is no easy upgrade path, so first [check maintenance "
-"policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/"
-"release-cycle)  and consider starting new projects on Yii3 while keeping "
-"existing ones on Yii 2.0."
+msgid "While sharing some common ideas and values, Yii3 is conceptually different from Yii 2.0. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii3 while keeping existing ones on Yii 2.0."
 msgstr ""
 
 #. type: Title ##
@@ -53,51 +48,37 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Yii3 requires PHP 8.2 or above. As a result, there are language features "
-"used that weren't used in Yii 2.0:"
+msgid "Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2.0:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Type declarations](https://www.php.net/manual/en/"
-"functions.arguments.php#functions.arguments.type-declaration)"
+msgid "[Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Return type declarations](https://www.php.net/manual/en/functions.returning-"
-"values.php#functions.returning-values.type-declaration)"
+msgid "[Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Class constant visibility](https://www.php.net/manual/en/"
-"language.oop5.constants.php)"
+msgid "[Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Named arguments](https://www.php.net/manual/en/"
-"functions.arguments.php#functions.named-arguments)"
+msgid "[Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Anonymous classes](https://www.php.net/manual/en/"
-"language.oop5.anonymous.php)"
+msgid "[Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[::class](https://www.php.net/manual/en/"
-"language.oop5.basic.php#language.oop5.basic.class.class)"
+msgid "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -107,30 +88,22 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Variadic functions](https://www.php.net/manual/en/"
-"functions.arguments.php#functions.variable-arg-list)"
+msgid "[Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Readonly properties](https://www.php.net/manual/en/"
-"language.oop5.properties.php#language.oop5.properties.readonly-properties)"
+msgid "[Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Readonly classes](https://www.php.net/manual/en/"
-"language.oop5.basic.php#language.oop5.basic.class.readonly)"
+msgid "[Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"[Constructor property promotion](https://www.php.net/manual/en/"
-"language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
+msgid "[Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -146,10 +119,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"It's a good idea to refactor your Yii 2.0 project before porting it to Yii3. "
-"That would both make porting easier and benefit the project in question "
-"while it's not moved to Yii3 yet."
+msgid "It's a good idea to refactor your Yii 2.0 project before porting it to Yii3. That would both make porting easier and benefit the project in question while it's not moved to Yii3 yet."
 msgstr ""
 
 #. type: Title ###
@@ -176,9 +146,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"See [Dependency injection and container](../concept/di-container.md) for an "
-"explanation of the idea."
+msgid "See [Dependency injection and container](../concept/di-container.md) for an explanation of the idea."
 msgstr ""
 
 #. type: Title ###
@@ -189,10 +157,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Since Active Record isn't the only way to work with a database in Yii3, "
-"consider introducing repositories that would hide details of getting data "
-"and gather them in a single place. You can later redo it:"
+msgid "Since Active Record isn't the only way to work with a database in Yii3, consider introducing repositories that would hide details of getting data and gather them in a single place. You can later redo it:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -222,10 +187,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"In case you have a rich complicated domain, it's a good idea to separate it "
-"from infrastructure provided by a framework that's all the business logic "
-"has to go to framework-independent classes."
+msgid "In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by a framework that's all the business logic has to go to framework-independent classes."
 msgstr ""
 
 #. type: Title ###
@@ -236,9 +198,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Yii3 services are conceptually similar to Yii 2.0 components, so it's a good "
-"idea to move reusable parts of your application into components."
+msgid "Yii3 services are conceptually similar to Yii 2.0 components, so it's a good idea to move reusable parts of your application into components."
 msgstr ""
 
 #. type: Title ##
@@ -255,10 +215,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Default application templates are using [Docker](https://www.docker.com/get-"
-"started/) to run application.  It's a good idea to learn how to use it and "
-"use it for your own projects since it provides a lot of benefits:"
+msgid "Default application templates are using [Docker](https://www.docker.com/get-started/) to run application.  It's a good idea to learn how to use it and use it for your own projects since it provides a lot of benefits:"
 msgstr ""
 
 #. type: Bullet: '1. '
@@ -284,11 +241,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Yii3 application templates are using [environment variables](https://"
-"en.wikipedia.org/wiki/Environment_variable)  to configure parts of the "
-"application. The concept is [very handy for Dockerized applications](https://"
-"12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
+msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
 msgstr ""
 
 #. type: Title #
@@ -299,22 +252,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses [actions]"
-"(../structure/action.md), which are any callables. You can organize these "
-"into controllers similar to Yii 2, but it's not required."
+msgid "Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses [actions](../structure/action.md), which are any callables. You can organize these into controllers similar to Yii 2, but it's not required."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Suggested Yii3 application structure is different from Yii 2.0.  It's "
-"described in [application structure](../structure/overview.md)."
+msgid "Suggested Yii3 application structure is different from Yii 2.0.  It's described in [application structure](../structure/overview.md)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
-msgid ""
-"Despite that, Yii3 is flexible, so it's still possible to use a structure "
-"similar to Yii 2.0 with Yii3."
+msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2.0 with Yii3."
 msgstr ""

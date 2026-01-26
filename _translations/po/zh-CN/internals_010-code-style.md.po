@@ -29,10 +29,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-"
-"fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) with "
-"extra rules added on top of it."
+msgid "Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it."
 msgstr ""
 
 #. type: Title ###
@@ -64,10 +61,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
-msgid ""
-"Postfix classes, interfaces, traits and variables, which is a [collection]"
-"(https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with "
-"`Collection`."
+msgid "Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`."
 msgstr ""
 
 #. type: Title ##
@@ -78,22 +72,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
-msgid ""
-"Declare [argument and return types](https://www.php.net/manual/en/"
-"migration70.new-features.php) where possible."
+msgid "Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
-msgid ""
-"[Use types for properties](https://wiki.php.net/rfc/typed_properties_v2)."
+msgid "[Use types for properties](https://wiki.php.net/rfc/typed_properties_v2)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
-msgid ""
-"Use strict typing. Avoid mixed and union types where possible except "
-"compatible types such as `string|Stringable`."
+msgid "Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`."
 msgstr ""
 
 #. type: Title ##
@@ -104,16 +93,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Inline comments are to be avoided unless code couldn't be understood without "
-"them.  A good example is a workaround for a bug in a certain PHP version."
+msgid "Inline comments are to be avoided unless code couldn't be understood without them.  A good example is a workaround for a bug in a certain PHP version."
 msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Method comment is necessary except it adds nothing to what method name and "
-"signature already has."
+msgid "Method comment is necessary except it adds nothing to what method name and signature already has."
 msgstr ""
 
 #. type: Plain text
@@ -123,8 +108,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
+msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
 msgstr ""
 
 #. type: Title ##
@@ -141,10 +125,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Property, variable and constant value assignments shouldn't be aligned.  The "
-"same applies to phpdoc tags. The reason is that aligned statements often "
-"cause larger diff and even conflicts."
+msgid "Property, variable and constant value assignments shouldn't be aligned.  The same applies to phpdoc tags. The reason is that aligned statements often cause larger diff and even conflicts."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -179,10 +160,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Chained calls should be formatted for better readability.  If it's a long "
-"chain that doesn't fit the line length of 120 characters, then each call "
-"should on a new line:"
+msgid "Chained calls should be formatted for better readability.  If it's a long chain that doesn't fit the line length of 120 characters, then each call should on a new line:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -357,9 +335,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Methods that are there to check if something is true should be named like "
-"the following:"
+msgid "Methods that are there to check if something is true should be named like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -379,9 +355,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"Boolean flags in methods are better to be avoided. It's a sign the method "
-"may be doing too much, and there should be two methods instead of one."
+msgid "Boolean flags in methods are better to be avoided. It's a sign the method may be doing too much, and there should be two methods instead of one."
 msgstr ""
 
 #. type: Fenced code block (php)

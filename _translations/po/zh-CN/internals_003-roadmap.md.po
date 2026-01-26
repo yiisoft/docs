@@ -40,16 +40,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Not limit a developer to choosing architecture. Allow anything from "
-"\"classic\" MVC to DDD."
+msgid "Not limit a developer to choosing architecture. Allow anything from \"classic\" MVC to DDD."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Be based on the best practices such as SOLID, GRASP, etc. and teach them to "
-"the community."
+msgid "Be based on the best practices such as SOLID, GRASP, etc. and teach them to the community."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -70,10 +66,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"PSR compliance helps with customizability, the ability to use general PHP "
-"libraries and implement fewer wrappers.  Here's the list of PSRs we want to "
-"implement."
+msgid "PSR compliance helps with customizability, the ability to use general PHP libraries and implement fewer wrappers.  Here's the list of PSRs we want to implement."
 msgstr ""
 
 #. type: Title ###
@@ -84,9 +77,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Implemented as a [separate package that isn't dependent on a framework]"
-"(https://github.com/yiisoft/log)."
+msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/log)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -149,16 +140,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Implemented as a [separate package that isn't dependent on a framework]"
-"(https://github.com/yiisoft/di)."
+msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/di)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Framework packages shouldn't use container directly. One should be able "
-"to instantiate everything manually."
+msgid "[x] Framework packages shouldn't use container directly. One should be able to instantiate everything manually."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -168,15 +155,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Remove all framework-specific implementations from the package. Move to "
-"a framework."
+msgid "[x] Remove all framework-specific implementations from the package. Move to a framework."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)"
+msgid "[x] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)"
 msgstr ""
 
 #. type: Title ###
@@ -203,9 +187,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] [Implement as a separate library](https://github.com/yiisoft/event-"
-"dispatcher)."
+msgid "[x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -226,9 +208,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Rewrite HTTP flow to PSR-7 request-response + formatting response via "
-"emitter."
+msgid "[x] Rewrite HTTP flow to PSR-7 request-response + formatting response via emitter."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -279,9 +259,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Implemented as a [separate package that isn't dependent on a framework]"
-"(https://github.com/yiisoft/cache)."
+msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/cache)."
 msgstr ""
 
 #. type: Title ###
@@ -314,9 +292,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Make sure types are as definitive as possible. Avoid varying types if "
-"possible."
+msgid "[x] Make sure types are as definitive as possible. Avoid varying types if possible."
 msgstr ""
 
 #. type: Title ##
@@ -332,9 +308,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Create a [single application template that works out of the box](https://"
-"github.com/yiisoft/app)."
+msgid "[x] Create a [single application template that works out of the box](https://github.com/yiisoft/app)."
 msgstr ""
 
 #. type: Title ##
@@ -345,9 +319,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"Implemented as a [separate package that isn't dependent on a framework]"
-"(https://github.com/yiisoft/router)."
+msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/router)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -378,8 +350,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Make sure interfaces follow the \"interface segregation\" principle."
+msgid "[x] Make sure interfaces follow the \"interface segregation\" principle."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -425,8 +396,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Development command line tool (symlinks packages into usable application)"
+msgid "[x] Development command line tool (symlinks packages into usable application)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -477,9 +447,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"RBAC is implemented as [a framework-independent package](https://github.com/"
-"yiisoft/rbac)."
+msgid "RBAC is implemented as [a framework-independent package](https://github.com/yiisoft/rbac)."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -495,16 +463,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
-msgid ""
-"View is implemented as [framework-independent package](https://github.com/"
-"yiisoft/view)."
+msgid "View is implemented as [framework-independent package](https://github.com/yiisoft/view)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Finish refactoring ([see issues](https://github.com/yiisoft/view/"
-"issues))."
+msgid "[x] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues))."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -535,30 +499,22 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Port sort, use data abstractions. Should be part of [yii-dataview]"
-"(https://github.com/yiisoft/yii-dataview)."
+msgid "[x] Port sort, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Port paging, use data abstractions. Should be part of [yii-dataview]"
-"(https://github.com/yiisoft/yii-dataview)."
+msgid "[x] Port paging, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Port grid, use data abstractions. Should be part of [yii-dataview]"
-"(https://github.com/yiisoft/yii-dataview)."
+msgid "[x] Port grid, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Port list, use data abstractions. Should be part of [yii-dataview]"
-"(https://github.com/yiisoft/yii-dataview)."
+msgid "[x] Port list, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
 msgstr ""
 
 #. type: Title ##
@@ -569,8 +525,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Finish [the main package](https://github.com/yiisoft/validator) redesign"
+msgid "[x] Finish [the main package](https://github.com/yiisoft/validator) redesign"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -624,26 +579,20 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-"
-"camelcase-namespaces/124983/52)."
+msgid "[x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52)."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). "
-"Make sure the error handler catches fatals and is using response."
+msgid "[x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure the error handler catches fatals and is using response."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] Make validators independent of models to allow reusing them in handlers."
+msgid "[x] Make validators independent of models to allow reusing them in handlers."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
-msgid ""
-"[x] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)."
+msgid "[x] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)."
 msgstr ""

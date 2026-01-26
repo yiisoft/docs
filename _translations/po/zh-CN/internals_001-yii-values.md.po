@@ -29,9 +29,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"The Yii project aims to build and support _practical_ and _helpful_ tools "
-"and community."
+msgid "The Yii project aims to build and support _practical_ and _helpful_ tools and community."
 msgstr ""
 
 #. type: Title ##
@@ -95,9 +93,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"Performance is a necessary condition of practicality. Software shouldn't "
-"waste machine resources or human resources."
+msgid "Performance is a necessary condition of practicality. Software shouldn't waste machine resources or human resources."
 msgstr ""
 
 #. type: Title ###
@@ -108,10 +104,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"We prefer sensible defaults and conventions that users can customize.  We "
-"seek a balance between flexibility, discipline and simplicity that meets "
-"common needs."
+msgid "We prefer sensible defaults and conventions that users can customize.  We seek a balance between flexibility, discipline and simplicity that meets common needs."
 msgstr ""
 
 #. type: Title ###
@@ -127,9 +120,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"Solutions for known use cases should avoid excess complexity by providing "
-"only necessary flexibility."
+msgid "Solutions for known use cases should avoid excess complexity by providing only necessary flexibility."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -149,18 +140,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"This value guides technical decisions as well as community activity.  "
-"Consideration of how software features help users should guide development.  "
-"Community-wise, we value any helpful contribution, be it a pull request or "
-"an answer in the forum."
+msgid "This value guides technical decisions as well as community activity.  Consideration of how software features help users should guide development.  Community-wise, we value any helpful contribution, be it a pull request or an answer in the forum."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"When the other principles conflict, we choose a solution that's more helpful "
-"to the community."
+msgid "When the other principles conflict, we choose a solution that's more helpful to the community."
 msgstr ""
 
 #. type: Title ###
@@ -197,16 +182,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"We prefer explicit, obvious solutions and code. Solutions should clearly "
-"express exactly what they do. For example:"
+msgid "We prefer explicit, obvious solutions and code. Solutions should clearly express exactly what they do. For example:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
-msgid ""
-"A straightforward solution is better than an abstract one unless the "
-"abstraction has a practical purpose."
+msgid "A straightforward solution is better than an abstract one unless the abstraction has a practical purpose."
 msgstr ""
 
 #. type: Bullet: '- '

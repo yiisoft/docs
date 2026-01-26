@@ -30,11 +30,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"When building modern applications, you often need to make HTTP requests to "
-"external APIs. This article demonstrates how to make HTTP requests in Yii3 "
-"applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/"
-"psr/)."
+msgid "When building modern applications, you often need to make HTTP requests to external APIs. This article demonstrates how to make HTTP requests in Yii3 applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/psr/)."
 msgstr ""
 
 #. type: Title ##
@@ -45,9 +41,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"The PHP-FIG (PHP Framework Interoperability Group) has defined several PSR "
-"standards for HTTP handling:"
+msgid "The PHP-FIG (PHP Framework Interoperability Group) has defined several PSR standards for HTTP handling:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -62,16 +56,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**PSR-18**: HTTP client interface for sending PSR-7 requests and returning "
-"PSR-7 responses"
+msgid "**PSR-18**: HTTP client interface for sending PSR-7 requests and returning PSR-7 responses"
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"Using these interfaces ensures your code is framework-agnostic and follows "
-"established PHP standards."
+msgid "Using these interfaces ensures your code is framework-agnostic and follows established PHP standards."
 msgstr ""
 
 #. type: Title ##
@@ -87,8 +77,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"Install the Guzzle HTTP client with PSR-18 support and PSR-17 factories:"
+msgid "Install the Guzzle HTTP client with PSR-18 support and PSR-17 factories:"
 msgstr ""
 
 #. type: Fenced code block (shell)
@@ -345,9 +334,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"Guzzle supports middleware for cross-cutting concerns like authentication, "
-"logging, or retrying:"
+msgid "Guzzle supports middleware for cross-cutting concerns like authentication, logging, or retrying:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -404,9 +391,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"For better performance when making multiple requests, you can use "
-"asynchronous requests:"
+msgid "For better performance when making multiple requests, you can use asynchronous requests:"
 msgstr ""
 
 #. type: Plain text
@@ -471,9 +456,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"When testing services that make HTTP requests, you can use Guzzle's "
-"MockHandler:"
+msgid "When testing services that make HTTP requests, you can use Guzzle's MockHandler:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -523,50 +506,35 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Use PSR interfaces**: Always type-hint against PSR interfaces rather than "
-"concrete implementations for better testability and flexibility."
+msgid "**Use PSR interfaces**: Always type-hint against PSR interfaces rather than concrete implementations for better testability and flexibility."
 msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Handle errors gracefully**: Always wrap HTTP requests in try-catch blocks "
-"and handle network failures appropriately."
+msgid "**Handle errors gracefully**: Always wrap HTTP requests in try-catch blocks and handle network failures appropriately."
 msgstr ""
 
 #. type: Bullet: '3. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Configure timeouts**: Set reasonable connection and request timeouts to "
-"prevent hanging requests."
+msgid "**Configure timeouts**: Set reasonable connection and request timeouts to prevent hanging requests."
 msgstr ""
 
 #. type: Bullet: '4. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Log requests**: Use middleware or manual logging to track API calls for "
-"debugging and monitoring."
+msgid "**Log requests**: Use middleware or manual logging to track API calls for debugging and monitoring."
 msgstr ""
 
 #. type: Bullet: '5. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Use dependency injection**: Inject HTTP clients and factories through your "
-"DI container rather than creating them directly."
+msgid "**Use dependency injection**: Inject HTTP clients and factories through your DI container rather than creating them directly."
 msgstr ""
 
 #. type: Bullet: '6. '
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"**Mock in tests**: Use Guzzle's MockHandler or similar tools to test your "
-"HTTP client code without making real network requests."
+msgid "**Mock in tests**: Use Guzzle's MockHandler or similar tools to test your HTTP client code without making real network requests."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
-msgid ""
-"By following these patterns and using PSR interfaces, you'll create "
-"maintainable, testable, and interoperable HTTP client code in your Yii3 "
-"applications."
+msgid "By following these patterns and using PSR interfaces, you'll create maintainable, testable, and interoperable HTTP client code in your Yii3 applications."
 msgstr ""

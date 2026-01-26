@@ -51,11 +51,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-yii-with-swoole.md
-msgid ""
-"In the context of Yii, it allows running request handlers as workers. Each "
-"worker may handle multiple requests.  Such an operation mode is often called "
-"[event loop](using-with-event-loop.md) and allows not re-initializing a "
-"framework for each request that improves performance significantly."
+msgid "In the context of Yii, it allows running request handlers as workers. Each worker may handle multiple requests.  Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not re-initializing a framework for each request that improves performance significantly."
 msgstr ""
 
 #. type: Plain text
@@ -77,9 +73,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-yii-with-swoole.md
-msgid ""
-"Since Swoole doesn't have built-in PSR-7 support, you need a package fixing "
-"so:"
+msgid "Since Swoole doesn't have built-in PSR-7 support, you need a package fixing so:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -198,7 +192,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../../guide/en/tutorial/using-yii-with-swoole.md
-msgid ""
-"A scope is shared, so at each iteration of the event loop every service that "
-"depends on state should be reset."
+msgid "A scope is shared, so at each iteration of the event loop every service that depends on state should be reset."
 msgstr ""

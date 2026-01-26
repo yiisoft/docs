@@ -45,16 +45,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/007-exceptions.md
-msgid ""
-"Use grammatically correct error messages including ending punctuation, "
-"that's most exceptions must end with a period."
+msgid "Use grammatically correct error messages including ending punctuation, that's most exceptions must end with a period."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/007-exceptions.md
-msgid ""
-"`\\InvalidArgumentException` must be used directly. There should be no "
-"exceptions inherited from it."
+msgid "`\\InvalidArgumentException` must be used directly. There should be no exceptions inherited from it."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -64,14 +60,10 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/007-exceptions.md
-msgid ""
-"[International community discussion and poll](https://forum.yiiframework.com/"
-"t/naming-exceptions/126613/6)"
+msgid "[International community discussion and poll](https://forum.yiiframework.com/t/naming-exceptions/126613/6)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/007-exceptions.md
-msgid ""
-"[Russian community discussion and poll](https://yiiframework.ru/forum/"
-"viewtopic.php?f=39&t=51290)"
+msgid "[Russian community discussion and poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51290)"
 msgstr ""

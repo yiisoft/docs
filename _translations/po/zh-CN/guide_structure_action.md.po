@@ -23,19 +23,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
-msgid ""
-"In a web application, the request URL determines what's executed. Matching "
-"is made by a router configured with multiple routes. Each route can be "
-"attached to a middleware that, given request, produces a response. Since "
-"middleware overall could be chained and can pass actual handling to the next "
-"middleware, we call the middleware actually doing the job an action."
+msgid "In a web application, the request URL determines what's executed. Matching is made by a router configured with multiple routes. Each route can be attached to a middleware that, given request, produces a response. Since middleware overall could be chained and can pass actual handling to the next middleware, we call the middleware actually doing the job an action."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
-msgid ""
-"There are multiple ways to describe an action. The simplest one is using a "
-"closure:"
+msgid "There are multiple ways to describe an action. The simplest one is using a closure:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -55,10 +48,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
-msgid ""
-"It's fine for simple handling since any more complicated one would require "
-"getting dependencies, so a good idea would be moving the handling to a class "
-"method. Callback middleware could be used for the purpose:"
+msgid "It's fine for simple handling since any more complicated one would require getting dependencies, so a good idea would be moving the handling to a class method. Callback middleware could be used for the purpose:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -93,9 +83,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
-msgid ""
-"For many cases, it makes sense to group handling for many routes into a "
-"single class:"
+msgid "For many cases, it makes sense to group handling for many routes into a single class:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -186,8 +174,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
-msgid ""
-"In the above example `PostRepository` is injected automatically via "
-"constructor. That means it is available in every action. Logger is injected "
-"into `index` action only."
+msgid "In the above example `PostRepository` is injected automatically via constructor. That means it is available in every action. Logger is injected into `index` action only."
 msgstr ""

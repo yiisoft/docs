@@ -23,20 +23,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"Yii simplifies the composition and sending of email messages using the "
-"[yiisoft/mailer](https://github.com/yiisoft/mailer) package. This package "
-"provides content composition functionality and a basic interface for sending "
-"emails. By default, the package includes a file mailer that writes email "
-"contents into a file instead of sending them. This is particularly useful "
-"during the initial stages of application development."
+msgid "Yii simplifies the composition and sending of email messages using the [yiisoft/mailer](https://github.com/yiisoft/mailer) package. This package provides content composition functionality and a basic interface for sending emails. By default, the package includes a file mailer that writes email contents into a file instead of sending them. This is particularly useful during the initial stages of application development."
 msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"To send actual emails, you can use the [Symfony Mailer](https://github.com/"
-"yiisoft/mailer-symfony) implementation, which is used in the examples below."
+msgid "To send actual emails, you can use the [Symfony Mailer](https://github.com/yiisoft/mailer-symfony) implementation, which is used in the examples below."
 msgstr ""
 
 #. type: Title ##
@@ -47,10 +39,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"The mailer service allows you to create a message instance, populate it with "
-"data, and send it. Typically, you get an instance from the DI container as "
-"`Yiisoft\\Mailer\\MailerInterface`."
+msgid "The mailer service allows you to create a message instance, populate it with data, and send it. Typically, you get an instance from the DI container as `Yiisoft\\Mailer\\MailerInterface`."
 msgstr ""
 
 #. type: Plain text
@@ -103,8 +92,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"To create a simple message with a text body, use `Yiisoft\\Mailer\\Message`:"
+msgid "To create a simple message with a text body, use `Yiisoft\\Mailer\\Message`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -145,9 +133,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"For this example, we will use package rendering package [view](https://"
-"github.com/yiisoft/view)."
+msgid "For this example, we will use package rendering package [view](https://github.com/yiisoft/view)."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -216,10 +202,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"You can wrap the view rendering result in a layout, similar to how layouts "
-"work in web applications. This is useful for setting up shared content like "
-"CSS styles:"
+msgid "You can wrap the view rendering result in a layout, similar to how layouts work in web applications. This is useful for setting up shared content like CSS styles:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -255,9 +238,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"The `Yiisoft\\Mailer\\MessageInterface` provides several methods to "
-"customize your message:"
+msgid "The `Yiisoft\\Mailer\\MessageInterface` provides several methods to customize your message:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -267,119 +248,87 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withFrom()` - Returns a new instance with the specified sender email "
-"address."
+msgid "`withFrom()` - Returns a new instance with the specified sender email address."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withTo()` - Returns a new instance with the specified recipient(s) email "
-"address."
+msgid "`withTo()` - Returns a new instance with the specified recipient(s) email address."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withReplyTo()` - Returns a new instance with the specified reply-to address."
+msgid "`withReplyTo()` - Returns a new instance with the specified reply-to address."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withCc()` - Returns a new instance with the specified Cc (extra copy "
-"receiver) addresses."
+msgid "`withCc()` - Returns a new instance with the specified Cc (extra copy receiver) addresses."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withBcc()` - Returns a new instance with the specified Bcc (hidden copy "
-"receiver) addresses."
+msgid "`withBcc()` - Returns a new instance with the specified Bcc (hidden copy receiver) addresses."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withSubject()` - Returns a new instance with the specified message subject."
+msgid "`withSubject()` - Returns a new instance with the specified message subject."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withDate()` - Returns a new instance with the specified date when the "
-"message was sent."
+msgid "`withDate()` - Returns a new instance with the specified date when the message was sent."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withPriority()` - Returns a new instance with the specified priority of "
-"this message."
+msgid "`withPriority()` - Returns a new instance with the specified priority of this message."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withReturnPath()` - Returns a new instance with the specified return-path "
-"(the bounce address) of this message."
+msgid "`withReturnPath()` - Returns a new instance with the specified return-path (the bounce address) of this message."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withSender()` - Returns a new instance with the specified actual sender "
-"email address."
+msgid "`withSender()` - Returns a new instance with the specified actual sender email address."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withHtmlBody()` - Returns a new instance with the specified message HTML "
-"content."
+msgid "`withHtmlBody()` - Returns a new instance with the specified message HTML content."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withTextBody()` - Returns a new instance with the specified message plain "
-"text content."
+msgid "`withTextBody()` - Returns a new instance with the specified message plain text content."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withAddedHeader()` - Returns a new instance with the specified added custom "
-"header value."
+msgid "`withAddedHeader()` - Returns a new instance with the specified added custom header value."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withHeader()` - Returns a new instance with the specified custom header "
-"value."
+msgid "`withHeader()` - Returns a new instance with the specified custom header value."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`withHeaders()` - Returns a new instance with the specified custom header "
-"values."
+msgid "`withHeaders()` - Returns a new instance with the specified custom header values."
 msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"These methods are immutable, meaning they return a new instance of the "
-"message with the updated data."
+msgid "These methods are immutable, meaning they return a new instance of the message with the updated data."
 msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"Note `with` prefix. It indicates that the method is immutable and returns a "
-"new instance of the class with the changed data."
+msgid "Note `with` prefix. It indicates that the method is immutable and returns a new instance of the class with the changed data."
 msgstr ""
 
 #. type: Title ###
@@ -415,15 +364,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`getCc()` - Returns the Cc (extra copy receiver) addresses of this message."
+msgid "`getCc()` - Returns the Cc (extra copy receiver) addresses of this message."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this "
-"message."
+msgid "`getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this message."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -433,9 +379,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`getDate()` - Returns the date when the message was sent, or null if it "
-"wasn't set."
+msgid "`getDate()` - Returns the date when the message was sent, or null if it wasn't set."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -445,9 +389,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`getReturnPath()` - Returns the return-path (the bounce address) of this "
-"message."
+msgid "`getReturnPath()` - Returns the return-path (the bounce address) of this message."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -511,9 +453,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"You can embed images into the message content using the `withEmbedded()` "
-"method. This is particularly useful when composing messages with views:"
+msgid "You can embed images into the message content using the `withEmbedded()` method. This is particularly useful when composing messages with views:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -539,9 +479,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"In your view or layout template, you can reference the embedded image using "
-"its CID:"
+msgid "In your view or layout template, you can reference the embedded image using its CID:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -612,9 +550,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"The `sendMultiple()` method returns a `Yiisoft\\Mailer\\SendResults` object "
-"containing arrays of successfully sent and failed messages."
+msgid "The `sendMultiple()` method returns a `Yiisoft\\Mailer\\SendResults` object containing arrays of successfully sent and failed messages."
 msgstr ""
 
 #. type: Title ##
@@ -625,10 +561,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"To create a custom mail solution, implement the "
-"`Yiisoft\\Mailer\\MailerInterface` and `Yiisoft\\Mailer\\MessageInterface` "
-"interfaces."
+msgid "To create a custom mail solution, implement the `Yiisoft\\Mailer\\MailerInterface` and `Yiisoft\\Mailer\\MessageInterface` interfaces."
 msgstr ""
 
 #. type: Title ##
@@ -639,38 +572,27 @@ msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"For local or test development, you can use simplified implementations of the "
-"mailer that does not send emails.  The package provides these "
-"implementations:"
+msgid "For local or test development, you can use simplified implementations of the mailer that does not send emails.  The package provides these implementations:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`Yiisoft\\Mailer\\StubMailer` - A simple mailer that stores messages in a "
-"local array."
+msgid "`Yiisoft\\Mailer\\StubMailer` - A simple mailer that stores messages in a local array."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`Yiisoft\\Mailer\\FileMailer` - A mock mailer that saves email messages as "
-"files instead of sending them."
+msgid "`Yiisoft\\Mailer\\FileMailer` - A mock mailer that saves email messages as files instead of sending them."
 msgstr ""
 
 #. type: Bullet: '- '
 #: en/tutorial/mailing.md
-msgid ""
-"`Yiisoft\\Mailer\\NullMailer` - A mailer that discards messages without "
-"sending or storing them."
+msgid "`Yiisoft\\Mailer\\NullMailer` - A mailer that discards messages without sending or storing them."
 msgstr ""
 
 #. type: Plain text
 #: en/tutorial/mailing.md
-msgid ""
-"To use one of these mailers, configure it in your development environment "
-"file Example: `environments/local/di.php`"
+msgid "To use one of these mailers, configure it in your development environment file Example: `environments/local/di.php`"
 msgstr ""
 
 #. type: Fenced code block (php)

@@ -31,18 +31,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
-msgid ""
-"The view injections are designed to provide a standardized way to pass "
-"parameters to the common layer of views in an application. It allows "
-"developers to manage the data that will be available across various views, "
-"ensuring flexibility and reusability of code."
+msgid "The view injections are designed to provide a standardized way to pass parameters to the common layer of views in an application. It allows developers to manage the data that will be available across various views, ensuring flexibility and reusability of code."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
-msgid ""
-"The view injections could be used if you require `yiisoft/yii-view-renderer` "
-"package:"
+msgid "The view injections could be used if you require `yiisoft/yii-view-renderer` package:"
 msgstr ""
 
 #. type: Fenced code block (sh)
@@ -78,11 +72,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
-msgid ""
-"Start by defining a class that will implement the "
-"`Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface`. This "
-"class will be responsible for providing the parameters you want to inject "
-"into your view templates and layouts."
+msgid "Start by defining a class that will implement the `Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface`. This class will be responsible for providing the parameters you want to inject into your view templates and layouts."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -134,11 +124,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
-msgid ""
-"If your application has multiple layouts, you can create separate parameter "
-"injections for each layout. This approach allows you to tailor the "
-"parameters injected into each layout according to its specific needs, "
-"enhancing the flexibility and maintainability of your application."
+msgid "If your application has multiple layouts, you can create separate parameter injections for each layout. This approach allows you to tailor the parameters injected into each layout according to its specific needs, enhancing the flexibility and maintainability of your application."
 msgstr ""
 
 #. type: Plain text
@@ -167,9 +153,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
-msgid ""
-"Add your new injection to `params.php` under specific layout name. In the "
-"following example, it's `@layout/cart`:"
+msgid "Add your new injection to `params.php` under specific layout name. In the following example, it's `@layout/cart`:"
 msgstr ""
 
 #. type: Fenced code block (php)

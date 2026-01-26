@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/012-tests.md
-msgid ""
-"For each package, we're adding unit-tests that are run via [PHPUnit](https://"
-"phpunit.de/).  When designing tests, the following guidelines should be "
-"taken into account."
+msgid "For each package, we're adding unit-tests that are run via [PHPUnit](https://phpunit.de/).  When designing tests, the following guidelines should be taken into account."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -56,9 +53,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
-msgid ""
-"The test must follow AAA: first arrange the necessary preconditions, then "
-"act, then assert expected results."
+msgid "The test must follow AAA: first arrange the necessary preconditions, then act, then assert expected results."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -68,14 +63,10 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
-msgid ""
-"Test must use public API.  Private properties or methods shouldn't be "
-"accessed, assumptions on internals of the class tested shouldn't be made."
+msgid "Test must use public API.  Private properties or methods shouldn't be accessed, assumptions on internals of the class tested shouldn't be made."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
-msgid ""
-"Tests shouldn't rely on composer-config-plugin and DI container unless "
-"necessary."
+msgid "Tests shouldn't rely on composer-config-plugin and DI container unless necessary."
 msgstr ""

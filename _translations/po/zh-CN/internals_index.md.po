@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/index.md
-msgid ""
-"This section contains documentation for developers contributing to the Yii "
-"framework itself.  It covers guidelines, workflows, and best practices for "
-"maintaining and developing Yii packages."
+msgid "This section contains documentation for developers contributing to the Yii framework itself.  It covers guidelines, workflows, and best practices for maintaining and developing Yii packages."
 msgstr ""
 
 #. type: Title ##
@@ -37,15 +34,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[000 — Packages](000-packages.md) - Package structure and naming conventions"
+msgid "[000 — Packages](000-packages.md) - Package structure and naming conventions"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[001 — Yii goal and values](001-yii-values.md) - Project goals and core "
-"values"
+msgid "[001 — Yii goal and values](001-yii-values.md) - Project goals and core values"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -65,16 +59,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[005 — Yii development tool](005-development-tool.md) - Development tools "
-"for Yii packages"
+msgid "[005 — Yii development tool](005-development-tool.md) - Development tools for Yii packages"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[006 — Git commit messages](006-git-commit-messages.md) - Commit message "
-"format"
+msgid "[006 — Git commit messages](006-git-commit-messages.md) - Commit message format"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -89,9 +79,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[009 — Design Decisions](009-design-decisions.md) - Architectural and design "
-"decisions"
+msgid "[009 — Design Decisions](009-design-decisions.md) - Architectural and design decisions"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -101,9 +89,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[011 — Error correction](011-error-correction.md) - Error handling and "
-"correction"
+msgid "[011 — Error correction](011-error-correction.md) - Error handling and correction"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -113,8 +99,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[013 — Code review](013-code-review.md) - Code review process and guidelines"
+msgid "[013 — Code review](013-code-review.md) - Code review process and guidelines"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -124,15 +109,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[015 — PhpStorm metadata and attributes](015-phpstorm.md) - PhpStorm "
-"integration"
+msgid "[015 — PhpStorm metadata and attributes](015-phpstorm.md) - PhpStorm integration"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[016 — Security workflow](016-security-workflow.md) - Security issue handling"
+msgid "[016 — Security workflow](016-security-workflow.md) - Security issue handling"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -147,28 +129,20 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[019 — View code style](019-view-code-style.md) - Code style for view "
-"templates"
+msgid "[019 — View code style](019-view-code-style.md) - Code style for view templates"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[020 — Package release](020-package-release.md) - Release process for "
-"packages"
+msgid "[020 — Package release](020-package-release.md) - Release process for packages"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[021 — Changelog and upgrade](021-changelog-upgrade.md) - Maintaining "
-"changelogs and upgrade notes"
+msgid "[021 — Changelog and upgrade](021-changelog-upgrade.md) - Maintaining changelogs and upgrade notes"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
-msgid ""
-"[022 — Config groups](022-config-groups.md) - Configuration group "
-"organization"
+msgid "[022 — Config groups](022-config-groups.md) - Configuration group organization"
 msgstr ""

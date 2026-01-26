@@ -39,9 +39,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Yii doesn't dictate using a particular database or storage for your "
-"application.  There are many ways you can work with relational databases:"
+msgid "Yii doesn't dictate using a particular database or storage for your application.  There are many ways you can work with relational databases:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -56,16 +54,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/start/databases.md
-msgid ""
-"[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/"
-"yiisoft/yii-cycle)"
+msgid "[Cycle](https://github.com/cycle) via [Yii Cycle package](https://github.com/yiisoft/yii-cycle)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/start/databases.md
-msgid ""
-"[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package]"
-"(https://github.com/stargazer-team/yii-doctrine)"
+msgid "[Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine package](https://github.com/stargazer-team/yii-doctrine)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -75,8 +69,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"For non-relational ones, there are usually official libraries available:"
+msgid "For non-relational ones, there are usually official libraries available:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -96,10 +89,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"In this guide, we will focus on working with relational databases using Yii "
-"DB. We'll use PostgreSQL to implement a simple CRUD (create read update "
-"delete)."
+msgid "In this guide, we will focus on working with relational databases using Yii DB. We'll use PostgreSQL to implement a simple CRUD (create read update delete)."
 msgstr ""
 
 #. type: Title ##
@@ -110,16 +100,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"You need to install PostgreSQL. If you prefer not to use Docker, [get the "
-"installer from official website](https://www.postgresql.org/download/), "
-"install it and create a database."
+msgid "You need to install PostgreSQL. If you prefer not to use Docker, [get the installer from official website](https://www.postgresql.org/download/), install it and create a database."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
+msgid "If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:"
 msgstr ""
 
 #. type: Fenced code block (yaml)
@@ -173,17 +159,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Note that we add `depends_on` so application waits for database to be up."
+msgid "Note that we add `depends_on` so application waits for database to be up."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You "
-"can enable it locally in `php.ini`.  If you use Docker, check `docker/"
-"Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then "
-"rebuild PHP image with `make build && make down && make up`."
+msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.  If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then rebuild PHP image with `make build && make down && make up`."
 msgstr ""
 
 #. type: Title ##
@@ -241,9 +222,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"And define parameters in `config/common/params.php`. For Docker that would "
-"be:"
+msgid "And define parameters in `config/common/params.php`. For Docker that would be:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -269,9 +248,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"For local installation without Docker the host in Dsn would be `localhost`. "
-"You'll have to adjust the rest to match how you configured the database."
+msgid "For local installation without Docker the host in Dsn would be `localhost`. You'll have to adjust the rest to match how you configured the database."
 msgstr ""
 
 #. type: Title ##
@@ -282,11 +259,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"For the initial state of the application and for further database changes, "
-"it is a good idea to use migrations.  These are files that create database "
-"changes. Applied migrations are tracked in the database, allowing us to know "
-"the current state and which migrations remain to be applied."
+msgid "For the initial state of the application and for further database changes, it is a good idea to use migrations.  These are files that create database changes. Applied migrations are tracked in the database, allowing us to know the current state and which migrations remain to be applied."
 msgstr ""
 
 #. type: Plain text
@@ -296,16 +269,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Create a directory to store migrations `src/Migration` right in the project "
-"root. Add the following configuration to `config/common/params.php`:"
+msgid "Create a directory to store migrations `src/Migration` right in the project root. Add the following configuration to `config/common/params.php`:"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Now you can use `make yii migrate:create page` to create a new migration. "
-"For our example we need a `page` table with some columns:"
+msgid "Now you can use `make yii migrate:create page` to create a new migration. For our example we need a `page` table with some columns:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -346,18 +315,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"The `M251102141707Page` name of the migration class is generated so replace "
-"the `Page` suffix with the actual migration name. The `M251102141707` prefix "
-"is needed to find and sort migrations in the order they were added."
+msgid "The `M251102141707Page` name of the migration class is generated so replace the `Page` suffix with the actual migration name. The `M251102141707` prefix is needed to find and sort migrations in the order they were added."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Note that we use UUID as the primary key. We are going to generate these IDs "
-"ourselves instead of relying on database so we'll need an extra compose "
-"package for that."
+msgid "Note that we use UUID as the primary key. We are going to generate these IDs ourselves instead of relying on database so we'll need an extra compose package for that."
 msgstr ""
 
 #. type: Fenced code block (shell)
@@ -368,11 +331,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"While the storage space is a bit bigger than using int, the workflow with "
-"such IDs is beneficial. Since you generate the ID yourself so you can define "
-"a set of related data and save it in a single transaction.  The entities "
-"that define this set of data in the code are often called an \"aggregate\"."
+msgid "While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. Since you generate the ID yourself so you can define a set of related data and save it in a single transaction.  The entities that define this set of data in the code are often called an \"aggregate\"."
 msgstr ""
 
 #. type: Plain text
@@ -388,9 +347,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Now that you have a table it is time to define an entity in the code. Create "
-"`src/Web/Page/Page.php`:"
+msgid "Now that you have a table it is time to define an entity in the code. Create `src/Web/Page/Page.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -448,9 +405,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Now that we have entity, we need a place for methods to save an entity, "
-"delete it and select either a single page or multiple pages."
+msgid "Now that we have entity, we need a place for methods to save an entity, delete it and select either a single page or multiple pages."
 msgstr ""
 
 #. type: Plain text
@@ -556,11 +511,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"In this repository there are both methods to get data and `save()` to do "
-"insert or update. DB returns raw data as arrays but our repository "
-"automatically creates entities from this raw data so later we operate typed "
-"data."
+msgid "In this repository there are both methods to get data and `save()` to do insert or update. DB returns raw data as arrays but our repository automatically creates entities from this raw data so later we operate typed data."
 msgstr ""
 
 #. type: Title ##
@@ -772,13 +723,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"In this view we have a form that submits a request for page deletion. "
-"Handing it with `GET` is common as well, but it is very wrong. Since "
-"deletion changes data, it needs to be handled by one of the non-idempotent "
-"HTTP methods.  We use POST and a form in our example, but it could be "
-"`DELETE` and async request made with JavaScript.  The button could be later "
-"styled properly to look similar to the \"Edit\"."
+msgid "In this view we have a form that submits a request for page deletion. Handing it with `GET` is common as well, but it is very wrong. Since deletion changes data, it needs to be handled by one of the non-idempotent HTTP methods.  We use POST and a form in our example, but it could be `DELETE` and async request made with JavaScript.  The button could be later styled properly to look similar to the \"Edit\"."
 msgstr ""
 
 #. type: Title ###
@@ -962,12 +907,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"In the above we use a special slug in the URL for new pages so the URL looks "
-"like `http://localhost/pages/new`. If the page isn't new, we pre-fill the "
-"form with the data from the database. Similar to how we did in [Working with "
-"forms](forms.md), we handle the form submission. After successful save we "
-"redirect to the page view."
+msgid "In the above we use a special slug in the URL for new pages so the URL looks like `http://localhost/pages/new`. If the page isn't new, we pre-fill the form with the data from the database. Similar to how we did in [Working with forms](forms.md), we handle the form submission. After successful save we redirect to the page view."
 msgstr ""
 
 #. type: Plain text
@@ -1061,10 +1001,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid ""
-"Note that we've grouped all page-related routes with a group under `/pages` "
-"prefix. That is a convenient way to both not to repeat yourself and add some "
-"extra middleware, such as authentication, to the whole group."
+msgid "Note that we've grouped all page-related routes with a group under `/pages` prefix. That is a convenient way to both not to repeat yourself and add some extra middleware, such as authentication, to the whole group."
 msgstr ""
 
 #. type: Title ##

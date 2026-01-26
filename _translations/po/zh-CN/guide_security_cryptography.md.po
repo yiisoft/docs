@@ -60,19 +60,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"Pseudorandom data are useful in many situations. For example, when resetting "
-"a password via email, you need to generate a token, save it to the database, "
-"and send it via email to the end user, which in turn will allow them to "
-"prove ownership of that account. It's important that this token be unique "
-"and hard to guess, else there is a possibility that an attacker can predict "
-"the token's value and reset the user's password."
+msgid "Pseudorandom data are useful in many situations. For example, when resetting a password via email, you need to generate a token, save it to the database, and send it via email to the end user, which in turn will allow them to prove ownership of that account. It's important that this token be unique and hard to guess, else there is a possibility that an attacker can predict the token's value and reset the user's password."
 msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"`\\Yiisoft\\Security\\Random` makes generating pseudorandom data simple:"
+msgid "`\\Yiisoft\\Security\\Random` makes generating pseudorandom data simple:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -83,8 +76,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"The code above would give you a random string consisting of 42 characters."
+msgid "The code above would give you a random string consisting of 42 characters."
 msgstr ""
 
 #. type: Plain text
@@ -110,13 +102,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"Yii provides convenient helper functions to encrypt/decrypt data using a "
-"secret key.  The data is passed through the encryption function so that only "
-"the person who has the secret key will be able to decrypt it.  For example, "
-"you need to store some information in your database, but you need to make "
-"sure only the user who has the secret key can view it (even if one "
-"compromises the application database):"
+msgid "Yii provides convenient helper functions to encrypt/decrypt data using a secret key.  The data is passed through the encryption function so that only the person who has the secret key will be able to decrypt it.  For example, you need to store some information in your database, but you need to make sure only the user who has the secret key can view it (even if one compromises the application database):"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -177,17 +163,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"There are situations in which you need to verify that your data hasn't been "
-"tampered with by a third party or even corrupted in some way. Yii provides a "
-"way to confirm data integrity by MAC signing."
+msgid "There are situations in which you need to verify that your data hasn't been tampered with by a third party or even corrupted in some way. Yii provides a way to confirm data integrity by MAC signing."
 msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"The `$key` should be present at both sending and receiving sides. On the "
-"sending side:"
+msgid "The `$key` should be present at both sending and receiving sides. On the sending side:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -225,10 +206,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/security/cryptography.md
-msgid ""
-"Masking a token helps to mitigate a BREACH attack by randomizing how the "
-"token outputted on each request.  A random mask is applied to the token, "
-"making the string always unique."
+msgid "Masking a token helps to mitigate a BREACH attack by randomizing how the token outputted on each request.  A random mask is applied to the token, making the string always unique."
 msgstr ""
 
 #. type: Plain text

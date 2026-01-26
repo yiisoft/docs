@@ -49,8 +49,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
-msgid ""
-"Decision makers - participate in discussions moving them to resolutions."
+msgid "Decision makers - participate in discussions moving them to resolutions."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -70,8 +69,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
-msgid ""
-"A single person may take one or more roles in the issue-resolving process."
+msgid "A single person may take one or more roles in the issue-resolving process."
 msgstr ""
 
 #. type: Title ##
@@ -82,9 +80,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
-msgid ""
-"We label issues to mark many things: current status, issue type, component "
-"affected. Status labels speak for themselves."
+msgid "We label issues to mark many things: current status, issue type, component affected. Status labels speak for themselves."
 msgstr ""
 
 #. type: Title ##
@@ -95,7 +91,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
-msgid ""
-"Issues aren't assigned to milestones unless they're critical or there is a "
-"likely good pull request exists."
+msgid "Issues aren't assigned to milestones unless they're critical or there is a likely good pull request exists."
 msgstr ""

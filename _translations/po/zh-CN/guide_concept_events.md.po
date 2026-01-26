@@ -24,21 +24,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"Events allow you to make custom code executed at certain execution points "
-"without modifying existing code.  You can attach a custom code called "
-"\"handler\" to an event so that when the event is triggered, the handler "
-"gets executed automatically."
+msgid "Events allow you to make custom code executed at certain execution points without modifying existing code.  You can attach a custom code called \"handler\" to an event so that when the event is triggered, the handler gets executed automatically."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"For example, when a user is signed up, you need to send a welcome email. You "
-"can do it right in the `SignupService` but then, when you additionally need "
-"to resize user's avatar image, you'll have to change `SignupService` code "
-"again. In other words, `SignupService` will be coupled to both code sending "
-"welcome email and code resizing avatar image."
+msgid "For example, when a user is signed up, you need to send a welcome email. You can do it right in the `SignupService` but then, when you additionally need to resize user's avatar image, you'll have to change `SignupService` code again. In other words, `SignupService` will be coupled to both code sending welcome email and code resizing avatar image."
 msgstr ""
 
 #. type: Plain text
@@ -53,10 +44,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"For raising events and attaching handlers to these events, Yii has a special "
-"service called event dispatcher.  It's available from [yiisoft/event-"
-"dispatcher package](https://github.com/yiisoft/event-dispatcher)."
+msgid "For raising events and attaching handlers to these events, Yii has a special service called event dispatcher.  It's available from [yiisoft/event-dispatcher package](https://github.com/yiisoft/event-dispatcher)."
 msgstr ""
 
 #. type: Title ##
@@ -67,10 +55,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"An event handler is [PHP callable](https://www.php.net/manual/en/"
-"language.types.callable.php) that gets executed when the event it's attached "
-"to is triggered."
+msgid "An event handler is [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that gets executed when the event it's attached to is triggered."
 msgstr ""
 
 #. type: Plain text
@@ -120,9 +105,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"The `attach()` method is accepting a callback. Based on the type of this "
-"callback argument, the event type is determined."
+msgid "The `attach()` method is accepting a callback. Based on the type of this callback argument, the event type is determined."
 msgstr ""
 
 #. type: Title ##
@@ -133,13 +116,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"You may attach one or more handlers to a single event. When an event is "
-"triggered, the attached handlers will be called in the order that they were "
-"attached to the event. In case an event implements "
-"`Psr\\EventDispatcher\\StoppableEventInterface`, event handler can stop "
-"executing the rest of the handlers that follow it if "
-"`isPropagationStopped()` returns `true`."
+msgid "You may attach one or more handlers to a single event. When an event is triggered, the attached handlers will be called in the order that they were attached to the event. In case an event implements `Psr\\EventDispatcher\\StoppableEventInterface`, event handler can stop executing the rest of the handlers that follow it if `isPropagationStopped()` returns `true`."
 msgstr ""
 
 #. type: Plain text
@@ -184,9 +161,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"First, you create an event supplying it with data that may be useful for "
-"handlers. Then you dispatch the event."
+msgid "First, you create an event supplying it with data that may be useful for handlers. Then you dispatch the event."
 msgstr ""
 
 #. type: Plain text
@@ -216,10 +191,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"Events don't have any name or wildcard matching on purpose. Event class "
-"names and class/interface hierarchy and composition could be used to achieve "
-"great flexibility:"
+msgid "Events don't have any name or wildcard matching on purpose. Event class names and class/interface hierarchy and composition could be used to achieve great flexibility:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -278,7 +250,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
-msgid ""
-"You usually assign event handlers via application config. See "
-"[\"Configuration\"](configuration.md) for details."
+msgid "You usually assign event handlers via application config. See [\"Configuration\"](configuration.md) for details."
 msgstr ""

@@ -48,18 +48,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"Most often, Sentry is used for monitoring errors (exceptions).  You can "
-"enrich errors with context to better understand the problem: - Request "
-"arguments - Tags for grouping exceptions - Environment state: environment "
-"variables, application state, and other global attributes"
+msgid "Most often, Sentry is used for monitoring errors (exceptions).  You can enrich errors with context to better understand the problem: - Request arguments - Tags for grouping exceptions - Environment state: environment variables, application state, and other global attributes"
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"You can find the full list of features on the official website: https://"
-"sentry.io/welcome/"
+msgid "You can find the full list of features on the official website: https://sentry.io/welcome/"
 msgstr ""
 
 #. type: Title ###
@@ -70,8 +64,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"Install the required package `yiisoft/yii-sentry` with the following command:"
+msgid "Install the required package `yiisoft/yii-sentry` with the following command:"
 msgstr ""
 
 #. type: Fenced code block (shell)
@@ -88,10 +81,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"The [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) "
-"library requires the `php-http/httplug` package and any HTTP driver.  In the "
-"example below we’ll use the Guzzle adapter."
+msgid "The [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) library requires the `php-http/httplug` package and any HTTP driver.  In the example below we’ll use the Guzzle adapter."
 msgstr ""
 
 #. type: Plain text
@@ -138,9 +128,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"Then, in the project settings on the “General Settings” tab, find the "
-"“Security Token” field and copy its value."
+msgid "Then, in the project settings on the “General Settings” tab, find the “Security Token” field and copy its value."
 msgstr ""
 
 #. type: Plain text
@@ -177,9 +165,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"Create the file `config/common/sentry.php` and put the following code into "
-"it:"
+msgid "Create the file `config/common/sentry.php` and put the following code into it:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -220,9 +206,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"That means you only need to add `SentryMiddleware` to the global middleware "
-"list in `config/web/application.php`:"
+msgid "That means you only need to add `SentryMiddleware` to the global middleware list in `config/web/application.php`:"
 msgstr ""
 
 #. type: Fenced code block (diff)
@@ -257,15 +241,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"Sentry supports `console` via a handler for the [ConsoleEvents::ERROR]"
-"(https://symfony.com/doc/current/components/console/events.html#the-"
-"consoleevents-error-event) event."
+msgid "Sentry supports `console` via a handler for the [ConsoleEvents::ERROR](https://symfony.com/doc/current/components/console/events.html#the-consoleevents-error-event) event."
 msgstr ""
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
-msgid ""
-"The package provides a configuration file that automatically subscribes the "
-"application to this event."
+msgid "The package provides a configuration file that automatically subscribes the application to this event."
 msgstr ""

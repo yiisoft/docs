@@ -23,26 +23,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP "
-"message interfaces](https://www.php-fig.org/psr/psr-7/)  and [PSR-15 request "
-"handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/)."
+msgid "Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)  and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"The application is composed of one or several middleware. Middleware runs "
-"between request and response.  When the URL is requested, the request object "
-"is passed to the middleware dispatcher that starts executing middleware one "
-"after another.  Each middleware, given the request, can:"
+msgid "The application is composed of one or several middleware. Middleware runs between request and response.  When the URL is requested, the request object is passed to the middleware dispatcher that starts executing middleware one after another.  Each middleware, given the request, can:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Pass the request to the next middleware performing some work before / after "
-"it."
+msgid "Pass the request to the next middleware performing some work before / after it."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -52,8 +43,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Depending on middleware used, application behavior may vary significantly."
+msgid "Depending on middleware used, application behavior may vary significantly."
 msgstr ""
 
 #. type: Plain text
@@ -63,9 +53,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"In the above each next middleware wraps the previous middleware. "
-"Alternatively, it could be presented as follows:"
+msgid "In the above each next middleware wraps the previous middleware. Alternatively, it could be presented as follows:"
 msgstr ""
 
 #. type: Plain text
@@ -81,25 +69,17 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware "
-"could be used with Yii, and there are many.  Say, you need to add basic "
-"authentication to one of the application URLs.  URL-dependent middleware is "
-"configured using router, so you need to change the router factory."
+msgid "Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware could be used with Yii, and there are many.  Say, you need to add basic authentication to one of the application URLs.  URL-dependent middleware is configured using router, so you need to change the router factory."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Authentication middleware is implemented by `middlewares/http-"
-"authentication` package so execute `composer require middlewares/http-"
-"authentication` in the application root directory."
+msgid "Authentication middleware is implemented by `middlewares/http-authentication` package so execute `composer require middlewares/http-authentication` in the application root directory."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Now register the middleware in DI container configuration `config/web.php`:"
+msgid "Now register the middleware in DI container configuration `config/web.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -148,11 +128,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"When configuring routing, you're binding `/basic-auth` URL to a chain of "
-"middleware consisting of basic authentication, and the action itself. A "
-"chain is a special middleware that executes all the middleware it's "
-"configured with."
+msgid "When configuring routing, you're binding `/basic-auth` URL to a chain of middleware consisting of basic authentication, and the action itself. A chain is a special middleware that executes all the middleware it's configured with."
 msgstr ""
 
 #. type: Plain text
@@ -174,16 +150,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"Basic authentication middleware wrote to request `username` attribute, so "
-"you can access the data if needed."
+msgid "Basic authentication middleware wrote to request `username` attribute, so you can access the data if needed."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"To apply middleware to application overall regardless of URL, adjust `config/"
-"application.php`:"
+msgid "To apply middleware to application overall regardless of URL, adjust `config/application.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -219,9 +191,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"To create middleware, you need to implement a single `process` method of "
-"`Psr\\Http\\Server\\MiddlewareInterface`:"
+msgid "To create middleware, you need to implement a single `process` method of `Psr\\Http\\Server\\MiddlewareInterface`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -232,9 +202,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"There are multiple ways to handle a request, and choosing one depends on "
-"what the middleware should achieve."
+msgid "There are multiple ways to handle a request, and choosing one depends on what the middleware should achieve."
 msgstr ""
 
 #. type: Title ###
@@ -245,8 +213,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"To respond directly, one needs a response factory passed via constructor:"
+msgid "To respond directly, one needs a response factory passed via constructor:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -305,9 +272,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"In case you need to pass data to the next middleware, you can use request "
-"attributes:"
+msgid "In case you need to pass data to the next middleware, you can use request attributes:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -337,9 +302,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-msgid ""
-"You may want to capture the response to manipulate it. It could be useful "
-"for adding CORS headers, gzipping content, etc."
+msgid "You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc."
 msgstr ""
 
 #. type: Fenced code block (php)

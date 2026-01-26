@@ -23,20 +23,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"Entry scripts are the first step in the application bootstrapping process. "
-"An application (either Web application or console application) has a single "
-"entry script. End users make requests to entry scripts which instantiate "
-"application instances and forward the requests to them."
+msgid "Entry scripts are the first step in the application bootstrapping process. An application (either Web application or console application) has a single entry script. End users make requests to entry scripts which instantiate application instances and forward the requests to them."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"Entry scripts for Web applications must be stored under Web-accessible "
-"directories so that they can be accessed by end users. They're often named "
-"as `index.php`, but can also use any other names, provided Web servers can "
-"locate them."
+msgid "Entry scripts for Web applications must be stored under Web-accessible directories so that they can be accessed by end users. They're often named as `index.php`, but can also use any other names, provided Web servers can locate them."
 msgstr ""
 
 #. type: Plain text
@@ -46,16 +38,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"Entry scripts mainly perform the following work with the help of "
-"`ApplicationRunner`:"
+msgid "Entry scripts mainly perform the following work with the help of `ApplicationRunner`:"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"Register [Composer autoloader](https://getcomposer.org/doc/01-basic-"
-"usage.md#autoloading);"
+msgid "Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);"
 msgstr ""
 
 #. type: Bullet: '* '
@@ -80,9 +68,7 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"With the help of an emitter that transforms a response object into an actual "
-"HTTP response that's sent to the client browser."
+msgid "With the help of an emitter that transforms a response object into an actual HTTP response that's sent to the client browser."
 msgstr ""
 
 #. type: Title ##
@@ -93,8 +79,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"The following is the code in the entry script for the application template:"
+msgid "The following is the code in the entry script for the application template:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -135,9 +120,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"Similarly, the following is the code for the entry script of a console "
-"application:"
+msgid "Similarly, the following is the code for the entry script of a console application:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -195,9 +178,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid ""
-"For alternative runtimes such as RoadRunner or Swoole, special entry scripts "
-"should be used. See:"
+msgid "For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:"
 msgstr ""
 
 #. type: Bullet: '- '

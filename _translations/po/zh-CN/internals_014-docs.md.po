@@ -34,12 +34,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"Documentation for a package could either be in `README.md` or `docs/"
-"{language}/{type}` where `{language}` is a language code and `{type}` could "
-"be \"guide,\" \"cookbook\" or something else.  Usually `docs` is there if "
-"the package usage or configuration isn't trivial or there's a need for "
-"translation."
+msgid "Documentation for a package could either be in `README.md` or `docs/{language}/{type}` where `{language}` is a language code and `{type}` could be \"guide,\" \"cookbook\" or something else.  Usually `docs` is there if the package usage or configuration isn't trivial or there's a need for translation."
 msgstr ""
 
 #. type: Plain text
@@ -59,9 +54,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"If the total length of readme is less than about 200 lines, it's fine to "
-"keep documentation in the readme."
+msgid "If the total length of readme is less than about 200 lines, it's fine to keep documentation in the readme."
 msgstr ""
 
 #. type: Title ##
@@ -72,18 +65,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/"
-"tree/master/guide/en)  aims at covering usage of packages as a whole "
-"framework. Unlike package documentation, it isn't focused on a single "
-"package but is covering certain use-cases."
+msgid "The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)  aims at covering usage of packages as a whole framework. Unlike package documentation, it isn't focused on a single package but is covering certain use-cases."
 msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"The guide should follow [Microsoft style guide](https://learn.microsoft.com/"
-"en-us/style-guide/welcome/)."
+msgid "The guide should follow [Microsoft style guide](https://learn.microsoft.com/en-us/style-guide/welcome/)."
 msgstr ""
 
 #. type: Title ###
@@ -105,29 +92,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/014-docs.md
-msgid ""
-"Install an application for working with `.po` translation files. For "
-"example, [Poedit](https://poedit.net/), [Lokalize](https://apps.kde.org/ru/"
-"lokalize/), [Gtranslator](https://wiki.gnome.org/Apps/Gtranslator) or "
-"another."
+msgid "Install an application for working with `.po` translation files. For example, [Poedit](https://poedit.net/), [Lokalize](https://apps.kde.org/ru/lokalize/), [Gtranslator](https://wiki.gnome.org/Apps/Gtranslator) or another."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/014-docs.md
-msgid ""
-"Find file what you want to translate in `_translations/guide/{lang}`. Note "
-"that if the source file is in a subfolder, the subfolder name is appended to "
-"the file name and separated by an underscore, for example, for translating "
-"`guide/en/concept/aliases.md` file find `_translations/guide/{lang}/"
-"concept_aliases.md.po` file."
+msgid "Find file what you want to translate in `_translations/guide/{lang}`. Note that if the source file is in a subfolder, the subfolder name is appended to the file name and separated by an underscore, for example, for translating `guide/en/concept/aliases.md` file find `_translations/guide/{lang}/concept_aliases.md.po` file."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/014-docs.md
-msgid ""
-"Open the file with the `.po` extension in `Poedit` from the folder with the "
-"desired localization, for example `_translations/guide/ru/intro_what-is-"
-"yii.md.po`. If there is no localization yet, create an issue."
+msgid "Open the file with the `.po` extension in `Poedit` from the folder with the desired localization, for example `_translations/guide/ru/intro_what-is-yii.md.po`. If there is no localization yet, create an issue."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -155,9 +130,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/internals/014-docs.md
-msgid ""
-"Pull updated branch after successful completion of workflow `Update docs "
-"translation` in GitHub Action"
+msgid "Pull updated branch after successful completion of workflow `Update docs translation` in GitHub Action"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -178,10 +151,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"Blocks are in the [GitHub Alerts format](https://docs.github.com/en/get-"
-"started/writing-on-github/getting-started-with-writing-and-formatting-on-"
-"github/basic-writing-and-formatting-syntax#alerts):"
+msgid "Blocks are in the [GitHub Alerts format](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts):"
 msgstr ""
 
 #. type: Fenced code block
@@ -206,12 +176,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"When translating documentation, these Block indicators should not be "
-"translated.  Keeps them intact as they are and only translate the block "
-"content.  For translating the label for the block, each guide translation "
-"should have a `blocktypes.json` file containing the translations. The "
-"following shows an example for German:"
+msgid "When translating documentation, these Block indicators should not be translated.  Keeps them intact as they are and only translate the block content.  For translating the label for the block, each guide translation should have a `blocktypes.json` file containing the translations. The following shows an example for German:"
 msgstr ""
 
 #. type: Fenced code block (json)
@@ -235,9 +200,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"PHPDoc mustn't be added if it doesn't add anything to what it describes. The "
-"following is a bad example:"
+msgid "PHPDoc mustn't be added if it doesn't add anything to what it describes. The following is a bad example:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -277,17 +240,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"PHPDoc, if present, should describe the purpose of the element it's added "
-"for."
+msgid "PHPDoc, if present, should describe the purpose of the element it's added for."
 msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"The `@see` tags must explicitly refer to class methods, properties, and "
-"constants. This is necessary for the correct display of links in IDEs, as "
-"well as for the correct display of links in API documentation."
+msgid "The `@see` tags must explicitly refer to class methods, properties, and constants. This is necessary for the correct display of links in IDEs, as well as for the correct display of links in API documentation."
 msgstr ""
 
 #. type: Plain text
@@ -342,9 +300,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid ""
-"Each package readme should be placed into `README.md` and contain the "
-"following:"
+msgid "Each package readme should be placed into `README.md` and contain the following:"
 msgstr ""
 
 #. type: Bullet: '- '

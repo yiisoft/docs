@@ -23,12 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"This guide walks you through deploying a Yii application to [Docker Swarm]"
-"(https://docs.docker.com/engine/swarm/)  starting from a blank server, using "
-"[Caddy](https://caddyserver.com/) as a reverse proxy and deploying from a "
-"container registry ([Forgejo](https://forgejo.org/) or [Gitea](https://"
-"about.gitea.com/))."
+msgid "This guide walks you through deploying a Yii application to [Docker Swarm](https://docs.docker.com/engine/swarm/)  starting from a blank server, using [Caddy](https://caddyserver.com/) as a reverse proxy and deploying from a container registry ([Forgejo](https://forgejo.org/) or [Gitea](https://about.gitea.com/))."
 msgstr ""
 
 #. type: Fenced code block (mermaid)
@@ -58,9 +53,7 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"A server with a fresh installation of a Linux distribution (Ubuntu 22.04 LTS "
-"or later recommended)"
+msgid "A server with a fresh installation of a Linux distribution (Ubuntu 22.04 LTS or later recommended)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -98,9 +91,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"For installation instructions, see the [official Docker documentation]"
-"(https://docs.docker.com/engine/install/ubuntu/)."
+msgid "For installation instructions, see the [official Docker documentation](https://docs.docker.com/engine/install/ubuntu/)."
 msgstr ""
 
 #. type: Title ###
@@ -140,9 +131,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Create a dedicated overlay network for reverse proxy to communicate with "
-"your services:"
+msgid "Create a dedicated overlay network for reverse proxy to communicate with your services:"
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -200,10 +189,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"Caddy automatically discovers services with Caddy labels and sets up HTTPS "
-"using Let's Encrypt. Yii3 application templates are using Caddy labels by "
-"default:"
+msgid "Caddy automatically discovers services with Caddy labels and sets up HTTPS using Let's Encrypt. Yii3 application templates are using Caddy labels by default:"
 msgstr ""
 
 #. type: Fenced code block (yaml)
@@ -235,9 +221,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"You need a container registry to store your Docker images. Choose one of the "
-"following options."
+msgid "You need a container registry to store your Docker images. Choose one of the following options."
 msgstr ""
 
 #. type: Title ###
@@ -300,10 +284,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"After deployment, access Forgejo at `https://git.example.com` and complete "
-"the initial setup. Make sure to enable the container registry in the "
-"settings."
+msgid "After deployment, access Forgejo at `https://git.example.com` and complete the initial setup. Make sure to enable the container registry in the settings."
 msgstr ""
 
 #. type: Title ###
@@ -361,9 +342,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"After deployment, access Gitea at `https://git.example.com` and complete the "
-"initial setup.  Make sure to enable the container registry in the settings."
+msgid "After deployment, access Gitea at `https://git.example.com` and complete the initial setup.  Make sure to enable the container registry in the settings."
 msgstr ""
 
 #. type: Title ##
@@ -383,10 +362,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"The [Yii application template](https://github.com/yiisoft/app) includes a "
-"Makefile with deployment commands. Update the `docker/.env` file in your "
-"project:"
+msgid "The [Yii application template](https://github.com/yiisoft/app) includes a Makefile with deployment commands. Update the `docker/.env` file in your project:"
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -410,12 +386,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Replace the values: - `STACK_NAME`: A unique name for your application stack "
-"- `PROD_HOST`: The domain name where your app will be accessible - "
-"`PROD_SSH`: SSH connection string to your server (format: `ssh://"
-"user@host`)  - `IMAGE`: Full path to your container image in the registry - "
-"`IMAGE_TAG`: Image tag, typically `latest` or a version number"
+msgid "Replace the values: - `STACK_NAME`: A unique name for your application stack - `PROD_HOST`: The domain name where your app will be accessible - `PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)  - `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`: Image tag, typically `latest` or a version number"
 msgstr ""
 
 #. type: Title ###
@@ -646,10 +617,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies "
-"in a builder stage 2. Creates a minimal production image with only the "
-"necessary files 3. Runs as a non-root user (`www-data`)"
+msgid "The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies in a builder stage 2. Creates a minimal production image with only the necessary files 3. Runs as a non-root user (`www-data`)"
 msgstr ""
 
 #. type: Title ###
@@ -788,9 +756,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"The `--with-registry-auth` flag ensures the Swarm nodes can pull images from "
-"your private registry."
+msgid "The `--with-registry-auth` flag ensures the Swarm nodes can pull images from your private registry."
 msgstr ""
 
 #. type: Title ###
@@ -880,8 +846,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Or update the `replicas` value in `docker/prod/compose.yml` and redeploy."
+msgid "Or update the `replicas` value in `docker/prod/compose.yml` and redeploy."
 msgstr ""
 
 #. type: Title ###
@@ -894,9 +859,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Add resource limits to prevent containers from consuming all server "
-"resources. Update `docker/prod/compose.yml`:"
+msgid "Add resource limits to prevent containers from consuming all server resources. Update `docker/prod/compose.yml`:"
 msgstr ""
 
 #. type: Fenced code block (yaml)
@@ -935,9 +898,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Instead of environment variables, use Docker secrets for sensitive "
-"information:"
+msgid "Instead of environment variables, use Docker secrets for sensitive information:"
 msgstr ""
 
 #. type: Fenced code block (bash)
@@ -1073,11 +1034,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"Common issues: - **Image pull errors**: Verify registry authentication with "
-"`docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other "
-"services are using ports 80/443 - **Resource constraints**: Check available "
-"resources with `docker -H ssh://docker-web node ls`"
+msgid "Common issues: - **Image pull errors**: Verify registry authentication with `docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other services are using ports 80/443 - **Resource constraints**: Check available resources with `docker -H ssh://docker-web node ls`"
 msgstr ""
 
 #. type: Title ###
@@ -1089,11 +1046,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"If Caddy can't obtain certificates: - Verify DNS is pointing to your server "
-"- Check that ports 80 and 443 are accessible from the internet - Ensure the "
-"email in the Let's Encrypt configuration is valid - Check logs: `docker -H "
-"ssh://docker-web service logs caddy`"
+msgid "If Caddy can't obtain certificates: - Verify DNS is pointing to your server - Check that ports 80 and 443 are accessible from the internet - Ensure the email in the Let's Encrypt configuration is valid - Check logs: `docker -H ssh://docker-web service logs caddy`"
 msgstr ""
 
 #. type: Title ###
@@ -1130,27 +1083,16 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"You've successfully deployed a Yii application to Docker Swarm with: - A "
-"container registry (Forgejo or Gitea)  - Automatic HTTPS via Caddy - Zero-"
-"downtime deployments with rolling updates - High availability with multiple "
-"replicas"
+msgid "You've successfully deployed a Yii application to Docker Swarm with: - A container registry (Forgejo or Gitea)  - Automatic HTTPS via Caddy - Zero-downtime deployments with rolling updates - High availability with multiple replicas"
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
-msgid ""
-"The Makefile commands simplify the deployment workflow: - `make prod-build` "
-"- Build the production image - `make prod-push` - Push to the registry - "
-"`make prod-deploy` - Deploy to Docker Swarm"
+msgid "The Makefile commands simplify the deployment workflow: - `make prod-build` - Build the production image - `make prod-push` - Push to the registry - `make prod-deploy` - Deploy to Docker Swarm"
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
-msgid ""
-"For more information, see: - [Yii Application Template](https://github.com/"
-"yiisoft/app)  - [Docker Swarm Documentation](https://docs.docker.com/engine/"
-"swarm/)  - [Caddy Docker Proxy](https://github.com/lucaslorentz/caddy-docker-"
-"proxy)"
+msgid "For more information, see: - [Yii Application Template](https://github.com/yiisoft/app)  - [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)  - [Caddy Docker Proxy](https://github.com/lucaslorentz/caddy-docker-proxy)"
 msgstr ""

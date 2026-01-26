@@ -37,19 +37,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"Cross-Site Request Forgery (CSRF) protection is a security mechanism that "
-"prevents malicious websites from making unauthorized requests on behalf of "
-"authenticated users. Yii3 includes built-in CSRF protection through the "
-"`Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
+msgid "Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"For a comprehensive understanding of CSRF attacks and protection mechanisms, "
-"see the [Security best practices](../guide/security/best-"
-"practices.md#avoiding-csrf) section in the main guide."
+msgid "For a comprehensive understanding of CSRF attacks and protection mechanisms, see the [Security best practices](../guide/security/best-practices.md#avoiding-csrf) section in the main guide."
 msgstr ""
 
 #. type: Title ##
@@ -60,9 +53,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"While CSRF protection should generally remain enabled for web applications, "
-"there are specific scenarios where you might need to disable it:"
+msgid "While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might need to disable it:"
 msgstr ""
 
 #. type: Title ###
@@ -73,44 +64,32 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"When building APIs or handling automated requests from external systems, "
-"CSRF protection can interfere with legitimate requests since these systems "
-"cannot provide valid CSRF tokens:"
+msgid "When building APIs or handling automated requests from external systems, CSRF protection can interfere with legitimate requests since these systems cannot provide valid CSRF tokens:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Third-party integrations**: External services cannot provide valid CSRF "
-"tokens"
+msgid "**Third-party integrations**: External services cannot provide valid CSRF tokens"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Mobile applications**: Native mobile apps typically don't use cookies or "
-"sessions in the same way as web browsers"
+msgid "**Mobile applications**: Native mobile apps typically don't use cookies or sessions in the same way as web browsers"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Server-to-server communication**: API endpoints designed for machine-to-"
-"machine communication"
+msgid "**Server-to-server communication**: API endpoints designed for machine-to-machine communication"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Payment processors**: PayPal, Stripe, and other payment systems send "
-"webhook notifications"
+msgid "**Payment processors**: PayPal, Stripe, and other payment systems send webhook notifications"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines"
+msgid "**Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -131,9 +110,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"First, you need to remove CSRF middleware from your main application "
-"middleware list in `config/web/di/application.php`:"
+msgid "First, you need to remove CSRF middleware from your main application middleware list in `config/web/di/application.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -154,11 +131,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"Now, if you need to leave CSRF on for specific routes or route groups, you "
-"can do so by adding the `CsrfMiddleware` middleware to the router "
-"configuration in `config/common/routes.php`. For a group that would be the "
-"following:"
+msgid "Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -188,8 +161,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"When disabling CSRF protection, keep these security considerations in mind:"
+msgid "When disabling CSRF protection, keep these security considerations in mind:"
 msgstr ""
 
 #. type: Title ###
@@ -236,15 +208,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Signature verification**: Verify webhook signatures (e.g., GitHub's X-Hub-"
-"Signature)"
+msgid "**Signature verification**: Verify webhook signatures (e.g., GitHub's X-Hub-Signature)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Timestamp validation**: Check request timestamps to prevent replay attacks"
+msgid "**Timestamp validation**: Check request timestamps to prevent replay attacks"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -302,9 +271,7 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Minimize exposure**: Only disable CSRF protection where absolutely "
-"necessary"
+msgid "**Minimize exposure**: Only disable CSRF protection where absolutely necessary"
 msgstr ""
 
 #. type: Bullet: '2. '
@@ -314,22 +281,17 @@ msgstr ""
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Monitor logs**: Log all requests to API endpoints for security monitoring"
+msgid "**Monitor logs**: Log all requests to API endpoints for security monitoring"
 msgstr ""
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Regular security audits**: Periodically review your API endpoints and "
-"their security measures"
+msgid "**Regular security audits**: Periodically review your API endpoints and their security measures"
 msgstr ""
 
 #. type: Bullet: '5. '
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"**Documentation**: Clearly document which endpoints have CSRF protection "
-"disabled and why"
+msgid "**Documentation**: Clearly document which endpoints have CSRF protection disabled and why"
 msgstr ""
 
 #. type: Title ##
@@ -340,18 +302,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"While CSRF protection is crucial for web applications, there are legitimate "
-"scenarios where it needs to be disabled, particularly for external APIs and "
-"webhooks. When disabling CSRF protection, always implement alternative "
-"security measures and follow security best practices to maintain the overall "
-"security of your application."
+msgid "While CSRF protection is crucial for web applications, there are legitimate scenarios where it needs to be disabled, particularly for external APIs and webhooks. When disabling CSRF protection, always implement alternative security measures and follow security best practices to maintain the overall security of your application."
 msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid ""
-"Remember that disabling CSRF protection increases security risks, so careful "
-"consideration and proper implementation of alternative security measures are "
-"essential."
+msgid "Remember that disabling CSRF protection increases security risks, so careful consideration and proper implementation of alternative security measures are essential."
 msgstr ""

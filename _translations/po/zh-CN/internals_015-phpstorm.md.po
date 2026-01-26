@@ -29,10 +29,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
-msgid ""
-"[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-"
-"metadata.html) helps the IDE to understand code better in cases when regular "
-"types and PHPDoc tags don't help."
+msgid "[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps the IDE to understand code better in cases when regular types and PHPDoc tags don't help."
 msgstr ""
 
 #. type: Plain text
@@ -53,9 +50,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/015-phpstorm.md
-msgid ""
-"Configuration should be split into files. Each file should be named after a "
-"class it configures."
+msgid "Configuration should be split into files. Each file should be named after a class it configures."
 msgstr ""
 
 #. type: Plain text
@@ -74,10 +69,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
-msgid ""
-"All constant dictionaries should be named as `{Class FQN}::{Group name}`. "
-"Group name should be short and written in capital letters.  Use underscore "
-"as a word separator that's `\\Yiisoft\\Http\\Status::STATUSES`. For example:"
+msgid "All constant dictionaries should be named as `{Class FQN}::{Group name}`. Group name should be short and written in capital letters.  Use underscore as a word separator that's `\\Yiisoft\\Http\\Status::STATUSES`. For example:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -109,10 +101,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
-msgid ""
-"[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN "
-"be used in code, but package `jetbrains/phpstorm-attributes` MUST be added "
-"as a dev dependency:"
+msgid "[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN be used in code, but package `jetbrains/phpstorm-attributes` MUST be added as a dev dependency:"
 msgstr ""
 
 #. type: Fenced code block (shell)
@@ -129,10 +118,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
-msgid ""
-"When [ComposerRequireChecker](https://github.com/maglnet/"
-"ComposerRequireChecker) is also used within the same package, add involved "
-"attributes' class names to whitelist in config. For example:"
+msgid "When [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) is also used within the same package, add involved attributes' class names to whitelist in config. For example:"
 msgstr ""
 
 #. type: Fenced code block (json)

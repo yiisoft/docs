@@ -70,9 +70,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
-msgid ""
-"Unlike other classes, methods that return a clone of the object with some "
-"properties modified aren't prefixed."
+msgid "Unlike other classes, methods that return a clone of the object with some properties modified aren't prefixed."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -88,9 +86,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
-msgid ""
-"The method that corresponds to the boolean attribute should be named after "
-"the attribute and accept a boolean flag argument."
+msgid "The method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument."
 msgstr ""
 
 #. type: Title #
@@ -101,10 +97,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/internals/018-widgets.md
-msgid ""
-"Unlike regular classes, widgets are used in view templates, so syntax is "
-"important.  It should be both easy to write, easy to read and not too "
-"verbose because similar constructs are meant to be used over and over again."
+msgid "Unlike regular classes, widgets are used in view templates, so syntax is important.  It should be both easy to write, easy to read and not too verbose because similar constructs are meant to be used over and over again."
 msgstr ""
 
 #. type: Plain text

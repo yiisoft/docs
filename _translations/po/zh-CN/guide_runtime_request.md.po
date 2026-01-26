@@ -43,18 +43,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"The method is `POST`, URI is `/contact`.  Extra headers are specifying host, "
-"preferred language and encoding.  The body could be anything.  In this case, "
-"it's a JSON payload."
+msgid "The method is `POST`, URI is `/contact`.  Extra headers are specifying host, preferred language and encoding.  The body could be anything.  In this case, it's a JSON payload."
 msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as "
-"request representation.  The object is available in controller actions and "
-"other types of middleware:"
+msgid "Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as request representation.  The object is available in controller actions and other types of middleware:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -126,9 +120,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"In case you want to make sure the request method is of a certain type, there "
-"is a special class with method names:"
+msgid "In case you want to make sure the request method is of a certain type, there is a special class with method names:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -247,9 +239,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"There are various methods to inspect request headers. To get all headers as "
-"an array:"
+msgid "There are various methods to inspect request headers. To get all headers as an array:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -275,9 +265,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"Also, you could get value as a comma-separated string instead of an array.  "
-"That's especially handy if a header has a single value:"
+msgid "Also, you could get value as a comma-separated string instead of an array.  That's especially handy if a header has a single value:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -312,9 +300,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"There are two methods to get body contents. The first is getting the body as "
-"it is without parsing:"
+msgid "There are two methods to get body contents. The first is getting the body as it is without parsing:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -325,8 +311,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"The `$body` would be an instance of `Psr\\Http\\Message\\StreamInterface`."
+msgid "The `$body` would be an instance of `Psr\\Http\\Message\\StreamInterface`."
 msgstr ""
 
 #. type: Plain text
@@ -342,9 +327,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"Parsing depends on PSR-7 implementation and may require middleware for "
-"custom body formats."
+msgid "Parsing depends on PSR-7 implementation and may require middleware for custom body formats."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -383,9 +366,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"Uploaded files that user submitted from a form with `enctype` attribute "
-"equals to `multipart/form-data` are handled via special request method:"
+msgid "Uploaded files that user submitted from a form with `enctype` attribute equals to `multipart/form-data` are handled via special request method:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -408,8 +389,5 @@ msgstr ""
 
 #. type: Plain text
 #: en/runtime/request.md
-msgid ""
-"Application middleware may set custom request attributes using "
-"`withAttribute()` method.  You can get these attributes with "
-"`getAttribute()`."
+msgid "Application middleware may set custom request attributes using `withAttribute()` method.  You can get these attributes with `getAttribute()`."
 msgstr ""

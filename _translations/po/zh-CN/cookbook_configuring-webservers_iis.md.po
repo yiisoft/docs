@@ -23,12 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: en/configuring-webservers/iis.md
-msgid ""
-"When you use [IIS](https://www.iis.net/), host the application in a virtual "
-"host (Website) where the document root points to the `path/to/app/public` "
-"folder and configure the website to run PHP.  In that `public` folder, place "
-"a file named `web.config` at `path/to/app/public/web.config`.  Use the "
-"following content:"
+msgid "When you use [IIS](https://www.iis.net/), host the application in a virtual host (Website) where the document root points to the `path/to/app/public` folder and configure the website to run PHP.  In that `public` folder, place a file named `web.config` at `path/to/app/public/web.config`.  Use the following content:"
 msgstr ""
 
 #. type: Fenced code block (xml)
@@ -59,22 +54,15 @@ msgstr ""
 
 #. type: Plain text
 #: en/configuring-webservers/iis.md
-msgid ""
-"Also, the following list of Microsoft's official resources could be useful "
-"to configure PHP on IIS:"
+msgid "Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:"
 msgstr ""
 
 #. type: Bullet: '1. '
 #: en/configuring-webservers/iis.md
-msgid ""
-"[How to set up your first IIS website](https://support.microsoft.com/en-us/"
-"help/323972/how-to-set-up-your-first-iis-web-site)"
+msgid "[How to set up your first IIS website](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)"
 msgstr ""
 
 #. type: Bullet: '2. '
 #: en/configuring-webservers/iis.md
-msgid ""
-"[Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/"
-"application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-"
-"website-on-iis)"
+msgid "[Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)"
 msgstr ""

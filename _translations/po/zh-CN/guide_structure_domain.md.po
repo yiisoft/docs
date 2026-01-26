@@ -68,11 +68,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"It's nearly impossible to build a model that solves multiple problems that "
-"aren't too complicated by itself. Therefore, it's a good practice to divide "
-"the domain into several use-cases and have a separate model for each use-"
-"case.  Such separated models are called \"bounded contexts.\""
+msgid "It's nearly impossible to build a model that solves multiple problems that aren't too complicated by itself. Therefore, it's a good practice to divide the domain into several use-cases and have a separate model for each use-case.  Such separated models are called \"bounded contexts.\""
 msgstr ""
 
 #. type: Title ##
@@ -83,9 +79,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"There are various building blocks that are typically used when describing "
-"domain models. It isn't mandatory to use them all."
+msgid "There are various building blocks that are typically used when describing domain models. It isn't mandatory to use them all."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -96,11 +90,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Entity is a uniquely identifiable object such as user, product, payment, "
-"etc. When comparing them, you're checking ID, not the attribute values. If "
-"there are two objects with different attributes but the same ID, they're "
-"considered being the same thing."
+msgid "Entity is a uniquely identifiable object such as user, product, payment, etc. When comparing them, you're checking ID, not the attribute values. If there are two objects with different attributes but the same ID, they're considered being the same thing."
 msgstr ""
 
 #. type: Title ###
@@ -111,11 +101,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Value object describes an object by its characteristics. For example, a "
-"price that consists of value and currency. When comparing such objects, "
-"you're checking actual values. If they match, an object is considered to be "
-"the same."
+msgid "Value object describes an object by its characteristics. For example, a price that consists of value and currency. When comparing such objects, you're checking actual values. If they match, an object is considered to be the same."
 msgstr ""
 
 #. type: Title ###
@@ -126,18 +112,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Aggregate is a set of domain objects such as entities and value objects and "
-"additional data that could be treated as a single unit. It usually "
-"represents a compound object from a domain model such as shop order or HR "
-"person dossier."
+msgid "Aggregate is a set of domain objects such as entities and value objects and additional data that could be treated as a single unit. It usually represents a compound object from a domain model such as shop order or HR person dossier."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"One of the components of an aggregate is called a root. The root identifies "
-"an aggregate as a whole and should be used to access it."
+msgid "One of the components of an aggregate is called a root. The root identifies an aggregate as a whole and should be used to access it."
 msgstr ""
 
 #. type: Title ###
@@ -148,10 +128,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"An aggregate, while processed, may raise events. For example, when order is "
-"confirmed, `OrderConfirmed` event would be risen so other parts of the "
-"system may react on these."
+msgid "An aggregate, while processed, may raise events. For example, when order is confirmed, `OrderConfirmed` event would be risen so other parts of the system may react on these."
 msgstr ""
 
 #. type: Title ###
@@ -162,9 +139,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Data transfer object or DTO is an object whose only purpose is to hold data "
-"as it is. It's commonly used to pass data between different services."
+msgid "Data transfer object or DTO is an object whose only purpose is to hold data as it is. It's commonly used to pass data between different services."
 msgstr ""
 
 #. type: Title ###
@@ -175,19 +150,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Service is a class that contains a standalone operation within the context "
-"of your domain model. See \"[service components](service.md)\"."
+msgid "Service is a class that contains a standalone operation within the context of your domain model. See \"[service components](service.md)\"."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"The repository task is to abstract away how domain objects are obtained. "
-"These are usually separated into two parts: an interface that stays in the "
-"domain layer and an implementation that's situated in the infrastructure "
-"layer. In such a way, domain doesn't care how data is obtained and saved and "
-"may be focused around the complicated business logic instead."
+msgid "The repository task is to abstract away how domain objects are obtained. These are usually separated into two parts: an interface that stays in the domain layer and an implementation that's situated in the infrastructure layer. In such a way, domain doesn't care how data is obtained and saved and may be focused around the complicated business logic instead."
 msgstr ""
 
 #. type: Plain text
@@ -203,29 +171,20 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md
-msgid ""
-"Entity, value object, aggregate, and domain events aren't services and "
-"shouldn't be instantiated through DI container.  Using `new` is the way to "
-"go with these."
+msgid "Entity, value object, aggregate, and domain events aren't services and shouldn't be instantiated through DI container.  Using `new` is the way to go with these."
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/domain.md
-msgid ""
-"[BoundedContext by Martin Fowler](https://martinfowler.com/bliki/"
-"BoundedContext.html)"
+msgid "[BoundedContext by Martin Fowler](https://martinfowler.com/bliki/BoundedContext.html)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/domain.md
-msgid ""
-"[ValueObject by Martin Fowler](https://martinfowler.com/bliki/"
-"ValueObject.html)"
+msgid "[ValueObject by Martin Fowler](https://martinfowler.com/bliki/ValueObject.html)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/domain.md
-msgid ""
-"[Aggregate by Marting Fowler](https://martinfowler.com/bliki/"
-"DDD_Aggregate.html)"
+msgid "[Aggregate by Marting Fowler](https://martinfowler.com/bliki/DDD_Aggregate.html)"
 msgstr ""

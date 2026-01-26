@@ -23,10 +23,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/general.md
-msgid ""
-"On a production server, if you don't use Docker, configure your web server "
-"to serve only the application's public files.  Point the document root of "
-"your web server to the `app/public` folder."
+msgid "On a production server, if you don't use Docker, configure your web server to serve only the application's public files.  Point the document root of your web server to the `app/public` folder."
 msgstr ""
 
 #. type: Plain text
