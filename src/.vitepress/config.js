@@ -1024,6 +1024,200 @@ export default {
                     {icon: 'telegram', link: 'https://t.me/yii3ru'}
                 ],
             }
+        },
+        'zh-CN': {
+            label: '简体中文',
+            lang: 'zh-CN',
+            link: '/zh-CN/',
+            themeConfig: {
+                nav: [
+                    {text: '指南', link: '/zh-CN/guide/'},
+                    {text: '实用手册', link: '/zh-CN/cookbook/'},
+                    {text: '内部文档', link: '/zh-CN/internals/'},
+                    {text: '官网', link: 'https://www.yiiframework.com'}
+                ],
+                sidebar: {
+                    '/zh-CN/guide/': [
+                        {
+                            text: '介绍',
+                            items: [
+                                {text: '关于 Yii', link: '/zh-CN/guide/intro/what-is-yii'},
+                                {text: '从版本 2 升级', link: '/zh-CN/guide/intro/upgrade-from-v2'}
+                            ]
+                        },
+                        {
+                            text: '入门',
+                            items: [
+                                {text: '前置要求', link: '/zh-CN/guide/start/prerequisites'},
+                                {text: '创建项目', link: '/zh-CN/guide/start/creating-project'},
+                                {text: '说声 Hello', link: '/zh-CN/guide/start/hello'},
+                                {text: '使用表单', link: '/zh-CN/guide/start/forms'},
+                                {text: '使用数据库', link: '/zh-CN/guide/start/databases'},
+                                {text: '使用 Gii 生成代码', link: '/zh-CN/guide/start/gii'},
+                                {text: '展望未来', link: '/zh-CN/guide/start/looking-ahead'},
+                                {text: '应用程序工作流', link: '/zh-CN/guide/start/workflow'}
+                            ]
+                        },
+                        {
+                            text: '核心概念',
+                            items: [
+                                {text: '别名', link: '/zh-CN/guide/concept/aliases'},
+                                {text: '自动加载', link: '/zh-CN/guide/concept/autoloading'},
+                                {text: '配置', link: '/zh-CN/guide/concept/configuration'},
+                                {text: 'DI 容器', link: '/zh-CN/guide/concept/di-container'},
+                                {text: '事件', link: '/zh-CN/guide/concept/events'},
+                                {text: '不可变性', link: '/zh-CN/guide/concept/immutability'}
+                            ]
+                        },
+                        {
+                            text: '应用程序结构',
+                            items: [
+                                {text: '概述', link: '/zh-CN/guide/structure/overview'},
+                                {text: '入口脚本', link: '/zh-CN/guide/structure/entry-script'},
+                                {text: '应用程序', link: '/zh-CN/guide/structure/application'},
+                                {text: '处理器', link: '/zh-CN/guide/structure/handler'},
+                                {text: '操作', link: '/zh-CN/guide/structure/action'},
+                                {text: '中间件', link: '/zh-CN/guide/structure/middleware'},
+                                {text: '领域', link: '/zh-CN/guide/structure/domain'},
+                                {text: '服务', link: '/zh-CN/guide/structure/service'},
+                                {text: '包', link: '/zh-CN/guide/structure/package'}
+                            ]
+                        },
+                        {
+                            text: '处理请求',
+                            items: [
+                                {text: '路由', link: '/zh-CN/guide/runtime/routing'},
+                                {text: '请求', link: '/zh-CN/guide/runtime/request'},
+                                {text: '响应', link: '/zh-CN/guide/runtime/response'},
+                                {text: '会话', link: '/zh-CN/guide/runtime/sessions'},
+                                {text: 'Cookies', link: '/zh-CN/guide/runtime/cookies'},
+                                {text: '错误处理', link: '/zh-CN/guide/runtime/handling-errors'},
+                                {text: '日志', link: '/zh-CN/guide/runtime/logging'}
+                            ]
+                        },
+                        {
+                            text: '安全',
+                            items: [
+                                {text: '概述', link: '/zh-CN/guide/security/overview'},
+                                {text: '认证', link: '/zh-CN/guide/security/authentication'},
+                                {text: '授权', link: '/zh-CN/guide/security/authorization'},
+                                {text: '使用密码', link: '/zh-CN/guide/security/passwords'},
+                                {text: '加密', link: '/zh-CN/guide/security/cryptography'},
+                                {text: '可信请求', link: '/zh-CN/guide/security/trusted-request'},
+                                {text: '最佳实践', link: '/zh-CN/guide/security/best-practices'}
+                            ]
+                        },
+                        {
+                            text: '缓存',
+                            items: [
+                                {text: '概述', link: '/zh-CN/guide/caching/overview'},
+                                {text: '数据缓存', link: '/zh-CN/guide/caching/data'}
+                            ]
+                        },
+                        {
+                            text: '使用数据库',
+                            items: [
+                                {text: '数据库迁移', link: '/zh-CN/guide/databases/db-migrations'}
+                            ]
+                        },
+                        {
+                            text: '视图',
+                            items: [
+                                {text: '视图', link: '/zh-CN/guide/views/view'},
+                                {text: '资源', link: '/zh-CN/guide/views/asset'},
+                                {text: '脚本、样式和元标签', link: '/zh-CN/guide/views/script-style-meta'},
+                                {text: '模板引擎', link: '/zh-CN/guide/views/template-engines'},
+                                {text: '视图注入', link: '/zh-CN/guide/views/view-injections'},
+                                {text: '小部件', link: '/zh-CN/guide/views/widget'}
+                            ]
+                        },
+                        {
+                            text: '教程',
+                            items: [
+                                {text: '控制台应用', link: '/zh-CN/guide/tutorial/console-applications'},
+                                {text: '邮件发送', link: '/zh-CN/guide/tutorial/mailing'},
+                                {text: '性能调优', link: '/zh-CN/guide/tutorial/performance-tuning'},
+                                {text: '使用事件循环', link: '/zh-CN/guide/tutorial/using-with-event-loop'},
+                                {text: '使用 Yii 与 RoadRunner', link: '/zh-CN/guide/tutorial/using-yii-with-roadrunner'},
+                                {text: '使用 Yii 与 Swoole', link: '/zh-CN/guide/tutorial/using-yii-with-swoole'}
+                            ]
+                        },
+                        {
+                            text: '术语表',
+                            link: '/zh-CN/guide/glossary'
+                        }
+                    ],
+                    '/zh-CN/cookbook/': [
+                        {
+                            text: '实用手册',
+                            items: [
+                                {text: '前言', link: '/zh-CN/cookbook/preface'},
+                                {text: '发起 HTTP 请求', link: '/zh-CN/cookbook/making-http-requests'},
+                                {text: '禁用 CSRF 保护', link: '/zh-CN/cookbook/disabling-csrf-protection'},
+                                {text: 'Sentry 集成', link: '/zh-CN/cookbook/sentry-integration'}
+                            ]
+                        },
+                        {
+                            text: '配置 Web 服务器',
+                            collapsed: false,
+                            items: [
+                                {text: '通用配置', link: '/zh-CN/cookbook/configuring-webservers/general'},
+                                {text: 'Apache', link: '/zh-CN/cookbook/configuring-webservers/apache'},
+                                {text: 'Nginx', link: '/zh-CN/cookbook/configuring-webservers/nginx'},
+                                {text: 'Nginx Unit', link: '/zh-CN/cookbook/configuring-webservers/nginx-unit'},
+                                {text: 'IIS', link: '/zh-CN/cookbook/configuring-webservers/iis'},
+                                {text: 'Lighttpd', link: '/zh-CN/cookbook/configuring-webservers/lighttpd'}
+                            ]
+                        },
+                        {
+                            text: '组织代码',
+                            items: [
+                                {text: '垂直切片', link: '/zh-CN/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'}
+                            ]
+                        },
+                        {
+                            text: '部署',
+                            items: [
+                                {text: 'Docker Swarm', link: '/zh-CN/cookbook/deployment/docker-swarm'}
+                            ]
+                        }
+                    ],
+                    '/zh-CN/internals/': [
+                        {
+                            text: '内部文档',
+                            items: [
+                                {text: '包', link: '/zh-CN/internals/000-packages'},
+                                {text: 'Yii 价值观', link: '/zh-CN/internals/001-yii-values'},
+                                {text: '问题工作流', link: '/zh-CN/internals/002-issue-workflow'},
+                                {text: '路线图', link: '/zh-CN/internals/003-roadmap'},
+                                {text: '命名空间', link: '/zh-CN/internals/004-namespaces'},
+                                {text: '开发工具', link: '/zh-CN/internals/005-development-tool'},
+                                {text: 'Git 提交消息', link: '/zh-CN/internals/006-git-commit-messages'},
+                                {text: '异常', link: '/zh-CN/internals/007-exceptions'},
+                                {text: '接口', link: '/zh-CN/internals/008-interfaces'},
+                                {text: '设计决策', link: '/zh-CN/internals/009-design-decisions'},
+                                {text: '代码风格', link: '/zh-CN/internals/010-code-style'},
+                                {text: '错误修正', link: '/zh-CN/internals/011-error-correction'},
+                                {text: '测试', link: '/zh-CN/internals/012-tests'},
+                                {text: '代码审查', link: '/zh-CN/internals/013-code-review'},
+                                {text: '文档', link: '/zh-CN/internals/014-docs'},
+                                {text: 'PHPStorm', link: '/zh-CN/internals/015-phpstorm'},
+                                {text: '安全工作流', link: '/zh-CN/internals/016-security-workflow'},
+                                {text: '标签', link: '/zh-CN/internals/017-tags'},
+                                {text: '小部件', link: '/zh-CN/internals/018-widgets'},
+                                {text: '视图代码风格', link: '/zh-CN/internals/019-view-code-style'},
+                                {text: '包发布', link: '/zh-CN/internals/020-package-release'},
+                                {text: '变更日志和升级', link: '/zh-CN/internals/021-changelog-upgrade'},
+                                {text: '配置组', link: '/zh-CN/internals/022-config-groups'}
+                            ]
+                        }
+                    ]
+                },
+                footer: {
+                    message: '基于 <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">BSD-3-Clause 许可证</a> 发布。',
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
+                }
+            }
         }
     }
 }
