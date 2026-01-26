@@ -14,7 +14,8 @@ flowchart LR
 
 In Yii3 views are typically PHP files that contain presentation logic and HTML markup. The view system provides
 a flexible way to organize your presentation layer and supports features like layouts and partial views. Instead of
-using plain PHP templates, you can leverage [one of the template engines such as Twig](template-engines.md).
+using plain PHP templates, you can leverage one of the template engines such as [Twig](template-engines.md)
+or [Blade](https://github.com/lee-to/yii-blade).
 
 ## Installation
 
