@@ -64,9 +64,9 @@ Now register the command in `config/params.php`:
 
 ```php
 return [
-    'console' => [
+    'yiisoft/yii-console' => [
         'commands' => [
-            'demo/hello' => App\Demo\HelloCommand::class,
+            'demo:hello' => App\Demo\HelloCommand::class,
         ],
     ],    
 ];
