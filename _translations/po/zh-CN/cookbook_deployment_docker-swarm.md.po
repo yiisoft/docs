@@ -1,0 +1,32 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-02 23:54+0000\n"
+"PO-Revision-Date: 2026-01-02 23:54+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/deployment/docker-swarm.md
+#, no-wrap
+msgid "Deploying Yii applications to Docker Swarm"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm.md
+msgid "[Using Caddy](docker-swarm-caddy.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/docker-swarm.md
+msgid "[Using Traefik](docker-swarm-traefik.md)"
+msgstr ""

@@ -1,0 +1,130 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"PO-Revision-Date: 2026-01-08 08:54+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/internals/021-changelog-upgrade.md
+#, no-wrap
+msgid "021 — Changelog and upgrade"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "For all released packages, we've a detailed changelog and upgrade guide."
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/021-changelog-upgrade.md
+#, no-wrap
+msgid "Changelog"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "Changelog is written for each version released. The file name is `CHANGELOG.md`. The format is the following:"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: ../src/internals/021-changelog-upgrade.md
+#, no-wrap
+msgid ""
+"# My package Change Log\n"
+"\n"
+"## 1.0.2 under development\n"
+"\n"
+"- no changes in this release.\n"
+"\n"
+"## 1.0.1 March 23, 2021\n"
+"\n"
+"- Bug #42: Short description of the change (@author1, @author2)\n"
+"\n"
+"## 1.0.0 February 02, 2021\n"
+"\n"
+"- Initial release.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "There \"My package\" is the name of the package, `1.0.1` is the version released followed by release date.  For each version, there are a number of lines listing the changes.  \"Bug\" refers to a change type.  The following types are used:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/internals/021-changelog-upgrade.md
+msgid "New — New features."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/internals/021-changelog-upgrade.md
+msgid "Chg — General changes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/internals/021-changelog-upgrade.md
+msgid "Enh — Existing feature enhancements."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/internals/021-changelog-upgrade.md
+msgid "Bug — Bug fixes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "In the changelog file lines should be ordered as New, Chg, Enh, Bug."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "\"#42\" above is the number of issue or pull requests corresponding to the change. \"author1\" is the GitHub nickname of the code author. \"author2\" is an additional author. An author's nickname MUST be prefixed with `@`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/021-changelog-upgrade.md
+#, no-wrap
+msgid "Upgrade"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "Upgrade guide is created when there is a new major version that isn't compatible with the previous one.  It describes steps necessary to upgrade application code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/021-changelog-upgrade.md
+msgid "The file name is `UPGRADE.md`. The format is the following:"
+msgstr ""
+
+#. type: Fenced code block (markdown)
+#: ../src/internals/021-changelog-upgrade.md
+#, no-wrap
+msgid ""
+"# Upgrading Instructions for my package\n"
+"\n"
+"This file contains the upgrade notes. These notes highlight changes that could break your\n"
+"application when you upgrade the package from one version to another.\n"
+"\n"
+"> **Important!** The following upgrading instructions are cumulative. That is, if you want\n"
+"> to upgrade from version A to version C and there is version B between A and C, you need\n"
+"> to follow the instructions for both A and B.\n"
+"\n"
+"## Upgrade from 2.x\n"
+"\n"
+"- Public method `test()` was removed. Use `perform()` instead.\n"
+"\n"
+"## Upgrade from 1.x\n"
+"\n"
+"- Clean up the cache after upgrading. Old cache is not compatible with new code.\n"
+msgstr ""
