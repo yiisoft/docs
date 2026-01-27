@@ -63,7 +63,7 @@ as it is. It's commonly used to pass data between different services.
 Service is a class that contains a standalone operation within the context
 of your domain model. See "[service components](service.md)".
 
-### Repository
+### Репозиторий
 
 The repository task is to abstract away how domain objects are
 obtained. These are usually separated into two parts: an interface that
