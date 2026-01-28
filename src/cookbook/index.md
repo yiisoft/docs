@@ -13,6 +13,7 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 ---
 
 - [Preface](preface.md)
+- [Replicating Yii2 basic app structure with Yii3](yii2-basic-to-yii3.md)
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [Making HTTP requests](making-http-requests.md)
 - [Disabling CSRF protection](disabling-csrf-protection.md)
