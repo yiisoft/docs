@@ -58,7 +58,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Assets](views/asset.md) TODO: verify!
 - [Widgets](views/widget.md) TODO: verify!
 
-## Working with databases
+## Работа с базами данных
 
 - [Yii
   DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)
