@@ -46,6 +46,20 @@ Go into the newly created directory and run:
 APP_ENV=dev ./yii serve --port=80
 ```
 
+For Windows Command Prompt users, run:
+
+```cmd
+set APP_ENV=dev
+yii serve --port=80
+```
+
+For Windows PowerShell users, run:
+
+```powershell
+$env:APP_ENV = "dev"
+.\yii serve --port=80
+```
+
 For Docker users, run:
 
 ```sh
