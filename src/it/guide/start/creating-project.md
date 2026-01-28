@@ -50,6 +50,20 @@ Accedere alla directory appena creata ed eseguire:
 APP_ENV=dev ./yii serve --port=80
 ```
 
+For Windows Command Prompt users, run:
+
+```cmd
+set APP_ENV=dev
+yii serve --port=80
+```
+
+For Windows PowerShell users, run:
+
+```powershell
+$env:APP_ENV = "dev"
+.\yii serve --port=80
+```
+
 Per gli utenti Docker, eseguire:
 
 ```sh

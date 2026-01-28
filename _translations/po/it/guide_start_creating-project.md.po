@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-01-09 11:54+0000\n"
+"POT-Creation-Date: 2026-01-28 10:30+0000\n"
 "PO-Revision-Date: 2026-01-10 21:35+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -118,6 +118,38 @@ msgstr "Accedere alla directory appena creata ed eseguire:"
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "APP_ENV=dev ./yii serve --port=80\n"
+msgstr "APP_ENV=dev ./yii serve --port=80\n"
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+#, fuzzy
+#| msgid "For Docker users, run:"
+msgid "For Windows Command Prompt users, run:"
+msgstr "Per gli utenti Docker, eseguire:"
+
+#. type: Fenced code block (cmd)
+#: ../src/guide/start/creating-project.md
+#, fuzzy, no-wrap
+#| msgid "APP_ENV=dev ./yii serve --port=80\n"
+msgid ""
+"set APP_ENV=dev\n"
+"yii serve --port=80\n"
+msgstr "APP_ENV=dev ./yii serve --port=80\n"
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+#, fuzzy
+#| msgid "For Docker users, run:"
+msgid "For Windows PowerShell users, run:"
+msgstr "Per gli utenti Docker, eseguire:"
+
+#. type: Fenced code block (powershell)
+#: ../src/guide/start/creating-project.md
+#, fuzzy, no-wrap
+#| msgid "APP_ENV=dev ./yii serve --port=80\n"
+msgid ""
+"$env:APP_ENV = \"dev\"\n"
+".\\yii serve --port=80\n"
 msgstr "APP_ENV=dev ./yii serve --port=80\n"
 
 #. type: Plain text

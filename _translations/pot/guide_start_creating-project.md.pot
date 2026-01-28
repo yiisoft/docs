@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-09 11:54+0000\n"
+"POT-Creation-Date: 2026-01-28 10:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,32 @@ msgstr ""
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "APP_ENV=dev ./yii serve --port=80\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "For Windows Command Prompt users, run:"
+msgstr ""
+
+#. type: Fenced code block (cmd)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"set APP_ENV=dev\n"
+"yii serve --port=80\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/creating-project.md
+msgid "For Windows PowerShell users, run:"
+msgstr ""
+
+#. type: Fenced code block (powershell)
+#: ../src/guide/start/creating-project.md
+#, no-wrap
+msgid ""
+"$env:APP_ENV = \"dev\"\n"
+".\\yii serve --port=80\n"
 msgstr ""
 
 #. type: Plain text

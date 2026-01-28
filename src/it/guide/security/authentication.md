@@ -156,12 +156,9 @@ use Yiisoft\User\CurrentUser;
 
 final readonly class SiteController
 {
-    public function __construct(
-        private ServerRequestInterface $request,
-        private CurrentUser $user,
-    ) {}
+    public function __construct(private CurrentUser $user) {}
 
-    public function index(): ResponseInterface
+    public function index(ServerRequestInterface $request): ResponseInterface
     {
         if ($this->user->isGuest()) {
             // user is guest
