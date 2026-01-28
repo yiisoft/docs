@@ -1,33 +1,36 @@
-# Working with databases
+# Работа с базами данных
 
-Yii doesn't dictate using a particular database or storage for your
-application.  There are many ways you can work with relational databases:
+Yii не требует использования конкретной базы данных или хранилища для вашего
+приложения. Существует множество способов работы с реляционными базами
+данных:
 
 - [Yii DB](https://github.com/yiisoft/db)
 - [Yii Active Record](https://github.com/yiisoft/active-record)
-- [Cycle](https://github.com/cycle) via [Yii Cycle
-  package](https://github.com/yiisoft/yii-cycle)
-- [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine
-  package](https://github.com/stargazer-team/yii-doctrine)
-- [PDO](https://www.php.net/manual/en/book.pdo.php)
+- [Cycle](https://github.com/cycle) через [пакет Yii
+  Cycle](https://github.com/yiisoft/yii-cycle)
+- [Doctrine](https://www.doctrine-project.org/) через [пакет Yii
+  Doctrine](https://github.com/stargazer-team/yii-doctrine)
+- [PDO](https://www.php.net/manual/ru/book.pdo.php)
 
-For non-relational ones, there are usually official libraries available:
+Для нереляционных баз данных обычно доступны официальные библиотеки:
 
 - [ElasticSearch](https://github.com/elastic/elasticsearch-php)
 - [Redis](https://redis.io/docs/latest/develop/clients/php/)
 - ...
 
-In this guide, we will focus on working with relational databases using Yii
-DB. We'll use PostgreSQL to implement a simple CRUD (create read update
-delete).
+В этом руководстве мы сосредоточимся на работе с реляционными базами данных
+с помощью Yii DB. Мы будем использовать PostgreSQL для реализации простого
+CRUD (создание, чтение, обновление, удаление).
 
-## Installing PostgreSQL
+## Установка PostgreSQL
 
-You need to install PostgreSQL. If you prefer not to use Docker, [get the
-installer from official website](https://www.postgresql.org/download/),
-install it and create a database.
+Необходимо установить PostgreSQL. Если вы предпочитаете не использовать
+Docker, [загрузите установщик с официального
+сайта](https://www.postgresql.org/download/), установите его и создайте базу
+данных.
 
-If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:
+При использовании Docker всё немного проще. Измените файл
+`docker/dev/compose.yml`:
 
 ```yaml
 services:
@@ -72,24 +75,26 @@ services:
             retries: 5
 ```
 
-Note that we add `depends_on` so application waits for database to be up.
+Обратите внимание, что мы добавляем `depends_on`, чтобы приложение ждало
+запуска базы данных.
 
-Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You
-can enable it locally in `php.ini`.  If you use Docker, check
-`docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions`
-list. Then rebuild PHP image with `make build && make down && make up`.
+Также потребуется расширение `pdo_pgsql` для взаимодействия с
+PostgreSQL. Его можно включить локально в файле `php.ini`. При использовании
+Docker проверьте файл `docker/Dockerfile` и добавьте `pdo_pgsql` в список
+`install-php-extensions`. Затем пересоберите образ PHP командой `make build
+&& make down && make up`.
 
-## Configuring connection
+## Настройка подключения
 
-Now that we have the database, it's time to define the connection.
+Теперь, когда у нас есть база данных, пришло время определить подключение.
 
-First we need a package to be installed:
+Сначала нам нужно установить пакет:
 
 ```sh
 make composer require yiisoft/db-pgsql
 ```
 
-Now create `config/common/di/db-pgsql.php`:
+Теперь создайте файл `config/common/di/db-pgsql.php`:
 
 ```php
 <?php
@@ -114,8 +119,8 @@ return [
 ];
 ```
 
-And define parameters in `config/common/params.php`. For Docker that would
-be:
+Определите параметры в файле `config/common/params.php`. Для Docker это
+будет:
 
 ```php
 use Yiisoft\Db\Pgsql\Dsn;
@@ -130,27 +135,28 @@ return [
 ];
 ```
 
-`db` host is resolved automatically within the Docker network.
+Хост `db` автоматически разрешается внутри сети Docker.
 
-For local installation without Docker the host in Dsn would be
-`localhost`. You'll have to adjust the rest to match how you configured the
-database.
+Для локальной установки без Docker хост в Dsn будет `localhost`. Остальные
+параметры необходимо настроить в соответствии с конфигурацией вашей базы
+данных.
 
-## Creating and applying migrations
+## Создание и применение миграций
 
-For the initial state of the application and for further database changes,
-it is a good idea to use migrations.  These are files that create database
-changes. Applied migrations are tracked in the database, allowing us to know
-the current state and which migrations remain to be applied.
+Для начальной настройки приложения и для дальнейших изменений базы данных
+рекомендуется использовать миграции. Это файлы, которые описывают изменения
+в структуре базы данных. Примененные миграции отслеживаются в базе данных,
+что позволяет отслеживать текущее состояние и определять, какие миграции еще
+необходимо применить.
 
-To use migrations we need another package installed:
+Для использования миграций нам нужно установить еще один пакет:
 
 ```sh
 make composer require yiisoft/db-migration
 ```
 
-Create a directory to store migrations `src/Migration` right in the project
-root. Add the following configuration to `config/common/params.php`:
+Создайте каталог для хранения миграций `src/Migration` в корневой директории
+проекта. Добавьте следующую конфигурацию в файл `config/common/params.php`:
 
 ```php
 'yiisoft/db-migration' => [
@@ -159,8 +165,9 @@ root. Add the following configuration to `config/common/params.php`:
 ],
 ```
 
-Now you can use `make yii migrate:create page` to create a new
-migration. For our example we need a `page` table with some columns:
+Теперь можно использовать команду `make yii migrate:create page` для
+создания новой миграции. Для нашего примера необходима таблица `page` с
+несколькими столбцами:
 
 ```php
 <?php
@@ -195,29 +202,31 @@ final class M251102141707Page implements RevertibleMigrationInterface
 }
 ```
 
-The `M251102141707Page` name of the migration class is generated so replace
-the `Page` suffix with the actual migration name. The `M251102141707` prefix
-is needed to find and sort migrations in the order they were added.
+Имя класса миграции `M251102141707Page` генерируется автоматически, поэтому
+замените суффикс `Page` на фактическое имя миграции. Префикс `M251102141707`
+необходим для поиска и сортировки миграций в порядке их добавления.
 
-Note that we use UUID as the primary key. We are going to generate these IDs
-ourselves instead of relying on database so we'll need an extra compose
-package for that.
+Обратите внимание, что мы используем UUID в качестве первичного ключа. Мы
+собираемся генерировать эти идентификаторы самостоятельно, вместо того чтобы
+полагаться на базу данных, для этого нам понадобится добавить дополнительный
+пакет composer.
 
 ```shell
 make composer require ramsey/uuid
 ```
 
-While the storage space is a bit bigger than using int, the workflow with
-such IDs is beneficial. Since you generate the ID yourself so you can define
-a set of related data and save it in a single transaction.  The entities
-that define this set of data in the code are often called an "aggregate".
+Хотя объем хранилища немного больше, чем при использовании int, работа с
+такими идентификаторами имеет свои преимущества. Поскольку идентификатор
+генерируется самостоятельно, можно определить набор связанных данных и
+сохранить его в одной транзакции. Сущности, которые определяют этот набор
+данных в коде, часто называются "агрегатом".
 
-Apply the migration with `make yii migrate:up`.
+Примените миграцию с помощью `make yii migrate:up`.
 
-## An entity
+## Сущность
 
-Now that you have a table it is time to define an entity in the code. Create
-`src/Web/Page/Page.php`:
+Теперь, когда таблица создана, необходимо определить сущность в
+коде. Создайте файл `src/Web/Page/Page.php`:
 
 ```php
 <?php
@@ -262,12 +271,12 @@ final readonly class Page
 }
 ```
 
-## Repository
+## Репозиторий
 
-Now that we have entity, we need a place for methods to save an entity,
-delete it and select either a single page or multiple pages.
+Теперь, когда сущность создана, необходимо место для методов сохранения,
+удаления и выборки одной или нескольких страниц.
 
-Create `src/Web/Page/PageRepository.php`:
+Создайте файл `src/Web/Page/PageRepository.php`:
 
 ```php
 <?php
@@ -362,28 +371,28 @@ final readonly class PageRepository
 }
 ```
 
-In this repository there are both methods to get data and `save()` to do
-insert or update. DB returns raw data as arrays but our repository
-automatically creates entities from this raw data so later we operate typed
-data.
+В этом репозитории есть методы для получения данных и метод `save()` для
+вставки или обновления записей. База данных возвращает необработанные данные
+в виде массивов, но репозиторий автоматически создает из них сущности, что
+позволяет в дальнейшем работать с типизированными данными.
 
-## Actions and routes
+## Действия и маршруты
 
-We need some actions to:
+Необходимо создать действия для:
 
-1. List all pages.
-2. View a page.
-3. Delete a page.
-4. Create a page.
-5. Update a page.
+1. Вывести список всех страниц.
+2. Просмотреть страницу.
+3. Удалить страницу.
+4. Создать страницу.
+5. Обновить страницу.
 
-Then we need routing for all these.
+Затем необходимо настроить маршрутизацию для всех этих действий.
 
-Let's tackle these one by one.
+Рассмотрим их по очереди.
 
 ### List all pages
 
-Create `src/Web/Page/ListAction.php`:
+Создайте файл `src/Web/Page/ListAction.php`:
 
 ```php
 <?php
@@ -413,7 +422,7 @@ final readonly class ListAction
 }
 ```
 
-Define list view in `src/Web/Page/list.php`:
+Создайте представление списка в файле `src/Web/Page/list.php`:
 
 ```php
 <?php
@@ -436,9 +445,9 @@ use Yiisoft\Router\UrlGeneratorInterface;
 <?= Html::a('Create', $urlGenerator->generate('page/edit', ['slug' => 'new'])) ?>
 ```
 
-### View a page
+### Просмотр страницы
 
-Create `src/Web/Page/ViewAction.php`:
+Создайте файл `src/Web/Page/ViewAction.php`:
 
 ```php
 <?php
@@ -477,7 +486,7 @@ final readonly class ViewAction
 }
 ```
 
-Now, a template in `src/Web/Page/view.php`:
+Теперь создайте шаблон в файле `src/Web/Page/view.php`:
 
 ```php
 <?php
@@ -510,16 +519,17 @@ use Yiisoft\Yii\View\Renderer\Csrf;
 <?= $deleteForm->close() ?>
 ```
 
-In this view we have a form that submits a request for page
-deletion. Handing it with `GET` is common as well, but it is very
-wrong. Since deletion changes data, it needs to be handled by one of the
-non-idempotent HTTP methods.  We use POST and a form in our example, but it
-could be `DELETE` and async request made with JavaScript.  The button could
-be later styled properly to look similar to the "Edit".
+В этом представлении есть форма, которая отправляет запрос на удаление
+страницы. Обработка таких запросов через `GET` тоже встречается, но это
+неправильно. Поскольку удаление изменяет данные, оно должно обрабатываться
+одним из неидемпотентных HTTP-методов. В нашем примере используется POST и
+форма, но это может быть и `DELETE` с асинхронным запросом на
+JavaScript. Кнопку можно позже стилизовать, чтобы она выглядела похоже на
+"Редактировать".
 
-### Delete a page
+### Удаление страницы
 
-Create `src/Web/Page/DeleteAction.php`:
+Создайте файл `src/Web/Page/DeleteAction.php`:
 
 ```php
 <?php
@@ -556,9 +566,9 @@ final readonly class DeleteAction
 }
 ```
 
-### Create or update a page
+### Создание или обновление страницы
 
-First of all, we need a form at `src/Web/Page/Form.php`:
+Прежде всего, необходимо создать форму в файле `src/Web/Page/Form.php`:
 
 ```php
 <?php
@@ -583,7 +593,7 @@ final class Form extends FormModel
 }
 ```
 
-Then an action. Create `src/Web/Page/EditAction.php`:
+Затем создайте действие в файле `src/Web/Page/EditAction.php`:
 
 ```php
 <?php
@@ -664,15 +674,16 @@ final readonly class EditAction
 }
 ```
 
-Note that `Uuid::uuid7()->toString()` won't work for MySQL and you'll need bytes instead, `Uuid::uuid7()->getBytes()`.
+Обратите внимание, что `Uuid::uuid7()->toString()` не будет работать для MySQL, и вам понадобятся байты вместо этого, `Uuid::uuid7()->getBytes()`.
 
-In the above we use a special slug in the URL for new pages so the URL looks
-like `http://localhost/pages/new`. If the page isn't new, we pre-fill the
-form with the data from the database. Similar to how we did in [Working with
-forms](forms.md), we handle the form submission. After successful save we
-redirect to the page view.
+В приведенном выше коде используется специальный slug в URL для новых
+страниц, чтобы URL выглядел как `http://localhost/pages/new`. Если страница
+не новая, форма предварительно заполняется данными из базы
+данных. Аналогично тому, как это было сделано в разделе [Работа с
+формами](forms.md), обрабатывается отправка формы. После успешного
+сохранения происходит перенаправление на страницу просмотра.
 
-Now, a template in `src/Web/Page/edit.php`:
+Теперь создайте шаблон в файле `src/Web/Page/edit.php`:
 
 ```php
 <?php
@@ -703,9 +714,9 @@ $htmlForm = Html::form()
 <?= $htmlForm->close() ?>
 ```
 
-### Routing
+### Маршрутизация
 
-Adjust `config/common/routes.php`:
+Измените файл `config/common/routes.php`:
 
 ```php
 <?php
@@ -745,11 +756,12 @@ return [
 ];
 ```
 
-Note that we've grouped all page-related routes with a group under `/pages`
-prefix. That is a convenient way to both not to repeat yourself and add some
-extra middleware, such as authentication, to the whole group.
+Обратите внимание, что все маршруты, связанные со страницами, сгруппированы
+под префиксом `/pages`. Это удобный способ избежать дублирования кода и
+применить дополнительные обработчики запросов, такие как аутентификация, ко
+всем маршрутам в группе.
 
-## Trying it out
+## Проверка работы
 
-Now try it out by opening `http://localhost/pages` in your browser.
+Теперь проверьте результат, открыв в браузере `http://localhost/pages`.
 

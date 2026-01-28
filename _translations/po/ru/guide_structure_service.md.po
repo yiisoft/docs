@@ -21,7 +21,7 @@ msgstr ""
 #: ../../guide/en/structure/service.md
 #, no-wrap
 msgid "Repository"
-msgstr ""
+msgstr "Репозиторий"
 
 #. type: Bullet: '- '
 #: ../../guide/en/structure/domain.md ../../guide/en/structure/service.md
