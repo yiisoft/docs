@@ -264,7 +264,7 @@ msgstr ""
 #: ../src/guide/index.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Working with databases"
-msgstr ""
+msgstr "Работа с базами данных"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
