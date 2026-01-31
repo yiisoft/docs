@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2025-12-24 13:00+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-01-30 23:32+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,34 +15,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title #
 #: ../src/guide/start/workflow.md
 #, no-wrap
 msgid "Running applications"
-msgstr ""
+msgstr "Запуск приложений"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "After installing Yii, you have a working Yii application.  This section introduces the application's built-in functionality, how the code is organized, and how the application handles requests in general."
-msgstr ""
+msgstr "После установки Yii у вас будет работающее приложение Yii. В этом разделе описывается встроенная функциональность приложения, организация кода, а также общий процесс обработки запросов."
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "Note that unlike the framework itself, after you install a project template, it's all yours.  You're free to add or delete code and overall change it as you need."
-msgstr ""
+msgstr "Обратите внимание, что в отличие от самого фреймворка, после установки шаблона проекта он полностью принадлежит вам. Вы можете свободно добавлять или удалять код и в целом изменять его в соответствии с вашими потребностями."
 
 #. type: Title ##
 #: ../src/guide/start/workflow.md
-#, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
+#, no-wrap
 msgid "Functionality <span id=\"functionality\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
+msgstr "Функциональность <span id=\"functionality\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "The installed application contains only one page, accessible at `http://localhost/`.  It shares a common layout that you can reuse on further pages."
-msgstr ""
+msgstr "Установленное приложение содержит только одну страницу, доступную по адресу `http://localhost/`. Она использует общий макет, который можно повторно использовать на других страницах."
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -54,22 +54,28 @@ msgid ""
 "debugging information, such as log messages, response statuses, the database queries run, and so on.\n"
 "-->\n"
 msgstr ""
+"<!--\n"
+"Вы также должны увидеть панель инструментов в нижней части окна браузера.\n"
+"Это полезный [инструмент отладки](https://github.com/yiisoft/yii-debug), предоставляемый Yii, который позволяет\n"
+"записывать и отображать большое количество отладочной информации, такой как сообщения журнала, статусы ответов,\n"
+"выполненные запросы к базе данных и многое другое.\n"
+"-->\n"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
-msgstr ""
+msgstr "Помимо веб-приложения, вы можете получить доступ к консольному скрипту с помощью `APP_ENV=dev ./yii` или, в случае использования Docker, `make yii`. Этот скрипт используется для запуска фоновых и обслуживающих задач приложения, что описано в разделе [Консольное приложение](../tutorial/console-applications.md)."
 
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
 msgid "Application structure <span id=\"application-structure\"></span>"
-msgstr ""
+msgstr "Структура приложения <span id=\"application-structure\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "The most important directories and files in your application are (assuming the application's root directory is `app`):"
-msgstr ""
+msgstr "Наиболее важные каталоги и файлы приложения (предполагается, что корневым каталогом приложения является `app`):"
 
 #. type: Fenced code block
 #: ../src/guide/start/workflow.md
@@ -102,38 +108,63 @@ msgid ""
 "Makefile                Config for make command.\n"
 "yii                     Console application entry point.\n"
 msgstr ""
+"assets/                 Исходные файлы наборов ресурсов.\n"
+"config/                 Файлы конфигурации.\n"
+"    common/             Общая конфигурация и определения DI.\n"
+"    console/            Конфигурация для консольного приложения.\n"
+"    environments/       Конфигурация для различных окружений (dev/test/prod).\n"
+"    web/                Конфигурация для веб-приложения.\n"
+"docker/                 Файлы, специфичные для Docker.\n"
+"public/                 Файлы, доступные из интернета.\n"
+"    assets/             Опубликованные/скомпилированные ресурсы.\n"
+"    index.php           Входной скрипт.\n"
+"runtime/                Файлы, создаваемые во время выполнения.\n"
+"src/                    Исходный код приложения.\n"
+"    Console/            Консольные команды.\n"
+"    Shared/             Код, общий для веб- и консольного приложений.\n"
+"    Web/                Код, специфичный для веб-приложения (действия, обработчики, макеты).\n"
+"        Shared/         Общие веб-компоненты.\n"
+"            Layout/     Компоненты и шаблоны макетов.\n"
+"    Environment.php     Класс конфигурации окружения.\n"
+"tests/                  Набор тестов Codeception для приложения.\n"
+"    Console/            Тесты консольных команд.\n"
+"    Functional/         Функциональные тесты.\n"
+"    Unit/               Модульные тесты.\n"
+"    Web/                Тесты веб-действий.\n"
+"vendor/                 Установленные пакеты Composer.\n"
+"Makefile                Конфигурация для команды make.\n"
+"yii                     Точка входа консольного приложения.\n"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "In general, the files in the application fall into two groups: those under `app/public` and those under other directories. You can access the former directly via HTTP (i.e., in a browser), while you shouldn't expose the latter."
-msgstr ""
+msgstr "В целом файлы приложения можно разделить на две группы: находящиеся в `app/public` и расположенные в других каталогах. К первым можно получить прямой доступ по HTTP (например, через браузер), тогда как вторые не следует делать доступными извне."
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "Each application has an entry script `public/index.php`, the only web-accessible PHP script in the application.  The entry script uses an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of an incoming request with the help of one of PSR-7 packages and passes it to an [application](../structure/application.md)  instance. The application executes a set of middleware sequentially to process the request.  It then passes the result to the emitter, which sends the response to the browser."
-msgstr ""
+msgstr "Каждое приложение имеет входной скрипт `public/index.php` — единственный PHP-скрипт приложения, доступный через веб. Входной скрипт с помощью [application runner](https://github.com/yiisoft/yii-runner) создает экземпляр входящего запроса с использованием одного из пакетов PSR-7 и передает его экземпляру [приложения](../structure/application.md). Приложение последовательно выполняет набор middleware для обработки запроса, после чего передает результат эмиттеру, который отправляет ответ в браузер."
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "Depending on the middleware you use, the application may behave differently. By default, a router uses the requested URL and configuration to choose a handler and execute it to produce a response."
-msgstr ""
+msgstr "В зависимости от используемых middleware поведение приложения может различаться. По умолчанию маршрутизатор использует запрошенный URL и конфигурацию для выбора обработчика и его выполнения с целью формирования ответа."
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
-msgstr ""
+msgstr "Дополнительную информацию о шаблоне приложения можно найти в [документации пакета yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md)."
 
 #. type: Title ##
 #: ../src/guide/start/workflow.md
-#, fuzzy, no-wrap
-#| msgid "References <span id=\"references\"></span>"
+#, no-wrap
 msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
+msgstr "Жизненный цикл запроса <span id=\"request-lifecycle\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "The following diagram shows how an application handles a request."
-msgstr ""
+msgstr "Следующая диаграмма показывает, как приложение обрабатывает запрос."
 
 #. type: Fenced code block (mermaid)
 #: ../src/guide/start/workflow.md
@@ -158,39 +189,39 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/guide/start/workflow.md
 msgid "A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`."
-msgstr ""
+msgstr "Пользователь отправляет запрос во [входной скрипт](../structure/entry-script.md) `public/index.php`."
 
 #. type: Bullet: '2. '
 #: ../src/guide/start/workflow.md
 msgid "The entry script with the help of the application runner loads the container [configuration](../concept/configuration.md) and creates an [application](../structure/application.md) instance and services necessary to handle the request."
-msgstr ""
+msgstr "Входной скрипт с помощью application runner загружает [конфигурацию](../concept/configuration.md) контейнера и создает экземпляр [приложения](../structure/application.md), а также сервисы, необходимые для обработки запроса."
 
 #. type: Bullet: '3. '
 #: ../src/guide/start/workflow.md
 msgid "Request factory creates a request object based on a raw request that came from a user."
-msgstr ""
+msgstr "Фабрика запросов создает объект запроса на основе необработанного запроса, полученного от пользователя."
 
 #. type: Bullet: '4. '
 #: ../src/guide/start/workflow.md
 msgid "Application passes a request object through a middleware array configured. One of these is typically a router."
-msgstr ""
+msgstr "Приложение передает объект запроса через настроенный набор middleware. Одним из них, как правило, является маршрутизатор."
 
 #. type: Bullet: '5. '
 #: ../src/guide/start/workflow.md
 msgid "The Router finds out what handler to execute based on request and configuration."
-msgstr ""
+msgstr "Маршрутизатор определяет, какой обработчик следует выполнить, на основе запроса и конфигурации."
 
 #. type: Bullet: '6. '
 #: ../src/guide/start/workflow.md
 msgid "The handler may load some data, possibly from a database."
-msgstr ""
+msgstr "Обработчик может загрузить данные, например из базы данных."
 
 #. type: Bullet: '7. '
 #: ../src/guide/start/workflow.md
 msgid "The handler forms a response by using data. Either directly or with the help of the view package."
-msgstr ""
+msgstr "Обработчик формирует ответ, используя данные — либо напрямую, либо с помощью пакета представлений."
 
 #. type: Bullet: '8. '
 #: ../src/guide/start/workflow.md
 msgid "Emitter receives the response and takes care of sending the response to the user's browser."
-msgstr ""
+msgstr "Эмиттер получает ответ и отвечает за его отправку в браузер пользователя."
