@@ -25,6 +25,7 @@ composer create-project yiisoft/app your_project
 docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
 sudo chown -R $(id -u):$(id -g) your_project
 cd your_project
+make composer update
 ```
 
 Если вам нужна dev-версия вместо релизной:
