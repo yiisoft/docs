@@ -1,90 +1,93 @@
-# Running applications
+# Запуск приложений
 
-After installing Yii, you have a working Yii application.  This section
-introduces the application's built-in functionality, how the code is
-organized, and how the application handles requests in general.
+После установки Yii у вас будет работающее приложение Yii. В этом разделе
+описывается встроенная функциональность приложения, организация кода, а
+также общий процесс обработки запросов.
 
-Note that unlike the framework itself, after you install a project template,
-it's all yours.  You're free to add or delete code and overall change it as
-you need.
+Обратите внимание, что в отличие от самого фреймворка, после установки
+шаблона проекта он полностью принадлежит вам. Вы можете свободно добавлять
+или удалять код и в целом изменять его в соответствии с вашими
+потребностями.
 
-## Functionality <span id="functionality"></span>
+## Функциональность <span id="functionality"></span>
 
-The installed application contains only one page, accessible at
-`http://localhost/`.  It shares a common layout that you can reuse on
-further pages.
+Установленное приложение содержит только одну страницу, доступную по адресу
+`http://localhost/`. Она использует общий макет, который можно повторно
+использовать на других страницах.
 
 <!--
-You should also see a toolbar at the bottom of the browser window.
-This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of
-debugging information, such as log messages, response statuses, the database queries run, and so on.
+Вы также должны увидеть панель инструментов в нижней части окна браузера.
+Это полезный [инструмент отладки](https://github.com/yiisoft/yii-debug), предоставляемый Yii, который позволяет
+записывать и отображать большое количество отладочной информации, такой как сообщения журнала, статусы ответов,
+выполненные запросы к базе данных и многое другое.
 -->
 
-In addition to the web application, you can access a console script via
-`APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to
-run background and maintenance tasks for the application, which the [Console
-Application Section](../tutorial/console-applications.md) describes.
+Помимо веб-приложения, вы можете получить доступ к консольному скрипту с
+помощью `APP_ENV=dev ./yii` или, в случае использования Docker, `make
+yii`. Этот скрипт используется для запуска фоновых и обслуживающих задач
+приложения, что описано в разделе [Консольное
+приложение](../tutorial/console-applications.md).
 
 
-## Application structure <span id="application-structure"></span>
+## Структура приложения <span id="application-structure"></span>
 
-The most important directories and files in your application are (assuming
-the application's root directory is `app`):
+Наиболее важные каталоги и файлы приложения (предполагается, что корневым
+каталогом приложения является `app`):
 
 ```
-assets/                 Asset bundle source files.
-config/                 Configuration files.
-    common/             Common configuration and DI definitions.
-    console/            Console-specific configuration.
-    environments/       Environment-specific configuration (dev/test/prod).
-    web/                Web-specific configuration.
-docker/                 Docker-specific files.
-public/                 Files publically accessible from the Internet.
-    assets/             Published/compiled assets.
-    index.php           Entry script.
-runtime/                Files generated during runtime.
-src/                    Application source code.
-    Console/            Console commands.
-    Shared/             Code shared between web and console applications.
-    Web/                Web-specific code (actions, handlers, layout).
-        Shared/         Shared web components.
-            Layout/     Layout components and templates.
-    Environment.php     Environment configuration class.
-tests/                  A set of Codeception tests for the application.
-    Console/            Console command tests.
-    Functional/         Functional tests.
-    Unit/               Unit tests.
-    Web/                Web actions tests.
-vendor/                 Installed Composer packages.
-Makefile                Config for make command.
-yii                     Console application entry point.
+assets/                 Исходные файлы наборов ресурсов.
+config/                 Файлы конфигурации.
+    common/             Общая конфигурация и определения DI.
+    console/            Конфигурация для консольного приложения.
+    environments/       Конфигурация для различных окружений (dev/test/prod).
+    web/                Конфигурация для веб-приложения.
+docker/                 Файлы, специфичные для Docker.
+public/                 Файлы, доступные из интернета.
+    assets/             Опубликованные/скомпилированные ресурсы.
+    index.php           Входной скрипт.
+runtime/                Файлы, создаваемые во время выполнения.
+src/                    Исходный код приложения.
+    Console/            Консольные команды.
+    Shared/             Код, общий для веб- и консольного приложений.
+    Web/                Код, специфичный для веб-приложения (действия, обработчики, макеты).
+        Shared/         Общие веб-компоненты.
+            Layout/     Компоненты и шаблоны макетов.
+    Environment.php     Класс конфигурации окружения.
+tests/                  Набор тестов Codeception для приложения.
+    Console/            Тесты консольных команд.
+    Functional/         Функциональные тесты.
+    Unit/               Модульные тесты.
+    Web/                Тесты веб-действий.
+vendor/                 Установленные пакеты Composer.
+Makefile                Конфигурация для команды make.
+yii                     Точка входа консольного приложения.
 ```
 
-In general, the files in the application fall into two groups: those under
-`app/public` and those under other directories. You can access the former
-directly via HTTP (i.e., in a browser), while you shouldn't expose the
-latter.
+В целом файлы приложения можно разделить на две группы: находящиеся в
+`app/public` и расположенные в других каталогах. К первым можно получить
+прямой доступ по HTTP (например, через браузер), тогда как вторые не следует
+делать доступными извне.
 
-Each application has an entry script `public/index.php`, the only
-web-accessible PHP script in the application.  The entry script uses an
-[application runner](https://github.com/yiisoft/yii-runner) to create an
-instance of an incoming request with the help of one of PSR-7 packages and
-passes it to an [application](../structure/application.md)  instance. The
-application executes a set of middleware sequentially to process the
-request.  It then passes the result to the emitter, which sends the response
-to the browser.
+Каждое приложение имеет входной скрипт `public/index.php` — единственный
+PHP-скрипт приложения, доступный через веб. Входной скрипт с помощью
+[application runner](https://github.com/yiisoft/yii-runner) создает
+экземпляр входящего запроса с использованием одного из пакетов PSR-7 и
+передает его экземпляру
+[приложения](../structure/application.md). Приложение последовательно
+выполняет набор middleware для обработки запроса, после чего передает
+результат эмиттеру, который отправляет ответ в браузер.
 
-Depending on the middleware you use, the application may behave
-differently. By default, a router uses the requested URL and configuration
-to choose a handler and execute it to produce a response.
+В зависимости от используемых middleware поведение приложения может
+различаться. По умолчанию маршрутизатор использует запрошенный URL и
+конфигурацию для выбора обработчика и его выполнения с целью формирования
+ответа.
 
-You can learn more about the application template from the [yiisoft/app
-package
-documentation](https://github.com/yiisoft/app/blob/master/README.md).
+Дополнительную информацию о шаблоне приложения можно найти в [документации
+пакета yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md).
 
-## Request Lifecycle <span id="request-lifecycle"></span>
+## Жизненный цикл запроса <span id="request-lifecycle"></span>
 
-The following diagram shows how an application handles a request.
+Следующая диаграмма показывает, как приложение обрабатывает запрос.
 
 ```mermaid
 flowchart LR
@@ -103,20 +106,19 @@ flowchart LR
   emitter --> user
 ```
 
-1. A user makes a request to the [entry
-   script](../structure/entry-script.md) `public/index.php`.
-2. The entry script with the help of the application runner loads the
-   container [configuration](../concept/configuration.md) and creates an
-   [application](../structure/application.md) instance and services
-   necessary to handle the request.
-3. Request factory creates a request object based on a raw request that came
-   from a user.
-4. Application passes a request object through a middleware array
-   configured. One of these is typically a router.
-5. The Router finds out what handler to execute based on request and
-   configuration.
-6. The handler may load some data, possibly from a database.
-7. The handler forms a response by using data. Either directly or with the
-   help of the view package.
-8. Emitter receives the response and takes care of sending the response to
-   the user's browser.
+1. Пользователь отправляет запрос во [входной
+   скрипт](../structure/entry-script.md) `public/index.php`.
+2. Входной скрипт с помощью application runner загружает
+   [конфигурацию](../concept/configuration.md) контейнера и создает
+   экземпляр [приложения](../structure/application.md), а также сервисы,
+   необходимые для обработки запроса.
+3. Фабрика запросов создает объект запроса на основе необработанного
+   запроса, полученного от пользователя.
+4. Приложение передает объект запроса через настроенный набор
+   middleware. Одним из них, как правило, является маршрутизатор.
+5. Маршрутизатор определяет, какой обработчик следует выполнить, на основе
+   запроса и конфигурации.
+6. Обработчик может загрузить данные, например из базы данных.
+7. Обработчик формирует ответ, используя данные — либо напрямую, либо с
+   помощью пакета представлений.
+8. Эмиттер получает ответ и отвечает за его отправку в браузер пользователя.
