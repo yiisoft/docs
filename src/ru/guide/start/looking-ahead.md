@@ -1,9 +1,10 @@
-# Looking ahead
+# Что дальше
 
-If you've read through the entire "Getting Started" chapter, you have now
-created a complete Yii application.  In the process, you've learned how to
-implement some commonly necessary features, such as getting data from users
-via an HTML form, fetching data from a database, and displaying data in a
-paginated fashion. You've also learned how to use [Gii](gii.md) to generate
-code automatically. Using Gii for code generation turns the bulk of your Web
-development process into a task as simple as just filling out some forms.
+Если вы прочитали всю главу «Начало работы», то теперь вы создали
+полноценное Yii-приложение. В процессе вы узнали, как решать ряд типовых
+задач, таких как получение данных от пользователей через HTML-форму,
+извлечение данных из базы данных и отображение данных с постраничной
+навигацией. Вы также узнали, как использовать Gii для автоматической
+генерации кода. Использование Gii для генерации кода превращает значительную
+часть процесса веб-разработки в задачу, сводящуюся к простому заполнению
+форм.
