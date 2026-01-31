@@ -25,6 +25,7 @@ Gli utenti Docker possono eseguire i seguenti comandi:
 docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
 sudo chown -R $(id -u):$(id -g) your_project
 cd your_project
+make composer update
 ```
 
 Se vuoi la versione di sviluppo invece di quella di rilascio:
