@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2025-12-24 13:00+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-01-31 13:19+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,14 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title #
 #: ../src/guide/start/looking-ahead.md
 #, no-wrap
 msgid "Looking ahead"
-msgstr ""
+msgstr "Что дальше"
 
 #. type: Plain text
 #: ../src/guide/start/looking-ahead.md
 msgid "If you've read through the entire \"Getting Started\" chapter, you have now created a complete Yii application.  In the process, you've learned how to implement some commonly necessary features, such as getting data from users via an HTML form, fetching data from a database, and displaying data in a paginated fashion. You've also learned how to use [Gii](gii.md) to generate code automatically. Using Gii for code generation turns the bulk of your Web development process into a task as simple as just filling out some forms."
-msgstr ""
+msgstr "Если вы прочитали всю главу «Начало работы», то теперь вы создали полноценное Yii-приложение. В процессе вы узнали, как решать ряд типовых задач, таких как получение данных от пользователей через HTML-форму, извлечение данных из базы данных и отображение данных с постраничной навигацией. Вы также узнали, как использовать Gii для автоматической генерации кода. Использование Gii для генерации кода превращает значительную часть процесса веб-разработки в задачу, сводящуюся к простому заполнению форм."
