@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 10:28+0000\n"
+"POT-Creation-Date: 2026-02-03 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,11 @@ msgid ""
 "Postfix classes, interfaces, traits and variables, which is a [collection]"
 "(https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with "
 "`Collection`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/internals/010-code-style.md
+msgid "Postfix middleware classes with `Middleware`."
 msgstr ""
 
 #. type: Title ##

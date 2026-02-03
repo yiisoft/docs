@@ -14,6 +14,7 @@ of it.
 - Postfix classes, interfaces, traits and variables, which is a
   [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)),
   with `Collection`.
+- Postfix middleware classes with `Middleware`.
 
 ## Types
 
