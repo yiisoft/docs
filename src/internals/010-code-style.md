@@ -10,6 +10,7 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 - Use the shortest possible, but an explanatory name.
 - Never trim or abbreviate a name.
 - Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`.
+- Postfix middleware classes with `Middleware`.
 
 ## Types
 
