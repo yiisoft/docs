@@ -1,10 +1,9 @@
-# Deploying Yii applications to Docker Swarm and Caddy
+# 将 Yii 应用部署到 Docker Swarm 和 Caddy
 
-This guide walks you through deploying a Yii application to [Docker
-Swarm](https://docs.docker.com/engine/swarm/)  starting from a blank server,
-using [Caddy](https://caddyserver.com/) as a reverse proxy and deploying
-from a container registry ([Forgejo](https://forgejo.org/) or
-[Gitea](https://about.gitea.com/)).
+本指南将引导你从空白服务器开始，使用 [Caddy](https://caddyserver.com/)
+作为反向代理，从容器注册表（[Forgejo](https://forgejo.org/) 或
+[Gitea](https://about.gitea.com/)）部署 Yii 应用程序到 [Docker
+Swarm](https://docs.docker.com/engine/swarm/)。
 
 ```mermaid
 graph LR
@@ -19,43 +18,40 @@ graph LR
     end
 ```
 
-## Prerequisites
+## 前提条件
 
-- A server with a fresh installation of a Linux distribution (Ubuntu 22.04
-  LTS or later recommended)
-- A domain name pointing to your server's IP address
-- SSH access to your server
-- Basic knowledge of Docker and command-line tools
+- 一台全新安装 Linux 发行版的服务器（推荐 Ubuntu 22.04 LTS 或更高版本）
+- 指向服务器 IP 地址的域名
+- 对服务器的 SSH 访问权限
+- Docker 和命令行工具的基础知识
 
-## Server preparation
+## 服务器准备
 
-### Install Docker
+### 安装 Docker
 
-For installation instructions, see the [official Docker
-documentation](https://docs.docker.com/engine/install/ubuntu/).
+有关安装说明，请参阅[官方 Docker 文档](https://docs.docker.com/engine/install/ubuntu/)。
 
-### Initialize Docker Swarm
+### 初始化 Docker Swarm
 
-Initialize your server as a Docker Swarm manager:
+将服务器初始化为 Docker Swarm 管理器：
 
 ```bash
 docker swarm init --advertise-addr <YOUR_SERVER_IP>
 ```
 
-Replace `<YOUR_SERVER_IP>` with your server's public IP address.
+将 `<YOUR_SERVER_IP>` 替换为服务器的公共 IP 地址。
 
-### Set up the reverse proxy network
+### 设置反向代理网络
 
-Create a dedicated overlay network for reverse proxy to communicate with
-your services:
+创建一个专用的覆盖网络，供反向代理与服务通信：
 
 ```bash
 docker network create --driver=overlay reverse_proxy_public
 ```
 
-## Setting up Caddy as reverse proxy
+## 设置 Caddy 作为反向代理
 
-To deploy Caddy as reverse proxy create a file `caddy-stack.yml`:
+要将 Caddy 部署为反向代理，请创建文件 `caddy-stack.yml`：
 
 ```yaml
 services:
@@ -78,15 +74,14 @@ networks:
     external: true
 ```
 
-Deploy Caddy:
+部署 Caddy：
 
 ```bash
 docker stack deploy -c caddy-stack.yml caddy
 ```
 
-Caddy automatically discovers services with Caddy labels and sets up HTTPS
-using Let's Encrypt. Yii3 application templates are using Caddy labels by
-default:
+Caddy 会自动发现带有 Caddy 标签的服务，并使用 Let's Encrypt 设置 HTTPS。Yii3 应用程序模板默认使用 Caddy
+标签：
 
 ```yaml
 deploy:
@@ -99,14 +94,13 @@ deploy:
 > Make sure your domain DNS records are configured and pointing to your server before deploying services with
 > Caddy labels, as Let's Encrypt requires domain validation.
 
-## Setting up a container registry
+## 设置容器注册表
 
-You need a container registry to store your Docker images. Choose one of the
-following options.
+你需要一个容器注册表来存储 Docker 镜像。选择以下选项之一。
 
-### Option 1: Using Forgejo
+### 选项 1：使用 Forgejo
 
-To deploy Forgejo create a file `forgejo-stack.yml`:
+要部署 Forgejo，请创建文件 `forgejo-stack.yml`：
 
 ```yaml
 services:
@@ -131,21 +125,19 @@ networks:
     external: true
 ```
 
-Deploy Forgejo:
+部署 Forgejo：
 
 ```bash
 docker stack deploy -c forgejo-stack.yml forgejo
 ```
 
-Replace `git.example.com` with your desired subdomain.
+将 `git.example.com` 替换为所需的子域名。
 
-After deployment, access Forgejo at `https://git.example.com` and complete
-the initial setup. Make sure to enable the container registry in the
-settings.
+部署后，访问 `https://git.example.com` 上的 Forgejo 并完成初始设置。确保在设置中启用容器注册表。
 
-### Option 2: Using Gitea
+### 选项 2：使用 Gitea
 
-To deploy Gitea create a file `gitea-stack.yml`:
+要部署 Gitea，请创建文件 `gitea-stack.yml`：
 
 ```yaml
 services:
@@ -170,24 +162,22 @@ networks:
     external: true
 ```
 
-Deploy Gitea:
+部署 Gitea：
 
 ```bash
 docker stack deploy -c gitea-stack.yml gitea
 ```
 
-Replace `git.example.com` with your desired subdomain.
+将 `git.example.com` 替换为所需的子域名。
 
-After deployment, access Gitea at `https://git.example.com` and complete the
-initial setup.  Make sure to enable the container registry in the settings.
+部署后，访问 `https://git.example.com` 上的 Gitea 并完成初始设置。确保在设置中启用容器注册表。
 
-## Configuring your Yii application
+## 配置 Yii 应用程序
 
-### Update the Makefile configuration
+### 更新 Makefile 配置
 
-The [Yii application template](https://github.com/yiisoft/app) includes a
-Makefile with deployment commands. Update the `docker/.env` file in your
-project:
+[Yii 应用程序模板](https://github.com/yiisoft/app)包含一个带有部署命令的 Makefile。更新项目中的
+`docker/.env` 文件：
 
 ```bash
 STACK_NAME=myapp
@@ -203,15 +193,13 @@ IMAGE=git.example.com/username/myapp
 IMAGE_TAG=latest
 ```
 
-Replace the values: - `STACK_NAME`: A unique name for your application stack
-- `PROD_HOST`: The domain name where your app will be accessible -
-`PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)
-- `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`:
-Image tag, typically `latest` or a version number
+替换以下值：- `STACK_NAME`：应用程序堆栈的唯一名称 - `PROD_HOST`：应用程序可访问的域名 - `PROD_SSH`：到服务器的
+SSH 连接字符串（格式：`ssh://user@host`）- `IMAGE`：注册表中容器镜像的完整路径 -
+`IMAGE_TAG`：镜像标签，通常为 `latest` 或版本号
 
-### Configure the production environment
+### 配置生产环境
 
-Update `docker/prod/.env` with your production environment variables:
+使用生产环境变量更新 `docker/prod/.env`：
 
 ```bash
 APP_ENV=prod
@@ -228,11 +216,11 @@ DB_PASSWORD=secure_password_here
 ```
 
 > [!WARNING]
-> Never commit sensitive credentials to version control. Use `docker/prod/override.env` for sensitive values and add it to `.gitignore`.
+> 切勿将敏感凭据提交到版本控制。对敏感值使用 `docker/prod/override.env` 并将其添加到 `.gitignore`。
 
-### Review the production Docker Compose configuration
+### 查看生产环境 Docker Compose 配置
 
-The default `docker/prod/compose.yml` includes:
+默认的 `docker/prod/compose.yml` 包括：
 
 ```yaml
 services:
@@ -271,14 +259,14 @@ services:
         caddy.reverse_proxy: "{{upstreams 80}}"
 ```
 
-This configuration:
-- Runs 2 replicas for high availability
-- Uses a rolling update strategy with automatic rollback on failure
-- Configures `labels` for automatic HTTPS on the reverse proxy
-- Disables obtaining of HTTPs certificates on the container itself
-  since proxy communicates with the container via HTTP. That is `auto_https off`.
+此配置：
+- 运行 2 个副本以实现高可用性
+- 使用滚动更新策略，失败时自动回滚
+- 配置 `labels` 以在反向代理上自动启用 HTTPS
+- 禁用容器本身获取 HTTPS 证书
+  因为代理通过 HTTP 与容器通信。即 `auto_https off`。
 
-If you need a database, add it to the stack:
+如果需要数据库，请将其添加到堆栈中：
 
 ```yaml
 services:
@@ -311,57 +299,56 @@ secrets:
     external: true
 ```
 
-Create the database password secret on the server:
+在服务器上创建数据库 password secret：
 
 ```bash
 echo "your_secure_password" | docker secret create db_password -
 ```
 
-## Building and pushing the image
+## 构建并推送镜像
 
-### Set up Docker login on your local machine
+### 在本地机器上设置 Docker 登录
 
-Configure Docker to authenticate with your container registry:
+配置 Docker 以向容器注册表进行身份验证：
 
 ```bash
 docker login git.example.com
 ```
 
-Enter your username and password when prompted.
+在提示时输入用户名和 password。
 
-### Build the production image
+### 构建生产镜像
 
-Use the Makefile to build your production image:
+使用 Makefile 构建生产镜像：
 
 ```bash
 make prod-build
 ```
 
-This runs the command defined in the Makefile:
+这将运行 Makefile 中定义的命令：
 
 ```bash
 docker build --file docker/Dockerfile --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .
 ```
 
-The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies
-in a builder stage 2. Creates a minimal production image with only the
-necessary files 3. Runs as a non-root user (`www-data`)
+Dockerfile 使用多阶段构建：1. 在构建器阶段安装 Composer 依赖项 2. 创建仅包含必要文件的最小生产镜像 3. 以非 root
+用户（`www-data`）身份运行
 
-### Push the image to the registry
+### 将镜像推送到注册表
 
-Push your built image to the container registry:
+将构建的镜像推送到容器注册表：
 
 ```bash
 make prod-push
 ```
 
-This executes:
+这将执行：
 
 ```bash
 docker push ${IMAGE}:${IMAGE_TAG}
 ```
 
-## Deploying to Docker Swarm
+## 部署到 Docker Swarm
 
 ### Configure SSH access
 
@@ -383,55 +370,54 @@ Host docker-web
 EOF
 ```
 
-### Set up Docker context
+### 设置 Docker 上下文
 
-Create a Docker context for remote deployment:
+创建用于远程部署的 Docker 上下文：
 
 ```bash
 docker context create swarm-prod --docker "host=ssh://docker-web"
 ```
 
-Alternatively, configure the `DOCKER_HOST` environment variable:
+或者，配置 `DOCKER_HOST` 环境变量：
 
 ```bash
 export DOCKER_HOST=ssh://docker-web
 ```
 
-### Deploy the application
+### 部署应用程序
 
-Deploy your application stack to Docker Swarm:
+将应用程序堆栈部署到 Docker Swarm：
 
 ```bash
 make prod-deploy
 ```
 
-This executes:
+这将执行：
 
 ```bash
 docker -H ${PROD_SSH} stack deploy --prune --detach=false --with-registry-auth -c docker/compose.yml -c docker/prod/compose.yml ${STACK_NAME}
 ```
 
-The `--with-registry-auth` flag ensures the Swarm nodes can pull images from
-your private registry.
+`--with-registry-auth` 标志确保 Swarm 节点可以从私有注册表拉取镜像。
 
-### Verify the deployment
+### 验证部署
 
-Check the status of your services:
+检查服务状态：
 
 ```bash
 docker -H ssh://docker-web service ls
 docker -H ssh://docker-web service ps ${STACK_NAME}_app
 ```
 
-View logs:
+查看日志：
 
 ```bash
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
 ```
 
-## Monitoring and maintenance
+## 监控和维护
 
-### View service logs
+### 查看服务日志
 
 ```bash
 # View all logs
@@ -444,20 +430,19 @@ docker -H ssh://docker-web service logs --tail 100 ${STACK_NAME}_app
 docker -H ssh://docker-web service logs -t ${STACK_NAME}_app
 ```
 
-### Scale the application
+### 扩展应用程序
 
-Adjust the number of replicas:
+调整副本数量：
 
 ```bash
 docker -H ssh://docker-web service scale ${STACK_NAME}_app=3
 ```
 
-Or update the `replicas` value in `docker/prod/compose.yml` and redeploy.
+或者更新 `docker/prod/compose.yml` 中的 `replicas` 值并重新部署。
 
-### Resource limits
+### 资源限制
 
-Add resource limits to prevent containers from consuming all server
-resources. Update `docker/prod/compose.yml`:
+添加资源限制以防止容器消耗所有服务器资源。更新 `docker/prod/compose.yml`：
 
 ```yaml
 services:
@@ -473,20 +458,19 @@ services:
           memory: 256M
 ```
 
-## Security considerations
+## 安全注意事项
 
-### Use Docker secrets for sensitive data
+### 对敏感数据使用 Docker secrets
 
-Instead of environment variables, use Docker secrets for sensitive
-information:
+对于敏感信息，使用 Docker secrets 而不是环境变量：
 
 ```bash
-# Create secrets
+# 创建 secrets
 echo "database_password" | docker secret create db_password -
 echo "api_key" | docker secret create api_key -
 ```
 
-Update `docker/prod/compose.yml`:
+更新 `docker/prod/compose.yml`：
 
 ```yaml
 services:
@@ -502,11 +486,11 @@ secrets:
     external: true
 ```
 
-Access secrets in your application at `/run/secrets/secret_name`.
+在应用程序中通过 `/run/secrets/secret_name` 访问 secrets。
 
-### Set up a firewall
+### 设置防火墙
 
-Configure UFW (Uncomplicated Firewall) on your server:
+在服务器上配置 UFW（简单防火墙）：
 
 ```bash
 # Allow SSH
@@ -526,65 +510,58 @@ sudo ufw allow 4789/udp
 sudo ufw enable
 ```
 
-### Keep the system updated
+### 保持系统更新
 
-Regularly update your server and Docker:
+定期更新服务器和 Docker：
 
 ```bash
-# Update system packages
+# 更新系统包
 sudo apt-get update && sudo apt-get upgrade -y
 
-# Update Docker images
+# 更新 Docker 镜像
 docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app
 ```
 
-## Troubleshooting
+## 故障排除
 
-### Service won't start
+### 服务无法启动
 
-Check service events and logs:
+检查服务事件和日志：
 
 ```bash
 docker -H ssh://docker-web service ps ${STACK_NAME}_app --no-trunc
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
 ```
 
-Common issues: - **Image pull errors**: Verify registry authentication with
-`docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other
-services are using ports 80/443 - **Resource constraints**: Check available
-resources with `docker -H ssh://docker-web node ls`
+常见问题：- **镜像拉取错误**：使用 `docker -H ssh://docker-web login` 验证注册表身份验证 -
+**端口冲突**：确保没有其他服务使用端口 80/443 - **资源约束**：使用 `docker -H ssh://docker-web node
+ls` 检查可用资源
 
-### SSL certificate issues
+### SSL 证书问题
 
-If Caddy can't obtain certificates: - Verify DNS is pointing to your server
-- Check that ports 80 and 443 are accessible from the internet - Ensure the
-email in the Let's Encrypt configuration is valid - Check logs: `docker -H
-ssh://docker-web service logs caddy`
+如果 Caddy 无法获取证书：- 验证 DNS 是否指向服务器 - 检查端口 80 和 443 是否可从互联网访问 - 确保 Let's
+Encrypt 配置中的电子邮件有效 - 检查日志：`docker -H ssh://docker-web service logs caddy`
 
-### Container registry connection issues
+### 容器注册表连接问题
 
-Test registry connectivity:
+测试注册表连接：
 
 ```bash
-# From your local machine
+# 从本地机器
 docker pull git.example.com/username/myapp:latest
 
-# From the server
+# 从服务器
 docker -H ssh://docker-web pull git.example.com/username/myapp:latest
 ```
 
-## Summary
+## 总结
 
-You've successfully deployed a Yii application to Docker Swarm with: - A
-container registry (Forgejo or Gitea)  - Automatic HTTPS via Caddy -
-Zero-downtime deployments with rolling updates - High availability with
-multiple replicas
+你已成功将 Yii 应用程序部署到 Docker Swarm，包括：- 容器注册表（Forgejo 或 Gitea）- 通过 Caddy 自动启用
+HTTPS - 通过滚动更新实现零停机部署 - 通过多个副本实现高可用性
 
-The Makefile commands simplify the deployment workflow: - `make prod-build`
-- Build the production image - `make prod-push` - Push to the registry -
-`make prod-deploy` - Deploy to Docker Swarm
+Makefile 命令简化了部署工作流程：- `make prod-build` - 构建生产镜像 - `make prod-push` -
+推送到注册表 - `make prod-deploy` - 部署到 Docker Swarm
 
-For more information, see: - [Yii Application
-Template](https://github.com/yiisoft/app)  - [Docker Swarm
-Documentation](https://docs.docker.com/engine/swarm/)  - [Caddy Docker
+有关更多信息，请参阅：- [Yii 应用程序模板](https://github.com/yiisoft/app) - [Docker Swarm
+文档](https://docs.docker.com/engine/swarm/) - [Caddy Docker
 Proxy](https://github.com/lucaslorentz/caddy-docker-proxy)

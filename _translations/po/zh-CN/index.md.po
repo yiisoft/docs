@@ -19,61 +19,61 @@ msgstr ""
 #: ../src/index.md
 #, no-wrap
 msgid "Yii gives you the maximum functionality by adding the least possible overhead."
-msgstr ""
+msgstr "Yii 以最小的开销为您提供最大的功能。"
 
 #. type: Yaml Front Matter Hash Value: features title
 #: ../src/index.md
 #, no-wrap
 msgid "Fast"
-msgstr ""
+msgstr "快速"
 
 #. type: Yaml Front Matter Hash Value: features details
 #: ../src/index.md
 #, no-wrap
 msgid "Sane defaults and built-in tools helps you write solid and secure code."
-msgstr ""
+msgstr "合理的默认设置和内置工具帮助您编写稳固且安全的代码。"
 
 #. type: Yaml Front Matter Hash Value: features title
 #: ../src/index.md
 #, no-wrap
 msgid "Secure"
-msgstr ""
+msgstr "安全"
 
 #. type: Yaml Front Matter Hash Value: features details
 #: ../src/index.md
 #, no-wrap
 msgid "Write more code in less time with simple, yet powerful APIs and code generation."
-msgstr ""
+msgstr "通过简单而强大的 API 和代码生成，在更短的时间内编写更多代码。"
 
 #. type: Yaml Front Matter Hash Value: features title
 #: ../src/index.md
 #, no-wrap
 msgid "Efficient"
-msgstr ""
+msgstr "高效"
 
 #. type: Yaml Front Matter Hash Value: hero actions text
 #: ../src/index.md
 #, no-wrap
 msgid "Get Started"
-msgstr ""
+msgstr "开始使用"
 
 #. type: Yaml Front Matter Hash Value: hero name
 #: ../src/index.md
 #, no-wrap
 msgid "Yii3 Framework"
-msgstr ""
+msgstr "Yii3 框架"
 
 #. type: Yaml Front Matter Hash Value: hero tagline
 #: ../src/index.md
 #, no-wrap
 msgid "A simple, powerful and fast framework. Meet the modern, definitive guide to Yii you've always wanted."
-msgstr ""
+msgstr "一个简单、强大且快速的框架。这是您一直想要的现代、权威的 Yii 指南。"
 
 #. type: Title ##
 #: ../src/index.md ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 #. type: Plain text
 #: ../src/index.md
@@ -84,14 +84,14 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid "[The Definitive Guide](guide/) — the comprehensive guide covering all aspects of the framework."
-msgstr ""
+msgstr "[权威指南](guide/) — 涵盖框架所有方面的综合指南。"
 
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid "[Community Cookbook](cookbook/) — a collection of community-contributed tips, tricks, and solutions for common Yii development tasks."
-msgstr ""
+msgstr "[社区手册](cookbook/) — 社区贡献的技巧、窍门和常见 Yii 开发任务解决方案的集合。"
 
 #. type: Bullet: '- '
 #: ../src/index.md
 msgid "[Internals](internals/) — documentation for developers contributing to the Yii framework itself, including guidelines, workflows, and best practices."
-msgstr ""
+msgstr "[内部文档](internals/) — 为贡献 Yii 框架本身的开发者提供的文档，包括指南、工作流程和最佳实践。"

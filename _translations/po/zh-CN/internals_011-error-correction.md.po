@@ -19,9 +19,9 @@ msgstr ""
 #: ../src/en/internals/011-error-correction.md
 #, no-wrap
 msgid "011 — Error correction"
-msgstr ""
+msgstr "011 — 错误修正"
 
 #. type: Plain text
 #: ../src/en/internals/011-error-correction.md
 msgid "If it's unambiguous within a class what the developer who incorrectly used the class meant, it's OK to correct the error.  Otherwise, the error MUST NOT be corrected."
-msgstr ""
+msgstr "如果在类中可以明确判断开发者错误使用该类的意图，则可以修正错误。否则，不得修正错误。"

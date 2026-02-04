@@ -1,7 +1,7 @@
-# Configuring web servers: NGINX Unit
+# 配置 Web 服务器：NGINX Unit
 
-Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP
-language module.  Here is a sample configuration.
+使用带有 PHP 语言模块的 [NGINX Unit](https://unit.nginx.org/) 运行基于 Yii
+的应用程序。以下是一个示例配置。
 
 ```json
 {
@@ -59,9 +59,8 @@ language module.  Here is a sample configuration.
 }
 ```
 
-You can also [set up](https://unit.nginx.org/configuration/#php) your PHP
-environment or supply a custom `php.ini` in the same configuration.
+你还可以在同一配置中 [设置](https://unit.nginx.org/configuration/#php) PHP 环境或提供自定义的
+`php.ini`。
 
-In the above, note the usage of `environment`. Since the Yii3 application
-template is using environment variables, this is a possible place to set
-them. In production environment remember to set `APP_ENV` to `prod`.
+在上面的配置中，请注意 `environment` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将
+`APP_ENV` 设置为 `prod`。

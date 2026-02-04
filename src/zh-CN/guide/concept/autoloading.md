@@ -30,7 +30,7 @@ If you need development-environment-specific autoloading that isn't used
 when executing Composer with `--no-dev` flag, add it to `autoload-dev`
 section instead of `autoload`.
 
-## References
+## 参考资料
 
 - [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/).
 - [Composer guide on

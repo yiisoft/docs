@@ -20,107 +20,107 @@ msgstr ""
 #: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Immutability"
-msgstr ""
+msgstr "不可变性"
 
 #. type: Title ###
 #: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
 #: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Names"
-msgstr ""
+msgstr "名称"
 
 #. type: Title ##
 #: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
 #: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Methods"
-msgstr ""
+msgstr "方法"
 
 #. type: Title #
 #: ../src/en/internals/017-tags.md
 #, no-wrap
 msgid "017 - Tags"
-msgstr ""
+msgstr "017 - 标签"
 
 #. type: Plain text
 #: ../src/en/internals/017-tags.md
 msgid "Unlike regular classes, tags are used in view templates, so syntax is important.  It should be both easy to write, easy to read and not too verbose because similar constructs are meant to be used over and over again."
-msgstr ""
+msgstr "与常规类不同，标签用于视图模板，因此语法很重要。它应该既易于编写、易于阅读，又不过于冗长，因为类似的结构会被反复使用。"
 
 #. type: Title ##
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Class names"
-msgstr ""
+msgstr "类名"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md
 msgid "Tags aren't postfixed or prefixed unless it's an abstract base class."
-msgstr ""
+msgstr "标签不使用后缀或前缀，除非它是抽象基类。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md
 msgid "If the tag represents a specification, use a name used in the specification."
-msgstr ""
+msgstr "如果标签表示规范，请使用规范中使用的名称。"
 
 #. type: Title ##
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Inheritance"
-msgstr ""
+msgstr "继承"
 
 #. type: Plain text
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "Inheritance is allowed with some restrictions:"
-msgstr ""
+msgstr "允许继承，但有一些限制："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "If a class isn't abstract, it should be final."
-msgstr ""
+msgstr "如果类不是抽象的，它应该是 final 的。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "Hierarchy should be kept as linear as possible."
-msgstr ""
+msgstr "层次结构应尽可能保持线性。"
 
 #. type: Plain text
 #: ../src/en/internals/017-tags.md
 msgid "Tags should:"
-msgstr ""
+msgstr "标签应该："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "Have no state."
-msgstr ""
+msgstr "没有状态。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md
 msgid "Be immutable. Every method that modifies a setting returns a clone with the setting changed."
-msgstr ""
+msgstr "是不可变的。每个修改设置的方法都会返回一个设置已更改的克隆。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md
 msgid "Be free of side effects. Many calls of the same method with the same argument should give the same result."
-msgstr ""
+msgstr "没有副作用。使用相同参数多次调用同一方法应该给出相同的结果。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "Unlike other classes, methods that return a clone of the object with some properties modified aren't prefixed."
-msgstr ""
+msgstr "与其他类不同，返回修改了某些属性的对象克隆的方法不使用前缀。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "Keep method names as short as possible but don't hurt readability."
-msgstr ""
+msgstr "保持方法名称尽可能简短，但不要影响可读性。"
 
 #. type: Title ###
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Boolean flags"
-msgstr ""
+msgstr "布尔标志"
 
 #. type: Plain text
 #: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
 msgid "The method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument."
-msgstr ""
+msgstr "对应于布尔属性的方法应以该属性命名，并接受一个布尔标志参数。"

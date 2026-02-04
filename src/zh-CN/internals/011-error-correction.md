@@ -1,5 +1,3 @@
-# 011 — Error correction
+# 011 — 错误修正
 
-If it's unambiguous within a class what the developer who incorrectly used
-the class meant, it's OK to correct the error.  Otherwise, the error MUST
-NOT be corrected.
+如果在类中可以明确判断开发者错误使用该类的意图，则可以修正错误。否则，不得修正错误。

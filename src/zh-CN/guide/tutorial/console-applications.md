@@ -79,7 +79,7 @@ After it's done, the command could be executed as
 ```
 
 
-## References
+## 参考资料
 
 - [Symfony Console component
   guide](https://symfony.com/doc/current/components/console.html)

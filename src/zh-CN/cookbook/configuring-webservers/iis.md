@@ -1,10 +1,8 @@
-# Configuring web servers: IIS
+# 配置 Web 服务器：IIS
 
-When you use [IIS](https://www.iis.net/), host the application in a virtual
-host (Website) where the document root points to the `path/to/app/public`
-folder and configure the website to run PHP.  In that `public` folder, place
-a file named `web.config` at `path/to/app/public/web.config`.  Use the
-following content:
+当你使用 [IIS](https://www.iis.net/) 时，在虚拟主机（网站）中托管应用程序，其中文档根目录指向
+`path/to/app/public` 文件夹，并配置网站运行 PHP。在该 `public` 文件夹中，放置一个名为 `web.config`
+的文件，路径为 `path/to/app/public/web.config`。使用以下内容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,10 +27,9 @@ following content:
 </configuration>
 ```
 
-Also, the following list of Microsoft's official resources could be useful
-to configure PHP on IIS:
+此外，以下 Microsoft 官方资源列表可能对在 IIS 上配置 PHP 有所帮助：
 
-1. [How to set up your first IIS
-   website](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
-2. [Configure a PHP Website on
-   IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)
+1. [如何设置你的第一个 IIS
+   网站](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
+2. [在 IIS 上配置 PHP
+   网站](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)

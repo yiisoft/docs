@@ -887,12 +887,12 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Deploying Yii applications to Docker Swarm and Traefik"
-msgstr ""
+msgstr "将 Yii 应用部署到 Docker Swarm 和 Traefik"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "This guide walks you through deploying a Yii application to [Docker Swarm](https://docs.docker.com/engine/swarm/)  starting from a blank server, using [Traefik](https://traefik.io/traefik) as a reverse proxy and deploying from a container registry ([Forgejo](https://forgejo.org/) or [Gitea](https://about.gitea.com/))."
-msgstr ""
+msgstr "本指南将引导你从空白服务器开始，使用 [Traefik](https://traefik.io/traefik) 作为反向代理，从容器注册表（[Forgejo](https://forgejo.org/) 或 [Gitea](https://about.gitea.com/)）部署 Yii 应用程序到 [Docker Swarm](https://docs.docker.com/engine/swarm/)。"
 
 #. type: Fenced code block (mermaid)
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -914,12 +914,12 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Setting up Traefik as reverse proxy"
-msgstr ""
+msgstr "设置 Traefik 作为反向代理"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "To deploy Traefik as reverse proxy create a file `traefik-stack.yml`:"
-msgstr ""
+msgstr "要将 Traefik 部署为反向代理，请创建文件 `traefik-stack.yml`："
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -963,7 +963,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Deploy Traefik:"
-msgstr ""
+msgstr "部署 Traefik："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -1003,7 +1003,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "After deployment, access Forgejo at `https://git.example.com` and complete the initial setup.  Make sure to enable the container registry in the settings."
-msgstr ""
+msgstr "部署后，访问 `https://git.example.com` 上的 Forgejo 并完成初始设置。确保在设置中启用容器注册表。"
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -1037,7 +1037,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "When using Traefik, you'll need to modify the Yii application's `docker/prod/compose.yml` to use Traefik labels instead of Caddy labels:"
-msgstr ""
+msgstr "使用 Traefik 时，你需要修改 Yii 应用程序的 `docker/prod/compose.yml` 以使用 Traefik 标签而不是 Caddy 标签："
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -1085,14 +1085,14 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "If Traefik can't obtain certificates: - Verify DNS is pointing to your server - Check that ports 80 and 443 are accessible from the internet - Ensure the email in the Let's Encrypt configuration is valid - Check logs: `docker -H ssh://docker-web service logs traefik_traefik`"
-msgstr ""
+msgstr "如果 Traefik 无法获取证书：- 验证 DNS 是否指向服务器 - 检查端口 80 和 443 是否可从互联网访问 - 确保 Let's Encrypt 配置中的电子邮件有效 - 检查日志：`docker -H ssh://docker-web service logs traefik_traefik`"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "You've successfully deployed a Yii application to Docker Swarm with: - A container registry (Forgejo or Gitea)  - Automatic HTTPS via Traefik - Zero-downtime deployments with rolling updates - High availability with multiple replicas"
-msgstr ""
+msgstr "你已成功将 Yii 应用程序部署到 Docker Swarm，包括：- 容器注册表（Forgejo 或 Gitea）- 通过 Traefik 自动启用 HTTPS - 通过滚动更新实现零停机部署 - 通过多个副本实现高可用性"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "For more information, see: - [Yii Application Template](https://github.com/yiisoft/app)  - [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)  - [Traefik Documentation](https://doc.traefik.io/traefik/)"
-msgstr ""
+msgstr "有关更多信息，请参阅：- [Yii 应用程序模板](https://github.com/yiisoft/app) - [Docker Swarm 文档](https://docs.docker.com/engine/swarm/) - [Traefik 文档](https://doc.traefik.io/traefik/)"

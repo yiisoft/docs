@@ -1027,12 +1027,13 @@ export default {
             }
         },
         'zh-CN': {
+            title: 'Yii3 文档',
             label: '简体中文',
             lang: 'zh-CN',
             link: '/zh-CN/',
             themeConfig: {
                 nav: [
-                    {text: '指南', link: '/zh-CN/guide/'},
+                    {text: '权威指南', link: '/zh-CN/guide/'},
                     {text: '实用手册', link: '/zh-CN/cookbook/'},
                     {text: '内部文档', link: '/zh-CN/internals/'},
                     {text: '官网', link: 'https://www.yiiframework.com'}
@@ -1217,6 +1218,35 @@ export default {
                 footer: {
                     message: '基于 <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">BSD-3-Clause 许可证</a> 发布。',
                     copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
+                },
+                docFooter: {
+                    prev: '上一页',
+                    next: '下一页',
+                },
+                outline: {
+                    label: '本页内容'
+                },
+                lastUpdated: {
+                    text: '最后更新于'
+                },
+                search: {
+                    options: {
+                        translations: {
+                            button: {
+                                buttonText: '搜索',
+                                buttonAriaLabel: '搜索'
+                            },
+                            modal: {
+                                noResultsText: '无法找到相关结果',
+                                resetButtonTitle: '清除查询条件',
+                                footer: {
+                                    selectText: '选择',
+                                    navigateText: '切换',
+                                    closeText: '关闭'
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

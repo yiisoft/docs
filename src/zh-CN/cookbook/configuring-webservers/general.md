@@ -1,14 +1,13 @@
-# Configuring web servers: General
+# 配置 Web 服务器：通用
 
-On a production server, if you don't use Docker, configure your web server
-to serve only the application's public files.  Point the document root of
-your web server to the `app/public` folder.
+在生产服务器上，如果你不使用 Docker，请配置你的 Web 服务器仅提供应用程序的公共文件。将 Web 服务器的文档根目录指向
+`app/public` 文件夹。
 
 > [!IMPORTANT]
-> If you're running your Yii application behind a reverse proxy, you might need to configure
-> [Trusted proxies and headers](../../guide/security/trusted-request.md).
+> 如果你在反向代理后面运行 Yii 应用程序，可能需要配置
+> [受信任的代理和标头](../../guide/security/trusted-request.md)。
 
-## Specific server configurations
+## 特定服务器配置
 
 - [Nginx](nginx.md)
 - [Apache](apache.md)

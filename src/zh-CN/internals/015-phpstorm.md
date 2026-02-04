@@ -1,29 +1,25 @@
-# 015 — PhpStorm metadata and attributes
+# 015 — PhpStorm 元数据和属性
 
-## PhpStorm metadata
+## PhpStorm 元数据
 
 [PhpStorm
-metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html)
-helps the IDE to understand code better in cases when regular types and
-PHPDoc tags don't help.
+元数据](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) 帮助
+IDE 在常规类型和 PHPDoc 标签无法提供帮助的情况下更好地理解代码。
 
-We use the following set of coding styles for metadata.
+我们对元数据使用以下编码风格。
 
-### Metadata location
+### 元数据位置
 
-- Metadata should be placed in `/.phpstorm.meta.php` directory.
-- Configuration should be split into files. Each file should be named after
-  a class it configures.
+- 元数据应放置在 `/.phpstorm.meta.php` 目录中。
+- 配置应拆分为多个文件。每个文件应以其配置的类命名。
 
 > [!NOTE]
-> There is no support for subdirectories in PhpStorm yet.
+> PhpStorm 目前还不支持子目录。
 
-### Constants 
+### 常量
 
-All constant dictionaries should be named as `{Class FQN}::{Group
-name}`. Group name should be short and written in capital letters.  Use
-underscore as a word separator that's `\Yiisoft\Http\Status::STATUSES`. For
-example:
+所有常量字典应命名为 `{类完全限定名}::{组名}`。组名应简短并使用大写字母。使用下划线作为单词分隔符，例如
+`\Yiisoft\Http\Status::STATUSES`。示例：
 
 ```php
 expectedReturnValues(
@@ -43,22 +39,20 @@ registerArgumentsSet(
 );
 ```
 
-## PhpStorm attributes
+## PhpStorm 属性
 
-[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN
-be used in code, but package `jetbrains/phpstorm-attributes` MUST be added
-as a dev dependency:
+[PhpStorm 属性](https://github.com/JetBrains/phpstorm-attributes)
+可以在代码中使用，但必须将 `jetbrains/phpstorm-attributes` 包添加为开发依赖：
 
 ```shell
 composer require --dev jetbrains/phpstorm-attributes
 ```
 
-### Using with ComposerRequireChecker
+### 与 ComposerRequireChecker 一起使用
 
-When
+当在同一个包中也使用
 [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker)
-is also used within the same package, add involved attributes' class names
-to whitelist in config. For example:
+时，将涉及的属性类名添加到配置的白名单中。例如：
 
 ```json
 {

@@ -1,6 +1,6 @@
-# Configuring web servers: lighttpd
+# 配置 Web 服务器：lighttpd
 
-To use [lighttpd](https://www.lighttpd.net/) >= 1.4.24, put `index.php` in the web root and add the following to the configuration:
+要使用 [lighttpd](https://www.lighttpd.net/) >= 1.4.24，将 `index.php` 放在 Web 根目录中，并将以下内容添加到配置中：
 
 ```
 url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")

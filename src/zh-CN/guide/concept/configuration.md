@@ -1,4 +1,4 @@
-# Configuration
+# 配置
 
 There are many ways to configure your application. We will focus on concepts
 used in the [default project template](https://github.com/yiisoft/app).
@@ -114,7 +114,7 @@ providers-web.php
 routes.php
 ```
 
-### Container configuration
+### 容器配置
 
 The application consists of a set of services registered in a [dependency
 container](di-container.md). The config files that responsible for direct
@@ -245,7 +245,7 @@ return [
 
 Read more about it in ["Routes"](../runtime/routing.md).
 
-### Events
+### 事件
 
 Many services emit certain events that you can attach to.  You could do that
 via three config files: `events-web.php` for web application events,
@@ -285,7 +285,7 @@ return [
 Read more about it in ["Events"](events.md).
 
 
-### Parameters
+### 参数
 
 Parameters, `config/params.php` store configuration values that are used in
 other config files to configuring services and service providers.

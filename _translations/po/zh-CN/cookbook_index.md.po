@@ -19,64 +19,64 @@ msgstr ""
 #: ../src/cookbook/index.md
 #, no-wrap
 msgid "Yii3 community cookbook"
-msgstr ""
+msgstr "Yii3 社区手册"
 
 #. type: Plain text
 #: ../src/cookbook/index.md
 msgid "Yii3 Community Cookbook is an OpenSource book full of tips and tricks about the [Yii3](https://www.yiiframework.com/)  PHP framework."
-msgstr ""
+msgstr "Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiiframework.com/) PHP 框架的技巧和窍门。"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "The Yii community creates the cookbook."
-msgstr ""
+msgstr "Yii 社区创建了这本手册。"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "Yii core team members curate and edit it."
-msgstr ""
+msgstr "Yii 核心团队成员负责策划和编辑。"
 
 #. type: Plain text
 #: ../src/cookbook/index.md
 msgid "Feel free to pull-request your own writings. Team members will review it, give feedback and merge the best possible way."
-msgstr ""
+msgstr "欢迎提交你自己的文章。团队成员将审查它，提供反馈并以最佳方式合并。"
 
 #. type: Plain text
 #: ../src/cookbook/index.md
 msgid "This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
-msgstr ""
+msgstr "本书遵循 [Yii 文档条款](https://www.yiiframework.com/license#docs)。"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Preface](preface.md)"
-msgstr ""
+msgstr "[前言](preface.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
-msgstr ""
+msgstr "[使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Making HTTP requests](making-http-requests.md)"
-msgstr ""
+msgstr "[发起 HTTP 请求](making-http-requests.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Disabling CSRF protection](disabling-csrf-protection.md)"
-msgstr ""
+msgstr "[禁用 CSRF 保护](disabling-csrf-protection.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Sentry integration](sentry-integration.md)"
-msgstr ""
+msgstr "[Sentry 集成](sentry-integration.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
-msgstr ""
+msgstr "[配置 Web 服务器](configuring-webservers/general.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
-msgstr ""
+msgstr "[部署到 Docker Swarm](deployment/docker-swarm.md)"

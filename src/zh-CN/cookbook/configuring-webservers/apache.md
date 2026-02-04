@@ -1,55 +1,52 @@
-# Configuring web servers: Apache
+# 配置 Web 服务器：Apache
 
-Use the following configuration in Apache's `httpd.conf` file or within a
-virtual host configuration. Note that you should replace
-`path/to/app/public` with the actual path for `app/public`.
+在 Apache 的 `httpd.conf` 文件或虚拟主机配置中使用以下配置。注意，你应该将 `path/to/app/public` 替换为
+`app/public` 的实际路径。
 
 ```apache
-# Set document root to be "app/public"
+# 将文档根目录设置为 "app/public"
 DocumentRoot "path/to/app/public"
 
 <Directory "path/to/app/public">
-    # use mod_rewrite for pretty URL support
+    # 使用 mod_rewrite 支持美化 URL
     RewriteEngine on
     
-    # if $showScriptName is false in UrlManager, do not allow accessing URLs with script name
+    # 如果 UrlManager 中的 $showScriptName 为 false，则不允许访问带脚本名称的 URL
     RewriteRule ^index.php/ - [L,R=404]
     
-    # If a directory or a file exists, use the request directly
+    # 如果目录或文件存在，直接使用请求
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     
-    # Otherwise forward the request to index.php
+    # 否则将请求转发到 index.php
     RewriteRule . index.php
     
     SetEnv APP_ENV dev
 
-    # ...other settings...
+    # ...其他设置...
 </Directory>
 ```
 
-In case you have `AllowOverride All` you can add `.htaccess` file with the
-following configuration instead of using `httpd.conf`:
+如果你设置了 `AllowOverride All`，可以添加包含以下配置的 `.htaccess` 文件，而不是使用 `httpd.conf`：
 
 ```apache
-# use mod_rewrite for pretty URL support
+# 使用 mod_rewrite 支持美化 URL
 RewriteEngine on
 
-# if $showScriptName is false in UrlManager, do not allow accessing URLs with script name
+# 如果 UrlManager 中的 $showScriptName 为 false，则不允许访问带脚本名称的 URL
 RewriteRule ^index.php/ - [L,R=404]
 
-# If a directory or a file exists, use the request directly
+# 如果目录或文件存在，直接使用请求
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Otherwise forward the request to index.php
+# 否则将请求转发到 index.php
 RewriteRule . index.php
 
 SetEnv APP_ENV dev
 
-# ...other settings...
+# ...其他设置...
 ```
 
-In the above, note the usage of `SetEnv`. Since the Yii3 application
-template is using environment variables, this is a possible place to set
-them. In production environment remember to set `APP_ENV` to `prod`.
+在上面的配置中，请注意 `SetEnv` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将
+`APP_ENV` 设置为 `prod`。

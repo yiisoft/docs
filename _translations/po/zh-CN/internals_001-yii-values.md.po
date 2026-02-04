@@ -19,224 +19,224 @@ msgstr ""
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "001 — Yii goal and values"
-msgstr ""
+msgstr "001 — Yii 目标和价值观"
 
 #. type: Title ##
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Goal"
-msgstr ""
+msgstr "目标"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "The Yii project aims to build and support _practical_ and _helpful_ tools and community."
-msgstr ""
+msgstr "Yii 项目旨在构建和支持 _practical_ 和 _helpful_ 的工具和社区。"
 
 #. type: Title ##
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Values"
-msgstr ""
+msgstr "价值观"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "The values we express in our work support the goal. We try to"
-msgstr ""
+msgstr "我们在工作中表达的价值观支持这一目标。我们努力"
 
 #. type: Title ##
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be practical"
-msgstr ""
+msgstr "实用"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[High performance](#high-performance)"
-msgstr ""
+msgstr "[高性能](#high-performance)"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[Sensible defaults and flexibility](#sensible-defaults-and-flexibility)"
-msgstr ""
+msgstr "[合理的默认值和灵活性](#sensible-defaults-and-flexibility)"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[Be practice-oriented](#be-practice-oriented)"
-msgstr ""
+msgstr "[以实践为导向](#be-practice-oriented)"
 
 #. type: Title ##
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be helpful"
-msgstr ""
+msgstr "有帮助"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[Be simple](#be-simple)"
-msgstr ""
+msgstr "[保持简单](#be-simple)"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[Be explicit](#be-explicit)"
-msgstr ""
+msgstr "[明确表达](#be-explicit)"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/001-yii-values.md
 msgid "[Be consistent](#be-consistent)"
-msgstr ""
+msgstr "[保持一致](#be-consistent)"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "High performance"
-msgstr ""
+msgstr "高性能"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "Performance is a necessary condition of practicality. Software shouldn't waste machine resources or human resources."
-msgstr ""
+msgstr "性能是实用性的必要条件。软件不应浪费机器资源或人力资源。"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Sensible defaults and flexibility"
-msgstr ""
+msgstr "合理的默认值和灵活性"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "We prefer sensible defaults and conventions that users can customize.  We seek a balance between flexibility, discipline and simplicity that meets common needs."
-msgstr ""
+msgstr "我们更喜欢用户可以自定义的合理默认值和约定。我们寻求灵活性、纪律性和简单性之间的平衡，以满足常见需求。"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be practice-oriented"
-msgstr ""
+msgstr "以实践为导向"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "We prefer practice to theory. For example:"
-msgstr ""
+msgstr "我们更喜欢实践而不是理论。例如："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Solutions for known use cases should avoid excess complexity by providing only necessary flexibility."
-msgstr ""
+msgstr "已知用例的解决方案应通过仅提供必要的灵活性来避免过度复杂性。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Standard implementations should take practical use into account."
-msgstr ""
+msgstr "标准实现应考虑实际使用。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Experience is at least as useful as theory in guiding design."
-msgstr ""
+msgstr "在指导设计方面，经验至少与理论一样有用。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Context is critical in determining appropriateness."
-msgstr ""
+msgstr "上下文对于确定适当性至关重要。"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "This value guides technical decisions as well as community activity.  Consideration of how software features help users should guide development.  Community-wise, we value any helpful contribution, be it a pull request or an answer in the forum."
-msgstr ""
+msgstr "这一价值观指导技术决策和社区活动。对软件功能如何帮助用户的考虑应该指导开发。在社区方面，我们重视任何有帮助的贡献，无论是 pull request 还是论坛中的回答。"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "When the other principles conflict, we choose a solution that's more helpful to the community."
-msgstr ""
+msgstr "当其他原则发生冲突时，我们选择对社区更有帮助的解决方案。"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be simple"
-msgstr ""
+msgstr "保持简单"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "Solutions should be simple and expressive:"
-msgstr ""
+msgstr "解决方案应该简单且富有表现力："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "We use as much complexity as needed and no more."
-msgstr ""
+msgstr "我们使用所需的复杂性，不多不少。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "We avoid ugly solutions unless there is no alternative."
-msgstr ""
+msgstr "除非别无选择，否则我们避免丑陋的解决方案。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Fewer rules are better than more rules."
-msgstr ""
+msgstr "规则越少越好。"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be Explicit"
-msgstr ""
+msgstr "明确表达"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "We prefer explicit, obvious solutions and code. Solutions should clearly express exactly what they do. For example:"
-msgstr ""
+msgstr "我们更喜欢明确、显而易见的解决方案和代码。解决方案应该清楚地表达它们的确切作用。例如："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "A straightforward solution is better than an abstract one unless the abstraction has a practical purpose."
-msgstr ""
+msgstr "除非抽象有实际目的，否则直接的解决方案比抽象的解决方案更好。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Loud fails are better than silent fails or masking errors."
-msgstr ""
+msgstr "明确的失败比静默失败或掩盖错误更好。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Explicit casts are better than PHP type juggling, type hints are good."
-msgstr ""
+msgstr "显式转换比 PHP 类型转换更好，类型提示很好。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "No magic unless necessary."
-msgstr ""
+msgstr "除非必要，否则不要使用魔术。"
 
 #. type: Title ###
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be consistent"
-msgstr ""
+msgstr "保持一致"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
 msgid "We try to be consistent in:"
-msgstr ""
+msgstr "我们努力在以下方面保持一致："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Code style"
-msgstr ""
+msgstr "代码风格"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Naming"
-msgstr ""
+msgstr "命名"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Design"
-msgstr ""
+msgstr "设计"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Structure"
-msgstr ""
+msgstr "结构"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/001-yii-values.md
 msgid "Values and goals"
-msgstr ""
+msgstr "价值观和目标"

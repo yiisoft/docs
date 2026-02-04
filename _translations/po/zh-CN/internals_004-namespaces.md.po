@@ -25,43 +25,43 @@ msgstr ""
 #: ../src/en/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "参考资料"
 
 #. type: Title #
 #: ../src/en/internals/004-namespaces.md
 #, no-wrap
 msgid "004 — Namespaces"
-msgstr ""
+msgstr "004 — 命名空间"
 
 #. type: Plain text
 #: ../src/en/internals/004-namespaces.md
 msgid "Package namespace rules are the following:"
-msgstr ""
+msgstr "包命名空间规则如下："
 
 #. type: Bullet: '1. '
 #: ../src/en/internals/004-namespaces.md
 msgid "PascalCase is used for namespace parts."
-msgstr ""
+msgstr "命名空间部分使用 PascalCase（帕斯卡命名法）。"
 
 #. type: Bullet: '2. '
 #: ../src/en/internals/004-namespaces.md
 msgid "Root vendor namespace is `Yiisoft`."
-msgstr ""
+msgstr "根供应商命名空间是 `Yiisoft`。"
 
 #. type: Bullet: '3. '
 #: ../src/en/internals/004-namespaces.md
 msgid "Package name parts are used in namespace."
-msgstr ""
+msgstr "包名称部分用于命名空间。"
 
 #. type: Bullet: '4. '
 #: ../src/en/internals/004-namespaces.md
 msgid "Adjective is added to a noun and is a single part."
-msgstr ""
+msgstr "形容词添加到名词后，作为单个部分。"
 
 #. type: Plain text
 #: ../src/en/internals/004-namespaces.md
 msgid "Some examples:"
-msgstr ""
+msgstr "一些示例："
 
 #. type: Plain text
 #: ../src/en/internals/004-namespaces.md
@@ -78,4 +78,4 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/en/internals/004-namespaces.md
 msgid "[International forum discussion](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)"
-msgstr ""
+msgstr "[国际论坛讨论](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)"

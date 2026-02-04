@@ -1,42 +1,38 @@
-# 000 — Packages
+# 000 — 包
 
-Yii3 team divided the framework into several packages that conform to the
-following agreements.
+Yii3 团队将框架划分为几个符合以下约定的包。
 
-For all packages, the GitHub repository name exactly matches the Packagist
-package name.
+对于所有包，GitHub 仓库名称与 Packagist 包名称完全匹配。
 
-For a full list of packages and their building status, see [status page at
-yiiframework.com](https://www.yiiframework.com/status/3.0).
+有关包及其构建状态的完整列表，请参阅 [yiiframework.com
+的状态页面](https://www.yiiframework.com/status/3.0)。
 
-## Yii-specific packages (framework and extensions)
+## Yii 特定包（框架和扩展）
     
-- named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:
-    - modules: `yii-module-users`, `yii-module-pages`
-    - themes: `yii-theme-adminlte`, `yii-theme-hyde`
-    - widgets: `yii-widget-datepicker`
+- 命名为 `yiisoft/yii-something` 或更具体的：`yii-type-something`，例如：
+    - 模块：`yii-module-users`，`yii-module-pages`
+    - 主题：`yii-theme-adminlte`，`yii-theme-hyde`
+    - 小部件：`yii-widget-datepicker`
     - ...
-- titled as "Yii Framework ..."
-- may have any dependencies and Yii-specific code
+- 标题为“Yii Framework ...”
+- 可以有任何依赖项和 Yii 特定代码
 
-## General purpose packages (libraries)
+## 通用包（库）
   
-- you can use these independently of Yii Framework
-- named as `yiisoft/something` without yii-prefix
-- titled as "Yii ..."
-- must not have dependencies on any Yii-specific packages
-- should have as fewer dependencies as possible
+- 您可以独立于 Yii 框架使用这些
+- 命名为 `yiisoft/something`，不带 yii 前缀
+- 标题为“Yii ...”
+- 不得依赖任何 Yii 特定包
+- 应尽可能少的依赖项
 
-## Configs and defaults
+## 配置和默认值
 
-The following applies to both Yii-specific packages and general purpose
-packages:
+以下适用于 Yii 特定包和通用包：
 
-- Package may have `config` directory with Yii-specific defaults.
-- Package may have "config-plugin" in "extra" section of `composer.json`.
-- Package mustn't have dependencies in `require` section of `composer.json`
-  that are used in `config` only.
-- You should namespace parameters with `vendor/package-name`:
+- 包可以有包含 Yii 特定默认值的 `config` 目录。
+- 包可以在 `composer.json` 的“extra”部分中有“config-plugin”。
+- 包不得在 `composer.json` 的 `require` 部分中有仅在 `config` 中使用的依赖项。
+- 您应该使用 `vendor/package-name` 命名空间参数：
 
 ```php
 return [
@@ -47,38 +43,29 @@ return [
 ];
 ```
   
-## Versions
+## 版本
 
-All packages follow [SemVer](https://semver.org/) versioning:
+所有包都遵循 [SemVer](https://semver.org/) 版本控制：
 
-- `x.*.*` - incompatible API changes.
-- `*.x.*` - add functionality (backwards-compatible).
-- `*.*.x` - bug fixes (backwards-compatible).
+- `x.*.*` - 不兼容的 API 更改。
+- `*.x.*` - 添加功能（向后兼容）。
+- `*.*.x` - bug 修复（向后兼容）。
 
-The first stable version should be 1.0.0.
+第一个稳定版本应该是 1.0.0。
 
-Each package version number doesn't depend on any other package version or
-framework name/version, only on its own public contract.  The framework as a
-whole has the "Yii3" name.
+每个包的版本号不依赖于任何其他包的版本或框架名称/版本，仅依赖于其自己的公共契约。整个框架的名称为 "Yii3"。
 
-It's alright to use packages with different major versions together, as long
-as they're compatible.
+只要兼容，一起使用不同主版本的包是可以的。
 
-## PHP versions support
+## PHP 版本支持
 
-The support of PHP versions supported for a package depends on [PHP versions
-life cycle](https://www.php.net/supported-versions.php).
+包支持的 PHP 版本取决于 [PHP 版本生命周期](https://www.php.net/supported-versions.php)。
 
-- Package versions with active support MUST support all PHP versions that
-  have active support.
-- Both packages and application templates MUST have supported versions that
-  receive bug and security fixes.  These SHOULD correspond to PHP versions
-  receiving security fixes.
-- Packages and application templates MIGHT have supported versions that work
-  with unsupported PHP versions.
-- Bumping the minimal PHP version in a package or an application template is
-  a minor change.
+- 具有活跃支持的包版本必须支持所有具有活跃支持的 PHP 版本。
+- 包和应用程序模板都必须有接收 bug 和安全修复的受支持版本。这些应该对应于接收安全修复的 PHP 版本。
+- 包和应用程序模板可能有与不受支持的 PHP 版本一起工作的受支持版本。
+- 提升包或应用程序模板中的最低 PHP 版本是一个次要更改。
 
 ## composer.json
 
-A logical OR operator in version ranges MUST use double pipe (`||`). For example: `"yiisoft/arrays": "^1.0 || ^2.0"`.   
+版本范围中的逻辑 OR 运算符必须使用双管道（`||`）。例如：`"yiisoft/arrays": "^1.0 || ^2.0"`。

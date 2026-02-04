@@ -8,7 +8,7 @@ worker may handle multiple requests.  Such an operation mode is often called
 [event loop](using-with-event-loop.md) and allows not re-initializing a
 framework for each request that improves performance significantly.
 
-## Installation
+## 安装
 
 Swoole works on Linux and macOS and can be installed via pecl:
 

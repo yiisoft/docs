@@ -19,425 +19,425 @@ msgstr ""
 #: ../src/index.md ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 #. type: Title ##
 #: ../src/cookbook/sentry-integration.md ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Console"
-msgstr ""
+msgstr "控制台"
 
 #. type: Title #
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "003 — Roadmap"
-msgstr ""
+msgstr "003 — 路线图"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "We want Yii 3 to:"
-msgstr ""
+msgstr "我们希望 Yii 3："
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "Not limit a developer to choosing architecture. Allow anything from \"classic\" MVC to DDD."
-msgstr ""
+msgstr "不限制开发者选择架构。允许从“经典”MVC 到 DDD 的任何架构。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "Be based on the best practices such as SOLID, GRASP, etc. and teach them to the community."
-msgstr ""
+msgstr "基于 SOLID、GRASP 等最佳实践，并将它们教给社区。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "Keep the most good things from Yii 2."
-msgstr ""
+msgstr "保留 Yii 2 中最好的东西。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "Be more open to the global PHP community and infrastructure."
-msgstr ""
+msgstr "对全球 PHP 社区和基础设施更加开放。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSRs compliance"
-msgstr ""
+msgstr "PSR 合规性"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "PSR compliance helps with customizability, the ability to use general PHP libraries and implement fewer wrappers.  Here's the list of PSRs we want to implement."
-msgstr ""
+msgstr "PSR 合规性有助于可定制性、使用通用 PHP 库的能力以及实现更少的包装器。以下是我们想要实现的 PSR 列表。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-3 Logger"
-msgstr ""
+msgstr "PSR-3 日志记录器"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/log)."
-msgstr ""
+msgstr "实现为 [不依赖于框架的独立包](https://github.com/yiisoft/log)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages should depend on interface only."
-msgstr ""
+msgstr "[x] 框架包应仅依赖于接口。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Split drivers into packages."
-msgstr ""
+msgstr "[x] 将驱动程序拆分为包。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Clean-up code."
-msgstr ""
+msgstr "[x] 清理代码。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Fix email target](https://github.com/yiisoft/log-target-email)."
-msgstr ""
+msgstr "[x] [修复电子邮件目标](https://github.com/yiisoft/log-target-email)。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-4 Autoloading"
-msgstr ""
+msgstr "PSR-4 自动加载"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Autoloading is fine already."
-msgstr ""
+msgstr "[x] 自动加载已经很好了。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Document on how it works."
-msgstr ""
+msgstr "[x] 记录它的工作原理。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-7 HTTP message"
-msgstr ""
+msgstr "PSR-7 HTTP 消息"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Remove our own implementation. At least for now."
-msgstr ""
+msgstr "[x] 删除我们自己的实现。至少目前如此。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages should depend on interfaces only."
-msgstr ""
+msgstr "[x] 框架包应仅依赖于接口。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-11 Container"
-msgstr ""
+msgstr "PSR-11 容器"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/di)."
-msgstr ""
+msgstr "实现为 [不依赖于框架的独立包](https://github.com/yiisoft/di)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Framework packages shouldn't use container directly. One should be able to instantiate everything manually."
-msgstr ""
+msgstr "[x] 框架包不应直接使用容器。应该能够手动实例化所有内容。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Finish refactoring."
-msgstr ""
+msgstr "[x] 完成重构。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Remove all framework-specific implementations from the package. Move to a framework."
-msgstr ""
+msgstr "[x] 从包中删除所有框架特定的实现。移至框架。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Implement autoloader fallback](https://github.com/yiisoft/di/issues/88)"
-msgstr ""
+msgstr "[x] [实现自动加载器回退](https://github.com/yiisoft/di/issues/88)"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-12 Code style"
-msgstr ""
+msgstr "PSR-12 代码风格"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make sure the code follows it."
-msgstr ""
+msgstr "[x] 确保代码遵循它。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Automate fixing style before release."
-msgstr ""
+msgstr "[x] 在发布前自动修复风格。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-14 Event dispatcher"
-msgstr ""
+msgstr "PSR-14 事件调度器"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Implement as a separate library](https://github.com/yiisoft/event-dispatcher)."
-msgstr ""
+msgstr "[x] [实现为独立库](https://github.com/yiisoft/event-dispatcher)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Use in other packages."
-msgstr ""
+msgstr "[x] 在其他包中使用。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Polish."
-msgstr ""
+msgstr "[x] 完善。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-15 HTTP handlers"
-msgstr ""
+msgstr "PSR-15 HTTP 处理器"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Rewrite HTTP flow to PSR-7 request-response + formatting response via emitter."
-msgstr ""
+msgstr "[x] 将 HTTP 流程重写为 PSR-7 请求-响应 + 通过 Emitter 进行格式化响应。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Offer SAPI emitter out of the box."
-msgstr ""
+msgstr "[x] 开箱即用地提供 SAPI Emitter。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make it possible to use alternative emitters such as RoadRunner."
-msgstr ""
+msgstr "[x] 支持使用 RoadRunner 等替代的 Emitter 实现。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Support middleware."
-msgstr ""
+msgstr "[x] 支持中间件。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Implement filters as middleware:"
-msgstr ""
+msgstr "[x] 将过滤器实现为中间件："
 
 #. type: Bullet: '  - '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)"
-msgstr ""
+msgstr "[x] [速率限制](https://github.com/yiisoft/yii-web/issues/63)"
 
 #. type: Bullet: '  - '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Authentication](https://github.com/yiisoft/yii-web/issues/114)"
-msgstr ""
+msgstr "[x] [身份验证](https://github.com/yiisoft/yii-web/issues/114)"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Re-implement router w/ middleware support for route groups."
-msgstr ""
+msgstr "[x] 重新实现路由器，支持路由组的中间件。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Filters should be middlewares."
-msgstr ""
+msgstr "[x] 过滤器应该是中间件。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-16 Simple cache"
-msgstr ""
+msgstr "PSR-16 简单缓存"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/cache)."
-msgstr ""
+msgstr "实现为 [不依赖于框架的独立包](https://github.com/yiisoft/cache)。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-17 HTTP factories"
-msgstr ""
+msgstr "PSR-17 HTTP 工厂"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Use PSR factories."
-msgstr ""
+msgstr "[x] 使用 PSR 工厂。"
 
 #. type: Title ###
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "PSR-18 HTTP client"
-msgstr ""
+msgstr "PSR-18 HTTP 客户端"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Stricter types"
-msgstr ""
+msgstr "更严格的类型"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make sure type hinting is used everywhere."
-msgstr ""
+msgstr "[x] 确保在所有地方都使用类型提示。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make sure types are as definitive as possible. Avoid varying types if possible."
-msgstr ""
+msgstr "[x] 确保类型尽可能明确。尽可能避免变化的类型。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Single application template"
-msgstr ""
+msgstr "单一应用程序模板"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Drop basic/advanced."
-msgstr ""
+msgstr "[x] 放弃 basic/advanced。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Create a [single application template that works out of the box](https://github.com/yiisoft/app)."
-msgstr ""
+msgstr "[x] 创建一个 [开箱即用的单一应用程序模板](https://github.com/yiisoft/app)。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Router"
-msgstr ""
+msgstr "路由器"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "Implemented as a [separate package that isn't dependent on a framework](https://github.com/yiisoft/router)."
-msgstr ""
+msgstr "实现为 [不依赖于框架的独立包](https://github.com/yiisoft/router)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] DSL for configuration."
-msgstr ""
+msgstr "[x] 用于配置的 DSL。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Ability to route to any callable."
-msgstr ""
+msgstr "[x] 能够路由到任何可调用对象。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Named routes."
-msgstr ""
+msgstr "[x] 命名路由。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Route groups w/ middleware support."
-msgstr ""
+msgstr "[x] 支持中间件的路由组。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Best practices and SOLID compliance of all classes/packages"
-msgstr ""
+msgstr "所有类/包的最佳实践和 SOLID 合规性"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make sure interfaces follow the \"interface segregation\" principle."
-msgstr ""
+msgstr "[x] 确保接口遵循“接口隔离”原则。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Don't use public properties."
-msgstr ""
+msgstr "[x] 不要使用公共属性。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Don't use `init()`."
-msgstr ""
+msgstr "[x] 不要使用 `init()`。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Don't inherit from `BaseObject` or `Component`. Remove these."
-msgstr ""
+msgstr "[x] 不要从 `BaseObject` 或 `Component` 继承。删除这些。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] No globals."
-msgstr ""
+msgstr "[x] 没有全局变量。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] No static calls except helpers that are final."
-msgstr ""
+msgstr "[x] 除了 final 的辅助函数外，没有静态调用。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Prefer throwing exceptions to fixing input."
-msgstr ""
+msgstr "[x] 优先抛出异常而不是修复输入。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Development toolkit"
-msgstr ""
+msgstr "开发工具包"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Release command line tool"
-msgstr ""
+msgstr "[x] 发布命令行工具"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Development command line tool (symlinks packages into usable application)"
-msgstr ""
+msgstr "[x] 开发命令行工具（将包符号链接到可用的应用程序）"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Separate web and console application"
-msgstr ""
+msgstr "[x] 分离 web 和控制台应用程序"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Possibly eliminate base application (still needed)"
-msgstr ""
+msgstr "[x] 可能消除基础应用程序（仍然需要）"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Create an interface for the console (using Symfony one)"
-msgstr ""
+msgstr "[x] 为控制台创建接口（使用 Symfony 的）"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Implementation may be one of the popular ones (using Symfony one)"
-msgstr ""
+msgstr "[x] 实现可能是流行的之一（使用 Symfony 的）"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Ensure application can add commands via config"
-msgstr ""
+msgstr "[x] 确保应用程序可以通过配置添加命令"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[ ] Follow best practices."
-msgstr ""
+msgstr "[ ] 遵循最佳实践。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[ ] Don't use the \"MVC\" term."
-msgstr ""
+msgstr "[ ] 不要使用“MVC”术语。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[ ] Upgrading from Yii 2."
-msgstr ""
+msgstr "[ ] 从 Yii 2 升级。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
@@ -448,101 +448,101 @@ msgstr ""
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "RBAC is implemented as [a framework-independent package](https://github.com/yiisoft/rbac)."
-msgstr ""
+msgstr "RBAC 实现为 [独立于框架的包](https://github.com/yiisoft/rbac)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make sure it follows best practices."
-msgstr ""
+msgstr "[x] 确保它遵循最佳实践。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "View"
-msgstr ""
+msgstr "视图"
 
 #. type: Plain text
 #: ../src/internals/003-roadmap.md
 msgid "View is implemented as [framework-independent package](https://github.com/yiisoft/view)."
-msgstr ""
+msgstr "视图实现为 [独立于框架的包](https://github.com/yiisoft/view)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Finish refactoring ([see issues](https://github.com/yiisoft/view/issues))."
-msgstr ""
+msgstr "[x] 完成重构（[查看 issue](https://github.com/yiisoft/view/issues)）。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port widgets."
-msgstr ""
+msgstr "[x] 移植小部件。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Rethink and implement active form widgets."
-msgstr ""
+msgstr "[x] 重新思考并实现活动表单小部件。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Implement caching widgets."
-msgstr ""
+msgstr "[x] 实现缓存小部件。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Data abstractions and grid"
-msgstr ""
+msgstr "数据抽象和网格"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Finish [data abstractions](https://github.com/yiisoft/data)."
-msgstr ""
+msgstr "[x] 完成 [数据抽象](https://github.com/yiisoft/data)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port sort, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
-msgstr ""
+msgstr "[x] 移植排序，使用数据抽象。应该是 [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port paging, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
-msgstr ""
+msgstr "[x] 移植分页，使用数据抽象。应该是 [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port grid, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
-msgstr ""
+msgstr "[x] 移植网格，使用数据抽象。应该是 [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port list, use data abstractions. Should be part of [yii-dataview](https://github.com/yiisoft/yii-dataview)."
-msgstr ""
+msgstr "[x] 移植列表，使用数据抽象。应该是 [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Validators"
-msgstr ""
+msgstr "验证器"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Finish [the main package](https://github.com/yiisoft/validator) redesign"
-msgstr ""
+msgstr "[x] 完成 [主包](https://github.com/yiisoft/validator) 重新设计"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port necessary validators"
-msgstr ""
+msgstr "[x] 移植必要的验证器"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Debug toolbar"
-msgstr ""
+msgstr "调试工具栏"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port debug toolbar."
-msgstr ""
+msgstr "[x] 移植调试工具栏。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
@@ -553,46 +553,46 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Port Gii."
-msgstr ""
+msgstr "[x] 移植 Gii。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Infrastructure"
-msgstr ""
+msgstr "基础设施"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Cover [config](https://github.com/yiisoft/config) with tests."
-msgstr ""
+msgstr "[x] 为 [config](https://github.com/yiisoft/config) 编写测试。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Release stable [config](https://github.com/yiisoft/config)."
-msgstr ""
+msgstr "[x] 发布稳定的 [config](https://github.com/yiisoft/config)。"
 
 #. type: Title ##
 #: ../src/internals/003-roadmap.md ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Others"
-msgstr ""
+msgstr "其他"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Decide on namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52)."
-msgstr ""
+msgstr "[x] [决定命名空间](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Clean up error handler](https://github.com/yiisoft/yii2/issues/14348). Make sure the error handler catches fatals and is using response."
-msgstr ""
+msgstr "[x] [清理错误处理器](https://github.com/yiisoft/yii2/issues/14348)。确保错误处理器捕获致命错误并使用响应。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] Make validators independent of models to allow reusing them in handlers."
-msgstr ""
+msgstr "[x] 使验证器独立于模型，以允许在处理器中重用它们。"
 
 #. type: Bullet: '- '
 #: ../src/internals/003-roadmap.md
 msgid "[x] [Split IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)."
-msgstr ""
+msgstr "[x] [拆分 IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)。"

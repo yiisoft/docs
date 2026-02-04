@@ -6,7 +6,7 @@ resources. Yii3 provides a comprehensive asset management system through the
 `yiisoft/assets` package that handles dependencies, optimization, and
 deployment of these resources.
 
-## Installation
+## 安装
 
 The asset management functionality is provided by the `yiisoft/assets`
 package:
@@ -635,7 +635,7 @@ final class MobileAsset extends AssetBundle
 7. **Minimize HTTP requests**: Combine related assets when possible
 8. **Optimize file sizes**: Compress and minify assets for production
 
-## Troubleshooting
+## 故障排除
 
 ### Common Issues
 

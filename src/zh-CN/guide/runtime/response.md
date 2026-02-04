@@ -76,7 +76,7 @@ And, if needed, headers could be removed:
 $response = $response->withoutHeader('Set-Cookie');
 ```
 
-## Body
+## 正文
 
 Response body is an object implementing `Psr\Http\Message\StreamInterface`.
 

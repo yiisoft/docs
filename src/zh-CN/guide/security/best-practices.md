@@ -265,7 +265,7 @@ Instead, PHP should be configured properly:
 
 Note that you should keep the file up to date.
 
-## References
+## 参考资料
 
 - [OWASP top 10](https://owasp.org/Top10/)
 - [The Basics of Web Application

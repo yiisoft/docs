@@ -1,89 +1,65 @@
-# 009 — Design Decisions
+# 009 — 设计决策
 
-In this document, we list important design decisions taken during Yii3
-development.
+在本文档中，我们列出了 Yii3 开发过程中做出的重要设计决策。
 
-## Remove magic properties
+## 移除魔术属性
 
-Magic properties in Yii 2 were an interesting idea that allowed a developer
-to start with public property and then seamlessly migrate to using
-getter/setter called via magic methods without changing the code.
+Yii 2 中的魔术属性是一个有趣的想法，它允许开发者从公共属性开始，然后无缝迁移到通过魔术方法调用的 getter/setter，而无需更改代码。
 
-The main reason for removal in Yii 3 is that it resulted in using public
-properties everywhere, thus lack of encapsulation and code fragility.
+在 Yii 3 中移除它的主要原因是它导致到处使用公共属性，从而缺乏封装性和代码脆弱性。
 
-## Remove the service locator
+## 移除服务定位器
 
-Service locator both Yii 1 and Yii 2 was convenient but was also abused a
-lot.  Although a dependency injection container was available in Yii 2,
-service locator was generally preferred to cause both a dependency on the
-service locator itself, high coupling, hard to test code.
+Yii 1 和 Yii 2 中的服务定位器很方便，但也被大量滥用。尽管 Yii 2
+中提供了依赖注入容器，但服务定位器通常更受欢迎，这导致了对服务定位器本身的依赖、高耦合和难以测试的代码。
 
-Yii 3 relies on dependency injection only lowering coupling significantly
-and making code way more testable.
+Yii 3 仅依赖依赖注入，显著降低了耦合度，使代码更易于测试。
 
-## Extract general packages
+## 提取通用包
 
-Yii 1 and Yii 2 were fully closed communities. All the code we had wasn't
-useful outside Yii, and most of the "external" code wasn't useful in Yii
-without wrappers. It was noted many times by communities external to Yii
-that many parts of Yii are well-designed and unique, and they'd use these if
-these were available as standalone packages.
+Yii 1 和 Yii 2 是完全封闭的社区。我们拥有的所有代码在 Yii 之外都没有用处，而大多数“外部”代码在没有包装器的情况下在 Yii
+中也没有用处。Yii 外部的社区多次指出，Yii 的许多部分设计良好且独特，如果这些部分作为独立包提供，他们会使用它们。
 
-As part of Yii 3 packages such as cache, RBAC, view, etc. were extracted
-into framework-independent packages. Benefits are:
+作为 Yii 3 的一部分，缓存、RBAC、视图等包被提取为独立于框架的包。好处是：
 
-- Increased usage and contribution
-- Yii team could delegate maintenance
-- Independent releases are possible
+- 增加使用和贡献
+- Yii 团队可以委托维护
+- 可以独立发布
 
-## Adopt PSRs
+## 采用 PSR
 
-The team adopted some PSRs in Yii 2, such as PSR-4 and PSR-2.  Interfaces in
-general weren't, although Yii is part of PHP-FIG.  Mainly because when Yii 2
-was released, these were either in the making or not adopted enough.
+团队在 Yii 2 中采用了一些 PSR，例如 PSR-4 和 PSR-2。尽管 Yii 是 PHP-FIG 的一部分，但通常没有采用接口。主要是因为当
+Yii 2 发布时，这些要么正在制定中，要么还没有被充分采用。
 
-Yii3 benefits from PSRs since there are nowadays many ready-to-use libraries
-that one can get via Composer: cache backends, middleware, loggers, DI
-containers, etc.
+Yii3 从 PSR 中受益，因为现在有许多可以通过 Composer 获得的即用型库：缓存后端、中间件、日志记录器、DI 容器等。
 
-By implementing PSRs in general packages, we allow these to be used in more
-projects, thus raising the contribution level.
+通过在通用包中实现 PSR，我们允许这些包在更多项目中使用，从而提高贡献水平。
 
-## Improve DI container
+## 改进 DI 容器
 
-The problem with the Yii 2 container was that it's tailored to be used with
-Yii 2 components.  API isn't well-designed to be used with general PHP
-classes.
+Yii 2 容器的问题在于它是为与 Yii 2 组件一起使用而定制的。API 设计不适合与通用 PHP 类一起使用。
 
-In Yii3, we ensured that container can be used to conveniently configure any
-PHP class.
+在 Yii3 中，我们确保容器可以方便地配置任何 PHP 类。
 
-That should result in the absence of Yii-specific wrapper packages and more
-direct usages of Composer packages.
+这应该会导致不再需要 Yii 特定的包装器包，并更直接地使用 Composer 包。
 
-## Adopt strict types
+## 采用严格类型
 
-Strict types were introduced because:
+引入严格类型是因为：
 
-- PHP 7 is now mainstream
-- While they solve no significant Yii 2 problems, they help to avoid many
-  day-to-day development issues
+- PHP 7 现在已成为主流
+- 虽然它们没有解决 Yii 2 的重大问题，但它们有助于避免许多日常开发问题
 
-## Adopt SemVer
+## 采用 SemVer
 
-Yii 2 has its own version policy. Problems:
+Yii 2 有自己的版本策略。问题：
 
-- It wasn't standard
-- Composer relies on SemVer
-- It's hard to support a framework built on top of packages if the
-  versioning policy isn't strict
+- 它不是标准的
+- Composer 依赖于 SemVer
+- 如果版本策略不严格，很难支持建立在包之上的框架
 
-## Prevent validators mutating data
+## 防止验证器改变数据
 
-In Yii 1 and Yii 2, validators such as "date" were mutating data.  It was
-confusing for a validation process not initially meant to mutate data it
-validates.
+在 Yii 1 和 Yii 2 中，诸如“date”之类的验证器会改变数据。对于最初不打算改变其验证的数据的验证过程来说，这令人困惑。
 
-[See related
-discussion](https://forum.yiiframework.com/t/saving-or-killing-non-validation-in-validators/126086).
+[查看相关讨论](https://forum.yiiframework.com/t/saving-or-killing-non-validation-in-validators/126086)。

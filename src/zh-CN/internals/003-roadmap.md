@@ -1,207 +1,184 @@
-# 003 — Roadmap
+# 003 — 路线图
 
-We want Yii 3 to:
+我们希望 Yii 3：
 
-- Not limit a developer to choosing architecture. Allow anything from
-  "classic" MVC to DDD.
-- Be based on the best practices such as SOLID, GRASP, etc. and teach them
-  to the community.
-- Keep the most good things from Yii 2.
-- Be more open to the global PHP community and infrastructure.
+- 不限制开发者选择架构。允许从“经典”MVC 到 DDD 的任何架构。
+- 基于 SOLID、GRASP 等最佳实践，并将它们教给社区。
+- 保留 Yii 2 中最好的东西。
+- 对全球 PHP 社区和基础设施更加开放。
 
-## PSRs compliance
+## PSR 合规性
 
-PSR compliance helps with customizability, the ability to use general PHP
-libraries and implement fewer wrappers.  Here's the list of PSRs we want to
-implement.
+PSR 合规性有助于可定制性、使用通用 PHP 库的能力以及实现更少的包装器。以下是我们想要实现的 PSR 列表。
 
-### PSR-3 Logger
+### PSR-3 日志记录器
 
-Implemented as a [separate package that isn't dependent on a
-framework](https://github.com/yiisoft/log).
+实现为 [不依赖于框架的独立包](https://github.com/yiisoft/log)。
 
-- [x] Framework packages should depend on interface only.
-- [x] Split drivers into packages.
-- [x] Clean-up code.
-- [x] [Fix email target](https://github.com/yiisoft/log-target-email).
+- [x] 框架包应仅依赖于接口。
+- [x] 将驱动程序拆分为包。
+- [x] 清理代码。
+- [x] [修复电子邮件目标](https://github.com/yiisoft/log-target-email)。
 
-### PSR-4 Autoloading
+### PSR-4 自动加载
 
-- [x] Autoloading is fine already.
-- [x] Document on how it works.
+- [x] 自动加载已经很好了。
+- [x] 记录它的工作原理。
 
-### PSR-7 HTTP message
+### PSR-7 HTTP 消息
 
-- [x] Remove our own implementation. At least for now.
-- [x] Framework packages should depend on interfaces only.
+- [x] 删除我们自己的实现。至少目前如此。
+- [x] 框架包应仅依赖于接口。
 
-### PSR-11 Container
+### PSR-11 容器
 
-Implemented as a [separate package that isn't dependent on a
-framework](https://github.com/yiisoft/di).
+实现为 [不依赖于框架的独立包](https://github.com/yiisoft/di)。
 
-- [x] Framework packages shouldn't use container directly. One should be
-  able to instantiate everything manually.
-- [x] Finish refactoring.
-- [x] Remove all framework-specific implementations from the package. Move
-  to a framework.
-- [x] [Implement autoloader
-  fallback](https://github.com/yiisoft/di/issues/88)
+- [x] 框架包不应直接使用容器。应该能够手动实例化所有内容。
+- [x] 完成重构。
+- [x] 从包中删除所有框架特定的实现。移至框架。
+- [x] [实现自动加载器回退](https://github.com/yiisoft/di/issues/88)
 
-### PSR-12 Code style
+### PSR-12 代码风格
 
-- [x] Make sure the code follows it.
-- [x] Automate fixing style before release.
+- [x] 确保代码遵循它。
+- [x] 在发布前自动修复风格。
 
-### PSR-14 Event dispatcher
+### PSR-14 事件调度器
 
-- [x] [Implement as a separate
-  library](https://github.com/yiisoft/event-dispatcher).
-- [x] Use in other packages.
-- [x] Polish.
+- [x] [实现为独立库](https://github.com/yiisoft/event-dispatcher)。
+- [x] 在其他包中使用。
+- [x] 完善。
 
-### PSR-15 HTTP handlers
+### PSR-15 HTTP 处理器
 
-- [x] Rewrite HTTP flow to PSR-7 request-response + formatting response via
-  emitter.
-- [x] Offer SAPI emitter out of the box.
-- [x] Make it possible to use alternative emitters such as RoadRunner.
-- [x] Support middleware.
-- [x] Implement filters as middleware:
-  - [x] [Rate limiting](https://github.com/yiisoft/yii-web/issues/63)
-  - [x] [Authentication](https://github.com/yiisoft/yii-web/issues/114)
-- [x] Re-implement router w/ middleware support for route groups.
-- [x] Filters should be middlewares.
+- [x] 将 HTTP 流程重写为 PSR-7 请求-响应 + 通过 Emitter 进行格式化响应。
+- [x] 开箱即用地提供 SAPI Emitter。
+- [x] 支持使用 RoadRunner 等替代的 Emitter 实现。
+- [x] 支持中间件。
+- [x] 将过滤器实现为中间件：
+  - [x] [速率限制](https://github.com/yiisoft/yii-web/issues/63)
+  - [x] [身份验证](https://github.com/yiisoft/yii-web/issues/114)
+- [x] 重新实现路由器，支持路由组的中间件。
+- [x] 过滤器应该是中间件。
 
-### PSR-16 Simple cache
+### PSR-16 简单缓存
 
-Implemented as a [separate package that isn't dependent on a
-framework](https://github.com/yiisoft/cache).
+实现为 [不依赖于框架的独立包](https://github.com/yiisoft/cache)。
 
-- [x] Framework packages should depend on interfaces only.
-- [x] Split drivers into packages.
-- [x] Clean-up code.
+- [x] 框架包应仅依赖于接口。
+- [x] 将驱动程序拆分为包。
+- [x] 清理代码。
 
-### PSR-17 HTTP factories
+### PSR-17 HTTP 工厂
 
-- [x] Use PSR factories.
+- [x] 使用 PSR 工厂。
 
-### PSR-18 HTTP client
+### PSR-18 HTTP 客户端
 
-- [x] Remove our own implementation. At least for now.
-- [x] Framework packages should depend on interfaces only.
+- [x] 删除我们自己的实现。至少目前如此。
+- [x] 框架包应仅依赖于接口。
 
-## Stricter types
+## 更严格的类型
 
-- [x] Make sure type hinting is used everywhere.
-- [x] Make sure types are as definitive as possible. Avoid varying types if
-  possible.
+- [x] 确保在所有地方都使用类型提示。
+- [x] 确保类型尽可能明确。尽可能避免变化的类型。
 
-## Single application template
+## 单一应用程序模板
 
-- [x] Drop basic/advanced.
-- [x] Create a [single application template that works out of the
-  box](https://github.com/yiisoft/app).
+- [x] 放弃 basic/advanced。
+- [x] 创建一个 [开箱即用的单一应用程序模板](https://github.com/yiisoft/app)。
 
-## Router
+## 路由器
 
-Implemented as a [separate package that isn't dependent on a
-framework](https://github.com/yiisoft/router).
+实现为 [不依赖于框架的独立包](https://github.com/yiisoft/router)。
 
-- [x] DSL for configuration.
-- [x] Ability to route to any callable.
-- [x] Named routes.
-- [x] Route groups w/ middleware support.
+- [x] 用于配置的 DSL。
+- [x] 能够路由到任何可调用对象。
+- [x] 命名路由。
+- [x] 支持中间件的路由组。
 
-## Best practices and SOLID compliance of all classes/packages
+## 所有类/包的最佳实践和 SOLID 合规性
 
-- [x] Make sure interfaces follow the "interface segregation" principle.
-- [x] Don't use public properties.
-- [x] Don't use `init()`.
-- [x] Don't inherit from `BaseObject` or `Component`. Remove these.
-- [x] No globals.
-- [x] No static calls except helpers that are final.
-- [x] Prefer throwing exceptions to fixing input.
+- [x] 确保接口遵循“接口隔离”原则。
+- [x] 不要使用公共属性。
+- [x] 不要使用 `init()`。
+- [x] 不要从 `BaseObject` 或 `Component` 继承。删除这些。
+- [x] 没有全局变量。
+- [x] 除了 final 的辅助函数外，没有静态调用。
+- [x] 优先抛出异常而不是修复输入。
 
-## Development toolkit
+## 开发工具包
 
-- [x] Release command line tool
-- [x] Development command line tool (symlinks packages into usable
-  application)
+- [x] 发布命令行工具
+- [x] 开发命令行工具（将包符号链接到可用的应用程序）
 
-## Console
+## 控制台
 
-- [x] Separate web and console application
-- [x] Possibly eliminate base application (still needed)
-- [x] Create an interface for the console (using Symfony one)
-- [x] Implementation may be one of the popular ones (using Symfony one)
-- [x] Ensure application can add commands via config
+- [x] 分离 web 和控制台应用程序
+- [x] 可能消除基础应用程序（仍然需要）
+- [x] 为控制台创建接口（使用 Symfony 的）
+- [x] 实现可能是流行的之一（使用 Symfony 的）
+- [x] 确保应用程序可以通过配置添加命令
 
-## Documentation
+## 文档
 
-- [ ] Follow best practices.
-- [ ] Don't use the "MVC" term.
-- [ ] Upgrading from Yii 2.
+- [ ] 遵循最佳实践。
+- [ ] 不要使用“MVC”术语。
+- [ ] 从 Yii 2 升级。
 
 ## RBAC
 
-RBAC is implemented as [a framework-independent
-package](https://github.com/yiisoft/rbac).
+RBAC 实现为 [独立于框架的包](https://github.com/yiisoft/rbac)。
 
-- [x] Finish refactoring.
-- [x] Make sure it follows best practices.
-- [x] Split drivers into packages.
+- [x] 完成重构。
+- [x] 确保它遵循最佳实践。
+- [x] 将驱动程序拆分为包。
 
-## View
+## 视图
 
-View is implemented as [framework-independent
-package](https://github.com/yiisoft/view).
+视图实现为 [独立于框架的包](https://github.com/yiisoft/view)。
 
-- [x] Finish refactoring ([see
-  issues](https://github.com/yiisoft/view/issues)).
-- [x] Port widgets.
-- [x] Rethink and implement active form widgets.
-- [x] Implement caching widgets.
+- [x] 完成重构（[查看 issue](https://github.com/yiisoft/view/issues)）。
+- [x] 移植小部件。
+- [x] 重新思考并实现活动表单小部件。
+- [x] 实现缓存小部件。
 
-## Data abstractions and grid
+## 数据抽象和网格
 
-- [x] Finish [data abstractions](https://github.com/yiisoft/data).
-- [x] Port sort, use data abstractions. Should be part of
-  [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [x] Port paging, use data abstractions. Should be part of
-  [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [x] Port grid, use data abstractions. Should be part of
-  [yii-dataview](https://github.com/yiisoft/yii-dataview).
-- [x] Port list, use data abstractions. Should be part of
-  [yii-dataview](https://github.com/yiisoft/yii-dataview).
+- [x] 完成 [数据抽象](https://github.com/yiisoft/data)。
+- [x] 移植排序，使用数据抽象。应该是
+  [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。
+- [x] 移植分页，使用数据抽象。应该是
+  [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。
+- [x] 移植网格，使用数据抽象。应该是
+  [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。
+- [x] 移植列表，使用数据抽象。应该是
+  [yii-dataview](https://github.com/yiisoft/yii-dataview) 的一部分。
 
-## Validators
+## 验证器
 
-- [x] Finish [the main package](https://github.com/yiisoft/validator)
-  redesign
-- [x] Port necessary validators
+- [x] 完成 [主包](https://github.com/yiisoft/validator) 重新设计
+- [x] 移植必要的验证器
 
-## Debug toolbar
+## 调试工具栏
 
-- [x] Port debug toolbar.
+- [x] 移植调试工具栏。
 
 ## Gii
 
-- [x] Port Gii.
+- [x] 移植 Gii。
 
-## Infrastructure
+## 基础设施
 
-- [x] Cover [config](https://github.com/yiisoft/config) with tests.
-- [x] Release stable [config](https://github.com/yiisoft/config).
+- [x] 为 [config](https://github.com/yiisoft/config) 编写测试。
+- [x] 发布稳定的 [config](https://github.com/yiisoft/config)。
 
-## Others
+## 其他
 
-- [x] [Decide on
-  namespaces](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52).
-- [x] [Clean up error
-  handler](https://github.com/yiisoft/yii2/issues/14348). Make sure the
-  error handler catches fatals and is using response.
-- [x] Make validators independent of models to allow reusing them in
-  handlers.
-- [x] [Split
-  IdentityInterface](https://github.com/yiisoft/yii2/issues/13825).
+- [x]
+  [决定命名空间](https://forum.yiiframework.com/t/lowercase-or-camelcase-namespaces/124983/52)。
+- [x]
+  [清理错误处理器](https://github.com/yiisoft/yii2/issues/14348)。确保错误处理器捕获致命错误并使用响应。
+- [x] 使验证器独立于模型，以允许在处理器中重用它们。
+- [x] [拆分 IdentityInterface](https://github.com/yiisoft/yii2/issues/13825)。

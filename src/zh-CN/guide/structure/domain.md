@@ -80,7 +80,7 @@ Entity, value object, aggregate, and domain events aren't services and
 shouldn't be instantiated through DI container.  Using `new` is the way to
 go with these.
 
-## References
+## 参考资料
 
 - [BoundedContext by Martin
   Fowler](https://martinfowler.com/bliki/BoundedContext.html)

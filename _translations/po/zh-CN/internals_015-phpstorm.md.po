@@ -19,39 +19,39 @@ msgstr ""
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "015 — PhpStorm metadata and attributes"
-msgstr ""
+msgstr "015 — PhpStorm 元数据和属性"
 
 #. type: Title ##
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "PhpStorm metadata"
-msgstr ""
+msgstr "PhpStorm 元数据"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
 msgid "[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps the IDE to understand code better in cases when regular types and PHPDoc tags don't help."
-msgstr ""
+msgstr "[PhpStorm 元数据](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) 帮助 IDE 在常规类型和 PHPDoc 标签无法提供帮助的情况下更好地理解代码。"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
 msgid "We use the following set of coding styles for metadata."
-msgstr ""
+msgstr "我们对元数据使用以下编码风格。"
 
 #. type: Title ###
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "Metadata location"
-msgstr ""
+msgstr "元数据位置"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/015-phpstorm.md
 msgid "Metadata should be placed in `/.phpstorm.meta.php` directory."
-msgstr ""
+msgstr "元数据应放置在 `/.phpstorm.meta.php` 目录中。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/015-phpstorm.md
 msgid "Configuration should be split into files. Each file should be named after a class it configures."
-msgstr ""
+msgstr "配置应拆分为多个文件。每个文件应以其配置的类命名。"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
@@ -60,17 +60,19 @@ msgid ""
 "> [!NOTE]\n"
 "> There is no support for subdirectories in PhpStorm yet.\n"
 msgstr ""
+"> [!NOTE]\n"
+"> PhpStorm 目前还不支持子目录。\n"
 
 #. type: Title ###
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "Constants "
-msgstr ""
+msgstr "常量"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
 msgid "All constant dictionaries should be named as `{Class FQN}::{Group name}`. Group name should be short and written in capital letters.  Use underscore as a word separator that's `\\Yiisoft\\Http\\Status::STATUSES`. For example:"
-msgstr ""
+msgstr "所有常量字典应命名为 `{类完全限定名}::{组名}`。组名应简短并使用大写字母。使用下划线作为单词分隔符，例如 `\\Yiisoft\\Http\\Status::STATUSES`。示例："
 
 #. type: Fenced code block (php)
 #: ../src/en/internals/015-phpstorm.md
@@ -97,12 +99,12 @@ msgstr ""
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "PhpStorm attributes"
-msgstr ""
+msgstr "PhpStorm 属性"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
 msgid "[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN be used in code, but package `jetbrains/phpstorm-attributes` MUST be added as a dev dependency:"
-msgstr ""
+msgstr "[PhpStorm 属性](https://github.com/JetBrains/phpstorm-attributes) 可以在代码中使用，但必须将 `jetbrains/phpstorm-attributes` 包添加为开发依赖："
 
 #. type: Fenced code block (shell)
 #: ../src/en/internals/015-phpstorm.md
@@ -114,12 +116,12 @@ msgstr ""
 #: ../src/en/internals/015-phpstorm.md
 #, no-wrap
 msgid "Using with ComposerRequireChecker"
-msgstr ""
+msgstr "与 ComposerRequireChecker 一起使用"
 
 #. type: Plain text
 #: ../src/en/internals/015-phpstorm.md
 msgid "When [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) is also used within the same package, add involved attributes' class names to whitelist in config. For example:"
-msgstr ""
+msgstr "当在同一个包中也使用 [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) 时，将涉及的属性类名添加到配置的白名单中。例如："
 
 #. type: Fenced code block (json)
 #: ../src/en/internals/015-phpstorm.md

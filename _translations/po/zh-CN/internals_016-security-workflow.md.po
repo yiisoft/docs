@@ -19,12 +19,12 @@ msgstr ""
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "016 — Security workflow"
-msgstr ""
+msgstr "016 — 安全工作流程"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "Security issues are typically sent via [a security form](https://www.yiiframework.com/security)."
-msgstr ""
+msgstr "安全问题通常通过 [安全表单](https://www.yiiframework.com/security) 发送。"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
@@ -33,106 +33,108 @@ msgid ""
 "If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message\n"
 "and delete the issue. Say thanks to the reporter and point to the security form for next time.  \n"
 msgstr ""
+"如果问题直接报告到公共页面（如仓库 issue 或论坛主题），请获取消息\n"
+"并删除该 issue。感谢报告者，并指出下次使用安全表单。\n"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Verify"
-msgstr ""
+msgstr "验证"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "Verify that the issue is valid. Request more information if needed."
-msgstr ""
+msgstr "验证问题是否有效。如果需要，请求更多信息。"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Add security advisory"
-msgstr ""
+msgstr "添加安全公告"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "Create a draft GitHub security advisory."
-msgstr ""
+msgstr "创建一个 GitHub 安全公告草稿。"
 
 #. type: Title ###
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Find out severity"
-msgstr ""
+msgstr "确定严重程度"
 
 #. type: Bullet: '1. '
 #: ../src/internals/016-security-workflow.md
 msgid "Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)."
-msgstr ""
+msgstr "使用 [NVD 计算器](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator) 获取 CVSS 分数。"
 
 #. type: Bullet: '2. '
 #: ../src/internals/016-security-workflow.md
 msgid "Choose severity based on the [rating scale](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale)."
-msgstr ""
+msgstr "根据 [评级量表](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale) 选择严重程度。"
 
 #. type: Title ###
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Give credit to the reporter"
-msgstr ""
+msgstr "给予报告者荣誉"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "Ask the reporter if he wants a credit for finding the issue. If so, point to his GitHub account."
-msgstr ""
+msgstr "询问报告者是否希望因发现问题而获得荣誉。如果是，请指向其 GitHub 账户。"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Request a CVE number"
-msgstr ""
+msgstr "请求 CVE 编号"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "When you're ready, request a CVE."
-msgstr ""
+msgstr "准备好后，请求一个 CVE。"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Prepare a patch"
-msgstr ""
+msgstr "准备补丁"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "Prepare a pull request fixing the issue. GitHub allows doing it in a private fork."
-msgstr ""
+msgstr "准备一个修复问题的 pull request。GitHub 允许在私有 fork 中执行此操作。"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Wait till the CVE number is allocated "
-msgstr ""
+msgstr "等待 CVE 编号分配"
 
 #. type: Plain text
 #: ../src/internals/016-security-workflow.md
 msgid "It usually takes several days."
-msgstr ""
+msgstr "通常需要几天时间。"
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
 #, no-wrap
 msgid "Release"
-msgstr ""
+msgstr "发布"
 
 #. type: Bullet: '- '
 #: ../src/internals/016-security-workflow.md
 msgid "Merge the patch pull request right before tagging the next package release."
-msgstr ""
+msgstr "在标记下一个包发布之前合并补丁 pull request。"
 
 #. type: Bullet: '- '
 #: ../src/internals/016-security-workflow.md
 msgid "Publish security advisory."
-msgstr ""
+msgstr "发布安全公告。"
 
 #. type: Bullet: '- '
 #: ../src/internals/016-security-workflow.md
 msgid "Add CVE to [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as an example."
-msgstr ""
+msgstr "将 CVE 添加到 [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories)。参见 [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) 作为示例。"

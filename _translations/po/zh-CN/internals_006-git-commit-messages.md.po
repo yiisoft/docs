@@ -20,56 +20,56 @@ msgstr ""
 #: ../src/en/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "Body"
-msgstr ""
+msgstr "正文"
 
 #. type: Title #
 #: ../src/en/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "006 — Git commit messages"
-msgstr ""
+msgstr "006 — Git 提交消息"
 
 #. type: Title ##
 #: ../src/en/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "Subject line"
-msgstr ""
+msgstr "主题行"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Use `#123` to reference issue by number"
-msgstr ""
+msgstr "使用 `#123` 通过编号引用问题"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Use imperative mood that's `Fix`, not `Fixed`"
-msgstr ""
+msgstr "使用祈使语气，即 `Fix` 而不是 `Fixed`"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Don't add a period at the end"
-msgstr ""
+msgstr "末尾不要添加句号"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Use `[skip ci]` if there is no need to run unit tests"
-msgstr ""
+msgstr "如果不需要运行单元测试，使用 `[skip ci]`"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Start with a capital letter"
-msgstr ""
+msgstr "以大写字母开头"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Limit to 50 characters"
-msgstr ""
+msgstr "限制在 50 个字符以内"
 
 #. type: Plain text
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Use the message body **if** you need an extra explanation. Explain why, not how."
-msgstr ""
+msgstr "**如果**需要额外说明，使用消息正文。解释为什么，而不是如何做。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/006-git-commit-messages.md
 msgid "Limit line length to 72 characters"
-msgstr ""
+msgstr "限制行长度为 72 个字符"
