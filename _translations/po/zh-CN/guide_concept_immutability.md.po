@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "Immutability"
-msgstr ""
+msgstr "不可变性"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md

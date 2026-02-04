@@ -20,7 +20,7 @@ msgstr ""
 #: ../../guide/en/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #. type: Title ##
 #: ../../guide/en/tutorial/using-yii-with-roadrunner.md

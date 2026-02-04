@@ -21,64 +21,64 @@ msgstr ""
 #: ../src/cookbook/preface.md
 #, no-wrap
 msgid "Prerequisites"
-msgstr ""
+msgstr "前提条件"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "A server with a fresh installation of a Linux distribution (Ubuntu 22.04 LTS or later recommended)"
-msgstr ""
+msgstr "一台全新安装 Linux 发行版的服务器（推荐 Ubuntu 22.04 LTS 或更高版本）"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "A domain name pointing to your server's IP address"
-msgstr ""
+msgstr "指向服务器 IP 地址的域名"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "SSH access to your server"
-msgstr ""
+msgstr "对服务器的 SSH 访问权限"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Basic knowledge of Docker and command-line tools"
-msgstr ""
+msgstr "Docker 和命令行工具的基础知识"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Server preparation"
-msgstr ""
+msgstr "服务器准备"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Install Docker"
-msgstr ""
+msgstr "安装 Docker"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "For installation instructions, see the [official Docker documentation](https://docs.docker.com/engine/install/ubuntu/)."
-msgstr ""
+msgstr "有关安装说明，请参阅[官方 Docker 文档](https://docs.docker.com/engine/install/ubuntu/)。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Initialize Docker Swarm"
-msgstr ""
+msgstr "初始化 Docker Swarm"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Initialize your server as a Docker Swarm manager:"
-msgstr ""
+msgstr "将服务器初始化为 Docker Swarm 管理器："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -92,20 +92,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Replace `<YOUR_SERVER_IP>` with your server's public IP address.\n"
-msgstr ""
+msgstr "将 `<YOUR_SERVER_IP>` 替换为服务器的公共 IP 地址。\n"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Set up the reverse proxy network"
-msgstr ""
+msgstr "设置反向代理网络"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Create a dedicated overlay network for reverse proxy to communicate with your services:"
-msgstr ""
+msgstr "创建一个专用的覆盖网络，供反向代理与服务通信："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -119,32 +119,32 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Setting up a container registry"
-msgstr ""
+msgstr "设置容器注册表"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "You need a container registry to store your Docker images. Choose one of the following options."
-msgstr ""
+msgstr "你需要一个容器注册表来存储 Docker 镜像。选择以下选项之一。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Option 1: Using Forgejo"
-msgstr ""
+msgstr "选项 1：使用 Forgejo"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "To deploy Forgejo create a file `forgejo-stack.yml`:"
-msgstr ""
+msgstr "要部署 Forgejo，请创建文件 `forgejo-stack.yml`："
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Deploy Forgejo:"
-msgstr ""
+msgstr "部署 Forgejo："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -157,26 +157,26 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Replace `git.example.com` with your desired subdomain."
-msgstr ""
+msgstr "将 `git.example.com` 替换为所需的子域名。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Option 2: Using Gitea"
-msgstr ""
+msgstr "选项 2：使用 Gitea"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "To deploy Gitea create a file `gitea-stack.yml`:"
-msgstr ""
+msgstr "要部署 Gitea，请创建文件 `gitea-stack.yml`："
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Deploy Gitea:"
-msgstr ""
+msgstr "部署 Gitea："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -189,27 +189,27 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "After deployment, access Gitea at `https://git.example.com` and complete the initial setup.  Make sure to enable the container registry in the settings."
-msgstr ""
+msgstr "部署后，访问 `https://git.example.com` 上的 Gitea 并完成初始设置。确保在设置中启用容器注册表。"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Configuring your Yii application"
-msgstr ""
+msgstr "配置 Yii 应用程序"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Update the Makefile configuration"
-msgstr ""
+msgstr "更新 Makefile 配置"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The [Yii application template](https://github.com/yiisoft/app) includes a Makefile with deployment commands. Update the `docker/.env` file in your project:"
-msgstr ""
+msgstr "[Yii 应用程序模板](https://github.com/yiisoft/app)包含一个带有部署命令的 Makefile。更新项目中的 `docker/.env` 文件："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -233,20 +233,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Replace the values: - `STACK_NAME`: A unique name for your application stack - `PROD_HOST`: The domain name where your app will be accessible - `PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)  - `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`: Image tag, typically `latest` or a version number"
-msgstr ""
+msgstr "替换以下值：- `STACK_NAME`：应用程序堆栈的唯一名称 - `PROD_HOST`：应用程序可访问的域名 - `PROD_SSH`：到服务器的 SSH 连接字符串（格式：`ssh://user@host`）- `IMAGE`：注册表中容器镜像的完整路径 - `IMAGE_TAG`：镜像标签，通常为 `latest` 或版本号"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Configure the production environment"
-msgstr ""
+msgstr "配置生产环境"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Update `docker/prod/.env` with your production environment variables:"
-msgstr ""
+msgstr "使用生产环境变量更新 `docker/prod/.env`："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -274,13 +274,15 @@ msgid ""
 "> [!WARNING]\n"
 "> Never commit sensitive credentials to version control. Use `docker/prod/override.env` for sensitive values and add it to `.gitignore`.\n"
 msgstr ""
+"> [!WARNING]\n"
+"> 切勿将敏感凭据提交到版本控制。对敏感值使用 `docker/prod/override.env` 并将其添加到 `.gitignore`。\n"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Review the production Docker Compose configuration"
-msgstr ""
+msgstr "查看生产环境 Docker Compose 配置"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -294,12 +296,18 @@ msgid ""
 "- Disables obtaining of HTTPs certificates on the container itself\n"
 "  since proxy communicates with the container via HTTP. That is `auto_https off`.\n"
 msgstr ""
+"此配置：\n"
+"- 运行 2 个副本以实现高可用性\n"
+"- 使用滚动更新策略，失败时自动回滚\n"
+"- 配置 `labels` 以在反向代理上自动启用 HTTPS\n"
+"- 禁用容器本身获取 HTTPS 证书\n"
+"  因为代理通过 HTTP 与容器通信。即 `auto_https off`。\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "If you need a database, add it to the stack:"
-msgstr ""
+msgstr "如果需要数据库，请将其添加到堆栈中："
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -340,7 +348,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Create the database password secret on the server:"
-msgstr ""
+msgstr "在服务器上创建数据库 password secret："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -354,20 +362,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Building and pushing the image"
-msgstr ""
+msgstr "构建并推送镜像"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Set up Docker login on your local machine"
-msgstr ""
+msgstr "在本地机器上设置 Docker 登录"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Configure Docker to authenticate with your container registry:"
-msgstr ""
+msgstr "配置 Docker 以向容器注册表进行身份验证："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -380,20 +388,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Enter your username and password when prompted."
-msgstr ""
+msgstr "在提示时输入用户名和 password。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Build the production image"
-msgstr ""
+msgstr "构建生产镜像"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Use the Makefile to build your production image:"
-msgstr ""
+msgstr "使用 Makefile 构建生产镜像："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -406,7 +414,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "This runs the command defined in the Makefile:"
-msgstr ""
+msgstr "这将运行 Makefile 中定义的命令："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -419,20 +427,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies in a builder stage 2. Creates a minimal production image with only the necessary files 3. Runs as a non-root user (`www-data`)"
-msgstr ""
+msgstr "Dockerfile 使用多阶段构建：1. 在构建器阶段安装 Composer 依赖项 2. 创建仅包含必要文件的最小生产镜像 3. 以非 root 用户（`www-data`）身份运行"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Push the image to the registry"
-msgstr ""
+msgstr "将镜像推送到注册表"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Push your built image to the container registry:"
-msgstr ""
+msgstr "将构建的镜像推送到容器注册表："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -445,7 +453,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "This executes:"
-msgstr ""
+msgstr "这将执行："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -459,7 +467,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Deploying to Docker Swarm"
-msgstr ""
+msgstr "部署到 Docker Swarm"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -499,13 +507,13 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Set up Docker context"
-msgstr ""
+msgstr "设置 Docker 上下文"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Create a Docker context for remote deployment:"
-msgstr ""
+msgstr "创建用于远程部署的 Docker 上下文："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -518,7 +526,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Alternatively, configure the `DOCKER_HOST` environment variable:"
-msgstr ""
+msgstr "或者，配置 `DOCKER_HOST` 环境变量："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -532,13 +540,13 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Deploy the application"
-msgstr ""
+msgstr "部署应用程序"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Deploy your application stack to Docker Swarm:"
-msgstr ""
+msgstr "将应用程序堆栈部署到 Docker Swarm："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -558,20 +566,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The `--with-registry-auth` flag ensures the Swarm nodes can pull images from your private registry."
-msgstr ""
+msgstr "`--with-registry-auth` 标志确保 Swarm 节点可以从私有注册表拉取镜像。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Verify the deployment"
-msgstr ""
+msgstr "验证部署"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Check the status of your services:"
-msgstr ""
+msgstr "检查服务状态："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -586,7 +594,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "View logs:"
-msgstr ""
+msgstr "查看日志："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -600,14 +608,14 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Monitoring and maintenance"
-msgstr ""
+msgstr "监控和维护"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "View service logs"
-msgstr ""
+msgstr "查看服务日志"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -629,13 +637,13 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Scale the application"
-msgstr ""
+msgstr "扩展应用程序"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Adjust the number of replicas:"
-msgstr ""
+msgstr "调整副本数量："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -648,20 +656,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Or update the `replicas` value in `docker/prod/compose.yml` and redeploy."
-msgstr ""
+msgstr "或者更新 `docker/prod/compose.yml` 中的 `replicas` 值并重新部署。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Resource limits"
-msgstr ""
+msgstr "资源限制"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Add resource limits to prevent containers from consuming all server resources. Update `docker/prod/compose.yml`:"
-msgstr ""
+msgstr "添加资源限制以防止容器消耗所有服务器资源。更新 `docker/prod/compose.yml`："
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -687,20 +695,20 @@ msgstr ""
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Security considerations"
-msgstr ""
+msgstr "安全注意事项"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Use Docker secrets for sensitive data"
-msgstr ""
+msgstr "对敏感数据使用 Docker secrets"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Instead of environment variables, use Docker secrets for sensitive information:"
-msgstr ""
+msgstr "对于敏感信息，使用 Docker secrets 而不是环境变量："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -711,12 +719,15 @@ msgid ""
 "echo \"database_password\" | docker secret create db_password -\n"
 "echo \"api_key\" | docker secret create api_key -\n"
 msgstr ""
+"# 创建 secrets\n"
+"echo \"database_password\" | docker secret create db_password -\n"
+"echo \"api_key\" | docker secret create api_key -\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Update `docker/prod/compose.yml`:"
-msgstr ""
+msgstr "更新 `docker/prod/compose.yml`："
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -740,20 +751,20 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Access secrets in your application at `/run/secrets/secret_name`."
-msgstr ""
+msgstr "在应用程序中通过 `/run/secrets/secret_name` 访问 secrets。"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Set up a firewall"
-msgstr ""
+msgstr "设置防火墙"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Configure UFW (Uncomplicated Firewall) on your server:"
-msgstr ""
+msgstr "在服务器上配置 UFW（简单防火墙）："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -782,13 +793,13 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Keep the system updated"
-msgstr ""
+msgstr "保持系统更新"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Regularly update your server and Docker:"
-msgstr ""
+msgstr "定期更新服务器和 Docker："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -801,6 +812,11 @@ msgid ""
 "# Update Docker images\n"
 "docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app\n"
 msgstr ""
+"# 更新系统包\n"
+"sudo apt-get update && sudo apt-get upgrade -y\n"
+"\n"
+"# 更新 Docker 镜像\n"
+"docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -808,20 +824,20 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Troubleshooting"
-msgstr ""
+msgstr "故障排除"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Service won't start"
-msgstr ""
+msgstr "服务无法启动"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Check service events and logs:"
-msgstr ""
+msgstr "检查服务事件和日志："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -836,27 +852,27 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Common issues: - **Image pull errors**: Verify registry authentication with `docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other services are using ports 80/443 - **Resource constraints**: Check available resources with `docker -H ssh://docker-web node ls`"
-msgstr ""
+msgstr "常见问题：- **镜像拉取错误**：使用 `docker -H ssh://docker-web login` 验证注册表身份验证 - **端口冲突**：确保没有其他服务使用端口 80/443 - **资源约束**：使用 `docker -H ssh://docker-web node ls` 检查可用资源"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "SSL certificate issues"
-msgstr ""
+msgstr "SSL 证书问题"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Container registry connection issues"
-msgstr ""
+msgstr "容器注册表连接问题"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Test registry connectivity:"
-msgstr ""
+msgstr "测试注册表连接："
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -869,19 +885,24 @@ msgid ""
 "# From the server\n"
 "docker -H ssh://docker-web pull git.example.com/username/myapp:latest\n"
 msgstr ""
+"# 从本地机器\n"
+"docker pull git.example.com/username/myapp:latest\n"
+"\n"
+"# 从服务器\n"
+"docker -H ssh://docker-web pull git.example.com/username/myapp:latest\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Summary"
-msgstr ""
+msgstr "总结"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The Makefile commands simplify the deployment workflow: - `make prod-build` - Build the production image - `make prod-push` - Push to the registry - `make prod-deploy` - Deploy to Docker Swarm"
-msgstr ""
+msgstr "Makefile 命令简化了部署工作流程：- `make prod-build` - 构建生产镜像 - `make prod-push` - 推送到注册表 - `make prod-deploy` - 部署到 Docker Swarm"
 
 #. type: Title #
 #: ../src/cookbook/deployment/docker-swarm-traefik.md

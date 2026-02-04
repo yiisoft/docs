@@ -480,7 +480,7 @@ msgstr ""
 #: ../src/guide/databases/db-migrations.md ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Strings"
-msgstr ""
+msgstr "字符串"
 
 #. type: Bullet: '  - '
 #: ../src/guide/databases/db-migrations.md

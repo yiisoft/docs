@@ -24,7 +24,7 @@ msgstr ""
 #: ../src/en/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #. type: Title ##
 #: ../src/en/cookbook/sentry-integration.md
@@ -33,7 +33,7 @@ msgstr ""
 #: ../src/en/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #. type: Title #
 #: ../src/en/guide/tutorial/using-yii-with-roadrunner.md

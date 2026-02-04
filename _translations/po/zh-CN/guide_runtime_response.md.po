@@ -26,7 +26,7 @@ msgstr ""
 #: ../src/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "Body"
-msgstr ""
+msgstr "正文"
 
 #. type: Title #
 #: ../src/guide/runtime/response.md

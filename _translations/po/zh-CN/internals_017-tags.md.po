@@ -25,9 +25,13 @@ msgstr "不可变性"
 #. type: Title ###
 #: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md
 #: ../src/en/internals/018-widgets.md
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "Names"
-msgstr "名称"
+msgstr ""
+"#-#-#-#-#  internals_010-code-style.md.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"命名\n"
+"#-#-#-#-#  internals_017-tags.md.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"名称"
 
 #. type: Title ##
 #: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md

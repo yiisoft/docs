@@ -23,7 +23,7 @@ msgstr ""
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/views/view.md

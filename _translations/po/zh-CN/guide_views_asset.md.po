@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm.md ../src/guide/views/asset.md
 #, no-wrap
 msgid "Troubleshooting"
-msgstr ""
+msgstr "故障排除"
 
 #. type: Title ##
 #: ../src/cookbook/making-http-requests.md
@@ -29,7 +29,7 @@ msgstr ""
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #. type: Title #
 #: ../src/guide/views/asset.md

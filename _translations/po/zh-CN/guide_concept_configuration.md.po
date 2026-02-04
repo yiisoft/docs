@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Container configuration"
-msgstr ""
+msgstr "容器配置"
 
 #. type: Title ##
 #: ../src/en/cookbook/sentry-integration.md
@@ -29,7 +29,7 @@ msgstr ""
 #: ../src/en/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #. type: Plain text
 #: ../src/en/guide/concept/configuration.md
@@ -345,7 +345,7 @@ msgstr ""
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
-msgstr ""
+msgstr "事件"
 
 #. type: Plain text
 #: ../src/en/guide/concept/configuration.md
@@ -394,7 +394,7 @@ msgstr ""
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #. type: Plain text
 #: ../src/en/guide/concept/configuration.md

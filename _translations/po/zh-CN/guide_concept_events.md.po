@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
-msgstr ""
+msgstr "事件"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md

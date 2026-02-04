@@ -24,7 +24,7 @@ msgstr ""
 #: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "参考资料"
 
 #. type: Title #
 #: ../src/guide/security/best-practices.md

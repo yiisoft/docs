@@ -296,7 +296,7 @@ msgstr ""
 #: en/runtime/request.md en/runtime/response.md
 #, no-wrap
 msgid "Body"
-msgstr ""
+msgstr "正文"
 
 #. type: Plain text
 #: en/runtime/request.md
