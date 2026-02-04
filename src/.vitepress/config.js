@@ -5,6 +5,7 @@ let currentYear = new Date().getFullYear();
 export default {
     base: '/docs/',
     title: 'Yii3 Documentation',
+    description: 'Official documentation for Yii3 — a fast, secure, and flexible PHP framework for modern application development.',
     ignoreDeadLinks: true,
     head: [['link', {rel: 'icon', href: '/docs/favicon.svg', type: 'image/svg+xml'}]],
     vite: {
