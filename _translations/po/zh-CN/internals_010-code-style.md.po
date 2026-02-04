@@ -19,119 +19,119 @@ msgstr ""
 #: ../src/guide/databases/db-migrations.md ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Strings"
-msgstr ""
+msgstr "字符串"
 
 #. type: Title #
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "010 — Code style"
-msgstr ""
+msgstr "010 — 代码风格"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it."
-msgstr ""
+msgstr "Yii 3 包中使用的代码格式基于 [PSR-1](https://www.php-fig.org/psr/psr-1/) 和 [PSR-12](https://www.php-fig.org/psr/psr-12/)，并在此基础上添加了额外的规则。"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md ../src/internals/017-tags.md
 #: ../src/internals/018-widgets.md
 #, no-wrap
 msgid "Names"
-msgstr ""
+msgstr "命名"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Use English only."
-msgstr ""
+msgstr "仅使用英语。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Use camelCase notation, including abbreviations (e.g., `enableIdn`)."
-msgstr ""
+msgstr "使用驼峰命名法，包括缩写（例如，`enableIdn`）。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Use the shortest possible, but an explanatory name."
-msgstr ""
+msgstr "使用尽可能短但具有解释性的名称。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Never trim or abbreviate a name."
-msgstr ""
+msgstr "永远不要修剪或缩写名称。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Postfix classes, interfaces, traits and variables, which is a [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)), with `Collection`."
-msgstr ""
+msgstr "对于 [集合](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)) 的类、接口、trait 和变量，使用 `Collection` 后缀。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Postfix middleware classes with `Middleware`."
-msgstr ""
+msgstr "对中间件类使用 `Middleware` 后缀。"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Types"
-msgstr ""
+msgstr "类型"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible."
-msgstr ""
+msgstr "尽可能声明 [参数和返回类型](https://www.php.net/manual/en/migration70.new-features.php)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "[Use types for properties](https://wiki.php.net/rfc/typed_properties_v2)."
-msgstr ""
+msgstr "[为属性使用类型](https://wiki.php.net/rfc/typed_properties_v2)。"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`."
-msgstr ""
+msgstr "使用严格类型。尽可能避免混合类型和联合类型，除非是兼容类型，如 `string|Stringable`。"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Comments"
-msgstr ""
+msgstr "注释"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Inline comments are to be avoided unless code couldn't be understood without them.  A good example is a workaround for a bug in a certain PHP version."
-msgstr ""
+msgstr "除非没有注释就无法理解代码，否则应避免内联注释。一个好的例子是针对某个 PHP 版本中的 bug 的解决方法。"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Method comment is necessary except it adds nothing to what method name and signature already has."
-msgstr ""
+msgstr "方法注释是必要的，除非它没有为方法名称和签名已有的内容添加任何内容。"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Class comment should describe the purpose of the class."
-msgstr ""
+msgstr "类注释应描述类的目的。"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
-msgstr ""
+msgstr "[查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)。"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Formatting"
-msgstr ""
+msgstr "格式化"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "No alignment"
-msgstr ""
+msgstr "不对齐"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Property, variable and constant value assignments shouldn't be aligned.  The same applies to phpdoc tags. The reason is that aligned statements often cause larger diff and even conflicts."
-msgstr ""
+msgstr "属性、变量和常量值赋值不应对齐。phpdoc 标签也是如此。原因是对齐的语句通常会导致更大的差异甚至冲突。"
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -161,12 +161,12 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Chain calls"
-msgstr ""
+msgstr "链式调用"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Chained calls should be formatted for better readability.  If it's a long chain that doesn't fit the line length of 120 characters, then each call should on a new line:"
-msgstr ""
+msgstr "链式调用应格式化以提高可读性。如果是不适合 120 个字符行长度的长链，则每个调用应在新行上："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -183,7 +183,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "If it's a short chain, it's alright for it to be on a single line:"
-msgstr ""
+msgstr "如果是短链，可以在单行上："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -194,84 +194,84 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "When no variables involved, use `'Hello!'`"
-msgstr ""
+msgstr "当不涉及变量时，使用 `'Hello!'`"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "To get variables into string prefer `\"Hello, $username!\"`"
-msgstr ""
+msgstr "要将变量放入字符串，首选 `\"Hello, $username!\"`"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Classes and interfaces"
-msgstr ""
+msgstr "类和接口"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Final by default"
-msgstr ""
+msgstr "默认为 final"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Classes should be `final` by default."
-msgstr ""
+msgstr "类默认应该是 `final` 的。"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Private by default"
-msgstr ""
+msgstr "默认为 private"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Constants, properties and methods should be private by default."
-msgstr ""
+msgstr "常量、属性和方法默认应该是 private 的。"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Composition over inheritance"
-msgstr ""
+msgstr "组合优于继承"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
-msgstr ""
+msgstr "优先使用[组合而不是继承](guide/en/concept/di-container.md)。"
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Property, constant and method order"
-msgstr ""
+msgstr "属性、常量和方法顺序"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Order should be the following:"
-msgstr ""
+msgstr "顺序应该如下："
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Constants"
-msgstr ""
+msgstr "常量"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "Properties"
-msgstr ""
+msgstr "属性"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md ../src/internals/017-tags.md
 #: ../src/internals/018-widgets.md
 #, no-wrap
 msgid "Methods"
-msgstr ""
+msgstr "方法"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Within each category, items should be sorted by visibility:"
-msgstr ""
+msgstr "在每个类别中，项目应按可见性排序："
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
@@ -292,23 +292,23 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Abstract classes"
-msgstr ""
+msgstr "抽象类"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Abstract classes *shouldn't* be prefixed or postfixed with `Abstract`."
-msgstr ""
+msgstr "抽象类*不应该*使用 `Abstract` 前缀或后缀。"
 
 #. type: Title ####
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Immutable methods"
-msgstr ""
+msgstr "不可变方法"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Immutable method convention is the following:"
-msgstr ""
+msgstr "不可变方法约定如下："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -325,23 +325,23 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/internals/010-code-style.md
 msgid "Cloned object name is `$new`."
-msgstr ""
+msgstr "克隆对象名称为 `$new`。"
 
 #. type: Bullet: '2. '
 #: ../src/internals/010-code-style.md
 msgid "Return type is `self`."
-msgstr ""
+msgstr "返回类型为 `self`。"
 
 #. type: Title ####
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Boolean check methods"
-msgstr ""
+msgstr "布尔检查方法"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Methods that are there to check if something is true should be named like the following:"
-msgstr ""
+msgstr "用于检查某事是否为真的方法应命名如下："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -356,12 +356,12 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Flags in methods "
-msgstr ""
+msgstr "方法中的标志"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Boolean flags in methods are better to be avoided. It's a sign the method may be doing too much, and there should be two methods instead of one."
-msgstr ""
+msgstr "最好避免在方法中使用布尔标志。这表明该方法可能做得太多，应该有两个方法而不是一个。"
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -372,7 +372,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "It is better to be two methods:"
-msgstr ""
+msgstr "最好是两个方法："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -386,12 +386,12 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Variables"
-msgstr ""
+msgstr "变量"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Add an underscore (`_`) prefix for unused variables. For example:"
-msgstr ""
+msgstr "为未使用的变量添加下划线（`_`）前缀。例如："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -406,12 +406,12 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Imports"
-msgstr ""
+msgstr "导入"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
 msgid "Prefer importing classes and functions to using fully qualified names:"
-msgstr ""
+msgstr "优先导入类和函数，而不是使用完全限定名称："
 
 #. type: Fenced code block (php)
 #: ../src/internals/010-code-style.md
@@ -429,19 +429,19 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Additional conventions"
-msgstr ""
+msgstr "其他约定"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "[Namespaces](004-namespaces.md)"
-msgstr ""
+msgstr "[命名空间](004-namespaces.md)"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "[Exceptions](007-exceptions.md)"
-msgstr ""
+msgstr "[异常](007-exceptions.md)"
 
 #. type: Bullet: '- '
 #: ../src/internals/010-code-style.md
 msgid "[Interfaces](008-interfaces.md)"
-msgstr ""
+msgstr "[接口](008-interfaces.md)"

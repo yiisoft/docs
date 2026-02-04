@@ -21,97 +21,97 @@ msgstr ""
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Security considerations"
-msgstr ""
+msgstr "安全注意事项"
 
 #. type: Title #
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Disabling CSRF protection"
-msgstr ""
+msgstr "禁用 CSRF 保护"
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "What is CSRF protection?"
-msgstr ""
+msgstr "什么是 CSRF 保护？"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
-msgstr ""
+msgstr "跨站请求伪造（CSRF）保护是一种安全机制，可防止恶意网站代表已认证用户发出未经授权的请求。Yii3 通过 `Yiisoft\\Yii\\Web\\Middleware\\Csrf` 中间件提供内置的 CSRF 保护。"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "For a comprehensive understanding of CSRF attacks and protection mechanisms, see the [Security best practices](../guide/security/best-practices.md#avoiding-csrf) section in the main guide."
-msgstr ""
+msgstr "要全面了解 CSRF 攻击和保护机制，请参阅主指南中的[安全最佳实践](../guide/security/best-practices.md#avoiding-csrf)部分。"
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "When to disable CSRF protection"
-msgstr ""
+msgstr "何时禁用 CSRF 保护"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "While CSRF protection should generally remain enabled for web applications, there are specific scenarios where you might need to disable it:"
-msgstr ""
+msgstr "虽然 Web 应用程序通常应保持启用 CSRF 保护，但在某些特定场景下你可能需要禁用它："
 
 #. type: Title ###
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "When external systems cannot provide CSRF tokens"
-msgstr ""
+msgstr "当外部系统无法提供 CSRF 令牌时"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "When building APIs or handling automated requests from external systems, CSRF protection can interfere with legitimate requests since these systems cannot provide valid CSRF tokens:"
-msgstr ""
+msgstr "在构建 API 或处理来自外部系统的自动化请求时，CSRF 保护可能会干扰合法请求，因为这些系统无法提供有效的 CSRF 令牌："
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Third-party integrations**: External services cannot provide valid CSRF tokens"
-msgstr ""
+msgstr "**第三方集成**：外部服务无法提供有效的 CSRF 令牌"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Mobile applications**: Native mobile apps typically don't use cookies or sessions in the same way as web browsers"
-msgstr ""
+msgstr "**移动应用程序**：原生移动应用通常不像 Web 浏览器那样使用 cookie 或会话"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Server-to-server communication**: API endpoints designed for machine-to-machine communication"
-msgstr ""
+msgstr "**服务器到服务器通信**：为机器对机器通信设计的 API 端点"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Payment processors**: PayPal, Stripe, and other payment systems send webhook notifications"
-msgstr ""
+msgstr "**支付处理器**：PayPal、Stripe 和其他支付系统发送 webhook 通知"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines"
-msgstr ""
+msgstr "**版本控制系统**：用于 CI/CD 流水线的 GitHub、GitLab webhook"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Social media platforms**: Twitter, Facebook webhook notifications"
-msgstr ""
+msgstr "**社交媒体平台**：Twitter、Facebook webhook 通知"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Communication services**: Slack, Discord bot integrations"
-msgstr ""
+msgstr "**通信服务**：Slack、Discord 机器人集成"
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "How to disable CSRF protection"
-msgstr ""
+msgstr "如何禁用 CSRF 保护"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "First, you need to remove CSRF middleware from your main application middleware list in `config/web/di/application.php`:"
-msgstr ""
+msgstr "首先，你需要从 `config/web/di/application.php` 中的主应用程序中间件列表中删除 CSRF 中间件："
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/disabling-csrf-protection.md
@@ -132,7 +132,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:"
-msgstr ""
+msgstr "现在，如果你需要为特定路由或路由组保留 CSRF 保护，可以通过在 `config/common/routes.php` 的路由器配置中添加 `CsrfMiddleware` 中间件来实现。对于路由组，配置如下："
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/disabling-csrf-protection.md
@@ -147,7 +147,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "For a single route, you can add the middleware directly to the route:"
-msgstr ""
+msgstr "对于单个路由，你可以直接将中间件添加到路由："
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/disabling-csrf-protection.md
@@ -162,75 +162,75 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "When disabling CSRF protection, keep these security considerations in mind:"
-msgstr ""
+msgstr "禁用 CSRF 保护时，请牢记以下安全注意事项："
 
 #. type: Title ###
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Alternative authentication methods"
-msgstr ""
+msgstr "替代身份验证方法"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "For API endpoints, implement proper authentication mechanisms:"
-msgstr ""
+msgstr "对于 API 端点，实施适当的身份验证机制："
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**API keys**: Require API keys for authentication"
-msgstr ""
+msgstr "**API 密钥**：要求使用 API 密钥进行身份验证"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Bearer tokens**: Use JWT or similar token-based authentication"
-msgstr ""
+msgstr "**Bearer 令牌**：使用 JWT 或类似的基于令牌的身份验证"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**OAuth 2.0**: Implement OAuth 2.0 for third-party access"
-msgstr ""
+msgstr "**OAuth 2.0**：为第三方访问实施 OAuth 2.0"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**IP whitelisting**: Restrict access to known IP addresses for webhooks"
-msgstr ""
+msgstr "**IP 白名单**：将 webhook 的访问限制为已知的 IP 地址"
 
 #. type: Title ###
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Request validation"
-msgstr ""
+msgstr "请求验证"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "Implement additional validation for requests without CSRF protection:"
-msgstr ""
+msgstr "为没有 CSRF 保护的请求实施额外的验证："
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Signature verification**: Verify webhook signatures (e.g., GitHub's X-Hub-Signature)"
-msgstr ""
+msgstr "**签名验证**：验证 webhook 签名（例如，GitHub 的 X-Hub-Signature）"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Timestamp validation**: Check request timestamps to prevent replay attacks"
-msgstr ""
+msgstr "**时间戳验证**：检查请求时间戳以防止重放攻击"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Rate limiting**: Implement rate limiting to prevent abuse"
-msgstr ""
+msgstr "**速率限制**：实施速率限制以防止滥用"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Input validation**: Strictly validate all input parameters"
-msgstr ""
+msgstr "**输入验证**：严格验证所有输入参数"
 
 #. type: Title ###
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Example: Webhook signature verification"
-msgstr ""
+msgstr "示例：Webhook 签名验证"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/disabling-csrf-protection.md
@@ -267,45 +267,45 @@ msgstr ""
 #: ../src/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Best practices"
-msgstr ""
+msgstr "最佳实践"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Minimize exposure**: Only disable CSRF protection where absolutely necessary"
-msgstr ""
+msgstr "**最小化暴露**：仅在绝对必要时禁用 CSRF 保护"
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Use HTTPS**: Always use HTTPS for API endpoints and webhooks"
-msgstr ""
+msgstr "**使用 HTTPS**：始终对 API 端点和 webhook 使用 HTTPS"
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Monitor logs**: Log all requests to API endpoints for security monitoring"
-msgstr ""
+msgstr "**监控日志**：记录所有对 API 端点的请求以进行安全监控"
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Regular security audits**: Periodically review your API endpoints and their security measures"
-msgstr ""
+msgstr "**定期安全审计**：定期审查你的 API 端点及其安全措施"
 
 #. type: Bullet: '5. '
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "**Documentation**: Clearly document which endpoints have CSRF protection disabled and why"
-msgstr ""
+msgstr "**文档记录**：清楚地记录哪些端点禁用了 CSRF 保护以及原因"
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
 #, no-wrap
 msgid "Conclusion"
-msgstr ""
+msgstr "结论"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "While CSRF protection is crucial for web applications, there are legitimate scenarios where it needs to be disabled, particularly for external APIs and webhooks. When disabling CSRF protection, always implement alternative security measures and follow security best practices to maintain the overall security of your application."
-msgstr ""
+msgstr "虽然 CSRF 保护对 Web 应用程序至关重要，但在某些合法场景下需要禁用它，特别是对于外部 API 和 webhook。禁用 CSRF 保护时，始终实施替代安全措施并遵循安全最佳实践，以维护应用程序的整体安全性。"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid "Remember that disabling CSRF protection increases security risks, so careful consideration and proper implementation of alternative security measures are essential."
-msgstr ""
+msgstr "请记住，禁用 CSRF 保护会增加安全风险，因此仔细考虑并正确实施替代安全措施至关重要。"

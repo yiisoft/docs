@@ -1,13 +1,10 @@
-# 019 — View code style
+# 019 — 视图代码风格
 
-The PHP code in the view files shouldn't be complicated.  The code must
-contain the logic responsible for formatting the data, but not the logic for
-requesting this data.
+视图文件中的 PHP 代码不应该太复杂。代码必须包含负责格式化数据的逻辑，但不应包含请求数据的逻辑。
 
-## Heading
+## 文件头部
 
-View file heading is used to place phpdoc describing variables available and
-to import classes:
+视图文件头部用于放置描述可用变量的 phpdoc 和导入类：
 
 ```php
 <?php
@@ -20,10 +17,9 @@ declare(strict_types=1);
 use Yiisoft\Html\Html;
 ```
 
-## Control structures
+## 控制结构
 
-Alternative syntax for control structures such as `foreach` and `if` is
-preferred:
+优先使用控制结构（如 `foreach` 和 `if`）的替代语法：
 
 ```php
 <?php foreach ($posts as $post): ?>   
@@ -32,15 +28,14 @@ preferred:
 <?php endforeach; ?>
 ```
 
-## Short echo
+## 短标签输出
 
-Short echo is preferred:
+优先使用短标签输出：
 
 ```php
 <?= Html::encode($name) ?>
 ```
 
-## Class methods
+## 类方法
 
-All class methods used in view files must be public regardless if the view
-is rendered by the class itself.
+视图文件中使用的所有类方法都必须是 public 的，无论视图是否由类本身渲染。

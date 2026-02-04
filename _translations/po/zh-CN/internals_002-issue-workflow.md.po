@@ -19,77 +19,77 @@ msgstr ""
 #: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "002 — Issue workflow"
-msgstr ""
+msgstr "002 — Issue 工作流程"
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "The process of handing incoming issues is the following:"
-msgstr ""
+msgstr "处理传入 issue 的流程如下："
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "![Issue workflow schema](/images/internals/002-issue-workflow.svg)"
-msgstr ""
+msgstr "![Issue 工作流程图](/images/internals/002-issue-workflow.svg)"
 
 #. type: Title ##
 #: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Roles"
-msgstr ""
+msgstr "角色"
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "We've many roles:"
-msgstr ""
+msgstr "我们有多个角色："
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
 msgid "Process managers - initially triage issues and manage labels."
-msgstr ""
+msgstr "流程管理员 - 初步分类 issue 并管理标签。"
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
 msgid "Decision makers - participate in discussions moving them to resolutions."
-msgstr ""
+msgstr "决策者 - 参与讨论并推动解决方案。"
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
 msgid "Bug hunters - verifying bugs."
-msgstr ""
+msgstr "Bug 猎人 - 验证 bug。"
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
 msgid "Contributors - create code for pull requests."
-msgstr ""
+msgstr "贡献者 - 为 pull request 创建代码。"
 
 #. type: Bullet: '- '
 #: ../src/internals/002-issue-workflow.md
 msgid "Code reviewers - review pull requests."
-msgstr ""
+msgstr "代码审查员 - 审查 pull request。"
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "A single person may take one or more roles in the issue-resolving process."
-msgstr ""
+msgstr "一个人可以在 issue 解决过程中担任一个或多个角色。"
 
 #. type: Title ##
 #: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Labels"
-msgstr ""
+msgstr "标签"
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "We label issues to mark many things: current status, issue type, component affected. Status labels speak for themselves."
-msgstr ""
+msgstr "我们使用标签标记许多内容：当前状态、issue 类型、受影响的组件。状态标签不言自明。"
 
 #. type: Title ##
 #: ../src/internals/002-issue-workflow.md
 #, no-wrap
 msgid "Milestones"
-msgstr ""
+msgstr "里程碑"
 
 #. type: Plain text
 #: ../src/internals/002-issue-workflow.md
 msgid "Issues aren't assigned to milestones unless they're critical or there is a likely good pull request exists."
-msgstr ""
+msgstr "除非 issue 是关键的或存在一个可能不错的 pull request，否则不会将其分配到里程碑。"

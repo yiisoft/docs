@@ -1,14 +1,14 @@
-# 004 — Namespaces
+# 004 — 命名空间
 
-Package namespace rules are the following:
+包命名空间规则如下：
 
-1. PascalCase is used for namespace parts.
-2. Root vendor namespace is `Yiisoft`.
-3. Package name parts are used in namespace.
-4. Adjective is added to a noun and is a single part.
+1. 命名空间部分使用 PascalCase（帕斯卡命名法）。
+2. 根供应商命名空间是 `Yiisoft`。
+3. 包名称部分用于命名空间。
+4. 形容词添加到名词后，作为单个部分。
 
 
-Some examples:
+一些示例：
 
 | Package                    | Namespace                 |
 |----------------------------|---------------------------|
@@ -17,7 +17,6 @@ Some examples:
 | yiisoft/db-mysql           | Yiisoft\Db\Mysql          |
 | yiisoft/friendly-exception | Yiisoft\FriendlyException |
 
-## References
+## 参考资料
 
-- [International forum
-  discussion](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)
+- [国际论坛讨论](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)

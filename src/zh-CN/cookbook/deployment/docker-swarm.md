@@ -1,4 +1,4 @@
-# Deploying Yii applications to Docker Swarm
+# 将 Yii 应用部署到 Docker Swarm
 
-- [Using Caddy](docker-swarm-caddy.md)
-- [Using Traefik](docker-swarm-traefik.md)
+- [使用 Caddy](docker-swarm-caddy.md)
+- [使用 Traefik](docker-swarm-traefik.md)

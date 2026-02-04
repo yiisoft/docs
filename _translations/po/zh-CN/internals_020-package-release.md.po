@@ -19,69 +19,69 @@ msgstr ""
 #: ../src/en/internals/020-package-release.md
 #, no-wrap
 msgid "020 — Package release"
-msgstr ""
+msgstr "020 — 包发布"
 
 #. type: Title ##
 #: ../src/en/internals/020-package-release.md
 #, no-wrap
 msgid "Criteria"
-msgstr ""
+msgstr "标准"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "No critical issues."
-msgstr ""
+msgstr "没有关键问题。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "Public API changes aren't likely. Some time passed w/o issues reported that may require API changes."
-msgstr ""
+msgstr "公共 API 不太可能更改。已经过了一段时间，没有报告可能需要 API 更改的问题。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "All dependencies are stable."
-msgstr ""
+msgstr "所有依赖项都是稳定的。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "Close to 100% test coverage with, ideally, a 100% MSI score."
-msgstr ""
+msgstr "接近 100% 的测试覆盖率，理想情况下 MSI 分数为 100%。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "README is alright."
-msgstr ""
+msgstr "README 没问题。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "Everything is type-hinted unless special cases."
-msgstr ""
+msgstr "除特殊情况外，所有内容都有类型提示。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "Psalm analysis passes on at least level 2."
-msgstr ""
+msgstr "Psalm 分析至少通过 2 级。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "phpdoc is alright."
-msgstr ""
+msgstr "phpdoc 没问题。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/020-package-release.md
 msgid "Public API is alright."
-msgstr ""
+msgstr "公共 API 没问题。"
 
 #. type: Title ##
 #: ../src/en/internals/020-package-release.md
 #, no-wrap
 msgid "Release instruction"
-msgstr ""
+msgstr "发布说明"
 
 #. type: Plain text
 #: ../src/en/internals/020-package-release.md
 msgid "Release a package via [Yii Development Tool](005-development-tool.md)."
-msgstr ""
+msgstr "通过 [Yii 开发工具](005-development-tool.md) 发布包。"
 
 #. type: Plain text
 #: ../src/en/internals/020-package-release.md
@@ -90,11 +90,13 @@ msgid ""
 "1. Check that you can sign commits locally (see \n"
 "[Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).\n"
 msgstr ""
+"1. 检查您是否可以在本地签署提交（参见\n"
+"[签署提交](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)）。\n"
 
 #. type: Bullet: '2. '
 #: ../src/en/internals/020-package-release.md
 msgid "Pull last changes from the `master` branch:"
-msgstr ""
+msgstr "从 `master` 分支拉取最新更改："
 
 #. type: Fenced code block (shell)
 #: ../src/en/internals/020-package-release.md
@@ -107,12 +109,12 @@ msgstr ""
 #. type: Bullet: '3. '
 #: ../src/en/internals/020-package-release.md
 msgid "Check the package for compliance with the criteria above."
-msgstr ""
+msgstr "检查包是否符合上述标准。"
 
 #. type: Bullet: '4. '
 #: ../src/en/internals/020-package-release.md
 msgid "Run `release/make` command:"
-msgstr ""
+msgstr "运行 `release/make` 命令："
 
 #. type: Fenced code block (shell)
 #: ../src/en/internals/020-package-release.md
@@ -123,14 +125,14 @@ msgstr ""
 #. type: Bullet: '5. '
 #: ../src/en/internals/020-package-release.md
 msgid "Select the version type (major, minor or path)."
-msgstr ""
+msgstr "选择版本类型（major、minor 或 patch）。"
 
 #. type: Bullet: '6. '
 #: ../src/en/internals/020-package-release.md
 msgid "On the question \"Push commits and tags, and release on GitHub?\" check a diff. If the diff is alright, answer \"yes.\""
-msgstr ""
+msgstr "在问题“Push commits and tags, and release on GitHub?”上检查差异。如果差异没问题，回答 \"yes\"。"
 
 #. type: Bullet: '7. '
 #: ../src/en/internals/020-package-release.md
 msgid "For major and minor releases, add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news)."
-msgstr ""
+msgstr "对于主要和次要版本，在 [Yii Framework News](https://www.yiiframework.com/news) 上添加带有发布说明的记录。"

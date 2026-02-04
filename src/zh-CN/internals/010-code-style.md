@@ -1,50 +1,40 @@
-# 010 — Code style
+# 010 — 代码风格
 
-Code formatting used in Yii 3 packages is based on
-[PSR-1](https://www.php-fig.org/psr/psr-1/) and
-[PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top
-of it.
+Yii 3 包中使用的代码格式基于 [PSR-1](https://www.php-fig.org/psr/psr-1/) 和
+[PSR-12](https://www.php-fig.org/psr/psr-12/)，并在此基础上添加了额外的规则。
 
 ## Names
 
-- Use English only.
-- Use camelCase notation, including abbreviations (e.g., `enableIdn`).
-- Use the shortest possible, but an explanatory name.
-- Never trim or abbreviate a name.
-- Postfix classes, interfaces, traits and variables, which is a
-  [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)),
-  with `Collection`.
-- Postfix middleware classes with `Middleware`.
+- 仅使用英语。
+- 使用驼峰命名法，包括缩写（例如，`enableIdn`）。
+- 使用尽可能短但具有解释性的名称。
+- 永远不要修剪或缩写名称。
+- 对于 [集合](https://en.wikipedia.org/wiki/Collection_(abstract_data_type))
+  的类、接口、trait 和变量，使用 `Collection` 后缀。
+- 对中间件类使用 `Middleware` 后缀。
 
-## Types
+## 类型
 
-- Declare [argument and return
-  types](https://www.php.net/manual/en/migration70.new-features.php) where
-  possible.
-- [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
-- Use strict typing. Avoid mixed and union types where possible except
-  compatible types such as `string|Stringable`.
+- 尽可能声明
+  [参数和返回类型](https://www.php.net/manual/en/migration70.new-features.php)。
+- [为属性使用类型](https://wiki.php.net/rfc/typed_properties_v2)。
+- 使用严格类型。尽可能避免混合类型和联合类型，除非是兼容类型，如 `string|Stringable`。
 
-## Comments
+## 注释
 
-Inline comments are to be avoided unless code couldn't be understood without
-them.  A good example is a workaround for a bug in a certain PHP version.
+除非没有注释就无法理解代码，否则应避免内联注释。一个好的例子是针对某个 PHP 版本中的 bug 的解决方法。
 
-Method comment is necessary except it adds nothing to what method name and
-signature already has.
+方法注释是必要的，除非它没有为方法名称和签名已有的内容添加任何内容。
 
-Class comment should describe the purpose of the class.
+类注释应描述类的目的。
 
-[See
-PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
+[查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)。
 
-## Formatting
+## 格式化
 
-### No alignment
+### 不对齐
 
-Property, variable and constant value assignments shouldn't be aligned.  The
-same applies to phpdoc tags. The reason is that aligned statements often
-cause larger diff and even conflicts.
+属性、变量和常量值赋值不应对齐。phpdoc 标签也是如此。原因是对齐的语句通常会导致更大的差异甚至冲突。
 
 ```php
 final class X
@@ -67,11 +57,9 @@ final class X
 }
 ```
 
-### Chain calls
+### 链式调用
 
-Chained calls should be formatted for better readability.  If it's a long
-chain that doesn't fit the line length of 120 characters, then each call
-should on a new line:
+链式调用应格式化以提高可读性。如果是不适合 120 个字符行长度的长链，则每个调用应在新行上：
 
 ```php
 $object
@@ -82,52 +70,52 @@ $object
     ->withDeadline($deadline);
 ```
 
-If it's a short chain, it's alright for it to be on a single line:
+如果是短链，可以在单行上：
 
 ```php
 $object = $object->withName('test');
 ```
 
-## Strings
+## 字符串
 
-- When no variables involved, use `'Hello!'`
-- To get variables into string prefer `"Hello, $username!"`
+- 当不涉及变量时，使用 `'Hello!'`
+- 要将变量放入字符串，首选 `"Hello, $username!"`
 
-## Classes and interfaces
+## 类和接口
 
-### Final by default
+### 默认为 final
 
-Classes should be `final` by default.
+类默认应该是 `final` 的。
 
-### Private by default
+### 默认为 private
 
-Constants, properties and methods should be private by default.
+常量、属性和方法默认应该是 private 的。
 
-### Composition over inheritance
+### 组合优于继承
 
-Prefer [composition to inheritance](guide/en/concept/di-container.md).
+优先使用[组合而不是继承](guide/en/concept/di-container.md)。
 
-### Property, constant and method order
+### 属性、常量和方法顺序
 
-Order should be the following:
+顺序应该如下：
 
-- Constants
-- Properties
-- Methods
+- 常量
+- 属性
+- 方法
 
-Within each category, items should be sorted by visibility:
+在每个类别中，项目应按可见性排序：
 
 - public
 - protected
 - private
 
-### Abstract classes
+### 抽象类
 
-Abstract classes *shouldn't* be prefixed or postfixed with `Abstract`.
+抽象类*不应该*使用 `Abstract` 前缀或后缀。
 
-#### Immutable methods
+#### 不可变方法
 
-Immutable method convention is the following:
+不可变方法约定如下：
 
 ```php
 public function withName(string $name): self
@@ -138,13 +126,12 @@ public function withName(string $name): self
 }
 ```
 
-1. Cloned object name is `$new`.
-2. Return type is `self`.
+1. 克隆对象名称为 `$new`。
+2. 返回类型为 `self`。
 
-#### Boolean check methods
+#### 布尔检查方法
 
-Methods that are there to check if something is true should be named like
-the following:
+用于检查某事是否为真的方法应命名如下：
 
 ```php
 public function isDeleted(): bool;
@@ -152,25 +139,24 @@ public function hasName(): bool;
 public function canDoIt(): bool;
 ```
 
-#### Flags in methods 
+#### 方法中的标志
 
-Boolean flags in methods are better to be avoided. It's a sign the method
-may be doing too much, and there should be two methods instead of one.
+最好避免在方法中使用布尔标志。这表明该方法可能做得太多，应该有两个方法而不是一个。
 
 ```php
 public function login(bool $refreshPage = true): void;
 ```
 
-It is better to be two methods:
+最好是两个方法：
 
 ```php
 public function login(): void;
 public function refreshPage(): void;
 ```
 
-## Variables
+## 变量
 
-Add an underscore (`_`) prefix for unused variables. For example:
+为未使用的变量添加下划线（`_`）前缀。例如：
 
 ```php
 foreach ($items as $key => $_value) {
@@ -178,9 +164,9 @@ foreach ($items as $key => $_value) {
 }
 ```
 
-## Imports
+## 导入
 
-Prefer importing classes and functions to using fully qualified names:
+优先导入类和函数，而不是使用完全限定名称：
 
 ```php
 use Yiisoft\Arrays\ArrayHelper;
@@ -191,9 +177,9 @@ use Yiisoft\Validator\Result;
 use function is_iterable;
 ```
 
-## Additional conventions
+## 其他约定
 
-- [Namespaces](004-namespaces.md)
-- [Exceptions](007-exceptions.md)
-- [Interfaces](008-interfaces.md)
+- [命名空间](004-namespaces.md)
+- [异常](007-exceptions.md)
+- [接口](008-interfaces.md)
 

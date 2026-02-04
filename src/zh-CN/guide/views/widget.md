@@ -5,7 +5,7 @@ HTML generation logic.  They provide a clean way to create configurable UI
 elements that can be used across different views and applications. Yii3
 provides a flexible widget system through the `yiisoft/widget` package.
 
-## Installation
+## 安装
 
 The widget functionality is provided by the `yiisoft/widget` package:
 

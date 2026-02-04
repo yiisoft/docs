@@ -123,7 +123,7 @@ if ($request->hasHeader('Accept-Encoding')) {
 }
 ```
 
-## Body
+## 正文
 
 There are two methods to get body contents. The first is getting the body as
 it is without parsing:

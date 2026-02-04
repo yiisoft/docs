@@ -24,120 +24,120 @@ msgstr ""
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "000 — Packages"
-msgstr ""
+msgstr "000 — 包"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "Yii3 team divided the framework into several packages that conform to the following agreements."
-msgstr ""
+msgstr "Yii3 团队将框架划分为几个符合以下约定的包。"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "For all packages, the GitHub repository name exactly matches the Packagist package name."
-msgstr ""
+msgstr "对于所有包，GitHub 仓库名称与 Packagist 包名称完全匹配。"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "For a full list of packages and their building status, see [status page at yiiframework.com](https://www.yiiframework.com/status/3.0)."
-msgstr ""
+msgstr "有关包及其构建状态的完整列表，请参阅 [yiiframework.com 的状态页面](https://www.yiiframework.com/status/3.0)。"
 
 #. type: Title ##
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "Yii-specific packages (framework and extensions)"
-msgstr ""
+msgstr "Yii 特定包（框架和扩展）"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "named `yiisoft/yii-something` or more specific: `yii-type-something` e.g.:"
-msgstr ""
+msgstr "命名为 `yiisoft/yii-something` 或更具体的：`yii-type-something`，例如："
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/000-packages.md
 msgid "modules: `yii-module-users`, `yii-module-pages`"
-msgstr ""
+msgstr "模块：`yii-module-users`，`yii-module-pages`"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/000-packages.md
 msgid "themes: `yii-theme-adminlte`, `yii-theme-hyde`"
-msgstr ""
+msgstr "主题：`yii-theme-adminlte`，`yii-theme-hyde`"
 
 #. type: Bullet: '    - '
 #: ../src/en/internals/000-packages.md
 msgid "widgets: `yii-widget-datepicker`"
-msgstr ""
+msgstr "小部件：`yii-widget-datepicker`"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "titled as \"Yii Framework ...\""
-msgstr ""
+msgstr "标题为“Yii Framework ...”"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "may have any dependencies and Yii-specific code"
-msgstr ""
+msgstr "可以有任何依赖项和 Yii 特定代码"
 
 #. type: Title ##
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "General purpose packages (libraries)"
-msgstr ""
+msgstr "通用包（库）"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "you can use these independently of Yii Framework"
-msgstr ""
+msgstr "您可以独立于 Yii 框架使用这些"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "named as `yiisoft/something` without yii-prefix"
-msgstr ""
+msgstr "命名为 `yiisoft/something`，不带 yii 前缀"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "titled as \"Yii ...\""
-msgstr ""
+msgstr "标题为“Yii ...”"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "must not have dependencies on any Yii-specific packages"
-msgstr ""
+msgstr "不得依赖任何 Yii 特定包"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "should have as fewer dependencies as possible"
-msgstr ""
+msgstr "应尽可能少的依赖项"
 
 #. type: Title ##
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "Configs and defaults"
-msgstr ""
+msgstr "配置和默认值"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "The following applies to both Yii-specific packages and general purpose packages:"
-msgstr ""
+msgstr "以下适用于 Yii 特定包和通用包："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Package may have `config` directory with Yii-specific defaults."
-msgstr ""
+msgstr "包可以有包含 Yii 特定默认值的 `config` 目录。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Package may have \"config-plugin\" in \"extra\" section of `composer.json`."
-msgstr ""
+msgstr "包可以在 `composer.json` 的“extra”部分中有“config-plugin”。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Package mustn't have dependencies in `require` section of `composer.json` that are used in `config` only."
-msgstr ""
+msgstr "包不得在 `composer.json` 的 `require` 部分中有仅在 `config` 中使用的依赖项。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "You should namespace parameters with `vendor/package-name`:"
-msgstr ""
+msgstr "您应该使用 `vendor/package-name` 命名空间参数："
 
 #. type: Fenced code block (php)
 #: ../src/en/internals/000-packages.md
@@ -155,73 +155,73 @@ msgstr ""
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "Versions"
-msgstr ""
+msgstr "版本"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "All packages follow [SemVer](https://semver.org/) versioning:"
-msgstr ""
+msgstr "所有包都遵循 [SemVer](https://semver.org/) 版本控制："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "`x.*.*` - incompatible API changes."
-msgstr ""
+msgstr "`x.*.*` - 不兼容的 API 更改。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "`*.x.*` - add functionality (backwards-compatible)."
-msgstr ""
+msgstr "`*.x.*` - 添加功能（向后兼容）。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "`*.*.x` - bug fixes (backwards-compatible)."
-msgstr ""
+msgstr "`*.*.x` - bug 修复（向后兼容）。"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "The first stable version should be 1.0.0."
-msgstr ""
+msgstr "第一个稳定版本应该是 1.0.0。"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "Each package version number doesn't depend on any other package version or framework name/version, only on its own public contract.  The framework as a whole has the \"Yii3\" name."
-msgstr ""
+msgstr "每个包的版本号不依赖于任何其他包的版本或框架名称/版本，仅依赖于其自己的公共契约。整个框架的名称为 \"Yii3\"。"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "It's alright to use packages with different major versions together, as long as they're compatible."
-msgstr ""
+msgstr "只要兼容，一起使用不同主版本的包是可以的。"
 
 #. type: Title ##
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "PHP versions support"
-msgstr ""
+msgstr "PHP 版本支持"
 
 #. type: Plain text
 #: ../src/en/internals/000-packages.md
 msgid "The support of PHP versions supported for a package depends on [PHP versions life cycle](https://www.php.net/supported-versions.php)."
-msgstr ""
+msgstr "包支持的 PHP 版本取决于 [PHP 版本生命周期](https://www.php.net/supported-versions.php)。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Package versions with active support MUST support all PHP versions that have active support."
-msgstr ""
+msgstr "具有活跃支持的包版本必须支持所有具有活跃支持的 PHP 版本。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Both packages and application templates MUST have supported versions that receive bug and security fixes.  These SHOULD correspond to PHP versions receiving security fixes."
-msgstr ""
+msgstr "包和应用程序模板都必须有接收 bug 和安全修复的受支持版本。这些应该对应于接收安全修复的 PHP 版本。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Packages and application templates MIGHT have supported versions that work with unsupported PHP versions."
-msgstr ""
+msgstr "包和应用程序模板可能有与不受支持的 PHP 版本一起工作的受支持版本。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/000-packages.md
 msgid "Bumping the minimal PHP version in a package or an application template is a minor change."
-msgstr ""
+msgstr "提升包或应用程序模板中的最低 PHP 版本是一个次要更改。"
 
 #. type: Title ##
 #: ../src/en/internals/000-packages.md
@@ -233,4 +233,4 @@ msgstr ""
 #: ../src/en/internals/000-packages.md
 #, no-wrap
 msgid "A logical OR operator in version ranges MUST use double pipe (`||`). For example: `\"yiisoft/arrays\": \"^1.0 || ^2.0\"`.   \n"
-msgstr ""
+msgstr "版本范围中的逻辑 OR 运算符必须使用双管道（`||`）。例如：`\"yiisoft/arrays\": \"^1.0 || ^2.0\"`。\n"

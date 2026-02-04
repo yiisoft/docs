@@ -1,27 +1,25 @@
-# 002 — Issue workflow
+# 002 — Issue 工作流程
 
-The process of handing incoming issues is the following:
+处理传入 issue 的流程如下：
 
-![Issue workflow schema](/images/internals/002-issue-workflow.svg)
+![Issue 工作流程图](/images/internals/002-issue-workflow.svg)
 
-## Roles
+## 角色
 
-We've many roles:
+我们有多个角色：
 
-- Process managers - initially triage issues and manage labels.
-- Decision makers - participate in discussions moving them to resolutions.
-- Bug hunters - verifying bugs.
-- Contributors - create code for pull requests.
-- Code reviewers - review pull requests.
+- 流程管理员 - 初步分类 issue 并管理标签。
+- 决策者 - 参与讨论并推动解决方案。
+- Bug 猎人 - 验证 bug。
+- 贡献者 - 为 pull request 创建代码。
+- 代码审查员 - 审查 pull request。
 
-A single person may take one or more roles in the issue-resolving process.
+一个人可以在 issue 解决过程中担任一个或多个角色。
 
-## Labels
+## 标签
 
-We label issues to mark many things: current status, issue type, component
-affected. Status labels speak for themselves.
+我们使用标签标记许多内容：当前状态、issue 类型、受影响的组件。状态标签不言自明。
 
-## Milestones
+## 里程碑
 
-Issues aren't assigned to milestones unless they're critical or there is a
-likely good pull request exists.
+除非 issue 是关键的或存在一个可能不错的 pull request，否则不会将其分配到里程碑。

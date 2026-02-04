@@ -1,36 +1,32 @@
-# 018 - Widgets
+# 018 - 小部件
 
-Unlike regular classes, widgets are used in view templates, so syntax is
-important.  It should be both easy to write, easy to read and not too
-verbose because similar constructs are meant to be used over and over again.
+与常规类不同，小部件用于视图模板，因此语法很重要。它应该既易于编写、易于阅读，又不过于冗长，因为类似的结构会被反复使用。
 
-## Class names
+## 类名
 
-Widgets aren't postfixed or prefixed.
+小部件不使用后缀或前缀。
 
-## Inheritance
+## 继承
 
-Inheritance is allowed with some restrictions:
+允许继承，但有一些限制：
 
-- If a class isn't abstract, it should be final.
-- Hierarchy should be kept as linear as possible.
+- 如果类不是抽象的，它应该是 final 的。
+- 层次结构应尽可能保持线性。
 
-## Immutability
+## 不可变性
 
-Widgets should:
+小部件应该：
 
-- Have no state.
-- Be immutable.
+- 没有状态。
+- 是不可变的。
 
-## Methods
+## 方法
 
 ### Names
 
-- Unlike other classes, methods that return a clone of the object with some
-  properties modified aren't prefixed.
-- Keep method names as short as possible but don't hurt readability.
+- 与其他类不同，返回修改了某些属性的对象克隆的方法不使用前缀。
+- 保持方法名称尽可能简短，但不要影响可读性。
 
-### Boolean flags
+### 布尔标志
 
-The method that corresponds to the boolean attribute should be named after
-the attribute and accept a boolean flag argument.
+对应于布尔属性的方法应以该属性命名，并接受一个布尔标志参数。

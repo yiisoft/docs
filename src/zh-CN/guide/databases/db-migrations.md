@@ -226,7 +226,7 @@ various column types:
   - flat
   - double
   - decimal
-- Strings
+- 字符串
   - char
   - string
   - text

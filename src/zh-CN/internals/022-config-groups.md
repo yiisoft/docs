@@ -1,73 +1,68 @@
-# 022 — Config groups
+# 022 — 配置组
 
-This document defines naming convention for the framework groups used with
-[yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a
-naming convention for config files.  These could be anything and are mapped
-to group names via `composer.json`.
+本文档定义了与 [yiisoft/config](https://github.com/yiisoft/config)
+一起使用的框架组的命名约定。请注意，这不是配置文件的命名约定。这些可以是任何内容，并通过 `composer.json` 映射到组名称。
 
-## Config group name postfixes
+## 配置组名称后缀
 
-- "web" postfix applies to web only that's classic server HTML generation,
-  REST, RPC, etc.
-- "console" postfix applies to console
-- If there's no postfix, it's "common" and applies to both web and console
-- "web" and "console" may override what's defined in "common"
+- “web”后缀仅适用于 web，即经典的服务器 HTML 生成、REST、RPC 等。
+- “console”后缀适用于控制台
+- 如果没有后缀，则为“common”，适用于 web 和控制台
+- “web”和“console”可以覆盖“common”中定义的内容
 
-## Parameters
+## 参数
 
-Application config parameters that are used in all configs.
+在所有配置中使用的应用程序配置参数。
 
-- `params` — common parameters
-- `params-web` — web application parameters
-- `params-console` — console application parameters
+- `params` — 通用参数
+- `params-web` — web 应用程序参数
+- `params-console` — 控制台应用程序参数
 
-## Container
+## 容器
 
-Configuration for [yiisoft/di](https://github.com/yiisoft/di).
+[yiisoft/di](https://github.com/yiisoft/di) 的配置。
 
-### Definitions
+### 定义
 
-- `di` — common container definitions
-- `di-web` — web container definitions
-- `di-console` — console container definitions
+- `di` — 通用容器定义
+- `di-web` — web 容器定义
+- `di-console` — 控制台容器定义
 
-### Providers
+### 提供者
 
-- `di-providers` — common container providers
-- `di-providers-web` — web container providers
-- `di-providers-console` — console container providers
+- `di-providers` — 通用容器提供者
+- `di-providers-web` — web 容器提供者
+- `di-providers-console` — 控制台容器提供者
 
-### Delegates
+### 委托
 
-- `di-delegates` — common container delegates
-- `di-delegates-web` — web container delegates
-- `di-delegates-console` — console container delegates
+- `di-delegates` — 通用容器委托
+- `di-delegates-web` — web 容器委托
+- `di-delegates-console` — 控制台容器委托
 
-### Tags
+### 标签
 
-- `di-tags` — common container tags
-- `di-tags-web` — web container tags
-- `di-tags-console` — console container tags
+- `di-tags` — 通用容器标签
+- `di-tags-web` — web 容器标签
+- `di-tags-console` — 控制台容器标签
 
-## Events
+## 事件
 
-Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event).
+[yiisoft/yii-event](https://github.com/yiisoft/yii-event) 的配置。
 
-- `events` — common events
-- `events-web` — web events
-- `events-console` — console events
+- `events` — 通用事件
+- `events-web` — web 事件
+- `events-console` — 控制台事件
 
-## Bootstrap
+## 引导
 
-Application bootstrapping for
-[yiisoft/yii-runner](https://github.com/yiisoft/yii-runner).
+[yiisoft/yii-runner](https://github.com/yiisoft/yii-runner) 的应用程序引导。
 
-- `bootstrap` — common bootstrap
-- `bootstrap-web` — web bootstrap
-- `bootstrap-console` — console bootstrap
+- `bootstrap` — 通用引导
+- `bootstrap-web` — web 引导
+- `bootstrap-console` — 控制台引导
 
-## Others
+## 其他
 
-- `routes` — [yiisoft/router](https://github.com/yiisoft/router) routes
-- `widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default
-  widgets configuration
+- `routes` — [yiisoft/router](https://github.com/yiisoft/router) 路由
+- `widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) 默认小部件配置

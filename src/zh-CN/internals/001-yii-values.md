@@ -1,82 +1,71 @@
-# 001 — Yii goal and values
+# 001 — Yii 目标和价值观
 
-## Goal
+## 目标
 
-The Yii project aims to build and support _practical_ and _helpful_ tools
-and community.
+Yii 项目旨在构建和支持 _practical_ 和 _helpful_ 的工具和社区。
 
-## Values
+## 价值观
 
-The values we express in our work support the goal. We try to
+我们在工作中表达的价值观支持这一目标。我们努力
 
-- Be practical
-    - [High performance](#high-performance)
-    - [Sensible defaults and
-      flexibility](#sensible-defaults-and-flexibility)
-    - [Be practice-oriented](#be-practice-oriented)
-- Be helpful
-    - [Be simple](#be-simple)
-    - [Be explicit](#be-explicit)
-    - [Be consistent](#be-consistent)
+- 实用
+    - [高性能](#high-performance)
+    - [合理的默认值和灵活性](#sensible-defaults-and-flexibility)
+    - [以实践为导向](#be-practice-oriented)
+- 有帮助
+    - [保持简单](#be-simple)
+    - [明确表达](#be-explicit)
+    - [保持一致](#be-consistent)
     
-## Be practical
+## 实用
 
-### High performance
+### 高性能
 
-Performance is a necessary condition of practicality. Software shouldn't
-waste machine resources or human resources.
+性能是实用性的必要条件。软件不应浪费机器资源或人力资源。
 
-### Sensible defaults and flexibility
+### 合理的默认值和灵活性
 
-We prefer sensible defaults and conventions that users can customize.  We
-seek a balance between flexibility, discipline and simplicity that meets
-common needs.
+我们更喜欢用户可以自定义的合理默认值和约定。我们寻求灵活性、纪律性和简单性之间的平衡，以满足常见需求。
 
-### Be practice-oriented
+### 以实践为导向
 
-We prefer practice to theory. For example:
+我们更喜欢实践而不是理论。例如：
 
-- Solutions for known use cases should avoid excess complexity by providing
-  only necessary flexibility.
-- Standard implementations should take practical use into account.
-- Experience is at least as useful as theory in guiding design.
-- Context is critical in determining appropriateness.
+- 已知用例的解决方案应通过仅提供必要的灵活性来避免过度复杂性。
+- 标准实现应考虑实际使用。
+- 在指导设计方面，经验至少与理论一样有用。
+- 上下文对于确定适当性至关重要。
 
-## Be helpful
+## 有帮助
 
-This value guides technical decisions as well as community activity.
-Consideration of how software features help users should guide development.
-Community-wise, we value any helpful contribution, be it a pull request or
-an answer in the forum.
+这一价值观指导技术决策和社区活动。对软件功能如何帮助用户的考虑应该指导开发。在社区方面，我们重视任何有帮助的贡献，无论是 pull request
+还是论坛中的回答。
 
-When the other principles conflict, we choose a solution that's more helpful
-to the community.
+当其他原则发生冲突时，我们选择对社区更有帮助的解决方案。
 
-### Be simple
+### 保持简单
 
-Solutions should be simple and expressive:
+解决方案应该简单且富有表现力：
 
-- We use as much complexity as needed and no more.
-- We avoid ugly solutions unless there is no alternative.
-- Fewer rules are better than more rules.
+- 我们使用所需的复杂性，不多不少。
+- 除非别无选择，否则我们避免丑陋的解决方案。
+- 规则越少越好。
 
-### Be Explicit
+### 明确表达
 
-We prefer explicit, obvious solutions and code. Solutions should clearly
-express exactly what they do. For example:
+我们更喜欢明确、显而易见的解决方案和代码。解决方案应该清楚地表达它们的确切作用。例如：
 
-- A straightforward solution is better than an abstract one unless the
-  abstraction has a practical purpose.
-- Loud fails are better than silent fails or masking errors.
-- Explicit casts are better than PHP type juggling, type hints are good.
-- No magic unless necessary.
+- 除非抽象有实际目的，否则直接的解决方案比抽象的解决方案更好。
+- 明确的失败比静默失败或掩盖错误更好。
+- 显式转换比 PHP 类型转换更好，类型提示很好。
+- 除非必要，否则不要使用魔术。
 
-### Be consistent
+### 保持一致
 
-We try to be consistent in:
+我们努力在以下方面保持一致：
 
-- Code style
-- Naming
-- Design
-- Structure
-- Values and goals
+- 代码风格
+- 命名
+- 设计
+- 结构
+- 价值观和目标

@@ -1,10 +1,8 @@
-# 008 — Interfaces
+# 008 — 接口
 
-- Interface name should be suffixed with `Interface`.
+- 接口名称应以 `Interface` 作为后缀。
 
-## References
+## 参考资料
 
-- [International community discussion and
-  poll](https://forum.yiiframework.com/t/naming-interfaces/126612/5)
-- [Russian community discussion and
-  poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)
+- [国际社区讨论和投票](https://forum.yiiframework.com/t/naming-interfaces/126612/5)
+- [俄罗斯社区讨论和投票](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)

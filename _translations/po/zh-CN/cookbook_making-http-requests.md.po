@@ -20,49 +20,49 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Best practices"
-msgstr ""
+msgstr "最佳实践"
 
 #. type: Title #
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Making HTTP requests"
-msgstr ""
+msgstr "发起 HTTP 请求"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "When building modern applications, you often need to make HTTP requests to external APIs. This article demonstrates how to make HTTP requests in Yii3 applications using Guzzle with and [PSR interfaces](https://www.php-fig.org/psr/)."
-msgstr ""
+msgstr "在构建现代应用程序时，你经常需要向外部 API 发起 HTTP 请求。本文演示如何在 Yii3 应用程序中使用 Guzzle 和 [PSR 接口](https://www.php-fig.org/psr/)发起 HTTP 请求。"
 
 #. type: Title ##
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "What are PSR interfaces for HTTP"
-msgstr ""
+msgstr "什么是 HTTP 的 PSR 接口"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "The PHP-FIG (PHP Framework Interoperability Group) has defined several PSR standards for HTTP handling:"
-msgstr ""
+msgstr "PHP-FIG（PHP 框架互操作性组）为 HTTP 处理定义了几个 PSR 标准："
 
 #. type: Bullet: '- '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**PSR-7**: HTTP message interfaces for requests and responses"
-msgstr ""
+msgstr "**PSR-7**：用于请求和响应的 HTTP 消息接口"
 
 #. type: Bullet: '- '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**PSR-17**: HTTP factory interfaces for creating PSR-7 message objects"
-msgstr ""
+msgstr "**PSR-17**：用于创建 PSR-7 消息对象的 HTTP 工厂接口"
 
 #. type: Bullet: '- '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**PSR-18**: HTTP client interface for sending PSR-7 requests and returning PSR-7 responses"
-msgstr ""
+msgstr "**PSR-18**：用于发送 PSR-7 请求并返回 PSR-7 响应的 HTTP 客户端接口"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Using these interfaces ensures your code is framework-agnostic and follows established PHP standards."
-msgstr ""
+msgstr "使用这些接口可以确保你的代码与框架无关，并遵循已建立的 PHP 标准。"
 
 #. type: Title ##
 #: ../src/en/cookbook/making-http-requests.md
@@ -73,12 +73,12 @@ msgstr ""
 #: ../src/en/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Install the Guzzle HTTP client with PSR-18 support and PSR-17 factories:"
-msgstr ""
+msgstr "安装支持 PSR-18 和 PSR-17 工厂的 Guzzle HTTP 客户端："
 
 #. type: Fenced code block (shell)
 #: ../src/en/cookbook/making-http-requests.md
@@ -92,18 +92,18 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Basic usage"
-msgstr ""
+msgstr "基本用法"
 
 #. type: Title ###
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Simple GET request"
-msgstr ""
+msgstr "简单的 GET 请求"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Here's how to make a basic GET request using PSR-18 interfaces:"
-msgstr ""
+msgstr "以下是如何使用 PSR-18 接口发起基本 GET 请求："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -141,12 +141,12 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "POST request with JSON data"
-msgstr ""
+msgstr "带 JSON 数据的 POST 请求"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Here's an example of making a POST request with JSON payload:"
-msgstr ""
+msgstr "以下是发起带 JSON 负载的 POST 请求的示例："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -189,19 +189,19 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Configuration in Yii3"
-msgstr ""
+msgstr "在 Yii3 中的配置"
 
 #. type: Title ###
 #: ../src/en/cookbook/making-http-requests.md
 #: ../src/en/guide/concept/configuration.md
 #, no-wrap
 msgid "Container configuration"
-msgstr ""
+msgstr "容器配置"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Configure the HTTP client and PSR factories in your DI container:"
-msgstr ""
+msgstr "在 DI 容器中配置 HTTP 客户端和 PSR 工厂："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -251,12 +251,12 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Service with error handling"
-msgstr ""
+msgstr "带错误处理的服务"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Here's a more robust service example with proper error handling:"
-msgstr ""
+msgstr "以下是一个更健壮的服务示例，具有适当的错误处理："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -324,18 +324,18 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Advanced usage"
-msgstr ""
+msgstr "高级用法"
 
 #. type: Title ###
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Using middlewares"
-msgstr ""
+msgstr "使用中间件"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "Guzzle supports middleware for cross-cutting concerns like authentication, logging, or retrying:"
-msgstr ""
+msgstr "Guzzle 支持用于横切关注点的中间件，如身份验证、日志记录或重试："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -387,18 +387,18 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Async requests"
-msgstr ""
+msgstr "异步请求"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "For better performance when making multiple requests, you can use asynchronous requests:"
-msgstr ""
+msgstr "为了在发起多个请求时获得更好的性能，你可以使用异步请求："
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "> **Note**: Async functionality is not part of PSR interfaces, so this code depends on Guzzle explicitly.\n"
-msgstr ""
+msgstr "> **Note**：异步功能不是 PSR 接口的一部分，因此此代码明确依赖于 Guzzle。\n"
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -452,12 +452,12 @@ msgstr ""
 #: ../src/en/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Testing HTTP clients"
-msgstr ""
+msgstr "测试 HTTP 客户端"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "When testing services that make HTTP requests, you can use Guzzle's MockHandler:"
-msgstr ""
+msgstr "在测试发起 HTTP 请求的服务时，你可以使用 Guzzle 的 MockHandler："
 
 #. type: Fenced code block (php)
 #: ../src/en/cookbook/making-http-requests.md
@@ -507,34 +507,34 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Use PSR interfaces**: Always type-hint against PSR interfaces rather than concrete implementations for better testability and flexibility."
-msgstr ""
+msgstr "**使用 PSR 接口**：始终针对 PSR 接口进行类型提示，而不是具体实现，以获得更好的可测试性和灵活性。"
 
 #. type: Bullet: '2. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Handle errors gracefully**: Always wrap HTTP requests in try-catch blocks and handle network failures appropriately."
-msgstr ""
+msgstr "**优雅地处理错误**：始终将 HTTP 请求包装在 try-catch 块中，并适当处理网络故障。"
 
 #. type: Bullet: '3. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Configure timeouts**: Set reasonable connection and request timeouts to prevent hanging requests."
-msgstr ""
+msgstr "**配置超时**：设置合理的连接和请求超时，以防止请求挂起。"
 
 #. type: Bullet: '4. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Log requests**: Use middleware or manual logging to track API calls for debugging and monitoring."
-msgstr ""
+msgstr "**记录请求**：使用中间件或手动日志记录来跟踪 API 调用，以便调试和监控。"
 
 #. type: Bullet: '5. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Use dependency injection**: Inject HTTP clients and factories through your DI container rather than creating them directly."
-msgstr ""
+msgstr "**使用依赖注入**：通过 DI 容器注入 HTTP 客户端和工厂，而不是直接创建它们。"
 
 #. type: Bullet: '6. '
 #: ../src/en/cookbook/making-http-requests.md
 msgid "**Mock in tests**: Use Guzzle's MockHandler or similar tools to test your HTTP client code without making real network requests."
-msgstr ""
+msgstr "**在测试中使用模拟**：使用 Guzzle 的 MockHandler 或类似工具来测试 HTTP 客户端代码，而无需发起真实的网络请求。"
 
 #. type: Plain text
 #: ../src/en/cookbook/making-http-requests.md
 msgid "By following these patterns and using PSR interfaces, you'll create maintainable, testable, and interoperable HTTP client code in your Yii3 applications."
-msgstr ""
+msgstr "通过遵循这些模式并使用 PSR 接口，你将在 Yii3 应用程序中创建可维护、可测试和可互操作的 HTTP 客户端代码。"

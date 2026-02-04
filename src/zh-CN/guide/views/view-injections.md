@@ -13,7 +13,7 @@ package:
 composer require yiisoft/yii-view-renderer
 ```
 
-## Configuration
+## 配置
 
 In config `params.php`:
 

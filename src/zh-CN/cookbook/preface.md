@@ -1,37 +1,26 @@
-# Preface
+# 前言
 
-Yii is a high-performance, package-based PHP framework for developing modern
-applications.  The name Yii (pronounced `Yee` or `[ji:]`) means "simple and
-evolutionary" in Chinese.  You can also think about it as an acronym for
-**Yes It Is**!
+Yii 是一个高性能、基于包的 PHP 框架，用于开发现代应用程序。Yii（发音为 `Yee` 或
+`[ji:]`）在中文中意为“简单且不断演进”。你也可以把它看作是 **Yes It Is**（是的，就是它）的首字母缩写！
 
-Yii is a generic Web programming framework.  You can use it for developing
-all kinds of Web applications using PHP.  Because of its architecture and
-sophisticated caching support, it's especially suitable for developing
-large-scale applications such as portals, content management systems,
-e-commerce, REST APIs, etc.
+Yii 是一个通用的 Web 编程框架。你可以使用它来开发各种类型的 PHP Web
+应用程序。由于其架构和完善的缓存支持，它特别适合开发大型应用程序，如门户网站、内容管理系统、电子商务、REST API 等。
 
-With comprehensive documentation and an enthusiastic user community, Yii can
-significantly reduce your development time in the long run.
+凭借全面的文档和热情的用户社区，从长远来看，Yii 可以显著减少你的开发时间。
 
-## What's the book about
+## 本书内容
 
-This book is for you if you're familiar with Yii3, building Yii
-applications, and read the official Yii3 guide.  It covers fundamentally
-important development concepts, application architecture approaches,
-integrating third party services with Yii3, etc.
+如果你熟悉 Yii3、构建 Yii 应用程序并阅读过官方 Yii3 指南，那么本书适合你。它涵盖了基本的重要开发概念、应用程序架构方法、将第三方服务与
+Yii3 集成等内容。
 
-The book consists of individual recipes gathered from Yii experts that you
-can apply in your applications.  These go by topic, but you are free to read
-them in any order as there is no dependency between them.
+本书由 Yii 专家收集的独立配方组成，你可以在应用程序中应用这些配方。这些配方按主题分类，但你可以按任意顺序阅读它们，因为它们之间没有依赖关系。
 
-## Prerequisites
+## 前提条件
 
-- You should have Yii3 installed.
-- You should be familiar with the framework basics and the official guide.
+- 你应该已经安装了 Yii3。
+- 你应该熟悉框架基础知识和官方指南。
 
-## How to participate
+## 如何参与
 
-If you've found any errata, wrong information, want to improve something or
-have a good recipe, create an issue or make a pull request in [the book
-GitHub repository](https://github.com/yiisoft/docs).
+如果你发现任何勘误、错误信息，想要改进某些内容或有好的配方，请在[本书的 GitHub
+仓库](https://github.com/yiisoft/docs)中创建 issue 或提交 pull request。

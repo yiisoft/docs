@@ -1,18 +1,17 @@
-# 006 — Git commit messages
+# 006 — Git 提交消息
 
 
-## Subject line
+## 主题行
 
-- Use `#123` to reference issue by number
-- Use imperative mood that's `Fix`, not `Fixed`
-- Don't add a period at the end
-- Use `[skip ci]` if there is no need to run unit tests
-- Start with a capital letter
-- Limit to 50 characters
+- 使用 `#123` 通过编号引用问题
+- 使用祈使语气，即 `Fix` 而不是 `Fixed`
+- 末尾不要添加句号
+- 如果不需要运行单元测试，使用 `[skip ci]`
+- 以大写字母开头
+- 限制在 50 个字符以内
 
-## Body
+## 正文
 
-Use the message body **if** you need an extra explanation. Explain why, not
-how.
+**如果**需要额外说明，使用消息正文。解释为什么，而不是如何做。
 
-- Limit line length to 72 characters
+- 限制行长度为 72 个字符

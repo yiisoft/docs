@@ -25,25 +25,25 @@ msgstr ""
 #: ../src/en/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "参考资料"
 
 #. type: Title #
 #: ../src/en/internals/008-interfaces.md
 #, no-wrap
 msgid "008 — Interfaces"
-msgstr ""
+msgstr "008 — 接口"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/008-interfaces.md
 msgid "Interface name should be suffixed with `Interface`."
-msgstr ""
+msgstr "接口名称应以 `Interface` 作为后缀。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/008-interfaces.md
 msgid "[International community discussion and poll](https://forum.yiiframework.com/t/naming-interfaces/126612/5)"
-msgstr ""
+msgstr "[国际社区讨论和投票](https://forum.yiiframework.com/t/naming-interfaces/126612/5)"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/008-interfaces.md
 msgid "[Russian community discussion and poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)"
-msgstr ""
+msgstr "[俄罗斯社区讨论和投票](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)"

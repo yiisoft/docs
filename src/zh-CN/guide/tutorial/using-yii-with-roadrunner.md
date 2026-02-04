@@ -5,7 +5,7 @@ it as workers and each worker may handle multiple requests. Such an operation mo
 [event loop](using-with-event-loop.md) and allows not re-initializing a framework for each request that improves
 performance significantly.
 
-## Installation
+## 安装
 
 RoadRunner works on Linux, macOS and Windows. The best way to install it is
 to use a Composer:
@@ -22,7 +22,7 @@ After installation is done, run
 
 That would download ready to use RoadRunner server `rr` binary.
 
-## Configuration
+## 配置
 
 First, we need to configure the server itself. Create `/.rr.yaml` and add
 the following config:

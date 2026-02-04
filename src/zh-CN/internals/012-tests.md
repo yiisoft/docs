@@ -1,18 +1,13 @@
-# 012 — Tests
+# 012 — 测试
 
-For each package, we're adding unit-tests that are run via
-[PHPUnit](https://phpunit.de/).  When designing tests, the following
-guidelines should be taken into account.
+对于每个包，我们都添加了通过 [PHPUnit](https://phpunit.de/) 运行的单元测试。在设计测试时，应考虑以下准则。
 
-- Test class should be marked as `final` by default.
-- `@test` annotation must not be used, prefix methods with `test`.
-- The test method name must reflect the purpose of the test.
-- "should" must not be used in the test method name.
-- If necessary, the test method phpdoc may describe the desired behavior.
-- The test must follow AAA: first arrange the necessary preconditions, then
-  act, then assert expected results.
-- There must be one test case per test method that's a single AAA.
-- Test must use public API.  Private properties or methods shouldn't be
-  accessed, assumptions on internals of the class tested shouldn't be made.
-- Tests shouldn't rely on composer-config-plugin and DI container unless
-  necessary.
+- 测试类默认应标记为 `final`。
+- 不得使用 `@test` 注解，方法应以 `test` 为前缀。
+- 测试方法名称必须反映测试的目的。
+- 测试方法名称中不得使用“should”。
+- 如有必要，测试方法的 phpdoc 可以描述期望的行为。
+- 测试必须遵循 AAA 模式：首先安排（Arrange）必要的前置条件，然后执行（Act），最后断言（Assert）预期结果。
+- 每个测试方法必须只有一个测试用例，即单个 AAA。
+- 测试必须使用公共 API。不应访问私有属性或方法，不应对被测试类的内部实现做出假设。
+- 除非必要，测试不应依赖 composer-config-plugin 和 DI 容器。

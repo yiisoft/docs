@@ -93,24 +93,24 @@ msgstr ""
 #: ../src/en/internals/018-widgets.md
 #, no-wrap
 msgid "018 - Widgets"
-msgstr ""
+msgstr "018 - 小部件"
 
 #. type: Plain text
 #: ../src/en/internals/018-widgets.md
 msgid "Unlike regular classes, widgets are used in view templates, so syntax is important.  It should be both easy to write, easy to read and not too verbose because similar constructs are meant to be used over and over again."
-msgstr ""
+msgstr "与常规类不同，小部件用于视图模板，因此语法很重要。它应该既易于编写、易于阅读，又不过于冗长，因为类似的结构会被反复使用。"
 
 #. type: Plain text
 #: ../src/en/internals/018-widgets.md
 msgid "Widgets aren't postfixed or prefixed."
-msgstr ""
+msgstr "小部件不使用后缀或前缀。"
 
 #. type: Plain text
 #: ../src/en/internals/018-widgets.md
 msgid "Widgets should:"
-msgstr ""
+msgstr "小部件应该："
 
 #. type: Bullet: '- '
 #: ../src/en/internals/018-widgets.md
 msgid "Be immutable."
-msgstr ""
+msgstr "是不可变的。"

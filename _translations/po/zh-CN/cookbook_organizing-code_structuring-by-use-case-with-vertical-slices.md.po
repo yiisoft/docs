@@ -19,37 +19,37 @@ msgstr ""
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 #, no-wrap
 msgid "Structuring code by use-case with vertical slices"
-msgstr ""
+msgstr "使用垂直切片按用例组织代码"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "When building an application, it's important to organize the code in a way that makes it easy to understand, support, and scale. One popular approach is to structure the code by use-case with vertical slices."
-msgstr ""
+msgstr "在构建应用程序时，以易于理解、支持和扩展的方式组织代码非常重要。一种流行的方法是使用垂直切片按用例组织代码。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "Vertical slices are self-contained pieces of functionality that cover the entire stack, from the user interface to the data access layer.  Developer organizes each slice around a specific use case, such as creating a new user or updating a product."
-msgstr ""
+msgstr "垂直切片是自包含的功能片段，涵盖整个技术栈，从用户界面到数据访问层。开发人员围绕特定用例组织每个切片，例如创建新用户或更新产品。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "When structuring code classically by type (such as models, views, controllers, helpers, etc.), it can be easy to lose sight of the bigger picture and how different pieces of code interact to support specific features or use cases.  This can lead to code duplication, tight coupling, and poor maintainability as the application grows."
-msgstr ""
+msgstr "当按类型（如模型、视图、控制器、辅助函数等）以经典方式组织代码时，很容易忽视全局以及不同代码片段如何交互以支持特定功能或用例。随着应用程序的增长，这可能导致代码重复、紧密耦合和可维护性差。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "On the other hand, structuring code by use-case makes developers focus on a specific feature or workflow and understand how different pieces of code work together to support that feature. This approach also helps to keep related code together in a single directory, making it easier to navigate and support. Vertical slicing also encourages the use of domain-driven design concepts, such as entities, repositories, and services, which can help to promote good separation of concerns and modularity."
-msgstr ""
+msgstr "另一方面，按用例组织代码使开发人员专注于特定功能或工作流程，并理解不同代码片段如何协同工作以支持该功能。这种方法还有助于将相关代码保存在单个目录中，使其更易于导航和支持。垂直切片还鼓励使用领域驱动设计概念，如实体、仓储和服务，这有助于促进良好的关注点分离和模块化。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "Additionally, structuring code by use-case can make it easier to test and debug the application since use-case namespace encapsulates each feature or workflow in its own directory with clear boundaries and well-defined interfaces."
-msgstr ""
+msgstr "此外，按用例组织代码可以使测试和调试应用程序变得更容易，因为用例命名空间将每个功能或工作流程封装在自己的目录中，具有清晰的边界和定义良好的接口。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "Here's an example directory structure for a PHP application organized using vertical slices:"
-msgstr ""
+msgstr "以下是使用垂直切片组织的 PHP 应用程序的示例目录结构："
 
 #. type: Fenced code block
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
@@ -94,12 +94,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "Each vertical slice has its own directory, which has code associated with the use case."
-msgstr ""
+msgstr "每个垂直切片都有自己的目录，其中包含与用例相关的代码。"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "The use-case subdirectories and their respective classes are organized by type within each directory, omitting a directory if there's a single class of the type. If code is shared between multiple use-cases, it's moved one level up such as `Model` or `Service`."
-msgstr ""
+msgstr "用例子目录及其各自的类在每个目录中按类型组织，如果某个类型只有一个类，则省略目录。如果代码在多个用例之间共享，则将其向上移动一级，例如 `Model` 或 `Service`。"
 
 #. type: Title ##
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
@@ -110,9 +110,9 @@ msgstr ""
 #: ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "参考资料"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "[Application structure overview](../../guide/structure/overview.md)"
-msgstr ""
+msgstr "[应用程序结构概述](../../guide/structure/overview.md)"

@@ -19,54 +19,54 @@ msgstr ""
 #: ../src/en/internals/012-tests.md
 #, no-wrap
 msgid "012 — Tests"
-msgstr ""
+msgstr "012 — 测试"
 
 #. type: Plain text
 #: ../src/en/internals/012-tests.md
 msgid "For each package, we're adding unit-tests that are run via [PHPUnit](https://phpunit.de/).  When designing tests, the following guidelines should be taken into account."
-msgstr ""
+msgstr "对于每个包，我们都添加了通过 [PHPUnit](https://phpunit.de/) 运行的单元测试。在设计测试时，应考虑以下准则。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "Test class should be marked as `final` by default."
-msgstr ""
+msgstr "测试类默认应标记为 `final`。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "`@test` annotation must not be used, prefix methods with `test`."
-msgstr ""
+msgstr "不得使用 `@test` 注解，方法应以 `test` 为前缀。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "The test method name must reflect the purpose of the test."
-msgstr ""
+msgstr "测试方法名称必须反映测试的目的。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "\"should\" must not be used in the test method name."
-msgstr ""
+msgstr "测试方法名称中不得使用“should”。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "If necessary, the test method phpdoc may describe the desired behavior."
-msgstr ""
+msgstr "如有必要，测试方法的 phpdoc 可以描述期望的行为。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "The test must follow AAA: first arrange the necessary preconditions, then act, then assert expected results."
-msgstr ""
+msgstr "测试必须遵循 AAA 模式：首先安排（Arrange）必要的前置条件，然后执行（Act），最后断言（Assert）预期结果。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "There must be one test case per test method that's a single AAA."
-msgstr ""
+msgstr "每个测试方法必须只有一个测试用例，即单个 AAA。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "Test must use public API.  Private properties or methods shouldn't be accessed, assumptions on internals of the class tested shouldn't be made."
-msgstr ""
+msgstr "测试必须使用公共 API。不应访问私有属性或方法，不应对被测试类的内部实现做出假设。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/012-tests.md
 msgid "Tests shouldn't rely on composer-config-plugin and DI container unless necessary."
-msgstr ""
+msgstr "除非必要，测试不应依赖 composer-config-plugin 和 DI 容器。"

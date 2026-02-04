@@ -19,14 +19,14 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm.md
 #, no-wrap
 msgid "Deploying Yii applications to Docker Swarm"
-msgstr ""
+msgstr "将 Yii 应用部署到 Docker Swarm"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm.md
 msgid "[Using Caddy](docker-swarm-caddy.md)"
-msgstr ""
+msgstr "[使用 Caddy](docker-swarm-caddy.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/docker-swarm.md
 msgid "[Using Traefik](docker-swarm-traefik.md)"
-msgstr ""
+msgstr "[使用 Traefik](docker-swarm-traefik.md)"

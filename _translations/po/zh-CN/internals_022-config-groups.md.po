@@ -20,225 +20,225 @@ msgstr ""
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
-msgstr ""
+msgstr "事件"
 
 #. type: Title ##
 #: ../src/en/guide/concept/configuration.md
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #. type: Title ##
 #: ../src/en/internals/003-roadmap.md ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Others"
-msgstr ""
+msgstr "其他"
 
 #. type: Title #
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "022 — Config groups"
-msgstr ""
+msgstr "022 — 配置组"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a naming convention for config files.  These could be anything and are mapped to group names via `composer.json`."
-msgstr ""
+msgstr "本文档定义了与 [yiisoft/config](https://github.com/yiisoft/config) 一起使用的框架组的命名约定。请注意，这不是配置文件的命名约定。这些可以是任何内容，并通过 `composer.json` 映射到组名称。"
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Config group name postfixes"
-msgstr ""
+msgstr "配置组名称后缀"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"web\" postfix applies to web only that's classic server HTML generation, REST, RPC, etc."
-msgstr ""
+msgstr "“web”后缀仅适用于 web，即经典的服务器 HTML 生成、REST、RPC 等。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"console\" postfix applies to console"
-msgstr ""
+msgstr "“console”后缀适用于控制台"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "If there's no postfix, it's \"common\" and applies to both web and console"
-msgstr ""
+msgstr "如果没有后缀，则为“common”，适用于 web 和控制台"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"web\" and \"console\" may override what's defined in \"common\""
-msgstr ""
+msgstr "“web”和“console”可以覆盖“common”中定义的内容"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Application config parameters that are used in all configs."
-msgstr ""
+msgstr "在所有配置中使用的应用程序配置参数。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params` — common parameters"
-msgstr ""
+msgstr "`params` — 通用参数"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params-web` — web application parameters"
-msgstr ""
+msgstr "`params-web` — web 应用程序参数"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params-console` — console application parameters"
-msgstr ""
+msgstr "`params-console` — 控制台应用程序参数"
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Container"
-msgstr ""
+msgstr "容器"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Configuration for [yiisoft/di](https://github.com/yiisoft/di)."
-msgstr ""
+msgstr "[yiisoft/di](https://github.com/yiisoft/di) 的配置。"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Definitions"
-msgstr ""
+msgstr "定义"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di` — common container definitions"
-msgstr ""
+msgstr "`di` — 通用容器定义"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-web` — web container definitions"
-msgstr ""
+msgstr "`di-web` — web 容器定义"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-console` — console container definitions"
-msgstr ""
+msgstr "`di-console` — 控制台容器定义"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Providers"
-msgstr ""
+msgstr "提供者"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers` — common container providers"
-msgstr ""
+msgstr "`di-providers` — 通用容器提供者"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers-web` — web container providers"
-msgstr ""
+msgstr "`di-providers-web` — web 容器提供者"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers-console` — console container providers"
-msgstr ""
+msgstr "`di-providers-console` — 控制台容器提供者"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Delegates"
-msgstr ""
+msgstr "委托"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates` — common container delegates"
-msgstr ""
+msgstr "`di-delegates` — 通用容器委托"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates-web` — web container delegates"
-msgstr ""
+msgstr "`di-delegates-web` — web 容器委托"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates-console` — console container delegates"
-msgstr ""
+msgstr "`di-delegates-console` — 控制台容器委托"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Tags"
-msgstr ""
+msgstr "标签"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags` — common container tags"
-msgstr ""
+msgstr "`di-tags` — 通用容器标签"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags-web` — web container tags"
-msgstr ""
+msgstr "`di-tags-web` — web 容器标签"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags-console` — console container tags"
-msgstr ""
+msgstr "`di-tags-console` — 控制台容器标签"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event)."
-msgstr ""
+msgstr "[yiisoft/yii-event](https://github.com/yiisoft/yii-event) 的配置。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events` — common events"
-msgstr ""
+msgstr "`events` — 通用事件"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events-web` — web events"
-msgstr ""
+msgstr "`events-web` — web 事件"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events-console` — console events"
-msgstr ""
+msgstr "`events-console` — 控制台事件"
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Bootstrap"
-msgstr ""
+msgstr "引导"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Application bootstrapping for [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner)."
-msgstr ""
+msgstr "[yiisoft/yii-runner](https://github.com/yiisoft/yii-runner) 的应用程序引导。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap` — common bootstrap"
-msgstr ""
+msgstr "`bootstrap` — 通用引导"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap-web` — web bootstrap"
-msgstr ""
+msgstr "`bootstrap-web` — web 引导"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap-console` — console bootstrap"
-msgstr ""
+msgstr "`bootstrap-console` — 控制台引导"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`routes` — [yiisoft/router](https://github.com/yiisoft/router) routes"
-msgstr ""
+msgstr "`routes` — [yiisoft/router](https://github.com/yiisoft/router) 路由"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default widgets configuration"
-msgstr ""
+msgstr "`widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) 默认小部件配置"

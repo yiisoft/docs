@@ -19,89 +19,89 @@ msgstr ""
 #: ../src/en/internals/013-code-review.md
 #, no-wrap
 msgid "013 — Code review"
-msgstr ""
+msgstr "013 — 代码审查"
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
 msgid "Code reviews are essential for the success of the project and are as important as contributing code."
-msgstr ""
+msgstr "代码审查对项目的成功至关重要，与贡献代码同样重要。"
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
 msgid "Reviews are handled via GitHub pull requests. When the request is ready for review, the \"status: code review\" label is added to it."
-msgstr ""
+msgstr "审查通过 GitHub pull request 处理。当请求准备好审查时，会添加“status: code review”标签。"
 
 #. type: Plain text
 #: ../src/en/internals/013-code-review.md
 msgid "[A full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  is available at GitHub."
-msgstr ""
+msgstr "[需要审查的 pull request 完整列表](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues) 可在 GitHub 上查看。"
 
 #. type: Title ##
 #: ../src/en/internals/013-code-review.md
 #, no-wrap
 msgid "Guidelines"
-msgstr ""
+msgstr "指南"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Check out the pull request branch, open the project in the IDE, get a big picture."
-msgstr ""
+msgstr "检出 pull request 分支，在 IDE 中打开项目，了解全局。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Does the pull request make sense overall?"
-msgstr ""
+msgstr "pull request 整体上是否合理？"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Run tests and/or application using code from the pull request. Are these OK?"
-msgstr ""
+msgstr "使用 pull request 中的代码运行测试和/或应用程序。这些是否正常？"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Read all lines of code in the pull request."
-msgstr ""
+msgstr "阅读 pull request 中的所有代码行。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Could it be done simpler?"
-msgstr ""
+msgstr "能否做得更简单？"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Are there security issues?"
-msgstr ""
+msgstr "是否存在安全问题？"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Are there performance issues?"
-msgstr ""
+msgstr "是否存在性能问题？"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "When leaving comments, be polite."
-msgstr ""
+msgstr "留下评论时，要有礼貌。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "Avoid code-formatting comments."
-msgstr ""
+msgstr "避免代码格式化方面的评论。"
 
 #. type: Title ##
 #: ../src/en/internals/013-code-review.md
 #, no-wrap
 msgid "Mandatory parts"
-msgstr ""
+msgstr "必需部分"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "[ ] Tests that fail without code and pass with code."
-msgstr ""
+msgstr "[ ] 没有代码时失败、有代码时通过的测试。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "[ ] Type hints."
-msgstr ""
+msgstr "[ ] 类型提示。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
@@ -111,9 +111,9 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "[ ] Documentation: phpdoc, yiisoft/docs."
-msgstr ""
+msgstr "[ ] 文档：phpdoc，yiisoft/docs。"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/013-code-review.md
 msgid "[ ] Changelog entry (if package is stable)."
-msgstr ""
+msgstr "[ ] 变更日志条目（如果包是稳定的）。"
