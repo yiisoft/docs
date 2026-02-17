@@ -1,7 +1,19 @@
 <script setup>
+import {computed} from 'vue'
 import { useData } from 'vitepress'
 
-const { lang } = useData()
+const {lang, page, site} = useData()
+
+const issueUrl = computed(() => {
+    const title = page.value.title
+    const pageUrl = location.origin + site.value.base + page.value.relativePath.replace(/\.md$/, '.html')
+    const params = new URLSearchParams({
+        template: '01-bug-report.yml',
+        title: 'Problem on "' + title + '"',
+        description: 'Link to page: [' + title + '](' + pageUrl + ')',
+    })
+    return `https://github.com/yiisoft/docs/issues/new?${params}`
+})
 
 const labels = {
   'en': 'Report an issue',
@@ -16,7 +28,7 @@ const labels = {
 <template>
   <div class="report-issue">
     <a
-      href="https://github.com/yiisoft/docs/issues"
+        :href="issueUrl"
       target="_blank"
       rel="noopener noreferrer"
       class="report-issue-link"
