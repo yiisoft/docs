@@ -52,10 +52,34 @@
 }
 
 /* Report issue link */
+.VPDocFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.VPDocFooter .edit-info {
+    display: contents !important;
+}
+.VPDocFooter .edit-link {
+    order: 0;
+}
 .report-issue {
+    order: 1;
     display: flex;
     align-items: center;
-    padding-bottom: 12px;
+    & + .edit-info .edit-link {
+        margin-right: 16px;
+    }
+}
+.VPDocFooter .last-updated {
+    order: 2;
+    margin-left: auto;
+    padding-left: 16px;
+}
+.VPDocFooter .prev-next {
+    order: 3;
+    width: 100%;
+    margin-top: 14px;
 }
 .report-issue-link {
     display: flex;
