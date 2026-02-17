@@ -6,7 +6,8 @@ const {lang, page, site} = useData()
 
 const issueUrl = computed(() => {
     const title = page.value.title
-    const pageUrl = location.origin + site.value.base + page.value.relativePath.replace(/\.md$/, '.html')
+    const origin = typeof window !== 'undefined' ? window.location.origin : ''
+    const pageUrl = origin + site.value.base + page.value.relativePath.replace(/\.md$/, '.html')
     const params = new URLSearchParams({
         template: '01-bug-report.yml',
         title: 'Problem on "' + title + '"',
