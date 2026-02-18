@@ -1,9 +1,7 @@
 name: Update translations
 
 on:
-  pull_request_target:
-    paths:
-      - '_translations/**'
+  pull_request:
   push:
     branches: [ "master" ]
     paths:
