@@ -4,6 +4,7 @@ import { useData, useRoute } from "vitepress";
 import { createMermaidRenderer } from "vitepress-mermaid-renderer";
 import 'glightbox/dist/css/glightbox.css';
 import './style.css'
+import ReportIssue from './components/ReportIssue.vue'
 
 export default {
     extends: DefaultTheme,
@@ -24,7 +25,9 @@ export default {
                 initMermaid();
             }
         );
-        return h(DefaultTheme.Layout);
+        return h(DefaultTheme.Layout, null, {
+            'doc-footer-before': () => h(ReportIssue),
+        });
     },
     setup() {
         const route = useRoute();

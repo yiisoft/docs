@@ -50,3 +50,51 @@
 .vp-doc .glightbox img:hover {
     opacity: 0.9;
 }
+
+/* Report issue link */
+.VPDocFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.VPDocFooter .edit-info {
+    display: contents !important;
+}
+.VPDocFooter .edit-link {
+    order: 0;
+}
+.report-issue {
+    order: 1;
+    display: flex;
+    align-items: center;
+    & + .edit-info .edit-link {
+        margin-right: 16px;
+    }
+}
+.VPDocFooter .last-updated {
+    order: 2;
+    margin-left: auto;
+    padding-left: 16px;
+}
+.VPDocFooter .prev-next {
+    order: 3;
+    width: 100%;
+    margin-top: 14px;
+}
+.report-issue-link {
+    display: flex;
+    align-items: center;
+    border: 0;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--vp-c-brand-1);
+    transition: color 0.25s;
+}
+.report-issue-link:hover {
+    color: var(--vp-c-brand-2);
+}
+.vpi-report-issue-icon {
+    margin-right: 8px;
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4M12 16h.01'/%3E%3C/svg%3E");
+}
