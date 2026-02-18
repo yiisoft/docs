@@ -24,11 +24,11 @@ jobs:
         run: _translations/prepare-config.sh
 
       - name: Use po4a
-        uses: vjik/docker-run@1.0
+        uses: vjik/docker-run@v1
         with:
             image: ghcr.io/yiisoft-contrib/po4a:0.74
-            options: -w /src/_translations
             volumes: ${{ github.workspace }}:/src
+            workdir: /src/_translations
             command: po4a po4a.conf && po4a po4a.conf
 
       - name: Commit changed files
