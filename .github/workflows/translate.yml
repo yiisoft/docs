@@ -24,7 +24,7 @@ jobs:
         run: _translations/prepare-config.sh
 
       - name: Use po4a
-        uses: vjik/docker-run@v1
+        uses: vjik/docker-run@1
         with:
             image: ghcr.io/yiisoft-contrib/po4a:0.74
             options: -w /src/_translations
