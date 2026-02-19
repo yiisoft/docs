@@ -26,11 +26,12 @@ jobs:
         run: _translations/prepare-config.sh
 
       - name: Use po4a
-        uses: addnab/docker-run-action@v3
+        uses: vjik/docker-run@v1
         with:
-            image: ghcr.io/yiisoft-contrib/po4a:0.74
-            options: -v ${{ github.workspace }}:/src -w /src/_translations
-            run: po4a po4a.conf && po4a po4a.conf
+          image: ghcr.io/yiisoft-contrib/po4a:0.74
+          volumes: ${{ github.workspace }}:/src
+          workdir: /src/_translations
+          command: po4a po4a.conf && po4a po4a.conf
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
