@@ -59,13 +59,13 @@ services:
                 condition: service_healthy
 
     db:
-        image: postgres:${POSTGRES_VERSION:-15}-alpine
+        image: postgres:${POSTGRES_VERSION:-18}-alpine
         environment:
             POSTGRES_DB: app
             POSTGRES_PASSWORD: password
             POSTGRES_USER: user
         volumes:
-            - ../runtime/db:/var/lib/postgresql/data:rw
+            - ../runtime/db:/var/lib/postgresql:rw
         ports:
             - "${DEV_DB_PORT:-5432}:5432"
         healthcheck:
@@ -764,4 +764,3 @@ return [
 ## Проверка работы
 
 Теперь проверьте результат, открыв в браузере `http://localhost/pages`.
-
