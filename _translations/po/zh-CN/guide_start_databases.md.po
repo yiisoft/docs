@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-20 09:25+0000\n"
+"POT-Creation-Date: 2026-02-21 21:31+0000\n"
 "PO-Revision-Date: 2026-01-12 12:47+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -161,7 +161,43 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.  If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then rebuild PHP image with `make build && make down && make up`."
+msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list:"
+msgstr ""
+
+#. type: Fenced code block (dockerfile)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid ""
+"RUN install-php-extensions \\\n"
+"    opcache \\\n"
+"    mbstring \\\n"
+"    intl \\\n"
+"    dom \\\n"
+"    ctype \\\n"
+"    curl \\\n"
+"    phar \\\n"
+"    openssl \\\n"
+"    xml \\\n"
+"    xmlwriter \\\n"
+"    simplexml \\\n"
+"    pdo \\\n"
+"    pdo_pgsql\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/databases.md
+msgid "Then rebuild PHP image with"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/start/databases.md
+#, no-wrap
+msgid "make build && make down && make up\n"
 msgstr ""
 
 #. type: Title ##
