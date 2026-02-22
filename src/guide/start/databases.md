@@ -72,8 +72,28 @@ Note that we add `depends_on` so application waits for database to be up.
 
 > [!IMPORTANT]
 > Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.
-> If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list. Then rebuild
-> PHP image with `make build && make down && make up`.
+> If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in `install-php-extensions` list:
+
+```dockerfile
+RUN install-php-extensions \
+    opcache \
+    mbstring \
+    intl \
+    dom \
+    ctype \
+    curl \
+    phar \
+    openssl \
+    xml \
+    xmlwriter \
+    simplexml \
+    pdo \
+    pdo_pgsql
+```
+
+Then rebuild > PHP image with ```sh
+make build && make down && make up
+```
 
 ## Configuring connection
 
