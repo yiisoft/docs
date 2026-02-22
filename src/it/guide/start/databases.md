@@ -259,29 +259,29 @@ final readonly class Page
         public string $id,
         public string $title,
         public string $text,
+        public string $slug,
         public DateTimeImmutable $createdAt,
         public DateTimeImmutable $updatedAt,
-    ) {}
+    ) {
+    }
 
     public static function create(
         string $id,
         string $title,
         string $text,
-        ?DateTimeImmutable $createdAt = null,
-        ?DateTimeImmutable $updatedAt = null,
-    ): self {
+        string $slug = null,
+        DateTimeImmutable $createdAt = new DateTimeImmutable(),
+        DateTimeImmutable $updatedAt = new DateTimeImmutable(),
+    ): self
+    {
         return new self(
             id: $id,
             title: $title,
+            slug: $slug ?? (new Inflector())->toSlug($title),
             text: $text,
-            createdAt: $createdAt ?? new DateTimeImmutable(),
-            updatedAt: $updatedAt ?? new DateTimeImmutable(),
+            createdAt: $createdAt,
+            updatedAt: $updatedAt,
         );
-    }
-
-    public function getSlug(): string
-    {
-        return (new Inflector())->toSlug($this->title);
     }
 }
 ```
@@ -302,7 +302,6 @@ namespace App\Web\Page;
 
 use DateTimeImmutable;
 use Yiisoft\Db\Connection\ConnectionInterface;
-use Yiisoft\Db\Query\Query;
 
 final readonly class PageRepository
 {
@@ -312,19 +311,19 @@ final readonly class PageRepository
 
     public function save(Page $page): void
     {
-        $data = [
+        $row = [
             'id' => $page->id,
             'title' => $page->title,
-            'slug' => $page->getSlug(),
+            'slug' => $page->slug,
             'text' => $page->text,
             'created_at' => $page->createdAt,
             'updated_at' => $page->updatedAt,
         ];
 
         if ($this->exists($page->id)) {
-            $this->connection->createCommand()->update('{{%page}}', $data, ['id' => $page->id])->execute();
+            $this->connection->createCommand()->update('{{%page}}', $row, ['id' => $page->id])->execute();
         } else {
-            $this->connection->createCommand()->insert('{{%page}}', $data)->execute();
+            $this->connection->createCommand()->insert('{{%page}}', $row)->execute();
         }
     }
 
@@ -343,28 +342,29 @@ final readonly class PageRepository
      */
     public function findAll(): iterable
     {
-        $data = $this->connection
+        $rows = $this->connection
             ->select()
             ->from('{{%page}}')
             ->all();
 
-        foreach ($data as $page) {
-            yield $this->createPage($page);
+        foreach ($rows as $row) {
+            yield $this->createPage($row);
         }
     }
 
-    private function createPage(?array $data): ?Page
+    private function createPage(?array $row): ?Page
     {
-        if ($data === null) {
+        if ($row === null) {
             return null;
         }
 
         return Page::create(
-            id: $data['id'],
-            title: $data['title'],
-            text: $data['text'],
-            createdAt: new DateTimeImmutable($data['created_at']),
-            updatedAt: new DateTimeImmutable($data['updated_at']),
+            id: $row['id'],
+            title: $row['title'],
+            text: $row['text'],
+            slug: $row['slug'],
+            createdAt: new DateTimeImmutable($row['created_at']),
+            updatedAt: new DateTimeImmutable($row['updated_at']),
         );
     }
 
@@ -452,7 +452,7 @@ use Yiisoft\Router\UrlGeneratorInterface;
 <ul>
     <?php foreach ($pages as $page): ?>
     <li>
-        <?= Html::a($page->title, $urlGenerator->generate('page/view', ['slug' => $page->getSlug()])) ?>
+        <?= Html::a($page->title, $urlGenerator->generate('page/view', ['slug' => $page->slug])) ?>
     </li>
     <?php endforeach ?>
 </ul>
@@ -521,12 +521,12 @@ use Yiisoft\Yii\View\Renderer\Csrf;
     <?= Html::encode($page->text) ?>
 </p>
 
-<?= Html::a('Edit', $urlGenerator->generate('page/edit', ['slug' => $page->getSlug()])) ?> |
+<?= Html::a('Edit', $urlGenerator->generate('page/edit', ['slug' => $page->slug])) ?> |
 
 
 <?php
     $deleteForm = Html::form()
-        ->post($urlGenerator->generate('page/delete', ['slug' => $page->getSlug()]))
+        ->post($urlGenerator->generate('page/delete', ['slug' => $page->slug]))
         ->csrf($csrf);
 ?>
 <?= $deleteForm->open() ?>
@@ -625,6 +625,7 @@ use Yiisoft\FormModel\FormHydrator;
 use Yiisoft\Http\Status;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Strings\Inflector;
 use Yiisoft\Yii\View\Renderer\ViewRenderer;
 
 final readonly class EditAction
@@ -666,7 +667,6 @@ final readonly class EditAction
                 id: $id,
                 title: $form->title,
                 text: $form->text,
-                updatedAt: new DateTimeImmutable(),
             );
 
             $pageRepository->save($page);
@@ -675,7 +675,7 @@ final readonly class EditAction
                 ->createResponse(Status::SEE_OTHER)
                 ->withHeader(
                     'Location',
-                    $this->urlGenerator->generate('page/view', ['slug' => $page->getSlug()]),
+                    $this->urlGenerator->generate('page/view', ['slug' => $page->slug]),
                 );
         }
 
