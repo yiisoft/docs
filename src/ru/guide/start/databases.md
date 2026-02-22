@@ -78,8 +78,8 @@ services:
 Обратите внимание, что мы добавляем `depends_on`, чтобы приложение ждало
 запуска базы данных.
 
-Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You
-can enable it locally in `php.ini`.
+> [!IMPORTANT]
+> Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.
 
 If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in
 `install-php-extensions` list:
@@ -114,7 +114,7 @@ make build && make down && make up
 Сначала нам нужно установить пакет:
 
 ```sh
-make composer require yiisoft/db-pgsql
+make composer require yiisoft/db-pgsql:2.*
 ```
 
 Теперь создайте файл `config/common/di/db-pgsql.php`:

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-02-21 21:31+0000\n"
+"POT-Creation-Date: 2026-02-22 04:03+0000\n"
 "PO-Revision-Date: 2026-01-27 22:23+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -163,7 +163,10 @@ msgstr "Обратите внимание, что мы добавляем `depen
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`."
+#, no-wrap
+msgid ""
+"> [!IMPORTANT]\n"
+"> Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.\n"
 msgstr ""
 
 #. type: Plain text
@@ -220,9 +223,10 @@ msgstr "Сначала нам нужно установить пакет:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
-#, no-wrap
-msgid "make composer require yiisoft/db-pgsql\n"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "make composer require yiisoft/db-pgsql:2.*\n"
+msgstr "composer install yiisoft/security\n"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md

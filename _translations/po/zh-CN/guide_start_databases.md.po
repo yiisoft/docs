@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-21 21:31+0000\n"
+"POT-Creation-Date: 2026-02-22 04:03+0000\n"
 "PO-Revision-Date: 2026-01-12 12:47+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -161,7 +161,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
-msgid "Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`."
+#, no-wrap
+msgid ""
+"> [!IMPORTANT]\n"
+"> Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.\n"
 msgstr ""
 
 #. type: Plain text
@@ -218,9 +221,10 @@ msgstr ""
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
-#, no-wrap
-msgid "make composer require yiisoft/db-pgsql\n"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "composer require yiisoft/yii-sentry --prefer-dist\n"
+msgid "make composer require yiisoft/db-pgsql:2.*\n"
+msgstr "composer require yiisoft/yii-sentry --prefer-dist\n"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
