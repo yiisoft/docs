@@ -92,7 +92,7 @@ RUN install-php-extensions \
     pdo_pgsql
 ```
 
-Then rebuild > PHP image with
+Then rebuild PHP image with
 
 ```sh
 make build && make down && make up
