@@ -138,7 +138,7 @@ return [
             Route::get('/info/v2')
                 ->action(ApiInfo::class)
                 ->name('api/info/v2')
-                ->middleware(JsonDataResponseMiddleware::class),            
+                ->middleware(JsonDataResponseMiddleware::class),
             Route::get('/user')
                 ->action([ApiUserController::class, 'index'])
                 ->name('api/user/index'),
