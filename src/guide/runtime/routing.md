@@ -138,13 +138,13 @@ return [
             Route::get('/info/v2')
                 ->action(ApiInfo::class)
                 ->name('api/info/v2')
-                ->middleware(FormatDataResponseAsJson::class),            
+                ->middleware(JsonDataResponseMiddleware::class),            
             Route::get('/user')
                 ->action([ApiUserController::class, 'index'])
                 ->name('api/user/index'),
             Route::get('/user/{login}')
                 ->action([ApiUserController::class, 'profile'])
-                ->middleware(FormatDataResponseAsJson::class)
+                ->middleware(JsonDataResponseMiddleware::class)
                 ->name('api/user/profile'),
         )
 ];
