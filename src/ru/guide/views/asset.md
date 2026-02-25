@@ -151,12 +151,12 @@ namespace App\Controller;
 use App\Asset\MainAsset;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Assets\AssetManager;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final class SiteController
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
         private AssetManager $assetManager,
     ) {}
 

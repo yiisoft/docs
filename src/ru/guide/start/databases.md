@@ -425,12 +425,12 @@ declare(strict_types=1);
 namespace App\Web\Page;
 
 use Psr\Http\Message\ResponseInterface;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class ListAction
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
         private PageRepository $pageRepository,
     )
     {
@@ -483,12 +483,12 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Http\Status;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class ViewAction
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
         private PageRepository $pageRepository,
         private ResponseFactoryInterface $responseFactory,
     ) {}
@@ -635,12 +635,12 @@ use Yiisoft\Http\Status;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Strings\Inflector;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class EditAction
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
         private FormHydrator $formHydrator,
         private ResponseFactoryInterface $responseFactory,
         private UrlGeneratorInterface $urlGenerator,

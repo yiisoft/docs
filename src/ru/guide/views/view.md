@@ -58,7 +58,7 @@ use Yiisoft\Html\Html;
 ```
 
 Here `$message` is a view data that is passed when you render a template
-with the help of `ViewRenderer`. For example, `src/Web/Echo/Action.php`:
+with the help of `WebViewRenderer`. For example, `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -69,12 +69,12 @@ namespace App\Web\Echo;
 
 use Psr\Http\Message\ResponseInterface;
 use Yiisoft\Router\HydratorAttribute\RouteArgument;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class Action
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
     ) {}
 
     public function __invoke(

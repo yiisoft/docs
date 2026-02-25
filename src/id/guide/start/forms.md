@@ -70,12 +70,12 @@ namespace App\Web\Echo;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\FormModel\FormHydrator;
-use Yiisoft\Yii\View\Renderer\ViewRenderer;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class Action
 {
     public function __construct(
-        private ViewRenderer $viewRenderer,
+        private WebViewRenderer $viewRenderer,
         private FormHydrator $formHydrator,
     ) {}
 
