@@ -1,0 +1,50 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-03-01 17:44+0000\n"
+"PO-Revision-Date: 2026-03-01 17:44+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: ../src/guide/start/demo-apps.md
+#, fuzzy, no-wrap
+msgid "Demo Applications"
+msgstr "Далее сконфигурируем приложение."
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+msgid "There are several demo applications that showcase different architectural approaches and framework capabilities."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+#, no-wrap
+msgid "**[Demo Blog](https://github.com/yiisoft/demo-blog) — Layered DDD architecture**\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+msgid "A blog application demonstrating a layered architecture following Domain-Driven Design (DDD) principles.  This demo is a good starting point if you want to learn how to structure a Yii3 application with a clear separation of concerns between domain, application, and infrastructure layers."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+#, no-wrap
+msgid "**[Demo Diary](https://github.com/yiisoft/demo-diary) — Vertical slices architecture**\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+msgid "A diary application built using the vertical slices architecture pattern.  In this approach, each feature is implemented end-to-end rather than being split across horizontal layers, making it easier to add or modify features independently."
+msgstr ""
