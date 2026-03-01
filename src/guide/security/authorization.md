@@ -111,7 +111,6 @@ use Yiisoft\Rbac\Php\ItemsStorage;
 use Yiisoft\Rbac\Php\AssignmentsStorage;
 use Yiisoft\Access\AccessCheckerInterface;
 use Yiisoft\User\CurrentUser;
-use Yiisoft\Session\SessionInterface;
 
 return [
     // ...
@@ -130,7 +129,6 @@ return [
     AccessCheckerInterface::class => ManagerInterface::class,
 
     CurrentUser::class => [
-        'withSession()' => [Reference::to(SessionInterface::class)],
         'withAccessChecker()' => [Reference::to(AccessCheckerInterface::class)]
     ],
 ];
