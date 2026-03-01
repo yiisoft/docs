@@ -63,7 +63,8 @@ export default {
                                 {text: 'Working with Databases', link: '/guide/start/databases'},
                                 {text: 'Generating Code with Gii', link: '/guide/start/gii'},
                                 {text: 'Looking Ahead', link: '/guide/start/looking-ahead'},
-                                {text: 'Application Workflow', link: '/guide/start/workflow'}
+                                {text: 'Application Workflow', link: '/guide/start/workflow'},
+                                {text: 'Demo Applications', link: '/guide/start/demo-apps'}
                             ]
                         },
                         {
@@ -256,7 +257,8 @@ export default {
                                 {text: 'Trabajando con bases de datos', link: '/es/guide/start/databases'},
                                 {text: 'Generando código con Gii', link: '/es/guide/start/gii'},
                                 {text: 'Mirando hacia adelante', link: '/es/guide/start/looking-ahead'},
-                                {text: 'Flujo de trabajo de la aplicación', link: '/es/guide/start/workflow'}
+                                {text: 'Flujo de trabajo de la aplicación', link: '/es/guide/start/workflow'},
+                                {text: 'Aplicaciones de demostración', link: '/es/guide/start/demo-apps'}
                             ]
                         },
                         {
@@ -449,7 +451,8 @@ export default {
                                 {text: 'Bekerja dengan Database', link: '/id/guide/start/databases'},
                                 {text: 'Menghasilkan Kode dengan Gii', link: '/id/guide/start/gii'},
                                 {text: 'Melihat ke Depan', link: '/id/guide/start/looking-ahead'},
-                                {text: 'Alur Kerja Aplikasi', link: '/id/guide/start/workflow'}
+                                {text: 'Alur Kerja Aplikasi', link: '/id/guide/start/workflow'},
+                                {text: 'Aplikasi Demo', link: '/id/guide/start/demo-apps'}
                             ]
                         },
                         {
@@ -642,7 +645,8 @@ export default {
                                 {text: 'Lavorare con i database', link: '/it/guide/start/databases'},
                                 {text: 'Generazione di codice con Gii', link: '/it/guide/start/gii'},
                                 {text: 'Prossimi passi', link: '/it/guide/start/looking-ahead'},
-                                {text: 'Flusso applicativo', link: '/it/guide/start/workflow'}
+                                {text: 'Flusso applicativo', link: '/it/guide/start/workflow'},
+                                {text: 'Applicazioni demo', link: '/it/guide/start/demo-apps'}
                             ]
                         },
                         {
@@ -858,7 +862,8 @@ export default {
                                 {text: 'Работа с базами данных', link: '/ru/guide/start/databases'},
                                 {text: 'Генерация кода с Gii', link: '/ru/guide/start/gii'},
                                 {text: 'Что дальше', link: '/ru/guide/start/looking-ahead'},
-                                {text: 'Рабочий процесс приложения', link: '/ru/guide/start/workflow'}
+                                {text: 'Рабочий процесс приложения', link: '/ru/guide/start/workflow'},
+                                {text: 'Демо-приложения', link: '/ru/guide/start/demo-apps'}
                             ]
                         },
                         {
@@ -1057,7 +1062,8 @@ export default {
                                 {text: '使用数据库', link: '/zh-CN/guide/start/databases'},
                                 {text: '使用 Gii 生成代码', link: '/zh-CN/guide/start/gii'},
                                 {text: '展望未来', link: '/zh-CN/guide/start/looking-ahead'},
-                                {text: '应用程序工作流', link: '/zh-CN/guide/start/workflow'}
+                                {text: '应用程序工作流', link: '/zh-CN/guide/start/workflow'},
+                                {text: '演示应用', link: '/zh-CN/guide/start/demo-apps'}
                             ]
                         },
                         {
