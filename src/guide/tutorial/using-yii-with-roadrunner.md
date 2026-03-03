@@ -28,6 +28,9 @@ First, we need to configure the server itself. Create `/.rr.yaml` and add the fo
 ```yaml
 server:
   command: "php worker.php"
+  env:
+    APP_ENV=prod
+    YII_DEBUG=false
 
 rpc:
   listen: tcp://127.0.0.1:6001
@@ -35,9 +38,10 @@ rpc:
 http:
   address: :8080
   pool:
-    num_workers: 4
-    max_jobs: 64
-  middleware: ["static", "headers"]
+    debug: false # set to true for local development only
+    supervisor:
+      max_worker_memory: 192
+  middleware: [static, gzip, headers, sendfile ]
   static:
     dir:   "public"
     forbid: [".php", ".htaccess"]
@@ -45,18 +49,13 @@ http:
     response:
       "Cache-Control": "no-cache"
 
-reload:
-  interval: 1s
-  patterns: [ ".php" ]
-  services:
-    http:
-      recursive: true
-      dirs: [ "." ]
-
 logs:
   mode: production
   level: warn
 ```
+
+> [!INFO]
+> Read more about HTTP configuration on [RoadRunner docs](https://docs.roadrunner.dev/docs/http/http)
 
 We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory
 files are static ones except `.php` and `.htaccess`. Also, we're sending an additional header.
@@ -67,7 +66,6 @@ Create `/worker.php`:
 <?php
 
 declare(strict_types=1);
-
 
 use Yiisoft\Yii\Runner\RoadRunner\RoadRunnerApplicationRunner;
 
@@ -83,7 +81,7 @@ require_once __DIR__ . '/preload.php';
 To start a server, execute the following command:
 
 ```
-./rr serve -d
+./rr serve
 ```
 
 ## On worker scope
