@@ -55,7 +55,7 @@ logs:
 ```
 
 > [!INFO]
-> Read more about HTTP configuration on [RoadRunner docs](https://docs.roadrunner.dev/docs/http/http)
+> Read more about TLS, HTTP/2, HTTP/3 configuration and other middleware [on the RoadRunner docs](https://docs.roadrunner.dev/docs/http/http).
 
 We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory
 files are static ones except `.php` and `.htaccess`. Also, we're sending an additional header.
