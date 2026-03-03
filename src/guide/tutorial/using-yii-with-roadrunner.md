@@ -30,7 +30,7 @@ server:
   command: "php worker.php"
   env:
     APP_ENV=prod
-    YII_DEBUG=false
+    APP_DEBUG=false
 
 rpc:
   listen: tcp://127.0.0.1:6001
