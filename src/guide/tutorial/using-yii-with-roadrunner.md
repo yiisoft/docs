@@ -29,8 +29,8 @@ First, we need to configure the server itself. Create `/.rr.yaml` and add the fo
 server:
   command: "php worker.php"
   env:
-    APP_ENV=prod
-    APP_DEBUG=false
+    YII_ENV: prod
+    YII_DEBUG: false
 
 rpc:
   listen: tcp://127.0.0.1:6001
