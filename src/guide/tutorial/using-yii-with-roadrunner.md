@@ -41,7 +41,7 @@ http:
     debug: false # set to true for local development only
     supervisor:
       max_worker_memory: 192
-  middleware: [static, gzip, headers, sendfile ]
+  middleware: [static, gzip, headers, sendfile]
   static:
     dir:   "public"
     forbid: [".php", ".htaccess"]
