@@ -57,8 +57,9 @@ logs:
 > [!INFO]
 > Read more about TLS, HTTP/2, HTTP/3 configuration and other middleware [on the RoadRunner docs](https://docs.roadrunner.dev/docs/http/http).
 
-We're specifying that entry script is `worker.php`, there should be three workers on port 8080, `public` directory
-files are static ones except `.php` and `.htaccess`. Also, we're sending an additional header.
+We're specifying that the entry script is `worker.php`, the server listens on port 8080, `public` directory
+files are served statically except `.php` and `.htaccess`. The `max_worker_memory` is a soft limit: if a worker
+exceeds 192 MB, it will restart after finishing its current request. Also, we're sending an additional header.
 
 Create `/worker.php`:
 
