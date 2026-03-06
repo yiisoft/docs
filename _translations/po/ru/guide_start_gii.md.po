@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2026-03-06 12:40+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -22,3 +22,11 @@ msgstr ""
 #| msgid "Generating random data"
 msgid "Generating code with Gii"
 msgstr "Генерация случайных данных"
+
+#. type: Plain text
+#: ../src/guide/start/gii.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> Gii is under development and will be available later.\n"
+msgstr ""
