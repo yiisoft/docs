@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2026-01-31 08:44+0000\n"
-"PO-Revision-Date: 2026-01-21 22:40+0300\n"
+"PO-Revision-Date: 2026-03-07 06:58+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -116,10 +116,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy
-#| msgid "For Docker users, run:"
 msgid "For Windows Command Prompt users, run:"
-msgstr "Если вы используете Docker, выполните:"
+msgstr "При использовании командной строки Windows выполните:"
 
 #. type: Fenced code block (cmd)
 #: ../src/guide/start/creating-project.md
@@ -131,10 +129,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy
-#| msgid "For Docker users, run:"
 msgid "For Windows PowerShell users, run:"
-msgstr "Если вы используете Docker, выполните:"
+msgstr "При использовании Windows PowerShell выполните :"
 
 #. type: Fenced code block (powershell)
 #: ../src/guide/start/creating-project.md
