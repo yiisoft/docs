@@ -50,14 +50,14 @@ make composer update
 APP_ENV=dev ./yii serve --port=80
 ```
 
-For Windows Command Prompt users, run:
+При использовании командной строки Windows выполните:
 
 ```cmd
 set APP_ENV=dev
 yii serve --port=80
 ```
 
-For Windows PowerShell users, run:
+При использовании Windows PowerShell выполните :
 
 ```powershell
 $env:APP_ENV = "dev"

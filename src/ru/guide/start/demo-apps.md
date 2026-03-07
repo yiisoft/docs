@@ -1,20 +1,20 @@
-# Demo Applications
+# Демо-приложения
 
-There are several demo applications that showcase different architectural
-approaches and framework capabilities.
+Существует несколько демо-приложений, демонстрирующих различные
+архитектурные подходы и возможности фреймворка.
 
-**[Demo Blog](https://github.com/yiisoft/demo-blog) — Layered DDD architecture**
+**[Демо блога](https://github.com/yiisoft/demo-blog) — Многоуровневая DDD архитектура**
 
-A blog application demonstrating a layered architecture following
-Domain-Driven Design (DDD) principles.  This demo is a good starting point
-if you want to learn how to structure a Yii3 application with a clear
-separation of concerns between domain, application, and infrastructure
-layers.
+Приложение блога демонстрирует многоуровневую архитектуру, следующую
+принципам Предметно-ориентированного проектирования (DDD). Это демо хорошая
+отправная точка, если вы хотите научиться структурировать приложение Yii3 с
+четким разделением обязанностей между уровнями домена, приложения и
+инфраструктуры.
 
-**[Demo Diary](https://github.com/yiisoft/demo-diary) — Vertical slices architecture**
+**[Демо дневника](https://github.com/yiisoft/demo-diary) — архитектура вертикальных срезов (Vertical slices architecture)**
 
-A diary application built using the vertical slices architecture pattern.
-In this approach, each feature is implemented end-to-end rather than being
-split across horizontal layers, making it easier to add or modify features
-independently.
+Приложение дневника, созданное с использованием архитектуры вертикальных
+срезов. При таком подходе каждая функциональность реализуется комплексно, а
+не разбивается на горизонтальные слои, что упрощает независимое добавление
+или изменение.
 

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2026-03-06 12:40+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2026-03-07 07:01+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,13 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. type: Title #
 #: ../src/guide/start/gii.md
-#, fuzzy, no-wrap
-#| msgid "Generating random data"
+#, no-wrap
 msgid "Generating code with Gii"
-msgstr "Генерация случайных данных"
+msgstr "Генерация кода при помощи Gii"
 
 #. type: Plain text
 #: ../src/guide/start/gii.md
@@ -30,3 +30,5 @@ msgid ""
 "> [!NOTE]\n"
 "> Gii is under development and will be available later.\n"
 msgstr ""
+"> [!Внимание]\n"
+"> Gii находится в стадии разработки и будет доступен позже.\n"
