@@ -29,7 +29,7 @@ msgstr "安装"
 #: ../src/guide/index.md ../src/guide/views/view.md
 #, no-wrap
 msgid "Views"
-msgstr ""
+msgstr "视图"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md ../src/guide/views/view.md
@@ -80,7 +80,7 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Basic Concepts"
-msgstr ""
+msgstr "基本概念"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/views/view-injections.md ../src/guide/views/view.md
@@ -91,7 +91,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "View is responsible for presenting data to end users. You give it a template with some placeholders and presentation logic and some data. The view is passing data to the template executing template logic. The end result is ready to be passed to end user, be it a browser, a file to download, an email to send or something else."
-msgstr ""
+msgstr "视图负责向最终用户呈现数据。您为其提供一个包含一些占位符、表示逻辑和数据的模板。视图将数据传递给模板，执行模板逻辑。最终结果准备好传递给最终用户，无论是浏览器、要下载的文件、要发送的电子邮件还是其他内容。"
 
 #. type: Fenced code block (mermaid)
 #: ../src/guide/views/view.md
@@ -107,12 +107,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "In Yii3 views are typically PHP files that contain presentation logic and HTML markup. The view system provides a flexible way to organize your presentation layer and supports features like layouts and partial views. Instead of using plain PHP templates, you can leverage one of the template engines such as [Twig](template-engines.md)  or [Blade](https://github.com/lee-to/yii-blade)."
-msgstr ""
+msgstr "在 Yii3 中，视图通常是包含表示逻辑和 HTML 标记的 PHP 文件。视图系统提供了一种灵活的方式来组织您的表示层，并支持布局和局部视图等功能。除了使用纯 PHP 模板，您还可以利用模板引擎，例如 [Twig](template-engines.md) 或 [Blade](https://github.com/lee-to/yii-blade)。"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "For basic view functionality, you need the `yiisoft/view` package:"
-msgstr ""
+msgstr "对于基本的视图功能，您需要 `yiisoft/view` 包："
 
 #. type: Fenced code block (sh)
 #: ../src/guide/views/view.md
@@ -123,38 +123,38 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "For web applications, you should also install the `yiisoft/yii-view-renderer` package which provides [PSR-7](https://www.php-fig.org/psr/psr-7/) compatibility and web-specific features:"
-msgstr ""
+msgstr "对于 Web 应用程序，您还应该安装 `yiisoft/yii-view-renderer` 包，它提供 [PSR-7](https://www.php-fig.org/psr/psr-7/) 兼容性和 Web 特定功能："
 
 #. type: Plain text
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
 msgid "These packages are included by default in the `yiisoft/app` application template."
-msgstr ""
+msgstr "这些包默认包含在 `yiisoft/app` 应用程序模板中。"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "A view template file contains presentation logic.  In the `yiisoft/app` template, view files are typically stored alongside their controllers (e.g., `src/Web/Echo/Action.php`). Here's a simple view file example, `src/Web/Echo/template.php`:"
-msgstr ""
+msgstr "视图模板文件包含表示逻辑。在 `yiisoft/app` 模板中，视图文件通常与它们的控制器存储在一起（例如，`src/Web/Echo/Action.php`）。这是一个简单的视图文件示例，`src/Web/Echo/template.php`："
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "Here `$message` is a view data that is passed when you render a template with the help of `WebViewRenderer`. For example, `src/Web/Echo/Action.php`:"
-msgstr ""
+msgstr "这里 `$message` 是通过 `WebViewRenderer` 渲染模板时传递的视图数据。例如，`src/Web/Echo/Action.php`："
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "First argument of the `render()` method is a path to the template file. In the `yiisoft/app`, template files are typically stored alongside their actions. The result is ready to be rendered to the browser so we return it immediately."
-msgstr ""
+msgstr "`render()` 方法的第一个参数是模板文件的路径。在 `yiisoft/app` 中，模板文件通常与其操作一起存储。结果已准备好渲染到浏览器，因此我们立即返回它。"
 
 #. type: Title ##
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Working with layouts"
-msgstr ""
+msgstr "使用布局"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "Most web applications use a common layout for all pages. In the `yiisoft/app` template, layouts are stored in `src/Web/Shared/Layout/Main/` directory. You can set a default layout in `config/common/params.php`:"
-msgstr ""
+msgstr "大多数 Web 应用程序为所有页面使用通用布局。在 `yiisoft/app` 模板中，布局存储在 `src/Web/Shared/Layout/Main/` 目录中。您可以在 `config/common/params.php` 中设置默认布局："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -171,7 +171,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "A typical layout file such as `src/Web/Shared/Layout/Main/layout.php` looks like this:"
-msgstr ""
+msgstr "典型的布局文件，例如 `src/Web/Shared/Layout/Main/layout.php`，如下所示："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -240,17 +240,17 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "In the template above `$applicationParams` is an array of parameters from `config/common/application.php`."
-msgstr ""
+msgstr "在上面的模板中，`$applicationParams` 是来自 `config/common/application.php` 的参数数组。"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "`$aliases` refers to [aliases component](../concept/aliases.md) that is used to get the base URL of the application at the server for URLs."
-msgstr ""
+msgstr "`$aliases` 指的是[别名组件](../concept/aliases.md)，用于获取服务器上应用程序的基础 URL。"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "`$this` is an instance of the view that we use to get page title and output assets. Both standard and custom."
-msgstr ""
+msgstr "`$this` 是视图的实例，我们用它来获取页面标题和输出资源，包括标准的和自定义的。"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
@@ -260,6 +260,9 @@ msgid ""
 "automatically copied to `public/assets` on first use. It is not very useful for a single CSS file but becomes handy as\n"
 "the number of assets grows.\n"
 msgstr ""
+"使用 `$assetManager->register(MainAsset::class);` 我们注册一个资源，定义要包含在页面中的 `css`。它在\n"
+"首次使用时会自动复制到 `public/assets`。对于单个 CSS 文件来说用处不大，但随着\n"
+"资源数量的增加，它会变得很方便。\n"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
@@ -269,22 +272,25 @@ msgid ""
 "> No output in plain PHP templates is encoded you should not forget to use `Html::encode()` to prevent\n"
 "XSS security vulnerabilities.\n"
 msgstr ""
+"> [!IMPORTANT]\n"
+"> 纯 PHP 模板中的输出不会被编码，您不应忘记使用 `Html::encode()` 来防止\n"
+"XSS 安全漏洞。\n"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "More about what's available in layout could be read in [yiisoft/view](https://github.com/yiisoft/view) documentation."
-msgstr ""
+msgstr "更多关于布局中可用内容的信息可以在 [yiisoft/view](https://github.com/yiisoft/view) 文档中阅读。"
 
 #. type: Title ###
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering without layout"
-msgstr ""
+msgstr "不使用布局渲染"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "Sometimes you need to render a view without a layout (for example, for AJAX responses):"
-msgstr ""
+msgstr "有时您需要渲染没有布局的视图（例如，对于 AJAX 响应）："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -308,19 +314,19 @@ msgstr ""
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Nested Views and Partials"
-msgstr ""
+msgstr "嵌套视图和局部视图"
 
 #. type: Title ###
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering Sub-views"
-msgstr ""
+msgstr "渲染子视图"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "You can render other views from within a view using the `$this->render()` method:\n"
-msgstr ""
+msgstr "您可以使用 `$this->render()` 方法从视图中渲染其他视图：\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -374,12 +380,12 @@ msgstr ""
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Using Blocks"
-msgstr ""
+msgstr "使用块"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "Blocks allow you to define content in one view and display it in another, typically in layouts:"
-msgstr ""
+msgstr "块允许您在一个视图中定义内容，并在另一个视图（通常是布局）中显示它："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -398,12 +404,12 @@ msgstr ""
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "Rendering as String"
-msgstr ""
+msgstr "渲染为字符串"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "If you need the rendered content as a string instead of a PSR-7 response:"
-msgstr ""
+msgstr "如果您需要将渲染内容作为字符串而不是 PSR-7 响应："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md
@@ -421,12 +427,12 @@ msgstr ""
 #: ../src/guide/views/view.md
 #, no-wrap
 msgid "View Events"
-msgstr ""
+msgstr "视图事件"
 
 #. type: Plain text
 #: ../src/guide/views/view.md
 msgid "The view system triggers events during the rendering process that you can listen to:"
-msgstr ""
+msgstr "视图系统在渲染过程中触发您可以监听的事件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view.md

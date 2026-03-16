@@ -19,37 +19,37 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Authentication"
-msgstr ""
+msgstr "认证"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "Authentication is the process of verifying the identity of a user. It usually uses an identifier (for example, a username or an email address) and a secret token (such as a password or an access token) to judge if the user is the one whom he claims as. Authentication is the basis of the login feature."
-msgstr ""
+msgstr "认证是验证用户身份的过程。它通常使用标识符（例如用户名或电子邮件地址）和 secret 令牌（例如 password 或访问令牌）来判断用户是否是其声称的人。认证是登录功能的基础。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "Yii provides an authentication framework which wires up various components to support login. To use this framework, you mainly need to do the following work:"
-msgstr ""
+msgstr "Yii 提供了一个认证框架，它连接各种组件以支持登录。要使用此框架，您主要需要执行以下工作："
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "Configure the `Yiisoft\\User\\CurrentUser` service;"
-msgstr ""
+msgstr "配置 `Yiisoft\\User\\CurrentUser` 服务；"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityInterface` interface;"
-msgstr ""
+msgstr "创建一个实现 `\\Yiisoft\\Auth\\IdentityInterface` 接口的类；"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` interface;"
-msgstr ""
+msgstr "创建一个实现 `\\Yiisoft\\Auth\\IdentityRepositoryInterface` 接口的类；"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "To use the `Yiisoft\\User\\CurrentUser` service, install [yiisoft/user](https://github.com/yiisoft/user) package:"
-msgstr ""
+msgstr "要使用 `Yiisoft\\User\\CurrentUser` 服务，请安装 [yiisoft/user](https://github.com/yiisoft/user) 包："
 
 #. type: Fenced code block (shell)
 #: ../src/guide/security/authentication.md
@@ -61,12 +61,12 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Configuring `Yiisoft\\User\\CurrentUser`"
-msgstr ""
+msgstr "配置 `Yiisoft\\User\\CurrentUser`"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The `Yiisoft\\User\\CurrentUser` application service manages the user authentication status. It depends on `Yiisoft\\Auth\\IdentityRepositoryInterface` that should return an instance of `\\Yiisoft\\Auth\\IdentityInterface` which has the actual authentication logic."
-msgstr ""
+msgstr "`Yiisoft\\User\\CurrentUser` 应用服务管理用户认证状态。它依赖于 `Yiisoft\\Auth\\IdentityRepositoryInterface`，该接口应返回一个包含实际认证逻辑的 `\\Yiisoft\\Auth\\IdentityInterface` 实例。"
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -98,22 +98,22 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
-msgstr ""
+msgstr "实现 `\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The identity class must implement the `\\Yiisoft\\Auth\\IdentityInterface` which has a single method:"
-msgstr ""
+msgstr "身份类必须实现 `\\Yiisoft\\Auth\\IdentityInterface` 接口，该接口只有一个方法："
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "[[yii\\web\\IdentityInterface::getId()|getId()]]: it returns the ID of the user represented by this identity instance."
-msgstr ""
+msgstr "[[yii\\web\\IdentityInterface::getId()|getId()]]：它返回此身份实例所代表的用户的 ID。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "In the following example, an identity class is implemented as a pure PHP object."
-msgstr ""
+msgstr "在以下示例中，身份类被实现为一个纯 PHP 对象。"
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -143,27 +143,27 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
-msgstr ""
+msgstr "实现 `\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The identity repository class must implement the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` which has the following methods:"
-msgstr ""
+msgstr "身份仓库类必须实现 `\\Yiisoft\\Auth\\IdentityRepositoryInterface` 接口，该接口具有以下方法："
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`findIdentity(string $id): ?IdentityInterface`: it looks for an instance of the identity class using the specified ID. This method is used when you need to keep the login status via session."
-msgstr ""
+msgstr "`findIdentity(string $id): ?IdentityInterface`：它使用指定的 ID 查找身份类的实例。当您需要通过会话保持登录状态时使用此方法。"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`findIdentityByToken(string $token, string $type): ?IdentityInterface`: it looks for an instance of the identity class using the specified access token. This method is used when you need to authenticate a user by a single secret token (for example, in a stateless REST API)."
-msgstr ""
+msgstr "`findIdentityByToken(string $token, string $type): ?IdentityInterface`：它使用指定的访问令牌查找身份类的实例。当您需要通过单个 secret 令牌（例如，在无状态 REST API 中）对用户进行认证时使用此方法。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "A dummy implementation may look like the following:"
-msgstr ""
+msgstr "一个示例实现可能如下所示："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -216,12 +216,12 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Using `Yiisoft\\User\\CurrentUser`"
-msgstr ""
+msgstr "使用 `Yiisoft\\User\\CurrentUser`"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "You can use `Yiisoft\\User\\CurrentUser` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
-msgstr ""
+msgstr "您可以使用 `Yiisoft\\User\\CurrentUser` 服务来获取当前用户身份。与任何服务一样，它可以在操作处理器的构造函数或方法中自动装配："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -249,12 +249,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "`isGuest()` determines if user is logged in or not. `getIdentity()` returns an instance of identity."
-msgstr ""
+msgstr "`isGuest()` 判断用户是否已登录。`getIdentity()` 返回一个身份实例。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "To log in a user, you may use the following code:"
-msgstr ""
+msgstr "要登录用户，您可以使用以下代码："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -269,12 +269,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The `login()` method sets the identity to the User service.  It stores identity into session so user authentication status is maintained."
-msgstr ""
+msgstr "`login()` 方法将身份设置到用户服务。它将身份存储到会话中，以便维护用户认证状态。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "To log out a user, call"
-msgstr ""
+msgstr "要注销用户，请调用"
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -288,17 +288,17 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Protecting Routes"
-msgstr ""
+msgstr "保护路由"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The `Yiisoft\\Auth\\Middleware\\Authentication` middleware can be used to restrict access to a given route to authenticated users only."
-msgstr ""
+msgstr "`Yiisoft\\Auth\\Middleware\\Authentication` 中间件可用于将对给定路由的访问限制为仅限已认证用户。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "First, configure the `Yiisoft\\Auth\\AuthenticationMethodInterface`:"
-msgstr ""
+msgstr "首先，配置 `Yiisoft\\Auth\\AuthenticationMethodInterface`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -316,7 +316,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "Then, apply the `Yiisoft\\Auth\\Middleware\\Authentication` middleware to a route:"
-msgstr ""
+msgstr "然后，将 `Yiisoft\\Auth\\Middleware\\Authentication` 中间件应用到路由："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -334,7 +334,7 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid " Or to a group of routes:\n"
-msgstr ""
+msgstr " 或应用到一组路由：\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authentication.md
@@ -358,34 +358,34 @@ msgstr ""
 #: ../src/guide/security/authentication.md
 #, no-wrap
 msgid "Authentication Events <span id=\"auth-events\"></span>"
-msgstr ""
+msgstr "认证事件 <span id=\"auth-events\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "The user service raises a few events during the login and logout processes."
-msgstr ""
+msgstr "用户服务在登录和注销过程中会触发一些事件。"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\BeforeLogin`: raised at the beginning of `login()`.  If the event handler calls `invalidate()` on an event object, the login process will be cancelled."
-msgstr ""
+msgstr "`\\Yiisoft\\User\\Event\\BeforeLogin`：在 `login()` 开始时触发。如果事件处理器在事件对象上调用 `invalidate()`，登录过程将被取消。"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\AfterLogin`: raised after a successful login."
-msgstr ""
+msgstr "`\\Yiisoft\\User\\Event\\AfterLogin`：在成功登录后触发。"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\BeforeLogout`: raised at the beginning of `logout()`.  If the event handler calls `invalidate()` on an event object, the logout process will be cancelled."
-msgstr ""
+msgstr "`\\Yiisoft\\User\\Event\\BeforeLogout`：在 `logout()` 开始时触发。如果事件处理器在事件对象上调用 `invalidate()`，注销过程将被取消。"
 
 #. type: Bullet: '* '
 #: ../src/guide/security/authentication.md
 msgid "`\\Yiisoft\\User\\Event\\AfterLogout`: raised after a successful logout."
-msgstr ""
+msgstr "`\\Yiisoft\\User\\Event\\AfterLogout`：在成功注销后触发。"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
 msgid "You may respond to these events to implement features such as login audit, online user statistics. For example, in the handler for `\\Yiisoft\\User\\Event\\AfterLogin`, you may record the login time and IP address in the `user` database table."
-msgstr ""
+msgstr "您可以响应这些事件来实现登录审计、在线用户统计等功能。例如，在 `\\Yiisoft\\User\\Event\\AfterLogin` 的处理器中，您可以在 `user` 数据库表中记录登录时间和 IP 地址。"

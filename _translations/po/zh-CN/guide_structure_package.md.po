@@ -19,28 +19,28 @@ msgstr ""
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Packages"
-msgstr ""
+msgstr "包"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Reusable code could be released as [a Composer package](https://getcomposer.org/doc/05-repositories.md#package).  It could be an infrastructure library, a module representing one of the application contexts or, basically, any reusable code."
-msgstr ""
+msgstr "可复用的代码可以作为 [Composer 包](https://getcomposer.org/doc/05-repositories.md#package)发布。它可以是一个基础设施库、代表某个应用上下文的模块，或者基本上任何可复用的代码。"
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Using packages <span id=\"using-packages\"></span>"
-msgstr ""
+msgstr "使用包 <span id=\"using-packages\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "By default, Composer installs packages registered on [Packagist](https://packagist.org/) — the biggest repository for open source PHP packages. You can look for packages on Packagist. You may also [create your own repository](https://getcomposer.org/doc/05-repositories.md#repository) and configure Composer to use it. This is useful if you're developing private packages that you want to share within your projects only."
-msgstr ""
+msgstr "默认情况下，Composer 会安装在 [Packagist](https://packagist.org/) 上注册的包——这是最大的开源 PHP 包仓库。您可以在 Packagist 上搜索包。您也可以[创建自己的仓库](https://getcomposer.org/doc/05-repositories.md#repository)并配置 Composer 使用它，这在开发只在项目内部共享的私有包时非常有用。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Packages installed by Composer are stored in the `vendor` directory of your project.  Because the Composer is a dependency manager, when it installs a package, it will also install all its dependent packages."
-msgstr ""
+msgstr "Composer 安装的包存储在项目的 `vendor` 目录中。由于 Composer 是一个依赖管理器，在安装某个包时，它也会同时安装该包所依赖的所有包。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -49,11 +49,13 @@ msgid ""
 "> [!WARNING]\n"
 "> `vendor` directory of your application should never be modified.\n"
 msgstr ""
+"> [!WARNING]\n"
+"> 永远不要手动修改应用程序的 `vendor` 目录。\n"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "A package could be installed with the following command:"
-msgstr ""
+msgstr "可以使用以下命令安装包："
 
 #. type: Fenced code block
 #: ../src/guide/structure/package.md
@@ -64,54 +66,54 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "After it's done, Composer modifies `composer.json` and `composer.lock`. The former defines what packages to install, and their version constraints the latter stores a snapshot of exact versions actually installed."
-msgstr ""
+msgstr "完成后，Composer 会修改 `composer.json` 和 `composer.lock`。前者定义要安装的包及其版本约束，后者存储实际安装的精确版本快照。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Classes from the package will be available immediately via [autoloading](../concept/autoloading.md)."
-msgstr ""
+msgstr "包中的类可以通过[自动加载](../concept/autoloading.md)立即使用。"
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Creating packages <span id=\"creating-packages\"></span>"
-msgstr ""
+msgstr "创建包 <span id=\"creating-packages\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "You may consider creating a package when you feel the need to share with other people your great code.  A package can contain any code you like, such as a helper class, a widget, a service, middleware, the whole module, etc."
-msgstr ""
+msgstr "当您希望与他人共享优质代码时，可以考虑创建一个包。包可以包含任何代码，例如辅助类、小部件、服务、中间件、完整模块等。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Below are the basic steps you may follow."
-msgstr ""
+msgstr "以下是基本步骤。"
 
 #. type: Bullet: '1. '
 #: ../src/guide/structure/package.md
 msgid "Create a project for your package and host it on a VCS repository, such as [GitHub.com](https://github.com).  The development and maintenance work for the package should be done on this repository."
-msgstr ""
+msgstr "为您的包创建一个项目，并将其托管在 VCS 仓库（例如 [GitHub.com](https://github.com)）上。包的开发和维护工作应在该仓库中进行。"
 
 #. type: Bullet: '2. '
 #: ../src/guide/structure/package.md
 msgid "Under the root directory of the project, create a file named `composer.json` as required by Composer. Please refer to the next subsection for more details."
-msgstr ""
+msgstr "在项目根目录下，按照 Composer 的要求创建 `composer.json` 文件。详情请参阅下一小节。"
 
 #. type: Bullet: '3. '
 #: ../src/guide/structure/package.md
 msgid "Register your package with a Composer repository, such as [Packagist](https://packagist.org/), so that other users can find and install your package using Composer."
-msgstr ""
+msgstr "将您的包注册到 Composer 仓库（例如 [Packagist](https://packagist.org/)），以便其他用户能够通过 Composer 找到并安装您的包。"
 
 #. type: Title ###
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "`composer.json` <span id=\"composer-json\"></span>"
-msgstr ""
+msgstr "`composer.json` <span id=\"composer-json\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Each Composer package must have a `composer.json` file in its root directory. The file contains the metadata about the package. You may find the complete specification about this file in the [Composer Manual](https://getcomposer.org/doc/01-basic-usage.md#composer-json-project-setup).  The following example shows the `composer.json` file for the `yiisoft/yii-widgets` package:"
-msgstr ""
+msgstr "每个 Composer 包的根目录下必须有一个 `composer.json` 文件，该文件包含包的元数据。您可以在 [Composer 手册](https://getcomposer.org/doc/01-basic-usage.md#composer-json-project-setup)中找到该文件的完整规范。以下示例展示了 `yiisoft/yii-widgets` 包的 `composer.json` 文件："
 
 #. type: Fenced code block (json)
 #: ../src/guide/structure/package.md
@@ -194,12 +196,12 @@ msgstr ""
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Package Name <span id=\"package-name\"></span>"
-msgstr ""
+msgstr "包名 <span id=\"package-name\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Each Composer package should have a package name which uniquely identifies the package among all others.  The format of package names is `vendorName/projectName`. For example, in the package name `yiisoft/queue`, the vendor name, and the project name are `yiisoft` and `queue`, respectively."
-msgstr ""
+msgstr "每个 Composer 包都应有一个唯一标识该包的包名。包名的格式为 `vendorName/projectName`。例如，在包名 `yiisoft/queue` 中，供应商名称为 `yiisoft`，项目名称为 `queue`。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -208,33 +210,35 @@ msgid ""
 "> [!WARNING]\n"
 "> Don't use `yiisoft` as your vendor name as it's reserved for use by the Yii itself.\n"
 msgstr ""
+"> [!WARNING]\n"
+"> 不要使用 `yiisoft` 作为您的供应商名称，该名称为 Yii 框架自身保留。\n"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "We recommend you prefix `yii-` to the project name for packages that aren't able to work as general PHP packages and require Yii application. This will allow users to more easily tell whether a package is Yii specific."
-msgstr ""
+msgstr "对于无法作为通用 PHP 包使用、必须依赖 Yii 应用程序的包，我们建议在项目名称前加上 `yii-` 前缀，以便用户更容易判断某个包是否为 Yii 专属包。"
 
 #. type: Title ####
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Dependencies <span id=\"dependencies\"></span>"
-msgstr ""
+msgstr "依赖 <span id=\"dependencies\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "If your extension depends on other packages, you should list them in `require` section of `composer.json`.  Make sure you also list appropriate version constraints (e.g. `^1.0`, `@stable`) for each dependent package.  Use stable dependencies when your extension is released in a stable version."
-msgstr ""
+msgstr "如果您的扩展依赖其他包，应在 `composer.json` 的 `require` 部分列出它们，并为每个依赖包指定适当的版本约束（例如 `^1.0`、`@stable`）。当扩展发布稳定版本时，应使用稳定版本的依赖。"
 
 #. type: Title ####
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Class Autoloading <span id=\"class-autoloading\"></span>"
-msgstr ""
+msgstr "类自动加载 <span id=\"class-autoloading\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "In order for your classes to be autoloaded, you should specify the `autoload` entry in the `composer.json` file, like shown below:"
-msgstr ""
+msgstr "要使您的类能够被自动加载，需要在 `composer.json` 文件中指定 `autoload` 条目，如下所示："
 
 #. type: Fenced code block (json)
 #: ../src/guide/structure/package.md
@@ -254,88 +258,88 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "You may list one or multiple root namespaces and their corresponding file paths."
-msgstr ""
+msgstr "您可以列出一个或多个根命名空间及其对应的文件路径。"
 
 #. type: Title ###
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Recommended Practices <span id=\"recommended-practices\"></span>"
-msgstr ""
+msgstr "推荐实践 <span id=\"recommended-practices\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "Because packages are meant to be used by other people, you often need to make an extra effort during development.  Below, we introduce some common and recommended practices in creating high-quality extensions."
-msgstr ""
+msgstr "由于包是供他人使用的，在开发过程中往往需要付出额外的努力。以下介绍一些创建高质量扩展的常见推荐实践。"
 
 #. type: Title ####
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Testing <span id=\"testing\"></span>"
-msgstr ""
+msgstr "测试 <span id=\"testing\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "You want your package to run flawlessly without bringing problems to other people. To reach this goal, you should test your extension before releasing it to the public."
-msgstr ""
+msgstr "您希望自己的包能够无缺陷运行，不给他人带来问题。为此，应在公开发布前对扩展进行充分测试。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "It's recommended that you create various test cases to cover your extension code rather than relying on manual tests.  Each time before you release a new version of your package, you may run these test cases to make sure everything is in good shape. For more details, please refer to the [Testing](../testing/overview.md) section."
-msgstr ""
+msgstr "建议编写各种测试用例来覆盖扩展代码，而不是依赖手动测试。每次发布新版本前，运行这些测试用例以确保一切正常。更多详情请参阅[测试](../testing/overview.md)章节。"
 
 #. type: Title ####
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Versioning <span id=\"versioning\"></span>"
-msgstr ""
+msgstr "版本管理 <span id=\"versioning\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "You should give each release of your extension a version number (e.g. `1.0.1`). We recommend you follow the [semantic versioning](https://semver.org) practice when determining what version numbers should be used."
-msgstr ""
+msgstr "应为扩展的每个发布版本指定版本号（例如 `1.0.1`）。在确定版本号时，我们建议遵循[语义化版本](https://semver.org)规范。"
 
 #. type: Title ####
 #: ../src/guide/structure/package.md
 #, no-wrap
 msgid "Releasing <span id=\"releasing\"></span>"
-msgstr ""
+msgstr "发布 <span id=\"releasing\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "To let other people know about your package, you need to release it to the public."
-msgstr ""
+msgstr "要让他人了解您的包，需要将其公开发布。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "If it's the first time you're releasing a package, you should register it in a Composer repository, such as [Packagist](https://packagist.org/).  After that, all you need to do is create a release tag (for example, `v1.0.1`)  on the VCS repository of your extension and notify the Composer repository about the new release. People will then be able to find the new release and install or update the package through the Composer repository."
-msgstr ""
+msgstr "如果是首次发布包，应将其注册到 Composer 仓库（例如 [Packagist](https://packagist.org/)）。之后，只需在扩展的 VCS 仓库上创建发布标签（例如 `v1.0.1`）并通知 Composer 仓库有新版本即可。其他人就能通过 Composer 仓库找到新版本并安装或更新该包。"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
 msgid "In the release of your package, in addition to code files, you should also consider including the following to help other people learn about and use your extension:"
-msgstr ""
+msgstr "在发布包时，除代码文件外，还应考虑包含以下内容，以帮助他人了解和使用您的扩展："
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/package.md
 msgid "A readme file in the package root directory: it describes what your extension does and how to install and use it.  We recommend you write it in [Markdown](https://daringfireball.net/projects/markdown/) format and name the file as `README.md`."
-msgstr ""
+msgstr "包根目录下的 readme 文件：描述扩展的功能及安装和使用方法。建议使用 [Markdown](https://daringfireball.net/projects/markdown/) 格式编写，并命名为 `README.md`。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/package.md
 msgid "A changelog file in the package root directory: it lists what changes are made in each release. The file may be written in Markdown format and named as `CHANGELOG.md`."
-msgstr ""
+msgstr "包根目录下的 changelog 文件：列出每个版本的变更内容。文件可使用 Markdown 格式编写，命名为 `CHANGELOG.md`。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/package.md
 msgid "An upgrade file in the package root directory: it gives the instructions on how to upgrade from older releases of the extension. The file may be written in Markdown format and named as `UPGRADE.md`."
-msgstr ""
+msgstr "包根目录下的 upgrade 文件：提供从旧版本升级的说明。文件可使用 Markdown 格式编写，命名为 `UPGRADE.md`。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/package.md
 msgid "Tutorials, demos, screenshots, etc.: these are needed if your extension provides many features that can't be fully covered in the readme file."
-msgstr ""
+msgstr "教程、演示、截图等：如果扩展提供的功能较多，无法在 readme 文件中完整说明，则需要这些补充材料。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/package.md
 msgid "API documentation: your code should be well-documented to allow other people to more easily read and understand it."
-msgstr ""
+msgstr "API 文档：代码应有完善的文档注释，以便他人更容易阅读和理解。"

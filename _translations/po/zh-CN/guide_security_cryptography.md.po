@@ -19,32 +19,32 @@ msgstr ""
 #: en/security/cryptography.md
 #, no-wrap
 msgid "Cryptography"
-msgstr ""
+msgstr "加密"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "In this section, we'll review the following security aspects:"
-msgstr ""
+msgstr "在本节中，我们将回顾以下安全方面："
 
 #. type: Bullet: '- '
 #: en/security/cryptography.md
 msgid "Generating random data"
-msgstr ""
+msgstr "生成随机数据"
 
 #. type: Bullet: '- '
 #: en/security/cryptography.md
 msgid "Encryption and Decryption"
-msgstr ""
+msgstr "加密和解密"
 
 #. type: Bullet: '- '
 #: en/security/cryptography.md
 msgid "Confirming Data Integrity"
-msgstr ""
+msgstr "确认数据完整性"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "To use these features, you need to install `yiisoft/security` package:"
-msgstr ""
+msgstr "要使用这些功能，您需要安装 `yiisoft/security` 包："
 
 #. type: Fenced code block
 #: en/security/cryptography.md
@@ -56,12 +56,12 @@ msgstr ""
 #: en/security/cryptography.md
 #, no-wrap
 msgid "Generating pseudorandom data"
-msgstr ""
+msgstr "生成伪随机数据"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "Pseudorandom data are useful in many situations. For example, when resetting a password via email, you need to generate a token, save it to the database, and send it via email to the end user, which in turn will allow them to prove ownership of that account. It's important that this token be unique and hard to guess, else there is a possibility that an attacker can predict the token's value and reset the user's password."
-msgstr ""
+msgstr "伪随机数据在许多情况下都很有用。例如，当通过电子邮件重置密码时，您需要生成一个令牌，将其保存到数据库，并通过电子邮件发送给最终用户，这反过来将允许他们证明对该帐户的所有权。重要的是，此令牌必须是唯一的且难以猜测，否则攻击者有可能预测令牌的值并重置用户的密码。"
 
 #. type: Plain text
 #: en/security/cryptography.md
@@ -77,33 +77,33 @@ msgstr ""
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "The code above would give you a random string consisting of 42 characters."
-msgstr ""
+msgstr "上面的代码将为您提供一个由 42 个字符组成的随机字符串。"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "If you need bytes or integers, use PHP functions directly:"
-msgstr ""
+msgstr "如果您需要字节或整数，请直接使用 PHP 函数："
 
 #. type: Bullet: '- '
 #: en/security/cryptography.md
 msgid "`random_bytes()` for bytes. Note that the output may not be ASCII."
-msgstr ""
+msgstr "使用 `random_bytes()` 生成字节。请注意，输出可能不是 ASCII。"
 
 #. type: Bullet: '- '
 #: en/security/cryptography.md
 msgid "`random_int()` for integers."
-msgstr ""
+msgstr "`random_int()` 用于整数。"
 
 #. type: Title ##
 #: en/security/cryptography.md
 #, no-wrap
 msgid "Encryption and decryption"
-msgstr ""
+msgstr "加密和解密"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "Yii provides convenient helper functions to encrypt/decrypt data using a secret key.  The data is passed through the encryption function so that only the person who has the secret key will be able to decrypt it.  For example, you need to store some information in your database, but you need to make sure only the user who has the secret key can view it (even if one compromises the application database):"
-msgstr ""
+msgstr "Yii 提供了方便的辅助函数，使用密钥加密/解密数据。数据通过加密函数传递，以便只有拥有密钥的人才能解密它。例如，您需要在数据库中存储一些信息，但您需要确保只有拥有密钥的用户才能查看它（即使有人破坏了应用程序数据库）："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -118,7 +118,7 @@ msgstr ""
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "Decrypting it:"
-msgstr ""
+msgstr "解密它："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -133,7 +133,7 @@ msgstr ""
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "You could use a key instead of a password:"
-msgstr ""
+msgstr "您可以使用密钥而不是密码："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -159,17 +159,17 @@ msgstr ""
 #: en/security/cryptography.md
 #, no-wrap
 msgid "Confirming data integrity"
-msgstr ""
+msgstr "确认数据完整性"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "There are situations in which you need to verify that your data hasn't been tampered with by a third party or even corrupted in some way. Yii provides a way to confirm data integrity by MAC signing."
-msgstr ""
+msgstr "在某些情况下，您需要验证您的数据没有被第三方篡改，甚至以某种方式损坏。Yii 提供了一种通过 MAC 签名确认数据完整性的方法。"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "The `$key` should be present at both sending and receiving sides. On the sending side:"
-msgstr ""
+msgstr "`$key` 应该在发送端和接收端都存在。在发送端："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -183,7 +183,7 @@ msgstr ""
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "On the receiving side:"
-msgstr ""
+msgstr "在接收端："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -202,17 +202,17 @@ msgstr ""
 #: en/security/cryptography.md
 #, no-wrap
 msgid "Masking token length"
-msgstr ""
+msgstr "掩码令牌长度"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "Masking a token helps to mitigate a BREACH attack by randomizing how the token outputted on each request.  A random mask is applied to the token, making the string always unique."
-msgstr ""
+msgstr "掩码令牌有助于通过随机化每个请求上令牌的输出方式来缓解 BREACH 攻击。对令牌应用随机掩码，使字符串始终唯一。"
 
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "To mask a token:"
-msgstr ""
+msgstr "要掩码令牌："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md
@@ -223,7 +223,7 @@ msgstr ""
 #. type: Plain text
 #: en/security/cryptography.md
 msgid "To get the original value from the masked one:"
-msgstr ""
+msgstr "要从掩码中获取原始值："
 
 #. type: Fenced code block (php)
 #: en/security/cryptography.md

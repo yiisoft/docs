@@ -19,12 +19,12 @@ msgstr ""
 #: en/runtime/request.md
 #, no-wrap
 msgid "Request"
-msgstr ""
+msgstr "请求"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "HTTP request has a method, URI, a set of headers and a body:"
-msgstr ""
+msgstr "HTTP 请求包含方法、URI、一组请求头以及正文："
 
 #. type: Fenced code block
 #: en/runtime/request.md
@@ -44,12 +44,12 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "The method is `POST`, URI is `/contact`.  Extra headers are specifying host, preferred language and encoding.  The body could be anything.  In this case, it's a JSON payload."
-msgstr ""
+msgstr "方法为 `POST`，URI 为 `/contact`。额外的请求头指定了主机、首选语言和编码。正文可以是任何内容，此处为 JSON 数据。"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as request representation.  The object is available in controller actions and other types of middleware:"
-msgstr ""
+msgstr "Yii 使用 [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) 作为请求的表示。该对象可在控制器操作和其他类型的中间件中使用："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -65,12 +65,12 @@ msgstr ""
 #: en/runtime/request.md
 #, no-wrap
 msgid "Method"
-msgstr ""
+msgstr "方法"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "The method could be obtained from a request object:"
-msgstr ""
+msgstr "可以从请求对象中获取方法："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -81,7 +81,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Usually it's one of the:"
-msgstr ""
+msgstr "通常是以下之一："
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
@@ -121,7 +121,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "In case you want to make sure the request method is of a certain type, there is a special class with method names:"
-msgstr ""
+msgstr "如果需要判断请求方法是否为某种类型，可以使用包含方法名称的专用类："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -143,42 +143,42 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "A URI has:"
-msgstr ""
+msgstr "URI 包含以下部分："
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Scheme (`http`, `https`)"
-msgstr ""
+msgstr "协议（`http`、`https`）"
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Host (`yiiframework.com`)"
-msgstr ""
+msgstr "主机（`yiiframework.com`）"
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Port (`80`, `443`)"
-msgstr ""
+msgstr "端口（`80`、`443`）"
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Path (`/posts/1`)"
-msgstr ""
+msgstr "路径（`/posts/1`）"
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Query string (`page=1&sort=+id`)"
-msgstr ""
+msgstr "查询字符串（`page=1&sort=+id`）"
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
 msgid "Fragment (`#anchor`)"
-msgstr ""
+msgstr "片段（`#anchor`）"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "You can obtain `UriInterface` from request like the following:"
-msgstr ""
+msgstr "您可以按如下方式从请求中获取 `UriInterface`："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -189,7 +189,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Then you can get various details from its methods:"
-msgstr ""
+msgstr "然后您可以通过其方法获取各类详细信息："
 
 #. type: Bullet: '- '
 #: en/runtime/request.md
@@ -235,12 +235,12 @@ msgstr ""
 #: en/runtime/request.md en/runtime/response.md
 #, no-wrap
 msgid "Headers"
-msgstr ""
+msgstr "请求头"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "There are various methods to inspect request headers. To get all headers as an array:"
-msgstr ""
+msgstr "有多种方法可以查看请求头。获取所有请求头的数组："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -255,7 +255,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "To get a single header:"
-msgstr ""
+msgstr "获取单个请求头："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -266,7 +266,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Also, you could get value as a comma-separated string instead of an array.  That's especially handy if a header has a single value:"
-msgstr ""
+msgstr "也可以获取逗号分隔的字符串形式而非数组，当请求头只有单个值时尤为方便："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -281,7 +281,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "To check if a header is present in the request:"
-msgstr ""
+msgstr "检查请求中是否存在某个请求头："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -301,7 +301,7 @@ msgstr "正文"
 #. type: Plain text
 #: en/runtime/request.md
 msgid "There are two methods to get body contents. The first is getting the body as it is without parsing:"
-msgstr ""
+msgstr "有两种方式获取正文内容。第一种是直接获取未解析的原始正文："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -312,12 +312,12 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "The `$body` would be an instance of `Psr\\Http\\Message\\StreamInterface`."
-msgstr ""
+msgstr "`$body` 是 `Psr\\Http\\Message\\StreamInterface` 的实例。"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Also, you could get a parsed body:"
-msgstr ""
+msgstr "也可以获取已解析的正文："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -328,7 +328,7 @@ msgstr ""
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Parsing depends on PSR-7 implementation and may require middleware for custom body formats."
-msgstr ""
+msgstr "解析取决于 PSR-7 的具体实现，对于自定义正文格式可能需要中间件支持。"
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -362,12 +362,12 @@ msgstr ""
 #: en/runtime/request.md
 #, no-wrap
 msgid "File uploads"
-msgstr ""
+msgstr "文件上传"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Uploaded files that user submitted from a form with `enctype` attribute equals to `multipart/form-data` are handled via special request method:"
-msgstr ""
+msgstr "用户通过 `enctype` 属性为 `multipart/form-data` 的表单上传的文件，可通过专用请求方法处理："
 
 #. type: Fenced code block (php)
 #: en/runtime/request.md
@@ -385,9 +385,9 @@ msgstr ""
 #: en/runtime/request.md
 #, no-wrap
 msgid "Attributes"
-msgstr ""
+msgstr "属性"
 
 #. type: Plain text
 #: en/runtime/request.md
 msgid "Application middleware may set custom request attributes using `withAttribute()` method.  You can get these attributes with `getAttribute()`."
-msgstr ""
+msgstr "应用中间件可以使用 `withAttribute()` 方法设置自定义请求属性，并通过 `getAttribute()` 获取这些属性。"

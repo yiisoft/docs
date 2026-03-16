@@ -19,576 +19,576 @@ msgstr ""
 #: ../src/guide/caching/overview.md ../src/guide/index.md
 #, no-wrap
 msgid "Caching"
-msgstr ""
+msgstr "缓存"
 
 #. type: Title #
 #: ../src/guide/index.md
 #, no-wrap
 msgid "The definitive guide to Yii3"
-msgstr ""
+msgstr "Yii3 权威指南"
 
 #. type: Plain text
 #: ../src/guide/index.md
 msgid "We release this guide under the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
-msgstr ""
+msgstr "本指南遵循 [Yii 文档条款](https://www.yiiframework.com/license#docs) 发布。"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Introduction"
-msgstr ""
+msgstr "介绍"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[About Yii](intro/what-is-yii.md)"
-msgstr ""
+msgstr "[关于 Yii](intro/what-is-yii.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
-msgstr ""
+msgstr "[从 2.0 版本升级](intro/upgrade-from-v2.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Getting started"
-msgstr ""
+msgstr "入门"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[What do you need to know?](start/prerequisites.md)"
-msgstr ""
+msgstr "[你需要了解什么？](start/prerequisites.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Creating a project](start/creating-project.md)"
-msgstr ""
+msgstr "[创建项目](start/creating-project.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Running applications](start/workflow.md)"
-msgstr ""
+msgstr "[运行应用](start/workflow.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Saying hello](start/hello.md)"
-msgstr ""
+msgstr "[说 Hello](start/hello.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Working with forms](start/forms.md)"
-msgstr ""
+msgstr "[使用表单](start/forms.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Working with databases](start/databases.md)"
-msgstr ""
+msgstr "[使用数据库](start/databases.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Generating code with Gii](start/gii.md) TODO"
-msgstr ""
+msgstr "[使用 Gii 生成代码](start/gii.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Looking ahead](start/looking-ahead.md)"
-msgstr ""
+msgstr "[展望未来](start/looking-ahead.md)"
 
 #. type: Title ###
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Application structure"
-msgstr ""
+msgstr "应用结构"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Application structure overview](structure/overview.md)"
-msgstr ""
+msgstr "[应用结构概述](structure/overview.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Entry scripts](structure/entry-script.md)"
-msgstr ""
+msgstr "[入口脚本](structure/entry-script.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Application](structure/application.md)"
-msgstr ""
+msgstr "[应用](structure/application.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Service components](structure/service.md)"
-msgstr ""
+msgstr "[服务组件](structure/service.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Actions](structure/action.md)"
-msgstr ""
+msgstr "[动作](structure/action.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Domain](structure/domain.md)"
-msgstr ""
+msgstr "[领域](structure/domain.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Middleware](structure/middleware.md)"
-msgstr ""
+msgstr "[中间件](structure/middleware.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Packages](structure/package.md)"
-msgstr ""
+msgstr "[包](structure/package.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Key concepts"
-msgstr ""
+msgstr "核心概念"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Class autoloading](concept/autoloading.md)"
-msgstr ""
+msgstr "[类自动加载](concept/autoloading.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Dependency injection container](concept/di-container.md)"
-msgstr ""
+msgstr "[依赖注入容器](concept/di-container.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Configuration](concept/configuration.md)"
-msgstr ""
+msgstr "[配置](concept/configuration.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Aliases](concept/aliases.md)"
-msgstr ""
+msgstr "[别名](concept/aliases.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Events](concept/events.md)"
-msgstr ""
+msgstr "[事件](concept/events.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Immutability](concept/immutability.md)"
-msgstr ""
+msgstr "[不可变性](concept/immutability.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Handling requests"
-msgstr ""
+msgstr "处理请求"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Routing and URL generation](runtime/routing.md)"
-msgstr ""
+msgstr "[路由和 URL 生成](runtime/routing.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Request](runtime/request.md)"
-msgstr ""
+msgstr "[请求](runtime/request.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Response](runtime/response.md)"
-msgstr ""
+msgstr "[响应](runtime/response.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Sessions](runtime/sessions.md)"
-msgstr ""
+msgstr "[会话](runtime/sessions.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Cookies](runtime/cookies.md)"
-msgstr ""
+msgstr "[Cookies](runtime/cookies.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Handling errors](runtime/handling-errors.md)"
-msgstr ""
+msgstr "[错误处理](runtime/handling-errors.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Logging](runtime/logging.md)"
-msgstr ""
+msgstr "[日志](runtime/logging.md)"
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/views/view.md
 #, no-wrap
 msgid "Views"
-msgstr ""
+msgstr "视图"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[View](views/view.md)"
-msgstr ""
+msgstr "[视图](views/view.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Template engines](views/template-engines.md) TODO: verify!"
-msgstr ""
+msgstr "[模板引擎](views/template-engines.md) TODO: verify!"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[View injections](views/view-injections.md)"
-msgstr ""
+msgstr "[视图注入](views/view-injections.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
-msgstr ""
+msgstr "[脚本、样式和元标签](views/script-style-meta.md) TODO: verify!"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Assets](views/asset.md) TODO: verify!"
-msgstr ""
+msgstr "[资源](views/asset.md) TODO: verify!"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Widgets](views/widget.md) TODO: verify!"
-msgstr ""
+msgstr "[小部件](views/widget.md) TODO: verify!"
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Working with databases"
-msgstr ""
+msgstr "使用数据库"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
-msgstr ""
+msgstr "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
-msgstr ""
+msgstr "[Active Record](https://github.com/yiisoft/active-record/blob/master/README.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Migrations](databases/db-migrations.md) TODO: verify/update!"
-msgstr ""
+msgstr "[迁移](databases/db-migrations.md) TODO: verify/update!"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Getting data from users"
-msgstr ""
+msgstr "从用户获取数据"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Creating forms](input/forms.md) TODO"
-msgstr ""
+msgstr "[创建表单](input/forms.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
-msgstr ""
+msgstr "[验证输入](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Uploading files](input/file-upload.md) TODO"
-msgstr ""
+msgstr "[上传文件](input/file-upload.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Collecting tabular input](input/tabular-input.md) TODO"
-msgstr ""
+msgstr "[收集表格输入](input/tabular-input.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Displaying data"
-msgstr ""
+msgstr "显示数据"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data formatting](output/formatting.md) TODO"
-msgstr ""
+msgstr "[数据格式化](output/formatting.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Pagination](output/pagination.md) TODO"
-msgstr ""
+msgstr "[分页](output/pagination.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Sorting](output/sorting.md) TODO"
-msgstr ""
+msgstr "[排序](output/sorting.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data providers](output/data-providers.md) TODO"
-msgstr ""
+msgstr "[数据提供者](output/data-providers.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data widgets](output/data-widgets.md) TODO"
-msgstr ""
+msgstr "[数据小部件](output/data-widgets.md) TODO"
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/security/overview.md
 #, no-wrap
 msgid "Security"
-msgstr ""
+msgstr "安全"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Security overview](security/overview.md)"
-msgstr ""
+msgstr "[安全概述](security/overview.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Authentication](security/authentication.md)"
-msgstr ""
+msgstr "[认证](security/authentication.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
-msgstr ""
+msgstr "[授权](security/authorization.md) TODO: verify and complete!"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Working with passwords](security/passwords.md)"
-msgstr ""
+msgstr "[使用 passwords](security/passwords.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Cryptography](security/cryptography.md)"
-msgstr ""
+msgstr "[加密](security/cryptography.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Best practices](security/best-practices.md)"
-msgstr ""
+msgstr "[最佳实践](security/best-practices.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Caching overview](caching/overview.md)"
-msgstr ""
+msgstr "[缓存概述](caching/overview.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data caching](caching/data.md)"
-msgstr ""
+msgstr "[数据缓存](caching/data.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Fragment caching](caching/fragment.md) TODO"
-msgstr ""
+msgstr "[片段缓存](caching/fragment.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Page caching](caching/page.md) TODO"
-msgstr ""
+msgstr "[页面缓存](caching/page.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[HTTP caching](caching/http.md) TODO"
-msgstr ""
+msgstr "[HTTP 缓存](caching/http.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "REST APIs"
-msgstr ""
+msgstr "REST APIs"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Quick start](rest/quick-start.md) TODO"
-msgstr ""
+msgstr "[快速开始](rest/quick-start.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Resources](rest/resources.md) TODO"
-msgstr ""
+msgstr "[资源](rest/resources.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Controllers](rest/controllers.md) TODO"
-msgstr ""
+msgstr "[控制器](rest/controllers.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Routing](rest/routing.md) TODO"
-msgstr ""
+msgstr "[路由](rest/routing.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Authentication](rest/authentication.md) TODO"
-msgstr ""
+msgstr "[认证](rest/authentication.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Rate limiting](rest/rate-limiting.md) TODO"
-msgstr ""
+msgstr "[速率限制](rest/rate-limiting.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Versioning](rest/versioning.md) TODO"
-msgstr ""
+msgstr "[版本控制](rest/versioning.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Error handling](rest/error-handling.md) TODO"
-msgstr ""
+msgstr "[错误处理](rest/error-handling.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Development tools"
-msgstr ""
+msgstr "开发工具"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "Debug toolbar and debugger"
-msgstr ""
+msgstr "调试工具栏和调试器"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "Generating code using Gii"
-msgstr ""
+msgstr "使用 Gii 生成代码"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "Generating API documentation"
-msgstr ""
+msgstr "生成 API 文档"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Testing"
-msgstr ""
+msgstr "测试"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Testing overview](testing/overview.md) TODO"
-msgstr ""
+msgstr "[测试概述](testing/overview.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Testing environment setup](testing/environment-setup.md) TODO"
-msgstr ""
+msgstr "[测试环境设置](testing/environment-setup.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Unit tests](testing/unit.md) TODO"
-msgstr ""
+msgstr "[单元测试](testing/unit.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Functional tests](testing/functional.md) TODO"
-msgstr ""
+msgstr "[功能测试](testing/functional.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Acceptance tests](testing/acceptance.md) TODO"
-msgstr ""
+msgstr "[验收测试](testing/acceptance.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Fixtures](testing/fixtures.md) TODO"
-msgstr ""
+msgstr "[固件](testing/fixtures.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Special topics"
-msgstr ""
+msgstr "特殊主题"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Console applications](tutorial/console-applications.md)"
-msgstr ""
+msgstr "[控制台应用](tutorial/console-applications.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Internationalization](tutorial/i18n.md) TODO"
-msgstr ""
+msgstr "[国际化](tutorial/i18n.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Mailing](tutorial/mailing.md)"
-msgstr ""
+msgstr "[邮件](tutorial/mailing.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Performance tuning](tutorial/performance-tuning.md)"
-msgstr ""
+msgstr "[性能调优](tutorial/performance-tuning.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md)"
-msgstr ""
+msgstr "[在事件循环中使用 Yii](tutorial/using-with-event-loop.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)"
-msgstr ""
+msgstr "[在 RoadRunner 中使用 Yii](tutorial/using-yii-with-roadrunner.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md)"
-msgstr ""
+msgstr "[在 Swoole 中使用 Yii](tutorial/using-yii-with-swoole.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Helpers"
-msgstr ""
+msgstr "助手类"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Arrays](https://github.com/yiisoft/arrays/)"
-msgstr ""
+msgstr "[数组](https://github.com/yiisoft/arrays/)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Files](https://github.com/yiisoft/files/)"
-msgstr ""
+msgstr "[文件](https://github.com/yiisoft/files/)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Html](https://github.com/yiisoft/html/)"
-msgstr ""
+msgstr "[Html](https://github.com/yiisoft/html/)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Json](https://github.com/yiisoft/json)"
-msgstr ""
+msgstr "[Json](https://github.com/yiisoft/json)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Network utilities](https://github.com/yiisoft/network-utilities/)"
-msgstr ""
+msgstr "[网络工具](https://github.com/yiisoft/network-utilities/)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[VarDumper](https://github.com/yiisoft/var-dumper)"
-msgstr ""
+msgstr "[VarDumper](https://github.com/yiisoft/var-dumper)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Strings](https://github.com/yiisoft/strings)"
-msgstr ""
+msgstr "[字符串](https://github.com/yiisoft/strings)"
 
 #. type: Title ##
 #: ../src/guide/index.md
 #, no-wrap
 msgid "Extras"
-msgstr ""
+msgstr "额外内容"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Cookbook](../cookbook/index.md)"
-msgstr ""
+msgstr "[实用手册](../cookbook/index.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Glossary](glossary.md)"
-msgstr ""
+msgstr "[术语表](glossary.md)"

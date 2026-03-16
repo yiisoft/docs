@@ -19,13 +19,13 @@ msgstr ""
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Application structure"
-msgstr ""
+msgstr "应用程序结构"
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Upgrading from Version 2.0"
-msgstr ""
+msgstr "从 2.0 版本升级"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -34,99 +34,101 @@ msgid ""
 "> If you haven't used Yii 2.0, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
 "> section.\n"
 msgstr ""
+"> 如果您未曾使用过 Yii 2.0，可以跳过本节，直接阅读"[入门](../start/prerequisites.md)"\n"
+"> 章节。\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "While sharing some common ideas and values, Yii3 is conceptually different from Yii 2.0. There is no easy upgrade path, so first [check maintenance policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/release-cycle)  and consider starting new projects on Yii3 while keeping existing ones on Yii 2.0."
-msgstr ""
+msgstr "尽管 Yii3 与 Yii 2.0 有一些共同的理念和价值观，但两者在概念上存在显著差异。升级并无捷径，建议先[查看 Yii 2.0 的维护策略和生命周期终止日期](https://www.yiiframework.com/release-cycle)，并考虑将新项目迁移到 Yii3，同时保持现有项目继续使用 Yii 2.0。"
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "PHP requirements"
-msgstr ""
+msgstr "PHP 要求"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 requires PHP 8.2 or above. As a result, there are language features used that weren't used in Yii 2.0:"
-msgstr ""
+msgstr "Yii3 要求 PHP 8.2 或更高版本。因此，它使用了 Yii 2.0 中未使用的语言特性："
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
-msgstr ""
+msgstr "[类型声明](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
-msgstr ""
+msgstr "[返回类型声明](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)"
-msgstr ""
+msgstr "[类常量可见性](https://www.php.net/manual/en/language.oop5.constants.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
-msgstr ""
+msgstr "[命名参数](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)"
-msgstr ""
+msgstr "[匿名类](https://www.php.net/manual/en/language.oop5.anonymous.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
-msgstr ""
+msgstr "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Generators](https://www.php.net/manual/en/language.generators.php)"
-msgstr ""
+msgstr "[生成器](https://www.php.net/manual/en/language.generators.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
-msgstr ""
+msgstr "[可变参数函数](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
-msgstr ""
+msgstr "[只读属性](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
-msgstr ""
+msgstr "[只读类](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
-msgstr ""
+msgstr "[构造函数属性提升](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Attributes](https://www.php.net/manual/en/language.attributes.php)"
-msgstr ""
+msgstr "[注解](https://www.php.net/manual/en/language.attributes.php)"
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Preliminary refactoring"
-msgstr ""
+msgstr "预备重构"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "It's a good idea to refactor your Yii 2.0 project before porting it to Yii3. That would both make porting easier and benefit the project in question while it's not moved to Yii3 yet."
-msgstr ""
+msgstr "在将 Yii 2.0 项目迁移到 Yii3 之前，先进行重构是个好主意。这既能简化迁移过程，也能在项目尚未切换到 Yii3 时直接受益。"
 
 #. type: Title ###
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Use DI instead of the service locator"
-msgstr ""
+msgstr "使用 DI 替代服务定位器"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -135,6 +137,8 @@ msgid ""
 "Since Yii3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using\n"
 "service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).\n"
 msgstr ""
+"由于 Yii3 强制要求注入依赖，建议提前做好准备，将\n"
+"服务定位器（`Yii::$app->`）切换为 [DI 容器](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container)。\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -143,22 +147,24 @@ msgid ""
 "If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller\n"
 "actions and widgets and passing dependencies manually from a controller to what needs them.\n"
 msgstr ""
+"如果因某种原因使用 DI 容器存在困难，可以考虑将所有 `Yii::$app->` 调用迁移到控制器\n"
+"动作和小部件中，并从控制器手动将依赖传递给需要它的对象。\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Dependency injection and container](../concept/di-container.md) for an explanation of the idea."
-msgstr ""
+msgstr "有关该理念的说明，请参阅[依赖注入与容器](../concept/di-container.md)。"
 
 #. type: Title ###
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Introduce repositories for getting data"
-msgstr ""
+msgstr "引入仓储层获取数据"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Since Active Record isn't the only way to work with a database in Yii3, consider introducing repositories that would hide details of getting data and gather them in a single place. You can later redo it:"
-msgstr ""
+msgstr "由于 Active Record 并非 Yii3 中操作数据库的唯一方式，建议引入仓储层来隐藏数据获取的实现细节，并将其集中管理。后续可以随时对其进行重构："
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -183,84 +189,84 @@ msgstr ""
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Separate domain layer from infrastructure"
-msgstr ""
+msgstr "将领域层与基础设施层分离"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In case you have a rich complicated domain, it's a good idea to separate it from infrastructure provided by a framework that's all the business logic has to go to framework-independent classes."
-msgstr ""
+msgstr "如果您的应用拥有复杂的领域逻辑，建议将其与框架提供的基础设施层分离，即所有业务逻辑应放入与框架无关的类中。"
 
 #. type: Title ###
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Move more into components"
-msgstr ""
+msgstr "将更多逻辑移入组件"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 services are conceptually similar to Yii 2.0 components, so it's a good idea to move reusable parts of your application into components."
-msgstr ""
+msgstr "Yii3 的服务在概念上与 Yii 2.0 的组件类似，因此建议将应用程序中可复用的部分移入组件。"
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Things to learn"
-msgstr ""
+msgstr "需要学习的内容"
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md ../src/guide/start/prerequisites.md
 #, no-wrap
 msgid "Docker"
-msgstr ""
+msgstr "Docker"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Default application templates are using [Docker](https://www.docker.com/get-started/) to run application.  It's a good idea to learn how to use it and use it for your own projects since it provides a lot of benefits:"
-msgstr ""
+msgstr "默认应用程序模板使用 [Docker](https://www.docker.com/get-started/) 来运行应用程序。建议学习并在自己的项目中使用 Docker，因为它提供了许多好处："
 
 #. type: Bullet: '1. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Exactly the same environment as in production."
-msgstr ""
+msgstr "与生产环境完全相同的运行环境。"
 
 #. type: Bullet: '2. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "No need to install anything except Docker itself."
-msgstr ""
+msgstr "除 Docker 本身外，无需安装任何其他软件。"
 
 #. type: Bullet: '3. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Environment is per application, not per server."
-msgstr ""
+msgstr "环境按应用程序隔离，而非按服务器共享。"
 
 #. type: Title ###
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Environment variables"
-msgstr ""
+msgstr "环境变量"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 application templates are using [environment variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure parts of the application. The concept is [very handy for Dockerized applications](https://12factor.net/)  but might be alien to users of Yii 1.1 and Yii 2.0."
-msgstr ""
+msgstr "Yii3 应用程序模板使用 [环境变量](https://en.wikipedia.org/wiki/Environment_variable) 来配置应用程序的各个部分。这一概念对于[容器化应用程序非常实用](https://12factor.net/)，但对于 Yii 1.1 和 Yii 2.0 的用户来说可能较为陌生。"
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
-msgstr ""
+msgstr "动作"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses [actions](../structure/action.md), which are any callables. You can organize these into controllers similar to Yii 2, but it's not required."
-msgstr ""
+msgstr "与 Yii 2.0 不同，Yii3 不要求使用控制器。它改为使用 [动作](../structure/action.md)，动作可以是任意可调用对象。您可以像 Yii 2 那样将动作组织到控制器中，但这并非必须。"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Suggested Yii3 application structure is different from Yii 2.0.  It's described in [application structure](../structure/overview.md)."
-msgstr ""
+msgstr "Yii3 建议的应用程序结构与 Yii 2.0 有所不同，详见 [应用程序结构](../structure/overview.md)。"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Despite that, Yii3 is flexible, so it's still possible to use a structure similar to Yii 2.0 with Yii3."
-msgstr ""
+msgstr "尽管如此，Yii3 具有良好的灵活性，仍然可以在 Yii3 中使用类似 Yii 2.0 的结构。"
