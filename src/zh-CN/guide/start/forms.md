@@ -1,34 +1,30 @@
-# Working with forms
+# 使用表单
 
-This section continues to improve on "Saying Hello." Instead of using URL,
-you will now ask a user for a message via form.
+本节继续改进“打招呼”功能。不再使用 URL，而是通过表单向用户请求消息。
 
-Through this tutorial, you will learn how to:
+通过本教程，您将学习如何：
 
-* Create a form model to represent the data entered by a user through a
-  form.
-* Declare rules to validate the data entered.
-* Build an HTML form in a view.
+* 创建表单模型来表示用户通过表单输入的数据。
+* 声明规则来验证输入的数据。
+* 在视图中构建 HTML 表单。
 
-## Installing form package
+## 安装表单包
 
-To install form package, issue the following command in your application
-directory:
+要安装表单包，请在应用程序目录中执行以下命令：
 
 ```
 composer require yiisoft/form-model
 ```
 
-For Docker that would be:
+对于 Docker，命令如下：
 
 ```
 make composer require yiisoft/form-model
 ```
 
-## Creating a form <span id="creating-form"></span>
+## 创建表单 <span id="creating-form"></span>
 
-The data to be requested from the user will be represented by a `Form` class
-as shown below and saved in the file `/src/Web/Echo/Form.php`:
+将从用户处请求的数据将由如下所示的 `Form` 类表示，并保存在文件 `/src/Web/Echo/Form.php` 中：
 
 ```php
 <?php
@@ -49,16 +45,13 @@ final class Form extends FormModel
 }
 ```
 
-In the above example, the `Form` has a single string property `$message`
-which length should be at least of two characters. There's also a custom
-label for the property.
+在上面的示例中，`Form` 有一个单独的字符串属性 `$message`，其长度至少应为两个字符。该属性还有一个自定义标签。
 
-## Using the form <span id="using-form"></span> 
+## 使用表单 <span id="using-form"></span>
 
-Now that you have a form, use it in your action from "[Saying
-Hello](hello.md)".
+现在您有了一个表单，在“[打招呼](hello.md)”中的操作中使用它。
 
-Here's what you end up with in `/src/Web/Echo/Action.php`:
+以下是 `/src/Web/Echo/Action.php` 中的最终结果：
 
 ```php
 <?php
@@ -92,12 +85,10 @@ final readonly class Action
 }
 ```
 
-Instead of reading from route, you fill your form from request's POST data
-and validate it with the help of `FormHydrator`. Next you pass the form to
-the view.
+您不再从路由中读取数据，而是从请求的 POST 数据填充表单，并借助 `FormHydrator` 进行验证。然后将表单传递给视图。
 
-For the form to function we need to allow both GET to render the form and
-POST to send the data.  Adjust your route in `config/common/routes.php`:
+为使表单正常工作，我们需要同时允许 GET（用于渲染表单）和 POST（用于发送数据）。调整 `config/common/routes.php`
+中的路由：
 
 ```php
 <?php
@@ -122,9 +113,9 @@ return [
 ];
 ```
 
-## Adjusting view
+## 调整视图
 
-To render a form, you need to change your view, `src/Web/Echo/template.php`:
+要渲染表单，您需要修改视图 `src/Web/Echo/template.php`：
 
 ```php
 <?php
@@ -156,14 +147,11 @@ $htmlForm = Html::form()
 <?php endif ?>
 ```
 
-If the form is valid, you display a message. The rest initializes and
-renders the form.
+如果表单有效，则显示消息。其余部分初始化并渲染表单。
 
-First, you initialize `$htmlForm` with the POST type and the action URL
-generated with the help from the URL generator.  You can access it as
-`$urlGenerator` in all views. You also need to pass the CSRF token to the
-form, which is also available in every view as `$csrf` thanks to the view
-injections listed in `config/common/params.php`:
+首先，您使用 POST 类型和借助 URL 生成器生成的操作 URL 初始化 `$htmlForm`。您可以在所有视图中以
+`$urlGenerator` 访问它。您还需要将 CSRF 令牌传递给表单，由于 `config/common/params.php`
+中列出的视图注入，它也可以在每个视图中以 `$csrf` 的形式访问：
 
 ```php
 'yiisoft/yii-view-renderer' => [
@@ -173,47 +161,33 @@ injections listed in `config/common/params.php`:
 ],
 ```
 
-The template renders the CSRF token value as a hidden input to ensure that
-the request originates from the form page and not from another website. It
-will be submitted along with POST form data. Omitting it would result in
-[HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
+模板将 CSRF 令牌值渲染为隐藏输入，以确保请求来自表单页面而非其他网站。它将与 POST 表单数据一起提交。省略它将导致 [HTTP 响应码
+422](https://tools.ietf.org/html/rfc4918#section-11.2)。
 
-You use `Field::text()` to output "message" field, so it takes care about
-filling the value, escaping it, rendering field label and validation errors.
+您使用 `Field::text()` 输出“message”字段，它会负责填充值、转义、渲染字段标签和验证错误。
 
-Now, in case you submit an empty message, you will get a validation error:
-"The message to be echoed must contain at least 2 characters."
+现在，如果您提交空消息，将会收到验证错误：“要回显的消息必须至少包含 2 个字符。”
 
-## Trying it Out <span id="trying-it-out"></span>
+## 试试看 <span id="trying-it-out"></span>
 
-To see how it works, use your browser to access the following URL:
+要查看其工作原理，请使用浏览器访问以下 URL：
 
 ```
 http://localhost:8080/say
 ```
 
-You will see a page with a form input field and a label that indicates what
-data to enter.  Also, the form has a "submit" button labeled "Say". If you
-click the "submit" button without entering anything, you will see that the
-field is required. If you enter a single character, the form displays an
-error message next to the problematic input field.
+您将看到一个包含表单输入字段和标签的页面，标签指示要输入什么数据。此外，表单有一个标有“Say”的“提交”按钮。如果您不输入任何内容就点击“提交”按钮，将看到该字段是必填的。如果您输入单个字符，表单会在有问题的输入字段旁边显示错误消息。
 
-![Form with a validation error](/images/guide/start/form-error.png)
+![表单验证错误](/images/guide/start/form-error.png)
 
-After you enter a valid message and click the "submit" button, the page
-echoes the data that you entered.
+在您输入有效消息并点击“提交”按钮后，页面将回显您输入的数据。
 
-![Form with a success message](/images/guide/start/form-success.png)
+![表单成功消息](/images/guide/start/form-success.png)
 
-## Summary <span id="summary"></span>
+## 总结 <span id="summary"></span>
 
-In this section of the guide, you've learned how to create a form model
-class to represent the user data and validate said data.
+在本指南的这一节中，您已学习了如何创建表单模型类来表示用户数据并验证该数据。
 
-You've also learned how to get data from users and how to display data back
-in the browser.  This is a task that could take you a lot of time when
-developing an application, but Yii provides powerful widgets to make this
-task easy.
+您还学习了如何从用户获取数据以及如何在浏览器中显示数据。这是开发应用程序时可能花费大量时间的任务，但 Yii 提供了强大的小部件来使这项任务变得容易。
 
-In the next section, you will learn how to work with databases, which are
-needed in nearly every application.
+在下一节中，您将学习如何使用数据库，这在几乎每个应用程序中都是必需的。

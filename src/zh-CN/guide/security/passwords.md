@@ -1,25 +1,18 @@
-# Working with passwords
+# 使用密码
 
-Most developers know that passwords can't be stored in plain text, but many
-developers believe it's still safe to hash passwords using `md5`, `sha1` or
-`sha256` etc. There was a time when using the aforementioned hashing
-algorithms was enough, but modern hardware makes it possible to reverse such
-hashes and even stronger ones using brute force attacks.
+大多数开发人员知道密码不能以纯文本形式存储，但许多开发人员认为使用 `md5`、`sha1` 或 `sha256`
+等对密码进行哈希处理仍然是安全的。曾经有一段时间，使用上述哈希算法就足够了，但现代硬件使得可以使用暴力攻击来逆向这些哈希甚至更强的哈希。
 
-To offer increased security for user passwords, even in the worst case
-scenario (when one breaches your application), you need to use a hashing
-algorithm that's resilient against brute force attacks.  The best current
-choice is `argon2`.  Yii `yiisoft/security` package make securely generate
-and verify hashes easier and ensure the best possible hashing solution used.
+为了为用户密码提供更高的安全性，即使在最坏的情况下（当有人破坏您的应用程序时），您需要使用能够抵御暴力攻击的哈希算法。目前最好的选择是
+`argon2`。Yii `yiisoft/security` 包使安全生成和验证哈希变得更容易，并确保使用最佳的哈希解决方案。
 
-To use it, you need to require the package first:
+要使用它，您需要首先安装该包：
 
 ```
 composer require yiisoft/security
 ```
 
-When a user provides a password for the first time (e.g., upon
-registration), the password needs to be hashed and stored:
+当用户第一次提供密码时（例如，注册时），需要对密码进行哈希处理并存储：
 
 
 ```php
@@ -29,8 +22,7 @@ $hash = (new PasswordHasher())->hash($password);
 saveHash($hash); 
 ```
 
-When a user attempts to log in, the submitted password must be verified
-against the previously hashed and stored password:
+当用户尝试登录时，提交的密码必须与之前哈希和存储的密码进行验证：
 
 
 ```php

@@ -19,68 +19,68 @@ msgstr ""
 #: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Entry scripts"
-msgstr ""
+msgstr "入口脚本"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "Entry scripts are the first step in the application bootstrapping process. An application (either Web application or console application) has a single entry script. End users make requests to entry scripts which instantiate application instances and forward the requests to them."
-msgstr ""
+msgstr "入口脚本是应用程序引导过程的第一步。每个应用程序（无论是 Web 应用程序还是控制台应用程序）都只有一个入口脚本。最终用户向入口脚本发起请求，入口脚本负责实例化应用程序并将请求转发给它。"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "Entry scripts for Web applications must be stored under Web-accessible directories so that they can be accessed by end users. They're often named as `index.php`, but can also use any other names, provided Web servers can locate them."
-msgstr ""
+msgstr "Web 应用程序的入口脚本必须存储在 Web 可访问目录下，以便最终用户能够访问。文件名通常为 `index.php`，但也可以使用其他名称，只要 Web 服务器能够找到即可。"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "Entry script for console application is `./yii`."
-msgstr ""
+msgstr "控制台应用程序的入口脚本为 `./yii`。"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "Entry scripts mainly perform the following work with the help of `ApplicationRunner`:"
-msgstr ""
+msgstr "入口脚本借助 `ApplicationRunner` 主要完成以下工作："
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);"
-msgstr ""
+msgstr "注册 [Composer 自动加载器](https://getcomposer.org/doc/01-basic-usage.md#autoloading)；"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "Obtain configuration;"
-msgstr ""
+msgstr "获取配置；"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "Use configuration to initialize a dependency injection container;"
-msgstr ""
+msgstr "使用配置初始化依赖注入容器；"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "Get an instance of the request."
-msgstr ""
+msgstr "获取请求实例。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "Pass it to `Application` to handle and get a response from it."
-msgstr ""
+msgstr "将请求传递给 `Application` 处理并获取响应。"
 
 #. type: Bullet: '* '
 #: ../src/guide/structure/entry-script.md
 msgid "With the help of an emitter that transforms a response object into an actual HTTP response that's sent to the client browser."
-msgstr ""
+msgstr "借助发射器将响应对象转换为实际的 HTTP 响应并发送给客户端浏览器。"
 
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Web Applications <span id=\"web-applications\"></span>"
-msgstr ""
+msgstr "Web 应用程序 <span id=\"web-applications\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "The following is the code in the entry script for the application template:"
-msgstr ""
+msgstr "以下是应用程序模板中入口脚本的代码："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/entry-script.md
@@ -116,12 +116,12 @@ msgstr ""
 #: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Console Applications <span id=\"console-applications\"></span>"
-msgstr ""
+msgstr "控制台应用程序 <span id=\"console-applications\"></span>"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "Similarly, the following is the code for the entry script of a console application:"
-msgstr ""
+msgstr "类似地，以下是控制台应用程序入口脚本的代码："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/entry-script.md
@@ -174,19 +174,19 @@ msgstr ""
 #: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Alternative runtimes"
-msgstr ""
+msgstr "其他运行时"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
 msgid "For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:"
-msgstr ""
+msgstr "对于 RoadRunner 或 Swoole 等其他运行时，需要使用专用的入口脚本。请参阅："
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/entry-script.md
 msgid "[Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)"
-msgstr ""
+msgstr "[在 RoadRunner 中使用 Yii](../tutorial/using-yii-with-roadrunner.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/entry-script.md
 msgid "[Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)"
-msgstr ""
+msgstr "[在 Swoole 中使用 Yii](../tutorial/using-yii-with-swoole.md)"

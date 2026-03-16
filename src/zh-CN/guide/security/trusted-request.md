@@ -1,30 +1,23 @@
-# Trusted request
+# 可信请求
 
-Getting user information, like a host and IP address, will work out of the
-box in a normal setup where a single webserver is used to serve the
-website. If your Yii application, however, runs behind a reverse proxy, you
-need to add configuration to retrieve this information as the direct client
-is now the proxy, and the user IP address is passed to the Yii application
-by a header set by the proxy.
+在使用单个 Web 服务器为网站提供服务的正常设置中，获取用户信息（如主机和 IP 地址）将开箱即用。但是，如果您的 Yii
+应用程序在反向代理后面运行，则需要添加配置来检索此信息，因为直接客户端现在是代理，用户 IP 地址由代理设置的标头传递给 Yii 应用程序。
 
-You shouldn't blindly trust headers provided by proxies unless you
-explicitly trust the proxy.  Yii supports configuring trusted proxies via
-the `Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver`.  You should
-add it to [middleware stack](../structure/middleware.md).
+除非您明确信任代理，否则不应盲目信任代理提供的标头。Yii 支持通过
+`Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver`
+配置可信代理。您应该将其添加到[中间件堆栈](../structure/middleware.md)。
 
-The following is a request config for an application that runs behind an
-array of reverse proxies, which are located in the `10.0.2.0/24` IP network:
+以下是在一组反向代理后面运行的应用程序的请求配置，这些代理位于 `10.0.2.0/24` IP 网络中：
 
 ```php
 /** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */
 $trustedHostsNetworkResolver = $trustedHostsNetworkResolver->withAddedTrustedHosts(['1.0.2.0/24']);
 ```
 
-The proxy sends the IP in the `X-Forwarded-For` header by default, and the
-protocol (`http` or `https`) is in `X-Forwarded-Proto`.
+代理默认在 `X-Forwarded-For` 标头中发送 IP，协议（`http` 或 `https`）在 `X-Forwarded-Proto`
+中。
 
-In case your proxies are using different headers, you can use the request
-configuration to adjust these, e.g.:
+如果您的代理使用不同的标头，您可以使用请求配置来调整这些，例如：
 
 ```php
 /** @var \Yiisoft\Yii\Web\Middleware\TrustedHostsNetworkResolver $trustedHostsNetworkResolver */
@@ -39,5 +32,4 @@ $trustedHostsNetworkResolver = $trustedHostsNetworkResolver
     );
 ```
 
-With the above configuration, `X-ProxyUser-Ip` and `Front-End-Https` headers
-are used to get user IP and protocol.
+使用上述配置，`X-ProxyUser-Ip` 和 `Front-End-Https` 标头用于获取用户 IP 和协议。

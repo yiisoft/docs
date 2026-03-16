@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/guide/start/gii.md
 #, no-wrap
 msgid "Generating code with Gii"
-msgstr ""
+msgstr "使用 Gii 生成代码"
 
 #. type: Plain text
 #: ../src/guide/start/gii.md
@@ -28,3 +28,5 @@ msgid ""
 "> [!NOTE]\n"
 "> Gii is under development and will be available later.\n"
 msgstr ""
+"> [!NOTE]\n"
+"> Gii 正在开发中，稍后将可使用。\n"

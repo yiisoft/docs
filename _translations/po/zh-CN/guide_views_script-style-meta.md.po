@@ -19,78 +19,78 @@ msgstr ""
 #: ../src/guide/structure/overview.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Overview"
-msgstr ""
+msgstr "概述"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Practical Examples"
-msgstr ""
+msgstr "实践示例"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Best Practices"
-msgstr ""
+msgstr "最佳实践"
 
 #. type: Title #
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Scripts, styles and meta tags"
-msgstr ""
+msgstr "脚本、样式与 meta 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Modern web applications require careful management of CSS styles, JavaScript code, and HTML meta tags.  Yii3 provides a comprehensive system for registering and organizing these resources through the `WebView` class, which is part of the `yiisoft/view` package."
-msgstr ""
+msgstr "现代 Web 应用程序需要对 CSS 样式、JavaScript 代码和 HTML meta 标签进行精细管理。Yii3 通过 `yiisoft/view` 包中的 `WebView` 类提供了一套完整的系统，用于注册和组织这些资源。"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "The `WebView` class extends the basic `View` class with web-specific functionality, allowing you to:"
-msgstr ""
+msgstr "`WebView` 类在基础 `View` 类的基础上扩展了 Web 特有的功能，使你可以："
 
 #. type: Bullet: '- '
 #: ../src/guide/views/script-style-meta.md
 msgid "Register CSS files and inline styles"
-msgstr ""
+msgstr "注册 CSS 文件和内联样式"
 
 #. type: Bullet: '- '
 #: ../src/guide/views/script-style-meta.md
 msgid "Register JavaScript files and inline scripts"
-msgstr ""
+msgstr "注册 JavaScript 文件和内联脚本"
 
 #. type: Bullet: '- '
 #: ../src/guide/views/script-style-meta.md
 msgid "Manage HTML meta tags and link tags"
-msgstr ""
+msgstr "管理 HTML meta 标签和 link 标签"
 
 #. type: Bullet: '- '
 #: ../src/guide/views/script-style-meta.md
 msgid "Control the position where resources are rendered"
-msgstr ""
+msgstr "控制资源的渲染位置"
 
 #. type: Bullet: '- '
 #: ../src/guide/views/script-style-meta.md
 msgid "Handle dependencies between resources"
-msgstr ""
+msgstr "处理资源之间的依赖关系"
 
 #. type: Title ##
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "CSS management"
-msgstr ""
+msgstr "CSS 管理"
 
 #. type: Title ###
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering CSS Files"
-msgstr ""
+msgstr "注册 CSS 文件"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "You can register CSS files to be included in your HTML pages:"
-msgstr ""
+msgstr "你可以注册需要包含在 HTML 页面中的 CSS 文件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -122,12 +122,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering Inline CSS"
-msgstr ""
+msgstr "注册内联 CSS"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "For inline CSS styles, use the `registerCss()` method:"
-msgstr ""
+msgstr "对于内联 CSS 样式，使用 `registerCss()` 方法："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -157,12 +157,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "CSS from Files"
-msgstr ""
+msgstr "从文件注册 CSS"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "You can also register CSS content from external files:"
-msgstr ""
+msgstr "你也可以从外部文件读取 CSS 内容并注册为内联样式："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -178,12 +178,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Style Tags"
-msgstr ""
+msgstr "使用 Style 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "For more control, you can use HTML style tags directly:"
-msgstr ""
+msgstr "如需更精细的控制，可以直接使用 HTML style 标签："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -207,18 +207,18 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "JavaScript management"
-msgstr ""
+msgstr "JavaScript 管理"
 
 #. type: Title ###
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering JavaScript Files"
-msgstr ""
+msgstr "注册 JavaScript 文件"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Include external JavaScript files using `registerJsFile()`:"
-msgstr ""
+msgstr "使用 `registerJsFile()` 引入外部 JavaScript 文件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -246,12 +246,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Registering Inline JavaScript"
-msgstr ""
+msgstr "注册内联 JavaScript"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Add inline JavaScript code with `registerJs()`:"
-msgstr ""
+msgstr "使用 `registerJs()` 添加内联 JavaScript 代码："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -277,12 +277,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "JavaScript Variables"
-msgstr ""
+msgstr "JavaScript 变量"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Pass PHP data to JavaScript using `registerJsVar()`:"
-msgstr ""
+msgstr "使用 `registerJsVar()` 将 PHP 数据传递给 JavaScript："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -304,7 +304,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "This generates JavaScript code like:"
-msgstr ""
+msgstr "这将生成如下 JavaScript 代码："
 
 #. type: Fenced code block (html)
 #: ../src/guide/views/script-style-meta.md
@@ -321,12 +321,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Script Tags"
-msgstr ""
+msgstr "使用 Script 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "For more control over script tags:"
-msgstr ""
+msgstr "如需对 script 标签进行更精细的控制："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -349,12 +349,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Position Constants"
-msgstr ""
+msgstr "位置常量"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Resources can be positioned at different locations in the HTML document:"
-msgstr ""
+msgstr "资源可以定位到 HTML 文档的不同位置："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -381,7 +381,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Example layout showing where each position is rendered:"
-msgstr ""
+msgstr "以下布局示例展示了各位置的渲染位置："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -421,18 +421,18 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Meta tags"
-msgstr ""
+msgstr "Meta 标签"
 
 #. type: Title ###
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Basic Meta Tags"
-msgstr ""
+msgstr "基本 Meta 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Register meta tags for SEO and page information:"
-msgstr ""
+msgstr "为 SEO 和页面信息注册 meta 标签："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -457,12 +457,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Meta Tag Objects"
-msgstr ""
+msgstr "使用 Meta 标签对象"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "For more control, use the `Html::meta()` helper:"
-msgstr ""
+msgstr "如需更精细的控制，使用 `Html::meta()` 辅助方法："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -488,12 +488,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Preventing Duplicate Meta Tags"
-msgstr ""
+msgstr "防止重复 Meta 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Use keys to prevent duplicate meta tags:"
-msgstr ""
+msgstr "使用键名防止 meta 标签重复注册："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -516,18 +516,18 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Link tags"
-msgstr ""
+msgstr "Link 标签"
 
 #. type: Title ###
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Basic Link Tags"
-msgstr ""
+msgstr "基本 Link 标签"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Register various types of link tags:"
-msgstr ""
+msgstr "注册各类 link 标签："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -568,7 +568,7 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Using Link Tag Objects"
-msgstr ""
+msgstr "使用 Link 标签对象"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -595,12 +595,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Complete Page Setup"
-msgstr ""
+msgstr "完整页面配置"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Here's how you might set up a complete page with all types of resources:"
-msgstr ""
+msgstr "以下示例展示如何为页面配置所有类型的资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -673,12 +673,12 @@ msgstr ""
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Conditional Resource Loading"
-msgstr ""
+msgstr "条件资源加载"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "Load resources based on conditions:"
-msgstr ""
+msgstr "根据条件加载资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md
@@ -720,53 +720,53 @@ msgstr ""
 #. type: Bullet: '1. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript at `POSITION_END`"
-msgstr ""
+msgstr "**使用合适的位置**：将 CSS 放在 `POSITION_HEAD`，JavaScript 放在 `POSITION_END`"
 
 #. type: Bullet: '2. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Minimize inline resources**: Prefer external files for better caching"
-msgstr ""
+msgstr "**减少内联资源**：优先使用外部文件以获得更好的缓存效果"
 
 #. type: Bullet: '3. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Use keys for duplicates**: Prevent duplicate resources with meaningful keys"
-msgstr ""
+msgstr "**使用键名去重**：通过有意义的键名防止资源重复注册"
 
 #. type: Bullet: '4. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Optimize loading**: Use `async` and `defer` attributes for non-critical JavaScript"
-msgstr ""
+msgstr "**优化加载**：对非关键 JavaScript 使用 `async` 和 `defer` 属性"
 
 #. type: Bullet: '5. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Group related resources**: Keep related CSS and JS files together"
-msgstr ""
+msgstr "**分组管理相关资源**：将相关的 CSS 和 JS 文件放在一起"
 
 #. type: Bullet: '6. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Use CDNs wisely**: Balance performance with reliability"
-msgstr ""
+msgstr "**合理使用 CDN**：在性能与可靠性之间取得平衡"
 
 #. type: Bullet: '7. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Validate meta tags**: Ensure proper SEO meta tags are set"
-msgstr ""
+msgstr "**验证 meta 标签**：确保正确设置 SEO 所需的 meta 标签"
 
 #. type: Bullet: '8. '
 #: ../src/guide/views/script-style-meta.md
 msgid "**Consider security**: Be careful with inline scripts and CSP policies"
-msgstr ""
+msgstr "**注意安全性**：谨慎处理内联脚本与 CSP 策略"
 
 #. type: Title ##
 #: ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Working with Asset Bundles"
-msgstr ""
+msgstr "使用资源包"
 
 #. type: Plain text
 #: ../src/guide/views/script-style-meta.md
 msgid "For more complex asset management, consider using asset bundles:"
-msgstr ""
+msgstr "对于更复杂的资源管理需求，可以考虑使用资源包："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/script-style-meta.md

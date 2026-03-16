@@ -1,25 +1,20 @@
-# Sessions
+# 会话
 
-Sessions persist data between requests without passing them to the client
-and back.  Yii has [a session package](https://github.com/yiisoft/session)
-to work with session data.
+会话在请求之间持久化数据，无需将数据传递给客户端再传回。Yii 提供了
+[会话包](https://github.com/yiisoft/session) 来处理会话数据。
 
-To add it to your application, use composer:
+要将其添加到应用程序，请使用 composer：
 
 ```shell
 composer require yiisoft/session
 ```
 
-## Configuring middleware
+## 配置中间件
 
-To keep a session between requests, you need to add `SessionMiddleware` to
-your route group or application middlewares.  You should prefer a route
-group when you have both API with token-based authentication and regular web
-routes in the same application. Having it this way avoids starting the
-session for API endpoints.
+要在请求之间保持会话，需要将 `SessionMiddleware` 添加到路由组或应用程序中间件中。当应用程序同时包含基于令牌认证的 API 和常规
+Web 路由时，优先选择路由组。这样可以避免为 API 端点启动会话。
 
-To add a session for a certain group of routes, edit `config/routes.php`
-like the following:
+要为特定路由组添加会话，请按如下方式编辑 `config/routes.php`：
 
 ```php
 <?php
@@ -38,8 +33,7 @@ return [
 ];
 ```
 
-To add a session to the whole application, edit `config/application.php`
-like the following:
+要为整个应用程序添加会话，请按如下方式编辑 `config/application.php`：
 
 ```php
 return [
@@ -61,7 +55,7 @@ return [
 ];
 ```
 
-## Opening and closing session
+## 开启和关闭会话
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -77,10 +71,10 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 ``` 
 
 > [!NOTE]
-> Closing session as early as possible is a good practice since many session implementations are blocking other
-> requests while the session is open.
+> 尽早关闭会话是一个良好实践，因为许多会话实现在会话开启期间
+> 会阻塞其他请求。
 
-There are two more ways to close a session:
+关闭会话还有两种方式：
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -93,9 +87,9 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 }
 ```
 
-## Working with session data
+## 处理会话数据
 
-Usually you will use the following methods to work with session data:
+通常您将使用以下方法处理会话数据：
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -125,15 +119,11 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 }
 ```
 
-## Flash messages
+## 闪存消息
 
-In case you need some data to remain in session until read, such as in case
-of displaying a message on the next page, "flash" messages are what you
-need.  A flash message is a special type of data that's available only in
-the current request and the next request.  After that, it will be deleted
-automatically.
+如果您需要某些数据在会话中保留直到被读取（例如在下一页显示消息），那么“闪存”消息正是您所需要的。闪存消息是一种特殊类型的数据，仅在当前请求和下一个请求中可用，之后将被自动删除。
 
-`FlashInteface` usage is the following:
+`FlashInterface` 的用法如下：
 
 ```php
 /** @var Yiisoft\Session\Flash\FlashInterface $flash */
@@ -148,14 +138,13 @@ if ($warning !== null) {
 }
 ```
 
-## Custom session storage
+## 自定义会话存储
 
-When using `Yiisoft\Session\Session`, you can use your own storage
-implementation:
+使用 `Yiisoft\Session\Session` 时，您可以使用自定义存储实现：
 
 ```php
 $handler = new MySessionHandler();
 $session = new \Yiisoft\Session\Session([], $handler);
 ```
 
-Custom storage must implement `\SessionHandlerInterface`.
+自定义存储必须实现 `\SessionHandlerInterface`。

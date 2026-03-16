@@ -25,13 +25,13 @@ msgstr "不可变性"
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
 msgid "Immutability means an object's state cannot change after it has been created.  Instead of modifying an instance, you create a new instance with the desired changes.  This approach is common for value objects such as Money, IDs, and DTOs. It helps to avoid accidental side effects: methods cannot silently change shared state, which makes code easier to reason about."
-msgstr ""
+msgstr "不可变性是指对象在创建后其状态不能被改变。您不能修改一个已有实例，而是创建一个包含所需更改的新实例。这种方式常用于值对象，如 Money、ID 和 DTO。它有助于避免意外的副作用：方法不能静默修改共享状态，从而使代码更易于理解。"
 
 #. type: Title ##
 #: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Mutable pitfalls (what we avoid)"
-msgstr ""
+msgstr "可变对象的陷阱（我们要避免的）"
 
 #. type: Fenced code block (php)
 #: ../src/en/guide/concept/immutability.md
@@ -52,12 +52,12 @@ msgstr ""
 #: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Creating an immutable object in PHP"
-msgstr ""
+msgstr "在 PHP 中创建不可变对象"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
 msgid "There is no direct way to modify an instance, but you can use clone to create a new instance with the desired changes.  That is what `with*` methods do."
-msgstr ""
+msgstr "PHP 中没有直接修改实例的方式，但可以使用 clone 创建一个包含所需更改的新实例。这正是 `with*` 方法的作用。"
 
 #. type: Fenced code block (php)
 #: ../src/en/guide/concept/immutability.md
@@ -140,12 +140,12 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/en/guide/concept/immutability.md
 msgid "We mark the class `final` to prevent subclass mutations; alternatively, design for extension carefully."
-msgstr ""
+msgstr "将类标记为 `final` 以防止子类修改状态；也可以谨慎地设计以支持扩展。"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/concept/immutability.md
 msgid "Validate in the constructor and `with*` methods so every instance is always valid."
-msgstr ""
+msgstr "在构造函数和 `with*` 方法中进行验证，确保每个实例始终处于有效状态。"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
@@ -155,22 +155,25 @@ msgid ""
 "> If you define a simple DTO, you can use modern PHP `readonly` and leave properties `public`. The `readonly` keyword\n"
 "> would ensure that the properties cannot be modified after the object is created.\n"
 msgstr ""
+"> [!TIP]\n"
+"> 如果您定义的是简单的 DTO，可以使用现代 PHP 的 `readonly` 关键字并将属性设为 `public`。`readonly` 关键字\n"
+"> 可确保属性在对象创建后无法被修改。\n"
 
 #. type: Title ##
 #: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Using clone (and why it is inexpensive)"
-msgstr ""
+msgstr "使用 clone（以及为何开销低）"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
 msgid "PHP's clone performs a shallow copy of the object. For immutable value objects that contain only scalars or other immutable objects, shallow cloning is enough and fast. In modern PHP, cloning small value objects is inexpensive in both time and memory."
-msgstr ""
+msgstr "PHP 的 clone 对对象执行浅拷贝。对于只包含标量或其他不可变对象的不可变值对象，浅拷贝已经足够且速度很快。在现代 PHP 中，克隆小型值对象在时间和内存方面的开销都很低。"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
 msgid "If your object holds mutable sub-objects that must also be copied, implement `__clone` to deep-clone them:"
-msgstr ""
+msgstr "如果对象持有也需要复制的可变子对象，请实现 `__clone` 来对其进行深拷贝："
 
 #. type: Fenced code block (php)
 #: ../src/en/guide/concept/immutability.md
@@ -206,19 +209,19 @@ msgstr ""
 #: ../src/en/guide/concept/immutability.md
 #, no-wrap
 msgid "Usage style"
-msgstr ""
+msgstr "使用风格"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/concept/immutability.md
 msgid "Build a value object once and pass it around. If you need a change, use a `with*` method that returns a new instance."
-msgstr ""
+msgstr "一次性构建值对象并传递使用。如需更改，使用返回新实例的 `with*` 方法。"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/concept/immutability.md
 msgid "Prefer scalar/immutable fields inside immutable objects; if a field can mutate, isolate it and deep-clone in `__clone` when needed."
-msgstr ""
+msgstr "不可变对象内部优先使用标量或不可变字段；如果某个字段可能发生变化，请将其隔离，并在需要时在 `__clone` 中对其进行深拷贝。"
 
 #. type: Plain text
 #: ../src/en/guide/concept/immutability.md
 msgid "Immutability aligns well with Yii's preference for predictable, side-effect-free code and makes services, caching, and configuration more robust."
-msgstr ""
+msgstr "不可变性与 Yii 对可预测、无副作用代码的偏好高度契合，能使服务、缓存和配置更加健壮。"

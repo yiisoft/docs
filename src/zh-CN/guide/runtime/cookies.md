@@ -1,14 +1,11 @@
-# Cookies
+# Cookie
 
-Cookies are for persisting data between requests by sending it to the client
-browser using HTTP headers.  The client sends data back to the server in
-request headers. Thus, cookies are handy to store small amounts of data,
-such as tokens or flags.
+Cookie 用于通过 HTTP 头将数据发送到客户端浏览器，以在请求之间持久化数据。客户端在请求头中将数据发回服务器。因此，Cookie
+非常适合存储少量数据，例如令牌或标志位。
 
-## Reading cookies
+## 读取 Cookie
 
-You could obtain Cookie values from server request that's available as route
-handler (such as controller action) argument:
+您可以从作为路由处理器（例如控制器操作）参数提供的服务器请求中获取 Cookie 值：
 
 ```php
 private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request)
@@ -19,15 +16,12 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 }
 ```
 
-In addition to getting cookie values directly from the server request, you
-can also use the
+除了直接从服务器请求获取 Cookie 值外，您还可以使用
 [yiisoft/request-provider](https://github.com/yiisoft/request-provider)
-package, which provides a more structured way to handle cookies through the
-`\Yiisoft\RequestProvider\RequestCookieProvider`.  This approach can
-simplify your code and improve readability.
+包，该包通过 `\Yiisoft\RequestProvider\RequestCookieProvider` 提供了一种更结构化的 Cookie
+处理方式，能简化代码并提高可读性。
 
-Here’s an example of how to work with cookies using the
-`\Yiisoft\RequestProvider\RequestCookieProvider`:
+以下是使用 `\Yiisoft\RequestProvider\RequestCookieProvider` 处理 Cookie 的示例：
 
 ```php
 final readonly class MyService
@@ -68,20 +62,17 @@ $cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
 return $cookie->addToResponse($response);
 ```
 
-After forming a cookie call `addToResponse()` passing an instance of
-`\Psr\Http\Message\ResponseInterface` to add corresponding HTTP headers to
-it.
+构造好 Cookie 后，调用 `addToResponse()` 并传入 `\Psr\Http\Message\ResponseInterface`
+实例，以将相应的 HTTP 头添加到响应中。
 
-## Signing and encrypting cookies
+## 签名与加密 Cookie
 
-To prevent the substitution of the cookie value, the package provides two
-implementations:
+为防止 Cookie 值被篡改，该包提供了两种实现：
 
-`Yiisoft\Cookies\CookieSigner` - signs each cookie with a unique prefix hash
-based on the value of the cookie and a secret key.
-`Yiisoft\Cookies\CookieEncryptor` - encrypts each cookie with a secret key.
+`Yiisoft\Cookies\CookieSigner` — 使用基于 Cookie 值和密钥的唯一前缀哈希对每个 Cookie
+进行签名。`Yiisoft\Cookies\CookieEncryptor` — 使用密钥对每个 Cookie 进行加密。
 
-Encryption is more secure than signing but has lower performance.
+加密比签名更安全，但性能较低。
 
 ```php
 $cookie = new \Yiisoft\Cookies\Cookie('identity', 'identityValue');
@@ -96,18 +87,15 @@ $signedCookie = $signer->sign($cookie);
 $encryptedCookie = $encryptor->encrypt($cookie);
 ```
 
-To validate and get back the pure value, use the `validate()` and
-`decrypt()` method.
+要验证并还原纯净值，请使用 `validate()` 和 `decrypt()` 方法。
 
 ```php
 $cookie = $signer->validate($signedCookie);
 $cookie = $encryptor->decrypt($encryptedCookie);
 ```
 
-If the cookie value is tampered with or hasn't been signed/encrypted before,
-a `\RuntimeException` will be thrown.  Therefore, if you aren't sure that
-the cookie value was signed/encrypted earlier, first use the `isSigned()`
-and `isEncrypted()` methods, respectively.
+如果 Cookie 值被篡改，或之前未经过签名/加密，则会抛出 `\RuntimeException`。因此，如果不确定 Cookie
+值之前是否已签名/加密，请先分别使用 `isSigned()` 和 `isEncrypted()` 方法进行检查。
 
 ```php
 if ($signer->isSigned($cookie)) {
@@ -119,27 +107,21 @@ if ($encryptor->isEncrypted($cookie)) {
 }
 ```
 
-It makes sense to sign or encrypt the value of a cookie if you store
-important data that a user shouldn't change.
+如果 Cookie 中存储了用户不应修改的重要数据，对其值进行签名或加密是有必要的。
 
-### Automating encryption and signing
+### 自动化加密与签名
 
-To automate the encryption/signing and decryption/validation of cookie
-values, use an instance of `Yiisoft\Cookies\CookieMiddleware`, which is
-[PSR-15](https://www.php-fig.org/psr/psr-15/) middleware.
+要自动化 Cookie 值的加密/签名和解密/验证，请使用 `Yiisoft\Cookies\CookieMiddleware` 实例，它是符合
+[PSR-15](https://www.php-fig.org/psr/psr-15/) 规范的中间件。
 
-This middleware provides the following features:
+该中间件提供以下功能：
 
-- Validates and decrypts the cookie parameter values from the request.
-- Excludes the cookie parameter from the request if it was tampered with and
-  logs information about it.
-- Encrypts/signs cookie values and replaces their clean values in the
-  `Set-Cookie` headers in the response.
+- 验证并解密请求中的 Cookie 参数值。
+- 如果 Cookie 参数被篡改，则将其从请求中排除并记录相关信息。
+- 对 Cookie 值进行加密/签名，并在响应的 `Set-Cookie` 头中替换原始值。
 
-In order for the middleware to know which values of which cookies need to be
-encrypted/signed, an array of settings must be passed to its
-constructor. The array keys are cookie name patterns and values are constant
-values of `CookieMiddleware::ENCRYPT` or `CookieMiddleware::SIGN`.
+为了让中间件知道哪些 Cookie 的值需要加密/签名，必须向其构造函数传入一个配置数组。数组的键是 Cookie 名称匹配模式，值为
+`CookieMiddleware::ENCRYPT` 或 `CookieMiddleware::SIGN` 常量。
 
 ```php
 use Yiisoft\Cookies\CookieMiddleware;
@@ -155,11 +137,11 @@ $cookiesSettings = [
 ];
 ```
 
-For more information on using the wildcard pattern, see the
+有关通配符模式用法的更多信息，请参阅
 [yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage)
-package.
+包。
 
-Creating and using middleware:
+创建并使用中间件：
 
 ```php
 /**
@@ -190,22 +172,15 @@ $middleware = new \Yiisoft\Cookies\CookieMiddleware(
 $response = $middleware->process($request, $handler);
 ```
 
-If the `$cookiesSettings` array is empty, no cookies will be encrypted and
-signed.
+如果 `$cookiesSettings` 数组为空，则不会对任何 Cookie 进行加密或签名。
 
-## Cookies security
+## Cookie 安全
 
-You should configure each cookie to be secure. Important security settings
-are:
+应将每个 Cookie 配置为安全的。重要的安全设置包括：
 
-- `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie
-  value.
-- `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It
-  will be sent via `HTTPS` only.
-- `sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would
-  prevent sending a cookie in cross-site browsing context. `SAME_SITE_LAX`
-  would prevent cookie sending during CSRF-prone request methods (e.g.,
-  POST, PUT, PATCH, etc.). `SAME_SITE_STRICT` would prevent cookies sending
-  for all methods.
-- Sign or encrypt the value of the cookie to prevent spoofing of values if
-  the data in the value shouldn't be tampered with.
+- `httpOnly`。设为 `true` 可防止 JavaScript 访问 Cookie 值。
+- `secure`。设为 `true` 可防止通过 `HTTP` 发送 Cookie，仅允许通过 `HTTPS` 发送。
+- `sameSite`，设为 `SAME_SITE_LAX` 或 `SAME_SITE_STRICT` 可防止在跨站浏览上下文中发送
+  Cookie。`SAME_SITE_LAX` 会阻止在易受 CSRF 攻击的请求方法（如 POST、PUT、PATCH 等）中发送
+  Cookie；`SAME_SITE_STRICT` 会阻止所有方法发送 Cookie。
+- 如果 Cookie 值中的数据不应被篡改，请对其进行签名或加密，以防止值被伪造。

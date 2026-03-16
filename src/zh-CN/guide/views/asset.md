@@ -1,43 +1,33 @@
-# Assets
+# 资源
 
-Asset management is crucial for modern web applications. Assets include CSS
-stylesheets, JavaScript files, images, fonts, and other static
-resources. Yii3 provides a comprehensive asset management system through the
-`yiisoft/assets` package that handles dependencies, optimization, and
-deployment of these resources.
+资源管理对现代 Web 应用程序至关重要。资源包括 CSS 样式表、JavaScript 文件、图像、字体及其他静态资源。Yii3 通过
+`yiisoft/assets` 包提供了一套完整的资源管理系统，用于处理这些资源的依赖、优化和部署。
 
 ## 安装
 
-The asset management functionality is provided by the `yiisoft/assets`
-package:
+资源管理功能由 `yiisoft/assets` 包提供：
 
 ```bash
 composer require yiisoft/assets
 ```
 
-This package is included by default in the `yiisoft/app` application
-template.
+该包默认包含在 `yiisoft/app` 应用程序模板中。
 
-## Basic Concepts
+## 基本概念
 
-### Asset Bundles
+### 资源包
 
-An asset bundle is a collection of related asset files (CSS, JavaScript,
-images) that are logically grouped together.  Asset bundles can depend on
-other bundles, allowing for proper dependency management.
+资源包是一组相关资源文件（CSS、JavaScript、图像）的集合，它们在逻辑上被组合在一起。资源包可以依赖其他包，从而实现适当的依赖关系管理。
 
-### Asset Manager
+### 资源管理器
 
-The Asset Manager is responsible for: - Resolving asset bundle dependencies
-- Publishing assets from protected directories to web-accessible locations -
-Combining and minifying assets (when configured)  - Generating proper URLs
-for assets
+资源管理器负责：- 解析资源包依赖 - 将资源从受保护目录发布到 Web 可访问的位置 - 合并和压缩资源（当配置时）- 生成资源的正确 URL
 
-## Creating Asset Bundles
+## 创建资源包
 
-### Basic Asset Bundle
+### 基本资源包
 
-Here's a simple asset bundle definition:
+下面是一个简单的资源包定义：
 
 ```php
 <?php
@@ -70,25 +60,25 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-### Asset Bundle Properties
+### 资源包属性
 
-**Path Configuration:**
-- `$basePath` - Physical path where asset files are located
-- `$baseUrl` - Web-accessible URL path for assets
-- `$sourcePath` - Source directory for assets that need to be published
+**路径配置：**
+- `$basePath` - 资源文件的物理路径
+- `$baseUrl` - 资源的 Web 可访问 URL 路径
+- `$sourcePath` - 需要发布的资源的源目录
 
-**Asset Files:**
-- `$css` - Array of CSS files
-- `$js` - Array of JavaScript files  
+**资源文件：**
+- `$css` - CSS 文件数组
+- `$js` - JavaScript 文件数组  
 
-**Dependencies:**
-- `$depends` - Array of other asset bundles this bundle depends on
+**依赖：**
+- `$depends` - 此包所依赖的其他资源包数组
 
-**Options:**
-- `$jsOptions` - HTML attributes for JavaScript tags
-- `$cssOptions` - HTML attributes for CSS link tags
+**选项：**
+- `$jsOptions` - JavaScript 标签的 HTML 属性
+- `$cssOptions` - CSS link 标签的 HTML 属性
 
-### Advanced Asset Bundle
+### 高级资源包
 
 ```php
 <?php
@@ -135,11 +125,11 @@ final class AdminAsset extends AssetBundle
 }
 ```
 
-## Using Asset Bundles
+## 使用资源包
 
-### In Controllers
+### 在控制器中
 
-Register asset bundles in your controllers or views:
+在控制器或视图中注册资源包：
 
 ```php
 <?php
@@ -183,9 +173,9 @@ final class SiteController
 }
 ```
 
-### In Views
+### 在视图中
 
-You can also register assets directly in views:
+你也可以直接在视图中注册资源：
 
 ```php
 <?php
@@ -211,10 +201,9 @@ $assetManager->register(ProductAsset::class);
 </div>
 ```
 
-### With WebView Integration
+### 与 WebView 集成
 
-The recommended approach is to integrate with WebView for automatic asset
-rendering:
+推荐的方式是与 WebView 集成，以自动渲染资源：
 
 ```php
 <?php
@@ -244,12 +233,11 @@ $this->addJsVars($assetManager->getJsVars());
 </div>
 ```
 
-## Asset Publishing
+## 资源发布
 
-### Source Path Publishing
+### 源路径发布
 
-When assets are located in non-web-accessible directories (like vendor
-packages), they need to be published:
+当资源位于不可通过 Web 访问的目录（如 vendor 包）时，需要发布它们：
 
 ```php
 <?php
@@ -279,9 +267,9 @@ final class VendorAsset extends AssetBundle
 }
 ```
 
-### Custom Publishing
+### 自定义发布
 
-You can also manually publish directories:
+你也可以手动发布目录：
 
 ```php
 /**
@@ -295,9 +283,9 @@ $publishedPath = $assetManager->publish('@vendor/company/package/assets');
 $publishedUrl = $assetManager->getPublishedUrl('@vendor/company/package/assets');
 ```
 
-## Third-party Library Assets
+## 第三方库资源
 
-### jQuery Asset Bundle
+### jQuery 资源包
 
 ```php
 <?php
@@ -325,7 +313,7 @@ final class JqueryAsset extends AssetBundle
 }
 ```
 
-### Bootstrap Asset Bundle
+### Bootstrap 资源包
 
 ```php
 <?php
@@ -355,9 +343,9 @@ final class BootstrapAsset extends AssetBundle
 }
 ```
 
-### CDN Assets
+### CDN 资源
 
-For CDN-hosted assets, you can specify full URLs:
+对于托管在 CDN 上的资源，可以指定完整 URL：
 
 ```php
 <?php
@@ -385,11 +373,11 @@ final class CdnAsset extends AssetBundle
 }
 ```
 
-## Asset Configuration
+## 资源配置
 
-### Application Configuration
+### 应用程序配置
 
-Configure asset management in your application configuration:
+在应用程序配置中配置资源管理：
 
 **config/web/params.php**
 ```php
@@ -412,9 +400,9 @@ return [
 ];
 ```
 
-### Environment-specific Assets
+### 特定环境的资源
 
-Configure different assets for different environments:
+为不同环境配置不同的资源：
 
 ```php
 <?php
@@ -448,11 +436,11 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-## Asset Optimization
+## 资源优化
 
-### Asset Combination
+### 资源合并
 
-Combine multiple CSS or JavaScript files into single files:
+将多个 CSS 或 JavaScript 文件合并为单个文件：
 
 ```php
 /**
@@ -469,9 +457,9 @@ $assetManager->setCombineOptions([
 ]);
 ```
 
-### Asset Compression
+### 资源压缩
 
-Configure asset compression for production:
+为生产环境配置资源压缩：
 
 ```php
 // In your asset manager configuration
@@ -483,9 +471,9 @@ Configure asset compression for production:
 ],
 ```
 
-## Working with Asset Converter
+## 使用资源转换器
 
-### SCSS/SASS Compilation
+### SCSS/SASS 编译
 
 ```php
 <?php
@@ -509,7 +497,7 @@ final class ScssAsset extends AssetBundle
 }
 ```
 
-### TypeScript Compilation
+### TypeScript 编译
 
 ```php
 <?php
@@ -533,9 +521,9 @@ final class TypeScriptAsset extends AssetBundle
 }
 ```
 
-## Practical Examples
+## 实践示例
 
-### Complete Application Asset Structure
+### 完整应用程序资源结构
 
 ```
 assets/
@@ -557,7 +545,7 @@ assets/
     └── main.woff
 ```
 
-### Complete Asset Bundle Setup
+### 完整资源包配置
 
 ```php
 <?php
@@ -623,36 +611,35 @@ final class MobileAsset extends AssetBundle
 }
 ```
 
-## Best Practices
+## 最佳实践
 
-1. **Organize by functionality**: Group related assets into logical bundles
-2. **Manage dependencies**: Properly declare dependencies between bundles
-3. **Use meaningful names**: Name your asset bundles clearly
-4. **Environment optimization**: Use minified assets in production
-5. **CDN consideration**: Use CDN for popular libraries when appropriate
-6. **Version your assets**: Include version numbers in filenames for cache
-   busting
-7. **Minimize HTTP requests**: Combine related assets when possible
-8. **Optimize file sizes**: Compress and minify assets for production
+1. **按功能组织**：将相关资源归入逻辑包
+2. **管理依赖**：正确声明包之间的依赖关系
+3. **使用有意义的名称**：清晰地命名资源包
+4. **环境优化**：在生产环境中使用压缩资源
+5. **考虑 CDN**：在适当时对常用库使用 CDN
+6. **版本化资源**：在文件名中包含版本号以清除缓存
+7. **减少 HTTP 请求**：尽可能合并相关资源
+8. **优化文件大小**：为生产环境压缩和最小化资源
 
 ## 故障排除
 
-### Common Issues
+### 常见问题
 
-**Asset not found:**
-- Check that the asset file exists in the specified path
-- Verify `$basePath` and `$baseUrl` are configured correctly
-- Ensure assets are published if using `$sourcePath`
+**资源未找到：**
+- 检查资源文件是否存在于指定路径中
+- 验证 `$basePath` 和 `$baseUrl` 是否配置正确
+- 如果使用 `$sourcePath`，确保资源已发布
 
-**Dependencies not loading:**
-- Verify the dependency bundles are properly registered
-- Check for circular dependencies
-- Ensure dependency bundles are correctly configured
+**依赖未加载：**
+- 验证依赖包是否已正确注册
+- 检查是否存在循环依赖
+- 确保依赖包已正确配置
 
-**Assets not appearing in HTML:**
-- Make sure you're calling `$this->addCssFiles()` and `$this->addJsFiles()` in your layout
-- Verify that `$this->head()`, `$this->beginBody()`, and `$this->endBody()` are called in the layout
+**资源未出现在 HTML 中：**
+- 确保在布局中调用了 `$this->addCssFiles()` 和 `$this->addJsFiles()`
+- 验证布局中是否调用了 `$this->head()`、`$this->beginBody()` 和 `$this->endBody()`
 
-**Permission issues:**
-- Check that the web server has write permissions to the assets directory
-- Verify the published assets directory is web-accessible
+**权限问题：**
+- 检查 Web 服务器是否具有资源目录的写入权限
+- 验证已发布的资源目录是否可通过 Web 访问

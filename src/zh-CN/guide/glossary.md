@@ -2,91 +2,71 @@
 
 ## alias
 
-Alias is a string used by Yii to refer to the class or directory such as
-`@app/vendor`.  Read more in ["Aliases"](concept/aliases.md).
+别名是 Yii 用于引用类或目录的字符串，例如 `@app/vendor`。详见[“别名”](concept/aliases.md)。
 
 ## asset
 
-Asset refers to a resource file. Typically, it contains JavaScript or CSS
-code but can be any static content accessed via HTTP.  Read more in
-["Assets"](views/asset.md).
+资源是指资源文件。通常包含 JavaScript 或 CSS 代码，但也可以是任何通过 HTTP
+访问的静态内容。详见[“资源”](views/asset.md)。
 
 # C
 
 ## configuration
 
-The Configuration may refer either to the process of setting properties of
-an object or to a configuration file that stores settings for an object, or
-a class of objects.  Read more in
-["Configuration"](concept/configuration.md).
+配置既可以指设置对象属性的过程，也可以指存储对象或一类对象设置的配置文件。详见[“配置”](concept/configuration.md)。
 
 # D
 
 ## DI
 
-Dependency Injection is a programming technique where an object injects a
-dependent object.  Read more in ["Dependency injection and
-container"](concept/di-container.md).
+依赖注入是一种编程技术，通过该技术将依赖对象注入到另一个对象中。详见[“依赖注入与容器”](concept/di-container.md)。
 
 # I
 
 ## installation
 
-Installation is a process of preparing something to work either by following
-a readme file or by executing a specially prepared script. In the case of
-Yii, it's setting permissions and fulfilling software requirements.
+安装是按照 readme 文件或执行专门准备的脚本来使软件正常运行的过程。对于 Yii 而言，主要是设置权限和满足软件依赖要求。
 
 # M
 
 ## middleware
 
-Middleware is a processor in the request processing stack. Given a request,
-it may either produce a response or do some action and pass processing to
-the next middleware.  Read more in ["Middleware"](structure/middleware.md).
+中间件是请求处理栈中的一个处理器。对于给定的请求，它既可以直接生成响应，也可以执行某些操作后将处理传递给下一个中间件。详见[“中间件”](structure/middleware.md)。
 
 ## module
 
-The module is a namespace that groups some code based on a use-case. It's
-typically used within the main application and may contain any source code,
-define additional URL handlers or console commands.
+模块是根据使用场景对代码进行分组的命名空间。它通常在主应用程序中使用，可以包含任意源代码、定义额外的 URL 处理器或控制台命令。
 
 # N
 
 ## namespace
 
-Namespace refers to a [PHP language
-feature](https://www.php.net/manual/en/language.namespaces.php) to group
-multiple classes under a certain name.
+命名空间是指一种 [PHP
+语言特性](https://www.php.net/manual/en/language.namespaces.php)，用于将多个类归组到某个特定名称下。
 
 # P
 
 ## package
 
-A package usually refers to [Composer
-package](https://getcomposer.org/doc/). It's code ready for reuse and
-redistribution installable automatically via package manager.
+包通常指 [Composer 包](https://getcomposer.org/doc/)，是可通过包管理器自动安装的、已准备好复用和再分发的代码。
 
 # R
 
 ## rule
 
-The rule usually refers to a validation rule of the
-[yiisoft/validator](https://github.com/yiisoft/validator) package.  It holds
-a set of parameters for checking if a data set is valid.  "Rule handler"
-does the actual processing.
+规则通常指 [yiisoft/validator](https://github.com/yiisoft/validator)
+包的验证规则。它持有一组用于检查数据集是否有效的参数。“规则处理器”负责实际执行处理。
 
 # Q
 
 ## queue
 
-A queue is similar to a stack. Queue follows First-In-First-Out
-methodology.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue)
-package.
+队列类似于栈，遵循先进先出（FIFO）原则。Yii 提供了
+[yiisoft/queue](https://github.com/yiisoft/queue) 包。
 
 # V
 
 ## vendor
 
-A Vendor is an organization or individual developer providing code in the
-form of packages.  It also may refer to [Composer's `vendor`
-directory](https://getcomposer.org/doc/).
+Vendor 是指以包的形式提供代码的组织或个人开发者。也可以指 [Composer 的 `vendor`
+目录](https://getcomposer.org/doc/)。

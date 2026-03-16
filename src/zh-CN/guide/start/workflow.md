@@ -1,122 +1,95 @@
-# Running applications
+# 运行应用
 
-After installing Yii, you have a working Yii application.  This section
-introduces the application's built-in functionality, how the code is
-organized, and how the application handles requests in general.
+安装 Yii 后，你就有了一个可工作的 Yii 应用程序。本节介绍应用程序的内置功能、代码的组织方式以及应用程序如何处理请求。
 
-Note that unlike the framework itself, after you install a project template,
-it's all yours.  You're free to add or delete code and overall change it as
-you need.
+请注意，与框架本身不同，安装项目模板后，它就完全属于你了。你可以自由地添加或删除代码，并根据需要进行整体更改。
 
-## Functionality <span id="functionality"></span>
+## 功能 <span id="functionality"></span>
 
-The installed application contains only one page, accessible at
-`http://localhost/`.  It shares a common layout that you can reuse on
-further pages.
+安装的应用程序只包含一个页面，可通过 `http://localhost/` 访问。它共享一个通用布局，你可以在其他页面上重用。
 
 <!--
-You should also see a toolbar at the bottom of the browser window.
-This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of
-debugging information, such as log messages, response statuses, the database queries run, and so on.
+你还应该在浏览器窗口底部看到一个工具栏。
+这是 Yii 提供的有用的[调试工具](https://github.com/yiisoft/yii-debug)，用于记录和显示大量
+调试信息，例如日志消息、响应状态、运行的数据库查询等。
 -->
 
-In addition to the web application, you can access a console script via
-`APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to
-run background and maintenance tasks for the application, which the [Console
-Application Section](../tutorial/console-applications.md) describes.
+除了 Web 应用程序外，你还可以通过 `APP_ENV=dev ./yii` 或在 Docker 的情况下通过 `make yii`
+访问控制台脚本。使用此脚本运行应用程序的后台和维护任务，[控制台应用程序部分](../tutorial/console-applications.md)对此进行了描述。
 
 
-## Application structure <span id="application-structure"></span>
+## 应用结构 <span id="application-structure"></span>
 
-The most important directories and files in your application are (assuming
-the application's root directory is `app`):
+应用程序中最重要的目录和文件是（假设应用程序的根目录是 `app`）：
 
 ```
-assets/                 Asset bundle source files.
-config/                 Configuration files.
-    common/             Common configuration and DI definitions.
-    console/            Console-specific configuration.
-    environments/       Environment-specific configuration (dev/test/prod).
-    web/                Web-specific configuration.
-docker/                 Docker-specific files.
-public/                 Files publically accessible from the Internet.
-    assets/             Published/compiled assets.
-    index.php           Entry script.
-runtime/                Files generated during runtime.
-src/                    Application source code.
-    Console/            Console commands.
-    Shared/             Code shared between web and console applications.
-    Web/                Web-specific code (actions, handlers, layout).
-        Shared/         Shared web components.
-            Layout/     Layout components and templates.
-    Environment.php     Environment configuration class.
-tests/                  A set of Codeception tests for the application.
-    Console/            Console command tests.
-    Functional/         Functional tests.
-    Unit/               Unit tests.
-    Web/                Web actions tests.
-vendor/                 Installed Composer packages.
-Makefile                Config for make command.
-yii                     Console application entry point.
+assets/                 资源包源文件。
+config/                 配置文件。
+    common/             通用配置和 DI 定义。
+    console/            控制台特定配置。
+    environments/       环境特定配置（dev/test/prod）。
+    web/                Web 特定配置。
+docker/                 Docker 特定文件。
+public/                 可从互联网公开访问的文件。
+    assets/             已发布/编译的资源。
+    index.php           入口脚本。
+runtime/                运行时生成的文件。
+src/                    应用程序源代码。
+    Console/            控制台命令。
+    Shared/             Web 和控制台应用程序之间共享的代码。
+    Web/                Web 特定代码（动作、处理器、布局）。
+        Shared/         共享的 Web 组件。
+            Layout/     布局组件和模板。
+    Environment.php     环境配置类。
+tests/                  应用程序的 Codeception 测试集。
+    Console/            控制台命令测试。
+    Functional/         功能测试。
+    Unit/               单元测试。
+    Web/                Web 动作测试。
+vendor/                 已安装的 Composer 包。
+Makefile                make 命令的配置。
+yii                     控制台应用程序入口点。
 ```
 
-In general, the files in the application fall into two groups: those under
-`app/public` and those under other directories. You can access the former
-directly via HTTP (i.e., in a browser), while you shouldn't expose the
-latter.
+一般来说，应用程序中的文件分为两组：`app/public` 下的文件和其他目录下的文件。你可以通过
+HTTP（即在浏览器中）直接访问前者，而不应该暴露后者。
 
-Each application has an entry script `public/index.php`, the only
-web-accessible PHP script in the application.  The entry script uses an
-[application runner](https://github.com/yiisoft/yii-runner) to create an
-instance of an incoming request with the help of one of PSR-7 packages and
-passes it to an [application](../structure/application.md)  instance. The
-application executes a set of middleware sequentially to process the
-request.  It then passes the result to the emitter, which sends the response
-to the browser.
+每个应用程序都有一个入口脚本 `public/index.php`，这是应用程序中唯一可通过 Web 访问的 PHP
+脚本。入口脚本使用[应用程序运行器](https://github.com/yiisoft/yii-runner)在 PSR-7
+包之一的帮助下创建传入请求的实例，并将其传递给[应用程序](../structure/application.md)实例。应用程序按顺序执行一组中间件来处理请求。然后将结果传递给发射器，发射器将响应发送到浏览器。
 
-Depending on the middleware you use, the application may behave
-differently. By default, a router uses the requested URL and configuration
-to choose a handler and execute it to produce a response.
+根据你使用的中间件，应用程序的行为可能会有所不同。默认情况下，路由器使用请求的 URL 和配置来选择处理器并执行它以生成响应。
 
-You can learn more about the application template from the [yiisoft/app
-package
-documentation](https://github.com/yiisoft/app/blob/master/README.md).
+你可以从 [yiisoft/app
+包文档](https://github.com/yiisoft/app/blob/master/README.md)中了解更多关于应用程序模板的信息。
 
-## Request Lifecycle <span id="request-lifecycle"></span>
+## 请求生命周期 <span id="request-lifecycle"></span>
 
-The following diagram shows how an application handles a request.
+下图显示了应用程序如何处理请求。
 
 ```mermaid
 flowchart LR
-  user[User's client] --> index
-  index[index.php] --> DI[Initialize Dependency Container]
-  config[configs] -.-> DI
-  DI --> RequestFactory[RequestFactory]
-  RequestFactory -->|Request| app[Application]
-  app -->|Request| middleware[Middleware]
-  middleware -->|Request| router[Router]
-  router -->|Request| action[Action Handler]
-  action -->|Response| emitter[SapiEmitter]
-  router -->|Response| emitter
-  middleware -->|Response| emitter
-  app -->|Response| emitter
+  user[用户客户端] --> index
+  index[index.php] --> DI[初始化依赖容器]
+  config[配置] -.-> DI
+  DI --> RequestFactory[请求工厂]
+  RequestFactory -->|请求| app[应用程序]
+  app -->|请求| middleware[中间件]
+  middleware -->|请求| router[路由器]
+  router -->|请求| action[动作处理器]
+  action -->|响应| emitter[SapiEmitter]
+  router -->|响应| emitter
+  middleware -->|响应| emitter
+  app -->|响应| emitter
   emitter --> user
 ```
 
-1. A user makes a request to the [entry
-   script](../structure/entry-script.md) `public/index.php`.
-2. The entry script with the help of the application runner loads the
-   container [configuration](../concept/configuration.md) and creates an
-   [application](../structure/application.md) instance and services
-   necessary to handle the request.
-3. Request factory creates a request object based on a raw request that came
-   from a user.
-4. Application passes a request object through a middleware array
-   configured. One of these is typically a router.
-5. The Router finds out what handler to execute based on request and
-   configuration.
-6. The handler may load some data, possibly from a database.
-7. The handler forms a response by using data. Either directly or with the
-   help of the view package.
-8. Emitter receives the response and takes care of sending the response to
-   the user's browser.
+1. 用户向 [入口脚本](../structure/entry-script.md) `public/index.php` 发出请求。
+2. 入口脚本在应用程序运行器的帮助下加载容器 [配置](../concept/configuration.md)，并创建处理请求所需的
+   [应用程序](../structure/application.md) 实例和服务。
+3. 请求工厂根据来自用户的原始请求创建请求对象。
+4. 应用程序将请求对象传递给配置的中间件数组。其中之一通常是路由器。
+5. 路由器根据请求和配置确定要执行的处理器。
+6. 处理器可能会加载一些数据，可能来自数据库。
+7. 处理器使用数据形成响应。可以直接形成，也可以借助视图包。
+8. 发射器接收响应并负责将响应发送到用户的浏览器。

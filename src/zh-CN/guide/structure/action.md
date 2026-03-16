@@ -1,13 +1,9 @@
-# Actions
+# 动作
 
-In a web application, the request URL determines what's executed. Matching
-is made by a router configured with multiple routes. Each route can be
-attached to a middleware that, given request, produces a response. Since
-middleware overall could be chained and can pass actual handling to the next
-middleware, we call the middleware actually doing the job an action.
+在 Web 应用程序中，请求 URL
+决定了要执行的内容。匹配由配置了多条路由的路由器完成。每条路由可以绑定一个中间件，该中间件接收请求并产生响应。由于中间件可以链式调用并将实际处理传递给下一个中间件，我们将真正执行任务的中间件称为动作。
 
-There are multiple ways to describe an action. The simplest one is using a
-closure:
+描述动作有多种方式，最简单的是使用闭包：
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -21,9 +17,7 @@ Route::get('/')->action(function (ServerRequestInterface $request) use ($respons
 });
 ```
 
-It's fine for simple handling since any more complicated one would require
-getting dependencies, so a good idea would be moving the handling to a class
-method. Callback middleware could be used for the purpose:
+对于简单的处理，这种方式完全可以，但更复杂的处理通常需要获取依赖，因此将处理逻辑移至类方法是一个好主意。为此可以使用回调中间件：
 
 ```php
 use Yiisoft\Router\Route;
@@ -31,7 +25,7 @@ use Yiisoft\Router\Route;
 Route::get('/')->action(FrontPageAction::class),
 ```
 
-The class itself would be like:
+该类的结构如下：
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -46,8 +40,7 @@ final readonly class FrontPageAction
 }
 ```
 
-For many cases, it makes sense to group handling for many routes into a
-single class:
+在许多情况下，将多条路由的处理逻辑归入一个类是合理的：
 
 
 ```php
@@ -57,7 +50,7 @@ Route::get('/post/index')->action([PostController::class, 'actionIndex']),
 Route::get('/post/view/{id:\d+}')->action([PostController::class, 'actionView']),
 ```
 
-The class itself would look like the following:
+该类的结构如下所示：
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -78,12 +71,12 @@ final readonly class PostController
 }
 ```
 
-We usually call such a class "controller."
+我们通常将这样的类称为“控制器”。
 
-## Autowiring
+## 自动注入
 
-Both constructors of action-classes and action-methods are automatically getting services from
- the dependency injection container:
+动作类的构造函数和动作方法都可以自动从
+ 依赖注入容器中获取服务：
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -112,7 +105,5 @@ final readonly class PostController
 }
 ```
 
-In the above example `PostRepository` is injected automatically via
-constructor. That means it is available in every action. Logger is injected
-into `index` action only.
+在上面的示例中，`PostRepository` 通过构造函数自动注入，因此在每个动作中都可用。而 Logger 仅注入到 `index` 动作中。
 

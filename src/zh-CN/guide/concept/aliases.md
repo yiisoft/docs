@@ -1,18 +1,14 @@
-# Aliases
+# 别名
 
-You can use aliases to represent file paths or URLs so that you don't have
-to hard-code absolute paths or URLs in your project. An alias must start
-with the `@` character to be differentiated from normal file paths and
-URLs. Alias defined without leading `@` will be prefixed with `@` character.
+您可以使用别名来表示文件路径或 URL，这样您就不必在项目中硬编码绝对路径或 URL。别名必须以 `@` 字符开头，以便与普通文件路径和 URL
+区分开来。定义时没有前导 `@` 的别名将自动添加 `@` 字符前缀。
 
-Default Yii application has some aliases pre-defined in
-`config/params.php`. For example, the alias `@public` represents the web
-root path; `@baseUrl` represents the base URL for the currently running Web
-application.
+默认的 Yii 应用程序在 `config/params.php` 中预定义了一些别名。例如，别名 `@public` 表示 Web
+根路径；`@baseUrl` 表示当前运行的 Web 应用程序的基础 URL。
 
-## Defining aliases <span id="defining-aliases"></span>
+## 定义别名 <span id="defining-aliases"></span>
 
-You can define an alias via application's `config/params.php`:
+您可以通过应用程序的 `config/params.php` 定义别名：
 
 ```php
 return [
@@ -36,21 +32,20 @@ return [
 ```
 
 > [!NOTE]
-> The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
+> 被别名化的文件路径或 URL *不一定*指向现有的文件或资源。
 
-Given a defined alias, you may derive a new alias by appending a slash `/`
-followed with one or more path segments.  For example, `@foo` is a root
-alias, while `@foo/bar/file.php` is a derived alias.
+给定一个已定义的别名，您可以通过附加斜杠 `/` 后跟一个或多个路径段来派生新别名。例如，`@foo` 是根别名，而
+`@foo/bar/file.php` 是派生别名。
 
-You can define an alias using another alias (either root or derived):
+您可以使用另一个别名（根别名或派生别名）来定义别名：
 
 ```php
 '@foobar' => '@foo/bar', 
 ```
 
-The `yiisoft/aliases` parameter initializes `Aliases` service from
-[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
-set extra aliases in runtime by using the service:
+`yiisoft/aliases` 参数从
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases) 包初始化 `Aliases`
+服务。您可以在运行时使用该服务设置额外的别名：
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -61,10 +56,9 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration <span id="using-aliases-in-configuration"></span>
+## 在配置中使用别名 <span id="using-aliases-in-configuration"></span>
 
-It's preferred to resolve aliases at the configuration level, so services
-get URLs and paths as ready to use strings:
+最好在配置级别解析别名，这样服务就可以获得可直接使用的 URL 和路径字符串：
 
 ```php
 <?php
@@ -83,10 +77,9 @@ return [
 ];
 ```
 
-## Resolving aliases <span id="resolving-aliases"></span>
+## 解析别名 <span id="resolving-aliases"></span>
 
-You can use `Aliases` service to resolve an alias or derived alias into the
-file path or URL it represents:
+您可以使用 `Aliases` 服务将别名或派生别名解析为它所代表的文件路径或 URL：
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -99,16 +92,13 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-The path/URL represented by a derived alias is determined by replacing the
-root alias part with its corresponding path/URL in the derived alias.
+派生别名所代表的 path/URL 是通过将派生别名中的根别名部分替换为其对应的 path/URL 来确定的。
 
 > [!NOTE]
-> The `get()` method doesn't check whether the resulting path/URL refers to an existing file or resource.
+> `get()` 方法不检查结果 path/URL 是否指向现有的文件或资源。
 
 
-A root alias may also contain slash `/` characters. The `get()` method is
-intelligent enough to tell, which part of an alias is a root alias and thus
-correctly determines the corresponding file path or URL:
+根别名也可以包含斜杠 `/` 字符。`get()` 方法足够智能，可以判断别名的哪一部分是根别名，从而正确确定相应的文件路径或 URL：
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -123,27 +113,22 @@ public function actionIndex(Aliases $aliases)
 } 
 ```
 
-If `@foo/bar` isn't defined as a root alias, the last statement would
-display `/path/to/foo/bar/file.php`.
+如果 `@foo/bar` 未定义为根别名，最后一条语句将显示 `/path/to/foo/bar/file.php`。
 
 
-## Predefined aliases <span id="predefined-aliases"></span>
+## 预定义别名 <span id="predefined-aliases"></span>
 
-[Yii application](https://github.com/yiisoft/app) predefines a set of
-aliases to reference commonly used file paths and URLs:
+[Yii 应用程序](https://github.com/yiisoft/app) 预定义了一组别名来引用常用的文件路径和 URL：
 
-- `@root` - the base directory of the currently running application.
-- `@assets` - application's public directory where it publishes assets.
-- `@assetsUrl` - URL of base directory with published assets.
-- `@baseUrl` - the base URL of the currently running Web
-  application. Defaults to `/`.
-- `@npm` - node packages directory.
-- `@bower` - bower packages directory.
-- `@vendor` - Composer's `vendor` directory.
-- `@public` - application's publicly accessible directory that with
-  `index.php`.
-- `@runtime` - the runtime path of the currently running
-  application. Defaults to `@root/runtime`.
-- `@layout` - the directory with layouts.
-- `@resources` - directory with views, asset sources and other resources.
-- `@views` - application view templates base directory.
+- `@root` - 当前运行应用程序的基础目录。
+- `@assets` - 应用程序发布资源的公共目录。
+- `@assetsUrl` - 已发布资源的基础目录的 URL。
+- `@baseUrl` - 当前运行的 Web 应用程序的基础 URL。默认为 `/`。
+- `@npm` - node 包目录。
+- `@bower` - bower 包目录。
+- `@vendor` - Composer 的 `vendor` 目录。
+- `@public` - 应用程序的公共可访问目录，包含 `index.php`。
+- `@runtime` - 当前运行应用程序的运行时路径。默认为 `@root/runtime`。
+- `@layout` - 布局目录。
+- `@resources` - 包含视图、资源源文件和其他资源的目录。
+- `@views` - 应用程序视图模板基础目录。

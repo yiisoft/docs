@@ -19,68 +19,68 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Middleware"
-msgstr ""
+msgstr "中间件"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)  and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/)."
-msgstr ""
+msgstr "Yii 通过基于 [PSR-7 HTTP 消息接口](https://www.php-fig.org/psr/psr-7/) 和 [PSR-15 请求处理器/中间件接口](https://www.php-fig.org/psr/psr-15/) 构建的抽象层来处理 HTTP。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "The application is composed of one or several middleware. Middleware runs between request and response.  When the URL is requested, the request object is passed to the middleware dispatcher that starts executing middleware one after another.  Each middleware, given the request, can:"
-msgstr ""
+msgstr "应用程序由一个或多个中间件组成。中间件在请求和响应之间运行。当 URL 被请求时，请求对象被传递给中间件调度器，后者开始逐个执行中间件。每个中间件在给定请求的情况下可以："
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/middleware.md
 msgid "Pass the request to the next middleware performing some work before / after it."
-msgstr ""
+msgstr "将请求传递给下一个中间件，并在其之前/之后执行一些工作。"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/middleware.md
 msgid "Form the response and return it."
-msgstr ""
+msgstr "形成响应并返回它。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Depending on middleware used, application behavior may vary significantly."
-msgstr ""
+msgstr "根据所使用的中间件，应用程序的行为可能会有很大差异。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "![Middleware](/images/guide/middleware.svg)"
-msgstr ""
+msgstr "![中间件](/images/guide/middleware.svg)"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In the above each next middleware wraps the previous middleware. Alternatively, it could be presented as follows:"
-msgstr ""
+msgstr "在上图中，每个后续中间件都包裹着前一个中间件。或者，它也可以如下所示："
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "![Middleware](/images/guide/middleware_alternative.svg)"
-msgstr ""
+msgstr "![中间件](/images/guide/middleware_alternative.svg)"
 
 #. type: Title ##
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Using middleware"
-msgstr ""
+msgstr "使用中间件"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware could be used with Yii, and there are many.  Say, you need to add basic authentication to one of the application URLs.  URL-dependent middleware is configured using router, so you need to change the router factory."
-msgstr ""
+msgstr "任何与 [PSR-15](https://www.php-fig.org/psr/psr-15/) 兼容的中间件都可以与 Yii 一起使用，而且有很多。比如，您需要为应用程序的某个 URL 添加基本身份验证。依赖 URL 的中间件使用路由器配置，因此您需要修改路由器工厂。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Authentication middleware is implemented by `middlewares/http-authentication` package so execute `composer require middlewares/http-authentication` in the application root directory."
-msgstr ""
+msgstr "身份验证中间件由 `middlewares/http-authentication` 包实现，因此在应用程序根目录中执行 `composer require middlewares/http-authentication`。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Now register the middleware in DI container configuration `config/web.php`:"
-msgstr ""
+msgstr "现在在 DI 容器配置 `config/web.php` 中注册中间件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -102,7 +102,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In the `config/routes.php`, add new route:"
-msgstr ""
+msgstr "在 `config/routes.php` 中，添加新路由："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -129,12 +129,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "When configuring routing, you're binding `/basic-auth` URL to a chain of middleware consisting of basic authentication, and the action itself. A chain is a special middleware that executes all the middleware it's configured with."
-msgstr ""
+msgstr "配置路由时，您将 `/basic-auth` URL 绑定到由基本身份验证和操作本身组成的中间件链。链是一种特殊的中间件，它执行其配置的所有中间件。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "The action itself could be the following:"
-msgstr ""
+msgstr "操作本身可以如下所示："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -151,12 +151,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Basic authentication middleware wrote to request `username` attribute, so you can access the data if needed."
-msgstr ""
+msgstr "基本身份验证中间件将 `username` 写入请求属性，因此您可以在需要时访问该数据。"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To apply middleware to application overall regardless of URL, adjust `config/application.php`:"
-msgstr ""
+msgstr "要将中间件应用于整个应用程序（不考虑 URL），请调整 `config/application.php`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -187,12 +187,12 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Creating your own middleware"
-msgstr ""
+msgstr "创建自己的中间件"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To create middleware, you need to implement a single `process` method of `Psr\\Http\\Server\\MiddlewareInterface`:"
-msgstr ""
+msgstr "要创建中间件，您需要实现 `Psr\\Http\\Server\\MiddlewareInterface` 的单个 `process` 方法："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -203,18 +203,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "There are multiple ways to handle a request, and choosing one depends on what the middleware should achieve."
-msgstr ""
+msgstr "处理请求有多种方式，选择哪种取决于中间件应实现的目标。"
 
 #. type: Title ###
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Forming a response directly"
-msgstr ""
+msgstr "直接形成响应"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To respond directly, one needs a response factory passed via constructor:"
-msgstr ""
+msgstr "要直接响应，需要通过构造函数传递响应工厂："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -250,7 +250,7 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Delegating handling to the next middleware"
-msgstr ""
+msgstr "将处理委托给下一个中间件"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
@@ -259,6 +259,8 @@ msgid ""
 "If middleware either isn't intended to form a response or change the request or can't do anything this time,\n"
 "handling could be left to the next middleware in the stack:  \n"
 msgstr ""
+"如果中间件既不打算形成响应或更改请求，也无法在此时执行任何操作，\n"
+"则可以将处理留给栈中的下一个中间件：\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -273,7 +275,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In case you need to pass data to the next middleware, you can use request attributes:"
-msgstr ""
+msgstr "如果您需要将数据传递给下一个中间件，可以使用请求属性："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -286,7 +288,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To get it in the next middleware:"
-msgstr ""
+msgstr "要在下一个中间件中获取它："
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -298,12 +300,12 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Capturing response to manipulate it"
-msgstr ""
+msgstr "捕获响应以操作它"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc."
-msgstr ""
+msgstr "您可能希望捕获响应以对其进行操作。这对于添加 CORS 标头、gzip 压缩内容等非常有用。"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md

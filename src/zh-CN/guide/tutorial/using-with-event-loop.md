@@ -1,22 +1,20 @@
-# Using Yii with event loop
+# 在事件循环中使用 Yii
 
-A normal PHP web request execution cycle consists of setting up an environment, getting a request, processing it to form a response
-and sending the result. After the response is sent, execution is terminated and its context is lost. So, for the further 
- request, the whole sequence is repeated. Such an approach has a big advantage in ease of development since a developer doesn't
-have to take much care about memory leaks or properly clean up context. On the other side, initializing everything for
-every request takes time and overall consumes up to 50% of processing resources.
+普通 PHP Web 请求的执行周期包括设置环境、获取请求、处理请求以生成响应
+以及发送结果。响应发送后，执行终止，其上下文也随之丢失。因此，对于后续
+请求，整个流程会重复执行。这种方式的一大优点是开发简便，开发者无需
+过多关注内存泄漏或上下文清理问题。但另一方面，为每个请求初始化所有内容
+需要消耗时间，整体上会占用多达 50% 的处理资源。
 
-There is an alternative way of running an application. Event loop. The idea
-is to initialize everything possible at once and then process a number of
-requests using it. Such an approach is usually called event loop.
+还有一种运行应用程序的方式——事件循环。其思路是一次性初始化所有可初始化的内容，然后利用它来处理多个请求。这种方式通常被称为事件循环。
 
-There are multiple tools that could be used to achieve it. Notably,
-[FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/)
-and [Swoole](https://www.swoole.co.uk/).
+可以使用多种工具来实现这一目标，其中较为知名的有
+[FrankenPHP](https://frankenphp.dev/)、[RoadRunner](https://roadrunner.dev/)
+和 [Swoole](https://www.swoole.co.uk/)。
 
-## Event loop implications
+## 事件循环的影响
 
-Event loop worker basically looks like the following:
+事件循环的 worker 基本结构如下：
 
 ```php
 initializeContext();
@@ -26,28 +24,21 @@ while ($request = getRequest()) {
 }
 ```
 
-Usually, there are multiple workers processing requests at the same time as
-with traditional php-fpm.
+通常会有多个 worker 同时处理请求，与传统的 php-fpm 方式类似。
 
-That means that there's more to consider when developing applications.
+这意味着在开发应用程序时需要考虑更多因素。
 
-### Processing is blocking
+### 处理是阻塞的
 
-Worker process requests one by one that's current processing is blocking
-processing next request. That means that long-running processes, same as in
-general PHP applications, should be put into a background via using a queue.
+Worker 逐一处理请求，当前请求的处理会阻塞下一个请求的处理。这意味着与普通 PHP 应用程序一样，耗时较长的任务应通过队列放到后台执行。
 
-### Services and state
+### 服务与状态
 
-Since the context in the event loop is shared between all request-responses
-processed by a single worker, all changes in the state of a service made by
-the previous request may affect the current request. Moreover, it can be a
-security problem if data from one user is available to another user.
+由于事件循环中的上下文由同一 worker
+处理的所有请求-响应共享，上一个请求对服务状态所做的任何修改都可能影响当前请求。此外，如果一个用户的数据可被另一个用户访问，还会带来安全问题。
 
-There are two ways of dealing with it. First, you can avoid having state by
-making services stateless. PHP's `readonly` keyword may be handy for
-it. Second, you can reset the services' state at the end of the request
-processing.  In this case, a state resetter will help you:
+有两种应对方式。第一种是将服务设计为无状态，从而避免状态问题，PHP 的 `readonly`
+关键字在此很有用。第二种是在每次请求处理结束后重置服务状态，此时可以使用状态重置器：
 
 ```php
 initializeContext();
@@ -59,7 +50,7 @@ while ($request = getRequest()) {
 }
 ```
 
-## Integrations
+## 集成
 
 - [RoadRunner](using-yii-with-roadrunner.md)
 - [Swoole](using-yii-with-swoole.md)

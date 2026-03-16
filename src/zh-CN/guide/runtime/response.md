@@ -1,6 +1,6 @@
-# Response
+# 响应
 
-HTTP response has status code and message, a set of headers and a body:
+HTTP 响应包含状态码和消息、一组响应头以及正文：
 
 ```
 HTTP/1.1 200 OK
@@ -14,12 +14,10 @@ Connection: Closed
 Hello!
 ```
 
-Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web
-application to represent response.
+Yii 在 Web 应用程序中使用 [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/)
+来表示响应。
 
-The object should be constructed and returned as a result of the execution
-of controller actions or other middleware.  Usually, the middleware has a
-response factory injected into its constructor.
+该对象应在控制器操作或其他中间件执行后构建并返回。通常，中间件会通过构造函数注入一个响应工厂。
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -43,9 +41,9 @@ final readonly class PostAction
 }
 ```
 
-## Status code
+## 状态码
 
-You can set a status code like the following:
+您可以按如下方式设置状态码：
 
 ```php
 use Yiisoft\Http\Status;
@@ -53,24 +51,23 @@ use Yiisoft\Http\Status;
 $response = $response->withStatus(Status::NOT_FOUND);
 ```
 
-Majority of status codes are available from `Status` class for convenience
-and readability.
+大多数状态码可通过 `Status` 类获取，以便于使用和提高可读性。
 
-## Headers
+## 头部
 
-You can set headers like this:
+您可以按如下方式设置响应头：
 
 ```php
 $response = $response->withHeader('Content-type', 'application/json');
 ```
 
-If there is a need to append a header value to the existing header:
+如果需要向已有响应头追加值：
 
 ```php
 $response = $response->withAddedHeader('Set-Cookie', 'qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT');
 ```
 
-And, if needed, headers could be removed:
+如果需要，也可以移除响应头：
 
 ```php
 $response = $response->withoutHeader('Set-Cookie');
@@ -78,9 +75,9 @@ $response = $response->withoutHeader('Set-Cookie');
 
 ## 正文
 
-Response body is an object implementing `Psr\Http\Message\StreamInterface`.
+响应正文是一个实现 `Psr\Http\Message\StreamInterface` 的对象。
 
-You can write to it via the interface itself:
+您可以通过该接口直接写入内容：
 
 ```php
 $body = $response->getBody();
@@ -88,9 +85,9 @@ $body->write('Hello');
 ```
 
 
-## Examples
+## 示例
 
-### Redirecting
+### 重定向
 
 ```php
 use Yiisoft\Http\Status;
@@ -100,17 +97,17 @@ return $response
   ->withHeader('Location', 'https://www.example.com');  
 ```
 
-Note that there are different statuses used for redirection:
+请注意，重定向使用不同的状态码：
 
-| Code | Usage                        | What is it for                                                                                                                                                          |
+| 代码 | 用法                         | 用途                                                                                                                                                                    |
 |------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 301  | `Status::MOVED_PERMANENTLY`  | Permanently changed a URL structure. Search engines update their indexes, and browsers cache it.                                                                        |
-| 308  | `Status::PERMANENT_REDIRECT` | Like 301, but guarantees the HTTP method won't change.                                                                                                                  |
-| 302  | `Status::FOUND`              | Temporary changes like maintenance pages. Original URL should still be used for future requests. Search engines typically don't update their indexes.                   |
-| 307  | `Status::TEMPORARY_REDIRECT` | Like 302, but guarantees the HTTP method won't change.                                                                                                                  |
-| 303  | `Status::SEE_OTHER`          | After form submissions to prevent duplicate submissions if the user refreshes. Explicitly tells to use `GET` for the redirect, even if the original request was `POST`. |
+| 301  | `Status::MOVED_PERMANENTLY`  | URL 结构已永久更改。搜索引擎更新索引，浏览器缓存结果。                                                                                                                  |
+| 308  | `Status::PERMANENT_REDIRECT` | 类似 301，但保证 HTTP 方法不会改变。                                                                                                                                    |
+| 302  | `Status::FOUND`              | 临时更改，例如维护页面。原始 URL 应继续用于未来请求，搜索引擎通常不更新索引。                                                                                           |
+| 307  | `Status::TEMPORARY_REDIRECT` | 类似 302，但保证 HTTP 方法不会改变。                                                                                                                                    |
+| 303  | `Status::SEE_OTHER`          | 表单提交后防止用户刷新时重复提交。明确指定重定向使用 `GET`，即使原始请求是 `POST`。                                                                                     |
 
-### Responding with JSON
+### 返回 JSON 响应
 
 ```php
 use Yiisoft\Http\Status;

@@ -1,49 +1,43 @@
-# Widgets
+# 小部件
 
-Widgets are reusable, self-contained components that encapsulate complex
-HTML generation logic.  They provide a clean way to create configurable UI
-elements that can be used across different views and applications. Yii3
-provides a flexible widget system through the `yiisoft/widget` package.
+小部件是可重用的独立组件，封装了复杂的 HTML 生成逻辑。它们提供了一种简洁的方式来创建可配置的 UI 元素，可在不同的视图和应用程序中使用。Yii3
+通过 `yiisoft/widget` 包提供了灵活的小部件系统。
 
 ## 安装
 
-The widget functionality is provided by the `yiisoft/widget` package:
+小部件功能由 `yiisoft/widget` 包提供：
 
 ```bash
 composer require yiisoft/widget
 ```
 
-For ready-made widgets (like forms, navigation, etc.), you can also install:
+对于现成的小部件（如表单、导航等），您还可以安装：
 
 ```bash
 composer require yiisoft/yii-widgets
 ```
 
-These packages are included by default in the `yiisoft/app` application
-template.
+这些包默认包含在 `yiisoft/app` 应用程序模板中。
 
-## Basic Concepts
+## 基本概念
 
-### Widget Class
+### 小部件类
 
-A widget is a PHP class that extends the abstract `Widget` class and
-implements a `render()` method that returns HTML content as a string.
+小部件是一个 PHP 类，继承自抽象的 `Widget` 类，并实现一个返回 HTML 内容字符串的 `render()` 方法。
 
-### Widget Factory
+### 小部件工厂
 
-The `WidgetFactory` is responsible for creating widget instances and can
-inject dependencies through the DI container.
+`WidgetFactory` 负责创建小部件实例，并可以通过 DI 容器注入依赖。
 
-### Widget Configuration
+### 小部件配置
 
-Widgets can be configured with properties and methods, making them highly
-customizable and reusable across different contexts.
+小部件可以通过属性和方法进行配置，使其在不同上下文中具有高度可定制性和可重用性。
 
-## Creating Custom Widgets
+## 创建自定义小部件
 
-### Simple Widget
+### 简单小部件
 
-Here's a basic widget that displays an alert message:
+以下是一个显示警告消息的基础小部件：
 
 ```php
 <?php
@@ -109,7 +103,7 @@ final class AlertWidget extends Widget
 }
 ```
 
-### Using the Widget
+### 使用小部件
 
 ```php
 <?php
@@ -135,9 +129,9 @@ use App\Widget\AlertWidget;
 </div>
 ```
 
-### Widget with Dependencies
+### 带依赖的小部件
 
-Widgets can use dependency injection for services:
+小部件可以通过依赖注入使用服务：
 
 ```php
 <?php
@@ -207,11 +201,11 @@ final class UserMenuWidget extends Widget
 }
 ```
 
-## Widget Factory Setup
+## 小部件工厂设置
 
-### Bootstrap Configuration
+### 启动配置
 
-Initialize the widget factory in your application bootstrap:
+在应用程序启动时初始化小部件工厂：
 
 **config/bootstrap.php**
 ```php
@@ -239,7 +233,7 @@ $widgetDefaults = [
 WidgetFactory::initialize($container, $widgetDefaults);
 ```
 
-### DI Container Configuration
+### DI 容器配置
 
 **config/web/di.php**
 ```php
@@ -257,11 +251,11 @@ return [
 ];
 ```
 
-## Advanced Widget Examples
+## 高级小部件示例
 
-### Data List Widget
+### 数据列表小部件
 
-A widget that displays a list of items with pagination:
+一个带分页显示条目列表的小部件：
 
 ```php
 <?php
@@ -343,7 +337,7 @@ final class DataListWidget extends Widget
 }
 ```
 
-Usage:
+用法：
 
 ```php
 <?php
@@ -364,9 +358,9 @@ use App\Widget\DataListWidget;
     }) ?>
 ```
 
-### Form Widget
+### 表单小部件
 
-A widget that simplifies form rendering:
+一个简化表单渲染的小部件：
 
 ```php
 <?php
@@ -467,9 +461,9 @@ final class FormWidget extends Widget
 }
 ```
 
-### Breadcrumb Widget
+### 面包屑小部件
 
-A widget for navigation breadcrumbs:
+一个用于导航面包屑的小部件：
 
 ```php
 <?php
@@ -551,11 +545,11 @@ final class BreadcrumbWidget extends Widget
 }
 ```
 
-## Widget Best Practices
+## 小部件最佳实践
 
-### Configuration Pattern
+### 配置模式
 
-Use immutable configuration methods:
+使用不可变的配置方法：
 
 ```php
 public function someProperty($value): self
@@ -566,9 +560,9 @@ public function someProperty($value): self
 }
 ```
 
-### Validation
+### 验证
 
-Validate widget configuration in the render method:
+在 render 方法中验证小部件配置：
 
 ```php
 protected function render(): string
@@ -581,9 +575,9 @@ protected function render(): string
 }
 ```
 
-### HTML Encoding
+### HTML 编码
 
-Always encode user data:
+始终对用户数据进行编码：
 
 ```php
 protected function render(): string
@@ -594,9 +588,9 @@ protected function render(): string
 }
 ```
 
-### Asset Management
+### 资源管理
 
-Register widget-specific assets:
+注册小部件专用资源：
 
 ```php
 <?php
@@ -626,9 +620,9 @@ final class ChartWidget extends Widget
 }
 ```
 
-## Using Widgets in Layouts
+## 在布局中使用小部件
 
-Widgets are particularly useful in layouts for common UI elements:
+小部件在布局中对于常见 UI 元素特别有用：
 
 **views/layout/main.php**
 ```php
@@ -667,11 +661,11 @@ use App\Widget\UserMenuWidget;
 </html>
 ```
 
-## Testing Widgets
+## 测试小部件
 
-### Unit Testing
+### 单元测试
 
-Test widget rendering logic:
+测试小部件的渲染逻辑：
 
 ```php
 <?php
@@ -707,9 +701,9 @@ final class AlertWidgetTest extends TestCase
 }
 ```
 
-## Common Widget Patterns
+## 常见小部件模式
 
-### Conditional Rendering
+### 条件渲染
 
 ```php
 protected function render(): string
@@ -727,7 +721,7 @@ private function shouldRender(): bool
 }
 ```
 
-### Template-based Rendering
+### 基于模板的渲染
 
 ```php
 protected function render(): string
@@ -745,7 +739,7 @@ private function renderTemplate(string $template, array $data): string
 }
 ```
 
-### Event Integration
+### 事件集成
 
 ```php
 protected function render(): string
@@ -762,6 +756,4 @@ protected function render(): string
 }
 ```
 
-Widgets provide a powerful way to create reusable, configurable UI
-components in Yii3 applications.  They help maintain clean separation of
-concerns and make your views more maintainable and testable.
+小部件为在 Yii3 应用程序中创建可重用、可配置的 UI 组件提供了强大的方式。它们有助于保持清晰的关注点分离，使您的视图更易于维护和测试。

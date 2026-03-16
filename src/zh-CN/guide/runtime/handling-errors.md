@@ -1,44 +1,30 @@
-# Handling errors
+# 错误处理
 
-Yii has a [yiisoft/error-handler](https://github.com/yiisoft/error-handler)
-package that makes error handling a much more pleasant experience than
-before. In particular, the Yii error handler provides the following:
+Yii 提供了 [yiisoft/error-handler](https://github.com/yiisoft/error-handler)
+包，使错误处理体验大为改善。Yii 错误处理器具体提供了以下功能：
 
-- [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching
-  unhandled errors.
-- PSR-15 middleware for mapping certain exceptions to custom responses.
-- Production and debug modes.
-- Debug mode displays details, stacktrace, has dark and light themes and
-  handy buttons to search for error without typing.
-- Takes PHP settings into account.
-- Handles out of memory errors, fatal errors, warnings, notices, and
-  exceptions.
-- Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger
-  for error logging.
-- Detects a response format based on a mime type of the request.
-- Supports responding with HTML, plain text, JSON, XML, and headers out of
-  the box.
-- You can implement your own error rendering for extra types.
+- 用于捕获未处理错误的 [PSR-15](https://www.php-fig.org/psr/psr-15/) 中间件。
+- 用于将特定异常映射到自定义响应的 PSR-15 中间件。
+- 生产模式和调试模式。
+- 调试模式显示详细信息和堆栈跟踪，提供深色和浅色主题，以及无需输入即可搜索错误的快捷按钮。
+- 考虑 PHP 配置设置。
+- 处理内存溢出错误、致命错误、警告、通知和异常。
+- 可使用任何兼容 [PSR-3](https://www.php-fig.org/psr/psr-3/) 的日志记录器记录错误。
+- 根据请求的 MIME 类型自动检测响应格式。
+- 开箱即支持 HTML、纯文本、JSON、XML 和响应头格式的响应。
+- 您可以为其他类型实现自定义错误渲染。
 
-This guide describes how to use the error handler in the [Yii
-framework](https://www.yiiframework.com/), for information about using it
-separate from Yii, see the [package
-description](https://github.com/yiisoft/error-handler).
+本指南介绍如何在 [Yii 框架](https://www.yiiframework.com/)中使用错误处理器。若要了解独立于 Yii
+使用的信息，请参阅[包说明](https://github.com/yiisoft/error-handler)。
 
-## Using error handler
+## 使用错误处理器
 
-The error handler consists of two parts. One part is
-`Yiisoft\ErrorHandler\Middleware\ErrorCatcher` middleware that, when
-registered, catches exceptions that may appear during middleware stack
-execution and passes them to the handler.  Another part is the error handler
-itself, `Yiisoft\ErrorHandler\ErrorHandler`, that's catching exceptions
-occurring outside the middleware stack and fatal errors. The handler also
-converts warnings and notices to exceptions and does more handy things.
+错误处理器由两部分组成。第一部分是 `Yiisoft\ErrorHandler\Middleware\ErrorCatcher`
+中间件，注册后可捕获中间件栈执行过程中出现的异常并将其传递给处理器。另一部分是错误处理器本身
+`Yiisoft\ErrorHandler\ErrorHandler`，用于捕获中间件栈之外的异常和致命错误。处理器还会将警告和通知转换为异常，并执行更多便捷操作。
 
-Error handler is registered in the application itself. Usually it happens in
-`ApplicationRunner`. By default, the handler configuration comes from the
-container. You may configure it in the application configuration,
-`config/web.php` like the following:
+错误处理器在应用程序本身中注册，通常在 `ApplicationRunner` 中完成。默认情况下，处理器的配置来自容器。您可以在应用配置
+`config/web.php` 中按如下方式配置：
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -71,9 +57,9 @@ return [
 ];
 ```
 
-As aforementioned, the error handler turns all non-fatal PHP errors into
-catchable exceptions (`Yiisoft\ErrorHandler\Exception\ErrorException`). This
-means you can use the following code to deal with PHP errors:
+如前所述，错误处理器会将所有非致命 PHP
+错误转换为可捕获的异常（`Yiisoft\ErrorHandler\Exception\ErrorException`）。这意味着您可以使用以下代码处理
+PHP 错误：
 
 ```php
 try {
@@ -84,10 +70,8 @@ try {
 // execution continues...
 ```
 
-The package has another middleware,
-`Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.  This middleware maps
-certain exceptions to custom responses. Configure it in the application
-configuration as follows:
+该包还有另一个中间件
+`Yiisoft\ErrorHandler\Middleware\ExceptionResponder`，用于将特定异常映射到自定义响应。在应用配置中按如下方式配置：
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -110,27 +94,23 @@ return [
 ];
 ```
 
-Note that when configuring application middleware stack, you must place
-`Yiisoft\ErrorHandler\Middleware\ExceptionResponder` before
-`Yiisoft\ErrorHandler\Middleware\ErrorCatcher`.
+请注意，在配置应用中间件栈时，必须将 `Yiisoft\ErrorHandler\Middleware\ExceptionResponder` 放在
+`Yiisoft\ErrorHandler\Middleware\ErrorCatcher` 之前。
 
-## Rendering error data
+## 渲染错误数据
 
-One of the renderers could render error data into a certain format.  The
-following renderers are available out of the box:
+渲染器可将错误数据渲染为特定格式。以下渲染器开箱即用：
 
-- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renders error into HTTP
-  headers. It's used for `HEAD` request.
-- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renders error into HTML.
-- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renders error into JSON.
-- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renders error into
-  plain text.
-- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renders error into XML.
+- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - 将错误渲染为 HTTP 响应头，用于 `HEAD`
+  请求。
+- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - 将错误渲染为 HTML。
+- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - 将错误渲染为 JSON。
+- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - 将错误渲染为纯文本。
+- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - 将错误渲染为 XML。
 
-The renderer produces detailed error data depending on whether debug mode is
-enabled or disabled.
+渲染器根据是否启用调试模式生成详细程度不同的错误数据。
 
-An Example of header rendering with a debugging mode turned off:
+调试模式关闭时，响应头渲染示例：
 
 ```
 ...
@@ -138,7 +118,7 @@ X-Error-Message: An internal server error occurred.
 ...
 ```
 
-An Example of header rendering with a debugging mode turned on:
+调试模式开启时，响应头渲染示例：
 
 ```
 ...
@@ -150,13 +130,13 @@ X-Error-Line: 21
 ...
 ```
 
-Example of JSON rendering output with a debugging mode turned off:
+调试模式关闭时，JSON 渲染输出示例：
 
 ```json
 {"message":"An internal server error occurred."}
 ```
 
-An Example of JSON rendering output with debugging mode turned on:
+调试模式开启时，JSON 渲染输出示例：
 
 ```json
 {
@@ -183,31 +163,25 @@ An Example of JSON rendering output with debugging mode turned on:
 }
 ```
 
-Example of HTML rendering with debugging mode turned off:
+调试模式关闭时，HTML 渲染示例：
 
-![View production](/images/guide/runtime/view-production.png)
+![生产模式视图](/images/guide/runtime/view-production.png)
 
-Example of HTML rendering with debugging mode on and a light theme:
+调试模式开启且使用浅色主题时，HTML 渲染示例：
 
-![View development with light
-theme](/images/guide/runtime/view-development-light.png)
+![开发模式视图（浅色主题）](/images/guide/runtime/view-development-light.png)
 
-Example of HTML rendering with debugging mode on and a dark theme:
+调试模式开启且使用深色主题时，HTML 渲染示例：
 
-![View development with dark
-theme](/images/guide/runtime/view-development-dark.png)
+![开发模式视图（深色主题）](/images/guide/runtime/view-development-dark.png)
 
-The error catcher chooses how to render an exception based on `accept` HTTP
-header.  If it's `text/html` or any unknown content type, it will use the
-error or exception HTML template to display errors.  For other mime types,
-the error handler will choose different renderers that you register within
-the error catcher.  By default, it supports JSON, XML, and plain text.
+错误捕获器根据 `accept` HTTP 请求头决定如何渲染异常。若为 `text/html` 或未知内容类型，将使用错误或异常 HTML
+模板显示错误。对于其他 MIME 类型，错误处理器会选择您在错误捕获器中注册的不同渲染器。默认支持 JSON、XML 和纯文本。
 
-### Implementing your own renderer
+### 实现自定义渲染器
 
-You may customize the error response format by providing your own instance
-of `Yiisoft\ErrorHandler\ThrowableRendererInterface` when registering error
-catcher middleware.
+在注册错误捕获器中间件时，可以通过提供自己的 `Yiisoft\ErrorHandler\ThrowableRendererInterface`
+实例来自定义错误响应格式。
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -231,7 +205,7 @@ final readonly class MyRenderer implements ThrowableRendererInterface
 };
 ```
 
-You may configure it in the application configuration `config/web.php`:
+可以在应用配置 `config/web.php` 中进行配置：
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -256,12 +230,10 @@ return [
 ];
 ```
 
-## Friendly exceptions
+## 友好异常
 
-Yii error renderer supports [friendly
-exceptions](https://github.com/yiisoft/friendly-exception) that make error
-handling an even more pleasant experience for your team. The idea is to
-offer a readable name and possible solutions to the problem:
+Yii
+错误渲染器支持[友好异常](https://github.com/yiisoft/friendly-exception)，让团队的错误处理体验更佳。其理念是为问题提供可读的名称和可能的解决方案：
 
 ```php
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
@@ -282,5 +254,4 @@ SOLUTION;
 }
 ```
 
-When the application throws such an exception, the error renderer would
-display the name and the solution if the debug mode is on.
+当应用程序抛出此类异常时，若调试模式已开启，错误渲染器将显示名称和解决方案。

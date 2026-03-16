@@ -1,12 +1,10 @@
-# Authorization
+# 授权
 
-Authorization is the process of verifying that a user has enough permission
-to do something.
+授权是验证用户是否有足够权限执行某项操作的过程。
 
-## Checking for permission <span id="checking-for-permission"></span>
+## 检查权限 <span id="checking-for-permission"></span>
 
-You can check if a user has certain permissions by using
-`\Yiisoft\User\CurrentUser` service:
+您可以使用 `\Yiisoft\User\CurrentUser` 服务来检查用户是否具有特定权限：
 
 ```php
 namespace App\Blog\Post;
@@ -46,75 +44,54 @@ final readonly class PostController
 }
 ```
 
-Behind the scenes, `Yiisoft\User\CurrentUser::can()` method calls
-`Yiisoft\Access\AccessCheckerInterface::userHasPermission()` so you should
-provide an implementation in dependency container in order for it to work.
+在幕后，`Yiisoft\User\CurrentUser::can()` 方法调用
+`Yiisoft\Access\AccessCheckerInterface::userHasPermission()`，因此您应该在依赖容器中提供一个实现才能使其工作。
 
-## Role-based access control (RBAC) <span id="rbac"></span>
+## 基于角色的访问控制 (RBAC) <span id="rbac"></span>
 
-Role-Based Access Control (RBAC) provides a simple yet powerful centralized
-access control. Please refer to the
-[Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for
-details about comparing RBAC with other more traditional access control
-schemes.
+基于角色的访问控制 (RBAC) 提供了一种简单而强大的集中式访问控制。有关 RBAC 与其他更传统的访问控制方案的比较详情，请参阅
+[Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control)。
 
-Yii implements a General Hierarchical RBAC, following the [NIST RBAC
-model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
+Yii 实现了通用分层 RBAC，遵循 [NIST RBAC
+模型](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf)。
 
-Using RBAC involves two parts of work. The first part is to build up the
-RBAC authorization data, and the second part is to use the authorization
-data to perform access check in places where it's necessary. Since RBAC
-implements `\Yiisoft\Access\AccessCheckerInterface`, using it's similar to
-using any other implementation of an access checker.
+使用 RBAC 涉及两部分工作。第一部分是构建 RBAC 授权数据，第二部分是在必要的地方使用授权数据执行访问检查。由于 RBAC 实现了
+`\Yiisoft\Access\AccessCheckerInterface`，使用它类似于使用任何其他访问检查器的实现。
 
-To ease description next, there are some basic RBAC concepts first.
+为了便于接下来的描述，首先介绍一些基本的 RBAC 概念。
 
-### Basic concepts <span id="basic-concepts"></span>
+### 基本概念 <span id="basic-concepts"></span>
 
-A role represents a collection of *permissions* (for example, creating
-posts, updating posts).  You may assign a role to one or many users.  To
-check if a user has a specified permission, you may check if the user has a
-role with that permission.
+角色代表一组*权限*（例如，创建文章、更新文章）。您可以将角色分配给一个或多个用户。要检查用户是否具有指定的权限，您可以检查用户是否具有包含该权限的角色。
 
-Associated with each role or permission, there may be a *rule*.  A rule
-represents a piece of code that an access checker will execute to decide if
-the corresponding role or permission applies to the current user.  For
-example, the "update post" permission may have a rule that checks if the
-current user is the post creator.  During access checking, if the user is
-NOT the post creator, there's no "update post" permission.
+每个角色或权限可能关联一个*规则*。规则代表访问检查器将执行的一段代码，用于决定相应的角色或权限是否适用于当前用户。例如，“更新文章”权限可能有一个规则来检查当前用户是否是文章创建者。在访问检查期间，如果用户不是文章创建者，则没有“更新文章”权限。
 
-Both roles and permissions are in a hierarchy.  In particular, a role may
-consist of other roles or permissions.  And a permission may consist of
-other permissions.  Yii implements a *partial order* hierarchy which
-includes the more special *tree* hierarchy.  While a role can contain a
-permission, it isn't `true` vice versa.
+角色和权限都处于层次结构中。特别是，一个角色可以由其他角色或权限组成。一个权限可以由其他权限组成。Yii
+实现了*偏序*层次结构，其中包括更特殊的*树*层次结构。虽然角色可以包含权限，但反之则不成立。
 
-### Configuring RBAC <span id="configuring-rbac"></span>
+### 配置 RBAC <span id="configuring-rbac"></span>
 
-Yii RBAC requires storage to be provided.
+Yii RBAC 需要提供存储。
 
-One of the following storages could be installed:
+可以安装以下存储之一：
 
-- [PHP storage](https://github.com/yiisoft/rbac-php) - PHP file storage;
-- [DB storage](https://github.com/yiisoft/rbac-db) - database storage based
-  on [Yii DB](https://github.com/yiisoft/db);
-- [Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database
-  storage based on [Cycle DBAL](https://github.com/cycle/database).
+- [PHP storage](https://github.com/yiisoft/rbac-php) — PHP 文件存储；
+- [DB storage](https://github.com/yiisoft/rbac-db) — 基于 [Yii
+  DB](https://github.com/yiisoft/db) 的数据库存储；
+- [Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) — 基于 [Cycle
+  DBAL](https://github.com/cycle/database) 的数据库存储。
   
-You can also provide your own storage using the
-[yiisoft/rbac](https://github.com/yiisoft/rbac) package.
+您还可以使用 [yiisoft/rbac](https://github.com/yiisoft/rbac) 包提供自己的存储。
   
-#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id="configuring-rbac-php"></span>
+#### 使用 [PHP storage](https://github.com/yiisoft/rbac-php) 配置 RBAC <span id="configuring-rbac-php"></span>
 
-Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:
+安装 [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) 包：
 
 ```
 composer require yiisoft/rbac-php
 ```
 
-Before we set off to define authorization data and perform access checking,
-you need to configure the `Yiisoft\Access\AccessCheckerInterface` in
-dependency container:
+在开始定义授权数据和执行访问检查之前，您需要在依赖容器中配置 `Yiisoft\Access\AccessCheckerInterface`：
 
 ```php
 use Yiisoft\Rbac\ItemsStorageInterface;
@@ -147,31 +124,27 @@ return [
 ];
 ```
 
-`Yiisoft\Rbac\Manager` uses PHP script files to store authorization data.
-Make sure the directory and all the files in it are writable by the Web
-server process if you want to change permission hierarchy online.
+`Yiisoft\Rbac\Manager` 使用 PHP 脚本文件来存储授权数据。如果您想在线更改权限层次结构，请确保该目录及其中的所有文件都可由
+Web 服务器进程写入。
 
-#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id="configuring-rbac-db"></span>
+#### 使用 [DB storage](https://github.com/yiisoft/rbac-db) 配置 RBAC <span id="configuring-rbac-db"></span>
 
-Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:
+安装 [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) 包：
 
 ```
 composer require yiisoft/rbac-db
 ```
 
-Install one of the following drivers:
-  - [SQLite](https://github.com/yiisoft/db-sqlite) (minimal required version is 3.8.3)
+安装以下驱动程序之一：
+  - [SQLite](https://github.com/yiisoft/db-sqlite)（最低要求版本为 3.8.3）
   - [MySQL](https://github.com/yiisoft/db-mysql)
   - [PostgreSQL](https://github.com/yiisoft/db-pgsql)
   - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)
   - [Oracle](https://github.com/yiisoft/db-oracle)
   
-[Configure
-connection](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection).
+[配置连接](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection)。
 
-Before we set off to define authorization data and perform access checking,
-you need to configure the `Yiisoft\Access\AccessCheckerInterface` in
-dependency container:
+在开始定义授权数据和执行访问检查之前，您需要在依赖容器中配置 `Yiisoft\Access\AccessCheckerInterface`：
 
 ```php
 use Yiisoft\Rbac\ItemsStorageInterface;
@@ -189,8 +162,7 @@ return [
 ];
 ```
 
-Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration
-paths to params.php:
+将 RBAC [DB storage](https://github.com/yiisoft/rbac-db) 迁移路径添加到 params.php：
 
 ```php
 return [
@@ -204,45 +176,35 @@ return [
 ];
 ```
 
-Apply migrations:
+应用迁移：
 
 ```
 APP_ENV=dev ./yii migrate:up
 ```
 
-### Building authorization data <span id="generating-rbac-data"></span>
+### 构建授权数据 <span id="generating-rbac-data"></span>
 
-Building authorization data is all about the following tasks:
+构建授权数据涉及以下任务：
 
-- defining roles and permissions;
-- establishing relations between roles and permissions;
-- defining rules;
-- associating rules with roles and permissions;
-- assigning roles to users.
+- 定义角色和权限；
+- 建立角色和权限之间的关系；
+- 定义规则；
+- 将规则与角色和权限关联；
+- 将角色分配给用户。
 
-Depending on authorization flexibility requirements, you can do the tasks in
-different ways.  If only developers change your permission hierarchy, you
-can use either migrations or a console command.  Migration advantage is that
-you could execute it along with other migrations.  The Console command
-advantage is that you have a good overview of the hierarchy in the code
-without a need to read many migrations.
+根据授权灵活性要求，您可以以不同的方式完成这些任务。如果只有开发人员更改您的权限层次结构，您可以使用迁移或控制台命令。迁移的优点是您可以与其他迁移一起执行它。控制台命令的优点是您可以在代码中很好地概览层次结构，而无需阅读许多迁移。
 
-Either way, in the end, you'll get the following RBAC hierarchy:
+无论哪种方式，最终您都会得到以下 RBAC 层次结构：
 
-![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg "Simple
-RBAC hierarchy")
+![简单的 RBAC 层次结构](/images/guide/security/rbac-hierarchy-1.svg "简单的 RBAC
+层次结构")
 
-In case you want to build permission hierarchy dynamically, you need a UI or
-a console command.  The API used to build the hierarchy itself won't be
-different.
+如果您想动态构建权限层次结构，则需要 UI 或控制台命令。用于构建层次结构本身的 API 不会有所不同。
 
-### Using console command
+### 使用控制台命令
 
-If your permission hierarchy doesn't change at all, and you have a fixed
-number of users, you can create a [console
-command](../tutorial/console-applications.md) that will initialize
-authorization data once via APIs offered by
-`\Yiisoft\Rbac\ManagerInterface`:
+如果您的权限层次结构根本不会改变，并且您有固定数量的用户，则可以创建一个[控制台命令](../tutorial/console-applications.md)，通过
+`\Yiisoft\Rbac\ManagerInterface` 提供的 API 一次性初始化授权数据：
 
 ```php
 <?php
@@ -312,7 +274,7 @@ final class RbacCommand extends Command
 }
 ```
 
-Add the command to `config/console/commands.php`:
+将命令添加到 `config/console/commands.php`：
 
 ```php
 return [ 
@@ -321,24 +283,23 @@ return [
 ];
 ```
  
-You can execute the command above from the console the following way:
+您可以通过以下方式从控制台执行上述命令：
 
 ```
 APP_ENV=dev ./yii rbac:init
 ```
 
-> If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
-  create either UI or console command to manage assignments.
+> 如果您不想硬编码哪些用户具有某些角色，请不要在命令中放入 `->assign()` 调用。相反，
+  创建 UI 或控制台命令来管理分配。
 
-#### Using migrations
+#### 使用迁移
 
-**TODO**: finish it when migrations are implemented.
+**TODO**：在实现迁移时完成它。
 
-You can use [migrations](../databases/db-migrations.md)  to initialize and
-change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
+您可以使用 [迁移](../databases/db-migrations.md) 通过
+`\Yiisoft\Rbac\ManagerInterface` 提供的 API 初始化和更改层次结构。
 
-Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then
-implement creating a hierarchy:
+使用 `APP_ENV=dev ./yii migrate:create init_rbac` 创建新迁移，然后实现创建层次结构：
 
 ```php
 <?php
@@ -396,22 +357,19 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
 }
 ```
 
-> If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
-  create either UI or console command to manage assignments.
+> 如果您不想硬编码哪些用户具有某些角色，请不要在迁移中放入 `->assign()` 调用。相反，
+  创建 UI 或控制台命令来管理分配。
 
-You could apply migration by using `APP_ENV=dev ./yii migrate:up`.
+您可以使用 `APP_ENV=dev ./yii migrate:up` 应用迁移。
 
-## Assigning roles to users
+## 将角色分配给用户
 
-TODO: update when signup implemented in demo / template.
+TODO：在演示/模板中实现注册时更新。
 
-The author can create a post, admin can update the post and do everything
-the author can.
+作者可以创建文章，管理员可以更新文章并执行作者可以执行的所有操作。
 
-If your application allows user signup, you need to assign roles to these
-new users at once.  For example, in order for all signed-up users to become
-authors in your advanced project template, you need to change
-`frontend\models\SignupForm::signup()` as follows:
+如果您的应用程序允许用户注册，您需要立即将角色分配给这些新用户。例如，为了让所有注册用户在您的高级项目模板中成为作者，您需要按如下方式更改
+`frontend\models\SignupForm::signup()`：
 
 ```php
 public function signup()
@@ -437,19 +395,14 @@ public function signup()
 }
 ```
 
-For applications that require complex access control with dynamically
-updated authorization data (such as an admin panel), you many need to
-develop special user interfaces using APIs offered by
-`Yiisoft\Rbac\Manager`.
+对于需要复杂访问控制和动态更新授权数据的应用程序（例如管理面板），您可能需要使用 `Yiisoft\Rbac\Manager` 提供的 API
+开发特殊的用户界面。
 
 
-### Using rules <span id="using-rules"></span>
+### 使用规则 <span id="using-rules"></span>
 
-As aforementioned, rules add extra constraint to roles and permissions.  A
-rule is a class extending from `\Yiisoft\Rbac\Rule`.  It must implement the
-`execute()` method.  In the hierarchy you've created before, the author
-can't edit his own post.  Let's fix it. First, you need a rule to verify
-that the user is the post author:
+如前所述，规则为角色和权限添加了额外的约束。规则是从 `\Yiisoft\Rbac\Rule` 扩展的类。它必须实现 `execute()`
+方法。在您之前创建的层次结构中，作者无法编辑自己的文章。让我们修复它。首先，您需要一个规则来验证用户是文章作者：
 
 ```php
 namespace App\User\Rbac;
@@ -471,8 +424,7 @@ final readonly class AuthorRule implements RuleInterface
 }
 ```
 
-The rule checks if user created the `post`. Create a special permission
-`updateOwnPost` in the command you've used before:
+该规则检查用户是否创建了 `post`。在您之前使用的命令中创建一个特殊权限 `updateOwnPost`：
 
 ```php
 use Yiisoft\Rbac\Permission;
@@ -494,16 +446,15 @@ $this->manager->addChild($authorRole->getName(), $updateOwnPost->getName());
 $this->manager->addChild('admin', 'author');
 ```
 
-Now you've got the following hierarchy:
+现在您得到了以下层次结构：
 
-![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg
-"RBAC hierarchy with a rule")
+![带有规则的 RBAC 层次结构](/images/guide/security/rbac-hierarchy-2.svg "带有规则的 RBAC
+层次结构")
 
 
-### Access check <span id="access-check"></span>
+### 访问检查 <span id="access-check"></span>
 
-The check is done similarly to how it was done in the first section of this
-guide:
+检查的方式与本指南第一部分中的方式类似：
 
 ```php
 namespace App\Blog\Post;
@@ -542,17 +493,13 @@ final readonly class PostController
 }
 ```
 
-The difference is that now checking for a user's own post is part of the
-RBAC.
+不同之处在于，现在检查用户自己的文章是 RBAC 的一部分。
 
-If the current user is Jane with `ID=1` you are starting at `createPost` and
-trying to get to `Jane`:
+如果当前用户是 Jane，`ID=1`，您从 `createPost` 开始并尝试到达 `Jane`：
 
-![Access check](/images/guide/security/rbac-access-check-1.svg "Access
-check")
+![访问检查](/images/guide/security/rbac-access-check-1.svg "访问检查")
 
-To check if a user can update a post, you need to pass an extra parameter
-that's required by `AuthorRule` described before:
+要检查用户是否可以更新文章，您需要传递之前描述的 `AuthorRule` 所需的额外参数：
 
 ```php
 if ($user->can('updatePost', ['post' => $post])) {
@@ -560,26 +507,23 @@ if ($user->can('updatePost', ['post' => $post])) {
 }
 ```
 
-Here is what happens if the current user is John:
+如果当前用户是 John，会发生以下情况：
 
 
-![Access check](/images/guide/security/rbac-access-check-2.svg "Access
-check")
+![访问检查](/images/guide/security/rbac-access-check-2.svg "访问检查")
 
-You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`
-should return `true` from its `execute()` method. The method receives its `$params` from the `can()` method call, so the value is
-`['post' => $post]`.
-If everything is fine, you will get to `author` assigned to John.
+您从 `updatePost` 开始并通过 `updateOwnPost`。要通过访问检查，`AuthorRule`
+应该从其 `execute()` 方法返回 `true`。该方法从 `can()` 方法调用接收其 `$params`，因此值为
+`['post' => $post]`。
+如果一切正常，您将到达分配给 John 的 `author`。
 
-In the case of Jane, it's a bit simpler since she is an admin:
+在 Jane 的情况下，这更简单，因为她是管理员：
 
-![Access check](/images/guide/security/rbac-access-check-3.svg "Access
-check")
+![访问检查](/images/guide/security/rbac-access-check-3.svg "访问检查")
 
-## Implementing your own access checker
+## 实现您自己的访问检查器
 
-If RBAC doesn't suit your needs, you can implement your own access checker
-without changing the application code:
+如果 RBAC 不适合您的需求，您可以在不更改应用程序代码的情况下实现自己的访问检查器：
 
 
 ```php

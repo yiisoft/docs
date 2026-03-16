@@ -30,28 +30,28 @@ msgstr "安装"
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Basic Concepts"
-msgstr ""
+msgstr "基本概念"
 
 #. type: Plain text
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
 msgid "These packages are included by default in the `yiisoft/app` application template."
-msgstr ""
+msgstr "这些包默认包含在 `yiisoft/app` 应用程序模板中。"
 
 #. type: Title #
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widgets"
-msgstr ""
+msgstr "小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Widgets are reusable, self-contained components that encapsulate complex HTML generation logic.  They provide a clean way to create configurable UI elements that can be used across different views and applications. Yii3 provides a flexible widget system through the `yiisoft/widget` package."
-msgstr ""
+msgstr "小部件是可重用的独立组件，封装了复杂的 HTML 生成逻辑。它们提供了一种简洁的方式来创建可配置的 UI 元素，可在不同的视图和应用程序中使用。Yii3 通过 `yiisoft/widget` 包提供了灵活的小部件系统。"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "The widget functionality is provided by the `yiisoft/widget` package:"
-msgstr ""
+msgstr "小部件功能由 `yiisoft/widget` 包提供："
 
 #. type: Fenced code block (bash)
 #: ../src/guide/views/widget.md
@@ -62,7 +62,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "For ready-made widgets (like forms, navigation, etc.), you can also install:"
-msgstr ""
+msgstr "对于现成的小部件（如表单、导航等），您还可以安装："
 
 #. type: Fenced code block (bash)
 #: ../src/guide/views/widget.md
@@ -74,51 +74,51 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Class"
-msgstr ""
+msgstr "小部件类"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "A widget is a PHP class that extends the abstract `Widget` class and implements a `render()` method that returns HTML content as a string."
-msgstr ""
+msgstr "小部件是一个 PHP 类，继承自抽象的 `Widget` 类，并实现一个返回 HTML 内容字符串的 `render()` 方法。"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Factory"
-msgstr ""
+msgstr "小部件工厂"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "The `WidgetFactory` is responsible for creating widget instances and can inject dependencies through the DI container."
-msgstr ""
+msgstr "`WidgetFactory` 负责创建小部件实例，并可以通过 DI 容器注入依赖。"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Configuration"
-msgstr ""
+msgstr "小部件配置"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Widgets can be configured with properties and methods, making them highly customizable and reusable across different contexts."
-msgstr ""
+msgstr "小部件可以通过属性和方法进行配置，使其在不同上下文中具有高度可定制性和可重用性。"
 
 #. type: Title ##
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Creating Custom Widgets"
-msgstr ""
+msgstr "创建自定义小部件"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Simple Widget"
-msgstr ""
+msgstr "简单小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Here's a basic widget that displays an alert message:"
-msgstr ""
+msgstr "以下是一个显示警告消息的基础小部件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -191,7 +191,7 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Using the Widget"
-msgstr ""
+msgstr "使用小部件"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -224,12 +224,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget with Dependencies"
-msgstr ""
+msgstr "带依赖的小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Widgets can use dependency injection for services:"
-msgstr ""
+msgstr "小部件可以通过依赖注入使用服务："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -306,24 +306,24 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Factory Setup"
-msgstr ""
+msgstr "小部件工厂设置"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Bootstrap Configuration"
-msgstr ""
+msgstr "启动配置"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Initialize the widget factory in your application bootstrap:"
-msgstr ""
+msgstr "在应用程序启动时初始化小部件工厂："
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "**config/bootstrap.php**\n"
-msgstr ""
+msgstr "**config/bootstrap.php**\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -357,13 +357,13 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "DI Container Configuration"
-msgstr ""
+msgstr "DI 容器配置"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "**config/web/di.php**\n"
-msgstr ""
+msgstr "**config/web/di.php**\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -387,18 +387,18 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Advanced Widget Examples"
-msgstr ""
+msgstr "高级小部件示例"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Data List Widget"
-msgstr ""
+msgstr "数据列表小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "A widget that displays a list of items with pagination:"
-msgstr ""
+msgstr "一个带分页显示条目列表的小部件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -486,7 +486,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Usage:"
-msgstr ""
+msgstr "用法："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -514,12 +514,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Form Widget"
-msgstr ""
+msgstr "表单小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "A widget that simplifies form rendering:"
-msgstr ""
+msgstr "一个简化表单渲染的小部件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -627,12 +627,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Breadcrumb Widget"
-msgstr ""
+msgstr "面包屑小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "A widget for navigation breadcrumbs:"
-msgstr ""
+msgstr "一个用于导航面包屑的小部件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -721,18 +721,18 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Widget Best Practices"
-msgstr ""
+msgstr "小部件最佳实践"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Configuration Pattern"
-msgstr ""
+msgstr "配置模式"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Use immutable configuration methods:"
-msgstr ""
+msgstr "使用不可变的配置方法："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -750,12 +750,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Validation"
-msgstr ""
+msgstr "验证"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Validate widget configuration in the render method:"
-msgstr ""
+msgstr "在 render 方法中验证小部件配置："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -775,12 +775,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "HTML Encoding"
-msgstr ""
+msgstr "HTML 编码"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Always encode user data:"
-msgstr ""
+msgstr "始终对用户数据进行编码："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -798,12 +798,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Asset Management"
-msgstr ""
+msgstr "资源管理"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Register widget-specific assets:"
-msgstr ""
+msgstr "注册小部件专用资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -840,12 +840,12 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Using Widgets in Layouts"
-msgstr ""
+msgstr "在布局中使用小部件"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Widgets are particularly useful in layouts for common UI elements:"
-msgstr ""
+msgstr "小部件在布局中对于常见 UI 元素特别有用："
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
@@ -896,18 +896,18 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Testing Widgets"
-msgstr ""
+msgstr "测试小部件"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Unit Testing"
-msgstr ""
+msgstr "单元测试"
 
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Test widget rendering logic:"
-msgstr ""
+msgstr "测试小部件的渲染逻辑："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -950,13 +950,13 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Common Widget Patterns"
-msgstr ""
+msgstr "常见小部件模式"
 
 #. type: Title ###
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Conditional Rendering"
-msgstr ""
+msgstr "条件渲染"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -981,7 +981,7 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Template-based Rendering"
-msgstr ""
+msgstr "基于模板的渲染"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -1006,7 +1006,7 @@ msgstr ""
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Event Integration"
-msgstr ""
+msgstr "事件集成"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/widget.md
@@ -1029,4 +1029,4 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/widget.md
 msgid "Widgets provide a powerful way to create reusable, configurable UI components in Yii3 applications.  They help maintain clean separation of concerns and make your views more maintainable and testable."
-msgstr ""
+msgstr "小部件为在 Yii3 应用程序中创建可重用、可配置的 UI 组件提供了强大的方式。它们有助于保持清晰的关注点分离，使您的视图更易于维护和测试。"

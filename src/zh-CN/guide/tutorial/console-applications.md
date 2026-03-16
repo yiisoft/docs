@@ -1,27 +1,23 @@
-# Console applications
+# 控制台应用程序
 
-Console applications are mainly used to create utility, background
-processing and maintenance tasks.
+控制台应用程序主要用于创建实用工具、后台处理和维护任务。
 
-To get support for console application in your project, get
-`yiisoft/yii-console` via composer:
+要在项目中获得控制台应用程序支持，请通过 composer 获取 `yiisoft/yii-console`：
 
 
 ```
 composer require yiisoft/yii-console
 ```
 
-After it's installed, you can access the entry point as
+安装后，您可以通过以下方式访问入口点：
 
 ```
 ./yii
 ```
 
-Out of the box only `serve` command is available. It's starting PHP built-in
-web server to serve the application locally.
+开箱即用只有 `serve` 命令可用。它启动 PHP 内置 Web 服务器在本地提供应用程序服务。
 
-Commands are executed with `symfony/console`. To create your own console
-command, you need to define a command:
+命令使用 `symfony/console` 执行。要创建自己的控制台命令，您需要定义一个命令：
 
 ```php
 <?php
@@ -60,7 +56,7 @@ class HelloCommand extends Command
 }
 ```
 
-Now register the command in `config/params.php`:
+现在在 `config/params.php` 中注册该命令：
 
 ```php
 return [
@@ -72,7 +68,7 @@ return [
 ];
 ```
 
-After it's done, the command could be executed as
+完成后，命令可以通过以下方式执行：
 
 ```
 ./yii demo:hello Alice
@@ -81,5 +77,5 @@ After it's done, the command could be executed as
 
 ## 参考资料
 
-- [Symfony Console component
-  guide](https://symfony.com/doc/current/components/console.html)
+- [Symfony Console
+  组件指南](https://symfony.com/doc/current/components/console.html)

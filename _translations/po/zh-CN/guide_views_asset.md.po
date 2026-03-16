@@ -37,17 +37,17 @@ msgstr "安装"
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Assets"
-msgstr ""
+msgstr "资源"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Asset management is crucial for modern web applications. Assets include CSS stylesheets, JavaScript files, images, fonts, and other static resources. Yii3 provides a comprehensive asset management system through the `yiisoft/assets` package that handles dependencies, optimization, and deployment of these resources."
-msgstr ""
+msgstr "资源管理对现代 Web 应用程序至关重要。资源包括 CSS 样式表、JavaScript 文件、图像、字体及其他静态资源。Yii3 通过 `yiisoft/assets` 包提供了一套完整的资源管理系统，用于处理这些资源的依赖、优化和部署。"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "The asset management functionality is provided by the `yiisoft/assets` package:"
-msgstr ""
+msgstr "资源管理功能由 `yiisoft/assets` 包提供："
 
 #. type: Fenced code block (bash)
 #: ../src/guide/views/asset.md
@@ -58,53 +58,53 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "This package is included by default in the `yiisoft/app` application template."
-msgstr ""
+msgstr "该包默认包含在 `yiisoft/app` 应用程序模板中。"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md ../src/guide/views/view.md
 #: ../src/guide/views/widget.md
 #, no-wrap
 msgid "Basic Concepts"
-msgstr ""
+msgstr "基本概念"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Bundles"
-msgstr ""
+msgstr "资源包"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "An asset bundle is a collection of related asset files (CSS, JavaScript, images) that are logically grouped together.  Asset bundles can depend on other bundles, allowing for proper dependency management."
-msgstr ""
+msgstr "资源包是一组相关资源文件（CSS、JavaScript、图像）的集合，它们在逻辑上被组合在一起。资源包可以依赖其他包，从而实现适当的依赖关系管理。"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Manager"
-msgstr ""
+msgstr "资源管理器"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "The Asset Manager is responsible for: - Resolving asset bundle dependencies - Publishing assets from protected directories to web-accessible locations - Combining and minifying assets (when configured)  - Generating proper URLs for assets"
-msgstr ""
+msgstr "资源管理器负责：- 解析资源包依赖 - 将资源从受保护目录发布到 Web 可访问的位置 - 合并和压缩资源（当配置时）- 生成资源的正确 URL"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Creating Asset Bundles"
-msgstr ""
+msgstr "创建资源包"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Basic Asset Bundle"
-msgstr ""
+msgstr "基本资源包"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Here's a simple asset bundle definition:"
-msgstr ""
+msgstr "下面是一个简单的资源包定义："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -144,7 +144,7 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Bundle Properties"
-msgstr ""
+msgstr "资源包属性"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -155,6 +155,10 @@ msgid ""
 "- `$baseUrl` - Web-accessible URL path for assets\n"
 "- `$sourcePath` - Source directory for assets that need to be published\n"
 msgstr ""
+"**路径配置：**\n"
+"- `$basePath` - 资源文件的物理路径\n"
+"- `$baseUrl` - 资源的 Web 可访问 URL 路径\n"
+"- `$sourcePath` - 需要发布的资源的源目录\n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -164,6 +168,9 @@ msgid ""
 "- `$css` - Array of CSS files\n"
 "- `$js` - Array of JavaScript files  \n"
 msgstr ""
+"**资源文件：**\n"
+"- `$css` - CSS 文件数组\n"
+"- `$js` - JavaScript 文件数组  \n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -172,6 +179,8 @@ msgid ""
 "**Dependencies:**\n"
 "- `$depends` - Array of other asset bundles this bundle depends on\n"
 msgstr ""
+"**依赖：**\n"
+"- `$depends` - 此包所依赖的其他资源包数组\n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -181,12 +190,15 @@ msgid ""
 "- `$jsOptions` - HTML attributes for JavaScript tags\n"
 "- `$cssOptions` - HTML attributes for CSS link tags\n"
 msgstr ""
+"**选项：**\n"
+"- `$jsOptions` - JavaScript 标签的 HTML 属性\n"
+"- `$cssOptions` - CSS link 标签的 HTML 属性\n"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Advanced Asset Bundle"
-msgstr ""
+msgstr "高级资源包"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -240,18 +252,18 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Using Asset Bundles"
-msgstr ""
+msgstr "使用资源包"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "In Controllers"
-msgstr ""
+msgstr "在控制器中"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Register asset bundles in your controllers or views:"
-msgstr ""
+msgstr "在控制器或视图中注册资源包："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -302,12 +314,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "In Views"
-msgstr ""
+msgstr "在视图中"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "You can also register assets directly in views:"
-msgstr ""
+msgstr "你也可以直接在视图中注册资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -340,12 +352,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "With WebView Integration"
-msgstr ""
+msgstr "与 WebView 集成"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "The recommended approach is to integrate with WebView for automatic asset rendering:"
-msgstr ""
+msgstr "推荐的方式是与 WebView 集成，以自动渲染资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -382,18 +394,18 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Publishing"
-msgstr ""
+msgstr "资源发布"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Source Path Publishing"
-msgstr ""
+msgstr "源路径发布"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "When assets are located in non-web-accessible directories (like vendor packages), they need to be published:"
-msgstr ""
+msgstr "当资源位于不可通过 Web 访问的目录（如 vendor 包）时，需要发布它们："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -430,12 +442,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Custom Publishing"
-msgstr ""
+msgstr "自定义发布"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "You can also manually publish directories:"
-msgstr ""
+msgstr "你也可以手动发布目录："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -456,13 +468,13 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Third-party Library Assets"
-msgstr ""
+msgstr "第三方库资源"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "jQuery Asset Bundle"
-msgstr ""
+msgstr "jQuery 资源包"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -497,7 +509,7 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Bootstrap Asset Bundle"
-msgstr ""
+msgstr "Bootstrap 资源包"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -534,12 +546,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "CDN Assets"
-msgstr ""
+msgstr "CDN 资源"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "For CDN-hosted assets, you can specify full URLs:"
-msgstr ""
+msgstr "对于托管在 CDN 上的资源，可以指定完整 URL："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -574,24 +586,24 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Configuration"
-msgstr ""
+msgstr "资源配置"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Application Configuration"
-msgstr ""
+msgstr "应用程序配置"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Configure asset management in your application configuration:"
-msgstr ""
+msgstr "在应用程序配置中配置资源管理："
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "**config/web/params.php**\n"
-msgstr ""
+msgstr "**config/web/params.php**\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -620,12 +632,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Environment-specific Assets"
-msgstr ""
+msgstr "特定环境的资源"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Configure different assets for different environments:"
-msgstr ""
+msgstr "为不同环境配置不同的资源："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -666,18 +678,18 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Optimization"
-msgstr ""
+msgstr "资源优化"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Combination"
-msgstr ""
+msgstr "资源合并"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Combine multiple CSS or JavaScript files into single files:"
-msgstr ""
+msgstr "将多个 CSS 或 JavaScript 文件合并为单个文件："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -701,12 +713,12 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Asset Compression"
-msgstr ""
+msgstr "资源压缩"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "Configure asset compression for production:"
-msgstr ""
+msgstr "为生产环境配置资源压缩："
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -725,13 +737,13 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Working with Asset Converter"
-msgstr ""
+msgstr "使用资源转换器"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "SCSS/SASS Compilation"
-msgstr ""
+msgstr "SCSS/SASS 编译"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -762,7 +774,7 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "TypeScript Compilation"
-msgstr ""
+msgstr "TypeScript 编译"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -793,13 +805,13 @@ msgstr ""
 #: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Practical Examples"
-msgstr ""
+msgstr "实践示例"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Complete Application Asset Structure"
-msgstr ""
+msgstr "完整应用程序资源结构"
 
 #. type: Fenced code block
 #: ../src/guide/views/asset.md
@@ -828,7 +840,7 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Complete Asset Bundle Setup"
-msgstr ""
+msgstr "完整资源包配置"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/asset.md
@@ -902,53 +914,53 @@ msgstr ""
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Best Practices"
-msgstr ""
+msgstr "最佳实践"
 
 #. type: Bullet: '1. '
 #: ../src/guide/views/asset.md
 msgid "**Organize by functionality**: Group related assets into logical bundles"
-msgstr ""
+msgstr "**按功能组织**：将相关资源归入逻辑包"
 
 #. type: Bullet: '2. '
 #: ../src/guide/views/asset.md
 msgid "**Manage dependencies**: Properly declare dependencies between bundles"
-msgstr ""
+msgstr "**管理依赖**：正确声明包之间的依赖关系"
 
 #. type: Bullet: '3. '
 #: ../src/guide/views/asset.md
 msgid "**Use meaningful names**: Name your asset bundles clearly"
-msgstr ""
+msgstr "**使用有意义的名称**：清晰地命名资源包"
 
 #. type: Bullet: '4. '
 #: ../src/guide/views/asset.md
 msgid "**Environment optimization**: Use minified assets in production"
-msgstr ""
+msgstr "**环境优化**：在生产环境中使用压缩资源"
 
 #. type: Bullet: '5. '
 #: ../src/guide/views/asset.md
 msgid "**CDN consideration**: Use CDN for popular libraries when appropriate"
-msgstr ""
+msgstr "**考虑 CDN**：在适当时对常用库使用 CDN"
 
 #. type: Bullet: '6. '
 #: ../src/guide/views/asset.md
 msgid "**Version your assets**: Include version numbers in filenames for cache busting"
-msgstr ""
+msgstr "**版本化资源**：在文件名中包含版本号以清除缓存"
 
 #. type: Bullet: '7. '
 #: ../src/guide/views/asset.md
 msgid "**Minimize HTTP requests**: Combine related assets when possible"
-msgstr ""
+msgstr "**减少 HTTP 请求**：尽可能合并相关资源"
 
 #. type: Bullet: '8. '
 #: ../src/guide/views/asset.md
 msgid "**Optimize file sizes**: Compress and minify assets for production"
-msgstr ""
+msgstr "**优化文件大小**：为生产环境压缩和最小化资源"
 
 #. type: Title ###
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Common Issues"
-msgstr ""
+msgstr "常见问题"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -959,6 +971,10 @@ msgid ""
 "- Verify `$basePath` and `$baseUrl` are configured correctly\n"
 "- Ensure assets are published if using `$sourcePath`\n"
 msgstr ""
+"**资源未找到：**\n"
+"- 检查资源文件是否存在于指定路径中\n"
+"- 验证 `$basePath` 和 `$baseUrl` 是否配置正确\n"
+"- 如果使用 `$sourcePath`，确保资源已发布\n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -969,6 +985,10 @@ msgid ""
 "- Check for circular dependencies\n"
 "- Ensure dependency bundles are correctly configured\n"
 msgstr ""
+"**依赖未加载：**\n"
+"- 验证依赖包是否已正确注册\n"
+"- 检查是否存在循环依赖\n"
+"- 确保依赖包已正确配置\n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -978,6 +998,9 @@ msgid ""
 "- Make sure you're calling `$this->addCssFiles()` and `$this->addJsFiles()` in your layout\n"
 "- Verify that `$this->head()`, `$this->beginBody()`, and `$this->endBody()` are called in the layout\n"
 msgstr ""
+"**资源未出现在 HTML 中：**\n"
+"- 确保在布局中调用了 `$this->addCssFiles()` 和 `$this->addJsFiles()`\n"
+"- 验证布局中是否调用了 `$this->head()`、`$this->beginBody()` 和 `$this->endBody()`\n"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md
@@ -987,3 +1010,6 @@ msgid ""
 "- Check that the web server has write permissions to the assets directory\n"
 "- Verify the published assets directory is web-accessible\n"
 msgstr ""
+"**权限问题：**\n"
+"- 检查 Web 服务器是否具有资源目录的写入权限\n"
+"- 验证已发布的资源目录是否可通过 Web 访问\n"

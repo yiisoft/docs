@@ -19,23 +19,23 @@ msgstr ""
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Authorization"
-msgstr ""
+msgstr "授权"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Authorization is the process of verifying that a user has enough permission to do something."
-msgstr ""
+msgstr "授权是验证用户是否有足够权限执行某项操作的过程。"
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Checking for permission <span id=\"checking-for-permission\"></span>"
-msgstr ""
+msgstr "检查权限 <span id=\"checking-for-permission\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "You can check if a user has certain permissions by using `\\Yiisoft\\User\\CurrentUser` service:"
-msgstr ""
+msgstr "您可以使用 `\\Yiisoft\\User\\CurrentUser` 服务来检查用户是否具有特定权限："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -81,101 +81,101 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Behind the scenes, `Yiisoft\\User\\CurrentUser::can()` method calls `Yiisoft\\Access\\AccessCheckerInterface::userHasPermission()` so you should provide an implementation in dependency container in order for it to work."
-msgstr ""
+msgstr "在幕后，`Yiisoft\\User\\CurrentUser::can()` 方法调用 `Yiisoft\\Access\\AccessCheckerInterface::userHasPermission()`，因此您应该在依赖容器中提供一个实现才能使其工作。"
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Role-based access control (RBAC) <span id=\"rbac\"></span>"
-msgstr ""
+msgstr "基于角色的访问控制 (RBAC) <span id=\"rbac\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Role-Based Access Control (RBAC) provides a simple yet powerful centralized access control. Please refer to the [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC with other more traditional access control schemes."
-msgstr ""
+msgstr "基于角色的访问控制 (RBAC) 提供了一种简单而强大的集中式访问控制。有关 RBAC 与其他更传统的访问控制方案的比较详情，请参阅 [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control)。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Yii implements a General Hierarchical RBAC, following the [NIST RBAC model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf)."
-msgstr ""
+msgstr "Yii 实现了通用分层 RBAC，遵循 [NIST RBAC 模型](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf)。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Using RBAC involves two parts of work. The first part is to build up the RBAC authorization data, and the second part is to use the authorization data to perform access check in places where it's necessary. Since RBAC implements `\\Yiisoft\\Access\\AccessCheckerInterface`, using it's similar to using any other implementation of an access checker."
-msgstr ""
+msgstr "使用 RBAC 涉及两部分工作。第一部分是构建 RBAC 授权数据，第二部分是在必要的地方使用授权数据执行访问检查。由于 RBAC 实现了 `\\Yiisoft\\Access\\AccessCheckerInterface`，使用它类似于使用任何其他访问检查器的实现。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "To ease description next, there are some basic RBAC concepts first."
-msgstr ""
+msgstr "为了便于接下来的描述，首先介绍一些基本的 RBAC 概念。"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Basic concepts <span id=\"basic-concepts\"></span>"
-msgstr ""
+msgstr "基本概念 <span id=\"basic-concepts\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "A role represents a collection of *permissions* (for example, creating posts, updating posts).  You may assign a role to one or many users.  To check if a user has a specified permission, you may check if the user has a role with that permission."
-msgstr ""
+msgstr "角色代表一组*权限*（例如，创建文章、更新文章）。您可以将角色分配给一个或多个用户。要检查用户是否具有指定的权限，您可以检查用户是否具有包含该权限的角色。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Associated with each role or permission, there may be a *rule*.  A rule represents a piece of code that an access checker will execute to decide if the corresponding role or permission applies to the current user.  For example, the \"update post\" permission may have a rule that checks if the current user is the post creator.  During access checking, if the user is NOT the post creator, there's no \"update post\" permission."
-msgstr ""
+msgstr "每个角色或权限可能关联一个*规则*。规则代表访问检查器将执行的一段代码，用于决定相应的角色或权限是否适用于当前用户。例如，“更新文章”权限可能有一个规则来检查当前用户是否是文章创建者。在访问检查期间，如果用户不是文章创建者，则没有“更新文章”权限。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Both roles and permissions are in a hierarchy.  In particular, a role may consist of other roles or permissions.  And a permission may consist of other permissions.  Yii implements a *partial order* hierarchy which includes the more special *tree* hierarchy.  While a role can contain a permission, it isn't `true` vice versa."
-msgstr ""
+msgstr "角色和权限都处于层次结构中。特别是，一个角色可以由其他角色或权限组成。一个权限可以由其他权限组成。Yii 实现了*偏序*层次结构，其中包括更特殊的*树*层次结构。虽然角色可以包含权限，但反之则不成立。"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Configuring RBAC <span id=\"configuring-rbac\"></span>"
-msgstr ""
+msgstr "配置 RBAC <span id=\"configuring-rbac\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Yii RBAC requires storage to be provided."
-msgstr ""
+msgstr "Yii RBAC 需要提供存储。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "One of the following storages could be installed:"
-msgstr ""
+msgstr "可以安装以下存储之一："
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "[PHP storage](https://github.com/yiisoft/rbac-php) - PHP file storage;"
-msgstr ""
+msgstr "[PHP storage](https://github.com/yiisoft/rbac-php) — PHP 文件存储；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "[DB storage](https://github.com/yiisoft/rbac-db) - database storage based on [Yii DB](https://github.com/yiisoft/db);"
-msgstr ""
+msgstr "[DB storage](https://github.com/yiisoft/rbac-db) — 基于 [Yii DB](https://github.com/yiisoft/db) 的数据库存储；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "[Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database storage based on [Cycle DBAL](https://github.com/cycle/database)."
-msgstr ""
+msgstr "[Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) — 基于 [Cycle DBAL](https://github.com/cycle/database) 的数据库存储。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "You can also provide your own storage using the [yiisoft/rbac](https://github.com/yiisoft/rbac) package."
-msgstr ""
+msgstr "您还可以使用 [yiisoft/rbac](https://github.com/yiisoft/rbac) 包提供自己的存储。"
 
 #. type: Title ####
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id=\"configuring-rbac-php\"></span>"
-msgstr ""
+msgstr "使用 [PHP storage](https://github.com/yiisoft/rbac-php) 配置 RBAC <span id=\"configuring-rbac-php\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:"
-msgstr ""
+msgstr "安装 [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) 包："
 
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
@@ -186,7 +186,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Before we set off to define authorization data and perform access checking, you need to configure the `Yiisoft\\Access\\AccessCheckerInterface` in dependency container:"
-msgstr ""
+msgstr "在开始定义授权数据和执行访问检查之前，您需要在依赖容器中配置 `Yiisoft\\Access\\AccessCheckerInterface`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -225,18 +225,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "`Yiisoft\\Rbac\\Manager` uses PHP script files to store authorization data.  Make sure the directory and all the files in it are writable by the Web server process if you want to change permission hierarchy online."
-msgstr ""
+msgstr "`Yiisoft\\Rbac\\Manager` 使用 PHP 脚本文件来存储授权数据。如果您想在线更改权限层次结构，请确保该目录及其中的所有文件都可由 Web 服务器进程写入。"
 
 #. type: Title ####
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id=\"configuring-rbac-db\"></span>"
-msgstr ""
+msgstr "使用 [DB storage](https://github.com/yiisoft/rbac-db) 配置 RBAC <span id=\"configuring-rbac-db\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:"
-msgstr ""
+msgstr "安装 [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) 包："
 
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
@@ -255,11 +255,17 @@ msgid ""
 "  - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)\n"
 "  - [Oracle](https://github.com/yiisoft/db-oracle)\n"
 msgstr ""
+"安装以下驱动程序之一：\n"
+"  - [SQLite](https://github.com/yiisoft/db-sqlite)（最低要求版本为 3.8.3）\n"
+"  - [MySQL](https://github.com/yiisoft/db-mysql)\n"
+"  - [PostgreSQL](https://github.com/yiisoft/db-pgsql)\n"
+"  - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)\n"
+"  - [Oracle](https://github.com/yiisoft/db-oracle)\n"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "[Configure connection](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection)."
-msgstr ""
+msgstr "[配置连接](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection)。"
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -283,7 +289,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration paths to params.php:"
-msgstr ""
+msgstr "将 RBAC [DB storage](https://github.com/yiisoft/rbac-db) 迁移路径添加到 params.php："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -303,7 +309,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Apply migrations:"
-msgstr ""
+msgstr "应用迁移："
 
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
@@ -315,68 +321,68 @@ msgstr ""
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Building authorization data <span id=\"generating-rbac-data\"></span>"
-msgstr ""
+msgstr "构建授权数据 <span id=\"generating-rbac-data\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Building authorization data is all about the following tasks:"
-msgstr ""
+msgstr "构建授权数据涉及以下任务："
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "defining roles and permissions;"
-msgstr ""
+msgstr "定义角色和权限；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "establishing relations between roles and permissions;"
-msgstr ""
+msgstr "建立角色和权限之间的关系；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "defining rules;"
-msgstr ""
+msgstr "定义规则；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "associating rules with roles and permissions;"
-msgstr ""
+msgstr "将规则与角色和权限关联；"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/authorization.md
 msgid "assigning roles to users."
-msgstr ""
+msgstr "将角色分配给用户。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Depending on authorization flexibility requirements, you can do the tasks in different ways.  If only developers change your permission hierarchy, you can use either migrations or a console command.  Migration advantage is that you could execute it along with other migrations.  The Console command advantage is that you have a good overview of the hierarchy in the code without a need to read many migrations."
-msgstr ""
+msgstr "根据授权灵活性要求，您可以以不同的方式完成这些任务。如果只有开发人员更改您的权限层次结构，您可以使用迁移或控制台命令。迁移的优点是您可以与其他迁移一起执行它。控制台命令的优点是您可以在代码中很好地概览层次结构，而无需阅读许多迁移。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Either way, in the end, you'll get the following RBAC hierarchy:"
-msgstr ""
+msgstr "无论哪种方式，最终您都会得到以下 RBAC 层次结构："
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg \"Simple RBAC hierarchy\")"
-msgstr ""
+msgstr "![简单的 RBAC 层次结构](/images/guide/security/rbac-hierarchy-1.svg \"简单的 RBAC 层次结构\")"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "In case you want to build permission hierarchy dynamically, you need a UI or a console command.  The API used to build the hierarchy itself won't be different."
-msgstr ""
+msgstr "如果您想动态构建权限层次结构，则需要 UI 或控制台命令。用于构建层次结构本身的 API 不会有所不同。"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Using console command"
-msgstr ""
+msgstr "使用控制台命令"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "If your permission hierarchy doesn't change at all, and you have a fixed number of users, you can create a [console command](../tutorial/console-applications.md) that will initialize authorization data once via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`:"
-msgstr ""
+msgstr "如果您的权限层次结构根本不会改变，并且您有固定数量的用户，则可以创建一个[控制台命令](../tutorial/console-applications.md)，通过 `\\Yiisoft\\Rbac\\ManagerInterface` 提供的 API 一次性初始化授权数据："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -452,7 +458,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Add the command to `config/console/commands.php`:"
-msgstr ""
+msgstr "将命令添加到 `config/console/commands.php`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -467,7 +473,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "You can execute the command above from the console the following way:"
-msgstr ""
+msgstr "您可以通过以下方式从控制台执行上述命令："
 
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
@@ -482,28 +488,30 @@ msgid ""
 "> If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,\n"
 "  create either UI or console command to manage assignments.\n"
 msgstr ""
+"> 如果您不想硬编码哪些用户具有某些角色，请不要在命令中放入 `->assign()` 调用。相反，\n"
+"  创建 UI 或控制台命令来管理分配。\n"
 
 #. type: Title ####
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Using migrations"
-msgstr ""
+msgstr "使用迁移"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "**TODO**: finish it when migrations are implemented.\n"
-msgstr ""
+msgstr "**TODO**：在实现迁移时完成它。\n"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "You can use [migrations](../databases/db-migrations.md)  to initialize and change hierarchy via APIs offered by `\\Yiisoft\\Rbac\\ManagerInterface`."
-msgstr ""
+msgstr "您可以使用 [迁移](../databases/db-migrations.md) 通过 `\\Yiisoft\\Rbac\\ManagerInterface` 提供的 API 初始化和更改层次结构。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:"
-msgstr ""
+msgstr "使用 `APP_ENV=dev ./yii migrate:create init_rbac` 创建新迁移，然后实现创建层次结构："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -571,33 +579,35 @@ msgid ""
 "> If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,\n"
 "  create either UI or console command to manage assignments.\n"
 msgstr ""
+"> 如果您不想硬编码哪些用户具有某些角色，请不要在迁移中放入 `->assign()` 调用。相反，\n"
+"  创建 UI 或控制台命令来管理分配。\n"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "You could apply migration by using `APP_ENV=dev ./yii migrate:up`."
-msgstr ""
+msgstr "您可以使用 `APP_ENV=dev ./yii migrate:up` 应用迁移。"
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Assigning roles to users"
-msgstr ""
+msgstr "将角色分配给用户"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "TODO: update when signup implemented in demo / template.\n"
-msgstr ""
+msgstr "TODO：在演示/模板中实现注册时更新。\n"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "The author can create a post, admin can update the post and do everything the author can."
-msgstr ""
+msgstr "作者可以创建文章，管理员可以更新文章并执行作者可以执行的所有操作。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "If your application allows user signup, you need to assign roles to these new users at once.  For example, in order for all signed-up users to become authors in your advanced project template, you need to change `frontend\\models\\SignupForm::signup()` as follows:"
-msgstr ""
+msgstr "如果您的应用程序允许用户注册，您需要立即将角色分配给这些新用户。例如，为了让所有注册用户在您的高级项目模板中成为作者，您需要按如下方式更改 `frontend\\models\\SignupForm::signup()`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -629,18 +639,18 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "For applications that require complex access control with dynamically updated authorization data (such as an admin panel), you many need to develop special user interfaces using APIs offered by `Yiisoft\\Rbac\\Manager`."
-msgstr ""
+msgstr "对于需要复杂访问控制和动态更新授权数据的应用程序（例如管理面板），您可能需要使用 `Yiisoft\\Rbac\\Manager` 提供的 API 开发特殊的用户界面。"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Using rules <span id=\"using-rules\"></span>"
-msgstr ""
+msgstr "使用规则 <span id=\"using-rules\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "As aforementioned, rules add extra constraint to roles and permissions.  A rule is a class extending from `\\Yiisoft\\Rbac\\Rule`.  It must implement the `execute()` method.  In the hierarchy you've created before, the author can't edit his own post.  Let's fix it. First, you need a rule to verify that the user is the post author:"
-msgstr ""
+msgstr "如前所述，规则为角色和权限添加了额外的约束。规则是从 `\\Yiisoft\\Rbac\\Rule` 扩展的类。它必须实现 `execute()` 方法。在您之前创建的层次结构中，作者无法编辑自己的文章。让我们修复它。首先，您需要一个规则来验证用户是文章作者："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -668,7 +678,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "The rule checks if user created the `post`. Create a special permission `updateOwnPost` in the command you've used before:"
-msgstr ""
+msgstr "该规则检查用户是否创建了 `post`。在您之前使用的命令中创建一个特殊权限 `updateOwnPost`："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -696,23 +706,23 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Now you've got the following hierarchy:"
-msgstr ""
+msgstr "现在您得到了以下层次结构："
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg \"RBAC hierarchy with a rule\")"
-msgstr ""
+msgstr "![带有规则的 RBAC 层次结构](/images/guide/security/rbac-hierarchy-2.svg \"带有规则的 RBAC 层次结构\")"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Access check <span id=\"access-check\"></span>"
-msgstr ""
+msgstr "访问检查 <span id=\"access-check\"></span>"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "The check is done similarly to how it was done in the first section of this guide:"
-msgstr ""
+msgstr "检查的方式与本指南第一部分中的方式类似："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -757,22 +767,22 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "The difference is that now checking for a user's own post is part of the RBAC."
-msgstr ""
+msgstr "不同之处在于，现在检查用户自己的文章是 RBAC 的一部分。"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "If the current user is Jane with `ID=1` you are starting at `createPost` and trying to get to `Jane`:"
-msgstr ""
+msgstr "如果当前用户是 Jane，`ID=1`，您从 `createPost` 开始并尝试到达 `Jane`："
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "![Access check](/images/guide/security/rbac-access-check-1.svg \"Access check\")"
-msgstr ""
+msgstr "![访问检查](/images/guide/security/rbac-access-check-1.svg \"访问检查\")"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "To check if a user can update a post, you need to pass an extra parameter that's required by `AuthorRule` described before:"
-msgstr ""
+msgstr "要检查用户是否可以更新文章，您需要传递之前描述的 `AuthorRule` 所需的额外参数："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md
@@ -786,12 +796,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "Here is what happens if the current user is John:"
-msgstr ""
+msgstr "如果当前用户是 John，会发生以下情况："
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "![Access check](/images/guide/security/rbac-access-check-2.svg \"Access check\")"
-msgstr ""
+msgstr "![访问检查](/images/guide/security/rbac-access-check-2.svg \"访问检查\")"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -802,27 +812,31 @@ msgid ""
 "`['post' => $post]`.\n"
 "If everything is fine, you will get to `author` assigned to John.\n"
 msgstr ""
+"您从 `updatePost` 开始并通过 `updateOwnPost`。要通过访问检查，`AuthorRule`\n"
+"应该从其 `execute()` 方法返回 `true`。该方法从 `can()` 方法调用接收其 `$params`，因此值为\n"
+"`['post' => $post]`。\n"
+"如果一切正常，您将到达分配给 John 的 `author`。\n"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "In the case of Jane, it's a bit simpler since she is an admin:"
-msgstr ""
+msgstr "在 Jane 的情况下，这更简单，因为她是管理员："
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "![Access check](/images/guide/security/rbac-access-check-3.svg \"Access check\")"
-msgstr ""
+msgstr "![访问检查](/images/guide/security/rbac-access-check-3.svg \"访问检查\")"
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "Implementing your own access checker"
-msgstr ""
+msgstr "实现您自己的访问检查器"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
 msgid "If RBAC doesn't suit your needs, you can implement your own access checker without changing the application code:"
-msgstr ""
+msgstr "如果 RBAC 不适合您的需求，您可以在不更改应用程序代码的情况下实现自己的访问检查器："
 
 #. type: Fenced code block (php)
 #: ../src/guide/security/authorization.md

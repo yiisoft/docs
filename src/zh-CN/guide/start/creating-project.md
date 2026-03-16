@@ -1,25 +1,21 @@
-# Creating a project
+# 创建项目
 
-In this guide we'll provide commands for both
-[Docker](https://docs.docker.com/get-started/get-docker/) and the built-in
-dev server with everything installed locally.
+在本指南中，我们将提供 [Docker](https://docs.docker.com/get-started/get-docker/)
+和本地安装所有内容的内置开发服务器的命令。
 
 > [!NOTE]
-> If you want to use another web server,
-> see ["Configuring web servers"](../../cookbook/configuring-webservers/general.md).
+> 如果你想使用其他 Web 服务器，
+> 请参阅 ["配置 Web 服务器"](../../cookbook/configuring-webservers/general.md)。
 
-We recommend starting with a project template that's a minimal working Yii
-project implementing some basic features.  It can serve as a good starting
-point for your projects.
+我们建议从项目模板开始，这是一个实现了一些基本功能的最小可工作的 Yii 项目。它可以作为你项目的良好起点。
 
-You can create a new project from a template using the
-[Composer](https://getcomposer.org) package manager:
+你可以使用 [Composer](https://getcomposer.org) 包管理器从模板创建一个新项目：
 
 ```sh
 composer create-project yiisoft/app your_project
 ```
 
-Docker users can run the following commands:
+Docker 用户可以运行以下命令：
 
 ```sh
 docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
@@ -28,7 +24,7 @@ cd your_project
 make composer update
 ```
 
-If you want development version instead of release one:
+如果你想要开发版本而不是发布版本：
  
 ```sh
 git clone https://github.com/yiisoft/app.git --depth 1 your_project && \
@@ -37,44 +33,42 @@ rm -rf .git && \
 make composer update
 ```
 
-This installs the latest stable version of the Yii project template in a
-directory named `your_project`.  You can choose a different directory name
-if you want.
+这将在名为 `your_project` 的目录中安装最新稳定版本的 Yii 项目模板。如果你愿意，可以选择不同的目录名称。
 
 > [!TIP]
-> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.
-> Don't use the development version of Yii for production because it may break your running code.
+> 如果你想安装最新的 Yii 开发版本，可以在命令中添加 `--stability=dev`。
+> 不要在生产环境中使用 Yii 的开发版本，因为它可能会破坏你正在运行的代码。
 
-Go into the newly created directory and run:
+进入新创建的目录并运行：
 
 ```sh
 APP_ENV=dev ./yii serve --port=80
 ```
 
-For Windows Command Prompt users, run:
+对于 Windows 命令提示符用户，运行：
 
 ```cmd
 set APP_ENV=dev
 yii serve --port=80
 ```
 
-For Windows PowerShell users, run:
+对于 Windows PowerShell 用户，运行：
 
 ```powershell
 $env:APP_ENV = "dev"
 .\yii serve --port=80
 ```
 
-For Docker users, run:
+对于 Docker 用户，运行：
 
 ```sh
 make up
 ```
 
-Open your browser to the URL `http://localhost/`.
+在浏览器中打开 URL `http://localhost/`。
 
 > [!NOTE]
-> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,
-> `DEV_PORT` in the `docker/.env` file.
+> HTTP 服务器监听 80 端口。如果该端口已被占用，请通过 `--port` 指定端口，或者在 Docker 的情况下，
+> 在 `docker/.env` 文件中设置 `DEV_PORT`。
 
-![Successful Installation of Yii](/images/guide/start/app-installed.png)
+![成功安装 Yii](/images/guide/start/app-installed.png)

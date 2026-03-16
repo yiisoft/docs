@@ -1,24 +1,19 @@
-# Template engines
+# 模板引擎
 
-Yii3 supports multiple template engines through a flexible renderer
-system. By default, PHP is used as the template engine, but you can easily
-add support for other engines like Twig and
-[Blade](https://github.com/lee-to/yii-blade), or create your own custom
-renderers.
+Yii3 通过灵活的渲染器系统支持多种模板引擎。默认情况下，PHP 用作模板引擎，但您可以轻松添加对其他引擎（如 Twig 和
+[Blade](https://github.com/lee-to/yii-blade)）的支持，或创建自己的自定义渲染器。
 
-PHP templates were described in the "[View](view.md)" guide section.
+PHP 模板在“[视图](view.md)”指南部分中有描述。
 
-## Twig Template Engine
+## Twig 模板引擎
 
-Twig is a modern template engine that provides a more designer-friendly
-syntax. To use Twig in your Yii3 application, you need to install the Twig
-extension.
+Twig 是一种现代模板引擎，提供更适合设计师的语法。要在您的 Yii3 应用程序中使用 Twig，您需要安装 Twig 扩展。
 
 ```bash
 composer require yiisoft/view-twig
 ```
 
-Now you can use `.twig` templates. For example, `views/site/about.twig`:
+现在您可以使用 `.twig` 模板。例如，`views/site/about.twig`：
 
 ```twig
 {# Variable type hints for IDE support #}
@@ -46,9 +41,9 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 </div>
 ```
 
-### Twig Features
+### Twig 特性
 
-**Automatic Escaping**: Twig automatically escapes variables for HTML context:
+**自动转义**：Twig 自动转义 HTML 上下文中的变量：
 
 ```twig
 {# Automatically escaped #}
@@ -58,7 +53,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 <div>{{ content|raw }}</div>
 ```
 
-**Filters and Functions**: Twig provides many built-in filters and functions:
+**过滤器和函数**：Twig 提供了许多内置过滤器和函数：
 
 ```twig
 {# Date formatting #}
@@ -71,7 +66,7 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 <a href="{{ path('user.profile', {'id': user.id}) }}">Profile</a>
 ```
 
-**Template Inheritance**: Twig supports template inheritance:
+**模板继承**：Twig 支持模板继承：
 
 **views/layout/main.twig**
 ```twig
@@ -100,9 +95,9 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {% endblock %}
 ```
 
-### Rendering Twig Templates
+### 渲染 Twig 模板
 
-Use Twig templates the same way as PHP templates:
+以与 PHP 模板相同的方式使用 Twig 模板：
 
 ```php
 // In your controller
@@ -115,10 +110,9 @@ public function about(): ResponseInterface
 }
 ```
 
-## Custom Template Engines
+## 自定义模板引擎
 
-You can create custom template engines by implementing the
-`TemplateRendererInterface`:
+您可以通过实现 `TemplateRendererInterface` 来创建自定义模板引擎：
 
 ```php
 <?php
@@ -149,7 +143,7 @@ final class MarkdownRenderer implements TemplateRendererInterface
 }
 ```
 
-Register your custom renderer:
+注册您的自定义渲染器：
 
 ```php
 use Yiisoft\Container\Reference;
@@ -162,7 +156,7 @@ use Yiisoft\Container\Reference;
 ],
 ```
 
-Now you can use `.md` template files:
+现在您可以使用 `.md` 模板文件：
 
 **views/content/help.md**
 ```markdown
@@ -177,31 +171,30 @@ This is a Markdown template with **bold** and *italic* text.
 - Feature 3
 ```
 
-## Choosing the Right Template Engine
+## 选择合适的模板引擎
 
-**Use PHP templates when:**
-- You need maximum flexibility and performance
-- Your team is comfortable with PHP
-- You want to leverage existing PHP knowledge
-- You need complex logic in templates (though this should be minimized)
+**在以下情况下使用 PHP 模板：**
+- 您需要最大的灵活性和性能
+- 您的团队熟悉 PHP
+- 您希望利用现有的 PHP 知识
+- 您需要在模板中使用复杂逻辑（尽管应尽量减少）
 
-**Use Twig templates when:**
-- You want stricter separation between logic and presentation
-- You work with designers who prefer cleaner syntax
-- You need automatic escaping and security features
-- You want template inheritance and advanced features
+**在以下情况下使用 Twig 模板：**
+- 您希望逻辑与表示之间有更严格的分离
+- 您与喜欢更简洁语法的设计师合作
+- 您需要自动转义和安全功能
+- 您需要模板继承和高级功能
 
-**Use custom templates when:**
-- You have specific requirements not met by PHP or Twig
-- You're working with specialized content formats
-- You need integration with external template systems
+**在以下情况下使用自定义模板：**
+- 您有 PHP 或 Twig 无法满足的特定要求
+- 您正在处理专业的内容格式
+- 您需要与外部模板系统集成
 
-## Best Practices
+## 最佳实践
 
-1. **Keep templates simple**: Move complex logic to controllers or services
-2. **Always escape output**: Prevent XSS attacks by properly escaping
-   variables
-3. **Use meaningful names**: Name your templates and variables clearly
-4. **Organize templates**: Group related templates in subdirectories
-5. **Document variables**: Always add type hints for better IDE support
-6. **Avoid business logic**: Keep business logic in models and services
+1. **保持模板简单**：将复杂逻辑移至控制器或服务
+2. **始终转义输出**：通过正确转义变量来防止 XSS 攻击
+3. **使用有意义的名称**：清晰地命名模板和变量
+4. **组织模板**：将相关模板分组到子目录中
+5. **记录变量**：始终添加类型提示以获得更好的 IDE 支持
+6. **避免业务逻辑**：将业务逻辑保留在模型和服务中
