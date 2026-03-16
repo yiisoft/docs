@@ -306,15 +306,9 @@ final class JqueryAsset extends AssetBundle
 {
     public string $basePath = '@assets';
     public string $baseUrl = '@assetsUrl';
-    
+
     public array $js = [
         'js/jquery-3.6.0.min.js',
-    ];
-    
-    // Or use CDN
-    public array $jsOptions = [
-        'integrity' => 'sha256-...',
-        'crossorigin' => 'anonymous',
     ];
 }
 ```
@@ -351,7 +345,9 @@ final class BootstrapAsset extends AssetBundle
 
 ### CDN Assets
 
-For CDN-hosted assets, you can specify full URLs:
+For CDN-hosted assets, set `$cdn` to `true` and use full URLs for your asset files. Setting `$cdn = true`
+tells the asset manager that the assets are served from an external CDN, so it skips local file publishing
+and path resolution. The `$basePath` and `$baseUrl` properties aren't needed in this case.
 
 ```php
 <?php
@@ -362,16 +358,23 @@ namespace App\Asset;
 
 use Yiisoft\Assets\AssetBundle;
 
-final class CdnAsset extends AssetBundle
+final class BootstrapCdnAsset extends AssetBundle
 {
+    public bool $cdn = true;
+
     public array $css = [
         'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
     ];
-    
+
+    public array $cssOptions = [
+        'integrity' => 'sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3',
+        'crossorigin' => 'anonymous',
+    ];
+
     public array $js = [
         'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
     ];
-    
+
     public array $jsOptions = [
         'integrity' => 'sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p',
         'crossorigin' => 'anonymous',
