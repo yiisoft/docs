@@ -25,7 +25,7 @@ msgstr "事件"
 #. type: Plain text
 #: ../src/guide/concept/events.md
 msgid "Events allow you to make custom code executed at certain execution points without modifying existing code.  You can attach a custom code called \"handler\" to an event so that when the event is triggered, the handler gets executed automatically."
-msgstr "事件允许您在特定执行点执行自定义代码，而无需修改现有代码。您可以将称为"处理器"的自定义代码附加到事件，以便在触发事件时，处理器会自动执行。"
+msgstr "事件允许您在特定执行点执行自定义代码，而无需修改现有代码。您可以将称为“处理器”的自定义代码附加到事件，以便在触发事件时，处理器会自动执行。"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md

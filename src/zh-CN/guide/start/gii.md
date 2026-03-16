@@ -1,4 +1,4 @@
-# Generating code with Gii
+# 使用 Gii 生成代码
 
 > [!NOTE]
-> Gii is under development and will be available later.
+> Gii 正在开发中，稍后将可使用。

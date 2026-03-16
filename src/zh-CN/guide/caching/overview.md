@@ -1,21 +1,13 @@
-# Caching
+# 缓存
 
-Caching is an inexpensive and effective way to improve the performance of an
-application.  By storing relatively static data in cache and serving it from
-cache when requested, the application saves the time that it otherwise would
-require to generate the data from scratch every time.
+缓存是提高应用程序性能的一种廉价而有效的方法。通过将相对静态的数据存储在缓存中，并在请求时从缓存中提供数据，应用程序节省了每次从头生成数据所需的时间。
 
-Caching can occur at different levels and places in an application. On the
-server-side, at the lower level, cache may be used to store basic data, such
-as a list of most recent article information fetched from the database; and
-at the higher level, cache may be used to store fragments or whole of Web
-pages, such as the rendering result of the most recent articles. On the
-client-side, you may use HTTP caching to keep most recently visited page
-content in the browser cache.
+缓存可以在应用程序的不同级别和位置发生。在服务器端，在较低级别，缓存可用于存储基本数据，例如从数据库获取的最新文章信息列表；在较高级别，缓存可用于存储
+Web 页面的片段或整体，例如最新文章的渲染结果。在客户端，您可以使用 HTTP 缓存将最近访问的页面内容保存在浏览器缓存中。
 
-Yii supports all these caching mechanisms:
+Yii 支持所有这些缓存机制：
 
-* [Data caching](data.md)
-* [Fragment caching](fragment.md)
-* [Page caching](page.md)
-* [HTTP caching](http.md)
+* [数据缓存](data.md)
+* [片段缓存](fragment.md)
+* [页面缓存](page.md)
+* [HTTP 缓存](http.md)

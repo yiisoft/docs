@@ -323,7 +323,7 @@ msgstr "[缓存雪崩](https://en.wikipedia.org/wiki/Cache_stampede)是一种级
 #. type: Plain text
 #: ../../guide/en/caching/data.md
 msgid "The `\\Yiisoft\\Cache\\Cache` uses a built-in \"Probably early expiration\" algorithm that prevents cache stampede.  This algorithm randomly fakes a cache miss for one user while others are still served the cached value.  You can control its behavior with the fifth optional parameter of `getOrSet()`, which is a float value called `$beta`.  By default, beta is `1.0`, which is usually enough.  The higher the value, the earlier cache will be re-created."
-msgstr "`\\Yiisoft\\Cache\\Cache` 使用内置的"可能提前过期"算法来防止缓存雪崩。该算法随机为一个用户伪造缓存未命中，而其他用户仍然获得缓存值。您可以使用 `getOrSet()` 的第五个可选参数来控制其行为，该参数是一个名为 `$beta` 的浮点值。默认情况下，beta 为 `1.0`，这通常就足够了。值越高，缓存重新创建得越早。"
+msgstr "`\\Yiisoft\\Cache\\Cache` 使用内置的“可能提前过期”算法来防止缓存雪崩。该算法随机为一个用户伪造缓存未命中，而其他用户仍然获得缓存值。您可以使用 `getOrSet()` 的第五个可选参数来控制其行为，该参数是一个名为 `$beta` 的浮点值。默认情况下，beta 为 `1.0`，这通常就足够了。值越高，缓存重新创建得越早。"
 
 #. type: Fenced code block (php)
 #: ../../guide/en/caching/data.md

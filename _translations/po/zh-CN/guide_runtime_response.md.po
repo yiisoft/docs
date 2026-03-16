@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/guide/runtime/request.md ../src/guide/runtime/response.md
 #, no-wrap
 msgid "Headers"
-msgstr "响应头"
+msgstr "头部"
 
 #. type: Title ##
 #: ../src/guide/runtime/request.md ../src/guide/runtime/response.md

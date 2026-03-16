@@ -1,20 +1,13 @@
-# Demo Applications
+# 演示应用程序
 
-There are several demo applications that showcase different architectural
-approaches and framework capabilities.
+以下是几个演示不同架构方式和框架功能的示例应用程序。
 
-**[Demo Blog](https://github.com/yiisoft/demo-blog) — Layered DDD architecture**
+**[Demo Blog](https://github.com/yiisoft/demo-blog) — 分层 DDD 架构**
 
-A blog application demonstrating a layered architecture following
-Domain-Driven Design (DDD) principles.  This demo is a good starting point
-if you want to learn how to structure a Yii3 application with a clear
-separation of concerns between domain, application, and infrastructure
-layers.
+这是一个遵循领域驱动设计（DDD）原则的分层架构博客应用程序。如果您想学习如何在领域层、应用层和基础设施层之间清晰分离关注点来构建 Yii3
+应用程序，此示例是一个很好的起点。
 
-**[Demo Diary](https://github.com/yiisoft/demo-diary) — Vertical slices architecture**
+**[Demo Diary](https://github.com/yiisoft/demo-diary) — 垂直切片架构**
 
-A diary application built using the vertical slices architecture pattern.
-In this approach, each feature is implemented end-to-end rather than being
-split across horizontal layers, making it easier to add or modify features
-independently.
+这是一个采用垂直切片架构模式构建的日记应用程序。在这种方式中，每个功能从头到尾完整实现，而不是按水平层拆分，从而更易于独立添加或修改功能。
 

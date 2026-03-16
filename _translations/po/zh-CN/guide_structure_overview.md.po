@@ -153,7 +153,7 @@ msgstr "一个上下文可以包含子上下文。如果一个类被多个上下
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
-msgstr "一个上下文可以有[一个称为"操作"或"控制器"的入口点](action.md)。它的工作是获取[请求实例](../runtime/request.md)，以适当的格式将其传递给[领域层](domain.md)，并根据领域层的返回创建[响应](../runtime/response.md)。"
+msgstr "一个上下文可以有 [一个称为“动作”或“控制器”的入口点](action.md)。它的工作是获取[请求实例](../runtime/request.md)，以适当的格式将其传递给 [领域层](domain.md)，并根据领域层的返回创建 [响应](../runtime/response.md)。"
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md

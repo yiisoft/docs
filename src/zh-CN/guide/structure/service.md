@@ -1,9 +1,6 @@
-# Service components
+# 服务组件
 
-Application may get complicated, so it makes sense to extract focused parts
-of business logic or infrastructure into service components. They're
-typically injected into other components or action handlers.  It's usually
-done via autowiring:
+应用程序可能会变得复杂，因此将业务逻辑或基础设施的专注部分提取到服务组件中是有意义的。它们通常被注入到其他组件或操作处理器中。这通常通过自动装配来完成：
 
 ```php
 public function actionIndex(CurrentRoute $route, MyService $myService): ResponseInterface
@@ -17,9 +14,7 @@ public function actionIndex(CurrentRoute $route, MyService $myService): Response
 }
 ```
 
-Yii3 doesn't technically imply any limitations on how you build services. In
-general, there's no need to extend from a base class or implement a certain
-interface:
+Yii3 在技术上对如何构建服务没有任何限制。通常，无需从基类继承或实现特定接口：
 
 ```php
 final readonly class MyService
@@ -37,29 +32,21 @@ final readonly class MyService
 }
 ```
 
-Services either perform a task or return data. They're created once, put
-into a DI container and then could be used multiple times. Because of that,
-it's a good idea to keep your services stateless that's both service itself
-and any of its dependencies shouldn't hold state. You can ensure it by using
-`readonly` PHP keyword at class level.
+服务要么执行任务，要么返回数据。它们被创建一次，放入 DI
+容器，然后可以多次使用。因此，保持服务无状态是个好主意，即服务本身及其任何依赖都不应保持状态。您可以通过在类级别使用 PHP 的 `readonly`
+关键字来确保这一点。
 
-## Service dependencies and configuration
+## 服务依赖和配置
 
-Services should always define all their dependencies on other services via
-`__construct()`. It both allows you to use a service right away after it's
-created and serves as an indicator of a service doing too much if there are
-too many dependencies.
+服务应始终通过 `__construct()`
+定义对其他服务的所有依赖。这既允许您在服务创建后立即使用它，也可以在依赖太多时作为服务承担过多职责的提示。
 
-- After the service is created, it shouldn't be re-configured in runtime.
-- DI container instance usually **shouldn't** be injected as a
-  dependency. Prefer concrete interfaces.
-- In case of complicated or "heavy" initialization, try to postpone it until
-  the service method is called.
+- 服务创建后，不应在运行时重新配置。
+- DI 容器实例通常**不应该**作为依赖注入。优先使用具体接口。
+- 如果初始化复杂或“繁重”，请尝试推迟到服务方法被调用时再进行。
 
-The same is valid for configuration values. They should be provided as a
-constructor argument. Related values could be grouped together into value
-objects. For example, database connection usually requires DSN string,
-username and password.  These three could be combined into Dsn class:
+配置值也同样适用。它们应作为构造函数参数提供。相关值可以组合到值对象中。例如，数据库连接通常需要 DSN 字符串、用户名和密码。这三个可以合并到 Dsn
+类中：
 
 ```php
 final readonly class Dsn
@@ -82,10 +69,9 @@ final readonly class Dsn
 }
 ```
 
-## Service methods
+## 服务方法
 
-Service method usually does something. It could be a simple thing repeated
-exactly, but usually it depends on the context. For example:
+服务方法通常执行某些操作。它可能是完全重复的简单事情，但通常取决于上下文。例如：
 
 ```php
 final readonly class PostPersister
@@ -103,17 +89,13 @@ final readonly class PostPersister
 }
 ```
 
-There's a service that is saving posts into permanent storage such as a
-database. An object allowing communication with a concrete storage is always
-the same, so it's injected using constructor while the post saved could
-vary, so it's passed as a method argument.
+有一个将帖子保存到数据库等永久存储的服务。允许与具体存储通信的对象始终相同，因此使用构造函数注入；而要保存的帖子可能不同，因此作为方法参数传递。
 
-## Is everything a service?
+## 一切都是服务吗？
 
-Often it makes sense to choose another class type to place your code
-into. Check:
+通常选择另一种类类型来放置您的代码更合适。请检查：
 
-- Repository
-- Widget
-- [Middleware](middleware.md)
-- Entity
+- 仓库
+- 小部件
+- [中间件](middleware.md)
+- 实体

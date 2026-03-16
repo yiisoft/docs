@@ -235,7 +235,7 @@ msgstr ""
 #: en/runtime/request.md en/runtime/response.md
 #, no-wrap
 msgid "Headers"
-msgstr "请求头"
+msgstr "头部"
 
 #. type: Plain text
 #: en/runtime/request.md

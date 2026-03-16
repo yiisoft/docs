@@ -223,8 +223,7 @@ msgstr "首先，我们需要安装一个包："
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/databases.md
-#, fuzzy, no-wrap
-#| msgid "composer require yiisoft/yii-sentry --prefer-dist\n"
+#, no-wrap
 msgid "make composer require yiisoft/db-pgsql:2.*\n"
 msgstr ""
 
@@ -371,7 +370,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/databases.md
 msgid "While the storage space is a bit bigger than using int, the workflow with such IDs is beneficial. Since you generate the ID yourself so you can define a set of related data and save it in a single transaction.  The entities that define this set of data in the code are often called an \"aggregate\"."
-msgstr "虽然存储空间比使用 int 稍大，但这种 ID 的工作流程很有益处。由于 ID 由您自己生成，因此您可以定义一组相关数据并在单个事务中保存。在代码中定义这组数据的实体通常称为"聚合"。"
+msgstr "虽然存储空间比使用 int 稍大，但这种 ID 的工作流程很有益处。由于 ID 由您自己生成，因此您可以定义一组相关数据并在单个事务中保存。在代码中定义这组数据的实体通常称为“聚合”。"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
@@ -763,7 +762,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/databases.md
 msgid "In this view we have a form that submits a request for page deletion. Handing it with `GET` is common as well, but it is very wrong. Since deletion changes data, it needs to be handled by one of the non-idempotent HTTP methods.  We use POST and a form in our example, but it could be `DELETE` and async request made with JavaScript.  The button could be later styled properly to look similar to the \"Edit\"."
-msgstr "在此视图中，我们有一个提交页面删除请求的表单。用 `GET` 处理也很常见，但这是非常错误的做法。由于删除会更改数据，它需要由非幂等的 HTTP 方法之一来处理。我们的示例中使用了 POST 和表单，但也可以使用 `DELETE` 和 JavaScript 发起的异步请求。该按钮后续可以适当设置样式，使其看起来类似于"编辑"按钮。"
+msgstr "在此视图中，我们有一个提交页面删除请求的表单。用 `GET` 处理也很常见，但这是非常错误的做法。由于删除会更改数据，它需要由非幂等的 HTTP 方法之一来处理。我们的示例中使用了 POST 和表单，但也可以使用 `DELETE` 和 JavaScript 发起的异步请求。该按钮后续可以适当设置样式，使其看起来类似于“编辑”按钮。"
 
 #. type: Title ###
 #: ../src/guide/start/databases.md

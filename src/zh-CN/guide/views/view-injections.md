@@ -1,12 +1,8 @@
-# View injections
+# 视图注入
 
-The view injections are designed to provide a standardized way to pass
-parameters to the common layer of views in an application. It allows
-developers to manage the data that will be available across various views,
-ensuring flexibility and reusability of code.
+视图注入旨在提供一种标准化的方式，将参数传递给应用程序的公共视图层。它允许开发者管理在各个视图中可用的数据，从而确保代码的灵活性和可复用性。
 
-The view injections could be used if you require `yiisoft/yii-view-renderer`
-package:
+使用视图注入需要引入 `yiisoft/yii-view-renderer` 包：
 
 
 ```sh
@@ -15,7 +11,7 @@ composer require yiisoft/yii-view-renderer
 
 ## 配置
 
-In config `params.php`:
+在配置文件 `params.php` 中：
 
 
 ```php
@@ -29,12 +25,10 @@ In config `params.php`:
     ],
 ```
 
-## New injections
+## 新建注入
 
-Start by defining a class that will implement the
-`Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface`. This class
-will be responsible for providing the parameters you want to inject into
-your view templates and layouts.
+首先定义一个实现 `Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface`
+接口的类。该类负责提供您希望注入到视图模板和布局中的参数。
 
 ```php
 class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface
@@ -57,7 +51,7 @@ class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonPar
 }
 ```
 
-Add your new Injection to `params.php`:
+将新建的注入类添加到 `params.php`：
 
 ```php
 'yiisoft/yii-view' => [
@@ -68,14 +62,11 @@ Add your new Injection to `params.php`:
     ],
 ```
 
-## Using Separate Injections for Different Layouts
+## 为不同布局使用独立注入
 
-If your application has multiple layouts, you can create separate parameter
-injections for each layout. This approach allows you to tailor the
-parameters injected into each layout according to its specific needs,
-enhancing the flexibility and maintainability of your application.
+如果您的应用程序有多个布局，可以为每个布局创建独立的参数注入类。这种方式允许您根据每个布局的具体需求定制注入的参数，从而提高应用程序的灵活性和可维护性。
 
-Create your custom ViewInjection for a specific layout:
+为特定布局创建自定义视图注入类：
 
 ```php
 readonly final class CartViewInjection implements CommonParametersInjectionInterface
@@ -93,8 +84,7 @@ readonly final class CartViewInjection implements CommonParametersInjectionInter
 }
 ```
 
-Add your new injection to `params.php` under specific layout name. In the
-following example, it's `@layout/cart`:
+在 `params.php` 中，将新建的注入类添加到指定布局名称下。以下示例中布局名称为 `@layout/cart`：
 
 ```php
 'yiisoft/yii-view' => [

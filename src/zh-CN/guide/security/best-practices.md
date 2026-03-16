@@ -1,29 +1,22 @@
-# Security best practices
+# 安全最佳实践
 
-Below, we'll review common security principles and describe how to avoid
-threats when developing applications using Yii.  Most of these principles
-aren't unique to Yii alone but apply to website or software development in
-general, so you will also find links for further reading on the general
-ideas behind these.
+下面，我们将回顾常见的安全原则，并描述在使用 Yii 开发应用程序时如何避免威胁。这些原则中的大多数并非 Yii
+独有，而是适用于一般的网站或软件开发，因此您还会找到有关这些背后一般思想的进一步阅读链接。
 
 
-## Basic principles
+## 基本原则
 
-There are two main principles when it comes to security no matter which
-application is being developed:
+无论开发哪种应用程序，在安全方面都有两个主要原则：
 
-1. Filter input.
-2. Escape output.
+1. 过滤输入。
+2. 转义输出。
 
 
-### Filter input
+### 过滤输入
 
-Filter input means that you should never consider input safe, and you should
-always check if the value you've got is actually among allowed ones.  For
-example, if you know that you sort by three fields `title`, `created_at` and
-`status` and the field came from user input, it's better to check the value
-you've got right where you're receiving it.  In terms of basic PHP, that
-would look like the following:
+过滤输入意味着您永远不应该认为输入是安全的，您应该始终检查您获得的值是否确实在允许的值之中。例如，如果您知道您按三个字段
+`title`、`created_at` 和 `status` 排序，并且该字段来自用户输入，最好在接收它的地方检查您获得的值。就基本 PHP
+而言，看起来如下：
 
 ```php
 $sortBy = $_GET['sort'];
@@ -32,57 +25,49 @@ if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
 }
 ```
 
-In Yii, most probably you'll use form validation to do similar checks.
+在 Yii 中，您很可能会使用表单验证来进行类似的检查。
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-community/vulnerabilities/Improper_Data_Validation>
 - <https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html>
 
 
-### Escape output
+### 转义输出
 
-Escape output means that, depending on the context where you're using data,
-you should prepend it with special characters to negate its special meaning.
-In context of HTML you should escape `<`, `>` and alike special characters.
-In the context of JavaScript or SQL, it will be a different set of characters.
-Since it's error-prone to escape manually, Yii provides various tools to perform escaping in different contexts.
+转义输出意味着，根据您使用数据的上下文，
+您应该在其前面加上特殊字符以消除其特殊含义。
+在 HTML 上下文中，您应该转义 `<`、`>` 和类似的特殊字符。
+在 JavaScript 或 SQL 的上下文中，它将是一组不同的字符。
+由于手动转义容易出错，Yii 提供了各种工具来在不同上下文中执行转义。
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-community/attacks/Command_Injection>
 - <https://owasp.org/www-community/attacks/Code_Injection>
 - <https://owasp.org/www-community/attacks/xss/>
 
 
-## Avoiding SQL injections
+## 避免 SQL 注入
 
-SQL injection happens when you form a query text by concatenating unescaped
-strings such as the following:
+SQL 注入发生在您通过连接未转义的字符串来形成查询文本时，如下所示：
 
 ```php
 $username = $_GET['username'];
 $sql = "SELECT * FROM user WHERE username = '$username'";
 ```
 
-Instead of supplying correct username attacker could give your applications
-something like `'; DROP TABLE user; --`.  The Resulting SQL will be the
-following:
+攻击者可以给您的应用程序提供类似 `'; DROP TABLE user; --` 的内容，而不是提供正确的用户名。结果 SQL 将如下所示：
 
 ```sql
 SELECT * FROM user WHERE username = ''; DROP TABLE user; --'
 ```
 
-This is a valid query that will search for users with empty username and
-then will drop `user` table most probably resulting in a broken website and
-data loss (you've set up regular backups, right?).
+这是一个有效的查询，它将搜索用户名为空的用户，然后删除 `user` 表，很可能导致网站损坏和数据丢失（您已经设置了定期备份，对吧？）。
 
-Make sure to either use PDO prepared statements directly or ensure that the
-library you prefer is doing it.  In the case of prepared statements, it's
-impossible to manipulate the query as was demonstrated above.
+确保直接使用 PDO 预处理语句，或确保您喜欢的库正在这样做。在预处理语句的情况下，不可能像上面演示的那样操纵查询。
 
-If you use data to specify column names or table names, the best thing to do
-is to allow only a predefined set of values:
+如果您使用数据来指定列名或表名，最好的做法是只允许预定义的值集：
  
 ```php
 function actionList($orderBy = null)
@@ -95,175 +80,149 @@ function actionList($orderBy = null)
 }
 ```
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-community/attacks/SQL_Injection>
 
 
-## Avoiding XSS
+## 避免 XSS
 
-XSS or cross-site scripting happens when output isn't escaped properly when outputting HTML to the browser. For example,
-if user can enter his name and instead of `Alexander` he enters `<script>alert('Hello!');</script>`, every page that
-outputs username without escaping it will execute JavaScript `alert('Hello!');` resulting in alert box popping up
-in a browser. Depending on the website instead of innocent alert, such a script could send messages using your name or even
-perform bank transactions.
+XSS 或跨站脚本攻击发生在向浏览器输出 HTML 时输出未正确转义的情况下。例如，
+如果用户可以输入他的名字，而不是 `Alexander`，他输入 `<script>alert('Hello!');</script>`，每个
+输出用户名而不转义它的页面都将执行 JavaScript `alert('Hello!');`，导致警告框在
+浏览器中弹出。根据网站的不同，这样的脚本可以使用您的名字发送消息，甚至
+执行银行交易，而不是无害的警告。
 
-Avoiding XSS is quite easy in Yii. There are two cases:
+在 Yii 中避免 XSS 非常容易。有两种情况：
 
-1. You want to output data as plain text.
-2. You want to output data as HTML.
+1. 您想将数据输出为纯文本。
+2. 您想将数据输出为 HTML。
 
-If all you need is plain text, then escaping is as easy as the following:
+如果您只需要纯文本，那么转义就像下面这样简单：
 
 
 ```php
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML, you could get some help from
-[HtmlPurifier](http://htmlpurifier.org/).  Note that HtmlPurifier processing
-is quite heavy, so consider adding caching.
+如果它应该是 HTML，您可以从 [HtmlPurifier](http://htmlpurifier.org/)
+获得一些帮助。请注意，HtmlPurifier 处理相当繁重，因此请考虑添加缓存。
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-community/attacks/xss/>
 
 
-## Avoiding CSRF
+## 避免 CSRF
 
-CSRF is an abbreviation for cross-site request forgery. The idea is that
-many applications assume that requests coming from a user browser are made
-by the user themselves. This assumption could be false.
+CSRF 是跨站请求伪造的缩写。其思想是许多应用程序假设来自用户浏览器的请求是由用户自己发出的。这个假设可能是错误的。
 
-For example, the website `an.example.com` has a `/logout` URL that, when accessed using a simple GET request, logs the user out. As long
-as it's requested by the user themselves everything is OK, but one day bad guys are somehow posting
-`<img src="http://an.example.com/logout">` on a forum the user often visits. The browser doesn't make any difference between
-requesting an image or requesting a page so when the user opens a page with such a manipulated `<img>` tag,
-the browser will send the GET request to that URL and the user will be logged out from `an.example.com`.
+例如，网站 `an.example.com` 有一个 `/logout` URL，当使用简单的 GET 请求访问时，会将用户注销。只要
+它是由用户自己请求的，一切都很好，但有一天坏人以某种方式在用户经常访问的论坛上发布
+`<img src="http://an.example.com/logout">`。浏览器在
+请求图像或请求页面之间没有任何区别，因此当用户打开带有这样一个被操纵的 `<img>` 标签的页面时，
+浏览器将向该 URL 发送 GET 请求，用户将从 `an.example.com` 注销。
 
-That's the basic idea of how a CSRF attack works. One can say that logging out a user isn't a serious thing.
-However, this was just an example.
-There are many more things one could do using this approach.
-For example, triggering payments or changing data. Imagine that some website has a URL
-`http://an.example.com/purse/transfer?to=anotherUser&amount=2000`. Accessing it using GET request, causes transfer of $2000
-from an authorized user account to user `anotherUser`.
-You know that the browser will always send a GET request to load an image,
-so you can change the code to accept only POST requests on that URL.
-Unfortunately, this won't save you, because an attacker
-can put some JavaScript code instead of `<img>` tag, which allows sending POST requests to that URL as well.
+这就是 CSRF 攻击工作原理的基本思想。有人可能会说注销用户不是什么严重的事情。
+然而，这只是一个例子。
+使用这种方法可以做更多的事情。
+例如，触发付款或更改数据。想象一下某个网站有一个 URL
+`http://an.example.com/purse/transfer?to=anotherUser&amount=2000`。使用 GET 请求访问它，会导致
+从授权用户帐户向用户 `anotherUser` 转账 $2000。
+您知道浏览器总是会发送 GET 请求来加载图像，
+因此您可以更改代码以仅接受该 URL 上的 POST 请求。
+不幸的是，这不会拯救您，因为攻击者
+可以放置一些 JavaScript 代码而不是 `<img>` 标签，这也允许向该 URL 发送 POST 请求。
 
-For this reason, Yii applies extra mechanisms to protect against CSRF
-attacks.
+因此，Yii 应用额外的机制来防止 CSRF 攻击。
 
-To avoid CSRF, you should always:
+为了避免 CSRF，您应该始终：
 
-1. Follow HTTP specification. GET shouldn't change the application state.
-   See [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) for
-   more details.
-2. Keep Yii CSRF protection enabled.
+1. 遵循 HTTP 规范。GET 不应该改变应用程序状态。有关更多详细信息，请参阅
+   [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。
+2. 保持 Yii CSRF 保护启用。
 
-Yii has CSRF protection as `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
-Make sure it's in your application middleware stack.
+Yii 将 CSRF 保护作为 `Yiisoft\Yii\Web\Middleware\Csrf` 中间件。确保它在您的应用程序中间件堆栈中。
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-community/attacks/csrf>
 - <https://owasp.org/www-community/SameSite>
 
 
-## Avoiding file exposure
+## 避免文件暴露
 
-By default, server webroot is meant to be pointed to `public` directory where `index.php` is. In the case of shared hosting
- environments, it could be impossible to achieve, so you'll end up with all the code, configs and logs in server webroot.
+默认情况下，服务器 webroot 应该指向 `index.php` 所在的 `public` 目录。在共享托管
+环境的情况下，这可能无法实现，因此您最终会将所有代码、配置和日志放在服务器 webroot 中。
 
-If so, remember to deny access to everything except `web`.  If it's
-impossible, consider hosting your application elsewhere.
+如果是这样，请记住拒绝访问除 `web` 之外的所有内容。如果不可能，请考虑在其他地方托管您的应用程序。
 
 
-## Avoiding debug info and tools in production
+## 避免在生产环境中使用调试信息和工具
 
-In debug mode, Yii shows quite verbose errors which are certainly helpful
-for development.  The thing is that these verbose errors are handy for
-attacker as well since these could reveal database structure, configuration
-values and parts of your code.
+在调试模式下，Yii 显示相当详细的错误，这对开发肯定有帮助。问题是这些详细的错误对攻击者也很方便，因为它们可能会泄露数据库结构、配置值和部分代码。
 
-Never run production applications with debugger or Gii accessible to
-everyone.  One could use it to get information about database structure,
-code and to simply rewrite code with what's generated by Gii.
+永远不要在调试器或 Gii 可供所有人访问的情况下运行生产应用程序。有人可以使用它来获取有关数据库结构、代码的信息，并简单地用 Gii
+生成的内容重写代码。
 
-You should avoid the debug toolbar in production unless necessary.  It
-exposes all the application and config details possible.  If you absolutely
-need it, check twice you restrict access to your IP only.
+除非必要，否则应避免在生产环境中使用调试工具栏。它会暴露所有可能的应用程序和配置详细信息。如果您绝对需要它，请仔细检查您是否仅限制对您的 IP 的访问。
 
-Further reading on the topic:
+有关该主题的进一步阅读：
 
 - <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
 - <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
 
 
-## Using secure connection over TLS
+## 通过 TLS 使用安全连接
 
-Yii provides features that rely on cookies and/or PHP sessions. These can be
-vulnerable in case your connection is compromised. The risk is reduced if
-the app uses secure connection via TLS (often referred to as
-[SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)).
+Yii 提供依赖于 cookie 和/或 PHP 会话的功能。如果您的连接受到威胁，这些可能会受到攻击。如果应用程序通过 TLS 使用安全连接（通常称为
+[SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)），则风险会降低。
 
-Nowadays, anyone can get a certificate for free and automatically update it
-thanks to [Let's Encrypt](https://letsencrypt.org/).
+如今，任何人都可以免费获得证书并自动更新它，这要归功于 [Let's Encrypt](https://letsencrypt.org/)。
 
-## Secure server configuration
+## 安全的服务器配置
 
-The purpose of this section is to highlight risks that need to be considered
-when creating a server configuration for serving a Yii-based
-website. Besides the points covered here, there may be other
-security-related configuration options to be considered, so don't consider
-this section to be complete.
+本节的目的是强调在为基于 Yii
+的网站创建服务器配置时需要考虑的风险。除了这里涵盖的要点之外，可能还有其他与安全相关的配置选项需要考虑，因此不要认为本节是完整的。
 
-### Avoiding `Host`-header attacks
+### 避免 `Host` 头攻击
 
-If the webserver is configured to serve the same site independent of the
-value of the `Host` header, this information mayn't be reliable and [may be
-faked by the user sending the HTTP
-request](https://www.acunetix.com/vulnerabilities/web/host-header-attack).
-In such situations, you should fix your webserver configuration to serve the
-site only for specified host names.
+如果 Web 服务器配置为独立于 `Host` 头的值提供相同的站点，则此信息可能不可靠，并且[可能被发送 HTTP
+请求的用户伪造](https://www.acunetix.com/vulnerabilities/web/host-header-attack)。在这种情况下，您应该修复您的
+Web 服务器配置，以仅为指定的主机名提供站点。
 
-For more information about the server configuration, please refer to the
-documentation of your webserver:
+有关服务器配置的更多信息，请参阅您的 Web 服务器的文档：
 
 - Apache 2:
   <https://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
 - Nginx:
   <https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/>
 
-### Configuring SSL peer validation
+### 配置 SSL 对等验证
 
-There is a typical misconception about how to solve SSL certificate
-validation issues such as:
+关于如何解决 SSL 证书验证问题存在一个典型的误解，例如：
 
 ```
 cURL error 60: SSL certificate problem: unable to get local issuer certificate
 ```
 
-or
+或
 
 ```
 stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages: error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed
 ```
 
-Many sources wrongly suggest disabling SSL peer verification.  That
-shouldn't be ever done since it enables man-in-the middle type of attacks.
-Instead, PHP should be configured properly:
+许多来源错误地建议禁用 SSL 对等验证。这永远不应该这样做，因为它会启用中间人类型的攻击。相反，应该正确配置 PHP：
 
-1. Download
-   [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert.pem).
-2. Add the following to your php.ini:
+1. 下载
+   [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert.pem)。
+2. 将以下内容添加到您的 php.ini：
   ```
   openssl.cafile="/path/to/cacert.pem"
   curl.cainfo="/path/to/cacert.pem".
   ```
 
-Note that you should keep the file up to date.
+请注意，您应该保持文件最新。
 
 ## 参考资料
 

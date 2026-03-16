@@ -1,63 +1,47 @@
-# Upgrading from Version 2.0
+# 从 2.0 版本升级
 
-> If you haven't used Yii 2.0, you can skip this section and get directly to "[getting started](../start/prerequisites.md)"
-> section.
+> 如果您未曾使用过 Yii 2.0，可以跳过本节，直接阅读“[入门](../start/prerequisites.md)”
+> 章节。
 
-While sharing some common ideas and values, Yii3 is conceptually different
-from Yii 2.0. There is no easy upgrade path, so first [check maintenance
-policy and end-of-life dates for Yii
-2.0](https://www.yiiframework.com/release-cycle)  and consider starting new
-projects on Yii3 while keeping existing ones on Yii 2.0.
+尽管 Yii3 与 Yii 2.0 有一些共同的理念和价值观，但两者在概念上存在显著差异。升级并无捷径，建议先[查看 Yii 2.0
+的维护策略和生命周期终止日期](https://www.yiiframework.com/release-cycle)，并考虑将新项目迁移到
+Yii3，同时保持现有项目继续使用 Yii 2.0。
 
-## PHP requirements
+## PHP 要求
 
-Yii3 requires PHP 8.2 or above. As a result, there are language features
-used that weren't used in Yii 2.0:
+Yii3 要求 PHP 8.2 或更高版本。因此，它使用了 Yii 2.0 中未使用的语言特性：
 
-- [Type
-  declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
-- [Return type
-  declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
-- [Class constant
-  visibility](https://www.php.net/manual/en/language.oop5.constants.php)
-- [Named
-  arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
-- [Anonymous
-  classes](https://www.php.net/manual/en/language.oop5.anonymous.php)
+- [类型声明](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
+- [返回类型声明](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)
+- [类常量可见性](https://www.php.net/manual/en/language.oop5.constants.php)
+- [命名参数](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
+- [匿名类](https://www.php.net/manual/en/language.oop5.anonymous.php)
 - [::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)
-- [Generators](https://www.php.net/manual/en/language.generators.php)
-- [Variadic
-  functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
-- [Readonly
-  properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)
-- [Readonly
-  classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)
-- [Constructor property
-  promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
-- [Attributes](https://www.php.net/manual/en/language.attributes.php)
+- [生成器](https://www.php.net/manual/en/language.generators.php)
+- [可变参数函数](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)
+- [只读属性](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)
+- [只读类](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)
+- [构造函数属性提升](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
+- [注解](https://www.php.net/manual/en/language.attributes.php)
 
-## Preliminary refactoring
+## 预备重构
 
-It's a good idea to refactor your Yii 2.0 project before porting it to
-Yii3. That would both make porting easier and benefit the project in
-question while it's not moved to Yii3 yet.
+在将 Yii 2.0 项目迁移到 Yii3 之前，先进行重构是个好主意。这既能简化迁移过程，也能在项目尚未切换到 Yii3 时直接受益。
 
-### Use DI instead of the service locator
+### 使用 DI 替代服务定位器
 
-Since Yii3 is forcing you to inject dependencies, it's a good idea to prepare and switch from using
-service locator (`Yii::$app->`) to [DI container](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container).
+由于 Yii3 强制要求注入依赖，建议提前做好准备，将
+服务定位器（`Yii::$app->`）切换为 [DI 容器](https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container)。
 
-If usage of DI container is problematic for whatever reason, consider moving all calls to `Yii::$app->` to controller
-actions and widgets and passing dependencies manually from a controller to what needs them.
+如果因某种原因使用 DI 容器存在困难，可以考虑将所有 `Yii::$app->` 调用迁移到控制器
+动作和小部件中，并从控制器手动将依赖传递给需要它的对象。
 
-See [Dependency injection and container](../concept/di-container.md) for an
-explanation of the idea.
+有关该理念的说明，请参阅[依赖注入与容器](../concept/di-container.md)。
 
-### Introduce repositories for getting data
+### 引入仓储层获取数据
 
-Since Active Record isn't the only way to work with a database in Yii3,
-consider introducing repositories that would hide details of getting data
-and gather them in a single place. You can later redo it:
+由于 Active Record 并非 Yii3
+中操作数据库的唯一方式，建议引入仓储层来隐藏数据获取的实现细节，并将其集中管理。后续可以随时对其进行重构：
 
 ```php
 final readonly class PostRepository
@@ -75,48 +59,38 @@ final readonly class PostRepository
 }
 ```
 
-### Separate domain layer from infrastructure
+### 将领域层与基础设施层分离
 
-In case you have a rich complicated domain, it's a good idea to separate it
-from infrastructure provided by a framework that's all the business logic
-has to go to framework-independent classes.
+如果您的应用拥有复杂的领域逻辑，建议将其与框架提供的基础设施层分离，即所有业务逻辑应放入与框架无关的类中。
 
-### Move more into components
+### 将更多逻辑移入组件
 
-Yii3 services are conceptually similar to Yii 2.0 components, so it's a good
-idea to move reusable parts of your application into components.
+Yii3 的服务在概念上与 Yii 2.0 的组件类似，因此建议将应用程序中可复用的部分移入组件。
 
-## Things to learn
+## 需要学习的内容
 
 ### Docker
 
-Default application templates are using
-[Docker](https://www.docker.com/get-started/) to run application.  It's a
-good idea to learn how to use it and use it for your own projects since it
-provides a lot of benefits:
+默认应用程序模板使用 [Docker](https://www.docker.com/get-started/)
+来运行应用程序。建议学习并在自己的项目中使用 Docker，因为它提供了许多好处：
 
-1. Exactly the same environment as in production.
-2. No need to install anything except Docker itself.
-3. Environment is per application, not per server.
+1. 与生产环境完全相同的运行环境。
+2. 除 Docker 本身外，无需安装任何其他软件。
+3. 环境按应用程序隔离，而非按服务器共享。
 
-### Environment variables
+### 环境变量
 
-Yii3 application templates are using [environment
-variables](https://en.wikipedia.org/wiki/Environment_variable)  to configure
-parts of the application. The concept is [very handy for Dockerized
-applications](https://12factor.net/)  but might be alien to users of Yii 1.1
-and Yii 2.0.
+Yii3 应用程序模板使用 [环境变量](https://en.wikipedia.org/wiki/Environment_variable)
+来配置应用程序的各个部分。这一概念对于[容器化应用程序非常实用](https://12factor.net/)，但对于 Yii 1.1 和 Yii
+2.0 的用户来说可能较为陌生。
 
-### Actions
+### 动作
 
-Unlike Yii 2.0, Yii3 does not require controllers. Instead, it uses
-[actions](../structure/action.md), which are any callables. You can organize
-these into controllers similar to Yii 2, but it's not required.
+与 Yii 2.0 不同，Yii3 不要求使用控制器。它改为使用
+[动作](../structure/action.md)，动作可以是任意可调用对象。您可以像 Yii 2 那样将动作组织到控制器中，但这并非必须。
 
-### Application structure
+### 应用结构
 
-Suggested Yii3 application structure is different from Yii 2.0.  It's
-described in [application structure](../structure/overview.md).
+Yii3 建议的应用程序结构与 Yii 2.0 有所不同，详见 [应用程序结构](../structure/overview.md)。
 
-Despite that, Yii3 is flexible, so it's still possible to use a structure
-similar to Yii 2.0 with Yii3.
+尽管如此，Yii3 具有良好的灵活性，仍然可以在 Yii3 中使用类似 Yii 2.0 的结构。

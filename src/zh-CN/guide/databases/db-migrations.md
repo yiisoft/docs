@@ -1,75 +1,54 @@
-# Migrations
+# 数据库迁移
 
-During the course of developing and maintaining a database-driven
-application, the structure of the database being used evolves just like the
-source code does. For example, during the development of an application, a
-new table may be found necessary; after the application is deployed to
-production, it may be discovered that an index should be created to improve
-the query performance; and so on. Because a database structure change often
-requires some source code changes, Yii supports the so-called *database
-migration* feature that allows you to keep track of database changes in
-terms of *database migrations* which are version-controlled together with
-the source code.
+在开发和维护数据库驱动的应用程序过程中，所使用的数据库结构会像源代码一样不断演变。例如，在应用程序开发过程中，可能发现需要一张新表；在应用程序部署到生产环境后，可能发现应该创建一个索引来提高查询性能；等等。由于数据库结构变更通常需要相应的源代码变更，Yii
+支持所谓的*数据库迁移*功能，允许您以*数据库迁移*的形式追踪数据库变更，这些迁移与源代码一起进行版本控制。
 
-The following steps show how database migration can be used by a team during
-development:
+以下步骤展示了团队在开发过程中如何使用数据库迁移：
 
-1. Tim creates a new migration (e.g. creates a new table, changes a column
-   definition, etc.).
-2. Tim commits the new migration into the source control system (e.g. Git,
-   Mercurial).
-3. Doug updates his repository from the source control system and receives
-   the new migration.
-4. Doug applies the migration to his local development database, thereby
-   synchronizing his database to reflect the changes that Tim has made.
+1. Tim 创建一个新的迁移（例如创建一张新表、修改列定义等）。
+2. Tim 将新的迁移提交到源代码控制系统（例如 Git、Mercurial）。
+3. Doug 从源代码控制系统更新他的仓库，获取新的迁移。
+4. Doug 将迁移应用到他的本地开发数据库，从而将数据库同步以反映 Tim 所做的更改。
 
-And the following steps show how to deploy a new release with database
-migrations to production:
+以下步骤展示了如何将带有数据库迁移的新版本部署到生产环境：
 
-1. Scott creates a release tag for the project repository that contains some
-   new database migrations.
-2. Scott updates the source code on the production server to the release
-   tag.
-3. Scott applies any accumulated database migrations to the production
-   database.
+1. Scott 为包含一些新数据库迁移的项目仓库创建一个发布标签。
+2. Scott 将生产服务器上的源代码更新到该发布标签。
+3. Scott 将所有累积的数据库迁移应用到生产数据库。
 
-Yii provides a set of migration command line tools that allow you to:
+Yii 提供了一套迁移命令行工具，允许您：
 
-* create new migrations;
-* apply migrations;
-* revert migrations;
-* re-apply migrations;
-* show migration history and status.
+* 创建新迁移；
+* 应用迁移；
+* 回滚迁移；
+* 重新应用迁移；
+* 显示迁移历史和状态。
 
-All these tools are accessible through the command `yii migrate`. In this
-section we will describe in detail how to accomplish various tasks using
-these tools.
+所有这些工具都可以通过命令 `yii migrate` 访问。在本节中，我们将详细描述如何使用这些工具完成各种任务。
 
 > [!TIP]
-> Migrations could affect not only database schema but adjust existing data to fit new schema, create RBAC
-hierarchy or clean up cache.
+> 迁移不仅可以影响数据库模式，还可以调整现有数据以适应新模式、创建 RBAC
+层次结构或清理缓存。
 
 > [!NOTE]
-> When manipulating data using a migration you may find that using your Active Record or entity classes
-> for this might be useful because some of the logic is already implemented there. Keep in mind however, that in contrast
-> to code written in the migrations, whose nature is to stay constant forever, application logic is subject to change.
-> So when using Active Record or entity classes in migration code, changes to the logic in the source code
-> may accidentally break the existing migrations. For this reason migration code should be kept independent of other
-> application logic such.
+> 在使用迁移操作数据时，您可能会发现使用 Active Record 或实体类会很有用，
+> 因为其中已经实现了一些逻辑。但请记住，与迁移中编写的代码（其本质是永久不变的）不同，
+> 应用程序逻辑是会发生变化的。因此，在迁移代码中使用 Active Record 或实体类时，
+> 源代码中逻辑的变更可能会意外破坏现有的迁移。出于这个原因，迁移代码应保持与
+> 其他应用程序逻辑相互独立。
 
-## Initial configuration
+## 初始配置
 
-To use migrations, install
-[yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package:
+要使用迁移，请安装 [yiisoft/db-migration](https://github.com/yiisoft/db-migration/)
+包：
 
 ```shell
 make composer require yiisoft/db-migration
 ```
 
-Create a directory to store migrations `src/Migration` right in the project
-root.
+在项目根目录中创建一个用于存储迁移的目录 `src/Migration`。
 
-Add the following configuration to `config/common/params.php`:
+将以下配置添加到 `config/common/params.php`：
 
 ```php
 'yiisoft/db-migration' => [
@@ -78,28 +57,22 @@ Add the following configuration to `config/common/params.php`:
 ],
 ```
 
-If you want to place migrations elsewhere, you can define the path in
-`newMigrationPath`. If your migrations to be applied are from multiple
-sources, such as external modules, `sourcePaths` could be used to define
-these.
+如果您想将迁移放置在其他位置，可以在 `newMigrationPath` 中定义路径。如果您要应用的迁移来自多个来源（例如外部模块），可以使用
+`sourcePaths` 来定义这些来源。
 
-You need a database connection configured as well. See [Working with
-databases](../start/databases.md) for an example of configuring it for
-PostgreSQL.
+您还需要配置数据库连接。有关为 PostgreSQL 配置的示例，请参阅 [使用数据库](../start/databases.md)。
 
-## Creating a migration
+## 创建迁移
 
-To create a new empty migration, run the following command:
+要创建一个新的空迁移，请运行以下命令：
 
 ```sh
 make shell
 ./yii migrate:create <name>
 ```
 
-The required `name` argument gives a brief description about the new
-migration. For example, if the migration is about creating a new table named
-*news*, you may use the name `create_news_table` and run the following
-command:
+必填的 `name` 参数对新迁移进行简短描述。例如，如果迁移是关于创建一张名为 *news* 的新表，您可以使用名称
+`create_news_table` 并运行以下命令：
 
 ```
 make shell
@@ -108,13 +81,11 @@ make shell
 
 
 > [!NOTE]
-> Because the `name` argument will be used as part of the generated migration class name,
-> it should only contain letters, digits, and/or underscore characters.
+> 由于 `name` 参数将用作生成的迁移类名的一部分，
+> 因此它应该只包含字母、数字和/或下划线字符。
 
-The above command will create a new PHP class file named
-`src/Migration/M251225221906CreateNewsTable.php`.  The file contains the
-following code which mainly declares a migration class with the skeleton
-code:
+上述命令将创建一个名为 `src/Migration/M251225221906CreateNewsTable.php` 的新 PHP
+类文件。该文件包含以下代码，主要声明了一个带有骨架代码的迁移类：
 
 ```php
 <?php
@@ -140,13 +111,9 @@ final class M251225221906CreateNewsTable implements RevertibleMigrationInterface
 }
 ```
 
-In the migration class, you are expected to write code in the `up()` method
-that makes changes to the database structure.  You may also want to write
-code in the `down()` method to revert the changes made by `up()`. The `up()`
-method is invoked when you upgrade the database with this migration, while
-the `down()` method is invoked when you downgrade the database.  The
-following code shows how you may implement the migration class to create a
-`news` table:
+在迁移类中，您需要在 `up()` 方法中编写对数据库结构进行更改的代码。您也可以在 `down()` 方法中编写代码来回滚 `up()`
+所做的更改。当您使用此迁移升级数据库时，将调用 `up()` 方法；当您降级数据库时，将调用 `down()`
+方法。以下代码展示了如何实现迁移类来创建一张 `news` 表：
 
 ```php
 <?php
@@ -178,46 +145,41 @@ final class M251225221906CreateNewsTable implements RevertibleMigrationInterface
 }
 ```
 
-Migration builder `$b` in the above manages database schema while the column
-builder `$cb` manages column types. Both allow using *abstract types*. When
-a migration is applied to a particular database, the abstract types will be
-translated into the corresponding database physical types and corresponding
-SQL to define them.
+上面的迁移构建器 `$b` 管理数据库模式，而列构建器 `$cb`
+管理列类型。两者都支持使用*抽象类型*。当迁移应用到特定数据库时，抽象类型将被转换为相应的数据库物理类型和相应的 SQL 定义语句。
 
-Methods available in migration builder belong to the following types:
+迁移构建器中可用的方法属于以下类型：
 
-- Raw queries
-  - getDb — to get database connection instance.
-  - execute — to execute raw SQL query.
-- Data
+- 原始查询
+  - getDb — 获取数据库连接实例。
+  - execute — 执行原始 SQL 查询。
+- 数据
   - insert / update / delete
   - batchInsert
   - upsert
-- Tables and views
+- 表和视图
   - createTable / renameTable / dropTable
   - truncateTable
   - addCommentOnTable / dropCommentFromTable
   - createView / dropView
-- Columns
+- 列
   - addColumn / renameColumn / alterColumn / dropColumn
   - addCommentOnColumn / dropCommentFromColumn
-- Keys and indexes
+- 键和索引
   - addPrimaryKey / dropPrimaryKey
   - addForeignKey / dropForeignKey
   - createIndex / dropIndex
 
-Additionally, there's a `columnBuilder()` which is used to obtain a column
-builder as in example above. The builder has static methods that define
-various column types:
+此外，还有一个 `columnBuilder()`，用于获取如上例所示的列构建器。该构建器具有定义各种列类型的静态方法：
 
-- Keys
+- 主键
     - primaryKey
     - smallPrimaryKey
     - bigPrimaryKey
     - uuidPrimaryKey
-- Boolean
+- 布尔值
   - boolean
-- Numbers
+- 数字
   - bit
   - tinyint
   - smallint
@@ -230,14 +192,14 @@ various column types:
   - char
   - string
   - text
-- Date and time
+- 日期和时间
   - timestamp
   - datetime
   - datetimeWithTimezone
   - time
   - timeWithTimezone
   - date
-- Special types
+- 特殊类型
   - money
   - binary
   - uuid
@@ -246,8 +208,7 @@ various column types:
   - json
 - enum
 
-All the above methods create a base type which could be adjusted with
-additional methods:
+以上所有方法都会创建一个基础类型，可通过以下附加方法进行调整：
 
 - null / notNull
 - defaultValue
@@ -260,42 +221,33 @@ additional methods:
 - extra
 - reference
 
-### Irreversible migrations
+### 不可逆迁移
 
-Not all migrations are reversible. For example, if the `up()` method deletes
-a row of a table, you may not be able to recover this row in the `down()`
-method. Sometimes, you may be just too lazy to implement the `down()`,
-because it is not very common to revert database migrations. In this case,
-you should implement `Yiisoft\Db\Migration\MigrationInterface` that has
-`up()` only.
+并非所有迁移都是可逆的。例如，如果 `up()` 方法删除了一行数据，您可能无法在 `down()` 方法中恢复该行。有时，您可能懒得实现
+`down()`，因为回滚数据库迁移并不常见。在这种情况下，您应该实现只有 `up()` 的
+`Yiisoft\Db\Migration\MigrationInterface`。
 
 
-### Transactional migrations
+### 事务性迁移
 
-While performing complex DB migrations, it is important to ensure each
-migration to either succeed or fail as a whole so that the database can
-maintain integrity and consistency. To achieve this goal, it is recommended
-that you may enclose the DB operations of each migration in a transaction
-automatically by adding `TransactionalMigrationInterface` to `implements` of
-your migration.
+在执行复杂的数据库迁移时，确保每个迁移作为一个整体要么全部成功要么全部失败非常重要，这样数据库才能保持完整性和一致性。为了实现这个目标，建议在迁移的
+`implements` 中添加 `TransactionalMigrationInterface`，从而自动将每个迁移的数据库操作封装在事务中。
 
-As a result, if any operation in the `up()` or `down()` method fails, all
-prior operations will be rolled back automatically.
+因此，如果 `up()` 或 `down()` 方法中的任何操作失败，所有之前的操作将自动回滚。
 
-> Note: Not all DBMS support transactions. And some DB queries cannot be put into a transaction. For some examples,
-please refer to [implicit commit](https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html).
+> 注意：并非所有数据库管理系统都支持事务。而且某些数据库查询无法放入事务中。有关一些示例，
+请参阅 [隐式提交](https://dev.mysql.com/doc/refman/5.7/en/implicit-commit.html)。
 
-## Generating a migration
+## 生成迁移
 
-Instead of writing migrations by hand, the command provides a convenient way
-generate some of the code.
+该命令提供了一种方便的方式来生成部分代码，而不必手动编写迁移。
 
 ```shell
 make shell
 ./yii migrate:create -- my_first_table --command=table --fields=name,example --table-comment=my_first_table
 ```
 
-That would generate the following:
+这将生成以下内容：
 
 ```php
 <?php
@@ -333,51 +285,40 @@ final class M251227095006CreateMyFirstTableTable implements RevertibleMigrationI
 }
 ```
 
-Commands available are:
+可用的命令有：
 
-- create - empty migration.
-- table - creating a table. Use `--fields` specify a list of fields to
-  use. Types could be specified as well such as
+- create — 空迁移。
+- table — 创建一张表。使用 `--fields` 指定字段列表。也可以指定类型，例如
   `id:primaryKey,name:string:defaultValue("Alex"),user_id:integer:foreignKey,category_id2:integer:foreignKey(category
-  id2)`.
-- dropTable - dropping a table.
-- addColumn - adding a column.
-- dropColumn - dropping a column.
-- junction - creating a junction table. Use `--and` specify a second table.
+  id2)`。
+- dropTable — 删除一张表。
+- addColumn — 添加一列。
+- dropColumn — 删除一列。
+- junction — 创建关联表。使用 `--and` 指定第二张表。
 
-## Applying Migrations
+## 应用迁移
 
-To upgrade a database to its latest structure, you should apply all
-available new migrations using the following command:
+要将数据库升级到最新结构，应使用以下命令应用所有可用的新迁移：
 
 ```
 ./yii migrate:up
 ```
 
-This command will list all migrations that have not been applied so far. If
-you confirm that you want to apply these migrations, it will run the `up()`
-method in every new migration class, one after another, in the order of
-their timestamp values. If any of the migrations fails, the command will
-quit without applying the rest of the migrations.
+此命令将列出迄今为止尚未应用的所有迁移。如果您确认要应用这些迁移，它将按时间戳顺序依次运行每个新迁移类的 `up()`
+方法。如果任何迁移失败，该命令将退出，而不会应用其余的迁移。
 
-For each migration that has been successfully applied, the command will
-insert a row into a database table named `migration` to record the
-successful application of the migration. This will allow the migration tool
-to identify which migrations have been applied and which have not.
+对于每个成功应用的迁移，该命令将在名为 `migration`
+的数据库表中插入一行，以记录迁移的成功应用。这将允许迁移工具识别哪些迁移已经应用，哪些还没有。
 
-Sometimes, you may only want to apply one or a few new migrations, instead
-of all available migrations.  You can do so by specifying the number of
-migrations that you want to apply when running the command.  For example,
-the following command will try to apply the next three available migrations:
+有时，您可能只想应用一个或几个新迁移，而不是所有可用的迁移。您可以在运行命令时指定要应用的迁移数量来实现此目的。例如，以下命令将尝试应用接下来的三个可用迁移：
 
 ```
 ./yii migrate:up --limit=3
 ```
 
-## Reverting Migrations <span id="reverting-migrations"></span>
+## 回滚迁移 <span id="reverting-migrations"></span>
 
-To revert (undo) one or multiple migrations that have been applied before,
-you can run the following command:
+要回滚（撤销）之前已应用的一个或多个迁移，可以运行以下命令：
 
 ```
 ./yii migrate:down            # revert the most recently applied migration
@@ -385,14 +326,13 @@ you can run the following command:
 ./yii migrate:down --all      # revert all migrations
 ```
 
-> Note: Not all migrations are reversible. Trying to revert such migrations will cause an error and stop the
-entire reverting process.
+> 注意：并非所有迁移都是可逆的。尝试回滚此类迁移将导致错误并停止
+整个回滚过程。
 
 
-## Redoing Migrations <span id="redoing-migrations"></span>
+## 重做迁移 <span id="redoing-migrations"></span>
 
-Redoing migrations means first reverting the specified migrations and then
-applying again. This can be done as follows:
+重做迁移是指先回滚指定的迁移，然后再重新应用。可以按如下方式操作：
 
 ```
 ./yii migrate:redo            # redo the last applied migration
@@ -400,12 +340,11 @@ applying again. This can be done as follows:
 ./yii migrate:redo --all      # redo all migrations
 ```
 
-> Note: If a migration is not reversible, you will not be able to redo it.
+> 注意：如果迁移不可逆，您将无法重做它。
 
-## Listing Migrations <span id="listing-migrations"></span>
+## 列出迁移 <span id="listing-migrations"></span>
 
-To list which migrations have been applied and which are not, you may use
-the following commands:
+要列出哪些迁移已应用、哪些未应用，可以使用以下命令：
 
 ```
 ./yii migrate/history            # showing the last 10 applied migrations
@@ -417,14 +356,11 @@ the following commands:
 ./yii migrate:new --all          # showing all new migrations
 ```
 
-### Upgrading from Yii 2.0
+### 从 Yii 2.0 升级
 
-Migrations in Yii 2.0 and the
-[yiisoft/db-migration](https://github.com/yiisoft/db-migration/) package are
-not compatible, and the `migration` table is also not compatible.
+Yii 2.0 中的迁移与
+[yiisoft/db-migration](https://github.com/yiisoft/db-migration/)
+包不兼容，`migration` 表也不兼容。
 
-A probable solution is to use structure dumps and rename the old `migration`
-table. Upon the initial execution of migrations, a new `migration` table
-with new fields will be created. All further changes in the database schema
-are applied using the new `migration` component and recorded in the new
-migration table.
+一个可行的解决方案是使用结构转储并重命名旧的 `migration` 表。在初次执行迁移时，将创建一个具有新字段的新 `migration`
+表。此后数据库模式的所有变更都使用新的 `migration` 组件应用，并记录在新的迁移表中。

@@ -1,10 +1,10 @@
-# Dependency injection and container
+# 依赖注入和容器
 
-## Dependency injection <span id="dependency-injection"></span>
+## 依赖注入 <span id="dependency-injection"></span>
 
-There are two ways of re-using things in OOP: inheritance and composition.
+在面向对象编程中，有两种重用代码的方式：继承和组合。
 
-Inheritance is simple:
+继承很简单：
 
 ```php
 class Cache
@@ -28,10 +28,9 @@ final readonly class CachedWidget extends Cache
 }
 ```
 
-The issue here is that these two are becoming unnecessarily coupled or
-inter-dependent, making them more fragile.
+这里的问题是这两者变得不必要地耦合或相互依赖，使它们更加脆弱。
 
-Another way to handle this is composition:
+另一种处理方式是组合：
 
 ```php
 interface CacheInterface
@@ -66,86 +65,60 @@ final readonly class CachedWidget
 }
 ```
 
-We've avoided unnecessary inheritance and used `CacheInterface` in the
-`CacheWidget` to reduce coupling.  You can replace cache implementation
-without changing `CachedWidget` so it's becoming more stable. The less edits
-are made to the code, the less chance of breaking it.
+我们避免了不必要的继承，并在 `CacheWidget` 中使用 `CacheInterface` 来减少耦合。您可以在不更改
+`CachedWidget` 的情况下替换缓存实现，因此它变得更加稳定。对代码的编辑越少，破坏它的机会就越小。
 
-The `CacheInterface` here is a dependency: a contract our object needs to
-function. In other words, our object depends on the contract.
+这里的 `CacheInterface` 是一个依赖：我们的对象需要运行的契约。换句话说，我们的对象依赖于这个契约。
 
-The process of putting an instance of a contract into an object
-(`CachedWidget`) is called dependency injection.  There are many ways to
-perform it:
+将契约的实例放入对象（`CachedWidget`）的过程称为依赖注入。有多种方式可以执行它：
 
-- Constructor injection. Best for mandatory dependencies.
-- Method injection. Best for optional dependencies.
-- Property injection. Better to be avoided in PHP except maybe data transfer
-  objects.
+- 构造函数注入。最适合强制性依赖。
+- 方法注入。最适合可选依赖。
+- 属性注入。在 PHP 中最好避免使用，除非可能是数据传输对象。
 
-### Why use private properties <span id="why-private-properties"></span>
+### 为什么使用私有属性 <span id="why-private-properties"></span>
 
-In the composition example above, note that the `$cache` property is
-declared as `private`.
+在上面的组合示例中，请注意 `$cache` 属性被声明为 `private`。
 
-This approach embraces composition by ensuring objects have well-defined
-interfaces for interaction rather than direct property access, making the
-code more maintainable and less prone to certain types of mistakes.
+这种方法通过确保对象具有明确定义的交互接口而不是直接属性访问来拥抱组合，使代码更易于维护，并且不太容易出现某些类型的错误。
 
-This design choice provides several benefits:
+这种设计选择提供了几个好处：
 
-- **Encapsulation**: Private properties with getters/setters allow you to
-  control access and make future changes without breaking existing code.
-- **Data integrity**: Setters can validate, normalize, or format values
-  before storing them, ensuring properties contain valid data.
-- **Immutability**: Private properties enable immutable object patterns
-  where setter `with*()` methods return new instances rather than modifying
-  the current one.
-- **Flexibility**: You can create read-only or write-only properties or add
-  additional logic to property access later.
+- **封装**：带有 getter/setter 的私有属性允许您控制访问并在不破坏现有代码的情况下进行未来更改。
+- **数据完整性**：Setter 可以在存储值之前验证、规范化或格式化值，确保属性包含有效数据。
+- **不可变性**：私有属性启用不可变对象模式，其中 setter `with*()` 方法返回新实例而不是修改当前实例。
+- **灵活性**：您可以创建只读或只写属性，或稍后向属性访问添加额外的逻辑。
 
 
-## DI container <span id="di-container"></span>
+## DI 容器 <span id="di-container"></span>
 
-Injecting basic dependencies is straightforward. You're choosing a place
-where you don't care about dependencies, which is usually an action handler,
-which you aren't going to unit-test ever, create instances of dependencies
-needed and pass these to dependent classes.
+注入基本依赖很简单。您选择一个不关心依赖的地方，通常是一个操作处理器，您永远不会对其进行单元测试，创建所需依赖的实例并将这些传递给依赖类。
 
-It works well when there are few dependencies overall and when there are no
-nested dependencies. When there are many and each dependency has
-dependencies itself, instantiating the whole hierarchy becomes a tedious
-process, which requires lots of code and may lead to hardly debuggable
-mistakes.
+当总体依赖很少且没有嵌套依赖时，它运行良好。当有很多依赖并且每个依赖本身都有依赖时，实例化整个层次结构变成一个繁琐的过程，需要大量代码，并可能导致难以调试的错误。
 
-Additionally, lots of dependencies, such as certain third-party API
-wrappers, are the same for any class using it.  So it makes sense to:
+此外，许多依赖（例如某些第三方 API 包装器）对于使用它的任何类都是相同的。因此，有必要：
 
-- Define how to instantiate such common dependencies.
-- Instantiate them when required and only once per request.
+- 定义如何实例化这些常见依赖。
+- 在需要时实例化它们，并且每个请求只实例化一次。
 
-That's what dependency containers are for.
+这就是依赖容器的用途。
 
-A dependency injection (DI) container is an object that knows how to
-instantiate and configure objects and all objects they depend on.
+依赖注入（DI）容器是一个知道如何实例化和配置对象以及它们所依赖的所有对象的对象。
 
-Yii provides the DI container feature through the
-[yiisoft/di](https://github.com/yiisoft/di) package and
-[yiisoft/injector](https://github.com/yiisoft/injector) package.
+Yii 通过 [yiisoft/di](https://github.com/yiisoft/di) 包和
+[yiisoft/injector](https://github.com/yiisoft/injector) 包提供 DI 容器功能。
 
 > [!NOTE]
-> The container contains only shared instances. If you need a factory, use the dedicated
-> [yiisoft/factory](https://github.com/yiisoft/factory) package.
+> 容器仅包含共享实例。如果您需要工厂，请使用专用的
+> [yiisoft/factory](https://github.com/yiisoft/factory) 包。
 
 > [!TIP]
-> [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
-> explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
+> [Martin Fowler 的文章](https://martinfowler.com/articles/injection.html) 很好地
+> 解释了为什么 DI 容器有用。这里我们将主要解释 Yii 提供的 DI 容器的使用。
 
-### Configuring container <span id="configuring-container"></span>
+### 配置容器 <span id="configuring-container"></span>
 
-Because to create a new object you need its dependencies, you should
-register them as early as possible.  You can do it in the application
-configuration, `config/web.php`. For the following service:
+因为要创建新对象需要其依赖，所以您应该尽早注册它们。您可以在应用程序配置 `config/web.php` 中执行此操作。对于以下服务：
 
 ```php
 final class MyService implements MyServiceInterface
@@ -161,7 +134,7 @@ final class MyService implements MyServiceInterface
 }
 ```
 
-configuration could be:
+配置可以是：
 
 ```php
 return [
@@ -173,14 +146,14 @@ return [
 ];
 ```
 
-That's equal to the following:
+这等同于以下内容：
 
 ```php
 $myService = new MyService(42);
 $myService->setDiscount(10);
 ```
 
-You can provide arguments with names as well:
+您也可以提供带名称的参数：
 
 ```php
 return [
@@ -192,10 +165,7 @@ return [
 ];
 ```
 
-That's basically it. You define a map of interfaces to classes and define
-how to configure them. When an interface is requested in constructor or
-elsewhere, container creates an instance of a class and configures it as per
-the configuration:
+基本上就是这样。您定义接口到类的映射并定义如何配置它们。当在构造函数或其他地方请求接口时，容器会创建类的实例并根据配置对其进行配置：
 
 ```php
 final class MyAction
@@ -212,11 +182,9 @@ final class MyAction
 }
 ```
 
-There are extra methods of declaring dependency configuration.
+还有其他声明依赖配置的方法。
 
-For simplest cases where there are no custom values needed and all the
-constructor dependencies could be obtained from a container, you can use a
-class name as a value.
+对于不需要自定义值且所有构造函数依赖都可以从容器获取的最简单情况，您可以使用类名作为值。
 
 ```php
 interface EngineInterface
@@ -231,8 +199,7 @@ final class EngineMarkOne implements EngineInterface
 }
 ```
 
-In the above example, if we already have cache defined in the container,
-nothing besides the class name is needed:
+在上面的示例中，如果我们已经在容器中定义了缓存，则除了类名之外不需要任何东西：
 
 ```php
 return [
@@ -241,8 +208,7 @@ return [
 ];
 ```
 
-If you have a dependency that has public properties, you can configure it as
-well.
+如果您有一个具有公共属性的依赖，您也可以配置它。
 
 
 ```php
@@ -252,7 +218,7 @@ final class NameProvider
 }
 ```
 
-Here's how to do it for the example above:
+以下是上面示例的操作方法：
 
 ```php
 NameProvider::class => [
@@ -261,11 +227,9 @@ NameProvider::class => [
 ],
 ```
 
-In this example, you may notice `NameProvider` specified twice. The key is
-what you may request as dependency and the value is how to create it.
+在此示例中，您可能会注意到 `NameProvider` 被指定了两次。键是您可以请求作为依赖的内容，值是如何创建它。
 
-If the configuration is tricky and requires some logic, a closure can be
-used:
+如果配置很复杂并需要一些逻辑，可以使用闭包：
 
 ```php
 MyServiceInterface::class => static function(ContainerInterface $container) {
@@ -273,9 +237,7 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-Additionally, to `ContainerInterface`, you can request any registered
-service directly as a closure parameter.  The injector will automatically
-resolve and inject these:
+此外，除了 `ContainerInterface`，您还可以直接将任何已注册的服务作为闭包参数请求。注入器将自动解析并注入这些：
 
 ```php
 MyServiceInterface::class => static function(ConnectionInterface $db) {
@@ -283,27 +245,24 @@ MyServiceInterface::class => static function(ConnectionInterface $db) {
 },
 ```
 
-It's possible to use a static method call:
+可以使用静态方法调用：
 
 ```php
 MyServiceInterface::class => [MyFactory::class, 'create'],
 ```
 
-Or an instance of an object:
+或对象的实例：
 
 ```php
 MyServiceInterface::class => new MyService(),
 ```
 
-### Injecting dependencies properly <span id="injecting-dependencies"></span>
+### 正确注入依赖 <span id="injecting-dependencies"></span>
 
-Directly referencing a container in a class is a bad idea since the code
-becomes non-generic, coupled to the container interface and, what's worse,
-dependencies are becoming hidden.  Because of that, Yii inverts the control
-by automatically injecting objects from a container in some constructors and
-methods based on method argument types.
+在类中直接引用容器是一个坏主意，因为代码变得不通用，耦合到容器接口，更糟糕的是，依赖变得隐藏。因此，Yii
+通过根据方法参数类型在某些构造函数和方法中自动从容器注入对象来反转控制。
 
-This is primarily done in constructor and handing method of action handlers:
+这主要在操作处理器的构造函数和处理方法中完成：
 
 ```php
 use \Yiisoft\Cache\CacheInterface;
@@ -330,17 +289,11 @@ final readonly class MyController
 }
 ```
 
-Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that
-instantiates and calls action handler, it checks the constructor and method
-argument types, gets dependencies of these types from a container and passes
-them as arguments. That's usually called auto-wiring. It happens for
-sub-dependencies as well, that's if you don't give dependency explicitly,
-the container would check if it has such a dependency first.  It's enough to
-declare a dependency you need, and it would be got from a container
-automatically.
+由于是 [yiisoft/injector](https://github.com/yiisoft/injector)
+实例化并调用操作处理器，它会检查构造函数和方法参数类型，从容器中获取这些类型的依赖并将它们作为参数传递。这通常称为自动装配。它也适用于子依赖，也就是说，如果您没有显式提供依赖，容器会首先检查它是否有这样的依赖。只需声明您需要的依赖，它就会自动从容器中获取。
 
 
-## References <span id="references"></span>
+## 参考资料 <span id="references"></span>
 
-- [Inversion of Control Containers and the Dependency Injection pattern by
-  Martin Fowler](https://martinfowler.com/articles/injection.html)
+- [Martin Fowler
+  的控制反转容器和依赖注入模式](https://martinfowler.com/articles/injection.html)

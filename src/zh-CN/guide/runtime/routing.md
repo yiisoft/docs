@@ -1,23 +1,17 @@
-# Routing and URL generation
+# 路由与 URL 生成
 
-Usually, a Yii application processes certain requests with certain
-handlers.  It selects a handler based on the request URL.  The part of the
-application that does the job is a router, and the process of selecting a
-handler, instantiating it and running a handler method is *routing*.
+通常，Yii 应用程序使用特定的处理器处理特定的请求。它根据请求 URL
+选择处理器。应用程序中负责此工作的部分是路由器，而选择处理器、实例化并调用处理器方法的过程就是*路由*。
 
-The reverse process of routing is *URL generation*, which creates a URL from
-a given named route and the associated query parameters.  When you later
-request the created URL, the routing process can resolve it back into the
-original route and query parameters.
+路由的逆过程是 *URL 生成*，它根据给定的命名路由和相关查询参数创建 URL。当您之后请求所生成的 URL
+时，路由过程可以将其解析回原始路由和查询参数。
 
-Routing and URL generation are separate services, but they use a common set
-of routes for both URL matching and URL generation.
+路由和 URL 生成是独立的服务，但它们共用同一套路由配置来进行 URL 匹配和 URL 生成。
 
-## Configuring routes
+## 配置路由
 
-By configuring routes, you can let your application recognize arbitrary URL
-formats without modifying your existing application code. You can configure
-routes in `/config/routes.php`. The structure of the file is the following:
+通过配置路由，您可以让应用程序识别任意 URL 格式，而无需修改现有应用代码。您可以在 `/config/routes.php`
+中配置路由，文件结构如下：
 
 ```php
 <?php
@@ -34,8 +28,7 @@ return [
 ];
 ```
 
-The file returns an array of routes. When defining a route, you start with a
-method corresponding to a certain HTTP request type:
+该文件返回一个路由数组。定义路由时，您从与某种 HTTP 请求类型对应的方法开始：
 
 - get
 - post
@@ -45,7 +38,7 @@ method corresponding to a certain HTTP request type:
 - head
 - options
 
-If you need many methods, you can use `methods()`:
+如果需要支持多个方法，可以使用 `methods()`：
 
 ```php
 <?php
@@ -63,17 +56,14 @@ return [
 ];
 ```
 
-All these methods accept a route pattern and a handler.  The route pattern
-defines how the router matches the URL when routing and how it generates URL
-based on route name and parameters.  You will learn about the actual syntax
-later in this guide.  You could specify a handler as:
+所有这些方法都接受一个路由模式和一个处理器。路由模式定义了路由器在匹配 URL 时的规则，以及如何根据路由名称和参数生成
+URL。本指南后续将介绍具体语法。处理器可以指定为：
 
-- [Middleware](../structure/middleware.md) class name.
-- Handler action (an array of [HandlerClass, handlerMethod]).
-- A callable.
+- [中间件](../structure/middleware.md) 类名。
+- 处理器操作（`[HandlerClass, handlerMethod]` 数组）。
+- 可调用对象。
 
-In case of a handler action, a class of type `HandlerClass` is instantiated
-and its `handlerMethod` is called:
+当使用处理器操作时，会实例化 `HandlerClass` 类型的类并调用其 `handlerMethod`：
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -88,7 +78,7 @@ final readonly class HandlerClass
 }
 ```
 
-The callable is called as is:
+可调用对象直接被调用：
 
 ```php
 static function (ServerRequestInterface $request, RequestHandlerInterface $next) use ($responseFactory) {
@@ -98,12 +88,10 @@ static function (ServerRequestInterface $request, RequestHandlerInterface $next)
 }
 ```
 
-For handler action and callable typed parameters are automatically injected
-using the dependency injection container passed to the route.
+对于处理器操作和可调用对象，类型化参数会通过传递给路由的依赖注入容器自动注入。
 
-Get current request and handler by type-hinting for `ServerRequestInterface`
-and `RequestHandlerInterface`.  You could add extra handlers to wrap primary
-one with `middleware()` method:
+通过对 `ServerRequestInterface` 和 `RequestHandlerInterface`
+进行类型提示，可以获取当前请求和处理器。您可以使用 `middleware()` 方法添加额外的处理器来包装主处理器：
 
 ```php
 <?php
@@ -121,10 +109,9 @@ return [
 ];
 ```
 
-Check ["the middleware"](../structure/middleware.md) guide to learn more
-about how to implement middleware.
+查阅[“中间件”](../structure/middleware.md)指南，了解更多关于如何实现中间件的内容。
 
-This is especially useful when grouping routes:
+在对路由进行分组时，这尤其有用：
 
 ```php
 <?php
@@ -153,13 +140,11 @@ return [
 ];
 ```
 
-Router executes `ApiDataWrapper` before handling any URL starting with
-`/api`.
+路由器在处理任何以 `/api` 开头的 URL 之前，都会先执行 `ApiDataWrapper`。
 
-You could name a route with a `name()` method. It's a good idea to choose a
-route name based on the handler's name.
+您可以使用 `name()` 方法为路由命名。建议根据处理器的名称来选择路由名称。
 
-You can set a default value for a route parameter. For example:
+您可以为路由参数设置默认值，例如：
 
 
 ```php
@@ -179,29 +164,20 @@ return [
 ];
 ```
 
-This configuration would result in a match with both `/user` and
-`/user/123`.  In both cases `CurrentRoute` service will contain `id`
-argument filled.  In the first case it will be default `42` and in the
-second case it will be `123`.
+此配置将同时匹配 `/user` 和 `/user/123`。两种情况下，`CurrentRoute` 服务都会填充 `id`
+参数。第一种情况使用默认值 `42`，第二种情况使用 `123`。
 
-In cause URL should be valid for a single host, you can specify it with
-`host()`.
+如果 URL 只对特定主机有效，可以使用 `host()` 指定主机。
 
-## Routing <span id="routing"></span>
+## 路由 <span id="routing"></span>
 
-Yii routing is flexible, and internally it may use different routing
-implementations.  The actual matching algorithm may vary, but the basic idea
-stays the same.
+Yii 路由非常灵活，内部可以使用不同的路由实现。实际的匹配算法可能有所不同，但基本思路是一致的。
 
-Router matches routes defined in config from top to bottom.  If there is a
-match, further matching isn't performed and the router executes the route
-handler to get the response.  If there is no match at all, router passes
-handling to the next middleware in the [application middleware
-set](../structure/middleware.md).
+路由器从上到下匹配配置中定义的路由。一旦匹配成功，就不再继续匹配，路由器会执行路由处理器以获取响应。如果完全没有匹配，路由器会将处理传递给[应用中间件集合](../structure/middleware.md)中的下一个中间件。
 
-## Generating URLs <span id="generating-urls"></span>
+## 生成 URL <span id="generating-urls"></span>
 
-To generate URL based on a route, a route should have a name:
+要根据路由生成 URL，路由必须有名称：
 
 ```php
 <?php
@@ -220,7 +196,7 @@ return [
 ```
 
 
-The generation looks like the following:
+生成方式如下：
 
 ```php
 <?php
@@ -247,60 +223,44 @@ final readonly class TestController extends AbstractController
 }
 ```
 
-In the above code, we get a generator instance with the help of [automatic
-dependency injection](../concept/di-container.md)  that works with action
-handlers.  In another service, you can get the instance with similar
-constructor injection.  In views URL generator is available as `$url`.
+在上述代码中，我们借助适用于操作处理器的[自动依赖注入](../concept/di-container.md)获取生成器实例。在其他服务中，可以通过类似的构造函数注入获取实例。在视图中，URL
+生成器以 `$url` 变量的形式提供。
 
-Then we use `generate()` method to get actual URL. It accepts a route name
-and an array of named query parameters.  The code will return
-"/test/submit/42." If you need absolute URL, use `generateAbsolute()`
-instead.
+然后使用 `generate()` 方法获取实际 URL，它接受路由名称和一个命名查询参数数组。上述代码将返回
+"/test/submit/42"。如果需要绝对 URL，请改用 `generateAbsolute()`。
 
-## Route patterns <span id="route-patterns"></span>
+## 路由模式 <span id="route-patterns"></span>
 
-Route patterns used depend on the underlying implementation used.  The
-default implementation is
-[nikic/FastRoute](https://github.com/nikic/FastRoute).
+所使用的路由模式取决于底层实现。默认实现为 [nikic/FastRoute](https://github.com/nikic/FastRoute)。
 
-Basic patterns are static like `/test`. That means they must match exactly
-in order for a route match.
+基本模式是静态的，如 `/test`，这意味着必须完全匹配才能成功路由。
 
-### Named Parameters <span id="named-parameters"></span>
+### 命名参数 <span id="named-parameters"></span>
 
-A pattern can include one or more named parameters which are specified in
-the pattern in the format of `{ParamName:RegExp}`, where `ParamName`
-specifies the parameter name and `RegExp` is an optional regular expression
-used to match parameter values.  If `RegExp` isn't specified, it means the
-parameter value should be a string without any slash.
+模式中可以包含一个或多个命名参数，格式为 `{ParamName:RegExp}`，其中 `ParamName` 指定参数名称，`RegExp`
+是用于匹配参数值的可选正则表达式。如果未指定 `RegExp`，则表示参数值应为不含斜杠的字符串。
 
 > [!NOTE]
-> You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.
+> 您只能在参数内部使用正则表达式，模式的其余部分被视为纯文本。
 
-You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid
-placeholder, because `()` is a capturing group. Instead, you can use either
-`{lang:en|de}` or `{lang:(?:en|de)}`.
+不能使用捕获组。例如 `{lang:(en|de)}` 不是有效的占位符，因为 `()` 是捕获组。应改用 `{lang:en|de}` 或
+`{lang:(?:en|de)}`。
 
-On a route match router fills the associated request attributes with values
-matching the corresponding parts of the URL.  When you use the rule to
-create a URL, it will take the values of the provided parameters and insert
-them at the places where the parameters are declared.
+路由匹配时，路由器会用 URL 中对应部分的值填充相关请求属性。当使用规则生成 URL 时，它会取所提供参数的值并将其插入参数声明的位置。
 
-Let's use some examples to illustrate how named parameters work. Assume
-you've declared the following three patterns:
+让我们通过示例来说明命名参数的工作方式。假设您声明了以下三个模式：
 
 
 1. `'posts/{year:\d{4}}/{category}`
 2. `'posts'`
 3. `'post/{id:\d+}'`
 
-- `/posts` match the second pattern;
-- `/posts/2014/php` match a first pattern. Parameters are the `year` whose
-  value is 2014 and the `category` whose value is `php`;
-- `/post/100` match a third pattern. The `id` parameter value is 100;
-- `/posts/php` doesn't match.
+- `/posts` 匹配第二个模式；
+- `/posts/2014/php` 匹配第一个模式，参数 `year` 的值为 2014，`category` 的值为 `php`；
+- `/post/100` 匹配第三个模式，`id` 参数值为 100；
+- `/posts/php` 不匹配任何模式。
 
-When generating URLs, you should use the following parameters:
+生成 URL 时，应使用以下参数：
 
 ```php
 echo $url->generate('first', ['year' => '2020', 'category' => 'Virology']);
@@ -308,13 +268,11 @@ echo $url->generate('second');
 echo $url->generate('third', ['id' => '42']);
 ```
 
-### Optional parts <span id="optional-parts"></span>
+### 可选部分 <span id="optional-parts"></span>
 
-You should wrap optional pattern parts with `[` and `]`.  For example,
-`/posts[/{id}]` pattern would match both `http://example.com/posts` and
-`http://example.com/posts/42`.  Router would fill `id` argument of
-`CurrentRoute` service in the second case only.  In this case, you could
-specify the default value:
+可选模式部分应用 `[` 和 `]` 包裹。例如，`/posts[/{id}]` 模式可以同时匹配 `http://example.com/posts`
+和 `http://example.com/posts/42`。路由器只在第二种情况下填充 `CurrentRoute` 服务的 `id`
+参数。此时可以指定默认值：
 
 ```php
 use \Yiisoft\Router\Route;
@@ -322,5 +280,4 @@ use \Yiisoft\Router\Route;
 Route::get('/posts[/{id}]')->defaults(['id' => '1']);
 ```
 
-Optional parts are only supported in a trailing position, not in the middle
-of a route.
+可选部分只支持在路由末尾，不支持在路由中间。

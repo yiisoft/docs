@@ -1,18 +1,14 @@
-# Data caching
+# 数据缓存
 
-Data caching is about storing some PHP variables in a cache and retrieving
-them later from the cache.  It's also the foundation for more advanced
-caching features, such as [page caching](page.md).
+数据缓存是将一些 PHP 变量存储在缓存中，然后稍后从缓存中检索它们。它也是更高级缓存功能（如 [页面缓存](page.md)）的基础。
 
-To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache)
-package:
+要使用缓存，请安装 [yiisoft/cache](https://github.com/yiisoft/cache) 包：
 
 ```shell
 composer require yiisoft/cache
 ```
 
-The following code is a typical usage pattern of data caching, where
-`$cache` refers to a `Cache` instance from the package:
+以下代码是数据缓存的典型使用模式，其中 `$cache` 引用包中的 `Cache` 实例：
 
 ```php
 public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
@@ -29,92 +25,65 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
 }
 ```
 
-When cache has data associated with the `$key`, it returns the cached
-value.  Otherwise, it executes the passed anonymous function to calculate
-the value to cache and return.
+当缓存中有与 `$key` 关联的数据时，它返回缓存的值。否则，它执行传递的匿名函数来计算要缓存的值并返回。
 
-If the anonymous function requires some data from the outer scope, you can
-pass it with the `use` statement.
+如果匿名函数需要来自外部作用域的一些数据，您可以使用 `use` 语句传递它。
 
-## Cache handlers
+## 缓存处理器
 
-The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/)
-compatible cache handlers which represent various cache storages, such as
-memory, files, and databases.
+缓存服务使用兼容 [PSR-16](https://www.php-fig.org/psr/psr-16/)
+的缓存处理器，它们代表各种缓存存储，如内存、文件和数据库。
 
-Yii provides the following handlers:
+Yii 提供以下处理器：
 
-- `NullCache` — a cache placeholder which does no real caching. The purpose
-  of this handler is to simplify the code that needs to check the
-  availability of cache. For example, during development or if the server
-  doesn't have actual cache support, you may configure a cache service to
-  use this handler.  When you enable actual cache support, you can switch to
-  using the corresponding cache handler.  In both cases, you may use the
-  same code without extra checks.
-- `ArrayCache` — provides caching for the current request only by storing
-  the values in an array.
-- [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP
-  [APC](https://secure.php.net/manual/en/book.apc.php) extension.  You can
-  consider this option as the fastest one when dealing with cache for a
-  centralized thick application (e.g., one server, no dedicated load
-  balancers, etc.).
-- [Database](https://github.com/yiisoft/cache-db) — uses a database table to
-  store cached data.
-- [File](https://github.com/yiisoft/cache-file) — uses standard files to
-  store cached data. This is particularly suitable to cache large chunks of
-  data, such as page content.
-- [Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP
+- `NullCache` —
+  一个不进行实际缓存的缓存占位符。此处理器的目的是简化需要检查缓存可用性的代码。例如，在开发期间或服务器没有实际缓存支持时，您可以配置缓存服务使用此处理器。当您启用实际缓存支持时，可以切换到使用相应的缓存处理器。在这两种情况下，您都可以使用相同的代码而无需额外检查。
+- `ArrayCache` — 通过将值存储在数组中，仅为当前请求提供缓存。
+- [APCu](https://github.com/yiisoft/cache-apcu) - 使用 PHP
+  [APC](https://secure.php.net/manual/en/book.apc.php)
+  扩展。在处理集中式厚应用程序（例如，单服务器，无专用负载均衡器等）的缓存时，您可以将此选项视为最快的选项。
+- [数据库](https://github.com/yiisoft/cache-db) — 使用数据库表存储缓存数据。
+- [文件](https://github.com/yiisoft/cache-file) —
+  使用标准文件存储缓存数据。这特别适合缓存大块数据，如页面内容。
+- [Memcached](https://github.com/yiisoft/cache-memcached) — 使用 PHP
   [memcached](https://secure.php.net/manual/en/book.memcached.php)
-  extension. You can consider this option as the fastest one when dealing
-  with cache in a distributed application
-  (e.g., with several servers, load balancers, etc.)
-- [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
-  ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
+  扩展。在分布式应用程序中处理缓存时，您可以将此选项视为最快的选项
+  （例如，多个服务器、负载均衡器等）
+- [Wincache](https://github.com/yiisoft/cache-wincache) — 使用 PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
+  （[另见](https://secure.php.net/manual/en/book.wincache.php)）扩展。
 
-[You could find more handlers at
-packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).
+[您可以在 packagist.org
+找到更多处理器](https://packagist.org/providers/psr/simple-cache-implementation)。
 
 > [!TIP]
-> You may use different cache storage in the same application. A common strategy is:
-> - To use memory-based cache storage to store small but constantly used data (e.g., statistics)
-> - To use file-based or database-based cache storage to store big and less often used data (e.g., page content)
+> 您可以在同一应用程序中使用不同的缓存存储。常见策略是：
+> - 使用基于内存的缓存存储来存储小但经常使用的数据（例如，统计信息）
+> - 使用基于文件或数据库的缓存存储来存储大且不常使用的数据（例如，页面内容）
 
-Cache handlers are usually set up in a [dependency injection
-container](../concept/di-container.md) so that they can be globally
-configurable and accessible.
+缓存处理器通常在[依赖注入容器](../concept/di-container.md)中设置，以便它们可以全局配置和访问。
 
-Because all cache handlers support the same set of APIs, you can swap the
-underlying cache handler with a different one. You can do it by
-reconfiguring the application without modifying the code that uses the
-cache.
+由于所有缓存处理器都支持相同的 API 集，您可以将底层缓存处理器替换为不同的处理器。您可以通过重新配置应用程序来实现，而无需修改使用缓存的代码。
 
-### Cache keys
+### 缓存键
 
-A key uniquely identifies each data item stored in the cache. When you store
-a data item, you have to specify a key for it. Later, when you retrieve the
-data item, you should give the corresponding key.
+键唯一标识存储在缓存中的每个数据项。当您存储数据项时，必须为其指定一个键。稍后，当您检索数据项时，应提供相应的键。
 
-You may use a string or an arbitrary value as a cache key. When a key isn't
-a string, it will be automatically serialized into a string.
+您可以使用字符串或任意值作为缓存键。当键不是字符串时，它将自动序列化为字符串。
 
-A common strategy of defining a cache key is to include all determining
-factors in terms of an array.
+定义缓存键的常见策略是将所有决定因素包含在数组中。
 
-When different applications use the same cache storage, you should specify a
-unique cache key prefix for each application to avoid conflicts of cache
-keys.  You can do this by using `\Yiisoft\Cache\PrefixedCache` decorator:
+当不同的应用程序使用相同的缓存存储时，您应该为每个应用程序指定唯一的缓存键前缀以避免缓存键冲突。您可以使用
+`\Yiisoft\Cache\PrefixedCache` 装饰器来实现：
 
 ```php
 $arrayCacheWithPrefix = new \Yiisoft\Cache\PrefixedCache(new \Yiisoft\Cache\ArrayCache(), 'myapp_');
 $cache = new \Yiisoft\Cache\Cache($arrayCacheWithPrefix);
 ```
 
-### Cache expiration
+### 缓存过期
 
-A data item stored in a cache will remain there forever unless it's removed
-because of some caching policy enforcement. For example, caching space is
-full and cache storage removes the oldest data.  To change this behavior,
-you can set a TTL parameter when calling a method to store a data item:
+存储在缓存中的数据项将永久保留在那里，除非由于某些缓存策略强制执行而被删除。例如，缓存空间已满，缓存存储会删除最旧的数据。要更改此行为，您可以在调用方法存储数据项时设置
+TTL 参数：
 
 ```php
 $ttl = 3600;
@@ -123,35 +92,27 @@ return getTopProductsFromDatabase($count);
 }, $ttl);
 ```
 
-The `$ttl` parameter indicates for how many seconds the data item can remain
-valid in the cache. When you retrieve the data item, if it has passed the
-expiration time, the method will execute the function and set the resulting
-value into cache.
+`$ttl` 参数指示数据项在缓存中可以保持有效的秒数。当您检索数据项时，如果已超过过期时间，该方法将执行函数并将结果值设置到缓存中。
 
-You may set the default TTL for the cache:
+您可以为缓存设置默认 TTL：
 
 ```php
 $cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hour
 ```
 
-Additionally, you can invalidate a cache key explicitly:
+此外，您可以显式使缓存键失效：
 
 ```php
 $cache->remove($key);
 ```
 
-### Invalidation dependencies
+### 失效依赖
 
-Besides the expiration setting, changes of the so-called **invalidation
-dependencies** may also invalidate cached data item.  For example,
-`\Yiisoft\Cache\Dependency\FileDependency` represents the dependency of a
-file's modification time.  When this dependency changes, it means something
-modifying the corresponding file.  As a result, any outdated file content
-found in the cache should invalidate.
+除了过期设置外，所谓的**失效依赖**的更改也可能使缓存的数据项失效。例如，`\Yiisoft\Cache\Dependency\FileDependency`
+表示文件修改时间的依赖关系。当此依赖关系发生变化时，意味着有东西修改了相应的文件。因此，在缓存中找到的任何过时的文件内容都应该失效。
 
-Cache dependencies are objects of `\Yiisoft\Cache\Dependency\Dependency`
-descendant classes. When you store a data item in the cache, you can pass
-along an associated cache dependency object. For example,
+缓存依赖是 `\Yiisoft\Cache\Dependency\Dependency`
+后代类的对象。当您在缓存中存储数据项时，可以传递关联的缓存依赖对象。例如，
 
 ```php
 /**
@@ -169,38 +130,28 @@ $cache->getOrSet('item_42_total', $callable, 3600, new TagDependency('item_42'))
 TagDependency::invalidate($cache, 'item_42');
 ```
 
-Below is a summary of the available cache dependencies:
+以下是可用缓存依赖的摘要：
 
-- `\Yiisoft\Cache\Dependency\ValueDependency`: invalidates the cache when
-  specified value changes.
-- `\Yiisoft\Cache\Dependency\CallbackDependency`: invalidates the cache when
-  the result of the specified PHP callback is different.
-- `\Yiisoft\Cache\Dependency\FileDependency`: invalidates the cache when the
-  file's last modification time is different.
-- `\Yiisoft\Cache\Dependency\TagDependency`: associates a cached data item
-  with one or many tags. You may invalidate the cached data items with the
-  specified tag(s) by calling `TagDependency::invalidate()`.
+- `\Yiisoft\Cache\Dependency\ValueDependency`：当指定值更改时使缓存失效。
+- `\Yiisoft\Cache\Dependency\CallbackDependency`：当指定 PHP 回调的结果不同时使缓存失效。
+- `\Yiisoft\Cache\Dependency\FileDependency`：当文件的最后修改时间不同时使缓存失效。
+- `\Yiisoft\Cache\Dependency\TagDependency`：将缓存的数据项与一个或多个标签关联。您可以通过调用
+  `TagDependency::invalidate()` 使具有指定标签的缓存数据项失效。
 
-You may combine many dependencies using
-`\Yiisoft\Cache\Dependency\AnyDependency` or
-`\Yiisoft\Cache\Dependency\AllDependencies`.
+您可以使用 `\Yiisoft\Cache\Dependency\AnyDependency` 或
+`\Yiisoft\Cache\Dependency\AllDependencies` 组合多个依赖项。
 
-To implement your own dependency, extend from
-`\Yiisoft\Cache\Dependency\Dependency`.
+要实现您自己的依赖项，请从 `\Yiisoft\Cache\Dependency\Dependency` 扩展。
 
-### Cache stampede prevention
+### 缓存雪崩预防
 
-[A cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) is a type
-of cascading failure that can occur when massively parallel computing
-systems with caching mechanisms come under a high load.  This behavior is
-sometimes also called dog-piling.
+[缓存雪崩](https://en.wikipedia.org/wiki/Cache_stampede)是一种级联故障，当具有缓存机制的大规模并行计算系统处于高负载时可能发生。这种行为有时也称为
+dog-piling。
 
-The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration"
-algorithm that prevents cache stampede.  This algorithm randomly fakes a
-cache miss for one user while others are still served the cached value.  You
-can control its behavior with the fifth optional parameter of `getOrSet()`,
-which is a float value called `$beta`.  By default, beta is `1.0`, which is
-usually enough.  The higher the value, the earlier cache will be re-created.
+`\Yiisoft\Cache\Cache`
+使用内置的“可能提前过期”算法来防止缓存雪崩。该算法随机为一个用户伪造缓存未命中，而其他用户仍然获得缓存值。您可以使用 `getOrSet()`
+的第五个可选参数来控制其行为，该参数是一个名为 `$beta` 的浮点值。默认情况下，beta 为
+`1.0`，这通常就足够了。值越高，缓存重新创建得越早。
 
 ```php
 /**

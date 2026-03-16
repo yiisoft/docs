@@ -1,26 +1,23 @@
-# Scripts, styles and meta tags
+# 脚本、样式与 meta 标签
 
-Modern web applications require careful management of CSS styles, JavaScript
-code, and HTML meta tags.  Yii3 provides a comprehensive system for
-registering and organizing these resources through the `WebView` class,
-which is part of the `yiisoft/view` package.
+现代 Web 应用程序需要对 CSS 样式、JavaScript 代码和 HTML meta 标签进行精细管理。Yii3 通过
+`yiisoft/view` 包中的 `WebView` 类提供了一套完整的系统，用于注册和组织这些资源。
 
-## Overview
+## 概述
 
-The `WebView` class extends the basic `View` class with web-specific
-functionality, allowing you to:
+`WebView` 类在基础 `View` 类的基础上扩展了 Web 特有的功能，使你可以：
 
-- Register CSS files and inline styles
-- Register JavaScript files and inline scripts
-- Manage HTML meta tags and link tags
-- Control the position where resources are rendered
-- Handle dependencies between resources
+- 注册 CSS 文件和内联样式
+- 注册 JavaScript 文件和内联脚本
+- 管理 HTML meta 标签和 link 标签
+- 控制资源的渲染位置
+- 处理资源之间的依赖关系
 
-## CSS management
+## CSS 管理
 
-### Registering CSS Files
+### 注册 CSS 文件
 
-You can register CSS files to be included in your HTML pages:
+你可以注册需要包含在 HTML 页面中的 CSS 文件：
 
 ```php
 <?php
@@ -45,9 +42,9 @@ $this->registerCssFile('/css/print.css', WebView::POSITION_HEAD, [
 $this->registerCssFile('/css/theme.css', WebView::POSITION_HEAD, [], 'theme-css');
 ```
 
-### Registering Inline CSS
+### 注册内联 CSS
 
-For inline CSS styles, use the `registerCss()` method:
+对于内联 CSS 样式，使用 `registerCss()` 方法：
 
 ```php
 // Register inline CSS
@@ -70,9 +67,9 @@ $this->registerCss('
 ', WebView::POSITION_HEAD, ['id' => 'print-styles']);
 ```
 
-### CSS from Files
+### 从文件注册 CSS
 
-You can also register CSS content from external files:
+你也可以从外部文件读取 CSS 内容并注册为内联样式：
 
 ```php
 // Read CSS from a file and register as inline CSS
@@ -81,9 +78,9 @@ $this->registerCssFromFile('/path/to/dynamic-styles.css', WebView::POSITION_HEAD
 ]);
 ```
 
-### Using Style Tags
+### 使用 Style 标签
 
-For more control, you can use HTML style tags directly:
+如需更精细的控制，可以直接使用 HTML style 标签：
 
 ```php
 use Yiisoft\Html\Html;
@@ -100,11 +97,11 @@ $styleTag = Html::style('
 $this->registerStyleTag($styleTag, WebView::POSITION_HEAD);
 ```
 
-## JavaScript management
+## JavaScript 管理
 
-### Registering JavaScript Files
+### 注册 JavaScript 文件
 
-Include external JavaScript files using `registerJsFile()`:
+使用 `registerJsFile()` 引入外部 JavaScript 文件：
 
 ```php
 // Register a JavaScript file
@@ -125,9 +122,9 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min
     WebView::POSITION_END, [], 'jquery');
 ```
 
-### Registering Inline JavaScript
+### 注册内联 JavaScript
 
-Add inline JavaScript code with `registerJs()`:
+使用 `registerJs()` 添加内联 JavaScript 代码：
 
 ```php
 // Register inline JavaScript
@@ -146,9 +143,9 @@ $this->registerJs('
 ', WebView::POSITION_READY);
 ```
 
-### JavaScript Variables
+### JavaScript 变量
 
-Pass PHP data to JavaScript using `registerJsVar()`:
+使用 `registerJsVar()` 将 PHP 数据传递给 JavaScript：
 
 ```php
 // Register JavaScript variables
@@ -164,7 +161,7 @@ $this->registerJsVar('config', [
 ]);
 ```
 
-This generates JavaScript code like:
+这将生成如下 JavaScript 代码：
 
 ```html
 <script>
@@ -174,9 +171,9 @@ var config = {"debug":true,"locale":"en-US"};
 </script>
 ```
 
-### Using Script Tags
+### 使用 Script 标签
 
-For more control over script tags:
+如需对 script 标签进行更精细的控制：
 
 ```php
 use Yiisoft\Html\Html;
@@ -192,9 +189,9 @@ $scriptTag = Html::script('
 $this->registerScriptTag($scriptTag, WebView::POSITION_END);
 ```
 
-## Position Constants
+## 位置常量
 
-Resources can be positioned at different locations in the HTML document:
+资源可以定位到 HTML 文档的不同位置：
 
 ```php
 use Yiisoft\View\WebView;
@@ -215,7 +212,7 @@ WebView::POSITION_READY
 WebView::POSITION_LOAD
 ```
 
-Example layout showing where each position is rendered:
+以下布局示例展示了各位置的渲染位置：
 
 ```php
 <?php
@@ -248,11 +245,11 @@ declare(strict_types=1);
 <?php $this->endPage() ?>
 ```
 
-## Meta tags
+## Meta 标签
 
-### Basic Meta Tags
+### 基本 Meta 标签
 
-Register meta tags for SEO and page information:
+为 SEO 和页面信息注册 meta 标签：
 
 ```php
 // Register meta tags using array syntax
@@ -270,9 +267,9 @@ $this->registerMeta(['property' => 'og:description', 'content' => 'Page descript
 $this->registerMeta(['property' => 'og:image', 'content' => 'https://example.com/image.jpg']);
 ```
 
-### Using Meta Tag Objects
+### 使用 Meta 标签对象
 
-For more control, use the `Html::meta()` helper:
+如需更精细的控制，使用 `Html::meta()` 辅助方法：
 
 ```php
 use Yiisoft\Html\Html;
@@ -291,9 +288,9 @@ $this->registerMetaTag(
 );
 ```
 
-### Preventing Duplicate Meta Tags
+### 防止重复 Meta 标签
 
-Use keys to prevent duplicate meta tags:
+使用键名防止 meta 标签重复注册：
 
 ```php
 // First registration
@@ -309,11 +306,11 @@ $this->registerMeta([
 ], 'description');
 ```
 
-## Link tags
+## Link 标签
 
-### Basic Link Tags
+### 基本 Link 标签
 
-Register various types of link tags:
+注册各类 link 标签：
 
 ```php
 // Favicon
@@ -347,7 +344,7 @@ $this->registerLink([
 ]);
 ```
 
-### Using Link Tag Objects
+### 使用 Link 标签对象
 
 ```php
 use Yiisoft\Html\Html;
@@ -367,11 +364,11 @@ $this->registerLinkTag(
 );
 ```
 
-## Practical Examples
+## 实践示例
 
-### Complete Page Setup
+### 完整页面配置
 
-Here's how you might set up a complete page with all types of resources:
+以下示例展示如何为页面配置所有类型的资源：
 
 ```php
 <?php
@@ -437,9 +434,9 @@ $this->registerCss('
 </div>
 ```
 
-### Conditional Resource Loading
+### 条件资源加载
 
-Load resources based on conditions:
+根据条件加载资源：
 
 ```php
 <?php
@@ -475,23 +472,20 @@ $this->registerJsVar('userPermissions', [
 ?>
 ```
 
-## Best Practices
+## 最佳实践
 
-1. **Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript
-   at `POSITION_END`
-2. **Minimize inline resources**: Prefer external files for better caching
-3. **Use keys for duplicates**: Prevent duplicate resources with meaningful
-   keys
-4. **Optimize loading**: Use `async` and `defer` attributes for non-critical
-   JavaScript
-5. **Group related resources**: Keep related CSS and JS files together
-6. **Use CDNs wisely**: Balance performance with reliability
-7. **Validate meta tags**: Ensure proper SEO meta tags are set
-8. **Consider security**: Be careful with inline scripts and CSP policies
+1. **使用合适的位置**：将 CSS 放在 `POSITION_HEAD`，JavaScript 放在 `POSITION_END`
+2. **减少内联资源**：优先使用外部文件以获得更好的缓存效果
+3. **使用键名去重**：通过有意义的键名防止资源重复注册
+4. **优化加载**：对非关键 JavaScript 使用 `async` 和 `defer` 属性
+5. **分组管理相关资源**：将相关的 CSS 和 JS 文件放在一起
+6. **合理使用 CDN**：在性能与可靠性之间取得平衡
+7. **验证 meta 标签**：确保正确设置 SEO 所需的 meta 标签
+8. **注意安全性**：谨慎处理内联脚本与 CSP 策略
 
-## Working with Asset Bundles
+## 使用资源包
 
-For more complex asset management, consider using asset bundles:
+对于更复杂的资源管理需求，可以考虑使用资源包：
 
 ```php
 // Register an asset bundle (covered in detail in the Assets guide)

@@ -1,155 +1,153 @@
-# The definitive guide to Yii3
+# Yii3 权威指南
 
-We release this guide under the [Terms of Yii
-Documentation](https://www.yiiframework.com/license#docs).
+本指南遵循 [Yii 文档条款](https://www.yiiframework.com/license#docs) 发布。
 
-## Introduction
+## 介绍
 
-- [About Yii](intro/what-is-yii.md)
-- [Upgrading from version 2.0](intro/upgrade-from-v2.md)
+- [关于 Yii](intro/what-is-yii.md)
+- [从 2.0 版本升级](intro/upgrade-from-v2.md)
 
-## Getting started
+## 入门
 
-- [What do you need to know?](start/prerequisites.md)
-- [Creating a project](start/creating-project.md)
-- [Running applications](start/workflow.md)
-- [Saying hello](start/hello.md)
-- [Working with forms](start/forms.md)
-- [Working with databases](start/databases.md)
-- [Generating code with Gii](start/gii.md) TODO
-- [Looking ahead](start/looking-ahead.md)
+- [你需要了解什么？](start/prerequisites.md)
+- [创建项目](start/creating-project.md)
+- [运行应用](start/workflow.md)
+- [说 Hello](start/hello.md)
+- [使用表单](start/forms.md)
+- [使用数据库](start/databases.md)
+- [使用 Gii 生成代码](start/gii.md) TODO
+- [展望未来](start/looking-ahead.md)
 
-## Application structure
+## 应用结构
 
-- [Application structure overview](structure/overview.md)
-- [Entry scripts](structure/entry-script.md)
-- [Application](structure/application.md)
-- [Service components](structure/service.md)
-- [Actions](structure/action.md)
-- [Domain](structure/domain.md)
-- [Middleware](structure/middleware.md)
-- [Packages](structure/package.md)
+- [应用结构概述](structure/overview.md)
+- [入口脚本](structure/entry-script.md)
+- [应用](structure/application.md)
+- [服务组件](structure/service.md)
+- [动作](structure/action.md)
+- [领域](structure/domain.md)
+- [中间件](structure/middleware.md)
+- [包](structure/package.md)
 
-## Key concepts
+## 核心概念
 
-- [Class autoloading](concept/autoloading.md)
-- [Dependency injection container](concept/di-container.md)
-- [Configuration](concept/configuration.md)
-- [Aliases](concept/aliases.md)
-- [Events](concept/events.md)
-- [Immutability](concept/immutability.md)
+- [类自动加载](concept/autoloading.md)
+- [依赖注入容器](concept/di-container.md)
+- [配置](concept/configuration.md)
+- [别名](concept/aliases.md)
+- [事件](concept/events.md)
+- [不可变性](concept/immutability.md)
 
-## Handling requests
+## 处理请求
 
-- [Routing and URL generation](runtime/routing.md)
-- [Request](runtime/request.md)
-- [Response](runtime/response.md)
-- [Sessions](runtime/sessions.md)
+- [路由和 URL 生成](runtime/routing.md)
+- [请求](runtime/request.md)
+- [响应](runtime/response.md)
+- [会话](runtime/sessions.md)
 - [Cookies](runtime/cookies.md)
-- [Handling errors](runtime/handling-errors.md)
-- [Logging](runtime/logging.md)
+- [错误处理](runtime/handling-errors.md)
+- [日志](runtime/logging.md)
 
-## Views
+## 视图
 
-- [View](views/view.md)
-- [Template engines](views/template-engines.md) TODO: verify!
-- [View injections](views/view-injections.md)
-- [Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!
-- [Assets](views/asset.md) TODO: verify!
-- [Widgets](views/widget.md) TODO: verify!
+- [视图](views/view.md)
+- [模板引擎](views/template-engines.md) TODO: verify!
+- [视图注入](views/view-injections.md)
+- [脚本、样式和元标签](views/script-style-meta.md) TODO: verify!
+- [资源](views/asset.md) TODO: verify!
+- [小部件](views/widget.md) TODO: verify!
 
-## Working with databases
+## 使用数据库
 
 - [Yii
   DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)
 - [Active
   Record](https://github.com/yiisoft/active-record/blob/master/README.md)
-- [Migrations](databases/db-migrations.md) TODO: verify/update!
+- [迁移](databases/db-migrations.md) TODO: verify/update!
 
-## Getting data from users
+## 从用户获取数据
 
-- [Creating forms](input/forms.md) TODO
-- [Validating
-  input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-- [Uploading files](input/file-upload.md) TODO
-- [Collecting tabular input](input/tabular-input.md) TODO
+- [创建表单](input/forms.md) TODO
+- [验证输入](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
+- [上传文件](input/file-upload.md) TODO
+- [收集表格输入](input/tabular-input.md) TODO
 
-## Displaying data
+## 显示数据
 
-- [Data formatting](output/formatting.md) TODO
-- [Pagination](output/pagination.md) TODO
-- [Sorting](output/sorting.md) TODO
-- [Data providers](output/data-providers.md) TODO
-- [Data widgets](output/data-widgets.md) TODO
+- [数据格式化](output/formatting.md) TODO
+- [分页](output/pagination.md) TODO
+- [排序](output/sorting.md) TODO
+- [数据提供者](output/data-providers.md) TODO
+- [数据小部件](output/data-widgets.md) TODO
 
-## Security
+## 安全
 
-- [Security overview](security/overview.md)
-- [Authentication](security/authentication.md)
-- [Authorization](security/authorization.md) TODO: verify and complete!
-- [Working with passwords](security/passwords.md)
-- [Cryptography](security/cryptography.md)
-- [Best practices](security/best-practices.md)
+- [安全概述](security/overview.md)
+- [认证](security/authentication.md)
+- [授权](security/authorization.md) TODO: verify and complete!
+- [使用 passwords](security/passwords.md)
+- [加密](security/cryptography.md)
+- [最佳实践](security/best-practices.md)
 
 
-## Caching
+## 缓存
 
-- [Caching overview](caching/overview.md)
-- [Data caching](caching/data.md)
-- [Fragment caching](caching/fragment.md) TODO
-- [Page caching](caching/page.md) TODO
-- [HTTP caching](caching/http.md) TODO
+- [缓存概述](caching/overview.md)
+- [数据缓存](caching/data.md)
+- [片段缓存](caching/fragment.md) TODO
+- [页面缓存](caching/page.md) TODO
+- [HTTP 缓存](caching/http.md) TODO
 
 
 ## REST APIs
 
-- [Quick start](rest/quick-start.md) TODO
-- [Resources](rest/resources.md) TODO
-- [Controllers](rest/controllers.md) TODO
-- [Routing](rest/routing.md) TODO
-- [Authentication](rest/authentication.md) TODO
-- [Rate limiting](rest/rate-limiting.md) TODO
-- [Versioning](rest/versioning.md) TODO
-- [Error handling](rest/error-handling.md) TODO
+- [快速开始](rest/quick-start.md) TODO
+- [资源](rest/resources.md) TODO
+- [控制器](rest/controllers.md) TODO
+- [路由](rest/routing.md) TODO
+- [认证](rest/authentication.md) TODO
+- [速率限制](rest/rate-limiting.md) TODO
+- [版本控制](rest/versioning.md) TODO
+- [错误处理](rest/error-handling.md) TODO
 
-## Development tools
+## 开发工具
 
-- Debug toolbar and debugger
-- Generating code using Gii
-- Generating API documentation
-
-
-## Testing
-
-- [Testing overview](testing/overview.md) TODO
-- [Testing environment setup](testing/environment-setup.md) TODO
-- [Unit tests](testing/unit.md) TODO
-- [Functional tests](testing/functional.md) TODO
-- [Acceptance tests](testing/acceptance.md) TODO
-- [Fixtures](testing/fixtures.md) TODO
+- 调试工具栏和调试器
+- 使用 Gii 生成代码
+- 生成 API 文档
 
 
-## Special topics
+## 测试
 
-- [Console applications](tutorial/console-applications.md)
-- [Internationalization](tutorial/i18n.md) TODO
-- [Mailing](tutorial/mailing.md)
-- [Performance tuning](tutorial/performance-tuning.md)
-- [Using Yii with event loop](tutorial/using-with-event-loop.md)
-- [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
-- [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
+- [测试概述](testing/overview.md) TODO
+- [测试环境设置](testing/environment-setup.md) TODO
+- [单元测试](testing/unit.md) TODO
+- [功能测试](testing/functional.md) TODO
+- [验收测试](testing/acceptance.md) TODO
+- [固件](testing/fixtures.md) TODO
 
-## Helpers
 
-- [Arrays](https://github.com/yiisoft/arrays/)
-- [Files](https://github.com/yiisoft/files/)
+## 特殊主题
+
+- [控制台应用](tutorial/console-applications.md)
+- [国际化](tutorial/i18n.md) TODO
+- [邮件](tutorial/mailing.md)
+- [性能调优](tutorial/performance-tuning.md)
+- [在事件循环中使用 Yii](tutorial/using-with-event-loop.md)
+- [在 RoadRunner 中使用 Yii](tutorial/using-yii-with-roadrunner.md)
+- [在 Swoole 中使用 Yii](tutorial/using-yii-with-swoole.md)
+
+## 助手类
+
+- [数组](https://github.com/yiisoft/arrays/)
+- [文件](https://github.com/yiisoft/files/)
 - [Html](https://github.com/yiisoft/html/)
 - [Json](https://github.com/yiisoft/json)
-- [Network utilities](https://github.com/yiisoft/network-utilities/)
+- [网络工具](https://github.com/yiisoft/network-utilities/)
 - [VarDumper](https://github.com/yiisoft/var-dumper)
-- [Strings](https://github.com/yiisoft/strings)
+- [字符串](https://github.com/yiisoft/strings)
 
-## Extras
+## 额外内容
 
-- [Cookbook](../cookbook/index.md)
-- [Glossary](glossary.md)
+- [实用手册](../cookbook/index.md)
+- [术语表](glossary.md)

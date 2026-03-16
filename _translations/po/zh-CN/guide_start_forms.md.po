@@ -24,7 +24,7 @@ msgstr "使用表单"
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "This section continues to improve on \"Saying Hello.\" Instead of using URL, you will now ask a user for a message via form."
-msgstr "本节继续改进"打招呼"功能。不再使用 URL，而是通过表单向用户请求消息。"
+msgstr "本节继续改进“打招呼”功能。不再使用 URL，而是通过表单向用户请求消息。"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -121,7 +121,7 @@ msgstr "使用表单 <span id=\"using-form\"></span>"
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Now that you have a form, use it in your action from \"[Saying Hello](hello.md)\"."
-msgstr "现在您有了一个表单，在"[打招呼](hello.md)"中的操作中使用它。"
+msgstr "现在您有了一个表单，在“[打招呼](hello.md)”中的操作中使用它。"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -272,12 +272,12 @@ msgstr "模板将 CSRF 令牌值渲染为隐藏输入，以确保请求来自表
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "You use `Field::text()` to output \"message\" field, so it takes care about filling the value, escaping it, rendering field label and validation errors."
-msgstr "您使用 `Field::text()` 输出"message"字段，它会负责填充值、转义、渲染字段标签和验证错误。"
+msgstr "您使用 `Field::text()` 输出“message”字段，它会负责填充值、转义、渲染字段标签和验证错误。"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "Now, in case you submit an empty message, you will get a validation error: \"The message to be echoed must contain at least 2 characters.\""
-msgstr "现在，如果您提交空消息，将会收到验证错误："要回显的消息必须至少包含 2 个字符。""
+msgstr "现在，如果您提交空消息，将会收到验证错误：“要回显的消息必须至少包含 2 个字符。”"
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
@@ -299,7 +299,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "You will see a page with a form input field and a label that indicates what data to enter.  Also, the form has a \"submit\" button labeled \"Say\". If you click the \"submit\" button without entering anything, you will see that the field is required. If you enter a single character, the form displays an error message next to the problematic input field."
-msgstr "您将看到一个包含表单输入字段和标签的页面，标签指示要输入什么数据。此外，表单有一个标有"Say"的"提交"按钮。如果您不输入任何内容就点击"提交"按钮，将看到该字段是必填的。如果您输入单个字符，表单会在有问题的输入字段旁边显示错误消息。"
+msgstr "您将看到一个包含表单输入字段和标签的页面，标签指示要输入什么数据。此外，表单有一个标有“Say”的“提交”按钮。如果您不输入任何内容就点击“提交”按钮，将看到该字段是必填的。如果您输入单个字符，表单会在有问题的输入字段旁边显示错误消息。"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -309,7 +309,7 @@ msgstr "![表单验证错误](/images/guide/start/form-error.png)"
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "After you enter a valid message and click the \"submit\" button, the page echoes the data that you entered."
-msgstr "在您输入有效消息并点击"提交"按钮后，页面将回显您输入的数据。"
+msgstr "在您输入有效消息并点击“提交”按钮后，页面将回显您输入的数据。"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md

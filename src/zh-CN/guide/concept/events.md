@@ -1,33 +1,24 @@
 # 事件
 
-Events allow you to make custom code executed at certain execution points
-without modifying existing code.  You can attach a custom code called
-"handler" to an event so that when the event is triggered, the handler gets
-executed automatically.
+事件允许您在特定执行点执行自定义代码，而无需修改现有代码。您可以将称为“处理器”的自定义代码附加到事件，以便在触发事件时，处理器会自动执行。
 
-For example, when a user is signed up, you need to send a welcome email. You
-can do it right in the `SignupService` but then, when you additionally need
-to resize user's avatar image, you'll have to change `SignupService` code
-again. In other words, `SignupService` will be coupled to both code sending
-welcome email and code resizing avatar image.
+例如，当用户注册时，您需要发送欢迎邮件。您可以直接在 `SignupService` 中执行此操作，但如果您还需要调整用户头像图片的大小，则必须再次更改
+`SignupService` 代码。换句话说，`SignupService` 将与发送欢迎邮件的代码和调整头像图片大小的代码耦合。
  
-To avoid it, instead of telling what do after signup explicitly you can, instead, raise `UserSignedUp` event
-and then finish a signup process. The code sending an email and the code resizing avatar image will attach to the event
- and, therefore, will be executed. If you'll ever need to do more on signup, you'll be able to attach extra event
-handlers without modifying `SignupService`. 
+为避免这种情况，您可以触发 `UserSignedUp` 事件，
+然后完成注册流程，而不是明确告知注册后要做什么。发送邮件的代码和调整头像图片大小的代码将附加到该事件，
+因此，它们将被执行。如果您以后需要在注册时执行更多操作，您可以附加额外的事件
+处理器，而无需修改 `SignupService`。
  
-For raising events and attaching handlers to these events, Yii has a special
-service called event dispatcher.  It's available from
-[yiisoft/event-dispatcher
-package](https://github.com/yiisoft/event-dispatcher).
+要触发事件并将处理器附加到这些事件，Yii 有一个称为事件调度器的特殊服务。它可以从 [yiisoft/event-dispatcher
+包](https://github.com/yiisoft/event-dispatcher) 获取。
 
-## Event Handlers <span id="event-handlers"></span>
+## 事件处理器 <span id="event-handlers"></span>
 
-An event handler is [PHP
-callable](https://www.php.net/manual/en/language.types.callable.php) that
-gets executed when the event it's attached to is triggered.
+事件处理器是 [PHP
+callable](https://www.php.net/manual/en/language.types.callable.php)，当它附加的事件被触发时执行。
 
-The signature of an event handler is:
+事件处理器的签名是：
 
 ```php
 function (EventClass $event) {
@@ -35,9 +26,9 @@ function (EventClass $event) {
 }
 ```
 
-## Attaching event handlers <span id="attaching-event-handlers"></span>
+## 附加事件处理器 <span id="attaching-event-handlers"></span>
 
-You can attach a handler to an event like the following:
+您可以按如下方式将处理器附加到事件：
 
 ```php
 use Yiisoft\EventDispatcher\Provider\Provider;
@@ -56,23 +47,19 @@ final readonly class WelcomeEmailSender
 }
 ```
 
-The `attach()` method is accepting a callback. Based on the type of this
-callback argument, the event type is determined.
+`attach()` 方法接受一个回调。根据此回调参数的类型，确定事件类型。
 
-## Event handlers order
+## 事件处理器顺序
 
-You may attach one or more handlers to a single event. When an event is
-triggered, the attached handlers will be called in the order that they were
-attached to the event. In case an event implements
-`Psr\EventDispatcher\StoppableEventInterface`, event handler can stop
-executing the rest of the handlers that follow it if
-`isPropagationStopped()` returns `true`.
+您可以将一个或多个处理器附加到单个事件。当事件被触发时，附加的处理器将按照它们附加到事件的顺序被调用。如果事件实现了
+`Psr\EventDispatcher\StoppableEventInterface`，当 `isPropagationStopped()` 返回
+`true` 时，事件处理器可以停止执行其后的其余处理器。
 
-In general, it's better not to rely on the order of event handlers.
+一般来说，最好不要依赖事件处理器的顺序。
 
-## Raising events <span id="raising-events"></span>
+## 触发事件 <span id="raising-events"></span>
 
-Events are raised like the following:
+事件按如下方式触发：
 
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -95,10 +82,9 @@ final readonly class SignupService
 }
 ```
 
-First, you create an event supplying it with data that may be useful for
-handlers. Then you dispatch the event.
+首先，您创建一个事件，并为其提供可能对处理器有用的数据。然后您调度该事件。
 
-The event class itself may look like the following:
+事件类本身可能如下所示：
 
 ```php
 final readonly class UserSignedUp
@@ -111,11 +97,9 @@ final readonly class UserSignedUp
 }
 ```
 
-## Events hierarchy
+## 事件层次结构
 
-Events don't have any name or wildcard matching on purpose. Event class
-names and class/interface hierarchy and composition could be used to achieve
-great flexibility:
+事件故意没有任何名称或通配符匹配。事件类名称以及类/接口层次结构和组合可用于实现极大的灵活性：
 
 ```php
 interface DocumentEvent
@@ -131,7 +115,7 @@ final readonly class AfterDocumentProcessed implements DocumentEvent
 }
 ```
 
-With the interface, you can listen to all document-related events:
+使用接口，您可以监听所有与文档相关的事件：
 
 
 ```php
@@ -140,16 +124,15 @@ $provider->attach(function (DocumentEvent $event) {
 });
 ``` 
 
-## Detaching event handlers <span id="detaching-event-handlers"></span>
+## 分离事件处理器 <span id="detaching-event-handlers"></span>
 
-To detach a handler from an event you can call `detach()` method:
+要从事件中分离处理器，您可以调用 `detach()` 方法：
 
 
 ```php
 $provider->detach(DocmentEvent::class);
 ```
 
-## Configuring application events
+## 配置应用程序事件
 
-You usually assign event handlers via application config. See
-["Configuration"](configuration.md) for details.
+您通常通过应用程序配置来分配事件处理器。有关详细信息，请参阅 ["配置"](configuration.md)。

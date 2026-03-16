@@ -126,7 +126,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "We usually call such a class \"controller.\""
-msgstr "我们通常将这样的类称为"控制器"。"
+msgstr "我们通常将这样的类称为“控制器”。"
 
 #. type: Title ##
 #: ../src/guide/structure/action.md

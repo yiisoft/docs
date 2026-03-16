@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Application structure"
-msgstr "应用程序结构"
+msgstr "应用结构"
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -34,7 +34,7 @@ msgid ""
 "> If you haven't used Yii 2.0, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
 "> section.\n"
 msgstr ""
-"> 如果您未曾使用过 Yii 2.0，可以跳过本节，直接阅读"[入门](../start/prerequisites.md)"\n"
+"> 如果您未曾使用过 Yii 2.0，可以跳过本节，直接阅读“[入门](../start/prerequisites.md)”\n"
 "> 章节。\n"
 
 #. type: Plain text

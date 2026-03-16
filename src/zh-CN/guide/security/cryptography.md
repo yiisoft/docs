@@ -1,25 +1,20 @@
-# Cryptography
+# 加密
 
-In this section, we'll review the following security aspects:
+在本节中，我们将回顾以下安全方面：
 
-- Generating random data
-- Encryption and Decryption
-- Confirming Data Integrity
+- 生成随机数据
+- 加密和解密
+- 确认数据完整性
 
-To use these features, you need to install `yiisoft/security` package:
+要使用这些功能，您需要安装 `yiisoft/security` 包：
 
 ```
 composer install yiisoft/security
 ```
 
-## Generating pseudorandom data
+## 生成伪随机数据
 
-Pseudorandom data are useful in many situations. For example, when resetting
-a password via email, you need to generate a token, save it to the database,
-and send it via email to the end user, which in turn will allow them to
-prove ownership of that account. It's important that this token be unique
-and hard to guess, else there is a possibility that an attacker can predict
-the token's value and reset the user's password.
+伪随机数据在许多情况下都很有用。例如，当通过电子邮件重置密码时，您需要生成一个令牌，将其保存到数据库，并通过电子邮件发送给最终用户，这反过来将允许他们证明对该帐户的所有权。重要的是，此令牌必须是唯一的且难以猜测，否则攻击者有可能预测令牌的值并重置用户的密码。
 
 `\Yiisoft\Security\Random` makes generating pseudorandom data simple:
 
@@ -27,21 +22,17 @@ the token's value and reset the user's password.
 $key = \Yiisoft\Security\Random::string(42);
 ```
 
-The code above would give you a random string consisting of 42 characters.
+上面的代码将为您提供一个由 42 个字符组成的随机字符串。
 
-If you need bytes or integers, use PHP functions directly:
+如果您需要字节或整数，请直接使用 PHP 函数：
 
-- `random_bytes()` for bytes. Note that the output may not be ASCII.
-- `random_int()` for integers.
+- 使用 `random_bytes()` 生成字节。请注意，输出可能不是 ASCII。
+- `random_int()` 用于整数。
 
-## Encryption and decryption
+## 加密和解密
 
-Yii provides convenient helper functions to encrypt/decrypt data using a
-secret key.  The data is passed through the encryption function so that only
-the person who has the secret key will be able to decrypt it.  For example,
-you need to store some information in your database, but you need to make
-sure only the user who has the secret key can view it (even if one
-compromises the application database):
+Yii
+提供了方便的辅助函数，使用密钥加密/解密数据。数据通过加密函数传递，以便只有拥有密钥的人才能解密它。例如，您需要在数据库中存储一些信息，但您需要确保只有拥有密钥的用户才能查看它（即使有人破坏了应用程序数据库）：
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $password);
@@ -50,7 +41,7 @@ $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $pass
 saveData($encryptedData);
 ```
 
-Decrypting it:
+解密它：
 
 ```php
 // collect encrypted data from a database or another storage
@@ -59,7 +50,7 @@ $encryptedData = getEncryptedData();
 $data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
 ```
 
-You could use a key instead of a password:
+您可以使用密钥而不是密码：
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
@@ -68,7 +59,7 @@ $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
 saveData($encryptedData);
 ```
 
-Decrypting it:
+解密它：
 
 ```php
 // collect encrypted data from a database or another storage
@@ -77,14 +68,11 @@ $encryptedData = getEncryptedData();
 $data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
 ```
 
-## Confirming data integrity
+## 确认数据完整性
 
-There are situations in which you need to verify that your data hasn't been
-tampered with by a third party or even corrupted in some way. Yii provides a
-way to confirm data integrity by MAC signing.
+在某些情况下，您需要验证您的数据没有被第三方篡改，甚至以某种方式损坏。Yii 提供了一种通过 MAC 签名确认数据完整性的方法。
 
-The `$key` should be present at both sending and receiving sides. On the
-sending side:
+`$key` 应该在发送端和接收端都存在。在发送端：
 
 ```php
 $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
@@ -92,7 +80,7 @@ $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
 sendMessage($signedMessage);
 ```
 
-On the receiving side:
+在接收端：
 
 ```php
 $signedMessage = receiveMessage($signedMessage);
@@ -104,19 +92,17 @@ try {
 }
 ```
 
-## Masking token length
+## 掩码令牌长度
 
-Masking a token helps to mitigate a BREACH attack by randomizing how the
-token outputted on each request.  A random mask is applied to the token,
-making the string always unique.
+掩码令牌有助于通过随机化每个请求上令牌的输出方式来缓解 BREACH 攻击。对令牌应用随机掩码，使字符串始终唯一。
 
-To mask a token:
+要掩码令牌：
 
 ```php
 $maskedToken = \Yiisoft\Security\TokenMask::apply($token);
 ```
 
-To get the original value from the masked one:
+要从掩码中获取原始值：
 
 ```php
 $token = \Yiisoft\Security\TokenMask::remove($maskedToken);

@@ -78,7 +78,7 @@ msgstr "限界上下文"
 #. type: Plain text
 #: ../src/guide/structure/domain.md
 msgid "It's nearly impossible to build a model that solves multiple problems that aren't too complicated by itself. Therefore, it's a good practice to divide the domain into several use-cases and have a separate model for each use-case.  Such separated models are called \"bounded contexts.\""
-msgstr "几乎不可能构建一个能解决多个问题且本身不太复杂的模型。因此，将领域划分为几个用例并为每个用例建立单独的模型是一种良好实践。这种分离的模型被称为"限界上下文"。"
+msgstr "几乎不可能构建一个能解决多个问题且本身不太复杂的模型。因此，将领域划分为几个用例并为每个用例建立单独的模型是一种良好实践。这种分离的模型被称为“限界上下文”。"
 
 #. type: Title ##
 #: ../src/guide/structure/domain.md
@@ -160,7 +160,7 @@ msgstr "服务"
 #. type: Plain text
 #: ../src/guide/structure/domain.md
 msgid "Service is a class that contains a standalone operation within the context of your domain model. See \"[service components](service.md)\"."
-msgstr "服务是一个包含领域模型上下文中独立操作的类。请参阅"[服务组件](service.md)"。"
+msgstr "服务是一个包含领域模型上下文中独立操作的类。请参阅“[服务组件](service.md)”。"
 
 #. type: Plain text
 #: ../src/guide/structure/domain.md

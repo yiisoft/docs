@@ -30,7 +30,7 @@ msgstr "说声 Hello"
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "This section describes how to create a new \"Hello\" page in your application.  It's a simple page that will echo back whatever you pass to it or, if nothing passed, will just say \"Hello!\"."
-msgstr "本节描述如何在应用程序中创建一个新的“Hello”页面。这是一个简单的页面，它会回显您传递给它的任何内容，或者如果没有传递任何内容，则显示"Hello!"。"
+msgstr "本节描述如何在应用程序中创建一个新的“Hello”页面。这是一个简单的页面，它会回显您传递给它的任何内容，或者如果没有传递任何内容，则显示“Hello!”。"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -109,7 +109,7 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "In your example, the `__invoke` method receives the `$message` parameter that with the help of `RouteArgument` attribute gets the message from URL. The value defaults to `\"Hello!\"`. If the request is made to `/say/Goodbye`, the action assigns the value \"Goodbye\" to the `$message` variable."
-msgstr "在您的示例中，`__invoke` 方法接收 `$message` 参数，借助 `RouteArgument` 属性从 URL 中获取消息。该值默认为 `\"Hello!\"`。如果请求发送到 `/say/Goodbye`，操作将值"Goodbye"赋给 `$message` 变量。"
+msgstr "在您的示例中，`__invoke` 方法接收 `$message` 参数，借助 `RouteArgument` 属性从 URL 中获取消息。该值默认为 `“Hello!”`。如果请求发送到 `/say/Goodbye`，操作将值“Goodbye”赋给 `$message` 变量。"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -176,12 +176,12 @@ msgstr "创建操作和视图后，在浏览器中打开 `http://localhost/say/H
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "This URL displays a page with \"The message is: Hello World\"."
-msgstr "此 URL 显示一个包含"The message is: Hello World"的页面。"
+msgstr "此 URL 显示一个包含“The message is: Hello World”的页面。"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "If you omit the `message` parameter in the URL, the page displays \"The message is: Hello!\"."
-msgstr "如果您在 URL 中省略 `message` 参数，页面将显示"The message is: Hello!"。"
+msgstr "如果您在 URL 中省略 `message` 参数，页面将显示“The message is: Hello!”。"
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
@@ -192,7 +192,7 @@ msgstr "创建视图模板 <span id=\"creating-view-template\"></span>"
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "Usually, the task is more complicated than printing out \"hello world\" and involves rendering some complex HTML. For this task, it's handy to use view templates. They're scripts you write to generate a response's body."
-msgstr "通常，任务比打印"hello world"更复杂，涉及渲染一些复杂的 HTML。对于这项任务，使用视图模板很方便。它们是您编写的用于生成响应主体的脚本。"
+msgstr "通常，任务比打印“hello world”更复杂，涉及渲染一些复杂的 HTML。对于这项任务，使用视图模板很方便。它们是您编写的用于生成响应主体的脚本。"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md

@@ -1,28 +1,22 @@
-# Saying hello
+# 说声 Hello
 
-This section describes how to create a new "Hello" page in your
-application.  It's a simple page that will echo back whatever you pass to it
-or, if nothing passed, will just say "Hello!".
+本节描述如何在应用程序中创建一个新的“Hello”页面。这是一个简单的页面，它会回显您传递给它的任何内容，或者如果没有传递任何内容，则显示“Hello!”。
 
-To achieve this goal, you will define a route and create [a
-handler](../structure/handler.md) that does the job and forms the response.
-Then you will improve it to use [view](../views/view.md) for building the
-response.
+为实现这个目标，您将定义一个路由并创建一个 [处理器](../structure/handler.md)
+来完成工作并形成响应。然后您将改进它，使用[视图](../views/view.md)来构建响应。
 
-Through this tutorial, you will learn three things:
+通过本教程，您将学习三件事：
 
-1. How to create a handler to respond to a request.
-2. How to map URL to the handler.
-3. How to use [view](../views/view.md) to compose the response's content.
+1. 如何创建处理器来响应请求。
+2. 如何将 URL 映射到处理器。
+3. 如何使用 [视图](../views/view.md) 来组成响应的内容。
 
-## Creating a handler <span id="creating-handler"></span>
+## 创建处理器 <span id="creating-handler"></span>
 
-For the "Hello" task, you will create a handler class that reads a `message`
-parameter from the request and displays that message back to the user. If
-the request doesn't provide a `message` parameter, the action will display
-the default "Hello" message.
+对于“Hello”任务，您将创建一个处理器类，从请求中读取 `message` 参数并将该消息显示给用户。如果请求没有提供 `message`
+参数，操作将显示默认的“Hello”消息。
 
-Create `src/Web/Echo/Action.php`:
+创建 `src/Web/Echo/Action.php`：
 
 ```php
 <?php
@@ -54,20 +48,14 @@ final readonly class Action
 }
 ```
 
-In your example, the `__invoke` method receives the `$message` parameter
-that with the help of `RouteArgument` attribute gets the message from
-URL. The value defaults to `"Hello!"`. If the request is made to
-`/say/Goodbye`, the action assigns the value "Goodbye" to the `$message`
-variable.
+在您的示例中，`__invoke` 方法接收 `$message` 参数，借助 `RouteArgument` 属性从 URL 中获取消息。该值默认为
+`“Hello!”`。如果请求发送到 `/say/Goodbye`，操作将值“Goodbye”赋给 `$message` 变量。
 
-The application passes the response through the [middleware
-stack](../structure/middleware.md) to the emitter that outputs the response
-to the end user.
+应用程序将响应通过[中间件栈](../structure/middleware.md)传递给发射器，由发射器将响应输出给最终用户。
 
-## Configuring router
+## 配置路由器
 
-Now, to map your handler to URL, you need to add a route in
-`config/common/routes.php`:
+现在，要将处理器映射到 URL，您需要在 `config/common/routes.php` 中添加路由：
 
 ```php
 <?php
@@ -91,33 +79,25 @@ return [
 ];
 ```
 
-In the above, you map the `/say[/{message}]` pattern to
-`\App\Web\Echo\Action`.  For a request, the router creates an instance and
-calls the `__invoke()` method.  The `{message}` part of the pattern writes
-anything specified in this place to the `message` request attribute.  `[]`
-marks this part of the pattern as optional.
+在上面，您将 `/say[/{message}]` 模式映射到 `\App\Web\Echo\Action`。对于请求，路由器创建一个实例并调用
+`__invoke()` 方法。模式中的 `{message}` 部分将此处指定的任何内容写入 `message` 请求属性。`[]`
+将模式的这部分标记为可选。
 
-You also give a `echo/say` name to this route to be able to generate URLs
-pointing to it.
+您还为此路由指定了 `echo/say` 名称，以便能够生成指向它的 URL。
 
-## Trying it out <span id="trying-it-out"></span>
+## 试试看 <span id="trying-it-out"></span>
 
-After creating the action and the view open
-`http://localhost/say/Hello+World` in your browser.
+创建操作和视图后，在浏览器中打开 `http://localhost/say/Hello+World`。
 
-This URL displays a page with "The message is: Hello World".
+此 URL 显示一个包含“The message is: Hello World”的页面。
 
-If you omit the `message` parameter in the URL, the page displays "The
-message is: Hello!".
+如果您在 URL 中省略 `message` 参数，页面将显示“The message is: Hello!”。
 
-## Creating a View Template <span id="creating-view-template"></span>
+## 创建视图模板 <span id="creating-view-template"></span>
 
-Usually, the task is more complicated than printing out "hello world" and
-involves rendering some complex HTML. For this task, it's handy to use view
-templates. They're scripts you write to generate a response's body.
+通常，任务比打印“hello world”更复杂，涉及渲染一些复杂的 HTML。对于这项任务，使用视图模板很方便。它们是您编写的用于生成响应主体的脚本。
 
-For the "Hello" task, create a `src/Web/Echo/template.php` template that
-prints the `message` parameter received from the action method:
+对于“Hello”任务，创建一个 `src/Web/Echo/template.php` 模板，打印从操作方法接收的 `message` 参数：
 
 ```php
 <?php
@@ -128,17 +108,13 @@ use Yiisoft\Html\Html;
 <p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-In the above code, the `message` parameter uses HTML encoding before you
-print it. You need that because the parameter comes from an end user and is
-vulnerable to [cross-site scripting (XSS)
-attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
-malicious JavaScript in the parameter.
+在上面的代码中，`message` 参数在打印之前使用 HTML 编码。这是必要的，因为该参数来自最终用户，通过在参数中嵌入恶意 JavaScript
+容易受到 [跨站脚本（XSS）攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。
 
-Naturally, you may put more content in the `say` view. The content can
-consist of HTML tags, plain text, and even PHP statements. In fact, the view
-service executes the `say` view as a PHP script.
+当然，您可以在 `say` 视图中放置更多内容。内容可以由 HTML 标签、纯文本甚至 PHP 语句组成。实际上，视图服务将 `say` 视图作为
+PHP 脚本执行。
 
-To use the view, you need to change `src/Web/Echo/Action.php`:
+要使用视图，您需要修改 `src/Web/Echo/Action.php`：
 
 ```php
 <?php
@@ -169,23 +145,16 @@ final readonly class Action
 }
 ```
 
-Now open your browser and check it again. You should see the similar text
-but with a layout applied.
+现在打开浏览器再次查看。您应该看到类似的文本，但已应用布局。
 
-Also, you've separated the part about how it works and part of how it's
-presented. In the larger applications, it helps a lot to deal with
-complexity.
+此外，您已将其工作方式与呈现方式分离。在较大的应用程序中，这对处理复杂性很有帮助。
 
-## Summary <span id="summary"></span>
+## 总结 <span id="summary"></span>
 
-In this section, you've touched the handler and template parts of the
-typical web application.  You created a handler as part of a class to handle
-a specific request. You also created a view to compose the response's
-content. In this simple example, no data source was involved as the only
-data used was the `message` parameter.
+在本节中，您接触了典型 Web
+应用程序的处理器和模板部分。您创建了一个处理器类来处理特定请求。您还创建了一个视图来组成响应的内容。在这个简单的示例中，没有涉及数据源，因为使用的唯一数据是
+`message` 参数。
 
-You've also learned about routing in Yii, which acts as the bridge between
-user requests and handlers.
+您还了解了 Yii 中的路由，它充当用户请求和处理器之间的桥梁。
 
-In the next section, you will learn how to fetch data and add a new page
-containing an HTML form.
+在下一节中，您将学习如何获取数据并添加一个包含 HTML 表单的新页面。
