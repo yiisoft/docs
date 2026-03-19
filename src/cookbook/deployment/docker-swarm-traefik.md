@@ -293,6 +293,7 @@ services:
       POSTGRES_DB: myapp
       POSTGRES_USER: myapp
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=und"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
