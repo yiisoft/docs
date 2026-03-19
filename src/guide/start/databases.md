@@ -57,6 +57,7 @@ services:
             POSTGRES_DB: app
             POSTGRES_PASSWORD: password
             POSTGRES_USER: user
+            POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=und --encoding=UTF8"
         volumes:
             - ../runtime/db:/var/lib/postgresql:rw
         ports:
