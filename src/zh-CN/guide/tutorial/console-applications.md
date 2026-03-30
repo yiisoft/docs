@@ -2,18 +2,27 @@
 
 控制台应用程序主要用于创建实用工具、后台处理和维护任务。
 
-要在项目中获得控制台应用程序支持，请通过 composer 获取 `yiisoft/yii-console`：
+## 入门
 
-
-```
-composer require yiisoft/yii-console
-```
-
-安装后，您可以通过以下方式访问入口点：
+If you're using [yiisoft/app](https://github.com/yiisoft/app) or
+[yiisoft/app-api](https://github.com/yiisoft/app-api), console support is
+already included.  You can access the entry point as:
 
 ```
 ./yii
 ```
+
+If you want a standalone console-only application, use the
+[yiisoft/app-console](https://github.com/yiisoft/app-console) project
+template:
+
+```sh
+composer create-project yiisoft/app-console your-project
+```
+
+To add console support to an existing project from scratch, refer to the
+[yiisoft/yii-console package
+documentation](https://github.com/yiisoft/yii-console).
 
 开箱即用只有 `serve` 命令可用。它启动 PHP 内置 Web 服务器在本地提供应用程序服务。
 
