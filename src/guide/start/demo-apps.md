@@ -14,3 +14,15 @@ A diary application built using the vertical slices architecture pattern.
 In this approach, each feature is implemented end-to-end rather than being split across horizontal layers,
 making it easier to add or modify features independently.
 
+**[WEB application template](https://github.com/yiisoft/app)**
+
+A simple web application that shows how to render a view and define the main layout.
+Main menu was not implemented, but contains one CLI command that prints a text.
+
+**[API application template](https://github.com/yiisoft/app-api)**
+
+An API with one endoint returning the app name and version, plus one CLI command that prints a text.
+
+**[CONSOLE application template](https://github.com/yiisoft/app-console)**
+
+Implements a single CLI command that prints a provided text.
