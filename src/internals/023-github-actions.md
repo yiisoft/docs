@@ -2,7 +2,7 @@
 
 This document defines naming convention for the GitHub actions configuration files.
 
-## Inputs, Outputs
+## Inputs and Outputs
 
 Input names and output names must use kebab-case format.
 
