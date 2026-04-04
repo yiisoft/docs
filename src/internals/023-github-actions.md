@@ -2,11 +2,12 @@
 
 This document defines naming convention for the GitHub actions configuration files.
 
-## Variables and Parameters
+## Inputs, Outputs, and Secrets
 
-Variable names, input names, output names, and input secret names must use kebab-case.
+Input names, output names, and input secret names must use kebab-case format.
 
-Example:
+For example:
+
 ```yaml
 inputs:
   my-input:
@@ -14,4 +15,15 @@ inputs:
 secrets:
   my-secret:
     description: 'My secret'
+```
+
+## Environment Variables
+
+Environment variables must use SCREAMING_SNAKE_CASE format.
+
+For example:
+
+```yaml
+env:
+  MY_ENV_VAR: 1
 ```
