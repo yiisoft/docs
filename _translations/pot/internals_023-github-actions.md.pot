@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-04-05 07:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid "023 — GitHub Actions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid ""
+"This document defines naming convention for the GitHub actions configuration "
+"files."
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid "Inputs and Outputs"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "Input names and output names must use kebab-case format."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "For example:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"inputs:\n"
+"  my-input:\n"
+"    description: 'My input'\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid "Secrets and Environment Variables"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid ""
+"Secret names and environment variable names must use SCREAMING_SNAKE_CASE "
+"format."
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"secrets:\n"
+"  MY_SECRET:\n"
+"    description: 'My secret'\n"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"env:\n"
+"  MY_ENV_VAR: 1\n"
+msgstr ""

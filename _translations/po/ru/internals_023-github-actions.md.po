@@ -1,0 +1,82 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-04-05 07:15+0000\n"
+"PO-Revision-Date: 2026-04-05 07:15+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title #
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid "023 — GitHub Actions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "This document defines naming convention for the GitHub actions configuration files."
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid "Inputs and Outputs"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "Input names and output names must use kebab-case format."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "For example:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"inputs:\n"
+"  my-input:\n"
+"    description: 'My input'\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/internals/023-github-actions.md
+#, fuzzy, no-wrap
+#| msgid "Environment variables"
+msgid "Secrets and Environment Variables"
+msgstr "Переменные окружения"
+
+#. type: Plain text
+#: ../src/internals/023-github-actions.md
+msgid "Secret names and environment variable names must use SCREAMING_SNAKE_CASE format."
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"secrets:\n"
+"  MY_SECRET:\n"
+"    description: 'My secret'\n"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/internals/023-github-actions.md
+#, no-wrap
+msgid ""
+"env:\n"
+"  MY_ENV_VAR: 1\n"
+msgstr ""

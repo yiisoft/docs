@@ -27,3 +27,5 @@
 - [020 — 包发布](020-package-release.md) - 包的发布流程
 - [021 — 变更日志和升级](021-changelog-upgrade.md) - 维护变更日志和升级说明
 - [022 — 配置组](022-config-groups.md) - 配置组组织
+- [023 - GitHub Actions](023-github-actions.md) - GitHub actions
+  configuration

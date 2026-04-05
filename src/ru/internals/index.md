@@ -42,3 +42,5 @@ maintaining and developing Yii packages.
   changelogs and upgrade notes
 - [022 — Config groups](022-config-groups.md) - Configuration group
   organization
+- [023 - GitHub Actions](023-github-actions.md) - GitHub actions
+  configuration
