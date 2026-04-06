@@ -21,8 +21,8 @@ debugging information, such as log messages, response statuses, the database que
 -->
 
 In addition to the web application, you can access a console script via
-`APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to
-run background and maintenance tasks for the application, which the [Console
+`./yii` or, in case of Docker, `make yii`.  Use this script to run
+background and maintenance tasks for the application, which the [Console
 Application Section](../tutorial/console-applications.md) describes.
 
 

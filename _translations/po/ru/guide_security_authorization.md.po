@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-03-01 17:44+0000\n"
+"POT-Creation-Date: 2026-04-06 22:12+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Fenced code block
+#: ../src/guide/databases/db-migrations.md
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "./yii migrate:up\n"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/security/authorization.md
@@ -315,12 +322,6 @@ msgstr ""
 msgid "Apply migrations:"
 msgstr "Настройка"
 
-#. type: Fenced code block
-#: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "APP_ENV=dev ./yii migrate:up\n"
-msgstr ""
-
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
@@ -485,7 +486,7 @@ msgstr ""
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "APP_ENV=dev ./yii rbac:init\n"
+msgid "./yii rbac:init\n"
 msgstr ""
 
 #. type: Plain text
@@ -515,7 +516,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid "Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:"
+msgid "Create new migration using `./yii migrate:create init_rbac` then implement creating a hierarchy:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -587,8 +588,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid "You could apply migration by using `APP_ENV=dev ./yii migrate:up`."
-msgstr ""
+#, fuzzy
+#| msgid "Apply the migration with `make yii migrate:up`."
+msgid "You could apply migration by using `./yii migrate:up`."
+msgstr "Примените миграцию с помощью `make yii migrate:up`."
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md

@@ -179,7 +179,7 @@ return [
 应用迁移：
 
 ```
-APP_ENV=dev ./yii migrate:up
+./yii migrate:up
 ```
 
 ### 构建授权数据 <span id="generating-rbac-data"></span>
@@ -286,7 +286,7 @@ return [
 您可以通过以下方式从控制台执行上述命令：
 
 ```
-APP_ENV=dev ./yii rbac:init
+./yii rbac:init
 ```
 
 > 如果您不想硬编码哪些用户具有某些角色，请不要在命令中放入 `->assign()` 调用。相反，
@@ -299,7 +299,8 @@ APP_ENV=dev ./yii rbac:init
 您可以使用 [迁移](../databases/db-migrations.md) 通过
 `\Yiisoft\Rbac\ManagerInterface` 提供的 API 初始化和更改层次结构。
 
-使用 `APP_ENV=dev ./yii migrate:create init_rbac` 创建新迁移，然后实现创建层次结构：
+Create new migration using `./yii migrate:create init_rbac` then implement
+creating a hierarchy:
 
 ```php
 <?php
@@ -360,7 +361,7 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
 > 如果您不想硬编码哪些用户具有某些角色，请不要在迁移中放入 `->assign()` 调用。相反，
   创建 UI 或控制台命令来管理分配。
 
-您可以使用 `APP_ENV=dev ./yii migrate:up` 应用迁移。
+You could apply migration by using `./yii migrate:up`.
 
 ## 将角色分配给用户
 

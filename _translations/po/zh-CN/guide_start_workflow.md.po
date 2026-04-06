@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2026-04-06 22:12+0000\n"
 "PO-Revision-Date: 2025-12-24 13:00+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -60,7 +60,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
-msgid "In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
+#, fuzzy
+#| msgid "In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
+msgid "In addition to the web application, you can access a console script via `./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
 msgstr "除了 Web 应用程序外，你还可以通过 `APP_ENV=dev ./yii` 或在 Docker 的情况下通过 `make yii` 访问控制台脚本。使用此脚本运行应用程序的后台和维护任务，[控制台应用程序部分](../tutorial/console-applications.md)对此进行了描述。"
 
 #. type: Title ##

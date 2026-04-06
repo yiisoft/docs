@@ -42,21 +42,7 @@ make composer update
 进入新创建的目录并运行：
 
 ```sh
-APP_ENV=dev ./yii serve --port=80
-```
-
-对于 Windows 命令提示符用户，运行：
-
-```cmd
-set APP_ENV=dev
-yii serve --port=80
-```
-
-对于 Windows PowerShell 用户，运行：
-
-```powershell
-$env:APP_ENV = "dev"
-.\yii serve --port=80
+./yii serve --port=80
 ```
 
 对于 Docker 用户，运行：

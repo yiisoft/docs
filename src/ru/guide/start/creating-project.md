@@ -47,21 +47,7 @@ make composer update
 Перейдите в созданную директорию и выполните:
 
 ```sh
-APP_ENV=dev ./yii serve --port=80
-```
-
-При использовании командной строки Windows выполните:
-
-```cmd
-set APP_ENV=dev
-yii serve --port=80
-```
-
-При использовании Windows PowerShell выполните :
-
-```powershell
-$env:APP_ENV = "dev"
-.\yii serve --port=80
+./yii serve --port=80
 ```
 
 Если вы используете Docker, выполните:
