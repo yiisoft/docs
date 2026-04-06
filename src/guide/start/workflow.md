@@ -18,7 +18,7 @@ This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by
 debugging information, such as log messages, response statuses, the database queries run, and so on.
 -->
 
-In addition to the web application, you can access a console script via `APP_ENV=dev ./yii` or, in case of Docker, `make yii`.
+In addition to the web application, you can access a console script via `./yii` or, in case of Docker, `make yii`.
 Use this script to run background and maintenance tasks for the application, which the
 [Console Application Section](../tutorial/console-applications.md) describes.
 
