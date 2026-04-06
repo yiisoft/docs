@@ -34,7 +34,35 @@ Each subdirectory (`dev/`, `test/`, `prod/`) corresponds to an environment stage
 
 ## Environment files
 
-The Docker setup uses two kinds of environment files that serve different purposes.
+The templates use two separate environment systems that serve different purposes and different runtimes.
+
+### .env.example (project root)
+
+The project root contains a `.env.example` file that serves as a template for local development
+**without Docker**:
+
+```ini
+# Local environment configuration.
+# Copy this file to .env and adjust as needed.
+# In production, set environment variables via server or container configuration instead.
+APP_ENV=dev
+APP_DEBUG=true
+```
+
+Copy it to create your local configuration file:
+
+```sh
+cp .env.example .env
+```
+
+The `.env` file is loaded automatically by `src/bootstrap.php` using
+[phpdotenv](https://github.com/vlucas/phpdotenv) only when `APP_ENV` is not already present in the
+process environment. This means **Docker-provided environment variables always take precedence** over
+the root `.env` file — both workflows can coexist safely in the same project directory.
+
+> [!NOTE]
+> `phpdotenv` is a development dependency and is not installed in production
+> (`composer install --no-dev`), so the root `.env` file has no effect on production containers.
 
 ### docker/.env
 

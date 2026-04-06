@@ -41,24 +41,25 @@ You can choose a different directory name if you want.
 > If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.
 > Don't use the development version of Yii for production because it may break your running code.
 
-Go into the newly created directory and run:
+Go into the newly created directory, copy the example environment file, and run:
 
 ```sh
-APP_ENV=dev ./yii serve --port=80
+cp .env.example .env
+./yii serve
 ```
 
 For Windows Command Prompt users, run:
 
 ```cmd
-set APP_ENV=dev
-yii serve --port=80
+copy .env.example .env
+yii serve
 ```
 
 For Windows PowerShell users, run:
 
 ```powershell
-$env:APP_ENV = "dev"
-.\yii serve --port=80
+Copy-Item .env.example .env
+.\yii serve
 ```
 
 For Docker users, run:
@@ -67,10 +68,11 @@ For Docker users, run:
 make up
 ```
 
-Open your browser to the URL `http://localhost/`.
+Open your browser to the URL printed to the console. For Docker it is `http://localhost/`; for the built-in
+server it is usually `http://localhost:8080`.
 
 > [!NOTE]
-> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,
-> `DEV_PORT` in the `docker/.env` file.
+> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
+> in `docker/.env`.
 
 ![Successful Installation of Yii](/images/guide/start/app-installed.png)
