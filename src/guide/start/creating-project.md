@@ -53,8 +53,7 @@ For Docker users, run:
 make up
 ```
 
-Open your browser to the URL printed to the console. For Docker it is `http://localhost/`; for the built-in
-server it is usually `http://localhost:8080`.
+Open your browser to the URL `http://localhost/`.
 
 > [!NOTE]
 > To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
