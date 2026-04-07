@@ -45,7 +45,7 @@ directory diverso se lo si desidera.
 > Se si desidera installare l'ultima versione di sviluppo di Yii, è possibile aggiungere `--stability=dev` al comando.
 > Non utilizzare la versione di sviluppo di Yii in produzione perché potrebbe compromettere il codice in esecuzione.
 
-Accedere alla directory appena creata ed eseguire:
+Go into the newly created directory, copy `.env.example` to `.env`, and run:
 
 ```sh
 ./yii serve --port=80
@@ -60,7 +60,7 @@ make up
 Aprire il browser all'URL `http://localhost/`.
 
 > [!NOTE]
-> Il server HTTP è in ascolto sulla porta 80. Se quella porta è già in uso, specificare la porta tramite `--port` o, nel caso di Docker,
-> `DEV_PORT` nel file `docker/.env`.
+> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
+> in `docker/.env`.
 
 ![Installazione riuscita di Yii](/images/guide/start/app-installed.png)

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-04-07 16:34+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -51,7 +51,7 @@ msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
 msgstr "[Aggiornamento dalla versione 2.0](intro/upgrade-from-v2.md)"
 
 #. type: Title ##
-#: ../src/guide/index.md
+#: ../src/guide/index.md ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "Getting started"
 msgstr "Per iniziare"
@@ -461,8 +461,8 @@ msgstr "Generare codice utilizzando Gii"
 msgid "Generating API documentation"
 msgstr "Generazione della documentazione API"
 
-#. type: Title ##
-#: ../src/guide/index.md
+#. type: Title ###
+#: ../src/guide/index.md ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr "Testing"
@@ -506,6 +506,13 @@ msgstr "Argomenti speciali"
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Console applications](tutorial/console-applications.md)"
+msgstr "[Applicazioni console](tutorial/console-applications.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Console applications](tutorial/console-applications.md)"
+msgid "[Docker in application templates](tutorial/docker.md)"
 msgstr "[Applicazioni console](tutorial/console-applications.md)"
 
 #. type: Bullet: '- '

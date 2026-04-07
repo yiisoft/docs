@@ -133,6 +133,7 @@ Yii](https://www.yiiframework.com/license#docs).
 ## Argomenti speciali
 
 - [Applicazioni console](tutorial/console-applications.md)
+- [Docker in application templates](tutorial/docker.md)
 - [Internazionalizzazione](tutorial/i18n.md) TODO
 - [Mailing](tutorial/mailing.md)
 - [Ottimizzazione delle prestazioni](tutorial/performance-tuning.md)

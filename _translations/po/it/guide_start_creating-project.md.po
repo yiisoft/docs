@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-06 22:12+0000\n"
+"POT-Creation-Date: 2026-04-07 16:34+0000\n"
 "PO-Revision-Date: 2026-01-10 21:35+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -116,7 +116,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid "Go into the newly created directory and run:"
+#, fuzzy
+#| msgid "Go into the newly created directory and run:"
+msgid "Go into the newly created directory, copy `.env.example` to `.env`, and run:"
 msgstr "Accedere alla directory appena creata ed eseguire:"
 
 #. type: Fenced code block (sh)
@@ -144,11 +146,15 @@ msgstr "Aprire il browser all'URL `http://localhost/`."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "> [!NOTE]\n"
+#| "> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
+#| "> `DEV_PORT` in the `docker/.env` file.\n"
 msgid ""
 "> [!NOTE]\n"
-"> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
-"> `DEV_PORT` in the `docker/.env` file.\n"
+"> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`\n"
+"> in `docker/.env`.\n"
 msgstr ""
 "> [!NOTE]\n"
 "> Il server HTTP è in ascolto sulla porta 80. Se quella porta è già in uso, specificare la porta tramite `--port` o, nel caso di Docker,\n"

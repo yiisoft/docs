@@ -39,7 +39,7 @@ make composer update
 > 如果你想安装最新的 Yii 开发版本，可以在命令中添加 `--stability=dev`。
 > 不要在生产环境中使用 Yii 的开发版本，因为它可能会破坏你正在运行的代码。
 
-进入新创建的目录并运行：
+Go into the newly created directory, copy `.env.example` to `.env`, and run:
 
 ```sh
 ./yii serve --port=80
@@ -54,7 +54,7 @@ make up
 在浏览器中打开 URL `http://localhost/`。
 
 > [!NOTE]
-> HTTP 服务器监听 80 端口。如果该端口已被占用，请通过 `--port` 指定端口，或者在 Docker 的情况下，
-> 在 `docker/.env` 文件中设置 `DEV_PORT`。
+> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
+> in `docker/.env`.
 
 ![成功安装 Yii](/images/guide/start/app-installed.png)

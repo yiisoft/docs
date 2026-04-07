@@ -1,0 +1,713 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-04-07 16:34+0000\n"
+"PO-Revision-Date: 2026-04-07 16:34+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ###
+#: ../src/guide/index.md ../src/guide/tutorial/docker.md
+#, fuzzy, no-wrap
+msgid "Testing"
+msgstr "Pruebas (Testing)"
+
+#. type: Title #
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Docker in Application Templates"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Both [yiisoft/app](https://github.com/yiisoft/app) and [yiisoft/app-api](https://github.com/yiisoft/app-api) come with a ready-to-use Docker setup based on [FrankenPHP](https://frankenphp.dev/) with Caddy as the built-in web server.  The setup covers local development, testing, and production deployment through a set of environment files, Docker Compose configurations, a multi-stage Dockerfile, and a `Makefile` that wraps common operations."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Docker directory overview"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "All Docker-related files live under the `docker/` directory:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"docker/\n"
+"├── .env                  # Compose-level variables (stack name, ports, image names)\n"
+"├── Dockerfile            # Multi-stage image definition\n"
+"├── compose.yml           # Base Compose file (shared anchor for all environments)\n"
+"├── dev/\n"
+"│   ├── .env              # Application environment variables for development\n"
+"│   ├── .gitignore        # Excludes override.env from version control\n"
+"│   ├── compose.yml       # Development-specific Compose overrides\n"
+"│   └── override.env.example  # Optional developer-local overrides template\n"
+"├── test/\n"
+"│   ├── .env              # Application environment variables for testing\n"
+"│   ├── .gitignore        # Excludes override.env from version control\n"
+"│   └── compose.yml       # Test-specific Compose overrides\n"
+"└── prod/\n"
+"    ├── .env              # Application environment variables for production\n"
+"    ├── .gitignore        # Excludes override.env from version control\n"
+"    └── compose.yml       # Production-specific Compose overrides (Docker Swarm)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Each subdirectory (`dev/`, `test/`, `prod/`) corresponds to an environment stage and contains its own `.env` file with application-level configuration and a `compose.yml` that extends the base `docker/compose.yml`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Environment files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The templates use two separate environment systems that serve different purposes and different runtimes."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ".env.example (project root)"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The project root contains a `.env.example` file that serves as a template for local development **without Docker**:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# Local environment configuration.\n"
+"# Copy this file to .env and adjust as needed.\n"
+"# In production, set environment variables via server or container configuration instead.\n"
+"APP_ENV=dev\n"
+"APP_DEBUG=true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Copy it to create your local configuration file:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "cp .env.example .env\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The `.env` file is loaded automatically by `src/bootstrap.php` using [phpdotenv](https://github.com/vlucas/phpdotenv) only when `APP_ENV` is not already present in the process environment. This means **Docker-provided environment variables always take precedence** over the root `.env` file — both workflows can coexist safely in the same project directory."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> `phpdotenv` is a development dependency and is not installed in production\n"
+"> (`composer install --no-dev`), so the root `.env` file has no effect on production containers.\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/.env"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "This file contains variables used by the Compose files themselves — they are **not** passed into the running application container:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# Variables for compose.yml files. Not available in the app.\n"
+"\n"
+"STACK_NAME=app\n"
+"\n"
+"# Development\n"
+"\n"
+"DEV_PORT=80\n"
+"\n"
+"# Production\n"
+"\n"
+"PROD_HOST=app.example.com\n"
+"PROD_SSH=\"ssh://docker-web\"\n"
+"\n"
+"IMAGE=app\n"
+"IMAGE_TAG=latest\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Variable     | Purpose                                                                 |\n"
+"|--------------|-------------------------------------------------------------------------|\n"
+"| `STACK_NAME` | Docker Compose project name and Docker Swarm stack name.                |\n"
+"| `DEV_PORT`   | Host port to expose the application on in development (`make up`).      |\n"
+"| `PROD_HOST`  | Hostname used by Caddy labels for automatic HTTPS in production.        |\n"
+"| `PROD_SSH`   | Remote Docker host for deploying to a Swarm node via SSH.               |\n"
+"| `IMAGE`      | Docker image name used during build and push.                           |\n"
+"| `IMAGE_TAG`  | Docker image tag (`latest` by default; use a version string in CI/CD).  |\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/dev/.env"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Contains application environment variables injected into the development container at runtime:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# App dev environment.\n"
+"# Note that variables are available in the app only, not in compose.yml.\n"
+"\n"
+"APP_ENV=dev\n"
+"APP_DEBUG=true\n"
+"SERVER_NAME=:80\n"
+"XDEBUG_MODE=develop\n"
+"COMPOSER_CACHE_DIR=/app/runtime/cache/composer\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Variable              | Purpose                                                                              |\n"
+"|-----------------------|--------------------------------------------------------------------------------------|\n"
+"| `APP_ENV`             | Application environment. `dev` enables developer-friendly behavior.                  |\n"
+"| `APP_DEBUG`           | Enables detailed error output and debug panels.                                      |\n"
+"| `SERVER_NAME`         | Caddy server address — `:80` means listen on all interfaces on port 80.              |\n"
+"| `XDEBUG_MODE`         | Xdebug mode. Use `develop` for helpers and `debug` to enable step debugging.         |\n"
+"| `COMPOSER_CACHE_DIR`  | Moves Composer's cache into the mounted volume so it persists between runs.          |\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/test/.env"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Contains application environment variables for the test container:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# App test environment.\n"
+"# Note that variables are available in the app only, not in compose.yml.\n"
+"\n"
+"APP_ENV=test\n"
+"APP_DEBUG=false\n"
+"APP_C3=true\n"
+"SERVER_NAME=:80\n"
+"XDEBUG_MODE=coverage\n"
+"COMPOSER_CACHE_DIR=/app/runtime/cache/composer\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Variable             | Purpose                                                                                       |\n"
+"|----------------------|-----------------------------------------------------------------------------------------------|\n"
+"| `APP_ENV`            | Sets the environment to `test` so the application loads test-specific configuration.         |\n"
+"| `APP_DEBUG`          | Disabled in tests to match a realistic execution context.                                    |\n"
+"| `APP_C3`             | Enables [c3](https://github.com/Codeception/c3) remote code coverage collection.            |\n"
+"| `SERVER_NAME`        | Caddy server address.                                                                         |\n"
+"| `XDEBUG_MODE`        | `coverage` activates Xdebug's code coverage driver required for coverage reports.            |\n"
+"| `COMPOSER_CACHE_DIR` | Persistent Composer cache inside the volume.                                                  |\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/prod/.env"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Contains application environment variables for the production container:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# App prod environment.\n"
+"# Note that variables are available in the app only, not in compose.yml.\n"
+"\n"
+"APP_ENV=prod\n"
+"APP_DEBUG=false\n"
+"SERVER_NAME=:80\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The production environment intentionally uses a minimal configuration. Secrets and host-specific overrides should be managed through deployment tooling and never committed to version control."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Override env files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Each environment directory contains a `.gitignore` that excludes an `override.env` file.  This file is optional and, when present, is merged on top of the main `.env` for that environment:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"# docker/dev/override.env.example\n"
+"APP_HOST_PATH=/projects/yiisoft/app\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Copy the example file to create your local overrides:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "cp docker/dev/override.env.example docker/dev/override.env\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Use override files for developer-specific settings such as Xdebug IDE keys or local bind paths that should not be shared with the team."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Compose files"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The Compose configuration is split across multiple files that Docker Compose merges at runtime.  This approach avoids duplicating shared settings and keeps each environment's file focused and small."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/compose.yml (base)"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The base file defines shared settings inherited by all environments:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app: &appconfig\n"
+"    extra_hosts:\n"
+"      - \"host.docker.internal:host-gateway\"\n"
+"\n"
+"volumes:\n"
+"  caddy_data:\n"
+"  caddy_config:\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The `&appconfig` YAML anchor lets environment files reference and extend this service definition.  The `host.docker.internal` entry maps to the Docker host so containers can reach services running on the host machine (for example, a local database)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The two named volumes (`caddy_data` and `caddy_config`) persist Caddy's certificate storage and configuration across container restarts."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/dev/compose.yml"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Extends the base file for local development:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    build:\n"
+"      dockerfile: docker/Dockerfile\n"
+"      context: ..\n"
+"      target: dev\n"
+"      args:\n"
+"        USER_ID: ${UID}\n"
+"        GROUP_ID: ${GID}\n"
+"    env_file:\n"
+"      - path: ./dev/.env\n"
+"      - path: ./dev/override.env\n"
+"        required: false\n"
+"    ports:\n"
+"      - \"${DEV_PORT:-80}:80\"\n"
+"    volumes:\n"
+"      - ../:/app\n"
+"      - ../runtime:/app/runtime\n"
+"      - caddy_data:/data\n"
+"      - caddy_config:/config\n"
+"    tty: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, fuzzy
+msgid "Key points:"
+msgstr "Conceptos Clave"
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/docker.md
+msgid "**`target: dev`** — Selects the `dev` stage from the multi-stage Dockerfile."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/docker.md
+msgid "**`USER_ID` / `GROUP_ID`** — Passed as build arguments so the container user matches the host user, preventing file permission issues on Linux."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/docker.md
+msgid "**`env_file`** — Loads `docker/dev/.env` and, optionally, the developer's local `override.env`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/docker.md
+msgid "**`ports`** — Exposes port 80 (or `DEV_PORT` from `docker/.env`) on the host."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/docker.md
+msgid "**`volumes`** — Mounts the entire project into `/app` so code changes are reflected immediately without rebuilding the image."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/test/compose.yml"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Identical in structure to the dev file but loads `docker/test/.env` and does not expose ports to the host, since tests run entirely inside the container network."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "docker/prod/compose.yml"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Targets production deployments using Docker Swarm:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    image: ${IMAGE}:${IMAGE_TAG}\n"
+"    networks:\n"
+"      - caddy_public\n"
+"    volumes:\n"
+"      - runtime:/app/runtime\n"
+"      - caddy_data:/data\n"
+"      - caddy_config:/config\n"
+"    env_file:\n"
+"      - path: ./prod/.env\n"
+"      - path: ./prod/override.env\n"
+"        required: false\n"
+"    deploy:\n"
+"      replicas: 2\n"
+"      update_config:\n"
+"        delay: 10s\n"
+"        parallelism: 1\n"
+"        order: start-first\n"
+"        failure_action: rollback\n"
+"        monitor: 10s\n"
+"      rollback_config:\n"
+"        parallelism: 0\n"
+"        order: stop-first\n"
+"      restart_policy:\n"
+"        condition: on-failure\n"
+"        delay: 5s\n"
+"        max_attempts: 3\n"
+"        window: 120s\n"
+"      labels:\n"
+"        caddy: ${PROD_HOST:-app.example.com}\n"
+"        caddy.reverse_proxy: \"{{upstreams 80}}\"\n"
+"\n"
+"volumes:\n"
+"  runtime:\n"
+"\n"
+"networks:\n"
+"  caddy_public:\n"
+"    external: true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Instead of building an image, the production file references a pre-built image (`${IMAGE}:${IMAGE_TAG}`).  The `deploy` block configures Docker Swarm behaviour: two replicas with a rolling `start-first` update strategy and automatic rollback on failure. The `caddy` labels are picked up by a [Caddy Docker Proxy](https://github.com/lucaslorentz/caddy-docker-proxy) running in the same Swarm to configure automatic HTTPS routing."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> The `caddy_public` network must already exist on the Swarm before deploying.\n"
+"> See the [Docker Swarm deployment guide](../../cookbook/deployment/docker-swarm.md) for full setup instructions.\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Multi-stage Dockerfile"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The `docker/Dockerfile` uses [multi-stage builds](https://docs.docker.com/build/building/multi-stage/) to produce lean images for each purpose from a single file, avoiding duplication of the base setup:"
+msgstr ""
+
+#. type: Fenced code block (dockerfile)
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"FROM composer/composer:2-bin AS composer\n"
+"\n"
+"FROM dunglas/frankenphp:1-php8.2-bookworm AS base\n"
+"\n"
+"RUN apt update && apt -y install \\\n"
+"    unzip\n"
+"\n"
+"RUN install-php-extensions \\\n"
+"    opcache mbstring intl dom ctype curl phar openssl xml xmlwriter simplexml pdo\n"
+"\n"
+"ENV LC_ALL=C.UTF-8\n"
+"\n"
+"#\n"
+"# Development\n"
+"#\n"
+"\n"
+"FROM base AS dev\n"
+"ARG USER_ID=10001\n"
+"ARG GROUP_ID=10001\n"
+"ARG USER_NAME=appuser\n"
+"ARG GROUP_NAME=appuser\n"
+"\n"
+"RUN install-php-extensions xdebug\n"
+"\n"
+"COPY --from=composer /composer /usr/bin/composer\n"
+"\n"
+"RUN \\\n"
+"    groupadd --gid ${GROUP_ID} ${GROUP_NAME}; \\\n"
+"    useradd --gid ${GROUP_ID} --uid ${USER_ID} ${GROUP_NAME}; \\\n"
+"    setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp; \\\n"
+"    chown -R ${USER_NAME}:${GROUP_NAME} /data/caddy && \\\n"
+"    chown -R ${USER_NAME}:${GROUP_NAME} /config/caddy\n"
+"USER ${USER_NAME}\n"
+"\n"
+"#\n"
+"# Production\n"
+"#\n"
+"\n"
+"FROM base AS prod-builder\n"
+"COPY --from=composer /composer /usr/bin/composer\n"
+"COPY .. /app\n"
+"RUN --mount=type=cache,target=/tmp/cache \\\n"
+"    composer install --no-dev --no-progress --no-interaction --classmap-authoritative && \\\n"
+"    rm composer.lock composer.json\n"
+"\n"
+"FROM base AS prod\n"
+"ENV APP_ENV=prod\n"
+"COPY --from=prod-builder --chown=www-data:www-data /app /app\n"
+"USER www-data\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The Dockerfile defines four stages:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Stage          | Purpose                                                                                          |\n"
+"|----------------|--------------------------------------------------------------------------------------------------|\n"
+"| `composer`     | Copies the Composer binary from the official image to avoid installing it in other stages.       |\n"
+"| `base`         | Installs FrankenPHP, common PHP extensions, and system packages shared by all environments.      |\n"
+"| `dev`          | Extends `base` with Xdebug and Composer. Creates a non-root user matching the host user's UID/GID to prevent permission issues with mounted volumes. |\n"
+"| `prod-builder` | Extends `base`, copies the application source, and runs `composer install --no-dev` using a build cache. Removes `composer.lock` and `composer.json` afterwards to keep the final image clean. |\n"
+"| `prod`         | Copies only the built application from `prod-builder` into a clean `base` image. This produces a small final image because the Composer binary and intermediate files are not included. |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> When building the production image you select a specific stage with `--target prod`. The `prod-builder`\n"
+"> stage is an intermediate step and is never pushed to a registry.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The `dev` target is selected when running `make up` or `make build`, while `make prod-build` targets `prod`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "make commands"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "The `Makefile` provides a convenient interface for all common Docker operations. Run `make` or `make help` to list available targets with their descriptions."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, fuzzy, no-wrap
+#| msgid "Development tools -"
+msgid "Development"
+msgstr "Herramientas de Desarrollo"
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Command       | Description                                                    |\n"
+"|---------------|----------------------------------------------------------------|\n"
+"| `make build`  | Build (or rebuild) the development Docker image.               |\n"
+"| `make up`     | Start the development environment in detached mode.            |\n"
+"| `make down`   | Stop and remove containers, networks, and orphaned services.   |\n"
+"| `make stop`   | Stop running containers without removing them.                 |\n"
+"| `make clear`  | Remove all development containers, networks, and volumes.      |\n"
+"| `make shell`  | Open an interactive Bash shell inside the running `app` container. |\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Running tools"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+msgid "Commands in this group run inside the development container using `docker compose run --rm`, so they work even when the container is not currently running:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Command                              | Description                                     |\n"
+"|--------------------------------------|-------------------------------------------------|\n"
+"| `make yii <command>`                 | Run a `./yii` console command.                  |\n"
+"| `make composer <command>`            | Run Composer.                                   |\n"
+"| `make rector`                        | Run [Rector](https://getrector.com/) for automated PHP refactoring and code quality improvements. |\n"
+"| `make cs-fix`                        | Run [PHP CS Fixer](https://cs.symfony.com/).    |\n"
+"| `make psalm`                         | Run [Psalm](https://psalm.dev/) static analysis. |\n"
+"| `make composer-dependency-analyser`  | Run [Composer Dependency Analyser](https://github.com/shipmonk-rnd/composer-dependency-analyser). |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Command                | Description                                               |\n"
+"|------------------------|-----------------------------------------------------------|\n"
+"| `make test`            | Run the full test suite with Codeception.                 |\n"
+"| `make test-coverage`   | Run tests and generate an HTML coverage report.           |\n"
+"| `make codecept <args>` | Run any Codeception command with custom arguments.        |\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/docker.md
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Production"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"| Command              | Description                                                                         |\n"
+"|----------------------|-------------------------------------------------------------------------------------|\n"
+"| `make prod-build`    | Build the production Docker image locally (`--target prod`).                        |\n"
+"| `make prod-push`     | Push the built image to the registry defined by `IMAGE` and `IMAGE_TAG`.            |\n"
+"| `make prod-deploy`   | Deploy the stack to a remote Docker Swarm node defined by `PROD_SSH`.               |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> Most commands accept additional arguments. For example, to install a specific package:\n"
+"> ```sh\n"
+"> make composer require yiisoft/yii-db-mysql\n"
+"> ```\n"
+"> To run a single test suite:\n"
+"> ```sh\n"
+"> make test -- Unit\n"
+"> ```\n"
+msgstr ""

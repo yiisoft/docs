@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-04-07 16:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
 msgstr ""
 
 #. type: Title ##
-#: ../src/guide/index.md
+#: ../src/guide/index.md ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "Getting started"
 msgstr ""
@@ -468,8 +468,8 @@ msgstr ""
 msgid "Generating API documentation"
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/index.md
+#. type: Title ###
+#: ../src/guide/index.md ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr ""
@@ -513,6 +513,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Console applications](tutorial/console-applications.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Docker in application templates](tutorial/docker.md)"
 msgstr ""
 
 #. type: Bullet: '- '

@@ -132,6 +132,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 ## Special topics
 
 - [Console applications](tutorial/console-applications.md)
+- [Docker in application templates](tutorial/docker.md)
 - [Internationalization](tutorial/i18n.md) TODO
 - [Mailing](tutorial/mailing.md)
 - [Performance tuning](tutorial/performance-tuning.md)

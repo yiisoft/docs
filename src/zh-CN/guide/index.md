@@ -130,6 +130,7 @@
 ## 特殊主题
 
 - [控制台应用](tutorial/console-applications.md)
+- [Docker in application templates](tutorial/docker.md)
 - [国际化](tutorial/i18n.md) TODO
 - [邮件](tutorial/mailing.md)
 - [性能调优](tutorial/performance-tuning.md)

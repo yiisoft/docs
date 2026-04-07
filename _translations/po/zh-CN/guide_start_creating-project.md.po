@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-06 22:12+0000\n"
+"POT-Creation-Date: 2026-04-07 16:34+0000\n"
 "PO-Revision-Date: 2026-01-09 11:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -103,7 +103,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-msgid "Go into the newly created directory and run:"
+#, fuzzy
+#| msgid "Go into the newly created directory and run:"
+msgid "Go into the newly created directory, copy `.env.example` to `.env`, and run:"
 msgstr "进入新创建的目录并运行："
 
 #. type: Fenced code block (sh)
@@ -130,11 +132,15 @@ msgstr "在浏览器中打开 URL `http://localhost/`。"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "> [!NOTE]\n"
+#| "> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
+#| "> `DEV_PORT` in the `docker/.env` file.\n"
 msgid ""
 "> [!NOTE]\n"
-"> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
-"> `DEV_PORT` in the `docker/.env` file.\n"
+"> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`\n"
+"> in `docker/.env`.\n"
 msgstr ""
 "> [!NOTE]\n"
 "> HTTP 服务器监听 80 端口。如果该端口已被占用，请通过 `--port` 指定端口，或者在 Docker 的情况下，\n"
