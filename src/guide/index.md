@@ -128,6 +128,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 ## Special topics
 
 - [Console applications](tutorial/console-applications.md)
+- [Docker in application templates](tutorial/docker.md)
 - [Internationalization](tutorial/i18n.md) TODO
 - [Mailing](tutorial/mailing.md)
 - [Performance tuning](tutorial/performance-tuning.md)
