@@ -41,7 +41,7 @@ You can choose a different directory name if you want.
 > If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.
 > Don't use the development version of Yii for production because it may break your running code.
 
-Go into the newly created directory, copy the example environment file, and run:
+Go into the newly created directory, copy `.env.example` to `.env`, and run:
 
 ```sh
 ./yii serve --port=80
