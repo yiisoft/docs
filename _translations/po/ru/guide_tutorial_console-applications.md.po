@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-26 08:41+0000\n"
+"POT-Creation-Date: 2026-03-30 08:11+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -27,6 +27,12 @@ msgstr ""
 msgid "References"
 msgstr "Ссылки"
 
+#. type: Title ##
+#: ../src/guide/index.md ../src/guide/tutorial/console-applications.md
+#, no-wrap
+msgid "Getting started"
+msgstr ""
+
 #. type: Title #
 #: ../src/guide/tutorial/console-applications.md
 #, no-wrap
@@ -40,19 +46,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
-msgid "To get support for console application in your project, get `yiisoft/yii-console` via composer:"
-msgstr ""
-
-#. type: Fenced code block
-#: ../src/guide/tutorial/console-applications.md
-#, fuzzy, no-wrap
-#| msgid "composer install yiisoft/security\n"
-msgid "composer require yiisoft/yii-console\n"
-msgstr "composer install yiisoft/security\n"
-
-#. type: Plain text
-#: ../src/guide/tutorial/console-applications.md
-msgid "After it's installed, you can access the entry point as"
+msgid "If you're using [yiisoft/app](https://github.com/yiisoft/app) or [yiisoft/app-api](https://github.com/yiisoft/app-api), console support is already included.  You can access the entry point as:"
 msgstr ""
 
 #. type: Fenced code block
@@ -60,6 +54,25 @@ msgstr ""
 #, no-wrap
 msgid "./yii\n"
 msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/console-applications.md
+msgid "If you want a standalone console-only application, use the [yiisoft/app-console](https://github.com/yiisoft/app-console) project template:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/tutorial/console-applications.md
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "composer create-project yiisoft/app-console your-project\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Plain text
+#: ../src/guide/tutorial/console-applications.md
+#, fuzzy
+#| msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
+msgid "To add console support to an existing project from scratch, refer to the [yiisoft/yii-console package documentation](https://github.com/yiisoft/yii-console)."
+msgstr "Дополнительную информацию о шаблоне приложения можно найти в [документации пакета yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md)."
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md

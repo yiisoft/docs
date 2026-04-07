@@ -288,13 +288,14 @@ services:
     # ... existing configuration ...
     
   db:
-    image: postgres:15-alpine
+    image: postgres:18-alpine
     environment:
       POSTGRES_DB: myapp
       POSTGRES_USER: myapp
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=und --encoding=UTF8"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql
     networks:
       - reverse_proxy_public
     deploy:

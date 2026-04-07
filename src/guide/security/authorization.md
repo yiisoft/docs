@@ -191,7 +191,7 @@ return [
 Apply migrations:
 
 ```
-APP_ENV=dev ./yii migrate:up
+./yii migrate:up
 ```
 
 ### Building authorization data <span id="generating-rbac-data"></span>
@@ -303,7 +303,7 @@ return [
 You can execute the command above from the console the following way:
 
 ```
-APP_ENV=dev ./yii rbac:init
+./yii rbac:init
 ```
 
 > If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
@@ -316,7 +316,7 @@ APP_ENV=dev ./yii rbac:init
 You can use [migrations](../databases/db-migrations.md)
 to initialize and change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:
+Create new migration using `./yii migrate:create init_rbac` then implement creating a hierarchy:
 
 ```php
 <?php
@@ -377,7 +377,7 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
 > If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
   create either UI or console command to manage assignments.
 
-You could apply migration by using `APP_ENV=dev ./yii migrate:up`.
+You could apply migration by using `./yii migrate:up`.
 
 ## Assigning roles to users
 

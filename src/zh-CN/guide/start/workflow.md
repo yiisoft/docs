@@ -14,8 +14,10 @@
 调试信息，例如日志消息、响应状态、运行的数据库查询等。
 -->
 
-除了 Web 应用程序外，你还可以通过 `APP_ENV=dev ./yii` 或在 Docker 的情况下通过 `make yii`
-访问控制台脚本。使用此脚本运行应用程序的后台和维护任务，[控制台应用程序部分](../tutorial/console-applications.md)对此进行了描述。
+In addition to the web application, you can access a console script via
+`./yii` or, in case of Docker, `make yii`.  Use this script to run
+background and maintenance tasks for the application, which the [Console
+Application Section](../tutorial/console-applications.md) describes.
 
 
 ## 应用结构 <span id="application-structure"></span>

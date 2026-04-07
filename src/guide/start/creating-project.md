@@ -44,22 +44,7 @@ You can choose a different directory name if you want.
 Go into the newly created directory, copy the example environment file, and run:
 
 ```sh
-cp .env.example .env
-./yii serve
-```
-
-For Windows Command Prompt users, run:
-
-```cmd
-copy .env.example .env
-yii serve
-```
-
-For Windows PowerShell users, run:
-
-```powershell
-Copy-Item .env.example .env
-.\yii serve
+./yii serve --port=80
 ```
 
 For Docker users, run:

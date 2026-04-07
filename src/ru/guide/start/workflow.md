@@ -22,11 +22,10 @@
 выполненные запросы к базе данных и многое другое.
 -->
 
-Помимо веб-приложения, вы можете получить доступ к консольному скрипту с
-помощью `APP_ENV=dev ./yii` или, в случае использования Docker, `make
-yii`. Этот скрипт используется для запуска фоновых и обслуживающих задач
-приложения, что описано в разделе [Консольное
-приложение](../tutorial/console-applications.md).
+In addition to the web application, you can access a console script via
+`./yii` or, in case of Docker, `make yii`.  Use this script to run
+background and maintenance tasks for the application, which the [Console
+Application Section](../tutorial/console-applications.md) describes.
 
 
 ## Структура приложения <span id="application-structure"></span>

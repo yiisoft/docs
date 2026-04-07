@@ -80,14 +80,14 @@ use Yiisoft\Injector\Injector;
 
 return [
     // ...
-    ErrorHandler::class => static function (ResponseFactoryInterface $responseFactory, Injector $injector) {
+    ExceptionResponder::class => static function (ResponseFactoryInterface $responseFactory, Injector $injector) {
         $exceptionMap = [
             // Status code with which the factory creates the response.
             MyNotFoundException::class => 404,
             // PHP callable that must return a `Psr\Http\Message\ResponseInterface`.
             MyHttpException::class => static fn (MyHttpException $exception) => new MyResponse($exception),
             // ...
-        ],
+        ];
         
         return new ExceptionResponder($exceptionMap, $responseFactory, $injector);
     },

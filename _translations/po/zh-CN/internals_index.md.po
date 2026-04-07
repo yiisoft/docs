@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:23+0000\n"
+"POT-Creation-Date: 2026-04-05 07:15+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -146,3 +146,8 @@ msgstr "[021 — 变更日志和升级](021-changelog-upgrade.md) - 维护变更
 #: ../src/internals/index.md
 msgid "[022 — Config groups](022-config-groups.md) - Configuration group organization"
 msgstr "[022 — 配置组](022-config-groups.md) - 配置组组织"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[023 - GitHub Actions](023-github-actions.md) - GitHub actions configuration"
+msgstr ""

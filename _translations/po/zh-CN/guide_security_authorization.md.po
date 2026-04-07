@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-03-01 17:44+0000\n"
+"POT-Creation-Date: 2026-04-06 22:12+0000\n"
 "PO-Revision-Date: 2026-01-20 21:38+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block
+#: ../src/guide/databases/db-migrations.md
+#: ../src/guide/security/authorization.md
+#, no-wrap
+msgid "./yii migrate:up\n"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/security/authorization.md
@@ -311,12 +318,6 @@ msgstr ""
 msgid "Apply migrations:"
 msgstr "应用迁移："
 
-#. type: Fenced code block
-#: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "APP_ENV=dev ./yii migrate:up\n"
-msgstr ""
-
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
@@ -478,7 +479,7 @@ msgstr "您可以通过以下方式从控制台执行上述命令："
 #. type: Fenced code block
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "APP_ENV=dev ./yii rbac:init\n"
+msgid "./yii rbac:init\n"
 msgstr ""
 
 #. type: Plain text
@@ -510,7 +511,9 @@ msgstr "您可以使用 [迁移](../databases/db-migrations.md) 通过 `\\Yiisof
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid "Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:"
+#, fuzzy
+#| msgid "Create new migration using `APP_ENV=dev ./yii migrate:create init_rbac` then implement creating a hierarchy:"
+msgid "Create new migration using `./yii migrate:create init_rbac` then implement creating a hierarchy:"
 msgstr "使用 `APP_ENV=dev ./yii migrate:create init_rbac` 创建新迁移，然后实现创建层次结构："
 
 #. type: Fenced code block (php)
@@ -584,7 +587,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
-msgid "You could apply migration by using `APP_ENV=dev ./yii migrate:up`."
+#, fuzzy
+#| msgid "You could apply migration by using `APP_ENV=dev ./yii migrate:up`."
+msgid "You could apply migration by using `./yii migrate:up`."
 msgstr "您可以使用 `APP_ENV=dev ./yii migrate:up` 应用迁移。"
 
 #. type: Title ##

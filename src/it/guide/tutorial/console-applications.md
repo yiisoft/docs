@@ -3,19 +3,27 @@
 Console applications are mainly used to create utility, background
 processing and maintenance tasks.
 
-To get support for console application in your project, get
-`yiisoft/yii-console` via composer:
+## Per iniziare
 
-
-```
-composer require yiisoft/yii-console
-```
-
-After it's installed, you can access the entry point as
+If you're using [yiisoft/app](https://github.com/yiisoft/app) or
+[yiisoft/app-api](https://github.com/yiisoft/app-api), console support is
+already included.  You can access the entry point as:
 
 ```
 ./yii
 ```
+
+If you want a standalone console-only application, use the
+[yiisoft/app-console](https://github.com/yiisoft/app-console) project
+template:
+
+```sh
+composer create-project yiisoft/app-console your-project
+```
+
+To add console support to an existing project from scratch, refer to the
+[yiisoft/yii-console package
+documentation](https://github.com/yiisoft/yii-console).
 
 Out of the box only `serve` command is available. It's starting PHP built-in
 web server to serve the application locally.

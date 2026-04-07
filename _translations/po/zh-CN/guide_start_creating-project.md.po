@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-31 08:44+0000\n"
+"POT-Creation-Date: 2026-04-06 22:12+0000\n"
 "PO-Revision-Date: 2026-01-09 11:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -109,33 +109,7 @@ msgstr "进入新创建的目录并运行："
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
 #, no-wrap
-msgid "APP_ENV=dev ./yii serve --port=80\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/start/creating-project.md
-msgid "For Windows Command Prompt users, run:"
-msgstr "对于 Windows 命令提示符用户，运行："
-
-#. type: Fenced code block (cmd)
-#: ../src/guide/start/creating-project.md
-#, no-wrap
-msgid ""
-"set APP_ENV=dev\n"
-"yii serve --port=80\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/start/creating-project.md
-msgid "For Windows PowerShell users, run:"
-msgstr "对于 Windows PowerShell 用户，运行："
-
-#. type: Fenced code block (powershell)
-#: ../src/guide/start/creating-project.md
-#, no-wrap
-msgid ""
-"$env:APP_ENV = \"dev\"\n"
-".\\yii serve --port=80\n"
+msgid "./yii serve --port=80\n"
 msgstr ""
 
 #. type: Plain text
