@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -178,8 +178,17 @@ msgstr "其他运行时"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
-msgid "For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:"
+#, fuzzy
+#| msgid "For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:"
+msgid "For alternative runtimes such as FrankenPHP, RoadRunner, or Swoole, special entry scripts should be used. See:"
 msgstr "对于 RoadRunner 或 Swoole 等其他运行时，需要使用专用的入口脚本。请参阅："
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/entry-script.md
+#, fuzzy
+#| msgid "[Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)"
+msgid "[Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)"
+msgstr "[在 RoadRunner 中使用 Yii](../tutorial/using-yii-with-roadrunner.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/entry-script.md

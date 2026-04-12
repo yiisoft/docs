@@ -135,6 +135,7 @@
 - [邮件](tutorial/mailing.md)
 - [性能调优](tutorial/performance-tuning.md)
 - [在事件循环中使用 Yii](tutorial/using-with-event-loop.md)
+- [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
 - [在 RoadRunner 中使用 Yii](tutorial/using-yii-with-roadrunner.md)
 - [在 Swoole 中使用 Yii](tutorial/using-yii-with-swoole.md)
 

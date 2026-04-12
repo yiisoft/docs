@@ -100,7 +100,9 @@ try {
 
 ## 其他运行时
 
-对于 RoadRunner 或 Swoole 等其他运行时，需要使用专用的入口脚本。请参阅：
+For alternative runtimes such as FrankenPHP, RoadRunner, or Swoole, special
+entry scripts should be used. See:
 
+- [Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)
 - [在 RoadRunner 中使用 Yii](../tutorial/using-yii-with-roadrunner.md)
 - [在 Swoole 中使用 Yii](../tutorial/using-yii-with-swoole.md)

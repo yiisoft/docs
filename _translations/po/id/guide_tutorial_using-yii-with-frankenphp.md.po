@@ -1,0 +1,340 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"PO-Revision-Date: 2026-04-12 22:50+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/views/view-injections.md
+#, no-wrap
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#. type: Title #
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid "Using Yii with FrankenPHP"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"[FrankenPHP](https://frankenphp.dev/) is an application server for PHP with Caddy built in. It can run Yii in \n"
+"[worker mode](using-with-event-loop.md), allowing the framework bootstrap to happen once per worker instead of\n"
+"once per request.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Install the FrankenPHP runner package with Composer:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, fuzzy, no-wrap
+msgid "composer require yiisoft/yii-runner-frankenphp\n"
+msgstr "composer require yiisoft/cache\n"
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "FrankenPHP works especially well in containerized deployments and is the runtime used by the Yii application templates Docker setup described in [Docker in application templates](docker.md)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "First, configure the worker entry script."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid "Worker entry script"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Create `/worker.php` in the project root:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Environment;\n"
+"use Psr\\Log\\LogLevel;\n"
+"use Yiisoft\\ErrorHandler\\ErrorHandler;\n"
+"use Yiisoft\\ErrorHandler\\Renderer\\PlainTextRenderer;\n"
+"use Yiisoft\\Log\\Logger;\n"
+"use Yiisoft\\Log\\StreamTarget;\n"
+"use Yiisoft\\Yii\\Runner\\FrankenPHP\\FrankenPHPApplicationRunner;\n"
+"\n"
+"$root = __DIR__;\n"
+"\n"
+"require_once $root . '/src/bootstrap.php';\n"
+"\n"
+"if (Environment::appC3()) {\n"
+"    $c3 = $root . '/c3.php';\n"
+"    if (file_exists($c3)) {\n"
+"        require_once $c3;\n"
+"    }\n"
+"}\n"
+"\n"
+"$runner = new FrankenPHPApplicationRunner(\n"
+"    rootPath: $root,\n"
+"    debug: Environment::appDebug(),\n"
+"    checkEvents: Environment::appDebug(),\n"
+"    environment: Environment::appEnv(),\n"
+"    temporaryErrorHandler: new ErrorHandler(\n"
+"        new Logger(\n"
+"            [\n"
+"                (new StreamTarget())->setLevels([\n"
+"                    LogLevel::EMERGENCY,\n"
+"                    LogLevel::ERROR,\n"
+"                    LogLevel::WARNING,\n"
+"                ]),\n"
+"            ],\n"
+"        ),\n"
+"        new PlainTextRenderer(),\n"
+"    ),\n"
+");\n"
+"$runner->run();\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "The runner bootstraps the application once and then keeps processing requests in worker mode. Unlike classic `public/index.php`, this script is not executed per request."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "Server configuration"
+msgstr "Konfigurasi container"
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "FrankenPHP is configured through a `Caddyfile`. For production, it may look like the following:"
+msgstr ""
+
+#. type: Fenced code block (caddyfile)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"{\n"
+"    skip_install_trust\n"
+"\n"
+"    frankenphp {\n"
+"\n"
+"    }\n"
+"}\n"
+"\n"
+"{$SERVER_NAME::80} {\n"
+"    encode zstd br gzip\n"
+"    php_server {\n"
+"        root /app/public\n"
+"        worker {\n"
+"            match *\n"
+"            file /app/worker.php\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "This configuration tells FrankenPHP to serve the `public` directory and handle all requests with `worker.php`.  Static assets are still served from `public`, while PHP requests are processed through the long-running worker."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "For development, add `watch` so FrankenPHP reloads workers when PHP files change:"
+msgstr ""
+
+#. type: Fenced code block (caddyfile)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"{\n"
+"    skip_install_trust\n"
+"\n"
+"    frankenphp {\n"
+"\n"
+"    }\n"
+"}\n"
+"\n"
+"{$SERVER_NAME::80} {\n"
+"    encode zstd br gzip\n"
+"    php_server {\n"
+"        root /app/public\n"
+"        worker {\n"
+"            match *\n"
+"            file /app/worker.php\n"
+"            watch /app/**/*.php\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Docker setup in Yii application templates"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Yii application templates already ship with a FrankenPHP-based Docker setup. To switch the application to worker mode, update the files inside the Docker layout instead of relying on `public/index.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Create `/worker.php` in the project root as shown above, then update the Caddy configuration used by the container.  For development, edit `docker/dev/Caddyfile`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "For production, use the same configuration without `watch` in `docker/Caddyfile`:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "The templates use `dunglas/frankenphp` as the base image in `docker/Dockerfile`, mount the project into `/app` in development, and pass runtime configuration through environment files such as `docker/dev/.env` and `docker/prod/.env`. The default value of `SERVER_NAME` in these files is `:80`, which matches the examples above."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "After changing `worker.php` and the relevant `Caddyfile`, rebuild the image and restart the environment:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"make build\n"
+"make up\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "In production, rebuild and deploy the production image using the project's production Docker workflow."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "If you switch fully to worker mode, `public/index.php` and `yiisoft/yii-runner-http` are no longer needed."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "Starting a server"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "The exact start command depends on how you run FrankenPHP:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "In the Yii application templates, run `make build` and `make up` after updating `worker.php` and the relevant `Caddyfile`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "In a custom setup, start FrankenPHP with the Caddy configuration that points to your application `Caddyfile`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid "On worker scope"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Each worker's memory is isolated from other workers."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "A single worker handles multiple requests, so services created inside it may keep state between requests."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "At each iteration of the event loop, every stateful service should be reset."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "For the general implications of long-running workers, see [Using Yii with event loop](using-with-event-loop.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid "Worker mode notes"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Use the `MAX_REQUESTS` environment variable to limit how many requests a worker handles before restart."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "Reset stateful services after each request. See [Yii DI `StateResetter` documentation](https://github.com/yiisoft/di#resetting-services-state)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "Additional configuration"
+msgstr "Konfigurasi container"
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "`FrankenPHPApplicationRunner` is configured by default for Yii application templates and follows the [config groups convention](https://github.com/yiisoft/docs/blob/master/022-config-groups.md)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "The constructor allows overriding the default bootstrap, events, DI, params, and error-handler configuration.  You can also provide a custom config instance with `withConfig()` and a custom container with `withContainer()`."
+msgstr ""

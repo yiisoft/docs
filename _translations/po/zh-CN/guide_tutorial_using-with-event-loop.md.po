@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2025-09-11 10:15+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Using Yii with event loop"
 msgstr "在事件循环中使用 Yii"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "A normal PHP web request execution cycle consists of setting up an environment, getting a request, processing it to form a response\n"
@@ -38,28 +38,28 @@ msgstr ""
 "需要消耗时间，整体上会占用多达 50% 的处理资源。\n"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "There is an alternative way of running an application. Event loop. The idea is to initialize everything possible at once and then process a number of requests using it. Such an approach is usually called event loop."
 msgstr "还有一种运行应用程序的方式——事件循环。其思路是一次性初始化所有可初始化的内容，然后利用它来处理多个请求。这种方式通常被称为事件循环。"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/)."
 msgstr "可以使用多种工具来实现这一目标，其中较为知名的有 [FrankenPHP](https://frankenphp.dev/)、[RoadRunner](https://roadrunner.dev/) 和 [Swoole](https://www.swoole.co.uk/)。"
 
 #. type: Title ##
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Event loop implications"
 msgstr "事件循环的影响"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "Event loop worker basically looks like the following:"
 msgstr "事件循环的 worker 基本结构如下："
 
 #. type: Fenced code block (php)
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "initializeContext();\n"
@@ -70,44 +70,44 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "Usually, there are multiple workers processing requests at the same time as with traditional php-fpm."
 msgstr "通常会有多个 worker 同时处理请求，与传统的 php-fpm 方式类似。"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "That means that there's more to consider when developing applications."
 msgstr "这意味着在开发应用程序时需要考虑更多因素。"
 
 #. type: Title ###
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Processing is blocking"
 msgstr "处理是阻塞的"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "Worker process requests one by one that's current processing is blocking processing next request. That means that long-running processes, same as in general PHP applications, should be put into a background via using a queue."
 msgstr "Worker 逐一处理请求，当前请求的处理会阻塞下一个请求的处理。这意味着与普通 PHP 应用程序一样，耗时较长的任务应通过队列放到后台执行。"
 
 #. type: Title ###
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Services and state"
 msgstr "服务与状态"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "Since the context in the event loop is shared between all request-responses processed by a single worker, all changes in the state of a service made by the previous request may affect the current request. Moreover, it can be a security problem if data from one user is available to another user."
 msgstr "由于事件循环中的上下文由同一 worker 处理的所有请求-响应共享，上一个请求对服务状态所做的任何修改都可能影响当前请求。此外，如果一个用户的数据可被另一个用户访问，还会带来安全问题。"
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "There are two ways of dealing with it. First, you can avoid having state by making services stateless. PHP's `readonly` keyword may be handy for it. Second, you can reset the services' state at the end of the request processing.  In this case, a state resetter will help you:"
 msgstr "有两种应对方式。第一种是将服务设计为无状态，从而避免状态问题，PHP 的 `readonly` 关键字在此很有用。第二种是在每次请求处理结束后重置服务状态，此时可以使用状态重置器："
 
 #. type: Fenced code block (php)
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid ""
 "initializeContext();\n"
@@ -120,17 +120,22 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 #, no-wrap
 msgid "Integrations"
 msgstr "集成"
 
 #. type: Bullet: '- '
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
+msgid "[FrankenPHP](using-yii-with-frankenphp.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "[RoadRunner](using-yii-with-roadrunner.md)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../../guide/en/tutorial/using-with-event-loop.md
+#: ../src/guide/tutorial/using-with-event-loop.md
 msgid "[Swoole](using-yii-with-swoole.md)"
 msgstr ""

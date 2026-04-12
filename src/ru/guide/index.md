@@ -137,6 +137,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Mailing](tutorial/mailing.md)
 - [Performance tuning](tutorial/performance-tuning.md)
 - [Using Yii with event loop](tutorial/using-with-event-loop.md)
+- [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
 - [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
 

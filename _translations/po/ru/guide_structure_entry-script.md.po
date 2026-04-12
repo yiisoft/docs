@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,77 +17,77 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Entry scripts"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Entry scripts are the first step in the application bootstrapping process. An application (either Web application or console application) has a single entry script. End users make requests to entry scripts which instantiate application instances and forward the requests to them."
 msgstr ""
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Entry scripts for Web applications must be stored under Web-accessible directories so that they can be accessed by end users. They're often named as `index.php`, but can also use any other names, provided Web servers can locate them."
 msgstr ""
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Entry script for console application is `./yii`."
 msgstr ""
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Entry scripts mainly perform the following work with the help of `ApplicationRunner`:"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, fuzzy
 #| msgid "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
 msgid "Register [Composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);"
 msgstr "[Composer guide on autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)."
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Obtain configuration;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Use configuration to initialize a dependency injection container;"
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Get an instance of the request."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Pass it to `Application` to handle and get a response from it."
 msgstr ""
 
 #. type: Bullet: '* '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "With the help of an emitter that transforms a response object into an actual HTTP response that's sent to the client browser."
 msgstr ""
 
 #. type: Title ##
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, fuzzy, no-wrap
 #| msgid "Dependency injection <span id=\"dependency-injection\"></span>"
 msgid "Web Applications <span id=\"web-applications\"></span>"
 msgstr "Внедрение зависимостей <span id=\"dependency-injection\"></span>"
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "The following is the code in the entry script for the application template:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -117,19 +117,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, fuzzy, no-wrap
 #| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
 msgid "Console Applications <span id=\"console-applications\"></span>"
 msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
 
 #. type: Plain text
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "Similarly, the following is the code for the entry script of a console application:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid ""
 "#!/usr/bin/env php\n"
@@ -176,22 +176,27 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 #, no-wrap
 msgid "Alternative runtimes"
 msgstr ""
 
 #. type: Plain text
-#: en/structure/entry-script.md
-msgid "For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:"
+#: ../src/guide/structure/entry-script.md
+msgid "For alternative runtimes such as FrankenPHP, RoadRunner, or Swoole, special entry scripts should be used. See:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
+msgid "[Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/entry-script.md
 msgid "[Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: en/structure/entry-script.md
+#: ../src/guide/structure/entry-script.md
 msgid "[Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)"
 msgstr ""

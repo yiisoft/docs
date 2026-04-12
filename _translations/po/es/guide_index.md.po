@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-07 16:34+0000\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -562,6 +562,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)"
 msgstr ""
 
 #. type: Bullet: '- '

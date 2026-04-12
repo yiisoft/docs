@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-03-05 14:13+0000\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,6 +18,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/cookbook/making-http-requests.md
 #: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
@@ -27,11 +28,27 @@ msgstr "安装"
 
 #. type: Title ##
 #: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
 msgstr "配置"
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "Starting a server"
+msgstr "启动服务器"
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid "On worker scope"
+msgstr "关于 Worker 作用域"
 
 #. type: Title #
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -154,13 +171,6 @@ msgid ""
 "(new RoadRunnerApplicationRunner(__DIR__, $_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();\n"
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
-#, no-wrap
-msgid "Starting a server"
-msgstr "启动服务器"
-
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md
@@ -172,12 +182,6 @@ msgstr "要启动服务器，请执行以下命令："
 #, no-wrap
 msgid "./rr serve\n"
 msgstr ""
-
-#. type: Title ##
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#, no-wrap
-msgid "On worker scope"
-msgstr "关于 Worker 作用域"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md

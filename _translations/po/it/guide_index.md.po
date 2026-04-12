@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-07 16:34+0000\n"
+"POT-Creation-Date: 2026-04-12 22:50+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -534,6 +534,13 @@ msgstr "[Ottimizzazione delle prestazioni](tutorial/performance-tuning.md)"
 #: ../src/guide/index.md
 msgid "[Using Yii with event loop](tutorial/using-with-event-loop.md)"
 msgstr "[Usare Yii con event loop](tutorial/using-with-event-loop.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)"
+msgid "[Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)"
+msgstr "[Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
