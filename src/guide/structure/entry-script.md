@@ -101,7 +101,8 @@ try {
 
 ## Alternative runtimes
 
-For alternative runtimes such as RoadRunner or Swoole, special entry scripts should be used. See:
+For alternative runtimes such as FrankenPHP, RoadRunner, or Swoole, special entry scripts should be used. See:
 
+- [Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)
 - [Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)
 - [Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)

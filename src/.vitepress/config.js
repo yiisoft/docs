@@ -146,6 +146,7 @@ export default {
                                 {text: 'Mailing', link: '/guide/tutorial/mailing'},
                                 {text: 'Performance Tuning', link: '/guide/tutorial/performance-tuning'},
                                 {text: 'Using with Event Loop', link: '/guide/tutorial/using-with-event-loop'},
+                                {text: 'Using Yii with FrankenPHP', link: '/guide/tutorial/using-yii-with-frankenphp'},
                                 {text: 'Using Yii with RoadRunner', link: '/guide/tutorial/using-yii-with-roadrunner'},
                                 {text: 'Using Yii with Swoole', link: '/guide/tutorial/using-yii-with-swoole'},
                                 {text: 'Docker in Application Templates', link: '/guide/tutorial/docker'}
