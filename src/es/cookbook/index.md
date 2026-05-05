@@ -20,5 +20,6 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Making HTTP requests](making-http-requests.md)
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
+- [Working on Windows](working-on-windows.md)
 - [Configuring webservers](configuring-webservers/general.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
