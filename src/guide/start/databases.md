@@ -154,6 +154,96 @@ return [
 For local installation without Docker the host in Dsn would be `localhost`. You'll have to adjust the rest to match
 how you configured the database.
 
+### Multiple database connections
+
+When the application works with several databases, keep `ConnectionInterface` for the primary connection and add a
+class alias for each named connection:
+
+```php
+<?php
+
+use App\Db\AnalyticsDatabase;
+use App\Db\MainDatabase;
+use Yiisoft\Db\Connection\ConnectionInterface;
+use Yiisoft\Db\Pgsql\Connection;
+use Yiisoft\Db\Pgsql\Driver;
+
+/** @var array $params */
+
+class_alias(Connection::class, MainDatabase::class);
+class_alias(Connection::class, AnalyticsDatabase::class);
+
+return [
+    ConnectionInterface::class => MainDatabase::class,
+
+    MainDatabase::class => [
+        'class' => Connection::class,
+        '__construct()' => [
+            'driver' => new Driver(
+                $params['app/db']['main']['dsn'],
+                $params['app/db']['main']['username'],
+                $params['app/db']['main']['password'],
+            ),
+        ],
+    ],
+
+    AnalyticsDatabase::class => [
+        'class' => Connection::class,
+        '__construct()' => [
+            'driver' => new Driver(
+                $params['app/db']['analytics']['dsn'],
+                $params['app/db']['analytics']['username'],
+                $params['app/db']['analytics']['password'],
+            ),
+        ],
+    ],
+];
+```
+
+The alias class names are used as service IDs and type hints. They don't need PHP files of their own.
+
+Define matching parameters:
+
+```php
+use Yiisoft\Db\Pgsql\Dsn;
+
+return [
+    // ...
+    'app/db' => [
+        'main' => [
+            'dsn' => new Dsn('pgsql', 'db', 'app', '5432'),
+            'username' => 'user',
+            'password' => 'password',
+        ],
+        'analytics' => [
+            'dsn' => new Dsn('pgsql', 'analytics-db', 'analytics', '5432'),
+            'username' => 'analytics_user',
+            'password' => 'analytics_password',
+        ],
+    ],
+];
+```
+
+Services that need the primary database can still depend on `ConnectionInterface`. Services that need another database
+should type-hint the corresponding alias:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Report;
+
+use App\Db\AnalyticsDatabase;
+
+final readonly class ReportRepository
+{
+    public function __construct(
+        private AnalyticsDatabase $connection,
+    ) {}
+}
+```
+
 ## Creating and applying migrations
 
 For the initial state of the application and for further database changes, it is a good idea to use migrations.
