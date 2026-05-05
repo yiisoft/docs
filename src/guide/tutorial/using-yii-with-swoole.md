@@ -1,7 +1,7 @@
 # Using Yii with Swoole
 
-[Swoole](https://www.swoole.com/) is a PHP network framework distributed as a PECL extension. It allows you built-in async,
-multiple threads I/O modules. Developers can use sync or async, coroutine API to write the applications.
+[Swoole](https://www.swoole.com/) is a PHP network framework distributed as a PECL extension. It provides built-in async
+and multi-threaded I/O modules. Developers can use synchronous, asynchronous, or coroutine APIs to write applications.
 
 In the context of Yii, it allows running request handlers as workers. Each worker may handle multiple requests.
 Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not re-initializing a framework
