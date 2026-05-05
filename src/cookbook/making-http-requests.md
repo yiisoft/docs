@@ -3,7 +3,7 @@
 Yii doesn't include its own HTTP client implementation. Use a client that implements
 [PSR-18](https://www.php-fig.org/psr/psr-18/) and depend on PSR interfaces in your application code.
 
-This recipe uses [Guzzle 7](https://docs.guzzlephp.org/) as the HTTP client. Guzzle provides a PSR-18 client and uses
+This recipe uses [Guzzle](https://docs.guzzlephp.org/) as the HTTP client. Guzzle provides a PSR-18 client and uses
 PSR-7 messages.
 
 ## Installation
