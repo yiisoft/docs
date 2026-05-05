@@ -57,6 +57,27 @@ final class X
 }
 ```
 
+### Trailing commas
+
+Use a trailing comma when arguments, parameters, or array elements are split into multiple lines:
+
+```php
+$this->assertSame(
+    ['' => ['Value must be no less than 5.']],
+    $result->getErrorMessagesIndexedByPath(),
+);
+```
+
+The same applies to constructor calls and function or method declarations:
+
+```php
+public function __construct(
+    private string $name,
+    private int $value,
+) {
+}
+```
+
 ### Chain calls
 
 Chained calls should be formatted for better readability.
@@ -184,4 +205,3 @@ use function is_iterable;
 - [Namespaces](004-namespaces.md)
 - [Exceptions](007-exceptions.md)
 - [Interfaces](008-interfaces.md)
-
