@@ -3,36 +3,21 @@
 Yii error pages can show links that open stack trace files in PhpStorm at the failing line. This is useful in local
 development when the error page runs in a browser and the project is open in the IDE.
 
-## Register the `phpstorm://` protocol
+## Check Toolbox links
 
-On Linux desktops, install a protocol handler such as
-[phpstorm-url-handler](https://github.com/sanduhrs/phpstorm-url-handler).
+PhpStorm can copy Toolbox links that use the `jetbrains://` protocol. In the Project tool window, right-click a
+project file and select **Copy Path/Reference** > **Toolbox URL**. The copied URL contains the project name and path
+format that PhpStorm expects.
 
-First, make sure the PhpStorm launcher is available as `phpstorm` or `pstorm` in your `PATH`.
-For example:
-
-```shell
-ln -s /path/to/phpstorm/bin/phpstorm.sh /usr/local/bin/phpstorm
-```
-
-Then install the URL handler:
+On Linux, check that Toolbox registered the protocol handler:
 
 ```shell
-git clone https://github.com/sanduhrs/phpstorm-url-handler.git
-cd phpstorm-url-handler
-cp phpstorm-url-handler /usr/local/bin/phpstorm-url-handler
-chmod +x /usr/local/bin/phpstorm-url-handler
-desktop-file-install phpstorm-url-handler.desktop
-update-desktop-database
+xdg-mime query default x-scheme-handler/jetbrains
 ```
 
-Use `sudo` for commands that write to system directories when your user doesn't have permission.
+The command should print a Toolbox or JetBrains daemon desktop file, for example `jetbrainsd.desktop`.
 
-Check the handler:
-
-```shell
-phpstorm-url-handler 'phpstorm://open?file=/path/to/project/src/Web/HomePage/Action.php&line=10'
-```
+PhpStorm should be running with the project open when you click stack trace links.
 
 ## Configure error trace links
 
@@ -47,10 +32,12 @@ Add the parameter to `config/common/params.php`:
 declare(strict_types=1);
 
 return [
-    'traceLink' => 'phpstorm://open?file={file}&line={line}',
+    'traceLink' => 'jetbrains://phpstorm/navigate/reference?project=my-app&path={file}:{line}',
     // Other parameters.
 ];
 ```
+
+Replace `my-app` with the `project` value from the Toolbox URL copied in PhpStorm.
 
 After that, open a debug error page and click a file link in the stack trace.
 
@@ -59,11 +46,19 @@ After that, open a debug error page and click a file link in the stack trace.
 When the application runs in Docker, stack traces usually contain container paths such as `/app/src/...`.
 PhpStorm needs the matching host path.
 
-Set `APP_HOST_PATH` in `.env` to the project path on the host machine:
+Set `APP_HOST_PATH` in `docker/dev/override.env` to the project path on the host machine. Set `APP_IDE_PROJECT` to the
+`project` value from a Toolbox URL copied in PhpStorm:
 
 ```dotenv
 APP_HOST_PATH=/home/user/projects/my-app
+APP_IDE_PROJECT=my-app
 ```
+
+`docker/dev/override.env` is for developer-specific settings and shouldn't be committed. See
+[Override env files](../guide/tutorial/docker.md#override-env-files) for details.
+
+In the application parameters, expose these environment values as `$params['app']['hostPath']` and
+`$params['app']['ideProject']`.
 
 With the default application template, `/app/src/Web/HomePage/Action.php` will be linked as
 `/home/user/projects/my-app/src/Web/HomePage/Action.php`.
@@ -82,7 +77,7 @@ use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
 return [
     HtmlRenderer::class => [
         '__construct()' => [
-            'traceLink' => 'phpstorm://open?file={file}&line={line}',
+            'traceLink' => 'jetbrains://phpstorm/navigate/reference?project=my-app&path={file}:{line}',
         ],
     ],
 ];
@@ -95,18 +90,24 @@ For Docker, use a closure to map the container path to the host path:
 
 declare(strict_types=1);
 
+/** @var array $params */
+
 use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
+
+$hostPath = rtrim($params['app']['hostPath'], '/') . '/';
+$project = $params['app']['ideProject'];
 
 return [
     HtmlRenderer::class => [
         '__construct()' => [
-            'traceLink' => static function (string $file, ?int $line): string {
-                $file = preg_replace('~^/app/~', '/home/user/projects/my-app/', $file);
+            'traceLink' => static function (string $file, ?int $line) use ($hostPath, $project): string {
+                $file = preg_replace('~^/app/~', $hostPath, $file);
+                $path = $line === null ? $file : $file . ':' . $line;
 
                 return str_replace(
-                    ['{file}', '{line}'],
-                    [$file, (string) $line],
-                    'phpstorm://open?file={file}&line={line}',
+                    ['{project}', '{path}'],
+                    [$project, $path],
+                    'jetbrains://phpstorm/navigate/reference?project={project}&path={path}',
                 );
             },
         ],
