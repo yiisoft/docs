@@ -1,7 +1,7 @@
 # 010 — Code style
 
 Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and
-[PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it.
+[PER-CS](https://www.php-fig.org/per/coding-style/) with extra rules added on top of it.
 
 ## Names
 
