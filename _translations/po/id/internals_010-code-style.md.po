@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-03 16:29+0000\n"
+"POT-Creation-Date: 2026-05-05 22:03+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -122,6 +122,32 @@ msgstr "[Memvalidasi Input](https://github.com/yiisoft/validator/blob/master/doc
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Formatting"
+msgstr ""
+
+#. type: Title ###
+#: ../src/internals/010-code-style.md
+#, no-wrap
+msgid "Line length"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+msgid "The maximum line length is 120 characters."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+msgid "When a function or method call exceeds the limit, split arguments into separate lines:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"$this->assertSame(\n"
+"    ['' => ['Value must be no less than 5.']],\n"
+"    $result->getErrorMessagesIndexedByPath(),\n"
+");\n"
 msgstr ""
 
 #. type: Title ###

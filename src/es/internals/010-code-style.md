@@ -40,6 +40,20 @@ PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
 
 ## Formatting
 
+### Line length
+
+The maximum line length is 120 characters.
+
+When a function or method call exceeds the limit, split arguments into
+separate lines:
+
+```php
+$this->assertSame(
+    ['' => ['Value must be no less than 5.']],
+    $result->getErrorMessagesIndexedByPath(),
+);
+```
+
 ### No alignment
 
 Property, variable and constant value assignments shouldn't be aligned.  The
@@ -196,4 +210,3 @@ use function is_iterable;
 - [Namespaces](004-namespaces.md)
 - [Exceptions](007-exceptions.md)
 - [Interfaces](008-interfaces.md)
-

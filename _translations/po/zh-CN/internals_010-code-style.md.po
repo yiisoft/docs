@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-03 16:29+0000\n"
+"POT-Creation-Date: 2026-05-05 22:03+0000\n"
 "PO-Revision-Date: 2025-12-27 10:28+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -125,6 +125,35 @@ msgstr "[查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#
 #, no-wrap
 msgid "Formatting"
 msgstr "格式化"
+
+#. type: Title ###
+#: ../src/internals/010-code-style.md
+#, fuzzy, no-wrap
+#| msgid "Masking token length"
+msgid "Line length"
+msgstr "掩码令牌长度"
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+#, fuzzy
+#| msgid "Limit line length to 72 characters"
+msgid "The maximum line length is 120 characters."
+msgstr "限制行长度为 72 个字符"
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+msgid "When a function or method call exceeds the limit, split arguments into separate lines:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"$this->assertSame(\n"
+"    ['' => ['Value must be no less than 5.']],\n"
+"    $result->getErrorMessagesIndexedByPath(),\n"
+");\n"
+msgstr ""
 
 #. type: Title ###
 #: ../src/internals/010-code-style.md

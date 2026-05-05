@@ -32,6 +32,20 @@ Yii 3 包中使用的代码格式基于 [PSR-1](https://www.php-fig.org/psr/psr-
 
 ## 格式化
 
+### Line length
+
+The maximum line length is 120 characters.
+
+When a function or method call exceeds the limit, split arguments into
+separate lines:
+
+```php
+$this->assertSame(
+    ['' => ['Value must be no less than 5.']],
+    $result->getErrorMessagesIndexedByPath(),
+);
+```
+
 ### 不对齐
 
 属性、变量和常量值赋值不应对齐。phpdoc 标签也是如此。原因是对齐的语句通常会导致更大的差异甚至冲突。
@@ -182,4 +196,3 @@ use function is_iterable;
 - [命名空间](004-namespaces.md)
 - [异常](007-exceptions.md)
 - [接口](008-interfaces.md)
-
