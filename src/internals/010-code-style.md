@@ -17,6 +17,19 @@ Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.o
 - Declare [argument and return types](https://www.php.net/manual/en/migration70.new-features.php) where possible.
 - [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
 - Use strict typing. Avoid mixed and union types where possible except compatible types such as `string|Stringable`.
+- Write nullable types as an explicit union with `null`:
+
+```php
+public function findById(string|null $id): User|null
+{
+}
+```
+
+Use the same form for properties:
+
+```php
+private LoggerInterface|null $logger = null;
+```
 
 ## Comments
 
@@ -184,4 +197,3 @@ use function is_iterable;
 - [Namespaces](004-namespaces.md)
 - [Exceptions](007-exceptions.md)
 - [Interfaces](008-interfaces.md)
-
