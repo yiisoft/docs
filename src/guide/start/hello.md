@@ -86,7 +86,7 @@ return [
 
 In the above, you map the `/say[/{message}]` pattern to `\App\Web\Echo\Action`. 
 For a request, the router creates an instance and calls the `__invoke()` method.
-The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute.
+The `{message}` part of the pattern writes anything specified in this place to the `message` route argument.
 `[]` marks this part of the pattern as optional. 
 
 You also give a `echo/say` name to this route to be able to generate URLs pointing to it.
