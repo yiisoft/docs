@@ -29,3 +29,4 @@ It covers guidelines, workflows, and best practices for maintaining and developi
 - [021 — Changelog and upgrade](021-changelog-upgrade.md) - Maintaining changelogs and upgrade notes
 - [022 — Config groups](022-config-groups.md) - Configuration group organization
 - [023 - GitHub Actions](023-github-actions.md) - GitHub actions configuration
+- [024 — Git branches](024-git-branches.md) - Git branch flow for package repositories
