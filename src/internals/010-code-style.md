@@ -1,7 +1,7 @@
 # 010 — Code style
 
-Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and
-[PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it.
+Code formatting used in Yii 3 packages is based on [PER Coding Style 3.0](https://www.php-fig.org/per/coding-style/)
+with extra rules added on top of it.
 
 ## Names
 
@@ -54,27 +54,6 @@ final class X
         $test = 123;
         $anotherTest = 123;
     }
-}
-```
-
-### Trailing commas
-
-Use a trailing comma when arguments, parameters, or array elements are split into multiple lines:
-
-```php
-$this->assertSame(
-    ['' => ['Value must be no less than 5.']],
-    $result->getErrorMessagesIndexedByPath(),
-);
-```
-
-The same applies to constructor calls and function or method declarations:
-
-```php
-public function __construct(
-    private string $name,
-    private int $value,
-) {
 }
 ```
 
