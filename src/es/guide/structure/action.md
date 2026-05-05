@@ -62,6 +62,7 @@ The class itself would look like the following:
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 
 final readonly class PostController
 {
@@ -71,14 +72,24 @@ final readonly class PostController
     }
     
     
-    public function actionView(ServerRequestInterface $request): ResponseInterface
+    public function actionView(
+        ServerRequestInterface $request,
+        #[RouteArgument('id')]
+        int $id,
+    ): ResponseInterface
     {
-        // render a single post      
+        // render a single post by $id
     }
 }
 ```
 
 We usually call such a class "controller."
+
+The `{id}` part of the `/post/view/{id:\d+}` route is a named route
+parameter. Route parameters are available from
+`Yiisoft\Router\CurrentRoute`. To receive one as an action argument, add the
+`RouteArgument` attribute to the corresponding parameter. The attribute name
+should match the route parameter name.
 
 ## Autowiring
 
@@ -115,4 +126,3 @@ final readonly class PostController
 In the above example `PostRepository` is injected automatically via
 constructor. That means it is available in every action. Logger is injected
 into `index` action only.
-

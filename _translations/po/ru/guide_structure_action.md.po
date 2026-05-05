@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-13 16:53+0000\n"
+"POT-Creation-Date: 2026-05-05 21:53+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. type: Title #
-#: ../src/guide/structure/action.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
 msgstr "Действия"
@@ -110,6 +110,7 @@ msgstr "Это соответствует:"
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
 "use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
 "\n"
 "final readonly class PostController\n"
 "{\n"
@@ -119,9 +120,13 @@ msgid ""
 "    }\n"
 "    \n"
 "    \n"
-"    public function actionView(ServerRequestInterface $request): ResponseInterface\n"
+"    public function actionView(\n"
+"        ServerRequestInterface $request,\n"
+"        #[RouteArgument('id')]\n"
+"        int $id,\n"
+"    ): ResponseInterface\n"
 "    {\n"
-"        // render a single post      \n"
+"        // render a single post by $id\n"
 "    }\n"
 "}\n"
 msgstr ""
@@ -129,6 +134,11 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "We usually call such a class \"controller.\""
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/action.md
+msgid "The `{id}` part of the `/post/view/{id:\\d+}` route is a named route parameter. Route parameters are available from `Yiisoft\\Router\\CurrentRoute`. To receive one as an action argument, add the `RouteArgument` attribute to the corresponding parameter. The attribute name should match the route parameter name."
 msgstr ""
 
 #. type: Title ##

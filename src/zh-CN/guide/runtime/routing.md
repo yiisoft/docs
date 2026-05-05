@@ -90,8 +90,42 @@ static function (ServerRequestInterface $request, RequestHandlerInterface $next)
 
 对于处理器操作和可调用对象，类型化参数会通过传递给路由的依赖注入容器自动注入。
 
-通过对 `ServerRequestInterface` 和 `RequestHandlerInterface`
-进行类型提示，可以获取当前请求和处理器。您可以使用 `middleware()` 方法添加额外的处理器来包装主处理器：
+Get current request and handler by type-hinting for `ServerRequestInterface`
+and `RequestHandlerInterface`.
+
+### Route arguments in actions
+
+Named route parameters are stored in `CurrentRoute`. To pass a route
+parameter to an action method parameter, use the `RouteArgument` attribute:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/post/{id:\d+}')
+        ->action([PostController::class, 'view'])
+        ->name('post/view')
+];
+
+final readonly class PostController
+{
+    public function view(#[RouteArgument('id')] int $id): ResponseInterface
+    {
+        // $id contains the value from the {id} route parameter.
+    }
+}
+```
+
+For optional route parameters, provide a default value either in the route
+with `defaults()` or in the action method signature.
+
+You could add extra handlers to wrap primary one with `middleware()` method:
 
 ```php
 <?php
@@ -246,7 +280,10 @@ final readonly class TestController extends AbstractController
 不能使用捕获组。例如 `{lang:(en|de)}` 不是有效的占位符，因为 `()` 是捕获组。应改用 `{lang:en|de}` 或
 `{lang:(?:en|de)}`。
 
-路由匹配时，路由器会用 URL 中对应部分的值填充相关请求属性。当使用规则生成 URL 时，它会取所提供参数的值并将其插入参数声明的位置。
+On a route match router fills `CurrentRoute` arguments with values matching
+the corresponding parts of the URL.  When you use the rule to create a URL,
+it will take the values of the provided parameters and insert them at the
+places where the parameters are declared.
 
 让我们通过示例来说明命名参数的工作方式。假设您声明了以下三个模式：
 

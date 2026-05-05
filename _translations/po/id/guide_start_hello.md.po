@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-25 03:25+0000\n"
+"POT-Creation-Date: 2026-05-05 21:53+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -154,7 +154,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
-msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute.  `[]` marks this part of the pattern as optional."
+msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` route argument.  `[]` marks this part of the pattern as optional."
 msgstr ""
 
 #. type: Plain text

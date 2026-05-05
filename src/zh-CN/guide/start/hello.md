@@ -79,9 +79,11 @@ return [
 ];
 ```
 
-在上面，您将 `/say[/{message}]` 模式映射到 `\App\Web\Echo\Action`。对于请求，路由器创建一个实例并调用
-`__invoke()` 方法。模式中的 `{message}` 部分将此处指定的任何内容写入 `message` 请求属性。`[]`
-将模式的这部分标记为可选。
+In the above, you map the `/say[/{message}]` pattern to
+`\App\Web\Echo\Action`.  For a request, the router creates an instance and
+calls the `__invoke()` method.  The `{message}` part of the pattern writes
+anything specified in this place to the `message` route argument.  `[]`
+marks this part of the pattern as optional.
 
 您还为此路由指定了 `echo/say` 名称，以便能够生成指向它的 URL。
 

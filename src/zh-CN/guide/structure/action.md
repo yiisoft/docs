@@ -55,6 +55,7 @@ Route::get('/post/view/{id:\d+}')->action([PostController::class, 'actionView'])
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
 use \Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 
 final readonly class PostController
 {
@@ -64,14 +65,24 @@ final readonly class PostController
     }
     
     
-    public function actionView(ServerRequestInterface $request): ResponseInterface
+    public function actionView(
+        ServerRequestInterface $request,
+        #[RouteArgument('id')]
+        int $id,
+    ): ResponseInterface
     {
-        // render a single post      
+        // render a single post by $id
     }
 }
 ```
 
 我们通常将这样的类称为“控制器”。
+
+The `{id}` part of the `/post/view/{id:\d+}` route is a named route
+parameter. Route parameters are available from
+`Yiisoft\Router\CurrentRoute`. To receive one as an action argument, add the
+`RouteArgument` attribute to the corresponding parameter. The attribute name
+should match the route parameter name.
 
 ## 自动注入
 
@@ -106,4 +117,3 @@ final readonly class PostController
 ```
 
 在上面的示例中，`PostRepository` 通过构造函数自动注入，因此在每个动作中都可用。而 Logger 仅注入到 `index` 动作中。
-
