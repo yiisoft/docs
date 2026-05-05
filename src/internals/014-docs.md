@@ -171,6 +171,20 @@ Each package readme should be placed into `README.md` and contain the following:
 - [ ] Installation. Usually `composer require`.
 - [ ] Getting started. One or two common usage examples are demonstrated.
 - [ ] Configuration.
+- [ ] Related packages, when the package has common drivers, adapters, integrations, or companion packages.
 - [ ] Contributing. It should contain a link to guidelines.
 - [ ] Running tests.
 - [ ] License.
+
+Use the "Related packages" section to help readers discover packages that are commonly used together with the current
+package. Include only packages with a practical relationship: drivers, adapters, framework integrations, or packages
+that solve the next step in the same workflow.
+
+Example:
+
+```markdown
+## Related packages
+
+- [yiisoft/log-target-file](https://github.com/yiisoft/log-target-file) - writes log messages to files.
+- [yiisoft/log-target-stream](https://github.com/yiisoft/log-target-stream) - writes log messages to streams.
+```
