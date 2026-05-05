@@ -32,3 +32,42 @@ jobs:
           files: '["src/en"]'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Find changed Markdown files
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only --diff-filter=ACMRT "origin/${{ github.base_ref }}...HEAD" -- "*.md" > changed-markdown.txt
+          else
+            git diff-tree --no-commit-id --name-only -r "${{ github.sha }}" -- "*.md" > changed-markdown.txt
+          fi
+
+          cat changed-markdown.txt
+
+      - name: Check links
+        shell: bash
+        run: |
+          if [ ! -s changed-markdown.txt ]; then
+            echo "No Markdown files changed."
+            exit 0
+          fi
+
+          mapfile -t files < changed-markdown.txt
+          npm run check-links -- "${files[@]}"
