@@ -32,6 +32,7 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Yiisoft\Definitions\Reference;
 
 return [
     ClientInterface::class => [
@@ -45,10 +46,10 @@ return [
     ],
 
     HttpFactory::class => HttpFactory::class,
-    RequestFactoryInterface::class => HttpFactory::class,
-    ResponseFactoryInterface::class => HttpFactory::class,
-    StreamFactoryInterface::class => HttpFactory::class,
-    UriFactoryInterface::class => HttpFactory::class,
+    RequestFactoryInterface::class => Reference::to(HttpFactory::class),
+    ResponseFactoryInterface::class => Reference::to(HttpFactory::class),
+    StreamFactoryInterface::class => Reference::to(HttpFactory::class),
+    UriFactoryInterface::class => Reference::to(HttpFactory::class),
 ];
 ```
 
@@ -124,6 +125,8 @@ Use `StreamFactoryInterface` when you need a request body:
 <?php
 
 declare(strict_types=1);
+
+namespace App\Webhook;
 
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
