@@ -66,10 +66,10 @@ exceeds 192 MB, it will restart after finishing its current request. Also, we're
 RoadRunner has a [KV plugin](https://docs.roadrunner.dev/docs/key-value/overview-kv) that can be used as a PSR-16
 cache storage. It is useful when the application already runs under RoadRunner and needs a cache shared by workers.
 
-Install the PHP bridge:
+Install the PHP bridge and Yii cache package:
 
 ```
-composer require spiral/roadrunner-kv
+composer require spiral/roadrunner-kv yiisoft/cache
 ```
 
 Add a KV storage to `.rr.yaml`:
