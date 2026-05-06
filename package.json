@@ -12,7 +12,7 @@
   "devDependencies": {
     "glightbox": "^3.3.1",
     "markdown-it-task-lists": "^2.1.1",
-    "markdown-link-check": "3.13.7",
+    "markdown-link-check": "3.14.2",
     "mermaid": "^11.12.3",
     "vitepress": "^1.6.4",
     "vitepress-mermaid-renderer": "^1.1.7"
