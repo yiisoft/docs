@@ -155,7 +155,6 @@ Use a service provider when the registration itself is a unit of code:
 - A service registration also needs supporting definitions.
 - The same registration should be reused in several applications.
 - Registration depends on runtime checks, optional classes, or environment-specific decisions.
-- The provider is lazy and should run only when one of its services is requested.
 
 Use a factory class when construction logic belongs to one service. A factory returns an object. A service provider
 registers definitions in the container.
