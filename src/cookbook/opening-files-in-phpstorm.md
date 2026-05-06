@@ -5,9 +5,9 @@ development when the error page runs in a browser and the project is open in the
 
 ## Check Toolbox links
 
-PhpStorm can copy Toolbox links that use the `jetbrains://` protocol. In the Project tool window, right-click a
-project file and select **Copy Path/Reference** > **Toolbox URL**. The copied URL contains the project name and path
-format that PhpStorm expects.
+PhpStorm supports Toolbox URLs that use the `jetbrains://` protocol. To get the `project` value and path format,
+right-click a project file in the Project tool window and select **Copy Path/Reference** > **Toolbox URL**.
+If the copied URL has `origin`, keep the `origin` parameter and its value in your links.
 
 On Linux, check that Toolbox registered the protocol handler:
 
@@ -37,7 +37,8 @@ return [
 ];
 ```
 
-Replace `my-app` with the `project` value from the Toolbox URL copied in PhpStorm.
+Replace `my-app` with the `project` value from the Toolbox URL. If the Toolbox URL uses `origin`, keep `origin` in
+the link template and use its value.
 
 After that, open a debug error page and click a file link in the stack trace.
 
@@ -47,7 +48,8 @@ When the application runs in Docker, stack traces usually contain container path
 PhpStorm needs the matching host path.
 
 Set `APP_HOST_PATH` in `docker/dev/override.env` to the project path on the host machine. Set `APP_IDE_PROJECT` to the
-`project` value from a Toolbox URL copied in PhpStorm:
+`project` value from a Toolbox URL. If the URL uses `origin`, store the `origin` value instead and use `origin` in the
+final URL template:
 
 ```dotenv
 APP_HOST_PATH=/home/user/projects/my-app
