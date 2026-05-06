@@ -3,7 +3,7 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "{{BASEURL}}/src/"
+      "replacement": "{{BASEURL}}/src/public/"
     }
   ],
   "httpHeaders": [
