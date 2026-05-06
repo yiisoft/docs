@@ -142,9 +142,10 @@ For convenience, there is a naming convention for custom string keys:
 ### Service providers
 
 As an alternative to registering dependencies directly, you can use service providers. A service provider is a class
-that receives configured options and registers services within the container. Similar to container configuration files,
-there are three configs for specifying service providers: `providers-console.php` for console commands,
-`providers-web.php` for web application and `providers.php` for both:
+that receives configured options and registers services within the container.
+
+Similar to container configuration files, there are three configs for specifying service providers:
+`providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both.
 
 Prefer direct container configuration for application services with a simple definition: a class name, an interface
 implementation, constructor arguments from `$params`, or a closure that creates a single service.
