@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-05-06 19:23+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -142,6 +142,112 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "We're specifying that the entry script is `worker.php`, the server listens on port 8080, `public` directory files are served statically except `.php` and `.htaccess`. The `max_worker_memory` is a soft limit: if a worker exceeds 192 MB, it will restart after finishing its current request. Also, we're sending an additional header."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid "KV cache"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "RoadRunner has a [KV plugin](https://docs.roadrunner.dev/docs/key-value/overview-kv) that can be used as a PSR-16 cache storage. It is useful when the application already runs under RoadRunner and needs a cache shared by workers."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "Install the PHP bridge and Yii cache package:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, fuzzy, no-wrap
+#| msgid "composer create-project yiisoft/app your_project\n"
+msgid "composer require spiral/roadrunner-kv yiisoft/cache\n"
+msgstr "composer create-project yiisoft/app your_project\n"
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "Add a KV storage to `.rr.yaml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid ""
+"kv:\n"
+"  cache:\n"
+"    driver: memory\n"
+"    config:\n"
+"      interval: 60\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "The `memory` driver stores values inside the RoadRunner process, so its data is lost when RoadRunner stops.  For persistent cache storage, use another KV driver from the RoadRunner documentation."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "Create `config/common/di/roadrunner-kv.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\SimpleCache\\CacheInterface as SimpleCacheInterface;\n"
+"use Spiral\\Goridge\\RPC\\RPC;\n"
+"use Spiral\\RoadRunner\\KeyValue\\Factory;\n"
+"use Spiral\\RoadRunner\\KeyValue\\StorageInterface;\n"
+"use Yiisoft\\Cache\\Cache;\n"
+"use Yiisoft\\Cache\\CacheInterface as YiiCacheInterface;\n"
+"\n"
+"return [\n"
+"    StorageInterface::class => static function (): StorageInterface {\n"
+"        $factory = new Factory(RPC::create('tcp://127.0.0.1:6001'));\n"
+"\n"
+"        return $factory->select('cache');\n"
+"    },\n"
+"\n"
+"    SimpleCacheInterface::class => StorageInterface::class,\n"
+"    YiiCacheInterface::class => Cache::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+msgid "Now services can use `Yiisoft\\Cache\\CacheInterface` the same way as with other cache backends:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Cache\\CacheInterface;\n"
+"\n"
+"final readonly class FeedService\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function latest(): array\n"
+"    {\n"
+"        return $this->cache->getOrSet('feed-latest', fn (): array => $this->loadLatest(), 60);\n"
+"    }\n"
+"\n"
+"    private function loadLatest(): array\n"
+"    {\n"
+"        return [];\n"
+"    }\n"
+"}\n"
 msgstr ""
 
 #. type: Plain text

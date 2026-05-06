@@ -21,5 +21,6 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
 - [Working on Windows](working-on-windows.md)
+- [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
 - [Configuring webservers](configuring-webservers/general.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
