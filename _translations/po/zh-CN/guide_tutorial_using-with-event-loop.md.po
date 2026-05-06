@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-05-06 19:19+0000\n"
 "PO-Revision-Date: 2025-09-11 10:15+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -44,7 +44,9 @@ msgstr "还有一种运行应用程序的方式——事件循环。其思路是
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-with-event-loop.md
-msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/)."
+#, fuzzy
+#| msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.co.uk/)."
+msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/)."
 msgstr "可以使用多种工具来实现这一目标，其中较为知名的有 [FrankenPHP](https://frankenphp.dev/)、[RoadRunner](https://roadrunner.dev/) 和 [Swoole](https://www.swoole.co.uk/)。"
 
 #. type: Title ##

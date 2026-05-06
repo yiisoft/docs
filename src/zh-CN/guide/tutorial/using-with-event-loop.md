@@ -8,9 +8,9 @@
 
 还有一种运行应用程序的方式——事件循环。其思路是一次性初始化所有可初始化的内容，然后利用它来处理多个请求。这种方式通常被称为事件循环。
 
-可以使用多种工具来实现这一目标，其中较为知名的有
-[FrankenPHP](https://frankenphp.dev/)、[RoadRunner](https://roadrunner.dev/)
-和 [Swoole](https://www.swoole.co.uk/)。
+There are multiple tools that could be used to achieve it. Notably,
+[FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/)
+and [Swoole](https://www.swoole.com/).
 
 ## 事件循环的影响
 

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-11 10:15+0500\n"
+"POT-Creation-Date: 2026-05-06 19:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,85 +17,124 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Starting a server"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-roadrunner.md
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "To start a server, execute the following command:"
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Using Yii with Swoole"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid ""
-"[Swoole](https://www.swoole.co.uk/) is a PHP network framework distributed as a PECL extension. It allows you built-in async,\n"
-"multiple threads I/O modules. Developers can use sync or async, coroutine API to write the applications.\n"
+"[Swoole](https://www.swoole.com/) is a PHP extension for event-driven, coroutine-based network applications. It\n"
+"includes an HTTP server, coroutine APIs, and runtime hooks for common blocking I/O functions.\n"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid ""
-"In the context of Yii, it allows running request handlers as workers. Each "
-"worker may handle multiple requests.  Such an operation mode is often called "
-"[event loop](using-with-event-loop.md) and allows not re-initializing a "
-"framework for each request that improves performance significantly."
+"Swoole allows Yii request handlers to run as workers. Each worker may handle "
+"multiple requests.  Such an operation mode is often called [event loop]"
+"(using-with-event-loop.md) and allows not re-initializing a framework for "
+"each request that improves performance significantly."
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
-msgid "Swoole works on Linux and macOS and can be installed via pecl:"
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid ""
+"Swoole supports Linux, macOS, Cygwin, and WSL. Install the extension through "
+"PECL:"
 msgstr ""
 
 #. type: Fenced code block (bash)
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "pecl install swoole\n"
 msgstr ""
 
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid ""
+"If PECL doesn't enable the extension automatically, add it to your `php.ini`:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "extension=swoole.so\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid "Check that PHP loads the extension:"
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "php --ri swoole\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid ""
+"The Swoole project also provides a [Docker image](https://github.com/swoole/"
+"docker-swoole) and documents source builds with optional features such as "
+"OpenSSL, sockets, MySQL, PostgreSQL, and curl hooks."
+msgstr ""
+
 #. type: Title ##
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Putting up a server"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid ""
-"Since Swoole doesn't have built-in PSR-7 support, you need a package fixing "
-"so:"
+"Swoole passes `Swoole\\Http\\Request` and `Swoole\\Http\\Response` objects "
+"to request callbacks. Yii handles PSR-7 requests and responses, so add a "
+"converter package:"
 msgstr ""
 
-#. type: Fenced code block (php)
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
-msgid "composer require ilexn/swoole-convent-psr7\n"
+msgid "composer require ilexn/swoole-convert-psr7\n"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Create an entry script, `server.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -152,14 +191,17 @@ msgid ""
 "    $container->get(StreamFactoryInterface::class)\n"
 ");\n"
 "\n"
-"$server = new Swoole\\HTTP\\Server('0.0.0.0', 9501);\n"
+"$server = new Swoole\\Http\\Server('0.0.0.0', 9501);\n"
 "\n"
 "$server->on('start', static function (Swoole\\Http\\Server $server) use ($application) {\n"
 "    $application->start();\n"
 "    echo \"Swoole http server is started at http://127.0.0.1:9501\\n\";\n"
 "});\n"
 "\n"
-"$server->on('request', static function (Swoole\\Http\\Request $request, Swoole\\Http\\Response $response) use ($serverRequestFactory, $application, $container) {\n"
+"$server->on('request', static function (\n"
+"    Swoole\\Http\\Request $request,\n"
+"    Swoole\\Http\\Response $response,\n"
+") use ($serverRequestFactory, $application, $container) {\n"
 "    $psr7Response = null;\n"
 "    try {\n"
 "        $requestContainer = clone $container;\n"
@@ -186,19 +228,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "php server.php\n"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "On scope"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid ""
 "A scope is shared, so at each iteration of the event loop every service that "
 "depends on state should be reset."
