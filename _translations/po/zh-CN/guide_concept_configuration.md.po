@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:16+0000\n"
+"POT-Creation-Date: 2026-05-06 19:36+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -235,8 +235,50 @@ msgstr "服务提供者"
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "As an alternative to registering dependencies directly, you can use service providers. Basically, these are classes that given parameters are configuring and registering services within the container. Similar to three dependency configuration files described, there are three configs for specifying service providers: `providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both:"
+msgid "As an alternative to registering dependencies directly, you can use service providers. A service provider is a class that receives configured options and registers services within the container."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+#, fuzzy
+#| msgid "As an alternative to registering dependencies directly, you can use service providers. Basically, these are classes that given parameters are configuring and registering services within the container. Similar to three dependency configuration files described, there are three configs for specifying service providers: `providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both:"
+msgid "Similar to container configuration files, there are three configs for specifying service providers: `providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both."
 msgstr "作为直接注册依赖项的替代方法，您可以使用服务提供者。基本上，这些是给定参数配置并在容器中注册服务的类。与所描述的三个依赖配置文件类似，有三个用于指定服务提供者的配置：`providers-console.php` 用于控制台命令，`providers-web.php` 用于 Web 应用程序，`providers.php` 用于两者："
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "Prefer direct container configuration for application services with a simple definition: a class name, an interface implementation, constructor arguments from `$params`, or a closure that creates a single service."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "Use a service provider when the registration itself is a unit of code:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "A package registers several related services, aliases, or decorators."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "A service registration also needs supporting definitions."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "The same registration should be reused in several applications."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "Registration depends on runtime checks, optional classes, or environment-specific decisions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "Use a factory class when construction logic belongs to one service. A factory returns an object. A service provider registers definitions in the container."
+msgstr ""
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/configuration.md

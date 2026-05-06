@@ -159,13 +159,29 @@ Untuk kenyamanan, ada konvensi penamaan untuk kunci string kustom:
 
 ### Service provider
 
-Sebagai alternatif untuk mendaftarkan dependensi secara langsung, Anda dapat
-menggunakan service provider. Pada dasarnya, ini adalah kelas yang, dengan
-parameter tertentu, mengonfigurasi dan mendaftarkan layanan dalam
-container. Mirip dengan tiga berkas konfigurasi dependency yang dijelaskan
-sebelumnya, ada tiga konfigurasi untuk menentukan service provider:
-`providers-console.php` untuk perintah konsol, `providers-web.php` untuk
-aplikasi web dan `providers.php` untuk keduanya:
+As an alternative to registering dependencies directly, you can use service
+providers. A service provider is a class that receives configured options
+and registers services within the container.
+
+Similar to container configuration files, there are three configs for
+specifying service providers: `providers-console.php` for console commands,
+`providers-web.php` for web application and `providers.php` for both.
+
+Prefer direct container configuration for application services with a simple
+definition: a class name, an interface implementation, constructor arguments
+from `$params`, or a closure that creates a single service.
+
+Use a service provider when the registration itself is a unit of code:
+
+- A package registers several related services, aliases, or decorators.
+- A service registration also needs supporting definitions.
+- The same registration should be reused in several applications.
+- Registration depends on runtime checks, optional classes, or
+  environment-specific decisions.
+
+Use a factory class when construction logic belongs to one service. A
+factory returns an object. A service provider registers definitions in the
+container.
 
 ```php
 /* @var array $params */
