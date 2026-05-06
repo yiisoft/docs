@@ -1,26 +1,42 @@
 # Using Yii with Swoole
 
-[Swoole](https://www.swoole.co.uk/) is a PHP network framework distributed as a PECL extension. It allows you built-in async,
-multiple threads I/O modules. Developers can use sync or async, coroutine API to write the applications.
+[Swoole](https://www.swoole.com/) is a PHP extension for event-driven, coroutine-based network applications. It
+includes an HTTP server, coroutine APIs, and runtime hooks for common blocking I/O functions.
 
-In the context of Yii, it allows running request handlers as workers. Each worker may handle multiple requests.
+Swoole allows Yii request handlers to run as workers. Each worker may handle multiple requests.
 Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not re-initializing a framework
-for each request that improves performance significantly. 
+for each request that improves performance significantly.
 
 ## Installation
 
-Swoole works on Linux and macOS and can be installed via pecl:
+Swoole supports Linux, macOS, Cygwin, and WSL. Install the extension through PECL:
 
 ```bash
 pecl install swoole
 ```
 
+If PECL doesn't enable the extension automatically, add it to your `php.ini`:
+
+```ini
+extension=swoole.so
+```
+
+Check that PHP loads the extension:
+
+```bash
+php --ri swoole
+```
+
+The Swoole project also provides a [Docker image](https://github.com/swoole/docker-swoole) and documents source builds
+with optional features such as OpenSSL, sockets, MySQL, PostgreSQL, and curl hooks.
+
 ## Putting up a server
 
-Since Swoole doesn't have built-in PSR-7 support, you need a package fixing so:
+Swoole passes `Swoole\Http\Request` and `Swoole\Http\Response` objects to request callbacks. Yii handles PSR-7
+requests and responses, so add a converter package:
 
-```php
-composer require ilexn/swoole-convent-psr7
+```shell
+composer require ilexn/swoole-convert-psr7
 ```
 
 Create an entry script, `server.php`:
@@ -80,14 +96,17 @@ $serverRequestFactory = new \Ilex\SwoolePsr7\SwooleServerRequestConverter(
     $container->get(StreamFactoryInterface::class)
 );
 
-$server = new Swoole\HTTP\Server('0.0.0.0', 9501);
+$server = new Swoole\Http\Server('0.0.0.0', 9501);
 
 $server->on('start', static function (Swoole\Http\Server $server) use ($application) {
     $application->start();
     echo "Swoole http server is started at http://127.0.0.1:9501\n";
 });
 
-$server->on('request', static function (Swoole\Http\Request $request, Swoole\Http\Response $response) use ($serverRequestFactory, $application, $container) {
+$server->on('request', static function (
+    Swoole\Http\Request $request,
+    Swoole\Http\Response $response,
+) use ($serverRequestFactory, $application, $container) {
     $psr7Response = null;
     try {
         $requestContainer = clone $container;
