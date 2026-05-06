@@ -1,0 +1,30 @@
+{
+  "projectBaseUrl": ".",
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "{{BASEURL}}/src/public/"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": [
+        "https://docs.github.com/",
+        "https://github.com/",
+        "https://help.github.com/"
+      ],
+      "headers": {
+        "Accept-Encoding": "zstd, br, gzip, deflate"
+      }
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [
+    200,
+    206,
+    429
+  ]
+}

@@ -6,13 +6,20 @@
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src",
-    "preview": "vitepress preview src"
+    "preview": "vitepress preview src",
+    "check-links": "bash scripts/check-links.sh"
   },
   "devDependencies": {
     "glightbox": "^3.3.1",
     "markdown-it-task-lists": "^2.1.1",
+    "markdown-link-check": "3.13.7",
     "mermaid": "^11.12.3",
     "vitepress": "^1.6.4",
     "vitepress-mermaid-renderer": "^1.1.7"
+  },
+  "overrides": {
+    "markdown-link-extractor": {
+      "marked": "12.0.2"
+    }
   }
 }

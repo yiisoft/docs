@@ -32,3 +32,68 @@ jobs:
           files: '["src/en"]'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Find files to check
+        id: links
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-status --diff-filter=ACMRTD "${{ github.event.pull_request.base.sha }}...HEAD" > changed-files.txt
+          elif [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            git diff-tree --root --no-commit-id --name-status -r "${{ github.sha }}" > changed-files.txt
+          else
+            git diff --name-status --diff-filter=ACMRTD "${{ github.event.before }}..${{ github.sha }}" > changed-files.txt
+          fi
+
+          check_all=false
+
+          if awk '
+            /^R/ && ($2 ~ /^src\/public\// || $3 ~ /^src\/public\// || $2 ~ /^src\/.*\.md$/) { found = 1 }
+            /^D/ && ($2 ~ /^src\/public\// || $2 ~ /^src\/.*\.md$/) { found = 1 }
+            !/^R/ && !/^D/ && $2 ~ /^src\/public\// { found = 1 }
+            END { exit found ? 0 : 1 }
+          ' changed-files.txt; then
+            check_all=true
+          fi
+
+          if [ "$check_all" = true ]; then
+            find src -name '*.md' | sort > files-to-check.txt
+          else
+            awk '
+              !/^D/ && /^R/ && $3 ~ /^src\/.*\.md$/ { print $3 }
+              !/^D/ && !/^R/ && $2 ~ /^src\/.*\.md$/ { print $2 }
+            ' changed-files.txt | sort -u > files-to-check.txt
+          fi
+
+          cat files-to-check.txt
+          echo "count=$(wc -l < files-to-check.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: No links to check
+        if: steps.links.outputs.count == '0'
+        run: echo "No Markdown files need link checking."
+
+      - name: Setup Node.js
+        if: steps.links.outputs.count != '0'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.links.outputs.count != '0'
+        run: npm ci
+
+      - name: Check links
+        if: steps.links.outputs.count != '0'
+        shell: bash
+        run: |
+          mapfile -t files < files-to-check.txt
+          npm run check-links -- "${files[@]}"
