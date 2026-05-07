@@ -135,8 +135,29 @@ return [
 
 ### 服务提供者
 
-作为直接注册依赖项的替代方法，您可以使用服务提供者。基本上，这些是给定参数配置并在容器中注册服务的类。与所描述的三个依赖配置文件类似，有三个用于指定服务提供者的配置：`providers-console.php`
-用于控制台命令，`providers-web.php` 用于 Web 应用程序，`providers.php` 用于两者：
+As an alternative to registering dependencies directly, you can use service
+providers. A service provider is a class that receives configured options
+and registers services within the container.
+
+Similar to container configuration files, there are three configs for
+specifying service providers: `providers-console.php` for console commands,
+`providers-web.php` for web application and `providers.php` for both.
+
+Prefer direct container configuration for application services with a simple
+definition: a class name, an interface implementation, constructor arguments
+from `$params`, or a closure that creates a single service.
+
+Use a service provider when the registration itself is a unit of code:
+
+- A package registers several related services, aliases, or decorators.
+- A service registration also needs supporting definitions.
+- The same registration should be reused in several applications.
+- Registration depends on runtime checks, optional classes, or
+  environment-specific decisions.
+
+Use a factory class when construction logic belongs to one service. A
+factory returns an object. A service provider registers definitions in the
+container.
 
 ```php
 /* @var array $params */

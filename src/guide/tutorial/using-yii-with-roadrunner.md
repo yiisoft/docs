@@ -61,6 +61,80 @@ We're specifying that the entry script is `worker.php`, the server listens on po
 files are served statically except `.php` and `.htaccess`. The `max_worker_memory` is a soft limit: if a worker
 exceeds 192 MB, it will restart after finishing its current request. Also, we're sending an additional header.
 
+## KV cache
+
+RoadRunner has a [KV plugin](https://docs.roadrunner.dev/docs/key-value/overview-kv) that can be used as a PSR-16
+cache storage. It is useful when the application already runs under RoadRunner and needs a cache shared by workers.
+
+Install the PHP bridge and Yii cache package:
+
+```
+composer require spiral/roadrunner-kv yiisoft/cache
+```
+
+Add a KV storage to `.rr.yaml`:
+
+```yaml
+kv:
+  cache:
+    driver: memory
+    config:
+      interval: 60
+```
+
+The `memory` driver stores values inside the RoadRunner process, so its data is lost when RoadRunner stops.
+For persistent cache storage, use another KV driver from the RoadRunner documentation.
+
+Create `config/common/di/roadrunner-kv.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\SimpleCache\CacheInterface as SimpleCacheInterface;
+use Spiral\Goridge\RPC\RPC;
+use Spiral\RoadRunner\KeyValue\Factory;
+use Spiral\RoadRunner\KeyValue\StorageInterface;
+use Yiisoft\Cache\Cache;
+use Yiisoft\Cache\CacheInterface as YiiCacheInterface;
+
+return [
+    StorageInterface::class => static function (): StorageInterface {
+        $factory = new Factory(RPC::create('tcp://127.0.0.1:6001'));
+
+        return $factory->select('cache');
+    },
+
+    SimpleCacheInterface::class => StorageInterface::class,
+    YiiCacheInterface::class => Cache::class,
+];
+```
+
+Now services can use `Yiisoft\Cache\CacheInterface` the same way as with other cache backends:
+
+```php
+use Yiisoft\Cache\CacheInterface;
+
+final readonly class FeedService
+{
+    public function __construct(
+        private CacheInterface $cache,
+    ) {
+    }
+
+    public function latest(): array
+    {
+        return $this->cache->getOrSet('feed-latest', fn (): array => $this->loadLatest(), 60);
+    }
+
+    private function loadLatest(): array
+    {
+        return [];
+    }
+}
+```
+
 Create `/worker.php`:
 
 ```php

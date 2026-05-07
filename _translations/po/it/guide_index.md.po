@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-05-06 19:16+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,6 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
+
+#. type: Title ###
+#: ../src/cookbook/making-http-requests.md ../src/guide/index.md
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Testing"
+msgstr "Testing"
 
 #. type: Title ##
 #: ../src/guide/caching/overview.md ../src/guide/index.md
@@ -460,12 +467,6 @@ msgstr "Generare codice utilizzando Gii"
 #: ../src/guide/index.md
 msgid "Generating API documentation"
 msgstr "Generazione della documentazione API"
-
-#. type: Title ###
-#: ../src/guide/index.md ../src/guide/tutorial/docker.md
-#, no-wrap
-msgid "Testing"
-msgstr "Testing"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md

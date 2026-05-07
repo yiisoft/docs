@@ -46,8 +46,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class MainAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'css/main.css',
@@ -69,9 +69,10 @@ final class MainAsset extends AssetBundle
 ### Asset Bundle Properties
 
 **Path Configuration:**
-- `$basePath` - Physical path where asset files are located
-- `$baseUrl` - Web-accessible URL path for assets
-- `$sourcePath` - Source directory for assets that need to be published
+- `$basePath` (`string|null`) - Physical path where web-accessible asset files are located.
+- `$baseUrl` (`string|null`) - Web-accessible URL path for assets.
+- `$sourcePath` (`string|null`) - Source directory for assets that need to be published.
+- `$cdn` (`bool`) - Whether the bundle uses CDN files exclusively.
 
 **Asset Files:**
 - `$css` - Array of CSS files
@@ -97,8 +98,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class AdminAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     // CSS files with media queries
     public array $css = [
@@ -169,7 +170,7 @@ final class SiteController
     public function admin(): ResponseInterface
     {
         // Register multiple asset bundles
-        $this->assetManager->register([
+        $this->assetManager->registerMany([
             MainAsset::class,
             AdminAsset::class,
         ]);
@@ -257,11 +258,11 @@ use Yiisoft\Assets\AssetBundle;
 final class VendorAsset extends AssetBundle
 {
     // Source directory (not web accessible)
-    public string $sourcePath = '@vendor/company/package/assets';
+    public ?string $sourcePath = '@vendor/company/package/assets';
     
     // Will be published to web-accessible directory
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'styles.css',
@@ -304,8 +305,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class JqueryAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
 
     public array $js = [
         'js/jquery-3.6.0.min.js',
@@ -326,8 +327,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class BootstrapAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'css/bootstrap.min.css',
@@ -345,9 +346,12 @@ final class BootstrapAsset extends AssetBundle
 
 ### CDN Assets
 
-For CDN-hosted assets, set `$cdn` to `true` and use full URLs for your asset files. Setting `$cdn = true`
-tells the asset manager that the assets are served from an external CDN, so it skips local file publishing
-and path resolution. The `$basePath` and `$baseUrl` properties aren't needed in this case.
+For CDN-hosted assets, set `$cdn` to `true`. The asset manager will skip local publishing and local file checks for
+this bundle.
+
+If every asset file is an absolute URL, leave `$basePath`, `$baseUrl`, and `$sourcePath` unset. If all files are served
+from the same CDN base URL, set `$baseUrl` to that URL and use relative paths in `$css` and `$js`. `$basePath` and
+`$sourcePath` aren't needed for CDN-only bundles.
 
 ```php
 <?php
@@ -424,8 +428,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class MainAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [];
     public array $js = [];
@@ -495,9 +499,9 @@ use Yiisoft\Assets\AssetBundle;
 
 final class ScssAsset extends AssetBundle
 {
-    public string $sourcePath = '@app/assets/scss';
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $sourcePath = '@app/assets/scss';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'main.scss', // Will be converted to main.css
@@ -519,9 +523,9 @@ use Yiisoft\Assets\AssetBundle;
 
 final class TypeScriptAsset extends AssetBundle
 {
-    public string $sourcePath = '@app/assets/ts';
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $sourcePath = '@app/assets/ts';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $js = [
         'main.ts', // Will be converted to main.js
@@ -568,8 +572,8 @@ use Yiisoft\Assets\AssetBundle;
 // Base asset bundle
 final class AppAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'css/main.css',
@@ -587,8 +591,8 @@ final class AppAsset extends AssetBundle
 // Admin-specific bundle
 final class AdminAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         'css/admin.css',
@@ -607,8 +611,8 @@ final class AdminAsset extends AssetBundle
 // Mobile-specific bundle  
 final class MobileAsset extends AssetBundle
 {
-    public string $basePath = '@assets';
-    public string $baseUrl = '@assetsUrl';
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
         ['css/mobile.css', 'media' => 'screen and (max-width: 768px)'],

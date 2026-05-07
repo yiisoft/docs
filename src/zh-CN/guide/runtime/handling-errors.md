@@ -175,60 +175,96 @@ X-Error-Line: 21
 
 ![开发模式视图（深色主题）](/images/guide/runtime/view-development-dark.png)
 
-错误捕获器根据 `accept` HTTP 请求头决定如何渲染异常。若为 `text/html` 或未知内容类型，将使用错误或异常 HTML
-模板显示错误。对于其他 MIME 类型，错误处理器会选择您在错误捕获器中注册的不同渲染器。默认支持 JSON、XML 和纯文本。
+The error catcher chooses how to render an exception based on `accept` HTTP
+header.  If it's `text/html` or any unknown content type, it will use the
+error or exception HTML template to display errors.  For other mime types,
+the error handler will choose different renderers registered in a renderer
+provider.  By default, it supports JSON, XML, and plain text.
 
 ### 实现自定义渲染器
 
-在注册错误捕获器中间件时，可以通过提供自己的 `Yiisoft\ErrorHandler\ThrowableRendererInterface`
-实例来自定义错误响应格式。
+You may customize the error response format by implementing
+`Yiisoft\ErrorHandler\ThrowableRendererInterface`.  The renderer converts a
+throwable into `Yiisoft\ErrorHandler\ErrorData`, which contains the response
+body and headers.
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
+use Throwable;
 use Yiisoft\ErrorHandler\ErrorData;
 use Yiisoft\ErrorHandler\ThrowableRendererInterface;
+use Yiisoft\Http\Header;
 
 final readonly class MyRenderer implements ThrowableRendererInterface
 {
-    public function render(Throwable $t, ServerRequestInterface $request = null): ErrorData
-    {
-        return new ErrorData($t->getMessage());
-    }
-
-    public function renderVerbose(Throwable $t, ServerRequestInterface $request = null): ErrorData
+    public function render(Throwable $t, ?ServerRequestInterface $request = null): ErrorData
     {
         return new ErrorData(
-            $t->getMessage(),
-            ['X-Custom-Header' => 'value-header'], // Headers to be added to the response.
+            '{"message":"An internal server error occurred."}',
+            [Header::CONTENT_TYPE => 'application/problem+json'],
         );
     }
-};
+
+    public function renderVerbose(Throwable $t, ?ServerRequestInterface $request = null): ErrorData
+    {
+        return new ErrorData(
+            json_encode(
+                [
+                    'type' => $t::class,
+                    'message' => $t->getMessage(),
+                    'file' => $t->getFile(),
+                    'line' => $t->getLine(),
+                ],
+                JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES,
+            ),
+            [Header::CONTENT_TYPE => 'application/problem+json'],
+        );
+    }
+}
 ```
 
-可以在应用配置 `config/web.php` 中进行配置：
+Register the renderer in `config/common/di/error-handler.php`:
 
 ```php
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Yiisoft\ErrorHandler\ErrorHandler;
-use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+use App\Error\MyRenderer;
+use Yiisoft\Definitions\DynamicReference;
+use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
+use Yiisoft\ErrorHandler\Renderer\JsonRenderer;
+use Yiisoft\ErrorHandler\Renderer\PlainTextRenderer;
+use Yiisoft\ErrorHandler\Renderer\XmlRenderer;
+use Yiisoft\ErrorHandler\RendererProvider\CompositeRendererProvider;
+use Yiisoft\ErrorHandler\RendererProvider\ContentTypeRendererProvider;
+use Yiisoft\ErrorHandler\RendererProvider\HeadRendererProvider;
+use Yiisoft\ErrorHandler\ThrowableResponseFactory;
+use Yiisoft\ErrorHandler\ThrowableResponseFactoryInterface;
 
 return [
-    // ...
-    ErrorCatcher::class => static function (ContainerInterface $container): ErrorCatcher {
-        $errorCatcher = new ErrorCatcher(
-            $container->get(ResponseFactoryInterface::class),
-            $container->get(ErrorHandler::class),
-            $container,
-        );
-        // Returns a new instance without renderers by the specified content types.
-        $errorCatcher = $errorCatcher->withoutRenderers('application/xml', 'text/xml');
-        // Returns a new instance with the specified content type and renderer class.
-        return $errorCatcher->withRenderer('my/format', new MyRenderer());
-    },
-    // ...
+    ThrowableResponseFactoryInterface::class => [
+        'class' => ThrowableResponseFactory::class,
+        '__construct()' => [
+            'rendererProvider' => DynamicReference::to(
+                static fn (ContainerInterface $container) => new CompositeRendererProvider(
+                    new HeadRendererProvider(),
+                    new ContentTypeRendererProvider($container, [
+                        'application/problem+json' => MyRenderer::class,
+                        'application/json' => JsonRenderer::class,
+                        'application/xml' => XmlRenderer::class,
+                        'text/xml' => XmlRenderer::class,
+                        'text/plain' => PlainTextRenderer::class,
+                        'text/html' => HtmlRenderer::class,
+                        '*/*' => HtmlRenderer::class,
+                    ]),
+                ),
+            ),
+        ],
+    ],
 ];
 ```
+
+The `renderers` array maps `Accept` header content types to renderer class
+names. When you provide this array, it replaces the default map, so include
+the default renderer classes you still need.
 
 ## 友好异常
 

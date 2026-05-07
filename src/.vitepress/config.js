@@ -164,7 +164,9 @@ export default {
                                 {text: 'Preface', link: '/cookbook/preface'},
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
-                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
+                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Working on Windows', link: '/cookbook/working-on-windows'},
+                                {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'}
                             ]
                         },
                         {

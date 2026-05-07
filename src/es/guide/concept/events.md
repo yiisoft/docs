@@ -1,82 +1,100 @@
 # Eventos
 
-Los eventos permiten ejecutar código personalizado en ciertos puntos de
-ejecución sin modificar el código existente.
-A un evento se le puede acoplar un código especial llamado gestor (handler),
-de manera que una vez que el evento se dispare (triggered),
-el código se ejecuta de manera automática.
+Events allow you to run custom code at certain execution points without
+changing the code that emits the event.  You attach a custom code called a
+listener to an event. When the event is dispatched, the listener is
+executed.
 
-Por ejemplo, cuando un usuario se registra debes enviarle un correo
-electrónico de bienvenida. Puedes realizar esto directamente en
-`RegistroService`,
-pero luego adicionalmente debes redimensionar la imagen del avatar del
-usuario, y tendrás que modificar nuevamente `RegistroService`.
-En otras palabras, a `RegistroService` se le acoplan el codigo de enviar un
-correo de bienvenida y redimensionar la imagen del avatar.
- 
-Para evitar todo eso, en vez de decir explicitamente qué hacer despues de un registro, podemos levantar el evento `UsuarioRegistrado`
-y luego finalizar el proceso de registro. El código que envía el correo y el código que redimensiona la imagen de avatar se adjuntan al evento
-y por lo tanto serán ejecutados cuando el evento se dispara. Si alguna vez se necesita hacer más cosas en el proceso de registro, puedes añadir distintos gestores de
-eventos sin necesidad de modificar `RegistroService`.
- 
-Para levantar eventos y acoplar gestores a esos eventos, Yii tiene un
-servicio especial llamado despachador de eventos.
-Se encuentra disponible en el [paquete
-yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher).
+For example, when a user signs up, you need to send a welcome email. You can
+do it in `SignupService`.  Later, when you also need to resize the user's
+avatar image, the service has to know about that too.
 
-## Gestores de Eventos <span id="event-handlers"></span>
+A cleaner flow is to dispatch a `UserSignedUp` event from
+`SignupService`. The welcome email sender and the avatar processor listen to
+this event. Additional signup-related work can be added by registering
+another listener.
 
-An event handler is [PHP
-callable](https://www.php.net/manual/en/language.types.callable.php) that
-gets executed when the event it's attached to is triggered.
+Yii uses [yiisoft/yii-event](https://github.com/yiisoft/yii-event) for
+application event configuration. It builds on the
+[yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher)
+package, which provides a [PSR-14](https://www.php-fig.org/psr/psr-14/)
+compatible event dispatcher.
 
-La firma de un gestor de eventos es:
+## Event classes <span id="event-classes"></span>
+
+An event is an object. It usually contains data that listeners need:
 
 ```php
-function (EventClass $event) {
-    // gestionar evento
-}
-```
-
-## Acoplar Gestores de Eventos <span id="attaching-event-handlers"></span>
-
-Puedes acoplar un gestor a un evento como se demuestra a continuación:
-
-```php
-use Yiisoft\EventDispatcher\Provider\Provider;
-
-class WelcomeEmailSender
+final readonly class UserSignedUp
 {
-    public function __construct(Provider $provider)
-    {
-        $provider->attach([$this, 'handleUserSignup']);
-    }
+    public function __construct(
+        public SignupForm $form,
+    ) {}
+}
+```
 
-    public function handleUserSignup(UserSignedUp $event)
+## Event listeners <span id="event-listeners"></span>
+
+An event listener is a [PHP
+callable](https://www.php.net/manual/en/language.types.callable.php) that
+receives an event:
+
+```php
+static function (UserSignedUp $event): void {
+    // Send a welcome email.
+}
+```
+
+You can also use an invokable class:
+
+```php
+final readonly class WelcomeEmailSender
+{
+    public function __invoke(UserSignedUp $event): void
     {
-        // gestionar evento
+        // Send a welcome email.
     }
 }
 ```
 
-El método `attach()` acepta funciones de retorno (callbacks). Dependiendo
-del argumento de la función de retorno
-se determina el tipo de evento.
+## Configuring event listeners <span id="configuring-event-listeners"></span>
 
-## Orden de Gestores de Eventos
+In an application, configure listeners in:
 
-Se puede acoplar uno o más gestores a un único evento. Cuando se lanza un
-evento, se ejecutarán los gestores adjuntos
-en el orden que se hayan añadido al evento. En el caso que un evento
-implemente `Psr\EventDispatcher\StoppableEventInterface`,
-el gestor de eventos puede detener la ejecución del resto de los gestores
-que le siguen si `isPropagationStopped()` devuelve `true`.
+- `config/events.php` for all application types.
+- `config/events-web.php` for web application events.
+- `config/events-console.php` for console application events.
 
-En general, lo mejor es no depender del orden de los gestores de eventos.
+The configuration is an array where keys are event class names and values
+are lists of listeners:
 
-## Lanzamiento de Eventos <span id="raising-events"></span>
+```php
+<?php
 
-Los eventos se lanzan de la siguiente forma:
+declare(strict_types=1);
+
+use App\Event\UserSignedUp;
+use App\EventListener\WelcomeEmailSender;
+use App\Service\AvatarProcessor;
+
+return [
+    UserSignedUp::class => [
+        WelcomeEmailSender::class,
+        static fn (UserSignedUp $event, AvatarProcessor $avatarProcessor) => $avatarProcessor->resize($event->form),
+    ],
+];
+```
+
+The listener may be a closure, a callable array, an invokable object, an
+invokable class name, or a DI alias.  For closure and callable array
+listeners, parameters after the first event parameter are resolved from the
+DI container.  Invokable class names are instantiated by the container.
+
+Dependencies are resolved when the event is dispatched.
+
+## Dispatching events <span id="dispatching-events"></span>
+
+To dispatch an event, use `Psr\EventDispatcher\EventDispatcherInterface`:
 
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -84,42 +102,38 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 final readonly class SignupService
 {
     public function __construct(
-        private EventDispatcherInterface $eventDispatcher
-    )
-    {
-    }
+        private EventDispatcherInterface $eventDispatcher,
+    ) {}
 
-    public function signup(SignupForm $form)
+    public function signup(SignupForm $form): void
     {
-        // handle signup
+        // Sign up the user.
 
-        $event = new UserSignedUp($form);
-        $this->eventDispatcher->dispatch($event);
+        $this->eventDispatcher->dispatch(new UserSignedUp($form));
     }
 }
 ```
 
-Primero, estamos creando un evento entregandole datos que pueden ser útiles
-para los gestores. Luego, se lanza el evento.
+The dispatcher asks a listener provider for listeners that match the event
+and calls them one by one.
 
-La clase del evento en sí se podría ver como esto:
+## Event listener order <span id="event-listener-order"></span>
 
-```php
-final readonly class UserSignedUp
-{
-    public function __construct(
-        public SignupForm $form
-    )
-    {
-    }
-}
-```
+When several listeners are configured for the same event, they are called in
+the order they are listed in the config.  If an event implements
+`Psr\EventDispatcher\StoppableEventInterface`, the dispatcher checks
+`isPropagationStopped()` before calling the next listener. When it returns
+`true`, the dispatcher stops processing the event.
 
-## Jerarquía de Eventos
+Keep listeners independent where possible. Ordering is useful for technical
+needs, but business logic is usually easier to maintain when each listener
+can run on its own.
 
-Los eventos no tienen nombre o wildcard matching por una razón. Los nombres
-de clases de los eventos y la jerarquía de clases/interfaces
-y composición se puede utilizar para obtener mayor flexibilidad:
+## Event hierarchy <span id="event-hierarchy"></span>
+
+Events don't have names or wildcard matching. Event class names, interfaces,
+and inheritance can be used when one listener should handle several related
+events:
 
 ```php
 interface DocumentEvent
@@ -138,23 +152,47 @@ final readonly class AfterDocumentProcessed implements DocumentEvent
 Para que la interface de arriba escuche todos los eventos relacionados con
 documentos, se puede realizar de la siguiente forma:
 
-
 ```php
-$provider->attach(function (DocumentEvent $event) {
-    // log events here
-});
-``` 
+use Yiisoft\EventDispatcher\Provider\ListenerCollection;
+use Yiisoft\EventDispatcher\Provider\Provider;
 
-## Desacoplar Gestores de Eventos <span id="detaching-event-handlers"></span>
+$listeners = (new ListenerCollection())
+    ->add(static function (DocumentEvent $event): void {
+        // Log document events.
+    });
 
-Para desacoplar un gestor de eventos puedes llamar al método `detach()`:
-
-
-```php
-$provider->detach(DocmentEvent::class);
+$provider = new Provider($listeners);
 ```
 
-## Configuring application events
+## Manual listener provider setup <span id="manual-listener-provider-setup"></span>
 
-You usually assign event handlers via application config. See
-["Configuration"](configuration.md) for details.
+In an application, use event configuration. For package-level code or tests,
+you can create a listener provider manually:
+
+```php
+use Yiisoft\EventDispatcher\Dispatcher\Dispatcher;
+use Yiisoft\EventDispatcher\Provider\ListenerCollection;
+use Yiisoft\EventDispatcher\Provider\Provider;
+
+$listeners = (new ListenerCollection())
+    ->add(static function (UserSignedUp $event): void {
+        // Send a welcome email.
+    });
+
+$provider = new Provider($listeners);
+$dispatcher = new Dispatcher($provider);
+
+$dispatcher->dispatch(new UserSignedUp($form));
+```
+
+`ListenerCollection::add()` returns a new collection instance. Assign the result when building a collection step by step:
+
+```php
+$listeners = new ListenerCollection();
+$listeners = $listeners->add(
+    static function (UserSignedUp $event): void {
+        // Send a welcome email.
+    },
+    UserSignedUp::class,
+);
+```

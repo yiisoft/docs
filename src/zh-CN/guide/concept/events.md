@@ -1,65 +1,100 @@
 # 事件
 
-事件允许您在特定执行点执行自定义代码，而无需修改现有代码。您可以将称为“处理器”的自定义代码附加到事件，以便在触发事件时，处理器会自动执行。
+Events allow you to run custom code at certain execution points without
+changing the code that emits the event.  You attach a custom code called a
+listener to an event. When the event is dispatched, the listener is
+executed.
 
-例如，当用户注册时，您需要发送欢迎邮件。您可以直接在 `SignupService` 中执行此操作，但如果您还需要调整用户头像图片的大小，则必须再次更改
-`SignupService` 代码。换句话说，`SignupService` 将与发送欢迎邮件的代码和调整头像图片大小的代码耦合。
- 
-为避免这种情况，您可以触发 `UserSignedUp` 事件，
-然后完成注册流程，而不是明确告知注册后要做什么。发送邮件的代码和调整头像图片大小的代码将附加到该事件，
-因此，它们将被执行。如果您以后需要在注册时执行更多操作，您可以附加额外的事件
-处理器，而无需修改 `SignupService`。
- 
-要触发事件并将处理器附加到这些事件，Yii 有一个称为事件调度器的特殊服务。它可以从 [yiisoft/event-dispatcher
-包](https://github.com/yiisoft/event-dispatcher) 获取。
+For example, when a user signs up, you need to send a welcome email. You can
+do it in `SignupService`.  Later, when you also need to resize the user's
+avatar image, the service has to know about that too.
 
-## 事件处理器 <span id="event-handlers"></span>
+A cleaner flow is to dispatch a `UserSignedUp` event from
+`SignupService`. The welcome email sender and the avatar processor listen to
+this event. Additional signup-related work can be added by registering
+another listener.
 
-事件处理器是 [PHP
-callable](https://www.php.net/manual/en/language.types.callable.php)，当它附加的事件被触发时执行。
+Yii uses [yiisoft/yii-event](https://github.com/yiisoft/yii-event) for
+application event configuration. It builds on the
+[yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher)
+package, which provides a [PSR-14](https://www.php-fig.org/psr/psr-14/)
+compatible event dispatcher.
 
-事件处理器的签名是：
+## Event classes <span id="event-classes"></span>
+
+An event is an object. It usually contains data that listeners need:
 
 ```php
-function (EventClass $event) {
-    // handle it
+final readonly class UserSignedUp
+{
+    public function __construct(
+        public SignupForm $form,
+    ) {}
 }
 ```
 
-## 附加事件处理器 <span id="attaching-event-handlers"></span>
+## Event listeners <span id="event-listeners"></span>
 
-您可以按如下方式将处理器附加到事件：
+An event listener is a [PHP
+callable](https://www.php.net/manual/en/language.types.callable.php) that
+receives an event:
 
 ```php
-use Yiisoft\EventDispatcher\Provider\Provider;
+static function (UserSignedUp $event): void {
+    // Send a welcome email.
+}
+```
 
+You can also use an invokable class:
+
+```php
 final readonly class WelcomeEmailSender
 {
-    public function __construct(Provider $provider)
+    public function __invoke(UserSignedUp $event): void
     {
-        $provider->attach([$this, 'handleUserSignup']);
-    }
-
-    public function handleUserSignup(UserSignedUp $event)
-    {
-        // handle it    
+        // Send a welcome email.
     }
 }
 ```
 
-`attach()` 方法接受一个回调。根据此回调参数的类型，确定事件类型。
+## Configuring event listeners <span id="configuring-event-listeners"></span>
 
-## 事件处理器顺序
+In an application, configure listeners in:
 
-您可以将一个或多个处理器附加到单个事件。当事件被触发时，附加的处理器将按照它们附加到事件的顺序被调用。如果事件实现了
-`Psr\EventDispatcher\StoppableEventInterface`，当 `isPropagationStopped()` 返回
-`true` 时，事件处理器可以停止执行其后的其余处理器。
+- `config/events.php` for all application types.
+- `config/events-web.php` for web application events.
+- `config/events-console.php` for console application events.
 
-一般来说，最好不要依赖事件处理器的顺序。
+The configuration is an array where keys are event class names and values
+are lists of listeners:
 
-## 触发事件 <span id="raising-events"></span>
+```php
+<?php
 
-事件按如下方式触发：
+declare(strict_types=1);
+
+use App\Event\UserSignedUp;
+use App\EventListener\WelcomeEmailSender;
+use App\Service\AvatarProcessor;
+
+return [
+    UserSignedUp::class => [
+        WelcomeEmailSender::class,
+        static fn (UserSignedUp $event, AvatarProcessor $avatarProcessor) => $avatarProcessor->resize($event->form),
+    ],
+];
+```
+
+The listener may be a closure, a callable array, an invokable object, an
+invokable class name, or a DI alias.  For closure and callable array
+listeners, parameters after the first event parameter are resolved from the
+DI container.  Invokable class names are instantiated by the container.
+
+Dependencies are resolved when the event is dispatched.
+
+## Dispatching events <span id="dispatching-events"></span>
+
+To dispatch an event, use `Psr\EventDispatcher\EventDispatcherInterface`:
 
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -67,39 +102,38 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 final readonly class SignupService
 {
     public function __construct(
-        private EventDispatcherInterface $eventDispatcher
-    )
-    {
-    }
+        private EventDispatcherInterface $eventDispatcher,
+    ) {}
 
-    public function signup(SignupForm $form)
+    public function signup(SignupForm $form): void
     {
-        // handle signup
+        // Sign up the user.
 
-        $event = new UserSignedUp($form);
-        $this->eventDispatcher->dispatch($event);
+        $this->eventDispatcher->dispatch(new UserSignedUp($form));
     }
 }
 ```
 
-首先，您创建一个事件，并为其提供可能对处理器有用的数据。然后您调度该事件。
+The dispatcher asks a listener provider for listeners that match the event
+and calls them one by one.
 
-事件类本身可能如下所示：
+## Event listener order <span id="event-listener-order"></span>
 
-```php
-final readonly class UserSignedUp
-{
-    public function __construct(
-        public SignupForm $form
-    )
-    {
-    }
-}
-```
+When several listeners are configured for the same event, they are called in
+the order they are listed in the config.  If an event implements
+`Psr\EventDispatcher\StoppableEventInterface`, the dispatcher checks
+`isPropagationStopped()` before calling the next listener. When it returns
+`true`, the dispatcher stops processing the event.
 
-## 事件层次结构
+Keep listeners independent where possible. Ordering is useful for technical
+needs, but business logic is usually easier to maintain when each listener
+can run on its own.
 
-事件故意没有任何名称或通配符匹配。事件类名称以及类/接口层次结构和组合可用于实现极大的灵活性：
+## Event hierarchy <span id="event-hierarchy"></span>
+
+Events don't have names or wildcard matching. Event class names, interfaces,
+and inheritance can be used when one listener should handle several related
+events:
 
 ```php
 interface DocumentEvent
@@ -117,22 +151,47 @@ final readonly class AfterDocumentProcessed implements DocumentEvent
 
 使用接口，您可以监听所有与文档相关的事件：
 
-
 ```php
-$provider->attach(function (DocumentEvent $event) {
-    // log events here
-});
-``` 
+use Yiisoft\EventDispatcher\Provider\ListenerCollection;
+use Yiisoft\EventDispatcher\Provider\Provider;
 
-## 分离事件处理器 <span id="detaching-event-handlers"></span>
+$listeners = (new ListenerCollection())
+    ->add(static function (DocumentEvent $event): void {
+        // Log document events.
+    });
 
-要从事件中分离处理器，您可以调用 `detach()` 方法：
-
-
-```php
-$provider->detach(DocmentEvent::class);
+$provider = new Provider($listeners);
 ```
 
-## 配置应用程序事件
+## Manual listener provider setup <span id="manual-listener-provider-setup"></span>
 
-您通常通过应用程序配置来分配事件处理器。有关详细信息，请参阅 ["配置"](configuration.md)。
+In an application, use event configuration. For package-level code or tests,
+you can create a listener provider manually:
+
+```php
+use Yiisoft\EventDispatcher\Dispatcher\Dispatcher;
+use Yiisoft\EventDispatcher\Provider\ListenerCollection;
+use Yiisoft\EventDispatcher\Provider\Provider;
+
+$listeners = (new ListenerCollection())
+    ->add(static function (UserSignedUp $event): void {
+        // Send a welcome email.
+    });
+
+$provider = new Provider($listeners);
+$dispatcher = new Dispatcher($provider);
+
+$dispatcher->dispatch(new UserSignedUp($form));
+```
+
+`ListenerCollection::add()` returns a new collection instance. Assign the result when building a collection step by step:
+
+```php
+$listeners = new ListenerCollection();
+$listeners = $listeners->add(
+    static function (UserSignedUp $event): void {
+        // Send a welcome email.
+    },
+    UserSignedUp::class,
+);
+```

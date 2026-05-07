@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-03 16:29+0000\n"
+"POT-Creation-Date: 2026-05-05 23:27+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "Code formatting used in Yii 3 packages is based on [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top of it."
+msgid "Code formatting used in Yii 3 packages is based on [PER Coding Style 3.0](https://www.php-fig.org/per/coding-style/)  with extra rules added on top of it."
 msgstr ""
 
 #. type: Title ###
@@ -122,6 +122,32 @@ msgstr "[Memvalidasi Input](https://github.com/yiisoft/validator/blob/master/doc
 #: ../src/internals/010-code-style.md
 #, no-wrap
 msgid "Formatting"
+msgstr ""
+
+#. type: Title ###
+#: ../src/internals/010-code-style.md
+#, no-wrap
+msgid "Line length"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+msgid "The maximum line length is 120 characters."
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/010-code-style.md
+msgid "When a function or method call exceeds the limit, split arguments into separate lines:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/internals/010-code-style.md
+#, no-wrap
+msgid ""
+"$this->assertSame(\n"
+"    ['' => ['Value must be no less than 5.']],\n"
+"    $result->getErrorMessagesIndexedByPath(),\n"
+");\n"
 msgstr ""
 
 #. type: Title ###

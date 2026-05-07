@@ -91,11 +91,11 @@ return [
 ];
 ```
 
-В примере выше вы связываете шаблон `/say[/{message}]` с
-`\App\Web\Echo\Action`. При обработке запроса роутер создаёт экземпляр и
-вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в
-этом месте, в атрибут запроса `message`. Квадратные скобки `[]` помечают эту
-часть шаблона как необязательную.
+In the above, you map the `/say[/{message}]` pattern to
+`\App\Web\Echo\Action`.  For a request, the router creates an instance and
+calls the `__invoke()` method.  The `{message}` part of the pattern writes
+anything specified in this place to the `message` route argument.  `[]`
+marks this part of the pattern as optional.
 
 Также вы задаёте этому маршруту имя `echo/say`, чтобы затем можно было
 генерировать URL, ведущие на него.

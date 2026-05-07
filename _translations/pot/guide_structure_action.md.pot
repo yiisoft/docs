@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-13 16:53+0000\n"
+"POT-Creation-Date: 2026-05-05 21:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../src/guide/structure/action.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
 msgstr ""
@@ -120,6 +120,7 @@ msgstr ""
 msgid ""
 "use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
 "use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
 "\n"
 "final readonly class PostController\n"
 "{\n"
@@ -129,9 +130,13 @@ msgid ""
 "    }\n"
 "    \n"
 "    \n"
-"    public function actionView(ServerRequestInterface $request): ResponseInterface\n"
+"    public function actionView(\n"
+"        ServerRequestInterface $request,\n"
+"        #[RouteArgument('id')]\n"
+"        int $id,\n"
+"    ): ResponseInterface\n"
 "    {\n"
-"        // render a single post      \n"
+"        // render a single post by $id\n"
 "    }\n"
 "}\n"
 msgstr ""
@@ -139,6 +144,16 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "We usually call such a class \"controller.\""
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/action.md
+msgid ""
+"The `{id}` part of the `/post/view/{id:\\d+}` route is a named route "
+"parameter. Route parameters are available from "
+"`Yiisoft\\Router\\CurrentRoute`. To receive one as an action argument, add "
+"the `RouteArgument` attribute to the corresponding parameter. The attribute "
+"name should match the route parameter name."
 msgstr ""
 
 #. type: Title ##

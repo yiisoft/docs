@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-25 03:25+0000\n"
+"POT-Creation-Date: 2026-05-05 21:53+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -193,8 +193,58 @@ msgstr "对于处理器操作和可调用对象，类型化参数会通过传递
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "Get current request and handler by type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.  You could add extra handlers to wrap primary one with `middleware()` method:"
+#, fuzzy
+#| msgid "Get current request and handler by type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`.  You could add extra handlers to wrap primary one with `middleware()` method:"
+msgid "Get current request and handler by type-hinting for `ServerRequestInterface` and `RequestHandlerInterface`."
 msgstr "通过对 `ServerRequestInterface` 和 `RequestHandlerInterface` 进行类型提示，可以获取当前请求和处理器。您可以使用 `middleware()` 方法添加额外的处理器来包装主处理器："
+
+#. type: Title ###
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid "Route arguments in actions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "Named route parameters are stored in `CurrentRoute`. To pass a route parameter to an action method parameter, use the `RouteArgument` attribute:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::get('/post/{id:\\d+}')\n"
+"        ->action([PostController::class, 'view'])\n"
+"        ->name('post/view')\n"
+"];\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function view(#[RouteArgument('id')] int $id): ResponseInterface\n"
+"    {\n"
+"        // $id contains the value from the {id} route parameter.\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "For optional route parameters, provide a default value either in the route with `defaults()` or in the action method signature."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "You could add extra handlers to wrap primary one with `middleware()` method:"
+msgstr ""
 
 #. type: Fenced code block (php)
 #: ../src/guide/runtime/routing.md
@@ -433,7 +483,9 @@ msgstr "不能使用捕获组。例如 `{lang:(en|de)}` 不是有效的占位符
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "On a route match router fills the associated request attributes with values matching the corresponding parts of the URL.  When you use the rule to create a URL, it will take the values of the provided parameters and insert them at the places where the parameters are declared."
+#, fuzzy
+#| msgid "On a route match router fills the associated request attributes with values matching the corresponding parts of the URL.  When you use the rule to create a URL, it will take the values of the provided parameters and insert them at the places where the parameters are declared."
+msgid "On a route match router fills `CurrentRoute` arguments with values matching the corresponding parts of the URL.  When you use the rule to create a URL, it will take the values of the provided parameters and insert them at the places where the parameters are declared."
 msgstr "路由匹配时，路由器会用 URL 中对应部分的值填充相关请求属性。当使用规则生成 URL 时，它会取所提供参数的值并将其插入参数声明的位置。"
 
 #. type: Plain text

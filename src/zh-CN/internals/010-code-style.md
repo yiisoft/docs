@@ -1,7 +1,8 @@
 # 010 — 代码风格
 
-Yii 3 包中使用的代码格式基于 [PSR-1](https://www.php-fig.org/psr/psr-1/) 和
-[PSR-12](https://www.php-fig.org/psr/psr-12/)，并在此基础上添加了额外的规则。
+Code formatting used in Yii 3 packages is based on [PER Coding Style
+3.0](https://www.php-fig.org/per/coding-style/)  with extra rules added on
+top of it.
 
 ## Names
 
@@ -31,6 +32,20 @@ Yii 3 包中使用的代码格式基于 [PSR-1](https://www.php-fig.org/psr/psr-
 [查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)。
 
 ## 格式化
+
+### Line length
+
+The maximum line length is 120 characters.
+
+When a function or method call exceeds the limit, split arguments into
+separate lines:
+
+```php
+$this->assertSame(
+    ['' => ['Value must be no less than 5.']],
+    $result->getErrorMessagesIndexedByPath(),
+);
+```
 
 ### 不对齐
 
@@ -182,4 +197,3 @@ use function is_iterable;
 - [命名空间](004-namespaces.md)
 - [异常](007-exceptions.md)
 - [接口](008-interfaces.md)
-

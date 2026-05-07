@@ -61,6 +61,84 @@ logs:
 外）以静态方式提供服务。`max_worker_memory` 是一个软限制：如果 worker 超过 192
 MB，它将在完成当前请求后重启。此外，我们还发送了一个额外的响应头。
 
+## KV cache
+
+RoadRunner has a [KV
+plugin](https://docs.roadrunner.dev/docs/key-value/overview-kv) that can be
+used as a PSR-16 cache storage. It is useful when the application already
+runs under RoadRunner and needs a cache shared by workers.
+
+Install the PHP bridge and Yii cache package:
+
+```
+composer require spiral/roadrunner-kv yiisoft/cache
+```
+
+Add a KV storage to `.rr.yaml`:
+
+```yaml
+kv:
+  cache:
+    driver: memory
+    config:
+      interval: 60
+```
+
+The `memory` driver stores values inside the RoadRunner process, so its data
+is lost when RoadRunner stops.  For persistent cache storage, use another KV
+driver from the RoadRunner documentation.
+
+Create `config/common/di/roadrunner-kv.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\SimpleCache\CacheInterface as SimpleCacheInterface;
+use Spiral\Goridge\RPC\RPC;
+use Spiral\RoadRunner\KeyValue\Factory;
+use Spiral\RoadRunner\KeyValue\StorageInterface;
+use Yiisoft\Cache\Cache;
+use Yiisoft\Cache\CacheInterface as YiiCacheInterface;
+
+return [
+    StorageInterface::class => static function (): StorageInterface {
+        $factory = new Factory(RPC::create('tcp://127.0.0.1:6001'));
+
+        return $factory->select('cache');
+    },
+
+    SimpleCacheInterface::class => StorageInterface::class,
+    YiiCacheInterface::class => Cache::class,
+];
+```
+
+Now services can use `Yiisoft\Cache\CacheInterface` the same way as with
+other cache backends:
+
+```php
+use Yiisoft\Cache\CacheInterface;
+
+final readonly class FeedService
+{
+    public function __construct(
+        private CacheInterface $cache,
+    ) {
+    }
+
+    public function latest(): array
+    {
+        return $this->cache->getOrSet('feed-latest', fn (): array => $this->loadLatest(), 60);
+    }
+
+    private function loadLatest(): array
+    {
+        return [];
+    }
+}
+```
+
 创建 `/worker.php`：
 
 ```php

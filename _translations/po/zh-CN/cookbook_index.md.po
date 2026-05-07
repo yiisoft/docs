@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-05-06 19:23+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -70,6 +70,16 @@ msgstr "[禁用 CSRF 保护](disabling-csrf-protection.md)"
 #: ../src/cookbook/index.md
 msgid "[Sentry integration](sentry-integration.md)"
 msgstr "[Sentry 集成](sentry-integration.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Working on Windows](working-on-windows.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Opening files directly in PhpStorm](opening-files-in-phpstorm.md)"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md

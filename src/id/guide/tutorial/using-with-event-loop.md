@@ -12,7 +12,7 @@ requests using it. Such an approach is usually called event loop.
 
 There are multiple tools that could be used to achieve it. Notably,
 [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/)
-and [Swoole](https://www.swoole.co.uk/).
+and [Swoole](https://www.swoole.com/).
 
 ## Event loop implications
 

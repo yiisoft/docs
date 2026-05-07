@@ -1,0 +1,212 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-06 19:23+0000\n"
+"PO-Revision-Date: 2026-05-06 19:23+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid "Opening files directly in PhpStorm"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "Yii error pages can show links that open stack trace files in PhpStorm at the failing line. This is useful in local development when the error page runs in a browser and the project is open in the IDE."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid "Check Toolbox links"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid ""
+"PhpStorm supports Toolbox URLs that use the `jetbrains://` protocol. To get the `project` value and path format,\n"
+"right-click a project file in the Project tool window and select **Copy Path/Reference** > **Toolbox URL**.\n"
+"If the copied URL has `origin`, keep the `origin` parameter and its value in your links.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "On Linux, check that Toolbox registered the protocol handler:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid "xdg-mime query default x-scheme-handler/jetbrains\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "The command should print a Toolbox or JetBrains daemon desktop file, for example `jetbrainsd.desktop`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "PhpStorm should be running with the project open when you click stack trace links."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, fuzzy, no-wrap
+#| msgid "[Configuration](concept/configuration.md)"
+msgid "Configure error trace links"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "The Yii application template configures `Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer` in `config/common/di/error-handler.php`. It reads a `traceLink` parameter and uses it for stack trace file links."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "Add the parameter to `config/common/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'traceLink' => 'jetbrains://phpstorm/navigate/reference?project=my-app&path={file}:{line}',\n"
+"    // Other parameters.\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "Replace `my-app` with the `project` value from the Toolbox URL. If the Toolbox URL uses `origin`, keep `origin` in the link template and use its value."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "After that, open a debug error page and click a file link in the stack trace."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid "Map Docker paths to host paths"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "When the application runs in Docker, stack traces usually contain container paths such as `/app/src/...`.  PhpStorm needs the matching host path."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "Set `APP_HOST_PATH` in `docker/dev/override.env` to the project path on the host machine. Set `APP_IDE_PROJECT` to the `project` value from a Toolbox URL. If the URL uses `origin`, store the `origin` value instead and use `origin` in the final URL template:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid ""
+"APP_HOST_PATH=/home/user/projects/my-app\n"
+"APP_IDE_PROJECT=my-app\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "`docker/dev/override.env` is for developer-specific settings and shouldn't be committed. See [Override env files](../guide/tutorial/docker.md#override-env-files) for details."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "In the application parameters, expose these environment values as `$params['app']['hostPath']` and `$params['app']['ideProject']`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "With the default application template, `/app/src/Web/HomePage/Action.php` will be linked as `/home/user/projects/my-app/src/Web/HomePage/Action.php`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid "Configure `HtmlRenderer` manually"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "If your application doesn't have the template's `error-handler.php` configuration, configure `HtmlRenderer` directly:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer;\n"
+"\n"
+"return [\n"
+"    HtmlRenderer::class => [\n"
+"        '__construct()' => [\n"
+"            'traceLink' => 'jetbrains://phpstorm/navigate/reference?project=my-app&path={file}:{line}',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/opening-files-in-phpstorm.md
+msgid "For Docker, use a closure to map the container path to the host path:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/opening-files-in-phpstorm.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"use Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer;\n"
+"\n"
+"$hostPath = rtrim($params['app']['hostPath'], '/') . '/';\n"
+"$project = $params['app']['ideProject'];\n"
+"\n"
+"return [\n"
+"    HtmlRenderer::class => [\n"
+"        '__construct()' => [\n"
+"            'traceLink' => static function (string $file, ?int $line) use ($hostPath, $project): string {\n"
+"                $file = preg_replace('~^/app/~', $hostPath, $file);\n"
+"                $path = $line === null ? $file : $file . ':' . $line;\n"
+"\n"
+"                return str_replace(\n"
+"                    ['{project}', '{path}'],\n"
+"                    [$project, $path],\n"
+"                    'jetbrains://phpstorm/navigate/reference?project={project}&path={path}',\n"
+"                );\n"
+"            },\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""

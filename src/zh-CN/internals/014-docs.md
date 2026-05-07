@@ -124,6 +124,35 @@ final class MyService extends MyServiceBase
 
 PHPDoc（如果存在）应描述其添加的元素的目的。
 
+Skip default values in PHPDoc when PHP already shows them in a parameter
+default, promoted property default, or property initializer. The declaration
+is the source of truth, and repeating the value in text can become outdated
+after code changes.
+
+错误代码示例：
+
+```php
+/**
+ * @param bool $skipOnEmpty Whether to skip validation when the value is empty. Defaults to true.
+ */
+public function __construct(
+    private bool $skipOnEmpty = true,
+) {
+}
+```
+
+有效代码示例：
+
+```php
+/**
+ * @param bool $skipOnEmpty Whether to skip validation when the value is empty.
+ */
+public function __construct(
+    private bool $skipOnEmpty = true,
+) {
+}
+```
+
 `@see` 标签必须明确引用类方法、属性和常量。这对于在 IDE 中正确显示链接以及在 API 文档中正确显示链接是必要的。
 
 错误代码示例：

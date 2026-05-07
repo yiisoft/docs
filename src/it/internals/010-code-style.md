@@ -1,9 +1,8 @@
 # 010 — Code style
 
-Code formatting used in Yii 3 packages is based on
-[PSR-1](https://www.php-fig.org/psr/psr-1/) and
-[PSR-12](https://www.php-fig.org/psr/psr-12/) with extra rules added on top
-of it.
+Code formatting used in Yii 3 packages is based on [PER Coding Style
+3.0](https://www.php-fig.org/per/coding-style/)  with extra rules added on
+top of it.
 
 ## Names
 
@@ -39,6 +38,20 @@ Class comment should describe the purpose of the class.
 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
 
 ## Formatting
+
+### Line length
+
+The maximum line length is 120 characters.
+
+When a function or method call exceeds the limit, split arguments into
+separate lines:
+
+```php
+$this->assertSame(
+    ['' => ['Value must be no less than 5.']],
+    $result->getErrorMessagesIndexedByPath(),
+);
+```
 
 ### No alignment
 
@@ -196,4 +209,3 @@ use function is_iterable;
 - [Namespaces](004-namespaces.md)
 - [Exceptions](007-exceptions.md)
 - [Interfaces](008-interfaces.md)
-

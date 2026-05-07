@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-23 12:30+0000\n"
+"POT-Creation-Date: 2026-05-05 22:22+0000\n"
 "PO-Revision-Date: 2026-01-23 12:30+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -247,13 +247,49 @@ msgstr "PHPDoc（如果存在）应描述其添加的元素的目的。"
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid "The `@see` tags must explicitly refer to class methods, properties, and constants. This is necessary for the correct display of links in IDEs, as well as for the correct display of links in API documentation."
-msgstr "`@see` 标签必须明确引用类方法、属性和常量。这对于在 IDE 中正确显示链接以及在 API 文档中正确显示链接是必要的。"
+msgid "Skip default values in PHPDoc when PHP already shows them in a parameter default, promoted property default, or property initializer. The declaration is the source of truth, and repeating the value in text can become outdated after code changes."
+msgstr ""
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
 msgid "Example of incorrect code:"
 msgstr "错误代码示例："
+
+#. type: Fenced code block (php)
+#: ../src/internals/014-docs.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @param bool $skipOnEmpty Whether to skip validation when the value is empty. Defaults to true.\n"
+" */\n"
+"public function __construct(\n"
+"    private bool $skipOnEmpty = true,\n"
+") {\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/014-docs.md
+msgid "Example of a valid code:"
+msgstr "有效代码示例："
+
+#. type: Fenced code block (php)
+#: ../src/internals/014-docs.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @param bool $skipOnEmpty Whether to skip validation when the value is empty.\n"
+" */\n"
+"public function __construct(\n"
+"    private bool $skipOnEmpty = true,\n"
+") {\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/internals/014-docs.md
+msgid "The `@see` tags must explicitly refer to class methods, properties, and constants. This is necessary for the correct display of links in IDEs, as well as for the correct display of links in API documentation."
+msgstr "`@see` 标签必须明确引用类方法、属性和常量。这对于在 IDE 中正确显示链接以及在 API 文档中正确显示链接是必要的。"
 
 #. type: Fenced code block (php)
 #: ../src/internals/014-docs.md
@@ -271,11 +307,6 @@ msgid ""
 "    public function doSomething(): void {}\n"
 "}\n"
 msgstr ""
-
-#. type: Plain text
-#: ../src/internals/014-docs.md
-msgid "Example of a valid code:"
-msgstr "有效代码示例："
 
 #. type: Fenced code block (php)
 #: ../src/internals/014-docs.md

@@ -102,8 +102,41 @@ For handler action and callable typed parameters are automatically injected
 using the dependency injection container passed to the route.
 
 Get current request and handler by type-hinting for `ServerRequestInterface`
-and `RequestHandlerInterface`.  You could add extra handlers to wrap primary
-one with `middleware()` method:
+and `RequestHandlerInterface`.
+
+### Route arguments in actions
+
+Named route parameters are stored in `CurrentRoute`. To pass a route
+parameter to an action method parameter, use the `RouteArgument` attribute:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/post/{id:\d+}')
+        ->action([PostController::class, 'view'])
+        ->name('post/view')
+];
+
+final readonly class PostController
+{
+    public function view(#[RouteArgument('id')] int $id): ResponseInterface
+    {
+        // $id contains the value from the {id} route parameter.
+    }
+}
+```
+
+For optional route parameters, provide a default value either in the route
+with `defaults()` or in the action method signature.
+
+You could add extra handlers to wrap primary one with `middleware()` method:
 
 ```php
 <?php
@@ -281,10 +314,10 @@ You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid
 placeholder, because `()` is a capturing group. Instead, you can use either
 `{lang:en|de}` or `{lang:(?:en|de)}`.
 
-On a route match router fills the associated request attributes with values
-matching the corresponding parts of the URL.  When you use the rule to
-create a URL, it will take the values of the provided parameters and insert
-them at the places where the parameters are declared.
+On a route match router fills `CurrentRoute` arguments with values matching
+the corresponding parts of the URL.  When you use the rule to create a URL,
+it will take the values of the provided parameters and insert them at the
+places where the parameters are declared.
 
 Let's use some examples to illustrate how named parameters work. Assume
 you've declared the following three patterns:

@@ -140,6 +140,35 @@ final class MyService extends MyServiceBase
 PHPDoc, if present, should describe the purpose of the element it's added
 for.
 
+Skip default values in PHPDoc when PHP already shows them in a parameter
+default, promoted property default, or property initializer. The declaration
+is the source of truth, and repeating the value in text can become outdated
+after code changes.
+
+Example of incorrect code:
+
+```php
+/**
+ * @param bool $skipOnEmpty Whether to skip validation when the value is empty. Defaults to true.
+ */
+public function __construct(
+    private bool $skipOnEmpty = true,
+) {
+}
+```
+
+Example of a valid code:
+
+```php
+/**
+ * @param bool $skipOnEmpty Whether to skip validation when the value is empty.
+ */
+public function __construct(
+    private bool $skipOnEmpty = true,
+) {
+}
+```
+
 The `@see` tags must explicitly refer to class methods, properties, and
 constants. This is necessary for the correct display of links in IDEs, as
 well as for the correct display of links in API documentation.

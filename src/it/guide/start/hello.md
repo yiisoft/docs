@@ -92,11 +92,11 @@ return [
 ];
 ```
 
-Nell'esempio sopra, mappi il pattern `/say[/{message}]` a
-`\App\Web\Echo\Action`. Per una richiesta, il router crea un'istanza e
-chiama il metodo `__invoke()`. La parte `{message}` del pattern scrive tutto
-ciò che viene specificato in questa posizione nell'attributo `message` della
-richiesta. `[]` marca questa parte del pattern come facoltativa.
+In the above, you map the `/say[/{message}]` pattern to
+`\App\Web\Echo\Action`.  For a request, the router creates an instance and
+calls the `__invoke()` method.  The `{message}` part of the pattern writes
+anything specified in this place to the `message` route argument.  `[]`
+marks this part of the pattern as optional.
 
 Dai anche un nome `echo/say` a questa rotta per poter generare URL che
 puntano ad essa.
