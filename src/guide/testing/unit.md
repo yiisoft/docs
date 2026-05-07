@@ -1,9 +1,49 @@
 # Unit tests
 
-Unit tests check a small piece of code directly. They should be fast, deterministic, and independent of the application
-container.
+Unit tests check a small piece of PHP code directly. In the Yii application template they live in `tests/Unit` and run
+through the `Unit` Codeception suite.
 
-## Create code to test
+The template includes `tests/Unit/EnvironmentTest.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Unit;
+
+use App\Environment;
+use Codeception\Test\Unit;
+
+use function PHPUnit\Framework\assertSame;
+
+final class EnvironmentTest extends Unit
+{
+    protected function _before(): void
+    {
+        Environment::prepare();
+    }
+
+    public function testAppEnv(): void
+    {
+        assertSame('test', Environment::appEnv());
+    }
+}
+```
+
+Run unit tests:
+
+```shell
+APP_ENV=test vendor/bin/codecept run Unit
+```
+
+Run only this test:
+
+```shell
+APP_ENV=test vendor/bin/codecept run Unit EnvironmentTest
+```
+
+## Add a unit test
 
 For example, create `src/Shared/SlugGenerator.php`:
 
@@ -35,9 +75,11 @@ declare(strict_types=1);
 namespace App\Tests\Unit;
 
 use App\Shared\SlugGenerator;
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
-final class SlugGeneratorTest extends TestCase
+use function PHPUnit\Framework\assertSame;
+
+final class SlugGeneratorTest extends Unit
 {
     public function testGenerateCreatesUrlFriendlySlug(): void
     {
@@ -45,7 +87,7 @@ final class SlugGeneratorTest extends TestCase
 
         $slug = $generator->generate('Hello, Yii3!');
 
-        self::assertSame('hello-yii3', $slug);
+        assertSame('hello-yii3', $slug);
     }
 }
 ```
@@ -53,7 +95,7 @@ final class SlugGeneratorTest extends TestCase
 Run it:
 
 ```shell
-vendor/bin/phpunit tests/Unit/SlugGeneratorTest.php
+APP_ENV=test vendor/bin/codecept run Unit SlugGeneratorTest
 ```
 
 ## Test services with dependencies
@@ -134,10 +176,12 @@ namespace App\Tests\Unit;
 
 use App\Clock\ClockInterface;
 use App\Post\PublishPost;
+use Codeception\Test\Unit;
 use DateTimeImmutable;
-use PHPUnit\Framework\TestCase;
 
-final class PublishPostTest extends TestCase
+use function PHPUnit\Framework\assertSame;
+
+final class PublishPostTest extends Unit
 {
     public function testPublishSetsPublicationDate(): void
     {
@@ -151,8 +195,8 @@ final class PublishPostTest extends TestCase
         $service = new PublishPost($clock);
         $post = $service->publish('Testing Yii');
 
-        self::assertSame('Testing Yii', $post->title);
-        self::assertSame('2026-05-07 10:00:00', $post->publishedAt->format('Y-m-d H:i:s'));
+        assertSame('Testing Yii', $post->title);
+        assertSame('2026-05-07 10:00:00', $post->publishedAt->format('Y-m-d H:i:s'));
     }
 }
 ```
@@ -160,8 +204,8 @@ final class PublishPostTest extends TestCase
 Run it:
 
 ```shell
-vendor/bin/phpunit tests/Unit/PublishPostTest.php
+APP_ENV=test vendor/bin/codecept run Unit PublishPostTest
 ```
 
-Unit tests should avoid real databases, HTTP calls, files, queues, and the full application bootstrap. If a behavior
-needs those, write a functional test.
+Keep unit tests focused on one class or one small collaboration. Use functional tests when the behavior depends on Yii
+configuration, dependency injection, routing, or middleware.

@@ -1,101 +1,98 @@
 # Testing
 
-This section shows a practical test setup for a Yii application. The examples use PHPUnit for unit and functional
-tests. They keep Yii's HTTP tests close to the framework model: create a PSR-7 request, pass it to the application, and
-assert on a PSR-7 response.
+The Yii application template includes a ready test setup. It uses Codeception with PHPUnit assertions and has four
+suites:
 
-Use the smallest test type that proves the behavior:
+- `Unit` for isolated PHP classes.
+- `Functional` for application code called in the same PHP process.
+- `Web` for requests sent through an HTTP server.
+- `Console` for console commands.
 
-1. Unit tests.
-2. Functional tests.
-3. End-to-end tests.
+The main files are:
 
-Unit tests are fast and should cover most domain and service rules. Functional tests check application wiring through a
-real request and response. End-to-end tests run through an HTTP server or browser and should cover only the main user
-flows.
+- `codeception.yml`.
+- `tests/bootstrap.php`.
+- `tests/Unit.suite.yml`.
+- `tests/Functional.suite.yml`.
+- `tests/Web.suite.yml`.
+- `tests/Console.suite.yml`.
+- `tests/Support/*Tester.php`.
 
-## Set up the project
+## Run tests locally
 
-Install PHPUnit:
-
-```shell
-composer require --dev phpunit/phpunit
-```
-
-Create the test directories:
+Build actor classes after installing dependencies or changing a suite:
 
 ```shell
-mkdir -p tests/Unit tests/Functional tests/EndToEnd tests/Support
+vendor/bin/codecept build
 ```
 
-Add development autoloading and scripts to `composer.json`:
-
-```json
-{
-  "autoload-dev": {
-    "psr-4": {
-      "App\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "test": "phpunit",
-    "test:unit": "phpunit --testsuite Unit",
-    "test:functional": "phpunit --testsuite Functional"
-  }
-}
-```
-
-Refresh Composer autoloading:
+Run all tests:
 
 ```shell
-composer dump-autoload
+APP_ENV=test vendor/bin/codecept run
 ```
 
-Follow [Testing environment setup](environment-setup.md) to add `phpunit.xml.dist`, a bootstrap file, and a state reset
-helper.
-
-## Run tests
-
-Run the full PHPUnit suite:
+The template also defines a Composer script:
 
 ```shell
-composer test
+APP_ENV=test composer test
 ```
 
-Run only unit tests:
+Run one suite:
 
 ```shell
-composer test:unit
-```
-
-Run only functional tests:
-
-```shell
-composer test:functional
+APP_ENV=test vendor/bin/codecept run Unit
+APP_ENV=test vendor/bin/codecept run Functional
+APP_ENV=test vendor/bin/codecept run Web
+APP_ENV=test vendor/bin/codecept run Console
 ```
 
 Run one test class or method:
 
 ```shell
-vendor/bin/phpunit tests/Functional/HomePageTest.php
-vendor/bin/phpunit --filter testHomePageReturnsSuccessfulResponse
+APP_ENV=test vendor/bin/codecept run Functional HomePageCest
+APP_ENV=test vendor/bin/codecept run Functional HomePageCest:base
 ```
 
-When the application runs in Docker, run the same command inside the test container:
+`APP_ENV=test` is required for local commands because `tests/bootstrap.php` prepares the application environment before
+tests run.
+
+## Run tests in Docker
+
+Build actor classes:
 
 ```shell
-docker compose -f docker/compose.yml -f docker/test/compose.yml run --rm app vendor/bin/phpunit
+make codecept build
 ```
 
-## What to write first
+Run all tests:
+
+```shell
+make test
+```
+
+Run one suite:
+
+```shell
+make test Unit
+make test Functional
+make test Web
+make test Console
+```
+
+The Docker test environment reads `docker/test/.env`, where `APP_ENV=test` is already set.
+
+## Choose a suite
 
 Start with unit tests for code that has no framework boundary: value objects, validators, domain services, and
 transformers.
 
-Add functional tests for behavior that needs routing, middleware, configuration, a container definition, templates, or
-session and cookie handling.
+Use functional tests when code needs Yii configuration, dependency injection, routing, middleware, request handling, or
+template rendering.
 
-Add end-to-end tests for user-visible workflows such as sign in, form submission, and JavaScript behavior.
+Use web tests for behavior that must go through an HTTP server: status codes, links, redirects, cookies, and rendered
+pages as seen by a client.
 
-Run static analysis in CI and before changing shared contracts. Add mutation testing when the code is important enough
-that weak assertions are a real risk.
+Use console tests for commands in `src/Console`.
+
+Run static analysis in CI and before changing shared contracts.

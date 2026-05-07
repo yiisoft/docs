@@ -1,95 +1,127 @@
 # End-to-end tests
 
-End-to-end tests run the application through a real HTTP server. Use them for user-visible flows such as sign in, form
-submission, redirects, cookies, JavaScript behavior, and file uploads.
+The Yii application template uses the `Web` Codeception suite for tests that go through an HTTP server. These tests live
+in `tests/Web` and use `App\Tests\Support\WebTester`.
 
-Keep them few. Detailed business rules belong in unit and functional tests.
+Use web tests for user-visible HTTP behavior: pages, links, forms, redirects, cookies, and error pages.
+
+## Web suite
+
+The template configures `tests/Web.suite.yml` like this:
+
+```yaml
+actor: WebTester
+extensions:
+  enabled:
+    - Codeception\Extension\RunProcess:
+        0: composer serve
+        sleep: 3
+modules:
+  enabled:
+    - PhpBrowser:
+        url: http://127.0.0.1:8080
+```
+
+`RunProcess` starts the application with the Composer `serve` script. `PhpBrowser` sends HTTP requests to the server.
+
+## Test a page
+
+The template includes `tests/Web/HomePageCest.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Web;
+
+use App\Tests\Support\WebTester;
+
+final class HomePageCest
+{
+    public function base(WebTester $I): void
+    {
+        $I->wantTo('home page works.');
+        $I->amOnPage('/');
+        $I->expectTo('see page home.');
+        $I->see('Hello!');
+    }
+}
+```
+
+Run the web suite locally:
+
+```shell
+APP_ENV=test vendor/bin/codecept run Web
+```
+
+Run only this test:
+
+```shell
+APP_ENV=test vendor/bin/codecept run Web HomePageCest
+```
+
+With Docker:
+
+```shell
+make test Web
+```
+
+## Test links and error pages
+
+Use the same actor methods for navigation and response assertions:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Web;
+
+use App\Tests\Support\WebTester;
+
+final class NotFoundHandlerCest
+{
+    public function nonExistentPage(WebTester $I): void
+    {
+        $I->wantTo('see 404 page.');
+        $I->amOnPage('/non-existent-page');
+        $I->canSeeResponseCodeIs(404);
+        $I->see('404');
+        $I->see('The page /non-existent-page not found.');
+    }
+}
+```
 
 ## Smoke test with curl
 
-Start the application in the test environment:
+For a deployment smoke test, start the application and check one URL:
 
 ```shell
 APP_ENV=test ./yii serve --port=8080
 ```
 
-In another terminal, check the home page:
+In another terminal:
 
 ```shell
 curl -fsS http://127.0.0.1:8080/ > /tmp/home.html
-grep -q "Welcome" /tmp/home.html
-```
-
-This is enough for a simple deployment or reverse-proxy smoke test.
-
-## Browser tests with Playwright
-
-Install Playwright:
-
-```shell
-npm install --save-dev @playwright/test
-npx playwright install
-```
-
-Create `playwright.config.ts`:
-
-```ts
-import { defineConfig } from '@playwright/test';
-
-export default defineConfig({
-  testDir: 'tests/EndToEnd',
-  webServer: {
-    command: 'APP_ENV=test ./yii serve --port=8080',
-    url: 'http://127.0.0.1:8080/',
-    reuseExistingServer: !process.env.CI,
-  },
-  use: {
-    baseURL: 'http://127.0.0.1:8080',
-  },
-});
-```
-
-Create `tests/EndToEnd/home-page.spec.ts`:
-
-```ts
-import { expect, test } from '@playwright/test';
-
-test('home page opens', async ({ page }) => {
-  await page.goto('/');
-
-  await expect(page).toHaveTitle(/Yii/i);
-  await expect(page.getByText('Welcome')).toBeVisible();
-});
-```
-
-Run it:
-
-```shell
-npx playwright test
-```
-
-Run it with a visible browser while debugging:
-
-```shell
-npx playwright test --headed --debug
+grep -q "Hello!" /tmp/home.html
 ```
 
 ## Reset state
 
-End-to-end tests use real infrastructure, so reset state before each scenario:
+Web tests use real infrastructure, so reset state before each scenario:
 
 - Load only the records required by the scenario.
 - Clear session and cookie storage.
 - Clear generated files and outgoing messages.
-- Stop background workers or make their effects deterministic.
+- Stop background workers, or make their effects deterministic.
 
-If the scenario changes a database, reset it in a Playwright `beforeEach` hook by calling a project-specific script:
+If the scenario changes a database, reset it in the Cest `_before()` hook or in a project-specific helper:
 
-```ts
-import { test } from '@playwright/test';
-import { execFileSync } from 'node:child_process';
-
-test.beforeEach(() => {
-  execFileSync('php', ['tests/reset-test-state.php']);
-});
+```php
+public function _before(WebTester $I): void
+{
+    // Reset database tables, files, queues, and outgoing messages.
+}
 ```

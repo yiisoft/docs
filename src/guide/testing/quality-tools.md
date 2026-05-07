@@ -1,113 +1,106 @@
-# Static analysis and mutation testing
+# Static analysis and code quality
 
-Static analysis checks code without running it. Mutation testing changes small parts of the source code and checks
-whether tests fail. Use both with the test suite.
+The Yii application template includes static analysis and code quality tools alongside the test suite.
 
-## Static analysis
+## Psalm
 
-Install Psalm:
-
-```shell
-composer require --dev vimeo/psalm
-vendor/bin/psalm --init
-```
-
-Run it:
+Run Psalm locally:
 
 ```shell
 vendor/bin/psalm
 ```
 
-Add a Composer script:
-
-```json
-{
-  "scripts": {
-    "psalm": "psalm --no-progress"
-  }
-}
-```
-
-If the project uses PHPStan, install and configure it:
+Run Psalm in Docker:
 
 ```shell
-composer require --dev phpstan/phpstan
+make psalm
 ```
 
-Create `phpstan.neon`:
+The template stores Psalm configuration in `psalm.xml`. The GitHub Actions workflow runs Psalm for supported PHP
+versions.
 
-```neon
-parameters:
-    level: 6
-    paths:
-        - src
-        - tests
-```
+When Psalm reports an issue, fix the code or add a precise type annotation. Keep suppressions narrow and local to the
+line or method that needs them.
 
-Run it:
+## Composer Dependency Analyser
+
+Composer Dependency Analyser checks that `composer.json` matches the classes used by the application.
+
+Run it locally:
 
 ```shell
-vendor/bin/phpstan analyse
+vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php
 ```
 
-## Mutation testing
-
-Install Infection:
+Run it in Docker:
 
 ```shell
-composer require --dev infection/infection
+make composer-dependency-analyser
 ```
 
-Create `infection.json5`:
+Use this check after adding or removing package usage in `src`, `config`, or `tests`.
 
-```json5
-{
-  "$schema": "vendor/infection/infection/resources/schema.json",
-  "source": {
-    "directories": [
-      "src"
-    ]
-  },
-  "phpUnit": {
-    "configDir": "."
-  },
-  "logs": {
-    "text": "runtime/infection.log"
-  },
-  "mutators": {
-    "@default": true
-  }
-}
-```
+## PHP CS Fixer
 
-Run it:
+PHP CS Fixer applies the project coding style from `.php-cs-fixer.php`.
+
+Run it locally:
 
 ```shell
-vendor/bin/infection --threads=max
+vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff
 ```
 
-For a large application, start with one path:
+Run it in Docker:
 
 ```shell
-vendor/bin/infection --filter=src/Shared
+make cs-fix
 ```
 
-Add CI thresholds after the first clean run:
+Commit formatting changes together with the code that needs them.
+
+## Rector
+
+Rector applies configured code upgrades and refactorings from `rector.php`.
+
+Preview changes locally:
 
 ```shell
-vendor/bin/infection --threads=max --min-msi=80 --min-covered-msi=90
+vendor/bin/rector --dry-run
 ```
 
-## CI command
-
-A pull request check can run:
+Apply changes locally:
 
 ```shell
-composer install --no-interaction --prefer-dist
-composer test
+vendor/bin/rector
+```
+
+Run it in Docker:
+
+```shell
+make rector
+```
+
+Review Rector changes before committing them. Automated refactoring can change behavior when custom rules or broad paths
+are configured.
+
+## Pull request checks
+
+A practical local check before opening a pull request is:
+
+```shell
+APP_ENV=test vendor/bin/codecept build
+APP_ENV=test vendor/bin/codecept run
 vendor/bin/psalm
-vendor/bin/infection --threads=max --min-msi=80 --min-covered-msi=90
+vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php
+vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff
 ```
 
-Run mutation testing less often if it is too slow for every pull request. Static analysis and unit tests should run on
-every change.
+With Docker:
+
+```shell
+make codecept build
+make test
+make psalm
+make composer-dependency-analyser
+make cs-fix
+```

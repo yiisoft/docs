@@ -1,14 +1,13 @@
 # Functional tests
 
-Functional tests run application code in the same PHP process. For a web application, create a PSR-7 request, pass it
-to Yii, and assert on the PSR-7 response.
+Functional tests run application code in the same PHP process. In the Yii application template they live in
+`tests/Functional` and use `App\Tests\Support\FunctionalTester`.
 
-This checks routing, middleware, action handlers, views, container configuration, headers, cookies, and sessions without
-starting a web server.
+Use them for routing, middleware, action handlers, views, container configuration, headers, cookies, and sessions.
 
-## Add a web test helper
+## Functional tester
 
-Create `tests/Support/WebApp.php`:
+The template already has a helper method for sending PSR-7 requests:
 
 ```php
 <?php
@@ -18,40 +17,25 @@ declare(strict_types=1);
 namespace App\Tests\Support;
 
 use App\Environment;
-use HttpSoft\Message\ServerRequestFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Yii\Runner\Http\HttpApplicationRunner;
 
 use function dirname;
 
-final class WebApp
+class FunctionalTester extends \Codeception\Actor
 {
-    public static function request(string $method, string $uri): ServerRequestInterface
-    {
-        return (new ServerRequestFactory())->createServerRequest($method, $uri);
-    }
+    use _generated\FunctionalTesterActions;
 
-    public static function handle(ServerRequestInterface $request): ResponseInterface
+    public function sendRequest(ServerRequestInterface $request): ResponseInterface
     {
         $runner = new HttpApplicationRunner(
             rootPath: dirname(__DIR__, 2),
-            debug: true,
-            environment: Environment::TEST,
-            bootstrapGroup: 'bootstrap-web',
-            eventsGroup: 'events-web',
-            diGroup: 'di-web',
-            diProvidersGroup: 'di-providers-web',
-            diDelegatesGroup: 'di-delegates-web',
-            diTagsGroup: 'di-tags-web',
-            paramsGroup: 'params-web',
-            nestedParamsGroups: ['params'],
-            nestedEventsGroups: ['events'],
+            environment: Environment::appEnv(),
         );
 
         $response = $runner->runAndGetResponse($request);
         $body = $response->getBody();
-
         if ($body->isSeekable()) {
             $body->rewind();
         }
@@ -61,11 +45,9 @@ final class WebApp
 }
 ```
 
-If your project uses different configuration group names, take them from `config/configuration.php`.
-
 ## Test a page
 
-Create `tests/Functional/HomePageTest.php`:
+The template includes `tests/Functional/HomePageCest.php`:
 
 ```php
 <?php
@@ -74,22 +56,25 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional;
 
-use App\Tests\Support\WebApp;
-use PHPUnit\Framework\TestCase;
+use App\Tests\Support\FunctionalTester;
+use HttpSoft\Message\ServerRequest;
 
-final class HomePageTest extends TestCase
+use function PHPUnit\Framework\assertSame;
+use function PHPUnit\Framework\assertStringContainsString;
+
+final class HomePageCest
 {
-    protected function setUp(): void
+    public function base(FunctionalTester $tester): void
     {
-        test_reset_runtime();
-    }
+        $response = $tester->sendRequest(
+            new ServerRequest(uri: '/'),
+        );
 
-    public function testHomePageReturnsSuccessfulResponse(): void
-    {
-        $response = WebApp::handle(WebApp::request('GET', '/'));
-
-        self::assertSame(200, $response->getStatusCode());
-        self::assertStringContainsString('Welcome', (string) $response->getBody());
+        assertSame(200, $response->getStatusCode());
+        assertStringContainsString(
+            'Don\'t forget to check the guide',
+            $response->getBody()->getContents(),
+        );
     }
 }
 ```
@@ -97,7 +82,8 @@ final class HomePageTest extends TestCase
 Run it:
 
 ```shell
-vendor/bin/phpunit tests/Functional/HomePageTest.php
+APP_ENV=test vendor/bin/codecept run Functional
+APP_ENV=test vendor/bin/codecept run Functional HomePageCest
 ```
 
 ## Send request data
@@ -105,7 +91,7 @@ vendor/bin/phpunit tests/Functional/HomePageTest.php
 Use PSR-7 methods to model the request:
 
 ```php
-$request = WebApp::request('POST', '/contact')
+$request = (new ServerRequest(uri: '/contact', method: 'POST'))
     ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
     ->withParsedBody([
         'ContactForm' => [
@@ -115,24 +101,24 @@ $request = WebApp::request('POST', '/contact')
         ],
     ]);
 
-$response = WebApp::handle($request);
+$response = $tester->sendRequest($request);
 
-self::assertSame(302, $response->getStatusCode());
-self::assertSame('/contact/sent', $response->getHeaderLine('Location'));
+assertSame(302, $response->getStatusCode());
+assertSame('/contact/sent', $response->getHeaderLine('Location'));
 ```
 
 For JSON APIs, write the JSON body into a PSR-7 stream and set `Content-Type: application/json`.
 
 ## Reset state
 
-Functional tests often touch runtime files, sessions, cache, and a database. Reset the changed state before each test:
+Functional tests often touch runtime files, sessions, cache, and a database. Reset changed state in the Cest `_before()`
+hook or in a project helper:
 
 ```php
-protected function setUp(): void
+public function _before(FunctionalTester $tester): void
 {
-    test_reset_runtime();
-    // Reset database tables, cache pools, queues, and outgoing messages here.
+    // Reset database tables, cache pools, queues, and outgoing messages.
 }
 ```
 
-Use functional tests when the behavior depends on Yii wiring. Keep pure domain rules in unit tests.
+Keep pure domain rules in unit tests. Put request and response behavior in functional tests.
