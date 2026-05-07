@@ -38,11 +38,10 @@ XDEBUG_CONFIG="client_host=host.docker.internal idekey=phpstorm"
 ```
 
 Keep the default `SERVER_NAME=:80` from `docker/dev/.env` unless the application needs a different Caddy address.
-Set the browser port with `DEV_PORT` in `docker/.env`. Older templates can use a separate `SERVER_PORT` variable;
-check the project's Docker files before setting it:
+Set the browser port with `DEV_PORT` in `docker/.env`:
 
 ```dotenv
-SERVER_PORT=80
+DEV_PORT=80
 ```
 
 On Linux, Docker must resolve `host.docker.internal` to the host gateway. The current Yii application template already
@@ -158,7 +157,7 @@ If the IDE accepts a connection and the breakpoint stays inactive, check path ma
 Without Docker, start the command with an Xdebug trigger:
 
 ```shell
-XDEBUG_MODE=debug XDEBUG_SESSION=1 ./yii hello
+XDEBUG_MODE=debug XDEBUG_SESSION=phpstorm ./yii hello
 ```
 
 With Docker, pass the trigger to the container:
@@ -166,7 +165,7 @@ With Docker, pass the trigger to the container:
 ```shell
 docker compose -f docker/compose.yml -f docker/dev/compose.yml run --rm \
   -e XDEBUG_MODE=debug \
-  -e XDEBUG_SESSION=1 \
+  -e XDEBUG_SESSION=phpstorm \
   -e PHP_IDE_CONFIG=serverName=localhost \
   app ./yii hello
 ```
@@ -178,7 +177,7 @@ Use the command name and arguments you need instead of `hello`.
 Without Docker, start the test runner with an Xdebug trigger:
 
 ```shell
-XDEBUG_MODE=debug XDEBUG_SESSION=1 vendor/bin/codecept run
+XDEBUG_MODE=debug XDEBUG_SESSION=phpstorm vendor/bin/codecept run
 ```
 
 With Docker, configure `docker/test/override.env`:
@@ -192,7 +191,7 @@ Then run the test container with a trigger:
 
 ```shell
 docker compose -f docker/compose.yml -f docker/test/compose.yml run --rm \
-  -e XDEBUG_SESSION=1 \
+  -e XDEBUG_SESSION=phpstorm \
   -e PHP_IDE_CONFIG=serverName=localhost \
   app ./vendor/bin/codecept run
 ```
@@ -205,7 +204,7 @@ environment variables to one run.
 - The IDE must listen before PHP starts the request.
 - Xdebug connects from PHP to the IDE. Allow incoming connections to port `9003` in the host firewall.
 - In Docker, `client_host` must be reachable from the container. The Yii template uses `host.docker.internal`.
-- For CLI and tests, set `XDEBUG_SESSION=1` or another trigger accepted by your Xdebug configuration.
+- For CLI and tests, set `XDEBUG_SESSION=phpstorm` or another trigger accepted by your Xdebug configuration.
 - For Docker path mappings, map the host project root to `/app`.
 - To inspect connection attempts, temporarily add `log=/app/runtime/xdebug.log` to `XDEBUG_CONFIG`.
 
