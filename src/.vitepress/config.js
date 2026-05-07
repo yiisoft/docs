@@ -220,7 +220,8 @@ export default {
                                 {text: 'View Code Style', link: '/internals/019-view-code-style'},
                                 {text: 'Package Release', link: '/internals/020-package-release'},
                                 {text: 'Changelog & Upgrade', link: '/internals/021-changelog-upgrade'},
-                                {text: 'Config Groups', link: '/internals/022-config-groups'}
+                                {text: 'Config Groups', link: '/internals/022-config-groups'},
+                                {text: 'GitHub Actions', link: '/internals/023-github-actions'}
                             ]
                         }
                     ]
