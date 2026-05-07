@@ -27,9 +27,9 @@ final class SlugGeneratorTest extends TestCase
     {
         $generator = new SlugGenerator();
 
-        $slug = $generator->generate('Hello, Yii 3!');
+        $slug = $generator->generate('Hello, Yii3!');
 
-        self::assertSame('hello-yii-3', $slug);
+        self::assertSame('hello-yii3', $slug);
     }
 }
 ```
