@@ -1,49 +1,101 @@
 # Testing
 
-Tests help keep Yii applications and packages safe to change. Use the smallest test type that can prove the behavior:
+This section shows a practical test setup for a Yii application. The examples use PHPUnit for unit and functional
+tests. They keep Yii's HTTP tests close to the framework model: create a PSR-7 request, pass it to the application, and
+assert on a PSR-7 response.
+
+Use the smallest test type that proves the behavior:
 
 1. Unit tests.
 2. Functional tests.
 3. End-to-end tests.
 
-This order keeps feedback fast. Unit tests are the cheapest to write and run. Functional tests cover application
-integration through a real request and response. End-to-end tests exercise the application through an HTTP server or
-browser and are best reserved for the flows that must work from the user's point of view.
+Unit tests are fast and should cover most domain and service rules. Functional tests check application wiring through a
+real request and response. End-to-end tests run through an HTTP server or browser and should cover only the main user
+flows.
 
-## Test types
+## Set up the project
 
-Unit tests check a small unit of code in isolation: a value object, service, middleware, handler, validator, or domain
-operation. They should avoid bootstrapping the whole application when a direct object call is enough.
+Install PHPUnit:
 
-Functional tests run application code in the same PHP process. For web functionality, create a PSR-7
-`ServerRequestInterface`, pass it to the application or middleware stack, and assert on the returned PSR-7
-`ResponseInterface`. This tests routing, middleware, container configuration, and response creation without starting a
-web server.
+```shell
+composer require --dev phpunit/phpunit
+```
 
-End-to-end tests use the application the same way a user or external system uses it: through HTTP requests, a browser,
-or another real client. They are useful for forms, authentication flows, JavaScript behavior, and integration with
-services that are hard to represent in-process.
+Create the test directories:
 
-## Application state
+```shell
+mkdir -p tests/Unit tests/Functional tests/EndToEnd tests/Support
+```
 
-Tests should start from a known application state and leave the application ready for the next test. Reset the same
-state that a real application changes:
+Add development autoloading and scripts to `composer.json`:
 
-- Database rows.
-- Cache entries.
-- Sessions and cookies.
-- Uploaded or generated files.
-- Queues and outgoing messages.
-- Time, random values, and other process-wide fakes.
+```json
+{
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:unit": "phpunit --testsuite Unit",
+    "test:functional": "phpunit --testsuite Functional"
+  }
+}
+```
 
-Prefer a separate test environment, separate test database, and isolated runtime directories. A test that depends on
-leftover data from a previous test can pass locally and fail in CI.
+Refresh Composer autoloading:
 
-## Quality gates
+```shell
+composer dump-autoload
+```
 
-Automated tests are only one part of the feedback loop. Static analysis checks type contracts and unreachable or unsafe
-code paths before the code runs. Mutation testing changes small parts of the source code and checks whether the test
-suite fails; surviving mutations point to assertions that are missing or too weak.
+Follow [Testing environment setup](environment-setup.md) to add `phpunit.xml.dist`, a bootstrap file, and a state reset
+helper.
 
-Run unit and functional tests frequently during development. Run end-to-end tests, static analysis, and mutation testing
-in CI or before releases, based on the project's size and cost of failure.
+## Run tests
+
+Run the full PHPUnit suite:
+
+```shell
+composer test
+```
+
+Run only unit tests:
+
+```shell
+composer test:unit
+```
+
+Run only functional tests:
+
+```shell
+composer test:functional
+```
+
+Run one test class or method:
+
+```shell
+vendor/bin/phpunit tests/Functional/HomePageTest.php
+vendor/bin/phpunit --filter testHomePageReturnsSuccessfulResponse
+```
+
+When the application runs in Docker, run the same command inside the test container:
+
+```shell
+docker compose -f docker/compose.yml -f docker/test/compose.yml run --rm app vendor/bin/phpunit
+```
+
+## What to write first
+
+Start with unit tests for code that has no framework boundary: value objects, validators, domain services, and
+transformers.
+
+Add functional tests for behavior that needs routing, middleware, configuration, a container definition, templates, or
+session and cookie handling.
+
+Add end-to-end tests for user-visible workflows such as sign in, form submission, and JavaScript behavior.
+
+Run static analysis in CI and before changing shared contracts. Add mutation testing when the code is important enough
+that weak assertions are a real risk.

@@ -1,61 +1,57 @@
 # Functional tests
 
-Functional tests check how application parts work together in the same PHP process. For web applications, use Yii's
-PSR-7 request-response flow: create a PSR-7 server request, pass it to the application or middleware stack, and assert
-on the PSR-7 response.
+Functional tests run application code in the same PHP process. For a web application, create a PSR-7 request, pass it
+to Yii, and assert on the PSR-7 response.
 
-This style covers routing, middleware, action handlers, container configuration, view rendering, and response headers
-without starting a web server.
+This checks routing, middleware, action handlers, views, container configuration, headers, cookies, and sessions without
+starting a web server.
 
-## Request and response
+## Add a web test helper
 
-Create the request with a PSR-17 server request factory from the PSR-7 implementation used by the project:
+Create `tests/Support/WebApp.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
+namespace App\Tests\Support;
+
+use App\Environment;
+use HttpSoft\Message\ServerRequestFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ServerRequestFactoryInterface;
-use Yiisoft\Yii\Http\Application;
+use Yiisoft\Yii\Runner\Http\HttpApplicationRunner;
 
-final class HomePageTest extends TestCase
+use function dirname;
+
+final class WebApp
 {
-    private Application $application;
-    private ServerRequestFactoryInterface $requestFactory;
-
-    protected function setUp(): void
+    public static function request(string $method, string $uri): ServerRequestInterface
     {
-        /** @var array{Application, ServerRequestFactoryInterface} $runtime */
-        $runtime = require __DIR__ . '/bootstrap-web-test.php';
-
-        [$this->application, $this->requestFactory] = $runtime;
+        return (new ServerRequestFactory())->createServerRequest($method, $uri);
     }
 
-    public function testHomePageReturnsSuccessfulResponse(): void
+    public static function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $request = $this->requestFactory->createServerRequest('GET', '/');
+        $runner = new HttpApplicationRunner(
+            rootPath: dirname(__DIR__, 2),
+            debug: true,
+            environment: Environment::TEST,
+            bootstrapGroup: 'bootstrap-web',
+            eventsGroup: 'events-web',
+            diGroup: 'di-web',
+            diProvidersGroup: 'di-providers-web',
+            diDelegatesGroup: 'di-delegates-web',
+            diTagsGroup: 'di-tags-web',
+            paramsGroup: 'params-web',
+            nestedParamsGroups: ['params'],
+            nestedEventsGroups: ['events'],
+        );
 
-        $response = $this->handle($request);
-
-        self::assertSame(200, $response->getStatusCode());
-        self::assertStringContainsString('Welcome', (string) $response->getBody());
-    }
-
-    private function handle(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->application->start();
-
-        try {
-            $response = $this->application->handle($request);
-        } finally {
-            $this->application->shutdown();
-        }
-
+        $response = $runner->runAndGetResponse($request);
         $body = $response->getBody();
+
         if ($body->isSeekable()) {
             $body->rewind();
         }
@@ -65,13 +61,78 @@ final class HomePageTest extends TestCase
 }
 ```
 
-The `bootstrap-web-test.php` file is project-specific. It should build the test container and return the
-`Yiisoft\Yii\Http\Application` instance together with the PSR-17 server request factory used by the project.
+If your project uses different configuration group names, take them from `config/configuration.php`.
+
+## Test a page
+
+Create `tests/Functional/HomePageTest.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Functional;
+
+use App\Tests\Support\WebApp;
+use PHPUnit\Framework\TestCase;
+
+final class HomePageTest extends TestCase
+{
+    protected function setUp(): void
+    {
+        test_reset_runtime();
+    }
+
+    public function testHomePageReturnsSuccessfulResponse(): void
+    {
+        $response = WebApp::handle(WebApp::request('GET', '/'));
+
+        self::assertSame(200, $response->getStatusCode());
+        self::assertStringContainsString('Welcome', (string) $response->getBody());
+    }
+}
+```
+
+Run it:
+
+```shell
+vendor/bin/phpunit tests/Functional/HomePageTest.php
+```
+
+## Send request data
+
+Use PSR-7 methods to model the request:
+
+```php
+$request = WebApp::request('POST', '/contact')
+    ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
+    ->withParsedBody([
+        'ContactForm' => [
+            'name' => 'Sam',
+            'email' => 'sam@example.test',
+            'body' => 'Hello.',
+        ],
+    ]);
+
+$response = WebApp::handle($request);
+
+self::assertSame(302, $response->getStatusCode());
+self::assertSame('/contact/sent', $response->getHeaderLine('Location'));
+```
+
+For JSON APIs, write the JSON body into a PSR-7 stream and set `Content-Type: application/json`.
 
 ## Reset state
 
-Functional tests usually touch more state than unit tests. Reset the database, cache, sessions, files, and outgoing
-messages before the next request. If a test sends multiple requests, reset state only between scenarios that must be
-independent.
+Functional tests often touch runtime files, sessions, cache, and a database. Reset the changed state before each test:
 
-Use functional tests for behavior that needs application wiring. Keep pure domain rules in unit tests.
+```php
+protected function setUp(): void
+{
+    test_reset_runtime();
+    // Reset database tables, cache pools, queues, and outgoing messages here.
+}
+```
+
+Use functional tests when the behavior depends on Yii wiring. Keep pure domain rules in unit tests.

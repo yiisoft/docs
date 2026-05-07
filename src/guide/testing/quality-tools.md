@@ -1,23 +1,113 @@
 # Static analysis and mutation testing
 
-Tests execute selected examples. Static analysis and mutation testing add different feedback.
+Static analysis checks code without running it. Mutation testing changes small parts of the source code and checks
+whether tests fail. Use both with the test suite.
 
-Static analysis reads the code and checks type contracts, control flow, unreachable code, invalid calls, and other
-issues before the code runs. Common PHP tools include [Psalm](https://psalm.dev/) and
-[PHPStan](https://phpstan.org/).
+## Static analysis
 
-Mutation testing changes small parts of the source code and runs the test suite against each change. If the tests still
-pass, the changed code is a surviving mutation. Surviving mutations often mean that assertions are missing, too broad,
-or checking implementation details instead of behavior. A common PHP mutation testing tool is
-[Infection](https://infection.github.io/).
+Install Psalm:
 
-## When to run them
+```shell
+composer require --dev vimeo/psalm
+vendor/bin/psalm --init
+```
 
-Run static analysis in CI for every pull request. Run it locally before pushing changes that affect shared interfaces,
-container configuration, or generated types.
+Run it:
 
-Mutation testing is more expensive. Run it for packages, domain code, and critical services where test strength matters.
-For large applications, start with a small source path and expand the scope as the suite becomes faster and more stable.
+```shell
+vendor/bin/psalm
+```
 
-Use these tools with tests. Static analysis finds many type and flow problems. Mutation testing shows whether tests
-would catch behavior changes.
+Add a Composer script:
+
+```json
+{
+  "scripts": {
+    "psalm": "psalm --no-progress"
+  }
+}
+```
+
+If the project uses PHPStan, install and configure it:
+
+```shell
+composer require --dev phpstan/phpstan
+```
+
+Create `phpstan.neon`:
+
+```neon
+parameters:
+    level: 6
+    paths:
+        - src
+        - tests
+```
+
+Run it:
+
+```shell
+vendor/bin/phpstan analyse
+```
+
+## Mutation testing
+
+Install Infection:
+
+```shell
+composer require --dev infection/infection
+```
+
+Create `infection.json5`:
+
+```json5
+{
+  "$schema": "vendor/infection/infection/resources/schema.json",
+  "source": {
+    "directories": [
+      "src"
+    ]
+  },
+  "phpUnit": {
+    "configDir": "."
+  },
+  "logs": {
+    "text": "runtime/infection.log"
+  },
+  "mutators": {
+    "@default": true
+  }
+}
+```
+
+Run it:
+
+```shell
+vendor/bin/infection --threads=max
+```
+
+For a large application, start with one path:
+
+```shell
+vendor/bin/infection --filter=src/Shared
+```
+
+Add CI thresholds after the first clean run:
+
+```shell
+vendor/bin/infection --threads=max --min-msi=80 --min-covered-msi=90
+```
+
+## CI command
+
+A pull request check can run:
+
+```shell
+composer install --no-interaction --prefer-dist
+composer test
+vendor/bin/psalm
+vendor/bin/infection --threads=max --min-msi=80 --min-covered-msi=90
+```
+
+Run mutation testing less often if it is too slow for every pull request. Static analysis and unit tests should run on
+every change.
