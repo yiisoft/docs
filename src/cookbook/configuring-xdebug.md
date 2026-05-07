@@ -123,6 +123,42 @@ For Docker, add path mappings:
 
 Start this configuration before running the web request, command, or test.
 
+## Zed
+
+Install or enable the PHP extension in Zed. It provides the `Xdebug` debug adapter.
+
+Create `.zed/debug.json`:
+
+```json
+[
+  {
+    "label": "PHP: Listen to Xdebug",
+    "adapter": "Xdebug",
+    "request": "launch",
+    "port": 9003
+  }
+]
+```
+
+For Docker, add path mappings:
+
+```json
+[
+  {
+    "label": "PHP: Listen to Xdebug",
+    "adapter": "Xdebug",
+    "request": "launch",
+    "port": 9003,
+    "pathMappings": {
+      "/app": "$ZED_WORKTREE_ROOT"
+    }
+  }
+]
+```
+
+Start the configuration with **debugger: start** before running the web request, command, or test. Zed can also load
+debug configurations from `.vscode/launch.json` when `.zed/debug.json` is absent.
+
 ## Debug a web request
 
 Without Docker:
@@ -214,4 +250,5 @@ environment variables to one run.
 - [PhpStorm Xdebug documentation](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html)
 - [PhpStorm servers and path mappings](https://www.jetbrains.com/help/phpstorm/servers.html)
 - [VS Code PHP Debug](https://github.com/xdebug/vscode-php-debug)
+- [Zed PHP documentation](https://zed.dev/docs/languages/php#debugging)
 - [Docker in application templates](../guide/tutorial/docker.md)
