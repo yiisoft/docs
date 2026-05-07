@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Yii Community
+    url: https://www.yiiframework.com/community
+    about: Join our friendly and helpful Yii community!
