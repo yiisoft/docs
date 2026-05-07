@@ -165,13 +165,16 @@ Without Docker:
 
 1. Start listening in the IDE.
 2. Put a breakpoint in an action or middleware.
-3. Start the application:
+3. Start the built-in server with an Xdebug trigger:
 
    ```shell
-   ./yii serve
+   ./yii serve --xdebug
    ```
 
-4. Enable debugging in the browser extension and reload the page.
+4. Open or reload the page in the browser.
+
+The `--xdebug` option passes `XDEBUG_MODE=debug XDEBUG_TRIGGER=yes` to the built-in PHP server. If you use another web
+server, enable debugging with the browser extension and reload the page.
 
 With Docker:
 
