@@ -18,5 +18,6 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 - [Sentry 集成](sentry-integration.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
+- [Configuring Xdebug](configuring-xdebug.md)
 - [配置 Web 服务器](configuring-webservers/general.md)
 - [部署到 Docker Swarm](deployment/docker-swarm.md)

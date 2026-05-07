@@ -1,0 +1,554 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-07 14:37+0000\n"
+"PO-Revision-Date: 2026-05-07 14:37+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "Configuring routes"
+msgid "Configuring Xdebug"
+msgstr "配置路由"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Xdebug lets an IDE stop PHP code on breakpoints while the application handles a web request, console command, or test.  The IDE listens for debug connections. PHP starts the request and Xdebug connects back to the IDE."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Yii works with the regular Xdebug setup. Configure Xdebug for the PHP runtime that executes the code and make sure the IDE can map runtime paths to project files."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "Checkout"
+msgid "Check Xdebug"
+msgstr "结账"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Use Xdebug 3. The default debug port is `9003`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Without Docker, install Xdebug for the PHP executable that runs the application, then check it:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"php --version\n"
+"php --ri xdebug\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "In `php.ini` or an Xdebug-specific ini file, enable step debugging:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"xdebug.mode=develop,debug\n"
+"xdebug.start_with_request=trigger\n"
+"xdebug.client_host=127.0.0.1\n"
+"xdebug.client_port=9003\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "`trigger` starts a debug session only when a browser extension, query parameter, cookie, or `XDEBUG_SESSION` environment variable asks for it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "With Docker, the Yii application template installs Xdebug in the development image. Enable step debugging in `docker/dev/override.env`:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"XDEBUG_MODE=develop,debug\n"
+"XDEBUG_CONFIG=\"client_host=host.docker.internal idekey=phpstorm\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Keep the default `SERVER_NAME=:80` from `docker/dev/.env` unless the application needs a different Caddy address.  Set the browser port with `DEV_PORT` in `docker/.env`:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "DEV_PORT=80\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "On Linux, Docker must resolve `host.docker.internal` to the host gateway. The current Yii application template already has this in `docker/compose.yml`:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"services:\n"
+"  app:\n"
+"    extra_hosts:\n"
+"      - \"host.docker.internal:host-gateway\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Rebuild the development image if Xdebug was added after the image had already been built:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "make build\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "PhpStorm metadata"
+msgid "PhpStorm"
+msgstr "PhpStorm 元数据"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"In **Settings** > **PHP** > **Debug**, check that Xdebug listens on port `9003`. Start listening with\n"
+"**Run** > **Start Listening for PHP Debug Connections**.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"For browser debugging, install a browser extension from **Settings** > **PHP** > **Debug**. In the extension options,\n"
+"use `phpstorm` as the IDE key.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "When PHP runs in Docker, configure a server in **Settings** > **PHP** > **Servers**:\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Name: `localhost`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Host: `localhost`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Port: `80`, or the host port configured by `DEV_PORT`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Debugger: `Xdebug`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Path mapping: map the project root on the host to `/app` in the container."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Use the project root for the mapping. Mapping only `public/` leaves files under `src/`, `config/`, and `vendor/` unmapped. The path in the container must match the path used by PHP. In the default template, the project is mounted into `/app`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "For local PHP, PhpStorm usually uses the same filesystem paths as PHP, so path mappings are usually unnecessary."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "VS Code"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Install the [PHP Debug](https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug) extension."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "For PHP that runs on the same filesystem as VS Code, create `.vscode/launch.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"{\n"
+"  \"version\": \"0.2.0\",\n"
+"  \"configurations\": [\n"
+"    {\n"
+"      \"name\": \"Listen for Xdebug\",\n"
+"      \"type\": \"php\",\n"
+"      \"request\": \"launch\",\n"
+"      \"port\": 9003\n"
+"    }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "For Docker, add path mappings:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"{\n"
+"  \"version\": \"0.2.0\",\n"
+"  \"configurations\": [\n"
+"    {\n"
+"      \"name\": \"Listen for Xdebug\",\n"
+"      \"type\": \"php\",\n"
+"      \"request\": \"launch\",\n"
+"      \"port\": 9003,\n"
+"      \"pathMappings\": {\n"
+"        \"/app\": \"${workspaceFolder}\"\n"
+"      }\n"
+"    }\n"
+"  ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Start this configuration before running the web request, command, or test."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "Zed"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Install or enable the PHP extension in Zed. It provides the `Xdebug` debug adapter."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Create `.zed/debug.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"[\n"
+"  {\n"
+"    \"label\": \"PHP: Listen to Xdebug\",\n"
+"    \"adapter\": \"Xdebug\",\n"
+"    \"request\": \"launch\",\n"
+"    \"port\": 9003\n"
+"  }\n"
+"]\n"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"[\n"
+"  {\n"
+"    \"label\": \"PHP: Listen to Xdebug\",\n"
+"    \"adapter\": \"Xdebug\",\n"
+"    \"request\": \"launch\",\n"
+"    \"port\": 9003,\n"
+"    \"pathMappings\": {\n"
+"      \"/app\": \"$ZED_WORKTREE_ROOT\"\n"
+"    }\n"
+"  }\n"
+"]\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Start the configuration with **debugger: start** before running the web request, command, or test. Zed can also load debug configurations from `.vscode/launch.json` when `.zed/debug.json` is absent."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "Simple GET request"
+msgid "Debug a web request"
+msgstr "简单的 GET 请求"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Without Docker:"
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Start listening in the IDE."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy
+#| msgid "Creating and using middleware:"
+msgid "Put a breakpoint in an action or middleware."
+msgstr "创建并使用中间件："
+
+#. type: Bullet: '3. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Start the built-in server with an Xdebug trigger:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "   ./yii serve --xdebug\n"
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Open or reload the page in the browser."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "The `--xdebug` option passes `XDEBUG_MODE=debug XDEBUG_TRIGGER=yes` to the built-in PHP server. If you use another web server, enable debugging with the browser extension and reload the page."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy
+#| msgid "Docker"
+msgid "With Docker:"
+msgstr "Docker"
+
+#. type: Bullet: '1. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Add the Docker Xdebug variables to `docker/dev/override.env`."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Start or restart the development containers:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "   make up\n"
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Enable debugging in the browser extension and reload the page."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "If the IDE accepts a connection and the breakpoint stays inactive, check path mappings first."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "Using console command"
+msgid "Debug a console command"
+msgstr "使用控制台命令"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Without Docker, start the command with an Xdebug trigger:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "XDEBUG_MODE=debug XDEBUG_SESSION=phpstorm ./yii hello\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "With Docker, pass the trigger to the container:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"docker compose -f docker/compose.yml -f docker/dev/compose.yml run --rm \\\n"
+"  -e XDEBUG_MODE=debug \\\n"
+"  -e XDEBUG_SESSION=phpstorm \\\n"
+"  -e PHP_IDE_CONFIG=serverName=localhost \\\n"
+"  app ./yii hello\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Use the command name and arguments you need instead of `hello`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "Debug tests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Without Docker, start the test runner with an Xdebug trigger:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid "XDEBUG_MODE=debug XDEBUG_SESSION=phpstorm vendor/bin/codecept run\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "With Docker, configure `docker/test/override.env`:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"XDEBUG_MODE=debug,coverage\n"
+"XDEBUG_CONFIG=\"client_host=host.docker.internal idekey=phpstorm\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Then run the test container with a trigger:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/configuring-xdebug.md
+#, no-wrap
+msgid ""
+"docker compose -f docker/compose.yml -f docker/test/compose.yml run --rm \\\n"
+"  -e XDEBUG_SESSION=phpstorm \\\n"
+"  -e PHP_IDE_CONFIG=serverName=localhost \\\n"
+"  app ./vendor/bin/codecept run\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Use `make test` for regular test runs. Use the explicit `docker compose` command when you need to pass debug-only environment variables to one run."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/views/asset.md
+#, no-wrap
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "The IDE must listen before PHP starts the request."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "Xdebug connects from PHP to the IDE. Allow incoming connections to port `9003` in the host firewall."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "In Docker, `client_host` must be reachable from the container. The Yii template uses `host.docker.internal`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "For CLI and tests, set `XDEBUG_SESSION=phpstorm` or another trigger accepted by your Xdebug configuration."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "For Docker path mappings, map the host project root to `/app`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "To inspect connection attempts, temporarily add `log=/app/runtime/xdebug.log` to `XDEBUG_CONFIG`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy, no-wrap
+#| msgid "See also:"
+msgid "See also"
+msgstr "另请参阅："
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy
+#| msgid "[XDebug profiler](https://xdebug.org/docs/profiler)"
+msgid "[Xdebug step debugging](https://xdebug.org/docs/step_debug)"
+msgstr "[XDebug 分析器](https://xdebug.org/docs/profiler)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "[PhpStorm Xdebug documentation](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "[PhpStorm servers and path mappings](https://www.jetbrains.com/help/phpstorm/servers.html)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "[VS Code PHP Debug](https://github.com/xdebug/vscode-php-debug)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+msgid "[Zed PHP documentation](https://zed.dev/docs/languages/php#debugging)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/configuring-xdebug.md
+#, fuzzy
+#| msgid "[Console applications](tutorial/console-applications.md)"
+msgid "[Docker in application templates](../guide/tutorial/docker.md)"
+msgstr "[控制台应用](tutorial/console-applications.md)"

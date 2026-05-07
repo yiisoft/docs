@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:23+0000\n"
+"POT-Creation-Date: 2026-05-07 14:37+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -87,6 +87,13 @@ msgstr ""
 #: ../src/cookbook/index.md
 msgid "[Opening files directly in PhpStorm](opening-files-in-phpstorm.md)"
 msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+#, fuzzy
+#| msgid "[Configuration](concept/configuration.md)"
+msgid "[Configuring Xdebug](configuring-xdebug.md)"
+msgstr "[Configurazione](concept/configuration.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
