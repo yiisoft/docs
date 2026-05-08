@@ -58,12 +58,12 @@ export default {
                             items: [
                                 {text: 'Prerequisites', link: '/guide/start/prerequisites'},
                                 {text: 'Creating a Project', link: '/guide/start/creating-project'},
+                                {text: 'Application Workflow', link: '/guide/start/workflow'},
                                 {text: 'Saying Hello', link: '/guide/start/hello'},
                                 {text: 'Working with Forms', link: '/guide/start/forms'},
                                 {text: 'Working with Databases', link: '/guide/start/databases'},
                                 {text: 'Generating Code with Gii', link: '/guide/start/gii'},
                                 {text: 'Looking Ahead', link: '/guide/start/looking-ahead'},
-                                {text: 'Application Workflow', link: '/guide/start/workflow'},
                                 {text: 'Demo Applications', link: '/guide/start/demo-apps'}
                             ]
                         },
@@ -189,7 +189,13 @@ export default {
                                 {text: 'Preface', link: '/cookbook/preface'},
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
-                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
+                            ]
+                        },
+                        {
+                            text: 'Developer\'s environment',
+                            collapsed: false,
+                            items: [
                                 {text: 'Working on Windows', link: '/cookbook/working-on-windows'},
                                 {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'},
                                 {text: 'Configuring Xdebug', link: '/cookbook/configuring-xdebug'}
