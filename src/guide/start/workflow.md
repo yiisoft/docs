@@ -22,6 +22,29 @@ In addition to the web application, you can access a console script via `./yii` 
 Use this script to run background and maintenance tasks for the application, which the
 [Console Application Section](../tutorial/console-applications.md) describes.
 
+## Experimental debugger <span id="debugging"></span>
+
+Yii has a debugger that can collect debug data for web requests and expose it through the
+[Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/). The debugger is a work in progress. It isn't released as a
+stable package, and its API, routes, and setup may change or be deprecated.
+
+To try the current development version, install the debug API package:
+
+```shell
+composer require yiisoft/yii-debug-api:^3.0@dev
+```
+
+Enable debug mode in `.env`:
+
+```dotenv
+APP_DEBUG=true
+```
+
+The package registers its routes automatically. Start the application and open `/debug` to check that the debug API is
+available. Then open [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/) and set your application URL there.
+
+> [!CAUTION]
+> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.
 
 ## Application structure <span id="application-structure"></span>
 
