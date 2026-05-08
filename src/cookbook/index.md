@@ -13,7 +13,6 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 ---
 
 - [Preface](preface.md)
-- [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [Making HTTP requests](making-http-requests.md)
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
@@ -21,4 +20,5 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
 - [Configuring Xdebug](configuring-xdebug.md)
 - [Configuring webservers](configuring-webservers/general.md)
+- [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
