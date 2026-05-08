@@ -119,12 +119,12 @@
 
 ## 测试
 
-- [测试概述](testing/overview.md) TODO
-- [测试环境设置](testing/environment-setup.md) TODO
-- [单元测试](testing/unit.md) TODO
-- [功能测试](testing/functional.md) TODO
-- [验收测试](testing/acceptance.md) TODO
-- [固件](testing/fixtures.md) TODO
+- [Testing overview](testing/overview.md)
+- [Testing environment setup](testing/environment-setup.md)
+- [Unit tests](testing/unit.md)
+- [Functional tests](testing/functional.md)
+- [End-to-end tests](testing/end-to-end.md)
+- [Static analysis and mutation testing](testing/quality-tools.md)
 
 
 ## 特殊主题

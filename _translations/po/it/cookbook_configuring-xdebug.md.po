@@ -352,7 +352,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/configuring-xdebug.md
 #, fuzzy
-#| msgid "Docker"
 msgid "With Docker:"
 msgstr "Docker"
 

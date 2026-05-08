@@ -121,12 +121,12 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 ## Testing
 
-- [Testing overview](testing/overview.md) TODO
-- [Testing environment setup](testing/environment-setup.md) TODO
-- [Unit tests](testing/unit.md) TODO
-- [Functional tests](testing/functional.md) TODO
-- [Acceptance tests](testing/acceptance.md) TODO
-- [Fixtures](testing/fixtures.md) TODO
+- [Testing overview](testing/overview.md)
+- [Testing environment setup](testing/environment-setup.md)
+- [Unit tests](testing/unit.md)
+- [Functional tests](testing/functional.md)
+- [End-to-end tests](testing/end-to-end.md)
+- [Static analysis and mutation testing](testing/quality-tools.md)
 
 
 ## Special topics

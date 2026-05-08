@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:16+0000\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
-#: ../src/guide/tutorial/docker.md
+#: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr ""
@@ -477,32 +477,32 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Testing overview](testing/overview.md) TODO"
+msgid "[Testing overview](testing/overview.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Testing environment setup](testing/environment-setup.md) TODO"
+msgid "[Testing environment setup](testing/environment-setup.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Unit tests](testing/unit.md) TODO"
+msgid "[Unit tests](testing/unit.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Functional tests](testing/functional.md) TODO"
+msgid "[Functional tests](testing/functional.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Acceptance tests](testing/acceptance.md) TODO"
+msgid "[End-to-end tests](testing/end-to-end.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Fixtures](testing/fixtures.md) TODO"
+msgid "[Static analysis and mutation testing](testing/quality-tools.md)"
 msgstr ""
 
 #. type: Title ##

@@ -122,12 +122,12 @@ Yii](https://www.yiiframework.com/license#docs).
 
 ## Testing
 
-- [Panoramica sul Testing](testing/overview.md) TODO
-- [Configurazione dell'ambiente di test](testing/environment-setup.md) TODO
-- [Test unitari](testing/unit.md) TODO
-- [Test funzionali](testing/functional.md) TODO
-- [Test di accettazione](testing/acceptance.md) TODO
-- [Fixtures](testing/fixtures.md) TODO
+- [Testing overview](testing/overview.md)
+- [Testing environment setup](testing/environment-setup.md)
+- [Unit tests](testing/unit.md)
+- [Functional tests](testing/functional.md)
+- [End-to-end tests](testing/end-to-end.md)
+- [Static analysis and mutation testing](testing/quality-tools.md)
 
 
 ## Argomenti speciali

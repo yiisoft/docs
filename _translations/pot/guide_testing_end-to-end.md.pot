@@ -1,0 +1,256 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md ../src/guide/testing/end-to-end.md
+#: ../src/guide/testing/environment-setup.md
+#: ../src/guide/testing/quality-tools.md
+msgid "With Docker:"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "End-to-end tests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid ""
+"The Yii application template uses the `Web` Codeception suite for tests that "
+"go through an HTTP server. These tests live in `tests/Web` and use "
+"`App\\Tests\\Support\\WebTester`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid ""
+"Use web tests for user-visible HTTP behavior: pages, links, forms, "
+"redirects, cookies, and error pages."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "Web suite"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "The template configures `tests/Web.suite.yml` like this:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"actor: WebTester\n"
+"extensions:\n"
+"  enabled:\n"
+"    - Codeception\\Extension\\RunProcess:\n"
+"        0: composer serve\n"
+"        sleep: 3\n"
+"modules:\n"
+"  enabled:\n"
+"    - PhpBrowser:\n"
+"        url: http://127.0.0.1:8080\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid ""
+"`RunProcess` starts the application with the Composer `serve` script. "
+"`PhpBrowser` sends HTTP requests to the server."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Test a page"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "The template includes `tests/Web/HomePageCest.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Web;\n"
+"\n"
+"use App\\Tests\\Support\\WebTester;\n"
+"\n"
+"final class HomePageCest\n"
+"{\n"
+"    public function base(WebTester $I): void\n"
+"    {\n"
+"        $I->wantTo('home page works.');\n"
+"        $I->amOnPage('/');\n"
+"        $I->expectTo('see page home.');\n"
+"        $I->see('Hello!');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "Run the web suite locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Web\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/unit.md
+msgid "Run only this test:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Web HomePageCest\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "make test Web\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "Test links and error pages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "Use the same actor methods for navigation and response assertions:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Web;\n"
+"\n"
+"use App\\Tests\\Support\\WebTester;\n"
+"\n"
+"final class NotFoundHandlerCest\n"
+"{\n"
+"    public function nonExistentPage(WebTester $I): void\n"
+"    {\n"
+"        $I->wantTo('see 404 page.');\n"
+"        $I->amOnPage('/non-existent-page');\n"
+"        $I->canSeeResponseCodeIs(404);\n"
+"        $I->see('404');\n"
+"        $I->see('The page /non-existent-page not found.');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "Smoke test with curl"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "For a deployment smoke test, start the application and check one URL:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid "APP_ENV=test ./yii serve --port=8080\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "In another terminal:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid ""
+"curl -fsS http://127.0.0.1:8080/ > /tmp/home.html\n"
+"grep -q \"Hello!\" /tmp/home.html\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Reset state"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid "Web tests use real infrastructure, so reset state before each scenario:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/end-to-end.md
+msgid "Load only the records required by the scenario."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/end-to-end.md
+msgid "Clear session and cookie storage."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/end-to-end.md
+msgid "Clear generated files and outgoing messages."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/end-to-end.md
+msgid "Stop background workers, or make their effects deterministic."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md
+msgid ""
+"If the scenario changes a database, reset it in the Cest `_before()` hook or "
+"in a project-specific helper:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/end-to-end.md
+#, no-wrap
+msgid ""
+"public function _before(WebTester $I): void\n"
+"{\n"
+"    // Reset database tables, files, queues, and outgoing messages.\n"
+"}\n"
+msgstr ""
