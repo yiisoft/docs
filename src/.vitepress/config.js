@@ -125,6 +125,8 @@ export default {
                         {
                             text: 'Working with Databases',
                             items: [
+                                {text: 'Yii DB', link: 'https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md'},
+                                {text: 'Active Record', link: 'https://github.com/yiisoft/active-record/blob/master/README.md'},
                                 {text: 'Database Migrations', link: '/guide/databases/db-migrations'}
                             ]
                         },
@@ -137,6 +139,17 @@ export default {
                                 {text: 'Template Engines', link: '/guide/views/template-engines'},
                                 {text: 'View Injections', link: '/guide/views/view-injections'},
                                 {text: 'Widgets', link: '/guide/views/widget'}
+                            ]
+                        },
+                        {
+                            text: 'Testing',
+                            items: [
+                                {text: 'Testing Overview', link: '/guide/testing/overview'},
+                                {text: 'Testing Environment Setup', link: '/guide/testing/environment-setup'},
+                                {text: 'Unit Tests', link: '/guide/testing/unit'},
+                                {text: 'Functional Tests', link: '/guide/testing/functional'},
+                                {text: 'End-to-End Tests', link: '/guide/testing/end-to-end'},
+                                {text: 'Static Analysis and Mutation Testing', link: '/guide/testing/quality-tools'}
                             ]
                         },
                         {
@@ -153,6 +166,18 @@ export default {
                             ]
                         },
                         {
+                            text: 'Helpers',
+                            items: [
+                                {text: 'Arrays', link: 'https://github.com/yiisoft/arrays/'},
+                                {text: 'Files', link: 'https://github.com/yiisoft/files/'},
+                                {text: 'Html', link: 'https://github.com/yiisoft/html/'},
+                                {text: 'Json', link: 'https://github.com/yiisoft/json'},
+                                {text: 'Network Utilities', link: 'https://github.com/yiisoft/network-utilities/'},
+                                {text: 'VarDumper', link: 'https://github.com/yiisoft/var-dumper'},
+                                {text: 'Strings', link: 'https://github.com/yiisoft/strings'}
+                            ]
+                        },
+                        {
                             text: 'Glossary',
                             link: '/guide/glossary'
                         }
@@ -166,7 +191,8 @@ export default {
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
                                 {text: 'Working on Windows', link: '/cookbook/working-on-windows'},
-                                {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'}
+                                {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'},
+                                {text: 'Configuring Xdebug', link: '/cookbook/configuring-xdebug'}
                             ]
                         },
                         {
