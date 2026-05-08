@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"POT-Creation-Date: 2026-05-08 11:11+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Running applications](start/workflow.md)"
+msgid "[Application Workflow](start/workflow.md)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -105,6 +105,52 @@ msgstr "Генерация случайных данных"
 msgid "[Looking ahead](start/looking-ahead.md)"
 msgstr ""
 
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
+msgid "[Demo applications](start/demo-apps.md)"
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+msgid "Key concepts"
+msgstr "Основные принципы"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Aliases](concept/aliases.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Autoloading](concept/autoloading.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+msgid "[Configuration](concept/configuration.md)"
+msgstr "Безопасная конфигурация сервера"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "Dependency injection and container"
+msgid "[Dependency injection container](concept/di-container.md)"
+msgstr "Внедрение зависимостей и контейнер внедрения зависимостей"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Events](concept/events.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Immutability](concept/immutability.md)"
+msgstr ""
+
 #. type: Title ###
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
@@ -128,17 +174,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
 msgid "[Actions](structure/action.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -148,46 +184,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
+msgid "[Domain](structure/domain.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Service components](structure/service.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
 msgid "[Packages](structure/package.md)"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/index.md
-#, fuzzy, no-wrap
-msgid "Key concepts"
-msgstr "Основные принципы"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Class autoloading](concept/autoloading.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-#, fuzzy
-#| msgid "Dependency injection and container"
-msgid "[Dependency injection container](concept/di-container.md)"
-msgstr "Внедрение зависимостей и контейнер внедрения зависимостей"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-#, fuzzy
-msgid "[Configuration](concept/configuration.md)"
-msgstr "Безопасная конфигурация сервера"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Aliases](concept/aliases.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Events](concept/events.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Immutability](concept/immutability.md)"
 msgstr ""
 
 #. type: Title ##
@@ -232,39 +239,69 @@ msgid "[Logging](runtime/logging.md)"
 msgstr ""
 
 #. type: Title #
-#: ../src/guide/index.md ../src/guide/views/view.md
+#: ../src/guide/index.md ../src/guide/security/overview.md
 #, no-wrap
-msgid "Views"
+msgid "Security"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[View](views/view.md)"
+msgid "[Security overview](security/overview.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgid "[Authentication](security/authentication.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[View injections](views/view-injections.md)"
+msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgid "[Working with passwords](security/passwords.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Assets](views/asset.md) TODO: verify!"
+msgid "[Cryptography](security/cryptography.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Widgets](views/widget.md) TODO: verify!"
+msgid "[Trusted request](security/trusted-request.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Best practices](security/best-practices.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Caching overview](caching/overview.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data caching](caching/data.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Fragment caching](caching/fragment.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Page caching](caching/page.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[HTTP caching](caching/http.md) TODO"
 msgstr ""
 
 #. type: Title #
@@ -286,6 +323,42 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Migrations](databases/db-migrations.md) TODO: verify/update!"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/views/view.md
+#, no-wrap
+msgid "Views"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View](views/view.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Assets](views/asset.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View injections](views/view-injections.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Widgets](views/widget.md) TODO: verify!"
 msgstr ""
 
 #. type: Title ##
@@ -343,67 +416,6 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data widgets](output/data-widgets.md) TODO"
-msgstr ""
-
-#. type: Title #
-#: ../src/guide/index.md ../src/guide/security/overview.md
-#, no-wrap
-msgid "Security"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Security overview](security/overview.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Authentication](security/authentication.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Working with passwords](security/passwords.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Cryptography](security/cryptography.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Best practices](security/best-practices.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Caching overview](caching/overview.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Data caching](caching/data.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Fragment caching](caching/fragment.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Page caching](caching/page.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[HTTP caching](caching/http.md) TODO"
 msgstr ""
 
 #. type: Title ##
@@ -522,18 +534,6 @@ msgstr "Разрешение псевдонимов <span id=\"resolving-aliases
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-#, fuzzy
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "[Docker in application templates](tutorial/docker.md)"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Internationalization](tutorial/i18n.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
 msgid "[Mailing](tutorial/mailing.md)"
 msgstr ""
 
@@ -560,6 +560,18 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
+msgid "[Docker in application templates](tutorial/docker.md)"
+msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Internationalization](tutorial/i18n.md) TODO"
 msgstr ""
 
 #. type: Title ##

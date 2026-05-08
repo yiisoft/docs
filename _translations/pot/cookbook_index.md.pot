@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-07 14:37+0000\n"
+"POT-Creation-Date: 2026-05-08 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,13 +60,6 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
-msgid ""
-"[Structuring code by use-case with vertical slices](organizing-code/"
-"structuring-by-use-case-with-vertical-slices.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/cookbook/index.md
 msgid "[Making HTTP requests](making-http-requests.md)"
 msgstr ""
 
@@ -98,6 +91,13 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid ""
+"[Structuring code by use-case with vertical slices](organizing-code/"
+"structuring-by-use-case-with-vertical-slices.md)"
 msgstr ""
 
 #. type: Bullet: '- '

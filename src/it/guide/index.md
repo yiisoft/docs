@@ -12,32 +12,33 @@ Yii](https://www.yiiframework.com/license#docs).
 
 - [Cosa devi sapere?](start/prerequisites.md)
 - [Creazione di un progetto](start/creating-project.md)
-- [Applicazioni in esecuzione](start/workflow.md)
+- [Application Workflow](start/workflow.md)
 - [Dire ciao](start/hello.md)
 - [Lavorare con i moduli](start/forms.md)
 - [Lavorare con i Database](start/databases.md)
 - [Generare codice con Gii](start/gii.md) TODO
 - [Guardando avanti](start/looking-ahead.md)
+- [Demo applications](start/demo-apps.md)
+
+## Concetti chiave
+
+- [Alias](concept/aliases.md)
+- [Autoloading](concept/autoloading.md)
+- [Configurazione](concept/configuration.md)
+- [Contenitore d’iniezione delle dipendenze](concept/di-container.md)
+- [Eventi](concept/events.md)
+- [Immutabilità](concept/immutability.md)
 
 ## Struttura applicativa
 
 - [Panoramica della struttura applicativa](structure/overview.md)
 - [Script d’avvio](structure/entry-script.md)
 - [Applicazione](structure/application.md)
-- [Componenti di servizio](structure/service.md)
 - [Azioni](structure/action.md)
-- [Dominio](structure/domain.md)
 - [Middleware](structure/middleware.md)
+- [Dominio](structure/domain.md)
+- [Componenti di servizio](structure/service.md)
 - [Pacchetti](structure/package.md)
-
-## Concetti chiave
-
-- [Caricamento automatico delle classi](concept/autoloading.md)
-- [Contenitore d’iniezione delle dipendenze](concept/di-container.md)
-- [Configurazione](concept/configuration.md)
-- [Alias](concept/aliases.md)
-- [Eventi](concept/events.md)
-- [Immutabilità](concept/immutability.md)
 
 ## Gestione delle richieste
 
@@ -49,14 +50,24 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Gestione degli errori](runtime/handling-errors.md)
 - [Logging](runtime/logging.md)
 
-## Viste
+## Sicurezza
 
-- [Vista](views/view.md)
-- [Motori di template](views/template-engines.md) TODO: verificare!
-- [Iniezione di parametri nella vista](views/view-injections.md)
-- [Script, stili e metatag](views/script-style-meta.md) Da fare: verificare!
-- [Assets](views/asset.md) TODO: verify!
-- [Widget](views/widget.md) TODO: verify!
+- [Panoramica sulla sicurezza](security/overview.md)
+- [Autenticazione](security/authentication.md)
+- [Verifica delle autorizzazioni](security/authorization.md) TODO: verify
+  and complete!
+- [Lavorare con le password](security/passwords.md)
+- [Crittografia](security/cryptography.md)
+- [Trusted request](security/trusted-request.md)
+- [Migliori pratiche](security/best-practices.md)
+
+## Caching
+
+- [Panoramica sulla cache](caching/overview.md)
+- [Caching dei dati](caching/data.md)
+- [Caching dei frammenti](caching/fragment.md) TODO
+- [Caching delle pagine](caching/page.md) TODO
+- [Caching HTTP](caching/http.md) TODO
 
 ## Lavorare con i database
 
@@ -65,6 +76,15 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Active
   Record](https://github.com/yiisoft/active-record/blob/master/README.md)
 - [Migrazioni](databases/db-migrations.md) TODO: verify/update!
+
+## Viste
+
+- [Vista](views/view.md)
+- [Assets](views/asset.md) TODO: verify!
+- [Script, stili e metatag](views/script-style-meta.md) Da fare: verificare!
+- [Motori di template](views/template-engines.md) TODO: verificare!
+- [Iniezione di parametri nella vista](views/view-injections.md)
+- [Widget](views/widget.md) TODO: verify!
 
 ## Ottenere dati dagli utenti
 
@@ -81,26 +101,6 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Ordinamento](output/sorting.md) TODO
 - [Fornitori di dati](output/data-providers.md) TODO
 - [Widget dati](output/data-widgets.md) TODO
-
-## Sicurezza
-
-- [Panoramica sulla sicurezza](security/overview.md)
-- [Autenticazione](security/authentication.md)
-- [Verifica delle autorizzazioni](security/authorization.md) TODO: verify
-  and complete!
-- [Lavorare con le password](security/passwords.md)
-- [Crittografia](security/cryptography.md)
-- [Migliori pratiche](security/best-practices.md)
-
-
-## Caching
-
-- [Panoramica sulla cache](caching/overview.md)
-- [Caching dei dati](caching/data.md)
-- [Caching dei frammenti](caching/fragment.md) TODO
-- [Caching delle pagine](caching/page.md) TODO
-- [Caching HTTP](caching/http.md) TODO
-
 
 ## API REST
 
@@ -133,14 +133,14 @@ Yii](https://www.yiiframework.com/license#docs).
 ## Argomenti speciali
 
 - [Applicazioni console](tutorial/console-applications.md)
-- [Docker in application templates](tutorial/docker.md)
-- [Internazionalizzazione](tutorial/i18n.md) TODO
 - [Mailing](tutorial/mailing.md)
 - [Ottimizzazione delle prestazioni](tutorial/performance-tuning.md)
 - [Usare Yii con event loop](tutorial/using-with-event-loop.md)
 - [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
 - [Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Usare Yii con Swoole](tutorial/using-yii-with-swoole.md)
+- [Docker in application templates](tutorial/docker.md)
+- [Internazionalizzazione](tutorial/i18n.md) TODO
 
 ## Helper
 

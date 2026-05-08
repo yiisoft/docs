@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-07 14:37+0000\n"
+"POT-Creation-Date: 2026-05-08 11:11+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -56,11 +56,6 @@ msgstr "[Вступление](preface.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
-msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/cookbook/index.md
 msgid "[Making HTTP requests](making-http-requests.md)"
 msgstr ""
 
@@ -93,6 +88,11 @@ msgstr "Безопасная конфигурация сервера"
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
 msgstr ""
 
 #. type: Bullet: '- '

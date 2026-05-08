@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-06 22:12+0000\n"
+"POT-Creation-Date: 2026-05-08 11:11+0000\n"
 "PO-Revision-Date: 2025-12-24 13:00+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -19,9 +19,9 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/start/workflow.md
 #, fuzzy, no-wrap
-#| msgid "[Running applications](start/workflow.md)"
-msgid "Running applications"
-msgstr "[Applicazioni in esecuzione](start/workflow.md)"
+#| msgid "Application structure"
+msgid "Application Workflow"
+msgstr "Struttura applicativa"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md

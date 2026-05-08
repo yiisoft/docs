@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"POT-Creation-Date: 2026-05-08 11:11+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -73,7 +73,9 @@ msgstr "[创建项目](start/creating-project.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Running applications](start/workflow.md)"
+#, fuzzy
+#| msgid "[Running applications](start/workflow.md)"
+msgid "[Application Workflow](start/workflow.md)"
 msgstr "[运行应用](start/workflow.md)"
 
 #. type: Bullet: '- '
@@ -101,6 +103,51 @@ msgstr "[使用 Gii 生成代码](start/gii.md) TODO"
 msgid "[Looking ahead](start/looking-ahead.md)"
 msgstr "[展望未来](start/looking-ahead.md)"
 
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Running applications](start/workflow.md)"
+msgid "[Demo applications](start/demo-apps.md)"
+msgstr "[运行应用](start/workflow.md)"
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Key concepts"
+msgstr "核心概念"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Aliases](concept/aliases.md)"
+msgstr "[别名](concept/aliases.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Class autoloading](concept/autoloading.md)"
+msgid "[Autoloading](concept/autoloading.md)"
+msgstr "[类自动加载](concept/autoloading.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Configuration](concept/configuration.md)"
+msgstr "[配置](concept/configuration.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Dependency injection container](concept/di-container.md)"
+msgstr "[依赖注入容器](concept/di-container.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Events](concept/events.md)"
+msgstr "[事件](concept/events.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Immutability](concept/immutability.md)"
+msgstr "[不可变性](concept/immutability.md)"
+
 #. type: Title ###
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
@@ -124,18 +171,8 @@ msgstr "[应用](structure/application.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
-msgstr "[服务组件](structure/service.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
 msgid "[Actions](structure/action.md)"
 msgstr "[动作](structure/action.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
-msgstr "[领域](structure/domain.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -144,44 +181,18 @@ msgstr "[中间件](structure/middleware.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
+msgid "[Domain](structure/domain.md)"
+msgstr "[领域](structure/domain.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Service components](structure/service.md)"
+msgstr "[服务组件](structure/service.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
 msgid "[Packages](structure/package.md)"
 msgstr "[包](structure/package.md)"
-
-#. type: Title ##
-#: ../src/guide/index.md
-#, no-wrap
-msgid "Key concepts"
-msgstr "核心概念"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Class autoloading](concept/autoloading.md)"
-msgstr "[类自动加载](concept/autoloading.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Dependency injection container](concept/di-container.md)"
-msgstr "[依赖注入容器](concept/di-container.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Configuration](concept/configuration.md)"
-msgstr "[配置](concept/configuration.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Aliases](concept/aliases.md)"
-msgstr "[别名](concept/aliases.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Events](concept/events.md)"
-msgstr "[事件](concept/events.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Immutability](concept/immutability.md)"
-msgstr "[不可变性](concept/immutability.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md
@@ -225,40 +236,72 @@ msgid "[Logging](runtime/logging.md)"
 msgstr "[日志](runtime/logging.md)"
 
 #. type: Title #
-#: ../src/guide/index.md ../src/guide/views/view.md
+#: ../src/guide/index.md ../src/guide/security/overview.md
 #, no-wrap
-msgid "Views"
-msgstr "视图"
+msgid "Security"
+msgstr "安全"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[View](views/view.md)"
-msgstr "[视图](views/view.md)"
+msgid "[Security overview](security/overview.md)"
+msgstr "[安全概述](security/overview.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Template engines](views/template-engines.md) TODO: verify!"
-msgstr "[模板引擎](views/template-engines.md) TODO: verify!"
+msgid "[Authentication](security/authentication.md)"
+msgstr "[认证](security/authentication.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[View injections](views/view-injections.md)"
-msgstr "[视图注入](views/view-injections.md)"
+msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
+msgstr "[授权](security/authorization.md) TODO: verify and complete!"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
-msgstr "[脚本、样式和元标签](views/script-style-meta.md) TODO: verify!"
+msgid "[Working with passwords](security/passwords.md)"
+msgstr "[使用 passwords](security/passwords.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Assets](views/asset.md) TODO: verify!"
-msgstr "[资源](views/asset.md) TODO: verify!"
+msgid "[Cryptography](security/cryptography.md)"
+msgstr "[加密](security/cryptography.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Widgets](views/widget.md) TODO: verify!"
-msgstr "[小部件](views/widget.md) TODO: verify!"
+#, fuzzy
+#| msgid "[Trusted request](trusted-request.md)"
+msgid "[Trusted request](security/trusted-request.md)"
+msgstr "[可信请求](trusted-request.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Best practices](security/best-practices.md)"
+msgstr "[最佳实践](security/best-practices.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Caching overview](caching/overview.md)"
+msgstr "[缓存概述](caching/overview.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data caching](caching/data.md)"
+msgstr "[数据缓存](caching/data.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Fragment caching](caching/fragment.md) TODO"
+msgstr "[片段缓存](caching/fragment.md) TODO"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Page caching](caching/page.md) TODO"
+msgstr "[页面缓存](caching/page.md) TODO"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[HTTP caching](caching/http.md) TODO"
+msgstr "[HTTP 缓存](caching/http.md) TODO"
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/start/databases.md
@@ -280,6 +323,42 @@ msgstr "[Active Record](https://github.com/yiisoft/active-record/blob/master/REA
 #: ../src/guide/index.md
 msgid "[Migrations](databases/db-migrations.md) TODO: verify/update!"
 msgstr "[迁移](databases/db-migrations.md) TODO: verify/update!"
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/views/view.md
+#, no-wrap
+msgid "Views"
+msgstr "视图"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View](views/view.md)"
+msgstr "[视图](views/view.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Assets](views/asset.md) TODO: verify!"
+msgstr "[资源](views/asset.md) TODO: verify!"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgstr "[脚本、样式和元标签](views/script-style-meta.md) TODO: verify!"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgstr "[模板引擎](views/template-engines.md) TODO: verify!"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View injections](views/view-injections.md)"
+msgstr "[视图注入](views/view-injections.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Widgets](views/widget.md) TODO: verify!"
+msgstr "[小部件](views/widget.md) TODO: verify!"
 
 #. type: Title ##
 #: ../src/guide/index.md
@@ -337,67 +416,6 @@ msgstr "[数据提供者](output/data-providers.md) TODO"
 #: ../src/guide/index.md
 msgid "[Data widgets](output/data-widgets.md) TODO"
 msgstr "[数据小部件](output/data-widgets.md) TODO"
-
-#. type: Title #
-#: ../src/guide/index.md ../src/guide/security/overview.md
-#, no-wrap
-msgid "Security"
-msgstr "安全"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Security overview](security/overview.md)"
-msgstr "[安全概述](security/overview.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Authentication](security/authentication.md)"
-msgstr "[认证](security/authentication.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
-msgstr "[授权](security/authorization.md) TODO: verify and complete!"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Working with passwords](security/passwords.md)"
-msgstr "[使用 passwords](security/passwords.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Cryptography](security/cryptography.md)"
-msgstr "[加密](security/cryptography.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Best practices](security/best-practices.md)"
-msgstr "[最佳实践](security/best-practices.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Caching overview](caching/overview.md)"
-msgstr "[缓存概述](caching/overview.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Data caching](caching/data.md)"
-msgstr "[数据缓存](caching/data.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Fragment caching](caching/fragment.md) TODO"
-msgstr "[片段缓存](caching/fragment.md) TODO"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Page caching](caching/page.md) TODO"
-msgstr "[页面缓存](caching/page.md) TODO"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[HTTP caching](caching/http.md) TODO"
-msgstr "[HTTP 缓存](caching/http.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
@@ -519,18 +537,6 @@ msgstr "[控制台应用](tutorial/console-applications.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-#, fuzzy
-#| msgid "[Console applications](tutorial/console-applications.md)"
-msgid "[Docker in application templates](tutorial/docker.md)"
-msgstr "[控制台应用](tutorial/console-applications.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Internationalization](tutorial/i18n.md) TODO"
-msgstr "[国际化](tutorial/i18n.md) TODO"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
 msgid "[Mailing](tutorial/mailing.md)"
 msgstr "[邮件](tutorial/mailing.md)"
 
@@ -560,6 +566,18 @@ msgstr "[在 RoadRunner 中使用 Yii](tutorial/using-yii-with-roadrunner.md)"
 #: ../src/guide/index.md
 msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md)"
 msgstr "[在 Swoole 中使用 Yii](tutorial/using-yii-with-swoole.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Console applications](tutorial/console-applications.md)"
+msgid "[Docker in application templates](tutorial/docker.md)"
+msgstr "[控制台应用](tutorial/console-applications.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Internationalization](tutorial/i18n.md) TODO"
+msgstr "[国际化](tutorial/i18n.md) TODO"
 
 #. type: Title ##
 #: ../src/guide/index.md
