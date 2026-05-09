@@ -140,7 +140,7 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Usare Yii con Swoole](tutorial/using-yii-with-swoole.md)
 - [Docker in application templates](tutorial/docker.md)
-- [Internazionalizzazione](tutorial/i18n.md) TODO
+- [Internationalization](tutorial/i18n.md)
 
 ## Helper
 

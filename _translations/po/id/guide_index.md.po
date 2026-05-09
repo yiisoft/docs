@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-08 11:11+0000\n"
+"POT-Creation-Date: 2026-05-09 11:15+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -602,7 +602,7 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Internationalization](tutorial/i18n.md) TODO"
+msgid "[Internationalization](tutorial/i18n.md)"
 msgstr ""
 
 #. type: Title ##
