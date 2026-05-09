@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 11:21+0000\n"
+"POT-Creation-Date: 2026-05-09 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -599,29 +599,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
-msgid "Add the console command to `config/console/commands.php`:"
-msgstr ""
-
-#. type: Fenced code block (php)
-#: ../src/guide/tutorial/i18n.md
-#, no-wrap
 msgid ""
-"<?php\n"
-"\n"
-"declare(strict_types=1);\n"
-"\n"
-"use App\\Console;\n"
-"use Yiisoft\\TranslatorExtractor\\Command\\ExtractCommand;\n"
-"\n"
-"return [\n"
-"    'hello' => Console\\HelloCommand::class,\n"
-"    'translator/extract' => ExtractCommand::class,\n"
-"];\n"
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/tutorial/i18n.md
-msgid "Rebuild config:"
+"The `translator/extract` console command is registered by `yiisoft/"
+"translator-extractor`.  Rebuild config after adding the extractor "
+"configuration file:"
 msgstr ""
 
 #. type: Fenced code block (sh)
