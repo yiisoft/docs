@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 11:15+0000\n"
+"POT-Creation-Date: 2026-05-09 11:21+0000\n"
 "PO-Revision-Date: 2026-05-09 11:15+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -24,7 +24,7 @@ msgstr "Konfigurasi container"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
-msgid "Internationalization prepares an application for more than one locale. Localization adapts the application to a specific locale, for example `en-US` or `de`."
+msgid "Internationalization prepares an application for more than one locale. Localization is the locale-specific part: translated text, plural forms, date and number formats, and view templates for a locale such as `en-US` or `de`."
 msgstr ""
 
 #. type: Plain text
@@ -92,18 +92,6 @@ msgstr "composer require yiisoft/cache\n"
 #: ../src/guide/tutorial/i18n.md
 msgid "The examples use ICU message formatting for plural forms. Make sure the PHP `intl` extension is enabled. For simple placeholders only, use `Yiisoft\\Translator\\SimpleMessageFormatter` in the configuration below."
 msgstr ""
-
-#. type: Plain text
-#: ../src/guide/tutorial/i18n.md
-msgid "After changing installed packages or configuration, rebuild the configuration merge plan:"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
-#| msgid "Container configuration"
-msgid "composer yii-config-rebuild\n"
-msgstr "Konfigurasi container"
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
@@ -597,6 +585,13 @@ msgstr ""
 #: ../src/guide/tutorial/i18n.md
 msgid "Rebuild config:"
 msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "composer yii-config-rebuild\n"
+msgstr "Konfigurasi container"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
