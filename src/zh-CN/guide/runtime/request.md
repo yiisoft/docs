@@ -176,3 +176,8 @@ foreach ($files as $file) {
 ## 属性
 
 应用中间件可以使用 `withAttribute()` 方法设置自定义请求属性，并通过 `getAttribute()` 获取这些属性。
+
+Route arguments, such as `id` from a `/posts/{id}` route pattern, aren't
+request attributes.  Use `#[RouteArgument]` in an action parameter or inject
+`Yiisoft\Router\CurrentRoute` when you need route arguments or route
+metadata.

@@ -53,6 +53,12 @@ $response = $response->withStatus(Status::NOT_FOUND);
 
 大多数状态码可通过 `Status` 类获取，以便于使用和提高可读性。
 
+Router may return a response before an action runs.  For example, an
+`OPTIONS` request to a known route path gets an automatic `204 No Content`
+response with an `Allow` header that lists supported methods.  See
+[Automatic OPTIONS responses](routing.md#automatic-options-responses) for
+routing details.
+
 ## 头部
 
 您可以按如下方式设置响应头：

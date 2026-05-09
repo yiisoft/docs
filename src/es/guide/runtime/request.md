@@ -187,3 +187,8 @@ foreach ($files as $file) {
 Application middleware may set custom request attributes using
 `withAttribute()` method.  You can get these attributes with
 `getAttribute()`.
+
+Route arguments, such as `id` from a `/posts/{id}` route pattern, aren't
+request attributes.  Use `#[RouteArgument]` in an action parameter or inject
+`Yiisoft\Router\CurrentRoute` when you need route arguments or route
+metadata.

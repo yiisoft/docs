@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-26 22:37+0000\n"
+"POT-Creation-Date: 2026-05-09 20:32+0000\n"
 "PO-Revision-Date: 2025-12-26 22:37+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -113,6 +113,11 @@ msgstr ""
 #: ../src/guide/runtime/response.md
 msgid "Majority of status codes are available from `Status` class for convenience and readability."
 msgstr "大多数状态码可通过 `Status` 类获取，以便于使用和提高可读性。"
+
+#. type: Plain text
+#: ../src/guide/runtime/response.md
+msgid "Router may return a response before an action runs.  For example, an `OPTIONS` request to a known route path gets an automatic `204 No Content` response with an `Allow` header that lists supported methods.  See [Automatic OPTIONS responses](routing.md#automatic-options-responses) for routing details."
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/response.md

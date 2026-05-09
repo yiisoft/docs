@@ -6,9 +6,9 @@ application that does the job is a router, and the process of selecting a
 handler, instantiating it and running a handler method is *routing*.
 
 The reverse process of routing is *URL generation*, which creates a URL from
-a given named route and the associated query parameters.  When you later
+a given named route, route arguments, and query parameters.  When you later
 request the created URL, the routing process can resolve it back into the
-original route and query parameters.
+original route arguments and query parameters.
 
 Routing and URL generation are separate services, but they use a common set
 of routes for both URL matching and URL generation.
@@ -63,10 +63,10 @@ return [
 ];
 ```
 
-All these methods accept a route pattern and a handler.  The route pattern
-defines how the router matches the URL when routing and how it generates URL
-based on route name and parameters.  You will learn about the actual syntax
-later in this guide.  You could specify a handler as:
+All these methods accept a route pattern.  The route pattern defines how the
+router matches the URL when routing and how it generates URL based on route
+name and parameters.  You will learn about the actual syntax later in this
+guide.  Specify a handler with `action()` as:
 
 - [Middleware](../structure/middleware.md) class name.
 - Handler action (an array of [HandlerClass, handlerMethod]).
@@ -106,7 +106,7 @@ and `RequestHandlerInterface`.
 
 ### Route arguments in actions
 
-Named route parameters are stored in `CurrentRoute`. To pass a route
+Named route parameters are stored in `CurrentRoute`.  To pass a route
 parameter to an action method parameter, use the `RouteArgument` attribute:
 
 ```php
@@ -132,6 +132,42 @@ final readonly class PostController
     }
 }
 ```
+
+If a parameter has the same name as the action parameter, you can omit the
+attribute name:
+
+```php
+public function view(#[RouteArgument] int $id): ResponseInterface
+{
+    // ...
+}
+```
+
+You can also inject `CurrentRoute` into an action or a service when you need
+several arguments or route metadata:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Router\CurrentRoute;
+
+final readonly class PostController
+{
+    public function view(CurrentRoute $currentRoute): ResponseInterface
+    {
+        $id = $currentRoute->getArgument('id');
+        $routeName = $currentRoute->getName();
+
+        // ...
+    }
+}
+```
+
+Route arguments aren't request attributes.  Read them from `CurrentRoute` or
+action parameters marked with `RouteArgument`.
 
 For optional route parameters, provide a default value either in the route
 with `defaults()` or in the action method signature.
@@ -232,6 +268,50 @@ handler to get the response.  If there is no match at all, router passes
 handling to the next middleware in the [application middleware
 set](../structure/middleware.md).
 
+### Automatic OPTIONS responses
+
+When the request path matches a route but the HTTP method doesn't, router
+returns a `405 Method Not Allowed` response with an `Allow` header:
+
+```http
+HTTP/1.1 405 Method Not Allowed
+Allow: GET
+```
+
+For an `OPTIONS` request to the same path, router returns an empty `204 No
+Content` response with the same `Allow` header:
+
+```http
+HTTP/1.1 204 No Content
+Allow: GET
+```
+
+This response is generated from the configured routes before the route
+action runs.  If an API endpoint needs CORS headers, attach CORS middleware
+to a route group:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Api\CorsMiddleware;
+use App\Api\PostController;
+use Yiisoft\Http\Method;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+
+return [
+    Group::create('/api')
+        ->withCors(CorsMiddleware::class)
+        ->routes(
+            Route::methods([Method::GET, Method::POST], '/posts')
+                ->action([PostController::class, 'index'])
+                ->name('api/posts')
+        )
+];
+```
+
 ## Generating URLs <span id="generating-urls"></span>
 
 To generate URL based on a route, a route should have a name:
@@ -245,9 +325,11 @@ use App\Controller\TestController;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/test', [TestController::class, 'index'])
+    Route::get('/test')
+        ->action([TestController::class, 'index'])
         ->name('test/index'),
-    Route::post('/test/submit/{id}', [TestController::class, 'submit'])
+    Route::post('/test/submit/{id}')
+        ->action([TestController::class, 'submit'])
         ->name('test/submit')
 ];
 ```
@@ -285,10 +367,151 @@ dependency injection](../concept/di-container.md)  that works with action
 handlers.  In another service, you can get the instance with similar
 constructor injection.  In views URL generator is available as `$url`.
 
-Then we use `generate()` method to get actual URL. It accepts a route name
-and an array of named query parameters.  The code will return
-"/test/submit/42." If you need absolute URL, use `generateAbsolute()`
-instead.
+Then we use `generate()` method to get the actual URL.  It accepts a route
+name, route arguments, query parameters, and a hash fragment.  The code will
+return `/test/submit/42`.
+
+Route arguments are used to fill placeholders in the route pattern.
+Arguments that aren't used in the pattern are added to the query string when
+the query parameters array doesn't already contain the same name:
+
+```php
+$url = $urlGenerator->generate(
+    'test/submit',
+    ['id' => '42', 'utm' => 'newsletter'],
+    ['page' => '1']
+);
+// $url is "/test/submit/42?page=1&utm=newsletter".
+```
+
+If you need absolute URL, use `generateAbsolute()` instead.
+
+### Generating URL from the current route
+
+Use `generateFromCurrent()` when a link should keep the current route and
+most of its arguments.  For example, a detail page can link to another page
+number while keeping the current route name and `id` argument:
+
+```php
+$url = $urlGenerator->generateFromCurrent(['page' => '2']);
+```
+
+The method also keeps query parameters from the current request.  Pass
+explicit query parameters when a link should replace or add query string
+values.
+
+### Locale-based URLs
+
+When the locale is part of the URL path, define it as a route argument.  For
+a Yii application with routes in `config/common/routes.php`, wrap localized
+routes in a group with a locale parameter:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\HomePage\Action as HomePageAction;
+use App\Web\Post\ViewAction as PostViewAction;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+
+return [
+    Group::create('/{_locale:en-US|de}')
+        ->routes(
+            Route::get('/')
+                ->action(HomePageAction::class)
+                ->name('home'),
+            Route::get('/posts/{slug}')
+                ->action(PostViewAction::class)
+                ->name('post/view')
+        )
+];
+```
+
+The route `/de/posts/welcome` matches the `post/view` route and stores
+`_locale` as a route argument with the `de` value.
+
+In middleware that chooses the request locale, read this argument from
+`CurrentRoute`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Middleware;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Yiisoft\Router\CurrentRoute;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Translator\TranslatorInterface;
+use Yiisoft\View\WebView;
+
+final readonly class LocaleMiddleware implements MiddlewareInterface
+{
+    private const DEFAULT_LOCALE = 'en-US';
+
+    public function __construct(
+        private CurrentRoute $currentRoute,
+        private TranslatorInterface $translator,
+        private UrlGeneratorInterface $urlGenerator,
+        private WebView $view,
+    ) {}
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $locale = $this->currentRoute->getArgument('_locale', self::DEFAULT_LOCALE);
+
+        $this->translator->setLocale($locale);
+        $this->view->setLocale($locale);
+        $this->urlGenerator->setDefaultArgument('_locale', $locale);
+
+        return $handler->handle($request);
+    }
+}
+```
+
+Register this middleware in the localized route group before the route
+action:
+
+```php
+use App\Web\HomePage\Action as HomePageAction;
+use App\Web\Middleware\LocaleMiddleware;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+
+return [
+    Group::create('/{_locale:en-US|de}')
+        ->middleware(LocaleMiddleware::class)
+        ->routes(
+            Route::get('/')
+                ->action(HomePageAction::class)
+                ->name('home')
+        )
+];
+```
+
+After the middleware sets the default `_locale` argument, URL generation can
+omit it:
+
+```php
+$url = $urlGenerator->generate('post/view', ['slug' => 'welcome']);
+// On a German page, $url is "/de/posts/welcome".
+```
+
+For a language switcher, use `generateFromCurrent()` and replace only the
+locale argument:
+
+```php
+$url = $urlGenerator->generateFromCurrent(
+    ['_locale' => 'en-US'],
+    fallbackRouteName: 'home'
+);
+```
 
 ## Route patterns <span id="route-patterns"></span>
 
