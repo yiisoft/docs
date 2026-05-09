@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 11:27+0000\n"
+"POT-Creation-Date: 2026-05-09 12:19+0000\n"
 "PO-Revision-Date: 2026-05-09 11:15+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -69,13 +69,14 @@ msgstr "Установка пакета"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
-msgid "Install the translator, locale helpers, and PHP-file message storage:"
+msgid "`yiisoft/app` already includes `yiisoft/i18n` and `yiisoft/translator`.  Install PHP-file message storage:"
 msgstr ""
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-msgid "composer require yiisoft/i18n yiisoft/translator yiisoft/translator-message-php\n"
+#| msgid "composer install yiisoft/security\n"
+msgid "composer require yiisoft/translator-message-php\n"
 msgstr "composer install yiisoft/security\n"
 
 #. type: Plain text
@@ -292,12 +293,12 @@ msgid ""
 "\n"
 "use Psr\\Http\\Message\\ResponseInterface;\n"
 "use Yiisoft\\Translator\\TranslatorInterface;\n"
-"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
 "\n"
 "final readonly class Action\n"
 "{\n"
 "    public function __construct(\n"
-"        private ViewRenderer $viewRenderer,\n"
+"        private WebViewRenderer $viewRenderer,\n"
 "        private TranslatorInterface $translator,\n"
 "    ) {}\n"
 "\n"
@@ -371,7 +372,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
-msgid "For a web application, choose locale early in the middleware stack and apply it to both the translator and the view.  The example below uses the `lang` query parameter and a fixed allow-list:"
+msgid "For a web application, choose locale early in the middleware stack and apply it to both the translator and the view.  The example below uses the `lang` query parameter and a fixed allow list:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -432,11 +433,14 @@ msgstr ""
 #, no-wrap
 msgid ""
 "use App\\Web\\Middleware\\LocaleMiddleware;\n"
+"use Yiisoft\\Router\\Route;\n"
 "\n"
-"Route::get('/')\n"
-"    ->middleware(LocaleMiddleware::class)\n"
-"    ->action(App\\Web\\HomePage\\Action::class)\n"
-"    ->name('home');\n"
+"return [\n"
+"    Route::get('/')\n"
+"        ->middleware(LocaleMiddleware::class)\n"
+"        ->action(App\\Web\\HomePage\\Action::class)\n"
+"        ->name('home'),\n"
+"];\n"
 msgstr ""
 
 #. type: Plain text
@@ -537,7 +541,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
-msgid "When the locale is set on `WebView` in middleware, the same locale is applied to views rendered by `ViewRenderer`."
+msgid "When the locale is set on `WebView` in middleware, the same locale is applied to views rendered by `WebViewRenderer`."
 msgstr ""
 
 #. type: Title ##
