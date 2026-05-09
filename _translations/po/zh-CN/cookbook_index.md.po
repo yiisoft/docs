@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-08 11:11+0000\n"
+"POT-Creation-Date: 2026-05-09 10:43+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -55,6 +55,11 @@ msgstr "[前言](preface.md)"
 #: ../src/cookbook/index.md
 msgid "[Making HTTP requests](making-http-requests.md)"
 msgstr "[发起 HTTP 请求](making-http-requests.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md

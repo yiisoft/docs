@@ -16,6 +16,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 - [Preface](preface.md)
 - [Making HTTP requests](making-http-requests.md)
+- [Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
 - [Working on Windows](working-on-windows.md)
