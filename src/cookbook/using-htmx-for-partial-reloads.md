@@ -4,9 +4,9 @@
 application, this works well for grids: sorting, filtering, and pagination can update only the grid while the rest of
 the page stays in place.
 
-This recipe shows the pattern used by the
-[Yii demo diary application](https://github.com/yiisoft/demo-diary/pull/54): load htmx, create the grid as a widget,
-add htmx attributes to the grid controls, and return only the widget HTML for htmx requests.
+This recipe uses `GridView` as an example because it has links and forms that naturally benefit from partial reloads.
+The same pattern works for any widget or page fragment: render the fragment separately, add htmx attributes to the
+controls that should refresh it, and return only that fragment for htmx requests.
 
 ## Install GridView
 
@@ -18,7 +18,7 @@ composer require yiisoft/yii-dataview
 
 ## Load htmx
 
-Create `src/Web/Shared/Layout/Main/HtmxAsset.php`:
+The simplest setup is loading htmx from a CDN. Create `src/Web/Shared/Layout/Main/HtmxAsset.php`:
 
 ```php
 <?php
@@ -44,8 +44,31 @@ final class HtmxAsset extends AssetBundle
 }
 ```
 
-When updating the htmx version, update the URL and `integrity` value together. To serve htmx locally, download
-`htmx.min.js` and register it from an application asset directory.
+When updating the htmx version, update the URL and `integrity` value together.
+
+For production applications, consider serving htmx from your application assets to avoid depending on a third-party CDN.
+Download `htmx.min.js` into `assets/main/js/htmx.min.js` and use a local asset bundle:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Shared\Layout\Main;
+
+use Yiisoft\Assets\AssetBundle;
+
+final class HtmxAsset extends AssetBundle
+{
+    public ?string $basePath = '@assets/main';
+    public ?string $baseUrl = '@assetsUrl/main';
+    public ?string $sourcePath = '@assetsSource/main';
+
+    public array $js = [
+        'js/htmx.min.js',
+    ];
+}
+```
 
 Add the bundle to the main layout asset:
 
@@ -344,7 +367,7 @@ should be replaced.
 In the browser developer tools, the htmx requests should include the `HX-Request` header. Their responses should contain
 only the grid container.
 
-Use the same pattern for other page fragments:
+Use the same pattern for other widgets or page fragments:
 
 1. Put the reloadable HTML into a widget or another small renderer.
 2. Add htmx attributes to the links and forms that should refresh it.
