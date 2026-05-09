@@ -162,7 +162,8 @@ export default {
                                 {text: 'Using Yii with FrankenPHP', link: '/guide/tutorial/using-yii-with-frankenphp'},
                                 {text: 'Using Yii with RoadRunner', link: '/guide/tutorial/using-yii-with-roadrunner'},
                                 {text: 'Using Yii with Swoole', link: '/guide/tutorial/using-yii-with-swoole'},
-                                {text: 'Docker in Application Templates', link: '/guide/tutorial/docker'}
+                                {text: 'Docker in Application Templates', link: '/guide/tutorial/docker'},
+                                {text: 'Internationalization', link: '/guide/tutorial/i18n'}
                             ]
                         },
                         {

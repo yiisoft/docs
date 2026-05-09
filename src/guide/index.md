@@ -135,7 +135,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
 - [Docker in application templates](tutorial/docker.md)
-- [Internationalization](tutorial/i18n.md) TODO
+- [Internationalization](tutorial/i18n.md)
 
 ## Helpers
 
