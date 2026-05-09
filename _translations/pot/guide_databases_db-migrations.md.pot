@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-05-09 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,6 +96,29 @@ msgstr ""
 #: ../src/guide/databases/db-migrations.md
 msgid ""
 "Scott applies any accumulated database migrations to the production database."
+msgstr ""
+
+#. type: Fenced code block (mermaid)
+#: ../src/guide/databases/db-migrations.md
+#, no-wrap
+msgid ""
+"sequenceDiagram\n"
+"    participant Tim\n"
+"    participant VCS as Source control\n"
+"    participant Doug\n"
+"    participant LocalDB as Local development database\n"
+"    participant Scott\n"
+"    participant ProdServer as Production server\n"
+"    participant ProdDB as Production database\n"
+"\n"
+"    Tim->>Tim: Creates a new migration\n"
+"    Tim->>VCS: Commits the new migration\n"
+"    Doug->>VCS: Updates his repository and receives the new migration\n"
+"    Doug->>LocalDB: Applies the migration locally\n"
+"\n"
+"    Scott->>VCS: Creates a release tag with new migrations\n"
+"    Scott->>ProdServer: Updates source code to the release tag\n"
+"    Scott->>ProdDB: Applies accumulated migrations\n"
 msgstr ""
 
 #. type: Plain text
@@ -861,6 +884,7 @@ msgstr ""
 
 #. type: Fenced code block
 #: ../src/guide/databases/db-migrations.md
+#: ../src/guide/security/authorization.md
 #, no-wrap
 msgid "./yii migrate:up\n"
 msgstr ""

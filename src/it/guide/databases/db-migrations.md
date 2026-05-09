@@ -33,6 +33,26 @@ migrations to production:
 3. Scott applies any accumulated database migrations to the production
    database.
 
+```mermaid
+sequenceDiagram
+    participant Tim
+    participant VCS as Source control
+    participant Doug
+    participant LocalDB as Local development database
+    participant Scott
+    participant ProdServer as Production server
+    participant ProdDB as Production database
+
+    Tim->>Tim: Creates a new migration
+    Tim->>VCS: Commits the new migration
+    Doug->>VCS: Updates his repository and receives the new migration
+    Doug->>LocalDB: Applies the migration locally
+
+    Scott->>VCS: Creates a release tag with new migrations
+    Scott->>ProdServer: Updates source code to the release tag
+    Scott->>ProdDB: Applies accumulated migrations
+```
+
 Yii provides a set of migration command line tools that allow you to:
 
 * create new migrations;

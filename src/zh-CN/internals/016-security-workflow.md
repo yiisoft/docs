@@ -5,6 +5,24 @@
 如果问题直接报告到公共页面（如仓库 issue 或论坛主题），请获取消息
 并删除该 issue。感谢报告者，并指出下次使用安全表单。
 
+```mermaid
+flowchart TD
+    form[Security form report] --> verify[Verify issue]
+    public[Public report] --> remove[Save details and delete public issue]
+    remove --> redirect[Point reporter to the security form]
+    redirect --> verify
+    verify -->|needs details| requestInfo[Request more information]
+    requestInfo --> verify
+    verify -->|valid| advisory[Create draft security advisory]
+    advisory --> severity[Set CVSS severity]
+    severity --> credit[Ask about reporter credit]
+    credit --> cve[Request CVE number]
+    cve --> patch[Prepare patch pull request]
+    patch --> wait[Wait for CVE allocation]
+    wait --> release[Release]
+    release --> publish[Publish advisory and submit FriendsOfPHP entry]
+```
+
 ## 验证
 
 验证问题是否有效。如果需要，请求更多信息。

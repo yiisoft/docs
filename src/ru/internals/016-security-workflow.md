@@ -6,6 +6,24 @@ form](https://www.yiiframework.com/security).
 If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message
 and delete the issue. Say thanks to the reporter and point to the security form for next time.  
 
+```mermaid
+flowchart TD
+    form[Security form report] --> verify[Verify issue]
+    public[Public report] --> remove[Save details and delete public issue]
+    remove --> redirect[Point reporter to the security form]
+    redirect --> verify
+    verify -->|needs details| requestInfo[Request more information]
+    requestInfo --> verify
+    verify -->|valid| advisory[Create draft security advisory]
+    advisory --> severity[Set CVSS severity]
+    severity --> credit[Ask about reporter credit]
+    credit --> cve[Request CVE number]
+    cve --> patch[Prepare patch pull request]
+    patch --> wait[Wait for CVE allocation]
+    wait --> release[Release]
+    release --> publish[Publish advisory and submit FriendsOfPHP entry]
+```
+
 ## Verify
 
 Verify that the issue is valid. Request more information if needed.

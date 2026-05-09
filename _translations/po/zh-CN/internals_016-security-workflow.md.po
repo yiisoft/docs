@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-05-09 18:47+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -35,6 +35,27 @@ msgid ""
 msgstr ""
 "如果问题直接报告到公共页面（如仓库 issue 或论坛主题），请获取消息\n"
 "并删除该 issue。感谢报告者，并指出下次使用安全表单。\n"
+
+#. type: Fenced code block (mermaid)
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid ""
+"flowchart TD\n"
+"    form[Security form report] --> verify[Verify issue]\n"
+"    public[Public report] --> remove[Save details and delete public issue]\n"
+"    remove --> redirect[Point reporter to the security form]\n"
+"    redirect --> verify\n"
+"    verify -->|needs details| requestInfo[Request more information]\n"
+"    requestInfo --> verify\n"
+"    verify -->|valid| advisory[Create draft security advisory]\n"
+"    advisory --> severity[Set CVSS severity]\n"
+"    severity --> credit[Ask about reporter credit]\n"
+"    credit --> cve[Request CVE number]\n"
+"    cve --> patch[Prepare patch pull request]\n"
+"    patch --> wait[Wait for CVE allocation]\n"
+"    wait --> release[Release]\n"
+"    release --> publish[Publish advisory and submit FriendsOfPHP entry]\n"
+msgstr ""
 
 #. type: Title ##
 #: ../src/internals/016-security-workflow.md
