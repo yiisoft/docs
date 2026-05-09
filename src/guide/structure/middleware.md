@@ -12,12 +12,35 @@ Each middleware, given the request, can:
 
 Depending on middleware used, application behavior may vary significantly.
 
-![Middleware](/images/guide/middleware.svg)
+```mermaid
+sequenceDiagram
+    participant Dispatcher as Middleware dispatcher
+    participant Middleware1 as Middleware 1
+    participant Middleware2 as Middleware 2
+    participant Action
 
-In the above each next middleware wraps the previous middleware. Alternatively, it could be presented
-as follows:
+    Dispatcher->>Middleware1: Request
+    Middleware1->>Middleware2: handle request
+    Middleware2->>Action: handle request
+    Action-->>Middleware2: Response
+    Middleware2-->>Middleware1: Response
+    Middleware1-->>Dispatcher: Response
+```
 
-![Middleware](/images/guide/middleware_alternative.svg)
+In the above each middleware wraps the next middleware. Alternatively, it could be presented as follows:
+
+```mermaid
+flowchart LR
+    request[Request]
+    m1Before["Middleware 1<br>work before next middleware"]
+    m2Before["Middleware 2<br>work before next middleware"]
+    action["Action<br>form response"]
+    m2After["Middleware 2<br>work after next middleware"]
+    m1After["Middleware 1<br>work after next middleware"]
+    response[Response]
+
+    request --> m1Before --> m2Before --> action --> m2After --> m1After --> response
+```
 
 ## Using middleware
 
