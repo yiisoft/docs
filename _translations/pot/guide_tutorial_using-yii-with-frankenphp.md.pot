@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-05-09 07:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,8 +376,8 @@ msgstr ""
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
 msgid ""
 "`FrankenPHPApplicationRunner` is configured by default for Yii application "
-"templates and follows the [config groups convention](https://github.com/"
-"yiisoft/docs/blob/master/022-config-groups.md)."
+"templates and follows the [dependency container configuration](../../guide/"
+"concept/configuration.html#container-configuration) concept."
 msgstr ""
 
 #. type: Plain text
