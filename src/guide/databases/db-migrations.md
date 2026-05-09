@@ -22,6 +22,20 @@ And the following steps show how to deploy a new release with database migration
 2. Scott updates the source code on the production server to the release tag.
 3. Scott applies any accumulated database migrations to the production database.
 
+```mermaid
+flowchart LR
+    subgraph Development
+        create[Create migration] --> commit[Commit migration]
+        commit --> pull[Pull changes]
+        pull --> applyLocal[Apply migration locally]
+    end
+
+    subgraph Production
+        tag[Create release tag] --> deploy[Update source on server]
+        deploy --> applyProd[Apply pending migrations]
+    end
+```
+
 Yii provides a set of migration command line tools that allow you to:
 
 * create new migrations;

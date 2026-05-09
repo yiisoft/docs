@@ -118,6 +118,22 @@ That's what dependency containers are for.
 A dependency injection (DI) container is an object that knows how to instantiate and configure objects and
 all objects they depend on.
 
+At runtime, application code declares dependencies. The container uses configuration and type declarations to build
+these objects and the objects they depend on:
+
+```mermaid
+flowchart TD
+    action[Action handler] -->|declares dependency| service[ReportService]
+    container[DI container] -->|injects| service
+    service -->|needs| cache[CacheInterface]
+    service -->|needs| db[ConnectionInterface]
+    container -->|creates and configures| service
+    container -->|resolves| cache
+    container -->|resolves| db
+    definitions[Container definitions] -.-> container
+    types[Constructor types] -.-> container
+```
+
 Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and
 [yiisoft/injector](https://github.com/yiisoft/injector) package.
 
