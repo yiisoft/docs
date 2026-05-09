@@ -137,7 +137,7 @@
 - [在 RoadRunner 中使用 Yii](tutorial/using-yii-with-roadrunner.md)
 - [在 Swoole 中使用 Yii](tutorial/using-yii-with-swoole.md)
 - [Docker in application templates](tutorial/docker.md)
-- [国际化](tutorial/i18n.md) TODO
+- [Internationalization](tutorial/i18n.md)
 
 ## 助手类
 
