@@ -1,23 +1,31 @@
 # Using htmx for partial page reloads
 
 [htmx](https://htmx.org/) lets links and forms request HTML fragments and swap them into the current page. In a Yii
-application this works well for grids: sorting, filtering, and pagination can update only the grid while the rest of the
-page stays in place.
+application, this works well for grids: sorting, filtering, and pagination can update only the grid while the rest of
+the page stays in place.
 
 This recipe shows the pattern used by the
-[Yii demo diary application](https://github.com/yiisoft/demo-diary/pull/54): load htmx, extract the grid into a widget,
+[Yii demo diary application](https://github.com/yiisoft/demo-diary/pull/54): load htmx, create the grid as a widget,
 add htmx attributes to the grid controls, and return only the widget HTML for htmx requests.
+
+## Install GridView
+
+Install the data view package if the application doesn't use it yet:
+
+```shell
+composer require yiisoft/yii-dataview
+```
 
 ## Load htmx
 
-Create an asset bundle for htmx:
+Create `src/Web/Shared/Layout/Main/HtmxAsset.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Presentation\Site\Layout;
+namespace App\Web\Shared\Layout\Main;
 
 use Yiisoft\Assets\AssetBundle;
 
@@ -36,8 +44,8 @@ final class HtmxAsset extends AssetBundle
 }
 ```
 
-When updating the htmx version, update the URL and `integrity` value together. If the application doesn't use a CDN,
-download `htmx.min.js` and register it from an application asset directory instead.
+When updating the htmx version, update the URL and `integrity` value together. To serve htmx locally, download
+`htmx.min.js` and register it from an application asset directory.
 
 Add the bundle to the main layout asset:
 
@@ -46,7 +54,7 @@ Add the bundle to the main layout asset:
 
 declare(strict_types=1);
 
-namespace App\Presentation\Site\Layout;
+namespace App\Web\Shared\Layout\Main;
 
 use Yiisoft\Assets\AssetBundle;
 
@@ -67,41 +75,163 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-## Extract the reloadable part
+## Create the reloadable part
 
-Put the grid into its own widget. The widget must render the complete HTML fragment that htmx will replace.
+Start with a regular page that renders a grid. In a clean `yiisoft/app` project, this means adding an action, a view
+template, and a widget that renders the grid. The first version doesn't need htmx. It should work as a normal full page.
 
-The example below uses `yiisoft/yii-dataview` `GridView`. Replace `UserDataReader`, `User`, and the columns with the
-reader and columns from your application.
+Create `src/Web/Users/Index/UsersGrid.php`:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\UseCase\Users\List;
+namespace App\Web\Users\Index;
 
-use App\Shared\UrlGenerator;
-use App\UseCase\Users\List\DataReader\User;
-use App\UseCase\Users\List\DataReader\UserDataReader;
 use Yiisoft\Data\Paginator\PaginatorInterface;
-use Yiisoft\Html\Html;
+use Yiisoft\Data\Reader\Iterable\IterableDataReader;
 use Yiisoft\Widget\Widget;
-use Yiisoft\Yii\DataView\GridView\Column\ActionButton;
-use Yiisoft\Yii\DataView\GridView\Column\ActionColumn;
-use Yiisoft\Yii\DataView\GridView\Column\DataColumn;
+use Yiisoft\Yii\DataView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\GridView;
 use Yiisoft\Yii\DataView\Pagination\OffsetPagination;
 use Yiisoft\Yii\DataView\Pagination\PaginationWidgetInterface;
 
-final class UsersList extends Widget
+final class UsersGrid extends Widget
+{
+    public function render(): string
+    {
+        /** @var PaginationWidgetInterface<PaginatorInterface> */
+        $pagination = OffsetPagination::widget();
+
+        return GridView::widget()
+            ->containerAttributes([
+                'id' => 'UsersGridView',
+                'class' => 'mt-4 position-relative',
+            ])
+            ->dataReader($this->dataReader())
+            ->pageSizeConstraint(5)
+            ->paginationWidget($pagination)
+            ->columns(
+                new DataColumn('id', header: 'ID', filter: true),
+                new DataColumn('login', header: 'Login', filter: true),
+                new DataColumn('name', header: 'Name', filter: true),
+                new DataColumn('status', header: 'Status', filter: true),
+            )
+            ->render();
+    }
+
+    private function dataReader(): IterableDataReader
+    {
+        return new IterableDataReader([
+            ['id' => 1, 'login' => 'admin', 'name' => 'Alice Adams', 'status' => 'Active'],
+            ['id' => 2, 'login' => 'editor', 'name' => 'Eve Editor', 'status' => 'Active'],
+            ['id' => 3, 'login' => 'author', 'name' => 'Arthur Author', 'status' => 'Active'],
+            ['id' => 4, 'login' => 'reviewer', 'name' => 'Rita Reviewer', 'status' => 'Inactive'],
+            ['id' => 5, 'login' => 'support', 'name' => 'Sam Support', 'status' => 'Active'],
+            ['id' => 6, 'login' => 'guest', 'name' => 'Grace Guest', 'status' => 'Inactive'],
+        ]);
+    }
+}
+```
+
+For a real application, replace `dataReader()` with a reader backed by a database query or repository. Keep the widget
+responsible for rendering the grid fragment.
+
+Create `src/Web/Users/Index/template.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\Users\Index\UsersGrid;
+use Yiisoft\View\WebView;
+
+/**
+ * @var WebView $this
+ */
+
+$this->setTitle('Users');
+?>
+<h1>Users</h1>
+
+<?= UsersGrid::widget() ?>
+```
+
+Create `src/Web/Users/Index/Action.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Users\Index;
+
+use Psr\Http\Message\ResponseInterface;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
+
+final readonly class Action
 {
     public function __construct(
-        private readonly UrlGenerator $urlGenerator,
-        private readonly UserDataReader $userDataReader,
+        private WebViewRenderer $viewRenderer,
     ) {
     }
 
+    public function __invoke(): ResponseInterface
+    {
+        return $this->viewRenderer->render(__DIR__ . '/template');
+    }
+}
+```
+
+Add the action to `config/common/routes.php`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web;
+use Yiisoft\Router\Group;
+use Yiisoft\Router\Route;
+
+return [
+    Group::create()
+        ->routes(
+            Route::get('/')
+                ->action(Web\HomePage\Action::class)
+                ->name('home'),
+            Route::get('/users')
+                ->action(Web\Users\Index\Action::class)
+                ->name('users/index'),
+        ),
+];
+```
+
+Open `/users` and make sure sorting, filtering, and pagination work with full page reloads first.
+
+## Add htmx attributes to the grid
+
+Now update `UsersGrid` so the grid controls request a fragment and swap it into `#UsersGridView`:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Users\Index;
+
+use Yiisoft\Data\Paginator\PaginatorInterface;
+use Yiisoft\Data\Reader\Iterable\IterableDataReader;
+use Yiisoft\Widget\Widget;
+use Yiisoft\Yii\DataView\Column\DataColumn;
+use Yiisoft\Yii\DataView\GridView\GridView;
+use Yiisoft\Yii\DataView\Pagination\OffsetPagination;
+use Yiisoft\Yii\DataView\Pagination\PaginationWidgetInterface;
+
+final class UsersGrid extends Widget
+{
     public function render(): string
     {
         $htmxLoadAttributes = [
@@ -122,7 +252,8 @@ final class UsersList extends Widget
                 'id' => 'UsersGridView',
                 'class' => 'mt-4 position-relative',
             ])
-            ->dataReader($this->userDataReader)
+            ->dataReader($this->dataReader())
+            ->pageSizeConstraint(5)
             ->sortableLinkAttributes([
                 'hx-boost' => 'true',
                 ...$htmxLoadAttributes,
@@ -133,36 +264,24 @@ final class UsersList extends Widget
             ])
             ->paginationWidget($pagination)
             ->columns(
-                new DataColumn(
-                    'id',
-                    header: 'ID',
-                    filter: true,
-                ),
-                new DataColumn(
-                    'login',
-                    filter: true,
-                ),
-                new DataColumn(
-                    'name',
-                    filter: true,
-                ),
-                new DataColumn(
-                    'status',
-                    content: static fn(User $user) => $user->status->label(),
-                ),
-                new ActionColumn(
-                    before: '<div class="btn-group">',
-                    after: '</div>',
-                    buttons: [
-                        new ActionButton(
-                            Html::i()->class('bi bi-pencil'),
-                            fn(User $user) => $this->urlGenerator->generate('user/update', ['id' => $user->id]),
-                            title: 'Update',
-                        ),
-                    ],
-                ),
+                new DataColumn('id', header: 'ID', filter: true),
+                new DataColumn('login', header: 'Login', filter: true),
+                new DataColumn('name', header: 'Name', filter: true),
+                new DataColumn('status', header: 'Status', filter: true),
             )
             ->render();
+    }
+
+    private function dataReader(): IterableDataReader
+    {
+        return new IterableDataReader([
+            ['id' => 1, 'login' => 'admin', 'name' => 'Alice Adams', 'status' => 'Active'],
+            ['id' => 2, 'login' => 'editor', 'name' => 'Eve Editor', 'status' => 'Active'],
+            ['id' => 3, 'login' => 'author', 'name' => 'Arthur Author', 'status' => 'Active'],
+            ['id' => 4, 'login' => 'reviewer', 'name' => 'Rita Reviewer', 'status' => 'Inactive'],
+            ['id' => 5, 'login' => 'support', 'name' => 'Sam Support', 'status' => 'Active'],
+            ['id' => 6, 'login' => 'guest', 'name' => 'Grace Guest', 'status' => 'Inactive'],
+        ]);
     }
 }
 ```
@@ -177,43 +296,6 @@ The important part is the shared `$htmxLoadAttributes` array:
 
 The target selector and the container `id` must match. In this example, both use `UsersGridView`.
 
-## Render the widget in the full page
-
-In the full page template, render regular page content and put the reloadable widget where the grid belongs:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Presentation\Site\Layout\Breadcrumbs\Breadcrumb;
-use App\Shared\UrlGenerator;
-use App\UseCase\Users\List\UsersList;
-use Yiisoft\Html\Html;
-use Yiisoft\Html\NoEncode;
-use Yiisoft\View\WebView;
-
-/**
- * @var WebView $this
- * @var UrlGenerator $urlGenerator
- */
-
-$this->setTitle('Users');
-$this->addToParameter('breadcrumbs', new Breadcrumb('Users'));
-?>
-<div class="d-flex justify-content-between align-items-center">
-    <h1>Users</h1>
-    <?= Html::a(
-        NoEncode::string('<i class="bi bi-person-plus me-1"></i> Create user'),
-        $urlGenerator->generate('user/create'),
-        ['class' => 'btn btn-outline-primary btn-sm'],
-    ) ?>
-</div>
-<?= UsersList::widget() ?>
-```
-
-The first page load still returns a complete page with layout, title, breadcrumbs, and actions.
-
 ## Return partial HTML for htmx requests
 
 htmx sends the `HX-Request` header with its requests.
@@ -225,24 +307,26 @@ In the action, return only the widget when the header is present:
 
 declare(strict_types=1);
 
-namespace App\UseCase\Users\List;
+namespace App\Web\Users\Index;
 
-use App\Presentation\Site\ResponseFactory\ResponseFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Yiisoft\DataResponse\ResponseFactory\HtmlResponseFactory;
+use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class Action
 {
     public function __construct(
-        private ResponseFactory $responseFactory,
+        private WebViewRenderer $viewRenderer,
+        private HtmlResponseFactory $htmlResponseFactory,
     ) {
     }
 
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $response = $request->getHeaderLine('HX-Request') === 'true'
-            ? $this->responseFactory->createHtmlResponse(UsersList::widget())
-            : $this->responseFactory->render(__DIR__ . '/template.php');
+            ? $this->htmlResponseFactory->createResponse(UsersGrid::widget())
+            : $this->viewRenderer->render(__DIR__ . '/template');
 
         return $response->withAddedHeader('Vary', 'HX-Request');
     }
@@ -251,37 +335,6 @@ final readonly class Action
 
 The `Vary` header matters when a browser, proxy, or CDN caches responses. The same URL can return a full page without
 `HX-Request` and a fragment with `HX-Request: true`, so caches must keep these responses separate.
-
-If your response factory doesn't have a method for raw HTML, add one with `HtmlResponseFactory`:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Presentation\Site\ResponseFactory;
-
-use Psr\Http\Message\ResponseInterface;
-use Yiisoft\DataResponse\ResponseFactory\HtmlResponseFactory;
-use Yiisoft\Http\Status;
-
-final readonly class ResponseFactory
-{
-    public function __construct(
-        private HtmlResponseFactory $htmlResponseFactory,
-        // Other dependencies.
-    ) {
-    }
-
-    public function createHtmlResponse(
-        mixed $data = null,
-        int $code = Status::OK,
-        string $reasonPhrase = '',
-    ): ResponseInterface {
-        return $this->htmlResponseFactory->createResponse($data, $code, $reasonPhrase);
-    }
-}
-```
 
 ## Try it
 
