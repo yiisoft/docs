@@ -18,7 +18,7 @@ Packages expose default config groups via the `config-plugin` key in the `extra`
 ```json
 "extra": {
     "config-plugin-options": {
-      "source-directory": "config",
+        "source-directory": "config",
     },
     "config-plugin": {
         "params": "params.php",
