@@ -1,0 +1,10 @@
+name: Feature request
+description: Suggest an idea for improvement
+body:
+  - type: textarea
+    attributes:
+      label: Proposed new feature or change
+      description: |
+        Describe the feature and explain why it's needed.
+    validations:
+      required: true

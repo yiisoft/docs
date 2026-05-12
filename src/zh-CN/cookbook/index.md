@@ -12,11 +12,13 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 ---
 
 - [前言](preface.md)
-- [使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [发起 HTTP 请求](making-http-requests.md)
+- [Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)
 - [禁用 CSRF 保护](disabling-csrf-protection.md)
 - [Sentry 集成](sentry-integration.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
+- [Configuring Xdebug](configuring-xdebug.md)
 - [配置 Web 服务器](configuring-webservers/general.md)
+- [使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [部署到 Docker Swarm](deployment/docker-swarm.md)

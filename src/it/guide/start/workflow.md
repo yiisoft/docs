@@ -1,4 +1,4 @@
-# Running applications
+# Application Workflow
 
 After installing Yii, you have a working Yii application.  This section
 introduces the application's built-in functionality, how the code is

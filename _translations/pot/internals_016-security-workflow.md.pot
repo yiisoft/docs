@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-05-09 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,27 @@ msgstr ""
 msgid ""
 "If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message\n"
 "and delete the issue. Say thanks to the reporter and point to the security form for next time.  \n"
+msgstr ""
+
+#. type: Fenced code block (mermaid)
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid ""
+"flowchart TD\n"
+"    form[Security form report] --> verify[Verify issue]\n"
+"    public[Public report] --> remove[Save details and delete public issue]\n"
+"    remove --> redirect[Point reporter to the security form]\n"
+"    redirect --> verify\n"
+"    verify -->|needs details| requestInfo[Request more information]\n"
+"    requestInfo --> verify\n"
+"    verify -->|valid| advisory[Create draft security advisory]\n"
+"    advisory --> severity[Set CVSS severity]\n"
+"    severity --> credit[Ask about reporter credit]\n"
+"    credit --> cve[Request CVE number]\n"
+"    cve --> patch[Prepare patch pull request]\n"
+"    patch --> wait[Wait for CVE allocation]\n"
+"    wait --> release[Release]\n"
+"    release --> publish[Publish advisory and submit FriendsOfPHP entry]\n"
 msgstr ""
 
 #. type: Title ##

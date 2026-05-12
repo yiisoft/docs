@@ -214,7 +214,7 @@ For the general implications of long-running workers, see [Using Yii with event 
 ## Additional configuration
 
 `FrankenPHPApplicationRunner` is configured by default for Yii application templates and follows the
-[config groups convention](https://github.com/yiisoft/docs/blob/master/022-config-groups.md).
+[dependency container configuration](../../guide/concept/configuration.html#container-configuration) concept.
 
 The constructor allows overriding the default bootstrap, events, DI, params, and error-handler configuration.
 You can also provide a custom config instance with `withConfig()` and a custom container with `withContainer()`.

@@ -56,6 +56,12 @@ $response = $response->withStatus(Status::NOT_FOUND);
 Majority of status codes are available from `Status` class for convenience
 and readability.
 
+Router may return a response before an action runs.  For example, an
+`OPTIONS` request to a known route path gets an automatic `204 No Content`
+response with an `Allow` header that lists supported methods.  See
+[Automatic OPTIONS responses](routing.md#automatic-options-responses) for
+routing details.
+
 ## Headers
 
 You can set headers like this:

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:16+0000\n"
+"POT-Creation-Date: 2026-05-09 11:15+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
-#: ../src/guide/tutorial/docker.md
+#: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
 #, fuzzy, no-wrap
 msgid "Testing"
 msgstr "Pruebas (Testing)"
@@ -76,8 +76,10 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Running applications](start/workflow.md)"
-msgstr ""
+#, fuzzy
+#| msgid "[Application structure overview](structure/overview.md) +"
+msgid "[Application Workflow](start/workflow.md)"
+msgstr "[Información General de Estructura de Una Aplicación](structure/overview.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -102,6 +104,49 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Looking ahead](start/looking-ahead.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Demo applications](start/demo-apps.md)"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/index.md
+#, fuzzy, no-wrap
+msgid "Key concepts"
+msgstr "Conceptos Clave"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Aliases](concept/aliases.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Autoloading](concept/autoloading.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Configuration](concept/configuration.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Dependency injection container](concept/di-container.md) +"
+msgid "[Dependency injection container](concept/di-container.md)"
+msgstr "[Contenedor de Inyección de Dependencia](concept/di-container.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Events](concept/events.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Immutability](concept/immutability.md)"
 msgstr ""
 
 #. type: Title ###
@@ -129,20 +174,10 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
 #, fuzzy
 #| msgid "[Actions](structure/action.md) +"
 msgid "[Actions](structure/action.md)"
 msgstr "[Acciones](structure/action.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
-msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -151,45 +186,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
+msgid "[Domain](structure/domain.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Service components](structure/service.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
 msgid "[Packages](structure/package.md)"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/index.md
-#, fuzzy, no-wrap
-msgid "Key concepts"
-msgstr "Conceptos Clave"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Class autoloading](concept/autoloading.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-#, fuzzy
-#| msgid "[Dependency injection container](concept/di-container.md) +"
-msgid "[Dependency injection container](concept/di-container.md)"
-msgstr "[Contenedor de Inyección de Dependencia](concept/di-container.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Configuration](concept/configuration.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Aliases](concept/aliases.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Events](concept/events.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Immutability](concept/immutability.md)"
 msgstr ""
 
 #. type: Title ##
@@ -237,43 +244,75 @@ msgid "[Logging](runtime/logging.md)"
 msgstr "[Registros (logs)](runtime/logging.md)"
 
 #. type: Title #
-#: ../src/guide/index.md ../src/guide/views/view.md
-#, fuzzy, no-wrap
-msgid "Views"
-msgstr "Vistas"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[View](views/view.md)"
+#: ../src/guide/index.md ../src/guide/security/overview.md
+#, no-wrap
+msgid "Security"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgid "[Security overview](security/overview.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 #, fuzzy
-#| msgid "[Views](views/view.md) -"
-msgid "[View injections](views/view-injections.md)"
-msgstr "[Vistas](views/view.md)"
+#| msgid "[Authentication](security/authentication.md) +"
+msgid "[Authentication](security/authentication.md)"
+msgstr "[Autenticación](security/authentication.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-#, fuzzy
-#| msgid "[Assets](views/asset.md) -"
-msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
-msgstr "[Assets](views/asset.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Assets](views/asset.md) TODO: verify!"
+msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Widgets](views/widget.md) TODO: verify!"
+msgid "[Working with passwords](security/passwords.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Cryptography](security/cryptography.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Best practices](security/best-practices.md) +"
+msgid "[Trusted request](security/trusted-request.md)"
+msgstr "[Buenas Prácticas](security/best-practices.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Best practices](security/best-practices.md) +"
+msgid "[Best practices](security/best-practices.md)"
+msgstr "[Buenas Prácticas](security/best-practices.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Caching overview](caching/overview.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Data caching](caching/data.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Fragment caching](caching/fragment.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Page caching](caching/page.md) TODO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[HTTP caching](caching/http.md) TODO"
 msgstr ""
 
 #. type: Title #
@@ -299,6 +338,46 @@ msgstr "[Validar Datos](https://github.com/yiisoft/validator/blob/master/docs/gu
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Migrations](databases/db-migrations.md) TODO: verify/update!"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/index.md ../src/guide/views/view.md
+#, fuzzy, no-wrap
+msgid "Views"
+msgstr "Vistas"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[View](views/view.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Assets](views/asset.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Assets](views/asset.md) -"
+msgid "[Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!"
+msgstr "[Assets](views/asset.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Template engines](views/template-engines.md) TODO: verify!"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Views](views/view.md) -"
+msgid "[View injections](views/view-injections.md)"
+msgstr "[Vistas](views/view.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Widgets](views/widget.md) TODO: verify!"
 msgstr ""
 
 #. type: Title ##
@@ -358,71 +437,6 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Data widgets](output/data-widgets.md) TODO"
-msgstr ""
-
-#. type: Title #
-#: ../src/guide/index.md ../src/guide/security/overview.md
-#, no-wrap
-msgid "Security"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Security overview](security/overview.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-#, fuzzy
-#| msgid "[Authentication](security/authentication.md) +"
-msgid "[Authentication](security/authentication.md)"
-msgstr "[Autenticación](security/authentication.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Authorization](security/authorization.md) TODO: verify and complete!"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Working with passwords](security/passwords.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Cryptography](security/cryptography.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-#, fuzzy
-#| msgid "[Best practices](security/best-practices.md) +"
-msgid "[Best practices](security/best-practices.md)"
-msgstr "[Buenas Prácticas](security/best-practices.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Caching overview](caching/overview.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Data caching](caching/data.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Fragment caching](caching/fragment.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Page caching](caching/page.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[HTTP caching](caching/http.md) TODO"
 msgstr ""
 
 #. type: Title ##
@@ -501,32 +515,34 @@ msgstr "Generación de Documentación de API"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Testing overview](testing/overview.md) TODO"
+#, fuzzy
+#| msgid "[Application structure overview](structure/overview.md) +"
+msgid "[Testing overview](testing/overview.md)"
+msgstr "[Información General de Estructura de Una Aplicación](structure/overview.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Testing environment setup](testing/environment-setup.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Testing environment setup](testing/environment-setup.md) TODO"
+msgid "[Unit tests](testing/unit.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Unit tests](testing/unit.md) TODO"
+msgid "[Functional tests](testing/functional.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Functional tests](testing/functional.md) TODO"
+msgid "[End-to-end tests](testing/end-to-end.md)"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Acceptance tests](testing/acceptance.md) TODO"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Fixtures](testing/fixtures.md) TODO"
+msgid "[Static analysis and mutation testing](testing/quality-tools.md)"
 msgstr ""
 
 #. type: Title ##
@@ -538,16 +554,6 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Console applications](tutorial/console-applications.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Docker in application templates](tutorial/docker.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Internationalization](tutorial/i18n.md) TODO"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -578,6 +584,16 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with Swoole](tutorial/using-yii-with-swoole.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Docker in application templates](tutorial/docker.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Internationalization](tutorial/i18n.md)"
 msgstr ""
 
 #. type: Title ##

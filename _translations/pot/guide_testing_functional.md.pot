@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Test a page"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Reset state"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Functional tests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid ""
+"Functional tests run application code in the same PHP process. In the Yii "
+"application template they live in `tests/Functional` and use "
+"`App\\Tests\\Support\\FunctionalTester`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid ""
+"Use them for routing, middleware, action handlers, views, container "
+"configuration, headers, cookies, and sessions."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Functional tester"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid "The template already has a helper method for sending PSR-7 requests:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Support;\n"
+"\n"
+"use App\\Environment;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\Yii\\Runner\\Http\\HttpApplicationRunner;\n"
+"\n"
+"use function dirname;\n"
+"\n"
+"class FunctionalTester extends \\Codeception\\Actor\n"
+"{\n"
+"    use _generated\\FunctionalTesterActions;\n"
+"\n"
+"    public function sendRequest(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $runner = new HttpApplicationRunner(\n"
+"            rootPath: dirname(__DIR__, 2),\n"
+"            environment: Environment::appEnv(),\n"
+"        );\n"
+"\n"
+"        $response = $runner->runAndGetResponse($request);\n"
+"        $body = $response->getBody();\n"
+"        if ($body->isSeekable()) {\n"
+"            $body->rewind();\n"
+"        }\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid "The template includes `tests/Functional/HomePageCest.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Functional;\n"
+"\n"
+"use App\\Tests\\Support\\FunctionalTester;\n"
+"use HttpSoft\\Message\\ServerRequest;\n"
+"\n"
+"use function PHPUnit\\Framework\\assertSame;\n"
+"use function PHPUnit\\Framework\\assertStringContainsString;\n"
+"\n"
+"final class HomePageCest\n"
+"{\n"
+"    public function base(FunctionalTester $tester): void\n"
+"    {\n"
+"        $response = $tester->sendRequest(\n"
+"            new ServerRequest(uri: '/'),\n"
+"        );\n"
+"\n"
+"        assertSame(200, $response->getStatusCode());\n"
+"        assertStringContainsString(\n"
+"            'Don\\'t forget to check the guide',\n"
+"            $response->getBody()->getContents(),\n"
+"        );\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md ../src/guide/testing/unit.md
+msgid "Run it:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid ""
+"APP_ENV=test vendor/bin/codecept run Functional\n"
+"APP_ENV=test vendor/bin/codecept run Functional HomePageCest\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid "Send request data"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid "Use PSR-7 methods to model the request:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid ""
+"$request = (new ServerRequest(uri: '/contact', method: 'POST'))\n"
+"    ->withHeader('Content-Type', 'application/x-www-form-urlencoded')\n"
+"    ->withParsedBody([\n"
+"        'ContactForm' => [\n"
+"            'name' => 'Sam',\n"
+"            'email' => 'sam@example.test',\n"
+"            'body' => 'Hello.',\n"
+"        ],\n"
+"    ]);\n"
+"\n"
+"$response = $tester->sendRequest($request);\n"
+"\n"
+"assertSame(302, $response->getStatusCode());\n"
+"assertSame('/contact/sent', $response->getHeaderLine('Location'));\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid ""
+"For JSON APIs, write the JSON body into a PSR-7 stream and set `Content-"
+"Type: application/json`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid ""
+"Functional tests often touch runtime files, sessions, cache, and a database. "
+"Reset changed state in the Cest `_before()` hook or in a project helper:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/functional.md
+#, no-wrap
+msgid ""
+"public function _before(FunctionalTester $tester): void\n"
+"{\n"
+"    // Reset database tables, cache pools, queues, and outgoing messages.\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md
+msgid ""
+"Keep pure domain rules in unit tests. Put request and response behavior in "
+"functional tests."
+msgstr ""

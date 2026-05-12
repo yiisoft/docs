@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:23+0000\n"
+"POT-Creation-Date: 2026-05-09 10:43+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -53,13 +53,13 @@ msgstr "[前言](preface.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
-msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
-msgstr "[使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
+msgid "[Making HTTP requests](making-http-requests.md)"
+msgstr "[发起 HTTP 请求](making-http-requests.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
-msgid "[Making HTTP requests](making-http-requests.md)"
-msgstr "[发起 HTTP 请求](making-http-requests.md)"
+msgid "[Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
@@ -83,8 +83,20 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
+#, fuzzy
+#| msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgid "[Configuring Xdebug](configuring-xdebug.md)"
+msgstr "[配置 Web 服务器](configuring-webservers/general.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
 msgid "[Configuring webservers](configuring-webservers/general.md)"
 msgstr "[配置 Web 服务器](configuring-webservers/general.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
+msgstr "[使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md

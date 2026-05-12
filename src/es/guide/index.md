@@ -12,32 +12,33 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 - [What do you need to know?](start/prerequisites.md)
 - [Creating a project](start/creating-project.md)
-- [Running applications](start/workflow.md)
+- [Application Workflow](start/workflow.md)
 - [Saying hello](start/hello.md)
 - [Working with forms](start/forms.md)
 - [Working with databases](start/databases.md)
 - [Generating code with Gii](start/gii.md) TODO
 - [Looking ahead](start/looking-ahead.md)
+- [Demo applications](start/demo-apps.md)
+
+## Key concepts
+
+- [Aliases](concept/aliases.md)
+- [Autoloading](concept/autoloading.md)
+- [Configuration](concept/configuration.md)
+- [Dependency injection container](concept/di-container.md)
+- [Events](concept/events.md)
+- [Immutability](concept/immutability.md)
 
 ## Application structure
 
 - [Application structure overview](structure/overview.md)
 - [Entry scripts](structure/entry-script.md)
 - [Application](structure/application.md)
-- [Service components](structure/service.md)
 - [Actions](structure/action.md)
-- [Domain](structure/domain.md)
 - [Middleware](structure/middleware.md)
+- [Domain](structure/domain.md)
+- [Service components](structure/service.md)
 - [Packages](structure/package.md)
-
-## Key concepts
-
-- [Class autoloading](concept/autoloading.md)
-- [Dependency injection container](concept/di-container.md)
-- [Configuration](concept/configuration.md)
-- [Aliases](concept/aliases.md)
-- [Events](concept/events.md)
-- [Immutability](concept/immutability.md)
 
 ## Handling requests
 
@@ -49,14 +50,23 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Handling errors](runtime/handling-errors.md)
 - [Logging](runtime/logging.md)
 
-## Views
+## Security
 
-- [View](views/view.md)
-- [Template engines](views/template-engines.md) TODO: verify!
-- [View injections](views/view-injections.md)
-- [Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!
-- [Assets](views/asset.md) TODO: verify!
-- [Widgets](views/widget.md) TODO: verify!
+- [Security overview](security/overview.md)
+- [Authentication](security/authentication.md)
+- [Authorization](security/authorization.md) TODO: verify and complete!
+- [Working with passwords](security/passwords.md)
+- [Cryptography](security/cryptography.md)
+- [Trusted request](security/trusted-request.md)
+- [Best practices](security/best-practices.md)
+
+## Caching
+
+- [Caching overview](caching/overview.md)
+- [Data caching](caching/data.md)
+- [Fragment caching](caching/fragment.md) TODO
+- [Page caching](caching/page.md) TODO
+- [HTTP caching](caching/http.md) TODO
 
 ## Working with databases
 
@@ -65,6 +75,15 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Active
   Record](https://github.com/yiisoft/active-record/blob/master/README.md)
 - [Migrations](databases/db-migrations.md) TODO: verify/update!
+
+## Views
+
+- [View](views/view.md)
+- [Assets](views/asset.md) TODO: verify!
+- [Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!
+- [Template engines](views/template-engines.md) TODO: verify!
+- [View injections](views/view-injections.md)
+- [Widgets](views/widget.md) TODO: verify!
 
 ## Getting data from users
 
@@ -81,25 +100,6 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Sorting](output/sorting.md) TODO
 - [Data providers](output/data-providers.md) TODO
 - [Data widgets](output/data-widgets.md) TODO
-
-## Security
-
-- [Security overview](security/overview.md)
-- [Authentication](security/authentication.md)
-- [Authorization](security/authorization.md) TODO: verify and complete!
-- [Working with passwords](security/passwords.md)
-- [Cryptography](security/cryptography.md)
-- [Best practices](security/best-practices.md)
-
-
-## Caching
-
-- [Caching overview](caching/overview.md)
-- [Data caching](caching/data.md)
-- [Fragment caching](caching/fragment.md) TODO
-- [Page caching](caching/page.md) TODO
-- [HTTP caching](caching/http.md) TODO
-
 
 ## REST APIs
 
@@ -121,25 +121,25 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 ## Testing
 
-- [Testing overview](testing/overview.md) TODO
-- [Testing environment setup](testing/environment-setup.md) TODO
-- [Unit tests](testing/unit.md) TODO
-- [Functional tests](testing/functional.md) TODO
-- [Acceptance tests](testing/acceptance.md) TODO
-- [Fixtures](testing/fixtures.md) TODO
+- [Testing overview](testing/overview.md)
+- [Testing environment setup](testing/environment-setup.md)
+- [Unit tests](testing/unit.md)
+- [Functional tests](testing/functional.md)
+- [End-to-end tests](testing/end-to-end.md)
+- [Static analysis and mutation testing](testing/quality-tools.md)
 
 
 ## Special topics
 
 - [Console applications](tutorial/console-applications.md)
-- [Docker in application templates](tutorial/docker.md)
-- [Internationalization](tutorial/i18n.md) TODO
 - [Mailing](tutorial/mailing.md)
 - [Performance tuning](tutorial/performance-tuning.md)
 - [Using Yii with event loop](tutorial/using-with-event-loop.md)
 - [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
 - [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
+- [Docker in application templates](tutorial/docker.md)
+- [Internationalization](tutorial/i18n.md)
 
 ## Helpers
 

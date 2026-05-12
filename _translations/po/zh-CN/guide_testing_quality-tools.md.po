@@ -1,0 +1,220 @@
+# Language zh-CN translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: 2026-05-08 08:49+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md ../src/guide/testing/end-to-end.md
+#: ../src/guide/testing/environment-setup.md
+#: ../src/guide/testing/quality-tools.md
+#, fuzzy
+msgid "With Docker:"
+msgstr "Docker"
+
+#. type: Title #
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "Static analysis and code quality"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "The Yii application template includes static analysis and code quality tools alongside the test suite."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "Psalm"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Run Psalm locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "vendor/bin/psalm\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+#, fuzzy
+#| msgid "Install Docker"
+msgid "Run Psalm in Docker:"
+msgstr "安装 Docker"
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "make psalm\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "The template stores Psalm configuration in `psalm.xml`. The GitHub Actions workflow runs Psalm for supported PHP versions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "When Psalm reports an issue, fix the code or add a precise type annotation. Keep suppressions narrow and local to the line or method that needs them."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "Composer Dependency Analyser"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Composer Dependency Analyser checks that `composer.json` matches the classes used by the application."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Run it locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+#, fuzzy
+#| msgid "Docker"
+msgid "Run it in Docker:"
+msgstr "Docker"
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "make composer-dependency-analyser\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Use this check after adding or removing package usage in `src`, `config`, or `tests`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "PHP CS Fixer"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "PHP CS Fixer applies the project coding style from `.php-cs-fixer.php`."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "make cs-fix\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Commit formatting changes together with the code that needs them."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "Rector"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Rector applies configured code upgrades and refactorings from `rector.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Preview changes locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "vendor/bin/rector --dry-run\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Apply changes locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "vendor/bin/rector\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "make rector\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "Review Rector changes before committing them. Automated refactoring can change behavior when custom rules or broad paths are configured."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid "Pull request checks"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/quality-tools.md
+msgid "A practical local check before opening a pull request is:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid ""
+"APP_ENV=test vendor/bin/codecept build\n"
+"APP_ENV=test vendor/bin/codecept run\n"
+"vendor/bin/psalm\n"
+"vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php\n"
+"vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/quality-tools.md
+#, no-wrap
+msgid ""
+"make codecept build\n"
+"make test\n"
+"make psalm\n"
+"make composer-dependency-analyser\n"
+"make cs-fix\n"
+msgstr ""

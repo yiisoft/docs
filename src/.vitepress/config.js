@@ -58,12 +58,12 @@ export default {
                             items: [
                                 {text: 'Prerequisites', link: '/guide/start/prerequisites'},
                                 {text: 'Creating a Project', link: '/guide/start/creating-project'},
+                                {text: 'Application Workflow', link: '/guide/start/workflow'},
                                 {text: 'Saying Hello', link: '/guide/start/hello'},
                                 {text: 'Working with Forms', link: '/guide/start/forms'},
                                 {text: 'Working with Databases', link: '/guide/start/databases'},
                                 {text: 'Generating Code with Gii', link: '/guide/start/gii'},
                                 {text: 'Looking Ahead', link: '/guide/start/looking-ahead'},
-                                {text: 'Application Workflow', link: '/guide/start/workflow'},
                                 {text: 'Demo Applications', link: '/guide/start/demo-apps'}
                             ]
                         },
@@ -125,6 +125,8 @@ export default {
                         {
                             text: 'Working with Databases',
                             items: [
+                                {text: 'Yii DB', link: 'https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md'},
+                                {text: 'Active Record', link: 'https://github.com/yiisoft/active-record/blob/master/README.md'},
                                 {text: 'Database Migrations', link: '/guide/databases/db-migrations'}
                             ]
                         },
@@ -140,6 +142,17 @@ export default {
                             ]
                         },
                         {
+                            text: 'Testing',
+                            items: [
+                                {text: 'Testing Overview', link: '/guide/testing/overview'},
+                                {text: 'Testing Environment Setup', link: '/guide/testing/environment-setup'},
+                                {text: 'Unit Tests', link: '/guide/testing/unit'},
+                                {text: 'Functional Tests', link: '/guide/testing/functional'},
+                                {text: 'End-to-End Tests', link: '/guide/testing/end-to-end'},
+                                {text: 'Static Analysis and Mutation Testing', link: '/guide/testing/quality-tools'}
+                            ]
+                        },
+                        {
                             text: 'Tutorial',
                             items: [
                                 {text: 'Console Applications', link: '/guide/tutorial/console-applications'},
@@ -149,7 +162,20 @@ export default {
                                 {text: 'Using Yii with FrankenPHP', link: '/guide/tutorial/using-yii-with-frankenphp'},
                                 {text: 'Using Yii with RoadRunner', link: '/guide/tutorial/using-yii-with-roadrunner'},
                                 {text: 'Using Yii with Swoole', link: '/guide/tutorial/using-yii-with-swoole'},
-                                {text: 'Docker in Application Templates', link: '/guide/tutorial/docker'}
+                                {text: 'Docker in Application Templates', link: '/guide/tutorial/docker'},
+                                {text: 'Internationalization', link: '/guide/tutorial/i18n'}
+                            ]
+                        },
+                        {
+                            text: 'Helpers',
+                            items: [
+                                {text: 'Arrays', link: 'https://github.com/yiisoft/arrays/'},
+                                {text: 'Files', link: 'https://github.com/yiisoft/files/'},
+                                {text: 'Html', link: 'https://github.com/yiisoft/html/'},
+                                {text: 'Json', link: 'https://github.com/yiisoft/json'},
+                                {text: 'Network Utilities', link: 'https://github.com/yiisoft/network-utilities/'},
+                                {text: 'VarDumper', link: 'https://github.com/yiisoft/var-dumper'},
+                                {text: 'Strings', link: 'https://github.com/yiisoft/strings'}
                             ]
                         },
                         {
@@ -163,10 +189,18 @@ export default {
                             items: [
                                 {text: 'Preface', link: '/cookbook/preface'},
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
+                                {text: 'Using htmx for Partial Page Reloads', link: '/cookbook/using-htmx-for-partial-reloads'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
-                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
+                            ]
+                        },
+                        {
+                            text: 'Developer\'s environment',
+                            collapsed: false,
+                            items: [
                                 {text: 'Working on Windows', link: '/cookbook/working-on-windows'},
-                                {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'}
+                                {text: 'Opening Files in PhpStorm', link: '/cookbook/opening-files-in-phpstorm'},
+                                {text: 'Configuring Xdebug', link: '/cookbook/configuring-xdebug'}
                             ]
                         },
                         {
@@ -220,7 +254,8 @@ export default {
                                 {text: 'View Code Style', link: '/internals/019-view-code-style'},
                                 {text: 'Package Release', link: '/internals/020-package-release'},
                                 {text: 'Changelog & Upgrade', link: '/internals/021-changelog-upgrade'},
-                                {text: 'Config Groups', link: '/internals/022-config-groups'}
+                                {text: 'Config Groups', link: '/internals/022-config-groups'},
+                                {text: 'GitHub Actions', link: '/internals/023-github-actions'}
                             ]
                         }
                     ]

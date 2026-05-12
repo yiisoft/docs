@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-03-19 11:10+0000\n"
+"POT-Creation-Date: 2026-05-07 14:37+0000\n"
 "PO-Revision-Date: 2026-01-02 23:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/cookbook/configuring-xdebug.md
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/views/asset.md
+#, fuzzy, no-wrap
+msgid "Troubleshooting"
+msgstr "Testing"
 
 #. type: Title #
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -1003,14 +1012,6 @@ msgid ""
 "# Update Docker images\n"
 "docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app\n"
 msgstr ""
-
-#. type: Title ##
-#: ../src/cookbook/deployment/docker-swarm-caddy.md
-#: ../src/cookbook/deployment/docker-swarm-traefik.md
-#: ../src/guide/views/asset.md
-#, fuzzy, no-wrap
-msgid "Troubleshooting"
-msgstr "Testing"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md

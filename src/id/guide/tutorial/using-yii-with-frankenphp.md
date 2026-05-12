@@ -234,8 +234,9 @@ event loop](using-with-event-loop.md).
 ## Additional configuration
 
 `FrankenPHPApplicationRunner` is configured by default for Yii application
-templates and follows the [config groups
-convention](https://github.com/yiisoft/docs/blob/master/022-config-groups.md).
+templates and follows the [dependency container
+configuration](../../guide/concept/configuration.html#container-configuration)
+concept.
 
 The constructor allows overriding the default bootstrap, events, DI, params,
 and error-handler configuration.  You can also provide a custom config

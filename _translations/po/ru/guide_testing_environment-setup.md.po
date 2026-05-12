@@ -1,0 +1,367 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: 2026-05-08 08:49+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-xdebug.md ../src/guide/testing/end-to-end.md
+#: ../src/guide/testing/environment-setup.md
+#: ../src/guide/testing/quality-tools.md
+#, fuzzy
+msgid "With Docker:"
+msgstr "Docker"
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"actor: WebTester\n"
+"extensions:\n"
+"  enabled:\n"
+"    - Codeception\\Extension\\RunProcess:\n"
+"        0: composer serve\n"
+"        sleep: 3\n"
+"modules:\n"
+"  enabled:\n"
+"    - PhpBrowser:\n"
+"        url: http://127.0.0.1:8080\n"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "Testing environment setup"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "The Yii application template has the test environment configured. Use this page when creating a new project from the template, restoring removed test files, or adding a new suite."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, fuzzy, no-wrap
+msgid "Composer configuration"
+msgstr "Безопасная конфигурация сервера"
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "The template requires Codeception, PHPUnit, and the modules used by the suites:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"{\n"
+"  \"require-dev\": {\n"
+"    \"codeception/codeception\": \"^5.3\",\n"
+"    \"codeception/module-asserts\": \"^3.2\",\n"
+"    \"codeception/module-cli\": \"^2.0\",\n"
+"    \"codeception/module-phpbrowser\": \"^3.0\",\n"
+"    \"phpunit/phpunit\": \"^11.5\"\n"
+"  },\n"
+"  \"autoload-dev\": {\n"
+"    \"psr-4\": {\n"
+"      \"App\\\\Tests\\\\\": \"tests\"\n"
+"    }\n"
+"  },\n"
+"  \"scripts\": {\n"
+"    \"test\": \"codecept run\"\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "If these entries are already in your project, keep the installed versions from `composer.lock`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "Main Codeception file"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "The root `codeception.yml` defines the test namespace, paths, bootstrap file, and coverage source:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"namespace: App\\Tests\n"
+"support_namespace: Support\n"
+"bootstrap: bootstrap.php\n"
+"\n"
+"settings:\n"
+"  shuffle: true\n"
+"  colors: true\n"
+"\n"
+"paths:\n"
+"  tests: tests\n"
+"  output: tests/_output\n"
+"  data: tests/Support/Data\n"
+"  support: tests/Support\n"
+"\n"
+"coverage:\n"
+"  enabled: true\n"
+"  show_uncovered: true\n"
+"  show_only_summary: true\n"
+"  include:\n"
+"    - src/*\n"
+"    - public/index.php\n"
+"    - yii\n"
+"\n"
+"extensions:\n"
+"  enabled:\n"
+"    - Codeception\\Extension\\RunFailed\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "`tests/bootstrap.php` prepares the application environment for every suite:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"App\\Environment::prepare();\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Set `APP_ENV=test` when running tests locally:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "The Docker test service reads the same value from `docker/test/.env`:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"APP_ENV=test\n"
+"APP_DEBUG=false\n"
+"APP_C3=true\n"
+"SERVER_NAME=:80\n"
+"XDEBUG_MODE=coverage\n"
+"COMPOSER_CACHE_DIR=/app/runtime/cache/composer\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "Suites"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "The template has one suite file per test type."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "`tests/Unit.suite.yml` enables PHPUnit assertions through Codeception:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"actor: UnitTester\n"
+"modules:\n"
+"    enabled:\n"
+"        - Asserts\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "`tests/Functional.suite.yml` uses the project `FunctionalTester` helper:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "actor: FunctionalTester\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "`tests/Web.suite.yml` starts the built-in server and sends HTTP requests with PhpBrowser:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "`tests/Console.suite.yml` enables console command testing:"
+msgstr ""
+
+#. type: Fenced code block (yaml)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid ""
+"actor: ConsoleTester\n"
+"modules:\n"
+"  enabled:\n"
+"    - Cli\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "After adding or changing a suite, rebuild generated actor actions:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "vendor/bin/codecept build\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "make codecept build\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, fuzzy, no-wrap
+msgid "Test configuration"
+msgstr "конфигурация может быть:"
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Put test-only application parameters into `config/environments/test/params.php`. The application loads this file when `APP_ENV=test`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Use the test environment for values such as:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Database name and credentials."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Mailer transport."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Queue transport."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Cache storage."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Log target paths."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Keep test credentials separate from development and production credentials."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "State reset"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Each test must leave the next test with predictable state. Choose a reset strategy for every external resource the test changes:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Recreate or truncate database tables before application-level tests."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Clear cache pools used by the test environment."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Clear sessions and cookies in web tests."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Remove generated files from `runtime`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/environment-setup.md
+msgid "Replace outgoing mail, queues, and HTTP clients with test doubles where practical."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "For database tests, prefer one project-wide fixture or migration flow. Mixing reset strategies makes failures hard to reproduce."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "Coverage"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "Run coverage locally when Xdebug or another coverage driver is enabled:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "APP_ENV=test APP_C3=true XDEBUG_MODE=coverage vendor/bin/codecept run --coverage --coverage-html --disable-coverage-php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/environment-setup.md
+msgid "With Docker, coverage variables are already in `docker/test/.env`:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md
+#, no-wrap
+msgid "make test-coverage\n"
+msgstr ""

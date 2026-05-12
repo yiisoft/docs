@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ###
+#: ../src/cookbook/making-http-requests.md ../src/guide/index.md
+#: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Testing"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "vendor/bin/codecept build\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md
+#, no-wrap
+msgid "make codecept build\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"The Yii application template includes a ready test setup. It uses "
+"Codeception with PHPUnit assertions and has four suites:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`Unit` for isolated PHP classes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`Functional` for application code called in the same PHP process."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`Web` for requests sent through an HTTP server."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`Console` for console commands."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "The main files are:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`codeception.yml`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/bootstrap.php`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/Unit.suite.yml`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/Functional.suite.yml`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/Web.suite.yml`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/Console.suite.yml`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/testing/overview.md
+msgid "`tests/Support/*Tester.php`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid "Run tests locally"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Build actor classes after installing dependencies or changing a suite:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Run all tests:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "The template also defines a Composer script:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid "APP_ENV=test composer test\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Run one suite:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid ""
+"APP_ENV=test vendor/bin/codecept run Unit\n"
+"APP_ENV=test vendor/bin/codecept run Functional\n"
+"APP_ENV=test vendor/bin/codecept run Web\n"
+"APP_ENV=test vendor/bin/codecept run Console\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Run one test class or method:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid ""
+"APP_ENV=test vendor/bin/codecept run Functional HomePageCest\n"
+"APP_ENV=test vendor/bin/codecept run Functional HomePageCest:base\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"`APP_ENV=test` is required for local commands because `tests/bootstrap.php` "
+"prepares the application environment before tests run."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid "Run tests in Docker"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Build actor classes:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid "make test\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid ""
+"make test Unit\n"
+"make test Functional\n"
+"make test Web\n"
+"make test Console\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"The Docker test environment reads `docker/test/.env`, where `APP_ENV=test` "
+"is already set."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/overview.md
+#, no-wrap
+msgid "Choose a suite"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"Start with unit tests for code that has no framework boundary: value "
+"objects, validators, domain services, and transformers."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"Use functional tests when code needs Yii configuration, dependency "
+"injection, routing, middleware, request handling, or template rendering."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid ""
+"Use web tests for behavior that must go through an HTTP server: status "
+"codes, links, redirects, cookies, and rendered pages as seen by a client."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Use console tests for commands in `src/Console`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/overview.md
+msgid "Run static analysis in CI and before changing shared contracts."
+msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:53+0000\n"
+"POT-Creation-Date: 2026-05-09 20:32+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "The reverse process of routing is *URL generation*, which creates a URL from a given named route and the associated query parameters.  When you later request the created URL, the routing process can resolve it back into the original route and query parameters."
+msgid "The reverse process of routing is *URL generation*, which creates a URL from a given named route, route arguments, and query parameters.  When you later request the created URL, the routing process can resolve it back into the original route arguments and query parameters."
 msgstr ""
 
 #. type: Plain text
@@ -133,7 +133,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "All these methods accept a route pattern and a handler.  The route pattern defines how the router matches the URL when routing and how it generates URL based on route name and parameters.  You will learn about the actual syntax later in this guide.  You could specify a handler as:"
+msgid "All these methods accept a route pattern.  The route pattern defines how the router matches the URL when routing and how it generates URL based on route name and parameters.  You will learn about the actual syntax later in this guide.  Specify a handler with `action()` as:"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -208,7 +208,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "Named route parameters are stored in `CurrentRoute`. To pass a route parameter to an action method parameter, use the `RouteArgument` attribute:"
+msgid "Named route parameters are stored in `CurrentRoute`.  To pass a route parameter to an action method parameter, use the `RouteArgument` attribute:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -236,6 +236,109 @@ msgid ""
 "        // $id contains the value from the {id} route parameter.\n"
 "    }\n"
 "}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "If a parameter has the same name as the action parameter, you can omit the attribute name:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"public function view(#[RouteArgument] int $id): ResponseInterface\n"
+"{\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "You can also inject `CurrentRoute` into an action or a service when you need several arguments or route metadata:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "namespace App\\Web\\Echo;\n"
+#| "\n"
+#| "use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+#| "use Psr\\Http\\Message\\ResponseInterface;\n"
+#| "use Yiisoft\\Html\\Html;\n"
+#| "use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+#| "\n"
+#| "final readonly class Action\n"
+#| "{\n"
+#| "    public function __construct(\n"
+#| "        private ResponseFactoryInterface $responseFactory,\n"
+#| "    ) {}\n"
+#| "\n"
+#| "    public function __invoke(\n"
+#| "        #[RouteArgument('message')]\n"
+#| "        string $message = 'Hello!'\n"
+#| "    ): ResponseInterface\n"
+#| "    {\n"
+#| "        $response = $this->responseFactory->createResponse();\n"
+#| "        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+#| "        return $response;\n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\CurrentRoute;\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function view(CurrentRoute $currentRoute): ResponseInterface\n"
+"    {\n"
+"        $id = $currentRoute->getArgument('id');\n"
+"        $routeName = $currentRoute->getName();\n"
+"\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse();\n"
+"        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "Route arguments aren't request attributes.  Read them from `CurrentRoute` or action parameters marked with `RouteArgument`."
 msgstr ""
 
 #. type: Plain text
@@ -407,6 +510,107 @@ msgstr ""
 msgid "Router matches routes defined in config from top to bottom.  If there is a match, further matching isn't performed and the router executes the route handler to get the response.  If there is no match at all, router passes handling to the next middleware in the [application middleware set](../structure/middleware.md)."
 msgstr ""
 
+#. type: Title ###
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid "Automatic OPTIONS responses"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "When the request path matches a route but the HTTP method doesn't, router returns a `405 Method Not Allowed` response with an `Allow` header:"
+msgstr ""
+
+#. type: Fenced code block (http)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"HTTP/1.1 405 Method Not Allowed\n"
+"Allow: GET\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "For an `OPTIONS` request to the same path, router returns an empty `204 No Content` response with the same `Allow` header:"
+msgstr ""
+
+#. type: Fenced code block (http)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"HTTP/1.1 204 No Content\n"
+"Allow: GET\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "This response is generated from the configured routes before the route action runs.  If an API endpoint needs CORS headers, attach CORS middleware to a route group:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "use App\\Web;\n"
+#| "use Yiisoft\\Router\\Group;\n"
+#| "use Yiisoft\\Router\\Route;\n"
+#| "\n"
+#| "return [\n"
+#| "    Group::create()\n"
+#| "        ->routes(\n"
+#| "            Route::get('/')\n"
+#| "                ->action(Web\\HomePage\\Action::class)\n"
+#| "                ->name('home'),\n"
+#| "            Route::get('/say[/{message}]')\n"
+#| "                ->action(Web\\Echo\\Action::class)\n"
+#| "                ->name('echo/say'),\n"
+#| "        ),\n"
+#| "];\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Api\\CorsMiddleware;\n"
+"use App\\Api\\PostController;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/api')\n"
+"        ->withCors(CorsMiddleware::class)\n"
+"        ->routes(\n"
+"            Route::methods([Method::GET, Method::POST], '/posts')\n"
+"                ->action([PostController::class, 'index'])\n"
+"                ->name('api/posts')\n"
+"        )\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
 #. type: Title ##
 #: ../src/guide/runtime/routing.md
 #, no-wrap
@@ -420,7 +624,27 @@ msgstr ""
 
 #. type: Fenced code block (php)
 #: ../src/guide/runtime/routing.md
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "use App\\Web;\n"
+#| "use Yiisoft\\Router\\Group;\n"
+#| "use Yiisoft\\Router\\Route;\n"
+#| "\n"
+#| "return [\n"
+#| "    Group::create()\n"
+#| "        ->routes(\n"
+#| "            Route::get('/')\n"
+#| "                ->action(Web\\HomePage\\Action::class)\n"
+#| "                ->name('home'),\n"
+#| "            Route::get('/say[/{message}]')\n"
+#| "                ->action(Web\\Echo\\Action::class)\n"
+#| "                ->name('echo/say'),\n"
+#| "        ),\n"
+#| "];\n"
 msgid ""
 "<?php\n"
 "\n"
@@ -430,12 +654,33 @@ msgid ""
 "use Yiisoft\\Router\\Route;\n"
 "\n"
 "return [\n"
-"    Route::get('/test', [TestController::class, 'index'])\n"
+"    Route::get('/test')\n"
+"        ->action([TestController::class, 'index'])\n"
 "        ->name('test/index'),\n"
-"    Route::post('/test/submit/{id}', [TestController::class, 'submit'])\n"
+"    Route::post('/test/submit/{id}')\n"
+"        ->action([TestController::class, 'submit'])\n"
 "        ->name('test/submit')\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
@@ -477,7 +722,327 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
-msgid "Then we use `generate()` method to get actual URL. It accepts a route name and an array of named query parameters.  The code will return \"/test/submit/42.\" If you need absolute URL, use `generateAbsolute()` instead."
+msgid "Then we use `generate()` method to get the actual URL.  It accepts a route name, route arguments, query parameters, and a hash fragment.  The code will return `/test/submit/42`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "Route arguments are used to fill placeholders in the route pattern.  Arguments that aren't used in the pattern are added to the query string when the query parameters array doesn't already contain the same name:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"$url = $urlGenerator->generate(\n"
+"    'test/submit',\n"
+"    ['id' => '42', 'utm' => 'newsletter'],\n"
+"    ['page' => '1']\n"
+");\n"
+"// $url is \"/test/submit/42?page=1&utm=newsletter\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "If you need absolute URL, use `generateAbsolute()` instead."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid "Generating URL from the current route"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "Use `generateFromCurrent()` when a link should keep the current route and most of its arguments.  For example, a detail page can link to another page number while keeping the current route name and `id` argument:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid "$url = $urlGenerator->generateFromCurrent(['page' => '2']);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "The method also keeps query parameters from the current request.  Pass explicit query parameters when a link should replace or add query string values."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid "Locale-based URLs"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "When the locale is part of the URL path, define it as a route argument.  For a Yii application with routes in `config/common/routes.php`, wrap localized routes in a group with a locale parameter:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "use App\\Web;\n"
+#| "use Yiisoft\\Router\\Group;\n"
+#| "use Yiisoft\\Router\\Route;\n"
+#| "\n"
+#| "return [\n"
+#| "    Group::create()\n"
+#| "        ->routes(\n"
+#| "            Route::get('/')\n"
+#| "                ->action(Web\\HomePage\\Action::class)\n"
+#| "                ->name('home'),\n"
+#| "            Route::get('/say[/{message}]')\n"
+#| "                ->action(Web\\Echo\\Action::class)\n"
+#| "                ->name('echo/say'),\n"
+#| "        ),\n"
+#| "];\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web\\HomePage\\Action as HomePageAction;\n"
+"use App\\Web\\Post\\ViewAction as PostViewAction;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/{_locale:en-US|de}')\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(HomePageAction::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/posts/{slug}')\n"
+"                ->action(PostViewAction::class)\n"
+"                ->name('post/view')\n"
+"        )\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "The route `/de/posts/welcome` matches the `post/view` route and stores `_locale` as a route argument with the `de` value."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "In middleware that chooses the request locale, read this argument from `CurrentRoute`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "namespace App\\Web\\Echo;\n"
+#| "\n"
+#| "use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+#| "use Psr\\Http\\Message\\ResponseInterface;\n"
+#| "use Yiisoft\\Html\\Html;\n"
+#| "use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+#| "\n"
+#| "final readonly class Action\n"
+#| "{\n"
+#| "    public function __construct(\n"
+#| "        private ResponseFactoryInterface $responseFactory,\n"
+#| "    ) {}\n"
+#| "\n"
+#| "    public function __invoke(\n"
+#| "        #[RouteArgument('message')]\n"
+#| "        string $message = 'Hello!'\n"
+#| "    ): ResponseInterface\n"
+#| "    {\n"
+#| "        $response = $this->responseFactory->createResponse();\n"
+#| "        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+#| "        return $response;\n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Middleware;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface;\n"
+"use Yiisoft\\Router\\CurrentRoute;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Translator\\TranslatorInterface;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"final readonly class LocaleMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    private const DEFAULT_LOCALE = 'en-US';\n"
+"\n"
+"    public function __construct(\n"
+"        private CurrentRoute $currentRoute,\n"
+"        private TranslatorInterface $translator,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"        private WebView $view,\n"
+"    ) {}\n"
+"\n"
+"    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
+"    {\n"
+"        $locale = $this->currentRoute->getArgument('_locale', self::DEFAULT_LOCALE);\n"
+"\n"
+"        $this->translator->setLocale($locale);\n"
+"        $this->view->setLocale($locale);\n"
+"        $this->urlGenerator->setDefaultArgument('_locale', $locale);\n"
+"\n"
+"        return $handler->handle($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse();\n"
+"        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "Register this middleware in the localized route group before the route action:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "use App\\Web;\n"
+#| "use Yiisoft\\Router\\Group;\n"
+#| "use Yiisoft\\Router\\Route;\n"
+#| "\n"
+#| "return [\n"
+#| "    Group::create()\n"
+#| "        ->routes(\n"
+#| "            Route::get('/')\n"
+#| "                ->action(Web\\HomePage\\Action::class)\n"
+#| "                ->name('home'),\n"
+#| "            Route::get('/say[/{message}]')\n"
+#| "                ->action(Web\\Echo\\Action::class)\n"
+#| "                ->name('echo/say'),\n"
+#| "        ),\n"
+#| "];\n"
+msgid ""
+"use App\\Web\\HomePage\\Action as HomePageAction;\n"
+"use App\\Web\\Middleware\\LocaleMiddleware;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/{_locale:en-US|de}')\n"
+"        ->middleware(LocaleMiddleware::class)\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(HomePageAction::class)\n"
+"                ->name('home')\n"
+"        )\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "After the middleware sets the default `_locale` argument, URL generation can omit it:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"$url = $urlGenerator->generate('post/view', ['slug' => 'welcome']);\n"
+"// On a German page, $url is \"/de/posts/welcome\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/routing.md
+msgid "For a language switcher, use `generateFromCurrent()` and replace only the locale argument:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/routing.md
+#, no-wrap
+msgid ""
+"$url = $urlGenerator->generateFromCurrent(\n"
+"    ['_locale' => 'en-US'],\n"
+"    fallbackRouteName: 'home'\n"
+");\n"
 msgstr ""
 
 #. type: Title ##

@@ -1,0 +1,333 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-08 08:49+0000\n"
+"PO-Revision-Date: 2026-05-08 08:49+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Plain text
+#: ../src/guide/testing/end-to-end.md ../src/guide/testing/unit.md
+msgid "Run only this test:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/functional.md ../src/guide/testing/unit.md
+msgid "Run it:"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "Unit tests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Unit tests check a small piece of PHP code directly. In the Yii application template they live in `tests/Unit` and run through the `Unit` Codeception suite."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "The template includes `tests/Unit/EnvironmentTest.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Unit;\n"
+"\n"
+"use App\\Environment;\n"
+"use Codeception\\Test\\Unit;\n"
+"\n"
+"use function PHPUnit\\Framework\\assertSame;\n"
+"\n"
+"final class EnvironmentTest extends Unit\n"
+"{\n"
+"    protected function _before(): void\n"
+"    {\n"
+"        Environment::prepare();\n"
+"    }\n"
+"\n"
+"    public function testAppEnv(): void\n"
+"    {\n"
+"        assertSame('test', Environment::appEnv());\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Run unit tests:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Unit\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Unit EnvironmentTest\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "Add a unit test"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "For example, create `src/Shared/SlugGenerator.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Shared;\n"
+"\n"
+"final class SlugGenerator\n"
+"{\n"
+"    public function generate(string $title): string\n"
+"    {\n"
+"        $slug = preg_replace('~[^a-z0-9]+~', '-', strtolower($title));\n"
+"\n"
+"        return trim((string) $slug, '-');\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Create `tests/Unit/SlugGeneratorTest.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Unit;\n"
+"\n"
+"use App\\Shared\\SlugGenerator;\n"
+"use Codeception\\Test\\Unit;\n"
+"\n"
+"use function PHPUnit\\Framework\\assertSame;\n"
+"\n"
+"final class SlugGeneratorTest extends Unit\n"
+"{\n"
+"    public function testGenerateCreatesUrlFriendlySlug(): void\n"
+"    {\n"
+"        $generator = new SlugGenerator();\n"
+"\n"
+"        $slug = $generator->generate('Hello, Yii3!');\n"
+"\n"
+"        assertSame('hello-yii3', $slug);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Unit SlugGeneratorTest\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "Test services with dependencies"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Pass dependencies through the constructor and use test doubles for I/O."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+#, fuzzy
+#| msgid "Create `src/Web/Echo/Action.php`:"
+msgid "Create `src/Clock/ClockInterface.php`:"
+msgstr "Создайте файл `src/Web/Echo/Action.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Clock;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"\n"
+"interface ClockInterface\n"
+"{\n"
+"    public function now(): DateTimeImmutable;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+#, fuzzy
+#| msgid "Create `src/Web/Page/PageRepository.php`:"
+msgid "Create `src/Post/Post.php`:"
+msgstr "Создайте файл `src/Web/Page/PageRepository.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Post;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"\n"
+"final readonly class Post\n"
+"{\n"
+"    public function __construct(\n"
+"        public string $title,\n"
+"        public DateTimeImmutable $publishedAt,\n"
+"    ) {\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+#, fuzzy
+#| msgid "Create `src/Web/Echo/Action.php`:"
+msgid "Create `src/Post/PublishPost.php`:"
+msgstr "Создайте файл `src/Web/Echo/Action.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "final class MyService implements MyServiceInterface\n"
+#| "{\n"
+#| "    public function __construct(int $amount)\n"
+#| "    {\n"
+#| "    }\n"
+#| "\n"
+#| "    public function setDiscount(int $discount): void\n"
+#| "    {\n"
+#| "    \n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Post;\n"
+"\n"
+"use App\\Clock\\ClockInterface;\n"
+"\n"
+"final readonly class PublishPost\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClockInterface $clock,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function publish(string $title): Post\n"
+"    {\n"
+"        return new Post($title, $this->clock->now());\n"
+"    }\n"
+"}\n"
+msgstr ""
+"class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Create `tests/Unit/PublishPostTest.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Tests\\Unit;\n"
+"\n"
+"use App\\Clock\\ClockInterface;\n"
+"use App\\Post\\PublishPost;\n"
+"use Codeception\\Test\\Unit;\n"
+"use DateTimeImmutable;\n"
+"\n"
+"use function PHPUnit\\Framework\\assertSame;\n"
+"\n"
+"final class PublishPostTest extends Unit\n"
+"{\n"
+"    public function testPublishSetsPublicationDate(): void\n"
+"    {\n"
+"        $clock = new class implements ClockInterface {\n"
+"            public function now(): DateTimeImmutable\n"
+"            {\n"
+"                return new DateTimeImmutable('2026-05-07 10:00:00');\n"
+"            }\n"
+"        };\n"
+"\n"
+"        $service = new PublishPost($clock);\n"
+"        $post = $service->publish('Testing Yii');\n"
+"\n"
+"        assertSame('Testing Yii', $post->title);\n"
+"        assertSame('2026-05-07 10:00:00', $post->publishedAt->format('Y-m-d H:i:s'));\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/testing/unit.md
+#, no-wrap
+msgid "APP_ENV=test vendor/bin/codecept run Unit PublishPostTest\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/testing/unit.md
+msgid "Keep unit tests focused on one class or one small collaboration. Use functional tests when the behavior depends on Yii configuration, dependency injection, routing, or middleware."
+msgstr ""

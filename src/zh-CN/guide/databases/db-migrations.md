@@ -16,6 +16,26 @@
 2. Scott 将生产服务器上的源代码更新到该发布标签。
 3. Scott 将所有累积的数据库迁移应用到生产数据库。
 
+```mermaid
+sequenceDiagram
+    participant Tim
+    participant VCS as Source control
+    participant Doug
+    participant LocalDB as Local development database
+    participant Scott
+    participant ProdServer as Production server
+    participant ProdDB as Production database
+
+    Tim->>Tim: Creates a new migration
+    Tim->>VCS: Commits the new migration
+    Doug->>VCS: Updates his repository and receives the new migration
+    Doug->>LocalDB: Applies the migration locally
+
+    Scott->>VCS: Creates a release tag with new migrations
+    Scott->>ProdServer: Updates source code to the release tag
+    Scott->>ProdDB: Applies accumulated migrations
+```
+
 Yii 提供了一套迁移命令行工具，允许您：
 
 * 创建新迁移；
