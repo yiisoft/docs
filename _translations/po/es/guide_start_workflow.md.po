@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-08 11:11+0000\n"
+"POT-Creation-Date: 2026-05-14 06:06+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -57,6 +57,53 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/workflow.md
 msgid "In addition to the web application, you can access a console script via `./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/workflow.md
+#, fuzzy, no-wrap
+#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
+msgid "Experimental debugger <span id=\"debugging\"></span>"
+msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Yii has a debugger that can collect debug data for web requests and expose it through the [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/). The debugger is a work in progress. It isn't released as a stable package, and its API, routes, and setup may change or be deprecated."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "To try the current development version, install the debug API package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "composer require yiisoft/yii-debug-api:^3.0@dev\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Enable debug mode in `.env`:"
+msgstr ""
+
+#. type: Fenced code block (dotenv)
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "APP_DEBUG=true\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "The package registers its routes automatically. Start the application and open `/debug` to check that the debug API is available. Then open [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/) and set your application URL there."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"> [!CAUTION]\n"
+"> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.\n"
 msgstr ""
 
 #. type: Title ##
