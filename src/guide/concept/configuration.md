@@ -8,12 +8,15 @@ configuration under `config/` directory.
 
 ## Config plugin
 
-The application template uses [yiisoft/config](https://github.com/yiisoft/config). It has two parts:
+The application template uses [yiisoft/config](https://github.com/yiisoft/config) as a composer plugin to assemble
+configs. It consists of two parts:
 
-1. A Composer plugin that scans installed packages for configuration metadata and builds a merge plan.
-2. A config loader that reads a config group at runtime according to that plan.
+1. Composer plugin that scans installed packages for configurations and builds a merge plan that declares the order
+   of merging found configurations into the final configuration to be passed to [DI container](di-container.md).
+2. Config loader that reads the configuration at runtime according to that merge plan.
 
-Packages expose default config groups via the `config-plugin` key in the `extra` section of `composer.json`:
+Packages provide default configurations through defined [config groups](https://github.com/yiisoft/config#config-groups)
+in the `config-plugin` key in the `extra` section of the `composer.json`:
 
 ```json
 "extra": {
@@ -28,9 +31,10 @@ Packages expose default config groups via the `config-plugin` key in the `extra`
 ```
 
 After Composer updates autoload files, such as during `dump-autoload`, `install`, `require`, `update`, or `remove`,
-the plugin scans installed packages and writes a merge plan to `config/.merge-plan.php`.
+the plugin scans installed packages for configurations and writes a merge plan to `config/.merge-plan.php`.
 
-At runtime, `Yiisoft\Config\Config` loads a config group according to that plan. Configs are read in three layers:
+At runtime, `Yiisoft\Config\Config` loads the defined config groups according to that merge plan.
+Configs are read in three layers:
 
 1. Vendor package configs with default values.
 2. Root package configs from the application `config/` directory.
@@ -38,7 +42,7 @@ At runtime, `Yiisoft\Config\Config` loads a config group according to that plan.
 
 Config keys with the same name are not allowed within a single layer.
 
-The application template stores config metadata in a PHP file instead of inline JSON:
+The application template stores configurations in a PHP file instead of inline JSON:
 
 ```json
 "extra": {
@@ -110,10 +114,10 @@ Config group names are mapping keys. Their values are file paths relative to the
 defaults to the directory containing `composer.json`.
 
 - A string value loads one file.
-- An array loads multiple files in the given order.
+- An array loads and merges multiple files in the given order.
 - `?` marks an optional file.
 - `*` marks a wildcard path.
-- `$group` references another config group.
+- `$group` references another config group to be merged.
 
 The `params` group is special: its values are available as `$params` in other config files by default.
 
@@ -403,7 +407,7 @@ For convenience, there is a naming convention about parameters:
 
 ### Package configs
 
-Config plugin does not copy package configs automatically. It loads vendor package configs directly from `vendor/`
+Config plugin does not copy vendor package configs automatically. It loads them directly from `vendor/`
 as the vendor layer and combines them with the root package and environment-specific layers.
 
 If you want to customize a package config file in your application, use the `yii-config-copy` Composer command to copy
@@ -411,4 +415,4 @@ it into your `config/` directory, usually under `config/packages/`. Once copied,
 package layer, so it can override vendor defaults.
 
 The merge plan stored in `.merge-plan.php` defines how config groups are assembled. If you add new config files or
-directories and update the root package config metadata, rebuild the merge plan with `composer yii-config-rebuild`.
+directories and update the root package configuration, rebuild the merge plan with `composer yii-config-rebuild`.
