@@ -25,7 +25,8 @@ make composer require yiisoft/form-model
 ## Creating a form <span id="creating-form"></span>
 
 The data to be requested from the user will be represented by a `Form` class as shown below and
-saved in the file `/src/Web/Echo/Form.php`:
+saved in the file `/src/Web/Echo/Form.php`. The example uses both built-in validation and custom
+validation with the `Callback` rule:
 
 ```php
 <?php
