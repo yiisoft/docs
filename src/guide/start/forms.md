@@ -52,7 +52,7 @@ of two characters. There's also a custom label for the property.
 ## Custom validation with callback rule
 
 If built-in rules are not enough, use the `Callback` rule as a PHP attribute and put custom logic into a method.
-You can add it to the same form model. For example, add a `yaml` field and validate that it contains valid YAML:
+You can add it to your form model. For example, add a `yaml` field and validate that it contains valid YAML:
 
 ```php
 <?php
@@ -83,7 +83,7 @@ final class Form extends FormModel
             return (new Result())->addError('The value must be a string.');
         }
 
-        $notYamlMessage = 'This value is not a valid YAML.';
+        $notYamlMessage = 'This value is not valid YAML.';
 
         try {
             $data = yaml_parse($value);
