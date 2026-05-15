@@ -1,6 +1,6 @@
 # Working with forms
 
-This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message via form.
+This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message and YAML via form.
 
 Through this tutorial, you will learn how to:
 
@@ -173,11 +173,13 @@ $htmlForm = Html::form()
 
 <?= $htmlForm->open() ?>
     <?= Field::text($form, 'message')->required() ?>
+    <?= Field::text($form, 'yaml')->required() ?>
     <?= Html::submitButton('Say') ?>
 <?= $htmlForm->close() ?>
 
 <?php if ($form->isValid()): ?>
     Echo said: <?= Html::encode($form->message) ?>
+    YAML: <?= Html::encode($form->yaml) ?>
 <?php endif ?>
 ```
 
@@ -199,11 +201,11 @@ The template renders the CSRF token value as a hidden input to ensure that the r
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-You use `Field::text()` to output "message" field, so it takes care about filling the value, escaping it,
+You use `Field::text()` to output "message" and "yaml" fields, so it takes care about filling the value, escaping it,
 rendering field label and validation errors.
 
 Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
-at least 2 characters."
+at least 2 characters." If `yaml` value is not valid YAML, you will also get a validation error.
 
 ## Trying it Out <span id="trying-it-out"></span>
 
@@ -213,9 +215,9 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page with a form input field and a label that indicates what data to enter.
+You will see a page with two form input fields and labels that indicate what data to enter.
 Also, the form has a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
-that the field is required. If you enter a single character, the form displays an error message next to
+that fields are required. If you enter a single character in message or invalid YAML, the form displays an error message next to
 the problematic input field.
 
 ![Form with a validation error](/images/guide/start/form-error.png)
