@@ -48,6 +48,7 @@ final class Form extends FormModel
     #[Length(min: 2)]
     public string $message = '';
 
+    #[Label('YAML content')]
     #[Callback(method: 'validateYaml')]
     public string $yaml = '';
 
