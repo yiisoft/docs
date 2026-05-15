@@ -1,6 +1,6 @@
 # Working with forms
 
-This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message and YAML via form.
+This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message and a YAML value via form to demonstrate both built-in and custom validation.
 
 Through this tutorial, you will learn how to:
 
@@ -205,7 +205,7 @@ You use `Field::text()` to output "message" and "yaml" fields, so it takes care 
 rendering field label and validation errors.
 
 Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
-at least 2 characters." If `yaml` value is not valid YAML, you will also get a validation error.
+at least 2 characters." If `yaml` value is not valid YAML, you will also get a validation error from `validateYaml()`.
 
 ## Trying it Out <span id="trying-it-out"></span>
 
