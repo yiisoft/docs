@@ -49,6 +49,43 @@ final class Form extends FormModel
 In the above example, the `Form` has a single string property `$message` which length should be at least
 of two characters. There's also a custom label for the property.
 
+## Custom validation with callback rule
+
+If built-in rules are not enough, use the `Callback` rule as a PHP attribute and put custom logic into a method.
+For example, you can validate that a field contains a UUID v7:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Echo;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+
+final class Form extends FormModel
+{
+    #[Callback(method: 'validateMessageAsUuidV7')]
+    public string $message = '';
+
+    private function validateMessageAsUuidV7(mixed $value): Result
+    {
+        if (Uuid::isValid($value, 'v7')) {
+            return new Result();
+        }
+
+        return (new Result())->addError('Message must be a valid UUID v7.');
+    }
+}
+```
+
+You can combine `Callback` with other attributes such as `Required`, `Length`, or `Regex` on the same property.
+In this example, `Uuid::isValid()` represents your project's UUID helper.
+See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
+for full examples and available method signatures.
+
 ## Using the form <span id="using-form"></span> 
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
