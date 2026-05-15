@@ -173,7 +173,7 @@ $htmlForm = Html::form()
 
 <?= $htmlForm->open() ?>
     <?= Field::text($form, 'message')->required() ?>
-    <?= Field::text($form, 'yaml')->required() ?>
+    <?= Field::textarea($form, 'yaml')->required() ?>
     <?= Html::submitButton('Say') ?>
 <?= $htmlForm->close() ?>
 
@@ -201,7 +201,7 @@ The template renders the CSRF token value as a hidden input to ensure that the r
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-You use `Field::text()` to output "message" and "yaml" fields, so it takes care about filling the value, escaping it,
+You use `Field::text()` and `Field::textarea()` to output "message" and "yaml" fields, so it takes care about filling the value, escaping it,
 rendering field label and validation errors.
 
 Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
@@ -215,7 +215,7 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page with two form input fields and labels that indicate what data to enter.
+You will see a page with a text field and a textarea with labels that indicate what data to enter.
 Also, the form has a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
 that fields are required. If you enter a single character in message or invalid YAML, the form displays an error message next to
 the problematic input field.
