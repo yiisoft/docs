@@ -61,16 +61,17 @@ declare(strict_types=1);
 
 namespace App\Web\Echo;
 
+use App\Uuid;
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\Callback;
 
 final class Form extends FormModel
 {
-    #[Callback(method: 'validateMessageAsUuidV7')]
+    #[Callback(method: 'validateUuidV7')]
     public string $message = '';
 
-    private function validateMessageAsUuidV7(mixed $value): Result
+    private function validateUuidV7(mixed $value): Result
     {
         if (Uuid::isValid($value, 'v7')) {
             return new Result();
