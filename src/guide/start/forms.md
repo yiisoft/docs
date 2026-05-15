@@ -52,7 +52,7 @@ of two characters. There's also a custom label for the property.
 ## Custom validation with callback rule
 
 If built-in rules are not enough, use the `Callback` rule as a PHP attribute and put custom logic into a method.
-For example, you can validate that a field contains a UUID v7:
+You can add it to the same form model. For example, add a `yaml` field and validate that it contains valid YAML:
 
 ```php
 <?php
@@ -61,29 +61,46 @@ declare(strict_types=1);
 
 namespace App\Web\Echo;
 
-use App\Uuid;
+use Exception;
 use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Length;
 
 final class Form extends FormModel
 {
-    #[Callback(method: 'validateUuidV7')]
+    #[Label('The message to be echoed')]
+    #[Length(min: 2)]
     public string $message = '';
 
-    private function validateUuidV7(mixed $value): Result
+    #[Callback(method: 'validateYaml')]
+    public string $yaml = '';
+
+    private function validateYaml(mixed $value): Result
     {
-        if (Uuid::isValid($value, 'v7')) {
-            return new Result();
+        if (!is_string($value)) {
+            return (new Result())->addError('The value must be a string.');
         }
 
-        return (new Result())->addError('Message must be a valid UUID v7.');
+        $notYamlMessage = 'This value is not a valid YAML.';
+
+        try {
+            $data = yaml_parse($value);
+        } catch (Exception) {
+            return (new Result())->addError($notYamlMessage);
+        }
+
+        if ($data === false) {
+            return (new Result())->addError($notYamlMessage);
+        }
+
+        return new Result();
     }
 }
 ```
 
 You can combine `Callback` with other attributes such as `Required`, `Length`, or `Regex` on the same property.
-In this example, `Uuid::isValid()` represents your project's UUID helper.
 See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
 for full examples and available method signatures.
 
