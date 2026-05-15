@@ -34,33 +34,6 @@ declare(strict_types=1);
 
 namespace App\Web\Echo;
 
-use Yiisoft\FormModel\FormModel;
-use Yiisoft\Validator\Label;
-use Yiisoft\Validator\Rule\Length;
-
-final class Form extends FormModel
-{
-    #[Label('The message to be echoed')]
-    #[Length(min: 2)]
-    public string $message = '';
-}
-```
-
-In the above example, the `Form` has a single string property `$message` which length should be at least
-of two characters. There's also a custom label for the property.
-
-## Custom validation with callback rule
-
-If built-in rules are not enough, use the `Callback` rule as a PHP attribute and put custom logic into a method.
-You can add it to your form model. For example, add a `yaml` field and validate that it contains valid YAML:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Web\Echo;
-
 use Exception;
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Label;
@@ -100,6 +73,8 @@ final class Form extends FormModel
 }
 ```
 
+In the above example, the `Form` has a `$message` property validated with `Length` and a `$yaml` property validated
+with the `Callback` rule using `validateYaml()`.
 You can combine `Callback` with other attributes such as `Required`, `Length`, or `Regex` on the same property.
 See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
 for full examples and available method signatures.
