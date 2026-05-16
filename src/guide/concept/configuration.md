@@ -9,11 +9,7 @@ configuration under `config/` directory.
 ## Config plugin
 
 The application template uses [yiisoft/config](https://github.com/yiisoft/config) as a composer plugin to assemble
-configs. It consists of two parts:
-
-1. Composer plugin that scans installed packages for configurations and builds a merge plan that declares the order
-   of merging found configurations into the final configuration to be passed to [DI container](di-container.md).
-2. Config loader that reads the configuration at runtime according to that merge plan.
+configs.
 
 Packages provide default configurations through defined [config groups](https://github.com/yiisoft/config#config-groups)
 in the `config-plugin` key in the `extra` section of the `composer.json`:
@@ -32,6 +28,8 @@ in the `config-plugin` key in the `extra` section of the `composer.json`:
 
 After Composer updates autoload files, such as during `dump-autoload`, `install`, `require`, `update`, or `remove`,
 the plugin scans installed packages for configurations and writes a merge plan to `config/.merge-plan.php`.
+The merge plan declares the order of merging found configurations into the final configuration to be passed
+to [DI container](di-container.md).
 
 At runtime, `Yiisoft\Config\Config` loads the defined config groups according to that merge plan.
 Configs are read in three layers:
@@ -40,7 +38,8 @@ Configs are read in three layers:
 2. Root package configs from the application `config/` directory.
 3. Environment-specific configs from the application.
 
-Config keys with the same name are not allowed within a single layer.
+> [!WARNING]
+> Config keys with the same name are not allowed within a single layer.
 
 The application template stores configurations in a PHP file instead of inline JSON:
 
