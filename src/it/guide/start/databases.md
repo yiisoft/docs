@@ -606,7 +606,7 @@ use Yiisoft\Yii\View\Renderer\Csrf;
 
 /** @var Page $page */
 /** @var UrlGeneratorInterface $urlGenerator */
-/* @var Csrf $csrf */
+/** @var Csrf $csrf */
 ?>
 
 <h1><?= Html::a('Pages', $urlGenerator->generate('page/list')) ?> → <?= Html::encode($page->title) ?></h1>
