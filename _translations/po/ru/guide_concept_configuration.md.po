@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:36+0000\n"
+"POT-Creation-Date: 2026-05-23 15:17+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Yii3 configs are part of the application. You can change many aspects of how the application works by editing configuration under `config/`."
+msgid "Yii3 configs are part of the application. You can change many aspects of how the application works by editing configuration under `config/` directory."
 msgstr ""
 
 #. type: Title ##
@@ -43,96 +43,184 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "In the application template [yiisoft/config](https://github.com/yiisoft/config) is used. Since writing all application configurations from scratch is a tedious process, many packages offer default configs, and the plugin helps with copying these into the application."
+msgid "The application template uses [yiisoft/config](https://github.com/yiisoft/config) as a composer plugin to assemble configs."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "To offer default configs, `composer.json` of the package has to have `config-plugin` section.  When installing or updating packages with Composer, the plugin reads `config-plugin` sections for each dependency, copies files themselves to application `config/packages/` if they don't yet exist and writes a merge plan to `config/packages/merge_plan.php`. The merge plan defines how to merge the configs into a single big array ready to be passed to [DI container](di-container.md)."
-msgstr ""
-
-#. type: Plain text
-#: ../src/guide/concept/configuration.md
-msgid "Take a look at what's in the \"yiisoft/app\" `composer.json` by default:"
+msgid "Packages provide default configurations through defined [config groups](https://github.com/yiisoft/config#config-groups)  in the `config-plugin` key in the `extra` section of the `composer.json`:"
 msgstr ""
 
 #. type: Fenced code block (json)
 #: ../src/guide/concept/configuration.md
 #, no-wrap
 msgid ""
-"\"config-plugin-options\": {\n"
-"  \"output-directory\": \"config/packages\"\n"
-"},\n"
-"\"config-plugin\": {\n"
-"    \"common\": \"config/common/*.php\",\n"
-"    \"params\": [\n"
-"        \"config/params.php\",\n"
-"        \"?config/params-local.php\"\n"
-"    ],\n"
-"    \"web\": [\n"
-"        \"$common\",\n"
-"        \"config/web/*.php\"\n"
-"    ],\n"
-"    \"console\": [\n"
-"        \"$common\",\n"
-"        \"config/console/*.php\"\n"
-"    ],\n"
-"    \"events\": \"config/events.php\",\n"
-"    \"events-web\": [\n"
-"        \"$events\",\n"
-"        \"config/events-web.php\"\n"
-"    ],\n"
-"    \"events-console\": [\n"
-"        \"$events\",\n"
-"        \"config/events-console.php\"\n"
-"    ],\n"
-"    \"providers\": \"config/providers.php\",\n"
-"    \"providers-web\": [\n"
-"        \"$providers\",\n"
-"        \"config/providers-web.php\"\n"
-"    ],\n"
-"    \"providers-console\": [\n"
-"        \"$providers\",\n"
-"        \"config/providers-console.php\"\n"
-"    ],\n"
-"    \"routes\": \"config/routes.php\"\n"
-"},\n"
+"\"extra\": {\n"
+"    \"config-plugin-options\": {\n"
+"        \"source-directory\": \"config\",\n"
+"    },\n"
+"    \"config-plugin\": {\n"
+"        \"params\": \"params.php\",\n"
+"        \"web\": \"web.php\"\n"
+"    }\n"
+"}\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "There are many named configs defined. For each name, there is a configuration."
+msgid "After Composer updates autoload files, such as during `dump-autoload`, `install`, `require`, `update`, or `remove`, the plugin scans installed packages for configurations and writes a merge plan to `config/.merge-plan.php`.  The merge plan declares the order of merging found configurations into the final configuration to be passed to [DI container](di-container.md)."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "A string means that the plugin takes config as is and merges it with same-named configs from packages you require.  That happens if these packages have `config-plugin` in their `composer.json`."
+msgid "At runtime, `Yiisoft\\Config\\Config` loads the defined config groups according to that merge plan.  Configs are read in three layers:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/guide/concept/configuration.md
+msgid "Vendor package configs with default values."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/guide/concept/configuration.md
+msgid "Root package configs from the application `config/` directory."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/guide/concept/configuration.md
+#, fuzzy
+#| msgid "Next, configure the application."
+msgid "Environment-specific configs from the application."
+msgstr "Далее сконфигурируем приложение."
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"> [!WARNING]\n"
+"> Config keys with the same name are not allowed within a single layer.\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "The array means that the plugin will merge many files in the order they're specified."
+msgid "The application template stores configurations in a PHP file instead of inline JSON:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"\"extra\": {\n"
+"    \"config-plugin-file\": \"config/configuration.php\"\n"
+"}\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "`?` at the beginning of the file path indicated that the file may be absent. In this case, it's skipped."
+msgid "That file returns the same keys you could otherwise define in `composer.json`: `config-plugin`, `config-plugin-options`, and `config-plugin-environments`."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/configuration.md
+#, no-wrap
+msgid ""
+"use App\\Environment;\n"
+"\n"
+"return [\n"
+"    'config-plugin-options' => [\n"
+"        'source-directory' => 'config',\n"
+"    ],\n"
+"    'config-plugin' => [\n"
+"        'params' => 'common/params.php',\n"
+"        'params-web' => [\n"
+"            '$params',\n"
+"            'web/params.php',\n"
+"        ],\n"
+"        'params-console' => [\n"
+"            '$params',\n"
+"            'console/params.php',\n"
+"        ],\n"
+"        'bootstrap' => 'common/bootstrap.php',\n"
+"        'bootstrap-web' => '$bootstrap',\n"
+"        'bootstrap-console' => '$bootstrap',\n"
+"        'di' => 'common/di/*.php',\n"
+"        'di-web' => [\n"
+"            '$di',\n"
+"            'web/di/*.php',\n"
+"        ],\n"
+"        'di-console' => '$di',\n"
+"        'di-delegates' => [],\n"
+"        'di-delegates-console' => '$di-delegates',\n"
+"        'di-delegates-web' => '$di-delegates',\n"
+"        'di-providers' => [],\n"
+"        'di-providers-web' => '$di-providers',\n"
+"        'di-providers-console' => '$di-providers',\n"
+"        'events' => [],\n"
+"        'events-web' => '$events',\n"
+"        'events-console' => '$events',\n"
+"        'routes' => 'common/routes.php',\n"
+"    ],\n"
+"    'config-plugin-environments' => [\n"
+"        Environment::DEV => [\n"
+"            'params' => [\n"
+"                'environments/dev/params.php',\n"
+"            ],\n"
+"        ],\n"
+"        Environment::TEST => [\n"
+"            'params' => [\n"
+"                'environments/test/params.php',\n"
+"            ],\n"
+"        ],\n"
+"        Environment::PROD => [\n"
+"            'params' => [\n"
+"                'environments/prod/params.php',\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"];\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "`$` at the beginning of the name means a reference to another named config."
+msgid "Config group names are mapping keys. Their values are file paths relative to the `source-directory` option, which defaults to the directory containing `composer.json`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "A string value loads one file."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "An array loads and merges multiple files in the given order."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`?` marks an optional file."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`*` marks a wildcard path."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`$group` references another config group to be merged."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "`params` is a bit special because it's reserved for application parameters. These are automatically available as `$params` in all other configuration files."
+msgid "The `params` group is special: its values are available as `$params` in other config files by default."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "You can learn more about config plugin features [from its documentation](https://github.com/yiisoft/config/blob/master/README.md)."
-msgstr ""
+#, fuzzy
+#| msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
+msgid "You can read more in the [yiisoft/config documentation](https://github.com/yiisoft/config/blob/master/README.md)."
+msgstr "Дополнительную информацию о шаблоне приложения можно найти в [документации пакета yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md)."
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md
@@ -142,7 +230,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Now, as you know how the plugin assembles configs, look at `config` directory:"
+msgid "Now, as you know how the plugin assembles configs, look at the `config/` directory structure used by the default application template:"
 msgstr ""
 
 #. type: Fenced code block
@@ -150,25 +238,56 @@ msgstr ""
 #, no-wrap
 msgid ""
 "common/\n"
-"    application-parameters.php\n"
-"    i18n.php\n"
-"    router.php\n"
+"    bootstrap.php\n"
+"    params.php\n"
+"    routes.php\n"
+"    di/\n"
+"        *.php\n"
 "console/\n"
-"packages/\n"
-"    yiisoft/\n"
-"    dist.lock\n"
-"    merge_plan.php\n"
+"    params.php\n"
+"environments/\n"
+"    dev/\n"
+"        params.php\n"
+"    prod/\n"
+"        params.php\n"
+"    test/\n"
+"        params.php\n"
 "web/\n"
-"    application.php\n"
-"    psr17.php\n"
-"events.php\n"
-"events-console.php\n"
-"events-web.php\n"
-"params.php\n"
-"providers.php\n"
-"providers-console.php\n"
-"providers-web.php\n"
-"routes.php\n"
+"    params.php\n"
+"    di/\n"
+"        *.php\n"
+".merge-plan.php\n"
+"configuration.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "This structure follows the groups defined in `config/configuration.php`:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`params`, `params-web`, and `params-console` load parameter files from `common/`, `web/`, and `console/`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`di` and `di-web` load container definitions from `common/di/` and `web/di/`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`routes` and `bootstrap` load `common/routes.php` and `common/bootstrap.php`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/configuration.md
+msgid "`config-plugin-environments` adds environment-specific parameter files from `environments/dev/`, `environments/test/`, and `environments/prod/`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "At runtime, `.merge-plan.php` stores the assembled merge plan generated from `configuration.php`."
 msgstr ""
 
 #. type: Title ###
@@ -179,7 +298,12 @@ msgstr "Безопасная конфигурация сервера"
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "The application consists of a set of services registered in a [dependency container](di-container.md). The config files that responsible for direct dependency container configuration are under `common/`, `console/` and `web/` directories.  We use `web/` for config specific to web application and `console/` for config specific to console commands. Both web and console are sharing configuration under `common/`."
+msgid "The application consists of services registered in a [dependency container](di-container.md). In the default template, direct container definitions live in `config/common/di/*.php` and `config/web/di/*.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "Definitions from `common/di/` are shared by web and console entry points. The `di-web` group adds web-specific definitions from `web/di/`. The `di-console` group currently reuses the shared `di` definitions without extra files."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -190,22 +314,24 @@ msgid ""
 "\n"
 "declare(strict_types=1);\n"
 "\n"
-"use App\\ApplicationParameters;\n"
+"use App\\Shared\\ApplicationParams;\n"
 "\n"
 "/** @var array $params */\n"
 "\n"
 "return [\n"
-"    ApplicationParameters::class => [\n"
-"        'class' => ApplicationParameters::class,\n"
-"        'charset()' => [$params['app']['charset']],\n"
-"        'name()' => [$params['app']['name']],\n"
+"    ApplicationParams::class => [\n"
+"        '__construct()' => [\n"
+"            'name' => $params['application']['name'],\n"
+"            'charset' => $params['application']['charset'],\n"
+"            'locale' => $params['application']['locale'],\n"
+"        ],\n"
 "    ],\n"
 "];\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Config plugin passes special `$params` variable to all config files.  The code passes its values to the service."
+msgid "Config plugin passes the special `$params` variable to all config files. The definition uses it to configure services."
 msgstr ""
 
 #. type: Plain text
@@ -241,7 +367,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Similar to container configuration files, there are three configs for specifying service providers: `providers-console.php` for console commands, `providers-web.php` for web application and `providers.php` for both."
+msgid "The default template exposes three config groups for service providers: `di-providers`, `di-providers-web`, and `di-providers-console`. In the template they are initialized as empty arrays in `config/configuration.php`, and you can later populate them inline or switch them to load values from files."
 msgstr ""
 
 #. type: Plain text
@@ -300,6 +426,7 @@ msgid ""
 "        ],\n"
 "    ],\n"
 "    // ...\n"
+"];\n"
 msgstr ""
 
 #. type: Plain text
@@ -360,18 +487,24 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "You can configure how web application responds to certain URLs in `config/routes.php`:"
+msgid "You can configure how the web application responds to certain URLs in `config/common/routes.php`:"
 msgstr ""
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/configuration.md
 #, no-wrap
 msgid ""
-"use App\\Controller\\SiteController;\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
 "use Yiisoft\\Router\\Route;\n"
 "\n"
 "return [\n"
-"    Route::get('/')->action([SiteController::class, 'index'])->name('site/index')\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"        ),\n"
 "];\n"
 msgstr ""
 
@@ -389,7 +522,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Many services emit certain events that you can attach to.  You could do that via three config files: `events-web.php` for web application events, `events-console.php` for console events and `events.php` for both.  The configuration is an array where keys are event names and values are an array of handlers:"
+msgid "Many services emit certain events that you can attach to.  The default template defines three event config groups in `config/configuration.php`: `events`, `events-web`, and `events-console`. They are empty by default, but you can populate them inline or point them to event config files."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "The configuration is an array where keys are event names and values are arrays of handlers:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -418,7 +556,7 @@ msgid ""
 "        // In this case, the `InvokableClass` with the `__invoke` method will be instantiated by your DI container\n"
 "        InvokableClass::class,\n"
 "        \n"
-"        // Any definition of an invokable class may be here while your `$container->has('the definition)` \n"
+"        // Any invokable class definition may be here as long as `$container->has('the definition')` is true.\n"
 "        'di-alias'\n"
 "    ],\n"
 "];\n"
@@ -437,7 +575,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Parameters, `config/params.php` store configuration values that are used in other config files to configuring services and service providers."
+msgid "Base parameters are stored in `config/common/params.php`. They are then extended by `config/web/params.php`, `config/console/params.php`, and environment-specific files under `config/environments/`."
 msgstr ""
 
 #. type: Plain text
@@ -445,14 +583,16 @@ msgstr ""
 #, no-wrap
 msgid ""
 "> [!TIP]\n"
-"> Don't use parameters, constants or environment variables directly in your application, configure\n"
+"> Don't use parameters, constants, or environment variables directly in your application, configure\n"
 "> services instead.\n"
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Default application `params.php` looks like the following:"
-msgstr ""
+#, fuzzy
+#| msgid "That's equal to the following:"
+msgid "The default application `common/params.php` looks like the following:"
+msgstr "Это соответствует:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/configuration.md
@@ -462,47 +602,37 @@ msgid ""
 "\n"
 "declare(strict_types=1);\n"
 "\n"
-"use App\\Command\\Hello;\n"
-"use App\\ViewInjection\\ContentViewInjection;\n"
-"use App\\ViewInjection\\LayoutViewInjection;\n"
+"use App\\Shared\\ApplicationParams;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Assets\\AssetManager;\n"
 "use Yiisoft\\Definitions\\Reference;\n"
-"use Yiisoft\\Yii\\View\\CsrfViewInjection;\n"
+"use Yiisoft\\Router\\CurrentRoute;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\CsrfViewInjection;\n"
 "\n"
 "return [\n"
-"    'app' => [\n"
-"        'charset' => 'UTF-8',\n"
-"        'locale' => 'en',\n"
-"        'name' => 'My Project',\n"
-"    ],\n"
+"    'application' => require __DIR__ . '/application.php',\n"
 "\n"
 "    'yiisoft/aliases' => [\n"
-"        'aliases' => [\n"
-"            '@root' => dirname(__DIR__),\n"
-"            '@assets' => '@root/public/assets',\n"
-"            '@assetsUrl' => '/assets',\n"
-"            '@baseUrl' => '/',\n"
-"            '@message' => '@root/resources/message',\n"
-"            '@npm' => '@root/node_modules',\n"
-"            '@public' => '@root/public',\n"
-"            '@resources' => '@root/resources',\n"
-"            '@runtime' => '@root/runtime',\n"
-"            '@vendor' => '@root/vendor',\n"
-"            '@layout' => '@resources/views/layout',\n"
-"            '@views' => '@resources/views',\n"
+"        'aliases' => require __DIR__ . '/aliases.php',\n"
+"    ],\n"
+"\n"
+"    'yiisoft/view' => [\n"
+"        'basePath' => null,\n"
+"        'parameters' => [\n"
+"            'assetManager' => Reference::to(AssetManager::class),\n"
+"            'applicationParams' => Reference::to(ApplicationParams::class),\n"
+"            'aliases' => Reference::to(Aliases::class),\n"
+"            'urlGenerator' => Reference::to(UrlGeneratorInterface::class),\n"
+"            'currentRoute' => Reference::to(CurrentRoute::class),\n"
 "        ],\n"
 "    ],\n"
 "\n"
-"    'yiisoft/yii-view' => [\n"
+"    'yiisoft/yii-view-renderer' => [\n"
+"        'viewPath' => null,\n"
+"        'layout' => '@src/Web/Shared/Layout/Main/layout.php',\n"
 "        'injections' => [\n"
-"            Reference::to(ContentViewInjection::class),\n"
 "            Reference::to(CsrfViewInjection::class),\n"
-"            Reference::to(LayoutViewInjection::class),\n"
-"        ],\n"
-"    ],\n"
-"\n"
-"    'yiisoft/yii-console' => [\n"
-"        'commands' => [\n"
-"            'hello' => Hello::class,\n"
 "        ],\n"
 "    ],\n"
 "];\n"
@@ -520,7 +650,7 @@ msgstr ""
 
 #. type: Bullet: '2. '
 #: ../src/guide/concept/configuration.md
-msgid "In case parameters are for the application itself, as in `app`, skip package prefix."
+msgid "In case parameters are for the application itself, as in `application`, skip package prefix."
 msgstr ""
 
 #. type: Bullet: '3. '
@@ -541,10 +671,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Config plugin described copy default package configurations to `packages/` directory. Once copied you own the configs, so you can adjust these as you like. `yiisoft/` in the default template stands for package vendor. Since only `yiisoft` packages are in template, there's a single directory. `merge_plan.php` is used in runtime to get the order on how configs are merged.  Note that for config keys there should be a single source of truth.  One config can't override values of another config."
+msgid "Config plugin does not copy vendor package configs automatically. It loads them directly from `vendor/` as the vendor layer and combines them with the root package and environment-specific layers."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "`dist.lock` is used by the plugin to keep track of changes and display diff between current config and example one."
+msgid "If you want to customize a package config file in your application, use the `yii-config-copy` Composer command to copy it into your `config/` directory, usually under `config/packages/`. Once copied, the file becomes part of the root package layer, so it can override vendor defaults."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/concept/configuration.md
+msgid "The merge plan stored in `.merge-plan.php` defines how config groups are assembled. If you add new config files or directories and update the root package configuration, rebuild the merge plan with `composer yii-config-rebuild`."
 msgstr ""
