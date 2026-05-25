@@ -202,4 +202,7 @@ You've also learned how to get data from users and how to display data back in t
 This is a task that could take you a lot of time when developing an application, but Yii provides powerful widgets
 to make this task easy.
 
+If you need to accept JSON request bodies, receive form data in an API endpoint, or return REST-style JSON responses,
+see the [JSON API quick start](../rest/quick-start.md).
+
 In the next section, you will learn how to work with databases, which are needed in nearly every application.
