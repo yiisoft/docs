@@ -106,7 +106,7 @@ export default {
                         {
                             text: 'REST APIs',
                             items: [
-                                {text: 'JSON API Quick Start', link: '/guide/rest/quick-start'}
+                                {text: 'Quick Start', link: '/guide/rest/quick-start'}
                             ]
                         },
                         {

@@ -99,7 +99,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 ## REST APIs
 
-- [JSON API quick start](rest/quick-start.md)
+- [Quick start](rest/quick-start.md)
 - [Resources](rest/resources.md) TODO
 - [Controllers](rest/controllers.md) TODO
 - [Routing](rest/routing.md) TODO

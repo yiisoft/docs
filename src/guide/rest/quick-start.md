@@ -1,4 +1,4 @@
-# JSON API quick start
+# Quick start
 
 Yii works with JSON APIs through the same PSR-7 request and response objects used by web pages.
 For API endpoints, the usual flow is:
@@ -8,49 +8,16 @@ For API endpoints, the usual flow is:
 * Validate the input object.
 * Return a response whose data is formatted as JSON.
 
-The [API application template](https://github.com/yiisoft/app-api) already contains this setup and is the best
-starting point for a dedicated API project.
+This guide assumes that you use the [API application template](https://github.com/yiisoft/app-api).
+It already includes request body parsing, request input resolving, JSON data responses, and presenter examples.
 For complete applications with different structures, see [Demo applications](../start/demo-apps.md).
-For an existing web application, install the packages you need:
-
-```shell
-composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
-```
-
-If you use Docker:
-
-```shell
-make composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
-```
-
-## Parsing JSON requests
-
-HTML forms submit `application/x-www-form-urlencoded` or `multipart/form-data` request bodies.
-These values are available through the PSR-7 parsed body and uploaded files.
-
-Raw JSON requests need a body parser middleware before routing and action execution.
-`yiisoft/request-body-parser` parses `application/json` requests by default and writes the result to
-`$request->getParsedBody()`:
-
-```php
-use Yiisoft\Request\Body\RequestBodyParser;
-use Yiisoft\Router\Middleware\Router;
-
-return [
-    RequestBodyParser::class,
-    Router::class,
-];
-```
-
-In a full application, this middleware is usually configured in the HTTP application middleware dispatcher.
-See the [API application template configuration](https://github.com/yiisoft/app-api/blob/master/config/web/di/application.php)
-for a complete example.
 
 ## Creating request input
 
 Use [yiisoft/input-http](https://github.com/yiisoft/input-http) to describe request data as a typed input object.
 Attach `#[FromBody]` when all values should come from the parsed request body.
-The same input works for JSON requests parsed by `RequestBodyParser` and for regular form data available as a parsed body.
+
+Create `src/Api/Post/CreatePostInput.php`:
 
 ```php
 <?php
@@ -87,9 +54,17 @@ Content-Type: application/json
 
 `CreatePostInput` receives `title` and `content` from the decoded JSON body.
 
-If a value must come from a specific part of the request, use parameter attributes instead:
+If a value must come from a specific part of the request, use parameter attributes instead.
+
+For example, create `src/Api/Post/UpdatePostInput.php`:
 
 ```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Api\Post;
+
 use Yiisoft\Input\Http\Attribute\Parameter\Body;
 use Yiisoft\Input\Http\Attribute\Parameter\Query;
 
@@ -106,9 +81,17 @@ final class UpdatePostInput
 }
 ```
 
-For file uploads submitted as `multipart/form-data`, map uploaded files with `#[UploadedFiles]`:
+For file uploads submitted as `multipart/form-data`, map uploaded files with `#[UploadedFiles]`.
+
+For example, create `src/Api/Post/UploadImageInput.php`:
 
 ```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Api\Post;
+
 use Yiisoft\Input\Http\Attribute\Parameter\Body;
 use Yiisoft\Input\Http\Attribute\Parameter\UploadedFiles;
 
@@ -123,30 +106,12 @@ final class UploadImageInput
 }
 ```
 
-## Resolving input in actions
+## Creating an action
 
 `RequestInputParametersResolver` lets an action type-hint request input objects directly.
-`HydratorAttributeParametersResolver` lets an action use individual request attributes such as `#[Query]` and `#[Body]`.
+In the API application template, it is already configured in `config/web/di/application.php`.
 
-```php
-use Yiisoft\Definitions\Reference;
-use Yiisoft\Input\Http\HydratorAttributeParametersResolver;
-use Yiisoft\Input\Http\RequestInputParametersResolver;
-use Yiisoft\Middleware\Dispatcher\CompositeParametersResolver;
-use Yiisoft\Middleware\Dispatcher\ParametersResolverInterface;
-
-return [
-    ParametersResolverInterface::class => [
-        'class' => CompositeParametersResolver::class,
-        '__construct()' => [
-            Reference::to(HydratorAttributeParametersResolver::class),
-            Reference::to(RequestInputParametersResolver::class),
-        ],
-    ],
-];
-```
-
-Then use the input object in an action:
+Create `src/Api/Post/CreatePostAction.php`:
 
 ```php
 <?php
@@ -181,9 +146,10 @@ final readonly class CreatePostAction
 }
 ```
 
-If you prefer centralized validation handling, configure `RequestInputParametersResolver` to throw
+You can validate the input in the action as shown above.
+Alternatively, configure `RequestInputParametersResolver` to throw
 `Yiisoft\Input\Http\InputValidationException` and convert that exception to a JSON response in one error handler.
-The API application template uses this approach.
+The API application template uses this centralized approach.
 
 ## Returning JSON responses
 
@@ -192,22 +158,7 @@ For small endpoints, you can write JSON to a PSR-7 response manually as shown in
 For APIs, prefer [yiisoft/data-response](https://github.com/yiisoft/data-response), which formats response data and
 sets the `Content-Type` header.
 
-```php
-use Yiisoft\DataResponse\Formatter\JsonFormatter;
-use Yiisoft\DataResponse\Middleware\ContentNegotiatorDataResponseMiddleware;
-
-return [
-    static fn() => new ContentNegotiatorDataResponseMiddleware(
-        formatters: [
-            'application/json' => new JsonFormatter(),
-        ],
-        fallback: new JsonFormatter(),
-    ),
-    // error handling, request body parser, router, and not-found middleware
-];
-```
-
-With that middleware, actions can return data responses. A small response factory keeps the response shape consistent:
+The API application template keeps response formatting in `src/Api/Shared/ResponseFactory.php`:
 
 ```php
 <?php
@@ -256,6 +207,8 @@ final readonly class ResponseFactory
 Presenters transform application objects to API output arrays.
 Keep them separate from domain entities so changing an API response doesn't force changes in business objects.
 
+Create `src/Api/Post/PostPresenter.php`:
+
 ```php
 <?php
 
@@ -287,7 +240,7 @@ The API template contains a fuller implementation of
 
 ## Routing an endpoint
 
-Register API routes as usual:
+Register API routes in `config/common/routes.php`:
 
 ```php
 use App\Api\Post\CreatePostAction;
@@ -313,3 +266,70 @@ curl -X POST http://localhost:8080/posts \
 
 Validation errors are returned as JSON with HTTP status `422 Unprocessable Entity`.
 Successful creation usually returns `201 Created`.
+
+## Existing applications
+
+If you add JSON API endpoints to an existing web application, install the API packages first:
+
+```shell
+composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
+```
+
+If you use Docker:
+
+```shell
+make composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
+```
+
+In `config/web/di/application.php`, add `RequestBodyParser` before `Router` so JSON requests are parsed before
+actions run:
+
+```php
+use Yiisoft\Request\Body\RequestBodyParser;
+use Yiisoft\Router\Middleware\Router;
+
+return [
+    RequestBodyParser::class,
+    Router::class,
+];
+```
+
+In the same file, add JSON data response middleware before error handling and routing:
+
+```php
+use Yiisoft\DataResponse\Formatter\JsonFormatter;
+use Yiisoft\DataResponse\Middleware\ContentNegotiatorDataResponseMiddleware;
+
+return [
+    static fn() => new ContentNegotiatorDataResponseMiddleware(
+        formatters: [
+            'application/json' => new JsonFormatter(),
+        ],
+        fallback: new JsonFormatter(),
+    ),
+    // error handling, request body parser, router, and not-found middleware
+];
+```
+
+Also in `config/web/di/application.php`, configure action parameter resolvers:
+
+```php
+use Yiisoft\Definitions\Reference;
+use Yiisoft\Input\Http\HydratorAttributeParametersResolver;
+use Yiisoft\Input\Http\RequestInputParametersResolver;
+use Yiisoft\Middleware\Dispatcher\CompositeParametersResolver;
+use Yiisoft\Middleware\Dispatcher\ParametersResolverInterface;
+
+return [
+    ParametersResolverInterface::class => [
+        'class' => CompositeParametersResolver::class,
+        '__construct()' => [
+            Reference::to(HydratorAttributeParametersResolver::class),
+            Reference::to(RequestInputParametersResolver::class),
+        ],
+    ],
+];
+```
+
+Use the [API application template configuration](https://github.com/yiisoft/app-api/blob/master/config/web/di/application.php)
+as the complete reference for middleware order and resolver setup.
