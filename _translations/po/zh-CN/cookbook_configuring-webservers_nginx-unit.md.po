@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2026-05-25 22:44+0000\n"
 "PO-Revision-Date: 2025-09-05 14:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,60 +16,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/configuring-webservers/nginx-unit.md
-#, no-wrap
-msgid "Configuring web servers: NGINX Unit"
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+#, fuzzy, no-wrap
+#| msgid "Configuring web servers: NGINX Unit"
+msgid "Configuring web servers: NGINX Unit and FreeUnit"
 msgstr "配置 Web 服务器：NGINX Unit"
 
 #. type: Plain text
-#: en/configuring-webservers/nginx-unit.md
-msgid "Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.  Here is a sample configuration."
-msgstr "使用带有 PHP 语言模块的 [NGINX Unit](https://unit.nginx.org/) 运行基于 Yii 的应用程序。以下是一个示例配置。"
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.  The same configuration format is used by [FreeUnit](https://github.com/freeunitorg/freeunit), a community LTS fork of Unit.  With FreeUnit Docker images, such as `ghcr.io/freeunitorg/freeunit:latest-php8.5`, put the configuration in `/var/lib/unit/config.json`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+#, fuzzy
+#| msgid "Secure server configuration"
+msgid "Here is a sample configuration."
+msgstr "安全的服务器配置"
 
 #. type: Fenced code block (json)
-#: en/configuring-webservers/nginx-unit.md
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
 #, no-wrap
 msgid ""
 "{\n"
 "    \"listeners\": {\n"
 "        \"*:80\": {\n"
-"            \"pass\": \"routes/yii\"\n"
+"            \"pass\": \"routes\"\n"
 "        }\n"
 "    },\n"
 "\n"
-"    \"routes\": {\n"
-"        \"yii\": [\n"
-"            {\n"
-"                \"match\": {\n"
-"                    \"uri\": [\n"
-"                        \"!/assets/*\",\n"
-"                        \"*.php\",\n"
-"                        \"*.php/*\"\n"
-"                    ]\n"
-"                },\n"
-"\n"
-"                \"action\": {\n"
-"                    \"pass\": \"applications/yii/direct\"\n"
-"                }\n"
+"    \"routes\": [\n"
+"        {\n"
+"            \"match\": {\n"
+"                \"uri\": [\n"
+"                    \"!/assets/*\",\n"
+"                    \"*.php\",\n"
+"                    \"*.php/*\"\n"
+"                ]\n"
 "            },\n"
-"            {\n"
-"                \"action\": {\n"
-"                    \"share\": \"/path/to/app/public/\",\n"
-"                    \"fallback\": {\n"
-"                        \"pass\": \"applications/yii/index\"\n"
-"                    }\n"
+"\n"
+"            \"action\": {\n"
+"                \"pass\": \"applications/yii/direct\"\n"
+"            }\n"
+"        },\n"
+"        {\n"
+"            \"action\": {\n"
+"                \"share\": \"/path/to/app/public$uri\",\n"
+"                \"fallback\": {\n"
+"                    \"pass\": \"applications/yii/index\"\n"
 "                }\n"
 "            }\n"
-"        ]\n"
-"    },\n"
+"        }\n"
+"    ],\n"
 "\n"
 "    \"applications\": {\n"
 "        \"yii\": {\n"
 "            \"type\": \"php\",\n"
-"            \"user\": \"www-data\",\n"
-"            \"environment\": {\n"
-"                \"APP_ENV\": \"dev\"\n"
-"            },\n"
 "            \"targets\": {\n"
 "                \"direct\": {\n"
 "                    \"root\": \"/path/to/app/public/\"\n"
@@ -86,11 +88,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/nginx-unit.md
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
 msgid "You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini` in the same configuration."
 msgstr "你还可以在同一配置中 [设置](https://unit.nginx.org/configuration/#php) PHP 环境或提供自定义的 `php.ini`。"
 
 #. type: Plain text
-#: en/configuring-webservers/nginx-unit.md
-msgid "In the above, note the usage of `environment`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
-msgstr "在上面的配置中，请注意 `environment` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将 `APP_ENV` 设置为 `prod`。"
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+#, fuzzy
+#| msgid "In the above, note the usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
+msgid "Since the Yii3 application template uses environment variables, you can set them in `applications.yii.environment`.  In a production environment, remember to set `APP_ENV` to `prod`."
+msgstr "在上面的配置中，请注意 `SetEnv` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将 `APP_ENV` 设置为 `prod`。"
