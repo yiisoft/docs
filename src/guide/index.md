@@ -14,7 +14,6 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Application Workflow](start/workflow.md)
 - [Saying hello](start/hello.md)
 - [Working with forms](start/forms.md)
-- [JSON API quick start](rest/quick-start.md)
 - [Working with databases](start/databases.md)
 - [Generating code with Gii](start/gii.md) TODO
 - [Looking ahead](start/looking-ahead.md)

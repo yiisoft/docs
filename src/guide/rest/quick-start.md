@@ -42,7 +42,7 @@ return [
 ];
 ```
 
-In a full application this middleware is usually configured in the HTTP application middleware dispatcher.
+In a full application, this middleware is usually configured in the HTTP application middleware dispatcher.
 See the [API application template configuration](https://github.com/yiisoft/app-api/blob/master/config/web/di/application.php)
 for a complete example.
 

@@ -61,7 +61,6 @@ export default {
                                 {text: 'Application Workflow', link: '/guide/start/workflow'},
                                 {text: 'Saying Hello', link: '/guide/start/hello'},
                                 {text: 'Working with Forms', link: '/guide/start/forms'},
-                                {text: 'JSON API Quick Start', link: '/guide/rest/quick-start'},
                                 {text: 'Working with Databases', link: '/guide/start/databases'},
                                 {text: 'Generating Code with Gii', link: '/guide/start/gii'},
                                 {text: 'Looking Ahead', link: '/guide/start/looking-ahead'},
