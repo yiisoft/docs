@@ -171,10 +171,15 @@ Move configuration in groups:
 
 - aliases to `config/common/aliases.php`;
 - route definitions to `config/common/routes.php`;
-- web-only service definitions to `config/web`;
-- console-only service definitions to `config/console`;
+- shared service definitions to `config/common/di/*.php`;
+- web-only service definitions to `config/web/di/*.php`;
+- console parameters and commands to `config/console`;
 - shared parameters to `config/common/params.php`;
 - environment overrides to `config/environments`.
+
+The default template's `di-console` group reuses shared definitions from `config/common/di/*.php`. If you need
+console-only container definitions, add the corresponding files to the `di-console` group in `config/configuration.php`
+and rebuild the merge plan.
 
 See [Configuration](../concept/configuration.md), [Aliases](../concept/aliases.md), and
 [Dependency injection container](../concept/di-container.md).
@@ -708,8 +713,8 @@ responses and explicit routing. Build one resource at a time:
 4. return JSON responses through Yii3 response helpers or PSR-7 factories;
 5. move authentication and rate limiting to middleware.
 
-See [REST APIs](../index.md#rest-apis), [Response](../runtime/response.md), and
-[Authentication](../security/authentication.md).
+See [Response](../runtime/response.md), [Authentication](../security/authentication.md), and
+[Authorization](../security/authorization.md).
 
 ## Testing
 

@@ -150,9 +150,14 @@ In Yii3, configuration is split by purpose and services are wired through the co
 
 - aliases in `config/common/aliases.php`;
 - parameters in `config/common/params.php` and environment files;
-- service definitions in `config/common/di`, `config/web/di`, and `config/console`;
+- shared service definitions in `config/common/di/*.php`;
+- web-only service definitions in `config/web/di/*.php`;
 - routes in `config/common/routes.php`;
 - console commands in `config/console`.
+
+The default template's console DI group reuses shared definitions from `config/common/di/*.php`. If you need
+console-only container definitions, add files for them to the `di-console` group in `config/configuration.php` and
+rebuild the merge plan.
 
 Replace `Yii::app()->componentName` with constructor-injected services:
 
