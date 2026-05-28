@@ -50,6 +50,7 @@ export default {
                             text: 'Introduction',
                             items: [
                                 {text: 'About Yii', link: '/guide/intro/what-is-yii'},
+                                {text: 'Upgrading from Version 1.1', link: '/guide/intro/upgrade-from-v1'},
                                 {text: 'Upgrading from Version 2', link: '/guide/intro/upgrade-from-v2'}
                             ]
                         },

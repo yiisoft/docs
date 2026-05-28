@@ -5,6 +5,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 ## Introduction
 
 - [About Yii](intro/what-is-yii.md)
+- [Upgrading from version 1.1](intro/upgrade-from-v1.md)
 - [Upgrading from version 2.0](intro/upgrade-from-v2.md)
 
 ## Getting started
