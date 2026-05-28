@@ -1,49 +1,49 @@
-# 配置 Web 服务器：NGINX Unit
+# Configuring web servers: NGINX Unit and FreeUnit
 
-使用带有 PHP 语言模块的 [NGINX Unit](https://unit.nginx.org/) 运行基于 Yii
-的应用程序。以下是一个示例配置。
+Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP
+language module.  The same configuration format is used by
+[FreeUnit](https://github.com/freeunitorg/freeunit), a community LTS fork of
+Unit.  With FreeUnit Docker images, such as
+`ghcr.io/freeunitorg/freeunit:latest-php8.5`, put the configuration in
+`/var/lib/unit/config.json`.
+
+Here is a sample configuration.
 
 ```json
 {
     "listeners": {
         "*:80": {
-            "pass": "routes/yii"
+            "pass": "routes"
         }
     },
 
-    "routes": {
-        "yii": [
-            {
-                "match": {
-                    "uri": [
-                        "!/assets/*",
-                        "*.php",
-                        "*.php/*"
-                    ]
-                },
-
-                "action": {
-                    "pass": "applications/yii/direct"
-                }
+    "routes": [
+        {
+            "match": {
+                "uri": [
+                    "!/assets/*",
+                    "*.php",
+                    "*.php/*"
+                ]
             },
-            {
-                "action": {
-                    "share": "/path/to/app/public/",
-                    "fallback": {
-                        "pass": "applications/yii/index"
-                    }
+
+            "action": {
+                "pass": "applications/yii/direct"
+            }
+        },
+        {
+            "action": {
+                "share": "/path/to/app/public$uri",
+                "fallback": {
+                    "pass": "applications/yii/index"
                 }
             }
-        ]
-    },
+        }
+    ],
 
     "applications": {
         "yii": {
             "type": "php",
-            "user": "www-data",
-            "environment": {
-                "APP_ENV": "dev"
-            },
             "targets": {
                 "direct": {
                     "root": "/path/to/app/public/"
@@ -62,5 +62,6 @@
 你还可以在同一配置中 [设置](https://unit.nginx.org/configuration/#php) PHP 环境或提供自定义的
 `php.ini`。
 
-在上面的配置中，请注意 `environment` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将
-`APP_ENV` 设置为 `prod`。
+Since the Yii3 application template uses environment variables, you can set
+them in `applications.yii.environment`.  In a production environment,
+remember to set `APP_ENV` to `prod`.
