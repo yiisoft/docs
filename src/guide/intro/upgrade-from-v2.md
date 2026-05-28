@@ -173,7 +173,7 @@ Move configuration in groups:
 - route definitions to `config/common/routes.php`;
 - shared service definitions to `config/common/di/*.php`;
 - web-only service definitions to `config/web/di/*.php`;
-- console parameters and commands to `config/console`;
+- console parameters and commands to `config/console/*.php`;
 - shared parameters to `config/common/params.php`;
 - environment overrides to `config/environments`.
 
