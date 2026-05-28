@@ -19,7 +19,6 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-#| msgid "Generating API documentation"
 msgid "Internationalization"
 msgstr "Generazione della documentazione API"
 

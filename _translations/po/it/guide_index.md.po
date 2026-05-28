@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-09 11:15+0000\n"
+"POT-Creation-Date: 2026-05-28 20:46+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,7 +19,8 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
-#: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/testing/overview.md
+#: ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr "Testing"
@@ -51,6 +52,13 @@ msgstr "Introduzione"
 #: ../src/guide/index.md
 msgid "[About Yii](intro/what-is-yii.md)"
 msgstr "[Informazioni su Yii](intro/what-is-yii.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
+msgid "[Upgrading from version 1.1](intro/upgrade-from-v1.md)"
+msgstr "[Aggiornamento dalla versione 2.0](intro/upgrade-from-v2.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -150,8 +158,8 @@ msgstr "[Eventi](concept/events.md)"
 msgid "[Immutability](concept/immutability.md)"
 msgstr "[Immutabilità](concept/immutability.md)"
 
-#. type: Title ###
-#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
+#. type: Title ##
+#: ../src/guide/index.md
 #, no-wrap
 msgid "Application structure"
 msgstr "Struttura applicativa"
@@ -292,17 +300,23 @@ msgstr "[Caching dei dati](caching/data.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Fragment caching](caching/fragment.md) TODO"
+#, fuzzy
+#| msgid "[Fragment caching](caching/fragment.md) TODO"
+msgid "Fragment caching TODO"
 msgstr "[Caching dei frammenti](caching/fragment.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Page caching](caching/page.md) TODO"
+#, fuzzy
+#| msgid "[Page caching](caching/page.md) TODO"
+msgid "Page caching TODO"
 msgstr "[Caching delle pagine](caching/page.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[HTTP caching](caching/http.md) TODO"
+#, fuzzy
+#| msgid "[HTTP caching](caching/http.md) TODO"
+msgid "HTTP caching TODO"
 msgstr "[Caching HTTP](caching/http.md) TODO"
 
 #. type: Title #
@@ -370,7 +384,9 @@ msgstr "Ottenere dati dagli utenti"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Creating forms](input/forms.md) TODO"
+#, fuzzy
+#| msgid "[Creating forms](input/forms.md) TODO"
+msgid "Creating forms TODO"
 msgstr "[Creazione di moduli](input/forms.md) TODO"
 
 #. type: Bullet: '- '
@@ -380,12 +396,16 @@ msgstr "[Convalida degli input](https://github.com/yiisoft/validator/blob/master
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Uploading files](input/file-upload.md) TODO"
+#, fuzzy
+#| msgid "[Uploading files](input/file-upload.md) TODO"
+msgid "Uploading files TODO"
 msgstr "[Caricamento dei file](input/file-upload.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Collecting tabular input](input/tabular-input.md) TODO"
+#, fuzzy
+#| msgid "[Collecting tabular input](input/tabular-input.md) TODO"
+msgid "Collecting tabular input TODO"
 msgstr "[Raccolta di input tabulari](input/tabular-input.md) TODO"
 
 #. type: Title ##
@@ -396,74 +416,76 @@ msgstr "Visualizzazione dei dati"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data formatting](output/formatting.md) TODO"
+#, fuzzy
+#| msgid "[Data formatting](output/formatting.md) TODO"
+msgid "Data formatting TODO"
 msgstr "[Formattazione dei dati](output/formatting.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Pagination](output/pagination.md) TODO"
-msgstr "[Paginazione](output/pagination.md) TODO"
+msgid "Pagination TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Sorting](output/sorting.md) TODO"
-msgstr "[Ordinamento](output/sorting.md) TODO"
+msgid "Sorting TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data providers](output/data-providers.md) TODO"
-msgstr "[Fornitori di dati](output/data-providers.md) TODO"
+msgid "Data providers TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data widgets](output/data-widgets.md) TODO"
-msgstr "[Widget dati](output/data-widgets.md) TODO"
+msgid "Data widgets TODO"
+msgstr ""
 
 #. type: Title ##
-#: ../src/guide/index.md
+#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "REST APIs"
 msgstr "API REST"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Quick start](rest/quick-start.md) TODO"
-msgstr "[Introduzione rapida](rest/quick-start.md) TODO"
+msgid "Quick start TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Resources](rest/resources.md) TODO"
-msgstr "[Risorse](rest/resources.md) Da fare"
+msgid "Resources TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Controllers](rest/controllers.md) TODO"
-msgstr "[Controller](rest/controllers.md) TODO"
+msgid "Controllers TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Routing](rest/routing.md) TODO"
-msgstr "[Routing](rest/routing.md) TODO"
+msgid "Routing TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Authentication](rest/authentication.md) TODO"
-msgstr "[Autenticazione](rest/authentication.md) TODO"
+msgid "Authentication TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Rate limiting](rest/rate-limiting.md) TODO"
-msgstr "[Rate limiting](rest/rate-limiting.md) TODO"
+msgid "Rate limiting TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Versioning](rest/versioning.md) TODO"
-msgstr "[Versionamento](rest/versioning.md) TODO"
+msgid "Versioning TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Error handling](rest/error-handling.md) TODO"
-msgstr "[Gestione degli errori](rest/error-handling.md) TODO"
+msgid "Error handling TODO"
+msgstr ""
 
 #. type: Title ##
 #: ../src/guide/index.md

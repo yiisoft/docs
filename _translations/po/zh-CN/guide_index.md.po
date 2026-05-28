@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 11:15+0000\n"
+"POT-Creation-Date: 2026-05-28 20:46+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,8 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
-#: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/testing/overview.md
+#: ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr "测试"
@@ -49,6 +50,13 @@ msgstr "介绍"
 #: ../src/guide/index.md
 msgid "[About Yii](intro/what-is-yii.md)"
 msgstr "[关于 Yii](intro/what-is-yii.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
+msgid "[Upgrading from version 1.1](intro/upgrade-from-v1.md)"
+msgstr "[从 2.0 版本升级](intro/upgrade-from-v2.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -148,8 +156,8 @@ msgstr "[事件](concept/events.md)"
 msgid "[Immutability](concept/immutability.md)"
 msgstr "[不可变性](concept/immutability.md)"
 
-#. type: Title ###
-#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
+#. type: Title ##
+#: ../src/guide/index.md
 #, no-wrap
 msgid "Application structure"
 msgstr "应用结构"
@@ -290,17 +298,23 @@ msgstr "[数据缓存](caching/data.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Fragment caching](caching/fragment.md) TODO"
+#, fuzzy
+#| msgid "[Fragment caching](caching/fragment.md) TODO"
+msgid "Fragment caching TODO"
 msgstr "[片段缓存](caching/fragment.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Page caching](caching/page.md) TODO"
+#, fuzzy
+#| msgid "[Page caching](caching/page.md) TODO"
+msgid "Page caching TODO"
 msgstr "[页面缓存](caching/page.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[HTTP caching](caching/http.md) TODO"
+#, fuzzy
+#| msgid "[HTTP caching](caching/http.md) TODO"
+msgid "HTTP caching TODO"
 msgstr "[HTTP 缓存](caching/http.md) TODO"
 
 #. type: Title #
@@ -368,7 +382,9 @@ msgstr "从用户获取数据"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Creating forms](input/forms.md) TODO"
+#, fuzzy
+#| msgid "[Creating forms](input/forms.md) TODO"
+msgid "Creating forms TODO"
 msgstr "[创建表单](input/forms.md) TODO"
 
 #. type: Bullet: '- '
@@ -378,12 +394,16 @@ msgstr "[验证输入](https://github.com/yiisoft/validator/blob/master/docs/gui
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Uploading files](input/file-upload.md) TODO"
+#, fuzzy
+#| msgid "[Uploading files](input/file-upload.md) TODO"
+msgid "Uploading files TODO"
 msgstr "[上传文件](input/file-upload.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Collecting tabular input](input/tabular-input.md) TODO"
+#, fuzzy
+#| msgid "[Collecting tabular input](input/tabular-input.md) TODO"
+msgid "Collecting tabular input TODO"
 msgstr "[收集表格输入](input/tabular-input.md) TODO"
 
 #. type: Title ##
@@ -394,74 +414,88 @@ msgstr "显示数据"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data formatting](output/formatting.md) TODO"
+#, fuzzy
+#| msgid "[Data formatting](output/formatting.md) TODO"
+msgid "Data formatting TODO"
 msgstr "[数据格式化](output/formatting.md) TODO"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Pagination](output/pagination.md) TODO"
-msgstr "[分页](output/pagination.md) TODO"
+msgid "Pagination TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Sorting](output/sorting.md) TODO"
-msgstr "[排序](output/sorting.md) TODO"
+msgid "Sorting TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data providers](output/data-providers.md) TODO"
-msgstr "[数据提供者](output/data-providers.md) TODO"
+msgid "Data providers TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Data widgets](output/data-widgets.md) TODO"
-msgstr "[数据小部件](output/data-widgets.md) TODO"
+#, fuzzy
+#| msgid "Data List Widget"
+msgid "Data widgets TODO"
+msgstr "数据列表小部件"
 
 #. type: Title ##
-#: ../src/guide/index.md
+#: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "REST APIs"
 msgstr "REST APIs"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Quick start](rest/quick-start.md) TODO"
-msgstr "[快速开始](rest/quick-start.md) TODO"
+msgid "Quick start TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Resources](rest/resources.md) TODO"
-msgstr "[资源](rest/resources.md) TODO"
+#, fuzzy
+#| msgid "Resource limits"
+msgid "Resources TODO"
+msgstr "资源限制"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Controllers](rest/controllers.md) TODO"
-msgstr "[控制器](rest/controllers.md) TODO"
+#, fuzzy
+#| msgid "In Controllers"
+msgid "Controllers TODO"
+msgstr "在控制器中"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Routing](rest/routing.md) TODO"
-msgstr "[路由](rest/routing.md) TODO"
+#, fuzzy
+#| msgid "Routing"
+msgid "Routing TODO"
+msgstr "路由"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Authentication](rest/authentication.md) TODO"
-msgstr "[认证](rest/authentication.md) TODO"
+#, fuzzy
+#| msgid "Authentication"
+msgid "Authentication TODO"
+msgstr "认证"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Rate limiting](rest/rate-limiting.md) TODO"
-msgstr "[速率限制](rest/rate-limiting.md) TODO"
+msgid "Rate limiting TODO"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Versioning](rest/versioning.md) TODO"
-msgstr "[版本控制](rest/versioning.md) TODO"
+#, fuzzy
+#| msgid "Versions"
+msgid "Versioning TODO"
+msgstr "版本"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Error handling](rest/error-handling.md) TODO"
-msgstr "[错误处理](rest/error-handling.md) TODO"
+msgid "Error handling TODO"
+msgstr ""
 
 #. type: Title ##
 #: ../src/guide/index.md
