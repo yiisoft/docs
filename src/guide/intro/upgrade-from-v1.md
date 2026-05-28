@@ -467,7 +467,7 @@ Yii 1.1 code may use `CDbCriteria`, `CDbCommand`, `CActiveDataProvider`, and `CG
 use `yiisoft/db` for database access and query building, and `yiisoft/data` / `yiisoft/yii-dataview` for data readers
 and widgets.
 
-Migrations are not compatible across Yii 1.1, Yii 2.0, and Yii3. For an existing application, create a baseline from
+Migrations are not compatible across Yii 1.1 and Yii3. For an existing application, create a baseline from
 the current schema and use Yii3 migrations for new changes.
 
 See [Working with databases](../start/databases.md) and [Migrations](../databases/db-migrations.md).
