@@ -570,7 +570,6 @@ fluent widget configuration:
 use Yiisoft\Data\Reader\ReadableDataInterface;
 use Yiisoft\Yii\DataView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\Column\ActionColumn;
-use Yiisoft\Yii\DataView\GridView\Column\Base\DataContext;
 use Yiisoft\Yii\DataView\GridView\GridView;
 
 /**
@@ -583,9 +582,7 @@ echo GridView::widget()
         new DataColumn('id'),
         new DataColumn('title', header: 'Title'),
         new DataColumn('created_at', header: 'Created'),
-        new ActionColumn(
-            urlCreator: static fn(string $action, DataContext $context): string => "/post/$action/" . $context->key,
-        ),
+        new ActionColumn(),
     );
 ```
 

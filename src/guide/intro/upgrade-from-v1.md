@@ -495,7 +495,6 @@ Yii3 uses [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview):
 use Yiisoft\Data\Reader\ReadableDataInterface;
 use Yiisoft\Yii\DataView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\Column\ActionColumn;
-use Yiisoft\Yii\DataView\GridView\Column\Base\DataContext;
 use Yiisoft\Yii\DataView\GridView\GridView;
 
 /**
@@ -507,9 +506,7 @@ echo GridView::widget()
     ->columns(
         new DataColumn('id'),
         new DataColumn('title'),
-        new ActionColumn(
-            urlCreator: static fn(string $action, DataContext $context): string => "/post/$action/" . $context->key,
-        ),
+        new ActionColumn(),
     );
 ```
 
