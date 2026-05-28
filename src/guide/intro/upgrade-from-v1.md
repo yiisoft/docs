@@ -30,6 +30,64 @@ For most long-lived applications, the third option is the least risky. Create a 
 same database, and build vertical slices: route, action, input validation, persistence, view, assets, and tests.
 Each slice should be idiomatic Yii3, even when it is based on behavior from the Yii 1.1 application.
 
+## Prepare the Yii 1.1 application
+
+Useful preparation can happen before the Yii3 application is ready. These refactorings make old behavior easier to
+understand and reduce the amount of Yii 1.1 framework state that crosses into the new code:
+
+- Remove direct `Yii::app()` access from reusable code where practical. If a full refactoring is too large, keep
+  `Yii::app()` calls near controllers, widgets, and commands, then pass values and services to lower-level code
+  explicitly.
+- Introduce repositories or query services for database reads currently spread across controllers, views,
+  `CActiveRecord` methods, and widgets. Yii3 can use Active Record, but it does not require it for every persistence
+  task.
+- Separate business rules from framework infrastructure. Code that does not extend `CComponent`, read global
+  application state, or render views is easier to reuse as a specification for Yii3 code.
+- Move reusable behavior out of large controllers and Active Record classes into Yii 1.1 application components or
+  plain services. Yii3 services are configured and injected differently, but the responsibility boundary is similar.
+- Add tests or characterization checks around routes and workflows you plan to rebuild first. They become the
+  executable specification for the Yii3 slice.
+
+For example, instead of reading post archive data directly from several controllers or widgets, create a small service
+that describes the application need:
+
+```php
+class PostRepository extends CComponent
+{
+    public function getArchive()
+    {
+        // ...
+    }
+
+    public function getTopForFrontPage($limit = 10)
+    {
+        // ...
+    }
+}
+```
+
+The Yii3 implementation may use `yiisoft/active-record`, `yiisoft/db`, or another persistence layer. The important
+point is that controllers and views no longer need to know that detail.
+
+## Things to learn before starting
+
+Some Yii3 application-template choices are likely to be new in a Yii 1.1 codebase:
+
+- [Composer](https://getcomposer.org/). Yii3 applications and packages are installed through Composer and loaded with
+  PSR-4 autoloading.
+- [Namespaces](https://www.php.net/manual/en/language.namespaces.php). Yii3 classes are namespaced instead of using
+  Yii 1.1-style class prefixes and path aliases for class loading.
+- [Docker](https://www.docker.com/get-started/). The default Yii3 application template includes Docker configuration.
+  Using it gives each application its own repeatable environment and reduces differences between local development and
+  production.
+- [Environment variables](https://en.wikipedia.org/wiki/Environment_variable). Yii3 templates commonly use them for
+  environment-specific settings and secrets, especially in Docker-based deployments. This follows the same idea as
+  [12-factor app configuration](https://12factor.net/config).
+- [Actions](../structure/action.md). Yii3 does not require controller inheritance. A route can point to any callable,
+  and the default template uses invokable action classes.
+- [Application structure](../structure/overview.md). Yii3's default structure is different from Yii 1.1. Start with
+  the Yii3 template and change it only when the application needs it.
+
 ## PHP, Composer, and namespaces
 
 Yii 1.1 applications commonly rely on PHP 5-era code, class prefixes such as `CController`, and autoloading by class

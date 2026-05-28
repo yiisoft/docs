@@ -39,6 +39,60 @@ Avoid moving the whole directory tree first. Yii3's defaults are intentionally d
 to preserve Yii 2.0 service-locator assumptions. Prefer small, reviewed decisions over carrying old structure forward
 because it is familiar.
 
+## Prepare the Yii 2.0 application
+
+Useful preparation can happen before the Yii3 application is ready. These refactorings improve the Yii 2.0 project
+itself and make the later rewrite less dependent on hidden framework state:
+
+- Replace `Yii::$app` access in reusable code with constructor arguments where practical. If a full dependency
+  injection refactoring is too large, keep `Yii::$app` calls near controllers and widgets, then pass values and
+  services to lower-level code explicitly.
+- Introduce repositories or query services for database reads that are currently scattered across controllers, views,
+  widgets, and Active Record methods. Yii3 does not require Active Record for persistence, so a repository boundary
+  gives you a natural place to change the implementation later.
+- Separate business rules from framework infrastructure. Domain code that does not extend Yii classes, read global
+  application state, or render views is much easier to reuse or rewrite.
+- Move reusable behavior into Yii 2.0 components or services instead of keeping it inside large controllers and Active
+  Record classes. Yii3 services are configured and injected differently, but the responsibility boundary is similar.
+- Add tests around routes and workflows you plan to rebuild first. They become the executable specification for the
+  Yii3 slice.
+
+For example, instead of reading post archive data directly from several controllers or widgets, create a small service
+that describes the application need:
+
+```php
+final class PostRepository
+{
+    public function getArchive(): array
+    {
+        // ...
+    }
+
+    public function getTopForFrontPage(int $limit = 10): array
+    {
+        // ...
+    }
+}
+```
+
+The Yii3 implementation may still use Active Record, or it may use `yiisoft/db` queries. The important point is that
+controllers and views no longer need to know that detail.
+
+## Things to learn before starting
+
+Some Yii3 application-template choices are worth learning before you start moving features:
+
+- [Docker](https://www.docker.com/get-started/). The default Yii3 application template includes Docker configuration.
+  Using it gives each application its own repeatable environment and reduces differences between local development and
+  production.
+- [Environment variables](https://en.wikipedia.org/wiki/Environment_variable). Yii3 templates commonly use them for
+  environment-specific settings and secrets, especially in Docker-based deployments. This follows the same idea as
+  [12-factor app configuration](https://12factor.net/config).
+- [Actions](../structure/action.md). Yii3 does not require controller inheritance. A route can point to any callable,
+  and the default template uses invokable action classes.
+- [Application structure](../structure/overview.md). Yii3's default structure is different from Yii 2.0. The structure
+  is flexible, but start with the Yii3 template and change it only when the application needs it.
+
 ## PHP requirements
 
 Yii3 application templates require PHP 8.2 or above. As a result, application code can use language features that
