@@ -4,8 +4,8 @@
 > section.
 
 Yii3 keeps many Yii ideas, but it is not a drop-in replacement for Yii 2.0. It uses PHP 8 features, PSR interfaces,
-dependency injection, explicit package composition, and a different application template. Plan the work as a port to
-a new application, not as a Composer update.
+dependency injection, explicit package composition, and a different application template. Use your Yii 2.0 experience
+to design a new Yii3 application deliberately instead of trying to reproduce the old application structure.
 
 For source applications, compare against:
 
@@ -18,21 +18,26 @@ For the target structure, compare against:
 - [Yii3 guide](../index.md)
 
 Before starting, [check maintenance policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/release-cycle).
-Keeping a mature Yii 2.0 application on Yii 2.0 can be a valid choice. A Yii3 port is most useful when you want the
+Keeping a mature Yii 2.0 application on Yii 2.0 can be a valid choice. A Yii3 project is most useful when you want the
 new package ecosystem, stricter typing, PSR middleware, and a more explicit architecture.
 
-## Recommended migration strategy
+## Recommended approach
 
-Do the migration in vertical slices:
+Think of the work as building a Yii3 application that is informed by the old one. The old project tells you which
+routes, forms, database tables, business rules, and user workflows matter. The Yii3 project should decide again where
+these responsibilities belong.
+
+Build it in vertical slices:
 
 1. Create a new Yii3 application with `yiisoft/app`.
-2. Configure Composer autoloading and copy only the application code you are actively porting.
-3. Port configuration and routes before controllers.
-4. Port one request flow at a time: route, action, input model, service, persistence, view, assets, tests.
+2. Configure Composer autoloading and add only the code needed for the slice you are building.
+3. Define configuration and routes before writing actions.
+4. Build one request flow at a time: route, action, input model, service, persistence, view, assets, tests.
 5. Keep the Yii 2.0 application running until each flow is verified in Yii3.
 
 Avoid moving the whole directory tree first. Yii3's defaults are intentionally different, and a mechanical copy tends
-to preserve Yii 2.0 service-locator assumptions.
+to preserve Yii 2.0 service-locator assumptions. Prefer small, reviewed decisions over carrying old structure forward
+because it is familiar.
 
 ## PHP requirements
 
@@ -52,8 +57,8 @@ were not common in Yii 2.0 applications:
 - [Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)
 - [Attributes](https://www.php.net/manual/en/language.attributes.php)
 
-Run static analysis and tests on Yii 2.0 before porting. It is easier to move code that already has explicit types,
-small services, and few implicit `Yii::$app` dependencies.
+Run static analysis and tests on Yii 2.0 before reusing code in Yii3. Code with explicit types, small services, and
+few implicit `Yii::$app` dependencies is easier to understand and easier to place in the new application.
 
 ## Project structure
 
@@ -91,7 +96,7 @@ src/
 tests/
 ```
 
-Typical moves are:
+Typical mappings to consider are:
 
 | Yii 2.0 basic | Yii 2.0 advanced | Yii3 |
 |---------------|------------------|------|
@@ -105,8 +110,8 @@ Typical moves are:
 | `config/*.php` | app and common config files | `config/common`, `config/web`, `config/console`, `config/environments` |
 
 There is no single required layout. The important change is that Yii3 applications should group code by responsibility
-and make dependencies explicit. For an advanced-template migration, treat `frontend` and `backend` as separate web
-contexts. Shared domain code can move to `src/Shared` or to application-specific packages.
+and make dependencies explicit. If you are coming from the advanced template, treat `frontend` and `backend` as separate
+web contexts. Shared domain code can live in `src/Shared` or in application-specific packages.
 
 ## Composer and autoloading
 
@@ -253,9 +258,9 @@ return [
 ];
 ```
 
-When porting a controller, list all Yii 2.0 actions and create named routes for them first. Then port each action to an
-invokable class or a controller-like service. Constructor injection replaces calls to `Yii::$app` and controller
-properties.
+When redesigning a controller flow, list all Yii 2.0 actions and create named routes for the flows you still need.
+Then implement each flow as an invokable class or a controller-like service. Constructor injection replaces calls to
+`Yii::$app` and controller properties.
 
 See [Actions](../structure/action.md), [Middleware](../structure/middleware.md), and
 [Routing and URL generation](../runtime/routing.md).
@@ -300,7 +305,7 @@ final readonly class SavePostAction
 }
 ```
 
-Port request handling code early because it affects forms, filters, REST endpoints, redirects, and tests.
+Design request handling early because it affects forms, filters, REST endpoints, redirects, and tests.
 
 See [Request](../runtime/request.md), [Response](../runtime/response.md), [Sessions](../runtime/sessions.md), and
 [Cookies](../runtime/cookies.md).
@@ -436,13 +441,13 @@ See [Working with forms](../start/forms.md), [Validating input](https://github.c
 
 ## Active Record and persistence
 
-There are two common Yii3 migration paths for Yii 2.0 Active Record classes.
+There are two common Yii3 choices for code that used Yii 2.0 Active Record classes.
 
 The first path is architectural: move business logic to services and domain objects, then use repositories for
 persistence. This is recommended when the Yii 2.0 model contains validation, form scenarios, authorization checks,
 mailing, file uploads, and database access in the same class.
 
-The second path is incremental: port the database model to
+The second path is incremental: represent the database model with
 [yiisoft/active-record](https://github.com/yiisoft/active-record). This is closer to Yii 2.0 and can be significantly
 faster when your Active Record classes mostly describe tables and relations.
 
@@ -534,7 +539,7 @@ $post->setTitle($input->title);
 $post->save();
 ```
 
-When porting, check each Active Record method:
+When deciding what to reuse, check each Active Record method:
 
 - table mapping and relations can usually move to `yiisoft/active-record`;
 - validation should move to `yiisoft/validator`;
@@ -695,7 +700,7 @@ See [Console applications](../tutorial/console-applications.md).
 ## REST APIs
 
 Yii 2.0 REST controllers, serializers, and response formatters do not move directly to Yii3. Start from PSR-7
-responses and explicit routing. Port one resource at a time:
+responses and explicit routing. Build one resource at a time:
 
 1. define routes for collection and item operations;
 2. inject request, persistence, serializer, and response factory dependencies;
@@ -708,7 +713,7 @@ See [REST APIs](../index.md#rest-apis), [Response](../runtime/response.md), and
 
 ## Testing
 
-Do not postpone tests until the full migration is done. For each ported request flow, add:
+Do not postpone tests until the whole Yii3 application is done. For each new request flow, add:
 
 - unit tests for services and validators;
 - functional tests for actions and middleware;
@@ -721,9 +726,9 @@ component arrays.
 See [Testing overview](../testing/overview.md), [Unit tests](../testing/unit.md),
 [Functional tests](../testing/functional.md), and [End-to-end tests](../testing/end-to-end.md).
 
-## Preliminary refactoring in Yii 2.0
+## Refactoring Yii 2.0 code before reusing it
 
-These changes are useful even before the Yii3 port:
+These changes are useful even if the old application stays on Yii 2.0 for a while:
 
 - Replace `Yii::$app` access in domain code with constructor arguments.
 - Move queries out of controllers and views into repositories or query services.
@@ -731,6 +736,7 @@ These changes are useful even before the Yii3 port:
 - Separate form models from persistence models.
 - Add return types and parameter types.
 - Replace route arrays scattered in views with named route constants or helper methods.
-- Add tests around each flow before changing framework code.
+- Add tests around each flow before rebuilding it in Yii3.
 
-The less framework state your Yii 2.0 code assumes, the easier it is to port to Yii3.
+The less framework state your Yii 2.0 code assumes, the easier it is to understand what should be reused and what
+should be redesigned for Yii3.

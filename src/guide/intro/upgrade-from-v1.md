@@ -7,8 +7,9 @@ Yii3 is not an incremental upgrade from Yii 1.1. Yii 2.0 was a full rewrite, and
 Composer packages, namespaces, PHP 8, PSR interfaces, dependency injection, explicit routes, middleware, and separate
 packages for features that were built into the framework in Yii 1.1.
 
-Treat a Yii 1.1 migration as a new Yii3 application that reuses domain knowledge, database schema, templates, and
-selected code after refactoring. A direct search-and-replace conversion is not realistic.
+Treat this as building a new Yii3 application with the benefit of Yii 1.1 experience. Reuse the domain knowledge,
+database schema, user workflows, and selected code after refactoring. Do not try to reproduce the Yii 1.1 application
+structure in Yii3. A direct search-and-replace conversion is not realistic.
 
 For additional background, read the Yii 2.0 guide section
 [Upgrading from Version 1.1](https://www.yiiframework.com/doc/guide/2.0/en/intro-upgrade-from-v1). It explains the
@@ -16,16 +17,18 @@ first major break from Yii 1.1: Composer, namespaces, object configuration, view
 widgets, assets, helpers, forms, query builder, Active Record, and URL management. Yii3 builds on many of those changes
 and makes dependencies more explicit.
 
-## Recommended migration strategy
+## Recommended approach
 
 Choose one of these paths:
 
-- Port Yii 1.1 to Yii3 directly when the application is small or you are already rewriting request flows.
-- Port Yii 1.1 concepts to Yii 2.0 first when the team needs a smaller conceptual step.
+- Build a new Yii3 application directly when the Yii 1.1 application is small or you are already rewriting request
+  flows.
+- Move Yii 1.1 concepts to Yii 2.0 first when the team needs a smaller conceptual step.
 - Keep Yii 1.1 running and rebuild critical flows in Yii3 one by one.
 
 For most long-lived applications, the third option is the least risky. Create a Yii3 application, connect it to the
-same database, and port vertical slices: route, action, input validation, persistence, view, assets, and tests.
+same database, and build vertical slices: route, action, input validation, persistence, view, assets, and tests.
+Each slice should be idiomatic Yii3, even when it is based on behavior from the Yii 1.1 application.
 
 ## PHP, Composer, and namespaces
 
@@ -68,8 +71,9 @@ Run:
 composer dump-autoload
 ```
 
-When porting a class, give it a namespace, add strict types, replace Yii 1.1 base classes, and inject dependencies
-instead of reading them from global application state.
+When reusing a class, give it a namespace, add strict types, replace Yii 1.1 base classes, and inject dependencies
+instead of reading them from global application state. If these changes make the class awkward, use the old class as a
+specification and write a new Yii3 class instead.
 
 ## Project structure
 
@@ -101,7 +105,7 @@ src/
 tests/
 ```
 
-Typical moves are:
+Typical mappings to consider are:
 
 | Yii 1.1 | Yii3 |
 |---------|------|
@@ -247,7 +251,8 @@ return [
 ];
 ```
 
-Port routes before action bodies. It gives you a checklist of all request flows that still need migration.
+Define routes before action bodies. It gives you a checklist of request flows you decided to keep in the Yii3
+application.
 
 See [Actions](../structure/action.md), [Middleware](../structure/middleware.md), and
 [Routing and URL generation](../runtime/routing.md).
@@ -511,8 +516,8 @@ echo GridView::widget()
     );
 ```
 
-Port the old data provider into a query service that returns a data reader. Port filters to validator rules and route
-or query parameters.
+Replace the old data provider with a query service that returns a data reader. Model filters as validator rules and
+route or query parameters.
 
 See [Using htmx for partial reloads](../../cookbook/using-htmx-for-partial-reloads.md) and
 [yii-dataview GridView docs](https://github.com/yiisoft/yii-dataview/blob/master/docs/en/guide/gridview.md).
@@ -537,7 +542,7 @@ $url = $urlGenerator->generate('post/view', ['id' => $post->getId()]);
 echo Html::a('View', $url)->render();
 ```
 
-Prefer named routes. They make views and GridView action columns easier to port.
+Prefer named routes. They make views and GridView action columns easier to design and maintain.
 
 See [Routing and URL generation](../runtime/routing.md).
 
@@ -567,7 +572,7 @@ autoloading. In Yii3:
 
 - replace helper calls with `yiisoft/html`, `yiisoft/arrays`, `yiisoft/strings`, or application helpers;
 - replace extensions with Composer packages;
-- port custom widgets to `yiisoft/widget` or plain services/templates;
+- rebuild custom widgets with `yiisoft/widget` or plain services/templates;
 - replace jQuery UI and Bootstrap widgets with current frontend packages or Yii3 widget packages where available.
 
 See [Widgets](../views/widget.md).
@@ -615,16 +620,16 @@ translator message package and inject translation services where needed.
 
 See [Internationalization](../tutorial/i18n.md).
 
-## What to refactor before porting
+## What to refactor before reusing
 
-These Yii 1.1 refactorings reduce migration risk:
+These Yii 1.1 refactorings make the old behavior easier to understand and reuse:
 
 - isolate database queries from controllers;
 - remove direct `Yii::app()` access from domain code;
 - move validation out of Active Record when it describes request input rather than database invariants;
 - replace large controller actions with services;
 - document all routes and URL rules;
-- add tests around the flows you plan to port first;
+- add tests around the flows you plan to rebuild first;
 - upgrade PHP syntax gradually if the old runtime allows it.
 
 The goal is not to make Yii 1.1 look like Yii3. The goal is to reduce hidden coupling before the code crosses the
