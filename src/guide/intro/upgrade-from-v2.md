@@ -417,23 +417,15 @@ Yii3 separates these concerns. Use `yiisoft/form-model` for form data and metada
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Rule\Email;
 use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\RulesProviderInterface;
 
-final class ContactForm extends FormModel implements RulesProviderInterface
+final class ContactForm extends FormModel
 {
-    public function __construct(
-        public ?string $name = null,
-        public ?string $email = null,
-    ) {
-    }
+    #[Required]
+    public ?string $name = null;
 
-    public function getRules(): array
-    {
-        return [
-            'name' => [new Required()],
-            'email' => [new Required(), new Email()],
-        ];
-    }
+    #[Required]
+    #[Email]
+    public ?string $email = null;
 }
 ```
 
@@ -516,23 +508,15 @@ form models, command objects, or services:
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Rule\Length;
 use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\RulesProviderInterface;
 
-final class PostInput extends FormModel implements RulesProviderInterface
+final class PostInput extends FormModel
 {
-    public function __construct(
-        public ?string $title = null,
-        public ?string $body = null,
-    ) {
-    }
+    #[Required]
+    #[Length(max: 255)]
+    public ?string $title = null;
 
-    public function getRules(): array
-    {
-        return [
-            'title' => [new Required(), new Length(max: 255)],
-            'body' => [new Required()],
-        ];
-    }
+    #[Required]
+    public ?string $body = null;
 }
 ```
 
@@ -584,9 +568,9 @@ fluent widget configuration:
 
 ```php
 use Yiisoft\Data\Reader\ReadableDataInterface;
+use Yiisoft\Yii\DataView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\Column\ActionColumn;
 use Yiisoft\Yii\DataView\GridView\Column\Base\DataContext;
-use Yiisoft\Yii\DataView\GridView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\GridView;
 
 /**
@@ -596,9 +580,9 @@ use Yiisoft\Yii\DataView\GridView\GridView;
 echo GridView::widget()
     ->dataReader($dataReader)
     ->columns(
-        new DataColumn(property: 'id'),
-        new DataColumn(property: 'title', header: 'Title'),
-        new DataColumn(property: 'created_at', header: 'Created'),
+        new DataColumn('id'),
+        new DataColumn('title', header: 'Title'),
+        new DataColumn('created_at', header: 'Created'),
         new ActionColumn(
             urlCreator: static fn(string $action, DataContext $context): string => "/post/$action/" . $context->key,
         ),
@@ -618,8 +602,8 @@ echo GridView::widget()
     ->urlParameterProvider(new UrlParameterProvider($currentRoute))
     ->urlCreator(new UrlCreator($urlGenerator))
     ->columns(
-        new DataColumn(property: 'id'),
-        new DataColumn(property: 'title'),
+        new DataColumn('id'),
+        new DataColumn('title'),
         new ActionColumn(
             urlCreator: new ActionColumnUrlCreator($urlGenerator, $currentRoute),
             urlConfig: new ActionColumnUrlConfig(baseRouteName: 'post'),

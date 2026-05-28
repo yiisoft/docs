@@ -382,23 +382,15 @@ Yii3 form model:
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Rule\Email;
 use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\RulesProviderInterface;
 
-final class ContactForm extends FormModel implements RulesProviderInterface
+final class ContactForm extends FormModel
 {
-    public function __construct(
-        public ?string $name = null,
-        public ?string $email = null,
-    ) {
-    }
+    #[Required]
+    public ?string $name = null;
 
-    public function getRules(): array
-    {
-        return [
-            'name' => [new Required()],
-            'email' => [new Required(), new Email()],
-        ];
-    }
+    #[Required]
+    #[Email]
+    public ?string $email = null;
 }
 ```
 
@@ -501,9 +493,9 @@ Yii3 uses [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview):
 
 ```php
 use Yiisoft\Data\Reader\ReadableDataInterface;
+use Yiisoft\Yii\DataView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\Column\ActionColumn;
 use Yiisoft\Yii\DataView\GridView\Column\Base\DataContext;
-use Yiisoft\Yii\DataView\GridView\Column\DataColumn;
 use Yiisoft\Yii\DataView\GridView\GridView;
 
 /**
@@ -513,8 +505,8 @@ use Yiisoft\Yii\DataView\GridView\GridView;
 echo GridView::widget()
     ->dataReader($dataReader)
     ->columns(
-        new DataColumn(property: 'id'),
-        new DataColumn(property: 'title'),
+        new DataColumn('id'),
+        new DataColumn('title'),
         new ActionColumn(
             urlCreator: static fn(string $action, DataContext $context): string => "/post/$action/" . $context->key,
         ),
