@@ -19,7 +19,6 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-#| msgid "Introduction +"
 msgid "Internationalization"
 msgstr "Introducción"
 

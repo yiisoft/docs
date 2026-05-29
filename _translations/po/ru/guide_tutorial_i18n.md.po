@@ -19,7 +19,6 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-#| msgid "Sentry integration"
 msgid "Internationalization"
 msgstr "Интеграция с Sentry"
 

@@ -18,7 +18,6 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-#| msgid "Container configuration"
 msgid "Internationalization"
 msgstr "Konfigurasi container"
 

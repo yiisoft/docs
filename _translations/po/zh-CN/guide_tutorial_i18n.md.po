@@ -18,7 +18,6 @@ msgstr ""
 #. type: Title #
 #: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
-#| msgid "Transactional migrations"
 msgid "Internationalization"
 msgstr "事务性迁移"
 

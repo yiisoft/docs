@@ -5,6 +5,7 @@
 ## 介绍
 
 - [关于 Yii](intro/what-is-yii.md)
+- [Upgrading from version 1.1](intro/upgrade-from-v1.md)
 - [从 2.0 版本升级](intro/upgrade-from-v2.md)
 
 ## 入门
@@ -63,9 +64,9 @@
 
 - [缓存概述](caching/overview.md)
 - [数据缓存](caching/data.md)
-- [片段缓存](caching/fragment.md) TODO
-- [页面缓存](caching/page.md) TODO
-- [HTTP 缓存](caching/http.md) TODO
+- Fragment caching TODO
+- Page caching TODO
+- HTTP caching TODO
 
 ## 使用数据库
 
@@ -86,29 +87,29 @@
 
 ## 从用户获取数据
 
-- [创建表单](input/forms.md) TODO
+- Creating forms TODO
 - [验证输入](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-- [上传文件](input/file-upload.md) TODO
-- [收集表格输入](input/tabular-input.md) TODO
+- Uploading files TODO
+- Collecting tabular input TODO
 
 ## 显示数据
 
-- [数据格式化](output/formatting.md) TODO
-- [分页](output/pagination.md) TODO
-- [排序](output/sorting.md) TODO
-- [数据提供者](output/data-providers.md) TODO
-- [数据小部件](output/data-widgets.md) TODO
+- Data formatting TODO
+- Pagination TODO
+- Sorting TODO
+- Data providers TODO
+- Data widgets TODO
 
 ## REST APIs
 
-- [快速开始](rest/quick-start.md) TODO
-- [资源](rest/resources.md) TODO
-- [控制器](rest/controllers.md) TODO
-- [路由](rest/routing.md) TODO
-- [认证](rest/authentication.md) TODO
-- [速率限制](rest/rate-limiting.md) TODO
-- [版本控制](rest/versioning.md) TODO
-- [错误处理](rest/error-handling.md) TODO
+- Quick start TODO
+- Resources TODO
+- Controllers TODO
+- Routing TODO
+- Authentication TODO
+- Rate limiting TODO
+- Versioning TODO
+- Error handling TODO
 
 ## 开发工具
 

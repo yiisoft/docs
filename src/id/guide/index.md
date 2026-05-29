@@ -6,6 +6,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 ## Introduction
 
 - [About Yii](intro/what-is-yii.md)
+- [Upgrading from version 1.1](intro/upgrade-from-v1.md)
 - [Upgrading from version 2.0](intro/upgrade-from-v2.md)
 
 ## Getting started
@@ -64,9 +65,9 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 - [Caching overview](caching/overview.md)
 - [Data caching](caching/data.md)
-- [Fragment caching](caching/fragment.md) TODO
-- [Page caching](caching/page.md) TODO
-- [HTTP caching](caching/http.md) TODO
+- Fragment caching TODO
+- Page caching TODO
+- HTTP caching TODO
 
 ## Working with databases
 
@@ -87,30 +88,30 @@ Documentation](https://www.yiiframework.com/license#docs).
 
 ## Getting data from users
 
-- [Creating forms](input/forms.md) TODO
+- Creating forms TODO
 - [Validating
   input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-- [Uploading files](input/file-upload.md) TODO
-- [Collecting tabular input](input/tabular-input.md) TODO
+- Uploading files TODO
+- Collecting tabular input TODO
 
 ## Displaying data
 
-- [Data formatting](output/formatting.md) TODO
-- [Pagination](output/pagination.md) TODO
-- [Sorting](output/sorting.md) TODO
-- [Data providers](output/data-providers.md) TODO
-- [Data widgets](output/data-widgets.md) TODO
+- Data formatting TODO
+- Pagination TODO
+- Sorting TODO
+- Data providers TODO
+- Data widgets TODO
 
 ## REST APIs
 
-- [Quick start](rest/quick-start.md) TODO
-- [Resources](rest/resources.md) TODO
-- [Controllers](rest/controllers.md) TODO
-- [Routing](rest/routing.md) TODO
-- [Authentication](rest/authentication.md) TODO
-- [Rate limiting](rest/rate-limiting.md) TODO
-- [Versioning](rest/versioning.md) TODO
-- [Error handling](rest/error-handling.md) TODO
+- Quick start TODO
+- Resources TODO
+- Controllers TODO
+- Routing TODO
+- Authentication TODO
+- Rate limiting TODO
+- Versioning TODO
+- Error handling TODO
 
 ## Development tools
 
