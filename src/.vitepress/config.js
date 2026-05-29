@@ -94,7 +94,7 @@ export default {
                         {
                             text: 'Packages',
                             items: [
-                                {text: 'Package', link: '/guide/structure/package'},
+                                {text: 'Using Packages', link: '/guide/structure/package'},
                                 {text: 'Designing Packages', link: '/guide/structure/designing-packages'}
                             ]
                         },

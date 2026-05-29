@@ -4,6 +4,37 @@ This page describes how to design a Composer package that adds behavior to a Yii
 Use it when your package needs to register services, routes, events, commands, assets, migrations, translations,
 or a theme.
 
+For installing and updating packages in an application, see [Using packages](package.md).
+
+## Composer metadata
+
+Each package must have a `composer.json` file in its root directory. At minimum, define a package name, dependencies,
+autoloading, and Yii config metadata when the package integrates with a Yii application.
+
+Use a package name in the `vendor-name/project-name` format:
+
+```json
+{
+    "name": "vendor/blog",
+    "type": "library",
+    "description": "Blog integration for Yii applications",
+    "require": {
+        "php": ">=8.2",
+        "yiisoft/router": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Blog\\": "src/"
+        }
+    }
+}
+```
+
+Use stable dependency constraints for stable releases. Avoid using `yiisoft` as your vendor name because it is reserved
+for Yii packages.
+
+If your package requires a Yii application, prefixing the project name with `yii-` can make that clear on Packagist.
+
 ## Package layout
 
 A Yii-aware package is a regular Composer package with PHP classes, optional resource files, and optional config files.
@@ -458,3 +489,11 @@ After changing config group mappings, they should rebuild the merge plan with:
 ```sh
 composer yii-config-rebuild
 ```
+
+## Releasing packages
+
+Before tagging a release, test the package by itself and inside a minimal Yii application. Include a `README.md`,
+`CHANGELOG.md`, and `UPGRADE.md` when behavior or configuration changes require explanation.
+
+Use [semantic versioning](https://semver.org) for public releases. After the first release, do not edit migrations that
+users may already have applied; add new migrations instead.

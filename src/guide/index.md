@@ -41,7 +41,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 ## Packages
 
-- [Packages](structure/package.md)
+- [Using packages](structure/package.md)
 - [Designing packages](structure/designing-packages.md)
 
 ## Handling requests
