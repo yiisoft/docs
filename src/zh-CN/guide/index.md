@@ -102,7 +102,7 @@
 
 ## REST APIs
 
-- Quick start TODO
+- [Quick start](rest/quick-start.md)
 - Resources TODO
 - Controllers TODO
 - Routing TODO

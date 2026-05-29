@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-28 20:46+0000\n"
+"POT-Creation-Date: 2026-05-29 09:35+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -449,7 +449,7 @@ msgstr "API REST"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "Quick start TODO"
+msgid "[Quick start](rest/quick-start.md)"
 msgstr ""
 
 #. type: Bullet: '- '
