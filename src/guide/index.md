@@ -39,6 +39,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Domain](structure/domain.md)
 - [Service components](structure/service.md)
 - [Packages](structure/package.md)
+- [Designing packages](structure/designing-packages.md)
 
 ## Handling requests
 

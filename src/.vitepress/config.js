@@ -89,7 +89,8 @@ export default {
                                 {text: 'Middleware', link: '/guide/structure/middleware'},
                                 {text: 'Domain', link: '/guide/structure/domain'},
                                 {text: 'Service', link: '/guide/structure/service'},
-                                {text: 'Package', link: '/guide/structure/package'}
+                                {text: 'Package', link: '/guide/structure/package'},
+                                {text: 'Designing Packages', link: '/guide/structure/designing-packages'}
                             ]
                         },
                         {

@@ -163,6 +163,9 @@ like shown below:
 
 You may list one or multiple root namespaces and their corresponding file paths.
 
+If your package integrates with Yii application configuration, see
+[Designing packages for Yii applications](designing-packages.md).
+
 ### Recommended Practices <span id="recommended-practices"></span>
 
 Because packages are meant to be used by other people, you often need to make an extra effort during development.
