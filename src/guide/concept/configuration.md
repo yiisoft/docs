@@ -202,7 +202,7 @@ For convenience, there is a naming convention for custom string keys:
 ### Service providers
 
 As an alternative to registering dependencies directly, you can use service providers. A service provider is a class
-that receives configured options and registers services within the container.
+that returns a reusable set of container definitions and extensions.
 
 The default template exposes three config groups for service providers: `di-providers`, `di-providers-web`, and
 `di-providers-console`. In the template they are initialized as empty arrays in `config/configuration.php`, and you can
@@ -211,15 +211,15 @@ later populate them inline or switch them to load values from files.
 Prefer direct container configuration for application services with a simple definition: a class name, an interface
 implementation, constructor arguments from `$params`, or a closure that creates a single service.
 
-Use a service provider when the registration itself is a unit of code:
+Use a service provider when the registration itself is a reusable unit:
 
-- A package registers several related services, aliases, or decorators.
+- A package registers several related services, aliases, or extensions.
 - A service registration also needs supporting definitions.
 - The same registration should be reused in several applications.
-- Registration depends on runtime checks, optional classes, or environment-specific decisions.
+- Registration depends on optional classes or environment-specific decisions.
 
 Use a factory class when construction logic belongs to one service. A factory returns an object. A service provider
-registers definitions in the container.
+returns definitions for several related services.
 
 ```php
 /* @var array $params */
@@ -232,24 +232,18 @@ use App\Provider\MiddlewareProvider;
 return [
     // ...
     'yiisoft/yii-web/middleware' => MiddlewareProvider::class,
-    'yiisoft/cache/cache' =>  [
-        'class' => CacheProvider::class,
-        '__construct()' => [
-            $params['yiisoft/cache-file']['file-cache']['path'],
-        ],
-    ],
+    'yiisoft/cache/cache' => new CacheProvider($params['yiisoft/cache-file']['file-cache']['path']),
     // ...
 ];
 ```
 
 In this config keys are provider names. By convention these are `vendor/package-name/provider-name`. Values are provider
-class names. These classes could be either created in the project itself or provided by a package.
+class names or provider instances. These classes could be either created in the project itself or provided by a package.
 
 If you need to configure some options for a service, similar to direct container configuration, take values
 from `$params` and pass them to providers.
 
-Provider should implement a single method, `public function register(Container $container): void`. In this method you
-need to add a service to container using `set()` method. Below is a provider for a cache service:
+Provider should implement `Yiisoft\Di\ServiceProviderInterface`. Below is a provider for a cache service:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -258,27 +252,31 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\Cache\Cache;
 use Yiisoft\Cache\CacheInterface as YiiCacheInterface;
 use Yiisoft\Cache\File\FileCache;
-use Yiisoft\Di\Container;
-use Yiisoft\Di\Support\ServiceProvider;
+use Yiisoft\Di\ServiceProviderInterface;
 
-final readonly class CacheProvider extends ServiceProvider
+final readonly class CacheProvider implements ServiceProviderInterface
 {
     public function __construct(
         private string $cachePath = '@runtime/cache'
     )
     {
-        $this->cachePath = $cachePath;
     }
 
-    public function register(Container $container): void
+    public function getDefinitions(): array
     {
-        $container->set(CacheInterface::class, function (ContainerInterface $container) {
-            $aliases = $container->get(Aliases::class);
+        return [
+            CacheInterface::class => function (ContainerInterface $container) {
+                $aliases = $container->get(Aliases::class);
 
-            return new FileCache($aliases->get($this->cachePath));
-        });
+                return new FileCache($aliases->get($this->cachePath));
+            },
+            YiiCacheInterface::class => Cache::class,
+        ];
+    }
 
-        $container->set(YiiCacheInterface::class, Cache::class);
+    public function getExtensions(): array
+    {
+        return [];
     }
 }
 ```

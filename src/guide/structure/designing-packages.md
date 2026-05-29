@@ -450,11 +450,8 @@ Design for that:
 - Test the package inside a minimal Yii application so the config plugin, DI container, routes, console commands,
   migrations, translations, and assets are exercised together.
 
-When a user needs to customize a package config file, they can copy it into the application with:
-
-```sh
-composer yii-config-copy
-```
+When a user needs to customize package configuration, they usually do not need to copy the package config file. They can
+partially redefine the needed keys in the application configuration.
 
 After changing config group mappings, they should rebuild the merge plan with:
 
