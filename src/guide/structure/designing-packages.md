@@ -12,7 +12,6 @@ Keep the configuration in a predictable directory and make the public API explic
 ```
 composer.json
 config/
-    configuration.php
     params.php
     di.php
     di-providers.php
@@ -39,8 +38,7 @@ Use only the files your package needs. For example, a package with console comma
 ## Config plugin metadata
 
 Yii applications use [yiisoft/config](https://github.com/yiisoft/config) to discover package configuration.
-Declare the config file in the `extra.config-plugin-file` section of `composer.json`, the same way the
-Yii application template does:
+Declare package config files in the `extra.config-plugin` section of `composer.json`:
 
 ```json
 {
@@ -52,37 +50,21 @@ Yii application template does:
         }
     },
     "extra": {
-        "config-plugin-file": "config/configuration.php"
+        "config-plugin": {
+            "params": "config/params.php",
+            "di": "config/di.php",
+            "di-providers": "config/di-providers.php",
+            "routes": "config/routes.php",
+            "events": "config/events.php",
+            "params-web": "config/params-web.php",
+            "params-console": "config/params-console.php",
+            "di-console": "config/di-console.php"
+        }
     }
 }
 ```
 
-In `config/configuration.php`, map Yii config groups to package config files:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-return [
-    'config-plugin-options' => [
-        'source-directory' => 'config',
-    ],
-    'config-plugin' => [
-        'params' => 'params.php',
-        'di' => 'di.php',
-        'di-providers' => 'di-providers.php',
-        'routes' => 'routes.php',
-        'events' => 'events.php',
-        'params-web' => 'params-web.php',
-        'params-console' => 'params-console.php',
-        'di-console' => 'di-console.php',
-    ],
-];
-```
-
-`config-plugin-file` is relative to the package root. The `source-directory` option is also relative to the package
-root. Each `config-plugin` key is a config group name and each value is a path relative to `source-directory`.
+Each `config-plugin` key is a config group name and each value is a path relative to the package root.
 
 Use the common, web, and console groups consistently:
 
@@ -166,16 +148,18 @@ declare(strict_types=1);
 use Vendor\Blog\Provider\BlogProvider;
 
 return [
-    'vendor/blog/provider' => BlogProvider::class,
+    'vendor/blog/post-repository' => BlogProvider::class,
 ];
 ```
 
-Declare the group in `config/configuration.php`:
+Declare the group in `composer.json`:
 
-```php
-'config-plugin' => [
-    'di-providers' => 'di-providers.php',
-],
+```json
+"extra": {
+    "config-plugin": {
+        "di-providers": "config/di-providers.php"
+    }
+}
 ```
 
 A provider can return several service definitions and extensions. Place the provider class in
@@ -344,7 +328,7 @@ return [
 ];
 ```
 
-Put this in `config/params-console.php` and declare it as `params-console` in `config/configuration.php`.
+Put this in `config/params-console.php` and declare it as `params-console` in `composer.json`.
 
 This only contributes package migration locations. The application still needs `yiisoft/db-migration` installed and
 a database connection configured before migration commands can run.

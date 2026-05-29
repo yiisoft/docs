@@ -38,6 +38,9 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Middleware](structure/middleware.md)
 - [Domain](structure/domain.md)
 - [Service components](structure/service.md)
+
+## Packages
+
 - [Packages](structure/package.md)
 - [Designing packages](structure/designing-packages.md)
 
