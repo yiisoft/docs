@@ -1,0 +1,796 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"PO-Revision-Date: 2026-05-29 19:04+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/guide/concept/configuration.md
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Routes"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/internals/022-config-groups.md
+#, no-wrap
+msgid "Events"
+msgstr "Eventos"
+
+#. type: Title ##
+#: ../src/guide/concept/configuration.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/internals/022-config-groups.md
+#, no-wrap
+msgid "Parameters"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/databases/db-migrations.md
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Migrations"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/intro/upgrade-from-v2.md
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Console commands"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Designing packages for Yii applications"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "This page describes how to design a Composer package that adds behavior to a Yii application through configuration.  Use it when your package needs to register services, routes, events, commands, assets, migrations, translations, or a theme."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "For installing and updating packages in an application, see [Using packages](package.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy, no-wrap
+#| msgid "Class autoloading"
+msgid "Composer metadata"
+msgstr "Autocarga de Clases (Autoloading)"
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Each package must have a `composer.json` file in its root directory. At minimum, define a package name, dependencies, autoloading, and Yii config metadata when the package integrates with a Yii application."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use a package name in the `vendor-name/project-name` format:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"name\": \"vendor/blog\",\n"
+"    \"type\": \"library\",\n"
+"    \"description\": \"Blog integration for Yii applications\",\n"
+"    \"require\": {\n"
+"        \"php\": \">=8.2\",\n"
+"        \"yiisoft/router\": \"^4.0\"\n"
+"    },\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"Vendor\\\\Blog\\\\\": \"src/\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use stable dependency constraints for stable releases. Avoid using `yiisoft` as your vendor name because it is reserved for Yii packages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "If your package requires a Yii application, prefixing the project name with `yii-` can make that clear on Packagist."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Package layout"
+msgstr "Generación de Documentación de API"
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "A Yii-aware package is a regular Composer package with PHP classes, optional resource files, and optional config files.  Keep the configuration in a predictable directory and make the public API explicit:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"composer.json\n"
+"config/\n"
+"    params.php\n"
+"    di.php\n"
+"    di-providers.php\n"
+"    routes.php\n"
+"    events.php\n"
+"    params-web.php\n"
+"    params-console.php\n"
+"    di-console.php\n"
+"src/\n"
+"    ...\n"
+"assets/\n"
+"    ...\n"
+"migrations/\n"
+"    ...\n"
+"messages/\n"
+"    ...\n"
+"views/\n"
+"    ...\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use only the files your package needs. For example, a package with console commands but no web routes does not need `routes.php`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Config plugin metadata"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Yii applications use [yiisoft/config](https://github.com/yiisoft/config) to discover package configuration.  Declare package config files in the `extra.config-plugin` section of `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"name\": \"vendor/blog\",\n"
+"    \"type\": \"library\",\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"Vendor\\\\Blog\\\\\": \"src/\"\n"
+"        }\n"
+"    },\n"
+"    \"extra\": {\n"
+"        \"config-plugin\": {\n"
+"            \"params\": \"config/params.php\",\n"
+"            \"di\": \"config/di.php\",\n"
+"            \"di-providers\": \"config/di-providers.php\",\n"
+"            \"routes\": \"config/routes.php\",\n"
+"            \"events\": \"config/events.php\",\n"
+"            \"params-web\": \"config/params-web.php\",\n"
+"            \"params-console\": \"config/params-console.php\",\n"
+"            \"di-console\": \"config/di-console.php\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Each `config-plugin` key is a config group name and each value is a path relative to the package root."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use the common, web, and console groups consistently:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "`params`, `di`, `di-providers`, `di-delegates`, `events`, and `bootstrap` apply to both web and console entry points."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "`params-web`, `di-web`, `di-providers-web`, `events-web`, `bootstrap-web`, and `routes` apply to web entry points."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "`params-console`, `di-console`, `di-providers-console`, `events-console`, and `bootstrap-console` apply to console entry points."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "If your package defines a new config group, document how an application should load that group. Prefer the standard groups when you integrate with Yii services because application templates and Yii packages already use these names."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "After users install, update, remove, or dump Composer autoload files, the config plugin rebuilds the merge plan that Yii reads at runtime. If users edit their root package configuration manually, ask them to run:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Put default options in `config/params.php`. Group package parameters under the Composer package name to avoid collisions:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'vendor/blog' => [\n"
+"        'postsPerPage' => 20,\n"
+"        'cacheTtl' => 3600,\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Application developers can override these values in their own `config/common/params.php`, `config/web/params.php`, `config/console/params.php`, or environment-specific parameter files."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Do not read environment variables or global state from package code when a parameter can express the choice. Use parameters to configure services through DI definitions or service providers."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "DI definitions"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use `config/di.php`, `config/di-web.php`, or `config/di-console.php` for direct container definitions:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Vendor\\Blog\\PostRepository;\n"
+"use Vendor\\Blog\\PostRepositoryInterface;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    PostRepositoryInterface::class => [\n"
+"        'class' => PostRepository::class,\n"
+"        '__construct()' => [\n"
+"            'cacheTtl' => $params['vendor/blog']['cacheTtl'],\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Prefer direct DI definitions when the configuration describes one service clearly."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "DI service providers"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use a DI provider when registration belongs together as a reusable unit: several related services, aliases, factory definitions, or extensions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy
+#| msgid "You can define an alias via application's `config/params.php`:"
+msgid "Register providers in `config/di-providers.php`:"
+msgstr "Puedes definir un alias mediante la aplicación en `config/params.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Vendor\\Blog\\Provider\\BlogProvider;\n"
+"\n"
+"return [\n"
+"    'vendor/blog/post-repository' => BlogProvider::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Declare the group in `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"\"extra\": {\n"
+"    \"config-plugin\": {\n"
+"        \"di-providers\": \"config/di-providers.php\"\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "A provider can return several service definitions and extensions. Place the provider class in `src/Provider/BlogProvider.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace Vendor\\Blog\\Provider;\n"
+"\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"use Vendor\\Blog\\CachedPostRepository;\n"
+"use Vendor\\Blog\\PostRepository;\n"
+"use Vendor\\Blog\\PostRepositoryInterface;\n"
+"use Yiisoft\\Di\\ServiceProviderInterface;\n"
+"\n"
+"final class BlogProvider implements ServiceProviderInterface\n"
+"{\n"
+"    public function getDefinitions(): array\n"
+"    {\n"
+"        return [\n"
+"            PostRepository::class => PostRepository::class,\n"
+"            PostRepositoryInterface::class => static fn (\n"
+"                ContainerInterface $container\n"
+"            ): CachedPostRepository => new CachedPostRepository(\n"
+"                $container->get(PostRepository::class),\n"
+"                $container->get(LoggerInterface::class),\n"
+"            ),\n"
+"        ];\n"
+"    }\n"
+"\n"
+"    public function getExtensions(): array\n"
+"    {\n"
+"        return [];\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Web packages can add routes through `config/routes.php`, declared as the `routes` group:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Vendor\\Blog\\Web\\Post\\IndexAction;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/blog')->routes(\n"
+"        Route::get('')\n"
+"            ->action(IndexAction::class)\n"
+"            ->name('vendor/blog/index'),\n"
+"    ),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Route names should be package-prefixed. This avoids collisions with application routes and with routes from other packages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Keep package routes small and overridable. If an application needs full control over URLs, document the actions and let the application define its own routes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use `config/events.php`, `config/events-web.php`, or `config/events-console.php` to attach package handlers to events:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Vendor\\Blog\\Event\\PostPublished;\n"
+"use Vendor\\Blog\\EventHandler\\ClearPostListCache;\n"
+"\n"
+"return [\n"
+"    PostPublished::class => [\n"
+"        ClearPostListCache::class,\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Handlers can be closures, callables, invokable objects, invokable class names, or DI aliases supported by the event dispatcher configuration. Prefer class names for package handlers because applications can override their dependencies through the container."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/structure/designing-packages.md ../src/guide/views/asset.md
+#, no-wrap
+msgid "Assets"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "If your package ships CSS, JavaScript, images, or fonts, define asset bundles as PHP classes. For example, place this class in `src/Asset/BlogAsset.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace Vendor\\Blog\\Asset;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class BlogAsset extends AssetBundle\n"
+"{\n"
+"    public ?string $basePath = '@assets';\n"
+"    public ?string $baseUrl = '@assetsUrl';\n"
+"    public ?string $sourcePath = __DIR__ . '/../../assets';\n"
+"\n"
+"    public array $css = [\n"
+"        'blog.css',\n"
+"    ];\n"
+"\n"
+"    public array $js = [\n"
+"        'blog.js',\n"
+"    ];\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Users can register the bundle from a view, widget, view injection, or action:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "$assetManager->register(BlogAsset::class);\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use `$sourcePath` for files shipped inside the package. Use `$basePath` and `$baseUrl` as the public target where the asset manager publishes them."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Packages that need database schema changes should ship migrations and add their namespace or path to `yiisoft/db-migration` parameters."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy
+#| msgid "Introduction +"
+msgid "For namespaced migrations:"
+msgstr "Introducción"
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'yiisoft/db-migration' => [\n"
+"        'sourceNamespaces' => [\n"
+"            'Vendor\\\\Blog\\\\Migration',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy
+#| msgid "Generating API documentation"
+msgid "For path-based migrations:"
+msgstr "Generación de Documentación de API"
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'yiisoft/db-migration' => [\n"
+"        'sourcePaths' => [\n"
+"            __DIR__ . '/../migrations',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Put this in `config/params-console.php` and declare it as `params-console` in `composer.json`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "This only contributes package migration locations. The application still needs `yiisoft/db-migration` installed and a database connection configured before migration commands can run."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Package migrations must be stable after release. Do not edit a migration that users may already have applied. Add a new migration instead."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Translations"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "If the package has user-facing messages, give it a dedicated translation category and register a category source in `config/di.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Translator\\CategorySource;\n"
+"use Yiisoft\\Translator\\IntlMessageFormatter;\n"
+"use Yiisoft\\Translator\\Message\\Php\\MessageSource;\n"
+"\n"
+"return [\n"
+"    'translation.vendor-blog' => [\n"
+"        'definition' => static function (): CategorySource {\n"
+"            $messageSource = new MessageSource(__DIR__ . '/../messages');\n"
+"\n"
+"            return new CategorySource(\n"
+"                'vendor-blog',\n"
+"                $messageSource,\n"
+"                new IntlMessageFormatter(),\n"
+"                $messageSource,\n"
+"            );\n"
+"        },\n"
+"        'tags' => ['translation.categorySource'],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Store messages by locale and category:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"messages/\n"
+"    en-US/\n"
+"        vendor-blog.php\n"
+"    de/\n"
+"        vendor-blog.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use the explicit category when translating:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "$translator->translate('post.created', category: 'vendor-blog');\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Themes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "A package can ship view files and assets for a theme. Do not activate it from vendor package configuration. Instead, document the root application configuration needed to enable it. For the application template, this belongs in `config/web/params.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'yiisoft/view' => [\n"
+"        'theme' => [\n"
+"            'pathMap' => [\n"
+"                '@views' => '@vendor/vendor/blog/views',\n"
+"            ],\n"
+"            'basePath' => '@vendor/vendor/blog/assets',\n"
+"            'baseUrl' => '@assetsUrl/vendor-blog',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Themes replace view paths according to a path map. Document which application view paths your theme replaces and which asset URL must be published or exposed by the application."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Do not set `yiisoft/view.theme` directly in vendor package configuration. `yiisoft/view` already defines that key, and duplicate keys in the same configuration layer are not allowed."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "If your package only provides optional theme files, do not make the theme active by default. Provide the view files, asset bundle, and a documented parameter snippet so the application can opt in."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Console packages can add Symfony Console commands through `config/params-console.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Vendor\\Blog\\Command\\ReindexCommand;\n"
+"\n"
+"return [\n"
+"    'yiisoft/yii-console' => [\n"
+"        'commands' => [\n"
+"            'blog/reindex' => ReindexCommand::class,\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Command names should be package-prefixed. Keep command dependencies constructor-injected and registered through DI."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Application overrides"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Package configuration is the default layer. The application can override it in its root package configuration.  Design for that:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "Use package-prefixed parameter keys, route names, event handler IDs, and DI aliases."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "Keep default configuration small and documented."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "Avoid doing irreversible work during service registration."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "Put optional integrations in separate config files or providers when they require optional Composer packages."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/designing-packages.md
+msgid "Test the package inside a minimal Yii application so the config plugin, DI container, routes, console commands, migrations, translations, and assets are exercised together."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "When a user needs to customize package configuration, they usually do not need to copy the package config file. They can partially redefine the needed keys in the application configuration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "After changing config group mappings, they should rebuild the merge plan with:"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/designing-packages.md
+#, no-wrap
+msgid "Releasing packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Before tagging a release, test the package by itself and inside a minimal Yii application. Include a `README.md`, `CHANGELOG.md`, and `UPGRADE.md` when behavior or configuration changes require explanation."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/designing-packages.md
+msgid "Use [semantic versioning](https://semver.org) for public releases. After the first release, do not edit migrations that users may already have applied; add new migrations instead."
+msgstr ""

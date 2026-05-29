@@ -1326,7 +1326,6 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, fuzzy, no-wrap
-#| msgid "Console"
 msgid "Console commands"
 msgstr "Консоль"
 

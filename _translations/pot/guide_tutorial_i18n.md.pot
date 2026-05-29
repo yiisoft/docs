@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 12:19+0000\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: ../src/guide/tutorial/i18n.md
+#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Internationalization"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#, no-wrap
+msgid "composer yii-config-rebuild\n"
 msgstr ""
 
 #. type: Plain text
@@ -605,12 +612,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Rebuild config after adding the extractor configuration file:"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/tutorial/i18n.md
-#, no-wrap
-msgid "composer yii-config-rebuild\n"
 msgstr ""
 
 #. type: Plain text
