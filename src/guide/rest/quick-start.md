@@ -54,7 +54,8 @@ Content-Type: application/json
 
 `CreatePostInput` receives `title` and `content` from the decoded JSON body.
 
-If a value must come from a specific part of the request, use parameter attributes instead.
+If most values should come from the request body, but one value must come from another part of the request,
+combine `#[FromBody]` with parameter attributes.
 
 For example, create `src/Api/Post/UpdatePostInput.php`:
 
@@ -65,18 +66,23 @@ declare(strict_types=1);
 
 namespace App\Api\Post;
 
-use Yiisoft\Input\Http\Attribute\Parameter\Body;
+use Yiisoft\Input\Http\AbstractInput;
+use Yiisoft\Input\Http\Attribute\Data\FromBody;
 use Yiisoft\Input\Http\Attribute\Parameter\Query;
+use Yiisoft\Validator\Rule\Length;
+use Yiisoft\Validator\Rule\Required;
 
-final class UpdatePostInput
+#[FromBody]
+final class UpdatePostInput extends AbstractInput
 {
     public function __construct(
         #[Query('id')]
-        public int $id,
-        #[Body]
-        public string $title,
-        #[Body]
-        public string $content,
+        public int $id = 0,
+        #[Required]
+        #[Length(min: 2, max: 100)]
+        public string $title = '',
+        #[Required]
+        public string $content = '',
     ) {}
 }
 ```
@@ -92,10 +98,11 @@ declare(strict_types=1);
 
 namespace App\Api\Post;
 
+use Yiisoft\Input\Http\AbstractInput;
 use Yiisoft\Input\Http\Attribute\Parameter\Body;
 use Yiisoft\Input\Http\Attribute\Parameter\UploadedFiles;
 
-final class UploadImageInput
+final class UploadImageInput extends AbstractInput
 {
     public function __construct(
         #[Body]
@@ -204,7 +211,7 @@ final readonly class ResponseFactory
 }
 ```
 
-Presenters transform application objects to API output arrays.
+Presenters are application-level abstractions that transform application objects to API output arrays.
 Keep them separate from domain entities so changing an API response doesn't force changes in business objects.
 
 Create `src/Api/Post/PostPresenter.php`:
