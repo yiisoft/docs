@@ -88,8 +88,14 @@ export default {
                                 {text: 'Action', link: '/guide/structure/action'},
                                 {text: 'Middleware', link: '/guide/structure/middleware'},
                                 {text: 'Domain', link: '/guide/structure/domain'},
-                                {text: 'Service', link: '/guide/structure/service'},
-                                {text: 'Package', link: '/guide/structure/package'}
+                                {text: 'Service', link: '/guide/structure/service'}
+                            ]
+                        },
+                        {
+                            text: 'Packages',
+                            items: [
+                                {text: 'Using Packages', link: '/guide/structure/package'},
+                                {text: 'Designing Packages', link: '/guide/structure/designing-packages'}
                             ]
                         },
                         {
