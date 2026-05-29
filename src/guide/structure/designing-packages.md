@@ -12,10 +12,13 @@ Keep the configuration in a predictable directory and make the public API explic
 ```
 composer.json
 config/
+    configuration.php
     params.php
     di.php
+    di-providers.php
     routes.php
     events.php
+    params-web.php
     params-console.php
     di-console.php
 src/
@@ -36,7 +39,8 @@ Use only the files your package needs. For example, a package with console comma
 ## Config plugin metadata
 
 Yii applications use [yiisoft/config](https://github.com/yiisoft/config) to discover package configuration.
-Declare the config files in the `extra.config-plugin` section of `composer.json`:
+Declare the config file in the `extra.config-plugin-file` section of `composer.json`, the same way the
+Yii application template does:
 
 ```json
 {
@@ -48,23 +52,37 @@ Declare the config files in the `extra.config-plugin` section of `composer.json`
         }
     },
     "extra": {
-        "config-plugin-options": {
-            "source-directory": "config"
-        },
-        "config-plugin": {
-            "params": "params.php",
-            "di": "di.php",
-            "routes": "routes.php",
-            "events": "events.php",
-            "params-console": "params-console.php",
-            "di-console": "di-console.php"
-        }
+        "config-plugin-file": "config/configuration.php"
     }
 }
 ```
 
-`source-directory` is relative to the package root. Each `config-plugin` key is a config group name and each value is
-a path relative to `source-directory`.
+In `config/configuration.php`, map Yii config groups to package config files:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+return [
+    'config-plugin-options' => [
+        'source-directory' => 'config',
+    ],
+    'config-plugin' => [
+        'params' => 'params.php',
+        'di' => 'di.php',
+        'di-providers' => 'di-providers.php',
+        'routes' => 'routes.php',
+        'events' => 'events.php',
+        'params-web' => 'params-web.php',
+        'params-console' => 'params-console.php',
+        'di-console' => 'di-console.php',
+    ],
+];
+```
+
+`config-plugin-file` is relative to the package root. The `source-directory` option is also relative to the package
+root. Each `config-plugin` key is a config group name and each value is a path relative to `source-directory`.
 
 Use the common, web, and console groups consistently:
 
@@ -85,7 +103,8 @@ composer yii-config-rebuild
 
 ## Parameters
 
-Put default options in `params.php`. Group package parameters under the Composer package name to avoid collisions:
+Put default options in `config/params.php`. Group package parameters under the Composer package name to avoid
+collisions:
 
 ```php
 <?php
@@ -108,7 +127,7 @@ parameters to configure services through DI definitions or service providers.
 
 ## DI definitions
 
-Use `di.php`, `di-web.php`, or `di-console.php` for direct container definitions:
+Use `config/di.php`, `config/di-web.php`, or `config/di-console.php` for direct container definitions:
 
 ```php
 <?php
@@ -134,10 +153,10 @@ Prefer direct DI definitions when the configuration describes one service clearl
 
 ## DI service providers
 
-Use a DI provider when registration is code: several related services, optional classes, aliases, decorators,
-or environment checks.
+Use a DI provider when registration belongs together as a reusable unit: several related services, aliases,
+factory definitions, or extensions.
 
-Register providers in a provider config group:
+Register providers in `config/di-providers.php`:
 
 ```php
 <?php
@@ -151,20 +170,16 @@ return [
 ];
 ```
 
-Declare the group in `composer.json`:
+Declare the group in `config/configuration.php`:
 
-```json
-"extra": {
-    "config-plugin-options": {
-        "source-directory": "config"
-    },
-    "config-plugin": {
-        "di-providers": "di-providers.php"
-    }
-}
+```php
+'config-plugin' => [
+    'di-providers' => 'di-providers.php',
+],
 ```
 
-A provider can register several services:
+A provider can return several service definitions and extensions. Place the provider class in
+`src/Provider/BlogProvider.php`:
 
 ```php
 <?php
@@ -173,23 +188,38 @@ declare(strict_types=1);
 
 namespace Vendor\Blog\Provider;
 
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+use Vendor\Blog\CachedPostRepository;
 use Vendor\Blog\PostRepository;
 use Vendor\Blog\PostRepositoryInterface;
-use Yiisoft\Di\Container;
-use Yiisoft\Di\Support\ServiceProvider;
+use Yiisoft\Di\ServiceProviderInterface;
 
-final class BlogProvider extends ServiceProvider
+final class BlogProvider implements ServiceProviderInterface
 {
-    public function register(Container $container): void
+    public function getDefinitions(): array
     {
-        $container->set(PostRepositoryInterface::class, PostRepository::class);
+        return [
+            PostRepository::class => PostRepository::class,
+            PostRepositoryInterface::class => static fn (
+                ContainerInterface $container
+            ): CachedPostRepository => new CachedPostRepository(
+                $container->get(PostRepository::class),
+                $container->get(LoggerInterface::class),
+            ),
+        ];
+    }
+
+    public function getExtensions(): array
+    {
+        return [];
     }
 }
 ```
 
 ## Routes
 
-Web packages can add routes through the `routes` group:
+Web packages can add routes through `config/routes.php`, declared as the `routes` group:
 
 ```php
 <?php
@@ -217,7 +247,7 @@ let the application define its own routes.
 
 ## Events
 
-Use the `events`, `events-web`, or `events-console` group to attach package handlers to events:
+Use `config/events.php`, `config/events-web.php`, or `config/events-console.php` to attach package handlers to events:
 
 ```php
 <?php
@@ -240,7 +270,8 @@ through the container.
 
 ## Assets
 
-If your package ships CSS, JavaScript, images, or fonts, define asset bundles as PHP classes:
+If your package ships CSS, JavaScript, images, or fonts, define asset bundles as PHP classes. For example,
+place this class in `src/Asset/BlogAsset.php`:
 
 ```php
 <?php
@@ -253,6 +284,8 @@ use Yiisoft\Assets\AssetBundle;
 
 final class BlogAsset extends AssetBundle
 {
+    public ?string $basePath = '@assets';
+    public ?string $baseUrl = '@assetsUrl';
     public ?string $sourcePath = __DIR__ . '/../../assets';
 
     public array $css = [
@@ -271,8 +304,8 @@ Users can register the bundle from a view, widget, view injection, or action:
 $assetManager->register(BlogAsset::class);
 ```
 
-Use `$sourcePath` for files shipped inside the package. Use `$basePath` and `$baseUrl` only when the files are already
-in a public web directory.
+Use `$sourcePath` for files shipped inside the package. Use `$basePath` and `$baseUrl` as the public target where the
+asset manager publishes them.
 
 ## Migrations
 
@@ -311,14 +344,18 @@ return [
 ];
 ```
 
-Put this in `params-console.php` and declare it as `params-console` in `composer.json`.
+Put this in `config/params-console.php` and declare it as `params-console` in `config/configuration.php`.
+
+This only contributes package migration locations. The application still needs `yiisoft/db-migration` installed and
+a database connection configured before migration commands can run.
 
 Package migrations must be stable after release. Do not edit a migration that users may already have applied. Add a
 new migration instead.
 
 ## Translations
 
-If the package has user-facing messages, give it a dedicated translation category and register a category source:
+If the package has user-facing messages, give it a dedicated translation category and register a category source in
+`config/di.php`:
 
 ```php
 <?php
@@ -364,8 +401,9 @@ $translator->translate('post.created', category: 'vendor-blog');
 
 ## Themes
 
-A package can ship view files and assets for a theme. Yii view configuration keeps theme settings under
-`yiisoft/view.theme`, so a theme package can provide default parameters:
+A package can ship view files and assets for a theme. Do not activate it from vendor package configuration. Instead,
+document the root application configuration needed to enable it. For the application template, this belongs in
+`config/web/params.php`:
 
 ```php
 <?php
@@ -376,9 +414,9 @@ return [
     'yiisoft/view' => [
         'theme' => [
             'pathMap' => [
-                '@views' => __DIR__ . '/../views',
+                '@views' => '@vendor/vendor/blog/views',
             ],
-            'basePath' => __DIR__ . '/../assets',
+            'basePath' => '@vendor/vendor/blog/assets',
             'baseUrl' => '@assetsUrl/vendor-blog',
         ],
     ],
@@ -388,12 +426,15 @@ return [
 Themes replace view paths according to a path map. Document which application view paths your theme replaces and which
 asset URL must be published or exposed by the application.
 
+Do not set `yiisoft/view.theme` directly in vendor package configuration. `yiisoft/view` already defines that key, and
+duplicate keys in the same configuration layer are not allowed.
+
 If your package only provides optional theme files, do not make the theme active by default. Provide the view files,
 asset bundle, and a documented parameter snippet so the application can opt in.
 
 ## Console commands
 
-Console packages can add Symfony Console commands through `params-console`:
+Console packages can add Symfony Console commands through `config/params-console.php`:
 
 ```php
 <?php
