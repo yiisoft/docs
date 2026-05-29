@@ -105,6 +105,12 @@ export default {
                             ]
                         },
                         {
+                            text: 'REST APIs',
+                            items: [
+                                {text: 'Quick Start', link: '/guide/rest/quick-start'}
+                            ]
+                        },
+                        {
                             text: 'Security',
                             items: [
                                 {text: 'Overview', link: '/guide/security/overview'},
