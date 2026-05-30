@@ -85,6 +85,7 @@ export default {
                                 {text: 'Overview', link: '/guide/structure/overview'},
                                 {text: 'Entry Script', link: '/guide/structure/entry-script'},
                                 {text: 'Application', link: '/guide/structure/application'},
+                                {text: 'Module', link: '/guide/structure/module'},
                                 {text: 'Action', link: '/guide/structure/action'},
                                 {text: 'Middleware', link: '/guide/structure/middleware'},
                                 {text: 'Domain', link: '/guide/structure/domain'},
