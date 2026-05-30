@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 10:43+0000\n"
+"POT-Creation-Date: 2026-05-30 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,4 +109,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid ""
+"[Applying migrations during rolling updates](deployment/rolling-update-"
+"migrations.md)"
 msgstr ""
