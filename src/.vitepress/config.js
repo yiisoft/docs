@@ -205,7 +205,8 @@ export default {
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
                                 {text: 'Using htmx for Partial Page Reloads', link: '/cookbook/using-htmx-for-partial-reloads'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
-                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
+                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Running Background Tasks and Cron Jobs', link: '/cookbook/background-tasks-and-cron'}
                             ]
                         },
                         {
