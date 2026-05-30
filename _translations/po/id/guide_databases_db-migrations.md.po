@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 18:47+0000\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,8 +15,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. type: Title #
+#. type: Title ##
 #: ../src/guide/databases/db-migrations.md
+#: ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Migrations"
 msgstr ""

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-29 09:35+0000\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -199,9 +199,24 @@ msgstr "[Dominio](structure/domain.md)"
 msgid "[Service components](structure/service.md)"
 msgstr "[Componenti di servizio](structure/service.md)"
 
+#. type: Title ##
+#: ../src/guide/index.md
+#, no-wrap
+msgid "Packages"
+msgstr ""
+
 #. type: Bullet: '- '
 #: ../src/guide/index.md
-msgid "[Packages](structure/package.md)"
+#, fuzzy
+#| msgid "[Packages](structure/package.md)"
+msgid "[Using packages](structure/package.md)"
+msgstr "[Pacchetti](structure/package.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+#, fuzzy
+#| msgid "[Packages](structure/package.md)"
+msgid "[Designing packages](structure/designing-packages.md)"
 msgstr "[Pacchetti](structure/package.md)"
 
 #. type: Title ##

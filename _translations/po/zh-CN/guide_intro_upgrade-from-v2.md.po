@@ -1269,7 +1269,6 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, fuzzy, no-wrap
-#| msgid "Using console command"
 msgid "Console commands"
 msgstr "使用控制台命令"
 

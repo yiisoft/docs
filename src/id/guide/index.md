@@ -39,7 +39,11 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Middleware](structure/middleware.md)
 - [Domain](structure/domain.md)
 - [Service components](structure/service.md)
-- [Packages](structure/package.md)
+
+## Packages
+
+- [Using packages](structure/package.md)
+- [Designing packages](structure/designing-packages.md)
 
 ## Handling requests
 

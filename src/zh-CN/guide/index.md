@@ -38,7 +38,11 @@
 - [中间件](structure/middleware.md)
 - [领域](structure/domain.md)
 - [服务组件](structure/service.md)
-- [包](structure/package.md)
+
+## 包
+
+- [Using packages](structure/package.md)
+- [Designing packages](structure/designing-packages.md)
 
 ## 处理请求
 

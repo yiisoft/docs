@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 12:19+0000\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
 "PO-Revision-Date: 2026-05-09 11:15+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,10 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title #
-#: ../src/guide/tutorial/i18n.md
+#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
 msgid "Internationalization"
 msgstr "Generazione della documentazione API"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "[Configurazione](concept/configuration.md)"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
@@ -680,12 +687,6 @@ msgstr ""
 #: ../src/guide/tutorial/i18n.md
 msgid "Rebuild config after adding the extractor configuration file:"
 msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
-msgid "composer yii-config-rebuild\n"
-msgstr "[Configurazione](concept/configuration.md)"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md

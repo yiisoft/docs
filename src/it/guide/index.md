@@ -39,7 +39,11 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Middleware](structure/middleware.md)
 - [Dominio](structure/domain.md)
 - [Componenti di servizio](structure/service.md)
-- [Pacchetti](structure/package.md)
+
+## Packages
+
+- [Using packages](structure/package.md)
+- [Designing packages](structure/designing-packages.md)
 
 ## Gestione delle richieste
 

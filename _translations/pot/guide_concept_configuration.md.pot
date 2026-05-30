@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-23 15:17+0000\n"
+"POT-Creation-Date: 2026-05-29 19:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -414,8 +414,8 @@ msgstr ""
 #: ../src/guide/concept/configuration.md
 msgid ""
 "As an alternative to registering dependencies directly, you can use service "
-"providers. A service provider is a class that receives configured options "
-"and registers services within the container."
+"providers. A service provider is a class that returns a reusable set of "
+"container definitions and extensions."
 msgstr ""
 
 #. type: Plain text
@@ -437,12 +437,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
-msgid "Use a service provider when the registration itself is a unit of code:"
+msgid "Use a service provider when the registration itself is a reusable unit:"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/configuration.md
-msgid "A package registers several related services, aliases, or decorators."
+msgid "A package registers several related services, aliases, or extensions."
 msgstr ""
 
 #. type: Bullet: '- '
@@ -458,16 +458,15 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/concept/configuration.md
 msgid ""
-"Registration depends on runtime checks, optional classes, or environment-"
-"specific decisions."
+"Registration depends on optional classes or environment-specific decisions."
 msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
 msgid ""
 "Use a factory class when construction logic belongs to one service. A "
-"factory returns an object. A service provider registers definitions in the "
-"container."
+"factory returns an object. A service provider returns definitions for "
+"several related services."
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -484,12 +483,7 @@ msgid ""
 "return [\n"
 "    // ...\n"
 "    'yiisoft/yii-web/middleware' => MiddlewareProvider::class,\n"
-"    'yiisoft/cache/cache' =>  [\n"
-"        'class' => CacheProvider::class,\n"
-"        '__construct()' => [\n"
-"            $params['yiisoft/cache-file']['file-cache']['path'],\n"
-"        ],\n"
-"    ],\n"
+"    'yiisoft/cache/cache' => new CacheProvider($params['yiisoft/cache-file']['file-cache']['path']),\n"
 "    // ...\n"
 "];\n"
 msgstr ""
@@ -498,8 +492,9 @@ msgstr ""
 #: ../src/guide/concept/configuration.md
 msgid ""
 "In this config keys are provider names. By convention these are `vendor/"
-"package-name/provider-name`. Values are provider class names. These classes "
-"could be either created in the project itself or provided by a package."
+"package-name/provider-name`. Values are provider class names or provider "
+"instances. These classes could be either created in the project itself or "
+"provided by a package."
 msgstr ""
 
 #. type: Plain text
@@ -513,10 +508,8 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/concept/configuration.md
 msgid ""
-"Provider should implement a single method, `public function "
-"register(Container $container): void`. In this method you need to add a "
-"service to container using `set()` method. Below is a provider for a cache "
-"service:"
+"Provider should implement `Yiisoft\\Di\\ServiceProviderInterface`. Below is "
+"a provider for a cache service:"
 msgstr ""
 
 #. type: Fenced code block (php)
@@ -529,33 +522,38 @@ msgid ""
 "use Yiisoft\\Cache\\Cache;\n"
 "use Yiisoft\\Cache\\CacheInterface as YiiCacheInterface;\n"
 "use Yiisoft\\Cache\\File\\FileCache;\n"
-"use Yiisoft\\Di\\Container;\n"
-"use Yiisoft\\Di\\Support\\ServiceProvider;\n"
+"use Yiisoft\\Di\\ServiceProviderInterface;\n"
 "\n"
-"final readonly class CacheProvider extends ServiceProvider\n"
+"final readonly class CacheProvider implements ServiceProviderInterface\n"
 "{\n"
 "    public function __construct(\n"
 "        private string $cachePath = '@runtime/cache'\n"
 "    )\n"
 "    {\n"
-"        $this->cachePath = $cachePath;\n"
 "    }\n"
 "\n"
-"    public function register(Container $container): void\n"
+"    public function getDefinitions(): array\n"
 "    {\n"
-"        $container->set(CacheInterface::class, function (ContainerInterface $container) {\n"
-"            $aliases = $container->get(Aliases::class);\n"
+"        return [\n"
+"            CacheInterface::class => function (ContainerInterface $container) {\n"
+"                $aliases = $container->get(Aliases::class);\n"
 "\n"
-"            return new FileCache($aliases->get($this->cachePath));\n"
-"        });\n"
+"                return new FileCache($aliases->get($this->cachePath));\n"
+"            },\n"
+"            YiiCacheInterface::class => Cache::class,\n"
+"        ];\n"
+"    }\n"
 "\n"
-"        $container->set(YiiCacheInterface::class, Cache::class);\n"
+"    public function getExtensions(): array\n"
+"    {\n"
+"        return [];\n"
 "    }\n"
 "}\n"
 msgstr ""
 
-#. type: Title ###
+#. type: Title ##
 #: ../src/guide/concept/configuration.md
+#: ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Routes"
 msgstr ""
@@ -568,7 +566,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (php)
-#: ../src/guide/concept/configuration.md
+#: ../src/guide/concept/configuration.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
 "use App\\Web;\n"
@@ -592,6 +590,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -651,7 +650,9 @@ msgid "Read more about it in [\"Events\"](events.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../src/guide/concept/configuration.md ../src/internals/022-config-groups.md
+#: ../src/guide/concept/configuration.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
 msgstr ""
