@@ -23,3 +23,4 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Configuring webservers](configuring-webservers/general.md)
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
+- [Applying migrations during rolling updates](deployment/rolling-update-migrations.md)

@@ -238,7 +238,8 @@ export default {
                         {
                             text: 'Deployment',
                             items: [
-                                {text: 'Docker Swarm', link: '/cookbook/deployment/docker-swarm'}
+                                {text: 'Docker Swarm', link: '/cookbook/deployment/docker-swarm'},
+                                {text: 'Rolling Update Migrations', link: '/cookbook/deployment/rolling-update-migrations'}
                             ]
                         }
                     ],
