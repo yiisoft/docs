@@ -301,6 +301,62 @@ return [
 ];
 ```
 
+### Trailing slash canonical URLs
+
+Choose one URL shape for each resource. If `/docs` and `/docs/` render the same page, search engines and caches may
+treat them as different URLs. Redirect one shape to the other before routing.
+
+The following middleware removes trailing slashes, preserves the query string, drops the fragment, and uses `308
+Permanent Redirect` so the HTTP method is preserved:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Middleware;
+
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Yiisoft\Http\Header;
+use Yiisoft\Http\Status;
+
+final readonly class RemoveTrailingSlashMiddleware implements MiddlewareInterface
+{
+    public function __construct(
+        private ResponseFactoryInterface $responseFactory,
+    ) {
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $uri = $request->getUri();
+        $path = $uri->getPath();
+
+        if ($path !== '/' && str_ends_with($path, '/')) {
+            $canonicalUri = $uri
+                ->withPath(rtrim($path, '/'))
+                ->withFragment('');
+
+            return $this->responseFactory
+                ->createResponse(Status::PERMANENT_REDIRECT)
+                ->withHeader(Header::LOCATION, (string) $canonicalUri);
+        }
+
+        return $handler->handle($request);
+    }
+}
+```
+
+Register this middleware before `Yiisoft\Router\Middleware\Router` in the application middleware stack. If only a
+specific route group needs this behavior, attach it to that group instead.
+
+Use the opposite rule if your project treats trailing slashes as canonical. The important part is to generate links in
+one form and redirect alternative forms consistently.
+
 ## Generating URLs <span id="generating-urls"></span>
 
 To generate URL based on a route, a route should have a name:
