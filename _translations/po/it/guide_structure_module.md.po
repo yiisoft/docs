@@ -1,0 +1,562 @@
+# Italian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-30 08:13+0000\n"
+"PO-Revision-Date: 2026-05-30 08:13+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/guide/concept/configuration.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid "Routes"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Title #
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid "Modules"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "A module is an application part grouped around a business context or a reusable feature. In Yii, this is a design boundary, not a required base class. A module can be:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "application code under the `App\\` namespace;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "a [Composer package](package.md) installed into `vendor/`;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "code that starts in the application and is later extracted into a package."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Use a module when a group of actions, domain services, repositories, event handlers, views, assets, commands, and related configuration changes together and has a name that makes sense to the business."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "For example, a blog module can live in an application as:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"src/\n"
+"    Blog/\n"
+"        Post/\n"
+"            Post.php\n"
+"            PostRepositoryInterface.php\n"
+"            InMemoryPostRepository.php\n"
+"        Web/\n"
+"            IndexAction.php\n"
+"            index.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "The same structure can later become a Composer package by changing the namespace and adding package metadata and configuration files. See [Designing packages](designing-packages.md) for package-specific details."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid "Module boundaries"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Keep module code together by context first and by technical type second. This is close to the [vertical slices](../../cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md) approach, but at a larger application-structure boundary. Prefer `App\\Blog\\Post\\PostRepositoryInterface` over a global `App\\Repository\\PostRepositoryInterface` when the repository belongs to blog posts only."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Treat module classes as a public API only when another module is expected to use them. Good public API classes are usually:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "commands or queries that express a use case;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "DTOs or value objects passed between modules;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "interfaces for services another module may call;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "events emitted by the module."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Keep implementation classes private to the module namespace. Other modules should not depend on `App\\Blog\\Post\\InMemoryPostRepository` or a controller action directly. They should depend on an interface, a use case class, or an event."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid "Interfaces between modules"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Put an interface where the contract belongs:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "If the interface describes a capability provided by a module, place it in that module. For example, `App\\Blog\\Post\\PostRepositoryInterface` belongs to the blog module because it describes how blog posts are read."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "If the interface describes what a module needs from the outside world, place it in the consuming module. For example, `App\\Order\\Customer\\CustomerVerifierInterface` belongs to the order module if orders only need a yes-or-no customer check. The customer module, an application adapter, or a package can provide the implementation."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "This keeps dependencies explicit. A module can depend on another module's public contract, but it should not reach into another module's internal implementation classes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "First, define the interface in the module:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Blog\\Post;\n"
+"\n"
+"interface PostRepositoryInterface\n"
+"{\n"
+"    /**\n"
+"     * @return list<Post>\n"
+"     */\n"
+"    public function findLatest(): array;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Put the implementation in the same module and bind the interface to it:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Post\\InMemoryPostRepository;\n"
+"use App\\Blog\\Post\\PostRepositoryInterface;\n"
+"\n"
+"return [\n"
+"    PostRepositoryInterface::class => InMemoryPostRepository::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "In the default application template, put this file under `config/common/di/`, for example `config/common/di/blog.php`. The template loads `config/common/di/*.php` into the shared `di` configuration group, so the binding is available to web and console entry points."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+#| msgid "Actions"
+msgid "Web actions"
+msgstr "Azioni"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Actions belong to the module when they are the web entry point for module behavior:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "namespace App\\Web\\Echo;\n"
+#| "\n"
+#| "use Psr\\Http\\Message\\ResponseInterface;\n"
+#| "use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+#| "use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+#| "\n"
+#| "final readonly class Action\n"
+#| "{\n"
+#| "    public function __construct(\n"
+#| "        private ViewRenderer $viewRenderer,\n"
+#| "    ) {}\n"
+#| "\n"
+#| "    public function __invoke(\n"
+#| "        #[RouteArgument('message')]\n"
+#| "        string $message = 'Hello!'\n"
+#| "    ): ResponseInterface\n"
+#| "    {\n"
+#| "        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+#| "            'message' => $message,\n"
+#| "        ]);\n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Blog\\Web;\n"
+"\n"
+"use App\\Blog\\Post\\PostRepositoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class IndexAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private PostRepositoryInterface $posts,\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/index', [\n"
+"            'posts' => $this->posts->findLatest(),\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\ViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ViewRenderer $viewRenderer,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'message' => $message,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Keep request parsing and response creation in the action. Keep business decisions in the module's domain classes or use case services."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+#, fuzzy
+#| msgid "Now, to map your handler to URL, you need to add a route in `config/common/routes.php`:"
+msgid "For a small application, add module routes directly to `config/common/routes.php`:"
+msgstr "Ora, per mappare il tuo gestore di richieste all'URL, devi aggiungere una rotta in `config/common/routes.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<?php\n"
+#| "\n"
+#| "declare(strict_types=1);\n"
+#| "\n"
+#| "use App\\Web;\n"
+#| "use Yiisoft\\Router\\Group;\n"
+#| "use Yiisoft\\Router\\Route;\n"
+#| "\n"
+#| "return [\n"
+#| "    Group::create()\n"
+#| "        ->routes(\n"
+#| "            Route::get('/')\n"
+#| "                ->action(Web\\HomePage\\Action::class)\n"
+#| "                ->name('home'),\n"
+#| "            Route::get('/say[/{message}]')\n"
+#| "                ->action(Web\\Echo\\Action::class)\n"
+#| "                ->name('echo/say'),\n"
+#| "        ),\n"
+#| "];\n"
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Web\\IndexAction;\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"        ),\n"
+"\n"
+"    Group::create('/blog')\n"
+"        ->routes(\n"
+"            Route::get('')\n"
+"                ->action(IndexAction::class)\n"
+"                ->name('blog/index'),\n"
+"        ),\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Use module-prefixed route names, such as `blog/index`, to avoid collisions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "If the application has many modules, you can give each module its own route config file. Change the `routes` group in `config/configuration.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"'routes' => [\n"
+"    'common/routes.php',\n"
+"    'common/routes/*.php',\n"
+"],\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Then create `config/common/routes/blog.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Web\\IndexAction;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/blog')\n"
+"        ->routes(\n"
+"            Route::get('')\n"
+"                ->action(IndexAction::class)\n"
+"                ->name('blog/index'),\n"
+"        ),\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "After changing `config/configuration.php` or adding files matched by a config wildcard, rebuild the merge plan:"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+msgid "Module configuration"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Application modules use the same configuration groups as packages. The difference is where the configuration lives:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "application module configuration lives in the root application under `config/`;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "package module configuration lives in the package and is declared in `extra.config-plugin`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Common locations for application module configuration are:"
+msgstr ""
+
+#. type: Fenced code block
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"config/\n"
+"    common/\n"
+"        di/\n"
+"            blog.php\n"
+"        routes/\n"
+"            blog.php\n"
+"        params.php\n"
+"    console/\n"
+"        params.php\n"
+"    web/\n"
+"        params.php\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Put shared service definitions in `common/di/`. Put web-only definitions in `web/di/`. Put console-only parameters or command registrations in `console/params.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "When a module grows enough to become reusable, move its PHP classes to a Composer package, move its configuration files to the package `config/` directory, and declare them in the package `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/module.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"extra\": {\n"
+"        \"config-plugin\": {\n"
+"            \"di\": \"config/di.php\",\n"
+"            \"routes\": \"config/routes.php\"\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "The application can then override package defaults in its own config files."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/module.md
+#, fuzzy, no-wrap
+msgid "Cross-module communication"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Choose the smallest coupling that supports the behavior:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "Use constructor injection with an interface for a direct synchronous call."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "Use an event when the producer should not know who reacts to something that happened."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "Use an application service or use case class when orchestration belongs outside both modules."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/module.md
+msgid "Use a package when the module must be reused by more than one application."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/module.md
+msgid "Avoid service locator calls and global state inside module classes. Let actions, commands, and services receive their dependencies through constructors so module boundaries stay visible in code and testable in isolation."
+msgstr ""

@@ -34,6 +34,7 @@
 - [应用结构概述](structure/overview.md)
 - [入口脚本](structure/entry-script.md)
 - [应用](structure/application.md)
+- [Modules](structure/module.md)
 - [动作](structure/action.md)
 - [中间件](structure/middleware.md)
 - [领域](structure/domain.md)

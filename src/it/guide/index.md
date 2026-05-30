@@ -35,6 +35,7 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Panoramica della struttura applicativa](structure/overview.md)
 - [Script d’avvio](structure/entry-script.md)
 - [Applicazione](structure/application.md)
+- [Modules](structure/module.md)
 - [Azioni](structure/action.md)
 - [Middleware](structure/middleware.md)
 - [Dominio](structure/domain.md)
