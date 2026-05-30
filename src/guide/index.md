@@ -34,6 +34,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Application structure overview](structure/overview.md)
 - [Entry scripts](structure/entry-script.md)
 - [Application](structure/application.md)
+- [Modules](structure/module.md)
 - [Actions](structure/action.md)
 - [Middleware](structure/middleware.md)
 - [Domain](structure/domain.md)
