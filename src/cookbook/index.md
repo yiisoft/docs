@@ -17,6 +17,7 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
+- [Using a custom migration template](custom-migration-template.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
