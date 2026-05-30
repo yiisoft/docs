@@ -178,6 +178,129 @@ foreach ($files as $file) {
 }
 ```
 
+Always check upload errors before reading the stream or moving the file. The file may be missing, too large for PHP
+configuration, only partially uploaded, or rejected by a PHP extension.
+
+The following example handles a single `avatar` upload. It validates the upload error, size, detected media type, stores
+the file outside the public directory, and generates its own file name instead of trusting the client-provided name.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Profile;
+
+use finfo;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use RuntimeException;
+use Yiisoft\Aliases\Aliases;
+use Yiisoft\Http\Status;
+
+final readonly class UploadAvatarAction
+{
+    private const MAX_SIZE = 2 * 1024 * 1024;
+
+    /**
+     * @var array<string, string>
+     */
+    private const EXTENSIONS = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/webp' => 'webp',
+    ];
+
+    public function __construct(
+        private Aliases $aliases,
+        private ResponseFactoryInterface $responseFactory,
+    ) {
+    }
+
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
+    {
+        $file = $request->getUploadedFiles()['avatar'] ?? null;
+
+        if (!$file instanceof UploadedFileInterface) {
+            return $this->badRequest('Upload a file in the "avatar" field.');
+        }
+
+        if ($file->getError() !== UPLOAD_ERR_OK) {
+            return $this->badRequest($this->uploadErrorMessage($file->getError()));
+        }
+
+        if ($file->getSize() === null || $file->getSize() > self::MAX_SIZE) {
+            return $this->badRequest('The file must not be larger than 2 MiB.');
+        }
+
+        $uploadDirectory = $this->aliases->get('@runtime/uploads/avatars');
+        $this->ensureDirectory($uploadDirectory);
+
+        $temporaryPath = $uploadDirectory . DIRECTORY_SEPARATOR . bin2hex(random_bytes(16)) . '.upload';
+        $file->moveTo($temporaryPath);
+
+        $mediaType = (new finfo(FILEINFO_MIME_TYPE))->file($temporaryPath);
+
+        if (!is_string($mediaType) || !isset(self::EXTENSIONS[$mediaType])) {
+            unlink($temporaryPath);
+            return $this->badRequest('Only JPEG, PNG, and WebP images are allowed.');
+        }
+
+        $fileName = bin2hex(random_bytes(16)) . '.' . self::EXTENSIONS[$mediaType];
+        $targetPath = $uploadDirectory . DIRECTORY_SEPARATOR . $fileName;
+
+        if (!rename($temporaryPath, $targetPath)) {
+            unlink($temporaryPath);
+            throw new RuntimeException('Unable to store uploaded file.');
+        }
+
+        $response = $this->responseFactory->createResponse(Status::CREATED);
+        $response->getBody()->write('Stored as ' . $fileName);
+
+        return $response;
+    }
+
+    private function badRequest(string $message): ResponseInterface
+    {
+        $response = $this->responseFactory->createResponse(Status::BAD_REQUEST);
+        $response->getBody()->write($message);
+
+        return $response;
+    }
+
+    private function uploadErrorMessage(int $error): string
+    {
+        return match ($error) {
+            UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'The uploaded file is too large.',
+            UPLOAD_ERR_PARTIAL => 'The file was only partially uploaded.',
+            UPLOAD_ERR_NO_FILE => 'No file was uploaded.',
+            default => 'The file could not be uploaded.',
+        };
+    }
+
+    private function ensureDirectory(string $directory): void
+    {
+        if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created.', $directory));
+        }
+    }
+}
+```
+
+Notes:
+
+- Store uploads under `@runtime` or another non-public directory unless the files are intentionally public.
+- Do not use `getClientFilename()` as a storage path. A browser controls it, so it may contain unsafe characters,
+  path-like values, or duplicate names.
+- Do not rely on `getClientMediaType()` alone. It comes from the client. Detect the actual type with `fileinfo`,
+  an image library, or another server-side parser appropriate for the file format.
+- Check PHP limits such as `upload_max_filesize`, `post_max_size`, and `max_file_uploads` when expected files are
+  rejected before the action runs.
+- When a form uploads several files, the array returned by `getUploadedFiles()` has the same shape as the file input
+  names. Validate and move each `UploadedFileInterface` separately.
+
 ## Attributes
 
 Application middleware may set custom request attributes using `withAttribute()` method.
