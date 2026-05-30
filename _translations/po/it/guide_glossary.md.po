@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-10-22 11:35+0000\n"
+"POT-Creation-Date: 2026-05-30 06:43+0000\n"
 "PO-Revision-Date: 2025-10-22 11:35+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,193 +17,540 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "A"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Actions"
+msgid "action"
+msgstr "Azioni"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Action is a callable, class, or class method that handles a matched route and returns a response.  Read more in [\"Actions\"](structure/action.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "alias"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "Alias is a string used by Yii to refer to the class or directory such as `@app/vendor`.  Read more in [\"Aliases\"](concept/aliases.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Application structure"
+msgid "application"
+msgstr "Struttura applicativa"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Application is an object that starts up, handles a request through configured middleware, and shuts down.  Read more in [\"Application\"](structure/application.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "asset"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "Asset refers to a resource file. Typically, it contains JavaScript or CSS code but can be any static content accessed via HTTP.  Read more in [\"Assets\"](views/asset.md)."
 msgstr ""
 
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "asset bundle"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Asset bundle is a PHP class that declares a group of CSS, JavaScript, image, or font files that should be published and registered together.  Read more in [\"Asset Bundles\"](views/asset.md#asset-bundles)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Documentation"
+msgid "authentication"
+msgstr "Documentazione"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Authentication is the process of determining the identity of the current user.  Read more in [\"Authentication\"](security/authentication.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+msgid "authorization"
+msgstr "Generazione della documentazione API"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Authorization is the process of checking whether an authenticated or anonymous user is allowed to perform an action.  Read more in [\"Authorization\"](security/authorization.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+msgid "autoloading"
+msgstr "[Configurazione](concept/configuration.md)"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Autoloading is the process of loading PHP classes automatically when they are first used.  Read more in [\"Class autoloading\"](concept/autoloading.md)."
+msgstr ""
+
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "B"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "bootstrap"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Bootstrap is application startup code that prepares services, configuration, and runtime state before request handling.  Read more in [\"Configuration\"](concept/configuration.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "C"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "configuration"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "The Configuration may refer either to the process of setting properties of an object or to a configuration file that stores settings for an object, or a class of objects.  Read more in [\"Configuration\"](concept/configuration.md)."
+#: ../src/guide/glossary.md
+msgid "Configuration may refer either to the process of setting properties of an object or to a configuration file that stores settings for an object, or a class of objects.  Read more in [\"Configuration\"](concept/configuration.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "container"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Container is an object that creates services, resolves their dependencies, and returns configured instances.  Read more in [\"DI container\"](concept/di-container.md#di-container)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "controller"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Controller is a class that groups action methods for related routes.  Read more in [\"Actions\"](structure/action.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "cookie"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Cookie is a small piece of data stored by a browser and sent with later requests to the same site.  Read more in [\"Cookies\"](runtime/cookies.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "CSRF"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "CSRF means cross-site request forgery, an attack where another site tries to make a user's browser submit an unwanted request to your application.  Read more in [\"Avoiding CSRF\"](security/best-practices.md#avoiding-csrf)."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "D"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "DI"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "Dependency Injection is a programming technique where an object injects a dependent object.  Read more in [\"Dependency injection and container\"](concept/di-container.md)."
+#: ../src/guide/glossary.md
+msgid "Dependency injection is a programming technique where an object receives its dependencies from the outside.  Read more in [\"Dependency injection and container\"](concept/di-container.md)."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "E"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "entry script"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Entry script is the first PHP script executed for a web or console application.  Read more in [\"Entry scripts\"](structure/entry-script.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Views"
+msgid "event"
+msgstr "Viste"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Event is an object that represents something that happened and can be passed to listeners.  Read more in [\"Events\"](concept/events.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "H"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "handler"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Handler is callable code selected by routing or middleware to process a request and produce a response.  Read more in [\"Routing and URL generation\"](runtime/routing.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "I"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "installation"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "Installation is a process of preparing something to work either by following a readme file or by executing a specially prepared script. In the case of Yii, it's setting permissions and fulfilling software requirements."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "L"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "layout"
+msgstr "Generazione della documentazione API"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Layout is a view template that wraps page-specific content with shared page structure.  Read more in [\"Working with layouts\"](views/view.md#working-with-layouts)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "M"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, fuzzy, no-wrap
+#| msgid "Introduction"
+msgid "migration"
+msgstr "Introduzione"
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Migration is a versioned PHP class that applies or reverts a database schema or data change.  Read more in [\"Migrations\"](databases/db-migrations.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "middleware"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "Middleware is a processor in the request processing stack. Given a request, it may either produce a response or do some action and pass processing to the next middleware.  Read more in [\"Middleware\"](structure/middleware.md)."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "model"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Model is an object that represents application data and usually contains validation or business rules for that data.  Read more in [\"Working with forms\"](start/forms.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "module"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "The module is a namespace that groups some code based on a use-case. It's typically used within the main application and may contain any source code, define additional URL handlers or console commands."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "N"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "namespace"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 msgid "Namespace refers to a [PHP language feature](https://www.php.net/manual/en/language.namespaces.php) to group multiple classes under a certain name."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "P"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "package"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and redistribution installable automatically via package manager."
-msgstr ""
-
-#. type: Title #
-#: ../../guide/en/glossary.md
-#, no-wrap
-msgid "R"
+#: ../src/guide/glossary.md
+msgid "A package usually refers to [Composer package](https://getcomposer.org/doc/). It's code ready for reuse and redistribution installable automatically via a package manager."
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
-msgid "rule"
+msgid "parameter"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "The rule usually refers to a validation rule of the [yiisoft/validator](https://github.com/yiisoft/validator) package.  It holds a set of parameters for checking if a data set is valid.  \"Rule handler\" does the actual processing."
+#: ../src/guide/glossary.md
+msgid "Parameter is a configuration value that can be used by application or package config files.  Read more in [\"Parameters\"](concept/configuration.md#parameters)."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "Q"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "queue"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "A queue is similar to a stack. Queue follows First-In-First-Out methodology.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package."
+#: ../src/guide/glossary.md
+#, fuzzy
+#| msgid "[VarDumper](https://github.com/yiisoft/var-dumper)"
+msgid "A queue is a data structure that processes items in first-in, first-out order.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package."
+msgstr "[VarDumper](https://github.com/yiisoft/var-dumper)"
+
+#. type: Title #
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "R"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "request"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Request is a PSR-7 object that represents an incoming HTTP message, including method, URI, headers, body, uploaded files, and attributes.  Read more in [\"Request\"](runtime/request.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "response"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Response is a PSR-7 object that represents an outgoing HTTP message, including status code, headers, and body.  Read more in [\"Response\"](runtime/response.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "route"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Route describes which request method and URL pattern should be handled by which action or middleware.  Read more in [\"Routing and URL generation\"](runtime/routing.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "rule"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "The rule usually refers to a validation rule of the [yiisoft/validator](https://github.com/yiisoft/validator) package.  It holds a set of parameters for checking if a data set is valid.  \"Rule handler\" does the actual processing."
 msgstr ""
 
 #. type: Title #
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "S"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "service"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Service is a focused object that performs application work or provides infrastructure behavior and is usually stored in the DI container.  Read more in [\"Service components\"](structure/service.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "service provider"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Service provider is a class that registers related service definitions for the DI container.  Read more in [\"Service providers\"](concept/configuration.md#service-providers)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "session"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Session is server-side storage associated with a browser across multiple requests.  Read more in [\"Sessions\"](runtime/sessions.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "T"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "template"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Template is a file used by a view or template engine to produce presentation output such as HTML.  Read more in [\"Views\"](views/view.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "V"
 msgstr ""
 
 #. type: Title ##
-#: ../../guide/en/glossary.md
+#: ../src/guide/glossary.md
 #, no-wrap
 msgid "vendor"
 msgstr ""
 
 #. type: Plain text
-#: ../../guide/en/glossary.md
-msgid "A Vendor is an organization or individual developer providing code in the form of packages.  It also may refer to [Composer's `vendor` directory](https://getcomposer.org/doc/)."
+#: ../src/guide/glossary.md
+msgid "A vendor is an organization or individual developer providing code in the form of packages.  It also may refer to [Composer's `vendor` directory](https://getcomposer.org/doc/)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "view"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "View is responsible for presenting data to end users, usually by executing a template with provided data.  Read more in [\"Views\"](views/view.md)."
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "W"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/glossary.md
+#, no-wrap
+msgid "widget"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/glossary.md
+msgid "Widget is a reusable view component that renders a piece of user interface.  Read more in [\"Widgets\"](views/widget.md)."
 msgstr ""

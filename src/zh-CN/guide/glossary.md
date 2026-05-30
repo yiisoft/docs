@@ -1,25 +1,112 @@
 # A
 
+## action
+
+Action is a callable, class, or class method that handles a matched route
+and returns a response.  Read more in ["Actions"](structure/action.md).
+
 ## alias
 
 别名是 Yii 用于引用类或目录的字符串，例如 `@app/vendor`。详见[“别名”](concept/aliases.md)。
+
+## application
+
+Application is an object that starts up, handles a request through
+configured middleware, and shuts down.  Read more in
+["Application"](structure/application.md).
 
 ## asset
 
 资源是指资源文件。通常包含 JavaScript 或 CSS 代码，但也可以是任何通过 HTTP
 访问的静态内容。详见[“资源”](views/asset.md)。
 
+## asset bundle
+
+Asset bundle is a PHP class that declares a group of CSS, JavaScript, image,
+or font files that should be published and registered together.  Read more
+in ["Asset Bundles"](views/asset.md#asset-bundles).
+
+## authentication
+
+Authentication is the process of determining the identity of the current
+user.  Read more in ["Authentication"](security/authentication.md).
+
+## authorization
+
+Authorization is the process of checking whether an authenticated or
+anonymous user is allowed to perform an action.  Read more in
+["Authorization"](security/authorization.md).
+
+## autoloading
+
+Autoloading is the process of loading PHP classes automatically when they
+are first used.  Read more in ["Class autoloading"](concept/autoloading.md).
+
+# B
+
+## bootstrap
+
+Bootstrap is application startup code that prepares services, configuration,
+and runtime state before request handling.  Read more in
+["Configuration"](concept/configuration.md).
+
 # C
 
 ## configuration
 
-配置既可以指设置对象属性的过程，也可以指存储对象或一类对象设置的配置文件。详见[“配置”](concept/configuration.md)。
+Configuration may refer either to the process of setting properties of an
+object or to a configuration file that stores settings for an object, or a
+class of objects.  Read more in ["Configuration"](concept/configuration.md).
+
+## container
+
+Container is an object that creates services, resolves their dependencies,
+and returns configured instances.  Read more in ["DI
+container"](concept/di-container.md#di-container).
+
+## controller
+
+Controller is a class that groups action methods for related routes.  Read
+more in ["Actions"](structure/action.md).
+
+## cookie
+
+Cookie is a small piece of data stored by a browser and sent with later
+requests to the same site.  Read more in ["Cookies"](runtime/cookies.md).
+
+## CSRF
+
+CSRF means cross-site request forgery, an attack where another site tries to
+make a user's browser submit an unwanted request to your application.  Read
+more in ["Avoiding CSRF"](security/best-practices.md#avoiding-csrf).
 
 # D
 
 ## DI
 
-依赖注入是一种编程技术，通过该技术将依赖对象注入到另一个对象中。详见[“依赖注入与容器”](concept/di-container.md)。
+Dependency injection is a programming technique where an object receives its
+dependencies from the outside.  Read more in ["Dependency injection and
+container"](concept/di-container.md).
+
+# E
+
+## entry script
+
+Entry script is the first PHP script executed for a web or console
+application.  Read more in ["Entry scripts"](structure/entry-script.md).
+
+## event
+
+Event is an object that represents something that happened and can be passed
+to listeners.  Read more in ["Events"](concept/events.md).
+
+# H
+
+## handler
+
+Handler is callable code selected by routing or middleware to process a
+request and produce a response.  Read more in ["Routing and URL
+generation"](runtime/routing.md).
 
 # I
 
@@ -27,11 +114,30 @@
 
 安装是按照 readme 文件或执行专门准备的脚本来使软件正常运行的过程。对于 Yii 而言，主要是设置权限和满足软件依赖要求。
 
+# L
+
+## layout
+
+Layout is a view template that wraps page-specific content with shared page
+structure.  Read more in ["Working with
+layouts"](views/view.md#working-with-layouts).
+
 # M
+
+## migration
+
+Migration is a versioned PHP class that applies or reverts a database schema
+or data change.  Read more in ["Migrations"](databases/db-migrations.md).
 
 ## middleware
 
 中间件是请求处理栈中的一个处理器。对于给定的请求，它既可以直接生成响应，也可以执行某些操作后将处理传递给下一个中间件。详见[“中间件”](structure/middleware.md)。
+
+## model
+
+Model is an object that represents application data and usually contains
+validation or business rules for that data.  Read more in ["Working with
+forms"](start/forms.md).
 
 ## module
 
@@ -48,25 +154,90 @@
 
 ## package
 
-包通常指 [Composer 包](https://getcomposer.org/doc/)，是可通过包管理器自动安装的、已准备好复用和再分发的代码。
+A package usually refers to [Composer
+package](https://getcomposer.org/doc/). It's code ready for reuse and
+redistribution installable automatically via a package manager.
+
+## parameter
+
+Parameter is a configuration value that can be used by application or
+package config files.  Read more in
+["Parameters"](concept/configuration.md#parameters).
+
+# Q
+
+## queue
+
+A queue is a data structure that processes items in first-in, first-out
+order.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package.
 
 # R
+
+## request
+
+Request is a PSR-7 object that represents an incoming HTTP message,
+including method, URI, headers, body, uploaded files, and attributes.  Read
+more in ["Request"](runtime/request.md).
+
+## response
+
+Response is a PSR-7 object that represents an outgoing HTTP message,
+including status code, headers, and body.  Read more in
+["Response"](runtime/response.md).
+
+## route
+
+Route describes which request method and URL pattern should be handled by
+which action or middleware.  Read more in ["Routing and URL
+generation"](runtime/routing.md).
 
 ## rule
 
 规则通常指 [yiisoft/validator](https://github.com/yiisoft/validator)
 包的验证规则。它持有一组用于检查数据集是否有效的参数。“规则处理器”负责实际执行处理。
 
-# Q
+# S
 
-## queue
+## service
 
-队列类似于栈，遵循先进先出（FIFO）原则。Yii 提供了
-[yiisoft/queue](https://github.com/yiisoft/queue) 包。
+Service is a focused object that performs application work or provides
+infrastructure behavior and is usually stored in the DI container.  Read
+more in ["Service components"](structure/service.md).
+
+## service provider
+
+Service provider is a class that registers related service definitions for
+the DI container.  Read more in ["Service
+providers"](concept/configuration.md#service-providers).
+
+## session
+
+Session is server-side storage associated with a browser across multiple
+requests.  Read more in ["Sessions"](runtime/sessions.md).
+
+# T
+
+## template
+
+Template is a file used by a view or template engine to produce presentation
+output such as HTML.  Read more in ["Views"](views/view.md).
 
 # V
 
 ## vendor
 
-Vendor 是指以包的形式提供代码的组织或个人开发者。也可以指 [Composer 的 `vendor`
-目录](https://getcomposer.org/doc/)。
+A vendor is an organization or individual developer providing code in the
+form of packages.  It also may refer to [Composer's `vendor`
+directory](https://getcomposer.org/doc/).
+
+## view
+
+View is responsible for presenting data to end users, usually by executing a
+template with provided data.  Read more in ["Views"](views/view.md).
+
+# W
+
+## widget
+
+Widget is a reusable view component that renders a piece of user interface.
+Read more in ["Widgets"](views/widget.md).
