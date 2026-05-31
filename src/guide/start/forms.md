@@ -90,18 +90,30 @@ final class ReportFilterForm extends FormModel
             return $result;
         }
 
-        $dateFrom = DateTimeImmutable::createFromFormat('!Y-m-d', $this->dateFrom);
-        $dateTo = DateTimeImmutable::createFromFormat('!Y-m-d', $this->dateTo);
+        $dateFrom = $this->parseDate($this->dateFrom);
+        $dateTo = $this->parseDate($this->dateTo);
 
-        if ($dateFrom === false || $dateTo === false) {
+        if ($dateFrom === null || $dateTo === null) {
             return $result;
         }
 
         if ($dateFrom > $dateTo) {
-            $result->addError('Start date must be earlier than or equal to end date.', [], ['dateFrom']);
+            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);
         }
 
         return $result;
+    }
+
+    private function parseDate(string $value): ?DateTimeImmutable
+    {
+        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+        $errors = DateTimeImmutable::getLastErrors();
+
+        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {
+            return null;
+        }
+
+        return $date;
     }
 }
 ```
