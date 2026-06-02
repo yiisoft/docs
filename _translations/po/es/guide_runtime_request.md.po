@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 20:32+0000\n"
+"POT-Creation-Date: 2026-06-02 21:36+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -381,6 +381,161 @@ msgid ""
 "        $file->moveTo('path/to/uploads/new_filename.ext');\n"
 "    }\n"
 "}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Always validate the upload before reading the stream or moving the file. The file may be missing, too large for PHP configuration, only partially uploaded, rejected by a PHP extension, or not match the file type and size your application expects. Yii Validator provides the `Yiisoft\\Validator\\Rule\\File` rule for this. It accepts PSR-7 `UploadedFileInterface` values and validates upload error codes, extension, MIME type, and size. Use `Yiisoft\\Validator\\Rule\\Each` when a field contains several files."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "The following example handles a single `avatar` upload. It validates the uploaded file with Yii Validator, stores the file outside the public directory, and generates its own file name instead of trusting the client-provided name."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Profile;\n"
+"\n"
+"use finfo;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Message\\UploadedFileInterface;\n"
+"use RuntimeException;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Validator\\Rule\\File;\n"
+"use Yiisoft\\Validator\\Rule\\Image\\Image;\n"
+"use Yiisoft\\Validator\\Validator;\n"
+"\n"
+"final readonly class UploadAvatarAction\n"
+"{\n"
+"    private const MAX_SIZE = 2 * 1024 * 1024;\n"
+"\n"
+"    /**\n"
+"     * @var array<string, string>\n"
+"     */\n"
+"    private const EXTENSIONS = [\n"
+"        'image/jpeg' => 'jpg',\n"
+"        'image/png' => 'png',\n"
+"        'image/webp' => 'webp',\n"
+"    ];\n"
+"\n"
+"    public function __construct(\n"
+"        private Aliases $aliases,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $file = $request->getUploadedFiles()['avatar'] ?? null;\n"
+"\n"
+"        $result = (new Validator())->validate(\n"
+"            ['avatar' => $file],\n"
+"            [\n"
+"                'avatar' => [\n"
+"                    new File(\n"
+"                        extensions: ['jpg', 'jpeg', 'png', 'webp'],\n"
+"                        mimeTypes: array_keys(self::EXTENSIONS),\n"
+"                        maxSize: self::MAX_SIZE,\n"
+"                    ),\n"
+"                    new Image(skipOnError: true),\n"
+"                ],\n"
+"            ],\n"
+"        );\n"
+"\n"
+"        if (!$result->isValid() || !$file instanceof UploadedFileInterface) {\n"
+"            $messages = $result->getPropertyErrorMessages('avatar');\n"
+"            return $this->badRequest(\n"
+"                $messages === [] ? 'Upload a file in the \"avatar\" field.' : implode(' ', $messages),\n"
+"            );\n"
+"        }\n"
+"\n"
+"        $uploadDirectory = $this->aliases->get('@runtime/uploads/avatars');\n"
+"        $this->ensureDirectory($uploadDirectory);\n"
+"\n"
+"        $temporaryPath = $uploadDirectory . DIRECTORY_SEPARATOR . bin2hex(random_bytes(16)) . '.upload';\n"
+"        $file->moveTo($temporaryPath);\n"
+"\n"
+"        $mediaType = (new finfo(FILEINFO_MIME_TYPE))->file($temporaryPath);\n"
+"\n"
+"        if (!is_string($mediaType) || !isset(self::EXTENSIONS[$mediaType])) {\n"
+"            unlink($temporaryPath);\n"
+"            return $this->badRequest('Only JPEG, PNG, and WebP images are allowed.');\n"
+"        }\n"
+"\n"
+"        $fileName = bin2hex(random_bytes(16)) . '.' . self::EXTENSIONS[$mediaType];\n"
+"        $targetPath = $uploadDirectory . DIRECTORY_SEPARATOR . $fileName;\n"
+"\n"
+"        if (!rename($temporaryPath, $targetPath)) {\n"
+"            unlink($temporaryPath);\n"
+"            throw new RuntimeException('Unable to store uploaded file.');\n"
+"        }\n"
+"\n"
+"        $response = $this->responseFactory->createResponse(Status::CREATED);\n"
+"        $response->getBody()->write('Stored as ' . $fileName);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function badRequest(string $message): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse(Status::BAD_REQUEST);\n"
+"        $response->getBody()->write($message);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function ensureDirectory(string $directory): void\n"
+"    {\n"
+"        if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {\n"
+"            throw new RuntimeException(sprintf('Directory \"%s\" was not created.', $directory));\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Notes:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Store uploads under `@runtime` or another non-public directory unless the files are intentionally public."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Do not use `getClientFilename()` as a storage path. A browser controls it, so it may contain unsafe characters, path-like values, or duplicate names."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Do not rely on `getClientMediaType()` alone. It comes from the client. Use `File` MIME type validation, `Image` for image validation and dimension checks, or another server-side parser appropriate for the file format."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Check PHP limits such as `upload_max_filesize`, `post_max_size`, and `max_file_uploads` when expected files are rejected before the action runs."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "When a form uploads several files, the array returned by `getUploadedFiles()` has the same shape as the file input names. Validate them with `Each(new File(...))` and move each `UploadedFileInterface` separately."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`File` can also validate string file paths and `SplFileInfo` instances. Do not pass user-submitted paths directly: use PSR-7 uploaded file objects from the request, or perform upload provenance checks before validating filesystem paths."
 msgstr ""
 
 #. type: Title ##
