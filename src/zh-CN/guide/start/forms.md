@@ -47,6 +47,97 @@ final class Form extends FormModel
 
 在上面的示例中，`Form` 有一个单独的字符串属性 `$message`，其长度至少应为两个字符。该属性还有一个自定义标签。
 
+## Custom validation <span id="custom-validation"></span>
+
+Validation attributes are Yii Validator rules. For common checks, first look
+for an existing rule. For example, to validate a UUID string, use `Uuid`:
+
+```php
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Rule\Uuid;
+
+final class Form extends FormModel
+{
+    #[Uuid]
+    public string $id = '';
+}
+```
+
+When a field needs application-specific validation that isn't covered by a
+built-in rule, use `Callback`. This is useful for one-off checks or for
+delegating to a domain/library method. With PHP attributes, use the `method`
+option because PHP attributes can't contain closures. For example, the
+following form validates a card number checksum:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Echo;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\ValidationContext;
+
+final class Form extends FormModel
+{
+    #[Label('Card number')]
+    #[Required]
+    #[Callback(method: 'validateCardNumberChecksum', skipOnError: true)]
+    public string $cardNumber = '';
+
+    private function validateCardNumberChecksum(mixed $value, Callback $rule, ValidationContext $context): Result
+    {
+        if (!is_string($value)) {
+            return (new Result())->addError('Card number must be a string.');
+        }
+
+        $digits = str_replace([' ', '-'], '', $value);
+
+        if ($digits === '' || !ctype_digit($digits)) {
+            return (new Result())->addError('Card number must contain digits only.');
+        }
+
+        $sum = 0;
+        $double = false;
+
+        foreach (array_reverse(str_split($digits)) as $digit) {
+            $number = (int) $digit;
+
+            if ($double) {
+                $number *= 2;
+                if ($number > 9) {
+                    $number -= 9;
+                }
+            }
+
+            $sum += $number;
+            $double = !$double;
+        }
+
+        if ($sum % 10 !== 0) {
+            return (new Result())->addError('Card number checksum is invalid.');
+        }
+
+        return new Result();
+    }
+}
+```
+
+The callback method returns a `Result`: return an empty result when the
+value is valid or add an error when it isn't.  The method body can call any
+validation code your application already uses, such as
+`App\Payment\CardNumber::hasValidChecksum($value)`.
+
+For validation logic reused in several forms, create a custom Yii Validator
+rule and handler instead of copying callback methods. See the [custom rule
+guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+for the rule/handler structure.
+
 ## 使用表单 <span id="using-form"></span>
 
 现在您有了一个表单，在“[打招呼](hello.md)”中的操作中使用它。
