@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-02 22:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr ""
+
 #. type: Title ##
 #: ../src/guide/concept/configuration.md
 #: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Routes"
 msgstr ""
@@ -264,13 +274,6 @@ msgid ""
 "After users install, update, remove, or dump Composer autoload files, the "
 "config plugin rebuilds the merge plan that Yii reads at runtime. If users "
 "edit their root package configuration manually, ask them to run:"
-msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
-#, no-wrap
-msgid "composer yii-config-rebuild\n"
 msgstr ""
 
 #. type: Plain text

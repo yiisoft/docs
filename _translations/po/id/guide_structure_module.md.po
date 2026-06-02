@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 08:13+0000\n"
+"POT-Creation-Date: 2026-06-02 22:29+0000\n"
 "PO-Revision-Date: 2026-05-30 08:13+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "Konfigurasi container"
+
 #. type: Title ##
 #: ../src/guide/concept/configuration.md
 #: ../src/guide/structure/designing-packages.md
@@ -22,14 +31,6 @@ msgstr ""
 #, no-wrap
 msgid "Routes"
 msgstr "Rute"
-
-#. type: Fenced code block (sh)
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md ../src/guide/structure/package.md
-#: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
-msgid "composer yii-config-rebuild\n"
-msgstr "Konfigurasi container"
 
 #. type: Title #
 #: ../src/guide/structure/module.md

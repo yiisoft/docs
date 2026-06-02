@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 08:13+0000\n"
+"POT-Creation-Date: 2026-06-02 22:29+0000\n"
 "PO-Revision-Date: 2026-05-30 08:13+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "Безопасная конфигурация сервера"
+
 #. type: Title ##
 #: ../src/guide/concept/configuration.md
 #: ../src/guide/structure/designing-packages.md
@@ -23,14 +32,6 @@ msgstr ""
 #, no-wrap
 msgid "Routes"
 msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md ../src/guide/structure/package.md
-#: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
-msgid "composer yii-config-rebuild\n"
-msgstr "Безопасная конфигурация сервера"
 
 #. type: Title #
 #: ../src/guide/structure/module.md
