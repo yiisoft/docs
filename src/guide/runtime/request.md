@@ -178,11 +178,14 @@ foreach ($files as $file) {
 }
 ```
 
-Always check upload errors before reading the stream or moving the file. The file may be missing, too large for PHP
-configuration, only partially uploaded, or rejected by a PHP extension.
+Always validate the upload before reading the stream or moving the file. The file may be missing, too large for PHP
+configuration, only partially uploaded, rejected by a PHP extension, or not match the file type and size your
+application expects. Yii Validator provides the `Yiisoft\Validator\Rule\File` rule for this. It accepts PSR-7
+`UploadedFileInterface` values and validates upload error codes, extension, MIME type, and size. Use
+`Yiisoft\Validator\Rule\Each` when a field contains several files.
 
-The following example handles a single `avatar` upload. It validates the upload error, size, detected media type, stores
-the file outside the public directory, and generates its own file name instead of trusting the client-provided name.
+The following example handles a single `avatar` upload. It validates the uploaded file with Yii Validator, stores the
+file outside the public directory, and generates its own file name instead of trusting the client-provided name.
 
 ```php
 <?php
@@ -199,6 +202,9 @@ use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 use Yiisoft\Aliases\Aliases;
 use Yiisoft\Http\Status;
+use Yiisoft\Validator\Rule\File;
+use Yiisoft\Validator\Rule\Image\Image;
+use Yiisoft\Validator\Validator;
 
 final readonly class UploadAvatarAction
 {
@@ -223,16 +229,25 @@ final readonly class UploadAvatarAction
     {
         $file = $request->getUploadedFiles()['avatar'] ?? null;
 
-        if (!$file instanceof UploadedFileInterface) {
-            return $this->badRequest('Upload a file in the "avatar" field.');
-        }
+        $result = (new Validator())->validate(
+            ['avatar' => $file],
+            [
+                'avatar' => [
+                    new File(
+                        extensions: ['jpg', 'jpeg', 'png', 'webp'],
+                        mimeTypes: array_keys(self::EXTENSIONS),
+                        maxSize: self::MAX_SIZE,
+                    ),
+                    new Image(skipOnError: true),
+                ],
+            ],
+        );
 
-        if ($file->getError() !== UPLOAD_ERR_OK) {
-            return $this->badRequest($this->uploadErrorMessage($file->getError()));
-        }
-
-        if ($file->getSize() === null || $file->getSize() > self::MAX_SIZE) {
-            return $this->badRequest('The file must not be larger than 2 MiB.');
+        if (!$result->isValid() || !$file instanceof UploadedFileInterface) {
+            $messages = $result->getPropertyErrorMessages('avatar');
+            return $this->badRequest(
+                $messages === [] ? 'Upload a file in the "avatar" field.' : implode(' ', $messages),
+            );
         }
 
         $uploadDirectory = $this->aliases->get('@runtime/uploads/avatars');
@@ -270,16 +285,6 @@ final readonly class UploadAvatarAction
         return $response;
     }
 
-    private function uploadErrorMessage(int $error): string
-    {
-        return match ($error) {
-            UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'The uploaded file is too large.',
-            UPLOAD_ERR_PARTIAL => 'The file was only partially uploaded.',
-            UPLOAD_ERR_NO_FILE => 'No file was uploaded.',
-            default => 'The file could not be uploaded.',
-        };
-    }
-
     private function ensureDirectory(string $directory): void
     {
         if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
@@ -294,12 +299,15 @@ Notes:
 - Store uploads under `@runtime` or another non-public directory unless the files are intentionally public.
 - Do not use `getClientFilename()` as a storage path. A browser controls it, so it may contain unsafe characters,
   path-like values, or duplicate names.
-- Do not rely on `getClientMediaType()` alone. It comes from the client. Detect the actual type with `fileinfo`,
-  an image library, or another server-side parser appropriate for the file format.
+- Do not rely on `getClientMediaType()` alone. It comes from the client. Use `File` MIME type validation, `Image` for
+  image validation and dimension checks, or another server-side parser appropriate for the file format.
 - Check PHP limits such as `upload_max_filesize`, `post_max_size`, and `max_file_uploads` when expected files are
   rejected before the action runs.
 - When a form uploads several files, the array returned by `getUploadedFiles()` has the same shape as the file input
-  names. Validate and move each `UploadedFileInterface` separately.
+  names. Validate them with `Each(new File(...))` and move each `UploadedFileInterface` separately.
+- `File` can also validate string file paths and `SplFileInfo` instances. Do not pass user-submitted paths directly:
+  use PSR-7 uploaded file objects from the request, or perform upload provenance checks before validating filesystem
+  paths.
 
 ## Attributes
 
