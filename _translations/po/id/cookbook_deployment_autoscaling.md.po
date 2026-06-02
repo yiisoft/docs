@@ -1,0 +1,342 @@
+# Indonesian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-02 22:17+0000\n"
+"PO-Revision-Date: 2026-06-02 22:17+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/deployment/autoscaling.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Configuring an application for autoscaling"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Autoscaling works when any application instance can handle any request and can be added or removed without special local state. In Yii applications this mostly means keeping runtime state outside the container or VM, making health checks cheap, and running migrations and workers separately from web replicas."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid "Keep web instances stateless"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Do not store user-visible state on the local filesystem of a web instance. Local files disappear when an instance is replaced and are not visible to other replicas."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Move these resources to shared services:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Sessions: use a shared session handler when users can move between replicas. See [Sessions](../../guide/runtime/sessions.md) and prefer closing sessions early."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Cache: use Redis, Memcached, database, or another shared PSR-16 cache backend for data that must be consistent across replicas. See [Data caching](../../guide/caching/data.md)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Uploads: store files in object storage, a shared volume, or a service dedicated to file storage. Local `runtime` or `public/uploads` directories are safe only for temporary files."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Generated assets: build them into the image or publish them to shared storage/CDN during deployment."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Logs: write to stdout/stderr or a central log target. Do not depend on files inside a short-lived instance."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Sticky sessions can reduce immediate pressure, but they are not a substitute for shared state. A replacement instance or deployment rollout still breaks local session and upload storage."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid "Add health endpoints"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Use a cheap liveness endpoint for the load balancer or orchestrator:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Health;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"\n"
+"final readonly class HealthCheckAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->responseFactory->createResponse(Status::NO_CONTENT);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+#, fuzzy
+#| msgid "You can define an alias via application's `config/params.php`:"
+msgid "Register it in `config/common/routes.php`:"
+msgstr "Anda dapat mendefinisikan sebuah alias melalui `config/params.php` aplikasi:"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid ""
+"use App\\Web\\Health\\HealthCheckAction;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    Route::get('/healthz')\n"
+"        ->action(HealthCheckAction::class)\n"
+"        ->name('healthz'),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Keep this endpoint independent from the database and external APIs. It should answer whether the PHP process can accept requests, not whether every dependency is healthy."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "If your platform supports readiness checks, add a separate endpoint such as `/readyz` for dependencies that must be available before routing traffic to a new instance. Keep it bounded with short timeouts. A slow readiness check can make a traffic spike worse."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Configure runtime paths"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "The `runtime` directory should contain disposable process-local files only: logs before shipping, cache files that can be rebuilt, temporary upload chunks, locks scoped to one instance, and debug artifacts."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "For autoscaled deployments:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "mount `runtime` as an instance-local writable volume or create it during image startup;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "do not store permanent uploaded files in `runtime`;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "do not use local file locks for jobs that must be unique across all replicas;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "clear or ignore local runtime cache during rollouts."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "When a command or worker must be unique globally, use a database lock, Redis lock, queue semantics, or run it as a single scheduled job outside the web autoscaling group."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Run migrations once"
+msgstr "Konfigurasi"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Do not run `./yii migrate` from every web instance during startup. Multiple replicas starting at the same time can compete for locks, slow down boot, or partially deploy incompatible schema."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Run migrations from one deployment job or a dedicated console container before or during rollout:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid "APP_ENV=prod php ./yii migrate --no-interaction\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "For zero-downtime deployments, use an expand-and-contract migration flow. See [Applying migrations during rolling updates](rolling-update-migrations.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid "Separate web, workers, and scheduled jobs"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Scale web replicas for request traffic. Scale queue workers for queue depth or processing latency. Run scheduled jobs from one scheduler, not from every web replica."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Use the same application image when practical, but different entry points:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid ""
+"php ./yii queue:listen\n"
+"php ./yii app:send-digests --no-interaction\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Make workers and scheduled commands idempotent. A deployment may stop a worker after it started processing a message, and the queue may deliver it again."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "Use environment-specific configuration"
+msgstr "Konfigurasi container"
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Keep secrets and per-environment values out of the image:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "database DSN, username, and password;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "cache/session backend addresses;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "cookie validation keys and encryption keys;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "mail, queue, and object-storage credentials;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "public base URL and trusted proxy settings."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Load them through environment variables or environment-specific Yii config files. Every replica of the same release should receive the same configuration values, except for platform-provided instance metadata."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/autoscaling.md
+#, no-wrap
+msgid "Capacity checklist"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "Before enabling autoscaling, verify that:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "a request can be served correctly after the previous request went to another replica;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "login and flash messages work without sticky sessions;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "uploaded files remain available after the handling instance is removed;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "cache misses on one instance do not corrupt or hide data on another instance;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "migrations are run by exactly one deployment step;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "background workers and scheduled commands are not multiplied accidentally;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "health checks are fast and do not overload the database;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "logs and metrics identify the application version and instance;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/deployment/autoscaling.md
+msgid "shutdown is graceful enough for your web server and queue worker timeouts."
+msgstr ""

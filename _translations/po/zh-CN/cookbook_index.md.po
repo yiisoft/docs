@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 09:18+0000\n"
+"POT-Creation-Date: 2026-06-02 22:17+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -102,6 +102,11 @@ msgstr "[使用垂直切片按用例组织代码](organizing-code/structuring-by
 #: ../src/cookbook/index.md
 msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
 msgstr "[部署到 Docker Swarm](deployment/docker-swarm.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring an application for autoscaling](deployment/autoscaling.md)"
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
