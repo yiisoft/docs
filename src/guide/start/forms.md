@@ -136,6 +136,79 @@ For validation logic reused in several forms, create a custom Yii Validator rule
 methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
 for the rule/handler structure.
 
+## Validating several fields together <span id="cross-field-validation"></span>
+
+Property attributes are enough when each field can be validated independently. When a rule depends on several fields,
+put a `Callback` rule on the form model class and attach an error to the field that should display it.
+
+For example, a report filter may require the start date to be earlier than or equal to the end date:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Report;
+
+use DateTimeImmutable;
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Date\Date;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\ValidationContext;
+
+#[Callback(method: 'validateDateRange')]
+final class ReportFilterForm extends FormModel
+{
+    #[Required]
+    #[Date(format: 'php:Y-m-d')]
+    public string $dateFrom = '';
+
+    #[Required]
+    #[Date(format: 'php:Y-m-d')]
+    public string $dateTo = '';
+
+    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result
+    {
+        $result = new Result();
+
+        if ($this->dateFrom === '' || $this->dateTo === '') {
+            return $result;
+        }
+
+        $dateFrom = $this->parseDate($this->dateFrom);
+        $dateTo = $this->parseDate($this->dateTo);
+
+        if ($dateFrom === null || $dateTo === null) {
+            return $result;
+        }
+
+        if ($dateFrom > $dateTo) {
+            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);
+        }
+
+        return $result;
+    }
+
+    private function parseDate(string $value): ?DateTimeImmutable
+    {
+        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+        $errors = DateTimeImmutable::getLastErrors();
+
+        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {
+            return null;
+        }
+
+        return $date;
+    }
+}
+```
+
+The class-level `Callback` receives the whole object as `$value`, but using `$this` is usually clearer in a form model
+method. Returning an empty `Result` means the cross-field rule passed. The third argument of `addError()` is the value
+path; `['dateFrom']` makes the error appear on the `dateFrom` field when rendering the form.
+
 ## Using the form <span id="using-form"></span> 
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
