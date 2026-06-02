@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-02 21:46+0000\n"
+"POT-Creation-Date: 2026-06-02 22:03+0000\n"
 "PO-Revision-Date: 2025-12-26 22:37+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -215,6 +215,93 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "For validation logic reused in several forms, create a custom Yii Validator rule and handler instead of copying callback methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)  for the rule/handler structure."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, fuzzy, no-wrap
+#| msgid "[Console applications](tutorial/console-applications.md)"
+msgid "Validating several fields together <span id=\"cross-field-validation\"></span>"
+msgstr "[Applicazioni console](tutorial/console-applications.md)"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Property attributes are enough when each field can be validated independently. When a rule depends on several fields, put a `Callback` rule on the form model class and attach an error to the field that should display it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For example, a report filter may require the start date to be earlier than or equal to the end date:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Report;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Date\\Date;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"#[Callback(method: 'validateDateRange')]\n"
+"final class ReportFilterForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateFrom = '';\n"
+"\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateTo = '';\n"
+"\n"
+"    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        $result = new Result();\n"
+"\n"
+"        if ($this->dateFrom === '' || $this->dateTo === '') {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        $dateFrom = $this->parseDate($this->dateFrom);\n"
+"        $dateTo = $this->parseDate($this->dateTo);\n"
+"\n"
+"        if ($dateFrom === null || $dateTo === null) {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        if ($dateFrom > $dateTo) {\n"
+"            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);\n"
+"        }\n"
+"\n"
+"        return $result;\n"
+"    }\n"
+"\n"
+"    private function parseDate(string $value): ?DateTimeImmutable\n"
+"    {\n"
+"        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);\n"
+"        $errors = DateTimeImmutable::getLastErrors();\n"
+"\n"
+"        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $date;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The class-level `Callback` receives the whole object as `$value`, but using `$this` is usually clearer in a form model method. Returning an empty `Result` means the cross-field rule passed. The third argument of `addError()` is the value path; `['dateFrom']` makes the error appear on the `dateFrom` field when rendering the form."
 msgstr ""
 
 #. type: Title ##
