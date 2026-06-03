@@ -247,7 +247,7 @@ In the first case it will be default `42` and in the second case it will be `123
 
 In cause URL should be valid for a single host, you can specify it with `host()`. 
 
-## Routing <span id="routing"></span>
+## Routing
 
 Yii routing is flexible, and internally it may use different routing implementations.
 The actual matching algorithm may vary, but the basic idea stays the same.
@@ -301,7 +301,7 @@ return [
 ];
 ```
 
-## Generating URLs <span id="generating-urls"></span>
+## Generating URLs
 
 To generate URL based on a route, a route should have a name:
 
@@ -496,14 +496,14 @@ $url = $urlGenerator->generateFromCurrent(
 );
 ```
 
-## Route patterns <span id="route-patterns"></span>
+## Route patterns
 
 Route patterns used depend on the underlying implementation used.
 The default implementation is [nikic/FastRoute](https://github.com/nikic/FastRoute).
 
 Basic patterns are static like `/test`. That means they must match exactly in order for a route match.
 
-### Named Parameters <span id="named-parameters"></span>
+### Named Parameters
 
 A pattern can include one or more named parameters which are specified in the pattern in the format
 of `{ParamName:RegExp}`, where `ParamName` specifies the parameter name and `RegExp` is an optional regular
@@ -541,7 +541,7 @@ echo $url->generate('second');
 echo $url->generate('third', ['id' => '42']);
 ```
 
-### Optional parts <span id="optional-parts"></span>
+### Optional parts
 
 You should wrap optional pattern parts with `[` and `]`.
 For example, `/posts[/{id}]` pattern would match

@@ -13,7 +13,7 @@ Through this tutorial, you will learn three things:
 2. How to map URL to the handler.
 3. How to use [view](../views/view.md) to compose the response's content.
 
-## Creating a handler <span id="creating-handler"></span>
+## Creating a handler
 
 For the "Hello" task, you will create a handler class that reads
 a `message` parameter from the request and displays that message back to the user. If the request
@@ -91,7 +91,7 @@ The `{message}` part of the pattern writes anything specified in this place to t
 
 You also give a `echo/say` name to this route to be able to generate URLs pointing to it.
 
-## Trying it out <span id="trying-it-out"></span>
+## Trying it out
 
 After creating the action and the view open `http://localhost/say/Hello+World` in your browser.
 
@@ -99,7 +99,7 @@ This URL displays a page with "The message is: Hello World".
 
 If you omit the `message` parameter in the URL, the page displays "The message is: Hello!".
 
-## Creating a View Template <span id="creating-view-template"></span>
+## Creating a View Template
 
 Usually, the task is more complicated than printing out "hello world" and involves rendering some complex
 HTML. For this task, it's handy to use view templates. They're scripts you write to generate a response's body.
@@ -159,7 +159,7 @@ Now open your browser and check it again. You should see the similar text but wi
 Also, you've separated the part about how it works and part of how it's presented. In the larger applications, 
 it helps a lot to deal with complexity.
 
-## Summary <span id="summary"></span>
+## Summary
 
 In this section, you've touched the handler and template parts of the typical web application.
 You created a handler as part of a class to handle a specific request. You also created a view

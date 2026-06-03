@@ -2,7 +2,7 @@
 
 Authorization is the process of verifying that a user has enough permission to do something.
 
-## Checking for permission <span id="checking-for-permission"></span>
+## Checking for permission
 
 You can check if a user has certain permissions by using `\Yiisoft\User\CurrentUser` service:
 
@@ -47,7 +47,7 @@ final readonly class PostController
 Behind the scenes, `Yiisoft\User\CurrentUser::can()` method calls `Yiisoft\Access\AccessCheckerInterface::userHasPermission()`
 so you should provide an implementation in dependency container in order for it to work. 
 
-## Role-based access control (RBAC) <span id="rbac"></span>
+## Role-based access control (RBAC)
 
 Role-Based Access Control (RBAC) provides a simple yet powerful centralized access control. Please refer to
 the [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for details about comparing RBAC
@@ -61,7 +61,7 @@ part is to use the authorization data to perform access check in places where it
 
 To ease description next, there are some basic RBAC concepts first.
 
-### Basic concepts <span id="basic-concepts"></span>
+### Basic concepts
 
 A role represents a collection of *permissions* (for example, creating posts, updating posts).
 You may assign a role to one or many users.
@@ -79,7 +79,7 @@ And a permission may consist of other permissions.
 Yii implements a *partial order* hierarchy which includes the more special *tree* hierarchy.
 While a role can contain a permission, it isn't `true` vice versa.
 
-### Configuring RBAC <span id="configuring-rbac"></span>
+### Configuring RBAC
 
 Yii RBAC requires storage to be provided.
 
@@ -92,7 +92,7 @@ One of the following storages could be installed:
   
 You can also provide your own storage using the [yiisoft/rbac](https://github.com/yiisoft/rbac) package.
   
-#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id="configuring-rbac-php"></span>
+#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php)
 
 Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:
 
@@ -138,7 +138,7 @@ return [
 Make sure the directory and all the files in it are writable by the Web server process if you want to change permission
 hierarchy online.
 
-#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id="configuring-rbac-db"></span>
+#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db)
 
 Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:
 
@@ -194,7 +194,7 @@ Apply migrations:
 ./yii migrate:up
 ```
 
-### Building authorization data <span id="generating-rbac-data"></span>
+### Building authorization data
 
 Building authorization data is all about the following tasks:
 
@@ -417,7 +417,7 @@ For applications that require complex access control with dynamically updated au
 (such as an admin panel), you many need to develop special user interfaces using APIs offered by `Yiisoft\Rbac\Manager`.
 
 
-### Using rules <span id="using-rules"></span>
+### Using rules
 
 As aforementioned, rules add extra constraint to roles and permissions.
 A rule is a class extending from `\Yiisoft\Rbac\Rule`.
@@ -472,7 +472,7 @@ Now you've got the following hierarchy:
 ![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg "RBAC hierarchy with a rule")
 
 
-### Access check <span id="access-check"></span>
+### Access check
 
 The check is done similarly to how it was done in the first section of this guide:
 
