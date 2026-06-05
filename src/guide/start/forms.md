@@ -22,7 +22,7 @@ For Docker that would be:
 make composer require yiisoft/form-model
 ```
 
-## Creating a form <span id="creating-form"></span>
+## Creating a form
 
 The data to be requested from the user will be represented by a `Form` class as shown below and
 saved in the file `/src/Web/Echo/Form.php`:
@@ -49,7 +49,7 @@ final class Form extends FormModel
 In the above example, the `Form` has a single string property `$message` which length should be at least
 of two characters. There's also a custom label for the property.
 
-## Custom validation <span id="custom-validation"></span>
+## Custom validation
 
 Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. For example,
 to validate a UUID string, use `Uuid`:
@@ -136,7 +136,7 @@ For validation logic reused in several forms, create a custom Yii Validator rule
 methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
 for the rule/handler structure.
 
-## Validating several fields together <span id="cross-field-validation"></span>
+## Validating several fields together
 
 Property attributes are enough when each field can be validated independently. When a rule depends on several fields,
 put a `Callback` rule on the form model class and attach an error to the field that should display it.
@@ -209,7 +209,7 @@ The class-level `Callback` receives the whole object as `$value`, but using `$th
 method. Returning an empty `Result` means the cross-field rule passed. The third argument of `addError()` is the value
 path; `['dateFrom']` makes the error appear on the `dateFrom` field when rendering the form.
 
-## Using the form <span id="using-form"></span> 
+## Using the form 
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
 
@@ -334,7 +334,7 @@ rendering field label and validation errors.
 Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
 at least 2 characters."
 
-## Trying it Out <span id="trying-it-out"></span>
+## Trying it Out
 
 To see how it works, use your browser to access the following URL:
 
@@ -353,7 +353,7 @@ After you enter a valid message and click the "submit" button, the page echoes t
 
 ![Form with a success message](/images/guide/start/form-success.png)
 
-## Summary <span id="summary"></span>
+## Summary
 
 In this section of the guide, you've learned how to create a form model class to represent the user data and validate
 said data.

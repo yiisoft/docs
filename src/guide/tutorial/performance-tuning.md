@@ -5,7 +5,7 @@ to your code, while some others are related to Yii itself. In this section, we w
 factors and explain how you can improve your application performance by adjusting these factors.
 
 
-## Optimizing your PHP Environment <span id="optimizing-php"></span>
+## Optimizing your PHP Environment
 
 A well-configured PHP environment is important. To get maximum performance:
 
@@ -16,7 +16,7 @@ A well-configured PHP environment is important. To get maximum performance:
 - Make sure [XDebug](https://xdebug.org/) isn't installed in the production environment.
 - Try [PHP 7 preloading](https://wiki.php.net/rfc/preload).
 
-## Optimizing your code <span id="optimizing-code"></span>
+## Optimizing your code
 
 Beyond environment configuration, there are code-level optimizations that can improve your application's performance:
 
@@ -36,7 +36,7 @@ Beyond environment configuration, there are code-level optimizations that can im
 The above optimizations would give you a significant performance boost only if the code in question is executed
 frequently. That is usually the case for big loops or batch processing.
 
-## Using caching techniques <span id="using-caching-techniques"></span>
+## Using caching techniques
 
 You can use various caching techniques to significantly improve the performance of your application. For example,
 if your application allows users to enter text in Markdown format, you may consider caching the parsed Markdown
@@ -44,7 +44,7 @@ content to avoid parsing the same Markdown text repeatedly in every request. Ple
 the [Caching](../caching/overview.md) section to learn about the caching support provided by Yii.
 
 
-## Optimizing session storage <span id="optimizing-session-storage"></span>
+## Optimizing session storage
 
 By default, session data is stored in files. The implementation is locking a file from opening a session to the point it's
 closed either by `$session->close()` or at the end of request.
@@ -63,7 +63,7 @@ session service as follows:
 ],
 ```
 
-## Optimizing databases <span id="optimizing-databases"></span>
+## Optimizing databases
 
 Executing DB queries and fetching data from databases are often the main performance bottleneck in
 a Web application. Although using [data caching](../caching/data.md) techniques may ease the performance hit,
@@ -80,7 +80,7 @@ Last but not least, use `LIMIT` in your `SELECT` queries. This avoids fetching a
 and exhausting the memory allocated to PHP.
 
 
-## Optimizing composer autoloader <span id="optimizing-autoloader"></span>
+## Optimizing composer autoloader
 
 Because Composer autoloader is used to include most third-party class files, you should consider optimizing it
 by executing the following command:
@@ -95,7 +95,7 @@ and [APCu cache](https://getcomposer.org/doc/articles/autoloader-optimization.md
 Note that both optimizations may or may not be suitable for your particular case.
 
 
-## Processing data offline <span id="processing-data-offline"></span>
+## Processing data offline
 
 When a request involves some resource-intensive operations, you should think of ways to perform those operations
 in offline mode without having users wait for them to finish.
@@ -162,7 +162,7 @@ As you can see, the test results aren't much different, since this is just a cle
 that contains a few classes. More discussion of preloading, including benchmarks,
 can be found in the [composer's issue](https://github.com/composer/composer/issues/7777).
 
-## Performance profiling <span id="performance-profiling"></span>
+## Performance profiling
 
 You should profile your code to find out the performance bottlenecks and take appropriate measures accordingly.
 The following profiling tools may be useful:

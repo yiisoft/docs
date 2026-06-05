@@ -7,7 +7,7 @@ application context.
 This page explains how to use packages in an application. To create a Yii-aware package, see
 [Designing packages for Yii applications](designing-packages.md).
 
-## Installing packages <span id="installing-packages"></span>
+## Installing packages
 
 By default, Composer installs packages registered on [Packagist](https://packagist.org/), the main repository for
 open source PHP packages.
@@ -34,7 +34,7 @@ Installed packages are stored in the application `vendor/` directory.
 Package classes are available through Composer autoloading after installation. See [Autoloading](../concept/autoloading.md)
 for details.
 
-## Updating packages <span id="updating-packages"></span>
+## Updating packages
 
 Update a package within the version constraint recorded in `composer.json`:
 
@@ -55,7 +55,7 @@ group mappings manually, rebuild it explicitly:
 composer yii-config-rebuild
 ```
 
-## Removing packages <span id="removing-packages"></span>
+## Removing packages
 
 Remove a package with:
 
@@ -66,7 +66,7 @@ composer remove vendor-name/package-name
 Then remove application code and configuration that referenced classes, services, routes, commands, assets, migrations,
 or translations from that package.
 
-## Private packages <span id="private-packages"></span>
+## Private packages
 
 For private code, configure Composer repositories in the application `composer.json`. Common options are:
 
@@ -95,7 +95,7 @@ composer require vendor/blog
 
 Read more in the [Composer repository documentation](https://getcomposer.org/doc/05-repositories.md).
 
-## Package configuration <span id="package-configuration"></span>
+## Package configuration
 
 Some Yii packages provide default configuration through [yiisoft/config](https://github.com/yiisoft/config).
 After installation, the package configuration becomes part of the vendor layer and the application can override it in

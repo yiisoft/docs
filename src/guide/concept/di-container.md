@@ -1,6 +1,6 @@
 # Dependency injection and container
 
-## Dependency injection <span id="dependency-injection"></span>
+## Dependency injection
 
 There are two ways of re-using things in OOP: inheritance and composition.
 
@@ -79,7 +79,7 @@ There are many ways to perform it:
 - Method injection. Best for optional dependencies.
 - Property injection. Better to be avoided in PHP except maybe data transfer objects.
 
-### Why use private properties <span id="why-private-properties"></span>
+### Why use private properties
 
 In the composition example above, note that the `$cache` property is declared as `private`.
 
@@ -97,7 +97,7 @@ This design choice provides several benefits:
 - **Flexibility**: You can create read-only or write-only properties or add additional logic to property access later.
 
 
-## DI container <span id="di-container"></span>
+## DI container
 
 Injecting basic dependencies is straightforward. You're choosing a place where you don't care about dependencies,
 which is usually an action handler, which you aren't going to unit-test ever, create instances of dependencies needed
@@ -129,7 +129,7 @@ Yii provides the DI container feature through the [yiisoft/di](https://github.co
 > [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
 > explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
-### Configuring container <span id="configuring-container"></span>
+### Configuring container
 
 Because to create a new object you need its dependencies, you should register them as early as possible.
 You can do it in the application configuration, `config/web.php`. For the following service:
@@ -275,7 +275,7 @@ Or an instance of an object:
 MyServiceInterface::class => new MyService(),
 ```
 
-### Injecting dependencies properly <span id="injecting-dependencies"></span>
+### Injecting dependencies properly
 
 Directly referencing a container in a class is a bad idea since the code becomes non-generic,
 coupled to the container interface and, what's worse, dependencies are becoming hidden. 
@@ -316,6 +316,6 @@ explicitly, the container would check if it has such a dependency first.
 It's enough to declare a dependency you need, and it would be got from a container automatically.
 
 
-## References <span id="references"></span>
+## References
 
 - [Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler](https://martinfowler.com/articles/injection.html)
