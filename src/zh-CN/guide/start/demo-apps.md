@@ -11,3 +11,7 @@
 
 这是一个采用垂直切片架构模式构建的日记应用程序。在这种方式中，每个功能从头到尾完整实现，而不是按水平层拆分，从而更易于独立添加或修改功能。
 
+**[Demo Summarizer](https://github.com/yiisoft/demo-summarizer) — Large language model (LLM) document summarizer**
+
+A runnable Yii3 demo for uploading documents, extracting readable Markdown,
+summarizing content, and tracking processing progress.

@@ -18,3 +18,7 @@
 не разбивается на горизонтальные слои, что упрощает независимое добавление
 или изменение.
 
+**[Demo Summarizer](https://github.com/yiisoft/demo-summarizer) — Large language model (LLM) document summarizer**
+
+A runnable Yii3 demo for uploading documents, extracting readable Markdown,
+summarizing content, and tracking processing progress.
