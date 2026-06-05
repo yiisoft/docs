@@ -14,3 +14,7 @@ A diary application built using the vertical slices architecture pattern.
 In this approach, each feature is implemented end-to-end rather than being split across horizontal layers,
 making it easier to add or modify features independently.
 
+**[Demo Summarizer](https://github.com/yiisoft/demo-summarizer) — LLM document summarizer**
+
+A runnable Yii3 demo for uploading documents, extracting readable Markdown, summarizing content,
+and tracking processing progress.
