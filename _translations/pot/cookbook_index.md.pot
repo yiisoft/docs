@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-02 22:29+0000\n"
+"POT-Creation-Date: 2026-06-05 22:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Sentry integration](sentry-integration.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Using a custom migration template](custom-migration-template.md)"
 msgstr ""
 
 #. type: Bullet: '- '

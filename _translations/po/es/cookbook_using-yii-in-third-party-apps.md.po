@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-02 22:29+0000\n"
+"POT-Creation-Date: 2026-06-05 22:11+0000\n"
 "PO-Revision-Date: 2026-06-02 22:29+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Fenced code block (sh)
+#: ../src/cookbook/custom-migration-template.md
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "Introducción"
 
 #. type: Title #
 #: ../src/cookbook/using-yii-in-third-party-apps.md
@@ -252,15 +262,6 @@ msgstr ""
 #: ../src/cookbook/using-yii-in-third-party-apps.md
 msgid "After changing `config/configuration.php`, rebuild the merge plan:"
 msgstr ""
-
-#. type: Fenced code block (sh)
-#: ../src/cookbook/using-yii-in-third-party-apps.md
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md ../src/guide/structure/package.md
-#: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
-msgid "composer yii-config-rebuild\n"
-msgstr "Introducción"
 
 #. type: Title ##
 #: ../src/cookbook/using-yii-in-third-party-apps.md

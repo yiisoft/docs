@@ -16,6 +16,7 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 - [Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)
 - [禁用 CSRF 保护](disabling-csrf-protection.md)
 - [Sentry 集成](sentry-integration.md)
+- [Using a custom migration template](custom-migration-template.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
