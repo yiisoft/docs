@@ -25,7 +25,7 @@ composer require yiisoft/form-model
 make composer require yiisoft/form-model
 ```
 
-## Создание формы <span id="creating-form"></span>
+## Creating a form
 
 Данные, которые будут запрошены у пользователя, будут представлены классом
 `Form`, как показано ниже, и сохранены в файле `/src/Web/Echo/Form.php`:
@@ -53,7 +53,7 @@ final class Form extends FormModel
 `$message`, длина которого должна быть не менее двух символов. Также для
 свойства задана пользовательская метка.
 
-## Custom validation <span id="custom-validation"></span>
+## Custom validation
 
 Validation attributes are Yii Validator rules. For common checks, first look
 for an existing rule. For example, to validate a UUID string, use `Uuid`:
@@ -144,7 +144,7 @@ rule and handler instead of copying callback methods. See the [custom rule
 guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
 for the rule/handler structure.
 
-## Validating several fields together <span id="cross-field-validation"></span>
+## Validating several fields together
 
 Property attributes are enough when each field can be validated
 independently. When a rule depends on several fields, put a `Callback` rule
@@ -222,7 +222,7 @@ The class-level `Callback` receives the whole object as `$value`, but using
 `addError()` is the value path; `['dateFrom']` makes the error appear on the
 `dateFrom` field when rendering the form.
 
-## Использование формы <span id="using-form"></span> 
+## Using the form 
 
 Теперь, когда у вас есть форма, используйте её в вашем обработчике из
 раздела "[Говорим «Привет»](hello.md)".
@@ -354,7 +354,7 @@ $htmlForm = Html::form()
 Теперь, если вы отправите пустое сообщение, вы получите ошибку валидации:
 "The message to be echoed must contain at least 2 characters."
 
-## Проверка работы <span id="trying-it-out"></span>
+## Trying it Out
 
 Чтобы увидеть, как это работает, откройте в браузере следующий URL:
 
@@ -374,7 +374,7 @@ http://localhost:8080/say
 
 ![Успешная отправка формы](/images/guide/start/form-success.png)
 
-## Краткое содержание <span id="summary"></span>
+## Summary
 
 В этом разделе руководства вы узнали, как создать класс модели формы для
 представления данных пользователя и валидации этих данных.

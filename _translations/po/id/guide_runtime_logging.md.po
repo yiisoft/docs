@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -59,7 +59,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Log Messages <span id=\"log-messages\"></span>"
+msgid "Log Messages"
 msgstr ""
 
 #. type: Plain text
@@ -179,7 +179,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Log targets <span id=\"log-targets\"></span>"
+msgid "Log targets"
 msgstr ""
 
 #. type: Plain text
@@ -272,7 +272,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Message Filtering <span id=\"message-filtering\"></span>"
+msgid "Message Filtering"
 msgstr ""
 
 #. type: Plain text
@@ -323,7 +323,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Message Formatting <span id=\"message-formatting\"></span>"
+msgid "Message Formatting"
 msgstr ""
 
 #. type: Plain text
@@ -437,7 +437,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Message Trace Level <span id=\"trace-level\"></span>"
+msgid "Message Trace Level"
 msgstr ""
 
 #. type: Plain text
@@ -478,7 +478,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Message flushing and exporting <span id=\"flushing-exporting\"></span>"
+msgid "Message flushing and exporting"
 msgstr ""
 
 #. type: Plain text
@@ -549,7 +549,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, no-wrap
-msgid "Toggling log targets <span id=\"toggling-log-targets\"></span>"
+msgid "Toggling log targets"
 msgstr ""
 
 #. type: Plain text
@@ -578,9 +578,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
-#, no-wrap
-msgid "Creating new targets <span id=\"new-targets\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Creating new targets"
+msgstr "Membuat Dokumentasi API"
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md

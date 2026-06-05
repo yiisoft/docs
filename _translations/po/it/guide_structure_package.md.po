@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,8 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
 #: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
 msgid "composer yii-config-rebuild\n"
 msgstr "[Configurazione](concept/configuration.md)"
@@ -41,10 +43,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Installing packages <span id=\"installing-packages\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#, no-wrap
+msgid "Installing packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -104,10 +105,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgid "Updating packages <span id=\"updating-packages\"></span>"
-msgstr "Creare un modello di vista <span id=\"creating-view-template\"></span>"
+#, no-wrap
+msgid "Updating packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -138,10 +138,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Removing packages <span id=\"removing-packages\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#, no-wrap
+msgid "Removing packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -161,10 +160,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Private packages <span id=\"private-packages\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#, no-wrap
+msgid "Private packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -225,9 +223,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "[Console applications](tutorial/console-applications.md)"
-msgid "Package configuration <span id=\"package-configuration\"></span>"
-msgstr "[Applicazioni console](tutorial/console-applications.md)"
+msgid "Package configuration"
+msgstr "[Configurazione](concept/configuration.md)"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md

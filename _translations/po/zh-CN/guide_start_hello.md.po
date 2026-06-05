@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:53+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-25 21:55+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,10 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
-msgstr "总结 <span id=\"summary\"></span>"
+msgid "Summary"
+msgstr "总结"
+
+#. type: Title ##
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Trying it out"
+msgstr "试试看"
 
 #. type: Title #
 #: ../src/guide/start/hello.md
@@ -59,9 +67,10 @@ msgstr "如何使用 [视图](../views/view.md) 来组成响应的内容。"
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgstr "创建处理器 <span id=\"creating-handler\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Creating a Message"
+msgid "Creating a handler"
+msgstr "创建消息"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -164,12 +173,6 @@ msgstr "在上面，您将 `/say[/{message}]` 模式映射到 `\\App\\Web\\Echo\
 msgid "You also give a `echo/say` name to this route to be able to generate URLs pointing to it."
 msgstr "您还为此路由指定了 `echo/say` 名称，以便能够生成指向它的 URL。"
 
-#. type: Title ##
-#: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Trying it out <span id=\"trying-it-out\"></span>"
-msgstr "试试看 <span id=\"trying-it-out\"></span>"
-
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "After creating the action and the view open `http://localhost/say/Hello+World` in your browser."
@@ -187,9 +190,10 @@ msgstr "如果您在 URL 中省略 `message` 参数，页面将显示“The mess
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgstr "创建视图模板 <span id=\"creating-view-template\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Creating a Message"
+msgid "Creating a View Template"
+msgstr "创建消息"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md

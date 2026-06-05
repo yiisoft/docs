@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 08:28+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,12 @@ msgstr ""
 #: ../src/guide/index.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Working with databases"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "Routing"
 msgstr ""
 
 #. type: Plain text
@@ -1236,12 +1242,6 @@ msgid ""
 "<?= $htmlForm->close() ?>\n"
 msgstr ""
 
-#. type: Title ###
-#: ../src/guide/start/databases.md
-#, no-wrap
-msgid "Routing"
-msgstr ""
-
 #. type: Plain text
 #: ../src/guide/start/databases.md
 msgid "Adjust `config/common/routes.php`:"
@@ -1297,7 +1297,7 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../src/guide/start/databases.md
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Trying it out"
 msgstr ""

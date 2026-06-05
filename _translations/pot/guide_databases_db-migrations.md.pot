@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -927,7 +927,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "Reverting Migrations <span id=\"reverting-migrations\"></span>"
+msgid "Reverting Migrations"
 msgstr ""
 
 #. type: Plain text
@@ -957,7 +957,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "Redoing Migrations <span id=\"redoing-migrations\"></span>"
+msgid "Redoing Migrations"
 msgstr ""
 
 #. type: Plain text
@@ -985,7 +985,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, no-wrap
-msgid "Listing Migrations <span id=\"listing-migrations\"></span>"
+msgid "Listing Migrations"
 msgstr ""
 
 #. type: Plain text

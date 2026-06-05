@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
 #: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "composer yii-config-rebuild\n"
 msgstr ""
@@ -49,7 +51,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
-msgid "Installing packages <span id=\"installing-packages\"></span>"
+msgid "Installing packages"
 msgstr ""
 
 #. type: Plain text
@@ -115,7 +117,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
-msgid "Updating packages <span id=\"updating-packages\"></span>"
+msgid "Updating packages"
 msgstr ""
 
 #. type: Plain text
@@ -152,7 +154,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
-msgid "Removing packages <span id=\"removing-packages\"></span>"
+msgid "Removing packages"
 msgstr ""
 
 #. type: Plain text
@@ -177,7 +179,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
-msgid "Private packages <span id=\"private-packages\"></span>"
+msgid "Private packages"
 msgstr ""
 
 #. type: Plain text
@@ -242,7 +244,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, no-wrap
-msgid "Package configuration <span id=\"package-configuration\"></span>"
+msgid "Package configuration"
 msgstr ""
 
 #. type: Plain text

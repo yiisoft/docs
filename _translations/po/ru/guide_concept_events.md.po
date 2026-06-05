@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:57+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,6 +18,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -46,9 +47,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Event classes <span id=\"event-classes\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+#| msgid "Environment variables"
+msgid "Event classes"
+msgstr "Переменные окружения"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -91,10 +92,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Event listeners <span id=\"event-listeners\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+#, no-wrap
+msgid "Event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -155,9 +155,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Configuring event listeners <span id=\"configuring-event-listeners\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+#| msgid "Confirming data integrity"
+msgid "Configuring event listeners"
+msgstr "Проверка целостности данных"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -220,10 +220,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Dispatching events <span id=\"dispatching-events\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Dispatching events"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -258,10 +257,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Event listener order <span id=\"event-listener-order\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+#, no-wrap
+msgid "Event listener order"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -275,10 +273,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Event hierarchy <span id=\"event-hierarchy\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+#, no-wrap
+msgid "Event hierarchy"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -325,7 +322,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, no-wrap
-msgid "Manual listener provider setup <span id=\"manual-listener-provider-setup\"></span>"
+msgid "Manual listener provider setup"
 msgstr ""
 
 #. type: Plain text

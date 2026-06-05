@@ -11,7 +11,7 @@ Aplikasi Yii bawaan memiliki beberapa alias yang sudah didefinisikan di
 path web root; `@baseUrl` merepresentasikan URL dasar untuk aplikasi Web
 yang sedang berjalan.
 
-## Defining aliases <span id="defining-aliases"></span>
+## Defining aliases
 
 Anda dapat mendefinisikan sebuah alias melalui `config/params.php` aplikasi:
 
@@ -64,7 +64,7 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Menggunakan aliases di konfigurasi <span id="using-aliases-in-configuration"></span>
+## Using aliases in configuration
 
 Disarankan untuk me-resolve alias pada level konfigurasi, sehingga service
 menerima URL dan path sebagai string siap pakai:
@@ -86,7 +86,7 @@ return [
 ];
 ```
 
-## Me-resolve alias <span id="resolving-aliases"></span>
+## Resolving aliases
 
 Anda dapat menggunakan layanan `Aliases`:
 
@@ -131,7 +131,7 @@ Jika `@foo/bar` tidak didefinisikan sebagai alias akar, pernyataan terakhir
 akan menghasilkan `/path/to/foo/bar/file.php`.
 
 
-## Alias bawaan <span id="predefined-aliases"></span>
+## Predefined aliases
 
 [Aplikasi Yii](https://github.com/yiisoft/app) mendefinisikan serangkaian
 alias untuk mereferensikan path file dan URL yang umum digunakan:

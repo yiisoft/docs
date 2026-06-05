@@ -336,7 +336,7 @@ final class M251227095006CreateMyFirstTableTable implements RevertibleMigrationI
 ./yii migrate:up --limit=3
 ```
 
-## 回滚迁移 <span id="reverting-migrations"></span>
+## Reverting Migrations
 
 要回滚（撤销）之前已应用的一个或多个迁移，可以运行以下命令：
 
@@ -350,7 +350,7 @@ final class M251227095006CreateMyFirstTableTable implements RevertibleMigrationI
 整个回滚过程。
 
 
-## 重做迁移 <span id="redoing-migrations"></span>
+## Redoing Migrations
 
 重做迁移是指先回滚指定的迁移，然后再重新应用。可以按如下方式操作：
 
@@ -362,7 +362,7 @@ final class M251227095006CreateMyFirstTableTable implements RevertibleMigrationI
 
 > 注意：如果迁移不可逆，您将无法重做它。
 
-## 列出迁移 <span id="listing-migrations"></span>
+## Listing Migrations
 
 要列出哪些迁移已应用、哪些未应用，可以使用以下命令：
 

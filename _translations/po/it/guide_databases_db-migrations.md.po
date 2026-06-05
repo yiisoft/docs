@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-27 10:28+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -831,9 +831,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Reverting Migrations <span id=\"reverting-migrations\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Reverting Migrations"
+msgstr "Generazione della documentazione API"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -859,9 +860,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Redoing Migrations <span id=\"redoing-migrations\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Redoing Migrations"
+msgstr "Generazione della documentazione API"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -885,9 +887,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Listing Migrations <span id=\"listing-migrations\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Application structure"
+msgid "Listing Migrations"
+msgstr "Struttura applicativa"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md

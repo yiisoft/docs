@@ -11,7 +11,7 @@ Default Yii application has some aliases pre-defined in
 root path; `@baseUrl` represents the base URL for the currently running Web
 application.
 
-## Definir Alias <span id="defining-aliases"></span>
+## Defining aliases
 
 Puedes definir un alias mediante la aplicación en `config/params.php`:
 
@@ -60,7 +60,7 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration <span id="using-aliases-in-configuration"></span>
+## Using aliases in configuration
 
 It's preferred to resolve aliases at the configuration level, so services
 get URLs and paths as ready to use strings:
@@ -82,7 +82,7 @@ return [
 ];
 ```
 
-## Resolución de Alias <span id="resolving-aliases"></span>
+## Resolving aliases
 
 Puedes utilizar el servicio `Aliases` para resolver un alias o un alias
 derivado a la ruta de archivo o URL que representa:
@@ -128,7 +128,7 @@ Si `@foo/bar` no está definido como un alias de raíz, la última declaración
 mostraría `/path/to/foo/bar/file.php`.
 
 
-## Alias Predefinidos <span id="predefined-aliases"></span>
+## Predefined aliases
 
 [Yii application](https://github.com/yiisoft/app) predefines a set of
 aliases to reference commonly used file paths and URLs:

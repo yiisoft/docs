@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-05 10:48+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -40,8 +40,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgstr "Defining aliases <span id=\"defining-aliases\"></span>"
+msgid "Defining aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -147,9 +147,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
-#, no-wrap
-msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
-msgstr "Menggunakan aliases di konfigurasi <span id=\"using-aliases-in-configuration\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "Using aliases in configuration"
+msgstr "Konfigurasi container"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -193,8 +194,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgstr "Me-resolve alias <span id=\"resolving-aliases\"></span>"
+msgid "Resolving aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -281,8 +282,8 @@ msgstr "Jika `@foo/bar` tidak didefinisikan sebagai alias akar, pernyataan terak
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
-msgstr "Alias bawaan <span id=\"predefined-aliases\"></span>"
+msgid "Predefined aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md

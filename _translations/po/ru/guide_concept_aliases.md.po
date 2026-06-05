@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 14:30+0300\n"
 "Last-Translator: Sergei Predvoditelev <sergei@predvoditelev.ru>\n"
 "Language-Team: Russian\n"
@@ -37,8 +37,8 @@ msgstr "По умолчанию Yii-приложение имеет нескол
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
+msgid "Defining aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -140,9 +140,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
-#, no-wrap
-msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
-msgstr "Использование псевдонимов в конфигурации <span id=\"using-aliases-in-configuration\"></span>"
+#, fuzzy, no-wrap
+msgid "Using aliases in configuration"
+msgstr "Безопасная конфигурация сервера"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -188,8 +188,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+msgid "Resolving aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -279,8 +279,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
-msgstr "Предопределенные псевдонимы <span id=\"predefined-aliases\"></span>"
+msgid "Predefined aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md

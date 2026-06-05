@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,8 +16,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
 #: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
 msgid "composer yii-config-rebuild\n"
 msgstr "容器配置"
@@ -44,9 +46,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Using packages <span id=\"using-packages\"></span>"
-msgid "Installing packages <span id=\"installing-packages\"></span>"
-msgstr "使用包 <span id=\"using-packages\"></span>"
+#| msgid "Install the package"
+msgid "Installing packages"
+msgstr "安装包"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -115,9 +117,9 @@ msgstr "包中的类可以通过[自动加载](../concept/autoloading.md)立即�
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Using packages <span id=\"using-packages\"></span>"
-msgid "Updating packages <span id=\"updating-packages\"></span>"
-msgstr "使用包 <span id=\"using-packages\"></span>"
+#| msgid "Using Blocks"
+msgid "Updating packages"
+msgstr "使用块"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -149,9 +151,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Creating packages <span id=\"creating-packages\"></span>"
-msgid "Removing packages <span id=\"removing-packages\"></span>"
-msgstr "创建包 <span id=\"creating-packages\"></span>"
+#| msgid "Reading cookies"
+msgid "Removing packages"
+msgstr "读取 Cookie"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -172,9 +174,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Creating packages <span id=\"creating-packages\"></span>"
-msgid "Private packages <span id=\"private-packages\"></span>"
-msgstr "创建包 <span id=\"creating-packages\"></span>"
+#| msgid "Using Blocks"
+msgid "Private packages"
+msgstr "使用块"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -237,9 +239,9 @@ msgstr "注册 [Composer 自动加载器](https://getcomposer.org/doc/01-basic-u
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
-msgid "Package configuration <span id=\"package-configuration\"></span>"
-msgstr "在配置中使用别名 <span id=\"using-aliases-in-configuration\"></span>"
+#| msgid "Package configs"
+msgid "Package configuration"
+msgstr "包配置"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md

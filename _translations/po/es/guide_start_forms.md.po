@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-02 22:03+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/start/forms.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Summary"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/start/forms.md
@@ -77,9 +85,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Creating a form <span id=\"creating-form\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Creating a form"
+msgstr "Generación de Documentación de API"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -116,9 +125,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/forms.md
 #, fuzzy, no-wrap
-#| msgid "Raising events <span id=\"raising-events\"></span>"
-msgid "Custom validation <span id=\"custom-validation\"></span>"
-msgstr "Lanzamiento de Eventos <span id=\"raising-events\"></span>"
+msgid "Custom validation"
+msgstr "Introducción"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -220,7 +228,7 @@ msgstr ""
 #: ../src/guide/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "Raising events <span id=\"raising-events\"></span>"
-msgid "Validating several fields together <span id=\"cross-field-validation\"></span>"
+msgid "Validating several fields together"
 msgstr "Lanzamiento de Eventos <span id=\"raising-events\"></span>"
 
 #. type: Plain text
@@ -306,7 +314,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/forms.md
 #, no-wrap
-msgid "Using the form <span id=\"using-form\"></span> "
+msgid "Using the form "
 msgstr ""
 
 #. type: Plain text
@@ -473,7 +481,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/forms.md
 #, no-wrap
-msgid "Trying it Out <span id=\"trying-it-out\"></span>"
+msgid "Trying it Out"
 msgstr ""
 
 #. type: Plain text
@@ -505,12 +513,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/start/forms.md
 msgid "![Form with a success message](/images/guide/start/form-success.png)"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/start/forms.md ../src/guide/start/hello.md
-#, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
 msgstr ""
 
 #. type: Plain text

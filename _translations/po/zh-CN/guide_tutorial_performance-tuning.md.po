@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -28,8 +28,9 @@ msgstr "影响应用程序性能的因素有很多，有些与运行环境有关
 
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
-#, no-wrap
-msgid "Optimizing your PHP Environment <span id=\"optimizing-php\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Optimizing your PHP Environment <span id=\"optimizing-php\"></span>"
+msgid "Optimizing your PHP Environment"
 msgstr "优化 PHP 环境 <span id=\"optimizing-php\"></span>"
 
 #. type: Plain text
@@ -65,8 +66,8 @@ msgstr "尝试 [PHP 7 预加载](https://wiki.php.net/rfc/preload)。"
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing your code <span id=\"optimizing-code\"></span>"
-msgstr "优化代码 <span id=\"optimizing-code\"></span>"
+msgid "Optimizing your code"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -106,8 +107,8 @@ msgstr "上述代码层面的优化只有在相关代码被频繁执行时才能
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Using caching techniques <span id=\"using-caching-techniques\"></span>"
-msgstr "使用缓存技术 <span id=\"using-caching-techniques\"></span>"
+msgid "Using caching techniques"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -116,9 +117,10 @@ msgstr "您可以使用多种缓存技术来显著提升应用程序性能。例
 
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
-#, no-wrap
-msgid "Optimizing session storage <span id=\"optimizing-session-storage\"></span>"
-msgstr "优化会话存储 <span id=\"optimizing-session-storage\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Custom session storage"
+msgid "Optimizing session storage"
+msgstr "自定义会话存储"
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -153,9 +155,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
-#, no-wrap
-msgid "Optimizing databases <span id=\"optimizing-databases\"></span>"
-msgstr "优化数据库 <span id=\"optimizing-databases\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Working with databases"
+msgid "Optimizing databases"
+msgstr "使用数据库"
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -180,8 +183,8 @@ msgstr "最后同样重要的一点是，在 `SELECT` 查询中使用 `LIMIT`，
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing composer autoloader <span id=\"optimizing-autoloader\"></span>"
-msgstr "优化 Composer 自动加载器 <span id=\"optimizing-autoloader\"></span>"
+msgid "Optimizing composer autoloader"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -201,9 +204,10 @@ msgstr "此外，您还可以考虑使用 [权威类映射](https://getcomposer.
 
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
-#, no-wrap
-msgid "Processing data offline <span id=\"processing-data-offline\"></span>"
-msgstr "离线处理数据 <span id=\"processing-data-offline\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Processing is blocking"
+msgid "Processing data offline"
+msgstr "处理是阻塞的"
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md
@@ -322,9 +326,10 @@ msgstr "如您所见，测试结果差异不大，因为这只是一个仅包含
 
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
-#, no-wrap
-msgid "Performance profiling <span id=\"performance-profiling\"></span>"
-msgstr "性能分析 <span id=\"performance-profiling\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Performance tuning"
+msgid "Performance profiling"
+msgstr "性能调优"
 
 #. type: Plain text
 #: ../src/guide/tutorial/performance-tuning.md

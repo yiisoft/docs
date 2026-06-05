@@ -1,6 +1,6 @@
 # Внедрение зависимостей и контейнер внедрения зависимостей
 
-## Внедрение зависимостей <span id="dependency-injection"></span>
+## Dependency injection
 
 В ООП существует два способа повторного использования кода: наследование и
 композиция.
@@ -86,7 +86,7 @@ perform it:
 - Через свойство. Лучше избегать использования в PHP, за исключением, может
   быть, объектов передачи данных (DTO)
 
-### Why use private properties <span id="why-private-properties"></span>
+### Why use private properties
 
 In the composition example above, note that the `$cache` property is
 declared as `private`.
@@ -108,7 +108,7 @@ This design choice provides several benefits:
   additional logic to property access later.
 
 
-## Контейнер внедрения зависимостей <span id="di-container"></span>
+## DI container
 
 Injecting basic dependencies is straightforward. You're choosing a place
 where you don't care about dependencies, which is usually an action handler,
@@ -144,7 +144,7 @@ Yii реализует DI-контейнер через пакет
 > [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
 > explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
 
-### Конфигурирование контейнера <span id="configuring-container"></span>
+### Configuring container
 
 Поскольку для создания нового объекта вам нужны его зависимости, вам следует
 зарегестрировать их как можно раньше.
@@ -298,7 +298,7 @@ Or an instance of an object:
 MyServiceInterface::class => new MyService(),
 ```
 
-### Injecting dependencies properly <span id="injecting-dependencies"></span>
+### Injecting dependencies properly
 
 Directly referencing a container in a class is a bad idea since the code
 becomes non-generic, coupled to the container interface and, what's worse,
@@ -342,7 +342,7 @@ declare a dependency you need, and it would be got from a container
 automatically.
 
 
-## Полезные ссылки <span id="references"></span>
+## Ссылки
 
 - [Inversion of Control Containers and the Dependency Injection pattern
   Мартина Фаулера](https://martinfowler.com/articles/injection.html)

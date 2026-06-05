@@ -18,7 +18,7 @@ Web 服务器能够找到即可。
 * 将请求传递给 `Application` 处理并获取响应。
 * 借助发射器将响应对象转换为实际的 HTTP 响应并发送给客户端浏览器。
 
-## Web 应用程序 <span id="web-applications"></span>
+## Web Applications
 
 以下是应用程序模板中入口脚本的代码：
 
@@ -50,7 +50,7 @@ $runner->run();
 ```
 
 
-## 控制台应用程序 <span id="console-applications"></span>
+## Console Applications
 
 类似地，以下是控制台应用程序入口脚本的代码：
 

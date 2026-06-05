@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:57+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,6 +17,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -45,9 +46,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Event classes <span id=\"event-classes\"></span>"
-msgstr "Me-resolve alias <span id=\"resolving-aliases\"></span>"
+#| msgid "Events"
+msgid "Event classes"
+msgstr "Event"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -68,10 +69,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Event listeners <span id=\"event-listeners\"></span>"
-msgstr "Me-resolve alias <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -108,9 +108,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgid "Configuring event listeners <span id=\"configuring-event-listeners\"></span>"
-msgstr "Defining aliases <span id=\"defining-aliases\"></span>"
+#| msgid "Configuration"
+msgid "Configuring event listeners"
+msgstr "Konfigurasi"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -171,10 +171,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
-msgid "Dispatching events <span id=\"dispatching-events\"></span>"
-msgstr "Menggunakan aliases di konfigurasi <span id=\"using-aliases-in-configuration\"></span>"
+#, no-wrap
+msgid "Dispatching events"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -209,10 +208,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Event listener order <span id=\"event-listener-order\"></span>"
-msgstr "Me-resolve alias <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Event listener order"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -226,10 +224,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Event hierarchy <span id=\"event-hierarchy\"></span>"
-msgstr "Me-resolve alias <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Event hierarchy"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -276,7 +273,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, no-wrap
-msgid "Manual listener provider setup <span id=\"manual-listener-provider-setup\"></span>"
+msgid "Manual listener provider setup"
 msgstr ""
 
 #. type: Plain text

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:53+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,9 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
+msgid "Summary"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Trying it out"
 msgstr ""
 
 #. type: Title #
@@ -60,9 +68,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Creating a handler"
+msgstr "Generación de Documentación de API"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -163,12 +172,6 @@ msgstr ""
 msgid "You also give a `echo/say` name to this route to be able to generate URLs pointing to it."
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Trying it out <span id=\"trying-it-out\"></span>"
-msgstr ""
-
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "After creating the action and the view open `http://localhost/say/Hello+World` in your browser."
@@ -186,9 +189,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Creating a View Template"
+msgstr "Generación de Documentación de API"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md

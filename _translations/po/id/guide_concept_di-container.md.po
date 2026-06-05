@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 11:13+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 07:37+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Referensi"
 
 #. type: Title #
 #: ../src/guide/concept/di-container.md
@@ -24,7 +35,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Dependency injection <span id=\"dependency-injection\"></span>"
+msgid "Dependency injection"
 msgstr ""
 
 #. type: Plain text
@@ -141,7 +152,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Why use private properties <span id=\"why-private-properties\"></span>"
+msgid "Why use private properties"
 msgstr ""
 
 #. type: Plain text
@@ -182,7 +193,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "DI container <span id=\"di-container\"></span>"
+msgid "DI container"
 msgstr ""
 
 #. type: Plain text
@@ -246,9 +257,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Configuration"
+msgid "Configuring container"
+msgstr "Konfigurasi"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -474,9 +486,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Injecting dependencies properly <span id=\"injecting-dependencies\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Invalidation dependencies"
+msgid "Injecting dependencies properly"
+msgstr "Invalidation dependencies"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -519,12 +532,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
 msgid "Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it checks the constructor and method argument types, gets dependencies of these types from a container and passes them as arguments. That's usually called auto-wiring. It happens for sub-dependencies as well, that's if you don't give dependency explicitly, the container would check if it has such a dependency first.  It's enough to declare a dependency you need, and it would be got from a container automatically."
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "References <span id=\"references\"></span>"
 msgstr ""
 
 #. type: Bullet: '- '

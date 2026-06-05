@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 11:13+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-16 11:13+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "参考资料"
 
 #. type: Title #
 #: ../src/guide/concept/di-container.md
@@ -23,9 +34,10 @@ msgstr "依赖注入和容器"
 
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Dependency injection <span id=\"dependency-injection\"></span>"
-msgstr "依赖注入 <span id=\"dependency-injection\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Dependency injection and container"
+msgid "Dependency injection"
+msgstr "依赖注入和容器"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -140,9 +152,10 @@ msgstr "属性注入。在 PHP 中最好避免使用，除非可能是数据传�
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Why use private properties <span id=\"why-private-properties\"></span>"
-msgstr "为什么使用私有属性 <span id=\"why-private-properties\"></span>"
+#, fuzzy, no-wrap
+#| msgid "[x] Don't use public properties."
+msgid "Why use private properties"
+msgstr "[x] 不要使用公共属性。"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -181,9 +194,10 @@ msgstr "**灵活性**：您可以创建只读或只写属性，或稍后向属�
 
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "DI container <span id=\"di-container\"></span>"
-msgstr "DI 容器 <span id=\"di-container\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Container"
+msgid "DI container"
+msgstr "容器"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -251,9 +265,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgstr "配置容器 <span id=\"configuring-container\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Configuring connection"
+msgid "Configuring container"
+msgstr "配置连接"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -477,9 +492,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Injecting dependencies properly <span id=\"injecting-dependencies\"></span>"
-msgstr "正确注入依赖 <span id=\"injecting-dependencies\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Invalidation dependencies"
+msgid "Injecting dependencies properly"
+msgstr "失效依赖"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -523,12 +539,6 @@ msgstr ""
 #: ../src/guide/concept/di-container.md
 msgid "Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it checks the constructor and method argument types, gets dependencies of these types from a container and passes them as arguments. That's usually called auto-wiring. It happens for sub-dependencies as well, that's if you don't give dependency explicitly, the container would check if it has such a dependency first.  It's enough to declare a dependency you need, and it would be got from a container automatically."
 msgstr "由于是 [yiisoft/injector](https://github.com/yiisoft/injector) 实例化并调用操作处理器，它会检查构造函数和方法参数类型，从容器中获取这些类型的依赖并将它们作为参数传递。这通常称为自动装配。它也适用于子依赖，也就是说，如果您没有显式提供依赖，容器会首先检查它是否有这样的依赖。只需声明您需要的依赖，它就会自动从容器中获取。"
-
-#. type: Title ##
-#: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "References <span id=\"references\"></span>"
-msgstr "参考资料 <span id=\"references\"></span>"
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/di-container.md

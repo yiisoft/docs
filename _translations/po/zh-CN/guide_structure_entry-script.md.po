@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -73,9 +73,10 @@ msgstr "借助发射器将响应对象转换为实际的 HTTP 响应并发送给
 
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
-#, no-wrap
-msgid "Web Applications <span id=\"web-applications\"></span>"
-msgstr "Web 应用程序 <span id=\"web-applications\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Demo Applications"
+msgid "Web Applications"
+msgstr "演示应用程序"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
@@ -114,9 +115,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
-#, no-wrap
-msgid "Console Applications <span id=\"console-applications\"></span>"
-msgstr "控制台应用程序 <span id=\"console-applications\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Console applications"
+msgid "Console Applications"
+msgstr "控制台应用程序"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -839,9 +839,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Reverting Migrations <span id=\"reverting-migrations\"></span>"
-msgstr "回滚迁移 <span id=\"reverting-migrations\"></span>"
+#, fuzzy, no-wrap
+#| msgid "revert migrations;"
+msgid "Reverting Migrations"
+msgstr "回滚迁移；"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -869,9 +870,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Redoing Migrations <span id=\"redoing-migrations\"></span>"
-msgstr "重做迁移 <span id=\"redoing-migrations\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Using migrations"
+msgid "Redoing Migrations"
+msgstr "使用迁移"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -895,9 +897,10 @@ msgstr "> 注意：如果迁移不可逆，您将无法重做它。\n"
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
-#, no-wrap
-msgid "Listing Migrations <span id=\"listing-migrations\"></span>"
-msgstr "列出迁移 <span id=\"listing-migrations\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Using migrations"
+msgid "Listing Migrations"
+msgstr "使用迁移"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md

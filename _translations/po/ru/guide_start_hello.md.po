@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-05 21:53+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-24 19:48+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,10 +18,18 @@ msgstr ""
 "X-Generator: Poedit 3.8\n"
 
 #. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
-msgstr "Краткое содержание <span id=\"summary\"></span>"
+msgid "Summary"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Trying it out"
+msgstr "Проверка работы"
 
 #. type: Title #
 #: ../src/guide/start/hello.md
@@ -61,9 +69,10 @@ msgstr "Как использовать [представление (view)](../v
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgstr "Создание обработчика <span id=\"creating-handler\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Creating a project"
+msgid "Creating a handler"
+msgstr "Создание проекта"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -166,12 +175,6 @@ msgstr "В примере выше вы связываете шаблон `/say[
 msgid "You also give a `echo/say` name to this route to be able to generate URLs pointing to it."
 msgstr "Также вы задаёте этому маршруту имя `echo/say`, чтобы затем можно было генерировать URL, ведущие на него."
 
-#. type: Title ##
-#: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Trying it out <span id=\"trying-it-out\"></span>"
-msgstr "Пробуем в деле <span id=\"trying-it-out\"></span>"
-
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid "After creating the action and the view open `http://localhost/say/Hello+World` in your browser."
@@ -189,9 +192,10 @@ msgstr "Если не указывать параметр `message` в URL, ст
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgstr "Создание шаблона представления <span id=\"creating-view-template\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Creating a project"
+msgid "Creating a View Template"
+msgstr "Создание проекта"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md

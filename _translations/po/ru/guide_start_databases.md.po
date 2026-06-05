@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-30 08:28+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-27 22:23+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -38,6 +38,12 @@ msgstr ""
 #, no-wrap
 msgid "Working with databases"
 msgstr "Работа с базами данных"
+
+#. type: Title ###
+#: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "Routing"
+msgstr "Маршрутизация"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
@@ -1156,12 +1162,6 @@ msgid ""
 "<?= $htmlForm->close() ?>\n"
 msgstr ""
 
-#. type: Title ###
-#: ../src/guide/start/databases.md
-#, no-wrap
-msgid "Routing"
-msgstr "Маршрутизация"
-
 #. type: Plain text
 #: ../src/guide/start/databases.md
 msgid "Adjust `config/common/routes.php`:"
@@ -1214,7 +1214,7 @@ msgid "Note that we've grouped all page-related routes with a group under `/page
 msgstr "Обратите внимание, что все маршруты, связанные со страницами, сгруппированы под префиксом `/pages`. Это удобный способ избежать дублирования кода и применить дополнительные обработчики запросов, такие как аутентификация, ко всем маршрутам в группе."
 
 #. type: Title ##
-#: ../src/guide/start/databases.md
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Trying it out"
 msgstr "Проверка работы"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 20:32+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -494,10 +494,10 @@ msgstr ""
 msgid "In cause URL should be valid for a single host, you can specify it with `host()`."
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/runtime/routing.md
+#. type: Title ###
+#: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
 #, no-wrap
-msgid "Routing <span id=\"routing\"></span>"
+msgid "Routing"
 msgstr ""
 
 #. type: Plain text
@@ -613,9 +613,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/runtime/routing.md
-#, no-wrap
-msgid "Generating URLs <span id=\"generating-urls\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Generating code using Gii"
+msgid "Generating URLs"
+msgstr "Generare codice utilizzando Gii"
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md
@@ -1048,7 +1049,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Route patterns <span id=\"route-patterns\"></span>"
+msgid "Route patterns"
 msgstr ""
 
 #. type: Plain text
@@ -1064,7 +1065,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Named Parameters <span id=\"named-parameters\"></span>"
+msgid "Named Parameters"
 msgstr ""
 
 #. type: Plain text
@@ -1147,7 +1148,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Optional parts <span id=\"optional-parts\"></span>"
+msgid "Optional parts"
 msgstr ""
 
 #. type: Plain text

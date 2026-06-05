@@ -243,7 +243,7 @@ return [
 
 如果 URL 只对特定主机有效，可以使用 `host()` 指定主机。
 
-## 路由 <span id="routing"></span>
+## 路由
 
 Yii 路由非常灵活，内部可以使用不同的路由实现。实际的匹配算法可能有所不同，但基本思路是一致的。
 
@@ -293,7 +293,7 @@ return [
 ];
 ```
 
-## 生成 URL <span id="generating-urls"></span>
+## Generating URLs
 
 要根据路由生成 URL，路由必须有名称：
 
@@ -492,13 +492,13 @@ $url = $urlGenerator->generateFromCurrent(
 );
 ```
 
-## 路由模式 <span id="route-patterns"></span>
+## Route patterns
 
 所使用的路由模式取决于底层实现。默认实现为 [nikic/FastRoute](https://github.com/nikic/FastRoute)。
 
 基本模式是静态的，如 `/test`，这意味着必须完全匹配才能成功路由。
 
-### 命名参数 <span id="named-parameters"></span>
+### Named Parameters
 
 模式中可以包含一个或多个命名参数，格式为 `{ParamName:RegExp}`，其中 `ParamName` 指定参数名称，`RegExp`
 是用于匹配参数值的可选正则表达式。如果未指定 `RegExp`，则表示参数值应为不含斜杠的字符串。
@@ -534,7 +534,7 @@ echo $url->generate('second');
 echo $url->generate('third', ['id' => '42']);
 ```
 
-### 可选部分 <span id="optional-parts"></span>
+### Optional parts
 
 可选模式部分应用 `[` 和 `]` 包裹。例如，`/posts[/{id}]` 模式可以同时匹配 `http://example.com/posts`
 和 `http://example.com/posts/42`。路由器只在第二种情况下填充 `CurrentRoute` 服务的 `id`

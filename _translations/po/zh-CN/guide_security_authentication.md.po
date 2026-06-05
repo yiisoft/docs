@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-28 10:30+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-12 19:52+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -96,9 +96,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/security/authentication.md
-#, no-wrap
-msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
-msgstr "实现 `\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityInterface` interface;"
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface`"
+msgstr "创建一个实现 `\\Yiisoft\\Auth\\IdentityInterface` 接口的类；"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
@@ -141,9 +142,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/security/authentication.md
-#, no-wrap
-msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
-msgstr "实现 `\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` interface;"
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface`"
+msgstr "创建一个实现 `\\Yiisoft\\Auth\\IdentityRepositoryInterface` 接口的类；"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md
@@ -356,9 +358,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/security/authentication.md
-#, no-wrap
-msgid "Authentication Events <span id=\"auth-events\"></span>"
-msgstr "认证事件 <span id=\"auth-events\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Authentication"
+msgid "Authentication Events"
+msgstr "认证"
 
 #. type: Plain text
 #: ../src/guide/security/authentication.md

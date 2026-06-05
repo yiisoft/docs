@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -74,9 +74,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
-#, no-wrap
-msgid "Web Applications <span id=\"web-applications\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Web Applications"
+msgstr "Introducción"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
@@ -115,9 +116,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
-#, no-wrap
-msgid "Console Applications <span id=\"console-applications\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Console Applications"
+msgstr "Introducción"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-02 22:03+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/start/forms.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Summary"
+msgstr "总结"
 
 #. type: Title #
 #: ../src/guide/start/forms.md
@@ -76,9 +84,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Creating a form <span id=\"creating-form\"></span>"
-msgstr "创建表单 <span id=\"creating-form\"></span>"
+#, fuzzy, no-wrap
+#| msgid "[Creating forms](input/forms.md) TODO"
+msgid "Creating a form"
+msgstr "[创建表单](input/forms.md) TODO"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -115,9 +124,9 @@ msgstr "在上面的示例中，`Form` 有一个单独的字符串属性 `$messa
 #. type: Title ##
 #: ../src/guide/start/forms.md
 #, fuzzy, no-wrap
-#| msgid "Console Applications <span id=\"console-applications\"></span>"
-msgid "Custom validation <span id=\"custom-validation\"></span>"
-msgstr "控制台应用程序 <span id=\"console-applications\"></span>"
+#| msgid "Request validation"
+msgid "Custom validation"
+msgstr "请求验证"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -219,7 +228,7 @@ msgstr ""
 #: ../src/guide/start/forms.md
 #, fuzzy, no-wrap
 #| msgid "Console Applications <span id=\"console-applications\"></span>"
-msgid "Validating several fields together <span id=\"cross-field-validation\"></span>"
+msgid "Validating several fields together"
 msgstr "控制台应用程序 <span id=\"console-applications\"></span>"
 
 #. type: Plain text
@@ -304,9 +313,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Using the form <span id=\"using-form\"></span> "
-msgstr "使用表单 <span id=\"using-form\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Working with forms"
+msgid "Using the form "
+msgstr "使用表单"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -471,9 +481,10 @@ msgstr "现在，如果您提交空消息，将会收到验证错误：“要回
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Trying it Out <span id=\"trying-it-out\"></span>"
-msgstr "试试看 <span id=\"trying-it-out\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Trying it out"
+msgid "Trying it Out"
+msgstr "试试看"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -505,12 +516,6 @@ msgstr "在您输入有效消息并点击“提交”按钮后，页面将回显
 #: ../src/guide/start/forms.md
 msgid "![Form with a success message](/images/guide/start/form-success.png)"
 msgstr "![表单成功消息](/images/guide/start/form-success.png)"
-
-#. type: Title ##
-#: ../src/guide/start/forms.md ../src/guide/start/hello.md
-#, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
-msgstr "总结 <span id=\"summary\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md

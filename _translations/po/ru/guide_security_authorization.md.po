@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-06 22:12+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -36,10 +36,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/security/authorization.md
-#, fuzzy, no-wrap
-#| msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
-msgid "Checking for permission <span id=\"checking-for-permission\"></span>"
-msgstr "Внедрение зависимостей <span id=\"injecting-dependencies\"></span>"
+#, no-wrap
+msgid "Checking for permission"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -95,7 +94,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "Role-based access control (RBAC) <span id=\"rbac\"></span>"
+msgid "Role-based access control (RBAC)"
 msgstr ""
 
 #. type: Plain text
@@ -121,9 +120,8 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Basic concepts <span id=\"basic-concepts\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+msgid "Basic concepts"
+msgstr "Основные принципы"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -143,9 +141,9 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Configuring RBAC <span id=\"configuring-rbac\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+#| msgid "configuration could be:"
+msgid "Configuring RBAC"
+msgstr "конфигурация может быть:"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -181,7 +179,7 @@ msgstr ""
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id=\"configuring-rbac-php\"></span>"
+msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php)"
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
@@ -244,7 +242,7 @@ msgstr ""
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id=\"configuring-rbac-db\"></span>"
+msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db)"
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
@@ -325,9 +323,9 @@ msgstr "Настройка"
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgid "Building authorization data <span id=\"generating-rbac-data\"></span>"
-msgstr "Определение псевдонимов <span id=\"defining-aliases\"></span>"
+#| msgid "Installation"
+msgid "Building authorization data"
+msgstr "Установка"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -650,9 +648,9 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Using rules <span id=\"using-rules\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#| msgid "Install the package"
+msgid "Using rules"
+msgstr "Установка пакета"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -722,10 +720,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
-#, fuzzy, no-wrap
-#| msgid "References <span id=\"references\"></span>"
-msgid "Access check <span id=\"access-check\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
+#, no-wrap
+msgid "Access check"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md

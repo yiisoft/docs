@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-29 19:04+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,8 +17,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
 #: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
 #, fuzzy, no-wrap
 msgid "composer yii-config-rebuild\n"
 msgstr "Introducción"
@@ -41,10 +43,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Installing packages <span id=\"installing-packages\"></span>"
-msgstr "Resolución de Alias <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Installing packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -103,10 +104,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgid "Updating packages <span id=\"updating-packages\"></span>"
-msgstr "Definir Alias <span id=\"defining-aliases\"></span>"
+#, no-wrap
+msgid "Updating packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -137,10 +137,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Removing packages <span id=\"removing-packages\"></span>"
-msgstr "Resolución de Alias <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Removing packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -160,10 +159,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/structure/package.md
-#, fuzzy, no-wrap
-#| msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
-msgid "Private packages <span id=\"private-packages\"></span>"
-msgstr "Alias Predefinidos <span id=\"predefined-aliases\"></span>"
+#, no-wrap
+msgid "Private packages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/structure/package.md
@@ -240,9 +238,9 @@ msgstr "[Guía de Composer sobre autocarga](https://getcomposer.org/doc/01-basic
 #. type: Title ##
 #: ../src/guide/structure/package.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Package configuration <span id=\"package-configuration\"></span>"
-msgstr "Resolución de Alias <span id=\"resolving-aliases\"></span>"
+#| msgid "Introduction +"
+msgid "Package configuration"
+msgstr "Introducción"
 
 #. type: Plain text
 #: ../src/guide/structure/package.md

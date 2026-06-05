@@ -22,7 +22,7 @@ composer require yiisoft/form-model
 make composer require yiisoft/form-model
 ```
 
-## 创建表单 <span id="creating-form"></span>
+## Creating a form
 
 将从用户处请求的数据将由如下所示的 `Form` 类表示，并保存在文件 `/src/Web/Echo/Form.php` 中：
 
@@ -47,7 +47,7 @@ final class Form extends FormModel
 
 在上面的示例中，`Form` 有一个单独的字符串属性 `$message`，其长度至少应为两个字符。该属性还有一个自定义标签。
 
-## Custom validation <span id="custom-validation"></span>
+## Custom validation
 
 Validation attributes are Yii Validator rules. For common checks, first look
 for an existing rule. For example, to validate a UUID string, use `Uuid`:
@@ -138,7 +138,7 @@ rule and handler instead of copying callback methods. See the [custom rule
 guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
 for the rule/handler structure.
 
-## Validating several fields together <span id="cross-field-validation"></span>
+## Validating several fields together
 
 Property attributes are enough when each field can be validated
 independently. When a rule depends on several fields, put a `Callback` rule
@@ -216,7 +216,7 @@ The class-level `Callback` receives the whole object as `$value`, but using
 `addError()` is the value path; `['dateFrom']` makes the error appear on the
 `dateFrom` field when rendering the form.
 
-## 使用表单 <span id="using-form"></span>
+## Using the form 
 
 现在您有了一个表单，在“[打招呼](hello.md)”中的操作中使用它。
 
@@ -337,7 +337,7 @@ $htmlForm = Html::form()
 
 现在，如果您提交空消息，将会收到验证错误：“要回显的消息必须至少包含 2 个字符。”
 
-## 试试看 <span id="trying-it-out"></span>
+## Trying it Out
 
 要查看其工作原理，请使用浏览器访问以下 URL：
 
@@ -353,7 +353,7 @@ http://localhost:8080/say
 
 ![表单成功消息](/images/guide/start/form-success.png)
 
-## 总结 <span id="summary"></span>
+## 总结
 
 在本指南的这一节中，您已学习了如何创建表单模型类来表示用户数据并验证该数据。
 
