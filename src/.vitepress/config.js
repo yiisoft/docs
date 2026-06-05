@@ -206,6 +206,7 @@ export default {
                                 {text: 'Using htmx for Partial Page Reloads', link: '/cookbook/using-htmx-for-partial-reloads'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Using a Custom Migration Template', link: '/cookbook/custom-migration-template'},
                                 {text: 'Using Yii in Third-Party Applications', link: '/cookbook/using-yii-in-third-party-apps'}
                             ]
                         },
