@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-28 10:30+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authentication.md
 #, no-wrap
-msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface` <span id=\"implementing-identity\"></span>"
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface`"
 msgstr ""
 
 #. type: Plain text
@@ -168,7 +168,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authentication.md
 #, no-wrap
-msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface` <span id=\"implementing-identity-repository\"></span>"
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface`"
 msgstr ""
 
 #. type: Plain text
@@ -404,7 +404,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authentication.md
 #, no-wrap
-msgid "Authentication Events <span id=\"auth-events\"></span>"
+msgid "Authentication Events"
 msgstr ""
 
 #. type: Plain text

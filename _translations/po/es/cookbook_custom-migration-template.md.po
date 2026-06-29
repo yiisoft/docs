@@ -1,0 +1,245 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 22:11+0000\n"
+"PO-Revision-Date: 2026-06-05 22:11+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title #
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid "Using a custom migration template"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "The `migrate:create` command from `yiisoft/db-migration` generates migration classes from PHP view templates. Use a custom template when your project wants a standard header, strict class shape, comments, helper calls, or team-specific placeholders in every new migration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "This recipe assumes migrations are already configured as described in the [Database migrations](../guide/databases/db-migrations.md) guide."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-migration-template.md
+#, fuzzy, no-wrap
+#| msgid "Generating API documentation"
+msgid "Create a template"
+msgstr "Generación de Documentación de API"
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "Create `resources/migration-templates/migration.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/**\n"
+" * This view is used by {@see Yiisoft\\Db\\Migration\\Command\\CreateCommand}.\n"
+" *\n"
+" * @var \\Yiisoft\\Db\\Migration\\Service\\Generate\\PhpRenderer $this\n"
+" * @var string $className The new migration class name without namespace.\n"
+" * @var string $namespace The new migration class namespace.\n"
+" */\n"
+"\n"
+"echo \"<?php\\n\";\n"
+"echo \"\\ndeclare(strict_types=1);\\n\";\n"
+"\n"
+"if (!empty($namespace)) {\n"
+"    echo \"\\nnamespace {$namespace};\\n\";\n"
+"}\n"
+"?>\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\MigrationBuilder;\n"
+"use Yiisoft\\Db\\Migration\\RevertibleMigrationInterface;\n"
+"\n"
+"final class <?= $className ?> implements RevertibleMigrationInterface\n"
+"{\n"
+"    public function up(MigrationBuilder $b): void\n"
+"    {\n"
+"        // Add forward migration code.\n"
+"    }\n"
+"\n"
+"    public function down(MigrationBuilder $b): void\n"
+"    {\n"
+"        // Add rollback migration code.\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "The template is a PHP file that prints the generated migration. For the default `create` command, the most useful variables are `$className` and `$namespace`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-migration-template.md
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Configure the generator"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+#, fuzzy
+#| msgid "You can define an alias via application's `config/params.php`:"
+msgid "Create `config/common/di/migration-generator.php`:"
+msgstr "Puedes definir un alias mediante la aplicación en `config/params.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Db\\Migration\\Service\\Generate\\CreateService;\n"
+"\n"
+"return [\n"
+"    CreateService::class => [\n"
+"        'setTemplate()' => [\n"
+"            'create',\n"
+"            dirname(__DIR__, 3) . '/resources/migration-templates/migration.php',\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "The `create` key changes the template used by:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid "./yii migrate:create audit_log\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "The command asks for confirmation and then writes a migration using your template."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "If the new DI file is not picked up, rebuild the config merge plan:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/cookbook/custom-migration-template.md
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, fuzzy, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "Introducción"
+
+#. type: Title ##
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid "Configure multiple templates"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "`yiisoft/db-migration` supports these template keys:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+msgid "`create`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+msgid "`table`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+msgid "`dropTable`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+msgid "`addColumn`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+msgid "`dropColumn`"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-migration-template.md
+#, fuzzy
+#| msgid "Introduction +"
+msgid "`junction`"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "To replace multiple templates at once, use `setTemplates()`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Db\\Migration\\Service\\Generate\\CreateService;\n"
+"\n"
+"return [\n"
+"    CreateService::class => [\n"
+"        'setTemplates()' => [[\n"
+"            'create' => dirname(__DIR__, 3) . '/resources/migration-templates/migration.php',\n"
+"            'table' => dirname(__DIR__, 3) . '/resources/migration-templates/create-table.php',\n"
+"            'dropTable' => dirname(__DIR__, 3) . '/resources/migration-templates/drop-table.php',\n"
+"            'addColumn' => dirname(__DIR__, 3) . '/resources/migration-templates/add-column.php',\n"
+"            'dropColumn' => dirname(__DIR__, 3) . '/resources/migration-templates/drop-column.php',\n"
+"            'junction' => dirname(__DIR__, 3) . '/resources/migration-templates/create-junction.php',\n"
+"        ]],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "For table-oriented templates, copy the corresponding file from `vendor/yiisoft/db-migration/resources/views/` and adjust it. Those templates receive additional variables such as `$table`, `$columns`, `$foreignKeys`, and `$tableComment`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-migration-template.md
+#, no-wrap
+msgid "Keep templates maintainable"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "Keep generated migrations independent from current application services. A migration may run years later, after service APIs have changed. Put stable schema operations in the generated class and leave business logic in console commands or application services."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-migration-template.md
+msgid "Do not edit templates under `vendor/`. Copy them into your project and configure `CreateService` to use the copies."
+msgstr ""

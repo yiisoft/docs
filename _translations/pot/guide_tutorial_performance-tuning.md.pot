@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing your PHP Environment <span id=\"optimizing-php\"></span>"
+msgid "Optimizing your PHP Environment"
 msgstr ""
 
 #. type: Plain text
@@ -80,7 +80,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing your code <span id=\"optimizing-code\"></span>"
+msgid "Optimizing your code"
 msgstr ""
 
 #. type: Plain text
@@ -145,7 +145,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Using caching techniques <span id=\"using-caching-techniques\"></span>"
+msgid "Using caching techniques"
 msgstr ""
 
 #. type: Plain text
@@ -162,7 +162,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing session storage <span id=\"optimizing-session-storage\"></span>"
+msgid "Optimizing session storage"
 msgstr ""
 
 #. type: Plain text
@@ -199,7 +199,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing databases <span id=\"optimizing-databases\"></span>"
+msgid "Optimizing databases"
 msgstr ""
 
 #. type: Plain text
@@ -241,7 +241,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Optimizing composer autoloader <span id=\"optimizing-autoloader\"></span>"
+msgid "Optimizing composer autoloader"
 msgstr ""
 
 #. type: Plain text
@@ -271,7 +271,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Processing data offline <span id=\"processing-data-offline\"></span>"
+msgid "Processing data offline"
 msgstr ""
 
 #. type: Plain text
@@ -425,7 +425,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/tutorial/performance-tuning.md
 #, no-wrap
-msgid "Performance profiling <span id=\"performance-profiling\"></span>"
+msgid "Performance profiling"
 msgstr ""
 
 #. type: Plain text

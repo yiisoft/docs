@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:53+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
+msgid "Summary"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Trying it out"
 msgstr ""
 
 #. type: Title #
@@ -67,7 +75,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/hello.md
 #, no-wrap
-msgid "Creating a handler <span id=\"creating-handler\"></span>"
+msgid "Creating a handler"
 msgstr ""
 
 #. type: Plain text
@@ -190,12 +198,6 @@ msgid ""
 "pointing to it."
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/start/hello.md
-#, no-wrap
-msgid "Trying it out <span id=\"trying-it-out\"></span>"
-msgstr ""
-
 #. type: Plain text
 #: ../src/guide/start/hello.md
 msgid ""
@@ -218,7 +220,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/hello.md
 #, no-wrap
-msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
+msgid "Creating a View Template"
 msgstr ""
 
 #. type: Plain text

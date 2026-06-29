@@ -1,6 +1,6 @@
 # 依赖注入和容器
 
-## 依赖注入 <span id="dependency-injection"></span>
+## Dependency injection
 
 在面向对象编程中，有两种重用代码的方式：继承和组合。
 
@@ -76,7 +76,7 @@ final readonly class CachedWidget
 - 方法注入。最适合可选依赖。
 - 属性注入。在 PHP 中最好避免使用，除非可能是数据传输对象。
 
-### 为什么使用私有属性 <span id="why-private-properties"></span>
+### Why use private properties
 
 在上面的组合示例中，请注意 `$cache` 属性被声明为 `private`。
 
@@ -90,7 +90,7 @@ final readonly class CachedWidget
 - **灵活性**：您可以创建只读或只写属性，或稍后向属性访问添加额外的逻辑。
 
 
-## DI 容器 <span id="di-container"></span>
+## DI container
 
 注入基本依赖很简单。您选择一个不关心依赖的地方，通常是一个操作处理器，您永远不会对其进行单元测试，创建所需依赖的实例并将这些传递给依赖类。
 
@@ -116,7 +116,7 @@ Yii 通过 [yiisoft/di](https://github.com/yiisoft/di) 包和
 > [Martin Fowler 的文章](https://martinfowler.com/articles/injection.html) 很好地
 > 解释了为什么 DI 容器有用。这里我们将主要解释 Yii 提供的 DI 容器的使用。
 
-### 配置容器 <span id="configuring-container"></span>
+### Configuring container
 
 因为要创建新对象需要其依赖，所以您应该尽早注册它们。您可以在应用程序配置 `config/web.php` 中执行此操作。对于以下服务：
 
@@ -257,7 +257,7 @@ MyServiceInterface::class => [MyFactory::class, 'create'],
 MyServiceInterface::class => new MyService(),
 ```
 
-### 正确注入依赖 <span id="injecting-dependencies"></span>
+### Injecting dependencies properly
 
 在类中直接引用容器是一个坏主意，因为代码变得不通用，耦合到容器接口，更糟糕的是，依赖变得隐藏。因此，Yii
 通过根据方法参数类型在某些构造函数和方法中自动从容器注入对象来反转控制。
@@ -293,7 +293,7 @@ final readonly class MyController
 实例化并调用操作处理器，它会检查构造函数和方法参数类型，从容器中获取这些类型的依赖并将它们作为参数传递。这通常称为自动装配。它也适用于子依赖，也就是说，如果您没有显式提供依赖，容器会首先检查它是否有这样的依赖。只需声明您需要的依赖，它就会自动从容器中获取。
 
 
-## 参考资料 <span id="references"></span>
+## 参考资料
 
 - [Martin Fowler
   的控制反转容器和依赖注入模式](https://martinfowler.com/articles/injection.html)

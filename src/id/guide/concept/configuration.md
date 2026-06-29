@@ -4,148 +4,210 @@ Ada banyak cara untuk mengonfigurasi aplikasi Anda. Kita akan fokus pada
 konsep yang digunakan dalam [template proyek
 default](https://github.com/yiisoft/app).
 
-Konfigurasi Yii3 adalah bagian dari aplikasi. Anda dapat mengubah banyak
-aspek cara kerja aplikasi dengan mengedit konfigurasi di bawah `config/`.
+Yii3 configs are part of the application. You can change many aspects of how
+the application works by editing configuration under `config/` directory.
 
 ## Plugin konfigurasi
 
-Dalam template aplikasi digunakan
-[yiisoft/config](https://github.com/yiisoft/config). Karena menulis semua
-konfigurasi aplikasi dari awal adalah proses yang melelahkan, banyak paket
-menyediakan konfigurasi default, dan plugin ini membantu menyalin
-konfigurasi tersebut ke dalam aplikasi.
+The application template uses
+[yiisoft/config](https://github.com/yiisoft/config) as a composer plugin to
+assemble configs.
 
-Untuk menawarkan konfigurasi default, `composer.json` paket harus memiliki
-bagian `config-plugin`. Saat menginstal atau memperbarui paket dengan
-Composer, plugin membaca bagian `config-plugin` untuk setiap dependensi,
-menyalin berkas-berkas tersebut ke `config/packages/` aplikasi jika belum
-ada, dan menulis rencana penggabungan ke
-`config/packages/merge_plan.php`. Rencana penggabungan mendefinisikan
-bagaimana menggabungkan konfigurasi menjadi satu array besar yang siap
-diteruskan ke [DI container](di-container.md).
-
-Lihat apa yang ada di `composer.json` bawaan "yiisoft/app":
+Packages provide default configurations through defined [config
+groups](https://github.com/yiisoft/config#config-groups)  in the
+`config-plugin` key in the `extra` section of the `composer.json`:
 
 ```json
-"config-plugin-options": {
-  "output-directory": "config/packages"
-},
-"config-plugin": {
-    "common": "config/common/*.php",
-    "params": [
-        "config/params.php",
-        "?config/params-local.php"
-    ],
-    "web": [
-        "$common",
-        "config/web/*.php"
-    ],
-    "console": [
-        "$common",
-        "config/console/*.php"
-    ],
-    "events": "config/events.php",
-    "events-web": [
-        "$events",
-        "config/events-web.php"
-    ],
-    "events-console": [
-        "$events",
-        "config/events-console.php"
-    ],
-    "providers": "config/providers.php",
-    "providers-web": [
-        "$providers",
-        "config/providers-web.php"
-    ],
-    "providers-console": [
-        "$providers",
-        "config/providers-console.php"
-    ],
-    "routes": "config/routes.php"
-},
+"extra": {
+    "config-plugin-options": {
+        "source-directory": "config",
+    },
+    "config-plugin": {
+        "params": "params.php",
+        "web": "web.php"
+    }
+}
 ```
 
-Terdapat banyak konfigurasi bernama yang didefinisikan. Untuk setiap nama,
-ada sebuah konfigurasi.
+After Composer updates autoload files, such as during `dump-autoload`,
+`install`, `require`, `update`, or `remove`, the plugin scans installed
+packages for configurations and writes a merge plan to
+`config/.merge-plan.php`.  The merge plan declares the order of merging
+found configurations into the final configuration to be passed to [DI
+container](di-container.md).
 
-Sebuah string berarti plugin mengambil konfigurasi apa adanya dan
-menggabungkannya dengan konfigurasi bernama sama dari paket yang Anda
-butuhkan. Hal ini terjadi jika paket-paket tersebut memiliki `config-plugin`
-di `composer.json` mereka.
+At runtime, `Yiisoft\Config\Config` loads the defined config groups
+according to that merge plan.  Configs are read in three layers:
 
-Array berarti plugin akan menggabungkan banyak berkas sesuai urutan yang
-ditentukan.
+1. Vendor package configs with default values.
+2. Root package configs from the application `config/` directory.
+3. Environment-specific configs from the application.
 
-`?` di awal path berkas menunjukkan bahwa berkas tersebut mungkin tidak
-ada. Dalam kasus ini, berkas akan dilewati.
+> [!WARNING]
+> Config keys with the same name are not allowed within a single layer.
 
-`$` di awal nama berarti referensi ke konfigurasi bernama lain.
+The application template stores configurations in a PHP file instead of
+inline JSON:
 
-`params` agak istimewa karena dicadangkan untuk parameter
-aplikasi. Nilai-nilai ini otomatis tersedia sebagai `$params` di semua
-berkas konfigurasi lainnya.
+```json
+"extra": {
+    "config-plugin-file": "config/configuration.php"
+}
+```
 
-Anda dapat mempelajari lebih lanjut tentang fitur plugin konfigurasi [dari
-dokumentasinya](https://github.com/yiisoft/config/blob/master/README.md).
+That file returns the same keys you could otherwise define in
+`composer.json`: `config-plugin`, `config-plugin-options`, and
+`config-plugin-environments`.
+
+```php
+use App\Environment;
+
+return [
+    'config-plugin-options' => [
+        'source-directory' => 'config',
+    ],
+    'config-plugin' => [
+        'params' => 'common/params.php',
+        'params-web' => [
+            '$params',
+            'web/params.php',
+        ],
+        'params-console' => [
+            '$params',
+            'console/params.php',
+        ],
+        'bootstrap' => 'common/bootstrap.php',
+        'bootstrap-web' => '$bootstrap',
+        'bootstrap-console' => '$bootstrap',
+        'di' => 'common/di/*.php',
+        'di-web' => [
+            '$di',
+            'web/di/*.php',
+        ],
+        'di-console' => '$di',
+        'di-delegates' => [],
+        'di-delegates-console' => '$di-delegates',
+        'di-delegates-web' => '$di-delegates',
+        'di-providers' => [],
+        'di-providers-web' => '$di-providers',
+        'di-providers-console' => '$di-providers',
+        'events' => [],
+        'events-web' => '$events',
+        'events-console' => '$events',
+        'routes' => 'common/routes.php',
+    ],
+    'config-plugin-environments' => [
+        Environment::DEV => [
+            'params' => [
+                'environments/dev/params.php',
+            ],
+        ],
+        Environment::TEST => [
+            'params' => [
+                'environments/test/params.php',
+            ],
+        ],
+        Environment::PROD => [
+            'params' => [
+                'environments/prod/params.php',
+            ],
+        ],
+    ],
+];
+```
+
+Config group names are mapping keys. Their values are file paths relative to
+the `source-directory` option, which defaults to the directory containing
+`composer.json`.
+
+- A string value loads one file.
+- An array loads and merges multiple files in the given order.
+- `?` marks an optional file.
+- `*` marks a wildcard path.
+- `$group` references another config group to be merged.
+
+The `params` group is special: its values are available as `$params` in
+other config files by default.
+
+You can read more in the [yiisoft/config
+documentation](https://github.com/yiisoft/config/blob/master/README.md).
 
 ## Berkas konfigurasi
 
-Sekarang, setelah Anda tahu bagaimana plugin merangkai konfigurasi, lihat
-direktori `config`:
+Now, as you know how the plugin assembles configs, look at the `config/`
+directory structure used by the default application template:
 
 ```
 common/
-    application-parameters.php
-    i18n.php
-    router.php
+    bootstrap.php
+    params.php
+    routes.php
+    di/
+        *.php
 console/
-packages/
-    yiisoft/
-    dist.lock
-    merge_plan.php
+    params.php
+environments/
+    dev/
+        params.php
+    prod/
+        params.php
+    test/
+        params.php
 web/
-    application.php
-    psr17.php
-events.php
-events-console.php
-events-web.php
-params.php
-providers.php
-providers-console.php
-providers-web.php
-routes.php
+    params.php
+    di/
+        *.php
+.merge-plan.php
+configuration.php
 ```
+
+This structure follows the groups defined in `config/configuration.php`:
+
+- `params`, `params-web`, and `params-console` load parameter files from
+  `common/`, `web/`, and `console/`.
+- `di` and `di-web` load container definitions from `common/di/` and
+  `web/di/`.
+- `routes` and `bootstrap` load `common/routes.php` and
+  `common/bootstrap.php`.
+- `config-plugin-environments` adds environment-specific parameter files
+  from `environments/dev/`, `environments/test/`, and `environments/prod/`.
+
+At runtime, `.merge-plan.php` stores the assembled merge plan generated from
+`configuration.php`.
 
 ### Konfigurasi container
 
-Aplikasi terdiri dari sekumpulan layanan yang terdaftar di [dependency
-container](di-container.md). Berkas konfigurasi yang bertanggung jawab atas
-konfigurasi langsung dependency container berada di bawah direktori
-`common/`, `console/` dan `web/`. Kita menggunakan `web/` untuk konfigurasi
-khusus aplikasi web dan `console/` untuk konfigurasi khusus perintah
-konsol. Baik web maupun console berbagi konfigurasi di bawah `common/`.
+The application consists of services registered in a [dependency
+container](di-container.md). In the default template, direct container
+definitions live in `config/common/di/*.php` and `config/web/di/*.php`.
+
+Definitions from `common/di/` are shared by web and console entry
+points. The `di-web` group adds web-specific definitions from `web/di/`. The
+`di-console` group currently reuses the shared `di` definitions without
+extra files.
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\ApplicationParameters;
+use App\Shared\ApplicationParams;
 
 /** @var array $params */
 
 return [
-    ApplicationParameters::class => [
-        'class' => ApplicationParameters::class,
-        'charset()' => [$params['app']['charset']],
-        'name()' => [$params['app']['name']],
+    ApplicationParams::class => [
+        '__construct()' => [
+            'name' => $params['application']['name'],
+            'charset' => $params['application']['charset'],
+            'locale' => $params['application']['locale'],
+        ],
     ],
 ];
 ```
 
-Plugin konfigurasi meneruskan variabel khusus `$params` ke semua berkas
-konfigurasi. Potongan kode di atas meneruskan nilainya ke layanan.
+Config plugin passes the special `$params` variable to all config files. The
+definition uses it to configure services.
 
 Panduan tentang ["Dependency injection and container"](di-container.md)
 menjelaskan format konfigurasi dan gagasan dependency injection secara
@@ -160,28 +222,30 @@ Untuk kenyamanan, ada konvensi penamaan untuk kunci string kustom:
 ### Service provider
 
 As an alternative to registering dependencies directly, you can use service
-providers. A service provider is a class that receives configured options
-and registers services within the container.
+providers. A service provider is a class that returns a reusable set of
+container definitions and extensions.
 
-Similar to container configuration files, there are three configs for
-specifying service providers: `providers-console.php` for console commands,
-`providers-web.php` for web application and `providers.php` for both.
+The default template exposes three config groups for service providers:
+`di-providers`, `di-providers-web`, and `di-providers-console`. In the
+template they are initialized as empty arrays in `config/configuration.php`,
+and you can later populate them inline or switch them to load values from
+files.
 
 Prefer direct container configuration for application services with a simple
 definition: a class name, an interface implementation, constructor arguments
 from `$params`, or a closure that creates a single service.
 
-Use a service provider when the registration itself is a unit of code:
+Use a service provider when the registration itself is a reusable unit:
 
-- A package registers several related services, aliases, or decorators.
+- A package registers several related services, aliases, or extensions.
 - A service registration also needs supporting definitions.
 - The same registration should be reused in several applications.
-- Registration depends on runtime checks, optional classes, or
-  environment-specific decisions.
+- Registration depends on optional classes or environment-specific
+  decisions.
 
 Use a factory class when construction logic belongs to one service. A
-factory returns an object. A service provider registers definitions in the
-container.
+factory returns an object. A service provider returns definitions for
+several related services.
 
 ```php
 /* @var array $params */
@@ -194,28 +258,22 @@ use App\Provider\MiddlewareProvider;
 return [
     // ...
     'yiisoft/yii-web/middleware' => MiddlewareProvider::class,
-    'yiisoft/cache/cache' =>  [
-        'class' => CacheProvider::class,
-        '__construct()' => [
-            $params['yiisoft/cache-file']['file-cache']['path'],
-        ],
-    ],
+    'yiisoft/cache/cache' => new CacheProvider($params['yiisoft/cache-file']['file-cache']['path']),
     // ...
+];
 ```
 
-Dalam konfigurasi ini kunci adalah nama provider. Menurut konvensi ini
-berupa `vendor/package-name/provider-name`. Nilainya adalah nama kelas
-provider. Kelas-kelas ini bisa dibuat di proyek itu sendiri atau disediakan
-oleh paket.
+In this config keys are provider names. By convention these are
+`vendor/package-name/provider-name`. Values are provider class names or
+provider instances. These classes could be either created in the project
+itself or provided by a package.
 
 Jika Anda perlu mengonfigurasi beberapa opsi untuk sebuah layanan, mirip
 dengan konfigurasi container langsung, ambil nilai dari `$params` dan
 teruskan ke provider.
 
-Provider harus mengimplementasikan satu metode, `public function
-register(Container $container): void`. Dalam metode ini Anda perlu
-menambahkan layanan ke container menggunakan metode `set()`. Di bawah ini
-contoh provider untuk layanan cache:
+Provider should implement `Yiisoft\Di\ServiceProviderInterface`. Below is a
+provider for a cache service:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -224,42 +282,52 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\Cache\Cache;
 use Yiisoft\Cache\CacheInterface as YiiCacheInterface;
 use Yiisoft\Cache\File\FileCache;
-use Yiisoft\Di\Container;
-use Yiisoft\Di\Support\ServiceProvider;
+use Yiisoft\Di\ServiceProviderInterface;
 
-final readonly class CacheProvider extends ServiceProvider
+final readonly class CacheProvider implements ServiceProviderInterface
 {
     public function __construct(
         private string $cachePath = '@runtime/cache'
     )
     {
-        $this->cachePath = $cachePath;
     }
 
-    public function register(Container $container): void
+    public function getDefinitions(): array
     {
-        $container->set(CacheInterface::class, function (ContainerInterface $container) {
-            $aliases = $container->get(Aliases::class);
+        return [
+            CacheInterface::class => function (ContainerInterface $container) {
+                $aliases = $container->get(Aliases::class);
 
-            return new FileCache($aliases->get($this->cachePath));
-        });
+                return new FileCache($aliases->get($this->cachePath));
+            },
+            YiiCacheInterface::class => Cache::class,
+        ];
+    }
 
-        $container->set(YiiCacheInterface::class, Cache::class);
+    public function getExtensions(): array
+    {
+        return [];
     }
 }
 ```
 
 ### Rute
 
-Anda dapat mengonfigurasi bagaimana aplikasi web merespons URL tertentu di
-`config/routes.php`:
+You can configure how the web application responds to certain URLs in
+`config/common/routes.php`:
 
 ```php
-use App\Controller\SiteController;
+use App\Web;
+use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 
 return [
-    Route::get('/')->action([SiteController::class, 'index'])->name('site/index')
+    Group::create()
+        ->routes(
+            Route::get('/')
+                ->action(Web\HomePage\Action::class)
+                ->name('home'),
+        ),
 ];
 ``` 
 
@@ -267,11 +335,13 @@ Baca lebih lanjut tentang ini di ["Routes"](../runtime/routing.md).
 
 ### Event
 
-Banyak layanan memancarkan event tertentu yang dapat Anda kaitkan. Anda
-dapat melakukannya melalui tiga berkas konfigurasi: `events-web.php` untuk
-event aplikasi web, `events-console.php` untuk event konsol dan `events.php`
-untuk keduanya. Konfigurasinya berupa array di mana kunci adalah nama event
-dan nilainya adalah array handler:
+Many services emit certain events that you can attach to.  The default
+template defines three event config groups in `config/configuration.php`:
+`events`, `events-web`, and `events-console`. They are empty by default, but
+you can populate them inline or point them to event config files.
+
+The configuration is an array where keys are event names and values are
+arrays of handlers:
 
 ```php
 return [
@@ -296,7 +366,7 @@ return [
         // In this case, the `InvokableClass` with the `__invoke` method will be instantiated by your DI container
         InvokableClass::class,
         
-        // Any definition of an invokable class may be here while your `$container->has('the definition)` 
+        // Any invokable class definition may be here as long as `$container->has('the definition')` is true.
         'di-alias'
     ],
 ];
@@ -307,62 +377,52 @@ Baca lebih lanjut di ["Events"](events.md).
 
 ### Parameter
 
-Parameter di `config/params.php` menyimpan nilai konfigurasi yang digunakan
-dalam berkas konfigurasi lain untuk mengonfigurasi layanan dan service
-provider.
+Base parameters are stored in `config/common/params.php`. They are then
+extended by `config/web/params.php`, `config/console/params.php`, and
+environment-specific files under `config/environments/`.
 
 > [!TIP]
-> Jangan gunakan parameter, konstanta, atau variabel lingkungan secara langsung dalam aplikasi Anda, konfigurasikan
-> layanan sebagai gantinya.
+> Don't use parameters, constants, or environment variables directly in your application, configure
+> services instead.
 
-`params.php` aplikasi bawaan terlihat seperti berikut:
+The default application `common/params.php` looks like the following:
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\Command\Hello;
-use App\ViewInjection\ContentViewInjection;
-use App\ViewInjection\LayoutViewInjection;
+use App\Shared\ApplicationParams;
+use Yiisoft\Aliases\Aliases;
+use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Reference;
-use Yiisoft\Yii\View\CsrfViewInjection;
+use Yiisoft\Router\CurrentRoute;
+use Yiisoft\Router\UrlGeneratorInterface;
+use Yiisoft\Yii\View\Renderer\CsrfViewInjection;
 
 return [
-    'app' => [
-        'charset' => 'UTF-8',
-        'locale' => 'en',
-        'name' => 'My Project',
-    ],
+    'application' => require __DIR__ . '/application.php',
 
     'yiisoft/aliases' => [
-        'aliases' => [
-            '@root' => dirname(__DIR__),
-            '@assets' => '@root/public/assets',
-            '@assetsUrl' => '/assets',
-            '@baseUrl' => '/',
-            '@message' => '@root/resources/message',
-            '@npm' => '@root/node_modules',
-            '@public' => '@root/public',
-            '@resources' => '@root/resources',
-            '@runtime' => '@root/runtime',
-            '@vendor' => '@root/vendor',
-            '@layout' => '@resources/views/layout',
-            '@views' => '@resources/views',
+        'aliases' => require __DIR__ . '/aliases.php',
+    ],
+
+    'yiisoft/view' => [
+        'basePath' => null,
+        'parameters' => [
+            'assetManager' => Reference::to(AssetManager::class),
+            'applicationParams' => Reference::to(ApplicationParams::class),
+            'aliases' => Reference::to(Aliases::class),
+            'urlGenerator' => Reference::to(UrlGeneratorInterface::class),
+            'currentRoute' => Reference::to(CurrentRoute::class),
         ],
     ],
 
-    'yiisoft/yii-view' => [
+    'yiisoft/yii-view-renderer' => [
+        'viewPath' => null,
+        'layout' => '@src/Web/Shared/Layout/Main/layout.php',
         'injections' => [
-            Reference::to(ContentViewInjection::class),
             Reference::to(CsrfViewInjection::class),
-            Reference::to(LayoutViewInjection::class),
-        ],
-    ],
-
-    'yiisoft/yii-console' => [
-        'commands' => [
-            'hello' => Hello::class,
         ],
     ],
 ];
@@ -372,8 +432,8 @@ Untuk kenyamanan, ada konvensi penamaan mengenai parameter:
 
 1. Kelompokkan parameter berdasarkan nama paket seperti
    `yiisoft/cache-file`.
-2. Jika parameter untuk aplikasi itu sendiri, seperti pada `app`, lewati
-   prefiks paket.
+2. In case parameters are for the application itself, as in `application`,
+   skip package prefix.
 3. Jika ada banyak layanan dalam paket, seperti `file-target` dan
    `file-rotator` dalam paket `yiisoft/log-target-file`, kelompokkan
    parameter berdasarkan nama layanan.
@@ -382,14 +442,16 @@ Untuk kenyamanan, ada konvensi penamaan mengenai parameter:
 
 ### Konfigurasi paket
 
-Plugin konfigurasi yang dijelaskan menyalin konfigurasi paket default ke
-direktori `packages/`. Setelah disalin, Anda memiliki konfigurasi tersebut,
-sehingga Anda dapat menyesuaikannya sesuka hati. `yiisoft/` pada template
-default mewakili vendor paket. Karena hanya paket `yiisoft` yang ada di
-template, ada satu direktori. `merge_plan.php` digunakan saat runtime untuk
-mendapatkan urutan bagaimana konfigurasi digabungkan. Perlu dicatat bahwa
-untuk kunci konfigurasi harus ada satu sumber kebenaran. Satu konfigurasi
-tidak dapat menimpa nilai konfigurasi lain.
+Config plugin does not copy vendor package configs automatically. It loads
+them directly from `vendor/` as the vendor layer and combines them with the
+root package and environment-specific layers.
 
-`dist.lock` digunakan oleh plugin untuk melacak perubahan dan menampilkan
-diff antara konfigurasi saat ini dan contoh konfigurasi.
+If you want to customize a package config file in your application, use the
+`yii-config-copy` Composer command to copy it into your `config/` directory,
+usually under `config/packages/`. Once copied, the file becomes part of the
+root package layer, so it can override vendor defaults.
+
+The merge plan stored in `.merge-plan.php` defines how config groups are
+assembled. If you add new config files or directories and update the root
+package configuration, rebuild the merge plan with `composer
+yii-config-rebuild`.

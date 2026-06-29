@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:57+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,6 +18,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -46,9 +47,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Event classes <span id=\"event-classes\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#| msgid "Environment variables"
+msgid "Event classes"
+msgstr "Variabili d'ambiente"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -69,10 +70,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "[Console applications](tutorial/console-applications.md)"
-msgid "Event listeners <span id=\"event-listeners\"></span>"
-msgstr "[Applicazioni console](tutorial/console-applications.md)"
+#, no-wrap
+msgid "Event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -109,9 +109,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Configuring event listeners <span id=\"configuring-event-listeners\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#| msgid "Configuring router"
+msgid "Configuring event listeners"
+msgstr "Configurazione del router"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -173,9 +173,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Creating a View Template <span id=\"creating-view-template\"></span>"
-msgid "Dispatching events <span id=\"dispatching-events\"></span>"
-msgstr "Creare un modello di vista <span id=\"creating-view-template\"></span>"
+#| msgid "Displaying data"
+msgid "Dispatching events"
+msgstr "Visualizzazione dei dati"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -210,10 +210,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Creating a handler <span id=\"creating-handler\"></span>"
-msgid "Event listener order <span id=\"event-listener-order\"></span>"
-msgstr "Creare un gestore di richieste <span id=\"creating-handler\"></span>"
+#, no-wrap
+msgid "Event listener order"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -227,10 +226,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Summary <span id=\"summary\"></span>"
-msgid "Event hierarchy <span id=\"event-hierarchy\"></span>"
-msgstr "Riepilogo <span id=\"summary\"></span>"
+#, no-wrap
+msgid "Event hierarchy"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -277,7 +275,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, no-wrap
-msgid "Manual listener provider setup <span id=\"manual-listener-provider-setup\"></span>"
+msgid "Manual listener provider setup"
 msgstr ""
 
 #. type: Plain text

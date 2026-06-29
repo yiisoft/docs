@@ -13,7 +13,7 @@ Yii uses [yiisoft/yii-event](https://github.com/yiisoft/yii-event) for applicati
 the [yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher) package, which provides a
 [PSR-14](https://www.php-fig.org/psr/psr-14/) compatible event dispatcher.
 
-## Event classes <span id="event-classes"></span>
+## Event classes
 
 An event is an object. It usually contains data that listeners need:
 
@@ -26,7 +26,7 @@ final readonly class UserSignedUp
 }
 ```
 
-## Event listeners <span id="event-listeners"></span>
+## Event listeners
 
 An event listener is a [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that receives an event:
 
@@ -48,7 +48,7 @@ final readonly class WelcomeEmailSender
 }
 ```
 
-## Configuring event listeners <span id="configuring-event-listeners"></span>
+## Configuring event listeners
 
 In an application, configure listeners in:
 
@@ -81,7 +81,7 @@ Invokable class names are instantiated by the container.
 
 Dependencies are resolved when the event is dispatched.
 
-## Dispatching events <span id="dispatching-events"></span>
+## Dispatching events
 
 To dispatch an event, use `Psr\EventDispatcher\EventDispatcherInterface`:
 
@@ -105,7 +105,7 @@ final readonly class SignupService
 
 The dispatcher asks a listener provider for listeners that match the event and calls them one by one.
 
-## Event listener order <span id="event-listener-order"></span>
+## Event listener order
 
 When several listeners are configured for the same event, they are called in the order they are listed in the config.
 If an event implements `Psr\EventDispatcher\StoppableEventInterface`, the dispatcher checks
@@ -115,7 +115,7 @@ event.
 Keep listeners independent where possible. Ordering is useful for technical needs, but business logic is usually easier
 to maintain when each listener can run on its own.
 
-## Event hierarchy <span id="event-hierarchy"></span>
+## Event hierarchy
 
 Events don't have names or wildcard matching. Event class names, interfaces, and inheritance can be used when one
 listener should handle several related events:
@@ -148,7 +148,7 @@ $listeners = (new ListenerCollection())
 $provider = new Provider($listeners);
 ```
 
-## Manual listener provider setup <span id="manual-listener-provider-setup"></span>
+## Manual listener provider setup
 
 In an application, use event configuration. For package-level code or tests, you can create a listener provider manually:
 

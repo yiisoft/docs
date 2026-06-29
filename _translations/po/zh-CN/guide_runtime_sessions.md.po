@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2026-06-29 17:10+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,45 +16,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Sessions"
 msgstr "会话"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "Sessions persist data between requests without passing them to the client and back.  Yii has [a session package](https://github.com/yiisoft/session) to work with session data."
 msgstr "会话在请求之间持久化数据，无需将数据传递给客户端再传回。Yii 提供了 [会话包](https://github.com/yiisoft/session) 来处理会话数据。"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "To add it to your application, use composer:"
 msgstr "要将其添加到应用程序，请使用 composer："
 
 #. type: Fenced code block (shell)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "composer require yiisoft/session\n"
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Configuring middleware"
 msgstr "配置中间件"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "To keep a session between requests, you need to add `SessionMiddleware` to your route group or application middlewares.  You should prefer a route group when you have both API with token-based authentication and regular web routes in the same application. Having it this way avoids starting the session for API endpoints."
 msgstr "要在请求之间保持会话，需要将 `SessionMiddleware` 添加到路由组或应用程序中间件中。当应用程序同时包含基于令牌认证的 API 和常规 Web 路由时，优先选择路由组。这样可以避免为 API 端点启动会话。"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "To add a session for a certain group of routes, edit `config/routes.php` like the following:"
 msgstr "要为特定路由组添加会话，请按如下方式编辑 `config/routes.php`："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -74,12 +74,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "To add a session to the whole application, edit `config/application.php` like the following:"
 msgstr "要为整个应用程序添加会话，请按如下方式编辑 `config/application.php`："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -90,7 +90,7 @@ msgid ""
 "                    ->withMiddlewares(\n"
 "                        [\n"
 "                            Router::class,\n"
-"                            CsrfMiddleware::class,\n"
+"                            CsrfTokenMiddleware::class,\n"
 "                            SessionMiddleware::class, // <-- add this\n"
 "                            ErrorCatcher::class,\n"
 "                        ]\n"
@@ -102,13 +102,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Opening and closing session"
 msgstr "开启和关闭会话"
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -136,12 +136,12 @@ msgstr ""
 "> 会阻塞其他请求。\n"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "There are two more ways to close a session:"
 msgstr "关闭会话还有两种方式："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -155,18 +155,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Working with session data"
 msgstr "处理会话数据"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "Usually you will use the following methods to work with session data:"
 msgstr "通常您将使用以下方法处理会话数据："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -197,23 +197,23 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Flash messages"
 msgstr "闪存消息"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "In case you need some data to remain in session until read, such as in case of displaying a message on the next page, \"flash\" messages are what you need.  A flash message is a special type of data that's available only in the current request and the next request.  After that, it will be deleted automatically."
 msgstr "如果您需要某些数据在会话中保留直到被读取（例如在下一页显示消息），那么“闪存”消息正是您所需要的。闪存消息是一种特殊类型的数据，仅在当前请求和下一个请求中可用，之后将被自动删除。"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "`FlashInteface` usage is the following:"
 msgstr "`FlashInterface` 的用法如下："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "/** @var Yiisoft\\Session\\Flash\\FlashInterface $flash */\n"
@@ -229,18 +229,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Custom session storage"
 msgstr "自定义会话存储"
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "When using `Yiisoft\\Session\\Session`, you can use your own storage implementation:"
 msgstr "使用 `Yiisoft\\Session\\Session` 时，您可以使用自定义存储实现："
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "$handler = new MySessionHandler();\n"
@@ -248,6 +248,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "Custom storage must implement `\\SessionHandlerInterface`."
 msgstr "自定义存储必须实现 `\\SessionHandlerInterface`。"

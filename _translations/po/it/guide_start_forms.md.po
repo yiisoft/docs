@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-25 03:25+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-26 22:37+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,6 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/start/forms.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Summary"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/start/forms.md
@@ -78,9 +86,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Creating a form <span id=\"creating-form\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "[Creating forms](input/forms.md) TODO"
+msgid "Creating a form"
+msgstr "[Creazione di moduli](input/forms.md) TODO"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -116,9 +125,199 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Using the form <span id=\"using-form\"></span> "
+#, fuzzy, no-wrap
+msgid "Custom validation"
+msgstr "Generazione della documentazione API"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. For example, to validate a UUID string, use `Uuid`:"
 msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Uuid;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Uuid]\n"
+"    public string $id = '';\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "When a field needs application-specific validation that isn't covered by a built-in rule, use `Callback`. This is useful for one-off checks or for delegating to a domain/library method. With PHP attributes, use the `method` option because PHP attributes can't contain closures. For example, the following form validates a card number checksum:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('Card number')]\n"
+"    #[Required]\n"
+"    #[Callback(method: 'validateCardNumberChecksum', skipOnError: true)]\n"
+"    public string $cardNumber = '';\n"
+"\n"
+"    private function validateCardNumberChecksum(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        if (!is_string($value)) {\n"
+"            return (new Result())->addError('Card number must be a string.');\n"
+"        }\n"
+"\n"
+"        $digits = str_replace([' ', '-'], '', $value);\n"
+"\n"
+"        if ($digits === '' || !ctype_digit($digits)) {\n"
+"            return (new Result())->addError('Card number must contain digits only.');\n"
+"        }\n"
+"\n"
+"        $sum = 0;\n"
+"        $double = false;\n"
+"\n"
+"        foreach (array_reverse(str_split($digits)) as $digit) {\n"
+"            $number = (int) $digit;\n"
+"\n"
+"            if ($double) {\n"
+"                $number *= 2;\n"
+"                if ($number > 9) {\n"
+"                    $number -= 9;\n"
+"                }\n"
+"            }\n"
+"\n"
+"            $sum += $number;\n"
+"            $double = !$double;\n"
+"        }\n"
+"\n"
+"        if ($sum % 10 !== 0) {\n"
+"            return (new Result())->addError('Card number checksum is invalid.');\n"
+"        }\n"
+"\n"
+"        return new Result();\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The callback method returns a `Result`: return an empty result when the value is valid or add an error when it isn't.  The method body can call any validation code your application already uses, such as `App\\Payment\\CardNumber::hasValidChecksum($value)`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For validation logic reused in several forms, create a custom Yii Validator rule and handler instead of copying callback methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)  for the rule/handler structure."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, fuzzy, no-wrap
+#| msgid "[Console applications](tutorial/console-applications.md)"
+msgid "Validating several fields together"
+msgstr "[Applicazioni console](tutorial/console-applications.md)"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Property attributes are enough when each field can be validated independently. When a rule depends on several fields, put a `Callback` rule on the form model class and attach an error to the field that should display it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For example, a report filter may require the start date to be earlier than or equal to the end date:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Report;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Date\\Date;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"#[Callback(method: 'validateDateRange')]\n"
+"final class ReportFilterForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateFrom = '';\n"
+"\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateTo = '';\n"
+"\n"
+"    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        $result = new Result();\n"
+"\n"
+"        if ($this->dateFrom === '' || $this->dateTo === '') {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        $dateFrom = $this->parseDate($this->dateFrom);\n"
+"        $dateTo = $this->parseDate($this->dateTo);\n"
+"\n"
+"        if ($dateFrom === null || $dateTo === null) {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        if ($dateFrom > $dateTo) {\n"
+"            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);\n"
+"        }\n"
+"\n"
+"        return $result;\n"
+"    }\n"
+"\n"
+"    private function parseDate(string $value): ?DateTimeImmutable\n"
+"    {\n"
+"        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);\n"
+"        $errors = DateTimeImmutable::getLastErrors();\n"
+"\n"
+"        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $date;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The class-level `Callback` receives the whole object as `$value`, but using `$this` is usually clearer in a form model method. Returning an empty `Result` means the cross-field rule passed. The third argument of `addError()` is the value path; `['dateFrom']` makes the error appear on the `dateFrom` field when rendering the form."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, fuzzy, no-wrap
+#| msgid "Working with databases"
+msgid "Using the form "
+msgstr "Lavorare con i database"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -336,9 +535,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/start/forms.md
-#, no-wrap
-msgid "Trying it Out <span id=\"trying-it-out\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Working with databases"
+msgid "Trying it Out"
+msgstr "Lavorare con i database"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md
@@ -370,12 +570,6 @@ msgstr ""
 #: ../src/guide/start/forms.md
 msgid "![Form with a success message](/images/guide/start/form-success.png)"
 msgstr ""
-
-#. type: Title ##
-#: ../src/guide/start/forms.md ../src/guide/start/hello.md
-#, no-wrap
-msgid "Summary <span id=\"summary\"></span>"
-msgstr "Riepilogo <span id=\"summary\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/forms.md

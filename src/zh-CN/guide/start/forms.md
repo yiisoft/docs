@@ -22,7 +22,7 @@ composer require yiisoft/form-model
 make composer require yiisoft/form-model
 ```
 
-## 创建表单 <span id="creating-form"></span>
+## Creating a form
 
 将从用户处请求的数据将由如下所示的 `Form` 类表示，并保存在文件 `/src/Web/Echo/Form.php` 中：
 
@@ -47,7 +47,176 @@ final class Form extends FormModel
 
 在上面的示例中，`Form` 有一个单独的字符串属性 `$message`，其长度至少应为两个字符。该属性还有一个自定义标签。
 
-## 使用表单 <span id="using-form"></span>
+## Custom validation
+
+Validation attributes are Yii Validator rules. For common checks, first look
+for an existing rule. For example, to validate a UUID string, use `Uuid`:
+
+```php
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Rule\Uuid;
+
+final class Form extends FormModel
+{
+    #[Uuid]
+    public string $id = '';
+}
+```
+
+When a field needs application-specific validation that isn't covered by a
+built-in rule, use `Callback`. This is useful for one-off checks or for
+delegating to a domain/library method. With PHP attributes, use the `method`
+option because PHP attributes can't contain closures. For example, the
+following form validates a card number checksum:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Echo;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\ValidationContext;
+
+final class Form extends FormModel
+{
+    #[Label('Card number')]
+    #[Required]
+    #[Callback(method: 'validateCardNumberChecksum', skipOnError: true)]
+    public string $cardNumber = '';
+
+    private function validateCardNumberChecksum(mixed $value, Callback $rule, ValidationContext $context): Result
+    {
+        if (!is_string($value)) {
+            return (new Result())->addError('Card number must be a string.');
+        }
+
+        $digits = str_replace([' ', '-'], '', $value);
+
+        if ($digits === '' || !ctype_digit($digits)) {
+            return (new Result())->addError('Card number must contain digits only.');
+        }
+
+        $sum = 0;
+        $double = false;
+
+        foreach (array_reverse(str_split($digits)) as $digit) {
+            $number = (int) $digit;
+
+            if ($double) {
+                $number *= 2;
+                if ($number > 9) {
+                    $number -= 9;
+                }
+            }
+
+            $sum += $number;
+            $double = !$double;
+        }
+
+        if ($sum % 10 !== 0) {
+            return (new Result())->addError('Card number checksum is invalid.');
+        }
+
+        return new Result();
+    }
+}
+```
+
+The callback method returns a `Result`: return an empty result when the
+value is valid or add an error when it isn't.  The method body can call any
+validation code your application already uses, such as
+`App\Payment\CardNumber::hasValidChecksum($value)`.
+
+For validation logic reused in several forms, create a custom Yii Validator
+rule and handler instead of copying callback methods. See the [custom rule
+guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+for the rule/handler structure.
+
+## Validating several fields together
+
+Property attributes are enough when each field can be validated
+independently. When a rule depends on several fields, put a `Callback` rule
+on the form model class and attach an error to the field that should display
+it.
+
+For example, a report filter may require the start date to be earlier than
+or equal to the end date:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Report;
+
+use DateTimeImmutable;
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Date\Date;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\ValidationContext;
+
+#[Callback(method: 'validateDateRange')]
+final class ReportFilterForm extends FormModel
+{
+    #[Required]
+    #[Date(format: 'php:Y-m-d')]
+    public string $dateFrom = '';
+
+    #[Required]
+    #[Date(format: 'php:Y-m-d')]
+    public string $dateTo = '';
+
+    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result
+    {
+        $result = new Result();
+
+        if ($this->dateFrom === '' || $this->dateTo === '') {
+            return $result;
+        }
+
+        $dateFrom = $this->parseDate($this->dateFrom);
+        $dateTo = $this->parseDate($this->dateTo);
+
+        if ($dateFrom === null || $dateTo === null) {
+            return $result;
+        }
+
+        if ($dateFrom > $dateTo) {
+            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);
+        }
+
+        return $result;
+    }
+
+    private function parseDate(string $value): ?DateTimeImmutable
+    {
+        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+        $errors = DateTimeImmutable::getLastErrors();
+
+        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {
+            return null;
+        }
+
+        return $date;
+    }
+}
+```
+
+The class-level `Callback` receives the whole object as `$value`, but using
+`$this` is usually clearer in a form model method. Returning an empty
+`Result` means the cross-field rule passed. The third argument of
+`addError()` is the value path; `['dateFrom']` makes the error appear on the
+`dateFrom` field when rendering the form.
+
+## Using the form 
 
 现在您有了一个表单，在“[打招呼](hello.md)”中的操作中使用它。
 
@@ -168,7 +337,7 @@ $htmlForm = Html::form()
 
 现在，如果您提交空消息，将会收到验证错误：“要回显的消息必须至少包含 2 个字符。”
 
-## 试试看 <span id="trying-it-out"></span>
+## Trying it Out
 
 要查看其工作原理，请使用浏览器访问以下 URL：
 
@@ -184,7 +353,7 @@ http://localhost:8080/say
 
 ![表单成功消息](/images/guide/start/form-success.png)
 
-## 总结 <span id="summary"></span>
+## 总结
 
 在本指南的这一节中，您已学习了如何创建表单模型类来表示用户数据并验证该数据。
 

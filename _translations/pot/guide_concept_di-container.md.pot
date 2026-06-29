@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-16 11:13+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/concept/di-container.md
@@ -25,7 +36,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Dependency injection <span id=\"dependency-injection\"></span>"
+msgid "Dependency injection"
 msgstr ""
 
 #. type: Plain text
@@ -156,7 +167,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Why use private properties <span id=\"why-private-properties\"></span>"
+msgid "Why use private properties"
 msgstr ""
 
 #. type: Plain text
@@ -211,7 +222,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "DI container <span id=\"di-container\"></span>"
+msgid "DI container"
 msgstr ""
 
 #. type: Plain text
@@ -291,7 +302,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Configuring container <span id=\"configuring-container\"></span>"
+msgid "Configuring container"
 msgstr ""
 
 #. type: Plain text
@@ -538,7 +549,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "Injecting dependencies properly <span id=\"injecting-dependencies\"></span>"
+msgid "Injecting dependencies properly"
 msgstr ""
 
 #. type: Plain text
@@ -596,12 +607,6 @@ msgid ""
 "container would check if it has such a dependency first.  It's enough to "
 "declare a dependency you need, and it would be got from a container "
 "automatically."
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "References <span id=\"references\"></span>"
 msgstr ""
 
 #. type: Bullet: '- '

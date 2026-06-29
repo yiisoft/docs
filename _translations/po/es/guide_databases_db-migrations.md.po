@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 18:47+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,8 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. type: Title #
+#. type: Title ##
 #: ../src/guide/databases/db-migrations.md
+#: ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Migrations"
 msgstr ""
@@ -833,9 +834,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Reverting Migrations <span id=\"reverting-migrations\"></span>"
-msgstr "Resolución de Alias <span id=\"resolving-aliases\"></span>"
+#| msgid "Generating API documentation"
+msgid "Reverting Migrations"
+msgstr "Generación de Documentación de API"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -862,9 +863,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Redoing Migrations <span id=\"redoing-migrations\"></span>"
-msgstr "Resolución de Alias <span id=\"resolving-aliases\"></span>"
+#| msgid "Generating API documentation"
+msgid "Redoing Migrations"
+msgstr "Generación de Documentación de API"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -889,9 +890,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md
 #, fuzzy, no-wrap
-#| msgid "Raising events <span id=\"raising-events\"></span>"
-msgid "Listing Migrations <span id=\"listing-migrations\"></span>"
-msgstr "Lanzamiento de Eventos <span id=\"raising-events\"></span>"
+#| msgid "Introduction +"
+msgid "Listing Migrations"
+msgstr "Introducción"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md

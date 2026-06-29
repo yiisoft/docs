@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2026-05-28 20:46+0000\n"
 "PO-Revision-Date: 2025-12-24 13:00+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,12 +14,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#. type: Title ##
-#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/start/prerequisites.md
-#, no-wrap
-msgid "Docker"
-msgstr "Docker"
 
 #. type: Title #
 #: ../src/guide/start/prerequisites.md
@@ -85,6 +79,12 @@ msgstr ""
 #: ../src/guide/start/prerequisites.md
 msgid "Since Yii is a web framework and the web largely uses HTTP, it's a good idea to [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP)."
 msgstr "由于 Yii 是一个 Web 框架，而 Web 主要使用 HTTP，所以[了解更多关于它的信息](https://developer.mozilla.org/en-US/docs/Web/HTTP)是个好主意。"
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "Docker"
+msgstr "Docker"
 
 #. type: Plain text
 #: ../src/guide/start/prerequisites.md

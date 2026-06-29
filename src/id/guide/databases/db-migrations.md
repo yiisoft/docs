@@ -394,7 +394,7 @@ the following command will try to apply the next three available migrations:
 ./yii migrate:up --limit=3
 ```
 
-## Reverting Migrations <span id="reverting-migrations"></span>
+## Reverting Migrations
 
 To revert (undo) one or multiple migrations that have been applied before,
 you can run the following command:
@@ -409,7 +409,7 @@ you can run the following command:
 entire reverting process.
 
 
-## Redoing Migrations <span id="redoing-migrations"></span>
+## Redoing Migrations
 
 Redoing migrations means first reverting the specified migrations and then
 applying again. This can be done as follows:
@@ -422,7 +422,7 @@ applying again. This can be done as follows:
 
 > Note: If a migration is not reversible, you will not be able to redo it.
 
-## Listing Migrations <span id="listing-migrations"></span>
+## Listing Migrations
 
 To list which migrations have been applied and which are not, you may use
 the following commands:

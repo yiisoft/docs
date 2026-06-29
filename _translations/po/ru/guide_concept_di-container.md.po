@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-01-16 11:13+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 07:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,6 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.7\n"
 
+#. type: Title ##
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Ссылки"
+
 #. type: Title #
 #: ../src/guide/concept/di-container.md
 #, no-wrap
@@ -25,9 +36,10 @@ msgstr "Внедрение зависимостей и контейнер вне
 
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Dependency injection <span id=\"dependency-injection\"></span>"
-msgstr "Внедрение зависимостей <span id=\"dependency-injection\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Dependency injection and container"
+msgid "Dependency injection"
+msgstr "Внедрение зависимостей и контейнер внедрения зависимостей"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -202,10 +214,9 @@ msgstr "Через свойство. Лучше избегать использ�
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, fuzzy, no-wrap
-#| msgid "References <span id=\"references\"></span>"
-msgid "Why use private properties <span id=\"why-private-properties\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
+#, no-wrap
+msgid "Why use private properties"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -245,8 +256,8 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/di-container.md
 #, no-wrap
-msgid "DI container <span id=\"di-container\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+msgid "DI container"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -328,9 +339,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Configuring connection"
+msgid "Configuring container"
+msgstr "Настройка подключения"
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -615,10 +627,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/concept/di-container.md
-#, fuzzy, no-wrap
-#| msgid "Injecting dependencies <span id=\"injecting-dependencies\"></span>"
-msgid "Injecting dependencies properly <span id=\"injecting-dependencies\"></span>"
-msgstr "Внедрение зависимостей <span id=\"injecting-dependencies\"></span>"
+#, no-wrap
+msgid "Injecting dependencies properly"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
@@ -691,12 +702,6 @@ msgstr ""
 "Обычно это называется автоматическим разрешением зависимостей.\n"
 "Это происходит и с дополнительными зависимостями - если вы явно не указываете зависимость, контейнер сначала проверит, есть ли у него такая зависимость.\n"
 "Достаточно объявить нужную вам зависимость, и она будет получена из контейнера автоматически."
-
-#. type: Title ##
-#: ../src/guide/concept/di-container.md
-#, no-wrap
-msgid "References <span id=\"references\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
 
 #. type: Bullet: '- '
 #: ../src/guide/concept/di-container.md

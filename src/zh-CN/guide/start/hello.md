@@ -11,7 +11,7 @@
 2. 如何将 URL 映射到处理器。
 3. 如何使用 [视图](../views/view.md) 来组成响应的内容。
 
-## 创建处理器 <span id="creating-handler"></span>
+## Creating a handler
 
 对于“Hello”任务，您将创建一个处理器类，从请求中读取 `message` 参数并将该消息显示给用户。如果请求没有提供 `message`
 参数，操作将显示默认的“Hello”消息。
@@ -87,7 +87,7 @@ marks this part of the pattern as optional.
 
 您还为此路由指定了 `echo/say` 名称，以便能够生成指向它的 URL。
 
-## 试试看 <span id="trying-it-out"></span>
+## 试试看
 
 创建操作和视图后，在浏览器中打开 `http://localhost/say/Hello+World`。
 
@@ -95,7 +95,7 @@ marks this part of the pattern as optional.
 
 如果您在 URL 中省略 `message` 参数，页面将显示“The message is: Hello!”。
 
-## 创建视图模板 <span id="creating-view-template"></span>
+## Creating a View Template
 
 通常，任务比打印“hello world”更复杂，涉及渲染一些复杂的 HTML。对于这项任务，使用视图模板很方便。它们是您编写的用于生成响应主体的脚本。
 
@@ -151,7 +151,7 @@ final readonly class Action
 
 此外，您已将其工作方式与呈现方式分离。在较大的应用程序中，这对处理复杂性很有帮助。
 
-## 总结 <span id="summary"></span>
+## 总结
 
 在本节中，您接触了典型 Web
 应用程序的处理器和模板部分。您创建了一个处理器类来处理特定请求。您还创建了一个视图来组成响应的内容。在这个简单的示例中，没有涉及数据源，因为使用的唯一数据是

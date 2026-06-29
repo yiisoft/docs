@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 21:57+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,6 +17,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -49,9 +50,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event classes <span id=\"event-classes\"></span>"
-msgstr "事件处理器 <span id=\"event-handlers\"></span>"
+#| msgid "Events"
+msgid "Event classes"
+msgstr "事件"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -72,10 +73,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event listeners <span id=\"event-listeners\"></span>"
-msgstr "事件处理器 <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -116,9 +116,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Configuring event listeners <span id=\"configuring-event-listeners\"></span>"
-msgstr "配置容器 <span id=\"configuring-container\"></span>"
+#| msgid "Configuring the Mailer"
+msgid "Configuring event listeners"
+msgstr "配置邮件发送器"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -184,9 +184,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Raising events <span id=\"raising-events\"></span>"
-msgid "Dispatching events <span id=\"dispatching-events\"></span>"
-msgstr "触发事件 <span id=\"raising-events\"></span>"
+#| msgid "Domain event"
+msgid "Dispatching events"
+msgstr "领域事件"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -221,10 +221,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event listener order <span id=\"event-listener-order\"></span>"
-msgstr "事件处理器 <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event listener order"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -238,10 +237,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event hierarchy <span id=\"event-hierarchy\"></span>"
-msgstr "事件处理器 <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event hierarchy"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -290,7 +288,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, no-wrap
-msgid "Manual listener provider setup <span id=\"manual-listener-provider-setup\"></span>"
+msgid "Manual listener provider setup"
 msgstr ""
 
 #. type: Plain text

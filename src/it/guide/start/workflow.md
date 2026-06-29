@@ -8,7 +8,7 @@ Note that unlike the framework itself, after you install a project template,
 it's all yours.  You're free to add or delete code and overall change it as
 you need.
 
-## Functionality <span id="functionality"></span>
+## Functionality
 
 The installed application contains only one page, accessible at
 `http://localhost/`.  It shares a common layout that you can reuse on
@@ -25,7 +25,7 @@ In addition to the web application, you can access a console script via
 background and maintenance tasks for the application, which the [Console
 Application Section](../tutorial/console-applications.md) describes.
 
-## Experimental debugger <span id="debugging"></span>
+## Experimental debugger
 
 Yii has a debugger that can collect debug data for web requests and expose
 it through the [Yii Dev
@@ -53,7 +53,7 @@ URL there.
 > [!CAUTION]
 > Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.
 
-## Application structure <span id="application-structure"></span>
+## Struttura applicativa
 
 The most important directories and files in your application are (assuming
 the application's root directory is `app`):
@@ -109,7 +109,7 @@ You can learn more about the application template from the [yiisoft/app
 package
 documentation](https://github.com/yiisoft/app/blob/master/README.md).
 
-## Request Lifecycle <span id="request-lifecycle"></span>
+## Request Lifecycle
 
 The following diagram shows how an application handles a request.
 

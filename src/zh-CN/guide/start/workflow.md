@@ -4,7 +4,7 @@
 
 请注意，与框架本身不同，安装项目模板后，它就完全属于你了。你可以自由地添加或删除代码，并根据需要进行整体更改。
 
-## 功能 <span id="functionality"></span>
+## Functionality
 
 安装的应用程序只包含一个页面，可通过 `http://localhost/` 访问。它共享一个通用布局，你可以在其他页面上重用。
 
@@ -19,7 +19,7 @@ In addition to the web application, you can access a console script via
 background and maintenance tasks for the application, which the [Console
 Application Section](../tutorial/console-applications.md) describes.
 
-## Experimental debugger <span id="debugging"></span>
+## Experimental debugger
 
 Yii has a debugger that can collect debug data for web requests and expose
 it through the [Yii Dev
@@ -47,7 +47,7 @@ URL there.
 > [!CAUTION]
 > Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.
 
-## 应用结构 <span id="application-structure"></span>
+## 应用结构
 
 应用程序中最重要的目录和文件是（假设应用程序的根目录是 `app`）：
 
@@ -92,7 +92,7 @@ HTTP（即在浏览器中）直接访问前者，而不应该暴露后者。
 你可以从 [yiisoft/app
 包文档](https://github.com/yiisoft/app/blob/master/README.md)中了解更多关于应用程序模板的信息。
 
-## 请求生命周期 <span id="request-lifecycle"></span>
+## Request Lifecycle
 
 下图显示了应用程序如何处理请求。
 

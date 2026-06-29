@@ -50,6 +50,7 @@ export default {
                             text: 'Introduction',
                             items: [
                                 {text: 'About Yii', link: '/guide/intro/what-is-yii'},
+                                {text: 'Upgrading from Version 1.1', link: '/guide/intro/upgrade-from-v1'},
                                 {text: 'Upgrading from Version 2', link: '/guide/intro/upgrade-from-v2'}
                             ]
                         },
@@ -84,11 +85,18 @@ export default {
                                 {text: 'Overview', link: '/guide/structure/overview'},
                                 {text: 'Entry Script', link: '/guide/structure/entry-script'},
                                 {text: 'Application', link: '/guide/structure/application'},
+                                {text: 'Module', link: '/guide/structure/module'},
                                 {text: 'Action', link: '/guide/structure/action'},
                                 {text: 'Middleware', link: '/guide/structure/middleware'},
                                 {text: 'Domain', link: '/guide/structure/domain'},
-                                {text: 'Service', link: '/guide/structure/service'},
-                                {text: 'Package', link: '/guide/structure/package'}
+                                {text: 'Service', link: '/guide/structure/service'}
+                            ]
+                        },
+                        {
+                            text: 'Packages',
+                            items: [
+                                {text: 'Using Packages', link: '/guide/structure/package'},
+                                {text: 'Designing Packages', link: '/guide/structure/designing-packages'}
                             ]
                         },
                         {
@@ -101,6 +109,12 @@ export default {
                                 {text: 'Cookies', link: '/guide/runtime/cookies'},
                                 {text: 'Handling Errors', link: '/guide/runtime/handling-errors'},
                                 {text: 'Logging', link: '/guide/runtime/logging'}
+                            ]
+                        },
+                        {
+                            text: 'REST APIs',
+                            items: [
+                                {text: 'Quick Start', link: '/guide/rest/quick-start'}
                             ]
                         },
                         {
@@ -191,7 +205,9 @@ export default {
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
                                 {text: 'Using htmx for Partial Page Reloads', link: '/cookbook/using-htmx-for-partial-reloads'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
-                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'}
+                                {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
+                                {text: 'Using a Custom Migration Template', link: '/cookbook/custom-migration-template'},
+                                {text: 'Using Yii in Third-Party Applications', link: '/cookbook/using-yii-in-third-party-apps'}
                             ]
                         },
                         {
@@ -224,7 +240,9 @@ export default {
                         {
                             text: 'Deployment',
                             items: [
-                                {text: 'Docker Swarm', link: '/cookbook/deployment/docker-swarm'}
+                                {text: 'Docker Swarm', link: '/cookbook/deployment/docker-swarm'},
+                                {text: 'Autoscaling', link: '/cookbook/deployment/autoscaling'},
+                                {text: 'Rolling Update Migrations', link: '/cookbook/deployment/rolling-update-migrations'}
                             ]
                         }
                     ],

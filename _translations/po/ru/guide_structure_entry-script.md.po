@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-12 22:50+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -77,9 +77,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
 #, fuzzy, no-wrap
-#| msgid "Dependency injection <span id=\"dependency-injection\"></span>"
-msgid "Web Applications <span id=\"web-applications\"></span>"
-msgstr "Внедрение зависимостей <span id=\"dependency-injection\"></span>"
+#| msgid "Demo Applications"
+msgid "Web Applications"
+msgstr "Демо-приложения"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md
@@ -119,9 +119,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/structure/entry-script.md
 #, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Console Applications <span id=\"console-applications\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#| msgid "Demo Applications"
+msgid "Console Applications"
+msgstr "Демо-приложения"
 
 #. type: Plain text
 #: ../src/guide/structure/entry-script.md

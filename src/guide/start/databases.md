@@ -15,6 +15,31 @@ For non-relational ones, there are usually official libraries available:
 - [Redis](https://redis.io/docs/latest/develop/clients/php/)
 - ...
 
+## Choosing a data access approach
+
+Yii3 keeps database access in optional packages. A new application doesn't get a global `Yii::$app->db` component
+or a built-in Active Record layer automatically, so choose the package and boundary that fit your application.
+
+If you used Yii 2.0 database access layer, `yiisoft/db` is the closest Yii3 equivalent. It provides database
+connections, commands, schema support, and a query builder. Instead of calling `Yii::$app->db`, configure a
+connection as a service and inject `ConnectionInterface` where the database is needed.
+
+If you used Yii 2.0 Active Record, you can install `yiisoft/active-record`. It is useful when your model classes
+mostly describe tables and relations. For applications where Yii 2.0 Active Record classes also contain form
+validation, request scenarios, authorization checks, or business workflows, move those responsibilities to form
+models, services, and domain objects instead of putting them back into the record class.
+
+For most application code, put a repository or query service between the action/service layer and storage:
+
+- actions and application services depend on repository methods such as `findOneBySlug()`, `findAll()`, `save()`,
+  and `deleteBySlug()`;
+- the repository hides whether persistence is implemented with `yiisoft/db`, Active Record, Cycle, Doctrine, or
+  another storage;
+- the repository is the place to map raw database rows or records to typed objects used by the rest of the code.
+
+Small CRUD applications can start with a concrete repository class. Larger applications usually benefit from a
+repository interface in the domain or module and an implementation in the infrastructure layer.
+
 In this guide, we will focus on working with relational databases using Yii DB. We'll use PostgreSQL to implement a
 simple CRUD (create read update delete).
 
@@ -366,8 +391,9 @@ final readonly class Page
 
 ## Repository
 
-Now that we have entity, we need a place for methods to save an entity, delete it and select either
-a single page or multiple pages.
+Now that we have an entity, we need a place for methods to save it, delete it, and select either a single page or
+multiple pages. This is the repository boundary described earlier: the rest of the application works with `Page`
+objects and doesn't need to know how they are stored.
 
 Create `src/Web/Page/PageRepository.php`:
 
@@ -588,7 +614,7 @@ use Yiisoft\Yii\View\Renderer\Csrf;
 
 /** @var Page $page */
 /** @var UrlGeneratorInterface $urlGenerator */
-/* @var Csrf $csrf */
+/** @var Csrf $csrf */
 ?>
 
 <h1><?= Html::a('Pages', $urlGenerator->generate('page/list')) ?> → <?= Html::encode($page->title) ?></h1>

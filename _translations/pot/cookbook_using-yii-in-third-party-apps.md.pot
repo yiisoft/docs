@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 22:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block (sh)
+#: ../src/cookbook/custom-migration-template.md
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr ""
+
+#. type: Title #
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Using Yii in third-party applications"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Sometimes a project already has an entry point owned by another framework, "
+"CMS, or legacy application, but you still want to reuse Yii services: "
+"configuration, DI definitions, domain services, logging, mailers, database "
+"connections, or console-oriented application code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Yii3 has no global application singleton. Bootstrap the Yii container "
+"explicitly and pass the services you need to the third-party code."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Bootstrap the Yii container"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Create a small adapter in the host application, for example `bootstrap-yii-"
+"services.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Environment;\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Yiisoft\\Config\\Config;\n"
+"use Yiisoft\\Config\\ConfigInterface;\n"
+"use Yiisoft\\Config\\ConfigPaths;\n"
+"use Yiisoft\\Config\\Modifier\\RecursiveMerge;\n"
+"use Yiisoft\\Config\\Modifier\\ReverseMerge;\n"
+"use Yiisoft\\Di\\Container;\n"
+"use Yiisoft\\Di\\ContainerConfig;\n"
+"\n"
+"function yiiContainer(string $yiiRoot): ContainerInterface\n"
+"{\n"
+"    require_once $yiiRoot . '/src/bootstrap.php';\n"
+"\n"
+"    $paramsGroup = 'params-console';\n"
+"    $eventsGroups = ['events-console', 'events'];\n"
+"\n"
+"    $config = new Config(\n"
+"        paths: new ConfigPaths($yiiRoot, 'config', 'vendor'),\n"
+"        environment: Environment::appEnv(),\n"
+"        modifiers: [\n"
+"            ReverseMerge::groups(...$eventsGroups),\n"
+"            RecursiveMerge::groups($paramsGroup, 'params', ...$eventsGroups),\n"
+"        ],\n"
+"        paramsGroup: $paramsGroup,\n"
+"    );\n"
+"\n"
+"    $containerConfig = ContainerConfig::create()\n"
+"        ->withValidate(Environment::appDebug())\n"
+"        ->withDefinitions(array_merge(\n"
+"            $config->get('di-console'),\n"
+"            [ConfigInterface::class => $config],\n"
+"        ))\n"
+"        ->withProviders($config->get('di-providers-console'))\n"
+"        ->withDelegates($config->get('di-delegates-console'));\n"
+"\n"
+"    if ($config->has('di-tags-console')) {\n"
+"        $containerConfig = $containerConfig->withTags($config->get('di-tags-console'));\n"
+"    }\n"
+"\n"
+"    $container = new Container($containerConfig);\n"
+"\n"
+"    foreach ($config->get('bootstrap-console') as $callback) {\n"
+"        if (!is_callable($callback)) {\n"
+"            throw new RuntimeException(sprintf(\n"
+"                'Bootstrap callback must be callable, \"%s\" given.',\n"
+"                get_debug_type($callback),\n"
+"            ));\n"
+"        }\n"
+"\n"
+"        $callback($container);\n"
+"    }\n"
+"\n"
+"    return $container;\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"The adapter builds only the Yii configuration and DI container, then runs "
+"the configured bootstrap callbacks. It does not create or run a Yii "
+"application runner, so the third-party application keeps ownership of the "
+"entry point and process lifecycle."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Use console configuration groups when you need common services and console-"
+"safe services. Use web groups instead only when you intentionally need web-"
+"specific definitions from the `di-web` group, such as PSR-17 HTTP factories "
+"or web middleware dependencies."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Get Yii services from the host application"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "Use the adapter from the third-party application:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Shared\\ApplicationParams;\n"
+"\n"
+"require_once __DIR__ . '/path/to/yii-app/vendor/autoload.php';\n"
+"require_once __DIR__ . '/bootstrap-yii-services.php';\n"
+"\n"
+"$container = yiiContainer(__DIR__ . '/path/to/yii-app');\n"
+"\n"
+"/** @var ApplicationParams $params */\n"
+"$params = $container->get(ApplicationParams::class);\n"
+"\n"
+"echo $params->name;\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"In real integrations, prefer getting your own application services instead "
+"of framework infrastructure. For example, expose `InvoiceSender`, "
+"`ReportBuilder`, or `CatalogImporter` from Yii and call that service from "
+"the host application."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Keep boundaries explicit"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Avoid mixing request lifecycles. Let the host application continue to own "
+"its HTTP request and response. Let Yii provide services that do not assume "
+"Yii is handling the current request."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "Good candidates for reuse:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "domain services;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "repositories and database connections;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "mailers and notification services;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "loggers;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "validators;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "queue producers;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "command-like application services."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Avoid pulling in Yii actions, middleware stacks, sessions, CSRF middleware, "
+"or view rendering unless the host application explicitly delegates that "
+"whole responsibility to Yii."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Configuration groups"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "The default application template separates configuration by group:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "`di` is shared by web and console entry points;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "`di-console` is console-specific and includes `di` in the template;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "`di-web` is web-specific and includes `di`;"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "`params-console` and `params-web` extend common `params`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Choose the smallest group that contains the services you need. If the host "
+"application only needs domain services, keep those definitions in `config/"
+"common/di/*.php` so both Yii and the third-party app can use them without "
+"web-only dependencies."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid "After changing `config/configuration.php`, rebuild the merge plan:"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Error handling and logging"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"The host application should remain responsible for top-level error handling. "
+"Catch exceptions at the integration boundary when the host app needs to "
+"convert them into its own response or error format."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"Yii services can still use `Psr\\Log\\LoggerInterface`. Configure the Yii "
+"logger to write to the same destination as the host application or bridge "
+"both applications to the same PSR-3 logger."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#, no-wrap
+msgid "Long-running host processes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+msgid ""
+"If the third-party application is a worker, daemon, or event-loop server, "
+"avoid mutable shared state in services. Yii services resolved from the "
+"container are shared by default, so design them as stateless services or "
+"create a fresh container for each isolated job when stateful dependencies "
+"are unavoidable."
+msgstr ""

@@ -142,7 +142,13 @@ CSRF 是跨站请求伪造的缩写。其思想是许多应用程序假设来自
    [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。
 2. 保持 Yii CSRF 保护启用。
 
-Yii 将 CSRF 保护作为 `Yiisoft\Yii\Web\Middleware\Csrf` 中间件。确保它在您的应用程序中间件堆栈中。
+Yii has CSRF protection via `Yiisoft\Csrf\CsrfTokenMiddleware` from the
+[`yiisoft/csrf`](https://github.com/yiisoft/csrf) package.  Make sure it's
+in your application middleware stack. For AJAX/SPA backends that use
+cookie-based authentication, the same package provides
+`Yiisoft\Csrf\CsrfHeaderMiddleware` — an alternative approach that relies on
+custom request headers and the CORS preflight mechanism instead of
+token-in-form.
 
 有关该主题的进一步阅读：
 

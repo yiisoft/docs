@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-27 03:24+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -59,10 +59,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Log Messages <span id=\"log-messages\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Log Messages"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -180,10 +179,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Log targets <span id=\"log-targets\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Log targets"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -274,10 +272,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "References <span id=\"references\"></span>"
-msgid "Message Filtering <span id=\"message-filtering\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
+#, no-wrap
+msgid "Message Filtering"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -326,10 +323,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "DI container <span id=\"di-container\"></span>"
-msgid "Message Formatting <span id=\"message-formatting\"></span>"
-msgstr "Контейнер внедрения зависимостей <span id=\"di-container\"></span>"
+#, no-wrap
+msgid "Message Formatting"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -441,10 +437,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "References <span id=\"references\"></span>"
-msgid "Message Trace Level <span id=\"trace-level\"></span>"
-msgstr "Полезные ссылки <span id=\"references\"></span>"
+#, no-wrap
+msgid "Message Trace Level"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -485,7 +480,7 @@ msgstr ""
 #: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
 #| msgid "Configuring container <span id=\"configuring-container\"></span>"
-msgid "Message flushing and exporting <span id=\"flushing-exporting\"></span>"
+msgid "Message flushing and exporting"
 msgstr "Конфигурирование контейнера <span id=\"configuring-container\"></span>"
 
 #. type: Plain text
@@ -555,10 +550,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Toggling log targets <span id=\"toggling-log-targets\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Toggling log targets"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
@@ -587,9 +581,9 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/logging.md
 #, fuzzy, no-wrap
-#| msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
-msgid "Creating new targets <span id=\"new-targets\"></span>"
-msgstr "Предопределенные псевдонимы <span id=\"predefined-aliases\"></span>"
+#| msgid "Creating a project"
+msgid "Creating new targets"
+msgstr "Создание проекта"
 
 #. type: Plain text
 #: ../src/guide/runtime/logging.md

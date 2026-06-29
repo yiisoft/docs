@@ -2,7 +2,7 @@
 
 授权是验证用户是否有足够权限执行某项操作的过程。
 
-## 检查权限 <span id="checking-for-permission"></span>
+## Checking for permission
 
 您可以使用 `\Yiisoft\User\CurrentUser` 服务来检查用户是否具有特定权限：
 
@@ -47,7 +47,7 @@ final readonly class PostController
 在幕后，`Yiisoft\User\CurrentUser::can()` 方法调用
 `Yiisoft\Access\AccessCheckerInterface::userHasPermission()`，因此您应该在依赖容器中提供一个实现才能使其工作。
 
-## 基于角色的访问控制 (RBAC) <span id="rbac"></span>
+## Role-based access control (RBAC)
 
 基于角色的访问控制 (RBAC) 提供了一种简单而强大的集中式访问控制。有关 RBAC 与其他更传统的访问控制方案的比较详情，请参阅
 [Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control)。
@@ -60,7 +60,7 @@ Yii 实现了通用分层 RBAC，遵循 [NIST RBAC
 
 为了便于接下来的描述，首先介绍一些基本的 RBAC 概念。
 
-### 基本概念 <span id="basic-concepts"></span>
+### Basic concepts
 
 角色代表一组*权限*（例如，创建文章、更新文章）。您可以将角色分配给一个或多个用户。要检查用户是否具有指定的权限，您可以检查用户是否具有包含该权限的角色。
 
@@ -69,7 +69,7 @@ Yii 实现了通用分层 RBAC，遵循 [NIST RBAC
 角色和权限都处于层次结构中。特别是，一个角色可以由其他角色或权限组成。一个权限可以由其他权限组成。Yii
 实现了*偏序*层次结构，其中包括更特殊的*树*层次结构。虽然角色可以包含权限，但反之则不成立。
 
-### 配置 RBAC <span id="configuring-rbac"></span>
+### Configuring RBAC
 
 Yii RBAC 需要提供存储。
 
@@ -83,7 +83,7 @@ Yii RBAC 需要提供存储。
   
 您还可以使用 [yiisoft/rbac](https://github.com/yiisoft/rbac) 包提供自己的存储。
   
-#### 使用 [PHP storage](https://github.com/yiisoft/rbac-php) 配置 RBAC <span id="configuring-rbac-php"></span>
+#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php)
 
 安装 [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) 包：
 
@@ -127,7 +127,7 @@ return [
 `Yiisoft\Rbac\Manager` 使用 PHP 脚本文件来存储授权数据。如果您想在线更改权限层次结构，请确保该目录及其中的所有文件都可由
 Web 服务器进程写入。
 
-#### 使用 [DB storage](https://github.com/yiisoft/rbac-db) 配置 RBAC <span id="configuring-rbac-db"></span>
+#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db)
 
 安装 [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) 包：
 
@@ -182,7 +182,7 @@ return [
 ./yii migrate:up
 ```
 
-### 构建授权数据 <span id="generating-rbac-data"></span>
+### Building authorization data
 
 构建授权数据涉及以下任务：
 
@@ -400,7 +400,7 @@ public function signup()
 开发特殊的用户界面。
 
 
-### 使用规则 <span id="using-rules"></span>
+### Using rules
 
 如前所述，规则为角色和权限添加了额外的约束。规则是从 `\Yiisoft\Rbac\Rule` 扩展的类。它必须实现 `execute()`
 方法。在您之前创建的层次结构中，作者无法编辑自己的文章。让我们修复它。首先，您需要一个规则来验证用户是文章作者：
@@ -453,7 +453,7 @@ $this->manager->addChild('admin', 'author');
 层次结构")
 
 
-### 访问检查 <span id="access-check"></span>
+### Access check
 
 检查的方式与本指南第一部分中的方式类似：
 

@@ -44,7 +44,7 @@ return [
                     ->withMiddlewares(
                         [
                             Router::class,
-                            CsrfMiddleware::class,
+                            CsrfTokenMiddleware::class,
                             SessionMiddleware::class, // <-- add this
                             ErrorCatcher::class,
                         ]

@@ -4,7 +4,7 @@
 
 Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making 
 unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through 
-the `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
+the `Yiisoft\Yii\Web\Middleware\CsrfTokenMiddleware` middleware.
 
 For a comprehensive understanding of CSRF attacks and protection mechanisms, see
 the [Security best practices](../guide/security/best-practices.md#avoiding-csrf) section in the main guide.
@@ -44,7 +44,7 @@ return [
                         CsrfTokenMiddleware::class, // <- Remove this line                        
 ```
 
-Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` 
+Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfTokenMiddleware` 
 middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:
 
 ```php

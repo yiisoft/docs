@@ -4,7 +4,7 @@
 框架本身有关。本节将列举这些主要因素，并说明如何通过调整它们来提升应用程序性能。
 
 
-## 优化 PHP 环境 <span id="optimizing-php"></span>
+## Optimizing your PHP Environment
 
 合理配置 PHP 环境至关重要。为获得最佳性能，建议：
 
@@ -15,7 +15,7 @@
 - 确保生产环境中未安装 [XDebug](https://xdebug.org/)。
 - 尝试 [PHP 7 预加载](https://wiki.php.net/rfc/preload)。
 
-## 优化代码 <span id="optimizing-code"></span>
+## Optimizing your code
 
 除环境配置外，代码层面的优化同样能提升应用程序性能：
 
@@ -35,14 +35,14 @@
 
 上述代码层面的优化只有在相关代码被频繁执行时才能带来显著提升，通常适用于大型循环或批量处理场景。
 
-## 使用缓存技术 <span id="using-caching-techniques"></span>
+## Using caching techniques
 
 您可以使用多种缓存技术来显著提升应用程序性能。例如，如果应用程序允许用户输入 Markdown 格式文本，可以考虑缓存解析后的 Markdown
 内容，避免每次请求都重复解析相同的 Markdown 文本。请参阅[缓存](../caching/overview.md)章节了解 Yii
 提供的缓存支持。
 
 
-## 优化会话存储 <span id="optimizing-session-storage"></span>
+## Optimizing session storage
 
 默认情况下，会话数据存储在文件中。该实现会在会话打开时锁定文件，直到
 通过 `$session->close()` 或请求结束时关闭会话为止。
@@ -63,7 +63,7 @@ SessionHandlerInterface](https://www.sitepoint.com/saving-php-sessions-in-redis/
 ],
 ```
 
-## 优化数据库 <span id="optimizing-databases"></span>
+## Optimizing databases
 
 执行数据库查询和从数据库获取数据通常是 Web
 应用程序的主要性能瓶颈。尽管使用[数据缓存](../caching/data.md)技术可以缓解性能压力，但并不能彻底解决问题。当数据库中的数据量极大且缓存数据失效时，如果没有合理的数据库和查询设计，获取最新数据的代价可能会非常高昂。
@@ -76,7 +76,7 @@ SessionHandlerInterface](https://www.sitepoint.com/saving-php-sessions-in-redis/
 最后同样重要的一点是，在 `SELECT` 查询中使用 `LIMIT`，以避免从数据库获取过量数据而耗尽 PHP 分配的内存。
 
 
-## 优化 Composer 自动加载器 <span id="optimizing-autoloader"></span>
+## Optimizing composer autoloader
 
 由于 Composer 自动加载器用于加载大多数第三方类文件，建议通过执行以下命令对其进行优化：
 
@@ -90,7 +90,7 @@ composer dumpautoload -o
 缓存](https://getcomposer.org/doc/articles/autoloader-optimization.md#optimization-level-2-b-apcu-cache)。请注意，这两种优化不一定适用于所有情况。
 
 
-## 离线处理数据 <span id="processing-data-offline"></span>
+## Processing data offline
 
 当某个请求涉及资源密集型操作时，应考虑以离线方式执行这些操作，避免让用户等待其完成。
 
@@ -149,7 +149,7 @@ foreach (array_unique($files) as $file) {
 如您所见，测试结果差异不大，因为这只是一个仅包含少量类的干净应用程序模板。关于预加载的更多讨论（包括基准测试）可参阅 [Composer 的相关
 issue](https://github.com/composer/composer/issues/7777)。
 
-## 性能分析 <span id="performance-profiling"></span>
+## Performance profiling
 
 应对代码进行性能分析以找出瓶颈，并采取相应措施。以下分析工具可能对您有所帮助：
 

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 20:32+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -445,10 +445,10 @@ msgid ""
 "`host()`."
 msgstr ""
 
-#. type: Title ##
-#: ../src/guide/runtime/routing.md
+#. type: Title ###
+#: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
 #, no-wrap
-msgid "Routing <span id=\"routing\"></span>"
+msgid "Routing"
 msgstr ""
 
 #. type: Plain text
@@ -541,7 +541,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Generating URLs <span id=\"generating-urls\"></span>"
+msgid "Generating URLs"
 msgstr ""
 
 #. type: Plain text
@@ -832,7 +832,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Route patterns <span id=\"route-patterns\"></span>"
+msgid "Route patterns"
 msgstr ""
 
 #. type: Plain text
@@ -853,7 +853,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Named Parameters <span id=\"named-parameters\"></span>"
+msgid "Named Parameters"
 msgstr ""
 
 #. type: Plain text
@@ -952,7 +952,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/runtime/routing.md
 #, no-wrap
-msgid "Optional parts <span id=\"optional-parts\"></span>"
+msgid "Optional parts"
 msgstr ""
 
 #. type: Plain text

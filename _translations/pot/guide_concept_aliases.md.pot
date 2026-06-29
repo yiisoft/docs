@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Defining aliases <span id=\"defining-aliases\"></span>"
+msgid "Defining aliases"
 msgstr ""
 
 #. type: Plain text
@@ -124,7 +124,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
+msgid "Using aliases in configuration"
 msgstr ""
 
 #. type: Plain text
@@ -157,7 +157,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
+msgid "Resolving aliases"
 msgstr ""
 
 #. type: Plain text
@@ -230,7 +230,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
+msgid "Predefined aliases"
 msgstr ""
 
 #. type: Plain text

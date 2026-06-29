@@ -6,7 +6,7 @@
 默认的 Yii 应用程序在 `config/params.php` 中预定义了一些别名。例如，别名 `@public` 表示 Web
 根路径；`@baseUrl` 表示当前运行的 Web 应用程序的基础 URL。
 
-## 定义别名 <span id="defining-aliases"></span>
+## Defining aliases
 
 您可以通过应用程序的 `config/params.php` 定义别名：
 
@@ -56,7 +56,7 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## 在配置中使用别名 <span id="using-aliases-in-configuration"></span>
+## Using aliases in configuration
 
 最好在配置级别解析别名，这样服务就可以获得可直接使用的 URL 和路径字符串：
 
@@ -77,7 +77,7 @@ return [
 ];
 ```
 
-## 解析别名 <span id="resolving-aliases"></span>
+## Resolving aliases
 
 您可以使用 `Aliases` 服务将别名或派生别名解析为它所代表的文件路径或 URL：
 
@@ -116,7 +116,7 @@ public function actionIndex(Aliases $aliases)
 如果 `@foo/bar` 未定义为根别名，最后一条语句将显示 `/path/to/foo/bar/file.php`。
 
 
-## 预定义别名 <span id="predefined-aliases"></span>
+## Predefined aliases
 
 [Yii 应用程序](https://github.com/yiisoft/app) 预定义了一组别名来引用常用的文件路径和 URL：
 

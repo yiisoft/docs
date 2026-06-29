@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-14 06:06+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/guide/index.md ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Application structure"
+msgstr ""
 
 #. type: Title #
 #: ../src/guide/start/workflow.md
@@ -41,7 +47,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Functionality <span id=\"functionality\"></span>"
+msgid "Functionality"
 msgstr ""
 
 #. type: Plain text
@@ -74,7 +80,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Experimental debugger <span id=\"debugging\"></span>"
+msgid "Experimental debugger"
 msgstr ""
 
 #. type: Plain text
@@ -123,12 +129,6 @@ msgstr ""
 msgid ""
 "> [!CAUTION]\n"
 "> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/start/workflow.md
-#, no-wrap
-msgid "Application structure <span id=\"application-structure\"></span>"
 msgstr ""
 
 #. type: Plain text
@@ -210,7 +210,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
+msgid "Request Lifecycle"
 msgstr ""
 
 #. type: Plain text

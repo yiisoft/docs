@@ -16,7 +16,7 @@ Attraverso questo tutorial, imparerai tre cose:
 3. Come usare [una vista](../views/view.md) per comporre il contenuto della
    risposta.
 
-## Creare un gestore di richieste <span id="creating-handler"></span>
+## Creating a handler
 
 Per il compito "Hello", creerai una classe gestore di richieste che legge un
 parametro `message` dalla richiesta e visualizza quel messaggio
@@ -101,7 +101,7 @@ marks this part of the pattern as optional.
 Dai anche un nome `echo/say` a questa rotta per poter generare URL che
 puntano ad essa.
 
-## Provarlo <span id="trying-it-out"></span>
+## Trying it out
 
 Dopo aver creato l'azione e la vista apri `http://localhost/say/Hello+World`
 nel tuo browser.
@@ -111,7 +111,7 @@ Questo URL visualizza una pagina con “The message is: Hello World".
 Se ometti il parametro `message` nell'URL, la pagina visualizza “The message
 is: Hello!".
 
-## Creare un modello di vista <span id="creating-view-template"></span>
+## Creating a View Template
 
 Solitamente, il compito è più complicato che stampare "hello world" e
 comporta il rendering di HTML complesso. Per questo compito, è utile usare
@@ -179,7 +179,7 @@ Inoltre, hai separato la parte su come funziona e la parte su come viene
 presentata. Nelle applicazioni più grandi, questo aiuta molto a gestire la
 complessità.
 
-## Riepilogo <span id="summary"></span>
+## Summary
 
 In questa sezione, hai toccato le parti del gestore di richieste e del
 modello della tipica applicazione web. Hai creato un gestore di richieste

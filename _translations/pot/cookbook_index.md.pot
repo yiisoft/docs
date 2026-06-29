@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 10:43+0000\n"
+"POT-Creation-Date: 2026-06-05 22:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,17 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
+msgid "[Using a custom migration template](custom-migration-template.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid ""
+"[Using Yii in third-party applications](using-yii-in-third-party-apps.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
 msgid "[Working on Windows](working-on-windows.md)"
 msgstr ""
 
@@ -109,4 +120,16 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring an application for autoscaling](deployment/autoscaling.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid ""
+"[Applying migrations during rolling updates](deployment/rolling-update-"
+"migrations.md)"
 msgstr ""

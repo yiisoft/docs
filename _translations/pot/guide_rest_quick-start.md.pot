@@ -1,0 +1,554 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-29 09:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Quick start"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Yii works with JSON APIs through the same PSR-7 request and response objects "
+"used by web pages.  For API endpoints, the usual flow is:"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../src/guide/rest/quick-start.md
+msgid "Parse the request body when the client sends JSON."
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../src/guide/rest/quick-start.md
+msgid "Map request data to a typed input object."
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../src/guide/rest/quick-start.md
+msgid "Validate the input object."
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../src/guide/rest/quick-start.md
+msgid "Return a response whose data is formatted as JSON."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"This guide assumes that you use the [API application template](https://"
+"github.com/yiisoft/app-api).  It already includes request body parsing, "
+"request input resolving, JSON data responses, and presenter examples.  For "
+"complete applications with different structures, see [Demo applications](../"
+"start/demo-apps.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Creating request input"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Use [yiisoft/input-http](https://github.com/yiisoft/input-http) to describe "
+"request data as a typed input object.  Attach `#[FromBody]` when all values "
+"should come from the parsed request body."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "Create `src/Api/Post/CreatePostInput.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Post;\n"
+"\n"
+"use Yiisoft\\Input\\Http\\AbstractInput;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Data\\FromBody;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"#[FromBody]\n"
+"final class CreatePostInput extends AbstractInput\n"
+"{\n"
+"    #[Required]\n"
+"    #[Length(min: 2, max: 100)]\n"
+"    public string $title = '';\n"
+"\n"
+"    #[Required]\n"
+"    public string $content = '';\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "For a request such as:"
+msgstr ""
+
+#. type: Fenced code block (http)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"POST /posts HTTP/1.1\n"
+"Content-Type: application/json\n"
+"\n"
+"{\"title\": \"First post\", \"content\": \"Text\"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"`CreatePostInput` receives `title` and `content` from the decoded JSON body."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"If most values should come from the request body, but one value must come "
+"from another part of the request, combine `#[FromBody]` with parameter "
+"attributes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "For example, create `src/Api/Post/UpdatePostInput.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Post;\n"
+"\n"
+"use Yiisoft\\Input\\Http\\AbstractInput;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Data\\FromBody;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Parameter\\Query;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"#[FromBody]\n"
+"final class UpdatePostInput extends AbstractInput\n"
+"{\n"
+"    public function __construct(\n"
+"        #[Query('id')]\n"
+"        public int $id = 0,\n"
+"        #[Required]\n"
+"        #[Length(min: 2, max: 100)]\n"
+"        public string $title = '',\n"
+"        #[Required]\n"
+"        public string $content = '',\n"
+"    ) {}\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"For file uploads submitted as `multipart/form-data`, map uploaded files with "
+"`#[UploadedFiles]`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "For example, create `src/Api/Post/UploadImageInput.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Post;\n"
+"\n"
+"use Yiisoft\\Input\\Http\\AbstractInput;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Parameter\\Body;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Parameter\\UploadedFiles;\n"
+"\n"
+"final class UploadImageInput extends AbstractInput\n"
+"{\n"
+"    public function __construct(\n"
+"        #[Body]\n"
+"        public string $title,\n"
+"        #[UploadedFiles('image')]\n"
+"        public mixed $image,\n"
+"    ) {}\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Creating an action"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"`RequestInputParametersResolver` lets an action type-hint request input "
+"objects directly.  In the API application template, it is already configured "
+"in `config/web/di/application.php`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "Create `src/Api/Post/CreatePostAction.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Post;\n"
+"\n"
+"use App\\Api\\Shared\\ResponseFactory;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"\n"
+"final readonly class CreatePostAction\n"
+"{\n"
+"    public function __invoke(\n"
+"        CreatePostInput $input,\n"
+"        ResponseFactory $responseFactory,\n"
+"    ): ResponseInterface {\n"
+"        $result = $input->getValidationResult();\n"
+"\n"
+"        if (!$result->isValid()) {\n"
+"            return $responseFactory->failValidation($result);\n"
+"        }\n"
+"\n"
+"        return $responseFactory\n"
+"            ->success([\n"
+"                'title' => $input->title,\n"
+"                'content' => $input->content,\n"
+"            ])\n"
+"            ->withStatus(Status::CREATED);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"You can validate the input in the action as shown above.  Alternatively, "
+"configure `RequestInputParametersResolver` to throw "
+"`Yiisoft\\Input\\Http\\InputValidationException` and convert that exception "
+"to a JSON response in one error handler.  The API application template uses "
+"this centralized approach."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Returning JSON responses"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"For small endpoints, you can write JSON to a PSR-7 response manually as "
+"shown in [Responding with JSON](../runtime/response.md#responding-with-"
+"json).  For APIs, prefer [yiisoft/data-response](https://github.com/yiisoft/"
+"data-response), which formats response data and sets the `Content-Type` "
+"header."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"The API application template keeps response formatting in `src/Api/Shared/"
+"ResponseFactory.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Shared;\n"
+"\n"
+"use App\\Api\\Shared\\Presenter\\AsIsPresenter;\n"
+"use App\\Api\\Shared\\Presenter\\PresenterInterface;\n"
+"use App\\Api\\Shared\\Presenter\\ValidationResultPresenter;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\DataResponse\\ResponseFactory\\DataResponseFactoryInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"\n"
+"final readonly class ResponseFactory\n"
+"{\n"
+"    public function __construct(\n"
+"        private DataResponseFactoryInterface $dataResponseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function success(\n"
+"        array|object|null $data = null,\n"
+"        PresenterInterface $presenter = new AsIsPresenter(),\n"
+"    ): ResponseInterface {\n"
+"        return $this->dataResponseFactory->createResponse([\n"
+"            'status' => 'success',\n"
+"            'data' => $presenter->present($data),\n"
+"        ]);\n"
+"    }\n"
+"\n"
+"    public function failValidation(Result $result): ResponseInterface\n"
+"    {\n"
+"        return $this->dataResponseFactory\n"
+"            ->createResponse([\n"
+"                'status' => 'failed',\n"
+"                'error_message' => 'Validation failed.',\n"
+"                'error_data' => (new ValidationResultPresenter())->present($result),\n"
+"            ])\n"
+"            ->withStatus(Status::UNPROCESSABLE_ENTITY);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Presenters are application-level abstractions that transform application "
+"objects to API output arrays.  Keep them separate from domain entities so "
+"changing an API response doesn't force changes in business objects."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "Create `src/Api/Post/PostPresenter.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Api\\Post;\n"
+"\n"
+"use App\\Api\\Shared\\Presenter\\PresenterInterface;\n"
+"\n"
+"/**\n"
+" * @implements PresenterInterface<Post>\n"
+" */\n"
+"final readonly class PostPresenter implements PresenterInterface\n"
+"{\n"
+"    public function present(mixed $value): array\n"
+"    {\n"
+"        return [\n"
+"            'id' => $value->id,\n"
+"            'title' => $value->title,\n"
+"            'content' => $value->content,\n"
+"        ];\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"The API template contains a fuller implementation of [response factory]"
+"(https://github.com/yiisoft/app-api/blob/master/src/Api/Shared/"
+"ResponseFactory.php) and [presenters](https://github.com/yiisoft/app-api/"
+"tree/master/src/Api/Shared/Presenter)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Routing an endpoint"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "Register API routes in `config/common/routes.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"use App\\Api\\Post\\CreatePostAction;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::methods([Method::POST], '/posts')\n"
+"        ->action(CreatePostAction::class)\n"
+"        ->name('api/posts/create'),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Send JSON by setting `Content-Type: application/json`.  Ask for JSON "
+"responses with `Accept: application/json`."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"curl -X POST http://localhost:8080/posts \\\n"
+"    -H 'Content-Type: application/json' \\\n"
+"    -H 'Accept: application/json' \\\n"
+"    -d '{\"title\":\"First post\",\"content\":\"Text\"}'\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Validation errors are returned as JSON with HTTP status `422 Unprocessable "
+"Entity`.  Successful creation usually returns `201 Created`."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "Existing applications"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"If you add JSON API endpoints to an existing web application, install the "
+"API packages first:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid "If you use Docker:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid "make composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"In `config/web/di/application.php`, add `RequestBodyParser` before `Router` "
+"so JSON requests are parsed before actions run:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Request\\Body\\RequestBodyParser;\n"
+"use Yiisoft\\Router\\Middleware\\Router;\n"
+"\n"
+"return [\n"
+"    RequestBodyParser::class,\n"
+"    Router::class,\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"In the same file, add JSON data response middleware before error handling "
+"and routing:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\DataResponse\\Formatter\\JsonFormatter;\n"
+"use Yiisoft\\DataResponse\\Middleware\\ContentNegotiatorDataResponseMiddleware;\n"
+"\n"
+"return [\n"
+"    static fn() => new ContentNegotiatorDataResponseMiddleware(\n"
+"        formatters: [\n"
+"            'application/json' => new JsonFormatter(),\n"
+"        ],\n"
+"        fallback: new JsonFormatter(),\n"
+"    ),\n"
+"    // error handling, request body parser, router, and not-found middleware\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Also in `config/web/di/application.php`, configure action parameter "
+"resolvers:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/rest/quick-start.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Definitions\\Reference;\n"
+"use Yiisoft\\Input\\Http\\HydratorAttributeParametersResolver;\n"
+"use Yiisoft\\Input\\Http\\RequestInputParametersResolver;\n"
+"use Yiisoft\\Middleware\\Dispatcher\\CompositeParametersResolver;\n"
+"use Yiisoft\\Middleware\\Dispatcher\\ParametersResolverInterface;\n"
+"\n"
+"return [\n"
+"    ParametersResolverInterface::class => [\n"
+"        'class' => CompositeParametersResolver::class,\n"
+"        '__construct()' => [\n"
+"            Reference::to(HydratorAttributeParametersResolver::class),\n"
+"            Reference::to(RequestInputParametersResolver::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/rest/quick-start.md
+msgid ""
+"Use the [API application template configuration](https://github.com/yiisoft/"
+"app-api/blob/master/config/web/di/application.php)  as the complete "
+"reference for middleware order and resolver setup."
+msgstr ""

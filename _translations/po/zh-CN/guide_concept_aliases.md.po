@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -33,9 +33,10 @@ msgstr "默认的 Yii 应用程序在 `config/params.php` 中预定义了一些�
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
-#, no-wrap
-msgid "Defining aliases <span id=\"defining-aliases\"></span>"
-msgstr "定义别名 <span id=\"defining-aliases\"></span>"
+#, fuzzy, no-wrap
+#| msgid "defining rules;"
+msgid "Defining aliases"
+msgstr "定义规则；"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -111,9 +112,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
-#, no-wrap
-msgid "Using aliases in configuration <span id=\"using-aliases-in-configuration\"></span>"
-msgstr "在配置中使用别名 <span id=\"using-aliases-in-configuration\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Container configuration"
+msgid "Using aliases in configuration"
+msgstr "容器配置"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -142,9 +144,10 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
-#, no-wrap
-msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgstr "解析别名 <span id=\"resolving-aliases\"></span>"
+#, fuzzy, no-wrap
+#| msgid "Reading cookies"
+msgid "Resolving aliases"
+msgstr "读取 Cookie"
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md
@@ -209,8 +212,8 @@ msgstr "如果 `@foo/bar` 未定义为根别名，最后一条语句将显示 `/
 #. type: Title ##
 #: ../src/guide/concept/aliases.md
 #, no-wrap
-msgid "Predefined aliases <span id=\"predefined-aliases\"></span>"
-msgstr "预定义别名 <span id=\"predefined-aliases\"></span>"
+msgid "Predefined aliases"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/aliases.md

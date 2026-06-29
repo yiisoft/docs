@@ -24,7 +24,7 @@ Entry scripts mainly perform the following work with the help of
 * With the help of an emitter that transforms a response object into an
   actual HTTP response that's sent to the client browser.
 
-## Web Applications <span id="web-applications"></span>
+## Web Applications
 
 The following is the code in the entry script for the application template:
 
@@ -56,7 +56,7 @@ $runner->run();
 ```
 
 
-## Console Applications <span id="console-applications"></span>
+## Console Applications
 
 Similarly, the following is the code for the entry script of a console
 application:

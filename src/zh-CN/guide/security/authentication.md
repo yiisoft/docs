@@ -45,7 +45,7 @@ return [
 ];
 ```
 
-## 实现 `\Yiisoft\Auth\IdentityInterface` <span id="implementing-identity"></span>
+## Implementing`\Yiisoft\Auth\IdentityInterface`
 
 身份类必须实现 `\Yiisoft\Auth\IdentityInterface` 接口，该接口只有一个方法：
 
@@ -74,7 +74,7 @@ final readonly class Identity implements IdentityInterface
 }
 ```
 
-## 实现 `\Yiisoft\Auth\IdentityRepositoryInterface` <span id="implementing-identity-repository"></span>
+## Implementing`\Yiisoft\Auth\IdentityRepositoryInterface`
 
 身份仓库类必须实现 `\Yiisoft\Auth\IdentityRepositoryInterface` 接口，该接口具有以下方法：
 
@@ -218,7 +218,7 @@ Group::create()
         )
 ```
 
-## 认证事件 <span id="auth-events"></span>
+## Authentication Events
 
 用户服务在登录和注销过程中会触发一些事件。
 

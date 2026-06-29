@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-12-24 13:00+0000\n"
+"POT-Creation-Date: 2026-05-28 20:46+0000\n"
 "PO-Revision-Date: 2026-01-19 22:04+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,12 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.8\n"
-
-#. type: Title ##
-#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/start/prerequisites.md
-#, no-wrap
-msgid "Docker"
-msgstr "Docker"
 
 #. type: Title #
 #: ../src/guide/start/prerequisites.md
@@ -87,6 +81,12 @@ msgstr "HTTP"
 #: ../src/guide/start/prerequisites.md
 msgid "Since Yii is a web framework and the web largely uses HTTP, it's a good idea to [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP)."
 msgstr "Поскольку Yii — веб‑фреймворк, а веб во многом работает поверх HTTP, рекомендуется [изучить этот протокол подробнее](https://developer.mozilla.org/ru/docs/Web/HTTP)."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "Docker"
+msgstr "Docker"
 
 #. type: Plain text
 #: ../src/guide/start/prerequisites.md

@@ -46,7 +46,7 @@ return [
 ];
 ```
 
-## Implementing`\Yiisoft\Auth\IdentityInterface` <span id="implementing-identity"></span>
+## Implementing`\Yiisoft\Auth\IdentityInterface`
 
 The identity class must implement the `\Yiisoft\Auth\IdentityInterface` which has a single method:
 
@@ -75,7 +75,7 @@ final readonly class Identity implements IdentityInterface
 }
 ```
 
-## Implementing`\Yiisoft\Auth\IdentityRepositoryInterface` <span id="implementing-identity-repository"></span>
+## Implementing`\Yiisoft\Auth\IdentityRepositoryInterface`
 
 The identity repository class must implement the `\Yiisoft\Auth\IdentityRepositoryInterface` which has
 the following methods:
@@ -222,7 +222,7 @@ Group::create()
         )
 ```
 
-## Authentication Events <span id="auth-events"></span>
+## Authentication Events
 
 The user service raises a few events during the login and logout processes.
 

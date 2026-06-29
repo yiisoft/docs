@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-14 06:06+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-24 13:00+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/guide/index.md ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Application structure"
+msgstr "应用结构"
 
 #. type: Title #
 #: ../src/guide/start/workflow.md
@@ -35,8 +41,8 @@ msgstr "请注意，与框架本身不同，安装项目模板后，它就完全
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Functionality <span id=\"functionality\"></span>"
-msgstr "功能 <span id=\"functionality\"></span>"
+msgid "Functionality"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -68,10 +74,9 @@ msgstr "除了 Web 应用程序外，你还可以通过 `APP_ENV=dev ./yii` 或�
 
 #. type: Title ##
 #: ../src/guide/start/workflow.md
-#, fuzzy, no-wrap
-#| msgid "Testing <span id=\"testing\"></span>"
-msgid "Experimental debugger <span id=\"debugging\"></span>"
-msgstr "测试 <span id=\"testing\"></span>"
+#, no-wrap
+msgid "Experimental debugger"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -113,12 +118,6 @@ msgid ""
 "> [!CAUTION]\n"
 "> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.\n"
 msgstr ""
-
-#. type: Title ##
-#: ../src/guide/start/workflow.md
-#, no-wrap
-msgid "Application structure <span id=\"application-structure\"></span>"
-msgstr "应用结构 <span id=\"application-structure\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -206,8 +205,8 @@ msgstr "你可以从 [yiisoft/app 包文档](https://github.com/yiisoft/app/blob
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
-msgstr "请求生命周期 <span id=\"request-lifecycle\"></span>"
+msgid "Request Lifecycle"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md

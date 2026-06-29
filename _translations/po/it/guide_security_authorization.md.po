@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-04-06 22:12+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-12-24 10:12+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -37,7 +37,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "Checking for permission <span id=\"checking-for-permission\"></span>"
+msgid "Checking for permission"
 msgstr ""
 
 #. type: Plain text
@@ -94,7 +94,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "Role-based access control (RBAC) <span id=\"rbac\"></span>"
+msgid "Role-based access control (RBAC)"
 msgstr ""
 
 #. type: Plain text
@@ -119,9 +119,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "Basic concepts <span id=\"basic-concepts\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+msgid "Basic concepts"
+msgstr "Concetti chiave"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -140,9 +140,10 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "Configuring RBAC <span id=\"configuring-rbac\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "Configuring router"
+msgid "Configuring RBAC"
+msgstr "Configurazione del router"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -180,9 +181,10 @@ msgstr "[Stringhe](https://github.com/yiisoft/strings)"
 
 #. type: Title ####
 #: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php) <span id=\"configuring-rbac-php\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "[Strings](https://github.com/yiisoft/strings)"
+msgid "Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php)"
+msgstr "[Stringhe](https://github.com/yiisoft/strings)"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -244,9 +246,10 @@ msgstr ""
 
 #. type: Title ####
 #: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db) <span id=\"configuring-rbac-db\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "[Strings](https://github.com/yiisoft/strings)"
+msgid "Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db)"
+msgstr "[Stringhe](https://github.com/yiisoft/strings)"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -327,9 +330,9 @@ msgstr "Struttura applicativa"
 
 #. type: Title ###
 #: ../src/guide/security/authorization.md
-#, no-wrap
-msgid "Building authorization data <span id=\"generating-rbac-data\"></span>"
-msgstr ""
+#, fuzzy, no-wrap
+msgid "Building authorization data"
+msgstr "Generazione della documentazione API"
 
 #. type: Plain text
 #: ../src/guide/security/authorization.md
@@ -649,7 +652,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "Using rules <span id=\"using-rules\"></span>"
+msgid "Using rules"
 msgstr ""
 
 #. type: Plain text
@@ -721,7 +724,7 @@ msgstr ""
 #. type: Title ###
 #: ../src/guide/security/authorization.md
 #, no-wrap
-msgid "Access check <span id=\"access-check\"></span>"
+msgid "Access check"
 msgstr ""
 
 #. type: Plain text

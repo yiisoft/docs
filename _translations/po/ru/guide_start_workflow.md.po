@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-14 06:06+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2026-01-30 23:32+0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,6 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.8\n"
+
+#. type: Title ##
+#: ../src/guide/index.md ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Application structure"
+msgstr "Структура приложения"
 
 #. type: Title #
 #: ../src/guide/start/workflow.md
@@ -37,8 +43,8 @@ msgstr "Обратите внимание, что в отличие от сам�
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Functionality <span id=\"functionality\"></span>"
-msgstr "Функциональность <span id=\"functionality\"></span>"
+msgid "Functionality"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -71,10 +77,9 @@ msgstr "Помимо веб-приложения, вы можете получи
 
 #. type: Title ##
 #: ../src/guide/start/workflow.md
-#, fuzzy, no-wrap
-#| msgid "Resolving aliases <span id=\"resolving-aliases\"></span>"
-msgid "Experimental debugger <span id=\"debugging\"></span>"
-msgstr "Разрешение псевдонимов <span id=\"resolving-aliases\"></span>"
+#, no-wrap
+msgid "Experimental debugger"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -116,12 +121,6 @@ msgid ""
 "> [!CAUTION]\n"
 "> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.\n"
 msgstr ""
-
-#. type: Title ##
-#: ../src/guide/start/workflow.md
-#, no-wrap
-msgid "Application structure <span id=\"application-structure\"></span>"
-msgstr "Структура приложения <span id=\"application-structure\"></span>"
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md
@@ -209,8 +208,8 @@ msgstr "Дополнительную информацию о шаблоне пр
 #. type: Title ##
 #: ../src/guide/start/workflow.md
 #, no-wrap
-msgid "Request Lifecycle <span id=\"request-lifecycle\"></span>"
-msgstr "Жизненный цикл запроса <span id=\"request-lifecycle\"></span>"
+msgid "Request Lifecycle"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/workflow.md

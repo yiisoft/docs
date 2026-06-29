@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-29 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgid ""
 "Cross-Site Request Forgery (CSRF) protection is a security mechanism that "
 "prevents malicious websites from making unauthorized requests on behalf of "
 "authenticated users. Yii3 includes built-in CSRF protection through the "
-"`Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
+"`Yiisoft\\Yii\\Web\\Middleware\\CsrfTokenMiddleware` middleware."
 msgstr ""
 
 #. type: Plain text
@@ -157,7 +157,7 @@ msgstr ""
 #: ../src/cookbook/disabling-csrf-protection.md
 msgid ""
 "Now, if you need to leave CSRF on for specific routes or route groups, you "
-"can do so by adding the `CsrfMiddleware` middleware to the router "
+"can do so by adding the `CsrfTokenMiddleware` middleware to the router "
 "configuration in `config/common/routes.php`. For a group that would be the "
 "following:"
 msgstr ""
@@ -296,7 +296,6 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
-#: ../src/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Best practices"
 msgstr ""

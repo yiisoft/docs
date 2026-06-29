@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-03-01 17:44+0000\n"
+"POT-Creation-Date: 2026-06-05 10:18+0000\n"
 "PO-Revision-Date: 2026-04-24 20:58+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -49,3 +49,15 @@ msgstr "**[Демо дневника](https://github.com/yiisoft/demo-diary) —
 #: ../src/guide/start/demo-apps.md
 msgid "A diary application built using the vertical slices architecture pattern.  In this approach, each feature is implemented end-to-end rather than being split across horizontal layers, making it easier to add or modify features independently."
 msgstr "Приложение дневника, созданное с использованием архитектуры вертикальных срезов. При таком подходе каждая функциональность реализуется комплексно, а не разбивается на горизонтальные слои, что упрощает независимое добавление или изменение."
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+#, fuzzy, no-wrap
+#| msgid "**[Demo Diary](https://github.com/yiisoft/demo-diary) — Vertical slices architecture**\n"
+msgid "**[Demo Summarizer](https://github.com/yiisoft/demo-summarizer) — Large language model (LLM) document summarizer**\n"
+msgstr "**[Демо дневника](https://github.com/yiisoft/demo-diary) — Архитектура вертикальных срезов (Vertical slices architecture)**\n"
+
+#. type: Plain text
+#: ../src/guide/start/demo-apps.md
+msgid "A runnable Yii3 demo for uploading documents, extracting readable Markdown, summarizing content, and tracking processing progress."
+msgstr ""

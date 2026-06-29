@@ -5,6 +5,7 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 ## Introduction
 
 - [About Yii](intro/what-is-yii.md)
+- [Upgrading from version 1.1](intro/upgrade-from-v1.md)
 - [Upgrading from version 2.0](intro/upgrade-from-v2.md)
 
 ## Getting started
@@ -33,11 +34,16 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Application structure overview](structure/overview.md)
 - [Entry scripts](structure/entry-script.md)
 - [Application](structure/application.md)
+- [Modules](structure/module.md)
 - [Actions](structure/action.md)
 - [Middleware](structure/middleware.md)
 - [Domain](structure/domain.md)
 - [Service components](structure/service.md)
-- [Packages](structure/package.md)
+
+## Packages
+
+- [Using packages](structure/package.md)
+- [Designing packages](structure/designing-packages.md)
 
 ## Handling requests
 
@@ -63,9 +69,9 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 - [Caching overview](caching/overview.md)
 - [Data caching](caching/data.md)
-- [Fragment caching](caching/fragment.md) TODO
-- [Page caching](caching/page.md) TODO
-- [HTTP caching](caching/http.md) TODO
+- Fragment caching TODO
+- Page caching TODO
+- HTTP caching TODO
 
 ## Working with databases
 
@@ -84,29 +90,29 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 ## Getting data from users
 
-- [Creating forms](input/forms.md) TODO
+- Creating forms TODO
 - [Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-- [Uploading files](input/file-upload.md) TODO
-- [Collecting tabular input](input/tabular-input.md) TODO
+- Uploading files TODO
+- Collecting tabular input TODO
 
 ## Displaying data
 
-- [Data formatting](output/formatting.md) TODO
-- [Pagination](output/pagination.md) TODO
-- [Sorting](output/sorting.md) TODO
-- [Data providers](output/data-providers.md) TODO
-- [Data widgets](output/data-widgets.md) TODO
+- Data formatting TODO
+- Pagination TODO
+- Sorting TODO
+- Data providers TODO
+- Data widgets TODO
 
 ## REST APIs
 
-- [Quick start](rest/quick-start.md) TODO
-- [Resources](rest/resources.md) TODO
-- [Controllers](rest/controllers.md) TODO
-- [Routing](rest/routing.md) TODO
-- [Authentication](rest/authentication.md) TODO
-- [Rate limiting](rest/rate-limiting.md) TODO
-- [Versioning](rest/versioning.md) TODO
-- [Error handling](rest/error-handling.md) TODO
+- [Quick start](rest/quick-start.md)
+- Resources TODO
+- Controllers TODO
+- Routing TODO
+- Authentication TODO
+- Rate limiting TODO
+- Versioning TODO
+- Error handling TODO
 
 ## Development tools
 

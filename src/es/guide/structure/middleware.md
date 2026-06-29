@@ -103,7 +103,7 @@ return [
                             ErrorCatcher::class,
                             BasicAuthentication::class,
                             SessionMiddleware::class,
-                            CsrfMiddleware::class,
+                            CsrfTokenMiddleware::class,
                             Router::class,
                         ]
                     );

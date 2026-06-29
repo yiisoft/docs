@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-05 21:57+0000\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
 "PO-Revision-Date: 2025-09-05 12:44+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -19,6 +19,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/configuration.md ../src/guide/concept/events.md
+#: ../src/guide/structure/designing-packages.md
 #: ../src/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
@@ -57,9 +58,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event classes <span id=\"event-classes\"></span>"
-msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+#| msgid "Events"
+msgid "Event classes"
+msgstr "Eventos"
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -97,10 +98,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event listeners <span id=\"event-listeners\"></span>"
-msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -163,10 +163,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Attaching event handlers <span id=\"attaching-event-handlers\"></span>"
-msgid "Configuring event listeners <span id=\"configuring-event-listeners\"></span>"
-msgstr "Acoplar Gestores de Eventos <span id=\"attaching-event-handlers\"></span>"
+#, no-wrap
+msgid "Configuring event listeners"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -225,10 +224,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Raising events <span id=\"raising-events\"></span>"
-msgid "Dispatching events <span id=\"dispatching-events\"></span>"
-msgstr "Lanzamiento de Eventos <span id=\"raising-events\"></span>"
+#, no-wrap
+msgid "Dispatching events"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -300,10 +298,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event listener order <span id=\"event-listener-order\"></span>"
-msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event listener order"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -317,10 +314,9 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/concept/events.md
-#, fuzzy, no-wrap
-#| msgid "Event Handlers <span id=\"event-handlers\"></span>"
-msgid "Event hierarchy <span id=\"event-hierarchy\"></span>"
-msgstr "Gestores de Eventos <span id=\"event-handlers\"></span>"
+#, no-wrap
+msgid "Event hierarchy"
+msgstr ""
 
 #. type: Plain text
 #: ../src/guide/concept/events.md
@@ -382,7 +378,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/guide/concept/events.md
 #, no-wrap
-msgid "Manual listener provider setup <span id=\"manual-listener-provider-setup\"></span>"
+msgid "Manual listener provider setup"
 msgstr ""
 
 #. type: Plain text

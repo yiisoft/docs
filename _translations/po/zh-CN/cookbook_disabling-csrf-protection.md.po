@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-29 17:10+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -37,7 +37,9 @@ msgstr "什么是 CSRF 保护？"
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid "Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
+#, fuzzy
+#| msgid "Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware."
+msgid "Cross-Site Request Forgery (CSRF) protection is a security mechanism that prevents malicious websites from making unauthorized requests on behalf of authenticated users. Yii3 includes built-in CSRF protection through the `Yiisoft\\Yii\\Web\\Middleware\\CsrfTokenMiddleware` middleware."
 msgstr "跨站请求伪造（CSRF）保护是一种安全机制，可防止恶意网站代表已认证用户发出未经授权的请求。Yii3 通过 `Yiisoft\\Yii\\Web\\Middleware\\Csrf` 中间件提供内置的 CSRF 保护。"
 
 #. type: Plain text
@@ -131,7 +133,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/disabling-csrf-protection.md
-msgid "Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:"
+#, fuzzy
+#| msgid "Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfMiddleware` middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:"
+msgid "Now, if you need to leave CSRF on for specific routes or route groups, you can do so by adding the `CsrfTokenMiddleware` middleware to the router configuration in `config/common/routes.php`. For a group that would be the following:"
 msgstr "现在，如果你需要为特定路由或路由组保留 CSRF 保护，可以通过在 `config/common/routes.php` 的路由器配置中添加 `CsrfMiddleware` 中间件来实现。对于路由组，配置如下："
 
 #. type: Fenced code block (php)
@@ -264,7 +268,6 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/cookbook/disabling-csrf-protection.md
-#: ../src/cookbook/making-http-requests.md
 #, no-wrap
 msgid "Best practices"
 msgstr "最佳实践"
