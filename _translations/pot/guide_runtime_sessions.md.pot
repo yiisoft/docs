@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"POT-Creation-Date: 2026-06-29 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Sessions"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "Sessions persist data between requests without passing them to the client "
 "and back.  Yii has [a session package](https://github.com/yiisoft/session) "
@@ -31,24 +31,24 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "To add it to your application, use composer:"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "composer require yiisoft/session\n"
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Configuring middleware"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "To keep a session between requests, you need to add `SessionMiddleware` to "
 "your route group or application middlewares.  You should prefer a route "
@@ -58,14 +58,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "To add a session for a certain group of routes, edit `config/routes.php` "
 "like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "<?php\n"
@@ -85,14 +85,14 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "To add a session to the whole application, edit `config/application.php` "
 "like the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "return [\n"
@@ -103,7 +103,7 @@ msgid ""
 "                    ->withMiddlewares(\n"
 "                        [\n"
 "                            Router::class,\n"
-"                            CsrfMiddleware::class,\n"
+"                            CsrfTokenMiddleware::class,\n"
 "                            SessionMiddleware::class, // <-- add this\n"
 "                            ErrorCatcher::class,\n"
 "                        ]\n"
@@ -115,13 +115,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Opening and closing session"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -137,7 +137,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "> [!NOTE]\n"
@@ -146,12 +146,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "There are two more ways to close a session:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -165,18 +165,18 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Working with session data"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "Usually you will use the following methods to work with session data:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "public function actionProfile(\\Yiisoft\\Session\\SessionInterface $session)\n"
@@ -207,13 +207,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Flash messages"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "In case you need some data to remain in session until read, such as in case "
 "of displaying a message on the next page, \"flash\" messages are what you "
@@ -223,12 +223,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "`FlashInteface` usage is the following:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "/** @var Yiisoft\\Session\\Flash\\FlashInterface $flash */\n"
@@ -244,20 +244,20 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid "Custom session storage"
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid ""
 "When using `Yiisoft\\Session\\Session`, you can use your own storage "
 "implementation:"
 msgstr ""
 
 #. type: Fenced code block (php)
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 #, no-wrap
 msgid ""
 "$handler = new MySessionHandler();\n"
@@ -265,6 +265,6 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/runtime/sessions.md
+#: ../src/guide/runtime/sessions.md
 msgid "Custom storage must implement `\\SessionHandlerInterface`."
 msgstr ""

@@ -162,8 +162,13 @@ To avoid CSRF, you should always:
    more details.
 2. Keep Yii CSRF protection enabled.
 
-Yii has CSRF protection as `Yiisoft\Yii\Web\Middleware\Csrf` middleware.
-Make sure it's in your application middleware stack.
+Yii has CSRF protection via `Yiisoft\Csrf\CsrfTokenMiddleware` from the
+[`yiisoft/csrf`](https://github.com/yiisoft/csrf) package.  Make sure it's
+in your application middleware stack. For AJAX/SPA backends that use
+cookie-based authentication, the same package provides
+`Yiisoft\Csrf\CsrfHeaderMiddleware` — an alternative approach that relies on
+custom request headers and the CORS preflight mechanism instead of
+token-in-form.
 
 Further reading on the topic:
 

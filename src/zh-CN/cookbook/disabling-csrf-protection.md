@@ -2,8 +2,10 @@
 
 ## 什么是 CSRF 保护？
 
-跨站请求伪造（CSRF）保护是一种安全机制，可防止恶意网站代表已认证用户发出未经授权的请求。Yii3 通过
-`Yiisoft\Yii\Web\Middleware\Csrf` 中间件提供内置的 CSRF 保护。
+Cross-Site Request Forgery (CSRF) protection is a security mechanism that
+prevents malicious websites from making unauthorized requests on behalf of
+authenticated users. Yii3 includes built-in CSRF protection through the
+`Yiisoft\Yii\Web\Middleware\CsrfTokenMiddleware` middleware.
 
 要全面了解 CSRF
 攻击和保护机制，请参阅主指南中的[安全最佳实践](../guide/security/best-practices.md#avoiding-csrf)部分。
@@ -41,8 +43,10 @@ return [
                         CsrfTokenMiddleware::class, // <- Remove this line                        
 ```
 
-现在，如果你需要为特定路由或路由组保留 CSRF 保护，可以通过在 `config/common/routes.php` 的路由器配置中添加
-`CsrfMiddleware` 中间件来实现。对于路由组，配置如下：
+Now, if you need to leave CSRF on for specific routes or route groups, you
+can do so by adding the `CsrfTokenMiddleware` middleware to the router
+configuration in `config/common/routes.php`. For a group that would be the
+following:
 
 ```php
 return [

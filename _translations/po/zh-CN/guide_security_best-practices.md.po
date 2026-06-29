@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-06-29 17:10+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,8 +17,8 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
-#: ../src/guide/structure/domain.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
 #: ../src/guide/tutorial/console-applications.md
 #: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
 #: ../src/internals/008-interfaces.md
@@ -328,8 +328,8 @@ msgstr "保持 Yii CSRF 保护启用。"
 
 #. type: Plain text
 #: ../src/guide/security/best-practices.md
-msgid "Yii has CSRF protection as `Yiisoft\\Yii\\Web\\Middleware\\Csrf` middleware.  Make sure it's in your application middleware stack."
-msgstr "Yii 将 CSRF 保护作为 `Yiisoft\\Yii\\Web\\Middleware\\Csrf` 中间件。确保它在您的应用程序中间件堆栈中。"
+msgid "Yii has CSRF protection via `Yiisoft\\Csrf\\CsrfTokenMiddleware` from the [`yiisoft/csrf`](https://github.com/yiisoft/csrf) package.  Make sure it's in your application middleware stack. For AJAX/SPA backends that use cookie-based authentication, the same package provides `Yiisoft\\Csrf\\CsrfHeaderMiddleware` — an alternative approach that relies on custom request headers and the CORS preflight mechanism instead of token-in-form."
+msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
