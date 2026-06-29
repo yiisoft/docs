@@ -1,6 +1,7 @@
 # Working with forms
 
-This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message and a YAML value via form.
+This section continues to improve on "Saying Hello." Instead of using URL, you will now ask a user for a message and
+an entity ID via form.
 
 Through this tutorial, you will learn how to:
 
@@ -35,12 +36,13 @@ declare(strict_types=1);
 
 namespace App\Web\Echo;
 
-use Exception;
 use Yiisoft\FormModel\FormModel;
 use Yiisoft\Validator\Label;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\Callback;
 use Yiisoft\Validator\Rule\Length;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\Rule\Uuid;
 
 final class Form extends FormModel
 {
@@ -48,74 +50,6 @@ final class Form extends FormModel
     #[Length(min: 2)]
     public string $message = '';
 
-    #[Label('YAML content')]
-    #[Callback(method: 'validateYaml')]
-    public string $yaml = '';
-
-    private function validateYaml(mixed $value): Result
-    {
-        if (!is_string($value)) {
-            return (new Result())->addError('The value must be a string.');
-        }
-
-        $notYamlMessage = 'This value is not valid YAML.';
-
-        try {
-            $data = yaml_parse($value);
-        } catch (Exception) {
-            return (new Result())->addError($notYamlMessage);
-        }
-
-        if ($data === false) {
-            return (new Result())->addError($notYamlMessage);
-        }
-
-        return new Result();
-    }
-}
-```
-
-In the above example, the `Form` has a `$message` property validated with `Length` and a `$yaml` property validated
-with the `Callback` rule using `validateYaml()`.
-You can combine `Callback` with other attributes such as `Required`, `Length`, or `Regex` on the same property.
-See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
-for full examples and available method signatures.
-
-## Custom validation <span id="custom-validation"></span>
-
-Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. For example,
-to validate a UUID string, use `Uuid`:
-
-```php
-use Yiisoft\FormModel\FormModel;
-use Yiisoft\Validator\Rule\Uuid;
-
-final class Form extends FormModel
-{
-    #[Uuid]
-    public string $id = '';
-}
-```
-
-When a field needs application-specific validation, use `Callback`. This is useful for one-off checks or for delegating
-to a domain/library method. With PHP attributes, use the `method` option because PHP attributes can't contain closures:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Web\Echo;
-
-use Yiisoft\FormModel\FormModel;
-use Yiisoft\Validator\Label;
-use Yiisoft\Validator\Result;
-use Yiisoft\Validator\Rule\Callback;
-use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\Rule\Uuid;
-
-final class Form extends FormModel
-{
     #[Label('Entity ID')]
     #[Required]
     #[Uuid(skipOnError: true)]
@@ -139,9 +73,16 @@ final class Form extends FormModel
 }
 ```
 
+In the above example, the `Form` has a `$message` property validated with `Length` and an `$id` property validated
+with `Required`, `Uuid`, and the `Callback` rule using `validateUuidV7()`.
+The `Uuid` rule checks the general UUID format first, while `Callback` applies the application-specific UUID version
+requirement. With PHP attributes, use the `method` option because PHP attributes can't contain closures.
+
 The callback method returns a `Result`: return an empty result when the value is valid or add an error when it isn't.
 The method body can call any validation code your application already uses, such as
 `App\Support\Uuid::isValid($value, 'v7')`.
+See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
+for full examples and available method signatures.
 
 For validation logic reused in several forms, create a custom Yii Validator rule and handler instead of copying callback
 methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
@@ -240,13 +181,13 @@ $htmlForm = Html::form()
 
 <?= $htmlForm->open() ?>
     <?= Field::text($form, 'message')->required() ?>
-    <?= Field::textarea($form, 'yaml')->required() ?>
+    <?= Field::text($form, 'id')->required() ?>
     <?= Html::submitButton('Say') ?>
 <?= $htmlForm->close() ?>
 
 <?php if ($form->isValid()): ?>
     Echo said: <?= Html::encode($form->message) ?>
-    YAML: <?= Html::encode($form->yaml) ?>
+    Entity ID: <?= Html::encode($form->id) ?>
 <?php endif ?>
 ```
 
@@ -268,11 +209,11 @@ The template renders the CSRF token value as a hidden input to ensure that the r
 the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in
 [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-You use `Field::text()` and `Field::textarea()` to output "message" and "yaml" fields, so it takes care about filling the value, escaping it,
+You use `Field::text()` to output "message" and "id" fields, so it takes care about filling the value, escaping it,
 rendering field label and validation errors.
 
 Now, in case you submit an empty message, you will get a validation error: "The message to be echoed must contain
-at least 2 characters." If `yaml` value is not valid YAML, you will also get a validation error.
+at least 2 characters." If `id` value is not a UUID version 7, you will also get a validation error.
 
 ## Trying it Out <span id="trying-it-out"></span>
 
@@ -282,9 +223,9 @@ To see how it works, use your browser to access the following URL:
 http://localhost:8080/say
 ```
 
-You will see a page with a text field and a textarea with labels that indicate what data to enter.
+You will see a page with text fields and labels that indicate what data to enter.
 Also, the form has a "submit" button labeled "Say". If you click the "submit" button without entering anything, you will see
-that fields are required. If you enter a single character in message or invalid YAML, the form displays an error message next to
+that fields are required. If you enter a single character in message or an invalid entity ID, the form displays an error message next to
 the problematic input field.
 
 ![Form with a validation error](/images/guide/start/form-error.png)
