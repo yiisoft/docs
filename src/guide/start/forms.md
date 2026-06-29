@@ -81,6 +81,72 @@ You can combine `Callback` with other attributes such as `Required`, `Length`, o
 See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
 for full examples and available method signatures.
 
+## Custom validation <span id="custom-validation"></span>
+
+Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. For example,
+to validate a UUID string, use `Uuid`:
+
+```php
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Rule\Uuid;
+
+final class Form extends FormModel
+{
+    #[Uuid]
+    public string $id = '';
+}
+```
+
+When a field needs application-specific validation, use `Callback`. This is useful for one-off checks or for delegating
+to a domain/library method. With PHP attributes, use the `method` option because PHP attributes can't contain closures:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Echo;
+
+use Yiisoft\FormModel\FormModel;
+use Yiisoft\Validator\Label;
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Required;
+use Yiisoft\Validator\Rule\Uuid;
+
+final class Form extends FormModel
+{
+    #[Label('Entity ID')]
+    #[Required]
+    #[Uuid(skipOnError: true)]
+    #[Callback(method: 'validateUuidV7', skipOnError: true)]
+    public string $id = '';
+
+    private function validateUuidV7(mixed $value): Result
+    {
+        $isUuidV7 = is_string($value)
+            && preg_match(
+                '/^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i',
+                $value,
+            ) === 1;
+
+        if (!$isUuidV7) {
+            return (new Result())->addError('Entity ID must be a UUID version 7.');
+        }
+
+        return new Result();
+    }
+}
+```
+
+The callback method returns a `Result`: return an empty result when the value is valid or add an error when it isn't.
+The method body can call any validation code your application already uses, such as
+`App\Support\Uuid::isValid($value, 'v7')`.
+
+For validation logic reused in several forms, create a custom Yii Validator rule and handler instead of copying callback
+methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+for the rule/handler structure.
+
 ## Using the form <span id="using-form"></span> 
 
 Now that you have a form, use it in your action from "[Saying Hello](hello.md)".
