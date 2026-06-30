@@ -53,6 +53,40 @@ final class Form extends FormModel
 `$message`, длина которого должна быть не менее двух символов. Также для
 свойства задана пользовательская метка.
 
+> Note: Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. If a field
+> also needs application-specific validation, use `Callback` for that domain logic. With PHP attributes, use the `method`
+> option because PHP attributes can't contain closures. For example, validate UUID syntax with `Uuid`, then add
+> `#[Callback(method: 'validateUuidV7', skipOnError: true)]` only when your domain specifically requires UUID version 7.
+
+```php
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\Callback;
+use Yiisoft\Validator\Rule\Uuid;
+
+#[Uuid(skipOnError: true)]
+#[Callback(method: 'validateUuidV7', skipOnError: true)]
+public string $id = '';
+
+private function validateUuidV7(mixed $value): Result
+{
+    return \App\Support\Uuid::isVersion7($value)
+        ? new Result()
+        : (new Result())->addError('ID must be a UUID version 7.');
+}
+```
+
+The callback method returns a `Result`: return an empty result when the
+value is valid or add an error when it isn't.  The method body can call any
+validation code your application already uses, such as
+`App\Support\Uuid::isValid($value, 'v7')`.  See [Callback rule
+details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
+for full examples and available method signatures.
+
+For validation logic reused in several forms, create a custom Yii Validator
+rule and handler instead of copying callback methods. See the [custom rule
+guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+for the rule/handler structure.
+
 ## Custom validation
 
 Validation attributes are Yii Validator rules. For common checks, first look
