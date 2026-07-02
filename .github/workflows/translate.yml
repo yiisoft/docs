@@ -11,14 +11,22 @@ on:
       - 'src/**'
 
 permissions:
-  contents: write
+  contents: read # Required to check out repository contents by default.
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   update-docs:
     name: Update docs
+    permissions:
+      contents: write # Required to push generated translation updates.
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           token: ${{ secrets.YIISOFT_GITHUB_TOKEN || github.token }}
           ref: ${{ github.head_ref }}
@@ -29,7 +37,7 @@ jobs:
         run: _translations/prepare-config.sh
 
       - name: Use po4a
-        uses: vjik/docker-run@623c9adf6ee99fc8f9fa4e3b0b6b0c25859b69ee
+        uses: vjik/docker-run@623c9adf6ee99fc8f9fa4e3b0b6b0c25859b69ee # v1
         with:
           image: ghcr.io/yiisoft-contrib/po4a:0.74
           volumes: ${{ github.workspace }}:/src
@@ -42,7 +50,18 @@ jobs:
         run: git config --global credential.helper '!f() { echo username=x-access-token; echo password=$GH_TOKEN; }; f'
 
       - name: Commit changed files
-        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403
-        with:
-          commit_message: Update translation
-          file_pattern: '_translations src'
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git add _translations src
+
+          if git diff --cached --quiet; then
+            echo "No translation changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update translation"
+          git push

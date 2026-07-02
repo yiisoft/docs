@@ -7,18 +7,23 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: read # Required to check out repository contents.
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
+    name: Build documentation
     permissions:
-      checks: write
-      contents: read
+      checks: write # Required by vale-action to publish check annotations.
+      contents: read # Required to check out repository contents.
 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           persist-credentials: false
 
@@ -29,7 +34,7 @@ jobs:
           unzip Microsoft.zip -d .github/styles
 
       - name: Check
-        uses: errata-ai/vale-action@85f9f7f2c5f449ac0ae5b66662961bae3f77ca6a
+        uses: errata-ai/vale-action@85f9f7f2c5f449ac0ae5b66662961bae3f77ca6a # tag = reviewdog
         with:
           reporter: github-check
           fail_on_error: false
@@ -39,10 +44,11 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   links:
+    name: Check links
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -50,13 +56,18 @@ jobs:
       - name: Find files to check
         id: links
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            git diff --name-status --diff-filter=ACMRTD "${{ github.event.pull_request.base.sha }}...HEAD" > changed-files.txt
-          elif [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
-            git diff-tree --root --no-commit-id --name-status -r "${{ github.sha }}" > changed-files.txt
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            git diff --name-status --diff-filter=ACMRTD "$PR_BASE_SHA...HEAD" > changed-files.txt
+          elif [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            git diff-tree --root --no-commit-id --name-status -r "$CURRENT_SHA" > changed-files.txt
           else
-            git diff --name-status --diff-filter=ACMRTD "${{ github.event.before }}..${{ github.sha }}" > changed-files.txt
+            git diff --name-status --diff-filter=ACMRTD "$BEFORE_SHA..$CURRENT_SHA" > changed-files.txt
           fi
 
           check_all=false
@@ -88,7 +99,7 @@ jobs:
 
       - name: Setup Node.js
         if: steps.links.outputs.count != '0'
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
