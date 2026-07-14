@@ -11,14 +11,3 @@ updates:
         patterns: [ "*" ]
     ignore:
       - dependency-name: "yiisoft/*"
-
-  - package-ecosystem: "composer"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    cooldown:
-      default-days: 7
-    groups:
-      composer-dev-dependencies:
-        dependency-type: "development"
-    versioning-strategy: "widen"
