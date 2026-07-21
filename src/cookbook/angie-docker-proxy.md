@@ -44,52 +44,22 @@ yii-angie-demo/
 |    ├── Dockerfile
 |    ├── entrypoint.sh
 |    └── templates
-|       └── angie.tmpl
+|       └──  angie.tmpl
 └── yii-app
-   ├── Dockerfile
-   └── public
-       └── index.php
+    ├── ...
+    ├── ...
+    └── 
 ```
 
-`yii-app/Dockerfile`:
+Create `yii-app` from the official Yii application template:
 
-```dockerfile
-FROM php:8.3-apache
-COPY public/ /var/www/html/
-EXPOSE 80
+```bash
+composer create-project yiisoft/app yii-app
 ```
 
-`yii-app/public/index.php`:
 
-```php
-<?php
-
-$appName = getenv('APP_NAME') ?: 'Yii demo';
-$virtualHost = getenv('VIRTUAL_HOST') ?: 'not set';
-$host = $_SERVER['HTTP_HOST'] ?? 'unknown';
-$forwardedFor = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? 'none';
-$scheme = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? 'http';
-
-header('Content-Type: text/html; charset=utf-8');
-
-?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title><?= htmlspecialchars($appName, ENT_QUOTES) ?></title>
-</head>
-<body>
-<main>
-    <h1><?= htmlspecialchars($appName, ENT_QUOTES) ?></h1>
-    <p>This is a demo Yii3 application with Angie Docker Proxy.</p>
-    <p><strong>Host:</strong> <?= htmlspecialchars($host, ENT_QUOTES) ?></p>
-    <p><strong>Forwarded protocol:</strong> <?= htmlspecialchars($scheme, ENT_QUOTES) ?></p>
-    <p><strong>Forwarded for:</strong> <?= htmlspecialchars($forwardedFor, ENT_QUOTES) ?></p>
-</main>
-</body>
-</html>
-```
+This article focuses on Angie Docker Proxy, so the internal Yii application configuration is not covered here. The
+application container uses its production Docker target and exposes HTTP on port `80`.
 
 #### Detailed description of Angie Docker Proxy
 
@@ -263,8 +233,7 @@ The following `docker-compose.yml` configuration uses Angie Docker Proxy:
 ```yaml
 services:
   angie-proxy:
-    build:
-      context: ./proxy
+    image: angiesoftware/proxy:latest
     environment:
       - ANGIE_ACME_EMAIL=admin@example.com
       - ANGIE_ACME_URL=https://acme-v02.api.letsencrypt.org/directory
@@ -470,3 +439,8 @@ Stop the services and remove the certificates:
 ```bash
 docker compose down -v
 ```
+
+## For more information
+
+- [Yii Application Template](https://github.com/yiisoft/app)
+- [Docker Compose documentation](
