@@ -1,6 +1,6 @@
 # Deploying Yii applications with Angie Docker Proxy
 
-Angie Docker Proxy is a small reverse proxy for Docker Compose projects. It runs in a separate container alongside the
+[Angie Docker Proxy ](https://hub.docker.com/r/angiesoftware/proxy)is a small reverse proxy for Docker Compose projects. It runs in a separate container alongside the
 applications, reads the Docker API through the Docker socket, discovers containers using the `VIRTUAL_HOST` and
 `VIRTUAL_PORT` environment variables, generates the Angie configuration, and automatically obtains TLS certificates
 using ACME.
