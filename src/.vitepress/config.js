@@ -241,6 +241,7 @@ export default {
                             text: 'Deployment',
                             items: [
                                 {text: 'Docker Swarm', link: '/cookbook/deployment/docker-swarm'},
+                                {text: 'Angie Docker Proxy', link: '/cookbook/deployment/angie-docker-proxy'},
                                 {text: 'Autoscaling', link: '/cookbook/deployment/autoscaling'},
                                 {text: 'Rolling Update Migrations', link: '/cookbook/deployment/rolling-update-migrations'}
                             ]
