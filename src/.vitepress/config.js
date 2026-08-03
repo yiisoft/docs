@@ -41,6 +41,7 @@ export default {
                 nav: [
                     {text: 'Guide', link: '/guide/'},
                     {text: 'Cookbook', link: '/cookbook/'},
+                    {text: 'Third-Party Integrations', link: '/third-party-integrations/'},
                     {text: 'Internals', link: '/internals/'},
                     {text: 'Site', link: 'https://www.yiiframework.com'}
                 ],
@@ -244,6 +245,14 @@ export default {
                                 {text: 'Angie Docker Proxy', link: '/cookbook/deployment/angie-docker-proxy'},
                                 {text: 'Autoscaling', link: '/cookbook/deployment/autoscaling'},
                                 {text: 'Rolling Update Migrations', link: '/cookbook/deployment/rolling-update-migrations'}
+                            ]
+                        }
+                    ],
+                    '/third-party-integrations/': [
+                        {
+                            text: 'Third-Party Integrations',
+                            items: [
+                                {text: 'Symfony Messenger integration guide', link: '/third-party-integrations/symfony-messenger-integration-guide'},
                             ]
                         }
                     ],
