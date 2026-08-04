@@ -208,7 +208,8 @@ export default {
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
                                 {text: 'Using a Custom Migration Template', link: '/cookbook/custom-migration-template'},
-                                {text: 'Using Yii in Third-Party Applications', link: '/cookbook/using-yii-in-third-party-apps'}
+                                {text: 'Using Yii in Third-Party Applications', link: '/cookbook/using-yii-in-third-party-apps'},
+                                {text: 'Third-Party Integrations', link: '/third-party-integrations/'}
                             ]
                         },
                         {
