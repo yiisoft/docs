@@ -86,10 +86,52 @@ final readonly class ServiceProvider implements ServiceProviderInterface
 }
 ```
 
-### 3. Configure the Symfony Messenger dependencies in the `config/common/di/application.php` file.
+### 3. Configure the Symfony Messenger.
 
 Example uses the [symfony/doctrine-messenger](https://packagist.org/packages/symfony/doctrine-messenger) package for transport:
 
+Add the Doctrine packages to the `composer.json`:
+```json
+{
+    // ...
+    "require": {
+        // ...
+        "doctrine/orm": "^3",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7"
+    },
+}
+```
+
+Install Doctrine:
+```shell
+composer install
+```
+
+Configure the Doctrine connection in the `config/common/params.php`:
+```php
+return [
+    // ...
+    'doctrine' => [
+        'paths' => [
+        ],
+        'isDevMode' => false,
+        'connection' => [
+            'driver' => 'pdo_mysql',
+            'user' => 'site1',
+            'password' => 'secret',
+            'dbname' => 'site3'
+        ]
+    ],
+];
+```
+
+Install the Symfony Doctrine Messenger package:
+```shell
+composer require symfony/doctrine-messenger
+```
+
+Configure the Doctrine and Symfony Messenger dependencies in the `config/common/di/application.php`:
 ```php
 use App\Messages\MyMessage;
 use App\Messages\MyMessageHandler;
@@ -277,7 +319,7 @@ return [
 Example:
 
 ```php
-use App\Messages\MyMessage
+use App\Messages\MyMessage;
 use MyMessageBus;
 use Psr\Http\Message\ResponseInterface;
 
