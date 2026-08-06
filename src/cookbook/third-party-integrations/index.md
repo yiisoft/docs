@@ -1,6 +1,6 @@
 # Third-Party Integrations
 
-Third-Party Integrations is a collection of community-contributed guides for Third-Party integrated packages.
+This is a collection of community-contributed guides for integrating third-party packages with Yii3.
 
 - The Yii community creates the guides.
 - Yii core team members curate and edit it.

@@ -41,7 +41,6 @@ export default {
                 nav: [
                     {text: 'Guide', link: '/guide/'},
                     {text: 'Cookbook', link: '/cookbook/'},
-                    {text: 'Third-Party Integrations', link: '/third-party-integrations/'},
                     {text: 'Internals', link: '/internals/'},
                     {text: 'Site', link: 'https://www.yiiframework.com'}
                 ],
@@ -209,7 +208,7 @@ export default {
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
                                 {text: 'Using a Custom Migration Template', link: '/cookbook/custom-migration-template'},
                                 {text: 'Using Yii in Third-Party Applications', link: '/cookbook/using-yii-in-third-party-apps'},
-                                {text: 'Third-Party Integrations', link: '/third-party-integrations/'}
+                                {text: 'Third-Party Integrations', link: '/cookbook/third-party-integrations/'}
                             ]
                         },
                         {
@@ -246,14 +245,6 @@ export default {
                                 {text: 'Angie Docker Proxy', link: '/cookbook/deployment/angie-docker-proxy'},
                                 {text: 'Autoscaling', link: '/cookbook/deployment/autoscaling'},
                                 {text: 'Rolling Update Migrations', link: '/cookbook/deployment/rolling-update-migrations'}
-                            ]
-                        }
-                    ],
-                    '/third-party-integrations/': [
-                        {
-                            text: 'Third-Party Integrations',
-                            items: [
-                                {text: 'Symfony Messenger integration guide', link: '/third-party-integrations/symfony-messenger-integration-guide'},
                             ]
                         }
                     ],
