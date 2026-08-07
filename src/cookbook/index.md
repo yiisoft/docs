@@ -19,6 +19,7 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Sentry integration](sentry-integration.md)
 - [Using a custom migration template](custom-migration-template.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
+- [Third-party integrations](third-party-integrations/index.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
 - [Configuring Xdebug](configuring-xdebug.md)
