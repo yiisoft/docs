@@ -107,7 +107,7 @@ Constants, properties and methods should be private by default.
 
 ### Composition over inheritance
 
-Prefer [composition to inheritance](guide/en/concept/di-container.md).
+Prefer [composition to inheritance](../guide/concept/di-container.md).
 
 ### Property, constant and method order
 
