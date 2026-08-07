@@ -1,6 +1,6 @@
 # Configuring web servers: Nginx
 
-To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
+To use [Nginx](https:/nginx.org/), install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).
 Use the following Nginx configuration, replacing `path/to/app/public` with the actual path for
 `app/public` and `mysite.test` with the actual hostname to serve.
 

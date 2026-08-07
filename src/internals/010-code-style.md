@@ -27,7 +27,7 @@ Method comment is necessary except it adds nothing to what method name and signa
 
 Class comment should describe the purpose of the class.
 
-[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
+See [PHPDoc](014-docs.md#phpdoc).
 
 ## Formatting
 
