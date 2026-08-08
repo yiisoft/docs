@@ -174,10 +174,87 @@ $answer = $request->getAttribute('answer');
 
 ### Capturing response to manipulate it
 
-You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc.
+You may want to capture the response to manipulate it after the action or next middleware has handled the request.
+This is useful for adding headers, applying security policy, or transforming a response body.
 
 ```php
 $response = $handler->handle($request);
-// extra handing
+// extra handling
 return $response;
 ```
+
+For example, a middleware can add security headers to every response it wraps:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Middleware;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+final readonly class SecurityHeadersMiddleware implements MiddlewareInterface
+{
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $response = $handler->handle($request);
+
+        return $response
+            ->withHeader('X-Frame-Options', 'DENY')
+            ->withHeader('X-Content-Type-Options', 'nosniff')
+            ->withHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    }
+}
+```
+
+Because PSR-7 responses are immutable, every `withHeader()` call returns a new response instance. Always return the
+last response value.
+
+If middleware changes the response body, create a new stream and remove headers that are no longer correct. The same
+principle applies to compression, minification, or other body transformations: the body bytes change, so a previously
+set `Content-Length`, `ETag`, or digest header may become stale.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Web\Middleware;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+final readonly class TextResponseTransformMiddleware implements MiddlewareInterface
+{
+    public function __construct(
+        private StreamFactoryInterface $streamFactory,
+    ) {
+    }
+
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $response = $handler->handle($request);
+
+        if (!str_starts_with($response->getHeaderLine('Content-Type'), 'text/plain')) {
+            return $response;
+        }
+
+        $body = (string) $response->getBody();
+        $stream = $this->streamFactory->createStream(strtoupper($body));
+
+        return $response
+            ->withBody($stream)
+            ->withoutHeader('Content-Length');
+    }
+}
+```
+
+For large responses, avoid reading the whole body into memory in application middleware. Prefer web server compression
+or a streaming implementation that works chunk by chunk.
