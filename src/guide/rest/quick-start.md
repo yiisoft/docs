@@ -165,6 +165,31 @@ For small endpoints, you can write JSON to a PSR-7 response manually as shown in
 For APIs, prefer [yiisoft/data-response](https://github.com/yiisoft/data-response), which formats response data and
 sets the `Content-Type` header.
 
+When using `DataResponseFactoryInterface`, add `ContentNegotiatorDataResponseMiddleware` to the application middleware
+stack. It selects a formatter for data responses from the request's `Accept` header, with JSON as a fallback:
+
+```php
+use Yiisoft\DataResponse\Formatter\JsonFormatter;
+use Yiisoft\DataResponse\Formatter\XmlFormatter;
+use Yiisoft\DataResponse\Middleware\ContentNegotiatorDataResponseMiddleware;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
+use Yiisoft\Request\Body\RequestBodyParser;
+use Yiisoft\Router\Middleware\Router;
+
+return [
+    static fn() => new ContentNegotiatorDataResponseMiddleware(
+        formatters: [
+            'application/xml' => new XmlFormatter(),
+            'application/json' => new JsonFormatter(),
+        ],
+        fallback: new JsonFormatter(),
+    ),
+    ErrorCatcher::class,
+    RequestBodyParser::class,
+    Router::class,
+];
+```
+
 The API application template keeps response formatting in `src/Api/Shared/ResponseFactory.php`:
 
 ```php
