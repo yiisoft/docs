@@ -203,6 +203,7 @@ export default {
                             items: [
                                 {text: 'Preface', link: '/cookbook/preface'},
                                 {text: 'Making HTTP Requests', link: '/cookbook/making-http-requests'},
+                                {text: 'Handling Webhooks', link: '/cookbook/handling-webhooks'},
                                 {text: 'Using htmx for Partial Page Reloads', link: '/cookbook/using-htmx-for-partial-reloads'},
                                 {text: 'Disabling CSRF Protection', link: '/cookbook/disabling-csrf-protection'},
                                 {text: 'Sentry Integration', link: '/cookbook/sentry-integration'},
