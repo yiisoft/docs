@@ -34,7 +34,7 @@ jobs:
           unzip Microsoft.zip -d .github/styles
 
       - name: Check
-        uses: errata-ai/vale-action@85f9f7f2c5f449ac0ae5b66662961bae3f77ca6a # tag = reviewdog
+        uses: errata-ai/vale-action@518a9136acc6e6668ce7c00d367051e0941e87ff # v3.0.0
         with:
           reporter: github-check
           fail_on_error: false
