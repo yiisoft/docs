@@ -35,7 +35,7 @@ signature already has.
 Class comment should describe the purpose of the class.
 
 [See
-PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc).
+PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc).
 
 ## Formatting
 
