@@ -116,7 +116,7 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, fuzzy
 #| msgid "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
-msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
+msgid "[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
 msgstr "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
 
 #. type: Title ##

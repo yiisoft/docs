@@ -119,8 +119,8 @@ msgstr "类注释应描述类的目的。"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
-msgstr "[查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)。"
+msgid "[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
+msgstr "[查看 PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)。"
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md

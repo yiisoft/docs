@@ -114,7 +114,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "[See PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)."
+msgid "[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
 msgstr ""
 
 #. type: Title ##
