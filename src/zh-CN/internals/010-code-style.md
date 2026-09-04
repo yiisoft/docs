@@ -29,7 +29,7 @@ top of it.
 
 类注释应描述类的目的。
 
-[查看 PHPDoc](https://github.com/yiisoft/docs/blob/master/014-docs.md#phpdoc)。
+[查看 PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)。
 
 ## 格式化
 
