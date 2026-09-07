@@ -93,7 +93,6 @@ $runner = new HttpApplicationRunner(
 $container = $runner->getContainer();
 $application = $container->get(Application::class);
 $errorCatcher = $container->get(ErrorCatcher::class);
-$stateResetter = $container->get(StateResetter::class);
 
 $serverRequestFactory = new SwooleServerRequestConverter(
     $container->get(ServerRequestFactoryInterface::class),
@@ -112,7 +111,7 @@ $server->on('start', static function (Server $server) use ($application) {
 $server->on('request', static function (
     Request  $request,
     Response $response
-) use ($serverRequestFactory, $application, $errorCatcher, $stateResetter) {
+) use ($serverRequestFactory, $application, $errorCatcher, $container) {
     try {
         $psr7Request = $serverRequestFactory->createFromSwoole($request);
         $psr7Response = $application->handle($psr7Request);
@@ -123,7 +122,7 @@ $server->on('request', static function (
         (new SwooleResponseConverter($response))->send($psr7Response);
     }
     $application->afterEmit($psr7Response);
-    $stateResetter->reset();
+    $container->get(StateResetter::class)->reset();
 });
 
 $server->on('shutdown', static function (Server $server) use ($application) {
