@@ -34,8 +34,7 @@ signature already has.
 
 Class comment should describe the purpose of the class.
 
-[See
-PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc).
+See [PHPDoc](014-docs.md#phpdoc).
 
 ## Formatting
 
@@ -118,7 +117,7 @@ Constants, properties and methods should be private by default.
 
 ### Composition over inheritance
 
-Prefer [composition to inheritance](guide/en/concept/di-container.md).
+Prefer [composition to inheritance](../guide/concept/di-container.md).
 
 ### Property, constant and method order
 

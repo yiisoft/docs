@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:23+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,6 +18,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/cookbook/making-http-requests.md
 #: ../src/cookbook/sentry-integration.md
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
@@ -106,11 +107,10 @@ msgstr "首先，我们需要配置服务器本身。创建 `/.rr.yaml` 并添�
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid ""
+"version: '3'\n"
+"\n"
 "server:\n"
 "  command: \"php worker.php\"\n"
-"  env:\n"
-"    YII_ENV: prod\n"
-"    YII_DEBUG: false\n"
 "\n"
 "rpc:\n"
 "  listen: tcp://127.0.0.1:6001\n"
@@ -270,13 +270,19 @@ msgid ""
 "\n"
 "declare(strict_types=1);\n"
 "\n"
-"use Yiisoft\\Yii\\Runner\\RoadRunner\\RoadRunnerApplicationRunner;\n"
+"use App\\Environment;\n"
+"use Yiisoft\\Yii\\Runner\\RoadRunner\\RoadRunnerHttpApplicationRunner;\n"
 "\n"
 "ini_set('display_errors', 'stderr');\n"
 "\n"
-"require_once __DIR__ . '/preload.php';\n"
+"require_once __DIR__ . '/src/bootstrap.php';\n"
 "\n"
-"(new RoadRunnerApplicationRunner(__DIR__, $_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();\n"
+"(new RoadRunnerHttpApplicationRunner(\n"
+"    rootPath: __DIR__, \n"
+"    debug: Environment::appDebug(),\n"
+"    checkEvents: Environment::appDebug(),\n"
+"    environment: Environment::appEnv()\n"
+"))->run();\n"
 msgstr ""
 
 #. type: Plain text

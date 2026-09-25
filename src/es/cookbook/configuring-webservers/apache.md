@@ -12,8 +12,9 @@ DocumentRoot "path/to/app/public"
     # use mod_rewrite for pretty URL support
     RewriteEngine on
     
-    # if $showScriptName is false in UrlManager, do not allow accessing URLs with script name
-    RewriteRule ^index.php/ - [L,R=404]
+    # Do not allow access to URLs with a script name
+    RewriteCond %{THE_REQUEST} index.php [NC]
+    RewriteRule . - [R=404,L]
     
     # If a directory or a file exists, use the request directly
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -35,8 +36,9 @@ following configuration instead of using `httpd.conf`:
 # use mod_rewrite for pretty URL support
 RewriteEngine on
 
-# if $showScriptName is false in UrlManager, do not allow accessing URLs with script name
-RewriteRule ^index.php/ - [L,R=404]
+# Do not allow access to URLs with a script name
+RewriteCond %{THE_REQUEST} index.php [NC]
+RewriteRule . - [R=404,L]
 
 # If a directory or a file exists, use the request directly
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-28 20:46+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/angie-docker-proxy.md
+#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
+#, no-wrap
+msgid "Project structure"
+msgstr ""
 
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
@@ -110,12 +117,6 @@ msgstr "Konfigurasi"
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "composer dump-autoload\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
-#, no-wrap
-msgid "Project structure"
 msgstr ""
 
 #. type: Fenced code block (text)
@@ -1255,6 +1256,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
+#: ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Console commands"
 msgstr ""

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 23:27+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,8 +129,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid ""
-"[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
+msgid "See [PHPDoc](014-docs.md#phpdoc)."
 msgstr ""
 
 #. type: Title ##
@@ -288,7 +287,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
+msgid "Prefer [composition to inheritance](../guide/concept/di-container.md)."
 msgstr ""
 
 #. type: Title ###

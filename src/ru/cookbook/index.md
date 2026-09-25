@@ -21,6 +21,7 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Sentry integration](sentry-integration.md)
 - [Using a custom migration template](custom-migration-template.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
+- [Third-party integrations](third-party-integrations/index.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
 - [Configuring Xdebug](configuring-xdebug.md)
@@ -28,6 +29,8 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Structuring code by use-case with vertical
   slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
+- [Deploying Yii applications with Angie Docker
+  Proxy](deployment/angie-docker-proxy.md)
 - [Configuring an application for autoscaling](deployment/autoscaling.md)
 - [Applying migrations during rolling
   updates](deployment/rolling-update-migrations.md)
