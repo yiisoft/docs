@@ -16,7 +16,7 @@
 3. Как использовать [представление (view)](../views/view.md), чтобы
    формировать содержимое ответа.
 
-## Creating a handler
+## Создание обработчика
 
 В рамках задания «Hello» вы создадите класс-обработчик, который читает
 параметр `message` из запроса и выводит это сообщение пользователю. Если
@@ -91,11 +91,11 @@ return [
 ];
 ```
 
-In the above, you map the `/say[/{message}]` pattern to
-`\App\Web\Echo\Action`.  For a request, the router creates an instance and
-calls the `__invoke()` method.  The `{message}` part of the pattern writes
-anything specified in this place to the `message` route argument.  `[]`
-marks this part of the pattern as optional.
+В примере выше вы связываете шаблон `/say[/{message}]` с
+`\App\Web\Echo\Action`. При обработке запроса роутер создаёт экземпляр и
+вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в
+этом месте, в параметр маршрута `message`. Квадратные скобки `[]` помечают
+эту часть шаблона как необязательную.
 
 Также вы задаёте этому маршруту имя `echo/say`, чтобы затем можно было
 генерировать URL, ведущие на него.
@@ -110,7 +110,7 @@ marks this part of the pattern as optional.
 Если не указывать параметр `message` в URL, страница покажет “The message
 is: Hello!”.
 
-## Creating a View Template
+## Создание шаблона представления
 
 Обычно задача сложнее, чем просто вывести «hello world» требует рендеринга
 более сложного HTML. В таких случаях удобно использовать шаблоны
@@ -177,7 +177,7 @@ final readonly class Action
 выглядит). В больших приложениях это очень помогает справляться со
 сложностью.
 
-## Summary
+## Краткое содержание
 
 В этом разделе вы познакомились с обработчиками и шаблонами — типичными
 частями веб‑приложения. Вы создали обработчик (класс), который отвечает за

@@ -23,7 +23,7 @@ msgstr ""
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Summary"
-msgstr ""
+msgstr "Краткое содержание"
 
 #. type: Title #
 #: ../src/guide/start/forms.md

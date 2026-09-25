@@ -584,7 +584,7 @@ docker pull git.example.com/username/myapp:latest
 docker -H ssh://docker-web pull git.example.com/username/myapp:latest
 ```
 
-## Summary
+## Краткое содержание
 
 You've successfully deployed a Yii application to Docker Swarm with: - A
 container registry (Forgejo or Gitea)  - Automatic HTTPS via Traefik -

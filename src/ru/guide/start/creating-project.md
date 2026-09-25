@@ -44,7 +44,8 @@ make composer update
 > Если хотите установить самую свежую dev-версию Yii, добавьте к команде `--stability=dev`.
 > Не используйте dev-версию Yii в продакшене: она может сломать работающее приложение.
 
-Go into the newly created directory, copy `.env.example` to `.env`, and run:
+Перейдите в созданную директорию, скопируйте `.env.example` в `.env` и
+выполните:
 
 ```sh
 ./yii serve --port=80
@@ -59,7 +60,7 @@ make up
 Откройте в браузере адрес `http://localhost/`.
 
 > [!NOTE]
-> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
-> in `docker/.env`.
+> Чтобы изменить порт для встроенного сервера, передайте порт через `--port` в `./yii serve`. При использовании Docker задайте `DEV_PORT` 
+> в файле `docker/.env`.
 
 ![Yii успешно установлен](/images/guide/start/app-installed.png)
