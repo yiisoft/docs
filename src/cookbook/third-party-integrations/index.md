@@ -10,3 +10,4 @@ Feel free to pull-request your own writings. Team members will review it, give f
 ---
 
 - [Symfony Messenger integration guide](symfony-messenger-integration-guide.md)
+- [Symfony Scheduler integration guide](symfony-scheduler-integration-guide.md)
