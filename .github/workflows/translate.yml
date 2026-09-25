@@ -45,12 +45,11 @@ jobs:
           command: po4a po4a.conf && po4a po4a.conf
 
       - name: Configure Git credentials
-        env:
-          GH_TOKEN: ${{ secrets.YIISOFT_GITHUB_TOKEN || github.token }}
         run: git config --global credential.helper '!f() { echo username=x-access-token; echo password=$GH_TOKEN; }; f'
 
       - name: Commit changed files
         env:
+          GH_TOKEN: ${{ secrets.YIISOFT_GITHUB_TOKEN || github.token }}
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
