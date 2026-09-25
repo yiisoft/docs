@@ -18,12 +18,15 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 - [Sentry 集成](sentry-integration.md)
 - [Using a custom migration template](custom-migration-template.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
+- [Third-party integrations](third-party-integrations/index.md)
 - [Working on Windows](working-on-windows.md)
 - [Opening files directly in PhpStorm](opening-files-in-phpstorm.md)
 - [Configuring Xdebug](configuring-xdebug.md)
 - [配置 Web 服务器](configuring-webservers/general.md)
 - [使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)
 - [部署到 Docker Swarm](deployment/docker-swarm.md)
+- [Deploying Yii applications with Angie Docker
+  Proxy](deployment/angie-docker-proxy.md)
 - [Configuring an application for autoscaling](deployment/autoscaling.md)
 - [Applying migrations during rolling
   updates](deployment/rolling-update-migrations.md)

@@ -29,7 +29,7 @@ top of it.
 
 类注释应描述类的目的。
 
-[查看 PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)。
+See [PHPDoc](014-docs.md#phpdoc).
 
 ## 格式化
 
@@ -108,7 +108,7 @@ $object = $object->withName('test');
 
 ### 组合优于继承
 
-优先使用[组合而不是继承](guide/en/concept/di-container.md)。
+Prefer [composition to inheritance](../guide/concept/di-container.md).
 
 ### 属性、常量和方法顺序
 

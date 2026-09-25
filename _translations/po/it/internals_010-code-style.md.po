@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 23:27+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-12-27 10:28+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -114,10 +114,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-#, fuzzy
-#| msgid "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
-msgid "[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
-msgstr "[Yii DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)"
+msgid "See [PHPDoc](014-docs.md#phpdoc)."
+msgstr ""
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
@@ -268,7 +266,7 @@ msgstr ""
 #: ../src/internals/010-code-style.md
 #, fuzzy
 #| msgid "[Dependency injection container](concept/di-container.md)"
-msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
+msgid "Prefer [composition to inheritance](../guide/concept/di-container.md)."
 msgstr "[Contenitore d’iniezione delle dipendenze](concept/di-container.md)"
 
 #. type: Title ###

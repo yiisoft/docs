@@ -27,9 +27,5 @@
 </configuration>
 ```
 
-此外，以下 Microsoft 官方资源列表可能对在 IIS 上配置 PHP 有所帮助：
-
-1. [如何设置你的第一个 IIS
-   网站](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)
-2. [在 IIS 上配置 PHP
-   网站](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)
+Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be
+useful to configure PHP on IIS.

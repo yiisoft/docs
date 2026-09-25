@@ -1,0 +1,550 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"PO-Revision-Date: 2026-09-25 14:35+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr "Установка"
+
+#. type: Title #
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "Sentry integration"
+msgid "Symfony Messenger integration guide"
+msgstr "Интеграция с Sentry"
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "The [Symfony Messenger](https://symfony.com/doc/current/components/messenger.html) component helps applications send and receive messages to/from other applications or via message queues."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "composer require symfony/messenger\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Title ##
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid "How to use with Yii"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "Creating a project"
+msgid "1. Create a Message and Handler."
+msgstr "Создание проекта"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "final class MyService implements MyServiceInterface\n"
+#| "{\n"
+#| "    public function __construct(int $amount)\n"
+#| "    {\n"
+#| "    }\n"
+#| "\n"
+#| "    public function setDiscount(int $discount): void\n"
+#| "    {\n"
+#| "    \n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"namespace App\\Messages;\n"
+"\n"
+"final readonly class MyMessage\n"
+"{\n"
+"    public function __construct(public string $content)\n"
+"    {\n"
+"    }\n"
+"}\n"
+msgstr ""
+"class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "final class MyService implements MyServiceInterface\n"
+#| "{\n"
+#| "    public function __construct(int $amount)\n"
+#| "    {\n"
+#| "    }\n"
+#| "\n"
+#| "    public function setDiscount(int $discount): void\n"
+#| "    {\n"
+#| "    \n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"namespace App\\Messages;\n"
+"\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"\n"
+"final readonly class MyMessageHandler\n"
+"{\n"
+"    public function __construct(private LoggerInterface $logger)\n"
+"    {\n"
+"    }\n"
+"    public function __invoke(MyMessage $message): void\n"
+"    {\n"
+"        // ...\n"
+"       $this->logger->info(\"The message with the content '$message->content' has been received.\");\n"
+"    }\n"
+"}\n"
+msgstr ""
+"class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid "2. Implement the ServiceProviderInterface."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "This instance of the ServiceProviderInterface is used to configure certain Symfony Messenger commands."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid ""
+"namespace App\\Services;\n"
+"\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Symfony\\Contracts\\Service\\ServiceProviderInterface;\n"
+"\n"
+"final readonly class ServiceProvider implements ServiceProviderInterface\n"
+"{\n"
+"    /**\n"
+"     * @param ContainerInterface $container\n"
+"     * @param array<string, string> $serviceMap\n"
+"     */\n"
+"    public function __construct(\n"
+"        private ContainerInterface $container,\n"
+"        private array              $serviceMap)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @inheritDoc\n"
+"     */\n"
+"    public function get(string $id): mixed\n"
+"    {\n"
+"        return $this->container->get($id);\n"
+"    }\n"
+"\n"
+"    public function has(string $id): bool\n"
+"    {\n"
+"        return $this->container->has($id);\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @inheritDoc\n"
+"     */\n"
+"    public function getProvidedServices(): array\n"
+"    {\n"
+"        return $this->serviceMap;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "Confirming data integrity"
+msgid "3. Configure the Symfony Messenger."
+msgstr "Проверка целостности данных"
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "Example uses the [symfony/doctrine-messenger](https://packagist.org/packages/symfony/doctrine-messenger) package for transport:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "Add the Doctrine packages to the `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid ""
+"{\n"
+"    // ...\n"
+"    \"require\": {\n"
+"        // ...\n"
+"        \"doctrine/orm\": \"^3\",\n"
+"        \"doctrine/dbal\": \"^4\",\n"
+"        \"symfony/cache\": \"^7\"\n"
+"    },\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy
+msgid "Install Doctrine:"
+msgstr "Установка пакета"
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "composer install\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy
+#| msgid "Add the following to your php.ini:"
+msgid "Configure the Doctrine connection in the `config/common/params.php`:"
+msgstr "Добавьте в свой php.ini следующее:"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    // ...\n"
+"    'doctrine' => [\n"
+"        'paths' => [\n"
+"        ],\n"
+"        'isDevMode' => false,\n"
+"        'connection' => [\n"
+"            'driver' => 'pdo_mysql',\n"
+"            'user' => 'site1',\n"
+"            'password' => 'secret',\n"
+"            'dbname' => 'site3'\n"
+"        ]\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "Install the Symfony Doctrine Messenger package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "composer install yiisoft/security\n"
+msgid "composer require symfony/doctrine-messenger\n"
+msgstr "composer install yiisoft/security\n"
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "Configure the Doctrine and Symfony Messenger dependencies in the `config/common/di/application.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid ""
+"use App\\Messages\\MyMessage;\n"
+"use App\\Messages\\MyMessageHandler;\n"
+"use App\\Services\\ServiceProvider;\n"
+"use Doctrine\\DBAL\\DriverManager;\n"
+"use Doctrine\\ORM\\Configuration;\n"
+"use Doctrine\\ORM\\EntityManager;\n"
+"use Doctrine\\ORM\\EntityManagerInterface;\n"
+"use Doctrine\\ORM\\ORMSetup;\n"
+"use Doctrine\\ORM\\Proxy\\ProxyFactory;\n"
+"use Doctrine\\ORM\\Tools\\Console\\EntityManagerProvider;\n"
+"use Doctrine\\ORM\\Tools\\Console\\EntityManagerProvider\\SingleManagerProvider;\n"
+"use Psr\\Cache\\CacheItemPoolInterface;\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"use Symfony\\Component\\Cache\\Adapter\\FilesystemAdapter;\n"
+"use Symfony\\Component\\EventDispatcher\\EventDispatcher;\n"
+"use Symfony\\Component\\EventDispatcher\\EventDispatcherInterface;\n"
+"use Symfony\\Component\\Messenger\\Bridge\\Doctrine\\Transport\\Connection;\n"
+"use Symfony\\Component\\Messenger\\Bridge\\Doctrine\\Transport\\DoctrineTransport;\n"
+"use Symfony\\Component\\Messenger\\Command\\ConsumeMessagesCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\DebugCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRemoveCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRetryCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesShowCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\SetupTransportsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StatsCommand;\n"
+"use Symfony\\Component\\Messenger\\EventListener\\StopWorkerOnRestartSignalListener;\n"
+"use Symfony\\Component\\Messenger\\Handler\\HandlersLocator;\n"
+"use Symfony\\Component\\Messenger\\MessageBus;\n"
+"use Symfony\\Component\\Messenger\\Middleware\\HandleMessageMiddleware;\n"
+"use Symfony\\Component\\Messenger\\Middleware\\SendMessageMiddleware;\n"
+"use Symfony\\Component\\Messenger\\RoutableMessageBus;\n"
+"use Symfony\\Component\\Messenger\\Transport\\Sender\\SendersLocator;\n"
+"use Symfony\\Component\\Messenger\\Transport\\Serialization\\PhpSerializer;\n"
+"use Symfony\\Component\\Messenger\\Transport\\Serialization\\SerializerInterface;\n"
+"use Symfony\\Contracts\\Service\\ServiceProviderInterface;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"\n"
+"class_alias(MessageBus::class, 'MyMessageBus');\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    CacheItemPoolInterface::class => static function (ContainerInterface $container) {\n"
+"        return new FilesystemAdapter(directory: $container->get(Aliases::class)->get('@runtime'));\n"
+"    }, //One of the following adapters can be used instead: Psr16Adapter, RedisAdapter, MemcachedAdapter, DoctrineDbalAdapter, and so forth.\n"
+"\n"
+"    Configuration::class => static function (ContainerInterface $container) use ($params) {\n"
+"        $config = ORMSetup::createAttributeMetadataConfiguration( // on PHP >= 8.4, use ORMSetup::createAttributeMetadataConfig()\n"
+"            paths: $params['doctrine']['paths'],\n"
+"            isDevMode: $params['doctrine']['isDevMode'],\n"
+"            cache: $container->get(CacheItemPoolInterface::class));\n"
+"        $config->setAutoGenerateProxyClasses(ProxyFactory::AUTOGENERATE_FILE_NOT_EXISTS_OR_CHANGED);\n"
+"        return $config;\n"
+"    },\n"
+"\n"
+"    EntityManagerInterface::class => static function (ContainerInterface $container) use ($params) {\n"
+"        $configuration = $container->get(Configuration::class);\n"
+"        return new EntityManager(\n"
+"            DriverManager::getConnection(\n"
+"                $params['doctrine']['connection'],\n"
+"                $configuration\n"
+"            ),\n"
+"            $configuration);\n"
+"    },\n"
+"    EntityManagerProvider::class => SingleManagerProvider::class,\n"
+"\n"
+"    SerializerInterface::class => PhpSerializer::class,\n"
+"    'DoctrineTransport' => static function (ContainerInterface $container) use ($params) {\n"
+"        $configuration = $container->get(Configuration::class);\n"
+"        $connection = new Connection([], DriverManager::getConnection(\n"
+"            $params['doctrine']['connection'],\n"
+"            $configuration\n"
+"        ));\n"
+"        return new DoctrineTransport($connection, $container->get(SerializerInterface::class));\n"
+"    },\n"
+"\n"
+"    MyMessageBus::class => static function (ContainerInterface $container) {\n"
+"        return new MyMessageBus([\n"
+"            new SendMessageMiddleware(sendersLocator: new SendersLocator([\n"
+"                MyMessage::class => ['DoctrineTransport']\n"
+"            ], $container)),\n"
+"            new HandleMessageMiddleware(new HandlersLocator([\n"
+"                MyMessage::class => [$container->get(MyMessageHandler::class)]\n"
+"            ])),\n"
+"        ]);\n"
+"    },\n"
+"\n"
+"    EventDispatcherInterface::class => static function (ContainerInterface $container) {\n"
+"        $eventDispatcher = new EventDispatcher();\n"
+"        $eventDispatcher->addSubscriber($container->get(StopWorkerOnRestartSignalListener::class));\n"
+"        return $eventDispatcher;\n"
+"    },\n"
+"    ServiceProviderInterface::class => [\n"
+"        'class' => ServiceProvider::class,\n"
+"        '__construct()' => [\n"
+"            'container' => Reference::to(ContainerInterface::class),\n"
+"            'serviceMap' => [\n"
+"                'DoctrineTransport' => DoctrineTransport::class\n"
+"            ]\n"
+"        ],\n"
+"    ],\n"
+"\n"
+"    ConsumeMessagesCommand::class => static function (ContainerInterface $container) {\n"
+"        return new ConsumeMessagesCommand(\n"
+"            $container->get(RoutableMessageBus::class),\n"
+"            $container,\n"
+"            $container->get(EventDispatcherInterface::class),\n"
+"            $container->get(LoggerInterface::class),\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"    DebugCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'mapping' => [\n"
+"                MyMessageBus::class => [Reference::to(MyMessageHandler::class)]\n"
+"            ]\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesRemoveCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalFailureReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class)\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesRetryCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class),\n"
+"            'messageBus' => Reference::to(MyMessageBus::class),\n"
+"            'eventDispatcher' => Reference::to(EventDispatcherInterface::class),\n"
+"            'logger' => Reference::to(LoggerInterface::class),\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesShowCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalFailureReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class)\n"
+"        ],\n"
+"    ],\n"
+"    SetupTransportsCommand::class => static function (ContainerInterface $container) {\n"
+"        return new SetupTransportsCommand(\n"
+"            $container,\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"    StatsCommand::class => static function (ContainerInterface $container) {\n"
+"        return new StatsCommand(\n"
+"            $container,\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid "4. Integrate the Symfony Messenger commands into the Yii console."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy
+#| msgid "Add the following to your php.ini:"
+msgid "Add the commands to `config/console/commands.php`:"
+msgstr "Добавьте в свой php.ini следующее:"
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid ""
+"use Symfony\\Component\\Messenger\\Command\\ConsumeMessagesCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\DebugCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRemoveCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRetryCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesShowCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\SetupTransportsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StatsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StopWorkersCommand;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'symfony:messenger:consume' => ConsumeMessagesCommand::class,\n"
+"    'symfony:messenger:debug' => DebugCommand::class,\n"
+"    'symfony:messenger:failed:remove' => FailedMessagesRemoveCommand::class,\n"
+"    'symfony:messenger:failed:retry' => FailedMessagesRetryCommand::class,\n"
+"    'symfony:messenger:failed:show' => FailedMessagesShowCommand::class,\n"
+"    'symfony:messenger:setup-transports' => SetupTransportsCommand::class,\n"
+"    'symfony:messenger:stats' => StatsCommand::class,\n"
+"    'symfony:messenger:stop-workers' => StopWorkersCommand::class\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid "5. Dispatch a message."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+msgid "Example:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid ""
+#| "final class MyService implements MyServiceInterface\n"
+#| "{\n"
+#| "    public function __construct(int $amount)\n"
+#| "    {\n"
+#| "    }\n"
+#| "\n"
+#| "    public function setDiscount(int $discount): void\n"
+#| "    {\n"
+#| "    \n"
+#| "    }\n"
+#| "}\n"
+msgid ""
+"use App\\Messages\\MyMessage;\n"
+"use MyMessageBus;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"final readonly class MyController\n"
+"{\n"
+"    public function __construct(private MyMessageBus $bus)\n"
+"    {\n"
+"    }\n"
+"    \n"
+"    public function sendMessage(): ResponseInterface\n"
+"    {\n"
+"        $this->bus->dispatch(new MyMessage('Hello Symfony Messenger!'));\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+"class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, fuzzy, no-wrap
+#| msgid "Confirming data integrity"
+msgid "6. Consume messages."
+msgstr "Проверка целостности данных"
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#, no-wrap
+msgid "./yii symfony:messenger:consume DoctrineTransport --bus=MyMessageBus\n"
+msgstr ""

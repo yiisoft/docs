@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 #, no-wrap
 msgid "Configuring web servers: IIS"
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 msgid ""
 "When you use [IIS](https://www.iis.net/), host the application in a virtual "
 "host (Website) where the document root points to the `path/to/app/public` "
@@ -33,7 +33,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (xml)
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 #, no-wrap
 msgid ""
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -59,23 +59,8 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 msgid ""
-"Also, the following list of Microsoft's official resources could be useful "
-"to configure PHP on IIS:"
-msgstr ""
-
-#. type: Bullet: '1. '
-#: en/configuring-webservers/iis.md
-msgid ""
-"[How to set up your first IIS website](https://support.microsoft.com/en-us/"
-"help/323972/how-to-set-up-your-first-iis-web-site)"
-msgstr ""
-
-#. type: Bullet: '2. '
-#: en/configuring-webservers/iis.md
-msgid ""
-"[Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/"
-"application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-"
-"website-on-iis)"
+"Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be "
+"useful to configure PHP on IIS."
 msgstr ""
