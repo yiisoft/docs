@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - '_translations/**'
+      - '.github/workflows/translate.yml'
   push:
     branches: [ "master" ]
     paths:
       - '_translations/**'
       - 'src/**'
+      - '.github/workflows/translate.yml'
 
 permissions:
   contents: read # Required to check out repository contents by default.
