@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2026-04-07 16:34+0000\n"
-"PO-Revision-Date: 2026-03-07 06:58+0500\n"
+"PO-Revision-Date: 2026-09-25 12:09+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. type: Title #
 #: ../src/guide/start/creating-project.md
@@ -105,10 +105,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy
-#| msgid "Go into the newly created directory and run:"
 msgid "Go into the newly created directory, copy `.env.example` to `.env`, and run:"
-msgstr "Перейдите в созданную директорию и выполните:"
+msgstr "Перейдите в созданную директорию, скопируйте `.env.example` в `.env` и выполните:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -134,19 +132,15 @@ msgstr "Откройте в браузере адрес `http://localhost/`."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> [!NOTE]\n"
-#| "> The HTTP server listens on port 80. If that port is already in use, specify the port via `--port` or, in case of Docker,\n"
-#| "> `DEV_PORT` in the `docker/.env` file.\n"
+#, no-wrap
 msgid ""
 "> [!NOTE]\n"
 "> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`\n"
 "> in `docker/.env`.\n"
 msgstr ""
 "> [!NOTE]\n"
-"> HTTP-сервер слушает порт 80. Если он уже занят, укажите порт через `--port` или, в случае Docker,\n"
-"> через `DEV_PORT` в файле `docker/.env`.\n"
+"> Чтобы изменить порт для встроенного сервера, передайте порт через `--port` в `./yii serve`. При использовании Docker задайте `DEV_PORT` \n"
+"> в файле `docker/.env`.\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2026-06-05 20:33+0000\n"
-"PO-Revision-Date: 2026-01-24 19:48+0300\n"
+"PO-Revision-Date: 2026-09-25 13:23+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
@@ -23,7 +23,7 @@ msgstr ""
 #: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Summary"
-msgstr ""
+msgstr "Краткое содержание"
 
 #. type: Title ##
 #: ../src/guide/start/databases.md ../src/guide/start/hello.md
@@ -69,10 +69,9 @@ msgstr "Как использовать [представление (view)](../v
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "Creating a project"
+#, no-wrap
 msgid "Creating a handler"
-msgstr "Создание проекта"
+msgstr "Создание обработчика"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -165,10 +164,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
-#, fuzzy
-#| msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` request attribute.  `[]` marks this part of the pattern as optional."
 msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` route argument.  `[]` marks this part of the pattern as optional."
-msgstr "В примере выше вы связываете шаблон `/say[/{message}]` с `\\App\\Web\\Echo\\Action`. При обработке запроса роутер создаёт экземпляр и вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в этом месте, в атрибут запроса `message`. Квадратные скобки `[]` помечают эту часть шаблона как необязательную."
+msgstr "В примере выше вы связываете шаблон `/say[/{message}]` с `\\App\\Web\\Echo\\Action`. При обработке запроса роутер создаёт экземпляр и вызывает метод `__invoke()`. Часть `{message}` сохраняет всё, что указано в этом месте, в параметр маршрута `message`. Квадратные скобки `[]` помечают эту часть шаблона как необязательную."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
@@ -192,10 +189,9 @@ msgstr "Если не указывать параметр `message` в URL, ст
 
 #. type: Title ##
 #: ../src/guide/start/hello.md
-#, fuzzy, no-wrap
-#| msgid "Creating a project"
+#, no-wrap
 msgid "Creating a View Template"
-msgstr "Создание проекта"
+msgstr "Создание шаблона представления"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
