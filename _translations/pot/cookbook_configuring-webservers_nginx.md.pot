@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-08 08:54+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,10 +25,10 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx.md
 msgid ""
-"To use [Nginx](https://wiki.nginx.org/), install PHP as an [FPM SAPI]"
-"(https://secure.php.net/install.fpm).  Use the following Nginx "
-"configuration, replacing `path/to/app/public` with the actual path for `app/"
-"public` and `mysite.test` with the actual hostname to serve."
+"To use [Nginx](https:/nginx.org/), install PHP as an [FPM SAPI](https://"
+"secure.php.net/install.fpm).  Use the following Nginx configuration, "
+"replacing `path/to/app/public` with the actual path for `app/public` and "
+"`mysite.test` with the actual hostname to serve."
 msgstr ""
 
 #. type: Fenced code block (nginx)

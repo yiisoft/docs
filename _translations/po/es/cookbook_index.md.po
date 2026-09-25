@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-05 22:11+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -33,12 +33,12 @@ msgid "The Yii community creates the cookbook."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../src/cookbook/index.md
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
 msgid "Yii core team members curate and edit it."
 msgstr ""
 
 #. type: Plain text
-#: ../src/cookbook/index.md
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
 msgid "Feel free to pull-request your own writings. Team members will review it, give feedback and merge the best possible way."
 msgstr ""
 
@@ -84,6 +84,11 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
+msgid "[Third-party integrations](third-party-integrations/index.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
 msgid "[Working on Windows](working-on-windows.md)"
 msgstr ""
 
@@ -110,6 +115,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Deploying Yii applications with Angie Docker Proxy](deployment/angie-docker-proxy.md)"
 msgstr ""
 
 #. type: Bullet: '- '

@@ -1,0 +1,49 @@
+# Russian translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"PO-Revision-Date: 2026-09-25 14:35+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
+msgid "Yii core team members curate and edit it."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
+msgid "Feel free to pull-request your own writings. Team members will review it, give feedback and merge the best possible way."
+msgstr ""
+
+#. type: Title #
+#: ../src/cookbook/third-party-integrations/index.md
+#, fuzzy, no-wrap
+#| msgid "Sentry integration"
+msgid "Third-Party Integrations"
+msgstr "Интеграция с Sentry"
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/index.md
+msgid "This is a collection of community-contributed guides for integrating third-party packages with Yii3."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/third-party-integrations/index.md
+msgid "The Yii community creates the guides."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/third-party-integrations/index.md
+msgid "[Symfony Messenger integration guide](symfony-messenger-integration-guide.md)"
+msgstr ""

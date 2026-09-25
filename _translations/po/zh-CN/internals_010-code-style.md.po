@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-05 23:27+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-12-27 10:28+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -119,8 +119,8 @@ msgstr "类注释应描述类的目的。"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "[See PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)."
-msgstr "[查看 PHPDoc](https://yiisoft.github.io/docs/internals/014-docs#phpdoc)。"
+msgid "See [PHPDoc](014-docs.md#phpdoc)."
+msgstr ""
 
 #. type: Title ##
 #: ../src/internals/010-code-style.md
@@ -272,7 +272,9 @@ msgstr "组合优于继承"
 
 #. type: Plain text
 #: ../src/internals/010-code-style.md
-msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
+#, fuzzy
+#| msgid "Prefer [composition to inheritance](guide/en/concept/di-container.md)."
+msgid "Prefer [composition to inheritance](../guide/concept/di-container.md)."
 msgstr "优先使用[组合而不是继承](guide/en/concept/di-container.md)。"
 
 #. type: Title ###

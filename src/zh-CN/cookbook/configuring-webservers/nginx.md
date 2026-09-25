@@ -1,8 +1,9 @@
 # 配置 Web 服务器：Nginx
 
-要使用 [Nginx](https://wiki.nginx.org/)，请将 PHP 安装为 [FPM
-SAPI](https://secure.php.net/install.fpm)。使用以下 Nginx 配置，将
-`path/to/app/public` 替换为 `app/public` 的实际路径，将 `mysite.test` 替换为要提供服务的实际主机名。
+To use [Nginx](https:/nginx.org/), install PHP as an [FPM
+SAPI](https://secure.php.net/install.fpm).  Use the following Nginx
+configuration, replacing `path/to/app/public` with the actual path for
+`app/public` and `mysite.test` with the actual hostname to serve.
 
 ```nginx
 server {

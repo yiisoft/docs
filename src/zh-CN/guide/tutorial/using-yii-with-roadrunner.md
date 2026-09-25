@@ -26,11 +26,10 @@ composer require yiisoft/yii-runner-roadrunner
 首先，我们需要配置服务器本身。创建 `/.rr.yaml` 并添加以下配置：
 
 ```yaml
+version: '3'
+
 server:
   command: "php worker.php"
-  env:
-    YII_ENV: prod
-    YII_DEBUG: false
 
 rpc:
   listen: tcp://127.0.0.1:6001
@@ -146,13 +145,19 @@ final readonly class FeedService
 
 declare(strict_types=1);
 
-use Yiisoft\Yii\Runner\RoadRunner\RoadRunnerApplicationRunner;
+use App\Environment;
+use Yiisoft\Yii\Runner\RoadRunner\RoadRunnerHttpApplicationRunner;
 
 ini_set('display_errors', 'stderr');
 
-require_once __DIR__ . '/preload.php';
+require_once __DIR__ . '/src/bootstrap.php';
 
-(new RoadRunnerApplicationRunner(__DIR__, $_ENV['YII_DEBUG'], $_ENV['YII_ENV']))->run();
+(new RoadRunnerHttpApplicationRunner(
+    rootPath: __DIR__, 
+    debug: Environment::appDebug(),
+    checkEvents: Environment::appDebug(),
+    environment: Environment::appEnv()
+))->run();
 ```
 
 ## 启动服务器

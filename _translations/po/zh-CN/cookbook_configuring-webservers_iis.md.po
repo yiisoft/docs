@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-09-05 14:50+0500\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2025-09-05 14:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title #
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 #, no-wrap
 msgid "Configuring web servers: IIS"
 msgstr "配置 Web 服务器：IIS"
 
 #. type: Plain text
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 msgid "When you use [IIS](https://www.iis.net/), host the application in a virtual host (Website) where the document root points to the `path/to/app/public` folder and configure the website to run PHP.  In that `public` folder, place a file named `web.config` at `path/to/app/public/web.config`.  Use the following content:"
 msgstr "当你使用 [IIS](https://www.iis.net/) 时，在虚拟主机（网站）中托管应用程序，其中文档根目录指向 `path/to/app/public` 文件夹，并配置网站运行 PHP。在该 `public` 文件夹中，放置一个名为 `web.config` 的文件，路径为 `path/to/app/public/web.config`。使用以下内容："
 
 #. type: Fenced code block (xml)
-#: en/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/iis.md
 #, no-wrap
 msgid ""
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -53,16 +53,8 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/configuring-webservers/iis.md
-msgid "Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:"
+#: ../src/cookbook/configuring-webservers/iis.md
+#, fuzzy
+#| msgid "Also, the following list of Microsoft's official resources could be useful to configure PHP on IIS:"
+msgid "Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be useful to configure PHP on IIS."
 msgstr "此外，以下 Microsoft 官方资源列表可能对在 IIS 上配置 PHP 有所帮助："
-
-#. type: Bullet: '1. '
-#: en/configuring-webservers/iis.md
-msgid "[How to set up your first IIS website](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)"
-msgstr "[如何设置你的第一个 IIS 网站](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site)"
-
-#. type: Bullet: '2. '
-#: en/configuring-webservers/iis.md
-msgid "[Configure a PHP Website on IIS](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)"
-msgstr "[在 IIS 上配置 PHP 网站](https://docs.microsoft.com/en-us/iis/application-frameworks/scenario-build-a-php-website-on-iis/configure-a-php-website-on-iis)"

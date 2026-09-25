@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-07 14:37+0000\n"
+"POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,15 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Troubleshooting"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/deployment/angie-docker-proxy.md
+#: ../src/cookbook/deployment/docker-swarm-caddy.md
+#: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/cookbook/preface.md
+#, no-wrap
+msgid "Prerequisites"
 msgstr ""
 
 #. type: Title #
@@ -55,14 +64,6 @@ msgid ""
 "        C\n"
 "        D\n"
 "    end\n"
-msgstr ""
-
-#. type: Title ##
-#: ../src/cookbook/deployment/docker-swarm-caddy.md
-#: ../src/cookbook/deployment/docker-swarm-traefik.md
-#: ../src/cookbook/preface.md
-#, no-wrap
-msgid "Prerequisites"
 msgstr ""
 
 #. type: Bullet: '- '
@@ -1127,6 +1128,7 @@ msgstr ""
 #. type: Title ##
 #: ../src/cookbook/deployment/docker-swarm-caddy.md
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
+#: ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Summary"
 msgstr ""
