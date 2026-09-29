@@ -153,10 +153,9 @@ for I/O while its session is open, another coroutine can handle a request in the
 the first user's session data. Resetting services between requests, increasing the worker count, or storing native
 sessions in Redis does not isolate these overlapping requests.
 
-If each worker handles requests one at a time, close the session and reset services between requests. Use a version of
-`yiisoft/session` that includes the [session ID reuse fix](https://github.com/yiisoft/session/pull/91), which prevents a
-new session from inheriting the previous request's native session ID. This fix does not make native sessions safe for
-overlapping coroutine requests.
+If each worker handles requests one at a time, close the session and reset services between requests. `yiisoft/session`
+prevents a new session from inheriting the previous request's native session ID, but does not isolate session state
+between overlapping coroutine requests.
 
 If you only need sessions to identify the current user, consider avoiding them and using token-based authentication,
 such as [JSON Web Tokens (JWT)](https://jwt.io/introduction). This is a good option for APIs: the client sends an access
