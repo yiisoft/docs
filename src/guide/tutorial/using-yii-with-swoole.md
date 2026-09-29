@@ -144,3 +144,22 @@ php server.php
 ## On scope
 
 A scope is shared, so at each iteration of the event loop every service that depends on state should be reset.
+
+## Sessions
+
+PHP's native session state, including `$_SESSION` and the active session ID, is shared within a worker process.
+The native `Yiisoft\Session\Session` implementation in `yiisoft/session` uses this state. If one request yields while
+its session is open, another request in the same worker can access that session and mix data between users.
+Creating a separate `Session` object for each request does not isolate the native state.
+
+Resetting services between requests is necessary for successive requests, but does not protect requests running
+concurrently in Swoole coroutines. Likewise, clearing a previous native session ID before opening a new session fixes
+ID reuse between successive requests, but does not provide coroutine isolation. Increasing the worker count does not
+prevent requests within a worker from sharing session state.
+
+For concurrent request handling, use a session implementation that keeps each request's session ID and in-memory data
+isolated from other coroutines, without relying on PHP's native session state. Changing only the native session storage
+handler to Redis or a database does not provide this isolation.
+
+See the [Swoole guidance on native PHP sessions](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
+and the [Yii session discussion](https://github.com/yiisoft/session/issues/25) for details.
