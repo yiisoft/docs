@@ -151,3 +151,23 @@ php server.php
 
 A scope is shared, so at each iteration of the event loop every service that
 depends on state should be reset.
+
+## Sessions
+
+Avoid native PHP sessions, including `Yiisoft\Session\Session`, when Swoole
+coroutines handle overlapping requests within one worker: they share session
+state and can expose one user's data to another request.
+
+For requests handled one at a time, close the session and reset services
+between requests. `yiisoft/session` prevents stale session ID reuse, but
+does not isolate overlapping coroutines.
+
+For authentication, consider tokens such as
+[JWT](https://jwt.io/introduction) instead of native sessions, especially
+for APIs. If you need session features, use an implementation that isolates
+each coroutine's session data; changing the native storage handler to Redis
+is not enough.
+
+See the [Swoole
+guidance](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
+and [Yii session discussion](https://github.com/yiisoft/session/issues/25).

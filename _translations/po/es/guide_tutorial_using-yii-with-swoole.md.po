@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"POT-Creation-Date: 2026-09-29 22:50+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -26,6 +26,13 @@ msgstr ""
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/runtime/sessions.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "Sessions"
 msgstr ""
 
 #. type: Title ##
@@ -231,4 +238,24 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "A scope is shared, so at each iteration of the event loop every service that depends on state should be reset."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid "Avoid native PHP sessions, including `Yiisoft\\Session\\Session`, when Swoole coroutines handle overlapping requests within one worker: they share session state and can expose one user's data to another request."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid "For requests handled one at a time, close the session and reset services between requests. `yiisoft/session` prevents stale session ID reuse, but does not isolate overlapping coroutines."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid "For authentication, consider tokens such as [JWT](https://jwt.io/introduction) instead of native sessions, especially for APIs. If you need session features, use an implementation that isolates each coroutine's session data; changing the native storage handler to Redis is not enough."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+msgid "See the [Swoole guidance](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796) and [Yii session discussion](https://github.com/yiisoft/session/issues/25)."
 msgstr ""
