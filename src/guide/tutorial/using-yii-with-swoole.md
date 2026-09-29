@@ -147,19 +147,19 @@ A scope is shared, so at each iteration of the event loop every service that dep
 
 ## Sessions
 
-PHP's native session state, including `$_SESSION` and the active session ID, is shared within a worker process.
-The native `Yiisoft\Session\Session` implementation in `yiisoft/session` uses this state. If one request yields while
-its session is open, another request in the same worker can access that session and mix data between users.
-Creating a separate `Session` object for each request does not isolate the native state.
+Avoid native PHP sessions when your Swoole application handles requests concurrently. This includes the native
+`Yiisoft\Session\Session` implementation in `yiisoft/session`: requests in the same worker share PHP's session state,
+so one request can read or overwrite another user's session data. Resetting services between requests does not protect
+overlapping requests. Increasing the worker count or storing native sessions in Redis does not solve this problem.
 
-Resetting services between requests is necessary for successive requests, but does not protect requests running
-concurrently in Swoole coroutines. Likewise, clearing a previous native session ID before opening a new session fixes
-ID reuse between successive requests, but does not provide coroutine isolation. Increasing the worker count does not
-prevent requests within a worker from sharing session state.
+If you only need sessions to identify the current user, consider avoiding them and using token-based authentication,
+such as [JSON Web Tokens (JWT)](https://jwt.io/introduction). This is a good option for APIs: the client sends an access
+token with each request, and your application verifies it without opening a native PHP session. Choose an authentication
+library that handles token verification and expiration, and plan how logout and token revocation should work.
 
-For concurrent request handling, use a session implementation that keeps each request's session ID and in-memory data
-isolated from other coroutines, without relying on PHP's native session state. Changing only the native session storage
-handler to Redis or a database does not provide this isolation.
+If your application needs session features such as flash messages or temporary user data, use a session implementation
+designed for concurrent Swoole requests. It must keep each request's session data separate without relying on
+`$_SESSION` or PHP's native session functions. Creating a new native `Session` object for each request is not sufficient.
 
 See the [Swoole guidance on native PHP sessions](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
 and the [Yii session discussion](https://github.com/yiisoft/session/issues/25) for details.
