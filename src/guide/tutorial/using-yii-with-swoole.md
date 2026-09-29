@@ -147,19 +147,26 @@ A scope is shared, so at each iteration of the event loop every service that dep
 
 ## Sessions
 
-Avoid native PHP sessions when your Swoole application handles requests concurrently. This includes the native
-`Yiisoft\Session\Session` implementation in `yiisoft/session`: requests in the same worker share PHP's session state,
-so one request can read or overwrite another user's session data. Resetting services between requests does not protect
-overlapping requests. Increasing the worker count or storing native sessions in Redis does not solve this problem.
+Avoid native PHP sessions when your Swoole application uses coroutines to handle overlapping requests within a worker.
+This includes the native `Yiisoft\Session\Session` implementation in `yiisoft/session`. If one request pauses to wait
+for I/O while its session is open, another coroutine can handle a request in the same worker and read or overwrite
+the first user's session data. Resetting services between requests, increasing the worker count, or storing native
+sessions in Redis does not isolate these overlapping requests.
+
+If each worker handles requests one at a time, close the session and reset services between requests. Use a version of
+`yiisoft/session` that includes the [session ID reuse fix](https://github.com/yiisoft/session/pull/91), which prevents a
+new session from inheriting the previous request's native session ID. This fix does not make native sessions safe for
+overlapping coroutine requests.
 
 If you only need sessions to identify the current user, consider avoiding them and using token-based authentication,
 such as [JSON Web Tokens (JWT)](https://jwt.io/introduction). This is a good option for APIs: the client sends an access
 token with each request, and your application verifies it without opening a native PHP session. Choose an authentication
 library that handles token verification and expiration, and plan how logout and token revocation should work.
 
-If your application needs session features such as flash messages or temporary user data, use a session implementation
-designed for concurrent Swoole requests. It must keep each request's session data separate without relying on
-`$_SESSION` or PHP's native session functions. Creating a new native `Session` object for each request is not sufficient.
+If your application needs session features such as flash messages or temporary user data while handling overlapping
+coroutine requests, use a session implementation designed for Swoole. It must keep each request's data separate without
+relying on `$_SESSION` or PHP's native session functions. Creating a new native `Session` object for each request is not
+sufficient.
 
 See the [Swoole guidance on native PHP sessions](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
 and the [Yii session discussion](https://github.com/yiisoft/session/issues/25) for details.
