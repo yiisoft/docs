@@ -9,8 +9,8 @@
 还有一种运行应用程序的方式——事件循环。其思路是一次性初始化所有可初始化的内容，然后利用它来处理多个请求。这种方式通常被称为事件循环。
 
 There are multiple tools that could be used to achieve it. Notably,
-[FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/)
-and [Swoole](https://www.swoole.com/).
+[FrankenPHP](https://frankenphp.dev/), [Rapira](https://rapira.rs/),
+[RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/).
 
 ## 事件循环的影响
 
@@ -53,5 +53,6 @@ while ($request = getRequest()) {
 ## 集成
 
 - [FrankenPHP](using-yii-with-frankenphp.md)
+- [Rapira](using-yii-with-rapira.md)
 - [RoadRunner](using-yii-with-roadrunner.md)
 - [Swoole](using-yii-with-swoole.md)

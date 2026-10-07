@@ -100,9 +100,10 @@ try {
 
 ## 其他运行时
 
-For alternative runtimes such as FrankenPHP, RoadRunner, or Swoole, special
-entry scripts should be used. See:
+For alternative runtimes such as FrankenPHP, Rapira, RoadRunner, or Swoole,
+special entry scripts should be used. See:
 
 - [Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)
+- [Using Yii with Rapira](../tutorial/using-yii-with-rapira.md)
 - [在 RoadRunner 中使用 Yii](../tutorial/using-yii-with-roadrunner.md)
 - [在 Swoole 中使用 Yii](../tutorial/using-yii-with-swoole.md)

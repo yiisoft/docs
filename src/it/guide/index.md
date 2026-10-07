@@ -143,6 +143,7 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Ottimizzazione delle prestazioni](tutorial/performance-tuning.md)
 - [Usare Yii con event loop](tutorial/using-with-event-loop.md)
 - [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
+- [Using Yii with Rapira](tutorial/using-yii-with-rapira.md)
 - [Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)
 - [Usare Yii con Swoole](tutorial/using-yii-with-swoole.md)
 - [Docker in application templates](tutorial/docker.md)

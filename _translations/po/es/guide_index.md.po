@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 08:13+0000\n"
+"POT-Creation-Date: 2026-10-07 15:22+0000\n"
 "PO-Revision-Date: 2025-12-24 08:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -156,7 +156,7 @@ msgid "[Immutability](concept/immutability.md)"
 msgstr ""
 
 #. type: Title ##
-#: ../src/guide/index.md
+#: ../src/guide/index.md ../src/guide/start/workflow.md
 #, no-wrap
 msgid "Application structure"
 msgstr ""
@@ -598,6 +598,11 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/index.md
+msgid "[Using Yii with Rapira](tutorial/using-yii-with-rapira.md)"
 msgstr ""
 
 #. type: Bullet: '- '

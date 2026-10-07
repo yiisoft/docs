@@ -1,0 +1,256 @@
+# Spanish translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-07 15:22+0000\n"
+"PO-Revision-Date: 2026-10-07 15:22+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/views/view-injections.md
+#, no-wrap
+msgid "Configuration"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid "Worker entry script"
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, fuzzy, no-wrap
+msgid "Server configuration"
+msgstr "Introducción"
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md
+#, no-wrap
+msgid "Starting a server"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#, no-wrap
+msgid "On worker scope"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, fuzzy, no-wrap
+msgid "Additional configuration"
+msgstr "Introducción"
+
+#. type: Title #
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid "Using Yii with Rapira"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid ""
+"[Rapira](https://rapira.rs/) is a PHP application server written in Rust that embeds the PHP interpreter.\n"
+"The [Yii Rapira runner](https://github.com/yiisoft/yii-runner-rapira) supports its classic, worker, and dispatcher modes.\n"
+"Worker and dispatcher modes initialize the application once per worker and reuse it for subsequent requests.\n"
+"See [Using Yii with event loop](using-with-event-loop.md) for the implications of keeping the application in memory.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "The runner requires PHP 8.4–8.5. Install the Rapira binary following the [Rapira installation instructions](https://rapira.rs/docs/intro/installation), using a PHP version supported by the runner.  The Composer packages provide the Yii integration; the server binary must be installed separately."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Install the runner and its contract package in your Yii application:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid "composer require yiisoft/yii-runner-rapira:@dev rapira/contract:@dev\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "These stability flags allow the development versions used by the runner's installation instructions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "The following example assumes an application based on `yiisoft/app` or `yiisoft/app-api`, with `App\\Environment` and `src/bootstrap.php` provided by the template."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Create `worker.php` in the application root:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Environment;\n"
+"use Psr\\Log\\LogLevel;\n"
+"use Yiisoft\\ErrorHandler\\ErrorHandler;\n"
+"use Yiisoft\\ErrorHandler\\Renderer\\PlainTextRenderer;\n"
+"use Yiisoft\\Log\\Logger;\n"
+"use Yiisoft\\Log\\StreamTarget;\n"
+"use Yiisoft\\Yii\\Runner\\Rapira\\RapiraApplicationRunner;\n"
+"\n"
+"$root = __DIR__;\n"
+"\n"
+"require_once $root . '/src/bootstrap.php';\n"
+"\n"
+"$runner = new RapiraApplicationRunner(\n"
+"    rootPath: $root,\n"
+"    debug: Environment::appDebug(),\n"
+"    checkEvents: Environment::appDebug(),\n"
+"    environment: Environment::appEnv(),\n"
+"    temporaryErrorHandler: new ErrorHandler(\n"
+"        new Logger(\n"
+"            [\n"
+"                (new StreamTarget())->setLevels([\n"
+"                    LogLevel::EMERGENCY,\n"
+"                    LogLevel::ERROR,\n"
+"                    LogLevel::WARNING,\n"
+"                ]),\n"
+"            ],\n"
+"        ),\n"
+"        new PlainTextRenderer(),\n"
+"    ),\n"
+");\n"
+"$runner->run();\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "The runner creates the container, starts the application, converts incoming requests to PSR-7 requests, and emits responses. It detects the Rapira execution mode, so the same entry script can be used with all three modes."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Create `rapira.toml` next to `worker.php`:"
+msgstr ""
+
+#. type: Fenced code block (toml)
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid ""
+"[http]\n"
+"listen = \"127.0.0.1:8000\"\n"
+"\n"
+"[pool]\n"
+"entrypoint = \"worker.php\"\n"
+"mode = \"worker\"\n"
+"max_requests = 1000\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "This configuration listens on the loopback interface and recycles each worker after 1,000 requests.  For serving files from `public`, follow Rapira's [static file configuration](https://rapira.rs/docs/static-files).  See the [configuration reference](https://rapira.rs/docs/configuration) for the other server and pool settings."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Run the following command from the application root:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid "rapira serve\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Open `http://127.0.0.1:8000` to access the application. Restart the server after changing application code or configuration."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#, no-wrap
+msgid "Execution modes"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "Set `mode` in the `[pool]` section of `rapira.toml` to choose how requests are processed:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "`classic` initializes the application for each request, similarly to PHP-FPM."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "`worker` keeps the application in memory and receives requests through PHP's SAPI superglobals."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "`dispatcher` keeps the application in memory and receives request objects through Rapira's dispatcher API.  The Yii runner processes these requests sequentially within each worker."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "See [Rapira execution modes](https://rapira.rs/docs/execution-modes) for details."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "In worker and dispatcher modes, services may retain state between requests. The runner calls `Yiisoft\\Di\\StateResetter::reset()` after each request, but you must configure resetters for your own stateful services.  See the [Yii DI documentation](https://github.com/yiisoft/di#resetting-services-state)."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "The `max_requests` setting limits how long a worker lives; it does not replace resetting request-specific state."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+msgid "`RapiraApplicationRunner` uses the application templates' web configuration groups by default. Its constructor accepts alternative groups, configuration directories, and a temporary error handler. Use `withConfig()` to supply a custom configuration instance or `withContainer()` to supply a PSR-11 container. See the [runner documentation](https://github.com/yiisoft/yii-runner-rapira#configuration) for examples."
+msgstr ""

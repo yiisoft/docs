@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-06 19:19+0000\n"
+"POT-Creation-Date: 2026-10-07 15:22+0000\n"
 "PO-Revision-Date: 2025-09-11 10:15+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-with-event-loop.md
-msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/)."
+msgid "There are multiple tools that could be used to achieve it. Notably, [FrankenPHP](https://frankenphp.dev/), [Rapira](https://rapira.rs/), [RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/)."
 msgstr ""
 
 #. type: Title ##
@@ -127,6 +127,13 @@ msgstr "Introduzione"
 #, fuzzy
 #| msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)"
 msgid "[FrankenPHP](using-yii-with-frankenphp.md)"
+msgstr "[Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)"
+
+#. type: Bullet: '- '
+#: ../src/guide/tutorial/using-with-event-loop.md
+#, fuzzy
+#| msgid "[Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)"
+msgid "[Rapira](using-yii-with-rapira.md)"
 msgstr "[Usare Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)"
 
 #. type: Bullet: '- '

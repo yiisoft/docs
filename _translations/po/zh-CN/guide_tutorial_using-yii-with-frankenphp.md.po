@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-09 07:49+0000\n"
+"POT-Creation-Date: 2026-10-07 15:22+0000\n"
 "PO-Revision-Date: 2026-04-12 22:50+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,9 @@ msgstr ""
 #. type: Title ##
 #: ../src/cookbook/making-http-requests.md
 #: ../src/cookbook/sentry-integration.md
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
@@ -29,6 +31,7 @@ msgstr "安装"
 #. type: Title ##
 #: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/views/view-injections.md
 #, no-wrap
@@ -53,8 +56,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
-msgid "Install the FrankenPHP runner package with Composer:"
+msgid "The [FrankenPHP runner](https://github.com/yiisoft/yii-runner-frankenphp) requires PHP 8.1–8.5.  Install FrankenPHP using its [installation instructions](https://frankenphp.dev/docs/), or use the Docker setup in the Yii application templates described below."
 msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, fuzzy
+#| msgid "Install the package"
+msgid "Install the runner package with Composer:"
+msgstr "安装包"
 
 #. type: Fenced code block (shell)
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
@@ -70,13 +80,22 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> This runner is for worker mode. To use FrankenPHP in classic mode, keep `public/index.php` and\n"
+"> [yiisoft/yii-runner-http](https://github.com/yiisoft/yii-runner-http), the default HTTP runner in the templates.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
 msgid "First, configure the worker entry script."
 msgstr ""
 
 #. type: Title ###
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #, fuzzy, no-wrap
-#| msgid "Entry scripts"
 msgid "Worker entry script"
 msgstr "入口脚本"
 
@@ -142,8 +161,8 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #, fuzzy, no-wrap
-#| msgid "Secure server configuration"
 msgid "Server configuration"
 msgstr "安全的服务器配置"
 
@@ -263,6 +282,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
@@ -281,11 +301,23 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
-msgid "In a custom setup, start FrankenPHP with the Caddy configuration that points to your application `Caddyfile`."
+msgid "With the standalone binary, run the following command from the directory containing your `Caddyfile`:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#, no-wrap
+msgid "frankenphp run --config Caddyfile\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+msgid "The example configuration uses `/app` as the application root. Adjust `/app/public`, `/app/worker.php`, and the watch path to match your installation. See the [FrankenPHP configuration reference](https://frankenphp.dev/docs/config/)  for other deployment options."
 msgstr ""
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "On worker scope"
@@ -332,13 +364,13 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
-msgid "Reset stateful services after each request. See [Yii DI `StateResetter` documentation](https://github.com/yiisoft/di#resetting-services-state)."
+msgid "The runner calls `Yiisoft\\Di\\StateResetter::reset()` after each request. Register resetters for your stateful services as described in the [Yii DI documentation](https://github.com/yiisoft/di#resetting-services-state)."
 msgstr ""
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #, fuzzy, no-wrap
-#| msgid "Initial configuration"
 msgid "Additional configuration"
 msgstr "初始配置"
 
@@ -346,7 +378,7 @@ msgstr "初始配置"
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
 #, fuzzy
 #| msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
-msgid "`FrankenPHPApplicationRunner` is configured by default for Yii application templates and follows the [dependency container configuration](../../guide/concept/configuration.html#container-configuration) concept."
+msgid "`FrankenPHPApplicationRunner` is configured by default for Yii application templates and follows the [dependency container configuration](../concept/configuration.md#container-configuration) concept."
 msgstr "你可以从 [yiisoft/app 包文档](https://github.com/yiisoft/app/blob/master/README.md)中了解更多关于应用程序模板的信息。"
 
 #. type: Plain text

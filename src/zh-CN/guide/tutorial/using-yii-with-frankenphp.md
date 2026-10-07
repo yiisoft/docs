@@ -6,7 +6,12 @@ once per request.
 
 ## 安装
 
-Install the FrankenPHP runner package with Composer:
+The [FrankenPHP runner](https://github.com/yiisoft/yii-runner-frankenphp)
+requires PHP 8.1–8.5.  Install FrankenPHP using its [installation
+instructions](https://frankenphp.dev/docs/), or use the Docker setup in the
+Yii application templates described below.
+
+Install the runner package with Composer:
 
 ```shell
 composer require yiisoft/yii-runner-frankenphp
@@ -15,6 +20,10 @@ composer require yiisoft/yii-runner-frankenphp
 FrankenPHP works especially well in containerized deployments and is the
 runtime used by the Yii application templates Docker setup described in
 [Docker in application templates](docker.md).
+
+> [!NOTE]
+> This runner is for worker mode. To use FrankenPHP in classic mode, keep `public/index.php` and
+> [yiisoft/yii-runner-http](https://github.com/yiisoft/yii-runner-http), the default HTTP runner in the templates.
 
 ## 配置
 
@@ -210,8 +219,18 @@ The exact start command depends on how you run FrankenPHP:
 
 - In the Yii application templates, run `make build` and `make up` after
   updating `worker.php` and the relevant `Caddyfile`.
-- In a custom setup, start FrankenPHP with the Caddy configuration that
-  points to your application `Caddyfile`.
+- With the standalone binary, run the following command from the directory
+  containing your `Caddyfile`:
+
+```shell
+frankenphp run --config Caddyfile
+```
+
+The example configuration uses `/app` as the application root. Adjust
+`/app/public`, `/app/worker.php`, and the watch path to match your
+installation. See the [FrankenPHP configuration
+reference](https://frankenphp.dev/docs/config/)  for other deployment
+options.
 
 ## 关于 Worker 作用域
 
@@ -228,15 +247,16 @@ event loop](using-with-event-loop.md).
 
 - Use the `MAX_REQUESTS` environment variable to limit how many requests a
   worker handles before restart.
-- Reset stateful services after each request. See [Yii DI `StateResetter`
+- The runner calls `Yiisoft\Di\StateResetter::reset()` after each
+  request. Register resetters for your stateful services as described in the
+  [Yii DI
   documentation](https://github.com/yiisoft/di#resetting-services-state).
 
 ## Additional configuration
 
 `FrankenPHPApplicationRunner` is configured by default for Yii application
 templates and follows the [dependency container
-configuration](../../guide/concept/configuration.html#container-configuration)
-concept.
+configuration](../concept/configuration.md#container-configuration) concept.
 
 The constructor allows overriding the default bootstrap, events, DI, params,
 and error-handler configuration.  You can also provide a custom config

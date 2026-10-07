@@ -11,8 +11,8 @@ is to initialize everything possible at once and then process a number of
 requests using it. Such an approach is usually called event loop.
 
 There are multiple tools that could be used to achieve it. Notably,
-[FrankenPHP](https://frankenphp.dev/), [RoadRunner](https://roadrunner.dev/)
-and [Swoole](https://www.swoole.com/).
+[FrankenPHP](https://frankenphp.dev/), [Rapira](https://rapira.rs/),
+[RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/).
 
 ## Event loop implications
 
@@ -62,5 +62,6 @@ while ($request = getRequest()) {
 ## Integrations
 
 - [FrankenPHP](using-yii-with-frankenphp.md)
+- [Rapira](using-yii-with-rapira.md)
 - [RoadRunner](using-yii-with-roadrunner.md)
 - [Swoole](using-yii-with-swoole.md)
