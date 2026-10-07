@@ -12,3 +12,5 @@ third-party packages with Yii3.
 
 - [Symfony Messenger integration
   guide](symfony-messenger-integration-guide.md)
+- [Symfony Scheduler integration
+  guide](symfony-scheduler-integration-guide.md)

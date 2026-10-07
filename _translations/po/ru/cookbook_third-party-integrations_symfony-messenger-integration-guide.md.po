@@ -43,7 +43,6 @@ msgstr ""
 #. type: Fenced code block (shell)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "composer install yiisoft/security\n"
 msgid "composer require symfony/messenger\n"
 msgstr "composer install yiisoft/security\n"
 
@@ -56,25 +55,12 @@ msgstr ""
 #. type: Title ###
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "Creating a project"
 msgid "1. Create a Message and Handler."
 msgstr "Создание проекта"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid ""
-#| "final class MyService implements MyServiceInterface\n"
-#| "{\n"
-#| "    public function __construct(int $amount)\n"
-#| "    {\n"
-#| "    }\n"
-#| "\n"
-#| "    public function setDiscount(int $discount): void\n"
-#| "    {\n"
-#| "    \n"
-#| "    }\n"
-#| "}\n"
 msgid ""
 "namespace App\\Messages;\n"
 "\n"
@@ -99,18 +85,6 @@ msgstr ""
 #. type: Fenced code block (php)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid ""
-#| "final class MyService implements MyServiceInterface\n"
-#| "{\n"
-#| "    public function __construct(int $amount)\n"
-#| "    {\n"
-#| "    }\n"
-#| "\n"
-#| "    public function setDiscount(int $discount): void\n"
-#| "    {\n"
-#| "    \n"
-#| "    }\n"
-#| "}\n"
 msgid ""
 "namespace App\\Messages;\n"
 "\n"
@@ -451,7 +425,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy
-#| msgid "Add the following to your php.ini:"
 msgid "Add the commands to `config/console/commands.php`:"
 msgstr "Добавьте в свой php.ini следующее:"
 

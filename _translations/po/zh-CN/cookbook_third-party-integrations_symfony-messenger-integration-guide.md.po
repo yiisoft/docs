@@ -42,7 +42,6 @@ msgstr ""
 #. type: Fenced code block (shell)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "composer require yiisoft/yii-sentry --prefer-dist\n"
 msgid "composer require symfony/messenger\n"
 msgstr "composer require yiisoft/yii-sentry --prefer-dist\n"
 
@@ -55,7 +54,6 @@ msgstr ""
 #. type: Title ###
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "Creating a Message"
 msgid "1. Create a Message and Handler."
 msgstr "创建消息"
 
@@ -407,7 +405,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy
-#| msgid "Add the command to `config/console/commands.php`:"
 msgid "Add the commands to `config/console/commands.php`:"
 msgstr "将命令添加到 `config/console/commands.php`："
 
@@ -446,7 +443,6 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy
-#| msgid "Examples"
 msgid "Example:"
 msgstr "示例"
 

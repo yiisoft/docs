@@ -13,3 +13,5 @@ give feedback and merge the best possible way.
 
 - [Symfony Messenger integration
   guide](symfony-messenger-integration-guide.md)
+- [Symfony Scheduler integration
+  guide](symfony-scheduler-integration-guide.md)

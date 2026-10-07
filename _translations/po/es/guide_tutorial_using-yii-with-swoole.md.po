@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-09-29 22:50+0000\n"
+"POT-Creation-Date: 2026-10-07 20:23+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -20,7 +20,9 @@ msgstr ""
 #: ../src/cookbook/making-http-requests.md
 #: ../src/cookbook/sentry-integration.md
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
 #: ../src/guide/views/view.md ../src/guide/views/widget.md
@@ -37,6 +39,7 @@ msgstr ""
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
@@ -183,7 +186,6 @@ msgid ""
 "$container = $runner->getContainer();\n"
 "$application = $container->get(Application::class);\n"
 "$errorCatcher = $container->get(ErrorCatcher::class);\n"
-"$stateResetter = $container->get(StateResetter::class);\n"
 "\n"
 "$serverRequestFactory = new SwooleServerRequestConverter(\n"
 "    $container->get(ServerRequestFactoryInterface::class),\n"
@@ -202,7 +204,7 @@ msgid ""
 "$server->on('request', static function (\n"
 "    Request  $request,\n"
 "    Response $response\n"
-") use ($serverRequestFactory, $application, $errorCatcher, $stateResetter) {\n"
+") use ($serverRequestFactory, $application, $errorCatcher, $container) {\n"
 "    try {\n"
 "        $psr7Request = $serverRequestFactory->createFromSwoole($request);\n"
 "        $psr7Response = $application->handle($psr7Request);\n"
@@ -213,7 +215,7 @@ msgid ""
 "        (new SwooleResponseConverter($response))->send($psr7Response);\n"
 "    }\n"
 "    $application->afterEmit($psr7Response);\n"
-"    $stateResetter->reset();\n"
+"    $container->get(StateResetter::class)->reset();\n"
 "});\n"
 "\n"
 "$server->on('shutdown', static function (Server $server) use ($application) {\n"

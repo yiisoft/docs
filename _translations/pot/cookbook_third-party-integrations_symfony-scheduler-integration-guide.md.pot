@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-07 20:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-rapira.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "composer require symfony/messenger\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "How to use with Yii"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "1. Create a Message and Handler."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"namespace App\\Messages;\n"
+"\n"
+"final readonly class MyMessage\n"
+"{\n"
+"    public function __construct(public string $content)\n"
+"    {\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"namespace App\\Messages;\n"
+"\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"\n"
+"final readonly class MyMessageHandler\n"
+"{\n"
+"    public function __construct(private LoggerInterface $logger)\n"
+"    {\n"
+"    }\n"
+"    public function __invoke(MyMessage $message): void\n"
+"    {\n"
+"        // ...\n"
+"       $this->logger->info(\"The message with the content '$message->content' has been received.\");\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"namespace App\\Services;\n"
+"\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Symfony\\Contracts\\Service\\ServiceProviderInterface;\n"
+"\n"
+"final readonly class ServiceProvider implements ServiceProviderInterface\n"
+"{\n"
+"    /**\n"
+"     * @param ContainerInterface $container\n"
+"     * @param array<string, string> $serviceMap\n"
+"     */\n"
+"    public function __construct(\n"
+"        private ContainerInterface $container,\n"
+"        private array              $serviceMap)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @inheritDoc\n"
+"     */\n"
+"    public function get(string $id): mixed\n"
+"    {\n"
+"        return $this->container->get($id);\n"
+"    }\n"
+"\n"
+"    public function has(string $id): bool\n"
+"    {\n"
+"        return $this->container->has($id);\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @inheritDoc\n"
+"     */\n"
+"    public function getProvidedServices(): array\n"
+"    {\n"
+"        return $this->serviceMap;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "4. Integrate the Symfony Messenger commands into the Yii console."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid "Add the commands to `config/console/commands.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"use Symfony\\Component\\Messenger\\Command\\ConsumeMessagesCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\DebugCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRemoveCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRetryCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesShowCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\SetupTransportsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StatsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StopWorkersCommand;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    'symfony:messenger:consume' => ConsumeMessagesCommand::class,\n"
+"    'symfony:messenger:debug' => DebugCommand::class,\n"
+"    'symfony:messenger:failed:remove' => FailedMessagesRemoveCommand::class,\n"
+"    'symfony:messenger:failed:retry' => FailedMessagesRetryCommand::class,\n"
+"    'symfony:messenger:failed:show' => FailedMessagesShowCommand::class,\n"
+"    'symfony:messenger:setup-transports' => SetupTransportsCommand::class,\n"
+"    'symfony:messenger:stats' => StatsCommand::class,\n"
+"    'symfony:messenger:stop-workers' => StopWorkersCommand::class\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid "Example:"
+msgstr ""
+
+#. type: Title #
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "Symfony Scheduler integration guide"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid ""
+"The [Symfony Scheduler](https://symfony.com/doc/current/scheduler.html) "
+"component manages task scheduling within your PHP application, like running "
+"a task each night at 3 AM, every two weeks except for holidays or any other "
+"custom schedule you might need."
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "composer require symfony/scheduler\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "2. Attaching Recurring Messages to a Schedule."
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"namespace App\\Scheduler;\n"
+"\n"
+"use App\\Messages\\MyMessage;\n"
+"use Symfony\\Component\\Scheduler\\RecurringMessage;\n"
+"use Symfony\\Component\\Scheduler\\Schedule;\n"
+"use Symfony\\Component\\Scheduler\\ScheduleProviderInterface;\n"
+"\n"
+"class MyScheduleProvider implements ScheduleProviderInterface\n"
+"{\n"
+"    public function getSchedule(): Schedule\n"
+"    {\n"
+"        return (new Schedule())\n"
+"            ->with(\n"
+"                RecurringMessage::every(\n"
+"                    '10 seconds',\n"
+"                    new MyMessage('Hello Symfony Scheduler!'))\n"
+"            );\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "3. Configure the Symfony Scheduler."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid ""
+"Depending on your needs, the Symfony Scheduler component offers two ways to "
+"consume messages: using the `messenger:consume` command or [creating a "
+"worker programmatically](https://symfony.com/doc/current/"
+"scheduler.html#creating-a-consumer-programmatically). The example uses the "
+"[symfony/messenger](https://packagist.org/packages/symfony/messenger) "
+"package to consume messages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid "Install the Symfony Messenger package:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid "Install the Symfony Cache package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "composer require ymfony/cache\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid ""
+"Implement the ServiceProviderInterface. This instance of the "
+"ServiceProviderInterface is used to configure certain Symfony Messenger "
+"commands."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+msgid ""
+"Configure the Symfony Scheduler and Symfony Messenger dependencies in the "
+"`config/common/di/application.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid ""
+"use App\\Messages\\MyMessage;\n"
+"use App\\Messages\\MyMessageHandler;\n"
+"use App\\Scheduler\\MyScheduleProvider;\n"
+"use App\\Services\\ServiceProvider;\n"
+"use Psr\\Cache\\CacheItemPoolInterface;\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"use Symfony\\Component\\Cache\\Adapter\\FilesystemAdapter;\n"
+"use Symfony\\Component\\EventDispatcher\\EventDispatcher;\n"
+"use Symfony\\Component\\Messenger\\Command\\ConsumeMessagesCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\DebugCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRemoveCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesRetryCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\FailedMessagesShowCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\SetupTransportsCommand;\n"
+"use Symfony\\Component\\Messenger\\Command\\StatsCommand;\n"
+"use Symfony\\Component\\Messenger\\EventListener\\StopWorkerOnRestartSignalListener;\n"
+"use Symfony\\Component\\Messenger\\Handler\\HandlersLocator;\n"
+"use Symfony\\Component\\Messenger\\MessageBus;\n"
+"use Symfony\\Component\\Messenger\\Middleware\\HandleMessageMiddleware;\n"
+"use Symfony\\Component\\Messenger\\RoutableMessageBus;\n"
+"use Symfony\\Component\\Scheduler\\Generator\\MessageGenerator;\n"
+"use Symfony\\Component\\Scheduler\\Messenger\\SchedulerTransport;\n"
+"use Symfony\\Contracts\\Service\\ServiceProviderInterface;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"\n"
+"class_alias(MessageBus::class, 'MyMessageBus');\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    CacheItemPoolInterface::class => static function (ContainerInterface $container) {\n"
+"        return new FilesystemAdapter(directory: $container->get(Aliases::class)->get('@runtime'));\n"
+"    }, //One of the following adapters can be used instead: Psr16Adapter, RedisAdapter, MemcachedAdapter, DoctrineDbalAdapter, and so forth.\n"
+"\n"
+"\n"
+"    'SchedulerTransport' => static function () {\n"
+"        return new SchedulerTransport(\n"
+"            new MessageGenerator(\n"
+"                new MyScheduleProvider(),\n"
+"                'MySchedule'\n"
+"            )\n"
+"        );\n"
+"    },\n"
+"\n"
+"    MyMessageBus::class => static function (ContainerInterface $container) {\n"
+"        return new MyMessageBus([\n"
+"            new HandleMessageMiddleware(new HandlersLocator([\n"
+"                MyMessage::class => [$container->get(MyMessageHandler::class)]\n"
+"            ])),\n"
+"        ]);\n"
+"    },\n"
+"\n"
+"    EventDispatcherInterface::class => static function (ContainerInterface $container) {\n"
+"        $eventDispatcher = new EventDispatcher();\n"
+"        $eventDispatcher->addSubscriber($container->get(StopWorkerOnRestartSignalListener::class));\n"
+"        return $eventDispatcher;\n"
+"    },\n"
+"    ServiceProviderInterface::class => [\n"
+"        'class' => ServiceProvider::class,\n"
+"        '__construct()' => [\n"
+"            'container' => Reference::to(ContainerInterface::class),\n"
+"            'serviceMap' => [\n"
+"                'SchedulerTransport' => SchedulerTransport::class\n"
+"            ]\n"
+"        ],\n"
+"    ],\n"
+"\n"
+"    ConsumeMessagesCommand::class => static function (ContainerInterface $container) {\n"
+"        return new ConsumeMessagesCommand(\n"
+"            $container->get(RoutableMessageBus::class),\n"
+"            $container,\n"
+"            $container->get(EventDispatcherInterface::class),\n"
+"            $container->get(LoggerInterface::class),\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"    DebugCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'mapping' => [\n"
+"                MyMessageBus::class => [Reference::to(MyMessageHandler::class)]\n"
+"            ]\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesRemoveCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalFailureReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class)\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesRetryCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class),\n"
+"            'messageBus' => Reference::to(MyMessageBus::class),\n"
+"            'eventDispatcher' => Reference::to(EventDispatcherInterface::class),\n"
+"            'logger' => Reference::to(LoggerInterface::class),\n"
+"        ],\n"
+"    ],\n"
+"    FailedMessagesShowCommand::class => [\n"
+"        '__construct()' => [\n"
+"            'globalFailureReceiverName' => null,\n"
+"            'failureTransports' => Reference::to(ServiceProviderInterface::class)\n"
+"        ],\n"
+"    ],\n"
+"    SetupTransportsCommand::class => static function (ContainerInterface $container) {\n"
+"        return new SetupTransportsCommand(\n"
+"            $container,\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"    StatsCommand::class => static function (ContainerInterface $container) {\n"
+"        return new StatsCommand(\n"
+"            $container,\n"
+"            array_keys($container->get(ServiceProviderInterface::class)->getProvidedServices())\n"
+"        );\n"
+"    },\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "5. Consume messages."
+msgstr ""
+
+#. type: Fenced code block (bash)
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
+#, no-wrap
+msgid "./yii symfony:messenger:consume SchedulerTransport --bus=MyMessageBus\n"
+msgstr ""

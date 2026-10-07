@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-07 15:22+0000\n"
+"POT-Creation-Date: 2026-10-07 20:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: ../src/cookbook/making-http-requests.md
 #: ../src/cookbook/sentry-integration.md
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
+#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md
 #: ../src/guide/tutorial/using-yii-with-rapira.md
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -195,7 +196,7 @@ msgid ""
 "[http]\n"
 "listen = \"127.0.0.1:8000\"\n"
 "\n"
-"[pool]\n"
+"[http.pool]\n"
 "entrypoint = \"worker.php\"\n"
 "mode = \"worker\"\n"
 "max_requests = 1000\n"
@@ -219,7 +220,7 @@ msgstr ""
 #. type: Fenced code block (shell)
 #: ../src/guide/tutorial/using-yii-with-rapira.md
 #, no-wrap
-msgid "rapira serve\n"
+msgid "rapira serve rapira.toml\n"
 msgstr ""
 
 #. type: Plain text
@@ -238,8 +239,8 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-rapira.md
 msgid ""
-"Set `mode` in the `[pool]` section of `rapira.toml` to choose how requests "
-"are processed:"
+"Set `mode` in the `[http.pool]` section of `rapira.toml` to choose how "
+"requests are processed:"
 msgstr ""
 
 #. type: Bullet: '- '

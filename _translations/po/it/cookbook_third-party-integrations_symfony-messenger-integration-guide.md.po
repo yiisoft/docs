@@ -42,7 +42,6 @@ msgstr ""
 #. type: Fenced code block (shell)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "composer create-project yiisoft/app your_project\n"
 msgid "composer require symfony/messenger\n"
 msgstr "composer create-project yiisoft/app your_project\n"
 
@@ -55,7 +54,6 @@ msgstr ""
 #. type: Title ###
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "Creating a project"
 msgid "1. Create a Message and Handler."
 msgstr "Creazione di un progetto"
 

@@ -82,7 +82,7 @@ Create `rapira.toml` next to `worker.php`:
 [http]
 listen = "127.0.0.1:8000"
 
-[pool]
+[http.pool]
 entrypoint = "worker.php"
 mode = "worker"
 max_requests = 1000
@@ -99,7 +99,7 @@ the other server and pool settings.
 Run the following command from the application root:
 
 ```shell
-rapira serve
+rapira serve rapira.toml
 ```
 
 Open `http://127.0.0.1:8000` to access the application. Restart the server
@@ -107,8 +107,8 @@ after changing application code or configuration.
 
 ## Execution modes
 
-Set `mode` in the `[pool]` section of `rapira.toml` to choose how requests
-are processed:
+Set `mode` in the `[http.pool]` section of `rapira.toml` to choose how
+requests are processed:
 
 - `classic` initializes the application for each request, similarly to
   PHP-FPM.

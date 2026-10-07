@@ -54,22 +54,12 @@ msgstr ""
 #. type: Title ###
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid "Generating API documentation"
 msgid "1. Create a Message and Handler."
 msgstr "Generación de Documentación de API"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid ""
-#| "final readonly class UserSignedUp\n"
-#| "{\n"
-#| "    public function __construct(\n"
-#| "        public SignupForm $form\n"
-#| "    )\n"
-#| "    {\n"
-#| "    }\n"
-#| "}\n"
 msgid ""
 "namespace App\\Messages;\n"
 "\n"
@@ -92,25 +82,6 @@ msgstr ""
 #. type: Fenced code block (php)
 #: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
 #, fuzzy, no-wrap
-#| msgid ""
-#| "use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
-#| "\n"
-#| "final readonly class SignupService\n"
-#| "{\n"
-#| "    public function __construct(\n"
-#| "        private EventDispatcherInterface $eventDispatcher\n"
-#| "    )\n"
-#| "    {\n"
-#| "    }\n"
-#| "\n"
-#| "    public function signup(SignupForm $form)\n"
-#| "    {\n"
-#| "        // handle signup\n"
-#| "\n"
-#| "        $event = new UserSignedUp($form);\n"
-#| "        $this->eventDispatcher->dispatch($event);\n"
-#| "    }\n"
-#| "}\n"
 msgid ""
 "namespace App\\Messages;\n"
 "\n"
