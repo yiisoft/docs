@@ -77,7 +77,7 @@ composer require symfony/messenger
 
 Install the Symfony Cache package:
 ```shell
-composer require ymfony/cache
+composer require symfony/cache
 ```
 
 Implement the ServiceProviderInterface. This instance of the ServiceProviderInterface is used to configure certain Symfony Messenger commands.
