@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-07 20:23+0000\n"
+"POT-Creation-Date: 2026-10-08 12:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,7 @@ msgstr ""
 #. type: Fenced code block (shell)
 #: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
 #, no-wrap
-msgid "composer require ymfony/cache\n"
+msgid "composer require symfony/cache\n"
 msgstr ""
 
 #. type: Plain text

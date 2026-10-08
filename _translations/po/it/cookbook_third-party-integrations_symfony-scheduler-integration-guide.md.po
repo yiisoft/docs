@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-07 20:23+0000\n"
+"POT-Creation-Date: 2026-10-08 12:04+0000\n"
 "PO-Revision-Date: 2026-10-07 20:23+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -256,7 +256,7 @@ msgstr ""
 #: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
 #, fuzzy, no-wrap
 #| msgid "composer create-project yiisoft/app your_project\n"
-msgid "composer require ymfony/cache\n"
+msgid "composer require symfony/cache\n"
 msgstr "composer create-project yiisoft/app your_project\n"
 
 #. type: Plain text
