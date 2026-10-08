@@ -387,6 +387,77 @@ $url = $urlGenerator->generateFromCurrent(['page' => '2']);
 The method also keeps query parameters from the current request.
 Pass explicit query parameters when a link should replace or add query string values.
 
+### Pagination URLs
+
+For most lists, keep the page number in the query string. This works well when the same list also has filters, sorting,
+or search terms because all list state stays in one place:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\Article\IndexAction;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/articles')
+        ->action(IndexAction::class)
+        ->name('article/index'),
+];
+```
+
+Generate pagination links by passing the page number as a query parameter:
+
+```php
+$url = $urlGenerator->generate('article/index', [], [
+    'page' => '2',
+    'tag' => 'yii',
+]);
+// $url is "/articles?page=2&tag=yii".
+```
+
+When the user changes only the page number, preserve the current filters and replace `page`:
+
+```php
+$query = $request->getQueryParams();
+$query['page'] = (string) $nextPage;
+
+$url = $urlGenerator->generate('article/index', [], $query);
+// For "/articles?tag=yii&sort=created_at&page=1" and $nextPage = 3,
+// $url is "/articles?tag=yii&sort=created_at&page=3".
+```
+
+If page URLs are part of a public archive structure and don't need many other list parameters, put the page number in
+the route path:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\Article\IndexAction;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/articles/page/{page:\d+}')
+        ->action(IndexAction::class)
+        ->name('article/page'),
+];
+```
+
+Then generate the URL with `page` as a route argument:
+
+```php
+$url = $urlGenerator->generate('article/page', ['page' => '2'], [
+    'tag' => 'yii',
+]);
+// $url is "/articles/page/2?tag=yii".
+```
+
+Choose one canonical URL shape for the same list. If both `/articles?page=2` and `/articles/page/2` render identical
+content, redirect one form to the other or add a canonical link in the page head.
+
 ### Locale-based URLs
 
 When the locale is part of the URL path, define it as a route argument.
