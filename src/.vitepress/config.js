@@ -87,9 +87,7 @@ export default {
                                 {text: 'Application', link: '/guide/structure/application'},
                                 {text: 'Module', link: '/guide/structure/module'},
                                 {text: 'Action', link: '/guide/structure/action'},
-                                {text: 'Middleware', link: '/guide/structure/middleware'},
-                                {text: 'Domain', link: '/guide/structure/domain'},
-                                {text: 'Service', link: '/guide/structure/service'}
+                                {text: 'Middleware', link: '/guide/structure/middleware'}
                             ]
                         },
                         {
@@ -236,7 +234,9 @@ export default {
                         {
                             text: 'Organizing Code',
                             items: [
-                                {text: 'Vertical Slices', link: '/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'}
+                                {text: 'Vertical Slices', link: '/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'},
+                                {text: 'Domain', link: '/cookbook/organizing-code/domain'},
+                                {text: 'Service', link: '/cookbook/organizing-code/service'}
                             ]
                         },
                         {
