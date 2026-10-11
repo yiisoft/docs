@@ -37,8 +37,6 @@
 - [Modules](structure/module.md)
 - [动作](structure/action.md)
 - [中间件](structure/middleware.md)
-- [领域](structure/domain.md)
-- [服务组件](structure/service.md)
 
 ## 包
 

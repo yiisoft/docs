@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,16 @@ msgstr ""
 msgid ""
 "[Structuring code by use-case with vertical slices](organizing-code/"
 "structuring-by-use-case-with-vertical-slices.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Domain](organizing-code/domain.md)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Service components](organizing-code/service.md)"
 msgstr ""
 
 #. type: Bullet: '- '

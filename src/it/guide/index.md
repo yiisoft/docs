@@ -38,8 +38,6 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Modules](structure/module.md)
 - [Azioni](structure/action.md)
 - [Middleware](structure/middleware.md)
-- [Dominio](structure/domain.md)
-- [Componenti di servizio](structure/service.md)
 
 ## Packages
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-02 23:54+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: 2026-01-02 23:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/domain.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "参考资料"
 
 #. type: Title #
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
@@ -100,17 +112,6 @@ msgstr "每个垂直切片都有自己的目录，其中包含与用例相关的
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
 msgid "The use-case subdirectories and their respective classes are organized by type within each directory, omitting a directory if there's a single class of the type. If code is shared between multiple use-cases, it's moved one level up such as `Model` or `Service`."
 msgstr "用例子目录及其各自的类在每个目录中按类型组织，如果某个类型只有一个类，则省略目录。如果代码在多个用例之间共享，则将其向上移动一级，例如 `Model` 或 `Service`。"
-
-#. type: Title ##
-#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
-#: ../src/guide/structure/domain.md
-#: ../src/guide/tutorial/console-applications.md
-#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
-#: ../src/internals/008-interfaces.md
-#, no-wrap
-msgid "References"
-msgstr "参考资料"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md

@@ -28,6 +28,8 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Configuring webservers](configuring-webservers/general.md)
 - [Structuring code by use-case with vertical
   slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Domain](organizing-code/domain.md)
+- [Service components](organizing-code/service.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
 - [Deploying Yii applications with Angie Docker
   Proxy](deployment/angie-docker-proxy.md)

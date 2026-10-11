@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-07 15:22+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -193,16 +193,6 @@ msgstr "[动作](structure/action.md)"
 #: ../src/guide/index.md
 msgid "[Middleware](structure/middleware.md)"
 msgstr "[中间件](structure/middleware.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
-msgstr "[领域](structure/domain.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
-msgstr "[服务组件](structure/service.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: 2026-01-08 08:54+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -114,6 +114,20 @@ msgstr "[配置 Web 服务器](configuring-webservers/general.md)"
 #: ../src/cookbook/index.md
 msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
 msgstr "[使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+#, fuzzy
+#| msgid "[Domain](structure/domain.md)"
+msgid "[Domain](organizing-code/domain.md)"
+msgstr "[领域](structure/domain.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+#, fuzzy
+#| msgid "[Service components](structure/service.md)"
+msgid "[Service components](organizing-code/service.md)"
+msgstr "[服务组件](structure/service.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md

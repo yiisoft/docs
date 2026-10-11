@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-10-07 15:22+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: 2026-01-04 21:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -195,16 +195,6 @@ msgstr "[Azioni](structure/action.md)"
 #: ../src/guide/index.md
 msgid "[Middleware](structure/middleware.md)"
 msgstr "[Middleware](structure/middleware.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
-msgstr "[Dominio](structure/domain.md)"
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
-msgstr "[Componenti di servizio](structure/service.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md

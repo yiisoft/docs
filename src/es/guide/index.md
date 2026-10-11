@@ -38,8 +38,6 @@ Documentation](https://www.yiiframework.com/license#docs).
 - [Modules](structure/module.md)
 - [Actions](structure/action.md)
 - [Middleware](structure/middleware.md)
-- [Domain](structure/domain.md)
-- [Service components](structure/service.md)
 
 ## Packages
 

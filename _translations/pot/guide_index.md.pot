@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-07 15:22+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,16 +185,6 @@ msgstr ""
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Middleware](structure/middleware.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Domain](structure/domain.md)"
-msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/index.md
-msgid "[Service components](structure/service.md)"
 msgstr ""
 
 #. type: Title ##

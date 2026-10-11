@@ -24,6 +24,8 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 - [Configuring Xdebug](configuring-xdebug.md)
 - [配置 Web 服务器](configuring-webservers/general.md)
 - [使用垂直切片按用例组织代码](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Domain](organizing-code/domain.md)
+- [Service components](organizing-code/service.md)
 - [部署到 Docker Swarm](deployment/docker-swarm.md)
 - [Deploying Yii applications with Angie Docker
   Proxy](deployment/angie-docker-proxy.md)

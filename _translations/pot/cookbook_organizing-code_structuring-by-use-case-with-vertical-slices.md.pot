@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-01-02 23:54+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/domain.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
+#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
+#: ../src/guide/security/best-practices.md
+#: ../src/guide/tutorial/console-applications.md
+#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
+#: ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr ""
 
 #. type: Title #
 #: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
@@ -131,17 +143,6 @@ msgid ""
 "type within each directory, omitting a directory if there's a single class "
 "of the type. If code is shared between multiple use-cases, it's moved one "
 "level up such as `Model` or `Service`."
-msgstr ""
-
-#. type: Title ##
-#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
-#: ../src/guide/structure/domain.md
-#: ../src/guide/tutorial/console-applications.md
-#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
-#: ../src/internals/008-interfaces.md
-#, no-wrap
-msgid "References"
 msgstr ""
 
 #. type: Bullet: '- '

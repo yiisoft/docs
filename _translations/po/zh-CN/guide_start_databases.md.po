@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"POT-Creation-Date: 2026-10-11 10:37+0000\n"
 "PO-Revision-Date: 2026-01-12 12:47+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/domain.md
+#: ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
+#, no-wrap
+msgid "Repository"
+msgstr "仓库"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
@@ -607,13 +614,6 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
-
-#. type: Bullet: '- '
-#: ../src/guide/start/databases.md ../src/guide/structure/domain.md
-#: ../src/guide/structure/service.md
-#, no-wrap
-msgid "Repository"
-msgstr "仓库"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md
