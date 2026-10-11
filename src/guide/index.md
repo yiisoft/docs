@@ -37,8 +37,6 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 - [Modules](structure/module.md)
 - [Actions](structure/action.md)
 - [Middleware](structure/middleware.md)
-- [Domain](structure/domain.md)
-- [Service components](structure/service.md)
 
 ## Packages
 

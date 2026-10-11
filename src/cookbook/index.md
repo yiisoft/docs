@@ -25,6 +25,8 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Configuring Xdebug](configuring-xdebug.md)
 - [Configuring webservers](configuring-webservers/general.md)
 - [Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)
+- [Domain](organizing-code/domain.md)
+- [Service components](organizing-code/service.md)
 - [Deploying to Docker Swarm](deployment/docker-swarm.md)
 - [Deploying Yii applications with Angie Docker Proxy](deployment/angie-docker-proxy.md)
 - [Configuring an application for autoscaling](deployment/autoscaling.md)
