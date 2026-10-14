@@ -86,9 +86,14 @@ Follow these rules when writing a type caster:
 5. **Fail instead of throwing.** If the value can't be converted, for example, a malformed string, return
    `Result::fail()`. An exception would break the whole hydration.
 
-Keep in mind that a failed cast is silent. If no caster succeeds, the hydrator doesn't set the property, so it keeps its
-default value, and no error is reported. Reporting the problem to the user is the job of the validation that runs after
-hydration. See [Null and invalid values](#null-and-invalid-values) for an example.
+Keep in mind what happens when no caster succeeds:
+
+- For a property, the cast fails silently. The hydrator doesn't set the property, so it keeps its default value, and
+  no error is reported. Reporting the problem to the user is the job of the validation that runs after hydration.
+  See [Null and invalid values](#null-and-invalid-values) for an example.
+- For a constructor parameter, the hydrator omits the argument. If the parameter has a default value, it's used.
+  Otherwise, object creation fails with `WrongConstructorArgumentsCountException`, even for a nullable parameter
+  without a default value.
 
 ## Registering a type caster
 
