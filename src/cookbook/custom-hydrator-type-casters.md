@@ -3,8 +3,8 @@
 [Yii Hydrator](https://github.com/yiisoft/hydrator) creates objects and fills them with data from arrays. It's used
 directly and by packages built on top of it:
 
-- [Yii Input HTTP](https://github.com/yiisoft/input-http) fills request input objects from route arguments, query
-  parameters, and request body;
+- [Yii Input HTTP](https://github.com/yiisoft/input-http) fills request input objects from query parameters, request
+  body, and, with the help of [Yii Router](https://github.com/yiisoft/router), route arguments;
 - [Yii Form Model](https://github.com/yiisoft/form-model) provides `FormHydrator` that fills form models from submitted
   data.
 
@@ -315,8 +315,9 @@ $filter = $hydrator->create(CommentFilter::class, [
 #### Request input
 
 The [Yii Input HTTP](https://github.com/yiisoft/input-http) package uses the hydrator to fill request input objects, so
-the same type caster works for route arguments, query parameters, and request body. Extend `AbstractInput` to get
-the input validated after hydration:
+the same type caster works for query parameters, request body, and route arguments. The `RouteArgument` attribute
+comes from [Yii Router](https://github.com/yiisoft/router). Extend `AbstractInput` to get the input validated after
+hydration:
 
 ```php
 <?php
@@ -329,7 +330,7 @@ use App\Post\PostId;
 use App\User\UserId;
 use Yiisoft\Input\Http\AbstractInput;
 use Yiisoft\Input\Http\Attribute\Parameter\Body;
-use Yiisoft\Input\Http\Attribute\Parameter\RouteArgument;
+use Yiisoft\Router\HydratorAttribute\RouteArgument;
 use Yiisoft\Validator\Rule\Required;
 
 final class UpdatePostInput extends AbstractInput
