@@ -94,7 +94,8 @@ hydration. See [Null and invalid values](#null-and-invalid-values) for an exampl
 
 Type casters are combined with `CompositeTypeCaster`. It tries the casters one by one and uses the result of the first
 one that succeeds. To add your caster, redefine `TypeCasterInterface` in the DI container configuration, for example,
-in `config/common/di/hydrator.php`:
+in `config/common/di/hydrator.php`. This chain is used by `HydratorInterface` from the container and by packages that
+rely on it, such as Yii Input HTTP:
 
 ```php
 <?php
@@ -126,12 +127,69 @@ Since the first successful result wins, the order matters:
 If a caster has dependencies, take it from the container:
 
 ```php
-TypeCasterInterface::class => static fn(ContainerInterface $container) => new CompositeTypeCaster(
-    $container->get(MoneyTypeCaster::class),
-    new PhpNativeTypeCaster(),
-    new HydratorTypeCaster(),
-),
+<?php
+
+declare(strict_types=1);
+
+use App\Shared\Money\MoneyTypeCaster;
+use Psr\Container\ContainerInterface;
+use Yiisoft\Hydrator\TypeCaster\CompositeTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\HydratorTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\PhpNativeTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\TypeCasterInterface;
+
+return [
+    TypeCasterInterface::class => static fn(ContainerInterface $container) => new CompositeTypeCaster(
+        $container->get(MoneyTypeCaster::class),
+        new PhpNativeTypeCaster(),
+        new HydratorTypeCaster(),
+    ),
+];
 ```
+
+### Registering for form models
+
+`FormHydrator` from Yii Form Model doesn't use `TypeCasterInterface`. Its DI configuration creates a dedicated hydrator
+with its own chain of type casters, so the caster has to be added there as well:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Shared\Uuid\UuidValueTypeCaster;
+use Yiisoft\Definitions\DynamicReference;
+use Yiisoft\FormModel\FormHydrator;
+use Yiisoft\FormModel\NonArrayTypeCaster;
+use Yiisoft\Hydrator\Hydrator;
+use Yiisoft\Hydrator\TypeCaster\CompositeTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\HydratorTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\NullTypeCaster;
+use Yiisoft\Hydrator\TypeCaster\PhpNativeTypeCaster;
+
+return [
+    FormHydrator::class => [
+        '__construct()' => [
+            'hydrator' => DynamicReference::to([
+                'class' => Hydrator::class,
+                '__construct()' => [
+                    'typeCaster' => new CompositeTypeCaster(
+                        new NullTypeCaster(emptyString: true),
+                        new UuidValueTypeCaster(),
+                        new PhpNativeTypeCaster(),
+                        new NonArrayTypeCaster(),
+                        new HydratorTypeCaster(),
+                    ),
+                ],
+            ]),
+        ],
+    ],
+];
+```
+
+This definition replaces the one from the package, so keep its type casters. The list above is taken from
+`config/di.php` of Yii Form Model 1.1; check it against the version you use. `NullTypeCaster` turns empty strings
+submitted by forms into `null` for nullable properties, so it stays first.
 
 ## Example: UUID value objects
 
@@ -227,6 +285,7 @@ use Yiisoft\Hydrator\Result;
 use Yiisoft\Hydrator\TypeCaster\TypeCastContext;
 use Yiisoft\Hydrator\TypeCaster\TypeCasterInterface;
 
+use function count;
 use function is_string;
 use function is_subclass_of;
 
@@ -251,6 +310,9 @@ final readonly class UuidValueTypeCaster implements TypeCasterInterface
     }
 
     /**
+     * Returns the `UuidValue` child class from the declared type, or `null` if there is none or there are several
+     * of them, such as in `UserId|PostId`.
+     *
      * @return class-string<UuidValue>|null
      */
     private function findUuidValueClass(?ReflectionType $type): ?string
@@ -261,17 +323,18 @@ final readonly class UuidValueTypeCaster implements TypeCasterInterface
             default => [],
         };
 
+        $classes = [];
         foreach ($types as $subType) {
             if (
                 $subType instanceof ReflectionNamedType
                 && !$subType->isBuiltin()
                 && is_subclass_of($subType->getName(), UuidValue::class)
             ) {
-                return $subType->getName();
+                $classes[] = $subType->getName();
             }
         }
 
-        return null;
+        return count($classes) === 1 ? $classes[0] : null;
     }
 }
 ```
@@ -279,9 +342,11 @@ final readonly class UuidValueTypeCaster implements TypeCasterInterface
 The caster follows the rules described above. Note that the class to create is taken from the declared type, not from
 the value: all IDs share the same UUID format, and a string alone can't tell whether it's a user ID or a post ID. As
 a result, a single caster serves all `UuidValue` child classes, and adding a new ID class doesn't require any changes in
-it.
+it. For the same reason, the caster fails for a type with several ID classes, such as `UserId|PostId`: there's no way
+to choose the right one.
 
-Register `UuidValueTypeCaster` as shown in the [Registering a type caster](#registering-a-type-caster) section.
+Register `UuidValueTypeCaster` as shown in the [Registering a type caster](#registering-a-type-caster) section,
+including the [form model configuration](#registering-for-form-models) if you use Yii Form Model.
 
 ### Using the value objects
 
@@ -364,8 +429,8 @@ final readonly class Action
 
 #### Form model
 
-`FormHydrator` from [Yii Form Model](https://github.com/yiisoft/form-model) populates form models with the same
-hydrator, so form properties can be typed as value objects too:
+`FormHydrator` from [Yii Form Model](https://github.com/yiisoft/form-model) populates form models. Once the caster is
+[registered for form models](#registering-for-form-models), form properties can be typed as value objects too:
 
 ```php
 <?php
