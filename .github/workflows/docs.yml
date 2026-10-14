@@ -39,7 +39,7 @@ jobs:
           reporter: github-check
           fail_on_error: false
           filter_mode: nofilter
-          files: '["src/en"]'
+          files: '["src/index.md", "src/cookbook", "src/guide", "src/internals"]'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
