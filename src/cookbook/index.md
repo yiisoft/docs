@@ -18,6 +18,7 @@ This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.
 - [Disabling CSRF protection](disabling-csrf-protection.md)
 - [Sentry integration](sentry-integration.md)
 - [Using a custom migration template](custom-migration-template.md)
+- [Custom hydrator type casters](custom-hydrator-type-casters.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
 - [Third-party integrations](third-party-integrations/index.md)
 - [Working on Windows](working-on-windows.md)
