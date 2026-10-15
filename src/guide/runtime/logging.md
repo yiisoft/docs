@@ -17,9 +17,11 @@ In this section, the focus in on the first two steps.
 
 ## Default log destination
 
-The [application template](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php)
-configures `Yiisoft\Log\StreamTarget`, which writes to standard output (`stdout`, or `php://stdout`) by default.
-It doesn't create application log files, such as `runtime/logs/app.log`.
+Yii3 application templates
+([web](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php) and
+[API](https://github.com/yiisoft/app-api/blob/master/config/common/di/logger.php))
+configure `Yiisoft\Log\StreamTarget`, which writes to standard output (`stdout`, or `php://stdout`) by default.
+They don't create application log files, such as `runtime/logs/app.log`.
 `StreamTarget` also supports standard error (`stderr`, or `php://stderr`), but you must configure it explicitly.
 
 This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).
@@ -153,7 +155,7 @@ To write application logs to a file, install the file target package:
 composer require yiisoft/log-target-file
 ```
 
-In the application template's `config/common/di/logger.php`, replace the `StreamTarget` reference with `FileTarget`:
+In your application's `config/common/di/logger.php`, replace the `StreamTarget` reference with `FileTarget`:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -178,7 +180,7 @@ To change the path, set `$params['yiisoft/log-target-file']['fileTarget']['file'
 Ensure that the PHP process can write to the log directory, and keep it outside the web server's document root.
 
 The file target package's default configuration also filters out `alert`, `critical`, and `notice` messages.
-The template's `StreamTarget` accepts all eight log levels. To keep that behavior, add the following entry to the
+The templates' `StreamTarget` accepts all eight log levels. To keep that behavior, add the following entry to the
 array that `config/common/params.php` returns:
 
 ```php

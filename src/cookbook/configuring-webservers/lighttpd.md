@@ -7,7 +7,7 @@ url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")
 ```
 
 > [!IMPORTANT]
-> The Yii3 application template writes application logs to `stdout` by default and doesn't create log files.
+> Yii3 application templates write application logs to `stdout` by default and don't create log files.
 > If you use PHP-FPM with lighttpd, [enable worker output capture](general.md#php-fpm).
 > Otherwise, configure output capture for the PHP process or
 > [use a file target](../../guide/runtime/logging.md#logging-to-files).

@@ -60,11 +60,11 @@ Here is a sample configuration.
 You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini`
 in the same configuration.
 
-Since the Yii3 application template uses environment variables, you can set them in `applications.yii.environment`.
+Since Yii3 application templates use environment variables, you can set them in `applications.yii.environment`.
 In a production environment, remember to set `APP_ENV` to `prod`.
 
 > [!IMPORTANT]
-> The Yii3 application template writes application logs to `stdout` by default and doesn't create log files.
+> Yii3 application templates write application logs to `stdout` by default and don't create log files.
 > Docker collects container output. For installations without containers, configure output capture for the
 > application process or [use a file target](../../guide/runtime/logging.md#logging-to-files).
 > See [application logs](general.md#application-logs) for details.

@@ -9,8 +9,8 @@ Point the document root of your web server to the `app/public` folder.
 
 ## Application logs
 
-The Yii3 application template writes application logs to standard output (`stdout`, or `php://stdout`) by default.
-It doesn't create application log files. Standard error (`stderr`) requires explicit log target configuration.
+Yii3 application templates write application logs to standard output (`stdout`, or `php://stdout`) by default.
+They don't create application log files. Standard error (`stderr`) requires explicit log target configuration.
 Docker collects container output, but on a server without containers you must configure where that output goes
 or [configure a file target](../../guide/runtime/logging.md#logging-to-files).
 Web server access and error log settings don't configure Yii's log targets.

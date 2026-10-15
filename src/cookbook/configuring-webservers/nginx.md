@@ -56,11 +56,11 @@ to avoid many unnecessary system `stat()` calls.
 Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii
 can detect if a connection is secure.
 
-In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables,
+In the above, note the usage of `fastcgi_param APP_ENV`. Since Yii3 application templates use environment variables,
 this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`.
 
 > [!IMPORTANT]
-> The Yii3 application template writes application logs to `stdout` by default and doesn't create log files.
+> Yii3 application templates write application logs to `stdout` by default and don't create log files.
 > The Nginx `access_log` and `error_log` directives above don't capture PHP-FPM worker output.
 > [Enable PHP-FPM worker output capture](general.md#php-fpm) or
 > [configure a file target](../../guide/runtime/logging.md#logging-to-files).
