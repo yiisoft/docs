@@ -223,7 +223,6 @@ use Ramsey\Uuid\Uuid;
 use Stringable;
 
 use function sprintf;
-use function strtolower;
 
 abstract readonly class UuidValue implements Stringable
 {
@@ -234,7 +233,7 @@ abstract readonly class UuidValue implements Stringable
         if (!Uuid::isValid($value)) {
             throw new InvalidArgumentException(sprintf('"%s" is not a valid UUID.', $value));
         }
-        $this->value = strtolower($value);
+        $this->value = Uuid::fromString($value)->toString();
     }
 
     public static function generate(): static
