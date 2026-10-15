@@ -23,8 +23,8 @@ If your web server uses PHP-FPM, enable worker output capture in the application
 catch_workers_output = yes
 ```
 
-Reload PHP-FPM after changing its configuration. Worker standard output and standard error will go to PHP-FPM's
-main error log, whose destination is configured by `error_log` in `php-fpm.conf`.
+Reload PHP-FPM after changing its configuration. PHP-FPM sends worker standard output and standard error to its
+main error log. The `error_log` directive in `php-fpm.conf` sets the destination.
 Without this setting, PHP-FPM redirects both streams to `/dev/null` by default.
 See the [PHP-FPM configuration reference](https://www.php.net/manual/en/install.fpm.configuration.php).
 

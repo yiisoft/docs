@@ -20,12 +20,12 @@ In this section, the focus in on the first two steps.
 The [application template](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php)
 configures `Yiisoft\Log\StreamTarget`, which writes to standard output (`stdout`, or `php://stdout`) by default.
 It doesn't create application log files, such as `runtime/logs/app.log`.
-Standard error (`stderr`, or `php://stderr`) is also supported, but you must configure it explicitly.
+`StreamTarget` also supports standard error (`stderr`, or `php://stderr`), but you must configure it explicitly.
 
 This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).
 Use `docker logs <container>` to read it when the container's logging driver supports that command.
 
-Without containers, the destination depends on how PHP is started and how its output is captured.
+Without containers, the destination depends on how you start PHP and capture its output.
 For example, PHP-FPM discards worker output by default unless you enable `catch_workers_output`.
 See [web server logging configuration](../../cookbook/configuring-webservers/general.md#application-logs).
 To have Yii write application log files directly, configure a [file target](#logging-to-files).
