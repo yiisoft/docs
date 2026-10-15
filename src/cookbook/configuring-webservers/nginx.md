@@ -58,3 +58,9 @@ can detect if a connection is secure.
 
 In the above, note the usage of `fastcgi_param APP_ENV`. Since the Yii3 application template is using environment variables,
 this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`.
+
+> [!IMPORTANT]
+> The Yii3 application template writes application logs to `stdout` by default and doesn't create log files.
+> The Nginx `access_log` and `error_log` directives above don't capture PHP-FPM worker output.
+> [Enable PHP-FPM worker output capture](general.md#php-fpm) or
+> [configure a file target](../../guide/runtime/logging.md#logging-to-files).

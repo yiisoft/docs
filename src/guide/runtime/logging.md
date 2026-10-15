@@ -15,6 +15,21 @@ Using the Yii logging framework involves the following steps:
 
 In this section, the focus in on the first two steps.
 
+## Default log destination
+
+The [application template](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php)
+configures `Yiisoft\Log\StreamTarget`, which writes to standard output (`stdout`, or `php://stdout`) by default.
+It doesn't create application log files, such as `runtime/logs/app.log`.
+Standard error (`stderr`, or `php://stderr`) is also supported, but you must configure it explicitly.
+
+This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).
+Use `docker logs <container>` to read it when the container's logging driver supports that command.
+
+Without containers, the destination depends on how PHP is started and how its output is captured.
+For example, PHP-FPM discards worker output by default unless you enable `catch_workers_output`.
+See [web server logging configuration](../../cookbook/configuring-webservers/general.md#application-logs).
+To have Yii write application log files directly, configure a [file target](#logging-to-files).
+
 ## Log Messages
 
 To record log messages, you need an instance of PSR-3 logger.
@@ -130,8 +145,39 @@ learn how to configure and use them.
 * [[\Yiisoft\Log\Target\File\FileTarget]]: saves log messages in files.
 * [[\Yiisoft\Log\Target\Syslog\SyslogTarget]]: saves log messages to syslog by calling the PHP function `syslog()`.
 
-In the following, we will describe the features common to all log targets.
+### Logging to files
 
+To write application logs to a file, install the file target package:
+
+```shell
+composer require yiisoft/log-target-file
+```
+
+In the application template's `config/common/di/logger.php`, replace the `StreamTarget` reference with `FileTarget`:
+
+```php
+use Psr\Log\LoggerInterface;
+use Yiisoft\Definitions\ReferencesArray;
+use Yiisoft\Log\Logger;
+use Yiisoft\Log\Target\File\FileTarget;
+
+return [
+    LoggerInterface::class => [
+        'class' => Logger::class,
+        '__construct()' => [
+            'targets' => ReferencesArray::from([
+                FileTarget::class,
+            ]),
+        ],
+    ],
+];
+```
+
+The package's default configuration writes to `@runtime/logs/app.log` and enables log rotation.
+To change the path, set `$params['yiisoft/log-target-file']['fileTarget']['file']` in `config/common/params.php`.
+Ensure that the PHP process can write to the log directory, and keep it outside the web server's document root.
+
+In the following, we will describe the features common to all log targets.
 
 ### Message Filtering
 
