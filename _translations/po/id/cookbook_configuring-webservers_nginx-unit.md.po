@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-25 22:44+0000\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
 "PO-Revision-Date: 2025-09-05 14:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,6 +14,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "See [application logs](general.md#application-logs) for logging configuration."
+msgstr ""
 
 #. type: Title #
 #: ../src/cookbook/configuring-webservers/nginx-unit.md
@@ -93,5 +101,5 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/nginx-unit.md
-msgid "Since the Yii3 application template uses environment variables, you can set them in `applications.yii.environment`.  In a production environment, remember to set `APP_ENV` to `prod`."
+msgid "Since Yii3 application templates use environment variables, you can set them in `applications.yii.environment`.  In a production environment, remember to set `APP_ENV` to `prod`."
 msgstr ""

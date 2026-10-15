@@ -50,5 +50,9 @@ SetEnv APP_ENV dev
 # ...other settings...
 ```
 
-在上面的配置中，请注意 `SetEnv` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将
-`APP_ENV` 设置为 `prod`。
+In the above, note the usage of `SetEnv`. Since Yii3 application templates
+use environment variables, this is a possible place to set them. In
+production environment remember to set `APP_ENV` to `prod`.
+
+See [application logs](general.md#application-logs) for logging
+configuration.

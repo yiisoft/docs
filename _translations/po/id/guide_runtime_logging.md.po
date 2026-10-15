@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -54,6 +54,30 @@ msgstr ""
 #. type: Plain text
 #: ../src/guide/runtime/logging.md
 msgid "In this section, the focus in on the first two steps."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/runtime/logging.md
+#, no-wrap
+msgid "Default log destination"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "Yii3 application templates ([web](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php) and [API](https://github.com/yiisoft/app-api/blob/master/config/common/di/logger.php))  configure `Yiisoft\\Log\\StreamTarget`, which writes to standard output (`stdout`, or `php://stdout`) by default.  They don't create application log files, such as `runtime/logs/app.log`.  `StreamTarget` also supports standard error (`stderr`, or `php://stderr`), but you must configure it explicitly."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+#, no-wrap
+msgid ""
+"This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).\n"
+"Use `docker logs <container>` to read it when the container's logging driver supports that command.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "Without containers, the destination depends on how you start PHP and capture its output.  For example, PHP-FPM discards worker output by default unless you enable `catch_workers_output`.  See [web server logging configuration](../../cookbook/configuring-webservers/general.md#application-logs).  To have Yii write application log files directly, configure a [file target](#logging-to-files)."
 msgstr ""
 
 #. type: Title ##
@@ -262,6 +286,86 @@ msgstr ""
 #. type: Bullet: '* '
 #: ../src/guide/runtime/logging.md
 msgid "[[\\Yiisoft\\Log\\Target\\Syslog\\SyslogTarget]]: saves log messages to syslog by calling the PHP function `syslog()`."
+msgstr ""
+
+#. type: Title ###
+#: ../src/guide/runtime/logging.md
+#, fuzzy, no-wrap
+#| msgid "Config files"
+msgid "Logging to files"
+msgstr "Berkas konfigurasi"
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "To write application logs to a file, install the file target package:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/guide/runtime/logging.md
+#, fuzzy, no-wrap
+#| msgid "composer require yiisoft/cache\n"
+msgid "composer require yiisoft/log-target-file\n"
+msgstr "composer require yiisoft/cache\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "In your application's `config/common/di/logger.php`, replace the `StreamTarget` reference with `FileTarget`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/logging.md
+#, no-wrap
+msgid ""
+"use Psr\\Log\\LoggerInterface;\n"
+"use Yiisoft\\Definitions\\ReferencesArray;\n"
+"use Yiisoft\\Log\\Logger;\n"
+"use Yiisoft\\Log\\Target\\File\\FileTarget;\n"
+"\n"
+"return [\n"
+"    LoggerInterface::class => [\n"
+"        'class' => Logger::class,\n"
+"        '__construct()' => [\n"
+"            'targets' => ReferencesArray::from([\n"
+"                FileTarget::class,\n"
+"            ]),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "The package's default configuration writes to `@runtime/logs/app.log` and enables log rotation.  To change the path, set `$params['yiisoft/log-target-file']['fileTarget']['file']` in `config/common/params.php`.  Ensure that the PHP process can write to the log directory, and keep it outside the web server's document root."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/runtime/logging.md
+msgid "The file target package's default configuration also filters out `alert`, `critical`, and `notice` messages.  The templates' `StreamTarget` accepts all eight log levels. To keep that behavior, add the following entry to the array that `config/common/params.php` returns:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/logging.md
+#, no-wrap
+msgid ""
+"use Psr\\Log\\LogLevel;\n"
+"\n"
+"return [\n"
+"    // Other application parameters...\n"
+"    'yiisoft/log-target-file' => [\n"
+"        'fileTarget' => [\n"
+"            'levels' => [\n"
+"                LogLevel::EMERGENCY,\n"
+"                LogLevel::ALERT,\n"
+"                LogLevel::CRITICAL,\n"
+"                LogLevel::ERROR,\n"
+"                LogLevel::WARNING,\n"
+"                LogLevel::NOTICE,\n"
+"                LogLevel::INFO,\n"
+"                LogLevel::DEBUG,\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"];\n"
 msgstr ""
 
 #. type: Plain text
