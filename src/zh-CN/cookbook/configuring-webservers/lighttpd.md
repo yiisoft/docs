@@ -5,3 +5,6 @@
 ```
 url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")
 ```
+
+See [application logs](general.md#application-logs) for logging
+configuration.

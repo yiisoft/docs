@@ -1,5 +1,8 @@
 import taskLists from 'markdown-it-task-lists'
 
+// Based on https://github.com/caddyserver/vscode-caddyfile (MIT), with fixes for placeholders, IPv6 and global options
+import caddyfileGrammar from './grammars/caddyfile.tmLanguage.json'
+
 let currentYear = new Date().getFullYear();
 
 export default {
@@ -26,6 +29,7 @@ export default {
         ]
     },
     markdown: {
+        languages: [{...caddyfileGrammar, name: 'caddyfile', aliases: ['caddy']}],
         config: (md) => {
             md.use(taskLists)
         }

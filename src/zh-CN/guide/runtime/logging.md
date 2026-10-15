@@ -14,6 +14,28 @@ Yii
 
 本节重点介绍前两个步骤。
 
+## Default log destination
+
+Yii3 application templates
+([web](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php)
+and
+[API](https://github.com/yiisoft/app-api/blob/master/config/common/di/logger.php))
+configure `Yiisoft\Log\StreamTarget`, which writes to standard output
+(`stdout`, or `php://stdout`) by default.  They don't create application log
+files, such as `runtime/logs/app.log`.  `StreamTarget` also supports
+standard error (`stderr`, or `php://stderr`), but you must configure it
+explicitly.
+
+This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).
+Use `docker logs <container>` to read it when the container's logging driver supports that command.
+
+Without containers, the destination depends on how you start PHP and capture
+its output.  For example, PHP-FPM discards worker output by default unless
+you enable `catch_workers_output`.  See [web server logging
+configuration](../../cookbook/configuring-webservers/general.md#application-logs).
+To have Yii write application log files directly, configure a [file
+target](#logging-to-files).
+
 ## Log Messages
 
 要记录日志消息，您需要一个 PSR-3 日志记录器实例。需要写入日志消息的类应通过依赖注入的方式接收它：
@@ -115,8 +137,69 @@ Yii 内置了以下日志目标。请参阅这些类的 API 文档了解如何�
 * [[\Yiisoft\Log\Target\Syslog\SyslogTarget]]：通过调用 PHP 函数 `syslog()`
   将日志消息保存到系统日志。
 
-下面将介绍所有日志目标共有的功能。
+### Logging to files
 
+To write application logs to a file, install the file target package:
+
+```shell
+composer require yiisoft/log-target-file
+```
+
+In your application's `config/common/di/logger.php`, replace the
+`StreamTarget` reference with `FileTarget`:
+
+```php
+use Psr\Log\LoggerInterface;
+use Yiisoft\Definitions\ReferencesArray;
+use Yiisoft\Log\Logger;
+use Yiisoft\Log\Target\File\FileTarget;
+
+return [
+    LoggerInterface::class => [
+        'class' => Logger::class,
+        '__construct()' => [
+            'targets' => ReferencesArray::from([
+                FileTarget::class,
+            ]),
+        ],
+    ],
+];
+```
+
+The package's default configuration writes to `@runtime/logs/app.log` and
+enables log rotation.  To change the path, set
+`$params['yiisoft/log-target-file']['fileTarget']['file']` in
+`config/common/params.php`.  Ensure that the PHP process can write to the
+log directory, and keep it outside the web server's document root.
+
+The file target package's default configuration also filters out `alert`,
+`critical`, and `notice` messages.  The templates' `StreamTarget` accepts
+all eight log levels. To keep that behavior, add the following entry to the
+array that `config/common/params.php` returns:
+
+```php
+use Psr\Log\LogLevel;
+
+return [
+    // Other application parameters...
+    'yiisoft/log-target-file' => [
+        'fileTarget' => [
+            'levels' => [
+                LogLevel::EMERGENCY,
+                LogLevel::ALERT,
+                LogLevel::CRITICAL,
+                LogLevel::ERROR,
+                LogLevel::WARNING,
+                LogLevel::NOTICE,
+                LogLevel::INFO,
+                LogLevel::DEBUG,
+            ],
+        ],
+    ],
+];
+```
+
+下面将介绍所有日志目标共有的功能。
 
 ### Message Filtering
 

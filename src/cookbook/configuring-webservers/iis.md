@@ -29,3 +29,5 @@ Use the following content:
 ```
 
 Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be useful to configure PHP on IIS.
+
+See [application logs](general.md#application-logs) for logging configuration.

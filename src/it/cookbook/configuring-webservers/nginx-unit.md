@@ -62,6 +62,9 @@ Here is a sample configuration.
 You can also [set up](https://unit.nginx.org/configuration/#php) your PHP
 environment or supply a custom `php.ini` in the same configuration.
 
-Since the Yii3 application template uses environment variables, you can set
-them in `applications.yii.environment`.  In a production environment,
-remember to set `APP_ENV` to `prod`.
+Since Yii3 application templates use environment variables, you can set them
+in `applications.yii.environment`.  In a production environment, remember to
+set `APP_ENV` to `prod`.
+
+See [application logs](general.md#application-logs) for logging
+configuration.

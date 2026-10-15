@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 20:05+0000\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
 "PO-Revision-Date: 2025-09-05 14:50+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -34,6 +34,40 @@ msgid ""
 "> [!IMPORTANT]\n"
 "> If you're running your Yii application behind a reverse proxy, you might need to configure\n"
 "> [Trusted proxies and headers](../../guide/security/trusted-request.md).\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/configuring-webservers/general.md
+#, fuzzy, no-wrap
+#| msgid "Introduction +"
+msgid "Application logs"
+msgstr "Introducción"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "Yii3 application templates write application logs to standard output (`stdout`, or `php://stdout`) by default.  They don't create application log files. Standard error (`stderr`) requires explicit log target configuration.  Docker collects container output, but on a server without containers you must configure where that output goes or [configure a file target](../../guide/runtime/logging.md#logging-to-files).  Web server access and error log settings don't configure Yii's log targets."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/configuring-webservers/general.md
+#, no-wrap
+msgid "PHP-FPM"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "If your web server uses PHP-FPM, enable worker output capture in the application's PHP-FPM pool configuration:"
+msgstr ""
+
+#. type: Fenced code block (ini)
+#: ../src/cookbook/configuring-webservers/general.md
+#, no-wrap
+msgid "catch_workers_output = yes\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/general.md
+msgid "Reload PHP-FPM after changing its configuration. PHP-FPM sends worker standard output and standard error to its main error log. The `error_log` directive in `php-fpm.conf` sets the destination.  Without this setting, PHP-FPM redirects both streams to `/dev/null` by default.  See the [PHP-FPM configuration reference](https://www.php.net/manual/en/install.fpm.configuration.php)."
 msgstr ""
 
 #. type: Title ##

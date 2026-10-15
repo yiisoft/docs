@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-09-25 14:35+0000\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
 "PO-Revision-Date: 2025-12-24 09:13+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -160,5 +160,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/cookbook/configuring-webservers/apache.md
-msgid "In the above, note the usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
+#, fuzzy
+#| msgid "In the above, note the usage of `SetEnv`. Since the Yii3 application template is using environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
+msgid "In the above, note the usage of `SetEnv`. Since Yii3 application templates use environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
 msgstr "在上面的配置中，请注意 `SetEnv` 的用法。由于 Yii3 应用程序模板使用环境变量，这是设置它们的一个可行位置。在生产环境中，请记得将 `APP_ENV` 设置为 `prod`。"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "See [application logs](general.md#application-logs) for logging configuration."
+msgstr ""

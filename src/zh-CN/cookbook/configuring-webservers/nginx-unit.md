@@ -62,6 +62,9 @@ Here is a sample configuration.
 你还可以在同一配置中 [设置](https://unit.nginx.org/configuration/#php) PHP 环境或提供自定义的
 `php.ini`。
 
-Since the Yii3 application template uses environment variables, you can set
-them in `applications.yii.environment`.  In a production environment,
-remember to set `APP_ENV` to `prod`.
+Since Yii3 application templates use environment variables, you can set them
+in `applications.yii.environment`.  In a production environment, remember to
+set `APP_ENV` to `prod`.
+
+See [application logs](general.md#application-logs) for logging
+configuration.
