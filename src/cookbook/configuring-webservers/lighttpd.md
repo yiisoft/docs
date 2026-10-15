@@ -5,3 +5,5 @@ To use [lighttpd](https://www.lighttpd.net/) >= 1.4.24, put `index.php` in the w
 ```
 url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")
 ```
+
+See [application logs](general.md#application-logs) for logging configuration.

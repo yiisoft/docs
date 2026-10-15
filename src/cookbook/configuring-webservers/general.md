@@ -7,6 +7,27 @@ Point the document root of your web server to the `app/public` folder.
 > If you're running your Yii application behind a reverse proxy, you might need to configure
 > [Trusted proxies and headers](../../guide/security/trusted-request.md).
 
+## Application logs
+
+Yii3 application templates write application logs to standard output (`stdout`, or `php://stdout`) by default.
+They don't create application log files. Standard error (`stderr`) requires explicit log target configuration.
+Docker collects container output, but on a server without containers you must configure where that output goes
+or [configure a file target](../../guide/runtime/logging.md#logging-to-files).
+Web server access and error log settings don't configure Yii's log targets.
+
+### PHP-FPM
+
+If your web server uses PHP-FPM, enable worker output capture in the application's PHP-FPM pool configuration:
+
+```ini
+catch_workers_output = yes
+```
+
+Reload PHP-FPM after changing its configuration. PHP-FPM sends worker standard output and standard error to its
+main error log. The `error_log` directive in `php-fpm.conf` sets the destination.
+Without this setting, PHP-FPM redirects both streams to `/dev/null` by default.
+See the [PHP-FPM configuration reference](https://www.php.net/manual/en/install.fpm.configuration.php).
+
 ## Specific server configurations
 
 - [Nginx](nginx.md)
