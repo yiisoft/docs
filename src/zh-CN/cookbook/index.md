@@ -17,6 +17,7 @@ Yii3 社区手册是一本开源书籍，包含了关于 [Yii3](https://www.yiif
 - [禁用 CSRF 保护](disabling-csrf-protection.md)
 - [Sentry 集成](sentry-integration.md)
 - [Using a custom migration template](custom-migration-template.md)
+- [Custom hydrator type casters](custom-hydrator-type-casters.md)
 - [Using Yii in third-party applications](using-yii-in-third-party-apps.md)
 - [Third-party integrations](third-party-integrations/index.md)
 - [Working on Windows](working-on-windows.md)
