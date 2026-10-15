@@ -30,7 +30,4 @@ Use the following content:
 
 Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be useful to configure PHP on IIS.
 
-> [!IMPORTANT]
-> Yii3 application templates write application logs to `stdout` by default and don't create log files.
-> IIS access logs don't replace application logs. Configure output capture for the PHP process or
-> [use a file target](../../guide/runtime/logging.md#logging-to-files).
+See [application logs](general.md#application-logs) for logging configuration.

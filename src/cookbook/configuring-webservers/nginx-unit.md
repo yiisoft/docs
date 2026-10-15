@@ -63,8 +63,4 @@ in the same configuration.
 Since Yii3 application templates use environment variables, you can set them in `applications.yii.environment`.
 In a production environment, remember to set `APP_ENV` to `prod`.
 
-> [!IMPORTANT]
-> Yii3 application templates write application logs to `stdout` by default and don't create log files.
-> Docker collects container output. For installations without containers, configure output capture for the
-> application process or [use a file target](../../guide/runtime/logging.md#logging-to-files).
-> See [application logs](general.md#application-logs) for details.
+See [application logs](general.md#application-logs) for logging configuration.
