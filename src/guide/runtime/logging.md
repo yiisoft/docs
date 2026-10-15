@@ -177,6 +177,32 @@ The package's default configuration writes to `@runtime/logs/app.log` and enable
 To change the path, set `$params['yiisoft/log-target-file']['fileTarget']['file']` in `config/common/params.php`.
 Ensure that the PHP process can write to the log directory, and keep it outside the web server's document root.
 
+The file target package's default configuration also filters out `alert`, `critical`, and `notice` messages.
+The template's `StreamTarget` accepts all eight log levels. To keep that behavior, add the following entry to the
+array that `config/common/params.php` returns:
+
+```php
+use Psr\Log\LogLevel;
+
+return [
+    // Other application parameters...
+    'yiisoft/log-target-file' => [
+        'fileTarget' => [
+            'levels' => [
+                LogLevel::EMERGENCY,
+                LogLevel::ALERT,
+                LogLevel::CRITICAL,
+                LogLevel::ERROR,
+                LogLevel::WARNING,
+                LogLevel::NOTICE,
+                LogLevel::INFO,
+                LogLevel::DEBUG,
+            ],
+        ],
+    ],
+];
+```
+
 In the following, we will describe the features common to all log targets.
 
 ### Message Filtering
