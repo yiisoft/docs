@@ -1,0 +1,362 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md ../src/guide/start/forms.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Summary"
+msgstr "Resumo"
+
+#. type: Title ##
+#: ../src/guide/start/databases.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Trying it out"
+msgstr "Testando"
+
+#. type: Title #
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid "Saying hello"
+msgstr "Dizendo olá"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "This section describes how to create a new \"Hello\" page in your application.  It's a simple page that will echo back whatever you pass to it or, if nothing passed, will just say \"Hello!\"."
+msgstr "Esta seção descreve como criar uma nova página \"Hello\" na sua aplicação.  É uma página simples que devolve o que você passar para ela ou, se nada for passado, apenas diz \"Hello!\"."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "To achieve this goal, you will define a route and create [a handler](../structure/handler.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
+msgstr "Para isso, você vai definir uma rota e criar [um handler](../structure/handler.md) que faz o trabalho e monta a resposta.  Depois, vai melhorá-lo para usar uma [view](../views/view.md) na construção da resposta."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Through this tutorial, you will learn three things:"
+msgstr "Neste tutorial, você vai aprender três coisas:"
+
+#. type: Bullet: '1. '
+#: ../src/guide/start/hello.md
+msgid "How to create a handler to respond to a request."
+msgstr "Como criar um handler para responder a uma requisição."
+
+#. type: Bullet: '2. '
+#: ../src/guide/start/hello.md
+msgid "How to map URL to the handler."
+msgstr "Como mapear uma URL para o handler."
+
+#. type: Bullet: '3. '
+#: ../src/guide/start/hello.md
+msgid "How to use [view](../views/view.md) to compose the response's content."
+msgstr "Como usar uma [view](../views/view.md) para compor o conteúdo da resposta."
+
+#. type: Title ##
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid "Creating a handler"
+msgstr "Criando um handler"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "For the \"Hello\" task, you will create a handler class that reads a `message` parameter from the request and displays that message back to the user. If the request doesn't provide a `message` parameter, the action will display the default \"Hello\" message."
+msgstr "Para a tarefa \"Hello\", você vai criar uma classe handler que lê o parâmetro `message` da requisição e mostra essa mensagem de volta para o usuário. Se a requisição não trouxer o parâmetro `message`, a action mostra a mensagem padrão \"Hello\"."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Create `src/Web/Echo/Action.php`:"
+msgstr "Crie `src/Web/Echo/Action.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse();\n"
+"        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse();\n"
+"        $response->getBody()->write('The message is: ' . Html::encode($message));\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "In your example, the `__invoke` method receives the `$message` parameter that with the help of `RouteArgument` attribute gets the message from URL. The value defaults to `\"Hello!\"`. If the request is made to `/say/Goodbye`, the action assigns the value \"Goodbye\" to the `$message` variable."
+msgstr "No exemplo, o método `__invoke` recebe o parâmetro `$message`, que, com a ajuda do atributo `RouteArgument`, pega a mensagem da URL. O valor padrão é `\"Hello!\"`. Se a requisição for feita para `/say/Goodbye`, a action atribui o valor \"Goodbye\" à variável `$message`."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "The application passes the response through the [middleware stack](../structure/middleware.md) to the emitter that outputs the response to the end user."
+msgstr "A aplicação passa a resposta pela [pilha de middlewares](../structure/middleware.md) até o emitter, que envia a resposta ao usuário final."
+
+#. type: Title ##
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid "Configuring router"
+msgstr "Configurando o router"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Now, to map your handler to URL, you need to add a route in `config/common/routes.php`:"
+msgstr "Agora, para mapear o handler para uma URL, você precisa adicionar uma rota em `config/common/routes.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/say[/{message}]')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "In the above, you map the `/say[/{message}]` pattern to `\\App\\Web\\Echo\\Action`.  For a request, the router creates an instance and calls the `__invoke()` method.  The `{message}` part of the pattern writes anything specified in this place to the `message` route argument.  `[]` marks this part of the pattern as optional."
+msgstr "Acima, você mapeia o padrão `/say[/{message}]` para `\\App\\Web\\Echo\\Action`.  A cada requisição, o router cria uma instância e chama o método `__invoke()`.  A parte `{message}` do padrão grava o que for informado nessa posição no argumento de rota `message`.  `[]` marca essa parte do padrão como opcional."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "You also give a `echo/say` name to this route to be able to generate URLs pointing to it."
+msgstr "Você também dá o nome `echo/say` a essa rota para poder gerar URLs que apontem para ela."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "After creating the action and the view open `http://localhost/say/Hello+World` in your browser."
+msgstr "Depois de criar a action e a view, abra `http://localhost/say/Hello+World` no navegador."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "This URL displays a page with \"The message is: Hello World\"."
+msgstr "Essa URL mostra uma página com \"The message is: Hello World\"."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "If you omit the `message` parameter in the URL, the page displays \"The message is: Hello!\"."
+msgstr "Se você omitir o parâmetro `message` na URL, a página mostra \"The message is: Hello!\"."
+
+#. type: Title ##
+#: ../src/guide/start/hello.md
+#, no-wrap
+msgid "Creating a View Template"
+msgstr "Criando um template de view"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Usually, the task is more complicated than printing out \"hello world\" and involves rendering some complex HTML. For this task, it's handy to use view templates. They're scripts you write to generate a response's body."
+msgstr "Normalmente, a tarefa é mais complicada do que imprimir \"hello world\" e envolve renderizar algum HTML complexo. Para isso, é prático usar templates de view. Eles são scripts que você escreve para gerar o corpo de uma resposta."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "For the \"Hello\" task, create a `src/Web/Echo/template.php` template that prints the `message` parameter received from the action method:"
+msgstr "Para a tarefa \"Hello\", crie um template `src/Web/Echo/template.php` que imprime o parâmetro `message` recebido do método da action:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use Yiisoft\\Html\\Html;\n"
+"/* @var string $message */\n"
+"?>\n"
+"\n"
+"<p>The message is: <?= Html::encode($message) ?></p>\n"
+msgstr ""
+"<?php\n"
+"use Yiisoft\\Html\\Html;\n"
+"/* @var string $message */\n"
+"?>\n"
+"\n"
+"<p>The message is: <?= Html::encode($message) ?></p>\n"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "In the above code, the `message` parameter uses HTML encoding before you print it. You need that because the parameter comes from an end user and is vulnerable to [cross-site scripting (XSS) attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding malicious JavaScript in the parameter."
+msgstr "No código acima, o parâmetro `message` passa por codificação HTML antes de ser impresso. Isso é necessário porque o parâmetro vem do usuário final e está sujeito a [ataques de cross-site scripting (XSS)](https://pt.wikipedia.org/wiki/Cross-site_scripting) com JavaScript malicioso embutido no parâmetro."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Naturally, you may put more content in the `say` view. The content can consist of HTML tags, plain text, and even PHP statements. In fact, the view service executes the `say` view as a PHP script."
+msgstr "Naturalmente, você pode colocar mais conteúdo na view `say`. O conteúdo pode ter tags HTML, texto puro e até instruções PHP. Na verdade, o serviço de view executa a view `say` como um script PHP."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "To use the view, you need to change `src/Web/Echo/Action.php`:"
+msgstr "Para usar a view, você precisa alterar `src/Web/Echo/Action.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/hello.md ../src/guide/views/view.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'message' => $message,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'message' => $message,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Now open your browser and check it again. You should see the similar text but with a layout applied."
+msgstr "Agora abra o navegador e confira de novo. Você deve ver um texto parecido, mas com um layout aplicado."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "Also, you've separated the part about how it works and part of how it's presented. In the larger applications, it helps a lot to deal with complexity."
+msgstr "Além disso, você separou a parte de como funciona da parte de como é apresentado. Em aplicações maiores, isso ajuda muito a lidar com a complexidade."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "In this section, you've touched the handler and template parts of the typical web application.  You created a handler as part of a class to handle a specific request. You also created a view to compose the response's content. In this simple example, no data source was involved as the only data used was the `message` parameter."
+msgstr "Nesta seção, você passou pelas partes de handler e de template de uma aplicação web típica.  Você criou um handler como parte de uma classe para tratar uma requisição específica. Também criou uma view para compor o conteúdo da resposta. Neste exemplo simples, nenhuma fonte de dados foi usada, já que o único dado era o parâmetro `message`."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "You've also learned about routing in Yii, which acts as the bridge between user requests and handlers."
+msgstr "Você também aprendeu sobre o roteamento no Yii, que funciona como a ponte entre as requisições do usuário e os handlers."
+
+#. type: Plain text
+#: ../src/guide/start/hello.md
+msgid "In the next section, you will learn how to fetch data and add a new page containing an HTML form."
+msgstr "Na próxima seção, você vai aprender a buscar dados e adicionar uma nova página com um formulário HTML."

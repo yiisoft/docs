@@ -1,0 +1,97 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-28 20:46+0000\n"
+"PO-Revision-Date: 2026-05-28 20:46+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "What do you need to know?"
+msgstr "O que você precisa saber?"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "The Yii learning curve isn't as steep as other PHP frameworks, but still, there are some things you should learn before starting with Yii."
+msgstr "A curva de aprendizado do Yii não é tão íngreme quanto a de outros frameworks PHP, mas ainda assim há algumas coisas que você deve aprender antes de começar com o Yii."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "PHP"
+msgstr "PHP"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "Yii is a PHP framework, so make sure you [read and understand language reference](https://www.php.net/manual/en/langref.php)."
+msgstr "O Yii é um framework PHP, então [leia e entenda a referência da linguagem](https://www.php.net/manual/pt_BR/langref.php)."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "Object-oriented programming"
+msgstr "Programação orientada a objetos"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "You need a basic understanding of object-oriented programming. If you're not familiar with it, check one of the many tutorials available such as [the one from tuts+](https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762)."
+msgstr "Você precisa de uma noção básica de programação orientada a objetos. Se ainda não conhece, veja um dos muitos tutoriais disponíveis, como [o do tuts+](https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762)."
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "When you develop with Yii, you write code in an object-oriented fashion, so make sure you're familiar with [PHP OOP support](https://www.php.net/manual/en/language.oop5.php)."
+msgstr "Ao desenvolver com o Yii, você escreve código orientado a objetos, então conheça bem o [suporte do PHP a POO](https://www.php.net/manual/pt_BR/language.oop5.php)."
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "Note that the more complicated your application is, the more advanced OOP concepts you should learn to successfully manage that complexity."
+msgstr "Quanto mais complexa for a sua aplicação, mais conceitos avançados de POO você vai precisar aprender para lidar bem com essa complexidade."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "Command line and Composer"
+msgstr "Linha de comando e Composer"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "Yii extensively uses the de-facto standard PHP package manager, [Composer](https://getcomposer.org) so make sure you read and understand its [guide](https://getcomposer.org/doc/01-basic-usage.md). If you aren't familiar with using the command line, it's time to start trying. Once you learn the basics, you'll never want to work without it."
+msgstr "O Yii usa amplamente o gerenciador de pacotes que é o padrão de fato no PHP, o [Composer](https://getcomposer.org), então leia e entenda o [guia dele](https://getcomposer.org/doc/01-basic-usage.md). Se você não tem costume de usar a linha de comando, é hora de começar. Depois de aprender o básico, você não vai querer trabalhar sem ela."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "HTTP"
+msgstr "HTTP"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "Since Yii is a web framework and the web largely uses HTTP, it's a good idea to [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP)."
+msgstr "Como o Yii é um framework web e a web usa principalmente HTTP, é uma boa ideia [aprender mais sobre ele](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)."
+
+#. type: Title ##
+#: ../src/guide/start/prerequisites.md
+#, no-wrap
+msgid "Docker"
+msgstr "Docker"
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "The default application template leverages Docker, so we recommend that you [read and understand the concepts](https://docs.docker.com/get-started/)."
+msgstr "O template de aplicação padrão usa Docker, então recomendamos que você [leia e entenda os conceitos](https://docs.docker.com/get-started/)."
+
+#. type: Plain text
+#: ../src/guide/start/prerequisites.md
+msgid "Also, you will benefit from familiarizing yourself with [twelve-factor app](https://12factor.net/) principles."
+msgstr "Também vale a pena conhecer os princípios do [twelve-factor app](https://12factor.net/pt_br/)."

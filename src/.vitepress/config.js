@@ -1320,6 +1320,291 @@ export default {
                     }
                 }
             }
+        },
+        'pt-BR': {
+            title: 'Documentação do Yii3',
+            label: 'Português (Brasil)',
+            lang: 'pt-BR',
+            link: '/pt-BR/',
+            themeConfig: {
+                nav: [
+                    {text: 'Guia', link: '/pt-BR/guide/'},
+                    {text: 'Cookbook', link: '/pt-BR/cookbook/'},
+                    {text: 'Detalhes internos', link: '/pt-BR/internals/'},
+                    {text: 'Site', link: 'https://www.yiiframework.com'}
+                ],
+                sidebar: {
+                    '/pt-BR/guide/': [
+                        {
+                            text: 'Introdução',
+                            items: [
+                                {text: 'Sobre o Yii', link: '/pt-BR/guide/intro/what-is-yii'},
+                                {text: 'Atualizando a partir da versão 1.1', link: '/pt-BR/guide/intro/upgrade-from-v1'},
+                                {text: 'Atualizando a partir da versão 2', link: '/pt-BR/guide/intro/upgrade-from-v2'}
+                            ]
+                        },
+                        {
+                            text: 'Primeiros passos',
+                            items: [
+                                {text: 'O que você precisa saber', link: '/pt-BR/guide/start/prerequisites'},
+                                {text: 'Criando um projeto', link: '/pt-BR/guide/start/creating-project'},
+                                {text: 'Fluxo da aplicação', link: '/pt-BR/guide/start/workflow'},
+                                {text: 'Dizendo olá', link: '/pt-BR/guide/start/hello'},
+                                {text: 'Trabalhando com formulários', link: '/pt-BR/guide/start/forms'},
+                                {text: 'Trabalhando com bancos de dados', link: '/pt-BR/guide/start/databases'},
+                                {text: 'Gerando código com o Gii', link: '/pt-BR/guide/start/gii'},
+                                {text: 'Seguindo em frente', link: '/pt-BR/guide/start/looking-ahead'},
+                                {text: 'Aplicações de demonstração', link: '/pt-BR/guide/start/demo-apps'}
+                            ]
+                        },
+                        {
+                            text: 'Conceitos principais',
+                            items: [
+                                {text: 'Aliases', link: '/pt-BR/guide/concept/aliases'},
+                                {text: 'Autoload', link: '/pt-BR/guide/concept/autoloading'},
+                                {text: 'Configuração', link: '/pt-BR/guide/concept/configuration'},
+                                {text: 'Container de DI', link: '/pt-BR/guide/concept/di-container'},
+                                {text: 'Eventos', link: '/pt-BR/guide/concept/events'},
+                                {text: 'Imutabilidade', link: '/pt-BR/guide/concept/immutability'}
+                            ]
+                        },
+                        {
+                            text: 'Estrutura da aplicação',
+                            items: [
+                                {text: 'Visão geral', link: '/pt-BR/guide/structure/overview'},
+                                {text: 'Script de entrada', link: '/pt-BR/guide/structure/entry-script'},
+                                {text: 'Aplicação', link: '/pt-BR/guide/structure/application'},
+                                {text: 'Módulo', link: '/pt-BR/guide/structure/module'},
+                                {text: 'Action', link: '/pt-BR/guide/structure/action'},
+                                {text: 'Middleware', link: '/pt-BR/guide/structure/middleware'}
+                            ]
+                        },
+                        {
+                            text: 'Pacotes',
+                            items: [
+                                {text: 'Usando pacotes', link: '/pt-BR/guide/structure/package'},
+                                {text: 'Projetando pacotes', link: '/pt-BR/guide/structure/designing-packages'}
+                            ]
+                        },
+                        {
+                            text: 'Tratando requisições',
+                            items: [
+                                {text: 'Roteamento', link: '/pt-BR/guide/runtime/routing'},
+                                {text: 'Requisição', link: '/pt-BR/guide/runtime/request'},
+                                {text: 'Resposta', link: '/pt-BR/guide/runtime/response'},
+                                {text: 'Sessões', link: '/pt-BR/guide/runtime/sessions'},
+                                {text: 'Cookies', link: '/pt-BR/guide/runtime/cookies'},
+                                {text: 'Tratamento de erros', link: '/pt-BR/guide/runtime/handling-errors'},
+                                {text: 'Logs', link: '/pt-BR/guide/runtime/logging'}
+                            ]
+                        },
+                        {
+                            text: 'APIs REST',
+                            items: [
+                                {text: 'Início rápido', link: '/pt-BR/guide/rest/quick-start'}
+                            ]
+                        },
+                        {
+                            text: 'Segurança',
+                            items: [
+                                {text: 'Visão geral', link: '/pt-BR/guide/security/overview'},
+                                {text: 'Autenticação', link: '/pt-BR/guide/security/authentication'},
+                                {text: 'Autorização', link: '/pt-BR/guide/security/authorization'},
+                                {text: 'Trabalhando com senhas', link: '/pt-BR/guide/security/passwords'},
+                                {text: 'Criptografia', link: '/pt-BR/guide/security/cryptography'},
+                                {text: 'Requisição confiável', link: '/pt-BR/guide/security/trusted-request'},
+                                {text: 'Boas práticas', link: '/pt-BR/guide/security/best-practices'}
+                            ]
+                        },
+                        {
+                            text: 'Cache',
+                            items: [
+                                {text: 'Visão geral', link: '/pt-BR/guide/caching/overview'},
+                                {text: 'Cache de dados', link: '/pt-BR/guide/caching/data'}
+                            ]
+                        },
+                        {
+                            text: 'Trabalhando com bancos de dados',
+                            items: [
+                                {text: 'Yii DB', link: 'https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md'},
+                                {text: 'Active Record', link: 'https://github.com/yiisoft/active-record/blob/master/README.md'},
+                                {text: 'Migrations de banco de dados', link: '/pt-BR/guide/databases/db-migrations'}
+                            ]
+                        },
+                        {
+                            text: 'Views',
+                            items: [
+                                {text: 'Views', link: '/pt-BR/guide/views/view'},
+                                {text: 'Assets', link: '/pt-BR/guide/views/asset'},
+                                {text: 'Scripts, estilos e meta tags', link: '/pt-BR/guide/views/script-style-meta'},
+                                {text: 'Template engines', link: '/pt-BR/guide/views/template-engines'},
+                                {text: 'Injeções em views', link: '/pt-BR/guide/views/view-injections'},
+                                {text: 'Widgets', link: '/pt-BR/guide/views/widget'}
+                            ]
+                        },
+                        {
+                            text: 'Testes',
+                            items: [
+                                {text: 'Visão geral de testes', link: '/pt-BR/guide/testing/overview'},
+                                {text: 'Configurando o ambiente de testes', link: '/pt-BR/guide/testing/environment-setup'},
+                                {text: 'Testes unitários', link: '/pt-BR/guide/testing/unit'},
+                                {text: 'Testes funcionais', link: '/pt-BR/guide/testing/functional'},
+                                {text: 'Testes end-to-end', link: '/pt-BR/guide/testing/end-to-end'},
+                                {text: 'Análise estática e testes de mutação', link: '/pt-BR/guide/testing/quality-tools'}
+                            ]
+                        },
+                        {
+                            text: 'Tutorial',
+                            items: [
+                                {text: 'Aplicações de console', link: '/pt-BR/guide/tutorial/console-applications'},
+                                {text: 'Envio de e-mails', link: '/pt-BR/guide/tutorial/mailing'},
+                                {text: 'Otimização de desempenho', link: '/pt-BR/guide/tutorial/performance-tuning'},
+                                {text: 'Usando com event loop', link: '/pt-BR/guide/tutorial/using-with-event-loop'},
+                                {text: 'Usando o Yii com FrankenPHP', link: '/pt-BR/guide/tutorial/using-yii-with-frankenphp'},
+                                {text: 'Usando o Yii com Rapira', link: '/pt-BR/guide/tutorial/using-yii-with-rapira'},
+                                {text: 'Usando o Yii com RoadRunner', link: '/pt-BR/guide/tutorial/using-yii-with-roadrunner'},
+                                {text: 'Usando o Yii com Swoole', link: '/pt-BR/guide/tutorial/using-yii-with-swoole'},
+                                {text: 'Docker nos templates de aplicação', link: '/pt-BR/guide/tutorial/docker'},
+                                {text: 'Internacionalização', link: '/pt-BR/guide/tutorial/i18n'}
+                            ]
+                        },
+                        {
+                            text: 'Helpers',
+                            items: [
+                                {text: 'Arrays', link: 'https://github.com/yiisoft/arrays/'},
+                                {text: 'Arquivos', link: 'https://github.com/yiisoft/files/'},
+                                {text: 'Html', link: 'https://github.com/yiisoft/html/'},
+                                {text: 'Json', link: 'https://github.com/yiisoft/json'},
+                                {text: 'Utilitários de rede', link: 'https://github.com/yiisoft/network-utilities/'},
+                                {text: 'VarDumper', link: 'https://github.com/yiisoft/var-dumper'},
+                                {text: 'Strings', link: 'https://github.com/yiisoft/strings'}
+                            ]
+                        },
+                        {
+                            text: 'Glossário',
+                            link: '/pt-BR/guide/glossary'
+                        }
+                    ],
+                    '/pt-BR/cookbook/': [
+                        {
+                            text: 'Cookbook',
+                            items: [
+                                {text: 'Prefácio', link: '/pt-BR/cookbook/preface'},
+                                {text: 'Fazendo requisições HTTP', link: '/pt-BR/cookbook/making-http-requests'},
+                                {text: 'Usando htmx para recarregar partes da página', link: '/pt-BR/cookbook/using-htmx-for-partial-reloads'},
+                                {text: 'Desativando a proteção CSRF', link: '/pt-BR/cookbook/disabling-csrf-protection'},
+                                {text: 'Integração com o Sentry', link: '/pt-BR/cookbook/sentry-integration'},
+                                {text: 'Usando um template de migration personalizado', link: '/pt-BR/cookbook/custom-migration-template'},
+                                {text: 'Type casters personalizados para o hydrator', link: '/pt-BR/cookbook/custom-hydrator-type-casters'},
+                                {text: 'Usando o Yii em aplicações de terceiros', link: '/pt-BR/cookbook/using-yii-in-third-party-apps'},
+                                {text: 'Integrações com terceiros', link: '/pt-BR/cookbook/third-party-integrations/'}
+                            ]
+                        },
+                        {
+                            text: 'Ambiente de desenvolvimento',
+                            collapsed: false,
+                            items: [
+                                {text: 'Trabalhando no Windows', link: '/pt-BR/cookbook/working-on-windows'},
+                                {text: 'Abrindo arquivos no PhpStorm', link: '/pt-BR/cookbook/opening-files-in-phpstorm'},
+                                {text: 'Configurando o Xdebug', link: '/pt-BR/cookbook/configuring-xdebug'}
+                            ]
+                        },
+                        {
+                            text: 'Configurando servidores web',
+                            collapsed: false,
+                            items: [
+                                {text: 'Geral', link: '/pt-BR/cookbook/configuring-webservers/general'},
+                                {text: 'Apache', link: '/pt-BR/cookbook/configuring-webservers/apache'},
+                                {text: 'Nginx', link: '/pt-BR/cookbook/configuring-webservers/nginx'},
+                                {text: 'Nginx Unit', link: '/pt-BR/cookbook/configuring-webservers/nginx-unit'},
+                                {text: 'IIS', link: '/pt-BR/cookbook/configuring-webservers/iis'},
+                                {text: 'Lighttpd', link: '/pt-BR/cookbook/configuring-webservers/lighttpd'}
+                            ]
+                        },
+                        {
+                            text: 'Organizando o código',
+                            items: [
+                                {text: 'Vertical slices', link: '/pt-BR/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'},
+                                {text: 'Domínio', link: '/pt-BR/cookbook/organizing-code/domain'},
+                                {text: 'Serviço', link: '/pt-BR/cookbook/organizing-code/service'}
+                            ]
+                        },
+                        {
+                            text: 'Deploy',
+                            items: [
+                                {text: 'Docker Swarm', link: '/pt-BR/cookbook/deployment/docker-swarm'},
+                                {text: 'Angie Docker Proxy', link: '/pt-BR/cookbook/deployment/angie-docker-proxy'},
+                                {text: 'Autoscaling', link: '/pt-BR/cookbook/deployment/autoscaling'},
+                                {text: 'Migrations em rolling updates', link: '/pt-BR/cookbook/deployment/rolling-update-migrations'}
+                            ]
+                        }
+                    ],
+                    '/pt-BR/internals/': [
+                        {
+                            text: 'Detalhes internos',
+                            items: [
+                                {text: 'Pacotes', link: '/pt-BR/internals/000-packages'},
+                                {text: 'Valores do Yii', link: '/pt-BR/internals/001-yii-values'},
+                                {text: 'Fluxo de issues', link: '/pt-BR/internals/002-issue-workflow'},
+                                {text: 'Roadmap', link: '/pt-BR/internals/003-roadmap'},
+                                {text: 'Namespaces', link: '/pt-BR/internals/004-namespaces'},
+                                {text: 'Ferramenta de desenvolvimento', link: '/pt-BR/internals/005-development-tool'},
+                                {text: 'Mensagens de commit no Git', link: '/pt-BR/internals/006-git-commit-messages'},
+                                {text: 'Exceções', link: '/pt-BR/internals/007-exceptions'},
+                                {text: 'Interfaces', link: '/pt-BR/internals/008-interfaces'},
+                                {text: 'Decisões de design', link: '/pt-BR/internals/009-design-decisions'},
+                                {text: 'Estilo de código', link: '/pt-BR/internals/010-code-style'},
+                                {text: 'Correção de erros', link: '/pt-BR/internals/011-error-correction'},
+                                {text: 'Testes', link: '/pt-BR/internals/012-tests'},
+                                {text: 'Code review', link: '/pt-BR/internals/013-code-review'},
+                                {text: 'Documentação', link: '/pt-BR/internals/014-docs'},
+                                {text: 'PHPStorm', link: '/pt-BR/internals/015-phpstorm'},
+                                {text: 'Fluxo de segurança', link: '/pt-BR/internals/016-security-workflow'},
+                                {text: 'Tags', link: '/pt-BR/internals/017-tags'},
+                                {text: 'Widgets', link: '/pt-BR/internals/018-widgets'},
+                                {text: 'Estilo de código de views', link: '/pt-BR/internals/019-view-code-style'},
+                                {text: 'Release de pacotes', link: '/pt-BR/internals/020-package-release'},
+                                {text: 'Changelog e upgrade', link: '/pt-BR/internals/021-changelog-upgrade'},
+                                {text: 'Grupos de configuração', link: '/pt-BR/internals/022-config-groups'},
+                                {text: 'GitHub Actions', link: '/pt-BR/internals/023-github-actions'}
+                            ]
+                        }
+                    ]
+                },
+                footer: {
+                    message: 'Publicado sob a <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">Licença BSD-3-Clause</a>.',
+                    copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
+                },
+                docFooter: {
+                    prev: 'Página anterior',
+                    next: 'Próxima página',
+                },
+                outline: {
+                    label: 'Nesta página'
+                },
+                lastUpdated: {
+                    text: 'Atualizado em'
+                },
+                search: {
+                    options: {
+                        translations: {
+                            button: {
+                                buttonText: 'Pesquisar',
+                                buttonAriaLabel: 'Pesquisar'
+                            },
+                            modal: {
+                                noResultsText: 'Nenhum resultado para',
+                                resetButtonTitle: 'Limpar pesquisa',
+                                footer: {
+                                    selectText: 'selecionar',
+                                    navigateText: 'navegar',
+                                    closeText: 'fechar'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -1,0 +1,295 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-06 19:16+0000\n"
+"PO-Revision-Date: 2026-05-06 19:16+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Making HTTP requests"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Yii doesn't include its own HTTP client implementation. Use a client that implements [PSR-18](https://www.php-fig.org/psr/psr-18/) and depend on PSR interfaces in your application code."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "This recipe uses [Guzzle](https://docs.guzzlephp.org/) as the HTTP client. Guzzle provides a PSR-18 client and uses PSR-7 messages."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#: ../src/cookbook/sentry-integration.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
+#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Install Guzzle:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "composer require guzzlehttp/guzzle\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "The package installs the PSR HTTP interfaces and `guzzlehttp/psr7`, which provides PSR-7 messages and PSR-17 factories."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Configure the container"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Create `config/common/di/http-client.php`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use GuzzleHttp\\Client;\n"
+"use GuzzleHttp\\Psr7\\HttpFactory;\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"use Psr\\Http\\Message\\UriFactoryInterface;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"\n"
+"return [\n"
+"    ClientInterface::class => [\n"
+"        'class' => Client::class,\n"
+"        '__construct()' => [\n"
+"            'config' => [\n"
+"                'timeout' => 10.0,\n"
+"                'connect_timeout' => 3.0,\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"\n"
+"    HttpFactory::class => HttpFactory::class,\n"
+"    RequestFactoryInterface::class => Reference::to(HttpFactory::class),\n"
+"    ResponseFactoryInterface::class => Reference::to(HttpFactory::class),\n"
+"    StreamFactoryInterface::class => Reference::to(HttpFactory::class),\n"
+"    UriFactoryInterface::class => Reference::to(HttpFactory::class),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Use `ClientInterface` for sending requests and PSR-17 factories for creating requests, streams, and URIs."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Send a GET request"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Inject `Psr\\Http\\Client\\ClientInterface` and `Psr\\Http\\Message\\RequestFactoryInterface` into the service that talks to the external API:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\GitHub;\n"
+"\n"
+"use Psr\\Http\\Client\\ClientExceptionInterface;\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use RuntimeException;\n"
+"\n"
+"final readonly class ReleaseClient\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClientInterface $httpClient,\n"
+"        private RequestFactoryInterface $requestFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @return array<string, mixed>\n"
+"     */\n"
+"    public function latest(string $owner, string $repository): array\n"
+"    {\n"
+"        $request = $this->requestFactory\n"
+"            ->createRequest(\n"
+"                'GET',\n"
+"                sprintf(\n"
+"                    'https://api.github.com/repos/%s/%s/releases/latest',\n"
+"                    rawurlencode($owner),\n"
+"                    rawurlencode($repository),\n"
+"                ),\n"
+"            )\n"
+"            ->withHeader('Accept', 'application/vnd.github+json');\n"
+"\n"
+"        try {\n"
+"            $response = $this->httpClient->sendRequest($request);\n"
+"        } catch (ClientExceptionInterface $e) {\n"
+"            throw new RuntimeException('GitHub request failed.', previous: $e);\n"
+"        }\n"
+"\n"
+"        if ($response->getStatusCode() !== 200) {\n"
+"            throw new RuntimeException(sprintf(\n"
+"                'GitHub returned HTTP %d.',\n"
+"                $response->getStatusCode(),\n"
+"            ));\n"
+"        }\n"
+"\n"
+"        return json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "PSR-18 clients throw `ClientExceptionInterface` for request sending errors. HTTP status codes such as `404` and `500` are valid responses, so check the status code in your service."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "Send JSON"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Use `StreamFactoryInterface` when you need a request body:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Webhook;\n"
+"\n"
+"use Psr\\Http\\Client\\ClientInterface;\n"
+"use Psr\\Http\\Message\\RequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"\n"
+"final readonly class WebhookClient\n"
+"{\n"
+"    public function __construct(\n"
+"        private ClientInterface $httpClient,\n"
+"        private RequestFactoryInterface $requestFactory,\n"
+"        private StreamFactoryInterface $streamFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * @param array<string, mixed> $payload\n"
+"     */\n"
+"    public function send(array $payload): void\n"
+"    {\n"
+"        $body = $this->streamFactory->createStream(json_encode($payload, JSON_THROW_ON_ERROR));\n"
+"\n"
+"        $request = $this->requestFactory\n"
+"            ->createRequest('POST', 'https://api.example.com/webhooks')\n"
+"            ->withHeader('Content-Type', 'application/json')\n"
+"            ->withHeader('Accept', 'application/json')\n"
+"            ->withBody($body);\n"
+"\n"
+"        $this->httpClient->sendRequest($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/making-http-requests.md ../src/guide/index.md
+#: ../src/guide/tutorial/docker.md
+#, no-wrap
+msgid "Testing"
+msgstr "Testes"
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "For unit tests, pass a client configured with Guzzle's `MockHandler`:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\GitHub\\ReleaseClient;\n"
+"use GuzzleHttp\\Client;\n"
+"use GuzzleHttp\\Handler\\MockHandler;\n"
+"use GuzzleHttp\\HandlerStack;\n"
+"use GuzzleHttp\\Psr7\\HttpFactory;\n"
+"use GuzzleHttp\\Psr7\\Response;\n"
+"use PHPUnit\\Framework\\TestCase;\n"
+"\n"
+"final class ReleaseClientTest extends TestCase\n"
+"{\n"
+"    public function testLatestReturnsDecodedRelease(): void\n"
+"    {\n"
+"        $handler = new MockHandler([\n"
+"            new Response(200, [], json_encode(['tag_name' => '1.0.0'], JSON_THROW_ON_ERROR)),\n"
+"        ]);\n"
+"\n"
+"        $client = new Client(['handler' => HandlerStack::create($handler)]);\n"
+"        $factory = new HttpFactory();\n"
+"\n"
+"        $releaseClient = new ReleaseClient($client, $factory);\n"
+"\n"
+"        $release = $releaseClient->latest('yiisoft', 'docs');\n"
+"\n"
+"        $this->assertSame('1.0.0', $release['tag_name']);\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/making-http-requests.md
+#, no-wrap
+msgid "When to use Guzzle directly"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/making-http-requests.md
+msgid "Depend on PSR interfaces for regular application services. Use `GuzzleHttp\\Client` directly in infrastructure code that needs Guzzle-only features such as asynchronous requests, handler stacks, or middleware."
+msgstr ""

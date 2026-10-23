@@ -1,0 +1,773 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-15 11:09+0000\n"
+"PO-Revision-Date: 2026-10-15 11:09+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Custom hydrator type casters"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "[Yii Hydrator](https://github.com/yiisoft/hydrator) creates objects and fills them with data from arrays. It's used directly and by packages built on top of it:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "[Yii Input HTTP](https://github.com/yiisoft/input-http) fills request input objects from query parameters, request body, and, with the help of [Yii Router](https://github.com/yiisoft/router), route arguments."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "[Yii Form Model](https://github.com/yiisoft/form-model) provides `FormHydrator` that fills form models from submitted data."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The incoming data is usually \"raw\": HTTP requests, database rows, and queue messages contain strings, numbers, and arrays. Before assigning a value to a property or passing it to a constructor parameter, the hydrator converts it to the declared type. A *type caster* performs this conversion. By writing your own type caster, you teach the hydrator to create your types, such as value objects, from raw data."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Why custom type casters"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Out of the box, the hydrator uses a composite type caster with two casters:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`PhpNativeTypeCaster` casts values to built-in PHP types, such as `int`, `string`, `bool`, and `array`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`HydratorTypeCaster` creates nested objects from arrays using the hydrator itself."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "That's enough for DTOs with scalar properties, but not for a rich domain model. Consider a property typed as `UserId`, `Email`, or `Money`. The incoming value is a string, and neither of the default casters knows how to turn it into such an object. So you end up declaring the property as `string` and converting it by hand wherever it's used:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"final class CreatePostForm extends FormModel\n"
+"{\n"
+"    public string $authorId = '';\n"
+"}\n"
+"\n"
+"// In every action that uses the form:\n"
+"try {\n"
+"    $authorId = new UserId($form->authorId);\n"
+"} catch (InvalidArgumentException) {\n"
+"    // Report the error somehow.\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "With a type caster for `UserId`, you can declare the property with its real type. The conversion happens during hydration:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"final class CreatePostForm extends FormModel\n"
+"{\n"
+"    public ?UserId $authorId = null;\n"
+"}\n"
+"\n"
+"// $form->authorId is already an instance of UserId.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The conversion logic lives in a single place. Once you register the caster, the hydrator applies it to every property and constructor parameter of the matching type in every object it creates."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Typical use cases are:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "value objects, such as entity IDs, emails, phone numbers, and money amounts."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "types from third-party libraries, such as UUIDs, dates, or currencies."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "consistent normalization of values, for example, parsing dates in a format specific to your application."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Anatomy of a type caster"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "A type caster implements `Yiisoft\\Hydrator\\TypeCaster\\TypeCasterInterface` with a single method:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "public function cast(mixed $value, TypeCastContext $context): Result;\n"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`$value` is the raw value to convert."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`$context` is a `Yiisoft\\Hydrator\\TypeCaster\\TypeCastContext`. Its `getReflectionType()` method returns the declared type of the target property or constructor parameter. Use it to decide whether the caster supports the target type."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The method returns a `Yiisoft\\Hydrator\\Result`: `Result::success($convertedValue)` if the conversion succeeded or `Result::fail()` if the caster can't handle the value."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Follow these rules when writing a type caster:"
+msgstr ""
+
+#. type: Bullet: '1. '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "**Check the target type first.** If the declared type isn't the one your caster is responsible for, return `Result::fail()` right away so other casters can handle the value."
+msgstr ""
+
+#. type: Bullet: '2. '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "**Handle both named and union types.** PHP represents a nullable type such as `?Email` (or `Email|null`) with `ReflectionNamedType` and `Email|string` with `ReflectionUnionType`. In the latter case, look for your type among its subtypes."
+msgstr ""
+
+#. type: Bullet: '3. '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "**Don't handle `null` yourself.** If the value is `null`, just return `Result::fail()`. `PhpNativeTypeCaster` returns `null` for any type that allows it, so a `null` value assigned to `?Email` stays `null`."
+msgstr ""
+
+#. type: Bullet: '4. '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "**Accept already converted values.** If the value is already an instance of the target type, return it as is."
+msgstr ""
+
+#. type: Bullet: '5. '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "**Fail instead of throwing.** If your caster can't convert the value, for example, a malformed string, return `Result::fail()`. An exception would break the whole hydration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Keep in mind what happens when no caster succeeds:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "For a property, the cast fails silently. The hydrator doesn't set the property or report an error, so the property keeps its default value. Reporting the problem to the user is the job of the validation that runs after hydration.  See [Null and invalid values](#null-and-invalid-values) for an example."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "For a constructor parameter, the hydrator omits the argument. If the parameter has a default value, it's used.  Otherwise, object creation fails with `WrongConstructorArgumentsCountException`, even for a nullable parameter without a default value."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Registering a type caster"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Combine type casters with `CompositeTypeCaster`. It tries the casters one by one and uses the result of the first one that succeeds. To add your caster, redefine `TypeCasterInterface` in the DI container configuration, for example, in `config/common/di/hydrator.php`. The `HydratorInterface` implementation from the container uses this chain, as do packages that rely on it, such as Yii Input HTTP:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Shared\\Uuid\\UuidValueTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\CompositeTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\HydratorTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\PhpNativeTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\TypeCasterInterface;\n"
+"\n"
+"return [\n"
+"    TypeCasterInterface::class => static fn() => new CompositeTypeCaster(\n"
+"        new UuidValueTypeCaster(),\n"
+"        new PhpNativeTypeCaster(),\n"
+"        new HydratorTypeCaster(),\n"
+"    ),\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Since the first successful result wins, the order matters:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Put custom casters before `PhpNativeTypeCaster`. Otherwise, for a property declared as `UserId|string`, `PhpNativeTypeCaster` accepts a string as is, and your caster never runs."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Keep the default casters in the list. `PhpNativeTypeCaster` casts scalar values to built-in types, and `HydratorTypeCaster` creates nested objects from arrays."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "If a caster has dependencies, take it from the container:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Shared\\Money\\MoneyTypeCaster;\n"
+"use Psr\\Container\\ContainerInterface;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\CompositeTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\HydratorTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\PhpNativeTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\TypeCasterInterface;\n"
+"\n"
+"return [\n"
+"    TypeCasterInterface::class => static fn(ContainerInterface $container) => new CompositeTypeCaster(\n"
+"        $container->get(MoneyTypeCaster::class),\n"
+"        new PhpNativeTypeCaster(),\n"
+"        new HydratorTypeCaster(),\n"
+"    ),\n"
+"];\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Registering for form models"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`FormHydrator` from Yii Form Model doesn't use `TypeCasterInterface`. Its DI configuration creates a dedicated hydrator with its own chain of type casters, so add your caster there as well:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Shared\\Uuid\\UuidValueTypeCaster;\n"
+"use Yiisoft\\Definitions\\DynamicReference;\n"
+"use Yiisoft\\FormModel\\FormHydrator;\n"
+"use Yiisoft\\FormModel\\NonArrayTypeCaster;\n"
+"use Yiisoft\\Hydrator\\Hydrator;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\CompositeTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\HydratorTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\NullTypeCaster;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\PhpNativeTypeCaster;\n"
+"\n"
+"return [\n"
+"    FormHydrator::class => [\n"
+"        '__construct()' => [\n"
+"            'hydrator' => DynamicReference::to([\n"
+"                'class' => Hydrator::class,\n"
+"                '__construct()' => [\n"
+"                    'typeCaster' => new CompositeTypeCaster(\n"
+"                        new NullTypeCaster(emptyString: true),\n"
+"                        new UuidValueTypeCaster(),\n"
+"                        new PhpNativeTypeCaster(),\n"
+"                        new NonArrayTypeCaster(),\n"
+"                        new HydratorTypeCaster(),\n"
+"                    ),\n"
+"                ],\n"
+"            ]),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "This definition replaces the one from the package, so keep its type casters. This example uses the list from `config/di.php` of Yii Form Model 1.1. Check it against the version you use. `NullTypeCaster` turns empty strings submitted by forms into `null` for nullable properties, so it stays first."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Example: UUID value objects"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Entity IDs often use value objects, such as `UserId`, `PostId`, and `OrderId`, instead of plain strings.  Such objects make method signatures self-documenting and prevent passing a post ID where a method expects a user ID.  The following example shows how to write a type caster that creates them from UUID strings."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Value objects"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "All ID value objects extend an abstract `UuidValue` class. The example uses [ramsey/uuid](https://github.com/ramsey/uuid) to validate and generate UUIDs:"
+msgstr ""
+
+#. type: Fenced code block (shell)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "composer require ramsey/uuid\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Shared\\Uuid;\n"
+"\n"
+"use InvalidArgumentException;\n"
+"use Ramsey\\Uuid\\Uuid;\n"
+"use Stringable;\n"
+"\n"
+"use function sprintf;\n"
+"\n"
+"abstract readonly class UuidValue implements Stringable\n"
+"{\n"
+"    private string $value;\n"
+"\n"
+"    final public function __construct(string $value)\n"
+"    {\n"
+"        if (!Uuid::isValid($value)) {\n"
+"            throw new InvalidArgumentException(sprintf('\"%s\" is not a valid UUID.', $value));\n"
+"        }\n"
+"        $this->value = Uuid::fromString($value)->toString();\n"
+"    }\n"
+"\n"
+"    public static function generate(): static\n"
+"    {\n"
+"        return new static(Uuid::uuid7()->toString());\n"
+"    }\n"
+"\n"
+"    public function equals(self $other): bool\n"
+"    {\n"
+"        return $other instanceof static && $other->value === $this->value;\n"
+"    }\n"
+"\n"
+"    public function __toString(): string\n"
+"    {\n"
+"        return $this->value;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The constructor is final, so `new static()` is safe and creates every child class from a string the same way.  A concrete ID is just an empty child class:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\User;\n"
+"\n"
+"use App\\Shared\\Uuid\\UuidValue;\n"
+"\n"
+"final readonly class UserId extends UuidValue\n"
+"{\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Define `PostId` and other IDs the same way."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Type caster"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Shared\\Uuid;\n"
+"\n"
+"use Ramsey\\Uuid\\Uuid;\n"
+"use ReflectionNamedType;\n"
+"use ReflectionType;\n"
+"use ReflectionUnionType;\n"
+"use Yiisoft\\Hydrator\\Result;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\TypeCastContext;\n"
+"use Yiisoft\\Hydrator\\TypeCaster\\TypeCasterInterface;\n"
+"\n"
+"use function count;\n"
+"use function is_string;\n"
+"use function is_subclass_of;\n"
+"\n"
+"final readonly class UuidValueTypeCaster implements TypeCasterInterface\n"
+"{\n"
+"    public function cast(mixed $value, TypeCastContext $context): Result\n"
+"    {\n"
+"        $class = $this->findUuidValueClass($context->getReflectionType());\n"
+"        if ($class === null) {\n"
+"            return Result::fail();\n"
+"        }\n"
+"\n"
+"        if ($value instanceof $class) {\n"
+"            return Result::success($value);\n"
+"        }\n"
+"\n"
+"        if (!is_string($value) || !Uuid::isValid($value)) {\n"
+"            return Result::fail();\n"
+"        }\n"
+"\n"
+"        return Result::success(new $class($value));\n"
+"    }\n"
+"\n"
+"    /**\n"
+"     * Returns the `UuidValue` child class from the declared type, or `null` if there is none or there are several\n"
+"     * of them, such as in `UserId|PostId`.\n"
+"     *\n"
+"     * @return class-string<UuidValue>|null\n"
+"     */\n"
+"    private function findUuidValueClass(?ReflectionType $type): ?string\n"
+"    {\n"
+"        $types = match (true) {\n"
+"            $type instanceof ReflectionNamedType => [$type],\n"
+"            $type instanceof ReflectionUnionType => $type->getTypes(),\n"
+"            default => [],\n"
+"        };\n"
+"\n"
+"        $classes = [];\n"
+"        foreach ($types as $subType) {\n"
+"            if (\n"
+"                $subType instanceof ReflectionNamedType\n"
+"                && !$subType->isBuiltin()\n"
+"                && is_subclass_of($subType->getName(), UuidValue::class)\n"
+"            ) {\n"
+"                $classes[] = $subType->getName();\n"
+"            }\n"
+"        }\n"
+"\n"
+"        return count($classes) === 1 ? $classes[0] : null;\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The caster follows the [rules for writing a type caster](#anatomy-of-a-type-caster). It chooses the class to create from the declared type. All IDs share the same UUID format, so a string alone can't tell whether it's a user ID or a post ID. A single caster therefore serves all `UuidValue` child classes, and adding a new ID class doesn't require changes to the caster. For the same reason, the caster fails for a type with several ID classes, such as `UserId|PostId`. There's no way to choose the right one."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Register `UuidValueTypeCaster` as shown in the [Registering a type caster](#registering-a-type-caster) section, including the [form model configuration](#registering-for-form-models) if you use Yii Form Model."
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Using the value objects"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Now any class that's populated by the hydrator can declare ID value objects directly."
+msgstr ""
+
+#. type: Title ####
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Hydrator"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The same string becomes a different value object depending on the type of the property:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"use App\\Post\\PostId;\n"
+"use App\\User\\UserId;\n"
+"use Yiisoft\\Hydrator\\HydratorInterface;\n"
+"\n"
+"final class CommentFilter\n"
+"{\n"
+"    public ?UserId $authorId = null;\n"
+"    public ?PostId $postId = null;\n"
+"}\n"
+"\n"
+"/** @var HydratorInterface $hydrator */\n"
+"$filter = $hydrator->create(CommentFilter::class, [\n"
+"    'authorId' => '0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10',\n"
+"    'postId' => '0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10',\n"
+"]);\n"
+"\n"
+"// $filter->authorId is UserId, $filter->postId is PostId.\n"
+"// $filter->authorId->equals($filter->postId) returns false.\n"
+msgstr ""
+
+#. type: Title ####
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Request input"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The [Yii Input HTTP](https://github.com/yiisoft/input-http) package uses the hydrator to fill request input objects, so the same type caster works for query parameters, request body, and route arguments. The `RouteArgument` attribute comes from [Yii Router](https://github.com/yiisoft/router). Extend `AbstractInput` to get the input validated after hydration:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Post\\Update;\n"
+"\n"
+"use App\\Post\\PostId;\n"
+"use App\\User\\UserId;\n"
+"use Yiisoft\\Input\\Http\\AbstractInput;\n"
+"use Yiisoft\\Input\\Http\\Attribute\\Parameter\\Body;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"final class UpdatePostInput extends AbstractInput\n"
+"{\n"
+"    #[RouteArgument('id')]\n"
+"    #[Required]\n"
+"    public ?PostId $id = null;\n"
+"\n"
+"    #[Body('author_id')]\n"
+"    #[Required]\n"
+"    public ?UserId $authorId = null;\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __invoke(UpdatePostInput $input): ResponseInterface\n"
+"    {\n"
+"        if (!$input->getValidationResult()->isValid()) {\n"
+"            // Return an error response.\n"
+"        }\n"
+"\n"
+"        // $input->id is PostId, $input->authorId is UserId.\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ####
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Form model"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "`FormHydrator` from [Yii Form Model](https://github.com/yiisoft/form-model) populates form models. Once you [register the caster for form models](#registering-for-form-models), you can declare form properties as value objects too:"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Post\\Create;\n"
+"\n"
+"use App\\User\\UserId;\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"final class CreatePostForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Length(min: 2)]\n"
+"    public string $title = '';\n"
+"\n"
+"    #[Required]\n"
+"    public ?UserId $authorId = null;\n"
+"}\n"
+msgstr ""
+
+#. type: Fenced code block (php)
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\FormModel\\FormHydrator;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private FormHydrator $formHydrator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $form = new CreatePostForm();\n"
+"\n"
+"        if ($this->formHydrator->populateFromPostAndValidate($form, $request)) {\n"
+"            // $form->authorId is UserId.\n"
+"            // ...\n"
+"        }\n"
+"\n"
+"        // ...\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Title ###
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "Null and invalid values"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Here is what happens with a property declared as `?UserId` for different input values:"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid ""
+"| Input value                              | Handled by             | Property value                   |\n"
+"|------------------------------------------|------------------------|----------------------------------|\n"
+"| `'0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10'` | `UuidValueTypeCaster`  | `UserId` instance                |\n"
+"| `null`                                   | `PhpNativeTypeCaster`  | `null`                           |\n"
+"| `'not-a-uuid'`                           | none, all casters fail | default value, `null` in example |\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "The last row is the important one: the hydrator doesn't report the malformed value.  With the `Required` rule, validation catches it with the \"cannot be blank\" error.  See the [request input](#request-input) and [form model](#form-model) examples.  But if the property is optional, an invalid UUID is silently turned into `null` and is indistinguishable from a missing value. If that's not acceptable, keep the raw value for validation: declare the property as `string`, validate its format, and convert it to the value object after validation."
+msgstr ""
+
+#. type: Title ##
+#: ../src/cookbook/custom-hydrator-type-casters.md
+#, no-wrap
+msgid "When to use a type caster"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "A type caster fits well when the conversion:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "depends only on the value and the declared type."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "is the same everywhere in the application."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "doesn't need I/O, such as database queries or HTTP calls."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "Value objects for IDs, emails, and money amounts match all three. Keep the conversion in a dedicated mapper or a domain factory instead when it:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "needs a database lookup, for example, turning an ID into a loaded entity."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "depends on context, such as the current user."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "combines several input fields into one object."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/cookbook/custom-hydrator-type-casters.md
+msgid "differs between use cases."
+msgstr ""

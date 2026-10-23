@@ -1,0 +1,153 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-04-05 07:15+0000\n"
+"PO-Revision-Date: 2026-04-05 07:15+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/internals/index.md
+#, no-wrap
+msgid "Yii Framework Internals"
+msgstr "Detalhes internos do Yii Framework"
+
+#. type: Plain text
+#: ../src/internals/index.md
+msgid "This section contains documentation for developers contributing to the Yii framework itself.  It covers guidelines, workflows, and best practices for maintaining and developing Yii packages."
+msgstr "Esta seção contém documentação para quem contribui com o próprio framework Yii. Ela cobre diretrizes, fluxos de trabalho e boas práticas para manter e desenvolver os pacotes do Yii."
+
+#. type: Title ##
+#: ../src/internals/index.md
+#, no-wrap
+msgid "Table of Contents"
+msgstr "Sumário"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[000 — Packages](000-packages.md) - Package structure and naming conventions"
+msgstr "[000 — Pacotes](000-packages.md) - Estrutura e convenções de nomes dos pacotes"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[001 — Yii goal and values](001-yii-values.md) - Project goals and core values"
+msgstr "[001 — Objetivo e valores do Yii](001-yii-values.md) - Objetivos e valores centrais do projeto"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[002 — Issue workflow](002-issue-workflow.md) - How to handle issues"
+msgstr "[002 — Fluxo de issues](002-issue-workflow.md) - Como lidar com issues"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[003 — Roadmap](003-roadmap.md) - Development roadmap and future plans"
+msgstr "[003 — Roadmap](003-roadmap.md) - Roadmap de desenvolvimento e planos futuros"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[004 — Namespaces](004-namespaces.md) - Namespace conventions"
+msgstr "[004 — Namespaces](004-namespaces.md) - Convenções de namespaces"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[005 — Yii development tool](005-development-tool.md) - Development tools for Yii packages"
+msgstr "[005 — Ferramenta de desenvolvimento do Yii](005-development-tool.md) - Ferramentas de desenvolvimento para pacotes do Yii"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[006 — Git commit messages](006-git-commit-messages.md) - Commit message format"
+msgstr "[006 — Mensagens de commit no Git](006-git-commit-messages.md) - Formato das mensagens de commit"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[007 — Exceptions](007-exceptions.md) - Exception handling guidelines"
+msgstr "[007 — Exceções](007-exceptions.md) - Diretrizes para exceções"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[008 — Interfaces](008-interfaces.md) - Interface design principles"
+msgstr "[008 — Interfaces](008-interfaces.md) - Princípios de design de interfaces"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[009 — Design Decisions](009-design-decisions.md) - Architectural and design decisions"
+msgstr "[009 — Decisões de design](009-design-decisions.md) - Decisões de arquitetura e design"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[010 — Code style](010-code-style.md) - PHP code style guidelines"
+msgstr "[010 — Estilo de código](010-code-style.md) - Diretrizes de estilo de código PHP"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[011 — Error correction](011-error-correction.md) - Error handling and correction"
+msgstr "[011 — Correção de erros](011-error-correction.md) - Tratamento e correção de erros"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[012 — Tests](012-tests.md) - Testing guidelines and practices"
+msgstr "[012 — Testes](012-tests.md) - Diretrizes e práticas de testes"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[013 — Code review](013-code-review.md) - Code review process and guidelines"
+msgstr "[013 — Code review](013-code-review.md) - Processo e diretrizes de code review"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[014 — Documentation](014-docs.md) - Documentation writing guidelines"
+msgstr "[014 — Documentação](014-docs.md) - Diretrizes para escrever documentação"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[015 — PhpStorm metadata and attributes](015-phpstorm.md) - PhpStorm integration"
+msgstr "[015 — Metadados e atributos do PhpStorm](015-phpstorm.md) - Integração com o PhpStorm"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[016 — Security workflow](016-security-workflow.md) - Security issue handling"
+msgstr "[016 — Fluxo de segurança](016-security-workflow.md) - Tratamento de problemas de segurança"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[017 — Tags](017-tags.md) - Git tagging conventions"
+msgstr "[017 — Tags](017-tags.md) - Convenções de tags no Git"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[018 — Widgets](018-widgets.md) - Widget development guidelines"
+msgstr "[018 — Widgets](018-widgets.md) - Diretrizes para desenvolver widgets"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[019 — View code style](019-view-code-style.md) - Code style for view templates"
+msgstr "[019 — Estilo de código de views](019-view-code-style.md) - Estilo de código para templates de view"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[020 — Package release](020-package-release.md) - Release process for packages"
+msgstr "[020 — Release de pacotes](020-package-release.md) - Processo de release de pacotes"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[021 — Changelog and upgrade](021-changelog-upgrade.md) - Maintaining changelogs and upgrade notes"
+msgstr "[021 — Changelog e upgrade](021-changelog-upgrade.md) - Mantendo changelogs e notas de upgrade"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[022 — Config groups](022-config-groups.md) - Configuration group organization"
+msgstr "[022 — Grupos de configuração](022-config-groups.md) - Organização dos grupos de configuração"
+
+#. type: Bullet: '- '
+#: ../src/internals/index.md
+msgid "[023 - GitHub Actions](023-github-actions.md) - GitHub actions configuration"
+msgstr "[023 - GitHub Actions](023-github-actions.md) - Configuração do GitHub Actions"

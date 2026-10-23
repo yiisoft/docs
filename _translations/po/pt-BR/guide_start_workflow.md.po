@@ -1,0 +1,286 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/guide/index.md ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Application structure"
+msgstr "Estrutura da aplicação"
+
+#. type: Title #
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Application Workflow"
+msgstr "Fluxo da aplicação"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "After installing Yii, you have a working Yii application.  This section introduces the application's built-in functionality, how the code is organized, and how the application handles requests in general."
+msgstr "Depois de instalar o Yii, você tem uma aplicação Yii funcionando.  Esta seção apresenta as funcionalidades que vêm com a aplicação, como o código está organizado e como a aplicação trata as requisições de forma geral."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Note that unlike the framework itself, after you install a project template, it's all yours.  You're free to add or delete code and overall change it as you need."
+msgstr "Diferente do próprio framework, depois que você instala um template de projeto, ele é todo seu.  Você pode adicionar ou remover código e mudar o que precisar."
+
+#. type: Title ##
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Functionality"
+msgstr "Funcionalidades"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "The installed application contains only one page, accessible at `http://localhost/`.  It shares a common layout that you can reuse on further pages."
+msgstr "A aplicação instalada tem apenas uma página, acessível em `http://localhost/`.  Ela usa um layout comum que você pode reaproveitar nas próximas páginas."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"<!--\n"
+"You should also see a toolbar at the bottom of the browser window.\n"
+"This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of\n"
+"debugging information, such as log messages, response statuses, the database queries run, and so on.\n"
+"-->\n"
+msgstr ""
+"<!--\n"
+"You should also see a toolbar at the bottom of the browser window.\n"
+"This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of\n"
+"debugging information, such as log messages, response statuses, the database queries run, and so on.\n"
+"-->\n"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "In addition to the web application, you can access a console script via `./yii` or, in case of Docker, `make yii`.  Use this script to run background and maintenance tasks for the application, which the [Console Application Section](../tutorial/console-applications.md) describes."
+msgstr "Além da aplicação web, você pode acessar um script de console via `./yii` ou, no caso do Docker, `make yii`.  Use esse script para rodar tarefas em segundo plano e de manutenção da aplicação, descritas na [seção de aplicações de console](../tutorial/console-applications.md)."
+
+#. type: Title ##
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Experimental debugger"
+msgstr "Debugger experimental"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Yii has a debugger that can collect debug data for web requests and expose it through the [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/). The debugger is a work in progress. It isn't released as a stable package, and its API, routes, and setup may change or be deprecated."
+msgstr "O Yii tem um debugger que coleta dados de debug das requisições web e os expõe pelo [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/). O debugger ainda está em desenvolvimento. Ele não foi lançado como pacote estável, e a API, as rotas e a configuração podem mudar ou ser descontinuadas."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "To try the current development version, install the debug API package:"
+msgstr "Para testar a versão de desenvolvimento atual, instale o pacote da API de debug:"
+
+#. type: Fenced code block (shell)
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "composer require yiisoft/yii-debug-api:^3.0@dev\n"
+msgstr "composer require yiisoft/yii-debug-api:^3.0@dev\n"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Enable debug mode in `.env`:"
+msgstr "Ative o modo debug no `.env`:"
+
+#. type: Fenced code block (dotenv)
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "APP_DEBUG=true\n"
+msgstr "APP_DEBUG=true\n"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "The package registers its routes automatically. Start the application and open `/debug` to check that the debug API is available. Then open [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/) and set your application URL there."
+msgstr "O pacote registra as rotas automaticamente. Inicie a aplicação e abra `/debug` para conferir se a API de debug está disponível. Depois abra o [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/) e informe a URL da sua aplicação."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"> [!CAUTION]\n"
+"> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.\n"
+msgstr ""
+"> [!CAUTION]\n"
+"> Use o modo debug no desenvolvimento local. Em produção, mantenha `APP_DEBUG=false` e não exponha as rotas de debug publicamente.\n"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "The most important directories and files in your application are (assuming the application's root directory is `app`):"
+msgstr "Os diretórios e arquivos mais importantes da sua aplicação são (considerando que o diretório raiz da aplicação é `app`):"
+
+#. type: Fenced code block
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"assets/                 Asset bundle source files.\n"
+"config/                 Configuration files.\n"
+"    common/             Common configuration and DI definitions.\n"
+"    console/            Console-specific configuration.\n"
+"    environments/       Environment-specific configuration (dev/test/prod).\n"
+"    web/                Web-specific configuration.\n"
+"docker/                 Docker-specific files.\n"
+"public/                 Files publically accessible from the Internet.\n"
+"    assets/             Published/compiled assets.\n"
+"    index.php           Entry script.\n"
+"runtime/                Files generated during runtime.\n"
+"src/                    Application source code.\n"
+"    Console/            Console commands.\n"
+"    Shared/             Code shared between web and console applications.\n"
+"    Web/                Web-specific code (actions, handlers, layout).\n"
+"        Shared/         Shared web components.\n"
+"            Layout/     Layout components and templates.\n"
+"    Environment.php     Environment configuration class.\n"
+"tests/                  A set of Codeception tests for the application.\n"
+"    Console/            Console command tests.\n"
+"    Functional/         Functional tests.\n"
+"    Unit/               Unit tests.\n"
+"    Web/                Web actions tests.\n"
+"vendor/                 Installed Composer packages.\n"
+"Makefile                Config for make command.\n"
+"yii                     Console application entry point.\n"
+msgstr ""
+"assets/                 Arquivos-fonte dos asset bundles.\n"
+"config/                 Arquivos de configuração.\n"
+"    common/             Configuração comum e definições de DI.\n"
+"    console/            Configuração específica do console.\n"
+"    environments/       Configuração por ambiente (dev/test/prod).\n"
+"    web/                Configuração específica da web.\n"
+"docker/                 Arquivos específicos do Docker.\n"
+"public/                 Arquivos acessíveis publicamente pela internet.\n"
+"    assets/             Assets publicados/compilados.\n"
+"    index.php           Script de entrada.\n"
+"runtime/                Arquivos gerados em tempo de execução.\n"
+"src/                    Código-fonte da aplicação.\n"
+"    Console/            Comandos de console.\n"
+"    Shared/             Código compartilhado entre as aplicações web e console.\n"
+"    Web/                Código específico da web (actions, handlers, layout).\n"
+"        Shared/         Componentes web compartilhados.\n"
+"            Layout/     Componentes e templates de layout.\n"
+"    Environment.php     Classe de configuração do ambiente.\n"
+"tests/                  Conjunto de testes Codeception da aplicação.\n"
+"    Console/            Testes dos comandos de console.\n"
+"    Functional/         Testes funcionais.\n"
+"    Unit/               Testes unitários.\n"
+"    Web/                Testes das actions web.\n"
+"vendor/                 Pacotes do Composer instalados.\n"
+"Makefile                Configuração do comando make.\n"
+"yii                     Ponto de entrada da aplicação de console.\n"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "In general, the files in the application fall into two groups: those under `app/public` and those under other directories. You can access the former directly via HTTP (i.e., in a browser), while you shouldn't expose the latter."
+msgstr "De forma geral, os arquivos da aplicação se dividem em dois grupos: os que ficam em `app/public` e os que ficam nos outros diretórios. Os primeiros podem ser acessados diretamente via HTTP (ou seja, no navegador), enquanto os demais não devem ser expostos."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Each application has an entry script `public/index.php`, the only web-accessible PHP script in the application.  The entry script uses an [application runner](https://github.com/yiisoft/yii-runner) to create an instance of an incoming request with the help of one of PSR-7 packages and passes it to an [application](../structure/application.md)  instance. The application executes a set of middleware sequentially to process the request.  It then passes the result to the emitter, which sends the response to the browser."
+msgstr "Toda aplicação tem um script de entrada `public/index.php`, o único script PHP acessível pela web na aplicação.  O script de entrada usa um [application runner](https://github.com/yiisoft/yii-runner) para criar uma instância da requisição recebida com a ajuda de um dos pacotes PSR-7 e a passa para uma instância da [aplicação](../structure/application.md). A aplicação executa um conjunto de middlewares em sequência para processar a requisição.  Depois, passa o resultado para o emitter, que envia a resposta ao navegador."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "Depending on the middleware you use, the application may behave differently. By default, a router uses the requested URL and configuration to choose a handler and execute it to produce a response."
+msgstr "Dependendo dos middlewares que você usa, a aplicação pode se comportar de forma diferente. Por padrão, um router usa a URL requisitada e a configuração para escolher um handler e executá-lo para produzir a resposta."
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "You can learn more about the application template from the [yiisoft/app package documentation](https://github.com/yiisoft/app/blob/master/README.md)."
+msgstr "Você pode saber mais sobre o template de aplicação na [documentação do pacote yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md)."
+
+#. type: Title ##
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid "Request Lifecycle"
+msgstr "Ciclo de vida da requisição"
+
+#. type: Plain text
+#: ../src/guide/start/workflow.md
+msgid "The following diagram shows how an application handles a request."
+msgstr "O diagrama a seguir mostra como uma aplicação trata uma requisição."
+
+#. type: Fenced code block (mermaid)
+#: ../src/guide/start/workflow.md
+#, no-wrap
+msgid ""
+"flowchart LR\n"
+"  user[User's client] --> index\n"
+"  index[index.php] --> DI[Initialize Dependency Container]\n"
+"  config[configs] -.-> DI\n"
+"  DI --> RequestFactory[RequestFactory]\n"
+"  RequestFactory -->|Request| app[Application]\n"
+"  app -->|Request| middleware[Middleware]\n"
+"  middleware -->|Request| router[Router]\n"
+"  router -->|Request| action[Action Handler]\n"
+"  action -->|Response| emitter[SapiEmitter]\n"
+"  router -->|Response| emitter\n"
+"  middleware -->|Response| emitter\n"
+"  app -->|Response| emitter\n"
+"  emitter --> user\n"
+msgstr ""
+"flowchart LR\n"
+"  user[User's client] --> index\n"
+"  index[index.php] --> DI[Initialize Dependency Container]\n"
+"  config[configs] -.-> DI\n"
+"  DI --> RequestFactory[RequestFactory]\n"
+"  RequestFactory -->|Request| app[Application]\n"
+"  app -->|Request| middleware[Middleware]\n"
+"  middleware -->|Request| router[Router]\n"
+"  router -->|Request| action[Action Handler]\n"
+"  action -->|Response| emitter[SapiEmitter]\n"
+"  router -->|Response| emitter\n"
+"  middleware -->|Response| emitter\n"
+"  app -->|Response| emitter\n"
+"  emitter --> user\n"
+
+#. type: Bullet: '1. '
+#: ../src/guide/start/workflow.md
+msgid "A user makes a request to the [entry script](../structure/entry-script.md) `public/index.php`."
+msgstr "Um usuário faz uma requisição para o [script de entrada](../structure/entry-script.md) `public/index.php`."
+
+#. type: Bullet: '2. '
+#: ../src/guide/start/workflow.md
+msgid "The entry script with the help of the application runner loads the container [configuration](../concept/configuration.md) and creates an [application](../structure/application.md) instance and services necessary to handle the request."
+msgstr "O script de entrada, com a ajuda do application runner, carrega a [configuração](../concept/configuration.md) do container e cria uma instância da [aplicação](../structure/application.md) e os serviços necessários para tratar a requisição."
+
+#. type: Bullet: '3. '
+#: ../src/guide/start/workflow.md
+msgid "Request factory creates a request object based on a raw request that came from a user."
+msgstr "A request factory cria um objeto de requisição a partir da requisição bruta que veio do usuário."
+
+#. type: Bullet: '4. '
+#: ../src/guide/start/workflow.md
+msgid "Application passes a request object through a middleware array configured. One of these is typically a router."
+msgstr "A aplicação passa o objeto de requisição pelo array de middlewares configurado. Um deles normalmente é o router."
+
+#. type: Bullet: '5. '
+#: ../src/guide/start/workflow.md
+msgid "The Router finds out what handler to execute based on request and configuration."
+msgstr "O router descobre qual handler executar com base na requisição e na configuração."
+
+#. type: Bullet: '6. '
+#: ../src/guide/start/workflow.md
+msgid "The handler may load some data, possibly from a database."
+msgstr "O handler pode carregar alguns dados, possivelmente de um banco de dados."
+
+#. type: Bullet: '7. '
+#: ../src/guide/start/workflow.md
+msgid "The handler forms a response by using data. Either directly or with the help of the view package."
+msgstr "O handler monta uma resposta usando esses dados, diretamente ou com a ajuda do pacote de view."
+
+#. type: Bullet: '8. '
+#: ../src/guide/start/workflow.md
+msgid "Emitter receives the response and takes care of sending the response to the user's browser."
+msgstr "O emitter recebe a resposta e cuida de enviá-la para o navegador do usuário."

@@ -1,0 +1,103 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
+"PO-Revision-Date: 2026-10-15 10:10+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md
+#: ../src/cookbook/configuring-webservers/iis.md
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "See [application logs](general.md#application-logs) for logging configuration."
+msgstr ""
+
+#. type: Title #
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+#, no-wrap
+msgid "Configuring web servers: NGINX Unit and FreeUnit"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP language module.  The same configuration format is used by [FreeUnit](https://github.com/freeunitorg/freeunit), a community LTS fork of Unit.  With FreeUnit Docker images, such as `ghcr.io/freeunitorg/freeunit:latest-php8.5`, put the configuration in `/var/lib/unit/config.json`."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "Here is a sample configuration."
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"listeners\": {\n"
+"        \"*:80\": {\n"
+"            \"pass\": \"routes\"\n"
+"        }\n"
+"    },\n"
+"\n"
+"    \"routes\": [\n"
+"        {\n"
+"            \"match\": {\n"
+"                \"uri\": [\n"
+"                    \"!/assets/*\",\n"
+"                    \"*.php\",\n"
+"                    \"*.php/*\"\n"
+"                ]\n"
+"            },\n"
+"\n"
+"            \"action\": {\n"
+"                \"pass\": \"applications/yii/direct\"\n"
+"            }\n"
+"        },\n"
+"        {\n"
+"            \"action\": {\n"
+"                \"share\": \"/path/to/app/public$uri\",\n"
+"                \"fallback\": {\n"
+"                    \"pass\": \"applications/yii/index\"\n"
+"                }\n"
+"            }\n"
+"        }\n"
+"    ],\n"
+"\n"
+"    \"applications\": {\n"
+"        \"yii\": {\n"
+"            \"type\": \"php\",\n"
+"            \"targets\": {\n"
+"                \"direct\": {\n"
+"                    \"root\": \"/path/to/app/public/\"\n"
+"                },\n"
+"\n"
+"                \"index\": {\n"
+"                    \"root\": \"/path/to/app/public/\",\n"
+"                    \"script\": \"index.php\"\n"
+"                }\n"
+"            }\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "You can also [set up](https://unit.nginx.org/configuration/#php) your PHP environment or supply a custom `php.ini` in the same configuration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "Since Yii3 application templates use environment variables, you can set them in `applications.yii.environment`.  In a production environment, remember to set `APP_ENV` to `prod`."
+msgstr ""

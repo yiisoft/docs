@@ -1,0 +1,239 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md
+#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/structure/module.md ../src/guide/structure/package.md
+#: ../src/guide/tutorial/i18n.md
+#, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr ""
+
+#. type: Title #
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Using packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Reusable code is distributed as [Composer packages](https://getcomposer.org/doc/05-repositories.md#package).  A package can be an infrastructure library, a Yii integration, a reusable feature, or a module representing an application context."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "This page explains how to use packages in an application. To create a Yii-aware package, see [Designing packages for Yii applications](designing-packages.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Installing packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "By default, Composer installs packages registered on [Packagist](https://packagist.org/), the main repository for open source PHP packages."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Install a package with:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor-name/package-name\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Composer updates two files:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer.json` stores the package name and version constraint."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer.lock` stores the exact versions installed."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Commit both files so other environments install the same dependency versions."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Installed packages are stored in the application `vendor/` directory."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid ""
+"> [!WARNING]\n"
+"> Never edit files in `vendor/` directly. Change application configuration, extend classes, decorate services, or\n"
+"> contribute fixes to the package instead.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Package classes are available through Composer autoloading after installation. See [Autoloading](../concept/autoloading.md)  for details."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Updating packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Update a package within the version constraint recorded in `composer.json`:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer update vendor-name/package-name\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Change the accepted version constraint with `composer require`:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor-name/package-name:^2.0\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "After updating a Yii-aware package, Composer rebuilds Yii's configuration merge plan. If you changed configuration group mappings manually, rebuild it explicitly:"
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Removing packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Remove a package with:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer remove vendor-name/package-name\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Then remove application code and configuration that referenced classes, services, routes, commands, assets, migrations, or translations from that package."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Private packages"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For private code, configure Composer repositories in the application `composer.json`. Common options are:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`vcs` for a Git repository."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`path` for a local package during development."
+msgstr ""
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer` for a private Composer repository."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For example, to work with a package located next to the application:"
+msgstr ""
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"repositories\": [\n"
+"        {\n"
+"            \"type\": \"path\",\n"
+"            \"url\": \"../packages/blog\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Then install it normally:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor/blog\n"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Read more in the [Composer repository documentation](https://getcomposer.org/doc/05-repositories.md)."
+msgstr ""
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Package configuration"
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Some Yii packages provide default configuration through [yiisoft/config](https://github.com/yiisoft/config).  After installation, the package configuration becomes part of the vendor layer and the application can override it in the root package configuration."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Prefer partial overrides in application config files over copying whole package config files. For example, override only the parameter or service definition you need."
+msgstr ""
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For more details, see [Configuration](../concept/configuration.md) and [Designing packages for Yii applications](designing-packages.md)."
+msgstr ""
