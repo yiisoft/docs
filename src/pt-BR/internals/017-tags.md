@@ -1,43 +1,43 @@
 # 017 - Tags
 
-Unlike regular classes, tags are used in view templates, so syntax is
-important.  It should be both easy to write, easy to read and not too
-verbose because similar constructs are meant to be used over and over again.
+Diferente das classes comuns, as tags são usadas em templates de view, então
+a sintaxe é importante.  Ela deve ser fácil de escrever, fácil de ler e não
+muito verbosa, porque construções parecidas são usadas repetidas vezes.
 
-## Class names
+## Nomes de classes
 
-- Tags aren't postfixed or prefixed unless it's an abstract base class.
-- If the tag represents a specification, use a name used in the
-  specification.
+- As tags não têm prefixo nem sufixo, a menos que sejam uma classe base
+  abstrata.
+- Se a tag representa uma especificação, use o nome usado na especificação.
 
-## Inheritance
+## Herança
 
-Inheritance is allowed with some restrictions:
+A herança é permitida com algumas restrições:
 
-- If a class isn't abstract, it should be final.
-- Hierarchy should be kept as linear as possible.
+- Se uma classe não é abstrata, ela deve ser final.
+- A hierarquia deve ser mantida o mais linear possível.
 
-## Immutability
+## Imutabilidade
 
-Tags should:
+As tags devem:
 
-- Have no state.
-- Be immutable. Every method that modifies a setting returns a clone with
-  the setting changed.
-- Be free of side effects. Many calls of the same method with the same
-  argument should give the same result.
+- Não ter estado.
+- Ser imutáveis. Todo método que modifica uma configuração retorna um clone
+  com a configuração alterada.
+- Não ter efeitos colaterais. Várias chamadas do mesmo método com o mesmo
+  argumento devem dar o mesmo resultado.
 
-## Methods
+## Métodos
 
-### Names
+### Nomes
 
-- Unlike other classes, methods that return a clone of the object with some
-  properties modified aren't prefixed.
-- Keep method names as short as possible but don't hurt readability.
-- If the tag represents a specification, use a name used in the
-  specification.
+- Diferente de outras classes, os métodos que retornam um clone do objeto
+  com algumas propriedades modificadas não têm prefixo.
+- Mantenha os nomes dos métodos o mais curtos possível, sem prejudicar a
+  legibilidade.
+- Se a tag representa uma especificação, use o nome usado na especificação.
 
-### Boolean flags
+### Flags booleanas
 
-The method that corresponds to the boolean attribute should be named after
-the attribute and accept a boolean flag argument.
+O método que corresponde a um atributo booleano deve ter o nome do atributo
+e aceitar um argumento booleano como flag.

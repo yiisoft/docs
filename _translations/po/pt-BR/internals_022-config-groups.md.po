@@ -8,237 +8,235 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md
-#: ../src/en/internals/022-config-groups.md
+#: ../src/en/guide/concept/configuration.md ../src/en/guide/concept/events.md ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Events"
-msgstr ""
+msgstr "Eventos"
 
 #. type: Title ##
-#: ../src/en/guide/concept/configuration.md
-#: ../src/en/internals/022-config-groups.md
+#: ../src/en/guide/concept/configuration.md ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
-msgstr ""
+msgstr "Parâmetros"
 
 #. type: Title ##
 #: ../src/en/internals/003-roadmap.md ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Others"
-msgstr ""
+msgstr "Outros"
 
 #. type: Title #
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "022 — Config groups"
-msgstr ""
+msgstr "022 — Grupos de configuração"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "This document defines naming convention for the framework groups used with [yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a naming convention for config files.  These could be anything and are mapped to group names via `composer.json`."
-msgstr ""
+msgstr "Este documento define a convenção de nomes para os grupos do framework usados com o [yiisoft/config](https://github.com/yiisoft/config).  Observe que esta não é uma convenção de nomes para arquivos de configuração.  Eles podem ter qualquer nome e são mapeados para os nomes de grupo via `composer.json`."
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Config group name postfixes"
-msgstr ""
+msgstr "Sufixos dos nomes de grupos de configuração"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"web\" postfix applies to web only that's classic server HTML generation, REST, RPC, etc."
-msgstr ""
+msgstr "O sufixo \"web\" se aplica apenas à web, ou seja, geração clássica de HTML no servidor, REST, RPC etc."
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"console\" postfix applies to console"
-msgstr ""
+msgstr "O sufixo \"console\" se aplica ao console"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "If there's no postfix, it's \"common\" and applies to both web and console"
-msgstr ""
+msgstr "Se não houver sufixo, o grupo é \"common\" e se aplica tanto à web quanto ao console"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "\"web\" and \"console\" may override what's defined in \"common\""
-msgstr ""
+msgstr "\"web\" e \"console\" podem sobrescrever o que está definido em \"common\""
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Application config parameters that are used in all configs."
-msgstr ""
+msgstr "Parâmetros de configuração da aplicação usados em todas as configurações."
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params` — common parameters"
-msgstr ""
+msgstr "`params` — parâmetros comuns"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params-web` — web application parameters"
-msgstr ""
+msgstr "`params-web` — parâmetros da aplicação web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`params-console` — console application parameters"
-msgstr ""
+msgstr "`params-console` — parâmetros da aplicação de console"
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Container"
-msgstr ""
+msgstr "Container"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Configuration for [yiisoft/di](https://github.com/yiisoft/di)."
-msgstr ""
+msgstr "Configuração do [yiisoft/di](https://github.com/yiisoft/di)."
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Definitions"
-msgstr ""
+msgstr "Definições"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di` — common container definitions"
-msgstr ""
+msgstr "`di` — definições comuns do container"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-web` — web container definitions"
-msgstr ""
+msgstr "`di-web` — definições do container para web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-console` — console container definitions"
-msgstr ""
+msgstr "`di-console` — definições do container para console"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Providers"
-msgstr ""
+msgstr "Providers"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers` — common container providers"
-msgstr ""
+msgstr "`di-providers` — providers comuns do container"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers-web` — web container providers"
-msgstr ""
+msgstr "`di-providers-web` — providers do container para web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-providers-console` — console container providers"
-msgstr ""
+msgstr "`di-providers-console` — providers do container para console"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Delegates"
-msgstr ""
+msgstr "Delegates"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates` — common container delegates"
-msgstr ""
+msgstr "`di-delegates` — delegates comuns do container"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates-web` — web container delegates"
-msgstr ""
+msgstr "`di-delegates-web` — delegates do container para web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-delegates-console` — console container delegates"
-msgstr ""
+msgstr "`di-delegates-console` — delegates do container para console"
 
 #. type: Title ###
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags` — common container tags"
-msgstr ""
+msgstr "`di-tags` — tags comuns do container"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags-web` — web container tags"
-msgstr ""
+msgstr "`di-tags-web` — tags do container para web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`di-tags-console` — console container tags"
-msgstr ""
+msgstr "`di-tags-console` — tags do container para console"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event)."
-msgstr ""
+msgstr "Configuração do [yiisoft/yii-event](https://github.com/yiisoft/yii-event)."
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events` — common events"
-msgstr ""
+msgstr "`events` — eventos comuns"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events-web` — web events"
-msgstr ""
+msgstr "`events-web` — eventos da web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`events-console` — console events"
-msgstr ""
+msgstr "`events-console` — eventos do console"
 
 #. type: Title ##
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #. type: Plain text
 #: ../src/en/internals/022-config-groups.md
 msgid "Application bootstrapping for [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner)."
-msgstr ""
+msgstr "Bootstrap da aplicação para o [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner)."
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap` — common bootstrap"
-msgstr ""
+msgstr "`bootstrap` — bootstrap comum"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap-web` — web bootstrap"
-msgstr ""
+msgstr "`bootstrap-web` — bootstrap da web"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`bootstrap-console` — console bootstrap"
-msgstr ""
+msgstr "`bootstrap-console` — bootstrap do console"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`routes` — [yiisoft/router](https://github.com/yiisoft/router) routes"
-msgstr ""
+msgstr "`routes` — rotas do [yiisoft/router](https://github.com/yiisoft/router)"
 
 #. type: Bullet: '- '
 #: ../src/en/internals/022-config-groups.md
 msgid "`widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default widgets configuration"
-msgstr ""
+msgstr "`widgets` — configuração padrão de widgets do [yiisoft/widget](https://github.com/yiisoft/widget)"

@@ -1,94 +1,94 @@
-# 014 — Documentation
+# 014 — Documentação
 
-Documentation is one of the most important parts of Yii.
+A documentação é uma das partes mais importantes do Yii.
 
-## Package documentation
+## Documentação de pacotes
 
-Documentation for a package could either be in `README.md` or
-`docs/{language}/{type}` where `{language}` is a language code and `{type}`
-could be "guide," "cookbook" or something else.  Usually `docs` is there if
-the package usage or configuration isn't trivial or there's a need for
-translation.
+A documentação de um pacote pode ficar no `README.md` ou em
+`docs/{language}/{type}`, onde `{language}` é um código de idioma e `{type}`
+pode ser "guide", "cookbook" ou outra coisa.  Normalmente, `docs` existe
+quando o uso ou a configuração do pacote não é trivial ou quando há
+necessidade de tradução.
 
-Some indicators that it's time to create `docs`:
+Alguns indícios de que é hora de criar `docs`:
 
-1. There is a need for translation.
-2. Many topics exist. Each of these is big by itself.
+1. Há necessidade de tradução.
+2. Existem muitos tópicos, e cada um deles é grande por si só.
 
-If the total length of readme is less than about 200 lines, it's fine to
-keep documentation in the readme.
+Se o tamanho total do readme for menor que cerca de 200 linhas, não há
+problema em manter a documentação no readme.
 
-## Definitive guide
+## Guia definitivo
 
-The definitive guide,
+O guia definitivo,
 [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
-aims at covering usage of packages as a whole framework. Unlike package
-documentation, it isn't focused on a single package but is covering certain
-use-cases.
+tem como objetivo cobrir o uso dos pacotes como um framework
+completo. Diferente da documentação dos pacotes, ele não se concentra em um
+único pacote, e sim em determinados casos de uso.
 
-The guide should follow [Microsoft style
-guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+O guia deve seguir o [guia de estilo da
+Microsoft](https://learn.microsoft.com/en-us/style-guide/welcome/).
 
-### Translation
+### Tradução
 
-The definitive guide uses [po4a](https://github.com/mquinson/po4a) in GitHub Action for translations.  
+O guia definitivo usa o [po4a](https://github.com/mquinson/po4a) em uma GitHub Action para as traduções.  
 
-Translation algorithm:
+Algoritmo de tradução:
 
-- Install an application for working with `.po` translation files. For
-  example, [Poedit](https://poedit.net/),
+- Instale uma aplicação para trabalhar com arquivos de tradução `.po`. Por
+  exemplo, [Poedit](https://poedit.net/),
   [Lokalize](https://apps.kde.org/ru/lokalize/),
-  [Gtranslator](https://wiki.gnome.org/Apps/Gtranslator) or another.
-- Find file what you want to translate in `_translations/guide/{lang}`. Note
-  that if the source file is in a subfolder, the subfolder name is appended
-  to the file name and separated by an underscore, for example, for
-  translating `guide/en/concept/aliases.md` file find
-  `_translations/guide/{lang}/concept_aliases.md.po` file.
-- Open the file with the `.po` extension in `Poedit` from the folder with
-  the desired localization, for example
-  `_translations/guide/ru/intro_what-is-yii.md.po`. If there is no
-  localization yet, create an issue.
-- Translate necessary strings and push the changes
-- Open a pull request to the main repository
+  [Gtranslator](https://wiki.gnome.org/Apps/Gtranslator) ou outra.
+- Encontre o arquivo que você quer traduzir em
+  `_translations/guide/{lang}`. Observe que, se o arquivo original estiver
+  em uma subpasta, o nome da subpasta é adicionado ao nome do arquivo,
+  separado por um sublinhado. Por exemplo, para traduzir o arquivo
+  `guide/en/concept/aliases.md`, procure o arquivo
+  `_translations/guide/{lang}/concept_aliases.md.po`.
+- Abra o arquivo com extensão `.po` no `Poedit` a partir da pasta com a
+  localização desejada, por exemplo
+  `_translations/guide/ru/intro_what-is-yii.md.po`. Se ainda não existir a
+  localização, crie uma issue.
+- Traduza as strings necessárias e faça push das alterações
+- Abra um pull request para o repositório principal
 
 > [!CAUTION]
-> Do not change the translation in files in `/guide/{lang}` manually.
+> Não altere manualmente a tradução nos arquivos em `/guide/{lang}`.
 
-If you have changed English and want to update translations:
+Se você alterou o texto em inglês e quer atualizar as traduções:
 
-- Open a pull request to the main repository
-- Pull updated branch after successful completion of workflow `Update docs
-  translation` in GitHub Action
-- Update translation in `.po` files by `Poedit`
-- Push changes
+- Abra um pull request para o repositório principal
+- Faça pull do branch atualizado depois que o workflow `Update docs
+  translation` da GitHub Action terminar com sucesso
+- Atualize a tradução nos arquivos `.po` com o `Poedit`
+- Faça push das alterações
 
-## Blocks
+## Blocos
 
-Blocks are in the [GitHub Alerts
-format](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts):
+Os blocos usam o [formato GitHub
+Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts):
 
 ```
 > [!NOTE]
-> Useful information that users should know, even when skimming content.
+> Informação útil que os usuários devem saber, mesmo lendo o conteúdo por alto.
 
 > [!TIP]
-> Helpful advice for doing things better or more easily.
+> Conselho útil para fazer as coisas melhor ou com mais facilidade.
 
 > [!IMPORTANT]
-> Key information users need to know to achieve their goal.
+> Informação essencial que os usuários precisam saber para alcançar o objetivo.
 
 > [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
+> Informação urgente que exige atenção imediata do usuário para evitar problemas.
 
 > [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
+> Alerta sobre riscos ou consequências negativas de certas ações.
 ```
 
-When translating documentation, these Block indicators should not be
-translated.  Keeps them intact as they are and only translate the block
-content.  For translating the label for the block, each guide translation
-should have a `blocktypes.json` file containing the translations. The
-following shows an example for German:
+Ao traduzir a documentação, esses indicadores de bloco não devem ser
+traduzidos.  Mantenha-os intactos e traduza apenas o conteúdo do bloco.
+Para traduzir o rótulo do bloco, cada tradução do guia deve ter um arquivo
+`blocktypes.json` com as traduções. Veja a seguir um exemplo para o alemão:
 
 ```json
 {
@@ -102,8 +102,8 @@ following shows an example for German:
 
 ## PHPDoc
 
-PHPDoc mustn't be added if it doesn't add anything to what it describes. The
-following is a bad example:
+Não se deve adicionar PHPDoc se ele não acrescentar nada ao que
+descreve. Este é um mau exemplo:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -137,15 +137,15 @@ final class MyService extends MyServiceBase
 }
 ```
 
-PHPDoc, if present, should describe the purpose of the element it's added
-for.
+O PHPDoc, quando presente, deve descrever o propósito do elemento ao qual
+foi adicionado.
 
-Skip default values in PHPDoc when PHP already shows them in a parameter
-default, promoted property default, or property initializer. The declaration
-is the source of truth, and repeating the value in text can become outdated
-after code changes.
+Omita valores padrão no PHPDoc quando o PHP já os mostra no valor padrão de
+um parâmetro, no valor padrão de uma propriedade promovida ou no
+inicializador de uma propriedade. A declaração é a fonte da verdade, e
+repetir o valor no texto pode ficar desatualizado após mudanças no código.
 
-Example of incorrect code:
+Exemplo de código incorreto:
 
 ```php
 /**
@@ -157,7 +157,7 @@ public function __construct(
 }
 ```
 
-Example of a valid code:
+Exemplo de código válido:
 
 ```php
 /**
@@ -169,11 +169,11 @@ public function __construct(
 }
 ```
 
-The `@see` tags must explicitly refer to class methods, properties, and
-constants. This is necessary for the correct display of links in IDEs, as
-well as for the correct display of links in API documentation.
+As tags `@see` devem referenciar explicitamente métodos, propriedades e
+constantes da classe. Isso é necessário para que os links sejam exibidos
+corretamente nas IDEs e na documentação da API.
 
-Example of incorrect code:
+Exemplo de código incorreto:
 
 ```php
 /**
@@ -189,7 +189,7 @@ final class Example
 }
 ```
 
-Example of a valid code:
+Exemplo de código válido:
 
 ```php
 /**
@@ -205,19 +205,18 @@ final class Example
 }
 ```
 
-## Readme checklist
+## Checklist do readme
 
-Each package readme should be placed into `README.md` and contain the
-following:
+O readme de cada pacote deve ficar em `README.md` e conter o seguinte:
 
 - [ ] Logo.
-- [ ] Short description of the package. What does it do?
-- [ ] Quality badges (build, code coverage).
-- [ ] Screenshot (if applicable).
-- [ ] Requirements.
-- [ ] Installation. Usually `composer require`.
-- [ ] Getting started. One or two common usage examples are demonstrated.
-- [ ] Configuration.
-- [ ] Contributing. It should contain a link to guidelines.
-- [ ] Running tests.
-- [ ] License.
+- [ ] Descrição curta do pacote. O que ele faz?
+- [ ] Badges de qualidade (build, cobertura de código).
+- [ ] Captura de tela (se aplicável).
+- [ ] Requisitos.
+- [ ] Instalação. Normalmente `composer require`.
+- [ ] Primeiros passos. Um ou dois exemplos de uso comuns.
+- [ ] Configuração.
+- [ ] Contribuindo. Deve conter um link para as diretrizes.
+- [ ] Executando os testes.
+- [ ] Licença.

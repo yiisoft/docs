@@ -1,13 +1,13 @@
-# 019 — View code style
+# 019 — Estilo de código das views
 
-The PHP code in the view files shouldn't be complicated.  The code must
-contain the logic responsible for formatting the data, but not the logic for
-requesting this data.
+O código PHP nos arquivos de view não deve ser complicado.  O código deve
+conter a lógica responsável por formatar os dados, mas não a lógica para
+buscar esses dados.
 
-## Heading
+## Cabeçalho
 
-View file heading is used to place phpdoc describing variables available and
-to import classes:
+O cabeçalho do arquivo de view é usado para colocar o phpdoc que descreve as
+variáveis disponíveis e para importar classes:
 
 ```php
 <?php
@@ -20,10 +20,10 @@ declare(strict_types=1);
 use Yiisoft\Html\Html;
 ```
 
-## Control structures
+## Estruturas de controle
 
-Alternative syntax for control structures such as `foreach` and `if` is
-preferred:
+Prefira a sintaxe alternativa para estruturas de controle como `foreach` e
+`if`:
 
 ```php
 <?php foreach ($posts as $post): ?>   
@@ -34,13 +34,13 @@ preferred:
 
 ## Short echo
 
-Short echo is preferred:
+Prefira o short echo:
 
 ```php
 <?= Html::encode($name) ?>
 ```
 
-## Class methods
+## Métodos de classe
 
-All class methods used in view files must be public regardless if the view
-is rendered by the class itself.
+Todos os métodos de classe usados em arquivos de view devem ser públicos,
+mesmo que a view seja renderizada pela própria classe.

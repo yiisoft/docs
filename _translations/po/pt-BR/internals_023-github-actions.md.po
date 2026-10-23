@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-04-05 07:15+0000\n"
 "PO-Revision-Date: 2026-04-05 07:15+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,28 +19,28 @@ msgstr ""
 #: ../src/internals/023-github-actions.md
 #, no-wrap
 msgid "023 — GitHub Actions"
-msgstr ""
+msgstr "023 — GitHub Actions"
 
 #. type: Plain text
 #: ../src/internals/023-github-actions.md
 msgid "This document defines naming convention for the GitHub actions configuration files."
-msgstr ""
+msgstr "Este documento define a convenção de nomes para os arquivos de configuração das GitHub Actions."
 
 #. type: Title ##
 #: ../src/internals/023-github-actions.md
 #, no-wrap
 msgid "Inputs and Outputs"
-msgstr ""
+msgstr "Inputs e outputs"
 
 #. type: Plain text
 #: ../src/internals/023-github-actions.md
 msgid "Input names and output names must use kebab-case format."
-msgstr ""
+msgstr "Os nomes de inputs e de outputs devem usar o formato kebab-case."
 
 #. type: Plain text
 #: ../src/internals/023-github-actions.md
 msgid "For example:"
-msgstr ""
+msgstr "Por exemplo:"
 
 #. type: Fenced code block (yaml)
 #: ../src/internals/023-github-actions.md
@@ -50,17 +50,20 @@ msgid ""
 "  my-input:\n"
 "    description: 'My input'\n"
 msgstr ""
+"inputs:\n"
+"  my-input:\n"
+"    description: 'My input'\n"
 
 #. type: Title ##
 #: ../src/internals/023-github-actions.md
 #, no-wrap
 msgid "Secrets and Environment Variables"
-msgstr ""
+msgstr "Secrets e variáveis de ambiente"
 
 #. type: Plain text
 #: ../src/internals/023-github-actions.md
 msgid "Secret names and environment variable names must use SCREAMING_SNAKE_CASE format."
-msgstr ""
+msgstr "Os nomes de secrets e de variáveis de ambiente devem usar o formato SCREAMING_SNAKE_CASE."
 
 #. type: Fenced code block (yaml)
 #: ../src/internals/023-github-actions.md
@@ -70,6 +73,9 @@ msgid ""
 "  MY_SECRET:\n"
 "    description: 'My secret'\n"
 msgstr ""
+"secrets:\n"
+"  MY_SECRET:\n"
+"    description: 'My secret'\n"
 
 #. type: Fenced code block (yaml)
 #: ../src/internals/023-github-actions.md
@@ -78,3 +84,5 @@ msgid ""
 "env:\n"
 "  MY_ENV_VAR: 1\n"
 msgstr ""
+"env:\n"
+"  MY_ENV_VAR: 1\n"

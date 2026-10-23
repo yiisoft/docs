@@ -1,49 +1,52 @@
-# 010 — Code style
+# 010 — Estilo de código
 
-Code formatting used in Yii 3 packages is based on [PER Coding Style
-3.0](https://www.php-fig.org/per/coding-style/)  with extra rules added on
-top of it.
+A formatação de código usada nos pacotes do Yii 3 é baseada no [PER Coding
+Style 3.0](https://www.php-fig.org/per/coding-style/)  com regras extras
+adicionadas por cima.
 
-## Names
+## Nomes
 
-- Use English only.
-- Use camelCase notation, including abbreviations (e.g., `enableIdn`).
-- Use the shortest possible, but an explanatory name.
-- Never trim or abbreviate a name.
-- Postfix classes, interfaces, traits and variables, which is a
-  [collection](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)),
-  with `Collection`.
-- Postfix middleware classes with `Middleware`.
+- Use apenas inglês.
+- Use a notação camelCase, inclusive em abreviações (por exemplo,
+  `enableIdn`).
+- Use o nome mais curto possível, mas que seja explicativo.
+- Nunca corte ou abrevie um nome.
+- Adicione o sufixo `Collection` a classes, interfaces, traits e variáveis
+  que sejam uma
+  [coleção](https://en.wikipedia.org/wiki/Collection_(abstract_data_type)).
+- Adicione o sufixo `Middleware` às classes de middleware.
 
-## Types
+## Tipos
 
-- Declare [argument and return
-  types](https://www.php.net/manual/en/migration70.new-features.php) where
-  possible.
-- [Use types for properties](https://wiki.php.net/rfc/typed_properties_v2).
-- Use strict typing. Avoid mixed and union types where possible except
-  compatible types such as `string|Stringable`.
+- Declare [tipos de argumento e de
+  retorno](https://www.php.net/manual/en/migration70.new-features.php)
+  sempre que possível.
+- [Use tipos nas
+  propriedades](https://wiki.php.net/rfc/typed_properties_v2).
+- Use tipagem estrita. Evite tipos mixed e union sempre que possível, exceto
+  tipos compatíveis como `string|Stringable`.
 
-## Comments
+## Comentários
 
-Inline comments are to be avoided unless code couldn't be understood without
-them.  A good example is a workaround for a bug in a certain PHP version.
+Evite comentários inline, a menos que o código não possa ser entendido sem
+eles.  Um bom exemplo é um contorno para um bug em determinada versão do
+PHP.
 
-Method comment is necessary except it adds nothing to what method name and
-signature already has.
+O comentário de método é necessário, exceto quando não acrescenta nada ao
+que o nome e a assinatura do método já dizem.
 
-Class comment should describe the purpose of the class.
+O comentário de classe deve descrever o propósito da classe.
 
-See [PHPDoc](014-docs.md#phpdoc).
+Veja [PHPDoc](014-docs.md#phpdoc).
 
-## Formatting
+## Formatação
 
-### Line length
+### Tamanho da linha
 
-The maximum line length is 120 characters.
+O tamanho máximo da linha é de 120 caracteres.
 
-When a function or method call exceeds the limit, split arguments into
-separate lines:
+Quando uma chamada de função ou método excede o limite, separe os argumentos
+em linhas distintas:
 
 ```php
 $this->assertSame(
@@ -52,11 +55,11 @@ $this->assertSame(
 );
 ```
 
-### No alignment
+### Sem alinhamento
 
-Property, variable and constant value assignments shouldn't be aligned.  The
-same applies to phpdoc tags. The reason is that aligned statements often
-cause larger diff and even conflicts.
+Atribuições de valores a propriedades, variáveis e constantes não devem ser
+alinhadas.  O mesmo vale para as tags phpdoc. O motivo é que instruções
+alinhadas costumam gerar diffs maiores e até conflitos.
 
 ```php
 final class X
@@ -79,11 +82,11 @@ final class X
 }
 ```
 
-### Chain calls
+### Chamadas encadeadas
 
-Chained calls should be formatted for better readability.  If it's a long
-chain that doesn't fit the line length of 120 characters, then each call
-should on a new line:
+Chamadas encadeadas devem ser formatadas para melhor legibilidade.  Se for
+uma cadeia longa que não cabe no limite de 120 caracteres por linha, cada
+chamada deve ficar em uma nova linha:
 
 ```php
 $object
@@ -94,7 +97,7 @@ $object
     ->withDeadline($deadline);
 ```
 
-If it's a short chain, it's alright for it to be on a single line:
+Se for uma cadeia curta, não há problema em deixá-la em uma única linha:
 
 ```php
 $object = $object->withName('test');
@@ -102,44 +105,44 @@ $object = $object->withName('test');
 
 ## Strings
 
-- When no variables involved, use `'Hello!'`
-- To get variables into string prefer `"Hello, $username!"`
+- Quando não houver variáveis envolvidas, use `'Hello!'`
+- Para inserir variáveis na string, prefira `"Hello, $username!"`
 
-## Classes and interfaces
+## Classes e interfaces
 
-### Final by default
+### Final por padrão
 
-Classes should be `final` by default.
+As classes devem ser `final` por padrão.
 
-### Private by default
+### Private por padrão
 
-Constants, properties and methods should be private by default.
+Constantes, propriedades e métodos devem ser private por padrão.
 
-### Composition over inheritance
+### Composição em vez de herança
 
-Prefer [composition to inheritance](../guide/concept/di-container.md).
+Prefira [composição a herança](../guide/concept/di-container.md).
 
-### Property, constant and method order
+### Ordem de propriedades, constantes e métodos
 
-Order should be the following:
+A ordem deve ser a seguinte:
 
-- Constants
-- Properties
-- Methods
+- Constantes
+- Propriedades
+- Métodos
 
-Within each category, items should be sorted by visibility:
+Dentro de cada categoria, os itens devem ser ordenados por visibilidade:
 
 - public
 - protected
 - private
 
-### Abstract classes
+### Classes abstratas
 
-Abstract classes *shouldn't* be prefixed or postfixed with `Abstract`.
+Classes abstratas *não devem* ter o prefixo ou sufixo `Abstract`.
 
-#### Immutable methods
+#### Métodos imutáveis
 
-Immutable method convention is the following:
+A convenção para métodos imutáveis é a seguinte:
 
 ```php
 public function withName(string $name): self
@@ -150,13 +153,13 @@ public function withName(string $name): self
 }
 ```
 
-1. Cloned object name is `$new`.
-2. Return type is `self`.
+1. O nome do objeto clonado é `$new`.
+2. O tipo de retorno é `self`.
 
-#### Boolean check methods
+#### Métodos de verificação booleana
 
-Methods that are there to check if something is true should be named like
-the following:
+Métodos que servem para verificar se algo é verdadeiro devem ser nomeados
+assim:
 
 ```php
 public function isDeleted(): bool;
@@ -164,25 +167,26 @@ public function hasName(): bool;
 public function canDoIt(): bool;
 ```
 
-#### Flags in methods 
+#### Flags em métodos 
 
-Boolean flags in methods are better to be avoided. It's a sign the method
-may be doing too much, and there should be two methods instead of one.
+É melhor evitar flags booleanas em métodos. Elas são um sinal de que o
+método pode estar fazendo coisas demais e de que deveria haver dois métodos
+em vez de um.
 
 ```php
 public function login(bool $refreshPage = true): void;
 ```
 
-It is better to be two methods:
+É melhor que sejam dois métodos:
 
 ```php
 public function login(): void;
 public function refreshPage(): void;
 ```
 
-## Variables
+## Variáveis
 
-Add an underscore (`_`) prefix for unused variables. For example:
+Adicione o prefixo sublinhado (`_`) em variáveis não usadas. Por exemplo:
 
 ```php
 foreach ($items as $key => $_value) {
@@ -192,7 +196,7 @@ foreach ($items as $key => $_value) {
 
 ## Imports
 
-Prefer importing classes and functions to using fully qualified names:
+Prefira importar classes e funções a usar nomes totalmente qualificados:
 
 ```php
 use Yiisoft\Arrays\ArrayHelper;
@@ -203,8 +207,8 @@ use Yiisoft\Validator\Result;
 use function is_iterable;
 ```
 
-## Additional conventions
+## Convenções adicionais
 
 - [Namespaces](004-namespaces.md)
-- [Exceptions](007-exceptions.md)
+- [Exceções](007-exceptions.md)
 - [Interfaces](008-interfaces.md)

@@ -1,13 +1,13 @@
 # 023 — GitHub Actions
 
-This document defines naming convention for the GitHub actions configuration
-files.
+Este documento define a convenção de nomes para os arquivos de configuração
+das GitHub Actions.
 
-## Inputs and Outputs
+## Inputs e outputs
 
-Input names and output names must use kebab-case format.
+Os nomes de inputs e de outputs devem usar o formato kebab-case.
 
-For example:
+Por exemplo:
 
 ```yaml
 inputs:
@@ -15,12 +15,12 @@ inputs:
     description: 'My input'
 ```
 
-## Secrets and Environment Variables
+## Secrets e variáveis de ambiente
 
-Secret names and environment variable names must use SCREAMING_SNAKE_CASE
-format.
+Os nomes de secrets e de variáveis de ambiente devem usar o formato
+SCREAMING_SNAKE_CASE.
 
-For example:
+Por exemplo:
 
 ```yaml
 secrets:

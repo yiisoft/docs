@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,9 +19,9 @@ msgstr ""
 #: ../src/en/internals/011-error-correction.md
 #, no-wrap
 msgid "011 — Error correction"
-msgstr ""
+msgstr "011 — Correção de erros"
 
 #. type: Plain text
 #: ../src/en/internals/011-error-correction.md
 msgid "If it's unambiguous within a class what the developer who incorrectly used the class meant, it's OK to correct the error.  Otherwise, the error MUST NOT be corrected."
-msgstr ""
+msgstr "Se, dentro de uma classe, não houver ambiguidade sobre o que o desenvolvedor que usou a classe de forma incorreta quis dizer, não há problema em corrigir o erro.  Caso contrário, o erro NÃO DEVE ser corrigido."

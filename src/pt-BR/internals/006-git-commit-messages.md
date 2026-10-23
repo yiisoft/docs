@@ -1,18 +1,18 @@
-# 006 — Git commit messages
+# 006 — Mensagens de commit do Git
 
 
-## Subject line
+## Linha de assunto
 
-- Use `#123` to reference issue by number
-- Use imperative mood that's `Fix`, not `Fixed`
-- Don't add a period at the end
-- Use `[skip ci]` if there is no need to run unit tests
-- Start with a capital letter
-- Limit to 50 characters
+- Use `#123` para referenciar uma issue pelo número
+- Use o modo imperativo, ou seja, `Fix`, e não `Fixed`
+- Não coloque ponto final
+- Use `[skip ci]` se não houver necessidade de rodar os testes unitários
+- Comece com letra maiúscula
+- Limite a 50 caracteres
 
 ## Corpo
 
-Use the message body **if** you need an extra explanation. Explain why, not
-how.
+Use o corpo da mensagem **se** precisar de uma explicação extra. Explique o
+porquê, não o como.
 
-- Limit line length to 72 characters
+- Limite o tamanho das linhas a 72 caracteres

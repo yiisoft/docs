@@ -1,11 +1,12 @@
-# 021 — Changelog and upgrade
+# 021 — Changelog e upgrade
 
-For all released packages, we've a detailed changelog and upgrade guide.
+Para todos os pacotes lançados, mantemos um changelog detalhado e um guia de
+upgrade.
 
 ## Changelog
 
-Changelog is written for each version released. The file name is
-`CHANGELOG.md`. The format is the following:
+O changelog é escrito para cada versão lançada. O nome do arquivo é
+`CHANGELOG.md`. O formato é o seguinte:
 
 ```markdown
 # My package Change Log
@@ -23,29 +24,29 @@ Changelog is written for each version released. The file name is
 - Initial release.
 ```
 
-There "My package" is the name of the package, `1.0.1` is the version
-released followed by release date.  For each version, there are a number of
-lines listing the changes.  "Bug" refers to a change type.  The following
-types are used:
+Ali, "My package" é o nome do pacote, `1.0.1` é a versão lançada, seguida da
+data de release.  Para cada versão, há algumas linhas listando as mudanças.
+"Bug" indica o tipo da mudança.  São usados os seguintes tipos:
 
-- New — New features.
-- Chg — General changes.
-- Enh — Existing feature enhancements.
-- Bug — Bug fixes.
+- New — Novas funcionalidades.
+- Chg — Mudanças gerais.
+- Enh — Melhorias em funcionalidades existentes.
+- Bug — Correções de bugs.
 
-In the changelog file lines should be ordered as New, Chg, Enh, Bug.
+No arquivo de changelog, as linhas devem ser ordenadas como New, Chg, Enh,
+Bug.
 
-"#42" above is the number of issue or pull requests corresponding to the
-change. "author1" is the GitHub nickname of the code author. "author2" is an
-additional author. An author's nickname MUST be prefixed with `@`.
+"#42" acima é o número da issue ou do pull request correspondente à
+mudança. "author1" é o nickname no GitHub do autor do código. "author2" é um
+autor adicional. O nickname de um autor DEVE ter o prefixo `@`.
 
 ## Upgrade
 
-Upgrade guide is created when there is a new major version that isn't
-compatible with the previous one.  It describes steps necessary to upgrade
-application code.
+O guia de upgrade é criado quando há uma nova versão major que não é
+compatível com a anterior.  Ele descreve os passos necessários para fazer o
+upgrade do código da aplicação.
 
-The file name is `UPGRADE.md`. The format is the following:
+O nome do arquivo é `UPGRADE.md`. O formato é o seguinte:
 
 ```markdown
 # Upgrading Instructions for my package

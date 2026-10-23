@@ -1,56 +1,58 @@
-# 020 — Package release
+# 020 — Release de pacotes
 
-## Criteria
+## Critérios
 
-- No critical issues.
-- Public API changes aren't likely. Some time passed w/o issues reported
-  that may require API changes.
-- All dependencies are stable.
-- Close to 100% test coverage with, ideally, a 100% MSI score.
-- README is alright.
-- Everything is type-hinted unless special cases.
-- Psalm analysis passes on at least level 2.
-- phpdoc is alright.
-- Public API is alright.
+- Nenhuma issue crítica.
+- Mudanças na API pública são improváveis. Já passou algum tempo sem issues
+  relatadas que possam exigir mudanças na API.
+- Todas as dependências são estáveis.
+- Cobertura de testes próxima de 100% e, idealmente, score MSI de 100%.
+- O README está em ordem.
+- Tudo tem type hints, exceto em casos especiais.
+- A análise do Psalm passa pelo menos no nível 2.
+- O phpdoc está em ordem.
+- A API pública está em ordem.
 
-## Release branch policy
+## Política de branches de release
 
-Use `master` for all regular releases.
+Use `master` para todos os releases regulares.
 
-Create a separate branch only when releasing a new version for a previous
-major version. In this case, create the branch from the latest tag in that
-previous major version line and apply only the changes needed for the
+Crie um branch separado apenas ao lançar uma nova versão de uma versão major
+anterior. Nesse caso, crie o branch a partir da tag mais recente dessa linha
+de versão major anterior e aplique apenas as mudanças necessárias para o
 release.
 
-## Release instruction
+## Instruções de release
 
-Release a package via [Yii Development Tool](005-development-tool.md).
+Faça o release de um pacote com a [Ferramenta de desenvolvimento do
+Yii](005-development-tool.md).
 
-1. Check that you can sign commits locally (see 
-[Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).
+1. Verifique se você consegue assinar commits localmente (veja 
+[Assinando commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).
 
-2. For regular releases, pull last changes from the `master` branch:
+2. Para releases regulares, faça pull das últimas mudanças do branch
+   `master`:
 
 ```shell
 ./yii-dev git/checkout master package-name
 ./yii-dev git/pull package-name
 ```
 
-For previous major version releases, use the branch created according to the
-release branch policy instead of `master`.
+Para releases de versões major anteriores, use o branch criado de acordo com
+a política de branches de release, em vez de `master`.
 
-3. Check the package for compliance with the criteria above.
+3. Verifique se o pacote atende aos critérios acima.
 
-4. Run `release/make` command:
+4. Execute o comando `release/make`:
 
 ```shell
 ./yii-dev release/make package-name
 ```
 
-5. Select the version type (major, minor or patch).
+5. Selecione o tipo de versão (major, minor ou patch).
 
-6. On the question "Push commits and tags, and release on GitHub?" check a
-   diff. If the diff is alright, answer "yes."
+6. Na pergunta "Push commits and tags, and release on GitHub?", confira o
+   diff. Se o diff estiver correto, responda "yes".
 
-7. For major and minor releases, add a record with release notes on [Yii
-   Framework News](https://www.yiiframework.com/news).
+7. Para releases major e minor, adicione um registro com as notas de release
+   em [Yii Framework News](https://www.yiiframework.com/news).

@@ -1,16 +1,16 @@
-# 007 — Exceptions
+# 007 — Exceções
 
-- Throw exceptions instead of returning an error code.
-- Exception class name must be suffixed with `Exception`.
-- Use grammatically correct error messages including ending punctuation,
-  that's most exceptions must end with a period.
-- `\InvalidArgumentException` must be used directly. There should be no
-  exceptions inherited from it.
-- `\InvalidArgumentException` must never be caught.
+- Lance exceções em vez de retornar um código de erro.
+- O nome da classe de exceção deve ter o sufixo `Exception`.
+- Use mensagens de erro gramaticalmente corretas, incluindo a pontuação
+  final, ou seja, a maioria das exceções deve terminar com ponto.
+- `\InvalidArgumentException` deve ser usada diretamente. Não deve haver
+  exceções herdadas dela.
+- `\InvalidArgumentException` nunca deve ser capturada.
 
-## References
+## Referências
 
-- [International community discussion and
-  poll](https://forum.yiiframework.com/t/naming-exceptions/126613/6)
-- [Russian community discussion and
-  poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51290)
+- [Discussão e enquete na comunidade
+  internacional](https://forum.yiiframework.com/t/naming-exceptions/126613/6)
+- [Discussão e enquete na comunidade
+  russa](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51290)

@@ -1,5 +1,5 @@
-# 011 — Error correction
+# 011 — Correção de erros
 
-If it's unambiguous within a class what the developer who incorrectly used
-the class meant, it's OK to correct the error.  Otherwise, the error MUST
-NOT be corrected.
+Se, dentro de uma classe, não houver ambiguidade sobre o que o desenvolvedor
+que usou a classe de forma incorreta quis dizer, não há problema em corrigir
+o erro.  Caso contrário, o erro NÃO DEVE ser corrigido.

@@ -1,27 +1,30 @@
-# 002 — Issue workflow
+# 002 — Fluxo de issues
 
-The process of handing incoming issues is the following:
+O processo de tratamento das issues recebidas é o seguinte:
 
-![Issue workflow schema](/images/internals/002-issue-workflow.svg)
+![Esquema do fluxo de issues](/images/internals/002-issue-workflow.svg)
 
-## Roles
+## Papéis
 
-We've many roles:
+Temos vários papéis:
 
-- Process managers - initially triage issues and manage labels.
-- Decision makers - participate in discussions moving them to resolutions.
-- Bug hunters - verifying bugs.
-- Contributors - create code for pull requests.
-- Code reviewers - review pull requests.
+- Gerentes de processo - fazem a triagem inicial das issues e gerenciam os
+  labels.
+- Tomadores de decisão - participam das discussões, levando-as a uma
+  resolução.
+- Caçadores de bugs - verificam os bugs.
+- Contribuidores - escrevem o código dos pull requests.
+- Revisores de código - revisam os pull requests.
 
-A single person may take one or more roles in the issue-resolving process.
+Uma mesma pessoa pode assumir um ou mais papéis no processo de resolução de
+issues.
 
 ## Labels
 
-We label issues to mark many things: current status, issue type, component
-affected. Status labels speak for themselves.
+Usamos labels nas issues para marcar várias coisas: status atual, tipo da
+issue, componente afetado. Os labels de status falam por si.
 
 ## Milestones
 
-Issues aren't assigned to milestones unless they're critical or there is a
-likely good pull request exists.
+As issues não são atribuídas a milestones, a menos que sejam críticas ou que
+provavelmente exista um bom pull request para elas.

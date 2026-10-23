@@ -1,36 +1,38 @@
 # 018 - Widgets
 
-Unlike regular classes, widgets are used in view templates, so syntax is
-important.  It should be both easy to write, easy to read and not too
-verbose because similar constructs are meant to be used over and over again.
+Diferente das classes comuns, os widgets são usados em templates de view,
+então a sintaxe é importante.  Ela deve ser fácil de escrever, fácil de ler
+e não muito verbosa, porque construções parecidas são usadas repetidas
+vezes.
 
-## Class names
+## Nomes de classes
 
-Widgets aren't postfixed or prefixed.
+Os widgets não têm prefixo nem sufixo.
 
-## Inheritance
+## Herança
 
-Inheritance is allowed with some restrictions:
+A herança é permitida com algumas restrições:
 
-- If a class isn't abstract, it should be final.
-- Hierarchy should be kept as linear as possible.
+- Se uma classe não é abstrata, ela deve ser final.
+- A hierarquia deve ser mantida o mais linear possível.
 
-## Immutability
+## Imutabilidade
 
-Widgets should:
+Os widgets devem:
 
-- Have no state.
-- Be immutable.
+- Não ter estado.
+- Ser imutáveis.
 
-## Methods
+## Métodos
 
-### Names
+### Nomes
 
-- Unlike other classes, methods that return a clone of the object with some
-  properties modified aren't prefixed.
-- Keep method names as short as possible but don't hurt readability.
+- Diferente de outras classes, os métodos que retornam um clone do objeto
+  com algumas propriedades modificadas não têm prefixo.
+- Mantenha os nomes dos métodos o mais curtos possível, sem prejudicar a
+  legibilidade.
 
-### Boolean flags
+### Flags booleanas
 
-The method that corresponds to the boolean attribute should be named after
-the attribute and accept a boolean flag argument.
+O método que corresponde a um atributo booleano deve ter o nome do atributo
+e aceitar um argumento booleano como flag.

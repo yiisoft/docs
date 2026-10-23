@@ -1,23 +1,23 @@
 # 004 — Namespaces
 
-Package namespace rules are the following:
+As regras de namespace dos pacotes são as seguintes:
 
-1. PascalCase is used for namespace parts.
-2. Root vendor namespace is `Yiisoft`.
-3. Package name parts are used in namespace.
-4. Adjective is added to a noun and is a single part.
+1. As partes do namespace usam PascalCase.
+2. O namespace raiz do vendor é `Yiisoft`.
+3. As partes do nome do pacote são usadas no namespace.
+4. Um adjetivo é unido ao substantivo e forma uma única parte.
 
 
-Some examples:
+Alguns exemplos:
 
-| Package                    | Namespace                 |
+| Pacote                     | Namespace                 |
 |----------------------------|---------------------------|
 | yiisoft/yii-web            | Yiisoft\Yii\Web           |
 | yiisoft/di                 | Yiisoft\Di                |
 | yiisoft/db-mysql           | Yiisoft\Db\Mysql          |
 | yiisoft/friendly-exception | Yiisoft\FriendlyException |
 
-## References
+## Referências
 
-- [International forum
-  discussion](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)
+- [Discussão no fórum
+  internacional](https://forum.yiiframework.com/t/use-yiisoft-as-a-root-namespace-instead-of-yii-for-yii-3-packages/125734)

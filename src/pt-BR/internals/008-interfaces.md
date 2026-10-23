@@ -1,10 +1,10 @@
 # 008 — Interfaces
 
-- Interface name should be suffixed with `Interface`.
+- O nome da interface deve ter o sufixo `Interface`.
 
-## References
+## Referências
 
-- [International community discussion and
-  poll](https://forum.yiiframework.com/t/naming-interfaces/126612/5)
-- [Russian community discussion and
-  poll](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)
+- [Discussão e enquete na comunidade
+  internacional](https://forum.yiiframework.com/t/naming-interfaces/126612/5)
+- [Discussão e enquete na comunidade
+  russa](https://yiiframework.ru/forum/viewtopic.php?f=39&t=51289)

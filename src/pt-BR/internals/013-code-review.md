@@ -1,33 +1,33 @@
 # 013 — Code review
 
-Code reviews are essential for the success of the project and are as
-important as contributing code.
+Code reviews são essenciais para o sucesso do projeto e tão importantes
+quanto contribuir com código.
 
-Reviews are handled via GitHub pull requests. When the request is ready for
-review, the "status: code review" label is added to it.
+As revisões são feitas por meio de pull requests no GitHub. Quando o pull
+request está pronto para revisão, recebe o label "status: code review".
 
-[A full list of pull requests that need
-review](https://github.com/search?q=org%3Ayiisoft+label%3A"status%3Acode+review"&state=open&type=Issues)
-is available at GitHub.
+[A lista completa de pull requests que precisam de
+revisão](https://github.com/search?q=org%3Ayiisoft+label%3A"status%3Acode+review"&state=open&type=Issues)
+está disponível no GitHub.
 
-## Guidelines
+## Diretrizes
 
-- Check out the pull request branch, open the project in the IDE, get a big
-  picture.
-- Does the pull request make sense overall?
-- Run tests and/or application using code from the pull request. Are these
-  OK?
-- Read all lines of code in the pull request.
-- Could it be done simpler?
-- Are there security issues?
-- Are there performance issues?
-- When leaving comments, be polite.
-- Avoid code-formatting comments.
+- Faça checkout do branch do pull request, abra o projeto na IDE e tenha uma
+  visão geral.
+- O pull request faz sentido como um todo?
+- Rode os testes e/ou a aplicação usando o código do pull request. Está tudo
+  certo?
+- Leia todas as linhas de código do pull request.
+- Daria para fazer de forma mais simples?
+- Há problemas de segurança?
+- Há problemas de desempenho?
+- Ao deixar comentários, seja educado.
+- Evite comentários sobre formatação de código.
 
-## Mandatory parts
+## Itens obrigatórios
 
-- [ ] Tests that fail without code and pass with code.
+- [ ] Testes que falham sem o código e passam com ele.
 - [ ] Type hints.
 - [ ] `declare(strict_types=1)`.
-- [ ] Documentation: phpdoc, yiisoft/docs.
-- [ ] Changelog entry (if package is stable).
+- [ ] Documentação: phpdoc, yiisoft/docs.
+- [ ] Entrada no changelog (se o pacote for estável).

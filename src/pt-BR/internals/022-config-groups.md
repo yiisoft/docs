@@ -1,73 +1,75 @@
-# 022 — Config groups
+# 022 — Grupos de configuração
 
-This document defines naming convention for the framework groups used with
-[yiisoft/config](https://github.com/yiisoft/config).  Note that this isn't a
-naming convention for config files.  These could be anything and are mapped
-to group names via `composer.json`.
+Este documento define a convenção de nomes para os grupos do framework
+usados com o [yiisoft/config](https://github.com/yiisoft/config).  Observe
+que esta não é uma convenção de nomes para arquivos de configuração.  Eles
+podem ter qualquer nome e são mapeados para os nomes de grupo via
+`composer.json`.
 
-## Config group name postfixes
+## Sufixos dos nomes de grupos de configuração
 
-- "web" postfix applies to web only that's classic server HTML generation,
-  REST, RPC, etc.
-- "console" postfix applies to console
-- If there's no postfix, it's "common" and applies to both web and console
-- "web" and "console" may override what's defined in "common"
+- O sufixo "web" se aplica apenas à web, ou seja, geração clássica de HTML
+  no servidor, REST, RPC etc.
+- O sufixo "console" se aplica ao console
+- Se não houver sufixo, o grupo é "common" e se aplica tanto à web quanto ao
+  console
+- "web" e "console" podem sobrescrever o que está definido em "common"
 
-## Parameters
+## Parâmetros
 
-Application config parameters that are used in all configs.
+Parâmetros de configuração da aplicação usados em todas as configurações.
 
-- `params` — common parameters
-- `params-web` — web application parameters
-- `params-console` — console application parameters
+- `params` — parâmetros comuns
+- `params-web` — parâmetros da aplicação web
+- `params-console` — parâmetros da aplicação de console
 
 ## Container
 
-Configuration for [yiisoft/di](https://github.com/yiisoft/di).
+Configuração do [yiisoft/di](https://github.com/yiisoft/di).
 
-### Definitions
+### Definições
 
-- `di` — common container definitions
-- `di-web` — web container definitions
-- `di-console` — console container definitions
+- `di` — definições comuns do container
+- `di-web` — definições do container para web
+- `di-console` — definições do container para console
 
 ### Providers
 
-- `di-providers` — common container providers
-- `di-providers-web` — web container providers
-- `di-providers-console` — console container providers
+- `di-providers` — providers comuns do container
+- `di-providers-web` — providers do container para web
+- `di-providers-console` — providers do container para console
 
 ### Delegates
 
-- `di-delegates` — common container delegates
-- `di-delegates-web` — web container delegates
-- `di-delegates-console` — console container delegates
+- `di-delegates` — delegates comuns do container
+- `di-delegates-web` — delegates do container para web
+- `di-delegates-console` — delegates do container para console
 
 ### Tags
 
-- `di-tags` — common container tags
-- `di-tags-web` — web container tags
-- `di-tags-console` — console container tags
+- `di-tags` — tags comuns do container
+- `di-tags-web` — tags do container para web
+- `di-tags-console` — tags do container para console
 
-## Events
+## Eventos
 
-Configuration for [yiisoft/yii-event](https://github.com/yiisoft/yii-event).
+Configuração do [yiisoft/yii-event](https://github.com/yiisoft/yii-event).
 
-- `events` — common events
-- `events-web` — web events
-- `events-console` — console events
+- `events` — eventos comuns
+- `events-web` — eventos da web
+- `events-console` — eventos do console
 
 ## Bootstrap
 
-Application bootstrapping for
+Bootstrap da aplicação para o
 [yiisoft/yii-runner](https://github.com/yiisoft/yii-runner).
 
-- `bootstrap` — common bootstrap
-- `bootstrap-web` — web bootstrap
-- `bootstrap-console` — console bootstrap
+- `bootstrap` — bootstrap comum
+- `bootstrap-web` — bootstrap da web
+- `bootstrap-console` — bootstrap do console
 
-## Others
+## Outros
 
-- `routes` — [yiisoft/router](https://github.com/yiisoft/router) routes
-- `widgets` — [yiisoft/widget](https://github.com/yiisoft/widget) default
-  widgets configuration
+- `routes` — rotas do [yiisoft/router](https://github.com/yiisoft/router)
+- `widgets` — configuração padrão de widgets do
+  [yiisoft/widget](https://github.com/yiisoft/widget)

@@ -1,8 +1,8 @@
-# 005 — Yii development tool
+# 005 — Ferramenta de desenvolvimento do Yii
 
-For Yii3, the number of packages increased significantly to achieve more
-reusability and independent releases.  To ease development of the framework
-itself, we've created a special tool available from
+No Yii3, o número de pacotes aumentou bastante para permitir mais reuso e
+releases independentes.  Para facilitar o desenvolvimento do próprio
+framework, criamos uma ferramenta especial, disponível em
 [yiisoft/yii-dev-tool](https://github.com/yiisoft/yii-dev-tool).
 
 ```
@@ -33,19 +33,20 @@ Available commands:
   update           Update packages
 ```
 
-There are many commands available. The most important ones are `install` and
-`update`. What it does is:
+Há muitos comandos disponíveis. Os mais importantes são `install` e
+`update`. O que eles fazem:
 
-1. Install/update all packages listed in
+1. Instalam/atualizam todos os pacotes listados em
    [`packages.php`](https://github.com/yiisoft/yii-dev-tool/blob/master/packages.php)
-   or individual package from that list if specified.
-2. For every package installed check `vendor` directory for packages listed
-   in `packages.php`.  If there is any, replace the package directory with a
-   symlink to another package source.
+   ou um pacote específico dessa lista, se informado.
+2. Para cada pacote instalado, verificam no diretório `vendor` se há pacotes
+   listados em `packages.php`.  Se houver, substituem o diretório do pacote
+   por um symlink para o código-fonte do outro pacote.
 
-As a result, you will have many packages using each other, so there is no
-need to `git push` and `composer install` / `composer update` during
-development.
+Como resultado, você terá muitos pacotes usando uns aos outros, sem precisar
+de `git push` e `composer install` / `composer update` durante o
+desenvolvimento.
 
-A [detailed example](https://github.com/yiisoft/yii-dev-tool#usage-example)
-of using the tool is available in its README.
+Um [exemplo
+detalhado](https://github.com/yiisoft/yii-dev-tool#usage-example) de uso da
+ferramenta está disponível no README dela.

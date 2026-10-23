@@ -1,29 +1,29 @@
-# 015 — PhpStorm metadata and attributes
+# 015 — Metadados e atributos do PhpStorm
 
-## PhpStorm metadata
+## Metadados do PhpStorm
 
-[PhpStorm
-metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html)
-helps the IDE to understand code better in cases when regular types and
-PHPDoc tags don't help.
+Os [metadados do
+PhpStorm](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html)
+ajudam a IDE a entender melhor o código nos casos em que os tipos comuns e
+as tags PHPDoc não ajudam.
 
-We use the following set of coding styles for metadata.
+Usamos o seguinte conjunto de convenções de estilo para os metadados.
 
-### Metadata location
+### Localização dos metadados
 
-- Metadata should be placed in `/.phpstorm.meta.php` directory.
-- Configuration should be split into files. Each file should be named after
-  a class it configures.
+- Os metadados devem ficar no diretório `/.phpstorm.meta.php`.
+- A configuração deve ser dividida em arquivos. Cada arquivo deve ter o nome
+  da classe que configura.
 
 > [!NOTE]
-> There is no support for subdirectories in PhpStorm yet.
+> O PhpStorm ainda não suporta subdiretórios.
 
-### Constants 
+### Constantes 
 
-All constant dictionaries should be named as `{Class FQN}::{Group
-name}`. Group name should be short and written in capital letters.  Use
-underscore as a word separator that's `\Yiisoft\Http\Status::STATUSES`. For
-example:
+Todos os dicionários de constantes devem ser nomeados como `{Class
+FQN}::{Group name}`. O nome do grupo deve ser curto e escrito em letras
+maiúsculas.  Use sublinhado como separador de palavras, por exemplo
+`\Yiisoft\Http\Status::STATUSES`. Por exemplo:
 
 ```php
 expectedReturnValues(
@@ -43,22 +43,22 @@ registerArgumentsSet(
 );
 ```
 
-## PhpStorm attributes
+## Atributos do PhpStorm
 
-[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN
-be used in code, but package `jetbrains/phpstorm-attributes` MUST be added
-as a dev dependency:
+Os [atributos do PhpStorm](https://github.com/JetBrains/phpstorm-attributes)
+PODEM ser usados no código, mas o pacote `jetbrains/phpstorm-attributes`
+DEVE ser adicionado como dependência de desenvolvimento:
 
 ```shell
 composer require --dev jetbrains/phpstorm-attributes
 ```
 
-### Using with ComposerRequireChecker
+### Usando com o ComposerRequireChecker
 
-When
+Quando o
 [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker)
-is also used within the same package, add involved attributes' class names
-to whitelist in config. For example:
+também é usado no mesmo pacote, adicione os nomes das classes dos atributos
+envolvidos à whitelist na configuração. Por exemplo:
 
 ```json
 {

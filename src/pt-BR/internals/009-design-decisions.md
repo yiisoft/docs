@@ -1,89 +1,93 @@
-# 009 — Design Decisions
+# 009 — Decisões de design
 
-In this document, we list important design decisions taken during Yii3
-development.
+Neste documento, listamos decisões de design importantes tomadas durante o
+desenvolvimento do Yii3.
 
-## Remove magic properties
+## Remover propriedades mágicas
 
-Magic properties in Yii 2 were an interesting idea that allowed a developer
-to start with public property and then seamlessly migrate to using
-getter/setter called via magic methods without changing the code.
+As propriedades mágicas do Yii 2 eram uma ideia interessante: permitiam ao
+desenvolvedor começar com uma propriedade pública e depois migrar de forma
+transparente para getter/setter chamados via métodos mágicos, sem mudar o
+código.
 
-The main reason for removal in Yii 3 is that it resulted in using public
-properties everywhere, thus lack of encapsulation and code fragility.
+O principal motivo da remoção no Yii 3 é que isso levava ao uso de
+propriedades públicas em todo lugar, resultando em falta de encapsulamento e
+código frágil.
 
-## Remove the service locator
+## Remover o service locator
 
-Service locator both Yii 1 and Yii 2 was convenient but was also abused a
-lot.  Although a dependency injection container was available in Yii 2,
-service locator was generally preferred to cause both a dependency on the
-service locator itself, high coupling, hard to test code.
+O service locator, tanto no Yii 1 quanto no Yii 2, era conveniente, mas
+também muito abusado.  Embora o Yii 2 tivesse um container de injeção de
+dependência, o service locator costumava ser preferido, o que causava
+dependência do próprio service locator, alto acoplamento e código difícil de
+testar.
 
-Yii 3 relies on dependency injection only lowering coupling significantly
-and making code way more testable.
+O Yii 3 usa apenas injeção de dependência, o que reduz bastante o
+acoplamento e torna o código muito mais testável.
 
-## Extract general packages
+## Extrair pacotes de uso geral
 
-Yii 1 and Yii 2 were fully closed communities. All the code we had wasn't
-useful outside Yii, and most of the "external" code wasn't useful in Yii
-without wrappers. It was noted many times by communities external to Yii
-that many parts of Yii are well-designed and unique, and they'd use these if
-these were available as standalone packages.
+O Yii 1 e o Yii 2 eram comunidades totalmente fechadas. Todo o código que
+tínhamos não era útil fora do Yii, e a maior parte do código "externo" não
+era útil no Yii sem wrappers. Comunidades de fora do Yii comentaram muitas
+vezes que várias partes do Yii são bem projetadas e únicas, e que as usariam
+se estivessem disponíveis como pacotes independentes.
 
-As part of Yii 3 packages such as cache, RBAC, view, etc. were extracted
-into framework-independent packages. Benefits are:
+Como parte do Yii 3, pacotes como cache, RBAC, view etc. foram extraídos
+para pacotes independentes de framework. Os benefícios são:
 
-- Increased usage and contribution
-- Yii team could delegate maintenance
-- Independent releases are possible
+- Mais uso e mais contribuições
+- O time do Yii pode delegar a manutenção
+- Releases independentes passam a ser possíveis
 
-## Adopt PSRs
+## Adotar PSRs
 
-The team adopted some PSRs in Yii 2, such as PSR-4 and PSR-2.  Interfaces in
-general weren't, although Yii is part of PHP-FIG.  Mainly because when Yii 2
-was released, these were either in the making or not adopted enough.
+O time adotou algumas PSRs no Yii 2, como a PSR-4 e a PSR-2.  As interfaces,
+em geral, não foram adotadas, embora o Yii faça parte do PHP-FIG.
+Principalmente porque, quando o Yii 2 foi lançado, elas ainda estavam em
+elaboração ou não tinham adoção suficiente.
 
-Yii3 benefits from PSRs since there are nowadays many ready-to-use libraries
-that one can get via Composer: cache backends, middleware, loggers, DI
-containers, etc.
+O Yii3 se beneficia das PSRs, já que hoje existem muitas bibliotecas prontas
+para uso que você instala via Composer: backends de cache, middlewares,
+loggers, containers de DI etc.
 
-By implementing PSRs in general packages, we allow these to be used in more
-projects, thus raising the contribution level.
+Ao implementar PSRs nos pacotes de uso geral, permitimos que eles sejam
+usados em mais projetos, aumentando o nível de contribuição.
 
-## Improve DI container
+## Melhorar o container de DI
 
-The problem with the Yii 2 container was that it's tailored to be used with
-Yii 2 components.  API isn't well-designed to be used with general PHP
-classes.
+O problema do container do Yii 2 era que ele foi feito sob medida para os
+componentes do Yii 2.  A API não foi bem projetada para uso com classes PHP
+em geral.
 
-In Yii3, we ensured that container can be used to conveniently configure any
-PHP class.
+No Yii3, garantimos que o container possa ser usado para configurar qualquer
+classe PHP de forma conveniente.
 
-That should result in the absence of Yii-specific wrapper packages and more
-direct usages of Composer packages.
+Isso deve resultar na ausência de pacotes wrapper específicos do Yii e em
+mais uso direto de pacotes do Composer.
 
-## Adopt strict types
+## Adotar strict types
 
-Strict types were introduced because:
+Os strict types foram introduzidos porque:
 
-- PHP 7 is now mainstream
-- While they solve no significant Yii 2 problems, they help to avoid many
-  day-to-day development issues
+- O PHP 7 agora é o padrão do mercado
+- Embora não resolvam nenhum problema significativo do Yii 2, ajudam a
+  evitar muitos problemas do dia a dia de desenvolvimento
 
-## Adopt SemVer
+## Adotar SemVer
 
-Yii 2 has its own version policy. Problems:
+O Yii 2 tem sua própria política de versões. Problemas:
 
-- It wasn't standard
-- Composer relies on SemVer
-- It's hard to support a framework built on top of packages if the
-  versioning policy isn't strict
+- Não era um padrão
+- O Composer se baseia em SemVer
+- É difícil manter um framework construído sobre pacotes se a política de
+  versionamento não for rígida
 
-## Prevent validators mutating data
+## Impedir que validadores alterem dados
 
-In Yii 1 and Yii 2, validators such as "date" were mutating data.  It was
-confusing for a validation process not initially meant to mutate data it
-validates.
+No Yii 1 e no Yii 2, validadores como "date" alteravam os dados.  Era
+confuso que um processo de validação, que a princípio não deveria alterar os
+dados que valida, fizesse isso.
 
-[See related
-discussion](https://forum.yiiframework.com/t/saving-or-killing-non-validation-in-validators/126086).
+[Veja a discussão
+relacionada](https://forum.yiiframework.com/t/saving-or-killing-non-validation-in-validators/126086).

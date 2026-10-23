@@ -1,82 +1,85 @@
-# 001 — Yii goal and values
+# 001 — Objetivo e valores do Yii
 
-## Goal
+## Objetivo
 
-The Yii project aims to build and support _practical_ and _helpful_ tools
-and community.
+O projeto Yii tem como objetivo construir e manter ferramentas e uma
+comunidade _práticas_ e _úteis_.
 
-## Values
+## Valores
 
-The values we express in our work support the goal. We try to
+Os valores que expressamos em nosso trabalho apoiam esse
+objetivo. Procuramos
 
-- Be practical
-    - [High performance](#high-performance)
-    - [Sensible defaults and
-      flexibility](#sensible-defaults-and-flexibility)
-    - [Be practice-oriented](#be-practice-oriented)
-- Be helpful
-    - [Be simple](#be-simple)
-    - [Be explicit](#be-explicit)
-    - [Be consistent](#be-consistent)
+- Ser práticos
+    - [Alto desempenho](#alto-desempenho)
+    - [Padrões sensatos e flexibilidade](#padroes-sensatos-e-flexibilidade)
+    - [Ser orientado à prática](#ser-orientado-a-pratica)
+- Ser úteis
+    - [Ser simples](#ser-simples)
+    - [Ser explícito](#ser-explicito)
+    - [Ser consistente](#ser-consistente)
     
-## Be practical
+## Ser práticos
 
-### High performance
+### Alto desempenho
 
-Performance is a necessary condition of practicality. Software shouldn't
-waste machine resources or human resources.
+Desempenho é uma condição necessária para a praticidade. O software não deve
+desperdiçar recursos de máquina nem recursos humanos.
 
-### Sensible defaults and flexibility
+### Padrões sensatos e flexibilidade
 
-We prefer sensible defaults and conventions that users can customize.  We
-seek a balance between flexibility, discipline and simplicity that meets
-common needs.
+Preferimos padrões e convenções sensatos que os usuários possam
+personalizar.  Buscamos um equilíbrio entre flexibilidade, disciplina e
+simplicidade que atenda às necessidades comuns.
 
-### Be practice-oriented
+### Ser orientado à prática
 
-We prefer practice to theory. For example:
+Preferimos a prática à teoria. Por exemplo:
 
-- Solutions for known use cases should avoid excess complexity by providing
-  only necessary flexibility.
-- Standard implementations should take practical use into account.
-- Experience is at least as useful as theory in guiding design.
-- Context is critical in determining appropriateness.
+- Soluções para casos de uso conhecidos devem evitar complexidade excessiva,
+  oferecendo apenas a flexibilidade necessária.
+- Implementações padrão devem levar em conta o uso prático.
+- A experiência é pelo menos tão útil quanto a teoria para orientar o
+  design.
+- O contexto é fundamental para determinar o que é adequado.
 
-## Be helpful
+## Ser úteis
 
-This value guides technical decisions as well as community activity.
-Consideration of how software features help users should guide development.
-Community-wise, we value any helpful contribution, be it a pull request or
-an answer in the forum.
+Esse valor orienta tanto as decisões técnicas quanto a atividade da
+comunidade.  O desenvolvimento deve ser guiado pela forma como os recursos
+do software ajudam os usuários.  Na comunidade, valorizamos qualquer
+contribuição útil, seja um pull request ou uma resposta no fórum.
 
-When the other principles conflict, we choose a solution that's more helpful
-to the community.
+Quando os outros princípios entram em conflito, escolhemos a solução mais
+útil para a comunidade.
 
-### Be simple
+### Ser simples
 
-Solutions should be simple and expressive:
+As soluções devem ser simples e expressivas:
 
-- We use as much complexity as needed and no more.
-- We avoid ugly solutions unless there is no alternative.
-- Fewer rules are better than more rules.
+- Usamos tanta complexidade quanto necessário, e não mais.
+- Evitamos soluções feias, a menos que não haja alternativa.
+- Menos regras é melhor do que mais regras.
 
-### Be Explicit
+### Ser explícito
 
-We prefer explicit, obvious solutions and code. Solutions should clearly
-express exactly what they do. For example:
+Preferimos soluções e código explícitos e óbvios. As soluções devem
+expressar claramente o que fazem. Por exemplo:
 
-- A straightforward solution is better than an abstract one unless the
-  abstraction has a practical purpose.
-- Loud fails are better than silent fails or masking errors.
-- Explicit casts are better than PHP type juggling, type hints are good.
-- No magic unless necessary.
+- Uma solução direta é melhor do que uma abstrata, a menos que a abstração
+  tenha um propósito prático.
+- Falhas ruidosas são melhores do que falhas silenciosas ou erros
+  mascarados.
+- Conversões explícitas são melhores do que a conversão automática de tipos
+  do PHP; type hints são bons.
+- Nada de mágica, a menos que seja necessário.
 
-### Be consistent
+### Ser consistente
 
-We try to be consistent in:
+Procuramos ser consistentes em:
 
-- Code style
-- Naming
+- Estilo de código
+- Nomenclatura
 - Design
-- Structure
-- Values and goals
+- Estrutura
+- Valores e objetivos

@@ -1,68 +1,68 @@
-# 016 — Security workflow
+# 016 — Fluxo de segurança
 
-Security issues are typically sent via [a security
-form](https://www.yiiframework.com/security).
+Problemas de segurança normalmente são enviados pelo [formulário de
+segurança](https://www.yiiframework.com/security).
 
-If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message
-and delete the issue. Say thanks to the reporter and point to the security form for next time.  
+Se um problema for relatado diretamente em uma página pública, como uma issue do repositório ou um tópico do fórum, copie a mensagem
+e apague a issue. Agradeça a quem relatou e indique o formulário de segurança para a próxima vez.  
 
 ```mermaid
 flowchart TD
-    form[Security form report] --> verify[Verify issue]
-    public[Public report] --> remove[Save details and delete public issue]
-    remove --> redirect[Point reporter to the security form]
+    form[Relato pelo formulário de segurança] --> verify[Verificar o problema]
+    public[Relato público] --> remove[Salvar os detalhes e apagar a issue pública]
+    remove --> redirect[Indicar o formulário de segurança a quem relatou]
     redirect --> verify
-    verify -->|needs details| requestInfo[Request more information]
+    verify -->|precisa de detalhes| requestInfo[Pedir mais informações]
     requestInfo --> verify
-    verify -->|valid| advisory[Create draft security advisory]
-    advisory --> severity[Set CVSS severity]
-    severity --> credit[Ask about reporter credit]
-    credit --> cve[Request CVE number]
-    cve --> patch[Prepare patch pull request]
-    patch --> wait[Wait for CVE allocation]
+    verify -->|válido| advisory[Criar rascunho de security advisory]
+    advisory --> severity[Definir a severidade CVSS]
+    severity --> credit[Perguntar sobre o crédito a quem relatou]
+    credit --> cve[Solicitar número CVE]
+    cve --> patch[Preparar pull request com o patch]
+    patch --> wait[Aguardar a atribuição do CVE]
     wait --> release[Release]
-    release --> publish[Publish advisory and submit FriendsOfPHP entry]
+    release --> publish[Publicar o advisory e enviar entrada ao FriendsOfPHP]
 ```
 
-## Verify
+## Verificar
 
-Verify that the issue is valid. Request more information if needed.
+Verifique se o problema é válido. Peça mais informações, se necessário.
 
-## Add security advisory
+## Adicionar security advisory
 
-Create a draft GitHub security advisory.
+Crie um rascunho de security advisory no GitHub.
 
-### Find out severity
+### Descobrir a severidade
 
-1. Get CVSS score using [NVD
-   calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator).
-2. Choose severity based on the [rating
-   scale](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale).
+1. Obtenha a pontuação CVSS usando a [calculadora do
+   NVD](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator).
+2. Escolha a severidade com base na [escala de
+   classificação](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale).
 
-### Give credit to the reporter
+### Dar crédito a quem relatou
 
-Ask the reporter if he wants a credit for finding the issue. If so, point to
-his GitHub account.
+Pergunte a quem relatou se deseja receber crédito por ter encontrado o
+problema. Se sim, indique a conta dessa pessoa no GitHub.
 
-## Request a CVE number
+## Solicitar um número CVE
 
-When you're ready, request a CVE.
+Quando estiver pronto, solicite um CVE.
 
-## Prepare a patch
+## Preparar um patch
 
-Prepare a pull request fixing the issue. GitHub allows doing it in a private
-fork.
+Prepare um pull request que corrija o problema. O GitHub permite fazer isso
+em um fork privado.
 
-## Wait till the CVE number is allocated 
+## Aguardar a atribuição do número CVE 
 
-It usually takes several days.
+Normalmente leva alguns dias.
 
 ## Release
 
-- Merge the patch pull request right before tagging the next package
-  release.
-- Publish security advisory.
-- Add CVE to
+- Faça o merge do pull request com o patch logo antes de criar a tag do
+  próximo release do pacote.
+- Publique o security advisory.
+- Adicione o CVE em
   [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).
-  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488)
-  as an example.
+  Veja [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488)
+  como exemplo.
