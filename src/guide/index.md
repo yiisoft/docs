@@ -156,3 +156,4 @@ We release this guide under the [Terms of Yii Documentation](https://www.yiifram
 
 - [Cookbook](../cookbook/index.md)
 - [Glossary](glossary.md)
+- [Brazilian Portuguese guide (unofficial, community-maintained)](https://yurineves92.github.io/guia-yii3/)
