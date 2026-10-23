@@ -1,37 +1,37 @@
-# Using Yii with FrankenPHP
+# Usando o Yii com FrankenPHP
 
-[FrankenPHP](https://frankenphp.dev/) is an application server for PHP with Caddy built in. It can run Yii in 
-[worker mode](using-with-event-loop.md), allowing the framework bootstrap to happen once per worker instead of
-once per request.
+O [FrankenPHP](https://frankenphp.dev/) é um servidor de aplicação PHP com o Caddy embutido. Ele pode rodar o Yii em
+[modo worker](using-with-event-loop.md), o que faz o bootstrap do framework acontecer uma vez por worker em vez de
+uma vez por requisição.
 
-## Installation
+## Instalação
 
-The [FrankenPHP runner](https://github.com/yiisoft/yii-runner-frankenphp)
-requires PHP 8.1–8.5.  Install FrankenPHP using its [installation
-instructions](https://frankenphp.dev/docs/), or use the Docker setup in the
-Yii application templates described below.
+O [runner para FrankenPHP](https://github.com/yiisoft/yii-runner-frankenphp)
+exige PHP 8.1–8.5.  Instale o FrankenPHP seguindo as [instruções de
+instalação](https://frankenphp.dev/docs/) dele, ou use a configuração Docker
+dos templates de aplicação do Yii, descrita abaixo.
 
-Install the runner package with Composer:
+Instale o pacote do runner com o Composer:
 
 ```shell
 composer require yiisoft/yii-runner-frankenphp
 ```
 
-FrankenPHP works especially well in containerized deployments and is the
-runtime used by the Yii application templates Docker setup described in
-[Docker in application templates](docker.md).
+O FrankenPHP funciona especialmente bem em deploys com containers e é o
+runtime usado pela configuração Docker dos templates de aplicação do Yii,
+descrita em [Docker nos templates de aplicação](docker.md).
 
 > [!NOTE]
-> This runner is for worker mode. To use FrankenPHP in classic mode, keep `public/index.php` and
-> [yiisoft/yii-runner-http](https://github.com/yiisoft/yii-runner-http), the default HTTP runner in the templates.
+> Este runner é para o modo worker. Para usar o FrankenPHP no modo clássico, mantenha o `public/index.php` e o
+> [yiisoft/yii-runner-http](https://github.com/yiisoft/yii-runner-http), o runner HTTP padrão dos templates.
 
-## Configuration
+## Configuração
 
-First, configure the worker entry script.
+Primeiro, configure o script de entrada do worker.
 
-### Worker entry script
+### Script de entrada do worker
 
-Create `/worker.php` in the project root:
+Crie `/worker.php` na raiz do projeto:
 
 ```php
 <?php
@@ -78,14 +78,14 @@ $runner = new FrankenPHPApplicationRunner(
 $runner->run();
 ```
 
-The runner bootstraps the application once and then keeps processing
-requests in worker mode. Unlike classic `public/index.php`, this script is
-not executed per request.
+O runner faz o bootstrap da aplicação uma vez e depois continua processando
+requisições em modo worker. Diferente do `public/index.php` clássico, este
+script não é executado a cada requisição.
 
-### Server configuration
+### Configuração do servidor
 
-FrankenPHP is configured through a `Caddyfile`. For production, it may look
-like the following:
+O FrankenPHP é configurado por um `Caddyfile`. Em produção, ele pode ficar
+assim:
 
 ```caddyfile
 {
@@ -108,12 +108,13 @@ like the following:
 }
 ```
 
-This configuration tells FrankenPHP to serve the `public` directory and
-handle all requests with `worker.php`.  Static assets are still served from
-`public`, while PHP requests are processed through the long-running worker.
+Essa configuração diz ao FrankenPHP para servir o diretório `public` e
+atender todas as requisições com o `worker.php`.  Os assets estáticos
+continuam sendo servidos de `public`, enquanto as requisições PHP são
+processadas pelo worker de longa duração.
 
-For development, add `watch` so FrankenPHP reloads workers when PHP files
-change:
+Em desenvolvimento, adicione `watch` para que o FrankenPHP recarregue os
+workers quando arquivos PHP mudarem:
 
 ```caddyfile
 {
@@ -137,14 +138,14 @@ change:
 }
 ```
 
-### Docker setup in Yii application templates
+### Configuração Docker nos templates de aplicação do Yii
 
-Yii application templates already ship with a FrankenPHP-based Docker
-setup. To switch the application to worker mode, update the files inside the
-Docker layout instead of relying on `public/index.php`.
+Os templates de aplicação do Yii já vêm com uma configuração Docker baseada
+no FrankenPHP. Para passar a aplicação para o modo worker, altere os
+arquivos da estrutura Docker em vez de depender do `public/index.php`.
 
-Create `/worker.php` in the project root as shown above, then update the
-Caddy configuration used by the container.  For development, edit
+Crie `/worker.php` na raiz do projeto como mostrado acima e depois altere a
+configuração do Caddy usada pelo container.  Em desenvolvimento, edite
 `docker/dev/Caddyfile`:
 
 ```caddyfile
@@ -169,8 +170,7 @@ Caddy configuration used by the container.  For development, edit
 }
 ```
 
-For production, use the same configuration without `watch` in
-`docker/Caddyfile`:
+Em produção, use a mesma configuração sem `watch` em `docker/Caddyfile`:
 
 ```caddyfile
 {
@@ -193,71 +193,72 @@ For production, use the same configuration without `watch` in
 }
 ```
 
-The templates use `dunglas/frankenphp` as the base image in
-`docker/Dockerfile`, mount the project into `/app` in development, and pass
-runtime configuration through environment files such as `docker/dev/.env`
-and `docker/prod/.env`. The default value of `SERVER_NAME` in these files is
-`:80`, which matches the examples above.
+Os templates usam `dunglas/frankenphp` como imagem base em
+`docker/Dockerfile`, montam o projeto em `/app` no desenvolvimento e passam
+a configuração de runtime por arquivos de ambiente como `docker/dev/.env` e
+`docker/prod/.env`. O valor padrão de `SERVER_NAME` nesses arquivos é `:80`,
+que corresponde aos exemplos acima.
 
-After changing `worker.php` and the relevant `Caddyfile`, rebuild the image
-and restart the environment:
+Depois de alterar o `worker.php` e o `Caddyfile` correspondente, reconstrua
+a imagem e reinicie o ambiente:
 
 ```shell
 make build
 make up
 ```
 
-In production, rebuild and deploy the production image using the project's
-production Docker workflow.
+Em produção, reconstrua a imagem de produção e faça o deploy usando o fluxo
+Docker de produção do projeto.
 
-If you switch fully to worker mode, `public/index.php` and
-`yiisoft/yii-runner-http` are no longer needed.
+Se você passar totalmente para o modo worker, o `public/index.php` e o
+`yiisoft/yii-runner-http` deixam de ser necessários.
 
-## Starting a server
+## Iniciando o servidor
 
-The exact start command depends on how you run FrankenPHP:
+O comando exato para iniciar depende de como você roda o FrankenPHP:
 
-- In the Yii application templates, run `make build` and `make up` after
-  updating `worker.php` and the relevant `Caddyfile`.
-- With the standalone binary, run the following command from the directory
-  containing your `Caddyfile`:
+- Nos templates de aplicação do Yii, execute `make build` e `make up` depois
+  de alterar o `worker.php` e o `Caddyfile` correspondente.
+- Com o binário standalone, execute o seguinte comando no diretório que
+  contém o seu `Caddyfile`:
 
 ```shell
 frankenphp run --config Caddyfile
 ```
 
-The example configuration uses `/app` as the application root. Adjust
-`/app/public`, `/app/worker.php`, and the watch path to match your
-installation. See the [FrankenPHP configuration
-reference](https://frankenphp.dev/docs/config/)  for other deployment
-options.
+A configuração de exemplo usa `/app` como raiz da aplicação. Ajuste
+`/app/public`, `/app/worker.php` e o caminho do watch conforme a sua
+instalação. Veja a [referência de configuração do
+FrankenPHP](https://frankenphp.dev/docs/config/)  para outras opções de
+deploy.
 
-## On worker scope
+## Sobre o escopo do worker
 
-- Each worker's memory is isolated from other workers.
-- A single worker handles multiple requests, so services created inside it
-  may keep state between requests.
-- At each iteration of the event loop, every stateful service should be
-  reset.
+- A memória de cada worker é isolada da dos outros workers.
+- Um único worker atende várias requisições, então os serviços criados
+  dentro dele podem manter estado entre requisições.
+- A cada iteração do event loop, todo serviço com estado deve ser
+  redefinido.
 
-For the general implications of long-running workers, see [Using Yii with
-event loop](using-with-event-loop.md).
+Para as implicações gerais de workers de longa duração, veja [Usando o Yii
+com event loop](using-with-event-loop.md).
 
-## Worker mode notes
+## Notas sobre o modo worker
 
-- Use the `MAX_REQUESTS` environment variable to limit how many requests a
-  worker handles before restart.
-- The runner calls `Yiisoft\Di\StateResetter::reset()` after each
-  request. Register resetters for your stateful services as described in the
-  [Yii DI
-  documentation](https://github.com/yiisoft/di#resetting-services-state).
+- Use a variável de ambiente `MAX_REQUESTS` para limitar quantas requisições
+  um worker atende antes de ser reiniciado.
+- O runner chama `Yiisoft\Di\StateResetter::reset()` depois de cada
+  requisição. Registre resetters para os seus serviços com estado, como
+  descrito na [documentação do Yii
+  DI](https://github.com/yiisoft/di#resetting-services-state).
 
-## Additional configuration
+## Configuração adicional
 
-`FrankenPHPApplicationRunner` is configured by default for Yii application
-templates and follows the [dependency container
-configuration](../concept/configuration.md#container-configuration) concept.
+O `FrankenPHPApplicationRunner` vem configurado por padrão para os templates
+de aplicação do Yii e segue o conceito de [configuração do container de
+dependências](../concept/configuration.md#configuracao-do-container).
 
-The constructor allows overriding the default bootstrap, events, DI, params,
-and error-handler configuration.  You can also provide a custom config
-instance with `withConfig()` and a custom container with `withContainer()`.
+O construtor permite sobrescrever a configuração padrão de bootstrap,
+eventos, DI, params e tratamento de erros.  Você também pode fornecer uma
+instância de configuração personalizada com `withConfig()` e um container
+personalizado com `withContainer()`.

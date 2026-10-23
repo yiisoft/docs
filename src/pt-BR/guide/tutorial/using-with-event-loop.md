@@ -1,22 +1,23 @@
-# Using Yii with event loop
+# Usando o Yii com event loop
 
-A normal PHP web request execution cycle consists of setting up an environment, getting a request, processing it to form a response
-and sending the result. After the response is sent, execution is terminated and its context is lost. So, for the further 
- request, the whole sequence is repeated. Such an approach has a big advantage in ease of development since a developer doesn't
-have to take much care about memory leaks or properly clean up context. On the other side, initializing everything for
-every request takes time and overall consumes up to 50% of processing resources.
+O ciclo normal de execução de uma requisição web em PHP consiste em preparar o ambiente, receber a requisição, processá-la para gerar uma resposta
+e enviar o resultado. Depois que a resposta é enviada, a execução termina e o contexto se perde. Então, na requisição
+ seguinte, toda a sequência se repete. Essa abordagem tem uma grande vantagem na facilidade de desenvolvimento, já que o desenvolvedor não
+precisa se preocupar muito com vazamentos de memória nem com limpar o contexto corretamente. Por outro lado, inicializar tudo a
+cada requisição leva tempo e, no total, consome até 50% dos recursos de processamento.
 
-There is an alternative way of running an application. Event loop. The idea
-is to initialize everything possible at once and then process a number of
-requests using it. Such an approach is usually called event loop.
+Existe outra forma de rodar uma aplicação: o event loop. A ideia é
+inicializar tudo o que for possível uma única vez e depois processar várias
+requisições usando esse contexto. Essa abordagem costuma ser chamada de
+event loop.
 
-There are multiple tools that could be used to achieve it. Notably,
+Há várias ferramentas que permitem fazer isso. As principais são
 [FrankenPHP](https://frankenphp.dev/), [Rapira](https://rapira.rs/),
-[RoadRunner](https://roadrunner.dev/) and [Swoole](https://www.swoole.com/).
+[RoadRunner](https://roadrunner.dev/) e [Swoole](https://www.swoole.com/).
 
-## Event loop implications
+## Implicações do event loop
 
-Event loop worker basically looks like the following:
+Um worker de event loop basicamente tem esta cara:
 
 ```php
 initializeContext();
@@ -26,28 +27,30 @@ while ($request = getRequest()) {
 }
 ```
 
-Usually, there are multiple workers processing requests at the same time as
-with traditional php-fpm.
+Normalmente, há vários workers processando requisições ao mesmo tempo, como
+no php-fpm tradicional.
 
-That means that there's more to consider when developing applications.
+Isso significa que há mais coisas a considerar ao desenvolver aplicações.
 
-### Processing is blocking
+### O processamento é bloqueante
 
-Worker process requests one by one that's current processing is blocking
-processing next request. That means that long-running processes, same as in
-general PHP applications, should be put into a background via using a queue.
+O worker processa as requisições uma a uma, ou seja, o processamento atual
+bloqueia o processamento da próxima requisição. Isso significa que processos
+demorados, assim como em aplicações PHP comuns, devem ir para segundo plano
+usando uma fila.
 
-### Services and state
+### Serviços e estado
 
-Since the context in the event loop is shared between all request-responses
-processed by a single worker, all changes in the state of a service made by
-the previous request may affect the current request. Moreover, it can be a
-security problem if data from one user is available to another user.
+Como o contexto no event loop é compartilhado entre todas as requisições e
+respostas processadas por um mesmo worker, qualquer mudança no estado de um
+serviço feita pela requisição anterior pode afetar a requisição atual. Além
+disso, isso pode ser um problema de segurança se os dados de um usuário
+ficarem disponíveis para outro.
 
-There are two ways of dealing with it. First, you can avoid having state by
-making services stateless. PHP's `readonly` keyword may be handy for
-it. Second, you can reset the services' state at the end of the request
-processing.  In this case, a state resetter will help you:
+Há duas formas de lidar com isso. A primeira é evitar estado, tornando os
+serviços stateless. A palavra-chave `readonly` do PHP pode ajudar nisso. A
+segunda é redefinir o estado dos serviços ao fim do processamento da
+requisição.  Nesse caso, um state resetter vai ajudar você:
 
 ```php
 initializeContext();
@@ -55,11 +58,11 @@ $resetter = $container->get(\Yiisoft\Di\StateResetter::class);
 while ($request = getRequest()) {
    $response = process($request);
    emit($response);
-   $resetter->reset(); // We should reset the state of such services on every request.
+   $resetter->reset(); // Precisamos redefinir o estado desses serviços a cada requisição.
 }
 ```
 
-## Integrations
+## Integrações
 
 - [FrankenPHP](using-yii-with-frankenphp.md)
 - [Rapira](using-yii-with-rapira.md)

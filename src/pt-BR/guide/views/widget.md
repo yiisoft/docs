@@ -1,49 +1,51 @@
 # Widgets
 
-Widgets are reusable, self-contained components that encapsulate complex
-HTML generation logic.  They provide a clean way to create configurable UI
-elements that can be used across different views and applications. Yii3
-provides a flexible widget system through the `yiisoft/widget` package.
+Widgets são componentes reutilizáveis e autocontidos que encapsulam uma
+lógica complexa de geração de HTML.  Eles oferecem uma forma limpa de criar
+elementos de interface configuráveis, que podem ser usados em diferentes
+views e aplicações. O Yii3 oferece um sistema de widgets flexível por meio
+do pacote `yiisoft/widget`.
 
-## Installation
+## Instalação
 
-The widget functionality is provided by the `yiisoft/widget` package:
+A funcionalidade de widgets vem do pacote `yiisoft/widget`:
 
 ```bash
 composer require yiisoft/widget
 ```
 
-For ready-made widgets (like forms, navigation, etc.), you can also install:
+Para widgets prontos (como formulários, navegação etc.), você também pode
+instalar:
 
 ```bash
 composer require yiisoft/yii-widgets
 ```
 
-These packages are included by default in the `yiisoft/app` application
-template.
+Esses pacotes já vêm incluídos por padrão no template de aplicação
+`yiisoft/app`.
 
-## Basic Concepts
+## Conceitos básicos
 
-### Widget Class
+### Classe do widget
 
-A widget is a PHP class that extends the abstract `Widget` class and
-implements a `render()` method that returns HTML content as a string.
+Um widget é uma classe PHP que estende a classe abstrata `Widget` e
+implementa um método `render()` que devolve o conteúdo HTML como string.
 
-### Widget Factory
+### Widget factory
 
-The `WidgetFactory` is responsible for creating widget instances and can
-inject dependencies through the DI container.
+A `WidgetFactory` é responsável por criar as instâncias dos widgets e pode
+injetar dependências por meio do container de DI.
 
-### Widget Configuration
+### Configuração de widgets
 
-Widgets can be configured with properties and methods, making them highly
-customizable and reusable across different contexts.
+Os widgets podem ser configurados com propriedades e métodos, o que os torna
+altamente personalizáveis e reutilizáveis em diferentes contextos.
 
-## Creating Custom Widgets
+## Criando widgets próprios
 
-### Simple Widget
+### Widget simples
 
-Here's a basic widget that displays an alert message:
+Este é um widget básico que exibe uma mensagem de alerta:
 
 ```php
 <?php
@@ -109,7 +111,7 @@ final class AlertWidget extends Widget
 }
 ```
 
-### Using the Widget
+### Usando o widget
 
 ```php
 <?php
@@ -135,9 +137,9 @@ use App\Widget\AlertWidget;
 </div>
 ```
 
-### Widget with Dependencies
+### Widget com dependências
 
-Widgets can use dependency injection for services:
+Os widgets podem usar injeção de dependência para receber serviços:
 
 ```php
 <?php
@@ -207,11 +209,11 @@ final class UserMenuWidget extends Widget
 }
 ```
 
-## Widget Factory Setup
+## Configuração da widget factory
 
-### Bootstrap Configuration
+### Configuração de bootstrap
 
-Initialize the widget factory in your application bootstrap:
+Inicialize a widget factory no bootstrap da sua aplicação:
 
 **config/bootstrap.php**
 ```php
@@ -225,7 +227,7 @@ use Yiisoft\Widget\WidgetFactory;
  * @var \Psr\Container\ContainerInterface $container
  */
 
-// Widget factory defaults
+// Valores padrão da widget factory
 $widgetDefaults = [
     App\Widget\AlertWidget::class => [
         'type()' => ['info'],
@@ -239,7 +241,7 @@ $widgetDefaults = [
 WidgetFactory::initialize($container, $widgetDefaults);
 ```
 
-### DI Container Configuration
+### Configuração do container de DI
 
 **config/web/di.php**
 ```php
@@ -247,7 +249,7 @@ use App\Widget\AlertWidget;
 use App\Widget\UserMenuWidget;
 
 return [
-    // Widget configurations can be defined here if needed
+    // Configurações de widgets podem ser definidas aqui, se necessário
     AlertWidget::class => static fn() => new AlertWidget(),
     
     UserMenuWidget::class => static fn(
@@ -257,11 +259,11 @@ return [
 ];
 ```
 
-## Advanced Widget Examples
+## Exemplos avançados de widgets
 
-### Data List Widget
+### Widget de lista de dados
 
-A widget that displays a list of items with pagination:
+Um widget que exibe uma lista de itens com paginação:
 
 ```php
 <?php
@@ -343,7 +345,7 @@ final class DataListWidget extends Widget
 }
 ```
 
-Usage:
+Uso:
 
 ```php
 <?php
@@ -364,9 +366,9 @@ use App\Widget\DataListWidget;
     }) ?>
 ```
 
-### Form Widget
+### Widget de formulário
 
-A widget that simplifies form rendering:
+Um widget que simplifica a renderização de formulários:
 
 ```php
 <?php
@@ -467,9 +469,9 @@ final class FormWidget extends Widget
 }
 ```
 
-### Breadcrumb Widget
+### Widget de breadcrumb
 
-A widget for navigation breadcrumbs:
+Um widget para breadcrumbs de navegação:
 
 ```php
 <?php
@@ -524,10 +526,10 @@ final class BreadcrumbWidget extends Widget
         
         foreach ($this->items as $index => $item) {
             if ($index === $itemCount - 1) {
-                // Last item (current page) - no link
+                // Último item (página atual) - sem link
                 $links[] = Html::span($item['label'], ['class' => 'breadcrumb-item active']);
             } else {
-                // Regular breadcrumb item with link
+                // Item de breadcrumb comum, com link
                 $url = isset($item['url']) 
                     ? (is_array($item['url']) 
                         ? $this->urlGenerator->generate($item['url'][0], $item['url'][1] ?? [])
@@ -551,11 +553,11 @@ final class BreadcrumbWidget extends Widget
 }
 ```
 
-## Widget Best Practices
+## Boas práticas com widgets
 
-### Configuration Pattern
+### Padrão de configuração
 
-Use immutable configuration methods:
+Use métodos de configuração imutáveis:
 
 ```php
 public function someProperty($value): self
@@ -566,9 +568,9 @@ public function someProperty($value): self
 }
 ```
 
-### Validation
+### Validação
 
-Validate widget configuration in the render method:
+Valide a configuração do widget no método render:
 
 ```php
 protected function render(): string
@@ -577,13 +579,13 @@ protected function render(): string
         throw new InvalidArgumentException('Items cannot be empty.');
     }
     
-    // ... render logic
+    // ... lógica de renderização
 }
 ```
 
-### HTML Encoding
+### Codificação de HTML
 
-Always encode user data:
+Sempre codifique os dados vindos do usuário:
 
 ```php
 protected function render(): string
@@ -594,9 +596,9 @@ protected function render(): string
 }
 ```
 
-### Asset Management
+### Gerenciamento de assets
 
-Register widget-specific assets:
+Registre os assets específicos do widget:
 
 ```php
 <?php
@@ -617,18 +619,19 @@ final class ChartWidget extends Widget
 
     protected function render(): string
     {
-        // Register required assets
+        // Registra os assets necessários
         $this->assetManager->register(ChartWidgetAsset::class);
         
-        // Render widget content
+        // Renderiza o conteúdo do widget
         return $this->renderChart();
     }
 }
 ```
 
-## Using Widgets in Layouts
+## Usando widgets em layouts
 
-Widgets are particularly useful in layouts for common UI elements:
+Os widgets são especialmente úteis em layouts, para elementos de interface
+comuns:
 
 **views/layout/main.php**
 ```php
@@ -648,7 +651,7 @@ use App\Widget\UserMenuWidget;
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- head content -->
+    <!-- conteúdo do head -->
 </head>
 <body>
     <header>
@@ -667,11 +670,11 @@ use App\Widget\UserMenuWidget;
 </html>
 ```
 
-## Testing Widgets
+## Testando widgets
 
-### Unit Testing
+### Testes unitários
 
-Test widget rendering logic:
+Teste a lógica de renderização do widget:
 
 ```php
 <?php
@@ -707,9 +710,9 @@ final class AlertWidgetTest extends TestCase
 }
 ```
 
-## Common Widget Patterns
+## Padrões comuns de widgets
 
-### Conditional Rendering
+### Renderização condicional
 
 ```php
 protected function render(): string
@@ -727,7 +730,7 @@ private function shouldRender(): bool
 }
 ```
 
-### Template-based Rendering
+### Renderização baseada em template
 
 ```php
 protected function render(): string
@@ -740,12 +743,12 @@ protected function render(): string
 
 private function renderTemplate(string $template, array $data): string
 {
-    // Use a view renderer to render template files
+    // Usa um view renderer para renderizar arquivos de template
     return $this->viewRenderer->renderPartialAsString($template, $data);
 }
 ```
 
-### Event Integration
+### Integração com eventos
 
 ```php
 protected function render(): string
@@ -762,6 +765,7 @@ protected function render(): string
 }
 ```
 
-Widgets provide a powerful way to create reusable, configurable UI
-components in Yii3 applications.  They help maintain clean separation of
-concerns and make your views more maintainable and testable.
+Os widgets oferecem uma forma eficaz de criar componentes de interface
+reutilizáveis e configuráveis em aplicações Yii3.  Eles ajudam a manter uma
+separação clara de responsabilidades e deixam suas views mais fáceis de
+manter e testar.

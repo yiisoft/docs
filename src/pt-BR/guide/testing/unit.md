@@ -1,10 +1,10 @@
-# Unit tests
+# Testes unitários
 
-Unit tests check a small piece of PHP code directly. In the Yii application
-template they live in `tests/Unit` and run through the `Unit` Codeception
-suite.
+Testes unitários verificam diretamente um pequeno trecho de código PHP. No
+template de aplicação Yii eles ficam em `tests/Unit` e são executados pela
+suíte `Unit` do Codeception.
 
-The template includes `tests/Unit/EnvironmentTest.php`:
+O template inclui `tests/Unit/EnvironmentTest.php`:
 
 ```php
 <?php
@@ -32,21 +32,21 @@ final class EnvironmentTest extends Unit
 }
 ```
 
-Run unit tests:
+Execute os testes unitários:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Unit
 ```
 
-Run only this test:
+Execute apenas este teste:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Unit EnvironmentTest
 ```
 
-## Add a unit test
+## Adicionar um teste unitário
 
-For example, create `src/Shared/SlugGenerator.php`:
+Por exemplo, crie `src/Shared/SlugGenerator.php`:
 
 ```php
 <?php
@@ -66,7 +66,7 @@ final class SlugGenerator
 }
 ```
 
-Create `tests/Unit/SlugGeneratorTest.php`:
+Crie `tests/Unit/SlugGeneratorTest.php`:
 
 ```php
 <?php
@@ -93,17 +93,17 @@ final class SlugGeneratorTest extends Unit
 }
 ```
 
-Run it:
+Execute-o:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Unit SlugGeneratorTest
 ```
 
-## Test services with dependencies
+## Testar serviços com dependências
 
-Pass dependencies through the constructor and use test doubles for I/O.
+Passe as dependências pelo construtor e use test doubles para I/O.
 
-Create `src/Clock/ClockInterface.php`:
+Crie `src/Clock/ClockInterface.php`:
 
 ```php
 <?php
@@ -120,7 +120,7 @@ interface ClockInterface
 }
 ```
 
-Create `src/Post/Post.php`:
+Crie `src/Post/Post.php`:
 
 ```php
 <?php
@@ -141,7 +141,7 @@ final readonly class Post
 }
 ```
 
-Create `src/Post/PublishPost.php`:
+Crie `src/Post/PublishPost.php`:
 
 ```php
 <?php
@@ -166,7 +166,7 @@ final readonly class PublishPost
 }
 ```
 
-Create `tests/Unit/PublishPostTest.php`:
+Crie `tests/Unit/PublishPostTest.php`:
 
 ```php
 <?php
@@ -202,12 +202,12 @@ final class PublishPostTest extends Unit
 }
 ```
 
-Run it:
+Execute-o:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Unit PublishPostTest
 ```
 
-Keep unit tests focused on one class or one small collaboration. Use
-functional tests when the behavior depends on Yii configuration, dependency
-injection, routing, or middleware.
+Mantenha os testes unitários focados em uma classe ou em uma pequena
+colaboração. Use testes funcionais quando o comportamento depende da
+configuração do Yii, injeção de dependência, roteamento ou middlewares.

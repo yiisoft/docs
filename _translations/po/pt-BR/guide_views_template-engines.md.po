@@ -8,57 +8,56 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-01-26 18:48+0000\n"
 "PO-Revision-Date: 2026-01-26 18:48+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md
-#: ../src/guide/views/template-engines.md
+#: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Best Practices"
-msgstr ""
+msgstr "Boas práticas"
 
 #. type: Title #
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Template engines"
-msgstr ""
+msgstr "Template engines"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Yii3 supports multiple template engines through a flexible renderer system. By default, PHP is used as the template engine, but you can easily add support for other engines like Twig and [Blade](https://github.com/lee-to/yii-blade), or create your own custom renderers."
-msgstr ""
+msgstr "O Yii3 suporta várias template engines por meio de um sistema flexível de renderers. Por padrão, o PHP é usado como template engine, mas você pode adicionar suporte a outras engines como Twig e [Blade](https://github.com/lee-to/yii-blade), ou criar seus próprios renderers."
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "PHP templates were described in the \"[View](view.md)\" guide section."
-msgstr ""
+msgstr "Os templates PHP foram descritos na seção \"[View](view.md)\" do guia."
 
 #. type: Title ##
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Twig Template Engine"
-msgstr ""
+msgstr "Template engine Twig"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Twig is a modern template engine that provides a more designer-friendly syntax. To use Twig in your Yii3 application, you need to install the Twig extension."
-msgstr ""
+msgstr "O Twig é uma template engine moderna, com uma sintaxe mais amigável para designers. Para usar o Twig na sua aplicação Yii3, instale a extensão do Twig."
 
 #. type: Fenced code block (bash)
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "composer require yiisoft/view-twig\n"
-msgstr ""
+msgstr "composer require yiisoft/view-twig\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Now you can use `.twig` templates. For example, `views/site/about.twig`:"
-msgstr ""
+msgstr "Agora você pode usar templates `.twig`. Por exemplo, `views/site/about.twig`:"
 
 #. type: Fenced code block (twig)
 #: ../src/guide/views/template-engines.md
@@ -88,18 +87,41 @@ msgid ""
 "    {% endif %}\n"
 "</div>\n"
 msgstr ""
+"{# Dicas de tipo das variáveis para suporte na IDE #}\n"
+"{# @var user \\App\\Entity\\User #}\n"
+"{# @var posts \\App\\Entity\\Post[] #}\n"
+"\n"
+"<div class=\"user-profile\">\n"
+"    <h1>{{ user.name }}</h1>\n"
+"    <p>Email: {{ user.email }}</p>\n"
+"    \n"
+"    {% if posts is not empty %}\n"
+"        <h2>Recent Posts</h2>\n"
+"        <ul class=\"posts\">\n"
+"            {% for post in posts %}\n"
+"                <li>\n"
+"                    <h3>{{ post.title }}</h3>\n"
+"                    <p>{{ post.excerpt }}</p>\n"
+"                    <time>{{ post.publishedAt|date('F j, Y') }}</time>\n"
+"                </li>\n"
+"            {% endfor %}\n"
+"        </ul>\n"
+"    {% else %}\n"
+"        <p>No posts available.</p>\n"
+"    {% endif %}\n"
+"</div>\n"
 
 #. type: Title ###
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Twig Features"
-msgstr ""
+msgstr "Recursos do Twig"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**Automatic Escaping**: Twig automatically escapes variables for HTML context:\n"
-msgstr ""
+msgstr "**Escape automático**: o Twig escapa as variáveis automaticamente para o contexto HTML:\n"
 
 #. type: Fenced code block (twig)
 #: ../src/guide/views/template-engines.md
@@ -111,12 +133,17 @@ msgid ""
 "{# Raw output (use carefully) #}\n"
 "<div>{{ content|raw }}</div>\n"
 msgstr ""
+"{# Escapado automaticamente #}\n"
+"<h1>{{ title }}</h1>\n"
+"\n"
+"{# Saída bruta (use com cuidado) #}\n"
+"<div>{{ content|raw }}</div>\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**Filters and Functions**: Twig provides many built-in filters and functions:\n"
-msgstr ""
+msgstr "**Filtros e funções**: o Twig oferece muitos filtros e funções nativos:\n"
 
 #. type: Fenced code block (twig)
 #: ../src/guide/views/template-engines.md
@@ -131,18 +158,26 @@ msgid ""
 "{# URL generation #}\n"
 "<a href=\"{{ path('user.profile', {'id': user.id}) }}\">Profile</a>\n"
 msgstr ""
+"{# Formatação de data #}\n"
+"<time>{{ post.createdAt|date('Y-m-d H:i') }}</time>\n"
+"\n"
+"{# Manipulação de strings #}\n"
+"<p>{{ description|truncate(100) }}</p>\n"
+"\n"
+"{# Geração de URLs #}\n"
+"<a href=\"{{ path('user.profile', {'id': user.id}) }}\">Profile</a>\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**Template Inheritance**: Twig supports template inheritance:\n"
-msgstr ""
+msgstr "**Herança de templates**: o Twig suporta herança de templates:\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**views/layout/main.twig**\n"
-msgstr ""
+msgstr "**views/layout/main.twig**\n"
 
 #. type: Fenced code block (twig)
 #: ../src/guide/views/template-engines.md
@@ -160,12 +195,23 @@ msgid ""
 "</body>\n"
 "</html>\n"
 msgstr ""
+"<!DOCTYPE html>\n"
+"<html>\n"
+"<head>\n"
+"    <title>{% block title %}Default Title{% endblock %}</title>\n"
+"</head>\n"
+"<body>\n"
+"    <main>\n"
+"        {% block content %}{% endblock %}\n"
+"    </main>\n"
+"</body>\n"
+"</html>\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**views/site/about.twig**\n"
-msgstr ""
+msgstr "**views/site/about.twig**\n"
 
 #. type: Fenced code block (twig)
 #: ../src/guide/views/template-engines.md
@@ -180,17 +226,25 @@ msgid ""
 "    <p>Welcome to our website!</p>\n"
 "{% endblock %}\n"
 msgstr ""
+"{% extends \"layout/main.twig\" %}\n"
+"\n"
+"{% block title %}About Us{% endblock %}\n"
+"\n"
+"{% block content %}\n"
+"    <h1>About Our Company</h1>\n"
+"    <p>Welcome to our website!</p>\n"
+"{% endblock %}\n"
 
 #. type: Title ###
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Rendering Twig Templates"
-msgstr ""
+msgstr "Renderizando templates Twig"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Use Twig templates the same way as PHP templates:"
-msgstr ""
+msgstr "Use templates Twig da mesma forma que templates PHP:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/template-engines.md
@@ -205,17 +259,25 @@ msgid ""
 "    ]);\n"
 "}\n"
 msgstr ""
+"// No seu controller\n"
+"public function about(): ResponseInterface\n"
+"{\n"
+"    return $this->viewRenderer->render('about.twig', [\n"
+"        'user' => $this->getCurrentUser(),\n"
+"        'posts' => $this->getRecentPosts(),\n"
+"    ]);\n"
+"}\n"
 
 #. type: Title ##
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Custom Template Engines"
-msgstr ""
+msgstr "Template engines personalizadas"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "You can create custom template engines by implementing the `TemplateRendererInterface`:"
-msgstr ""
+msgstr "Você pode criar template engines personalizadas implementando a `TemplateRendererInterface`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/template-engines.md
@@ -248,11 +310,37 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\View;\n"
+"\n"
+"use Yiisoft\\View\\TemplateRendererInterface;\n"
+"\n"
+"final class MarkdownRenderer implements TemplateRendererInterface\n"
+"{\n"
+"    public function __construct(\n"
+"        private MarkdownParserInterface $parser,\n"
+"    ) {}\n"
+"\n"
+"    public function render(string $template, array $parameters = []): string\n"
+"    {\n"
+"        $content = file_get_contents($template);\n"
+"        \n"
+"        // Substitui os placeholders pelos parâmetros\n"
+"        foreach ($parameters as $key => $value) {\n"
+"            $content = str_replace(\"{{$key}}\", (string) $value, $content);\n"
+"        }\n"
+"        \n"
+"        return $this->parser->parse($content);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Register your custom renderer:"
-msgstr ""
+msgstr "Registre o seu renderer personalizado:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/template-engines.md
@@ -267,17 +355,25 @@ msgid ""
 "    ],\n"
 "],\n"
 msgstr ""
+"use Yiisoft\\Container\\Reference;\n"
+"\n"
+"// Na configuração\n"
+"'yiisoft/view' => [\n"
+"    'renderers' => [\n"
+"        'md' => Reference::to(App\\View\\MarkdownRenderer::class),\n"
+"    ],\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 msgid "Now you can use `.md` template files:"
-msgstr ""
+msgstr "Agora você pode usar arquivos de template `.md`:"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "**views/content/help.md**\n"
-msgstr ""
+msgstr "**views/content/help.md**\n"
 
 #. type: Fenced code block (markdown)
 #: ../src/guide/views/template-engines.md
@@ -293,12 +389,21 @@ msgid ""
 "- Feature 2\n"
 "- Feature 3\n"
 msgstr ""
+"# Help: {{title}}\n"
+"\n"
+"Welcome, {{username}}!\n"
+"\n"
+"This is a Markdown template with **bold** and *italic* text.\n"
+"\n"
+"- Feature 1\n"
+"- Feature 2\n"
+"- Feature 3\n"
 
 #. type: Title ##
 #: ../src/guide/views/template-engines.md
 #, no-wrap
 msgid "Choosing the Right Template Engine"
-msgstr ""
+msgstr "Escolhendo a template engine certa"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
@@ -310,6 +415,11 @@ msgid ""
 "- You want to leverage existing PHP knowledge\n"
 "- You need complex logic in templates (though this should be minimized)\n"
 msgstr ""
+"**Use templates PHP quando:**\n"
+"- Você precisa do máximo de flexibilidade e desempenho\n"
+"- Seu time está à vontade com PHP\n"
+"- Você quer aproveitar o conhecimento de PHP que já tem\n"
+"- Você precisa de lógica complexa nos templates (embora isso deva ser minimizado)\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
@@ -321,6 +431,11 @@ msgid ""
 "- You need automatic escaping and security features\n"
 "- You want template inheritance and advanced features\n"
 msgstr ""
+"**Use templates Twig quando:**\n"
+"- Você quer uma separação mais rígida entre lógica e apresentação\n"
+"- Você trabalha com designers que preferem uma sintaxe mais limpa\n"
+"- Você precisa de escape automático e recursos de segurança\n"
+"- Você quer herança de templates e recursos avançados\n"
 
 #. type: Plain text
 #: ../src/guide/views/template-engines.md
@@ -331,33 +446,37 @@ msgid ""
 "- You're working with specialized content formats\n"
 "- You need integration with external template systems\n"
 msgstr ""
+"**Use templates personalizados quando:**\n"
+"- Você tem requisitos específicos que o PHP ou o Twig não atendem\n"
+"- Você trabalha com formatos de conteúdo especializados\n"
+"- Você precisa integrar com sistemas de template externos\n"
 
 #. type: Bullet: '1. '
 #: ../src/guide/views/template-engines.md
 msgid "**Keep templates simple**: Move complex logic to controllers or services"
-msgstr ""
+msgstr "**Mantenha os templates simples**: leve a lógica complexa para controllers ou serviços"
 
 #. type: Bullet: '2. '
 #: ../src/guide/views/template-engines.md
 msgid "**Always escape output**: Prevent XSS attacks by properly escaping variables"
-msgstr ""
+msgstr "**Sempre escape a saída**: evite ataques XSS escapando as variáveis corretamente"
 
 #. type: Bullet: '3. '
 #: ../src/guide/views/template-engines.md
 msgid "**Use meaningful names**: Name your templates and variables clearly"
-msgstr ""
+msgstr "**Use nomes significativos**: dê nomes claros aos seus templates e variáveis"
 
 #. type: Bullet: '4. '
 #: ../src/guide/views/template-engines.md
 msgid "**Organize templates**: Group related templates in subdirectories"
-msgstr ""
+msgstr "**Organize os templates**: agrupe templates relacionados em subdiretórios"
 
 #. type: Bullet: '5. '
 #: ../src/guide/views/template-engines.md
 msgid "**Document variables**: Always add type hints for better IDE support"
-msgstr ""
+msgstr "**Documente as variáveis**: sempre adicione dicas de tipo para um suporte melhor da IDE"
 
 #. type: Bullet: '6. '
 #: ../src/guide/views/template-engines.md
 msgid "**Avoid business logic**: Keep business logic in models and services"
-msgstr ""
+msgstr "**Evite lógica de negócio**: mantenha a lógica de negócio em models e serviços"

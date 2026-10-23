@@ -8,106 +8,103 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-06-02 22:29+0000\n"
 "PO-Revision-Date: 2026-06-02 22:29+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Fenced code block (sh)
-#: ../src/cookbook/using-yii-in-third-party-apps.md
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md ../src/guide/structure/package.md
-#: ../src/guide/tutorial/i18n.md
+#: ../src/cookbook/using-yii-in-third-party-apps.md ../src/guide/structure/designing-packages.md ../src/guide/structure/module.md ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "composer yii-config-rebuild\n"
-msgstr ""
+msgstr "composer yii-config-rebuild\n"
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Internationalization"
-msgstr ""
+msgstr "Internacionalização"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Internationalization prepares an application for more than one locale. Localization is the locale-specific part: translated text, plural forms, date and number formats, and view templates for a locale such as `en-US` or `de`."
-msgstr ""
+msgstr "A internacionalização prepara uma aplicação para mais de um locale. A localização é a parte específica de cada locale: textos traduzidos, formas de plural, formatos de data e número e templates de view para um locale como `en-US` ou `de`."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "In a Yii application, the usual parts are:"
-msgstr ""
+msgstr "Numa aplicação Yii, as partes habituais são:"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/i18n.md
 msgid "locale selection for the current request;"
-msgstr ""
+msgstr "a escolha do idioma da requisição atual;"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/i18n.md
 msgid "translated application messages;"
-msgstr ""
+msgstr "as mensagens traduzidas da aplicação;"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/i18n.md
 msgid "plural and parameter formatting;"
-msgstr ""
+msgstr "a formatação de plurais e parâmetros;"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/i18n.md
 msgid "localized view templates for pages that need different markup."
-msgstr ""
+msgstr "templates de view localizados para páginas que precisam de marcação diferente."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "This tutorial assumes a new [yiisoft/app](https://github.com/yiisoft/app) project."
-msgstr ""
+msgstr "Este tutorial parte de um projeto novo do [yiisoft/app](https://github.com/yiisoft/app)."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Install packages"
-msgstr ""
+msgstr "Instalando os pacotes"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`yiisoft/app` already includes `yiisoft/i18n` and `yiisoft/translator`.  Install PHP-file message storage:"
-msgstr ""
+msgstr "O `yiisoft/app` já inclui `yiisoft/i18n` e `yiisoft/translator`.  Instale o armazenamento de mensagens em arquivos PHP:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "composer require yiisoft/translator-message-php\n"
-msgstr ""
+msgstr "composer require yiisoft/translator-message-php\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Install the extractor as a development dependency:"
-msgstr ""
+msgstr "Instale o extrator como dependência de desenvolvimento:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "composer require --dev yiisoft/translator-extractor\n"
-msgstr ""
+msgstr "composer require --dev yiisoft/translator-extractor\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The examples use ICU message formatting for plural forms. Make sure the PHP `intl` extension is enabled. For simple placeholders only, use `Yiisoft\\Translator\\SimpleMessageFormatter` in the configuration below."
-msgstr ""
+msgstr "Os exemplos usam a formatação de mensagens ICU para as formas de plural. Confira se a extensão `intl` do PHP está habilitada. Se você só precisa de placeholders simples, use `Yiisoft\\Translator\\SimpleMessageFormatter` na configuração abaixo."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Configure application locale"
-msgstr ""
+msgstr "Configurando o idioma da aplicação"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The application template keeps basic application settings in `config/common/application.php`.  Set the source locale there:"
-msgstr ""
+msgstr "O template da aplicação guarda as configurações básicas em `config/common/application.php`.  Defina ali o idioma de origem:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -123,6 +120,15 @@ msgid ""
 "    'name' => 'My Project',\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    'charset' => 'UTF-8',\n"
+"    'locale' => 'en-US',\n"
+"    'name' => 'My Project',\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
@@ -132,11 +138,14 @@ msgid ""
 "When your application chooses locale per request, set the selected locale on the view as shown in\n"
 "[Choosing locale per request](#choosing-locale-per-request).\n"
 msgstr ""
+"O layout padrão usa esse valor no atributo `<html lang=\"\">` por meio de `ApplicationParams`.\n"
+"Quando a aplicação escolhe o idioma por requisição, defina o idioma escolhido na view, como mostrado em\n"
+"[Escolhendo o idioma por requisição](#escolhendo-o-idioma-por-requisicao).\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Configure translator defaults in `config/common/params.php`:"
-msgstr ""
+msgstr "Configure os padrões do tradutor em `config/common/params.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -148,22 +157,27 @@ msgid ""
 "    'defaultCategory' => 'app',\n"
 "],\n"
 msgstr ""
+"'yiisoft/translator' => [\n"
+"    'locale' => 'en-US',\n"
+"    'fallbackLocale' => 'en-US',\n"
+"    'defaultCategory' => 'app',\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`locale` is the default translation locale. `fallbackLocale` is used when a translation is missing for the current locale. `defaultCategory` is the category used when a call to `translate()` does not specify one."
-msgstr ""
+msgstr "`locale` é o idioma padrão das traduções. `fallbackLocale` é usado quando falta uma tradução para o idioma atual. `defaultCategory` é a categoria usada quando uma chamada a `translate()` não especifica nenhuma."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Configure message storage"
-msgstr ""
+msgstr "Configurando o armazenamento de mensagens"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Create `config/common/di/translator.php`:"
-msgstr ""
+msgstr "Crie `config/common/di/translator.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -196,16 +210,42 @@ msgid ""
 "    ],\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Translator\\CategorySource;\n"
+"use Yiisoft\\Translator\\IntlMessageFormatter;\n"
+"use Yiisoft\\Translator\\Message\\Php\\MessageSource;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    'translation.app' => [\n"
+"        'definition' => static function (Aliases $aliases) use ($params): CategorySource {\n"
+"            $messageSource = new MessageSource($aliases->get('@root/messages'));\n"
+"\n"
+"            return new CategorySource(\n"
+"                $params['yiisoft/translator']['defaultCategory'],\n"
+"                $messageSource,\n"
+"                new IntlMessageFormatter(),\n"
+"                $messageSource,\n"
+"            );\n"
+"        },\n"
+"        'tags' => ['translation.categorySource'],\n"
+"    ],\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "This registers the `app` category. The `MessageSource` reads PHP arrays from the `messages/` directory and writes extracted messages back to the same directory."
-msgstr ""
+msgstr "Isso registra a categoria `app`. O `MessageSource` lê arrays PHP do diretório `messages/` e grava as mensagens extraídas de volta no mesmo diretório."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Create the source and target message files:"
-msgstr ""
+msgstr "Crie os arquivos de mensagens de origem e de destino:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/i18n.md
@@ -217,11 +257,16 @@ msgid ""
 "└── en-US/\n"
 "    └── app.php\n"
 msgstr ""
+"messages/\n"
+"├── de/\n"
+"│   └── app.php\n"
+"└── en-US/\n"
+"    └── app.php\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`messages/en-US/app.php`:"
-msgstr ""
+msgstr "`messages/en-US/app.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -235,11 +280,18 @@ msgid ""
 "    'cart.items' => '{count, plural, =0{No items} one{# item} other{# items}}',\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"return [\n"
+"    'home.title' => 'Home',\n"
+"    'home.welcome' => 'Welcome to Yii3',\n"
+"    'cart.items' => '{count, plural, =0{No items} one{# item} other{# items}}',\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`messages/de/app.php`:"
-msgstr ""
+msgstr "`messages/de/app.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -253,17 +305,24 @@ msgid ""
 "    'cart.items' => '{count, plural, =0{Keine Artikel} one{# Artikel} other{# Artikel}}',\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"return [\n"
+"    'home.title' => 'Home',\n"
+"    'home.welcome' => 'Willkommen bei Yii3',\n"
+"    'cart.items' => '{count, plural, =0{Keine Artikel} one{# Artikel} other{# Artikel}}',\n"
+"];\n"
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Translate messages"
-msgstr ""
+msgstr "Traduzindo mensagens"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Inject `Yiisoft\\Translator\\TranslatorInterface` where you prepare data for a response.  For the default home page action, update `src/Web/HomePage/Action.php`:"
-msgstr ""
+msgstr "Injete `Yiisoft\\Translator\\TranslatorInterface` onde você prepara os dados de uma resposta.  Para a action padrão da página inicial, altere `src/Web/HomePage/Action.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -295,11 +354,36 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\HomePage;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Translator\\TranslatorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"        private TranslatorInterface $translator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'itemCount' => 3,\n"
+"            'translator' => $this->translator,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Use the translator in `src/Web/HomePage/template.php`:"
-msgstr ""
+msgstr "Use o tradutor em `src/Web/HomePage/template.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -330,22 +414,46 @@ msgid ""
 "    <p><?= Html::encode($translator->translate('cart.items', ['count' => $itemCount])) ?></p>\n"
 "</div>\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Shared\\ApplicationParams;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Translator\\TranslatorInterface;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" * @var ApplicationParams $applicationParams\n"
+" * @var int $itemCount\n"
+" * @var TranslatorInterface $translator\n"
+" */\n"
+"\n"
+"$this->setTitle($translator->translate('home.title'));\n"
+"?>\n"
+"\n"
+"<div class=\"text-center\">\n"
+"    <h1><?= Html::encode($translator->translate('home.welcome')) ?></h1>\n"
+"\n"
+"    <p><?= Html::encode($translator->translate('cart.items', ['count' => $itemCount])) ?></p>\n"
+"</div>\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Escape translated text before output. Store trusted HTML separately or render it from a view template."
-msgstr ""
+msgstr "Escape o texto traduzido antes de exibi-lo. Guarde HTML confiável separadamente ou renderize-o a partir de um template de view."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Choosing locale per request"
-msgstr ""
+msgstr "Escolhendo o idioma por requisição"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "For a web application, choose locale early in the middleware stack and apply it to both the translator and the view.  The example below uses the `lang` query parameter and a fixed allow list:"
-msgstr ""
+msgstr "Numa aplicação web, escolha o idioma cedo na pilha de middlewares e aplique-o tanto ao tradutor quanto à view.  O exemplo abaixo usa o parâmetro `lang` da query string e uma lista fixa de idiomas permitidos:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -394,11 +502,53 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Middleware;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface;\n"
+"use Yiisoft\\Translator\\TranslatorInterface;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"final readonly class LocaleMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    private const DEFAULT_LOCALE = 'en-US';\n"
+"    private const SUPPORTED_LOCALES = ['en-US', 'de'];\n"
+"\n"
+"    public function __construct(\n"
+"        private TranslatorInterface $translator,\n"
+"        private WebView $view,\n"
+"    ) {}\n"
+"\n"
+"    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
+"    {\n"
+"        $locale = $this->getLocale($request);\n"
+"\n"
+"        $this->translator->setLocale($locale);\n"
+"        $this->view->setLocale($locale);\n"
+"\n"
+"        return $handler->handle($request);\n"
+"    }\n"
+"\n"
+"    private function getLocale(ServerRequestInterface $request): string\n"
+"    {\n"
+"        $locale = $request->getQueryParams()['lang'] ?? null;\n"
+"\n"
+"        return is_string($locale) && in_array($locale, self::SUPPORTED_LOCALES, true)\n"
+"            ? $locale\n"
+"            : self::DEFAULT_LOCALE;\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Register the middleware in `config/common/routes.php` or in the route group that needs localized output.  Add middleware before the route action:"
-msgstr ""
+msgstr "Registre o middleware em `config/common/routes.php` ou no grupo de rotas que precisa de saída localizada.  Adicione o middleware antes da action da rota:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -414,27 +564,36 @@ msgid ""
 "        ->name('home'),\n"
 "];\n"
 msgstr ""
+"use App\\Web\\Middleware\\LocaleMiddleware;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Route::get('/')\n"
+"        ->middleware(LocaleMiddleware::class)\n"
+"        ->action(App\\Web\\HomePage\\Action::class)\n"
+"        ->name('home'),\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Update `src/Web/Shared/Layout/Main/layout.php` to read the locale from the current view state:"
-msgstr ""
+msgstr "Altere `src/Web/Shared/Layout/Main/layout.php` para ler o idioma do estado atual da view:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "<html lang=\"<?= Html::encode($this->getLocale()) ?>\">\n"
-msgstr ""
+msgstr "<html lang=\"<?= Html::encode($this->getLocale()) ?>\">\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Use the same approach when locale is stored in a session, a cookie, a user profile, or a route parameter."
-msgstr ""
+msgstr "Use a mesma abordagem quando o idioma estiver guardado na sessão, num cookie, no perfil do usuário ou num parâmetro de rota."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`yiisoft/i18n` provides `Yiisoft\\I18n\\Locale` for working with BCP 47 locale codes:"
-msgstr ""
+msgstr "O `yiisoft/i18n` oferece `Yiisoft\\I18n\\Locale` para trabalhar com códigos de locale BCP 47:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -448,52 +607,59 @@ msgid ""
 "echo $locale->region(); // DE\n"
 "echo $locale->fallbackLocale()->asString(); // de\n"
 msgstr ""
+"use Yiisoft\\I18n\\Locale;\n"
+"\n"
+"$locale = new Locale('de-DE');\n"
+"\n"
+"echo $locale->language(); // de\n"
+"echo $locale->region(); // DE\n"
+"echo $locale->fallbackLocale()->asString(); // de\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "This is useful when you need to derive a language fallback or inspect locale parts before choosing a supported locale."
-msgstr ""
+msgstr "Isso é útil quando você precisa derivar um idioma de reserva ou inspecionar as partes do locale antes de escolher um idioma suportado."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Localized view files"
-msgstr ""
+msgstr "Arquivos de view localizados"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Use message translation for labels, headings, buttons, validation messages, and short paragraphs.  Use localized view files when a page needs different markup or a different amount of text for each locale."
-msgstr ""
+msgstr "Use tradução de mensagens para rótulos, títulos, botões, mensagens de validação e parágrafos curtos.  Use arquivos de view localizados quando uma página precisa de marcação diferente ou de uma quantidade diferente de texto para cada idioma."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "`yiisoft/view` looks for localized files in a locale subdirectory next to the original view file. For example, when `src/Web/HomePage/template.php` is rendered with locale `de-DE`, Yii checks:"
-msgstr ""
+msgstr "O `yiisoft/view` procura arquivos localizados num subdiretório com o nome do locale, ao lado do arquivo de view original. Por exemplo, quando `src/Web/HomePage/template.php` é renderizado com o locale `de-DE`, o Yii verifica:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/tutorial/i18n.md
 msgid "`src/Web/HomePage/de-DE/template.php`"
-msgstr ""
+msgstr "`src/Web/HomePage/de-DE/template.php`"
 
 #. type: Bullet: '2. '
 #: ../src/guide/tutorial/i18n.md
 msgid "`src/Web/HomePage/de/template.php`"
-msgstr ""
+msgstr "`src/Web/HomePage/de/template.php`"
 
 #. type: Bullet: '3. '
 #: ../src/guide/tutorial/i18n.md
 msgid "`src/Web/HomePage/template.php`"
-msgstr ""
+msgstr "`src/Web/HomePage/template.php`"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The fallback to the two-letter language code is automatic."
-msgstr ""
+msgstr "O fallback para o código de idioma de duas letras é automático."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "You can set the locale for a single render call:"
-msgstr ""
+msgstr "Você pode definir o idioma para uma única chamada de renderização:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -503,27 +669,30 @@ msgid ""
 "    ->withLocale('de-DE')\n"
 "    ->render(__DIR__ . '/template');\n"
 msgstr ""
+"return $this->viewRenderer\n"
+"    ->withLocale('de-DE')\n"
+"    ->render(__DIR__ . '/template');\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "When the locale is set on `WebView` in middleware, the same locale is applied to views rendered by `WebViewRenderer`."
-msgstr ""
+msgstr "Quando o idioma é definido no `WebView` dentro de um middleware, o mesmo idioma é aplicado às views renderizadas pelo `WebViewRenderer`."
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Extract messages"
-msgstr ""
+msgstr "Extraindo mensagens"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Configure the extractor so it can read existing messages and write new IDs to the same message storage."
-msgstr ""
+msgstr "Configure o extrator para que ele consiga ler as mensagens existentes e gravar novos IDs no mesmo armazenamento de mensagens."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Create `config/common/di/translator-extractor.php`:"
-msgstr ""
+msgstr "Crie `config/common/di/translator-extractor.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -562,27 +731,59 @@ msgid ""
 "    ],\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Definitions\\DynamicReference;\n"
+"use Yiisoft\\Translator\\Message\\Php\\MessageSource;\n"
+"use Yiisoft\\TranslatorExtractor\\CategorySource as ExtractorCategorySource;\n"
+"use Yiisoft\\TranslatorExtractor\\Extractor;\n"
+"\n"
+"/** @var array $params */\n"
+"\n"
+"return [\n"
+"    Extractor::class => [\n"
+"        '__construct()' => [\n"
+"            [\n"
+"                DynamicReference::to([\n"
+"                    'class' => ExtractorCategorySource::class,\n"
+"                    '__construct()' => [\n"
+"                        $params['yiisoft/translator']['defaultCategory'],\n"
+"                        DynamicReference::to(\n"
+"                            static fn (Aliases $aliases): MessageSource => new MessageSource($aliases->get('@root/messages')),\n"
+"                        ),\n"
+"                        DynamicReference::to(\n"
+"                            static fn (Aliases $aliases): MessageSource => new MessageSource($aliases->get('@root/messages')),\n"
+"                        ),\n"
+"                    ],\n"
+"                ]),\n"
+"            ],\n"
+"        ],\n"
+"    ],\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Rebuild config after adding the extractor configuration file:"
-msgstr ""
+msgstr "Reconstrua a configuração depois de adicionar o arquivo de configuração do extrator:"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Extract messages from application source files:"
-msgstr ""
+msgstr "Extraia as mensagens dos arquivos-fonte da aplicação:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "./yii translator/extract src --languages=en-US,de\n"
-msgstr ""
+msgstr "./yii translator/extract src --languages=en-US,de\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The command scans calls such as:"
-msgstr ""
+msgstr "O comando procura chamadas como:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -591,11 +792,13 @@ msgid ""
 "$translator->translate('home.welcome');\n"
 "$translator->translate('cart.items', ['count' => $itemCount]);\n"
 msgstr ""
+"$translator->translate('home.welcome');\n"
+"$translator->translate('cart.items', ['count' => $itemCount]);\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "It writes missing IDs to:"
-msgstr ""
+msgstr "Ele grava os IDs que faltam em:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/i18n.md
@@ -604,49 +807,51 @@ msgid ""
 "messages/en-US/app.php\n"
 "messages/de/app.php\n"
 msgstr ""
+"messages/en-US/app.php\n"
+"messages/de/app.php\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "After extraction, edit target language files and replace source IDs with translated text."
-msgstr ""
+msgstr "Depois da extração, edite os arquivos dos idiomas de destino e troque os IDs de origem pelo texto traduzido."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Use `--category` when a call belongs to another category:"
-msgstr ""
+msgstr "Use `--category` quando uma chamada pertence a outra categoria:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "./yii translator/extract src --languages=en-US,de --category=shop\n"
-msgstr ""
+msgstr "./yii translator/extract src --languages=en-US,de --category=shop\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The extractor excludes `vendor/` by default. Use `--only` or `--except` when you need a narrower scan:"
-msgstr ""
+msgstr "O extrator exclui `vendor/` por padrão. Use `--only` ou `--except` quando precisar de uma varredura mais restrita:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "./yii translator/extract src --languages=en-US,de --only=**/*.php --except=**/runtime/**\n"
-msgstr ""
+msgstr "./yii translator/extract src --languages=en-US,de --only=**/*.php --except=**/runtime/**\n"
 
 #. type: Title ##
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Working with categories"
-msgstr ""
+msgstr "Trabalhando com categorias"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The default `app` category is enough for most application messages. Add categories when a package or a large feature owns its own message files."
-msgstr ""
+msgstr "A categoria padrão `app` basta para a maioria das mensagens da aplicação. Adicione categorias quando um pacote ou um recurso grande tem seus próprios arquivos de mensagens."
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "For a `shop` category, create another tagged category source:"
-msgstr ""
+msgstr "Para uma categoria `shop`, crie outro category source com a tag:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
@@ -666,22 +871,35 @@ msgid ""
 "    'tags' => ['translation.categorySource'],\n"
 "],\n"
 msgstr ""
+"'translation.shop' => [\n"
+"    'definition' => static function (Aliases $aliases): CategorySource {\n"
+"        $messageSource = new MessageSource($aliases->get('@root/messages'));\n"
+"\n"
+"        return new CategorySource(\n"
+"            'shop',\n"
+"            $messageSource,\n"
+"            new IntlMessageFormatter(),\n"
+"            $messageSource,\n"
+"        );\n"
+"    },\n"
+"    'tags' => ['translation.categorySource'],\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Translate with the category name:"
-msgstr ""
+msgstr "Traduza informando o nome da categoria:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "$translator->translate('checkout.submit', category: 'shop');\n"
-msgstr ""
+msgstr "$translator->translate('checkout.submit', category: 'shop');\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "The message files are stored as:"
-msgstr ""
+msgstr "Os arquivos de mensagens ficam assim:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/i18n.md
@@ -690,8 +908,10 @@ msgid ""
 "messages/de/shop.php\n"
 "messages/en-US/shop.php\n"
 msgstr ""
+"messages/de/shop.php\n"
+"messages/en-US/shop.php\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md
 msgid "Keep message IDs stable. Changing an ID creates a new translation task for every locale."
-msgstr ""
+msgstr "Mantenha os IDs de mensagens estáveis. Mudar um ID cria uma nova tarefa de tradução para cada idioma."

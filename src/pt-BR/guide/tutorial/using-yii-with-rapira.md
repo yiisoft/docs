@@ -1,36 +1,36 @@
-# Using Yii with Rapira
+# Usando o Yii com Rapira
 
-[Rapira](https://rapira.rs/) is a PHP application server written in Rust that embeds the PHP interpreter.
-The [Yii Rapira runner](https://github.com/yiisoft/yii-runner-rapira) supports its classic, worker, and dispatcher modes.
-Worker and dispatcher modes initialize the application once per worker and reuse it for subsequent requests.
-See [Using Yii with event loop](using-with-event-loop.md) for the implications of keeping the application in memory.
+O [Rapira](https://rapira.rs/) é um servidor de aplicação PHP escrito em Rust que embute o interpretador PHP.
+O [runner do Yii para Rapira](https://github.com/yiisoft/yii-runner-rapira) suporta os modos classic, worker e dispatcher.
+Os modos worker e dispatcher inicializam a aplicação uma vez por worker e a reaproveitam nas requisições seguintes.
+Veja [Usando o Yii com event loop](using-with-event-loop.md) para as implicações de manter a aplicação na memória.
 
-## Installation
+## Instalação
 
-The runner requires PHP 8.4–8.5. Install the Rapira binary following the
-[Rapira installation
-instructions](https://rapira.rs/docs/intro/installation), using a PHP
-version supported by the runner.  The Composer packages provide the Yii
-integration; the server binary must be installed separately.
+O runner exige PHP 8.4–8.5. Instale o binário do Rapira seguindo as
+[instruções de instalação do
+Rapira](https://rapira.rs/docs/intro/installation), com uma versão do PHP
+suportada pelo runner.  Os pacotes do Composer fornecem a integração com o
+Yii; o binário do servidor precisa ser instalado à parte.
 
-Install the runner and its contract package in your Yii application:
+Instale o runner e o pacote de contratos dele na sua aplicação Yii:
 
 ```shell
 composer require yiisoft/yii-runner-rapira:@dev rapira/contract:@dev
 ```
 
-These stability flags allow the development versions used by the runner's
-installation instructions.
+Essas flags de estabilidade permitem as versões de desenvolvimento usadas
+nas instruções de instalação do runner.
 
-## Configuration
+## Configuração
 
-The following example assumes an application based on `yiisoft/app` or
-`yiisoft/app-api`, with `App\Environment` and `src/bootstrap.php` provided
-by the template.
+O exemplo a seguir supõe uma aplicação baseada em `yiisoft/app` ou
+`yiisoft/app-api`, com `App\Environment` e `src/bootstrap.php` fornecidos
+pelo template.
 
-### Worker entry script
+### Script de entrada do worker
 
-Create `worker.php` in the application root:
+Crie `worker.php` na raiz da aplicação:
 
 ```php
 <?php
@@ -70,13 +70,14 @@ $runner = new RapiraApplicationRunner(
 $runner->run();
 ```
 
-The runner creates the container, starts the application, converts incoming
-requests to PSR-7 requests, and emits responses. It detects the Rapira
-execution mode, so the same entry script can be used with all three modes.
+O runner cria o container, inicia a aplicação, converte as requisições
+recebidas em requisições PSR-7 e emite as respostas. Ele detecta o modo de
+execução do Rapira, então o mesmo script de entrada serve para os três
+modos.
 
-### Server configuration
+### Configuração do servidor
 
-Create `rapira.toml` next to `worker.php`:
+Crie `rapira.toml` ao lado de `worker.php`:
 
 ```toml
 [http]
@@ -88,56 +89,56 @@ mode = "worker"
 max_requests = 1000
 ```
 
-This configuration listens on the loopback interface and recycles each
-worker after 1,000 requests.  For serving files from `public`, follow
-Rapira's [static file configuration](https://rapira.rs/docs/static-files).
-See the [configuration reference](https://rapira.rs/docs/configuration) for
-the other server and pool settings.
+Essa configuração escuta na interface de loopback e recicla cada worker
+depois de 1.000 requisições.  Para servir arquivos de `public`, siga a
+[configuração de arquivos estáticos](https://rapira.rs/docs/static-files) do
+Rapira.  Veja a [referência de
+configuração](https://rapira.rs/docs/configuration) para as outras opções do
+servidor e do pool.
 
-## Starting a server
+## Iniciando o servidor
 
-Run the following command from the application root:
+Execute o seguinte comando na raiz da aplicação:
 
 ```shell
 rapira serve rapira.toml
 ```
 
-Open `http://127.0.0.1:8000` to access the application. Restart the server
-after changing application code or configuration.
+Abra `http://127.0.0.1:8000` para acessar a aplicação. Reinicie o servidor
+depois de alterar o código ou a configuração da aplicação.
 
-## Execution modes
+## Modos de execução
 
-Set `mode` in the `[http.pool]` section of `rapira.toml` to choose how
-requests are processed:
+Defina `mode` na seção `[http.pool]` do `rapira.toml` para escolher como as
+requisições são processadas:
 
-- `classic` initializes the application for each request, similarly to
-  PHP-FPM.
-- `worker` keeps the application in memory and receives requests through
-  PHP's SAPI superglobals.
-- `dispatcher` keeps the application in memory and receives request objects
-  through Rapira's dispatcher API.  The Yii runner processes these requests
-  sequentially within each worker.
+- `classic` inicializa a aplicação a cada requisição, como no PHP-FPM.
+- `worker` mantém a aplicação na memória e recebe as requisições pelas
+  superglobais da SAPI do PHP.
+- `dispatcher` mantém a aplicação na memória e recebe objetos de requisição
+  pela API de dispatcher do Rapira.  O runner do Yii processa essas
+  requisições sequencialmente dentro de cada worker.
 
-See [Rapira execution modes](https://rapira.rs/docs/execution-modes) for
-details.
+Veja [os modos de execução do
+Rapira](https://rapira.rs/docs/execution-modes) para mais detalhes.
 
-## On worker scope
+## Sobre o escopo do worker
 
-In worker and dispatcher modes, services may retain state between
-requests. The runner calls `Yiisoft\Di\StateResetter::reset()` after each
-request, but you must configure resetters for your own stateful services.
-See the [Yii DI
-documentation](https://github.com/yiisoft/di#resetting-services-state).
+Nos modos worker e dispatcher, os serviços podem manter estado entre
+requisições. O runner chama `Yiisoft\Di\StateResetter::reset()` depois de
+cada requisição, mas você precisa configurar resetters para os seus próprios
+serviços com estado.  Veja a [documentação do Yii
+DI](https://github.com/yiisoft/di#resetting-services-state).
 
-The `max_requests` setting limits how long a worker lives; it does not
-replace resetting request-specific state.
+A opção `max_requests` limita quanto tempo um worker vive; ela não substitui
+a redefinição do estado específico de cada requisição.
 
-## Additional configuration
+## Configuração adicional
 
-`RapiraApplicationRunner` uses the application templates' web configuration
-groups by default. Its constructor accepts alternative groups, configuration
-directories, and a temporary error handler. Use `withConfig()` to supply a
-custom configuration instance or `withContainer()` to supply a PSR-11
-container. See the [runner
-documentation](https://github.com/yiisoft/yii-runner-rapira#configuration)
-for examples.
+O `RapiraApplicationRunner` usa por padrão os grupos de configuração web dos
+templates de aplicação. O construtor aceita grupos alternativos, diretórios
+de configuração e um error handler temporário. Use `withConfig()` para
+fornecer uma instância de configuração personalizada ou `withContainer()`
+para fornecer um container PSR-11. Veja a [documentação do
+runner](https://github.com/yiisoft/yii-runner-rapira#configuration) para
+exemplos.

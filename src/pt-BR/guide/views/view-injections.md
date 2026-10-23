@@ -1,21 +1,21 @@
-# View injections
+# Injeções de view
 
-The view injections are designed to provide a standardized way to pass
-parameters to the common layer of views in an application. It allows
-developers to manage the data that will be available across various views,
-ensuring flexibility and reusability of code.
+As injeções de view oferecem uma forma padronizada de passar parâmetros para
+a camada comum das views de uma aplicação. Com elas, você gerencia os dados
+que ficarão disponíveis em várias views, o que garante flexibilidade e
+reaproveitamento de código.
 
-The view injections could be used if you require `yiisoft/yii-view-renderer`
-package:
+Você pode usar as injeções de view se a sua aplicação exige o pacote
+`yiisoft/yii-view-renderer`:
 
 
 ```sh
 composer require yiisoft/yii-view-renderer
 ```
 
-## Configuration
+## Configuração
 
-In config `params.php`:
+Na configuração `params.php`:
 
 
 ```php
@@ -29,17 +29,17 @@ In config `params.php`:
     ],
 ```
 
-## New injections
+## Novas injeções
 
-Start by defining a class that will implement the
-`Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface`. This class
-will be responsible for providing the parameters you want to inject into
-your view templates and layouts.
+Comece definindo uma classe que implemente
+`Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface`. Essa classe
+fornece os parâmetros que você quer injetar nos templates de view e nos
+layouts.
 
 ```php
 class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonParametersInjectionInterface
 {
-    // Class properties and methods will go here
+    // As propriedades e os métodos da classe ficam aqui
 
     public function __construct(UserService $userService)
     {
@@ -57,7 +57,7 @@ class MyCustomParametersInjection implements Yiisoft\Yii\View\Renderer\CommonPar
 }
 ```
 
-Add your new Injection to `params.php`:
+Adicione a nova injeção ao `params.php`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -68,14 +68,14 @@ Add your new Injection to `params.php`:
     ],
 ```
 
-## Using Separate Injections for Different Layouts
+## Usando injeções separadas para layouts diferentes
 
-If your application has multiple layouts, you can create separate parameter
-injections for each layout. This approach allows you to tailor the
-parameters injected into each layout according to its specific needs,
-enhancing the flexibility and maintainability of your application.
+Se a sua aplicação tem vários layouts, você pode criar injeções de
+parâmetros separadas para cada um. Assim, os parâmetros injetados em cada
+layout atendem às necessidades específicas dele, o que deixa a aplicação
+mais flexível e fácil de manter.
 
-Create your custom ViewInjection for a specific layout:
+Crie a sua ViewInjection personalizada para um layout específico:
 
 ```php
 readonly final class CartViewInjection implements CommonParametersInjectionInterface
@@ -93,8 +93,8 @@ readonly final class CartViewInjection implements CommonParametersInjectionInter
 }
 ```
 
-Add your new injection to `params.php` under specific layout name. In the
-following example, it's `@layout/cart`:
+Adicione a nova injeção ao `params.php` sob o nome de um layout
+específico. No exemplo a seguir, é `@layout/cart`:
 
 ```php
 'yiisoft/yii-view' => [
@@ -106,7 +106,7 @@ following example, it's `@layout/cart`:
                     ->get(Cart::class);
 
                 return new LayoutSpecificInjections(
-                    '@layout/cart', // layout name for injection
+                    '@layout/cart', // nome do layout para a injeção
 
                     new CartViewInjection($cart)
                 );

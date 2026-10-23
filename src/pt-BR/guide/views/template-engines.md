@@ -1,27 +1,28 @@
 # Template engines
 
-Yii3 supports multiple template engines through a flexible renderer
-system. By default, PHP is used as the template engine, but you can easily
-add support for other engines like Twig and
-[Blade](https://github.com/lee-to/yii-blade), or create your own custom
+O Yii3 suporta várias template engines por meio de um sistema flexível de
+renderers. Por padrão, o PHP é usado como template engine, mas você pode
+adicionar suporte a outras engines como Twig e
+[Blade](https://github.com/lee-to/yii-blade), ou criar seus próprios
 renderers.
 
-PHP templates were described in the "[View](view.md)" guide section.
+Os templates PHP foram descritos na seção "[View](view.md)" do guia.
 
-## Twig Template Engine
+## Template engine Twig
 
-Twig is a modern template engine that provides a more designer-friendly
-syntax. To use Twig in your Yii3 application, you need to install the Twig
-extension.
+O Twig é uma template engine moderna, com uma sintaxe mais amigável para
+designers. Para usar o Twig na sua aplicação Yii3, instale a extensão do
+Twig.
 
 ```bash
 composer require yiisoft/view-twig
 ```
 
-Now you can use `.twig` templates. For example, `views/site/about.twig`:
+Agora você pode usar templates `.twig`. Por exemplo,
+`views/site/about.twig`:
 
 ```twig
-{# Variable type hints for IDE support #}
+{# Dicas de tipo das variáveis para suporte na IDE #}
 {# @var user \App\Entity\User #}
 {# @var posts \App\Entity\Post[] #}
 
@@ -46,32 +47,32 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 </div>
 ```
 
-### Twig Features
+### Recursos do Twig
 
-**Automatic Escaping**: Twig automatically escapes variables for HTML context:
+**Escape automático**: o Twig escapa as variáveis automaticamente para o contexto HTML:
 
 ```twig
-{# Automatically escaped #}
+{# Escapado automaticamente #}
 <h1>{{ title }}</h1>
 
-{# Raw output (use carefully) #}
+{# Saída bruta (use com cuidado) #}
 <div>{{ content|raw }}</div>
 ```
 
-**Filters and Functions**: Twig provides many built-in filters and functions:
+**Filtros e funções**: o Twig oferece muitos filtros e funções nativos:
 
 ```twig
-{# Date formatting #}
+{# Formatação de data #}
 <time>{{ post.createdAt|date('Y-m-d H:i') }}</time>
 
-{# String manipulation #}
+{# Manipulação de strings #}
 <p>{{ description|truncate(100) }}</p>
 
-{# URL generation #}
+{# Geração de URLs #}
 <a href="{{ path('user.profile', {'id': user.id}) }}">Profile</a>
 ```
 
-**Template Inheritance**: Twig supports template inheritance:
+**Herança de templates**: o Twig suporta herança de templates:
 
 **views/layout/main.twig**
 ```twig
@@ -100,12 +101,12 @@ Now you can use `.twig` templates. For example, `views/site/about.twig`:
 {% endblock %}
 ```
 
-### Rendering Twig Templates
+### Renderizando templates Twig
 
-Use Twig templates the same way as PHP templates:
+Use templates Twig da mesma forma que templates PHP:
 
 ```php
-// In your controller
+// No seu controller
 public function about(): ResponseInterface
 {
     return $this->viewRenderer->render('about.twig', [
@@ -115,9 +116,9 @@ public function about(): ResponseInterface
 }
 ```
 
-## Custom Template Engines
+## Template engines personalizadas
 
-You can create custom template engines by implementing the
+Você pode criar template engines personalizadas implementando a
 `TemplateRendererInterface`:
 
 ```php
@@ -139,7 +140,7 @@ final class MarkdownRenderer implements TemplateRendererInterface
     {
         $content = file_get_contents($template);
         
-        // Replace placeholders with parameters
+        // Substitui os placeholders pelos parâmetros
         foreach ($parameters as $key => $value) {
             $content = str_replace("{{$key}}", (string) $value, $content);
         }
@@ -149,12 +150,12 @@ final class MarkdownRenderer implements TemplateRendererInterface
 }
 ```
 
-Register your custom renderer:
+Registre o seu renderer personalizado:
 
 ```php
 use Yiisoft\Container\Reference;
 
-// In configuration
+// Na configuração
 'yiisoft/view' => [
     'renderers' => [
         'md' => Reference::to(App\View\MarkdownRenderer::class),
@@ -162,7 +163,7 @@ use Yiisoft\Container\Reference;
 ],
 ```
 
-Now you can use `.md` template files:
+Agora você pode usar arquivos de template `.md`:
 
 **views/content/help.md**
 ```markdown
@@ -177,31 +178,35 @@ This is a Markdown template with **bold** and *italic* text.
 - Feature 3
 ```
 
-## Choosing the Right Template Engine
+## Escolhendo a template engine certa
 
-**Use PHP templates when:**
-- You need maximum flexibility and performance
-- Your team is comfortable with PHP
-- You want to leverage existing PHP knowledge
-- You need complex logic in templates (though this should be minimized)
+**Use templates PHP quando:**
+- Você precisa do máximo de flexibilidade e desempenho
+- Seu time está à vontade com PHP
+- Você quer aproveitar o conhecimento de PHP que já tem
+- Você precisa de lógica complexa nos templates (embora isso deva ser minimizado)
 
-**Use Twig templates when:**
-- You want stricter separation between logic and presentation
-- You work with designers who prefer cleaner syntax
-- You need automatic escaping and security features
-- You want template inheritance and advanced features
+**Use templates Twig quando:**
+- Você quer uma separação mais rígida entre lógica e apresentação
+- Você trabalha com designers que preferem uma sintaxe mais limpa
+- Você precisa de escape automático e recursos de segurança
+- Você quer herança de templates e recursos avançados
 
-**Use custom templates when:**
-- You have specific requirements not met by PHP or Twig
-- You're working with specialized content formats
-- You need integration with external template systems
+**Use templates personalizados quando:**
+- Você tem requisitos específicos que o PHP ou o Twig não atendem
+- Você trabalha com formatos de conteúdo especializados
+- Você precisa integrar com sistemas de template externos
 
-## Best Practices
+## Boas práticas
 
-1. **Keep templates simple**: Move complex logic to controllers or services
-2. **Always escape output**: Prevent XSS attacks by properly escaping
-   variables
-3. **Use meaningful names**: Name your templates and variables clearly
-4. **Organize templates**: Group related templates in subdirectories
-5. **Document variables**: Always add type hints for better IDE support
-6. **Avoid business logic**: Keep business logic in models and services
+1. **Mantenha os templates simples**: leve a lógica complexa para
+   controllers ou serviços
+2. **Sempre escape a saída**: evite ataques XSS escapando as variáveis
+   corretamente
+3. **Use nomes significativos**: dê nomes claros aos seus templates e
+   variáveis
+4. **Organize os templates**: agrupe templates relacionados em subdiretórios
+5. **Documente as variáveis**: sempre adicione dicas de tipo para um suporte
+   melhor da IDE
+6. **Evite lógica de negócio**: mantenha a lógica de negócio em models e
+   serviços

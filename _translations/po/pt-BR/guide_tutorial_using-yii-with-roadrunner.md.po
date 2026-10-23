@@ -8,54 +8,42 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2026-09-25 14:35+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/making-http-requests.md
-#: ../src/cookbook/sentry-integration.md
-#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
-#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#: ../src/cookbook/making-http-requests.md ../src/cookbook/sentry-integration.md ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "Instalação"
 
 #. type: Title ##
-#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/views/view-injections.md
+#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "Configuração"
 
 #. type: Title ##
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Starting a server"
-msgstr ""
+msgstr "Iniciando o servidor"
 
 #. type: Title ##
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "On worker scope"
-msgstr ""
+msgstr "Sobre o escopo do worker"
 
 #. type: Title #
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "Using Yii with RoadRunner"
-msgstr ""
+msgstr "Usando o Yii com RoadRunner"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -66,38 +54,42 @@ msgid ""
 "[event loop](using-with-event-loop.md) and allows not re-initializing a framework for each request that improves\n"
 "performance significantly.\n"
 msgstr ""
+"O [RoadRunner](https://roadrunner.dev/) é um servidor de aplicação escrito em Go que se integra bem ao PHP. Ele roda\n"
+"o PHP como workers, e cada worker pode atender várias requisições. Esse modo de operação costuma ser chamado de\n"
+"[event loop](using-with-event-loop.md) e evita reinicializar o framework a cada requisição, o que melhora\n"
+"bastante o desempenho.\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "RoadRunner works on Linux, macOS and Windows. The best way to install it is to use a Composer:"
-msgstr ""
+msgstr "O RoadRunner funciona no Linux, macOS e Windows. A melhor forma de instalá-lo é pelo Composer:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "composer require yiisoft/yii-runner-roadrunner\n"
-msgstr ""
+msgstr "composer require yiisoft/yii-runner-roadrunner\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "After installation is done, run"
-msgstr ""
+msgstr "Terminada a instalação, execute"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "./vendor/bin/rr get\n"
-msgstr ""
+msgstr "./vendor/bin/rr get\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "That would download ready to use RoadRunner server `rr` binary."
-msgstr ""
+msgstr "Isso baixa o binário `rr` do servidor RoadRunner, pronto para uso."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "First, we need to configure the server itself. Create `/.rr.yaml` and add the following config:"
-msgstr ""
+msgstr "Primeiro, precisamos configurar o próprio servidor. Crie `/.rr.yaml` e adicione a seguinte configuração:"
 
 #. type: Fenced code block (yaml)
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -129,6 +121,31 @@ msgid ""
 "  mode: production\n"
 "  level: warn\n"
 msgstr ""
+"version: '3'\n"
+"\n"
+"server:\n"
+"  command: \"php worker.php\"\n"
+"\n"
+"rpc:\n"
+"  listen: tcp://127.0.0.1:6001\n"
+"\n"
+"http:\n"
+"  address: :8080\n"
+"  pool:\n"
+"    debug: false # defina como true apenas no desenvolvimento local\n"
+"    supervisor:\n"
+"      max_worker_memory: 192\n"
+"  middleware: [static, gzip, headers, sendfile]\n"
+"  static:\n"
+"    dir:   \"public\"\n"
+"    forbid: [\".php\", \".htaccess\"]\n"
+"  headers:\n"
+"    response:\n"
+"      \"Cache-Control\": \"no-cache\"\n"
+"\n"
+"logs:\n"
+"  mode: production\n"
+"  level: warn\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -137,38 +154,40 @@ msgid ""
 "> [!INFO]\n"
 "> Read more about TLS, HTTP/2, HTTP/3 configuration and other middleware [on the RoadRunner docs](https://docs.roadrunner.dev/docs/http/http).\n"
 msgstr ""
+"> [!INFO]\n"
+"> Saiba mais sobre configuração de TLS, HTTP/2, HTTP/3 e outros middlewares [na documentação do RoadRunner](https://docs.roadrunner.dev/docs/http/http).\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "We're specifying that the entry script is `worker.php`, the server listens on port 8080, `public` directory files are served statically except `.php` and `.htaccess`. The `max_worker_memory` is a soft limit: if a worker exceeds 192 MB, it will restart after finishing its current request. Also, we're sending an additional header."
-msgstr ""
+msgstr "Estamos definindo que o script de entrada é o `worker.php`, que o servidor escuta na porta 8080 e que os arquivos do diretório `public` são servidos estaticamente, exceto `.php` e `.htaccess`. O `max_worker_memory` é um limite flexível: se um worker passar de 192 MB, ele reinicia depois de terminar a requisição atual. Também estamos enviando um header adicional."
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "KV cache"
-msgstr ""
+msgstr "Cache KV"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "RoadRunner has a [KV plugin](https://docs.roadrunner.dev/docs/key-value/overview-kv) that can be used as a PSR-16 cache storage. It is useful when the application already runs under RoadRunner and needs a cache shared by workers."
-msgstr ""
+msgstr "O RoadRunner tem um [plugin KV](https://docs.roadrunner.dev/docs/key-value/overview-kv) que pode ser usado como armazenamento de cache PSR-16. Ele é útil quando a aplicação já roda no RoadRunner e precisa de um cache compartilhado entre os workers."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Install the PHP bridge and Yii cache package:"
-msgstr ""
+msgstr "Instale a ponte PHP e o pacote de cache do Yii:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "composer require spiral/roadrunner-kv yiisoft/cache\n"
-msgstr ""
+msgstr "composer require spiral/roadrunner-kv yiisoft/cache\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Add a KV storage to `.rr.yaml`:"
-msgstr ""
+msgstr "Adicione um armazenamento KV ao `.rr.yaml`:"
 
 #. type: Fenced code block (yaml)
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -180,16 +199,21 @@ msgid ""
 "    config:\n"
 "      interval: 60\n"
 msgstr ""
+"kv:\n"
+"  cache:\n"
+"    driver: memory\n"
+"    config:\n"
+"      interval: 60\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "The `memory` driver stores values inside the RoadRunner process, so its data is lost when RoadRunner stops.  For persistent cache storage, use another KV driver from the RoadRunner documentation."
-msgstr ""
+msgstr "O driver `memory` guarda os valores dentro do processo do RoadRunner, então os dados se perdem quando o RoadRunner para.  Para um armazenamento de cache persistente, use outro driver KV da documentação do RoadRunner."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Create `config/common/di/roadrunner-kv.php`:"
-msgstr ""
+msgstr "Crie `config/common/di/roadrunner-kv.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -217,11 +241,32 @@ msgid ""
 "    YiiCacheInterface::class => Cache::class,\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\SimpleCache\\CacheInterface as SimpleCacheInterface;\n"
+"use Spiral\\Goridge\\RPC\\RPC;\n"
+"use Spiral\\RoadRunner\\KeyValue\\Factory;\n"
+"use Spiral\\RoadRunner\\KeyValue\\StorageInterface;\n"
+"use Yiisoft\\Cache\\Cache;\n"
+"use Yiisoft\\Cache\\CacheInterface as YiiCacheInterface;\n"
+"\n"
+"return [\n"
+"    StorageInterface::class => static function (): StorageInterface {\n"
+"        $factory = new Factory(RPC::create('tcp://127.0.0.1:6001'));\n"
+"\n"
+"        return $factory->select('cache');\n"
+"    },\n"
+"\n"
+"    SimpleCacheInterface::class => StorageInterface::class,\n"
+"    YiiCacheInterface::class => Cache::class,\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Now services can use `Yiisoft\\Cache\\CacheInterface` the same way as with other cache backends:"
-msgstr ""
+msgstr "Agora os serviços podem usar `Yiisoft\\Cache\\CacheInterface` do mesmo jeito que com outros backends de cache:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -247,11 +292,30 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use Yiisoft\\Cache\\CacheInterface;\n"
+"\n"
+"final readonly class FeedService\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function latest(): array\n"
+"    {\n"
+"        return $this->cache->getOrSet('feed-latest', fn (): array => $this->loadLatest(), 60);\n"
+"    }\n"
+"\n"
+"    private function loadLatest(): array\n"
+"    {\n"
+"        return [];\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Create `/worker.php`:"
-msgstr ""
+msgstr "Crie `/worker.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
@@ -275,30 +339,46 @@ msgid ""
 "    environment: Environment::appEnv()\n"
 "))->run();\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Environment;\n"
+"use Yiisoft\\Yii\\Runner\\RoadRunner\\RoadRunnerHttpApplicationRunner;\n"
+"\n"
+"ini_set('display_errors', 'stderr');\n"
+"\n"
+"require_once __DIR__ . '/src/bootstrap.php';\n"
+"\n"
+"(new RoadRunnerHttpApplicationRunner(\n"
+"    rootPath: __DIR__, \n"
+"    debug: Environment::appDebug(),\n"
+"    checkEvents: Environment::appDebug(),\n"
+"    environment: Environment::appEnv()\n"
+"))->run();\n"
 
 #. type: Plain text
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "To start a server, execute the following command:"
-msgstr ""
+msgstr "Para iniciar o servidor, execute o seguinte comando:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 #, no-wrap
 msgid "./rr serve\n"
-msgstr ""
+msgstr "./rr serve\n"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "Each worker's scope is isolated from other workers. Memory isn't shared."
-msgstr ""
+msgstr "O escopo de cada worker é isolado dos outros workers. A memória não é compartilhada."
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "A single worker serves multiple requests where the scope is shared."
-msgstr ""
+msgstr "Um único worker atende várias requisições, e nelas o escopo é compartilhado."
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/using-yii-with-roadrunner.md
 msgid "At each iteration of the event loop, every service that depends on state should be reset."
-msgstr ""
+msgstr "A cada iteração do event loop, todo serviço que depende de estado deve ser redefinido."

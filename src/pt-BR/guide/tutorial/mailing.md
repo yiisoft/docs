@@ -1,23 +1,23 @@
-# Mailing
+# Envio de e-mails
 
-Yii simplifies the composition and sending of email messages using the
-[yiisoft/mailer](https://github.com/yiisoft/mailer) package. This package
-provides content composition functionality and a basic interface for sending
-emails. By default, the package includes a file mailer that writes email
-contents into a file instead of sending them. This is particularly useful
-during the initial stages of application development.
+O Yii simplifica a composição e o envio de e-mails com o pacote
+[yiisoft/mailer](https://github.com/yiisoft/mailer). Esse pacote oferece a
+composição do conteúdo e uma interface básica para enviar e-mails. Por
+padrão, o pacote inclui um mailer de arquivo, que grava o conteúdo dos
+e-mails num arquivo em vez de enviá-los. Isso é especialmente útil nas fases
+iniciais do desenvolvimento da aplicação.
 
-To send actual emails, you can use the [Symfony
-Mailer](https://github.com/yiisoft/mailer-symfony) implementation, which is
-used in the examples below.
+Para enviar e-mails de verdade, você pode usar a implementação com [Symfony
+Mailer](https://github.com/yiisoft/mailer-symfony), que é a usada nos
+exemplos abaixo.
 
-## Configuring the Mailer
+## Configurando o mailer
 
-The mailer service allows you to create a message instance, populate it with
-data, and send it. Typically, you get an instance from the DI container as
-`Yiisoft\Mailer\MailerInterface`.
+O serviço de mailer permite criar uma instância de mensagem, preenchê-la com
+dados e enviá-la. Normalmente, você obtém uma instância do container de DI
+como `Yiisoft\Mailer\MailerInterface`.
 
-You can also create an instance manually as follows:
+Você também pode criar uma instância manualmente:
 
 ```php
 
@@ -32,16 +32,17 @@ $mailer = new \Yiisoft\Mailer\Symfony\Mailer(
 );
 ```
 
-The `Yiisoft\Mailer\MailerInterface` provides two main methods:
+A `Yiisoft\Mailer\MailerInterface` oferece dois métodos principais:
 
-- `send()` - Sends the given email message.
-- `sendMultiple()` - Sends many messages at once.
+- `send()` - Envia a mensagem de e-mail informada.
+- `sendMultiple()` - Envia várias mensagens de uma vez.
 
-## Creating a Message
+## Criando uma mensagem
 
-### Simple Text Message
+### Mensagem de texto simples
 
-To create a simple message with a text body, use `Yiisoft\Mailer\Message`:
+Para criar uma mensagem simples com corpo em texto, use
+`Yiisoft\Mailer\Message`:
 
 ```php
 $message = new \Yiisoft\Mailer\Message(
@@ -52,7 +53,7 @@ $message = new \Yiisoft\Mailer\Message(
 );
 ```
 
-### Simple HTML Message
+### Mensagem HTML simples
 
 ```php
 $message = new \Yiisoft\Mailer\Message(
@@ -63,9 +64,9 @@ $message = new \Yiisoft\Mailer\Message(
 );
 ```
 
-### HTML Message from template
+### Mensagem HTML a partir de um template
 
-For this example, we will use package rendering package
+Neste exemplo, vamos usar o pacote de renderização
 [view](https://github.com/yiisoft/view).
 
 ```php
@@ -86,9 +87,10 @@ $message = new \Yiisoft\Mailer\Message(
 );
 ```
 
-### Using Layouts
+### Usando layouts
 
-You can also pass parameters to layouts from your template message:
+Você também pode passar parâmetros para os layouts a partir do template da
+mensagem:
 
 ```php
 /**
@@ -113,15 +115,15 @@ $message = new \Yiisoft\Mailer\Message(
 );
 ```
 
-### Layout Example
+### Exemplo de layout
 
-You can wrap the view rendering result in a layout, similar to how layouts
-work in web applications. This is useful for setting up shared content like
-CSS styles:
+Você pode envolver o resultado da renderização da view num layout, do mesmo
+jeito que os layouts funcionam em aplicações web. Isso é útil para definir
+conteúdo compartilhado, como estilos CSS:
 
 ```php
 <?php
-/* @var $content string Mail contents as view render result */
+/* @var $content string Conteúdo do e-mail, resultado da renderização da view */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -141,95 +143,97 @@ Mailed by Yii
 </html>
 ```
 
-## Adding More Data
+## Adicionando mais dados
 
-The `Yiisoft\Mailer\MessageInterface` provides several methods to customize
-your message:
+A `Yiisoft\Mailer\MessageInterface` oferece vários métodos para personalizar
+a mensagem:
 
-- `withCharset()` - Returns a new instance with the specified charset.
-- `withFrom()` - Returns a new instance with the specified sender email
-  address.
-- `withTo()` - Returns a new instance with the specified recipient(s) email
-  address.
-- `withReplyTo()` - Returns a new instance with the specified reply-to
-  address.
-- `withCc()` - Returns a new instance with the specified Cc (extra copy
-  receiver) addresses.
-- `withBcc()` - Returns a new instance with the specified Bcc (hidden copy
-  receiver) addresses.
-- `withSubject()` - Returns a new instance with the specified message
-  subject.
-- `withDate()` - Returns a new instance with the specified date when the
-  message was sent.
-- `withPriority()` - Returns a new instance with the specified priority of
-  this message.
-- `withReturnPath()` - Returns a new instance with the specified return-path
-  (the bounce address) of this message.
-- `withSender()` - Returns a new instance with the specified actual sender
-  email address.
-- `withHtmlBody()` - Returns a new instance with the specified message HTML
-  content.
-- `withTextBody()` - Returns a new instance with the specified message plain
-  text content.
-- `withAddedHeader()` - Returns a new instance with the specified added
-  custom header value.
-- `withHeader()` - Returns a new instance with the specified custom header
-  value.
-- `withHeaders()` - Returns a new instance with the specified custom header
-  values.
+- `withCharset()` - Retorna uma nova instância com o charset informado.
+- `withFrom()` - Retorna uma nova instância com o endereço de e-mail do
+  remetente informado.
+- `withTo()` - Retorna uma nova instância com o(s) endereço(s) de e-mail
+  do(s) destinatário(s) informado(s).
+- `withReplyTo()` - Retorna uma nova instância com o endereço de resposta
+  (reply-to) informado.
+- `withCc()` - Retorna uma nova instância com os endereços em Cc
+  (destinatários de cópia) informados.
+- `withBcc()` - Retorna uma nova instância com os endereços em Bcc
+  (destinatários de cópia oculta) informados.
+- `withSubject()` - Retorna uma nova instância com o assunto da mensagem
+  informado.
+- `withDate()` - Retorna uma nova instância com a data de envio da mensagem
+  informada.
+- `withPriority()` - Retorna uma nova instância com a prioridade da mensagem
+  informada.
+- `withReturnPath()` - Retorna uma nova instância com o return-path
+  (endereço de bounce) da mensagem informado.
+- `withSender()` - Retorna uma nova instância com o endereço de e-mail do
+  remetente real informado.
+- `withHtmlBody()` - Retorna uma nova instância com o conteúdo HTML da
+  mensagem informado.
+- `withTextBody()` - Retorna uma nova instância com o conteúdo em texto puro
+  da mensagem informado.
+- `withAddedHeader()` - Retorna uma nova instância com o valor de header
+  personalizado adicionado.
+- `withHeader()` - Retorna uma nova instância com o valor de header
+  personalizado informado.
+- `withHeaders()` - Retorna uma nova instância com os valores de headers
+  personalizados informados.
 
-These methods are immutable, meaning they return a new instance of the
-message with the updated data.
+Esses métodos são imutáveis, ou seja, retornam uma nova instância da
+mensagem com os dados atualizados.
 
-Note `with` prefix. It indicates that the method is immutable and returns a
-new instance of the class with the changed data.
+Repare no prefixo `with`. Ele indica que o método é imutável e retorna uma
+nova instância da classe com os dados alterados.
 
 ### Getters
 
-The following getters are available to retrieve message data:
+Os getters a seguir estão disponíveis para obter os dados da mensagem:
 
-- `getCharset()` - Returns the charset of this message.
-- `getFrom()` - Returns the message sender email address.
-- `getTo()` - Returns the message recipient(s) email address.
-- `getReplyTo()` - Returns the reply-to address of this message.
-- `getCc()` - Returns the Cc (extra copy receiver) addresses of this
-  message.
-- `getBcc()` - Returns the Bcc (hidden copy receiver) addresses of this
-  message.
-- `getSubject()` - Returns the message subject.
-- `getDate()` - Returns the date when the message was sent, or null if it
-  wasn't set.
-- `getPriority()` - Returns the priority of this message.
-- `getReturnPath()` - Returns the return-path (the bounce address) of this
-  message.
-- `getSender()` - Returns the message actual sender email address.
-- `getHtmlBody()` - Returns the message HTML body.
-- `getTextBody()` - Returns the message text body.
-- `getHeader()` - Returns all values for the specified header.
-- `__toString()` - Returns string representation of this message.
+- `getCharset()` - Retorna o charset da mensagem.
+- `getFrom()` - Retorna o endereço de e-mail do remetente da mensagem.
+- `getTo()` - Retorna o(s) endereço(s) de e-mail do(s) destinatário(s) da
+  mensagem.
+- `getReplyTo()` - Retorna o endereço de resposta (reply-to) da mensagem.
+- `getCc()` - Retorna os endereços em Cc (destinatários de cópia) da
+  mensagem.
+- `getBcc()` - Retorna os endereços em Bcc (destinatários de cópia oculta)
+  da mensagem.
+- `getSubject()` - Retorna o assunto da mensagem.
+- `getDate()` - Retorna a data de envio da mensagem, ou null se ela não foi
+  definida.
+- `getPriority()` - Retorna a prioridade da mensagem.
+- `getReturnPath()` - Retorna o return-path (endereço de bounce) da
+  mensagem.
+- `getSender()` - Retorna o endereço de e-mail do remetente real da
+  mensagem.
+- `getHtmlBody()` - Retorna o corpo HTML da mensagem.
+- `getTextBody()` - Retorna o corpo em texto da mensagem.
+- `getHeader()` - Retorna todos os valores do header informado.
+- `__toString()` - Retorna a representação em string da mensagem.
 
-## Attaching Files
+## Anexando arquivos
 
-You can attach files to your message using the `withAttached()` method:
+Você pode anexar arquivos à mensagem com o método `withAttached()`:
 
 ```php
 use Yiisoft\Mailer\File;
 
-// Attach a file from the local file system
+// Anexa um arquivo do sistema de arquivos local
 $message = $message->withAttached(
     File::fromPath('/path/to/source/file.pdf'),
 );
 
-// Create an attachment on-the-fly
+// Cria um anexo na hora
 $message = $message->withAttached(
     File::fromContent('Attachment content', 'attach.txt', 'text/plain'),
 );
 ```
 
-## Embedding Images
+## Incorporando imagens
 
-You can embed images into the message content using the `withEmbedded()`
-method. This is particularly useful when composing messages with views:
+Você pode incorporar imagens ao conteúdo da mensagem com o método
+`withEmbedded()`. Isso é especialmente útil ao compor mensagens com views:
 
 ```php
 $logo = 'path/to/logo';
@@ -249,16 +253,16 @@ return new \Yiisoft\Mailer\Message(
         );
 ```
 
-In your view or layout template, you can reference the embedded image using
-its CID:
+No template da view ou do layout, você pode referenciar a imagem incorporada
+pelo seu CID:
 
 ```php
 <img src="<?= $logoCid; ?>">
 ```
 
-## Sending a Message
+## Enviando uma mensagem
 
-To send an email message:
+Para enviar uma mensagem de e-mail:
 
 ```php
 /**
@@ -280,9 +284,9 @@ $message = new \Yiisoft\Mailer\Message(
 $mailer->send($message);
 ```
 
-## Sending Multiple Messages
+## Enviando várias mensagens
 
-You can send multiple messages at once:
+Você pode enviar várias mensagens de uma vez:
 
 ```php
 $messages = [];
@@ -296,34 +300,33 @@ foreach ($users as $user) {
 $result = $mailer->sendMultiple($messages);
 ```
 
-The `sendMultiple()` method returns a `Yiisoft\Mailer\SendResults` object
-containing arrays of successfully sent and failed messages.
+O método `sendMultiple()` retorna um objeto `Yiisoft\Mailer\SendResults` com
+arrays das mensagens enviadas com sucesso e das que falharam.
 
-## Implementing your own mail driver
+## Implementando seu próprio driver de e-mail
 
-To create a custom mail solution, implement the
-`Yiisoft\Mailer\MailerInterface` and `Yiisoft\Mailer\MessageInterface`
-interfaces.
+Para criar uma solução de e-mail personalizada, implemente as interfaces
+`Yiisoft\Mailer\MailerInterface` e `Yiisoft\Mailer\MessageInterface`.
 
-## For Development
+## Para desenvolvimento
 
-For local or test development, you can use simplified implementations of the
-mailer that does not send emails.  The package provides these
-implementations:
+Em desenvolvimento local ou em testes, você pode usar implementações
+simplificadas do mailer que não enviam e-mails.  O pacote oferece estas
+implementações:
 
-- `Yiisoft\Mailer\StubMailer` - A simple mailer that stores messages in a
-  local array.
-- `Yiisoft\Mailer\FileMailer` - A mock mailer that saves email messages as
-  files instead of sending them.
-- `Yiisoft\Mailer\NullMailer` - A mailer that discards messages without
-  sending or storing them.
+- `Yiisoft\Mailer\StubMailer` - Um mailer simples que guarda as mensagens
+  num array local.
+- `Yiisoft\Mailer\FileMailer` - Um mailer de mentira que grava as mensagens
+  de e-mail em arquivos em vez de enviá-las.
+- `Yiisoft\Mailer\NullMailer` - Um mailer que descarta as mensagens sem
+  enviá-las nem guardá-las.
 
-To use one of these mailers, configure it in your development environment
-file Example: `environments/local/di.php`
+Para usar um desses mailers, configure-o no arquivo de ambiente de
+desenvolvimento. Exemplo: `environments/local/di.php`
 
 ```php
 return [
-    Yiisoft\Mailer\MailerInterface::class => Yiisoft\Mailer\StubMailer::class, //or any other
+    Yiisoft\Mailer\MailerInterface::class => Yiisoft\Mailer\StubMailer::class, //ou qualquer outro
 ];
 
 ```

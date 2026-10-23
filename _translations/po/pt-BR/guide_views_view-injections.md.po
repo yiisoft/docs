@@ -8,47 +8,45 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-12-24 13:00+0000\n"
 "PO-Revision-Date: 2025-12-24 13:00+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/views/view-injections.md
+#: ../src/cookbook/sentry-integration.md ../src/guide/concept/configuration.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "Configuração"
 
 #. type: Title #
 #: ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "View injections"
-msgstr ""
+msgstr "Injeções de view"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "The view injections are designed to provide a standardized way to pass parameters to the common layer of views in an application. It allows developers to manage the data that will be available across various views, ensuring flexibility and reusability of code."
-msgstr ""
+msgstr "As injeções de view oferecem uma forma padronizada de passar parâmetros para a camada comum das views de uma aplicação. Com elas, você gerencia os dados que ficarão disponíveis em várias views, o que garante flexibilidade e reaproveitamento de código."
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "The view injections could be used if you require `yiisoft/yii-view-renderer` package:"
-msgstr ""
+msgstr "Você pode usar as injeções de view se a sua aplicação exige o pacote `yiisoft/yii-view-renderer`:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/views/view-injections.md ../src/guide/views/view.md
 #, no-wrap
 msgid "composer require yiisoft/yii-view-renderer\n"
-msgstr ""
+msgstr "composer require yiisoft/yii-view-renderer\n"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "In config `params.php`:"
-msgstr ""
+msgstr "Na configuração `params.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view-injections.md
@@ -63,17 +61,25 @@ msgid ""
 "        ],\n"
 "    ],\n"
 msgstr ""
+"...\n"
+"'yiisoft/yii-view' => [\n"
+"        'injections' => [\n"
+"            Reference::to(ContentViewInjection::class),\n"
+"            Reference::to(CsrfViewInjection::class),\n"
+"            Reference::to(LayoutViewInjection::class),\n"
+"        ],\n"
+"    ],\n"
 
 #. type: Title ##
 #: ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "New injections"
-msgstr ""
+msgstr "Novas injeções"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "Start by defining a class that will implement the `Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface`. This class will be responsible for providing the parameters you want to inject into your view templates and layouts."
-msgstr ""
+msgstr "Comece definindo uma classe que implemente `Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface`. Essa classe fornece os parâmetros que você quer injetar nos templates de view e nos layouts."
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view-injections.md
@@ -98,11 +104,29 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"class MyCustomParametersInjection implements Yiisoft\\Yii\\View\\Renderer\\CommonParametersInjectionInterface\n"
+"{\n"
+"    // As propriedades e os métodos da classe ficam aqui\n"
+"\n"
+"    public function __construct(UserService $userService)\n"
+"    {\n"
+"        $this->userService = $userService;\n"
+"    }\n"
+"\n"
+"    public function getCommonParameters(): array\n"
+"    {\n"
+"        return [\n"
+"            'siteName' => 'My Awesome Site',\n"
+"            'currentYear' => date('Y'),\n"
+"            'user' => $this->userService->getCurrentUser(),\n"
+"        ];\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "Add your new Injection to `params.php`:"
-msgstr ""
+msgstr "Adicione a nova injeção ao `params.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view-injections.md
@@ -115,22 +139,28 @@ msgid ""
 "        ],\n"
 "    ],\n"
 msgstr ""
+"'yiisoft/yii-view' => [\n"
+"        'injections' => [\n"
+"            ...,\n"
+"            Reference::to(MyCustomParametersInjection::class),\n"
+"        ],\n"
+"    ],\n"
 
 #. type: Title ##
 #: ../src/guide/views/view-injections.md
 #, no-wrap
 msgid "Using Separate Injections for Different Layouts"
-msgstr ""
+msgstr "Usando injeções separadas para layouts diferentes"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "If your application has multiple layouts, you can create separate parameter injections for each layout. This approach allows you to tailor the parameters injected into each layout according to its specific needs, enhancing the flexibility and maintainability of your application."
-msgstr ""
+msgstr "Se a sua aplicação tem vários layouts, você pode criar injeções de parâmetros separadas para cada um. Assim, os parâmetros injetados em cada layout atendem às necessidades específicas dele, o que deixa a aplicação mais flexível e fácil de manter."
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "Create your custom ViewInjection for a specific layout:"
-msgstr ""
+msgstr "Crie a sua ViewInjection personalizada para um layout específico:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view-injections.md
@@ -150,11 +180,24 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"readonly final class CartViewInjection implements CommonParametersInjectionInterface\n"
+"{\n"
+"    public function __construct(private Cart $cart)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function getCommonParameters(): array\n"
+"    {\n"
+"        return [\n"
+"            'cart' => $this->cart,\n"
+"        ];\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/views/view-injections.md
 msgid "Add your new injection to `params.php` under specific layout name. In the following example, it's `@layout/cart`:"
-msgstr ""
+msgstr "Adicione a nova injeção ao `params.php` sob o nome de um layout específico. No exemplo a seguir, é `@layout/cart`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/views/view-injections.md
@@ -177,3 +220,19 @@ msgid ""
 "        ],\n"
 "    ],\n"
 msgstr ""
+"'yiisoft/yii-view' => [\n"
+"        'injections' => [\n"
+"            ...,\n"
+"            Reference::to(MyCustomParametersInjection::class),\n"
+"            DynamicReference::to(static function (ContainerInterface $container) {\n"
+"                $cart = $container\n"
+"                    ->get(Cart::class);\n"
+"\n"
+"                return new LayoutSpecificInjections(\n"
+"                    '@layout/cart', // nome do layout para a injeção\n"
+"\n"
+"                    new CartViewInjection($cart)\n"
+"                );\n"
+"            }),\n"
+"        ],\n"
+"    ],\n"

@@ -1,14 +1,14 @@
 # Testes
 
-The Yii application template includes a ready test setup. It uses
-Codeception with PHPUnit assertions and has four suites:
+O template de aplicação Yii inclui uma configuração de testes pronta. Ele
+usa o Codeception com asserções do PHPUnit e tem quatro suítes:
 
-- `Unit` for isolated PHP classes.
-- `Functional` for application code called in the same PHP process.
-- `Web` for requests sent through an HTTP server.
-- `Console` for console commands.
+- `Unit` para classes PHP isoladas.
+- `Functional` para código da aplicação chamado no mesmo processo PHP.
+- `Web` para requisições enviadas por um servidor HTTP.
+- `Console` para comandos de console.
 
-The main files are:
+Os arquivos principais são:
 
 - `codeception.yml`.
 - `tests/bootstrap.php`.
@@ -18,27 +18,28 @@ The main files are:
 - `tests/Console.suite.yml`.
 - `tests/Support/*Tester.php`.
 
-## Run tests locally
+## Executar testes localmente
 
-Build actor classes after installing dependencies or changing a suite:
+Gere as classes de actor depois de instalar as dependências ou alterar uma
+suíte:
 
 ```shell
 vendor/bin/codecept build
 ```
 
-Run all tests:
+Execute todos os testes:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run
 ```
 
-The template also defines a Composer script:
+O template também define um script do Composer:
 
 ```shell
 APP_ENV=test composer test
 ```
 
-Run one suite:
+Execute uma suíte:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Unit
@@ -47,31 +48,32 @@ APP_ENV=test vendor/bin/codecept run Web
 APP_ENV=test vendor/bin/codecept run Console
 ```
 
-Run one test class or method:
+Execute uma classe ou um método de teste:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Functional HomePageCest
 APP_ENV=test vendor/bin/codecept run Functional HomePageCest:base
 ```
 
-`APP_ENV=test` is required for local commands because `tests/bootstrap.php`
-prepares the application environment before tests run.
+`APP_ENV=test` é obrigatório nos comandos locais porque
+`tests/bootstrap.php` prepara o ambiente da aplicação antes da execução dos
+testes.
 
-## Run tests in Docker
+## Executar testes no Docker
 
-Build actor classes:
+Gere as classes de actor:
 
 ```shell
 make codecept build
 ```
 
-Run all tests:
+Execute todos os testes:
 
 ```shell
 make test
 ```
 
-Run one suite:
+Execute uma suíte:
 
 ```shell
 make test Unit
@@ -80,20 +82,24 @@ make test Web
 make test Console
 ```
 
-The Docker test environment reads `docker/test/.env`, where `APP_ENV=test`
-is already set.
+O ambiente de testes do Docker lê `docker/test/.env`, onde `APP_ENV=test` já
+está definido.
 
-## Choose a suite
+## Escolher uma suíte
 
-Start with unit tests for code that has no framework boundary: value
-objects, validators, domain services, and transformers.
+Comece com testes unitários para código que não tem fronteira com o
+framework: value objects, validadores, serviços de domínio e
+transformadores.
 
-Use functional tests when code needs Yii configuration, dependency
-injection, routing, middleware, request handling, or template rendering.
+Use testes funcionais quando o código precisa da configuração do Yii,
+injeção de dependência, roteamento, middlewares, tratamento de requisições
+ou renderização de templates.
 
-Use web tests for behavior that must go through an HTTP server: status
-codes, links, redirects, cookies, and rendered pages as seen by a client.
+Use testes web para comportamentos que precisam passar por um servidor HTTP:
+códigos de status, links, redirecionamentos, cookies e páginas renderizadas
+como o cliente as vê.
 
-Use console tests for commands in `src/Console`.
+Use testes de console para os comandos em `src/Console`.
 
-Run static analysis in CI and before changing shared contracts.
+Execute a análise estática no CI e antes de alterar contratos
+compartilhados.

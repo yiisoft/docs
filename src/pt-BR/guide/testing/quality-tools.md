@@ -1,95 +1,98 @@
-# Static analysis and code quality
+# Análise estática e qualidade de código
 
-The Yii application template includes static analysis and code quality tools
-alongside the test suite.
+O template de aplicação Yii inclui ferramentas de análise estática e de
+qualidade de código junto com a suíte de testes.
 
 ## Psalm
 
-Run Psalm locally:
+Execute o Psalm localmente:
 
 ```shell
 vendor/bin/psalm
 ```
 
-Run Psalm in Docker:
+Execute o Psalm no Docker:
 
 ```shell
 make psalm
 ```
 
-The template stores Psalm configuration in `psalm.xml`. The GitHub Actions
-workflow runs Psalm for supported PHP versions.
+O template guarda a configuração do Psalm em `psalm.xml`. O workflow do
+GitHub Actions executa o Psalm nas versões de PHP suportadas.
 
-When Psalm reports an issue, fix the code or add a precise type
-annotation. Keep suppressions narrow and local to the line or method that
-needs them.
+Quando o Psalm reportar um problema, corrija o código ou adicione uma
+anotação de tipo precisa. Mantenha as supressões restritas e locais à linha
+ou ao método que precisa delas.
 
 ## Composer Dependency Analyser
 
-Composer Dependency Analyser checks that `composer.json` matches the classes
-used by the application.
+O Composer Dependency Analyser verifica se o `composer.json` corresponde às
+classes usadas pela aplicação.
 
-Run it locally:
+Execute-o localmente:
 
 ```shell
 vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.php
 ```
 
-Run it in Docker:
+Execute-o no Docker:
 
 ```shell
 make composer-dependency-analyser
 ```
 
-Use this check after adding or removing package usage in `src`, `config`, or
-`tests`.
+Use essa verificação depois de adicionar ou remover o uso de pacotes em
+`src`, `config` ou `tests`.
 
 ## PHP CS Fixer
 
-PHP CS Fixer applies the project coding style from `.php-cs-fixer.php`.
+O PHP CS Fixer aplica o estilo de código do projeto definido em
+`.php-cs-fixer.php`.
 
-Run it locally:
+Execute-o localmente:
 
 ```shell
 vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff
 ```
 
-Run it in Docker:
+Execute-o no Docker:
 
 ```shell
 make cs-fix
 ```
 
-Commit formatting changes together with the code that needs them.
+Faça o commit das mudanças de formatação junto com o código que as exige.
 
 ## Rector
 
-Rector applies configured code upgrades and refactorings from `rector.php`.
+O Rector aplica as atualizações e refatorações de código configuradas em
+`rector.php`.
 
-Preview changes locally:
+Visualize as mudanças localmente:
 
 ```shell
 vendor/bin/rector --dry-run
 ```
 
-Apply changes locally:
+Aplique as mudanças localmente:
 
 ```shell
 vendor/bin/rector
 ```
 
-Run it in Docker:
+Execute-o no Docker:
 
 ```shell
 make rector
 ```
 
-Review Rector changes before committing them. Automated refactoring can
-change behavior when custom rules or broad paths are configured.
+Revise as mudanças do Rector antes de fazer o commit. A refatoração
+automatizada pode alterar o comportamento quando regras personalizadas ou
+caminhos amplos estão configurados.
 
-## Pull request checks
+## Verificações de pull request
 
-A practical local check before opening a pull request is:
+Uma verificação local prática antes de abrir um pull request é:
 
 ```shell
 APP_ENV=test vendor/bin/codecept build
@@ -99,7 +102,7 @@ vendor/bin/composer-dependency-analyser --config=composer-dependency-analyser.ph
 vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff
 ```
 
-With Docker:
+Com Docker:
 
 ```shell
 make codecept build

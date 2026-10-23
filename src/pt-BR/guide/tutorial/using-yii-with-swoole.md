@@ -1,51 +1,51 @@
-# Using Yii with Swoole
+# Usando o Yii com Swoole
 
-[Swoole](https://www.swoole.com/) is a PHP extension for event-driven, coroutine-based network applications. It
-includes an HTTP server, coroutine APIs, and runtime hooks for common blocking I/O functions.
+O [Swoole](https://www.swoole.com/) é uma extensão PHP para aplicações de rede orientadas a eventos e baseadas em corrotinas. Ela
+inclui um servidor HTTP, APIs de corrotinas e hooks de runtime para as funções de I/O bloqueantes mais comuns.
 
-Swoole allows Yii request handlers to run as workers. Each worker may handle
-multiple requests.  Such an operation mode is often called [event
-loop](using-with-event-loop.md) and allows not re-initializing a framework
-for each request that improves performance significantly.
+O Swoole permite que os handlers de requisição do Yii rodem como
+workers. Cada worker pode atender várias requisições.  Esse modo de operação
+costuma ser chamado de [event loop](using-with-event-loop.md) e evita
+reinicializar o framework a cada requisição, o que melhora bastante o
+desempenho.
 
-## Installation
+## Instalação
 
-Swoole supports Linux, macOS, Cygwin, and WSL. Install the extension through
-PECL:
+O Swoole suporta Linux, macOS, Cygwin e WSL. Instale a extensão pelo PECL:
 
 ```bash
 pecl install swoole
 ```
 
-If PECL doesn't enable the extension automatically, add it to your
+Se o PECL não habilitar a extensão automaticamente, adicione-a ao seu
 `php.ini`:
 
 ```ini
 extension=swoole.so
 ```
 
-Check that PHP loads the extension:
+Confira se o PHP carrega a extensão:
 
 ```bash
 php --ri swoole
 ```
 
-The Swoole project also provides a [Docker
-image](https://github.com/swoole/docker-swoole) and documents source builds
-with optional features such as OpenSSL, sockets, MySQL, PostgreSQL, and curl
-hooks.
+O projeto Swoole também oferece uma [imagem
+Docker](https://github.com/swoole/docker-swoole) e documenta builds a partir
+do código-fonte com recursos opcionais, como hooks para OpenSSL, sockets,
+MySQL, PostgreSQL e curl.
 
-## Putting up a server
+## Subindo um servidor
 
-Swoole passes `Swoole\Http\Request` and `Swoole\Http\Response` objects to
-request callbacks. Yii handles PSR-7 requests and responses, so add a
-converter package:
+O Swoole passa objetos `Swoole\Http\Request` e `Swoole\Http\Response` para
+os callbacks de requisição. O Yii trabalha com requisições e respostas
+PSR-7, então adicione um pacote conversor:
 
 ```shell
 composer require ilexn/swoole-convert-psr7
 ```
 
-Create an entry script, `server.php`:
+Crie um script de entrada, `server.php`:
 
 ```php
 <?php
@@ -138,35 +138,37 @@ $server->on('shutdown', static function (Server $server) use ($application) {
 $server->start();
 ```
 
-## Starting a server
+## Iniciando o servidor
 
-To start a server, execute the following command:
+Para iniciar o servidor, execute o seguinte comando:
 
 ```
 php server.php
 ```
 
-## On scope
+## Sobre o escopo
 
-A scope is shared, so at each iteration of the event loop every service that
-depends on state should be reset.
+O escopo é compartilhado, então a cada iteração do event loop todo serviço
+que depende de estado deve ser redefinido.
 
 ## Sessões
 
-Avoid native PHP sessions, including `Yiisoft\Session\Session`, when Swoole
-coroutines handle overlapping requests within one worker: they share session
-state and can expose one user's data to another request.
+Evite as sessões nativas do PHP, incluindo `Yiisoft\Session\Session`, quando
+corrotinas do Swoole atendem requisições simultâneas dentro de um mesmo
+worker: elas compartilham o estado da sessão e podem expor os dados de um
+usuário a outra requisição.
 
-For requests handled one at a time, close the session and reset services
-between requests. `yiisoft/session` prevents stale session ID reuse, but
-does not isolate overlapping coroutines.
+Para requisições atendidas uma por vez, feche a sessão e redefina os
+serviços entre as requisições. O `yiisoft/session` impede o reuso de IDs de
+sessão antigos, mas não isola corrotinas simultâneas.
 
-For authentication, consider tokens such as
-[JWT](https://jwt.io/introduction) instead of native sessions, especially
-for APIs. If you need session features, use an implementation that isolates
-each coroutine's session data; changing the native storage handler to Redis
-is not enough.
+Para autenticação, considere tokens como [JWT](https://jwt.io/introduction)
+em vez de sessões nativas, principalmente em APIs. Se você precisa de
+recursos de sessão, use uma implementação que isole os dados de sessão de
+cada corrotina; trocar o handler de armazenamento nativo para Redis não
+basta.
 
-See the [Swoole
-guidance](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
-and [Yii session discussion](https://github.com/yiisoft/session/issues/25).
+Veja as [orientações do
+Swoole](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796)
+e a [discussão sobre sessões no
+Yii](https://github.com/yiisoft/session/issues/25).

@@ -1,15 +1,15 @@
-# Functional tests
+# Testes funcionais
 
-Functional tests run application code in the same PHP process. In the Yii
-application template they live in `tests/Functional` and use
+Testes funcionais executam o código da aplicação no mesmo processo PHP. No
+template de aplicação Yii eles ficam em `tests/Functional` e usam
 `App\Tests\Support\FunctionalTester`.
 
-Use them for routing, middleware, action handlers, views, container
-configuration, headers, cookies, and sessions.
+Use-os para roteamento, middlewares, action handlers, views, configuração do
+container, headers, cookies e sessões.
 
 ## Functional tester
 
-The template already has a helper method for sending PSR-7 requests:
+O template já tem um método helper para enviar requisições PSR-7:
 
 ```php
 <?php
@@ -47,9 +47,9 @@ class FunctionalTester extends \Codeception\Actor
 }
 ```
 
-## Test a page
+## Testar uma página
 
-The template includes `tests/Functional/HomePageCest.php`:
+O template inclui `tests/Functional/HomePageCest.php`:
 
 ```php
 <?php
@@ -81,16 +81,16 @@ final class HomePageCest
 }
 ```
 
-Run it:
+Execute-o:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Functional
 APP_ENV=test vendor/bin/codecept run Functional HomePageCest
 ```
 
-## Send request data
+## Enviar dados na requisição
 
-Use PSR-7 methods to model the request:
+Use os métodos PSR-7 para modelar a requisição:
 
 ```php
 $request = (new ServerRequest(uri: '/contact', method: 'POST'))
@@ -109,21 +109,21 @@ assertSame(302, $response->getStatusCode());
 assertSame('/contact/sent', $response->getHeaderLine('Location'));
 ```
 
-For JSON APIs, write the JSON body into a PSR-7 stream and set
+Para APIs JSON, escreva o corpo JSON em um stream PSR-7 e defina
 `Content-Type: application/json`.
 
-## Reset state
+## Redefinir o estado
 
-Functional tests often touch runtime files, sessions, cache, and a
-database. Reset changed state in the Cest `_before()` hook or in a project
-helper:
+Testes funcionais costumam mexer em arquivos de runtime, sessões, cache e
+banco de dados. Redefina o estado alterado no hook `_before()` do Cest ou em
+um helper do projeto:
 
 ```php
 public function _before(FunctionalTester $tester): void
 {
-    // Reset database tables, cache pools, queues, and outgoing messages.
+    // Redefina tabelas do banco de dados, pools de cache, filas e mensagens de saída.
 }
 ```
 
-Keep pure domain rules in unit tests. Put request and response behavior in
-functional tests.
+Mantenha as regras de domínio puras nos testes unitários. Coloque o
+comportamento de requisição e resposta nos testes funcionais.

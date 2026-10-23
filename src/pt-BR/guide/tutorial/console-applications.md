@@ -1,35 +1,34 @@
-# Console applications
+# Aplicações de console
 
-Console applications are mainly used to create utility, background
-processing and maintenance tasks.
+Aplicações de console são usadas principalmente para criar utilitários,
+processamento em segundo plano e tarefas de manutenção.
 
 ## Primeiros passos
 
-If you're using [yiisoft/app](https://github.com/yiisoft/app) or
-[yiisoft/app-api](https://github.com/yiisoft/app-api), console support is
-already included.  You can access the entry point as:
+Se você usa [yiisoft/app](https://github.com/yiisoft/app) ou
+[yiisoft/app-api](https://github.com/yiisoft/app-api), o suporte a console
+já vem incluído.  Você pode acessar o ponto de entrada assim:
 
 ```
 ./yii
 ```
 
-If you want a standalone console-only application, use the
-[yiisoft/app-console](https://github.com/yiisoft/app-console) project
-template:
+Se você quer uma aplicação somente de console, use o template de projeto
+[yiisoft/app-console](https://github.com/yiisoft/app-console):
 
 ```sh
 composer create-project yiisoft/app-console your-project
 ```
 
-To add console support to an existing project from scratch, refer to the
-[yiisoft/yii-console package
-documentation](https://github.com/yiisoft/yii-console).
+Para adicionar suporte a console a um projeto existente do zero, consulte a
+[documentação do pacote
+yiisoft/yii-console](https://github.com/yiisoft/yii-console).
 
-Out of the box only `serve` command is available. It's starting PHP built-in
-web server to serve the application locally.
+De início, apenas o comando `serve` está disponível. Ele inicia o servidor
+web embutido do PHP para servir a aplicação localmente.
 
-Commands are executed with `symfony/console`. To create your own console
-command, you need to define a command:
+Os comandos são executados com `symfony/console`. Para criar seu próprio
+comando de console, você precisa definir um comando:
 
 ```php
 <?php
@@ -68,7 +67,7 @@ class HelloCommand extends Command
 }
 ```
 
-Now register the command in `config/params.php`:
+Agora registre o comando em `config/params.php`:
 
 ```php
 return [
@@ -80,14 +79,14 @@ return [
 ];
 ```
 
-After it's done, the command could be executed as
+Feito isso, o comando pode ser executado assim
 
 ```
 ./yii demo:hello Alice
 ```
 
 
-## References
+## Referências
 
-- [Symfony Console component
-  guide](https://symfony.com/doc/current/components/console.html)
+- [Guia do componente Symfony
+  Console](https://symfony.com/doc/current/components/console.html)

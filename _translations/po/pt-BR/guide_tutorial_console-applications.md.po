@@ -8,23 +8,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-03-30 08:11+0000\n"
 "PO-Revision-Date: 2026-03-30 08:11+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md
-#: ../src/guide/structure/domain.md
-#: ../src/guide/tutorial/console-applications.md
-#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
-#: ../src/internals/008-interfaces.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md ../src/guide/concept/autoloading.md ../src/guide/security/best-practices.md ../src/guide/structure/domain.md ../src/guide/tutorial/console-applications.md ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
-msgstr ""
+msgstr "Referências"
 
 #. type: Title ##
 #: ../src/guide/index.md ../src/guide/tutorial/console-applications.md
@@ -36,49 +31,49 @@ msgstr "Primeiros passos"
 #: ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "Console applications"
-msgstr ""
+msgstr "Aplicações de console"
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "Console applications are mainly used to create utility, background processing and maintenance tasks."
-msgstr ""
+msgstr "Aplicações de console são usadas principalmente para criar utilitários, processamento em segundo plano e tarefas de manutenção."
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "If you're using [yiisoft/app](https://github.com/yiisoft/app) or [yiisoft/app-api](https://github.com/yiisoft/app-api), console support is already included.  You can access the entry point as:"
-msgstr ""
+msgstr "Se você usa [yiisoft/app](https://github.com/yiisoft/app) ou [yiisoft/app-api](https://github.com/yiisoft/app-api), o suporte a console já vem incluído.  Você pode acessar o ponto de entrada assim:"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "./yii\n"
-msgstr ""
+msgstr "./yii\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "If you want a standalone console-only application, use the [yiisoft/app-console](https://github.com/yiisoft/app-console) project template:"
-msgstr ""
+msgstr "Se você quer uma aplicação somente de console, use o template de projeto [yiisoft/app-console](https://github.com/yiisoft/app-console):"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "composer create-project yiisoft/app-console your-project\n"
-msgstr ""
+msgstr "composer create-project yiisoft/app-console your-project\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "To add console support to an existing project from scratch, refer to the [yiisoft/yii-console package documentation](https://github.com/yiisoft/yii-console)."
-msgstr ""
+msgstr "Para adicionar suporte a console a um projeto existente do zero, consulte a [documentação do pacote yiisoft/yii-console](https://github.com/yiisoft/yii-console)."
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "Out of the box only `serve` command is available. It's starting PHP built-in web server to serve the application locally."
-msgstr ""
+msgstr "De início, apenas o comando `serve` está disponível. Ele inicia o servidor web embutido do PHP para servir a aplicação localmente."
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "Commands are executed with `symfony/console`. To create your own console command, you need to define a command:"
-msgstr ""
+msgstr "Os comandos são executados com `symfony/console`. Para criar seu próprio comando de console, você precisa definir um comando:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/console-applications.md
@@ -119,11 +114,45 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"namespace App\\Command\\Demo;\n"
+"\n"
+"use Symfony\\Component\\Console\\Attribute\\AsCommand;\n"
+"use Symfony\\Component\\Console\\Command\\Command;\n"
+"use Symfony\\Component\\Console\\Input\\InputArgument;\n"
+"use Symfony\\Component\\Console\\Input\\InputInterface;\n"
+"use Symfony\\Component\\Console\\Output\\OutputInterface;\n"
+"use Symfony\\Component\\Console\\Style\\SymfonyStyle;\n"
+"use Yiisoft\\Yii\\Console\\ExitCode;\n"
+"\n"
+"#[AsCommand(\n"
+"    name: 'demo:hello',\n"
+"    description: 'Echoes hello',\n"
+"    \n"
+")]\n"
+"class HelloCommand extends Command\n"
+"{   \n"
+"    public function configure(): void\n"
+"    {\n"
+"        $this            \n"
+"            ->setHelp('This command serves for demo purpose')\n"
+"            ->addArgument('name', InputArgument::OPTIONAL, 'Name to greet', 'anonymous');\n"
+"    }\n"
+"\n"
+"    protected function execute(InputInterface $input, OutputInterface $output): int\n"
+"    {\n"
+"        $io = new SymfonyStyle($input, $output);\n"
+"\n"
+"        $name = $input->getArgument('name');\n"
+"        $io->success(\"Hello, $name!\");\n"
+"        return ExitCode::OK;\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "Now register the command in `config/params.php`:"
-msgstr ""
+msgstr "Agora registre o comando em `config/params.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/console-applications.md
@@ -137,19 +166,26 @@ msgid ""
 "    ],    \n"
 "];\n"
 msgstr ""
+"return [\n"
+"    'yiisoft/yii-console' => [\n"
+"        'commands' => [\n"
+"            'demo:hello' => App\\Demo\\HelloCommand::class,\n"
+"        ],\n"
+"    ],    \n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/console-applications.md
 msgid "After it's done, the command could be executed as"
-msgstr ""
+msgstr "Feito isso, o comando pode ser executado assim"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/console-applications.md
 #, no-wrap
 msgid "./yii demo:hello Alice\n"
-msgstr ""
+msgstr "./yii demo:hello Alice\n"
 
 #. type: Bullet: '- '
 #: ../src/guide/tutorial/console-applications.md
 msgid "[Symfony Console component guide](https://symfony.com/doc/current/components/console.html)"
-msgstr ""
+msgstr "[Guia do componente Symfony Console](https://symfony.com/doc/current/components/console.html)"

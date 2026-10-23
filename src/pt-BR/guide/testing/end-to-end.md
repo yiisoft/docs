@@ -1,15 +1,15 @@
-# End-to-end tests
+# Testes end-to-end
 
-The Yii application template uses the `Web` Codeception suite for tests that
-go through an HTTP server. These tests live in `tests/Web` and use
+O template de aplicação Yii usa a suíte `Web` do Codeception para testes que
+passam por um servidor HTTP. Esses testes ficam em `tests/Web` e usam
 `App\Tests\Support\WebTester`.
 
-Use web tests for user-visible HTTP behavior: pages, links, forms,
-redirects, cookies, and error pages.
+Use testes web para o comportamento HTTP visível ao usuário: páginas, links,
+formulários, redirecionamentos, cookies e páginas de erro.
 
-## Web suite
+## Suíte Web
 
-The template configures `tests/Web.suite.yml` like this:
+O template configura `tests/Web.suite.yml` assim:
 
 ```yaml
 actor: WebTester
@@ -24,12 +24,12 @@ modules:
         url: http://127.0.0.1:8080
 ```
 
-`RunProcess` starts the application with the Composer `serve`
-script. `PhpBrowser` sends HTTP requests to the server.
+`RunProcess` inicia a aplicação com o script `serve` do
+Composer. `PhpBrowser` envia requisições HTTP ao servidor.
 
-## Test a page
+## Testar uma página
 
-The template includes `tests/Web/HomePageCest.php`:
+O template inclui `tests/Web/HomePageCest.php`:
 
 ```php
 <?php
@@ -52,27 +52,27 @@ final class HomePageCest
 }
 ```
 
-Run the web suite locally:
+Execute a suíte web localmente:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Web
 ```
 
-Run only this test:
+Execute apenas este teste:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run Web HomePageCest
 ```
 
-With Docker:
+Com Docker:
 
 ```shell
 make test Web
 ```
 
-## Test links and error pages
+## Testar links e páginas de erro
 
-Use the same actor methods for navigation and response assertions:
+Use os mesmos métodos do actor para navegação e asserções sobre a resposta:
 
 ```php
 <?php
@@ -96,36 +96,37 @@ final class NotFoundHandlerCest
 }
 ```
 
-## Smoke test with curl
+## Smoke test com curl
 
-For a deployment smoke test, start the application and check one URL:
+Para um smoke test de deploy, inicie a aplicação e verifique uma URL:
 
 ```shell
 APP_ENV=test ./yii serve --port=8080
 ```
 
-In another terminal:
+Em outro terminal:
 
 ```shell
 curl -fsS http://127.0.0.1:8080/ > /tmp/home.html
 grep -q "Hello!" /tmp/home.html
 ```
 
-## Reset state
+## Redefinir o estado
 
-Web tests use real infrastructure, so reset state before each scenario:
+Testes web usam infraestrutura real, então redefina o estado antes de cada
+cenário:
 
-- Load only the records required by the scenario.
-- Clear session and cookie storage.
-- Clear generated files and outgoing messages.
-- Stop background workers, or make their effects deterministic.
+- Carregue apenas os registros exigidos pelo cenário.
+- Limpe o armazenamento de sessão e de cookies.
+- Limpe arquivos gerados e mensagens de saída.
+- Pare os workers em segundo plano ou torne seus efeitos determinísticos.
 
-If the scenario changes a database, reset it in the Cest `_before()` hook or
-in a project-specific helper:
+Se o cenário altera um banco de dados, redefina-o no hook `_before()` do
+Cest ou em um helper específico do projeto:
 
 ```php
 public function _before(WebTester $I): void
 {
-    // Reset database tables, files, queues, and outgoing messages.
+    // Redefina tabelas do banco de dados, arquivos, filas e mensagens de saída.
 }
 ```

@@ -1,26 +1,26 @@
-# Scripts, styles and meta tags
+# Scripts, estilos e meta tags
 
-Modern web applications require careful management of CSS styles, JavaScript
-code, and HTML meta tags.  Yii3 provides a comprehensive system for
-registering and organizing these resources through the `WebView` class,
-which is part of the `yiisoft/view` package.
+Aplicações web modernas exigem um gerenciamento cuidadoso de estilos CSS,
+código JavaScript e meta tags HTML.  O Yii3 oferece um sistema completo para
+registrar e organizar esses recursos por meio da classe `WebView`, que faz
+parte do pacote `yiisoft/view`.
 
-## Overview
+## Visão geral
 
-The `WebView` class extends the basic `View` class with web-specific
-functionality, allowing you to:
+A classe `WebView` estende a classe básica `View` com funcionalidades
+específicas para a web, permitindo que você:
 
-- Register CSS files and inline styles
-- Register JavaScript files and inline scripts
-- Manage HTML meta tags and link tags
-- Control the position where resources are rendered
-- Handle dependencies between resources
+- Registre arquivos CSS e estilos inline
+- Registre arquivos JavaScript e scripts inline
+- Gerencie meta tags e link tags HTML
+- Controle a posição em que os recursos são renderizados
+- Lide com dependências entre recursos
 
-## CSS management
+## Gerenciamento de CSS
 
-### Registering CSS Files
+### Registrando arquivos CSS
 
-You can register CSS files to be included in your HTML pages:
+Você pode registrar arquivos CSS para incluí-los nas suas páginas HTML:
 
 ```php
 <?php
@@ -33,24 +33,24 @@ use Yiisoft\View\WebView;
  * @var WebView $this
  */
 
-// Register a CSS file
+// Registra um arquivo CSS
 $this->registerCssFile('/css/styles.css');
 
-// Register CSS file with attributes
+// Registra um arquivo CSS com atributos
 $this->registerCssFile('/css/print.css', WebView::POSITION_HEAD, [
     'media' => 'print',
 ]);
 
-// Register CSS file with custom key to avoid duplicates
+// Registra um arquivo CSS com uma chave personalizada para evitar duplicatas
 $this->registerCssFile('/css/theme.css', WebView::POSITION_HEAD, [], 'theme-css');
 ```
 
-### Registering Inline CSS
+### Registrando CSS inline
 
-For inline CSS styles, use the `registerCss()` method:
+Para estilos CSS inline, use o método `registerCss()`:
 
 ```php
-// Register inline CSS
+// Registra CSS inline
 $this->registerCss('
     .highlight {
         background-color: yellow;
@@ -62,7 +62,7 @@ $this->registerCss('
     }
 ', WebView::POSITION_HEAD);
 
-// With custom attributes
+// Com atributos personalizados
 $this->registerCss('
     @media print {
         .no-print { display: none; }
@@ -70,20 +70,20 @@ $this->registerCss('
 ', WebView::POSITION_HEAD, ['id' => 'print-styles']);
 ```
 
-### CSS from Files
+### CSS a partir de arquivos
 
-You can also register CSS content from external files:
+Você também pode registrar o conteúdo CSS de arquivos externos:
 
 ```php
-// Read CSS from a file and register as inline CSS
+// Lê o CSS de um arquivo e o registra como CSS inline
 $this->registerCssFromFile('/path/to/dynamic-styles.css', WebView::POSITION_HEAD, [
     'id' => 'dynamic-styles',
 ]);
 ```
 
-### Using Style Tags
+### Usando tags style
 
-For more control, you can use HTML style tags directly:
+Para ter mais controle, você pode usar tags style do HTML diretamente:
 
 ```php
 use Yiisoft\Html\Html;
@@ -100,37 +100,37 @@ $styleTag = Html::style('
 $this->registerStyleTag($styleTag, WebView::POSITION_HEAD);
 ```
 
-## JavaScript management
+## Gerenciamento de JavaScript
 
-### Registering JavaScript Files
+### Registrando arquivos JavaScript
 
-Include external JavaScript files using `registerJsFile()`:
+Inclua arquivos JavaScript externos com `registerJsFile()`:
 
 ```php
-// Register a JavaScript file
+// Registra um arquivo JavaScript
 $this->registerJsFile('/js/main.js');
 
-// Register with attributes (async loading)
+// Registra com atributos (carregamento assíncrono)
 $this->registerJsFile('/js/analytics.js', WebView::POSITION_END, [
     'async' => true,
 ]);
 
-// Register with defer attribute
+// Registra com o atributo defer
 $this->registerJsFile('/js/interactive.js', WebView::POSITION_END, [
     'defer' => true,
 ]);
 
-// Register from CDN
+// Registra a partir de uma CDN
 $this->registerJsFile('https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js', 
     WebView::POSITION_END, [], 'jquery');
 ```
 
-### Registering Inline JavaScript
+### Registrando JavaScript inline
 
-Add inline JavaScript code with `registerJs()`:
+Adicione código JavaScript inline com `registerJs()`:
 
 ```php
-// Register inline JavaScript
+// Registra JavaScript inline
 $this->registerJs('
     document.addEventListener("DOMContentLoaded", function() {
         console.log("Page loaded!");
@@ -138,7 +138,7 @@ $this->registerJs('
     });
 ', WebView::POSITION_END);
 
-// Register JavaScript that should run when DOM is ready
+// Registra JavaScript que deve rodar quando o DOM estiver pronto
 $this->registerJs('
     function showAlert(message) {
         alert(message);
@@ -146,12 +146,12 @@ $this->registerJs('
 ', WebView::POSITION_READY);
 ```
 
-### JavaScript Variables
+### Variáveis JavaScript
 
-Pass PHP data to JavaScript using `registerJsVar()`:
+Passe dados do PHP para o JavaScript com `registerJsVar()`:
 
 ```php
-// Register JavaScript variables
+// Registra variáveis JavaScript
 $this->registerJsVar('apiUrl', 'https://api.example.com');
 $this->registerJsVar('currentUser', [
     'id' => $user->getId(),
@@ -164,7 +164,7 @@ $this->registerJsVar('config', [
 ]);
 ```
 
-This generates JavaScript code like:
+Isso gera um código JavaScript como este:
 
 ```html
 <script>
@@ -174,9 +174,9 @@ var config = {"debug":true,"locale":"en-US"};
 </script>
 ```
 
-### Using Script Tags
+### Usando tags script
 
-For more control over script tags:
+Para ter mais controle sobre as tags script:
 
 ```php
 use Yiisoft\Html\Html;
@@ -192,30 +192,30 @@ $scriptTag = Html::script('
 $this->registerScriptTag($scriptTag, WebView::POSITION_END);
 ```
 
-## Position Constants
+## Constantes de posição
 
-Resources can be positioned at different locations in the HTML document:
+Os recursos podem ser posicionados em diferentes pontos do documento HTML:
 
 ```php
 use Yiisoft\View\WebView;
 
-// In the <head> section
+// Na seção <head>
 WebView::POSITION_HEAD
 
-// At the beginning of <body>
+// No início do <body>
 WebView::POSITION_BEGIN  
 
-// At the end of <body> (before </body>)
+// No fim do <body> (antes de </body>)
 WebView::POSITION_END
 
-// When DOM is ready (jQuery document.ready equivalent)
+// Quando o DOM estiver pronto (equivalente ao document.ready do jQuery)
 WebView::POSITION_READY
 
-// When page is fully loaded (window.onload equivalent)
+// Quando a página terminar de carregar (equivalente ao window.onload)
 WebView::POSITION_LOAD
 ```
 
-Example layout showing where each position is rendered:
+Exemplo de layout mostrando onde cada posição é renderizada:
 
 ```php
 <?php
@@ -230,18 +230,18 @@ declare(strict_types=1);
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- POSITION_HEAD resources rendered here -->
+    <!-- Recursos de POSITION_HEAD são renderizados aqui -->
     <?php $this->head() ?>
 </head>
 <body>
-    <!-- POSITION_BEGIN resources rendered here -->
+    <!-- Recursos de POSITION_BEGIN são renderizados aqui -->
     <?php $this->beginBody() ?>
     
     <main>
         <?= $content ?>
     </main>
     
-    <!-- POSITION_END, POSITION_READY, POSITION_LOAD resources rendered here -->
+    <!-- Recursos de POSITION_END, POSITION_READY e POSITION_LOAD são renderizados aqui -->
     <?php $this->endBody() ?>
 </body>
 </html>
@@ -250,34 +250,34 @@ declare(strict_types=1);
 
 ## Meta tags
 
-### Basic Meta Tags
+### Meta tags básicas
 
-Register meta tags for SEO and page information:
+Registre meta tags para SEO e informações da página:
 
 ```php
-// Register meta tags using array syntax
+// Registra meta tags usando a sintaxe de array
 $this->registerMeta(['name' => 'description', 'content' => 'Page description']);
 $this->registerMeta(['name' => 'keywords', 'content' => 'yii, php, framework']);
 $this->registerMeta(['name' => 'author', 'content' => 'John Doe']);
 $this->registerMeta(['name' => 'robots', 'content' => 'index, follow']);
 
-// Viewport for responsive design
+// Viewport para design responsivo
 $this->registerMeta(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1']);
 
-// Open Graph tags for social media
+// Tags Open Graph para redes sociais
 $this->registerMeta(['property' => 'og:title', 'content' => 'Page Title']);
 $this->registerMeta(['property' => 'og:description', 'content' => 'Page description']);
 $this->registerMeta(['property' => 'og:image', 'content' => 'https://example.com/image.jpg']);
 ```
 
-### Using Meta Tag Objects
+### Usando objetos de meta tag
 
-For more control, use the `Html::meta()` helper:
+Para ter mais controle, use o helper `Html::meta()`:
 
 ```php
 use Yiisoft\Html\Html;
 
-// Create meta tags with the Html helper
+// Cria meta tags com o helper Html
 $this->registerMetaTag(
     Html::meta()
         ->name('description')
@@ -287,22 +287,22 @@ $this->registerMetaTag(
 $this->registerMetaTag(
     Html::meta()
         ->httpEquiv('refresh')
-        ->content('300') // Refresh every 5 minutes
+        ->content('300') // Atualiza a cada 5 minutos
 );
 ```
 
-### Preventing Duplicate Meta Tags
+### Evitando meta tags duplicadas
 
-Use keys to prevent duplicate meta tags:
+Use chaves para evitar meta tags duplicadas:
 
 ```php
-// First registration
+// Primeiro registro
 $this->registerMeta([
     'name' => 'description',
     'content' => 'Original description'
 ], 'description');
 
-// This will override the previous one
+// Este sobrescreve o anterior
 $this->registerMeta([
     'name' => 'description', 
     'content' => 'Updated description'
@@ -311,9 +311,9 @@ $this->registerMeta([
 
 ## Link tags
 
-### Basic Link Tags
+### Link tags básicas
 
-Register various types of link tags:
+Registre vários tipos de link tags:
 
 ```php
 // Favicon
@@ -323,7 +323,7 @@ $this->registerLink([
     'href' => '/favicon.png',
 ]);
 
-// RSS feed
+// Feed RSS
 $this->registerLink([
     'rel' => 'alternate',
     'type' => 'application/rss+xml',
@@ -331,13 +331,13 @@ $this->registerLink([
     'href' => '/feed.rss',
 ]);
 
-// Canonical URL
+// URL canônica
 $this->registerLink([
     'rel' => 'canonical',
     'href' => 'https://example.com/canonical-url',
 ]);
 
-// Preload resources
+// Pré-carregamento de recursos
 $this->registerLink([
     'rel' => 'preload',
     'href' => '/fonts/main.woff2',
@@ -347,19 +347,19 @@ $this->registerLink([
 ]);
 ```
 
-### Using Link Tag Objects
+### Usando objetos de link tag
 
 ```php
 use Yiisoft\Html\Html;
 
-// CSS stylesheet
+// Folha de estilo CSS
 $this->registerLinkTag(
     Html::link('/css/main.css', [
         'rel' => 'stylesheet',
     ])
 );
 
-// DNS prefetch
+// Prefetch de DNS
 $this->registerLinkTag(
     Html::link('https://fonts.googleapis.com', [
         'rel' => 'dns-prefetch',
@@ -367,11 +367,11 @@ $this->registerLinkTag(
 );
 ```
 
-## Practical Examples
+## Exemplos práticos
 
-### Complete Page Setup
+### Configuração completa de uma página
 
-Here's how you might set up a complete page with all types of resources:
+Veja como montar uma página completa com todos os tipos de recursos:
 
 ```php
 <?php
@@ -388,33 +388,33 @@ use Yiisoft\View\WebView;
  * @var array $product
  */
 
-// Set page title
+// Define o título da página
 $this->setTitle($title);
 
 // Meta tags
 $this->registerMeta(['name' => 'description', 'content' => $description]);
 $this->registerMeta(['name' => 'keywords', 'content' => 'ecommerce, products, online shop']);
 
-// Open Graph tags
+// Tags Open Graph
 $this->registerMeta(['property' => 'og:title', 'content' => $title]);
 $this->registerMeta(['property' => 'og:description', 'content' => $description]);
 $this->registerMeta(['property' => 'og:image', 'content' => $product['image']]);
 
-// CSS files
+// Arquivos CSS
 $this->registerCssFile('/css/product.css');
 $this->registerCssFile('/css/responsive.css', WebView::POSITION_HEAD, [
     'media' => 'screen and (max-width: 768px)',
 ]);
 
-// JavaScript files
+// Arquivos JavaScript
 $this->registerJsFile('/js/product-gallery.js', WebView::POSITION_END);
 $this->registerJsFile('/js/shopping-cart.js', WebView::POSITION_END);
 
-// JavaScript variables
+// Variáveis JavaScript
 $this->registerJsVar('productData', $product);
 $this->registerJsVar('cartApiUrl', '/api/cart');
 
-// Inline JavaScript
+// JavaScript inline
 $this->registerJs('
     document.addEventListener("DOMContentLoaded", function() {
         initProductGallery();
@@ -422,7 +422,7 @@ $this->registerJs('
     });
 ', WebView::POSITION_END);
 
-// Page-specific styles
+// Estilos específicos da página
 $this->registerCss('
     .product-special {
         background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
@@ -433,13 +433,13 @@ $this->registerCss('
 ?>
 
 <div class="product-page">
-    <!-- Your page content here -->
+    <!-- O conteúdo da sua página vai aqui -->
 </div>
 ```
 
-### Conditional Resource Loading
+### Carregamento condicional de recursos
 
-Load resources based on conditions:
+Carregue recursos de acordo com condições:
 
 ```php
 <?php
@@ -453,20 +453,20 @@ declare(strict_types=1);
  * @var string $userRole
  */
 
-// Load theme-specific CSS
+// Carrega o CSS específico do tema
 if ($isDarkMode) {
     $this->registerCssFile('/css/dark-theme.css');
 } else {
     $this->registerCssFile('/css/light-theme.css');
 }
 
-// Admin-specific resources
+// Recursos específicos da área admin
 if ($isAdmin) {
     $this->registerCssFile('/css/admin-toolbar.css');
     $this->registerJsFile('/js/admin-functions.js');
 }
 
-// Role-based JavaScript configuration
+// Configuração JavaScript baseada no papel do usuário
 $this->registerJsVar('userPermissions', [
     'canEdit' => in_array($userRole, ['admin', 'editor']),
     'canDelete' => $userRole === 'admin',
@@ -475,31 +475,35 @@ $this->registerJsVar('userPermissions', [
 ?>
 ```
 
-## Best Practices
+## Boas práticas
 
-1. **Use appropriate positions**: Place CSS in `POSITION_HEAD`, JavaScript
-   at `POSITION_END`
-2. **Minimize inline resources**: Prefer external files for better caching
-3. **Use keys for duplicates**: Prevent duplicate resources with meaningful
-   keys
-4. **Optimize loading**: Use `async` and `defer` attributes for non-critical
-   JavaScript
-5. **Group related resources**: Keep related CSS and JS files together
-6. **Use CDNs wisely**: Balance performance with reliability
-7. **Validate meta tags**: Ensure proper SEO meta tags are set
-8. **Consider security**: Be careful with inline scripts and CSP policies
+1. **Use as posições adequadas**: coloque o CSS em `POSITION_HEAD` e o
+   JavaScript em `POSITION_END`
+2. **Reduza os recursos inline**: prefira arquivos externos, que aproveitam
+   melhor o cache
+3. **Use chaves contra duplicatas**: evite recursos duplicados com chaves
+   significativas
+4. **Otimize o carregamento**: use os atributos `async` e `defer` para
+   JavaScript não crítico
+5. **Agrupe recursos relacionados**: mantenha juntos os arquivos CSS e JS
+   relacionados
+6. **Use CDNs com critério**: equilibre desempenho e confiabilidade
+7. **Valide as meta tags**: garanta que as meta tags de SEO estejam
+   definidas corretamente
+8. **Pense na segurança**: tenha cuidado com scripts inline e políticas de
+   CSP
 
-## Working with Asset Bundles
+## Trabalhando com asset bundles
 
-For more complex asset management, consider using asset bundles:
+Para um gerenciamento de assets mais complexo, considere usar asset bundles:
 
 ```php
-// Register an asset bundle (covered in detail in the Assets guide)
+// Registra um asset bundle (explicado em detalhes no guia de Assets)
 $assetBundle = $this->assetManager->register(MainAsset::class);
 
-// Add all CSS files from the bundle
+// Adiciona todos os arquivos CSS do bundle
 $this->addCssFiles($this->assetManager->getCssFiles());
 
-// Add all JavaScript files from the bundle  
+// Adiciona todos os arquivos JavaScript do bundle  
 $this->addJsFiles($this->assetManager->getJsFiles());
 ```

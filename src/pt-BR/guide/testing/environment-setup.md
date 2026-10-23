@@ -1,13 +1,12 @@
-# Testing environment setup
+# Configuração do ambiente de testes
 
-The Yii application template has the test environment configured. Use this
-page when creating a new project from the template, restoring removed test
-files, or adding a new suite.
+O template de aplicação Yii já vem com o ambiente de testes configurado. Use
+esta página ao criar um novo projeto a partir do template, restaurar
+arquivos de teste removidos ou adicionar uma nova suíte.
 
-## Composer configuration
+## Configuração do Composer
 
-The template requires Codeception, PHPUnit, and the modules used by the
-suites:
+O template exige o Codeception, o PHPUnit e os módulos usados pelas suítes:
 
 ```json
 {
@@ -29,13 +28,13 @@ suites:
 }
 ```
 
-If these entries are already in your project, keep the installed versions
-from `composer.lock`.
+Se essas entradas já estiverem no seu projeto, mantenha as versões
+instaladas do `composer.lock`.
 
-## Main Codeception file
+## Arquivo principal do Codeception
 
-The root `codeception.yml` defines the test namespace, paths, bootstrap
-file, and coverage source:
+O `codeception.yml` na raiz define o namespace dos testes, os caminhos, o
+arquivo de bootstrap e a origem da cobertura:
 
 ```yaml
 namespace: App\Tests
@@ -66,7 +65,7 @@ extensions:
     - Codeception\Extension\RunFailed
 ```
 
-`tests/bootstrap.php` prepares the application environment for every suite:
+`tests/bootstrap.php` prepara o ambiente da aplicação para todas as suítes:
 
 ```php
 <?php
@@ -76,13 +75,13 @@ declare(strict_types=1);
 App\Environment::prepare();
 ```
 
-Set `APP_ENV=test` when running tests locally:
+Defina `APP_ENV=test` ao executar os testes localmente:
 
 ```shell
 APP_ENV=test vendor/bin/codecept run
 ```
 
-The Docker test service reads the same value from `docker/test/.env`:
+O serviço de testes do Docker lê o mesmo valor de `docker/test/.env`:
 
 ```dotenv
 APP_ENV=test
@@ -93,11 +92,12 @@ XDEBUG_MODE=coverage
 COMPOSER_CACHE_DIR=/app/runtime/cache/composer
 ```
 
-## Suites
+## Suítes
 
-The template has one suite file per test type.
+O template tem um arquivo de suíte por tipo de teste.
 
-`tests/Unit.suite.yml` enables PHPUnit assertions through Codeception:
+`tests/Unit.suite.yml` habilita as asserções do PHPUnit por meio do
+Codeception:
 
 ```yaml
 actor: UnitTester
@@ -106,14 +106,14 @@ modules:
         - Asserts
 ```
 
-`tests/Functional.suite.yml` uses the project `FunctionalTester` helper:
+`tests/Functional.suite.yml` usa o helper `FunctionalTester` do projeto:
 
 ```yaml
 actor: FunctionalTester
 ```
 
-`tests/Web.suite.yml` starts the built-in server and sends HTTP requests
-with PhpBrowser:
+`tests/Web.suite.yml` inicia o servidor embutido e envia requisições HTTP
+com o PhpBrowser:
 
 ```yaml
 actor: WebTester
@@ -128,7 +128,7 @@ modules:
         url: http://127.0.0.1:8080
 ```
 
-`tests/Console.suite.yml` enables console command testing:
+`tests/Console.suite.yml` habilita os testes de comandos de console:
 
 ```yaml
 actor: ConsoleTester
@@ -137,58 +137,63 @@ modules:
     - Cli
 ```
 
-After adding or changing a suite, rebuild generated actor actions:
+Depois de adicionar ou alterar uma suíte, reconstrua as ações geradas dos
+actors:
 
 ```shell
 vendor/bin/codecept build
 ```
 
-With Docker:
+Com Docker:
 
 ```shell
 make codecept build
 ```
 
-## Test configuration
+## Configuração de testes
 
-Put test-only application parameters into
-`config/environments/test/params.php`. The application loads this file when
-`APP_ENV=test`.
+Coloque os parâmetros da aplicação exclusivos de teste em
+`config/environments/test/params.php`. A aplicação carrega esse arquivo
+quando `APP_ENV=test`.
 
-Use the test environment for values such as:
+Use o ambiente de teste para valores como:
 
-- Database name and credentials.
-- Mailer transport.
-- Queue transport.
-- Cache storage.
-- Log target paths.
+- Nome e credenciais do banco de dados.
+- Transporte do mailer.
+- Transporte da fila.
+- Armazenamento do cache.
+- Caminhos dos destinos de log.
 
-Keep test credentials separate from development and production credentials.
+Mantenha as credenciais de teste separadas das credenciais de
+desenvolvimento e produção.
 
-## State reset
+## Redefinição de estado
 
-Each test must leave the next test with predictable state. Choose a reset
-strategy for every external resource the test changes:
+Cada teste deve deixar para o próximo um estado previsível. Escolha uma
+estratégia de redefinição para cada recurso externo que o teste altera:
 
-- Recreate or truncate database tables before application-level tests.
-- Clear cache pools used by the test environment.
-- Clear sessions and cookies in web tests.
-- Remove generated files from `runtime`.
-- Replace outgoing mail, queues, and HTTP clients with test doubles where
-  practical.
+- Recrie ou trunque as tabelas do banco de dados antes dos testes de nível
+  de aplicação.
+- Limpe os pools de cache usados pelo ambiente de teste.
+- Limpe sessões e cookies nos testes web.
+- Remova arquivos gerados de `runtime`.
+- Substitua e-mails enviados, filas e clientes HTTP por test doubles quando
+  for viável.
 
-For database tests, prefer one project-wide fixture or migration
-flow. Mixing reset strategies makes failures hard to reproduce.
+Para testes de banco de dados, prefira um único fluxo de fixtures ou
+migrations para todo o projeto. Misturar estratégias de redefinição torna as
+falhas difíceis de reproduzir.
 
-## Coverage
+## Cobertura
 
-Run coverage locally when Xdebug or another coverage driver is enabled:
+Execute a cobertura localmente quando o Xdebug ou outro driver de cobertura
+estiver habilitado:
 
 ```shell
 APP_ENV=test APP_C3=true XDEBUG_MODE=coverage vendor/bin/codecept run --coverage --coverage-html --disable-coverage-php
 ```
 
-With Docker, coverage variables are already in `docker/test/.env`:
+Com Docker, as variáveis de cobertura já estão em `docker/test/.env`:
 
 ```shell
 make test-coverage

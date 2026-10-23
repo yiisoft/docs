@@ -1,43 +1,42 @@
 # Assets
 
-Asset management is crucial for modern web applications. Assets include CSS
-stylesheets, JavaScript files, images, fonts, and other static
-resources. Yii3 provides a comprehensive asset management system through the
-`yiisoft/assets` package that handles dependencies, optimization, and
-deployment of these resources.
+O gerenciamento de assets é essencial em aplicações web modernas. Assets
+incluem folhas de estilo CSS, arquivos JavaScript, imagens, fontes e outros
+recursos estáticos. O Yii3 oferece um sistema completo de gerenciamento de
+assets por meio do pacote `yiisoft/assets`, que cuida das dependências, da
+otimização e da publicação desses recursos.
 
-## Installation
+## Instalação
 
-The asset management functionality is provided by the `yiisoft/assets`
-package:
+A funcionalidade de gerenciamento de assets vem do pacote `yiisoft/assets`:
 
 ```bash
 composer require yiisoft/assets
 ```
 
-This package is included by default in the `yiisoft/app` application
-template.
+Esse pacote já vem incluído por padrão no template de aplicação
+`yiisoft/app`.
 
-## Basic Concepts
+## Conceitos básicos
 
-### Asset Bundles
+### Asset bundles
 
-An asset bundle is a collection of related asset files (CSS, JavaScript,
-images) that are logically grouped together.  Asset bundles can depend on
-other bundles, allowing for proper dependency management.
+Um asset bundle é um conjunto de arquivos de asset relacionados (CSS,
+JavaScript, imagens) agrupados logicamente.  Asset bundles podem depender de
+outros bundles, o que permite gerenciar as dependências corretamente.
 
 ### Asset Manager
 
-The Asset Manager is responsible for: - Resolving asset bundle dependencies
-- Publishing assets from protected directories to web-accessible locations -
-Combining and minifying assets (when configured)  - Generating proper URLs
-for assets
+O Asset Manager é responsável por: - Resolver as dependências dos asset
+bundles - Publicar assets de diretórios protegidos em locais acessíveis pela
+web - Combinar e minificar assets (quando configurado)  - Gerar as URLs
+corretas dos assets
 
-## Creating Asset Bundles
+## Criando asset bundles
 
-### Basic Asset Bundle
+### Asset bundle básico
 
-Here's a simple asset bundle definition:
+Esta é uma definição simples de asset bundle:
 
 ```php
 <?php
@@ -70,26 +69,26 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-### Asset Bundle Properties
+### Propriedades do asset bundle
 
-**Path Configuration:**
-- `$basePath` (`string|null`) - Physical path where web-accessible asset files are located.
-- `$baseUrl` (`string|null`) - Web-accessible URL path for assets.
-- `$sourcePath` (`string|null`) - Source directory for assets that need to be published.
-- `$cdn` (`bool`) - Whether the bundle uses CDN files exclusively.
+**Configuração de caminhos:**
+- `$basePath` (`string|null`) - Caminho físico onde ficam os arquivos de asset acessíveis pela web.
+- `$baseUrl` (`string|null`) - Caminho da URL acessível pela web para os assets.
+- `$sourcePath` (`string|null`) - Diretório de origem dos assets que precisam ser publicados.
+- `$cdn` (`bool`) - Indica se o bundle usa exclusivamente arquivos de CDN.
 
-**Asset Files:**
-- `$css` - Array of CSS files
-- `$js` - Array of JavaScript files  
+**Arquivos de asset:**
+- `$css` - Array de arquivos CSS
+- `$js` - Array de arquivos JavaScript  
 
-**Dependencies:**
-- `$depends` - Array of other asset bundles this bundle depends on
+**Dependências:**
+- `$depends` - Array de outros asset bundles dos quais este bundle depende
 
-**Options:**
-- `$jsOptions` - HTML attributes for JavaScript tags
-- `$cssOptions` - HTML attributes for CSS link tags
+**Opções:**
+- `$jsOptions` - Atributos HTML das tags de JavaScript
+- `$cssOptions` - Atributos HTML das tags link de CSS
 
-### Advanced Asset Bundle
+### Asset bundle avançado
 
 ```php
 <?php
@@ -105,26 +104,26 @@ final class AdminAsset extends AssetBundle
     public ?string $basePath = '@assets';
     public ?string $baseUrl = '@assetsUrl';
     
-    // CSS files with media queries
+    // Arquivos CSS com media queries
     public array $css = [
         'css/admin/main.css',
         ['css/admin/print.css', 'media' => 'print'],
         ['css/admin/mobile.css', 'media' => 'screen and (max-width: 768px)'],
     ];
     
-    // JavaScript files with attributes
+    // Arquivos JavaScript com atributos
     public array $js = [
         'js/admin/core.js',
         ['js/admin/charts.js', 'defer' => true],
         ['js/admin/analytics.js', 'async' => true],
     ];
     
-    // Global options for all JS files in this bundle
+    // Opções globais para todos os arquivos JS deste bundle
     public array $jsOptions = [
         'data-admin' => 'true',
     ];
     
-    // Global options for all CSS files in this bundle
+    // Opções globais para todos os arquivos CSS deste bundle
     public array $cssOptions = [
         'data-bundle' => 'admin',
     ];
@@ -136,11 +135,11 @@ final class AdminAsset extends AssetBundle
 }
 ```
 
-## Using Asset Bundles
+## Usando asset bundles
 
-### In Controllers
+### Em controllers
 
-Register asset bundles in your controllers or views:
+Registre os asset bundles nos seus controllers ou views:
 
 ```php
 <?php
@@ -163,7 +162,7 @@ final class SiteController
 
     public function index(): ResponseInterface
     {
-        // Register the asset bundle
+        // Registra o asset bundle
         $this->assetManager->register(MainAsset::class);
         
         return $this->viewRenderer->render('index', [
@@ -173,7 +172,7 @@ final class SiteController
     
     public function admin(): ResponseInterface
     {
-        // Register multiple asset bundles
+        // Registra vários asset bundles
         $this->assetManager->registerMany([
             MainAsset::class,
             AdminAsset::class,
@@ -184,9 +183,9 @@ final class SiteController
 }
 ```
 
-### In Views
+### Em views
 
-You can also register assets directly in views:
+Você também pode registrar assets diretamente nas views:
 
 ```php
 <?php
@@ -202,20 +201,20 @@ use Yiisoft\Assets\AssetManager;
  * @var array $product
  */
 
-// Register product-specific assets
+// Registra os assets específicos do produto
 $assetManager->register(ProductAsset::class);
 ?>
 
 <div class="product-page">
     <h1><?= Html::encode($product['name']) ?></h1>
-    <!-- Product content -->
+    <!-- Conteúdo do produto -->
 </div>
 ```
 
-### With WebView Integration
+### Com integração à WebView
 
-The recommended approach is to integrate with WebView for automatic asset
-rendering:
+A abordagem recomendada é integrar com a WebView para que os assets sejam
+renderizados automaticamente:
 
 ```php
 <?php
@@ -229,10 +228,10 @@ use App\Asset\MainAsset;
  * @var \Yiisoft\Assets\AssetManager $assetManager
  */
 
-// Register assets
+// Registra os assets
 $assetManager->register(MainAsset::class);
 
-// Add all registered assets to the view
+// Adiciona todos os assets registrados à view
 $this->addCssFiles($assetManager->getCssFiles());
 $this->addCssStrings($assetManager->getCssStrings());
 $this->addJsFiles($assetManager->getJsFiles());
@@ -241,16 +240,16 @@ $this->addJsVars($assetManager->getJsVars());
 ?>
 
 <div class="page-content">
-    <!-- Your page content -->
+    <!-- Conteúdo da sua página -->
 </div>
 ```
 
-## Asset Publishing
+## Publicação de assets
 
-### Source Path Publishing
+### Publicação a partir do source path
 
-When assets are located in non-web-accessible directories (like vendor
-packages), they need to be published:
+Quando os assets ficam em diretórios não acessíveis pela web (como pacotes
+do vendor), eles precisam ser publicados:
 
 ```php
 <?php
@@ -263,10 +262,10 @@ use Yiisoft\Assets\AssetBundle;
 
 final class VendorAsset extends AssetBundle
 {
-    // Source directory (not web accessible)
+    // Diretório de origem (não acessível pela web)
     public ?string $sourcePath = '@vendor/company/package/assets';
     
-    // Will be published to web-accessible directory
+    // Será publicado em um diretório acessível pela web
     public ?string $basePath = '@assets';
     public ?string $baseUrl = '@assetsUrl';
     
@@ -280,25 +279,25 @@ final class VendorAsset extends AssetBundle
 }
 ```
 
-### Custom Publishing
+### Publicação personalizada
 
-You can also manually publish directories:
+Você também pode publicar diretórios manualmente:
 
 ```php
 /**
  * @var \Yiisoft\Assets\AssetManager $assetManager
  */
 
-// Publish a directory
+// Publica um diretório
 $publishedPath = $assetManager->publish('@vendor/company/package/assets');
 
-// Get the published URL
+// Obtém a URL publicada
 $publishedUrl = $assetManager->getPublishedUrl('@vendor/company/package/assets');
 ```
 
-## Third-party Library Assets
+## Assets de bibliotecas de terceiros
 
-### jQuery Asset Bundle
+### Asset bundle do jQuery
 
 ```php
 <?php
@@ -320,7 +319,7 @@ final class JqueryAsset extends AssetBundle
 }
 ```
 
-### Bootstrap Asset Bundle
+### Asset bundle do Bootstrap
 
 ```php
 <?php
@@ -345,20 +344,22 @@ final class BootstrapAsset extends AssetBundle
     ];
     
     public array $depends = [
-        JqueryAsset::class, // Bootstrap requires jQuery
+        JqueryAsset::class, // O Bootstrap exige o jQuery
     ];
 }
 ```
 
-### CDN Assets
+### Assets em CDN
 
-For CDN-hosted assets, set `$cdn` to `true`. The asset manager will skip
-local publishing and local file checks for this bundle.
+Para assets hospedados em CDN, defina `$cdn` como `true`. O asset manager
+vai pular a publicação local e as verificações de arquivos locais para esse
+bundle.
 
-If every asset file is an absolute URL, leave `$basePath`, `$baseUrl`, and
-`$sourcePath` unset. If all files are served from the same CDN base URL, set
-`$baseUrl` to that URL and use relative paths in `$css` and
-`$js`. `$basePath` and `$sourcePath` aren't needed for CDN-only bundles.
+Se todos os arquivos de asset forem URLs absolutas, deixe `$basePath`,
+`$baseUrl` e `$sourcePath` sem valor. Se todos os arquivos vierem da mesma
+URL base da CDN, defina `$baseUrl` com essa URL e use caminhos relativos em
+`$css` e `$js`. `$basePath` e `$sourcePath` não são necessários em bundles
+só de CDN.
 
 ```php
 <?php
@@ -393,23 +394,23 @@ final class BootstrapCdnAsset extends AssetBundle
 }
 ```
 
-## Asset Configuration
+## Configuração de assets
 
-### Application Configuration
+### Configuração da aplicação
 
-Configure asset management in your application configuration:
+Configure o gerenciamento de assets na configuração da sua aplicação:
 
 **config/web/params.php**
 ```php
 return [
     'yiisoft/assets' => [
-        // Base path for published assets
+        // Caminho base dos assets publicados
         'basePath' => '@webroot/assets',
         
-        // Base URL for assets
+        // URL base dos assets
         'baseUrl' => '@web/assets',
         
-        // Asset converter configuration
+        // Configuração do conversor de assets
         'converter' => [
             'commands' => [
                 'scss' => ['sass', '{from}', '{to}', '--style=compressed'],
@@ -420,9 +421,9 @@ return [
 ];
 ```
 
-### Environment-specific Assets
+### Assets por ambiente
 
-Configure different assets for different environments:
+Configure assets diferentes para cada ambiente:
 
 ```php
 <?php
@@ -444,11 +445,11 @@ final class MainAsset extends AssetBundle
     public function __construct()
     {
         if (YII_ENV_DEV) {
-            // Development assets (unminified)
+            // Assets de desenvolvimento (não minificados)
             $this->css = ['css/main.css', 'css/debug.css'];
             $this->js = ['js/main.js', 'js/debug.js'];
         } else {
-            // Production assets (minified)
+            // Assets de produção (minificados)
             $this->css = ['css/main.min.css'];
             $this->js = ['js/main.min.js'];
         }
@@ -456,33 +457,33 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-## Asset Optimization
+## Otimização de assets
 
-### Asset Combination
+### Combinação de assets
 
-Combine multiple CSS or JavaScript files into single files:
+Combine vários arquivos CSS ou JavaScript em arquivos únicos:
 
 ```php
 /**
  * @var \Yiisoft\Assets\AssetManager $assetManager
  */
 
-// Enable asset combination
+// Habilita a combinação de assets
 $assetManager->setCombine(true);
 
-// Set combination options
+// Define as opções de combinação
 $assetManager->setCombineOptions([
-    'css' => true,  // Combine CSS files
-    'js' => true,   // Combine JavaScript files
+    'css' => true,  // Combina os arquivos CSS
+    'js' => true,   // Combina os arquivos JavaScript
 ]);
 ```
 
-### Asset Compression
+### Compressão de assets
 
-Configure asset compression for production:
+Configure a compressão de assets para produção:
 
 ```php
-// In your asset manager configuration
+// Na configuração do seu asset manager
 'converter' => [
     'commands' => [
         'css' => ['cleancss', '{from}', '-o', '{to}'],
@@ -491,9 +492,9 @@ Configure asset compression for production:
 ],
 ```
 
-## Working with Asset Converter
+## Trabalhando com o conversor de assets
 
-### SCSS/SASS Compilation
+### Compilação de SCSS/SASS
 
 ```php
 <?php
@@ -511,13 +512,13 @@ final class ScssAsset extends AssetBundle
     public ?string $baseUrl = '@assetsUrl';
     
     public array $css = [
-        'main.scss', // Will be converted to main.css
+        'main.scss', // Será convertido em main.css
         'components.scss',
     ];
 }
 ```
 
-### TypeScript Compilation
+### Compilação de TypeScript
 
 ```php
 <?php
@@ -535,26 +536,26 @@ final class TypeScriptAsset extends AssetBundle
     public ?string $baseUrl = '@assetsUrl';
     
     public array $js = [
-        'main.ts', // Will be converted to main.js
+        'main.ts', // Será convertido em main.js
         'utils.ts',
     ];
 }
 ```
 
-## Practical Examples
+## Exemplos práticos
 
-### Complete Application Asset Structure
+### Estrutura completa de assets da aplicação
 
 ```
 assets/
 ├── css/
-│   ├── main.css           # Main application styles
-│   ├── admin.css          # Admin-specific styles
-│   └── mobile.css         # Mobile-specific styles
+│   ├── main.css           # Estilos principais da aplicação
+│   ├── admin.css          # Estilos da área admin
+│   └── mobile.css         # Estilos para mobile
 ├── js/
-│   ├── main.js            # Main application JavaScript
-│   ├── admin.js           # Admin functionality
-│   └── vendor/            # Third-party libraries
+│   ├── main.js            # JavaScript principal da aplicação
+│   ├── admin.js           # Funcionalidades da área admin
+│   └── vendor/            # Bibliotecas de terceiros
 │       ├── jquery.min.js
 │       └── bootstrap.min.js
 ├── images/
@@ -565,7 +566,7 @@ assets/
     └── main.woff
 ```
 
-### Complete Asset Bundle Setup
+### Configuração completa de asset bundles
 
 ```php
 <?php
@@ -576,7 +577,7 @@ namespace App\Asset;
 
 use Yiisoft\Assets\AssetBundle;
 
-// Base asset bundle
+// Asset bundle base
 final class AppAsset extends AssetBundle
 {
     public ?string $basePath = '@assets';
@@ -595,7 +596,7 @@ final class AppAsset extends AssetBundle
     ];
 }
 
-// Admin-specific bundle
+// Bundle específico da área admin
 final class AdminAsset extends AssetBundle
 {
     public ?string $basePath = '@assets';
@@ -615,7 +616,7 @@ final class AdminAsset extends AssetBundle
     ];
 }
 
-// Mobile-specific bundle  
+// Bundle específico para mobile  
 final class MobileAsset extends AssetBundle
 {
     public ?string $basePath = '@assets';
@@ -631,36 +632,41 @@ final class MobileAsset extends AssetBundle
 }
 ```
 
-## Best Practices
+## Boas práticas
 
-1. **Organize by functionality**: Group related assets into logical bundles
-2. **Manage dependencies**: Properly declare dependencies between bundles
-3. **Use meaningful names**: Name your asset bundles clearly
-4. **Environment optimization**: Use minified assets in production
-5. **CDN consideration**: Use CDN for popular libraries when appropriate
-6. **Version your assets**: Include version numbers in filenames for cache
-   busting
-7. **Minimize HTTP requests**: Combine related assets when possible
-8. **Optimize file sizes**: Compress and minify assets for production
+1. **Organize por funcionalidade**: agrupe assets relacionados em bundles
+   lógicos
+2. **Gerencie as dependências**: declare corretamente as dependências entre
+   bundles
+3. **Use nomes significativos**: dê nomes claros aos seus asset bundles
+4. **Otimize por ambiente**: use assets minificados em produção
+5. **Considere uma CDN**: use CDN para bibliotecas populares quando fizer
+   sentido
+6. **Versione seus assets**: inclua números de versão nos nomes dos arquivos
+   para invalidar o cache
+7. **Reduza as requisições HTTP**: combine assets relacionados quando
+   possível
+8. **Otimize o tamanho dos arquivos**: comprima e minifique os assets para
+   produção
 
-## Troubleshooting
+## Solução de problemas
 
-### Common Issues
+### Problemas comuns
 
-**Asset not found:**
-- Check that the asset file exists in the specified path
-- Verify `$basePath` and `$baseUrl` are configured correctly
-- Ensure assets are published if using `$sourcePath`
+**Asset não encontrado:**
+- Verifique se o arquivo de asset existe no caminho especificado
+- Confira se `$basePath` e `$baseUrl` estão configurados corretamente
+- Garanta que os assets foram publicados se você usa `$sourcePath`
 
-**Dependencies not loading:**
-- Verify the dependency bundles are properly registered
-- Check for circular dependencies
-- Ensure dependency bundles are correctly configured
+**Dependências não carregam:**
+- Confira se os bundles de dependência estão registrados corretamente
+- Verifique se há dependências circulares
+- Garanta que os bundles de dependência estão configurados corretamente
 
-**Assets not appearing in HTML:**
-- Make sure you're calling `$this->addCssFiles()` and `$this->addJsFiles()` in your layout
-- Verify that `$this->head()`, `$this->beginBody()`, and `$this->endBody()` are called in the layout
+**Assets não aparecem no HTML:**
+- Verifique se você chama `$this->addCssFiles()` e `$this->addJsFiles()` no seu layout
+- Confira se `$this->head()`, `$this->beginBody()` e `$this->endBody()` são chamados no layout
 
-**Permission issues:**
-- Check that the web server has write permissions to the assets directory
-- Verify the published assets directory is web-accessible
+**Problemas de permissão:**
+- Verifique se o servidor web tem permissão de escrita no diretório de assets
+- Confira se o diretório de assets publicados é acessível pela web

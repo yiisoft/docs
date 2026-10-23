@@ -1,52 +1,53 @@
 # Views
 
-View is responsible for presenting data to end users. You give it a template
-with some placeholders and presentation logic and some data. The view is
-passing data to the template executing template logic. The end result is
-ready to be passed to end user, be it a browser, a file to download, an
-email to send or something else.
+A view é responsável por apresentar os dados ao usuário final. Você entrega
+a ela um template com alguns placeholders e lógica de apresentação, além de
+alguns dados. A view passa os dados para o template e executa a lógica do
+template. O resultado final está pronto para ser entregue ao usuário final,
+seja um navegador, um arquivo para download, um e-mail a ser enviado ou
+outra coisa.
 
 ```mermaid
 flowchart LR
-  A[Data] --> V[View]
+  A[Dados] --> V[View]
   B[Template] --> V
   V --> C[HTML]
-  C --> D[Browser]
+  C --> D[Navegador]
 ```
 
-In Yii3 views are typically PHP files that contain presentation logic and
-HTML markup. The view system provides a flexible way to organize your
-presentation layer and supports features like layouts and partial
-views. Instead of using plain PHP templates, you can leverage one of the
-template engines such as [Twig](template-engines.md)  or
+No Yii3, as views normalmente são arquivos PHP com lógica de apresentação e
+marcação HTML. O sistema de views oferece uma forma flexível de organizar a
+camada de apresentação e suporta recursos como layouts e views parciais. Em
+vez de templates PHP puros, você pode usar uma das template engines, como
+[Twig](template-engines.md)  ou
 [Blade](https://github.com/lee-to/yii-blade).
 
-## Installation
+## Instalação
 
-For basic view functionality, you need the `yiisoft/view` package:
+Para a funcionalidade básica de views, você precisa do pacote
+`yiisoft/view`:
 
 ```sh
 composer require yiisoft/view
 ```
 
-For web applications, you should also install the
-`yiisoft/yii-view-renderer` package which provides
-[PSR-7](https://www.php-fig.org/psr/psr-7/) compatibility and web-specific
-features:
+Em aplicações web, instale também o pacote `yiisoft/yii-view-renderer`, que
+oferece compatibilidade com [PSR-7](https://www.php-fig.org/psr/psr-7/) e
+recursos específicos para a web:
 
 ```sh
 composer require yiisoft/yii-view-renderer
 ```
 
-These packages are included by default in the `yiisoft/app` application
-template.
+Esses pacotes já vêm incluídos por padrão no template de aplicação
+`yiisoft/app`.
 
-## Basic Concepts
+## Conceitos básicos
 
-A view template file contains presentation logic.  In the `yiisoft/app`
-template, view files are typically stored alongside their controllers (e.g.,
-`src/Web/Echo/Action.php`). Here's a simple view file example,
-`src/Web/Echo/template.php`:
+Um arquivo de template de view contém lógica de apresentação.  No template
+`yiisoft/app`, os arquivos de view normalmente ficam junto dos seus
+controllers (por exemplo, `src/Web/Echo/Action.php`). Este é um exemplo
+simples de arquivo de view, `src/Web/Echo/template.php`:
 
 ```php
 <?php
@@ -57,8 +58,8 @@ use Yiisoft\Html\Html;
 <p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-Here `$message` is a view data that is passed when you render a template
-with the help of `WebViewRenderer`. For example, `src/Web/Echo/Action.php`:
+Aqui, `$message` é um dado da view passado quando você renderiza um template
+com o `WebViewRenderer`. Por exemplo, `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -89,16 +90,17 @@ final readonly class Action
 }
 ```
 
-First argument of the `render()` method is a path to the template file. In
-the `yiisoft/app`, template files are typically stored alongside their
-actions. The result is ready to be rendered to the browser so we return it
-immediately.
+O primeiro argumento do método `render()` é o caminho do arquivo de
+template. No `yiisoft/app`, os arquivos de template normalmente ficam junto
+das suas actions. O resultado já está pronto para ser enviado ao navegador,
+então o devolvemos imediatamente.
 
-## Working with layouts
+## Trabalhando com layouts
 
-Most web applications use a common layout for all pages. In the
-`yiisoft/app` template, layouts are stored in `src/Web/Shared/Layout/Main/`
-directory. You can set a default layout in `config/common/params.php`:
+A maioria das aplicações web usa um layout comum para todas as páginas. No
+template `yiisoft/app`, os layouts ficam no diretório
+`src/Web/Shared/Layout/Main/`. Você pode definir um layout padrão em
+`config/common/params.php`:
 
 ```php
 return [
@@ -109,8 +111,8 @@ return [
 ];
 ```
 
-A typical layout file such as `src/Web/Shared/Layout/Main/layout.php` looks
-like this:
+Um arquivo de layout típico, como `src/Web/Shared/Layout/Main/layout.php`,
+tem esta cara:
 
 ```php
 <?php
@@ -173,30 +175,30 @@ $this->beginPage()
 <?php $this->endPage() ?>
 ```
 
-In the template above `$applicationParams` is an array of parameters from
+No template acima, `$applicationParams` é um array de parâmetros de
 `config/common/application.php`.
 
-`$aliases` refers to [aliases component](../concept/aliases.md) that is used
-to get the base URL of the application at the server for URLs.
+`$aliases` se refere ao [componente de aliases](../concept/aliases.md),
+usado para obter a URL base da aplicação no servidor para montar URLs.
 
-`$this` is an instance of the view that we use to get page title and output
-assets. Both standard and custom.
+`$this` é uma instância da view que usamos para obter o título da página e
+gerar a saída dos assets, tanto os padrão quanto os personalizados.
 
-With `$assetManager->register(MainAsset::class);` we register an asset that defines `css` to include to the page. It is
-automatically copied to `public/assets` on first use. It is not very useful for a single CSS file but becomes handy as
-the number of assets grows.
+Com `$assetManager->register(MainAsset::class);` registramos um asset que define o `css` a ser incluído na página. Ele é
+copiado automaticamente para `public/assets` no primeiro uso. Isso não ajuda muito com um único arquivo CSS, mas se torna útil
+conforme o número de assets cresce.
 
 > [!IMPORTANT]
-> No output in plain PHP templates is encoded you should not forget to use `Html::encode()` to prevent
-XSS security vulnerabilities.
+> Nenhuma saída em templates PHP puros é codificada, então não se esqueça de usar `Html::encode()` para evitar
+vulnerabilidades de segurança do tipo XSS.
 
-More about what's available in layout could be read in
-[yiisoft/view](https://github.com/yiisoft/view) documentation.
+Você encontra mais detalhes sobre o que está disponível no layout na
+documentação do [yiisoft/view](https://github.com/yiisoft/view).
 
-### Rendering without layout
+### Renderizando sem layout
 
-Sometimes you need to render a view without a layout (for example, for AJAX
-responses):
+Às vezes você precisa renderizar uma view sem layout (por exemplo, para
+respostas AJAX):
 
 ```php
 public function ajaxContent(): ResponseInterface
@@ -206,18 +208,18 @@ public function ajaxContent(): ResponseInterface
         ->render('ajax-content', ['data' => $data]);
 }
 
-// Or use the renderPartial method
+// Ou use o método renderPartial
 public function ajaxContent(): ResponseInterface
 {
     return $this->viewRenderer->renderPartial('ajax-content', ['data' => $data]);
 }
 ```
 
-## Nested Views and Partials
+## Views aninhadas e parciais
 
-### Rendering Sub-views
+### Renderizando sub-views
 
-You can render other views from within a view using the `$this->render()` method:
+Você pode renderizar outras views de dentro de uma view com o método `$this->render()`:
 
 ```php
 <?php
@@ -256,24 +258,25 @@ use Yiisoft\Html\Html;
 </article>
 ```
 
-### Using Blocks
+### Usando blocos
 
-Blocks allow you to define content in one view and display it in another,
-typically in layouts:
+Os blocos permitem definir conteúdo em uma view e exibi-lo em outra,
+normalmente nos layouts:
 
 ```php
-// In a view file
+// Em um arquivo de view
 <?php $this->setBlock('sidebar', $this->render('_sidebar', ['items' => $sidebarItems])) ?>
 
-// In the layout file
+// No arquivo de layout
 <?php if ($this->hasBlock('sidebar')): ?>
     <aside><?= $this->getBlock('sidebar') ?></aside>
 <?php endif ?>
 ```
 
-## Rendering as String
+## Renderizando como string
 
-If you need the rendered content as a string instead of a PSR-7 response:
+Se você precisa do conteúdo renderizado como string em vez de uma resposta
+PSR-7:
 
 ```php
 public function getEmailContent(): string
@@ -284,21 +287,21 @@ public function getEmailContent(): string
 }
 ```
 
-## View Events
+## Eventos de view
 
-The view system triggers events during the rendering process that you can
-listen to:
+O sistema de views dispara eventos durante a renderização, e você pode
+escutá-los:
 
 ```php
 use Yiisoft\View\Event\WebView\BeforeRender;
 use Yiisoft\View\Event\WebView\AfterRender;
 
-// Example event listener
+// Exemplo de listener de eventos
 final class ViewEventListener
 {
     public function onBeforeRender(BeforeRender $event): void
     {
-        // Add global CSS class based on view name
+        // Adiciona uma classe CSS global com base no nome da view
         if (str_contains($event->getFile(), 'admin/')) {
             $event->getView()->registerCssClass('admin-view');
         }
@@ -306,7 +309,7 @@ final class ViewEventListener
 
     public function onAfterRender(AfterRender $event): void
     {
-        // Log rendering time
+        // Registra no log o tempo de renderização
         $this->logger->info('View rendered', [
             'view' => $event->getFile(),
             'time' => $event->getRenderTime(),

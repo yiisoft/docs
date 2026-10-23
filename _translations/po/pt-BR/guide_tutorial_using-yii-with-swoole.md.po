@@ -8,54 +8,41 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-10-07 20:23+0000\n"
 "PO-Revision-Date: 2026-10-07 20:23+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/making-http-requests.md
-#: ../src/cookbook/sentry-integration.md
-#: ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md
-#: ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-rapira.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md
-#: ../src/guide/views/view.md ../src/guide/views/widget.md
+#: ../src/cookbook/making-http-requests.md ../src/cookbook/sentry-integration.md ../src/cookbook/third-party-integrations/symfony-messenger-integration-guide.md ../src/cookbook/third-party-integrations/symfony-scheduler-integration-guide.md ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-rapira.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md ../src/guide/views/asset.md ../src/guide/views/view.md ../src/guide/views/widget.md
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "Instalação"
 
 #. type: Title ##
-#: ../src/guide/runtime/sessions.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
+#: ../src/guide/runtime/sessions.md ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Sessions"
 msgstr "Sessões"
 
 #. type: Title ##
-#: ../src/guide/tutorial/using-yii-with-frankenphp.md
-#: ../src/guide/tutorial/using-yii-with-rapira.md
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-frankenphp.md ../src/guide/tutorial/using-yii-with-rapira.md ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Starting a server"
-msgstr ""
+msgstr "Iniciando o servidor"
 
 #. type: Plain text
-#: ../src/guide/tutorial/using-yii-with-roadrunner.md
-#: ../src/guide/tutorial/using-yii-with-swoole.md
+#: ../src/guide/tutorial/using-yii-with-roadrunner.md ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "To start a server, execute the following command:"
-msgstr ""
+msgstr "Para iniciar o servidor, execute o seguinte comando:"
 
 #. type: Title #
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Using Yii with Swoole"
-msgstr ""
+msgstr "Usando o Yii com Swoole"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
@@ -64,71 +51,73 @@ msgid ""
 "[Swoole](https://www.swoole.com/) is a PHP extension for event-driven, coroutine-based network applications. It\n"
 "includes an HTTP server, coroutine APIs, and runtime hooks for common blocking I/O functions.\n"
 msgstr ""
+"O [Swoole](https://www.swoole.com/) é uma extensão PHP para aplicações de rede orientadas a eventos e baseadas em corrotinas. Ela\n"
+"inclui um servidor HTTP, APIs de corrotinas e hooks de runtime para as funções de I/O bloqueantes mais comuns.\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Swoole allows Yii request handlers to run as workers. Each worker may handle multiple requests.  Such an operation mode is often called [event loop](using-with-event-loop.md) and allows not re-initializing a framework for each request that improves performance significantly."
-msgstr ""
+msgstr "O Swoole permite que os handlers de requisição do Yii rodem como workers. Cada worker pode atender várias requisições.  Esse modo de operação costuma ser chamado de [event loop](using-with-event-loop.md) e evita reinicializar o framework a cada requisição, o que melhora bastante o desempenho."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Swoole supports Linux, macOS, Cygwin, and WSL. Install the extension through PECL:"
-msgstr ""
+msgstr "O Swoole suporta Linux, macOS, Cygwin e WSL. Instale a extensão pelo PECL:"
 
 #. type: Fenced code block (bash)
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "pecl install swoole\n"
-msgstr ""
+msgstr "pecl install swoole\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "If PECL doesn't enable the extension automatically, add it to your `php.ini`:"
-msgstr ""
+msgstr "Se o PECL não habilitar a extensão automaticamente, adicione-a ao seu `php.ini`:"
 
 #. type: Fenced code block (ini)
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "extension=swoole.so\n"
-msgstr ""
+msgstr "extension=swoole.so\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Check that PHP loads the extension:"
-msgstr ""
+msgstr "Confira se o PHP carrega a extensão:"
 
 #. type: Fenced code block (bash)
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "php --ri swoole\n"
-msgstr ""
+msgstr "php --ri swoole\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "The Swoole project also provides a [Docker image](https://github.com/swoole/docker-swoole) and documents source builds with optional features such as OpenSSL, sockets, MySQL, PostgreSQL, and curl hooks."
-msgstr ""
+msgstr "O projeto Swoole também oferece uma [imagem Docker](https://github.com/swoole/docker-swoole) e documenta builds a partir do código-fonte com recursos opcionais, como hooks para OpenSSL, sockets, MySQL, PostgreSQL e curl."
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Putting up a server"
-msgstr ""
+msgstr "Subindo um servidor"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Swoole passes `Swoole\\Http\\Request` and `Swoole\\Http\\Response` objects to request callbacks. Yii handles PSR-7 requests and responses, so add a converter package:"
-msgstr ""
+msgstr "O Swoole passa objetos `Swoole\\Http\\Request` e `Swoole\\Http\\Response` para os callbacks de requisição. O Yii trabalha com requisições e respostas PSR-7, então adicione um pacote conversor:"
 
 #. type: Fenced code block (shell)
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "composer require ilexn/swoole-convert-psr7\n"
-msgstr ""
+msgstr "composer require ilexn/swoole-convert-psr7\n"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Create an entry script, `server.php`:"
-msgstr ""
+msgstr "Crie um script de entrada, `server.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/tutorial/using-yii-with-swoole.md
@@ -223,40 +212,128 @@ msgid ""
 "\n"
 "$server->start();\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Environment;\n"
+"use Ilex\\SwoolePsr7\\SwooleResponseConverter;\n"
+"use Ilex\\SwoolePsr7\\SwooleServerRequestConverter;\n"
+"use Psr\\Http\\Message\\ServerRequestFactoryInterface;\n"
+"use Psr\\Http\\Message\\StreamFactoryInterface;\n"
+"use Psr\\Http\\Message\\UploadedFileFactoryInterface;\n"
+"use Psr\\Http\\Message\\UriFactoryInterface;\n"
+"use Psr\\Log\\LogLevel;\n"
+"use Swoole\\Http\\Server;\n"
+"use Swoole\\HTTP\\Request;\n"
+"use Swoole\\HTTP\\Response;\n"
+"use Yiisoft\\Di\\StateResetter;\n"
+"use Yiisoft\\ErrorHandler\\ErrorHandler;\n"
+"use Yiisoft\\ErrorHandler\\Middleware\\ErrorCatcher;\n"
+"use Yiisoft\\ErrorHandler\\Renderer\\HtmlRenderer;\n"
+"use Yiisoft\\Log\\Logger;\n"
+"use Yiisoft\\Log\\StreamTarget;\n"
+"use Yiisoft\\Yii\\Http\\Application;\n"
+"use Yiisoft\\Yii\\Http\\Handler\\ThrowableHandler;\n"
+"use Yiisoft\\Yii\\Runner\\Http\\HttpApplicationRunner;\n"
+"\n"
+"ini_set('display_errors', 'stderr');\n"
+"\n"
+"require_once __DIR__ . '/src/bootstrap.php';\n"
+"\n"
+"$runner = new HttpApplicationRunner(\n"
+"    rootPath: __DIR__,\n"
+"    debug: Environment::appDebug(),\n"
+"    checkEvents: Environment::appDebug(),\n"
+"    environment: Environment::appEnv(),\n"
+"    temporaryErrorHandler: new ErrorHandler(\n"
+"        new Logger(\n"
+"            [\n"
+"                (new StreamTarget())->setLevels([\n"
+"                    LogLevel::EMERGENCY,\n"
+"                    LogLevel::ERROR,\n"
+"                    LogLevel::WARNING,\n"
+"                ]),\n"
+"            ],\n"
+"        ),\n"
+"        new HtmlRenderer(),\n"
+"    ),\n"
+");\n"
+"\n"
+"$container = $runner->getContainer();\n"
+"$application = $container->get(Application::class);\n"
+"$errorCatcher = $container->get(ErrorCatcher::class);\n"
+"\n"
+"$serverRequestFactory = new SwooleServerRequestConverter(\n"
+"    $container->get(ServerRequestFactoryInterface::class),\n"
+"    $container->get(UriFactoryInterface::class),\n"
+"    $container->get(UploadedFileFactoryInterface::class),\n"
+"    $container->get(StreamFactoryInterface::class)\n"
+");\n"
+"\n"
+"$server = new Server('0.0.0.0', 9501);\n"
+"\n"
+"$server->on('start', static function (Server $server) use ($application) {\n"
+"    $application->start();\n"
+"    echo \"Swoole http server is started at http://127.0.0.1:9501\\n\";\n"
+"});\n"
+"\n"
+"$server->on('request', static function (\n"
+"    Request  $request,\n"
+"    Response $response\n"
+") use ($serverRequestFactory, $application, $errorCatcher, $container) {\n"
+"    try {\n"
+"        $psr7Request = $serverRequestFactory->createFromSwoole($request);\n"
+"        $psr7Response = $application->handle($psr7Request);\n"
+"        (new SwooleResponseConverter($response))->send($psr7Response);\n"
+"    } catch (Throwable $throwable) {\n"
+"        $handler = new ThrowableHandler($throwable);\n"
+"        $psr7Response = $errorCatcher->process($request, $handler);\n"
+"        (new SwooleResponseConverter($response))->send($psr7Response);\n"
+"    }\n"
+"    $application->afterEmit($psr7Response);\n"
+"    $container->get(StateResetter::class)->reset();\n"
+"});\n"
+"\n"
+"$server->on('shutdown', static function (Server $server) use ($application) {\n"
+"    $application->shutdown();\n"
+"});\n"
+"\n"
+"$server->start();\n"
 
 #. type: Fenced code block
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "php server.php\n"
-msgstr ""
+msgstr "php server.php\n"
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "On scope"
-msgstr ""
+msgstr "Sobre o escopo"
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "A scope is shared, so at each iteration of the event loop every service that depends on state should be reset."
-msgstr ""
+msgstr "O escopo é compartilhado, então a cada iteração do event loop todo serviço que depende de estado deve ser redefinido."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "Avoid native PHP sessions, including `Yiisoft\\Session\\Session`, when Swoole coroutines handle overlapping requests within one worker: they share session state and can expose one user's data to another request."
-msgstr ""
+msgstr "Evite as sessões nativas do PHP, incluindo `Yiisoft\\Session\\Session`, quando corrotinas do Swoole atendem requisições simultâneas dentro de um mesmo worker: elas compartilham o estado da sessão e podem expor os dados de um usuário a outra requisição."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "For requests handled one at a time, close the session and reset services between requests. `yiisoft/session` prevents stale session ID reuse, but does not isolate overlapping coroutines."
-msgstr ""
+msgstr "Para requisições atendidas uma por vez, feche a sessão e redefina os serviços entre as requisições. O `yiisoft/session` impede o reuso de IDs de sessão antigos, mas não isola corrotinas simultâneas."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "For authentication, consider tokens such as [JWT](https://jwt.io/introduction) instead of native sessions, especially for APIs. If you need session features, use an implementation that isolates each coroutine's session data; changing the native storage handler to Redis is not enough."
-msgstr ""
+msgstr "Para autenticação, considere tokens como [JWT](https://jwt.io/introduction) em vez de sessões nativas, principalmente em APIs. Se você precisa de recursos de sessão, use uma implementação que isole os dados de sessão de cada corrotina; trocar o handler de armazenamento nativo para Redis não basta."
 
 #. type: Plain text
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 msgid "See the [Swoole guidance](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796) and [Yii session discussion](https://github.com/yiisoft/session/issues/25)."
-msgstr ""
+msgstr "Veja as [orientações do Swoole](https://github.com/swoole/swoole-src/issues/4478#issuecomment-962840796) e a [discussão sobre sessões no Yii](https://github.com/yiisoft/session/issues/25)."
