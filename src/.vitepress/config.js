@@ -198,6 +198,10 @@ export default {
                         {
                             text: 'Glossary',
                             link: '/guide/glossary'
+                        },
+                        {
+                            text: 'Brazilian Portuguese Guide (Community)',
+                            link: 'https://yurineves92.github.io/guia-yii3/'
                         }
                     ],
                     '/cookbook/': [
