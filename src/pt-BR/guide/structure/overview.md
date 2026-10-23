@@ -1,65 +1,65 @@
-# Overview
+# Visão geral
 
-Yii applications code is typically grouped into modules by context. In each
-module there could be grouping by type.
+O código de aplicações Yii normalmente é agrupado em módulos por
+contexto. Dentro de cada módulo, pode haver um agrupamento por tipo.
 
-For example, if the application is an online store, the context could be:
+Por exemplo, se a aplicação for uma loja online, os contextos poderiam ser:
 
-- Customer
-  - Profile
-  - Products list
+- Cliente
+  - Perfil
+  - Lista de produtos
   - Checkout
-- Logistics
-- Delivery
-  - Addresses
+- Logística
+- Entrega
+  - Endereços
 - Helpdesk
-  - Support
-  - Claims
-  - Returns
-- Accounting
-  - Returns
-  - Transactions
-  - Taxes
+  - Suporte
+  - Reclamações
+  - Devoluções
+- Contabilidade
+  - Devoluções
+  - Transações
+  - Impostos
 
-For a "Customer" context, residing under `App\Customer` namespace, structure
-would be:
+Para um contexto "Customer", localizado no namespace `App\Customer`, a
+estrutura seria:
 
 ```
 App/
-  Customer/                          <-- module namespace
+  Customer/                          <-- namespace do módulo
     Entity/
-      Customer.php                   <-- entity shared by "Profile" and "Checkout"
+      Customer.php                   <-- entidade compartilhada por "Profile" e "Checkout"
     Profile/
       Widget/
         Gravatar.php
-      ProfileRepository.php          <-- repository is usually specific to context
-      ProfileController.php          <-- "Customer\Profile" entry point
-    ProductList/                     <-- module namespace 
-      Entity/                        <-- entities specific to "Customer\ProductList"
+      ProfileRepository.php          <-- o repositório geralmente é específico do contexto
+      ProfileController.php          <-- ponto de entrada de "Customer\Profile"
+    ProductList/                     <-- namespace do módulo 
+      Entity/                        <-- entidades específicas de "Customer\ProductList"
         Category.php
         Product.php
-      ProductsListController.php     <-- "Customer\ProductList" entry point
-    Checkout/                        <-- module namespace
+      ProductsListController.php     <-- ponto de entrada de "Customer\ProductList"
+    Checkout/                        <-- namespace do módulo
       CheckoutController.php
 ```
 
-A context may include sub-contexts. If a class is shared by multiple
-contexts, it's moved to the ancestor of both contexts.
+Um contexto pode incluir subcontextos. Se uma classe é compartilhada por
+vários contextos, ela é movida para o ancestral comum desses contextos.
 
-A context may have [an entry point known as "action" or
-"controller"](action.md). Its job is to take [a request
-instance](../runtime/request.md), pass it to [domain layer](domain.md) in a
-suitable format, and create [a response](../runtime/response.md) based on
-domain layer return.
+Um contexto pode ter [um ponto de entrada conhecido como "action" ou
+"controller"](action.md). A função dele é receber [uma instância de
+requisição](../runtime/request.md), passá-la para a [camada de
+domínio](domain.md) em um formato adequado e criar [uma
+resposta](../runtime/response.md) com base no retorno da camada de domínio.
 
-Besides, Yii applications also have the following:
+Além disso, aplicações Yii também têm o seguinte:
 
-* [entry scripts](entry-script.md): they're PHP scripts that are directly
-  accessible by end users.  They're responsible for starting a request
-  handling cycle. Typically, a single entry script is handling the whole
-  application.
-* [services](service.md): they're typically stateless objects registered
-  within dependency container and provide various action methods.
-* [middleware](middleware.md): they represent a code that needs to be
-  invoked before and after the actual handling of each request by action
-  handlers.
+* [scripts de entrada](entry-script.md): são scripts PHP acessíveis
+  diretamente pelos usuários finais.  Eles são responsáveis por iniciar um
+  ciclo de tratamento de requisição. Normalmente, um único script de entrada
+  atende a aplicação inteira.
+* [serviços](service.md): normalmente são objetos sem estado registrados no
+  container de dependências que fornecem diversos métodos de ação.
+* [middleware](middleware.md): representam código que precisa ser executado
+  antes e depois do tratamento efetivo de cada requisição pelos handlers de
+  action.

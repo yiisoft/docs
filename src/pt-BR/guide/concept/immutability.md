@@ -1,31 +1,31 @@
-# Immutability
+# Imutabilidade
 
-Immutability means an object's state cannot change after it has been
-created.  Instead of modifying an instance, you create a new instance with
-the desired changes.  This approach is common for value objects such as
-Money, IDs, and DTOs. It helps to avoid accidental side effects: methods
-cannot silently change shared state, which makes code easier to reason
-about.
+Imutabilidade significa que o estado de um objeto não pode mudar depois que
+ele é criado.  Em vez de modificar uma instância, você cria uma nova
+instância com as mudanças desejadas.  Essa abordagem é comum em value
+objects como Money, IDs e DTOs. Ela ajuda a evitar efeitos colaterais
+acidentais: os métodos não conseguem alterar silenciosamente um estado
+compartilhado, o que torna o código mais fácil de entender.
 
-## Mutable pitfalls (what we avoid)
+## Armadilhas da mutabilidade (o que evitamos)
 
 ```php
-// A shared base query built once and reused:
+// Uma query base compartilhada, montada uma vez e reutilizada:
 $base = Post::find()->where(['status' => Post::STATUS_PUBLISHED]);
 
-// Somewhere deep in the code we only need one post:
-$one = $base->limit(1)->one(); // mutates the underlying builder (sticky limit!)
+// Em algum lugar profundo do código, precisamos de um só post:
+$one = $base->limit(1)->one(); // altera o builder subjacente (o limit fica grudado!)
 
-// Later we reuse the same $base expecting a full list:
+// Depois reutilizamos o mesmo $base esperando a lista completa:
 $list = $base->orderBy(['created_at' => SORT_DESC])->all();
-// Oops: still limited to 1 because the previous limit(1) modified $base.
+// Ops: continua limitado a 1, porque o limit(1) anterior modificou $base.
 ```
 
-## Creating an immutable object in PHP
+## Criando um objeto imutável em PHP
 
-There is no direct way to modify an instance, but you can use clone to
-create a new instance with the desired changes.  That is what `with*`
-methods do.
+Não há como modificar uma instância diretamente, mas você pode usar clone
+para criar uma nova instância com as mudanças desejadas.  É isso que os
+métodos `with*` fazem.
 
 ```php
 final class Money
@@ -99,27 +99,27 @@ final class Money
 
 $price = new Money(1000, 'USD');
 $discounted = $price->withAmount(800);
-// $price is still 1000 USD, $discounted is 800 USD
+// $price continua 1000 USD, $discounted é 800 USD
 ```
 
-- We mark the class `final` to prevent subclass mutations; alternatively,
-  design for extension carefully.
-- Validate in the constructor and `with*` methods so every instance is
-  always valid.
+- Marcamos a classe como `final` para impedir mutações por subclasses; como
+  alternativa, projete a extensão com cuidado.
+- Valide no construtor e nos métodos `with*`, para que toda instância seja
+  sempre válida.
 
 > [!TIP]
-> If you define a simple DTO, you can use modern PHP `readonly` and leave properties `public`. The `readonly` keyword
-> would ensure that the properties cannot be modified after the object is created.
+> Se você define um DTO simples, pode usar o `readonly` do PHP moderno e deixar as propriedades `public`. A palavra-chave `readonly`
+> garante que as propriedades não possam ser modificadas depois que o objeto é criado.
 
-## Using clone (and why it is inexpensive)
+## Usando clone (e por que é barato)
 
-PHP's clone performs a shallow copy of the object. For immutable value
-objects that contain only scalars or other immutable objects, shallow
-cloning is enough and fast. In modern PHP, cloning small value objects is
-inexpensive in both time and memory.
+O clone do PHP faz uma cópia rasa do objeto. Para value objects imutáveis
+que contêm apenas escalares ou outros objetos imutáveis, a clonagem rasa é
+suficiente e rápida. No PHP moderno, clonar value objects pequenos é barato
+em tempo e em memória.
 
-If your object holds mutable sub-objects that must also be copied, implement
-`__clone` to deep-clone them:
+Se o seu objeto guarda subobjetos mutáveis que também precisam ser copiados,
+implemente `__clone` para fazer a clonagem profunda deles:
 
 ```php
 final class Order
@@ -135,8 +135,8 @@ final class Order
 
     public function __clone(): void
     {
-        // Money is immutable in our example, so a deep clone is not required.
-        // If it were mutable, you could do: $this->total = clone $this->total;
+        // Money é imutável no nosso exemplo, então a clonagem profunda não é necessária.
+        // Se fosse mutável, você poderia fazer: $this->total = clone $this->total;
     }
 
     public function withTotal(Money $total): self
@@ -148,13 +148,14 @@ final class Order
 }
 ```
 
-## Usage style
+## Estilo de uso
 
-- Build a value object once and pass it around. If you need a change, use a
-  `with*` method that returns a new instance.
-- Prefer scalar/immutable fields inside immutable objects; if a field can
-  mutate, isolate it and deep-clone in `__clone` when needed.
+- Crie um value object uma vez e passe-o adiante. Se precisar de uma
+  mudança, use um método `with*` que retorna uma nova instância.
+- Prefira campos escalares/imutáveis dentro de objetos imutáveis; se um
+  campo puder mudar, isole-o e faça a clonagem profunda em `__clone` quando
+  necessário.
 
-Immutability aligns well with Yii's preference for predictable,
-side-effect-free code and makes services, caching, and configuration more
-robust.
+A imutabilidade combina bem com a preferência do Yii por código previsível e
+sem efeitos colaterais, e torna serviços, cache e configuração mais
+robustos.

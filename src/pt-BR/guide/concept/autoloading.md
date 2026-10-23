@@ -1,15 +1,16 @@
-# Class autoloading
+# Autoload de classes
 
-Since Yii uses [Composer](https://getcomposer.org) to manage packages, it
-automatically loads classes from these packages without the need to
-`require` their file explicitly.  When it installs packages, it generates a
-[PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use
-it, `require_once` autoloader `/vendor/autoload.php` in your `index.php`
-entry point file.
+Como o Yii usa o [Composer](https://getcomposer.org) para gerenciar pacotes,
+ele carrega automaticamente as classes desses pacotes sem a necessidade de
+fazer `require` dos arquivos explicitamente.  Ao instalar pacotes, o
+Composer gera um [autoloader compatível com
+PSR-4](https://www.php-fig.org/psr/psr-4/).  Para usá-lo, faça
+`require_once` do autoloader `/vendor/autoload.php` no seu arquivo de ponto
+de entrada `index.php`.
 
-You can use autoloader not only for the packages installed, but for your
-application as well since it's also a package.  To load classes of a certain
-namespace, add the following to `composer.json`:
+Você pode usar o autoloader não só para os pacotes instalados, mas também
+para a sua aplicação, já que ela também é um pacote.  Para carregar classes
+de um determinado namespace, adicione o seguinte ao `composer.json`:
 
 ```json
 {
@@ -21,17 +22,18 @@ namespace, add the following to `composer.json`:
 }
 ```
 
-Where `App\\` is a root namespace and `src/` is a directory where you have
-your classes. You can add more source roots if needed. When done, execute
-`composer dump-autoload` or simply `composer du` and classes from the
-corresponding namespaces will start loading automatically.
+Onde `App\\` é o namespace raiz e `src/` é a pasta onde ficam suas
+classes. Você pode adicionar mais raízes de código-fonte se
+precisar. Depois, execute `composer dump-autoload` ou simplesmente `composer
+du`, e as classes dos namespaces correspondentes passarão a ser carregadas
+automaticamente.
 
-If you need development-environment-specific autoloading that isn't used
-when executing Composer with `--no-dev` flag, add it to `autoload-dev`
-section instead of `autoload`.
+Se você precisar de autoload específico do ambiente de desenvolvimento, que
+não seja usado ao executar o Composer com a flag `--no-dev`, adicione-o à
+seção `autoload-dev` em vez de `autoload`.
 
-## References
+## Referências
 
 - [PSR-4: Autoloader](https://www.php-fig.org/psr/psr-4/).
-- [Composer guide on
-  autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading).
+- [Guia do Composer sobre
+  autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading).

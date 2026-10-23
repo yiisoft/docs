@@ -1,32 +1,33 @@
-# Entry scripts
+# Scripts de entrada
 
-Entry scripts are the first step in the application bootstrapping
-process. An application (either Web application or console application) has
-a single entry script. End users make requests to entry scripts which
-instantiate application instances and forward the requests to them.
+Os scripts de entrada são o primeiro passo no processo de inicialização da
+aplicação. Uma aplicação (seja web ou de console) tem um único script de
+entrada. Os usuários finais fazem requisições aos scripts de entrada, que
+instanciam a aplicação e encaminham as requisições para ela.
 
-Entry scripts for Web applications must be stored under Web-accessible
-directories so that they can be accessed by end users. They're often named
-as `index.php`, but can also use any other names, provided Web servers can
-locate them.
+Os scripts de entrada de aplicações web devem ficar em pastas acessíveis
+pela web, para que os usuários finais possam acessá-los. Eles costumam se
+chamar `index.php`, mas podem ter qualquer outro nome, desde que os
+servidores web consigam localizá-los.
 
-Entry script for console application is `./yii`.
+O script de entrada da aplicação de console é `./yii`.
 
-Entry scripts mainly perform the following work with the help of
+Os scripts de entrada fazem principalmente o seguinte, com a ajuda do
 `ApplicationRunner`:
 
-* Register [Composer
-  autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading);
-* Obtain configuration;
-* Use configuration to initialize a dependency injection container;
-* Get an instance of the request.
-* Pass it to `Application` to handle and get a response from it.
-* With the help of an emitter that transforms a response object into an
-  actual HTTP response that's sent to the client browser.
+* Registram o [autoloader do
+  Composer](https://getcomposer.org/doc/01-basic-usage.md#autoloading);
+* Obtêm a configuração;
+* Usam a configuração para inicializar um container de injeção de
+  dependência;
+* Obtêm uma instância da requisição.
+* Passam-na para a `Application` tratar e obtêm dela uma resposta.
+* Com a ajuda de um emitter, transformam o objeto de resposta em uma
+  resposta HTTP real, que é enviada ao navegador do cliente.
 
-## Web Applications
+## Aplicações web
 
-The following is the code in the entry script for the application template:
+Este é o código do script de entrada do template de aplicação:
 
 ```php
 <?php
@@ -35,31 +36,31 @@ declare(strict_types=1);
 
 use App\ApplicationRunner;
 
-// PHP built-in server routing.
+// Roteamento do servidor embutido do PHP.
 if (PHP_SAPI === 'cli-server') {
-    // Serve static files as is.
+    // Serve arquivos estáticos como estão.
     if (is_file(__DIR__ . $_SERVER['REQUEST_URI'])) {
         return false;
     }
 
-    // Explicitly set for URLs with dot.
+    // Definido explicitamente para URLs com ponto.
     $_SERVER['SCRIPT_NAME'] = '/index.php';
 }
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $runner = new ApplicationRunner();
-// Development mode:
+// Modo de desenvolvimento:
 $runner->debug();
-// Run application:
+// Executa a aplicação:
 $runner->run();
 ```
 
 
-## Console Applications
+## Aplicações de console
 
-Similarly, the following is the code for the entry script of a console
-application:
+Da mesma forma, este é o código do script de entrada de uma aplicação de
+console:
 
 ```php
 #!/usr/bin/env php
@@ -105,12 +106,12 @@ try {
 }
 ```
 
-## Alternative runtimes
+## Runtimes alternativos
 
-For alternative runtimes such as FrankenPHP, Rapira, RoadRunner, or Swoole,
-special entry scripts should be used. See:
+Para runtimes alternativos como FrankenPHP, Rapira, RoadRunner ou Swoole,
+devem ser usados scripts de entrada especiais. Veja:
 
-- [Using Yii with FrankenPHP](../tutorial/using-yii-with-frankenphp.md)
-- [Using Yii with Rapira](../tutorial/using-yii-with-rapira.md)
-- [Using Yii with RoadRunner](../tutorial/using-yii-with-roadrunner.md)
-- [Using Yii with Swoole](../tutorial/using-yii-with-swoole.md)
+- [Usando o Yii com FrankenPHP](../tutorial/using-yii-with-frankenphp.md)
+- [Usando o Yii com Rapira](../tutorial/using-yii-with-rapira.md)
+- [Usando o Yii com RoadRunner](../tutorial/using-yii-with-roadrunner.md)
+- [Usando o Yii com Swoole](../tutorial/using-yii-with-swoole.md)

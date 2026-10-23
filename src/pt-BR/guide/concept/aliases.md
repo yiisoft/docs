@@ -1,18 +1,17 @@
 # Aliases
 
-You can use aliases to represent file paths or URLs so that you don't have
-to hard-code absolute paths or URLs in your project. An alias must start
-with the `@` character to be differentiated from normal file paths and
-URLs. Alias defined without leading `@` will be prefixed with `@` character.
+Você pode usar aliases para representar caminhos de arquivos ou URLs,
+evitando escrever caminhos absolutos ou URLs fixos no seu projeto. Um alias
+deve começar com o caractere `@` para se diferenciar de caminhos de arquivos
+e URLs normais. Um alias definido sem o `@` inicial receberá o prefixo `@`.
 
-Default Yii application has some aliases pre-defined in
-`config/params.php`. For example, the alias `@public` represents the web
-root path; `@baseUrl` represents the base URL for the currently running Web
-application.
+A aplicação Yii padrão tem alguns aliases predefinidos em
+`config/params.php`. Por exemplo, o alias `@public` representa o caminho da
+raiz web; `@baseUrl` representa a URL base da aplicação web em execução.
 
-## Defining aliases
+## Definindo aliases
 
-You can define an alias via application's `config/params.php`:
+Você pode definir um alias no `config/params.php` da aplicação:
 
 ```php
 return [
@@ -22,13 +21,13 @@ return [
         'aliases' => [
             // ...
         
-            // an alias of a file path
+            // um alias de um caminho de arquivo
             '@foo' => '/path/to/foo',
         
-            // an alias of a URL
+            // um alias de uma URL
             '@bar' => 'https://www.example.com',
         
-            // an alias of a concrete file that contains a \foo\Bar class 
+            // um alias de um arquivo concreto que contém a classe \foo\Bar 
             '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
         ],
     ],
@@ -36,21 +35,21 @@ return [
 ```
 
 > [!NOTE]
-> The file path or URL being aliased may *not* necessarily refer to an existing file or resource.
+> O caminho de arquivo ou URL representado pelo alias *não* precisa necessariamente se referir a um arquivo ou recurso existente.
 
-Given a defined alias, you may derive a new alias by appending a slash `/`
-followed with one or more path segments.  For example, `@foo` is a root
-alias, while `@foo/bar/file.php` is a derived alias.
+A partir de um alias definido, você pode derivar um novo alias acrescentando
+uma barra `/` seguida de um ou mais segmentos de caminho.  Por exemplo,
+`@foo` é um alias raiz, enquanto `@foo/bar/file.php` é um alias derivado.
 
-You can define an alias using another alias (either root or derived):
+Você pode definir um alias usando outro alias (raiz ou derivado):
 
 ```php
 '@foobar' => '@foo/bar', 
 ```
 
-The `yiisoft/aliases` parameter initializes `Aliases` service from
-[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
-set extra aliases in runtime by using the service:
+O parâmetro `yiisoft/aliases` inicializa o serviço `Aliases` do pacote
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases).  Você pode definir
+aliases extras em tempo de execução usando o serviço:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -61,10 +60,10 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration
+## Usando aliases na configuração
 
-It's preferred to resolve aliases at the configuration level, so services
-get URLs and paths as ready to use strings:
+É preferível resolver os aliases no nível da configuração, para que os
+serviços recebam URLs e caminhos como strings prontas para uso:
 
 ```php
 <?php
@@ -83,10 +82,10 @@ return [
 ];
 ```
 
-## Resolving aliases
+## Resolvendo aliases
 
-You can use `Aliases` service to resolve an alias or derived alias into the
-file path or URL it represents:
+Você pode usar o serviço `Aliases` para resolver um alias ou alias derivado
+no caminho de arquivo ou URL que ele representa:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -99,16 +98,17 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-The path/URL represented by a derived alias is determined by replacing the
-root alias part with its corresponding path/URL in the derived alias.
+O caminho/URL representado por um alias derivado é determinado substituindo
+a parte do alias raiz pelo caminho/URL correspondente.
 
 > [!NOTE]
-> The `get()` method doesn't check whether the resulting path/URL refers to an existing file or resource.
+> O método `get()` não verifica se o caminho/URL resultante se refere a um arquivo ou recurso existente.
 
 
-A root alias may also contain slash `/` characters. The `get()` method is
-intelligent enough to tell, which part of an alias is a root alias and thus
-correctly determines the corresponding file path or URL:
+Um alias raiz também pode conter caracteres de barra `/`. O método `get()` é
+inteligente o suficiente para identificar qual parte de um alias é o alias
+raiz e, assim, determina corretamente o caminho de arquivo ou URL
+correspondente:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -123,27 +123,26 @@ public function actionIndex(Aliases $aliases)
 } 
 ```
 
-If `@foo/bar` isn't defined as a root alias, the last statement would
-display `/path/to/foo/bar/file.php`.
+Se `@foo/bar` não estiver definido como alias raiz, a última instrução
+exibiria `/path/to/foo/bar/file.php`.
 
 
-## Predefined aliases
+## Aliases predefinidos
 
-[Yii application](https://github.com/yiisoft/app) predefines a set of
-aliases to reference commonly used file paths and URLs:
+A [aplicação Yii](https://github.com/yiisoft/app) predefine um conjunto de
+aliases para referenciar caminhos de arquivos e URLs de uso comum:
 
-- `@root` - the base directory of the currently running application.
-- `@assets` - application's public directory where it publishes assets.
-- `@assetsUrl` - URL of base directory with published assets.
-- `@baseUrl` - the base URL of the currently running Web
-  application. Defaults to `/`.
-- `@npm` - node packages directory.
-- `@bower` - bower packages directory.
-- `@vendor` - Composer's `vendor` directory.
-- `@public` - application's publicly accessible directory that with
+- `@root` - a pasta base da aplicação em execução.
+- `@assets` - pasta pública da aplicação onde ela publica os assets.
+- `@assetsUrl` - URL da pasta base com os assets publicados.
+- `@baseUrl` - a URL base da aplicação web em execução. O padrão é `/`.
+- `@npm` - pasta de pacotes node.
+- `@bower` - pasta de pacotes bower.
+- `@vendor` - a pasta `vendor` do Composer.
+- `@public` - pasta publicamente acessível da aplicação, que contém o
   `index.php`.
-- `@runtime` - the runtime path of the currently running
-  application. Defaults to `@root/runtime`.
-- `@layout` - the directory with layouts.
-- `@resources` - directory with views, asset sources and other resources.
-- `@views` - application view templates base directory.
+- `@runtime` - o caminho de runtime da aplicação em execução. O padrão é
+  `@root/runtime`.
+- `@layout` - a pasta com os layouts.
+- `@resources` - pasta com views, fontes de assets e outros recursos.
+- `@views` - pasta base dos templates de view da aplicação.

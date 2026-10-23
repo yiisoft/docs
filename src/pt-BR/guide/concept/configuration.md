@@ -1,20 +1,21 @@
-# Configuration
+# Configuração
 
-There are many ways to configure your application. We will focus on concepts
-used in the [default project template](https://github.com/yiisoft/app).
+Há muitas formas de configurar a sua aplicação. Aqui o foco são os conceitos
+usados no [template de projeto padrão](https://github.com/yiisoft/app).
 
-Yii3 configs are part of the application. You can change many aspects of how
-the application works by editing configuration under `config/` directory.
+As configurações do Yii3 fazem parte da aplicação. Você pode mudar muitos
+aspectos do funcionamento da aplicação editando a configuração na pasta
+`config/`.
 
-## Config plugin
+## Plugin de configuração
 
-The application template uses
-[yiisoft/config](https://github.com/yiisoft/config) as a composer plugin to
-assemble configs.
+O template de aplicação usa o
+[yiisoft/config](https://github.com/yiisoft/config) como plugin do Composer
+para montar as configurações.
 
-Packages provide default configurations through defined [config
-groups](https://github.com/yiisoft/config#config-groups)  in the
-`config-plugin` key in the `extra` section of the `composer.json`:
+Os pacotes fornecem configurações padrão por meio de [grupos de
+configuração](https://github.com/yiisoft/config#config-groups)  definidos na
+chave `config-plugin` da seção `extra` do `composer.json`:
 
 ```json
 "extra": {
@@ -28,25 +29,26 @@ groups](https://github.com/yiisoft/config#config-groups)  in the
 }
 ```
 
-After Composer updates autoload files, such as during `dump-autoload`,
-`install`, `require`, `update`, or `remove`, the plugin scans installed
-packages for configurations and writes a merge plan to
-`config/.merge-plan.php`.  The merge plan declares the order of merging
-found configurations into the final configuration to be passed to [DI
-container](di-container.md).
+Depois que o Composer atualiza os arquivos de autoload, como durante
+`dump-autoload`, `install`, `require`, `update` ou `remove`, o plugin
+procura configurações nos pacotes instalados e grava um merge plan em
+`config/.merge-plan.php`.  O merge plan declara a ordem em que as
+configurações encontradas são mescladas na configuração final, que é passada
+ao [container de DI](di-container.md).
 
-At runtime, `Yiisoft\Config\Config` loads the defined config groups
-according to that merge plan.  Configs are read in three layers:
+Em tempo de execução, `Yiisoft\Config\Config` carrega os grupos de
+configuração definidos de acordo com esse merge plan.  As configurações são
+lidas em três camadas:
 
-1. Vendor package configs with default values.
-2. Root package configs from the application `config/` directory.
-3. Environment-specific configs from the application.
+1. Configurações dos pacotes em vendor, com os valores padrão.
+2. Configurações do pacote raiz, da pasta `config/` da aplicação.
+3. Configurações da aplicação específicas de cada ambiente.
 
 > [!WARNING]
-> Config keys with the same name are not allowed within a single layer.
+> Chaves de configuração com o mesmo nome não são permitidas dentro de uma mesma camada.
 
-The application template stores configurations in a PHP file instead of
-inline JSON:
+O template de aplicação guarda as configurações em um arquivo PHP em vez de
+JSON inline:
 
 ```json
 "extra": {
@@ -54,8 +56,8 @@ inline JSON:
 }
 ```
 
-That file returns the same keys you could otherwise define in
-`composer.json`: `config-plugin`, `config-plugin-options`, and
+Esse arquivo retorna as mesmas chaves que você poderia definir no
+`composer.json`: `config-plugin`, `config-plugin-options` e
 `config-plugin-environments`.
 
 ```php
@@ -115,26 +117,26 @@ return [
 ];
 ```
 
-Config group names are mapping keys. Their values are file paths relative to
-the `source-directory` option, which defaults to the directory containing
-`composer.json`.
+Os nomes dos grupos de configuração são as chaves do mapeamento. Os valores
+são caminhos de arquivos relativos à opção `source-directory`, cujo padrão é
+a pasta que contém o `composer.json`.
 
-- A string value loads one file.
-- An array loads and merges multiple files in the given order.
-- `?` marks an optional file.
-- `*` marks a wildcard path.
-- `$group` references another config group to be merged.
+- Um valor string carrega um arquivo.
+- Um array carrega e mescla vários arquivos na ordem indicada.
+- `?` marca um arquivo opcional.
+- `*` marca um caminho com curinga.
+- `$group` referencia outro grupo de configuração a ser mesclado.
 
-The `params` group is special: its values are available as `$params` in
-other config files by default.
+O grupo `params` é especial: por padrão, os valores dele ficam disponíveis
+como `$params` nos outros arquivos de configuração.
 
-You can read more in the [yiisoft/config
-documentation](https://github.com/yiisoft/config/blob/master/README.md).
+Leia mais na [documentação do
+yiisoft/config](https://github.com/yiisoft/config/blob/master/README.md).
 
-## Config files
+## Arquivos de configuração
 
-Now, as you know how the plugin assembles configs, look at the `config/`
-directory structure used by the default application template:
+Agora que você sabe como o plugin monta as configurações, veja a estrutura
+da pasta `config/` usada pelo template de aplicação padrão:
 
 ```
 common/
@@ -160,30 +162,31 @@ web/
 configuration.php
 ```
 
-This structure follows the groups defined in `config/configuration.php`:
+Essa estrutura segue os grupos definidos em `config/configuration.php`:
 
-- `params`, `params-web`, and `params-console` load parameter files from
-  `common/`, `web/`, and `console/`.
-- `di` and `di-web` load container definitions from `common/di/` and
+- `params`, `params-web` e `params-console` carregam arquivos de parâmetros
+  de `common/`, `web/` e `console/`.
+- `di` e `di-web` carregam definições do container de `common/di/` e
   `web/di/`.
-- `routes` and `bootstrap` load `common/routes.php` and
+- `routes` e `bootstrap` carregam `common/routes.php` e
   `common/bootstrap.php`.
-- `config-plugin-environments` adds environment-specific parameter files
-  from `environments/dev/`, `environments/test/`, and `environments/prod/`.
+- `config-plugin-environments` acrescenta arquivos de parâmetros específicos
+  de cada ambiente de `environments/dev/`, `environments/test/` e
+  `environments/prod/`.
 
-At runtime, `.merge-plan.php` stores the assembled merge plan generated from
-`configuration.php`.
+Em tempo de execução, `.merge-plan.php` guarda o merge plan montado a partir
+de `configuration.php`.
 
-### Container configuration
+### Configuração do container
 
-The application consists of services registered in a [dependency
-container](di-container.md). In the default template, direct container
-definitions live in `config/common/di/*.php` and `config/web/di/*.php`.
+A aplicação é formada por serviços registrados em um [container de
+dependências](di-container.md). No template padrão, as definições diretas do
+container ficam em `config/common/di/*.php` e `config/web/di/*.php`.
 
-Definitions from `common/di/` are shared by web and console entry
-points. The `di-web` group adds web-specific definitions from `web/di/`. The
-`di-console` group currently reuses the shared `di` definitions without
-extra files.
+As definições de `common/di/` são compartilhadas pelos pontos de entrada web
+e de console. O grupo `di-web` acrescenta definições específicas da web, de
+`web/di/`. Atualmente, o grupo `di-console` reaproveita as definições
+compartilhadas de `di`, sem arquivos extras.
 
 ```php
 <?php
@@ -205,46 +208,49 @@ return [
 ];
 ```
 
-Config plugin passes the special `$params` variable to all config files. The
-definition uses it to configure services.
+O plugin de configuração passa a variável especial `$params` para todos os
+arquivos de configuração. A definição a usa para configurar os serviços.
 
-The guide on ["Dependency injection and container"](di-container.md)
-describes the configuration format and the idea of dependency injection in
-detail.
+O guia ["Injeção de dependência e container"](di-container.md) descreve em
+detalhes o formato da configuração e a ideia de injeção de dependência.
 
-For convenience, there is a naming convention for custom string keys:
+Por conveniência, existe uma convenção de nomes para chaves string
+personalizadas:
 
-1. Prefix package name such as `yiisoft/cache-file/custom-definition`.
-2. In case configuration are for the application itself, skip package
-   prefix, such as `custom-definition`.
+1. Prefixe com o nome do pacote, como em
+   `yiisoft/cache-file/custom-definition`.
+2. Se a configuração for da própria aplicação, omita o prefixo do pacote,
+   como em `custom-definition`.
 
 ### Service providers
 
-As an alternative to registering dependencies directly, you can use service
-providers. A service provider is a class that returns a reusable set of
-container definitions and extensions.
+Como alternativa a registrar dependências diretamente, você pode usar
+service providers. Um service provider é uma classe que retorna um conjunto
+reutilizável de definições e extensões do container.
 
-The default template exposes three config groups for service providers:
-`di-providers`, `di-providers-web`, and `di-providers-console`. In the
-template they are initialized as empty arrays in `config/configuration.php`,
-and you can later populate them inline or switch them to load values from
-files.
+O template padrão expõe três grupos de configuração para service providers:
+`di-providers`, `di-providers-web` e `di-providers-console`. No template,
+eles são inicializados como arrays vazios em `config/configuration.php`, e
+depois você pode preenchê-los inline ou fazê-los carregar valores de
+arquivos.
 
-Prefer direct container configuration for application services with a simple
-definition: a class name, an interface implementation, constructor arguments
-from `$params`, or a closure that creates a single service.
+Prefira a configuração direta do container para serviços da aplicação com
+definição simples: um nome de classe, a implementação de uma interface,
+argumentos do construtor vindos de `$params` ou uma closure que cria um
+único serviço.
 
-Use a service provider when the registration itself is a reusable unit:
+Use um service provider quando o próprio registro for uma unidade
+reutilizável:
 
-- A package registers several related services, aliases, or extensions.
-- A service registration also needs supporting definitions.
-- The same registration should be reused in several applications.
-- Registration depends on optional classes or environment-specific
-  decisions.
+- Um pacote registra vários serviços, aliases ou extensões relacionados.
+- O registro de um serviço também precisa de definições de apoio.
+- O mesmo registro deve ser reutilizado em várias aplicações.
+- O registro depende de classes opcionais ou de decisões específicas do
+  ambiente.
 
-Use a factory class when construction logic belongs to one service. A
-factory returns an object. A service provider returns definitions for
-several related services.
+Use uma classe factory quando a lógica de construção pertence a um único
+serviço. Uma factory retorna um objeto. Um service provider retorna
+definições para vários serviços relacionados.
 
 ```php
 /* @var array $params */
@@ -262,17 +268,17 @@ return [
 ];
 ```
 
-In this config keys are provider names. By convention these are
-`vendor/package-name/provider-name`. Values are provider class names or
-provider instances. These classes could be either created in the project
-itself or provided by a package.
+Nesta configuração, as chaves são os nomes dos providers. Por convenção,
+eles seguem o formato `vendor/package-name/provider-name`. Os valores são
+nomes de classes de provider ou instâncias de provider. Essas classes podem
+ser criadas no próprio projeto ou fornecidas por um pacote.
 
-If you need to configure some options for a service, similar to direct
-container configuration, take values from `$params` and pass them to
-providers.
+Se você precisar configurar algumas opções de um serviço, da mesma forma que
+na configuração direta do container, pegue os valores de `$params` e
+passe-os aos providers.
 
-Provider should implement `Yiisoft\Di\ServiceProviderInterface`. Below is a
-provider for a cache service:
+O provider deve implementar `Yiisoft\Di\ServiceProviderInterface`. Abaixo
+está um provider para um serviço de cache:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -310,9 +316,9 @@ final readonly class CacheProvider implements ServiceProviderInterface
 }
 ```
 
-### Routes
+### Rotas
 
-You can configure how the web application responds to certain URLs in
+Você pode configurar como a aplicação web responde a determinadas URLs em
 `config/common/routes.php`:
 
 ```php
@@ -330,61 +336,62 @@ return [
 ];
 ``` 
 
-Read more about it in ["Routes"](../runtime/routing.md).
+Leia mais sobre isso em ["Rotas"](../runtime/routing.md).
 
-### Events
+### Eventos
 
-Many services emit certain events that you can attach to.  The default
-template defines three event config groups in `config/configuration.php`:
-`events`, `events-web`, and `events-console`. They are empty by default, but
-you can populate them inline or point them to event config files.
+Muitos serviços emitem eventos aos quais você pode se associar.  O template
+padrão define três grupos de configuração de eventos em
+`config/configuration.php`: `events`, `events-web` e `events-console`. Eles
+vêm vazios por padrão, mas você pode preenchê-los inline ou apontá-los para
+arquivos de configuração de eventos.
 
-The configuration is an array where keys are event names and values are
-arrays of handlers:
+A configuração é um array em que as chaves são os nomes dos eventos e os
+valores são arrays de handlers:
 
 ```php
 return [
     EventName::class => [
-        // Just a regular closure, it will be called from the Dispatcher "as is".
+        // Uma closure comum, que será chamada pelo Dispatcher "como está".
         static fn (EventName $event) => someStuff($event),
         
-        // A regular closure with an extra dependency. All the parameters after the first one (the event itself)
-        // will be resolved from your DI container within `yiisoft/injector`.
+        // Uma closure comum com uma dependência extra. Todos os parâmetros depois do primeiro (o próprio evento)
+        // serão resolvidos pelo seu container de DI por meio do `yiisoft/injector`.
         static fn (EventName $event, DependencyClass $dependency) => someStuff($event),
         
-        // An example with a regular callable. If the `staticMethodName` method has some dependencies,
-        // they will be resolved the same way as in the earlier example.
+        // Um exemplo com um callable comum. Se o método `staticMethodName` tiver dependências,
+        // elas serão resolvidas da mesma forma que no exemplo anterior.
         [SomeClass::class, 'staticMethodName'],
         
-        // Non-static methods are allowed too. In this case, `SomeClass` will be instantiated by your DI container.
+        // Métodos não estáticos também são permitidos. Nesse caso, `SomeClass` será instanciada pelo seu container de DI.
         [SomeClass::class, 'methodName'],
         
-        // An object of a class with the `__invoke` method implemented
+        // Um objeto de uma classe que implementa o método `__invoke`
         new InvokableClass(),
         
-        // In this case, the `InvokableClass` with the `__invoke` method will be instantiated by your DI container
+        // Nesse caso, a `InvokableClass` com o método `__invoke` será instanciada pelo seu container de DI
         InvokableClass::class,
         
-        // Any invokable class definition may be here as long as `$container->has('the definition')` is true.
+        // Qualquer definição de classe invocável pode estar aqui, desde que `$container->has('the definition')` seja true.
         'di-alias'
     ],
 ];
 ```
 
-Read more about it in ["Events"](events.md).
+Leia mais sobre isso em ["Eventos"](events.md).
 
 
-### Parameters
+### Parâmetros
 
-Base parameters are stored in `config/common/params.php`. They are then
-extended by `config/web/params.php`, `config/console/params.php`, and
-environment-specific files under `config/environments/`.
+Os parâmetros base ficam em `config/common/params.php`. Depois, eles são
+estendidos por `config/web/params.php`, `config/console/params.php` e pelos
+arquivos específicos de cada ambiente em `config/environments/`.
 
 > [!TIP]
-> Don't use parameters, constants, or environment variables directly in your application, configure
-> services instead.
+> Não use parâmetros, constantes ou variáveis de ambiente diretamente na sua aplicação; em vez disso, configure
+> os serviços.
 
-The default application `common/params.php` looks like the following:
+O `common/params.php` da aplicação padrão é assim:
 
 ```php
 <?php
@@ -427,29 +434,31 @@ return [
 ];
 ```
 
-For convenience, there is a naming convention about parameters:
+Por conveniência, existe uma convenção de nomes para os parâmetros:
 
-1. Group parameters package name such as `yiisoft/cache-file`.
-2. In case parameters are for the application itself, as in `application`,
-   skip package prefix.
-3. In case there are many services in the package, such as `file-target` and
-   `file-rotator` in `yiisoft/log-target-file` package, group parameters by
-   service name.
-4. Use `enabled` as parameter name to be able to disable or enable a
-   service, such as `yiisoft/yii-debug`.
+1. Agrupe os parâmetros pelo nome do pacote, como em `yiisoft/cache-file`.
+2. Se os parâmetros forem da própria aplicação, como em `application`, omita
+   o prefixo do pacote.
+3. Se houver muitos serviços no pacote, como `file-target` e `file-rotator`
+   no pacote `yiisoft/log-target-file`, agrupe os parâmetros pelo nome do
+   serviço.
+4. Use `enabled` como nome de parâmetro para poder desabilitar ou habilitar
+   um serviço, como em `yiisoft/yii-debug`.
 
-### Package configs
+### Configurações de pacotes
 
-Config plugin does not copy vendor package configs automatically. It loads
-them directly from `vendor/` as the vendor layer and combines them with the
-root package and environment-specific layers.
+O plugin de configuração não copia automaticamente as configurações dos
+pacotes em vendor. Ele as carrega diretamente de `vendor/` como camada
+vendor e as combina com as camadas do pacote raiz e específicas de cada
+ambiente.
 
-If you want to customize a package config file in your application, use the
-`yii-config-copy` Composer command to copy it into your `config/` directory,
-usually under `config/packages/`. Once copied, the file becomes part of the
-root package layer, so it can override vendor defaults.
+Se você quiser personalizar um arquivo de configuração de um pacote na sua
+aplicação, use o comando do Composer `yii-config-copy` para copiá-lo para a
+sua pasta `config/`, normalmente em `config/packages/`. Depois de copiado, o
+arquivo passa a fazer parte da camada do pacote raiz e pode sobrescrever os
+padrões de vendor.
 
-The merge plan stored in `.merge-plan.php` defines how config groups are
-assembled. If you add new config files or directories and update the root
-package configuration, rebuild the merge plan with `composer
-yii-config-rebuild`.
+O merge plan guardado em `.merge-plan.php` define como os grupos de
+configuração são montados. Se você adicionar novos arquivos ou pastas de
+configuração e atualizar a configuração do pacote raiz, reconstrua o merge
+plan com `composer yii-config-rebuild`.

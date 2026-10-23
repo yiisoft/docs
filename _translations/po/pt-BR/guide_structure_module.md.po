@@ -8,65 +8,60 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-06-02 22:29+0000\n"
 "PO-Revision-Date: 2026-06-02 22:29+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Fenced code block (sh)
-#: ../src/cookbook/using-yii-in-third-party-apps.md
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md ../src/guide/structure/package.md
-#: ../src/guide/tutorial/i18n.md
+#: ../src/cookbook/using-yii-in-third-party-apps.md ../src/guide/structure/designing-packages.md ../src/guide/structure/module.md ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "composer yii-config-rebuild\n"
-msgstr ""
+msgstr "composer yii-config-rebuild\n"
 
 #. type: Title ##
-#: ../src/guide/concept/configuration.md
-#: ../src/guide/structure/designing-packages.md
-#: ../src/guide/structure/module.md
+#: ../src/guide/concept/configuration.md ../src/guide/structure/designing-packages.md ../src/guide/structure/module.md
 #, no-wrap
 msgid "Routes"
-msgstr ""
+msgstr "Rotas"
 
 #. type: Title #
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Modules"
-msgstr ""
+msgstr "Módulos"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "A module is an application part grouped around a business context or a reusable feature. In Yii, this is a design boundary, not a required base class. A module can be:"
-msgstr ""
+msgstr "Um módulo é uma parte da aplicação agrupada em torno de um contexto de negócio ou de um recurso reutilizável. No Yii, isso é uma fronteira de design, não uma classe base obrigatória. Um módulo pode ser:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "application code under the `App\\` namespace;"
-msgstr ""
+msgstr "código da aplicação no namespace `App\\`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "a [Composer package](package.md) installed into `vendor/`;"
-msgstr ""
+msgstr "um [pacote Composer](package.md) instalado em `vendor/`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "code that starts in the application and is later extracted into a package."
-msgstr ""
+msgstr "código que começa na aplicação e depois é extraído para um pacote."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Use a module when a group of actions, domain services, repositories, event handlers, views, assets, commands, and related configuration changes together and has a name that makes sense to the business."
-msgstr ""
+msgstr "Use um módulo quando um grupo de actions, serviços de domínio, repositórios, handlers de eventos, views, assets, comandos e a configuração relacionada mudam juntos e têm um nome que faz sentido para o negócio."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "For example, a blog module can live in an application as:"
-msgstr ""
+msgstr "Por exemplo, um módulo de blog pode ficar na aplicação assim:"
 
 #. type: Fenced code block
 #: ../src/guide/structure/module.md
@@ -82,83 +77,92 @@ msgid ""
 "            IndexAction.php\n"
 "            index.php\n"
 msgstr ""
+"src/\n"
+"    Blog/\n"
+"        Post/\n"
+"            Post.php\n"
+"            PostRepositoryInterface.php\n"
+"            InMemoryPostRepository.php\n"
+"        Web/\n"
+"            IndexAction.php\n"
+"            index.php\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "The same structure can later become a Composer package by changing the namespace and adding package metadata and configuration files. See [Designing packages](designing-packages.md) for package-specific details."
-msgstr ""
+msgstr "A mesma estrutura pode virar um pacote Composer mais tarde, mudando o namespace e adicionando os metadados e os arquivos de configuração do pacote. Veja [Projetando pacotes](designing-packages.md) para os detalhes específicos de pacotes."
 
 #. type: Title ##
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Module boundaries"
-msgstr ""
+msgstr "Fronteiras de módulos"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Keep module code together by context first and by technical type second. This is close to the [vertical slices](../../cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md) approach, but at a larger application-structure boundary. Prefer `App\\Blog\\Post\\PostRepositoryInterface` over a global `App\\Repository\\PostRepositoryInterface` when the repository belongs to blog posts only."
-msgstr ""
+msgstr "Mantenha o código do módulo agrupado primeiro por contexto e depois por tipo técnico. Isso se aproxima da abordagem de [vertical slices](../../cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md), mas numa fronteira maior da estrutura da aplicação. Prefira `App\\Blog\\Post\\PostRepositoryInterface` a um `App\\Repository\\PostRepositoryInterface` global quando o repositório pertence apenas aos posts do blog."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Treat module classes as a public API only when another module is expected to use them. Good public API classes are usually:"
-msgstr ""
+msgstr "Trate as classes de um módulo como API pública apenas quando se espera que outro módulo as use. Boas classes de API pública normalmente são:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "commands or queries that express a use case;"
-msgstr ""
+msgstr "comandos ou queries que expressam um caso de uso;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "DTOs or value objects passed between modules;"
-msgstr ""
+msgstr "DTOs ou value objects trocados entre módulos;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "interfaces for services another module may call;"
-msgstr ""
+msgstr "interfaces de serviços que outro módulo pode chamar;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "events emitted by the module."
-msgstr ""
+msgstr "eventos emitidos pelo módulo."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Keep implementation classes private to the module namespace. Other modules should not depend on `App\\Blog\\Post\\InMemoryPostRepository` or a controller action directly. They should depend on an interface, a use case class, or an event."
-msgstr ""
+msgstr "Mantenha as classes de implementação privadas ao namespace do módulo. Outros módulos não devem depender diretamente de `App\\Blog\\Post\\InMemoryPostRepository` ou de uma action de controller. Eles devem depender de uma interface, de uma classe de caso de uso ou de um evento."
 
 #. type: Title ##
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Interfaces between modules"
-msgstr ""
+msgstr "Interfaces entre módulos"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Put an interface where the contract belongs:"
-msgstr ""
+msgstr "Coloque a interface onde o contrato pertence:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "If the interface describes a capability provided by a module, place it in that module. For example, `App\\Blog\\Post\\PostRepositoryInterface` belongs to the blog module because it describes how blog posts are read."
-msgstr ""
+msgstr "Se a interface descreve uma capacidade fornecida por um módulo, coloque-a nesse módulo. Por exemplo, `App\\Blog\\Post\\PostRepositoryInterface` pertence ao módulo de blog porque descreve como os posts do blog são lidos."
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "If the interface describes what a module needs from the outside world, place it in the consuming module. For example, `App\\Order\\Customer\\CustomerVerifierInterface` belongs to the order module if orders only need a yes-or-no customer check. The customer module, an application adapter, or a package can provide the implementation."
-msgstr ""
+msgstr "Se a interface descreve o que um módulo precisa do mundo externo, coloque-a no módulo consumidor. Por exemplo, `App\\Order\\Customer\\CustomerVerifierInterface` pertence ao módulo de pedidos se os pedidos só precisam de uma verificação de cliente do tipo sim ou não. O módulo de clientes, um adaptador da aplicação ou um pacote pode fornecer a implementação."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "This keeps dependencies explicit. A module can depend on another module's public contract, but it should not reach into another module's internal implementation classes."
-msgstr ""
+msgstr "Isso mantém as dependências explícitas. Um módulo pode depender do contrato público de outro módulo, mas não deve acessar as classes de implementação internas de outro módulo."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "First, define the interface in the module:"
-msgstr ""
+msgstr "Primeiro, defina a interface no módulo:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -178,11 +182,24 @@ msgid ""
 "    public function findLatest(): array;\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Blog\\Post;\n"
+"\n"
+"interface PostRepositoryInterface\n"
+"{\n"
+"    /**\n"
+"     * @return list<Post>\n"
+"     */\n"
+"    public function findLatest(): array;\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Put the implementation in the same module and bind the interface to it:"
-msgstr ""
+msgstr "Coloque a implementação no mesmo módulo e associe a interface a ela:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -199,22 +216,32 @@ msgid ""
 "    PostRepositoryInterface::class => InMemoryPostRepository::class,\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Post\\InMemoryPostRepository;\n"
+"use App\\Blog\\Post\\PostRepositoryInterface;\n"
+"\n"
+"return [\n"
+"    PostRepositoryInterface::class => InMemoryPostRepository::class,\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "In the default application template, put this file under `config/common/di/`, for example `config/common/di/blog.php`. The template loads `config/common/di/*.php` into the shared `di` configuration group, so the binding is available to web and console entry points."
-msgstr ""
+msgstr "No template de aplicação padrão, coloque esse arquivo em `config/common/di/`, por exemplo `config/common/di/blog.php`. O template carrega `config/common/di/*.php` no grupo de configuração compartilhado `di`, então a associação fica disponível para os pontos de entrada web e de console."
 
 #. type: Title ##
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Web actions"
-msgstr ""
+msgstr "Actions web"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Actions belong to the module when they are the web entry point for module behavior:"
-msgstr ""
+msgstr "As actions pertencem ao módulo quando são o ponto de entrada web do comportamento do módulo:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -246,16 +273,41 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Blog\\Web;\n"
+"\n"
+"use App\\Blog\\Post\\PostRepositoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class IndexAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private PostRepositoryInterface $posts,\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/index', [\n"
+"            'posts' => $this->posts->findLatest(),\n"
+"        ]);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Keep request parsing and response creation in the action. Keep business decisions in the module's domain classes or use case services."
-msgstr ""
+msgstr "Mantenha a leitura da requisição e a criação da resposta na action. Mantenha as decisões de negócio nas classes de domínio do módulo ou em serviços de caso de uso."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "For a small application, add module routes directly to `config/common/routes.php`:"
-msgstr ""
+msgstr "Em uma aplicação pequena, adicione as rotas do módulo diretamente em `config/common/routes.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -286,16 +338,40 @@ msgid ""
 "        ),\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Web\\IndexAction;\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"        ),\n"
+"\n"
+"    Group::create('/blog')\n"
+"        ->routes(\n"
+"            Route::get('')\n"
+"                ->action(IndexAction::class)\n"
+"                ->name('blog/index'),\n"
+"        ),\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Use module-prefixed route names, such as `blog/index`, to avoid collisions."
-msgstr ""
+msgstr "Use nomes de rota com o prefixo do módulo, como `blog/index`, para evitar colisões."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "If the application has many modules, you can give each module its own route config file. Change the `routes` group in `config/configuration.php`:"
-msgstr ""
+msgstr "Se a aplicação tem muitos módulos, você pode dar a cada módulo o seu próprio arquivo de configuração de rotas. Altere o grupo `routes` em `config/configuration.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -306,11 +382,15 @@ msgid ""
 "    'common/routes/*.php',\n"
 "],\n"
 msgstr ""
+"'routes' => [\n"
+"    'common/routes.php',\n"
+"    'common/routes/*.php',\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Then create `config/common/routes/blog.php`:"
-msgstr ""
+msgstr "Depois crie `config/common/routes/blog.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/module.md
@@ -333,37 +413,53 @@ msgid ""
 "        ),\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Blog\\Web\\IndexAction;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create('/blog')\n"
+"        ->routes(\n"
+"            Route::get('')\n"
+"                ->action(IndexAction::class)\n"
+"                ->name('blog/index'),\n"
+"        ),\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "After changing `config/configuration.php` or adding files matched by a config wildcard, rebuild the merge plan:"
-msgstr ""
+msgstr "Depois de alterar `config/configuration.php` ou de adicionar arquivos que casam com um curinga da configuração, reconstrua o merge plan:"
 
 #. type: Title ##
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Module configuration"
-msgstr ""
+msgstr "Configuração de módulos"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Application modules use the same configuration groups as packages. The difference is where the configuration lives:"
-msgstr ""
+msgstr "Os módulos da aplicação usam os mesmos grupos de configuração que os pacotes. A diferença é onde a configuração fica:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "application module configuration lives in the root application under `config/`;"
-msgstr ""
+msgstr "a configuração de um módulo da aplicação fica na aplicação raiz, em `config/`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "package module configuration lives in the package and is declared in `extra.config-plugin`."
-msgstr ""
+msgstr "a configuração de um módulo em pacote fica no pacote e é declarada em `extra.config-plugin`."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Common locations for application module configuration are:"
-msgstr ""
+msgstr "Locais comuns para a configuração de módulos da aplicação são:"
 
 #. type: Fenced code block
 #: ../src/guide/structure/module.md
@@ -381,16 +477,27 @@ msgid ""
 "    web/\n"
 "        params.php\n"
 msgstr ""
+"config/\n"
+"    common/\n"
+"        di/\n"
+"            blog.php\n"
+"        routes/\n"
+"            blog.php\n"
+"        params.php\n"
+"    console/\n"
+"        params.php\n"
+"    web/\n"
+"        params.php\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Put shared service definitions in `common/di/`. Put web-only definitions in `web/di/`. Put console-only parameters or command registrations in `console/params.php`."
-msgstr ""
+msgstr "Coloque as definições de serviços compartilhadas em `common/di/`. Coloque as definições exclusivas da web em `web/di/`. Coloque os parâmetros ou registros de comandos exclusivos do console em `console/params.php`."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "When a module grows enough to become reusable, move its PHP classes to a Composer package, move its configuration files to the package `config/` directory, and declare them in the package `composer.json`:"
-msgstr ""
+msgstr "Quando um módulo cresce a ponto de se tornar reutilizável, mova as classes PHP para um pacote Composer, mova os arquivos de configuração para a pasta `config/` do pacote e declare-os no `composer.json` do pacote:"
 
 #. type: Fenced code block (json)
 #: ../src/guide/structure/module.md
@@ -405,44 +512,52 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"{\n"
+"    \"extra\": {\n"
+"        \"config-plugin\": {\n"
+"            \"di\": \"config/di.php\",\n"
+"            \"routes\": \"config/routes.php\"\n"
+"        }\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "The application can then override package defaults in its own config files."
-msgstr ""
+msgstr "A aplicação pode, então, sobrescrever os padrões do pacote nos próprios arquivos de configuração."
 
 #. type: Title ##
 #: ../src/guide/structure/module.md
 #, no-wrap
 msgid "Cross-module communication"
-msgstr ""
+msgstr "Comunicação entre módulos"
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Choose the smallest coupling that supports the behavior:"
-msgstr ""
+msgstr "Escolha o menor acoplamento que atenda ao comportamento:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "Use constructor injection with an interface for a direct synchronous call."
-msgstr ""
+msgstr "Use injeção pelo construtor com uma interface para uma chamada síncrona direta."
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "Use an event when the producer should not know who reacts to something that happened."
-msgstr ""
+msgstr "Use um evento quando quem produz não deve saber quem reage a algo que aconteceu."
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "Use an application service or use case class when orchestration belongs outside both modules."
-msgstr ""
+msgstr "Use um serviço de aplicação ou uma classe de caso de uso quando a orquestração pertence a um lugar fora dos dois módulos."
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/module.md
 msgid "Use a package when the module must be reused by more than one application."
-msgstr ""
+msgstr "Use um pacote quando o módulo precisa ser reutilizado por mais de uma aplicação."
 
 #. type: Plain text
 #: ../src/guide/structure/module.md
 msgid "Avoid service locator calls and global state inside module classes. Let actions, commands, and services receive their dependencies through constructors so module boundaries stay visible in code and testable in isolation."
-msgstr ""
+msgstr "Evite chamadas a service locator e estado global dentro das classes do módulo. Deixe que actions, comandos e serviços recebam as suas dependências pelos construtores, para que as fronteiras dos módulos fiquem visíveis no código e possam ser testadas isoladamente."

@@ -8,104 +8,103 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-12-24 08:02+0000\n"
 "PO-Revision-Date: 2025-12-24 08:02+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/guide/structure/overview.md
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/en/guide/structure/overview.md ../src/en/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Overview"
-msgstr ""
+msgstr "Visão geral"
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "Yii applications code is typically grouped into modules by context. In each module there could be grouping by type."
-msgstr ""
+msgstr "O código de aplicações Yii normalmente é agrupado em módulos por contexto. Dentro de cada módulo, pode haver um agrupamento por tipo."
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "For example, if the application is an online store, the context could be:"
-msgstr ""
+msgstr "Por exemplo, se a aplicação for uma loja online, os contextos poderiam ser:"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/structure/overview.md
 msgid "Customer"
-msgstr ""
+msgstr "Cliente"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Products list"
-msgstr ""
+msgstr "Lista de produtos"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Checkout"
-msgstr ""
+msgstr "Checkout"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/structure/overview.md
 msgid "Logistics"
-msgstr ""
+msgstr "Logística"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/structure/overview.md
 msgid "Delivery"
-msgstr ""
+msgstr "Entrega"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Addresses"
-msgstr ""
+msgstr "Endereços"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/structure/overview.md
 msgid "Helpdesk"
-msgstr ""
+msgstr "Helpdesk"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Support"
-msgstr ""
+msgstr "Suporte"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Claims"
-msgstr ""
+msgstr "Reclamações"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Returns"
-msgstr ""
+msgstr "Devoluções"
 
 #. type: Bullet: '- '
 #: ../src/en/guide/structure/overview.md
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilidade"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Transactions"
-msgstr ""
+msgstr "Transações"
 
 #. type: Bullet: '  - '
 #: ../src/en/guide/structure/overview.md
 msgid "Taxes"
-msgstr ""
+msgstr "Impostos"
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "For a \"Customer\" context, residing under `App\\Customer` namespace, structure would be:"
-msgstr ""
+msgstr "Para um contexto \"Customer\", localizado no namespace `App\\Customer`, a estrutura seria:"
 
 #. type: Fenced code block
 #: ../src/en/guide/structure/overview.md
@@ -128,33 +127,49 @@ msgid ""
 "    Checkout/                        <-- module namespace\n"
 "      CheckoutController.php\n"
 msgstr ""
+"App/\n"
+"  Customer/                          <-- namespace do módulo\n"
+"    Entity/\n"
+"      Customer.php                   <-- entidade compartilhada por \"Profile\" e \"Checkout\"\n"
+"    Profile/\n"
+"      Widget/\n"
+"        Gravatar.php\n"
+"      ProfileRepository.php          <-- o repositório geralmente é específico do contexto\n"
+"      ProfileController.php          <-- ponto de entrada de \"Customer\\Profile\"\n"
+"    ProductList/                     <-- namespace do módulo \n"
+"      Entity/                        <-- entidades específicas de \"Customer\\ProductList\"\n"
+"        Category.php\n"
+"        Product.php\n"
+"      ProductsListController.php     <-- ponto de entrada de \"Customer\\ProductList\"\n"
+"    Checkout/                        <-- namespace do módulo\n"
+"      CheckoutController.php\n"
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "A context may include sub-contexts. If a class is shared by multiple contexts, it's moved to the ancestor of both contexts."
-msgstr ""
+msgstr "Um contexto pode incluir subcontextos. Se uma classe é compartilhada por vários contextos, ela é movida para o ancestral comum desses contextos."
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
-msgstr ""
+msgstr "Um contexto pode ter [um ponto de entrada conhecido como \"action\" ou \"controller\"](action.md). A função dele é receber [uma instância de requisição](../runtime/request.md), passá-la para a [camada de domínio](domain.md) em um formato adequado e criar [uma resposta](../runtime/response.md) com base no retorno da camada de domínio."
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
 msgid "Besides, Yii applications also have the following:"
-msgstr ""
+msgstr "Além disso, aplicações Yii também têm o seguinte:"
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md
 msgid "[entry scripts](entry-script.md): they're PHP scripts that are directly accessible by end users.  They're responsible for starting a request handling cycle. Typically, a single entry script is handling the whole application."
-msgstr ""
+msgstr "[scripts de entrada](entry-script.md): são scripts PHP acessíveis diretamente pelos usuários finais.  Eles são responsáveis por iniciar um ciclo de tratamento de requisição. Normalmente, um único script de entrada atende a aplicação inteira."
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md
 msgid "[services](service.md): they're typically stateless objects registered within dependency container and provide various action methods."
-msgstr ""
+msgstr "[serviços](service.md): normalmente são objetos sem estado registrados no container de dependências que fornecem diversos métodos de ação."
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md
 msgid "[middleware](middleware.md): they represent a code that needs to be invoked before and after the actual handling of each request by action handlers."
-msgstr ""
+msgstr "[middleware](middleware.md): representam código que precisa ser executado antes e depois do tratamento efetivo de cada requisição pelos handlers de action."
