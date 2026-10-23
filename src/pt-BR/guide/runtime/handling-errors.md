@@ -1,44 +1,46 @@
-# Handling errors
+# Tratamento de erros
 
-Yii has a [yiisoft/error-handler](https://github.com/yiisoft/error-handler)
-package that makes error handling a much more pleasant experience than
-before. In particular, the Yii error handler provides the following:
+O Yii tem o pacote
+[yiisoft/error-handler](https://github.com/yiisoft/error-handler), que torna
+o tratamento de erros muito mais agradável do que antes. Em particular, o
+error handler do Yii oferece:
 
-- [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware for catching
-  unhandled errors.
-- PSR-15 middleware for mapping certain exceptions to custom responses.
-- Production and debug modes.
-- Debug mode displays details, stacktrace, has dark and light themes and
-  handy buttons to search for error without typing.
-- Takes PHP settings into account.
-- Handles out of memory errors, fatal errors, warnings, notices, and
-  exceptions.
-- Can use any [PSR-3](https://www.php-fig.org/psr/psr-3/) compatible logger
-  for error logging.
-- Detects a response format based on a mime type of the request.
-- Supports responding with HTML, plain text, JSON, XML, and headers out of
-  the box.
-- You can implement your own error rendering for extra types.
+- Middleware [PSR-15](https://www.php-fig.org/psr/psr-15/) para capturar
+  erros não tratados.
+- Middleware PSR-15 para mapear certas exceções para respostas
+  personalizadas.
+- Modos de produção e de debug.
+- O modo debug mostra detalhes e o stacktrace, tem temas claro e escuro e
+  botões práticos para pesquisar o erro sem digitar.
+- Leva em conta as configurações do PHP.
+- Trata erros de falta de memória, erros fatais, warnings, notices e
+  exceções.
+- Pode usar qualquer logger compatível com a
+  [PSR-3](https://www.php-fig.org/psr/psr-3/) para registrar os erros.
+- Detecta o formato da resposta com base no mime type da requisição.
+- Suporta respostas em HTML, texto puro, JSON, XML e headers sem
+  configuração extra.
+- Você pode implementar a sua própria renderização de erros para outros
+  tipos.
 
-This guide describes how to use the error handler in the [Yii
-framework](https://www.yiiframework.com/), for information about using it
-separate from Yii, see the [package
-description](https://github.com/yiisoft/error-handler).
+Este guia descreve como usar o error handler no [framework
+Yii](https://www.yiiframework.com/). Para usá-lo separado do Yii, veja a
+[descrição do pacote](https://github.com/yiisoft/error-handler).
 
-## Using error handler
+## Usando o error handler
 
-The error handler consists of two parts. One part is
-`Yiisoft\ErrorHandler\Middleware\ErrorCatcher` middleware that, when
-registered, catches exceptions that may appear during middleware stack
-execution and passes them to the handler.  Another part is the error handler
-itself, `Yiisoft\ErrorHandler\ErrorHandler`, that's catching exceptions
-occurring outside the middleware stack and fatal errors. The handler also
-converts warnings and notices to exceptions and does more handy things.
+O error handler tem duas partes. Uma é o middleware
+`Yiisoft\ErrorHandler\Middleware\ErrorCatcher`, que, quando registrado,
+captura as exceções que podem surgir durante a execução da pilha de
+middlewares e as passa para o handler.  A outra é o próprio error handler,
+`Yiisoft\ErrorHandler\ErrorHandler`, que captura as exceções que ocorrem
+fora da pilha de middlewares e os erros fatais. O handler também converte
+warnings e notices em exceções e faz outras coisas úteis.
 
-Error handler is registered in the application itself. Usually it happens in
-`ApplicationRunner`. By default, the handler configuration comes from the
-container. You may configure it in the application configuration,
-`config/web.php` like the following:
+O error handler é registrado na própria aplicação. Normalmente isso acontece
+no `ApplicationRunner`. Por padrão, a configuração do handler vem do
+container. Você pode configurá-lo na configuração da aplicação,
+`config/web.php`, assim:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -71,9 +73,10 @@ return [
 ];
 ```
 
-As aforementioned, the error handler turns all non-fatal PHP errors into
-catchable exceptions (`Yiisoft\ErrorHandler\Exception\ErrorException`). This
-means you can use the following code to deal with PHP errors:
+Como dito acima, o error handler transforma todos os erros não fatais do PHP
+em exceções que podem ser capturadas
+(`Yiisoft\ErrorHandler\Exception\ErrorException`). Isso significa que você
+pode usar o código a seguir para lidar com erros do PHP:
 
 ```php
 try {
@@ -84,10 +87,10 @@ try {
 // execution continues...
 ```
 
-The package has another middleware,
-`Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.  This middleware maps
-certain exceptions to custom responses. Configure it in the application
-configuration as follows:
+O pacote tem outro middleware,
+`Yiisoft\ErrorHandler\Middleware\ExceptionResponder`.  Esse middleware
+mapeia certas exceções para respostas personalizadas. Configure-o na
+configuração da aplicação assim:
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -110,27 +113,27 @@ return [
 ];
 ```
 
-Note that when configuring application middleware stack, you must place
-`Yiisoft\ErrorHandler\Middleware\ExceptionResponder` before
+Ao configurar a pilha de middlewares da aplicação, você deve colocar
+`Yiisoft\ErrorHandler\Middleware\ExceptionResponder` antes de
 `Yiisoft\ErrorHandler\Middleware\ErrorCatcher`.
 
-## Rendering error data
+## Renderizando os dados do erro
 
-One of the renderers could render error data into a certain format.  The
-following renderers are available out of the box:
+Cada renderer converte os dados do erro para um formato específico.  Os
+seguintes renderers já vêm prontos:
 
-- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renders error into HTTP
-  headers. It's used for `HEAD` request.
-- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renders error into HTML.
-- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renders error into JSON.
-- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renders error into
-  plain text.
-- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renders error into XML.
+- `Yiisoft\ErrorHandler\Renderer\HeaderRenderer` - Renderiza o erro em
+  headers HTTP. É usado em requisições `HEAD`.
+- `Yiisoft\ErrorHandler\Renderer\HtmlRenderer` - Renderiza o erro em HTML.
+- `Yiisoft\ErrorHandler\Renderer\JsonRenderer` - Renderiza o erro em JSON.
+- `Yiisoft\ErrorHandler\Renderer\PlainTextRenderer` - Renderiza o erro em
+  texto puro.
+- `Yiisoft\ErrorHandler\Renderer\XmlRenderer` - Renderiza o erro em XML.
 
-The renderer produces detailed error data depending on whether debug mode is
-enabled or disabled.
+O renderer gera dados de erro mais ou menos detalhados conforme o modo debug
+esteja ativado ou não.
 
-An Example of header rendering with a debugging mode turned off:
+Exemplo de renderização em headers com o modo debug desativado:
 
 ```
 ...
@@ -138,7 +141,7 @@ X-Error-Message: An internal server error occurred.
 ...
 ```
 
-An Example of header rendering with a debugging mode turned on:
+Exemplo de renderização em headers com o modo debug ativado:
 
 ```
 ...
@@ -150,13 +153,13 @@ X-Error-Line: 21
 ...
 ```
 
-Example of JSON rendering output with a debugging mode turned off:
+Exemplo de saída JSON com o modo debug desativado:
 
 ```json
 {"message":"An internal server error occurred."}
 ```
 
-An Example of JSON rendering output with debugging mode turned on:
+Exemplo de saída JSON com o modo debug ativado:
 
 ```json
 {
@@ -183,32 +186,32 @@ An Example of JSON rendering output with debugging mode turned on:
 }
 ```
 
-Example of HTML rendering with debugging mode turned off:
+Exemplo de renderização HTML com o modo debug desativado:
 
-![View production](/images/guide/runtime/view-production.png)
+![Tela de produção](/images/guide/runtime/view-production.png)
 
-Example of HTML rendering with debugging mode on and a light theme:
+Exemplo de renderização HTML com o modo debug ativado e tema claro:
 
-![View development with light
-theme](/images/guide/runtime/view-development-light.png)
+![Tela de desenvolvimento com tema
+claro](/images/guide/runtime/view-development-light.png)
 
-Example of HTML rendering with debugging mode on and a dark theme:
+Exemplo de renderização HTML com o modo debug ativado e tema escuro:
 
-![View development with dark
-theme](/images/guide/runtime/view-development-dark.png)
+![Tela de desenvolvimento com tema
+escuro](/images/guide/runtime/view-development-dark.png)
 
-The error catcher chooses how to render an exception based on `accept` HTTP
-header.  If it's `text/html` or any unknown content type, it will use the
-error or exception HTML template to display errors.  For other mime types,
-the error handler will choose different renderers registered in a renderer
-provider.  By default, it supports JSON, XML, and plain text.
+O error catcher escolhe como renderizar uma exceção com base no header HTTP
+`accept`.  Se ele for `text/html` ou um tipo de conteúdo desconhecido, usa o
+template HTML de erro ou de exceção para exibir os erros.  Para outros mime
+types, o error handler escolhe entre os renderers registrados em um renderer
+provider.  Por padrão, ele suporta JSON, XML e texto puro.
 
-### Implementing your own renderer
+### Implementando o seu próprio renderer
 
-You may customize the error response format by implementing
-`Yiisoft\ErrorHandler\ThrowableRendererInterface`.  The renderer converts a
-throwable into `Yiisoft\ErrorHandler\ErrorData`, which contains the response
-body and headers.
+Você pode personalizar o formato da resposta de erro implementando
+`Yiisoft\ErrorHandler\ThrowableRendererInterface`.  O renderer converte um
+throwable em `Yiisoft\ErrorHandler\ErrorData`, que contém o corpo e os
+headers da resposta.
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -245,7 +248,7 @@ final readonly class MyRenderer implements ThrowableRendererInterface
 }
 ```
 
-Register the renderer in `config/common/di/error-handler.php`:
+Registre o renderer em `config/common/di/error-handler.php`:
 
 ```php
 use Psr\Container\ContainerInterface;
@@ -284,16 +287,17 @@ return [
 ];
 ```
 
-The `renderers` array maps `Accept` header content types to renderer class
-names. When you provide this array, it replaces the default map, so include
-the default renderer classes you still need.
+O array `renderers` mapeia os tipos de conteúdo do header `Accept` para
+nomes de classes de renderer. Quando você informa esse array, ele substitui
+o mapa padrão, então inclua as classes de renderer padrão que ainda
+precisar.
 
-## Friendly exceptions
+## Exceções amigáveis
 
-Yii error renderer supports [friendly
-exceptions](https://github.com/yiisoft/friendly-exception) that make error
-handling an even more pleasant experience for your team. The idea is to
-offer a readable name and possible solutions to the problem:
+O renderer de erros do Yii suporta [exceções
+amigáveis](https://github.com/yiisoft/friendly-exception), que deixam o
+tratamento de erros ainda mais agradável para o seu time. A ideia é oferecer
+um nome legível e possíveis soluções para o problema:
 
 ```php
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
@@ -314,5 +318,5 @@ SOLUTION;
 }
 ```
 
-When the application throws such an exception, the error renderer would
-display the name and the solution if the debug mode is on.
+Quando a aplicação lança uma exceção desse tipo, o renderer de erros mostra
+o nome e a solução se o modo debug estiver ativado.

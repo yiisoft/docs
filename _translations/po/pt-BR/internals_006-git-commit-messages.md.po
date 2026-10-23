@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/en/internals/006-git-commit-messages.md
 #, no-wrap
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 #. type: Title #
 #: ../src/en/internals/006-git-commit-messages.md

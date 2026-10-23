@@ -1,6 +1,7 @@
-# Request
+# Requisição
 
-HTTP request has a method, URI, a set of headers and a body:
+Uma requisição HTTP tem um método, uma URI, um conjunto de headers e um
+corpo:
 
 ```
 POST /contact HTTP/1.1
@@ -14,13 +15,13 @@ Accept-Encoding: gzip, deflate
 }
 ```
 
-The method is `POST`, URI is `/contact`.  Extra headers are specifying host,
-preferred language and encoding.  The body could be anything.  In this case,
-it's a JSON payload.
+O método é `POST` e a URI é `/contact`.  Os headers extras informam o host,
+o idioma preferido e a codificação.  O corpo pode ser qualquer coisa.  Neste
+caso, é um payload JSON.
 
-Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as
-request representation.  The object is available in controller actions and
-other types of middleware:
+O Yii usa o [`ServerRequest` da PSR-7](https://www.php-fig.org/psr/psr-7/)
+para representar a requisição.  O objeto está disponível nas actions de
+controllers e em outros tipos de middleware:
 
 ```php
 public function view(ServerRequestInterface $request): ResponseInterface
@@ -29,15 +30,15 @@ public function view(ServerRequestInterface $request): ResponseInterface
 }
 ```
 
-## Method
+## Método
 
-The method could be obtained from a request object:
+O método pode ser obtido do objeto de requisição:
 
 ```php
 $method = $request->getMethod();
 ```
 
-Usually it's one of the:
+Normalmente ele é um destes:
 
 - GET
 - POST
@@ -47,8 +48,8 @@ Usually it's one of the:
 - PATCH
 - OPTIONS
 
-In case you want to make sure the request method is of a certain type, there
-is a special class with method names:
+Se você quiser garantir que o método da requisição é de um tipo específico,
+existe uma classe especial com os nomes dos métodos:
 
 ```php
 use Yiisoft\Http\Method;
@@ -60,22 +61,22 @@ if ($request->getMethod() === Method::POST) {
 
 ## URI
 
-A URI has:
+Uma URI tem:
 
-- Scheme (`http`, `https`)
+- Esquema (`http`, `https`)
 - Host (`yiiframework.com`)
-- Port (`80`, `443`)
-- Path (`/posts/1`)
+- Porta (`80`, `443`)
+- Caminho (`/posts/1`)
 - Query string (`page=1&sort=+id`)
-- Fragment (`#anchor`)
+- Fragmento (`#anchor`)
 
-You can obtain `UriInterface` from request like the following:
+Você pode obter a `UriInterface` da requisição assim:
 
 ```php
 $uri = $request->getUri();
 ``` 
 
-Then you can get various details from its methods:
+Depois, pode obter vários detalhes pelos métodos dela:
 
 - `getScheme()`
 - `getAuthority()`
@@ -88,8 +89,8 @@ Then you can get various details from its methods:
   
 ## Headers
 
-There are various methods to inspect request headers. To get all headers as
-an array:
+Há vários métodos para inspecionar os headers da requisição. Para obter
+todos os headers como array:
 
 ```php
 $headers = $request->getHeaders();
@@ -98,15 +99,15 @@ foreach ($headers as $name => $values) {
 }
 ```
 
-To get a single header:
+Para obter um único header:
 
 ```php
 $values = $request->getHeader('Accept-Encoding');
 ```
 
 
-Also, you could get value as a comma-separated string instead of an array.
-That's especially handy if a header has a single value:
+Você também pode obter o valor como uma string separada por vírgulas em vez
+de um array.  Isso é bem prático quando o header tem um único valor:
 
 ```php
 if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
@@ -115,7 +116,7 @@ if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
 }
 ```
 
-To check if a header is present in the request:
+Para verificar se um header está presente na requisição:
 
 ```php
 if ($request->hasHeader('Accept-Encoding')) {
@@ -123,25 +124,25 @@ if ($request->hasHeader('Accept-Encoding')) {
 }
 ```
 
-## Body
+## Corpo
 
-There are two methods to get body contents. The first is getting the body as
-it is without parsing:
+Há dois métodos para obter o conteúdo do corpo. O primeiro retorna o corpo
+como está, sem parsing:
 
 ```php
 $body = $request->getBody();
 ```
 
-The `$body` would be an instance of `Psr\Http\Message\StreamInterface`.
+`$body` será uma instância de `Psr\Http\Message\StreamInterface`.
 
-Also, you could get a parsed body:
+Você também pode obter o corpo já interpretado:
 
 ```php
 $bodyParameters = $request->getParsedBody();
 ```
 
-Parsing depends on PSR-7 implementation and may require middleware for
-custom body formats.
+O parsing depende da implementação da PSR-7 e pode exigir um middleware para
+formatos de corpo personalizados.
 
 ```php
 <?php
@@ -168,10 +169,11 @@ final readonly class JsonBodyParserMiddleware implements MiddlewareInterface
 }
 ```
 
-## File uploads
+## Upload de arquivos
 
-Uploaded files that user submitted from a form with `enctype` attribute
-equals to `multipart/form-data` are handled via special request method:
+Os arquivos enviados pelo usuário em um formulário com o atributo `enctype`
+igual a `multipart/form-data` são tratados por um método especial da
+requisição:
 
 ```php
 $files = $request->getUploadedFiles();
@@ -182,19 +184,19 @@ foreach ($files as $file) {
 }
 ```
 
-Always validate the upload before reading the stream or moving the file. The
-file may be missing, too large for PHP configuration, only partially
-uploaded, rejected by a PHP extension, or not match the file type and size
-your application expects. Yii Validator provides the
-`Yiisoft\Validator\Rule\File` rule for this. It accepts PSR-7
-`UploadedFileInterface` values and validates upload error codes, extension,
-MIME type, and size. Use `Yiisoft\Validator\Rule\Each` when a field contains
-several files.
+Sempre valide o upload antes de ler o stream ou mover o arquivo. O arquivo
+pode estar ausente, ser grande demais para a configuração do PHP, ter sido
+enviado só em parte, ter sido rejeitado por uma extensão do PHP ou não
+corresponder ao tipo e ao tamanho que a sua aplicação espera. O Yii
+Validator oferece a regra `Yiisoft\Validator\Rule\File` para isso. Ela
+aceita valores `UploadedFileInterface` da PSR-7 e valida os códigos de erro
+do upload, a extensão, o tipo MIME e o tamanho. Use
+`Yiisoft\Validator\Rule\Each` quando um campo tiver vários arquivos.
 
-The following example handles a single `avatar` upload. It validates the
-uploaded file with Yii Validator, stores the file outside the public
-directory, and generates its own file name instead of trusting the
-client-provided name.
+O exemplo a seguir trata o upload de um único `avatar`. Ele valida o arquivo
+enviado com o Yii Validator, guarda o arquivo fora do diretório público e
+gera o próprio nome do arquivo em vez de confiar no nome informado pelo
+cliente.
 
 ```php
 <?php
@@ -303,34 +305,36 @@ final readonly class UploadAvatarAction
 }
 ```
 
-Notes:
+Observações:
 
-- Store uploads under `@runtime` or another non-public directory unless the
-  files are intentionally public.
-- Do not use `getClientFilename()` as a storage path. A browser controls it,
-  so it may contain unsafe characters, path-like values, or duplicate names.
-- Do not rely on `getClientMediaType()` alone. It comes from the client. Use
-  `File` MIME type validation, `Image` for image validation and dimension
-  checks, or another server-side parser appropriate for the file format.
-- Check PHP limits such as `upload_max_filesize`, `post_max_size`, and
-  `max_file_uploads` when expected files are rejected before the action
-  runs.
-- When a form uploads several files, the array returned by
-  `getUploadedFiles()` has the same shape as the file input names. Validate
-  them with `Each(new File(...))` and move each `UploadedFileInterface`
-  separately.
-- `File` can also validate string file paths and `SplFileInfo` instances. Do
-  not pass user-submitted paths directly: use PSR-7 uploaded file objects
-  from the request, or perform upload provenance checks before validating
-  filesystem paths.
+- Guarde os uploads em `@runtime` ou em outro diretório não público, a menos
+  que os arquivos sejam públicos de propósito.
+- Não use `getClientFilename()` como caminho de armazenamento. Quem controla
+  esse valor é o navegador, então ele pode ter caracteres inseguros, valores
+  que parecem caminhos ou nomes duplicados.
+- Não confie apenas em `getClientMediaType()`. Esse valor vem do
+  cliente. Use a validação de tipo MIME da regra `File`, a regra `Image`
+  para validar imagens e dimensões, ou outro parser no servidor adequado ao
+  formato do arquivo.
+- Verifique limites do PHP como `upload_max_filesize`, `post_max_size` e
+  `max_file_uploads` quando arquivos esperados forem rejeitados antes de a
+  action rodar.
+- Quando um formulário envia vários arquivos, o array retornado por
+  `getUploadedFiles()` tem o mesmo formato dos nomes dos inputs de
+  arquivo. Valide-os com `Each(new File(...))` e mova cada
+  `UploadedFileInterface` separadamente.
+- A regra `File` também valida caminhos de arquivo em string e instâncias de
+  `SplFileInfo`. Não passe caminhos enviados pelo usuário diretamente: use
+  os objetos de arquivo enviado da PSR-7 vindos da requisição, ou verifique
+  a origem do upload antes de validar caminhos do sistema de arquivos.
 
-## Attributes
+## Atributos
 
-Application middleware may set custom request attributes using
-`withAttribute()` method.  You can get these attributes with
-`getAttribute()`.
+Os middlewares da aplicação podem definir atributos personalizados na
+requisição com o método `withAttribute()`.  Você pode ler esses atributos
+com `getAttribute()`.
 
-Route arguments, such as `id` from a `/posts/{id}` route pattern, aren't
-request attributes.  Use `#[RouteArgument]` in an action parameter or inject
-`Yiisoft\Router\CurrentRoute` when you need route arguments or route
-metadata.
+Argumentos de rota, como o `id` de um padrão de rota `/posts/{id}`, não são
+atributos da requisição.  Use `#[RouteArgument]` em um parâmetro da action
+ou injete `Yiisoft\Router\CurrentRoute` quando precisar de argumentos ou
+metadados da rota.

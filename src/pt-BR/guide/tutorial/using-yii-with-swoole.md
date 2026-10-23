@@ -151,7 +151,7 @@ php server.php
 A scope is shared, so at each iteration of the event loop every service that
 depends on state should be reset.
 
-## Sessions
+## Sessões
 
 Avoid native PHP sessions, including `Yiisoft\Session\Session`, when Swoole
 coroutines handle overlapping requests within one worker: they share session

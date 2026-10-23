@@ -34,7 +34,7 @@ msgstr ""
 #: ../src/guide/tutorial/using-yii-with-swoole.md
 #, no-wrap
 msgid "Sessions"
-msgstr ""
+msgstr "Sessões"
 
 #. type: Title ##
 #: ../src/guide/tutorial/using-yii-with-frankenphp.md

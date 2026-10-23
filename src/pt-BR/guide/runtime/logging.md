@@ -1,49 +1,52 @@
-# Logging
+# Logs
 
-Yii relies on [PSR-3 interfaces](https://www.php-fig.org/psr/psr-3/) for
-logging, so you could configure any PSR-3 compatible logging library to do
-the actual job.
+O Yii usa as [interfaces PSR-3](https://www.php-fig.org/psr/psr-3/) para
+logs, então você pode configurar qualquer biblioteca de log compatível com a
+PSR-3 para fazer o trabalho.
 
-Yii provides its own logger that's highly customizable and extensible.
-Using it, you can log various types of messages, filter them, and gather
-them at different targets, such as files or emails.
+O Yii oferece o seu próprio logger, que é bem personalizável e extensível.
+Com ele, você pode registrar vários tipos de mensagens, filtrá-las e
+reuni-las em destinos diferentes, como arquivos ou e-mails.
 
-Using the Yii logging framework involves the following steps:
+Usar o sistema de logs do Yii envolve os seguintes passos:
  
-* Record [log messages](#log-messages) at various places in your code;
-* Configure [log targets](#log-targets) in the application configuration to
-  filter and export log messages;
-* Examine the filtered logged messages exported by different targets
-  (e.g. the Yii debugger).
+* Registrar [mensagens de log](#mensagens-de-log) em vários pontos do
+  código;
+* Configurar [destinos de log](#destinos-de-log) na configuração da
+  aplicação para filtrar e exportar as mensagens;
+* Examinar as mensagens filtradas exportadas pelos diferentes destinos (por
+  exemplo, o debugger do Yii).
 
-In this section, the focus in on the first two steps.
+Esta seção foca nos dois primeiros passos.
 
-## Default log destination
+## Destino padrão dos logs
 
-Yii3 application templates
+Os templates de aplicação do Yii3
 ([web](https://github.com/yiisoft/app/blob/master/config/common/di/logger.php)
-and
+e
 [API](https://github.com/yiisoft/app-api/blob/master/config/common/di/logger.php))
-configure `Yiisoft\Log\StreamTarget`, which writes to standard output
-(`stdout`, or `php://stdout`) by default.  They don't create application log
-files, such as `runtime/logs/app.log`.  `StreamTarget` also supports
-standard error (`stderr`, or `php://stderr`), but you must configure it
-explicitly.
+configuram o `Yiisoft\Log\StreamTarget`, que por padrão escreve na saída
+padrão (`stdout`, ou `php://stdout`).  Eles não criam arquivos de log da
+aplicação, como `runtime/logs/app.log`.  O `StreamTarget` também suporta a
+saída de erro padrão (`stderr`, ou `php://stderr`), mas você precisa
+configurá-la explicitamente.
 
-This works well with Docker, which [collects container output](https://docs.docker.com/engine/logging/).
-Use `docker logs <container>` to read it when the container's logging driver supports that command.
+Isso funciona bem com o Docker, que [coleta a saída dos containers](https://docs.docker.com/engine/logging/).
+Use `docker logs <container>` para lê-la quando o driver de log do container suportar esse comando.
 
-Without containers, the destination depends on how you start PHP and capture
-its output.  For example, PHP-FPM discards worker output by default unless
-you enable `catch_workers_output`.  See [web server logging
-configuration](../../cookbook/configuring-webservers/general.md#application-logs).
-To have Yii write application log files directly, configure a [file
-target](#logging-to-files).
+Sem containers, o destino depende de como você inicia o PHP e captura a
+saída dele.  Por exemplo, o PHP-FPM descarta a saída dos workers por padrão,
+a menos que você ative `catch_workers_output`.  Veja a [configuração de logs
+do servidor
+web](../../cookbook/configuring-webservers/general.md#application-logs).
+Para o Yii escrever arquivos de log da aplicação diretamente, configure um
+[destino em arquivo](#logs-em-arquivos).
 
-## Log Messages
+## Mensagens de log
 
-To record log messages, you need an instance of PSR-3 logger.  A class that
-writes log messages should receive it as a dependency:
+Para registrar mensagens de log, você precisa de uma instância de um logger
+PSR-3.  Uma classe que escreve mensagens de log deve recebê-lo como
+dependência:
 
 ```php
 class MyService
@@ -57,30 +60,29 @@ class MyService
 }
 ```
 
-Recording a log message is as simple as calling one of the following logging
-methods that correspond to log levels:
+Registrar uma mensagem de log é tão simples quanto chamar um dos métodos a
+seguir, que correspondem aos níveis de log:
 
-- `emergency` - System is unusable.
-- `alert` - Action must be taken immediately.  Example: Entire website down,
-  database unavailable, etc.  This should trigger the SMS alerts and wake
-  you up.
-- `critical` - Critical conditions. Example: Application component
-  unavailable, unexpected exception.
-- `error` - Runtime errors that don't require immediate action but should
-  typically be logged and monitored.
-- `warning` - Exceptional occurrences that aren't errors. Example: Use of
-  deprecated APIs, poor use of an API, undesirable things that aren't
-  necessarily wrong.
-- `notice` - Normal but significant events.
-- `info` - Interesting events. Example: User logs in, SQL logs.
-- `debug` - Detailed debug information.
+- `emergency` - O sistema está inutilizável.
+- `alert` - É preciso agir imediatamente.  Exemplo: site inteiro fora do ar,
+  banco de dados indisponível etc.  Isso deve disparar os alertas por SMS e
+  acordar você.
+- `critical` - Condições críticas. Exemplo: componente da aplicação
+  indisponível, exceção inesperada.
+- `error` - Erros em tempo de execução que não exigem ação imediata, mas
+  normalmente devem ser registrados e monitorados.
+- `warning` - Ocorrências excepcionais que não são erros. Exemplo: uso de
+  APIs obsoletas, uso inadequado de uma API, coisas indesejáveis que não
+  estão necessariamente erradas.
+- `notice` - Eventos normais, mas significativos.
+- `info` - Eventos interessantes. Exemplo: login de usuário, logs de SQL.
+- `debug` - Informações detalhadas de debug.
 
-Each method has two arguments.  The first is a message.  The Second is a
-context array that typically has structured data that doesn't fit a message
-well but still does offer important information.  In case you provide an
-exception as context, you should pass the "exception" key.  Another special
-key is "category." Categories are handy to better organize and filter log
-messages.
+Cada método tem dois argumentos.  O primeiro é a mensagem.  O segundo é um
+array de contexto, que normalmente tem dados estruturados que não cabem bem
+na mensagem, mas trazem informações importantes.  Se você passar uma exceção
+no contexto, use a chave "exception".  Outra chave especial é "category". As
+categorias ajudam a organizar e filtrar melhor as mensagens de log.
 
 ```php
 use \Psr\Log\LoggerInterface;
@@ -100,37 +102,38 @@ final readonly class MyService
 }
 ```
 
-When deciding on a category for a message, you may choose a hierarchical
-naming scheme, which will make it easier for [log targets](#log-targets) to
-filter messages based on their categories. A simple yet effective naming
-scheme is to use the PHP magic constant `__METHOD__` for the category
-names. This is also the approach used in the core Yii framework code.
+Ao escolher a categoria de uma mensagem, você pode adotar um esquema de
+nomes hierárquico, o que facilita para os [destinos de
+log](#destinos-de-log) filtrarem as mensagens pela categoria. Um esquema
+simples e eficaz é usar a constante mágica do PHP `__METHOD__` como nome da
+categoria. Essa também é a abordagem usada no código do core do Yii.
 
-The `__METHOD__` constant evaluates as the name of the method (prefixed with
-the fully qualified class name) where the constant appears.  For example,
-it's equal to the string `'App\\Service\\MyService::serve'` if the above
-line of code is called within this method.
+A constante `__METHOD__` resulta no nome do método (prefixado com o nome
+completo da classe) onde ela aparece.  Por exemplo, ela é igual à string
+`'App\\Service\\MyService::serve'` se a linha de código acima for chamada
+dentro desse método.
 
 > [!IMPORTANT]
-> The logging methods described above are actually shortcuts to the [[\Psr\Log\LoggerInterface::log()]].
+> Os métodos de log descritos acima são, na verdade, atalhos para [[\Psr\Log\LoggerInterface::log()]].
 
-Note that PSR-3 package provides `\Psr\Log\NullLogger` class that provides
-the same set of methods but doesn't log anything. That means that you don't
-have to check if logger is configured with `if ($logger !== null)` and,
-instead, can assume that logger is always present.
+O pacote PSR-3 tem a classe `\Psr\Log\NullLogger`, que oferece o mesmo
+conjunto de métodos, mas não registra nada. Isso significa que você não
+precisa verificar se o logger está configurado com `if ($logger !== null)` e
+pode assumir que o logger sempre existe.
 
 
-## Log targets
+## Destinos de log
 
-A log target is an instance of a class that extends the
-[[\Yiisoft\Log\Target]]. It filters the log messages by their severity
-levels and categories and then exports them to some medium. For example, a
-[[\Yiisoft\Log\Target\File\FileTarget|file target]]exports the filtered log
-messages to a file, while a [[Yiisoft\Log\Target\Email\EmailTarget|email
-target]] exports the log messages to specified email addresses.
+Um destino de log é uma instância de uma classe que estende
+[[\Yiisoft\Log\Target]]. Ele filtra as mensagens de log pelo nível de
+severidade e pela categoria e depois as exporta para algum meio. Por
+exemplo, um [[\Yiisoft\Log\Target\File\FileTarget|destino em arquivo]]
+exporta as mensagens filtradas para um arquivo, enquanto um
+[[Yiisoft\Log\Target\Email\EmailTarget|destino por e-mail]] exporta as
+mensagens para os endereços de e-mail definidos.
 
-You can register many log targets in an application by configuring them
-through the `\Yiisoft\Log\Logger` constructor:
+Você pode registrar vários destinos de log em uma aplicação configurando-os
+no construtor de `\Yiisoft\Log\Logger`:
 
 ```php
 use \Psr\Log\LogLevel;
@@ -148,37 +151,40 @@ $logger = new \Yiisoft\Log\Logger([
 ]);
 ```
 
-In the above code, two log targets are registered:
+No código acima, dois destinos de log são registrados:
 
-* the first target selects error and warning messages and writes them to
-  `/path/to/app.log` file;
-* the second target selects emergency, alert, and critical messages under the categories whose names start with
-`Yiisoft\Cache\`, and sends them in an email to both `admin@example.com` and `developer@example.com`.
+* o primeiro seleciona as mensagens de erro e de warning e as grava no
+  arquivo `/path/to/app.log`;
+* o segundo seleciona as mensagens de emergency, alert e critical das categorias cujos nomes começam com
+`Yiisoft\Cache\` e as envia por e-mail para `admin@example.com` e `developer@example.com`.
 
-Yii comes with the following built-in log targets. Please refer to the API
-documentation about these classes to learn how to configure and use them.
+O Yii vem com os seguintes destinos de log embutidos. Consulte a
+documentação da API dessas classes para saber como configurá-los e usá-los.
 
-* [[\Yiisoft\Log\PsrTarget]]: passes log messages to another PSR-3
-  compatible logger.
-* [[\Yiisoft\Log\StreamTarget]]: writes log messages into a specified output
-  stream.
-* [[\Yiisoft\Log\Target\Db\DbTarget]]: saves log messages in database.
-* [[\Yiisoft\Log\Target\Email\EmailTarget]]: sends log messages to
-  pre-specified email addresses.
-* [[\Yiisoft\Log\Target\File\FileTarget]]: saves log messages in files.
-* [[\Yiisoft\Log\Target\Syslog\SyslogTarget]]: saves log messages to syslog
-  by calling the PHP function `syslog()`.
+* [[\Yiisoft\Log\PsrTarget]]: repassa as mensagens de log para outro logger
+  compatível com a PSR-3.
+* [[\Yiisoft\Log\StreamTarget]]: escreve as mensagens de log em um stream de
+  saída definido.
+* [[\Yiisoft\Log\Target\Db\DbTarget]]: salva as mensagens de log no banco de
+  dados.
+* [[\Yiisoft\Log\Target\Email\EmailTarget]]: envia as mensagens de log para
+  endereços de e-mail definidos.
+* [[\Yiisoft\Log\Target\File\FileTarget]]: salva as mensagens de log em
+  arquivos.
+* [[\Yiisoft\Log\Target\Syslog\SyslogTarget]]: salva as mensagens de log no
+  syslog chamando a função PHP `syslog()`.
 
-### Logging to files
+### Logs em arquivos
 
-To write application logs to a file, install the file target package:
+Para gravar os logs da aplicação em um arquivo, instale o pacote do destino
+em arquivo:
 
 ```shell
 composer require yiisoft/log-target-file
 ```
 
-In your application's `config/common/di/logger.php`, replace the
-`StreamTarget` reference with `FileTarget`:
+No `config/common/di/logger.php` da sua aplicação, troque a referência ao
+`StreamTarget` por `FileTarget`:
 
 ```php
 use Psr\Log\LoggerInterface;
@@ -198,16 +204,17 @@ return [
 ];
 ```
 
-The package's default configuration writes to `@runtime/logs/app.log` and
-enables log rotation.  To change the path, set
-`$params['yiisoft/log-target-file']['fileTarget']['file']` in
-`config/common/params.php`.  Ensure that the PHP process can write to the
-log directory, and keep it outside the web server's document root.
+A configuração padrão do pacote grava em `@runtime/logs/app.log` e ativa a
+rotação de logs.  Para mudar o caminho, defina
+`$params['yiisoft/log-target-file']['fileTarget']['file']` em
+`config/common/params.php`.  Garanta que o processo do PHP consiga escrever
+no diretório de logs e mantenha esse diretório fora do document root do
+servidor web.
 
-The file target package's default configuration also filters out `alert`,
-`critical`, and `notice` messages.  The templates' `StreamTarget` accepts
-all eight log levels. To keep that behavior, add the following entry to the
-array that `config/common/params.php` returns:
+A configuração padrão do pacote de destino em arquivo também descarta as
+mensagens `alert`, `critical` e `notice`.  O `StreamTarget` dos templates
+aceita os oito níveis de log. Para manter esse comportamento, adicione a
+seguinte entrada ao array retornado por `config/common/params.php`:
 
 ```php
 use Psr\Log\LogLevel;
@@ -231,37 +238,37 @@ return [
 ];
 ```
 
-In the following, we will describe the features common to all log targets.
+A seguir, descrevemos os recursos comuns a todos os destinos de log.
 
-### Message Filtering
+### Filtragem de mensagens
 
-For each log target, you can configure its levels and categories to specify
-which severity levels and categories of the messages the target should
-process.
+Para cada destino de log, você pode configurar os níveis e as categorias,
+definindo quais níveis de severidade e quais categorias de mensagens o
+destino deve processar.
 
-The target `setLevels()` method takes an array consisting of one or several
-of `\Psr\Log\LogLevel` constants.
+O método `setLevels()` do destino recebe um array com uma ou mais constantes
+de `\Psr\Log\LogLevel`.
 
-By default, the target will process messages of *any* severity level.
+Por padrão, o destino processa mensagens de *qualquer* nível de severidade.
 
-The target `setCategories()` method takes an array consisting of message
-category names or patterns.  A target will only process messages whose
-category can be found or match one of the patterns in this array.  A
-category pattern is a category name prefix with an asterisk `*` at its
-end. A category name matches a category pattern if it starts with the same
-prefix of the pattern. For example, `Yiisoft\Cache\Cache::set` and
-`Yiisoft\Cache\Cache::get` both match the pattern `Yiisoft\Cache\*`.
+O método `setCategories()` do destino recebe um array com nomes ou padrões
+de categorias de mensagens.  O destino só processa as mensagens cuja
+categoria esteja no array ou case com um dos padrões dele.  Um padrão de
+categoria é um prefixo de nome de categoria com um asterisco `*` no
+final. Um nome de categoria casa com o padrão se começar com o mesmo
+prefixo. Por exemplo, `Yiisoft\Cache\Cache::set` e
+`Yiisoft\Cache\Cache::get` casam com o padrão `Yiisoft\Cache\*`.
 
-By default, the target will process messages of *any* category.
+Por padrão, o destino processa mensagens de *qualquer* categoria.
 
-Besides allowing the categories by the `setCategories()` method, you may
-also deny certain categories by the `setExcept()` method.  If the category
-of a message is found or matches one of the patterns in this property, the
-target will NOT process it.
+Além de permitir categorias com o método `setCategories()`, você também pode
+negar certas categorias com o método `setExcept()`.  Se a categoria de uma
+mensagem estiver nessa lista ou casar com um dos padrões dela, o destino NÃO
+vai processá-la.
  
-The following target configuration specifies that the target should only
-process error and warning messages under the categories whose names match
-either `Yiisoft\Cache\*` or `App\Exceptions\HttpException:*`, but not
+A configuração a seguir define que o destino só deve processar mensagens de
+erro e de warning das categorias cujos nomes casem com `Yiisoft\Cache\*` ou
+`App\Exceptions\HttpException:*`, mas não com
 `App\Exceptions\HttpException:404`.
 
 ```php
@@ -271,12 +278,12 @@ $fileTarget->setCategories(['Yiisoft\Cache\*', 'App\Exceptions\HttpException:*']
 $fileTarget->setExcept(['App\Exceptions\HttpException:404']);
 ```
 
-### Message Formatting
+### Formatação de mensagens
 
-Log targets export the filtered log messages in a certain format.  For
-example, if you install a log target of the class
-[[\Yiisoft\Log\Target\File\FileTarget]], you may find a log message similar
-to the following in the log file:
+Os destinos de log exportam as mensagens filtradas em um certo formato.  Por
+exemplo, se você instalar um destino de log da classe
+[[\Yiisoft\Log\Target\File\FileTarget]], pode encontrar no arquivo de log
+uma mensagem parecida com esta:
 
 ```
 2020-12-05 09:27:52.223800 [info][application] Some message
@@ -288,15 +295,15 @@ memory: 4398536
 category: 'application'
 ```
 
-By default, log messages have the following format:
+Por padrão, as mensagens de log têm o seguinte formato:
 
 ```
 Timestamp Prefix[Level][Category] Message Context
 ```
 
-You may customize this format by calling
-[[\Yiisoft\Log\Target::setFormat()|setFormat()]] method, which takes a PHP
-callable returning a custom-formatted message.
+Você pode personalizar esse formato chamando o método
+[[\Yiisoft\Log\Target::setFormat()|setFormat()]], que recebe um callable PHP
+que retorna a mensagem formatada.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -313,13 +320,14 @@ $logger->info('Text message', ['category' => 'app']);
 // (APP) [info] Text message
 ```
 
-In addition, if you're comfortable with the default message format but need
-to change the timestamp format or add custom data to the message, you can
-call the [[\Yiisoft\Log\Target::setTimestampFormat()|setTimestampFormat()]]
-and [[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods. For example,
-the following code changes the timestamp format and configures a log target
-to prefix each log message with the current user ID (IP address and Session
-ID are removed for privacy reasons).
+Além disso, se o formato padrão da mensagem servir para você, mas for
+preciso mudar o formato do timestamp ou adicionar dados à mensagem, você
+pode chamar os métodos
+[[\Yiisoft\Log\Target::setTimestampFormat()|setTimestampFormat()]] e
+[[\Yiisoft\Log\Target::setPrefix()|setPrefix()]]. Por exemplo, o código a
+seguir muda o formato do timestamp e configura um destino de log para
+prefixar cada mensagem com o ID do usuário atual (o endereço IP e o ID da
+sessão foram removidos por questões de privacidade).
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -339,20 +347,19 @@ $logger->info('Text', ['category' => 'user']);
 // Common context: ...
 ```
 
-The PHP callable that's passed to the
-[[\Yiisoft\Log\Target::setFormat()|setFormat()]] and
-[[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] methods has the following
-signature:
+O callable PHP passado para os métodos
+[[\Yiisoft\Log\Target::setFormat()|setFormat()]] e
+[[\Yiisoft\Log\Target::setPrefix()|setPrefix()]] tem a seguinte assinatura:
 
 ```php
 function (\Yiisoft\Log\Message $message, array $commonContext): string;
 ```
 
-Besides message prefixes, log targets also append some common context information to each of the log messages.
-You may adjust this behavior by calling target [[\Yiisoft\Log\Target::setCommonContext()|setCommonContext()]]
-method, passing an array of data in the `key => value` format that you want to include.
-For example, the following log target configuration specifies that only the
-value of the `$_SERVER` variable will be appended to the log messages.
+Além dos prefixos, os destinos de log também acrescentam algumas informações de contexto comuns a cada mensagem de log.
+Você pode ajustar esse comportamento chamando o método [[\Yiisoft\Log\Target::setCommonContext()|setCommonContext()]]
+do destino, passando um array de dados no formato `key => value` com o que você quer incluir.
+Por exemplo, a configuração de destino a seguir define que apenas o
+valor da variável `$_SERVER` será acrescentado às mensagens de log.
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -360,24 +367,22 @@ $fileTarget->setCommonContext(['server' => $_SERVER]);
 ```
 
 
-### Message Trace Level
+### Nível de trace das mensagens
 
-During development, it's often desirable to see where each log message is
-coming from.  You can achieve this by calling the
-[[\Yiisoft\Log\Logger::setTraceLevel()|setTraceLevel()]] method like the
-following:
+Durante o desenvolvimento, muitas vezes é útil ver de onde vem cada mensagem
+de log.  Você pode fazer isso chamando o método
+[[\Yiisoft\Log\Logger::setTraceLevel()|setTraceLevel()]] assim:
 
 ```php
 $logger = new \Yiisoft\Log\Logger($targets);
 $logger->setTraceLevel(3);
 ```
 
-This application configuration sets the trace level to be 3, so each log
-message will be appended with at most three levels of the call stack at
-which the log message is recorded. You can also set a list of paths to
-exclude from the trace by calling the
-[[\Yiisoft\Log\Logger::setExcludedTracePaths()|setExcludedTracePaths()]]
-method.
+Essa configuração define o nível de trace como 3, então cada mensagem de log
+recebe no máximo três níveis da pilha de chamadas do ponto em que a mensagem
+foi registrada. Você também pode definir uma lista de caminhos a excluir do
+trace chamando o método
+[[\Yiisoft\Log\Logger::setExcludedTracePaths()|setExcludedTracePaths()]].
 
 ```php
 $logger = new \Yiisoft\Log\Logger($targets);
@@ -385,18 +390,18 @@ $logger->setExcludedTracePaths(['/path/to/file', '/path/to/folder']);
 ```
 
 > [!IMPORTANT]
-> Getting call stack information isn't trivial. Therefore, you should only use this feature during development
-or when debugging an application.
+> Obter informações da pilha de chamadas não é trivial. Por isso, use esse recurso apenas durante o desenvolvimento
+ou ao depurar uma aplicação.
 
 
-### Message flushing and exporting
+### Envio (flush) e exportação de mensagens
 
-As aforementioned, log messages are maintained in an array by
-[[\Yiisoft\Log\Logger|logger object]]. To limit the memory consumption by
-this array, the logger will flush the recorded messages to the [log
-targets](#log-targets)  each time the array accumulates a certain number of
-log messages. You can customize this number by calling the
-[[\Yiisoft\Log\Logger::setFlushInterval()]] method:
+Como dito acima, as mensagens de log ficam em um array no
+[[\Yiisoft\Log\Logger|objeto logger]]. Para limitar o consumo de memória
+desse array, o logger envia as mensagens registradas para os [destinos de
+log](#destinos-de-log) sempre que o array acumula um certo número de
+mensagens. Você pode personalizar esse número chamando o método
+[[\Yiisoft\Log\Logger::setFlushInterval()]]:
 
 
 ```php
@@ -405,26 +410,26 @@ $logger->setFlushInterval(100); // default is 1000
 ```
 
 > [!IMPORTANT]
-> Message flushing also occurs when the application ends,
-which ensures log targets can receive complete log messages.
+> O envio das mensagens também acontece quando a aplicação termina,
+o que garante que os destinos de log recebam as mensagens completas.
 
-When the [[\Yiisoft\Log\Logger|logger object]] flushes log messages to [log targets](#log-targets),
-they don't get exported immediately. Instead, the message exporting only occurs when a log target
- accumulates a certain number of the filtered messages. You can customize this number by calling the
-[[\Yiisoft\Log\Target::setExportInterval()|setExportInterval()]] method of individual
-[log targets](#log-targets), like the following:
+Quando o [[\Yiisoft\Log\Logger|objeto logger]] envia as mensagens para os [destinos de log](#destinos-de-log),
+elas não são exportadas imediatamente. A exportação só acontece quando um destino de log
+ acumula um certo número de mensagens filtradas. Você pode personalizar esse número chamando o método
+[[\Yiisoft\Log\Target::setExportInterval()|setExportInterval()]] de cada
+[destino de log](#destinos-de-log), assim:
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
 $fileTarget->setExportInterval(100); // default is 1000
 ```
 
-Because of the flushing and exporting level setting, by default when you
-call any logging method, you will NOT see the log message immediately in the
-log targets. This could be a problem for some long-running console
-applications. To make each log message appear immediately in the log
-targets, you should set both flush interval and export interval to be 1, as
-shown below:
+Por causa dessas configurações de envio e exportação, por padrão, quando
+você chama qualquer método de log, NÃO vai ver a mensagem imediatamente nos
+destinos de log. Isso pode ser um problema em aplicações de console de longa
+duração. Para que cada mensagem apareça imediatamente nos destinos de log,
+defina tanto o intervalo de envio quanto o de exportação como 1, como
+mostrado abaixo:
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -435,15 +440,16 @@ $logger->setFlushInterval(1);
 ```
 
 > [!NOTE]
-> Frequent message flushing and exporting will degrade the performance of your application.
+> Enviar e exportar mensagens com frequência piora o desempenho da sua aplicação.
 
 
-### Toggling log targets
+### Ativando e desativando destinos de log
 
-You can enable or disable a log target by calling its
-[[\Yiisoft\Log\Target::enable()|enable()] ] and
-[[\Yiisoft\Log\Target::disable()|disable()]] methods.  You may do so via the
-log target configuration or by the following PHP statement in your code:
+Você pode ativar ou desativar um destino de log chamando os métodos
+[[\Yiisoft\Log\Target::enable()|enable()] ] e
+[[\Yiisoft\Log\Target::disable()|disable()]].  Você pode fazer isso na
+configuração do destino de log ou com a seguinte instrução PHP no seu
+código:
 
 ```php
 $fileTarget = new \Yiisoft\Log\Target\File\FileTarget('/path/to/app.log');
@@ -456,33 +462,36 @@ foreach ($logger->getTargets() as $target) {
 }
 ```
 
-To check whether the log target is enabled, call the `isEnabled()` method.
-You also may pass callable to
-[[\Yiisoft\Log\Target::setEnabled()|setEnabled()]] to define a dynamic
-condition for whether the log target should be enabled or not.
+Para verificar se o destino de log está ativado, chame o método
+`isEnabled()`.  Você também pode passar um callable para
+[[\Yiisoft\Log\Target::setEnabled()|setEnabled()]] para definir uma condição
+dinâmica que diz se o destino de log deve estar ativado ou não.
 
 
-### Creating new targets
+### Criando novos destinos
 
-Creating a new log target class is straightforward. You mainly need to
-implement the [[\Yii\Log\Target::export()]] abstract method that sends all
-accumulated log messages to a designated medium.
+Criar uma nova classe de destino de log é simples. Basicamente, você precisa
+implementar o método abstrato [[\Yii\Log\Target::export()]], que envia todas
+as mensagens de log acumuladas para um meio definido.
 
-The following protected methods will also be available for child targets:
+Os seguintes métodos protegidos também ficam disponíveis para os destinos
+filhos:
 
-- `getMessages` - Get a list of log messages ([[\Yii\Log\Message]]
-  instances).
-- `getFormattedMessages` - Get a list of log messages formatted as strings.
-- `formatMessages` - Get all log messages formatted as a string.
-- `getCommonContext` - Get an array with common context data in the `key =>
-  value` format.
+- `getMessages` - Retorna uma lista de mensagens de log (instâncias de
+  [[\Yii\Log\Message]]).
+- `getFormattedMessages` - Retorna uma lista de mensagens de log formatadas
+  como strings.
+- `formatMessages` - Retorna todas as mensagens de log formatadas como uma
+  string.
+- `getCommonContext` - Retorna um array com os dados de contexto comuns no
+  formato `key => value`.
 
-For more details, you may refer to any of the log target classes included in
-the package.
+Para mais detalhes, consulte qualquer uma das classes de destino de log
+incluídas no pacote.
 
 > [!TIP]
-> Instead of creating your own loggers, you may try any PSR-3 compatible logger such
-as [Monolog](https://github.com/Seldaek/monolog) by using [[\Yii\Log\PsrTarget]].
+> Em vez de criar os seus próprios loggers, você pode experimentar qualquer logger compatível com a PSR-3, como
+o [Monolog](https://github.com/Seldaek/monolog), usando [[\Yii\Log\PsrTarget]].
 
 ```php
 /**

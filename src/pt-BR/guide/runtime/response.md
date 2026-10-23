@@ -1,6 +1,7 @@
-# Response
+# Resposta
 
-HTTP response has status code and message, a set of headers and a body:
+Uma resposta HTTP tem um código e uma mensagem de status, um conjunto de
+headers e um corpo:
 
 ```
 HTTP/1.1 200 OK
@@ -14,12 +15,12 @@ Connection: Closed
 Hello!
 ```
 
-Yii uses [PSR-7 `Response`](https://www.php-fig.org/psr/psr-7/) in the web
-application to represent response.
+O Yii usa o [`Response` da PSR-7](https://www.php-fig.org/psr/psr-7/) na
+aplicação web para representar a resposta.
 
-The object should be constructed and returned as a result of the execution
-of controller actions or other middleware.  Usually, the middleware has a
-response factory injected into its constructor.
+O objeto deve ser criado e retornado como resultado da execução das actions
+de controllers ou de outros middlewares.  Normalmente, o middleware recebe
+uma response factory injetada no construtor.
 
 ```php
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -43,9 +44,9 @@ final readonly class PostAction
 }
 ```
 
-## Status code
+## Código de status
 
-You can set a status code like the following:
+Você pode definir o código de status assim:
 
 ```php
 use Yiisoft\Http\Status;
@@ -53,40 +54,42 @@ use Yiisoft\Http\Status;
 $response = $response->withStatus(Status::NOT_FOUND);
 ```
 
-Majority of status codes are available from `Status` class for convenience
-and readability.
+A maioria dos códigos de status está disponível na classe `Status`, por
+conveniência e legibilidade.
 
-Router may return a response before an action runs.  For example, an
-`OPTIONS` request to a known route path gets an automatic `204 No Content`
-response with an `Allow` header that lists supported methods.  See
-[Automatic OPTIONS responses](routing.md#automatic-options-responses) for
-routing details.
+O router pode retornar uma resposta antes de a action rodar.  Por exemplo,
+uma requisição `OPTIONS` para o caminho de uma rota conhecida recebe
+automaticamente uma resposta `204 No Content` com um header `Allow` listando
+os métodos suportados.  Veja [Respostas OPTIONS
+automáticas](routing.md#respostas-options-automaticas) para os detalhes de
+roteamento.
 
 ## Headers
 
-You can set headers like this:
+Você pode definir headers assim:
 
 ```php
 $response = $response->withHeader('Content-type', 'application/json');
 ```
 
-If there is a need to append a header value to the existing header:
+Se for preciso acrescentar um valor a um header existente:
 
 ```php
 $response = $response->withAddedHeader('Set-Cookie', 'qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT');
 ```
 
-And, if needed, headers could be removed:
+E, se necessário, os headers podem ser removidos:
 
 ```php
 $response = $response->withoutHeader('Set-Cookie');
 ```
 
-## Body
+## Corpo
 
-Response body is an object implementing `Psr\Http\Message\StreamInterface`.
+O corpo da resposta é um objeto que implementa
+`Psr\Http\Message\StreamInterface`.
 
-You can write to it via the interface itself:
+Você pode escrever nele pela própria interface:
 
 ```php
 $body = $response->getBody();
@@ -94,9 +97,9 @@ $body->write('Hello');
 ```
 
 
-## Examples
+## Exemplos
 
-### Redirecting
+### Redirecionando
 
 ```php
 use Yiisoft\Http\Status;
@@ -106,17 +109,17 @@ return $response
   ->withHeader('Location', 'https://www.example.com');  
 ```
 
-Note that there are different statuses used for redirection:
+Existem status diferentes usados para redirecionamento:
 
-| Code | Usage                        | What is it for                                                                                                                                                          |
-|------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 301  | `Status::MOVED_PERMANENTLY`  | Permanently changed a URL structure. Search engines update their indexes, and browsers cache it.                                                                        |
-| 308  | `Status::PERMANENT_REDIRECT` | Like 301, but guarantees the HTTP method won't change.                                                                                                                  |
-| 302  | `Status::FOUND`              | Temporary changes like maintenance pages. Original URL should still be used for future requests. Search engines typically don't update their indexes.                   |
-| 307  | `Status::TEMPORARY_REDIRECT` | Like 302, but guarantees the HTTP method won't change.                                                                                                                  |
-| 303  | `Status::SEE_OTHER`          | After form submissions to prevent duplicate submissions if the user refreshes. Explicitly tells to use `GET` for the redirect, even if the original request was `POST`. |
+| Código | Constante                    | Para que serve |
+|--------|------------------------------|----------------|
+| 301    | `Status::MOVED_PERMANENTLY`  | Mudança permanente na estrutura de URLs. Os mecanismos de busca atualizam os índices e os navegadores guardam em cache. |
+| 308    | `Status::PERMANENT_REDIRECT` | Como o 301, mas garante que o método HTTP não muda. |
+| 302    | `Status::FOUND`              | Mudanças temporárias, como páginas de manutenção. A URL original ainda deve ser usada nas próximas requisições. Os mecanismos de busca normalmente não atualizam os índices. |
+| 307    | `Status::TEMPORARY_REDIRECT` | Como o 302, mas garante que o método HTTP não muda. |
+| 303    | `Status::SEE_OTHER`          | Depois do envio de formulários, para evitar envios duplicados se o usuário recarregar a página. Indica explicitamente que o redirecionamento deve usar `GET`, mesmo que a requisição original tenha sido `POST`. |
 
-### Responding with JSON
+### Respondendo com JSON
 
 ```php
 use Yiisoft\Http\Status;

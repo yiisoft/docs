@@ -854,7 +854,7 @@ $htmlForm = Html::form()
 <?= $htmlForm->close() ?>
 ```
 
-### Routing
+### Roteamento
 
 Adjust `config/common/routes.php`:
 

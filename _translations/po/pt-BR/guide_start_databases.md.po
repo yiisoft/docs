@@ -48,7 +48,7 @@ msgstr "Trabalhando com bancos de dados"
 #: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Routing"
-msgstr ""
+msgstr "Roteamento"
 
 #. type: Plain text
 #: ../src/guide/start/databases.md

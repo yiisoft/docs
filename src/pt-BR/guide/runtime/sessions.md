@@ -1,25 +1,26 @@
-# Sessions
+# Sessões
 
-Sessions persist data between requests without passing them to the client
-and back.  Yii has [a session package](https://github.com/yiisoft/session)
-to work with session data.
+As sessões mantêm dados entre requisições sem precisar enviá-los ao cliente
+e de volta.  O Yii tem [um pacote de
+sessão](https://github.com/yiisoft/session) para trabalhar com os dados da
+sessão.
 
-To add it to your application, use composer:
+Para adicioná-lo à sua aplicação, use o composer:
 
 ```shell
 composer require yiisoft/session
 ```
 
-## Configuring middleware
+## Configurando o middleware
 
-To keep a session between requests, you need to add `SessionMiddleware` to
-your route group or application middlewares.  You should prefer a route
-group when you have both API with token-based authentication and regular web
-routes in the same application. Having it this way avoids starting the
-session for API endpoints.
+Para manter a sessão entre requisições, você precisa adicionar o
+`SessionMiddleware` ao seu grupo de rotas ou aos middlewares da aplicação.
+Prefira um grupo de rotas quando a mesma aplicação tiver uma API com
+autenticação por token e rotas web comuns. Assim, a sessão não é iniciada
+nos endpoints da API.
 
-To add a session for a certain group of routes, edit `config/routes.php`
-like the following:
+Para adicionar a sessão a um grupo específico de rotas, edite
+`config/routes.php` assim:
 
 ```php
 <?php
@@ -38,8 +39,8 @@ return [
 ];
 ```
 
-To add a session to the whole application, edit `config/application.php`
-like the following:
+Para adicionar a sessão à aplicação inteira, edite `config/application.php`
+assim:
 
 ```php
 return [
@@ -61,7 +62,7 @@ return [
 ];
 ```
 
-## Opening and closing session
+## Abrindo e fechando a sessão
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -77,10 +78,10 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 ``` 
 
 > [!NOTE]
-> Closing session as early as possible is a good practice since many session implementations are blocking other
-> requests while the session is open.
+> Fechar a sessão o quanto antes é uma boa prática, já que muitas implementações de sessão bloqueiam outras
+> requisições enquanto a sessão está aberta.
 
-There are two more ways to close a session:
+Há mais duas formas de fechar uma sessão:
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -93,9 +94,10 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 }
 ```
 
-## Working with session data
+## Trabalhando com os dados da sessão
 
-Usually you will use the following methods to work with session data:
+Normalmente você vai usar os seguintes métodos para trabalhar com os dados
+da sessão:
 
 ```php
 public function actionProfile(\Yiisoft\Session\SessionInterface $session)
@@ -125,15 +127,15 @@ public function actionProfile(\Yiisoft\Session\SessionInterface $session)
 }
 ```
 
-## Flash messages
+## Mensagens flash
 
-In case you need some data to remain in session until read, such as in case
-of displaying a message on the next page, "flash" messages are what you
-need.  A flash message is a special type of data that's available only in
-the current request and the next request.  After that, it will be deleted
-automatically.
+Quando você precisa que um dado fique na sessão até ser lido, como ao exibir
+uma mensagem na próxima página, o que você precisa são as mensagens
+"flash".  Uma mensagem flash é um tipo especial de dado que só fica
+disponível na requisição atual e na próxima.  Depois disso, ela é apagada
+automaticamente.
 
-`FlashInteface` usage is the following:
+O uso de `FlashInteface` é o seguinte:
 
 ```php
 /** @var Yiisoft\Session\Flash\FlashInterface $flash */
@@ -148,14 +150,15 @@ if ($warning !== null) {
 }
 ```
 
-## Custom session storage
+## Armazenamento de sessão personalizado
 
-When using `Yiisoft\Session\Session`, you can use your own storage
-implementation:
+Ao usar `Yiisoft\Session\Session`, você pode usar a sua própria
+implementação de armazenamento:
 
 ```php
 $handler = new MySessionHandler();
 $session = new \Yiisoft\Session\Session([], $handler);
 ```
 
-Custom storage must implement `\SessionHandlerInterface`.
+O armazenamento personalizado precisa implementar
+`\SessionHandlerInterface`.

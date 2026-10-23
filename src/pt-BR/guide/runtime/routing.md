@@ -1,23 +1,23 @@
-# Routing and URL generation
+# Roteamento e geração de URLs
 
-Usually, a Yii application processes certain requests with certain
-handlers.  It selects a handler based on the request URL.  The part of the
-application that does the job is a router, and the process of selecting a
-handler, instantiating it and running a handler method is *routing*.
+Normalmente, uma aplicação Yii processa certas requisições com certos
+handlers.  Ela escolhe o handler com base na URL da requisição.  A parte da
+aplicação que faz esse trabalho é o router, e o processo de escolher um
+handler, instanciá-lo e executar um método dele é o *roteamento*.
 
-The reverse process of routing is *URL generation*, which creates a URL from
-a given named route, route arguments, and query parameters.  When you later
-request the created URL, the routing process can resolve it back into the
-original route arguments and query parameters.
+O processo inverso do roteamento é a *geração de URLs*, que cria uma URL a
+partir de uma rota nomeada, de argumentos de rota e de parâmetros de query.
+Quando você requisita depois a URL criada, o roteamento consegue convertê-la
+de volta nos argumentos de rota e parâmetros de query originais.
 
-Routing and URL generation are separate services, but they use a common set
-of routes for both URL matching and URL generation.
+Roteamento e geração de URLs são serviços separados, mas usam o mesmo
+conjunto de rotas tanto para casar URLs quanto para gerá-las.
 
-## Configuring routes
+## Configurando rotas
 
-By configuring routes, you can let your application recognize arbitrary URL
-formats without modifying your existing application code. You can configure
-routes in `/config/routes.php`. The structure of the file is the following:
+Configurando rotas, você faz a aplicação reconhecer formatos arbitrários de
+URL sem modificar o código existente. Você pode configurar as rotas em
+`/config/routes.php`. A estrutura do arquivo é a seguinte:
 
 ```php
 <?php
@@ -34,8 +34,8 @@ return [
 ];
 ```
 
-The file returns an array of routes. When defining a route, you start with a
-method corresponding to a certain HTTP request type:
+O arquivo retorna um array de rotas. Ao definir uma rota, você começa com um
+método que corresponde a um tipo de requisição HTTP:
 
 - get
 - post
@@ -45,7 +45,7 @@ method corresponding to a certain HTTP request type:
 - head
 - options
 
-If you need many methods, you can use `methods()`:
+Se você precisar de vários métodos, pode usar `methods()`:
 
 ```php
 <?php
@@ -63,17 +63,17 @@ return [
 ];
 ```
 
-All these methods accept a route pattern.  The route pattern defines how the
-router matches the URL when routing and how it generates URL based on route
-name and parameters.  You will learn about the actual syntax later in this
-guide.  Specify a handler with `action()` as:
+Todos esses métodos aceitam um padrão de rota.  O padrão de rota define como
+o router casa a URL durante o roteamento e como gera a URL a partir do nome
+da rota e dos parâmetros.  Você vai conhecer a sintaxe mais adiante neste
+guia.  Defina o handler com `action()` como:
 
-- [Middleware](../structure/middleware.md) class name.
-- Handler action (an array of [HandlerClass, handlerMethod]).
-- A callable.
+- Nome de uma classe de [middleware](../structure/middleware.md).
+- Uma action de handler (um array no formato [HandlerClass, handlerMethod]).
+- Um callable.
 
-In case of a handler action, a class of type `HandlerClass` is instantiated
-and its `handlerMethod` is called:
+No caso de uma action de handler, uma classe do tipo `HandlerClass` é
+instanciada e o seu método `handlerMethod` é chamado:
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -88,7 +88,7 @@ final readonly class HandlerClass
 }
 ```
 
-The callable is called as is:
+O callable é chamado como está:
 
 ```php
 static function (ServerRequestInterface $request, RequestHandlerInterface $next) use ($responseFactory) {
@@ -98,16 +98,18 @@ static function (ServerRequestInterface $request, RequestHandlerInterface $next)
 }
 ```
 
-For handler action and callable typed parameters are automatically injected
-using the dependency injection container passed to the route.
+Para actions de handler e callables, os parâmetros tipados são injetados
+automaticamente pelo container de injeção de dependência passado para a
+rota.
 
-Get current request and handler by type-hinting for `ServerRequestInterface`
-and `RequestHandlerInterface`.
+Obtenha a requisição e o handler atuais usando os type hints
+`ServerRequestInterface` e `RequestHandlerInterface`.
 
-### Route arguments in actions
+### Argumentos de rota nas actions
 
-Named route parameters are stored in `CurrentRoute`.  To pass a route
-parameter to an action method parameter, use the `RouteArgument` attribute:
+Os parâmetros nomeados da rota ficam guardados em `CurrentRoute`.  Para
+passar um parâmetro de rota para um parâmetro do método da action, use o
+atributo `RouteArgument`:
 
 ```php
 <?php
@@ -133,8 +135,8 @@ final readonly class PostController
 }
 ```
 
-If a parameter has the same name as the action parameter, you can omit the
-attribute name:
+Se o parâmetro tiver o mesmo nome do parâmetro da action, você pode omitir o
+nome no atributo:
 
 ```php
 public function view(#[RouteArgument] int $id): ResponseInterface
@@ -143,8 +145,8 @@ public function view(#[RouteArgument] int $id): ResponseInterface
 }
 ```
 
-You can also inject `CurrentRoute` into an action or a service when you need
-several arguments or route metadata:
+Você também pode injetar `CurrentRoute` em uma action ou em um serviço
+quando precisar de vários argumentos ou de metadados da rota:
 
 ```php
 <?php
@@ -166,13 +168,14 @@ final readonly class PostController
 }
 ```
 
-Route arguments aren't request attributes.  Read them from `CurrentRoute` or
-action parameters marked with `RouteArgument`.
+Argumentos de rota não são atributos da requisição.  Leia-os de
+`CurrentRoute` ou de parâmetros da action marcados com `RouteArgument`.
 
-For optional route parameters, provide a default value either in the route
-with `defaults()` or in the action method signature.
+Para parâmetros de rota opcionais, informe um valor padrão na rota com
+`defaults()` ou na assinatura do método da action.
 
-You could add extra handlers to wrap primary one with `middleware()` method:
+Você pode adicionar handlers extras em volta do principal com o método
+`middleware()`:
 
 ```php
 <?php
@@ -190,10 +193,10 @@ return [
 ];
 ```
 
-Check ["the middleware"](../structure/middleware.md) guide to learn more
-about how to implement middleware.
+Veja o guia sobre ["middleware"](../structure/middleware.md) para saber mais
+sobre como implementar middlewares.
 
-This is especially useful when grouping routes:
+Isso é especialmente útil ao agrupar rotas:
 
 ```php
 <?php
@@ -222,13 +225,13 @@ return [
 ];
 ```
 
-Router executes `ApiDataWrapper` before handling any URL starting with
-`/api`.
+O router executa `ApiDataWrapper` antes de tratar qualquer URL que comece
+com `/api`.
 
-You could name a route with a `name()` method. It's a good idea to choose a
-route name based on the handler's name.
+Você pode dar um nome a uma rota com o método `name()`. É uma boa ideia
+escolher o nome da rota com base no nome do handler.
 
-You can set a default value for a route parameter. For example:
+Você pode definir um valor padrão para um parâmetro de rota. Por exemplo:
 
 
 ```php
@@ -248,47 +251,45 @@ return [
 ];
 ```
 
-This configuration would result in a match with both `/user` and
-`/user/123`.  In both cases `CurrentRoute` service will contain `id`
-argument filled.  In the first case it will be default `42` and in the
-second case it will be `123`.
+Essa configuração casa tanto com `/user` quanto com `/user/123`.  Nos dois
+casos, o serviço `CurrentRoute` vai ter o argumento `id` preenchido.  No
+primeiro caso, ele será o padrão `42` e, no segundo, `123`.
 
-In cause URL should be valid for a single host, you can specify it with
-`host()`.
+Se a URL só deve valer para um host, você pode defini-lo com `host()`.
 
-## Routing
+## Roteamento
 
-Yii routing is flexible, and internally it may use different routing
-implementations.  The actual matching algorithm may vary, but the basic idea
-stays the same.
+O roteamento do Yii é flexível e, internamente, pode usar diferentes
+implementações.  O algoritmo de casamento pode variar, mas a ideia básica é
+a mesma.
 
-Router matches routes defined in config from top to bottom.  If there is a
-match, further matching isn't performed and the router executes the route
-handler to get the response.  If there is no match at all, router passes
-handling to the next middleware in the [application middleware
-set](../structure/middleware.md).
+O router casa as rotas definidas na configuração de cima para baixo.  Se
+houver um casamento, ele para de procurar e executa o handler da rota para
+obter a resposta.  Se nenhuma rota casar, o router passa o tratamento para o
+próximo middleware do [conjunto de middlewares da
+aplicação](../structure/middleware.md).
 
-### Automatic OPTIONS responses
+### Respostas OPTIONS automáticas
 
-When the request path matches a route but the HTTP method doesn't, router
-returns a `405 Method Not Allowed` response with an `Allow` header:
+Quando o caminho da requisição casa com uma rota, mas o método HTTP não, o
+router retorna uma resposta `405 Method Not Allowed` com o header `Allow`:
 
 ```http
 HTTP/1.1 405 Method Not Allowed
 Allow: GET
 ```
 
-For an `OPTIONS` request to the same path, router returns an empty `204 No
-Content` response with the same `Allow` header:
+Para uma requisição `OPTIONS` no mesmo caminho, o router retorna uma
+resposta vazia `204 No Content` com o mesmo header `Allow`:
 
 ```http
 HTTP/1.1 204 No Content
 Allow: GET
 ```
 
-This response is generated from the configured routes before the route
-action runs.  If an API endpoint needs CORS headers, attach CORS middleware
-to a route group:
+Essa resposta é gerada a partir das rotas configuradas, antes de a action da
+rota ser executada.  Se um endpoint de API precisar de headers CORS,
+adicione um middleware de CORS a um grupo de rotas:
 
 ```php
 <?php
@@ -312,9 +313,9 @@ return [
 ];
 ```
 
-## Generating URLs
+## Gerando URLs
 
-To generate URL based on a route, a route should have a name:
+Para gerar uma URL a partir de uma rota, a rota precisa ter um nome:
 
 ```php
 <?php
@@ -335,7 +336,7 @@ return [
 ```
 
 
-The generation looks like the following:
+A geração fica assim:
 
 ```php
 <?php
@@ -362,18 +363,19 @@ final readonly class TestController extends AbstractController
 }
 ```
 
-In the above code, we get a generator instance with the help of [automatic
-dependency injection](../concept/di-container.md)  that works with action
-handlers.  In another service, you can get the instance with similar
-constructor injection.  In views URL generator is available as `$url`.
+No código acima, obtemos uma instância do gerador com a ajuda da [injeção de
+dependência automática](../concept/di-container.md), que funciona com
+handlers de action.  Em outro serviço, você pode obter a instância com uma
+injeção no construtor parecida.  Nas views, o gerador de URLs está
+disponível como `$url`.
 
-Then we use `generate()` method to get the actual URL.  It accepts a route
-name, route arguments, query parameters, and a hash fragment.  The code will
-return `/test/submit/42`.
+Depois usamos o método `generate()` para obter a URL.  Ele aceita o nome da
+rota, argumentos de rota, parâmetros de query e um fragmento (hash).  O
+código retorna `/test/submit/42`.
 
-Route arguments are used to fill placeholders in the route pattern.
-Arguments that aren't used in the pattern are added to the query string when
-the query parameters array doesn't already contain the same name:
+Os argumentos de rota preenchem os placeholders do padrão da rota.  Os
+argumentos que não aparecem no padrão são adicionados à query string, desde
+que o array de parâmetros de query ainda não tenha o mesmo nome:
 
 ```php
 $url = $urlGenerator->generate(
@@ -384,27 +386,28 @@ $url = $urlGenerator->generate(
 // $url is "/test/submit/42?page=1&utm=newsletter".
 ```
 
-If you need absolute URL, use `generateAbsolute()` instead.
+Se você precisar de uma URL absoluta, use `generateAbsolute()`.
 
-### Generating URL from the current route
+### Gerando a URL a partir da rota atual
 
-Use `generateFromCurrent()` when a link should keep the current route and
-most of its arguments.  For example, a detail page can link to another page
-number while keeping the current route name and `id` argument:
+Use `generateFromCurrent()` quando um link deve manter a rota atual e a
+maior parte dos seus argumentos.  Por exemplo, uma página de detalhes pode
+apontar para outro número de página mantendo o nome da rota atual e o
+argumento `id`:
 
 ```php
 $url = $urlGenerator->generateFromCurrent(['page' => '2']);
 ```
 
-The method also keeps query parameters from the current request.  Pass
-explicit query parameters when a link should replace or add query string
-values.
+O método também mantém os parâmetros de query da requisição atual.  Passe
+parâmetros de query explícitos quando o link precisar substituir ou
+adicionar valores na query string.
 
-### Locale-based URLs
+### URLs com locale
 
-When the locale is part of the URL path, define it as a route argument.  For
-a Yii application with routes in `config/common/routes.php`, wrap localized
-routes in a group with a locale parameter:
+Quando o locale faz parte do caminho da URL, defina-o como um argumento de
+rota.  Em uma aplicação Yii com as rotas em `config/common/routes.php`,
+coloque as rotas localizadas em um grupo com um parâmetro de locale:
 
 ```php
 <?php
@@ -429,10 +432,10 @@ return [
 ];
 ```
 
-The route `/de/posts/welcome` matches the `post/view` route and stores
-`_locale` as a route argument with the `de` value.
+A rota `/de/posts/welcome` casa com a rota `post/view` e guarda `_locale`
+como argumento de rota com o valor `de`.
 
-In middleware that chooses the request locale, read this argument from
+No middleware que escolhe o locale da requisição, leia esse argumento de
 `CurrentRoute`:
 
 ```php
@@ -475,8 +478,8 @@ final readonly class LocaleMiddleware implements MiddlewareInterface
 }
 ```
 
-Register this middleware in the localized route group before the route
-action:
+Registre esse middleware no grupo de rotas localizadas, antes da action da
+rota:
 
 ```php
 use App\Web\HomePage\Action as HomePageAction;
@@ -495,16 +498,16 @@ return [
 ];
 ```
 
-After the middleware sets the default `_locale` argument, URL generation can
-omit it:
+Depois que o middleware define o argumento padrão `_locale`, a geração de
+URLs pode omiti-lo:
 
 ```php
 $url = $urlGenerator->generate('post/view', ['slug' => 'welcome']);
 // On a German page, $url is "/de/posts/welcome".
 ```
 
-For a language switcher, use `generateFromCurrent()` and replace only the
-locale argument:
+Para um seletor de idioma, use `generateFromCurrent()` e substitua apenas o
+argumento de locale:
 
 ```php
 $url = $urlGenerator->generateFromCurrent(
@@ -513,50 +516,49 @@ $url = $urlGenerator->generateFromCurrent(
 );
 ```
 
-## Route patterns
+## Padrões de rota
 
-Route patterns used depend on the underlying implementation used.  The
-default implementation is
+Os padrões de rota dependem da implementação usada por baixo.  A
+implementação padrão é o
 [nikic/FastRoute](https://github.com/nikic/FastRoute).
 
-Basic patterns are static like `/test`. That means they must match exactly
-in order for a route match.
+Os padrões básicos são estáticos, como `/test`. Isso significa que eles
+precisam casar exatamente para a rota ser escolhida.
 
-### Named Parameters
+### Parâmetros nomeados
 
-A pattern can include one or more named parameters which are specified in
-the pattern in the format of `{ParamName:RegExp}`, where `ParamName`
-specifies the parameter name and `RegExp` is an optional regular expression
-used to match parameter values.  If `RegExp` isn't specified, it means the
-parameter value should be a string without any slash.
+Um padrão pode ter um ou mais parâmetros nomeados, escritos no formato
+`{ParamName:RegExp}`, onde `ParamName` é o nome do parâmetro e `RegExp` é
+uma expressão regular opcional usada para casar o valor.  Se `RegExp` não
+for informada, o valor do parâmetro deve ser uma string sem barras.
 
 > [!NOTE]
-> You can only use regular expressions inside parameters. The rest of the pattern is considered plain text.
+> Você só pode usar expressões regulares dentro dos parâmetros. O resto do padrão é tratado como texto puro.
 
-You can't use capturing groups. For example `{lang:(en|de)}` isn't a valid
-placeholder, because `()` is a capturing group. Instead, you can use either
-`{lang:en|de}` or `{lang:(?:en|de)}`.
+Você não pode usar grupos de captura. Por exemplo, `{lang:(en|de)}` não é um
+placeholder válido, porque `()` é um grupo de captura. Em vez disso, use
+`{lang:en|de}` ou `{lang:(?:en|de)}`.
 
-On a route match router fills `CurrentRoute` arguments with values matching
-the corresponding parts of the URL.  When you use the rule to create a URL,
-it will take the values of the provided parameters and insert them at the
-places where the parameters are declared.
+Quando uma rota casa, o router preenche os argumentos de `CurrentRoute` com
+os valores das partes correspondentes da URL.  Quando você usa a regra para
+criar uma URL, ela pega os valores dos parâmetros informados e os insere nas
+posições onde os parâmetros foram declarados.
 
-Let's use some examples to illustrate how named parameters work. Assume
-you've declared the following three patterns:
+Vamos usar alguns exemplos para mostrar como os parâmetros nomeados
+funcionam. Suponha que você declarou os três padrões a seguir:
 
 
 1. `'posts/{year:\d{4}}/{category}`
 2. `'posts'`
 3. `'post/{id:\d+}'`
 
-- `/posts` match the second pattern;
-- `/posts/2014/php` match a first pattern. Parameters are the `year` whose
-  value is 2014 and the `category` whose value is `php`;
-- `/post/100` match a third pattern. The `id` parameter value is 100;
-- `/posts/php` doesn't match.
+- `/posts` casa com o segundo padrão;
+- `/posts/2014/php` casa com o primeiro padrão. Os parâmetros são `year`,
+  com valor 2014, e `category`, com valor `php`;
+- `/post/100` casa com o terceiro padrão. O valor do parâmetro `id` é 100;
+- `/posts/php` não casa.
 
-When generating URLs, you should use the following parameters:
+Ao gerar URLs, você deve usar os seguintes parâmetros:
 
 ```php
 echo $url->generate('first', ['year' => '2020', 'category' => 'Virology']);
@@ -564,13 +566,13 @@ echo $url->generate('second');
 echo $url->generate('third', ['id' => '42']);
 ```
 
-### Optional parts
+### Partes opcionais
 
-You should wrap optional pattern parts with `[` and `]`.  For example,
-`/posts[/{id}]` pattern would match both `http://example.com/posts` and
-`http://example.com/posts/42`.  Router would fill `id` argument of
-`CurrentRoute` service in the second case only.  In this case, you could
-specify the default value:
+Coloque as partes opcionais do padrão entre `[` e `]`.  Por exemplo, o
+padrão `/posts[/{id}]` casa tanto com `http://example.com/posts` quanto com
+`http://example.com/posts/42`.  O router só preenche o argumento `id` do
+serviço `CurrentRoute` no segundo caso.  Nesse caso, você pode definir o
+valor padrão:
 
 ```php
 use \Yiisoft\Router\Route;
@@ -578,5 +580,4 @@ use \Yiisoft\Router\Route;
 Route::get('/posts[/{id}]')->defaults(['id' => '1']);
 ```
 
-Optional parts are only supported in a trailing position, not in the middle
-of a route.
+Partes opcionais só são suportadas no final da rota, não no meio dela.

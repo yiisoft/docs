@@ -1,14 +1,15 @@
 # Cookies
 
-Cookies are for persisting data between requests by sending it to the client
-browser using HTTP headers.  The client sends data back to the server in
-request headers. Thus, cookies are handy to store small amounts of data,
-such as tokens or flags.
+Os cookies servem para manter dados entre requisições, enviando-os ao
+navegador do cliente por headers HTTP.  O cliente devolve os dados ao
+servidor nos headers da requisição. Por isso, os cookies são práticos para
+guardar pequenas quantidades de dados, como tokens ou flags.
 
-## Reading cookies
+## Lendo cookies
 
-You could obtain Cookie values from server request that's available as route
-handler (such as controller action) argument:
+Você pode obter os valores dos cookies a partir da requisição do servidor,
+que está disponível como argumento do handler da rota (por exemplo, uma
+action de controller):
 
 ```php
 private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request)
@@ -19,14 +20,14 @@ private function actionProfile(\Psr\Http\Message\ServerRequestInterface $request
 }
 ```
 
-In addition to getting cookie values directly from the server request, you
-can also use the
-[yiisoft/request-provider](https://github.com/yiisoft/request-provider)
-package, which provides a more structured way to handle cookies through the
-`\Yiisoft\RequestProvider\RequestCookieProvider`.  This approach can
-simplify your code and improve readability.
+Além de obter os valores dos cookies direto da requisição do servidor, você
+também pode usar o pacote
+[yiisoft/request-provider](https://github.com/yiisoft/request-provider), que
+oferece uma forma mais estruturada de lidar com cookies por meio do
+`\Yiisoft\RequestProvider\RequestCookieProvider`.  Essa abordagem pode
+simplificar o código e melhorar a legibilidade.
 
-Here’s an example of how to work with cookies using the
+Veja um exemplo de como trabalhar com cookies usando o
 `\Yiisoft\RequestProvider\RequestCookieProvider`:
 
 ```php
@@ -68,20 +69,21 @@ $cookie = (new \Yiisoft\Cookies\Cookie('cookieName', 'value'))
 return $cookie->addToResponse($response);
 ```
 
-After forming a cookie call `addToResponse()` passing an instance of
-`\Psr\Http\Message\ResponseInterface` to add corresponding HTTP headers to
-it.
+Depois de montar o cookie, chame `addToResponse()` passando uma instância de
+`\Psr\Http\Message\ResponseInterface` para adicionar os headers HTTP
+correspondentes a ela.
 
-## Signing and encrypting cookies
+## Assinando e criptografando cookies
 
-To prevent the substitution of the cookie value, the package provides two
-implementations:
+Para evitar que o valor do cookie seja substituído, o pacote oferece duas
+implementações:
 
-`Yiisoft\Cookies\CookieSigner` - signs each cookie with a unique prefix hash
-based on the value of the cookie and a secret key.
-`Yiisoft\Cookies\CookieEncryptor` - encrypts each cookie with a secret key.
+`Yiisoft\Cookies\CookieSigner` - assina cada cookie com um prefixo de hash
+único baseado no valor do cookie e em uma chave secreta.
+`Yiisoft\Cookies\CookieEncryptor` - criptografa cada cookie com uma chave
+secreta.
 
-Encryption is more secure than signing but has lower performance.
+A criptografia é mais segura que a assinatura, mas tem desempenho menor.
 
 ```php
 $cookie = new \Yiisoft\Cookies\Cookie('identity', 'identityValue');
@@ -96,18 +98,19 @@ $signedCookie = $signer->sign($cookie);
 $encryptedCookie = $encryptor->encrypt($cookie);
 ```
 
-To validate and get back the pure value, use the `validate()` and
-`decrypt()` method.
+Para validar e obter de volta o valor puro, use os métodos `validate()` e
+`decrypt()`.
 
 ```php
 $cookie = $signer->validate($signedCookie);
 $cookie = $encryptor->decrypt($encryptedCookie);
 ```
 
-If the cookie value is tampered with or hasn't been signed/encrypted before,
-a `\RuntimeException` will be thrown.  Therefore, if you aren't sure that
-the cookie value was signed/encrypted earlier, first use the `isSigned()`
-and `isEncrypted()` methods, respectively.
+Se o valor do cookie tiver sido adulterado ou não tiver sido
+assinado/criptografado antes, uma `\RuntimeException` será lançada.  Por
+isso, se você não tem certeza de que o valor do cookie foi
+assinado/criptografado antes, use primeiro os métodos `isSigned()` e
+`isEncrypted()`, respectivamente.
 
 ```php
 if ($signer->isSigned($cookie)) {
@@ -119,27 +122,29 @@ if ($encryptor->isEncrypted($cookie)) {
 }
 ```
 
-It makes sense to sign or encrypt the value of a cookie if you store
-important data that a user shouldn't change.
+Faz sentido assinar ou criptografar o valor de um cookie quando você guarda
+dados importantes que o usuário não deve alterar.
 
-### Automating encryption and signing
+### Automatizando a criptografia e a assinatura
 
-To automate the encryption/signing and decryption/validation of cookie
-values, use an instance of `Yiisoft\Cookies\CookieMiddleware`, which is
-[PSR-15](https://www.php-fig.org/psr/psr-15/) middleware.
+Para automatizar a criptografia/assinatura e a descriptografia/validação dos
+valores dos cookies, use uma instância de
+`Yiisoft\Cookies\CookieMiddleware`, que é um middleware
+[PSR-15](https://www.php-fig.org/psr/psr-15/).
 
-This middleware provides the following features:
+Esse middleware oferece os seguintes recursos:
 
-- Validates and decrypts the cookie parameter values from the request.
-- Excludes the cookie parameter from the request if it was tampered with and
-  logs information about it.
-- Encrypts/signs cookie values and replaces their clean values in the
-  `Set-Cookie` headers in the response.
+- Valida e descriptografa os valores dos cookies vindos da requisição.
+- Remove o cookie da requisição se ele tiver sido adulterado e registra essa
+  informação no log.
+- Criptografa/assina os valores dos cookies e substitui os valores puros nos
+  headers `Set-Cookie` da resposta.
 
-In order for the middleware to know which values of which cookies need to be
-encrypted/signed, an array of settings must be passed to its
-constructor. The array keys are cookie name patterns and values are constant
-values of `CookieMiddleware::ENCRYPT` or `CookieMiddleware::SIGN`.
+Para o middleware saber quais valores de quais cookies precisam ser
+criptografados/assinados, é preciso passar um array de configurações para o
+construtor dele. As chaves do array são padrões de nomes de cookies e os
+valores são as constantes `CookieMiddleware::ENCRYPT` ou
+`CookieMiddleware::SIGN`.
 
 ```php
 use Yiisoft\Cookies\CookieMiddleware;
@@ -155,11 +160,10 @@ $cookiesSettings = [
 ];
 ```
 
-For more information on using the wildcard pattern, see the
-[yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage)
-package.
+Para mais informações sobre o uso de padrões com curinga, veja o pacote
+[yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage).
 
-Creating and using middleware:
+Criando e usando o middleware:
 
 ```php
 /**
@@ -190,22 +194,22 @@ $middleware = new \Yiisoft\Cookies\CookieMiddleware(
 $response = $middleware->process($request, $handler);
 ```
 
-If the `$cookiesSettings` array is empty, no cookies will be encrypted and
-signed.
+Se o array `$cookiesSettings` estiver vazio, nenhum cookie será
+criptografado ou assinado.
 
-## Cookies security
+## Segurança dos cookies
 
-You should configure each cookie to be secure. Important security settings
-are:
+Você deve configurar cada cookie para ser seguro. As configurações de
+segurança importantes são:
 
-- `httpOnly`. Setting it to `true` would prevent JavaScript to access cookie
-  value.
-- `secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It
-  will be sent via `HTTPS` only.
-- `sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would
-  prevent sending a cookie in cross-site browsing context. `SAME_SITE_LAX`
-  would prevent cookie sending during CSRF-prone request methods (e.g.,
-  POST, PUT, PATCH, etc.). `SAME_SITE_STRICT` would prevent cookies sending
-  for all methods.
-- Sign or encrypt the value of the cookie to prevent spoofing of values if
-  the data in the value shouldn't be tampered with.
+- `httpOnly`. Definir como `true` impede que o JavaScript acesse o valor do
+  cookie.
+- `secure`. Definir como `true` impede o envio do cookie via `HTTP`. Ele só
+  será enviado via `HTTPS`.
+- `sameSite`, se definido como `SAME_SITE_LAX` ou `SAME_SITE_STRICT`, impede
+  o envio do cookie em contexto de navegação entre sites. `SAME_SITE_LAX`
+  impede o envio do cookie em métodos de requisição sujeitos a CSRF (por
+  exemplo, POST, PUT, PATCH etc.). `SAME_SITE_STRICT` impede o envio dos
+  cookies em todos os métodos.
+- Assine ou criptografe o valor do cookie para evitar falsificação quando os
+  dados não puderem ser adulterados.

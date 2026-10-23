@@ -10,7 +10,7 @@
 - Start with a capital letter
 - Limit to 50 characters
 
-## Body
+## Corpo
 
 Use the message body **if** you need an extra explanation. Explain why, not
 how.
