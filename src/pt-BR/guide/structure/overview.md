@@ -49,8 +49,9 @@ vários contextos, ela é movida para o ancestral comum desses contextos.
 Um contexto pode ter [um ponto de entrada conhecido como "action" ou
 "controller"](action.md). A função dele é receber [uma instância de
 requisição](../runtime/request.md), passá-la para a [camada de
-domínio](domain.md) em um formato adequado e criar [uma
-resposta](../runtime/response.md) com base no retorno da camada de domínio.
+domínio](../../cookbook/organizing-code/domain.md) em um formato adequado e
+criar [uma resposta](../runtime/response.md) com base no retorno da camada
+de domínio.
 
 Além disso, aplicações Yii também têm o seguinte:
 
@@ -58,8 +59,9 @@ Além disso, aplicações Yii também têm o seguinte:
   diretamente pelos usuários finais.  Eles são responsáveis por iniciar um
   ciclo de tratamento de requisição. Normalmente, um único script de entrada
   atende a aplicação inteira.
-* [serviços](service.md): normalmente são objetos sem estado registrados no
-  container de dependências que fornecem diversos métodos de ação.
+* [serviços](../../cookbook/organizing-code/service.md): normalmente são
+  objetos sem estado registrados no container de dependências que fornecem
+  diversos métodos de ação.
 * [middleware](middleware.md): representam código que precisa ser executado
   antes e depois do tratamento efetivo de cada requisição pelos handlers de
   action.

@@ -17,7 +17,7 @@
 ## 权威指南
 
 权威指南
-[yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
+[yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/src/guide)
 旨在涵盖作为整个框架的包的使用。与包文档不同，它不专注于单个包，而是涵盖某些用例。
 
 指南应遵循 [Microsoft

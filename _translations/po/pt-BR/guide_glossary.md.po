@@ -459,8 +459,8 @@ msgstr "serviço"
 
 #. type: Plain text
 #: ../src/guide/glossary.md
-msgid "Service is a focused object that performs application work or provides infrastructure behavior and is usually stored in the DI container.  Read more in [\"Service components\"](structure/service.md)."
-msgstr "Serviço é um objeto focado que realiza trabalho da aplicação ou fornece comportamento de infraestrutura e normalmente fica registrado no container de DI.  Leia mais em [\"Componentes de serviço\"](structure/service.md)."
+msgid "Service is a focused object that performs application work or provides infrastructure behavior and is usually stored in the DI container.  Read more in [\"Service components\"](../cookbook/organizing-code/service.md)."
+msgstr "Serviço é um objeto focado que realiza trabalho da aplicação ou fornece comportamento de infraestrutura e normalmente fica registrado no container de DI.  Leia mais em [\"Componentes de serviço\"](../cookbook/organizing-code/service.md)."
 
 #. type: Title ##
 #: ../src/guide/glossary.md

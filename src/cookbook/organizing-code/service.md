@@ -105,5 +105,5 @@ Often it makes sense to choose another class type to place your code into. Check
 
 - Repository
 - Widget
-- [Middleware](middleware.md)
+- [Middleware](../../guide/structure/middleware.md)
 - Entity

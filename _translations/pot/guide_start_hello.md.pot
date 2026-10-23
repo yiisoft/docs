@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"POT-Creation-Date: 2026-10-23 18:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 #: ../src/guide/start/hello.md
 msgid ""
 "To achieve this goal, you will define a route and create [a handler](../"
-"structure/handler.md) that does the job and forms the response.  Then you "
+"structure/action.md) that does the job and forms the response.  Then you "
 "will improve it to use [view](../views/view.md) for building the response."
 msgstr ""
 

@@ -2,7 +2,7 @@
 
 O cache de dados consiste em guardar algumas variáveis PHP no cache e
 recuperá-las dele mais tarde.  Ele também é a base para recursos de cache
-mais avançados, como o [cache de páginas](page.md).
+mais avançados, como o cache de páginas.
 
 Para usar o cache, instale o pacote
 [yiisoft/cache](https://github.com/yiisoft/cache):
@@ -54,7 +54,7 @@ O Yii fornece os seguintes drivers:
 - `ArrayCache` — faz cache apenas durante a requisição atual, guardando os
   valores em um array.
 - [APCu](https://github.com/yiisoft/cache-apcu) - usa a extensão
-  [APC](https://secure.php.net/manual/en/book.apc.php) do PHP.  Você pode
+  [APC](https://www.php.net/manual/en/book.apcu.php) do PHP.  Você pode
   considerar esta a opção mais rápida ao lidar com cache em uma aplicação
   centralizada e robusta (por exemplo, um servidor, sem load balancers
   dedicados etc.).

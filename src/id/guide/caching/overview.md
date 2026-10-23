@@ -20,6 +20,6 @@ di cache browser.
 Yii mendukung semua mekanisme caching berikut:
 
 * [Data caching](data.md)
-* [Fragment caching](fragment.md)
-* [Page caching](page.md)
-* [HTTP caching](http.md)
+* Fragment caching
+* Page caching
+* HTTP caching

@@ -226,7 +226,8 @@ conjunto de parâmetros para verificar se um conjunto de dados é válido.  O
 
 Serviço é um objeto focado que realiza trabalho da aplicação ou fornece
 comportamento de infraestrutura e normalmente fica registrado no container
-de DI.  Leia mais em ["Componentes de serviço"](structure/service.md).
+de DI.  Leia mais em ["Componentes de
+serviço"](../cookbook/organizing-code/service.md).
 
 ## service provider (provedor de serviços)
 

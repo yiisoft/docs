@@ -122,7 +122,7 @@ XSS или кросс-сайтинговый скриптинг становит
 ```
 
 Если нужно вывести HTML, вам лучше воспользоваться
-[HtmlPurifier](http://htmlpurifier.org/).
+[HtmlPurifier](https://github.com/ezyang/htmlpurifier).
 Обратите внимание, что обработка с помощью HtmlPurifier довольно тяжела,
 поэтому рассмотрите возможность использования кеширования.
 
@@ -211,8 +211,8 @@ token-in-form.
 
 Дополнительная информация по теме:
 
-- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
-- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>
+- <https://owasp.org/www-project-top-ten/>
 
 
 ## Использование безопасного подключения через TLS

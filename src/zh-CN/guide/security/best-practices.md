@@ -105,7 +105,7 @@ XSS 或跨站脚本攻击发生在向浏览器输出 HTML 时输出未正确转�
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-如果它应该是 HTML，您可以从 [HtmlPurifier](http://htmlpurifier.org/)
+如果它应该是 HTML，您可以从 [HtmlPurifier](https://github.com/ezyang/htmlpurifier)
 获得一些帮助。请注意，HtmlPurifier 处理相当繁重，因此请考虑添加缓存。
 
 有关该主题的进一步阅读：
@@ -175,8 +175,8 @@ token-in-form.
 
 有关该主题的进一步阅读：
 
-- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
-- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>
+- <https://owasp.org/www-project-top-ten/>
 
 
 ## 通过 TLS 使用安全连接

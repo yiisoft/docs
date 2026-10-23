@@ -5,7 +5,7 @@ uma página simples que devolve o que você passar para ela ou, se nada for
 passado, apenas diz "Hello!".
 
 Para isso, você vai definir uma rota e criar [um
-handler](../structure/handler.md) que faz o trabalho e monta a resposta.
+handler](../structure/action.md) que faz o trabalho e monta a resposta.
 Depois, vai melhorá-lo para usar uma [view](../views/view.md) na construção
 da resposta.
 

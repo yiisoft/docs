@@ -21,7 +21,7 @@ problema em manter a documentação no readme.
 ## Guia definitivo
 
 O guia definitivo,
-[yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
+[yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/src/guide)
 tem como objetivo cobrir o uso dos pacotes como um framework
 completo. Diferente da documentação dos pacotes, ele não se concentra em um
 único pacote, e sim em determinados casos de uso.

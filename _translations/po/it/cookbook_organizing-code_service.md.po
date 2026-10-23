@@ -17,15 +17,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Bullet: '- '
-#: ../src/cookbook/organizing-code/domain.md
-#: ../src/cookbook/organizing-code/service.md
+#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md
 #, no-wrap
 msgid "Entity"
 msgstr ""
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/domain.md
-#: ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
+#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Repository"
 msgstr ""
@@ -224,5 +222,5 @@ msgstr ""
 #: ../src/cookbook/organizing-code/service.md
 #, fuzzy
 #| msgid "[Middleware](structure/middleware.md)"
-msgid "[Middleware](middleware.md)"
+msgid "[Middleware](../../guide/structure/middleware.md)"
 msgstr "[Middleware](structure/middleware.md)"

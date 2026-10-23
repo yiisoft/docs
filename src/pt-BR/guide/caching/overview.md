@@ -17,6 +17,6 @@ cache do navegador.
 O Yii suporta todos estes mecanismos de cache:
 
 * [Cache de dados](data.md)
-* [Cache de fragmentos](fragment.md)
-* [Cache de páginas](page.md)
-* [Cache HTTP](http.md)
+* Cache de fragmentos
+* Cache de páginas
+* Cache HTTP

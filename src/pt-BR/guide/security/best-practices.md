@@ -123,8 +123,8 @@ seguinte:
 ```
 
 Se precisar ser HTML, você pode ter a ajuda do
-[HtmlPurifier](http://htmlpurifier.org/).  Note que o processamento do
-HtmlPurifier é bem pesado, então considere usar cache.
+[HtmlPurifier](https://github.com/ezyang/htmlpurifier).  Note que o
+processamento do HtmlPurifier é bem pesado, então considere usar cache.
 
 Leitura adicional sobre o assunto:
 
@@ -206,8 +206,8 @@ ao seu IP.
 
 Leitura adicional sobre o assunto:
 
-- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
-- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>
+- <https://owasp.org/www-project-top-ten/>
 
 
 ## Usando conexão segura via TLS

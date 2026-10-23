@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-11 10:37+0000\n"
+"POT-Creation-Date: 2026-10-23 18:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,5 +225,5 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/cookbook/organizing-code/service.md
-msgid "[Middleware](middleware.md)"
+msgid "[Middleware](../../guide/structure/middleware.md)"
 msgstr ""

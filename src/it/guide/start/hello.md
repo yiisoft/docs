@@ -5,7 +5,7 @@ applicazione. È una pagina semplice che restituirà tutto ciò che le passi o,
 se non viene passato nulla, dirà semplicemente "Hello!".
 
 Per raggiungere questo obiettivo, definirai una rotta e creerai [un gestore
-di richieste](../structure/handler.md) che esegue il lavoro e forma la
+di richieste](../structure/action.md) che esegue il lavoro e forma la
 risposta. Poi lo migliorerai per usare [una vista](../views/view.md) per
 costruire la risposta.
 

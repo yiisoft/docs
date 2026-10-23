@@ -259,8 +259,8 @@ msgstr "<?= \\Yiisoft\\Html\\Html::encode($username) ?>\n"
 
 #. type: Plain text
 #: ../src/guide/security/best-practices.md
-msgid "If it should be HTML, you could get some help from [HtmlPurifier](http://htmlpurifier.org/).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
-msgstr "Se precisar ser HTML, você pode ter a ajuda do [HtmlPurifier](http://htmlpurifier.org/).  Note que o processamento do HtmlPurifier é bem pesado, então considere usar cache."
+msgid "If it should be HTML, you could get some help from [HtmlPurifier](https://github.com/ezyang/htmlpurifier).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
+msgstr "Se precisar ser HTML, você pode ter a ajuda do [HtmlPurifier](https://github.com/ezyang/htmlpurifier).  Note que o processamento do HtmlPurifier é bem pesado, então considere usar cache."
 
 #. type: Title ##
 #: ../src/guide/security/best-practices.md
@@ -394,13 +394,13 @@ msgstr "Evite a barra de debug em produção, a menos que seja necessário.  Ela
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-project-.net/articles/Exception_Handling.md>"
-msgstr "<https://owasp.org/www-project-.net/articles/Exception_Handling.md>"
+msgid "<https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>"
+msgstr "<https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>"
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>"
-msgstr "<https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>"
+msgid "<https://owasp.org/www-project-top-ten/>"
+msgstr "<https://owasp.org/www-project-top-ten/>"
 
 #. type: Title ##
 #: ../src/guide/security/best-practices.md

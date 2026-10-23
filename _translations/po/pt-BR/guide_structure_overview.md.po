@@ -151,8 +151,8 @@ msgstr "Um contexto pode incluir subcontextos. Se uma classe é compartilhada po
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
-msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
-msgstr "Um contexto pode ter [um ponto de entrada conhecido como \"action\" ou \"controller\"](action.md). A função dele é receber [uma instância de requisição](../runtime/request.md), passá-la para a [camada de domínio](domain.md) em um formato adequado e criar [uma resposta](../runtime/response.md) com base no retorno da camada de domínio."
+msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](../../cookbook/organizing-code/domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
+msgstr "Um contexto pode ter [um ponto de entrada conhecido como \"action\" ou \"controller\"](action.md). A função dele é receber [uma instância de requisição](../runtime/request.md), passá-la para a [camada de domínio](../../cookbook/organizing-code/domain.md) em um formato adequado e criar [uma resposta](../runtime/response.md) com base no retorno da camada de domínio."
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
@@ -166,8 +166,8 @@ msgstr "[scripts de entrada](entry-script.md): são scripts PHP acessíveis dire
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md
-msgid "[services](service.md): they're typically stateless objects registered within dependency container and provide various action methods."
-msgstr "[serviços](service.md): normalmente são objetos sem estado registrados no container de dependências que fornecem diversos métodos de ação."
+msgid "[services](../../cookbook/organizing-code/service.md): they're typically stateless objects registered within dependency container and provide various action methods."
+msgstr "[serviços](../../cookbook/organizing-code/service.md): normalmente são objetos sem estado registrados no container de dependências que fornecem diversos métodos de ação."
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md

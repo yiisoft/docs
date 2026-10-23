@@ -5,7 +5,7 @@ application.  It's a simple page that will echo back whatever you pass to it
 or, if nothing passed, will just say "Hello!".
 
 To achieve this goal, you will define a route and create [a
-handler](../structure/handler.md) that does the job and forms the response.
+handler](../structure/action.md) that does the job and forms the response.
 Then you will improve it to use [view](../views/view.md) for building the
 response.
 

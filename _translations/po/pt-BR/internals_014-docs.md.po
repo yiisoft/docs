@@ -65,8 +65,8 @@ msgstr "Guia definitivo"
 
 #. type: Plain text
 #: ../src/internals/014-docs.md
-msgid "The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)  aims at covering usage of packages as a whole framework. Unlike package documentation, it isn't focused on a single package but is covering certain use-cases."
-msgstr "O guia definitivo, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)  tem como objetivo cobrir o uso dos pacotes como um framework completo. Diferente da documentação dos pacotes, ele não se concentra em um único pacote, e sim em determinados casos de uso."
+msgid "The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/src/guide)  aims at covering usage of packages as a whole framework. Unlike package documentation, it isn't focused on a single package but is covering certain use-cases."
+msgstr "O guia definitivo, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/src/guide)  tem como objetivo cobrir o uso dos pacotes como um framework completo. Diferente da documentação dos pacotes, ele não se concentra em um único pacote, e sim em determinados casos de uso."
 
 #. type: Plain text
 #: ../src/internals/014-docs.md

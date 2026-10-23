@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-30 06:43+0000\n"
+"POT-Creation-Date: 2026-10-23 18:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -551,7 +551,7 @@ msgstr ""
 msgid ""
 "Service is a focused object that performs application work or provides "
 "infrastructure behavior and is usually stored in the DI container.  Read "
-"more in [\"Service components\"](structure/service.md)."
+"more in [\"Service components\"](../cookbook/organizing-code/service.md)."
 msgstr ""
 
 #. type: Title ##

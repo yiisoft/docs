@@ -117,5 +117,5 @@ código. Confira:
 
 - Repositório
 - Widget
-- [Middleware](middleware.md)
+- [Middleware](../../guide/structure/middleware.md)
 - Entidade

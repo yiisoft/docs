@@ -1,5 +1,22 @@
 {
   "projectBaseUrl": ".",
+  "ignorePatterns": [
+    {
+      "pattern": "^https://dev\\.mysql\\.com/"
+    },
+    {
+      "pattern": "^https://stackoverflow\\.com/"
+    },
+    {
+      "pattern": "^https://security\\.stackexchange\\.com/"
+    },
+    {
+      "pattern": "^https://code\\.tutsplus\\.com/"
+    },
+    {
+      "pattern": "^https://yiiframework\\.ru/"
+    }
+  ],
   "replacementPatterns": [
     {
       "pattern": "^/",

@@ -23,8 +23,8 @@ msgstr "Cache de dados"
 
 #. type: Plain text
 #: ../../guide/en/caching/data.md
-msgid "Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.  It's also the foundation for more advanced caching features, such as [page caching](page.md)."
-msgstr "O cache de dados consiste em guardar algumas variáveis PHP no cache e recuperá-las dele mais tarde.  Ele também é a base para recursos de cache mais avançados, como o [cache de páginas](page.md)."
+msgid "Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.  It's also the foundation for more advanced caching features, such as page caching."
+msgstr "O cache de dados consiste em guardar algumas variáveis PHP no cache e recuperá-las dele mais tarde.  Ele também é a base para recursos de cache mais avançados, como o cache de páginas."
 
 #. type: Plain text
 #: ../../guide/en/caching/data.md
@@ -110,8 +110,8 @@ msgstr "`ArrayCache` — faz cache apenas durante a requisição atual, guardand
 
 #. type: Bullet: '- '
 #: ../../guide/en/caching/data.md
-msgid "[APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.  You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one server, no dedicated load balancers, etc.)."
-msgstr "[APCu](https://github.com/yiisoft/cache-apcu) - usa a extensão [APC](https://secure.php.net/manual/en/book.apc.php) do PHP.  Você pode considerar esta a opção mais rápida ao lidar com cache em uma aplicação centralizada e robusta (por exemplo, um servidor, sem load balancers dedicados etc.)."
+msgid "[APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://www.php.net/manual/en/book.apcu.php) extension.  You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one server, no dedicated load balancers, etc.)."
+msgstr "[APCu](https://github.com/yiisoft/cache-apcu) - usa a extensão [APC](https://www.php.net/manual/en/book.apcu.php) do PHP.  Você pode considerar esta a opção mais rápida ao lidar com cache em uma aplicação centralizada e robusta (por exemplo, um servidor, sem load balancers dedicados etc.)."
 
 #. type: Bullet: '- '
 #: ../../guide/en/caching/data.md

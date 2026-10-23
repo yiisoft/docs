@@ -40,8 +40,8 @@ msgstr "Esta seção descreve como criar uma nova página \"Hello\" na sua aplic
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
-msgid "To achieve this goal, you will define a route and create [a handler](../structure/handler.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
-msgstr "Para isso, você vai definir uma rota e criar [um handler](../structure/handler.md) que faz o trabalho e monta a resposta.  Depois, vai melhorá-lo para usar uma [view](../views/view.md) na construção da resposta."
+msgid "To achieve this goal, you will define a route and create [a handler](../structure/action.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
+msgstr "Para isso, você vai definir uma rota e criar [um handler](../structure/action.md) que faz o trabalho e monta a resposta.  Depois, vai melhorá-lo para usar uma [view](../views/view.md) na construção da resposta."
 
 #. type: Plain text
 #: ../src/guide/start/hello.md

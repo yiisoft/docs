@@ -43,15 +43,15 @@ msgstr "[Cache de dados](data.md)"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Fragment caching](fragment.md)"
-msgstr "[Cache de fragmentos](fragment.md)"
+msgid "Fragment caching"
+msgstr "Cache de fragmentos"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Page caching](page.md)"
-msgstr "[Cache de páginas](page.md)"
+msgid "Page caching"
+msgstr "Cache de páginas"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[HTTP caching](http.md)"
-msgstr "[Cache HTTP](http.md)"
+msgid "HTTP caching"
+msgstr "Cache HTTP"

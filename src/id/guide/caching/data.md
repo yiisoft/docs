@@ -3,7 +3,7 @@
 Caching data adalah tentang menyimpan beberapa variabel PHP ke dalam cache
 dan mengambilnya kembali dari cache.
 Ini juga menjadi fondasi untuk fitur caching yang lebih lanjut, seperti
-[caching halaman](page.md).
+caching halaman.
 
 Untuk menggunakan cache, pasang paket
 [yiisoft/cache](https://github.com/yiisoft/cache):
@@ -61,7 +61,7 @@ Yii menyediakan handler berikut:
 - `ArrayCache` — menyediakan caching hanya untuk permintaan saat ini dengan
   menyimpan nilai dalam sebuah array.
 - [APCu](https://github.com/yiisoft/cache-apcu) — menggunakan ekstensi PHP
-  [APC](https://secure.php.net/manual/en/book.apc.php).
+  [APC](https://www.php.net/manual/en/book.apcu.php).
     Ini bisa dianggap sebagai opsi tercepat saat berurusan dengan cache
   untuk aplikasi terpusat (mis., satu
     server, tanpa load balancer khusus, dll.).

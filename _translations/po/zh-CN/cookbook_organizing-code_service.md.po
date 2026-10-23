@@ -16,15 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Bullet: '- '
-#: ../src/cookbook/organizing-code/domain.md
-#: ../src/cookbook/organizing-code/service.md
+#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md
 #, fuzzy, no-wrap
 msgid "Entity"
 msgstr "实体"
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/domain.md
-#: ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
+#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Repository"
 msgstr "仓库"
@@ -199,5 +197,5 @@ msgstr "小部件"
 #: ../src/cookbook/organizing-code/service.md
 #, fuzzy
 #| msgid "[Middleware](structure/middleware.md)"
-msgid "[Middleware](middleware.md)"
+msgid "[Middleware](../../guide/structure/middleware.md)"
 msgstr "[中间件](structure/middleware.md)"

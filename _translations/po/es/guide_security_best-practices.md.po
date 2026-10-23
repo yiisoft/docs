@@ -17,12 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
-#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
-#: ../src/guide/tutorial/console-applications.md
-#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
-#: ../src/internals/008-interfaces.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md ../src/guide/security/best-practices.md ../src/guide/structure/domain.md ../src/guide/tutorial/console-applications.md ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr "Referencias"
@@ -241,7 +236,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/best-practices.md
-msgid "If it should be HTML, you could get some help from [HtmlPurifier](http://htmlpurifier.org/).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
+msgid "If it should be HTML, you could get some help from [HtmlPurifier](https://github.com/ezyang/htmlpurifier).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
 msgstr ""
 
 #. type: Title ##
@@ -359,12 +354,12 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-project-.net/articles/Exception_Handling.md>"
+msgid "<https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>"
+msgid "<https://owasp.org/www-project-top-ten/>"
 msgstr ""
 
 #. type: Title ##

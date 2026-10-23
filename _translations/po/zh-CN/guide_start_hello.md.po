@@ -16,9 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/deployment/docker-swarm-caddy.md
-#: ../src/cookbook/deployment/docker-swarm-traefik.md
-#: ../src/guide/start/forms.md ../src/guide/start/hello.md
+#: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md ../src/guide/start/forms.md ../src/guide/start/hello.md
 #, no-wrap
 msgid "Summary"
 msgstr "总结"
@@ -42,8 +40,8 @@ msgstr "本节描述如何在应用程序中创建一个新的“Hello”页面�
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
-msgid "To achieve this goal, you will define a route and create [a handler](../structure/handler.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
-msgstr "为实现这个目标，您将定义一个路由并创建一个 [处理器](../structure/handler.md) 来完成工作并形成响应。然后您将改进它，使用[视图](../views/view.md)来构建响应。"
+msgid "To achieve this goal, you will define a route and create [a handler](../structure/action.md) that does the job and forms the response.  Then you will improve it to use [view](../views/view.md) for building the response."
+msgstr "为实现这个目标，您将定义一个路由并创建一个 [处理器](../structure/action.md) 来完成工作并形成响应。然后您将改进它，使用[视图](../views/view.md)来构建响应。"
 
 #. type: Plain text
 #: ../src/guide/start/hello.md
