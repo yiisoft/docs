@@ -1,4 +1,4 @@
-# Deploying Yii applications to Docker Swarm
+# Fazendo deploy de aplicações Yii no Docker Swarm
 
-- [Using Caddy](docker-swarm-caddy.md)
-- [Using Traefik](docker-swarm-traefik.md)
+- [Usando Caddy](docker-swarm-caddy.md)
+- [Usando Traefik](docker-swarm-traefik.md)

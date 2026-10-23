@@ -1,40 +1,42 @@
-# Configuring web servers: General
+# Configurando servidores web: geral
 
-On a production server, if you don't use Docker, configure your web server
-to serve only the application's public files.  Point the document root of
-your web server to the `app/public` folder.
+Em um servidor de produção, se você não usa Docker, configure seu servidor
+web para servir apenas os arquivos públicos da aplicação.  Aponte o document
+root do servidor web para a pasta `app/public`.
 
 > [!IMPORTANT]
-> If you're running your Yii application behind a reverse proxy, you might need to configure
-> [Trusted proxies and headers](../../guide/security/trusted-request.md).
+> Se você executa sua aplicação Yii atrás de um proxy reverso, pode ser necessário configurar
+> [proxies e headers confiáveis](../../guide/security/trusted-request.md).
 
-## Application logs
+## Logs da aplicação
 
-Yii3 application templates write application logs to standard output
-(`stdout`, or `php://stdout`) by default.  They don't create application log
-files. Standard error (`stderr`) requires explicit log target
-configuration.  Docker collects container output, but on a server without
-containers you must configure where that output goes or [configure a file
-target](../../guide/runtime/logging.md#logging-to-files).  Web server access
-and error log settings don't configure Yii's log targets.
+Os templates de aplicação do Yii3 escrevem os logs da aplicação na saída
+padrão (`stdout`, ou `php://stdout`) por padrão.  Eles não criam arquivos de
+log da aplicação. A saída de erro padrão (`stderr`) exige configuração
+explícita de destino de log.  O Docker coleta a saída dos containers, mas em
+um servidor sem containers você precisa configurar para onde essa saída vai
+ou [configurar um destino de
+arquivo](../../guide/runtime/logging.md#logs-em-arquivos).  As configurações
+de log de acesso e de erro do servidor web não configuram os destinos de log
+do Yii.
 
 ### PHP-FPM
 
-If your web server uses PHP-FPM, enable worker output capture in the
-application's PHP-FPM pool configuration:
+Se o seu servidor web usa PHP-FPM, habilite a captura da saída dos workers
+na configuração do pool PHP-FPM da aplicação:
 
 ```ini
 catch_workers_output = yes
 ```
 
-Reload PHP-FPM after changing its configuration. PHP-FPM sends worker
-standard output and standard error to its main error log. The `error_log`
-directive in `php-fpm.conf` sets the destination.  Without this setting,
-PHP-FPM redirects both streams to `/dev/null` by default.  See the [PHP-FPM
-configuration
-reference](https://www.php.net/manual/en/install.fpm.configuration.php).
+Recarregue o PHP-FPM depois de alterar a configuração. O PHP-FPM envia a
+saída padrão e a saída de erro dos workers para o seu log de erro
+principal. A diretiva `error_log` em `php-fpm.conf` define o destino.  Sem
+essa configuração, o PHP-FPM redireciona as duas saídas para `/dev/null` por
+padrão.  Veja a [referência de configuração do
+PHP-FPM](https://www.php.net/manual/en/install.fpm.configuration.php).
 
-## Specific server configurations
+## Configurações específicas de servidores
 
 - [Nginx](nginx.md)
 - [Apache](apache.md)

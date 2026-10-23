@@ -1,16 +1,18 @@
-# Using Yii in third-party applications
+# Usando o Yii em aplicações de terceiros
 
-Sometimes a project already has an entry point owned by another framework,
-CMS, or legacy application, but you still want to reuse Yii services:
-configuration, DI definitions, domain services, logging, mailers, database
-connections, or console-oriented application code.
+Às vezes um projeto já tem um ponto de entrada controlado por outro
+framework, CMS ou aplicação legada, mas você ainda quer reaproveitar
+serviços do Yii: configuração, definições de DI, serviços de domínio, logs,
+mailers, conexões com banco de dados ou código de aplicação voltado ao
+console.
 
-Yii3 has no global application singleton. Bootstrap the Yii container
-explicitly and pass the services you need to the third-party code.
+O Yii3 não tem um singleton global de aplicação. Inicialize o container do
+Yii explicitamente e passe os serviços de que você precisa ao código de
+terceiros.
 
-## Bootstrap the Yii container
+## Inicialize o container do Yii
 
-Create a small adapter in the host application, for example
+Crie um pequeno adaptador na aplicação hospedeira, por exemplo
 `bootstrap-yii-services.php`:
 
 ```php
@@ -75,19 +77,19 @@ function yiiContainer(string $yiiRoot): ContainerInterface
 }
 ```
 
-The adapter builds only the Yii configuration and DI container, then runs
-the configured bootstrap callbacks. It does not create or run a Yii
-application runner, so the third-party application keeps ownership of the
-entry point and process lifecycle.
+O adaptador monta apenas a configuração e o container de DI do Yii e depois
+executa os callbacks de bootstrap configurados. Ele não cria nem executa um
+runner de aplicação do Yii, então a aplicação de terceiros continua dona do
+ponto de entrada e do ciclo de vida do processo.
 
-Use console configuration groups when you need common services and
-console-safe services. Use web groups instead only when you intentionally
-need web-specific definitions from the `di-web` group, such as PSR-17 HTTP
-factories or web middleware dependencies.
+Use os grupos de configuração de console quando precisar de serviços comuns
+e serviços seguros para o console. Use os grupos web apenas quando precisar
+intencionalmente de definições específicas da web do grupo `di-web`, como as
+factories HTTP da PSR-17 ou dependências de middlewares web.
 
-## Get Yii services from the host application
+## Obtenha serviços do Yii a partir da aplicação hospedeira
 
-Use the adapter from the third-party application:
+Use o adaptador a partir da aplicação de terceiros:
 
 ```php
 <?php
@@ -107,65 +109,66 @@ $params = $container->get(ApplicationParams::class);
 echo $params->name;
 ```
 
-In real integrations, prefer getting your own application services instead
-of framework infrastructure. For example, expose `InvoiceSender`,
-`ReportBuilder`, or `CatalogImporter` from Yii and call that service from
-the host application.
+Em integrações reais, prefira obter os serviços da sua própria aplicação em
+vez da infraestrutura do framework. Por exemplo, exponha `InvoiceSender`,
+`ReportBuilder` ou `CatalogImporter` a partir do Yii e chame esse serviço na
+aplicação hospedeira.
 
-## Keep boundaries explicit
+## Mantenha os limites explícitos
 
-Avoid mixing request lifecycles. Let the host application continue to own
-its HTTP request and response. Let Yii provide services that do not assume
-Yii is handling the current request.
+Evite misturar ciclos de vida de requisição. Deixe a aplicação hospedeira
+continuar dona da requisição e da resposta HTTP. Deixe o Yii fornecer
+serviços que não pressupõem que o Yii está tratando a requisição atual.
 
-Good candidates for reuse:
+Bons candidatos para reaproveitamento:
 
-- domain services;
-- repositories and database connections;
-- mailers and notification services;
+- serviços de domínio;
+- repositórios e conexões com banco de dados;
+- mailers e serviços de notificação;
 - loggers;
-- validators;
-- queue producers;
-- command-like application services.
+- validadores;
+- produtores de fila;
+- serviços de aplicação no estilo de comandos.
 
-Avoid pulling in Yii actions, middleware stacks, sessions, CSRF middleware,
-or view rendering unless the host application explicitly delegates that
-whole responsibility to Yii.
+Evite trazer actions, pilhas de middlewares, sessões, middleware de CSRF ou
+renderização de views do Yii, a menos que a aplicação hospedeira delegue
+explicitamente essa responsabilidade inteira ao Yii.
 
-## Configuration groups
+## Grupos de configuração
 
-The default application template separates configuration by group:
+O template de aplicação padrão separa a configuração por grupo:
 
-- `di` is shared by web and console entry points;
-- `di-console` is console-specific and includes `di` in the template;
-- `di-web` is web-specific and includes `di`;
-- `params-console` and `params-web` extend common `params`.
+- `di` é compartilhado pelos pontos de entrada web e de console;
+- `di-console` é específico do console e inclui `di` no template;
+- `di-web` é específico da web e inclui `di`;
+- `params-console` e `params-web` estendem o `params` comum.
 
-Choose the smallest group that contains the services you need. If the host
-application only needs domain services, keep those definitions in
-`config/common/di/*.php` so both Yii and the third-party app can use them
-without web-only dependencies.
+Escolha o menor grupo que contém os serviços de que você precisa. Se a
+aplicação hospedeira só precisa de serviços de domínio, mantenha essas
+definições em `config/common/di/*.php` para que tanto o Yii quanto a
+aplicação de terceiros possam usá-las sem dependências exclusivas da web.
 
-After changing `config/configuration.php`, rebuild the merge plan:
+Depois de alterar `config/configuration.php`, reconstrua o merge plan:
 
 ```shell
 composer yii-config-rebuild
 ```
 
-## Error handling and logging
+## Tratamento de erros e logs
 
-The host application should remain responsible for top-level error
-handling. Catch exceptions at the integration boundary when the host app
-needs to convert them into its own response or error format.
+A aplicação hospedeira deve continuar responsável pelo tratamento de erros
+de nível mais alto. Capture as exceções na fronteira da integração quando a
+aplicação hospedeira precisar convertê-las na sua própria resposta ou
+formato de erro.
 
-Yii services can still use `Psr\Log\LoggerInterface`. Configure the Yii
-logger to write to the same destination as the host application or bridge
-both applications to the same PSR-3 logger.
+Os serviços do Yii ainda podem usar `Psr\Log\LoggerInterface`. Configure o
+logger do Yii para gravar no mesmo destino da aplicação hospedeira ou
+conecte as duas aplicações ao mesmo logger PSR-3.
 
-## Long-running host processes
+## Processos hospedeiros de longa duração
 
-If the third-party application is a worker, daemon, or event-loop server,
-avoid mutable shared state in services. Yii services resolved from the
-container are shared by default, so design them as stateless services or
-create a fresh container for each isolated job when stateful dependencies
-are unavoidable.
+Se a aplicação de terceiros for um worker, um daemon ou um servidor com
+event loop, evite estado mutável compartilhado nos serviços. Os serviços do
+Yii obtidos do container são compartilhados por padrão, então projete-os
+como serviços sem estado ou crie um container novo para cada job isolado
+quando dependências com estado forem inevitáveis.

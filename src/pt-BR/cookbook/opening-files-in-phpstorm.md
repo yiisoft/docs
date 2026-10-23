@@ -1,35 +1,36 @@
-# Opening files directly in PhpStorm
+# Abrindo arquivos diretamente no PhpStorm
 
-Yii error pages can show links that open stack trace files in PhpStorm at
-the failing line. This is useful in local development when the error page
-runs in a browser and the project is open in the IDE.
+As páginas de erro do Yii podem mostrar links que abrem os arquivos do stack
+trace no PhpStorm, na linha que falhou. Isso é útil no desenvolvimento
+local, quando a página de erro roda no navegador e o projeto está aberto na
+IDE.
 
-## Check Toolbox links
+## Verifique os links do Toolbox
 
-PhpStorm supports Toolbox URLs that use the `jetbrains://` protocol. To get the `project` value and path format,
-right-click a project file in the Project tool window and select **Copy Path/Reference** > **Toolbox URL**.
-If the copied URL has `origin`, keep the `origin` parameter and its value in your links.
+O PhpStorm suporta URLs do Toolbox que usam o protocolo `jetbrains://`. Para obter o valor de `project` e o formato do caminho,
+clique com o botão direito em um arquivo do projeto na janela Project e selecione **Copy Path/Reference** > **Toolbox URL**.
+Se a URL copiada tiver `origin`, mantenha o parâmetro `origin` e o valor dele nos seus links.
 
-On Linux, check that Toolbox registered the protocol handler:
+No Linux, verifique se o Toolbox registrou o handler do protocolo:
 
 ```shell
 xdg-mime query default x-scheme-handler/jetbrains
 ```
 
-The command should print a Toolbox or JetBrains daemon desktop file, for
-example `jetbrainsd.desktop`.
+O comando deve imprimir um arquivo desktop do Toolbox ou do daemon da
+JetBrains, por exemplo `jetbrainsd.desktop`.
 
-PhpStorm should be running with the project open when you click stack trace
-links.
+O PhpStorm deve estar rodando com o projeto aberto quando você clicar nos
+links do stack trace.
 
-## Configure error trace links
+## Configure os links do stack trace
 
-The Yii application template configures
-`Yiisoft\ErrorHandler\Renderer\HtmlRenderer` in
-`config/common/di/error-handler.php`. It reads a `traceLink` parameter and
-uses it for stack trace file links.
+O template de aplicação do Yii configura o
+`Yiisoft\ErrorHandler\Renderer\HtmlRenderer` em
+`config/common/di/error-handler.php`. Ele lê um parâmetro `traceLink` e o
+usa nos links de arquivos do stack trace.
 
-Add the parameter to `config/common/params.php`:
+Adicione o parâmetro em `config/common/params.php`:
 
 ```php
 <?php
@@ -38,46 +39,48 @@ declare(strict_types=1);
 
 return [
     'traceLink' => 'jetbrains://phpstorm/navigate/reference?project=my-app&path={file}:{line}',
-    // Other parameters.
+    // Outros parâmetros.
 ];
 ```
 
-Replace `my-app` with the `project` value from the Toolbox URL. If the
-Toolbox URL uses `origin`, keep `origin` in the link template and use its
-value.
+Substitua `my-app` pelo valor de `project` da URL do Toolbox. Se a URL do
+Toolbox usar `origin`, mantenha `origin` no template do link e use o valor
+dele.
 
-After that, open a debug error page and click a file link in the stack
-trace.
+Depois disso, abra uma página de erro em modo debug e clique em um link de
+arquivo no stack trace.
 
-## Map Docker paths to host paths
+## Mapeie os caminhos do Docker para os caminhos do host
 
-When the application runs in Docker, stack traces usually contain container
-paths such as `/app/src/...`.  PhpStorm needs the matching host path.
+Quando a aplicação roda no Docker, os stack traces geralmente contêm
+caminhos do container, como `/app/src/...`.  O PhpStorm precisa do caminho
+correspondente no host.
 
-Set `APP_HOST_PATH` in `docker/dev/override.env` to the project path on the
-host machine. Set `APP_IDE_PROJECT` to the `project` value from a Toolbox
-URL. If the URL uses `origin`, store the `origin` value instead and use
-`origin` in the final URL template:
+Defina `APP_HOST_PATH` em `docker/dev/override.env` com o caminho do projeto
+na máquina host. Defina `APP_IDE_PROJECT` com o valor de `project` de uma
+URL do Toolbox. Se a URL usar `origin`, guarde o valor de `origin` e use
+`origin` no template final da URL:
 
 ```dotenv
 APP_HOST_PATH=/home/user/projects/my-app
 APP_IDE_PROJECT=my-app
 ```
 
-`docker/dev/override.env` is for developer-specific settings and shouldn't
-be committed. See [Override env
-files](../guide/tutorial/docker.md#override-env-files) for details.
+O `docker/dev/override.env` é para configurações específicas de cada
+desenvolvedor e não deve ser commitado. Veja [Arquivos env de
+override](../guide/tutorial/docker.md#arquivos-env-de-override) para mais
+detalhes.
 
-In the application parameters, expose these environment values as
-`$params['app']['hostPath']` and `$params['app']['ideProject']`.
+Nos parâmetros da aplicação, exponha esses valores de ambiente como
+`$params['app']['hostPath']` e `$params['app']['ideProject']`.
 
-With the default application template, `/app/src/Web/HomePage/Action.php`
-will be linked as `/home/user/projects/my-app/src/Web/HomePage/Action.php`.
+Com o template de aplicação padrão, `/app/src/Web/HomePage/Action.php` será
+linkado como `/home/user/projects/my-app/src/Web/HomePage/Action.php`.
 
-## Configure `HtmlRenderer` manually
+## Configure o `HtmlRenderer` manualmente
 
-If your application doesn't have the template's `error-handler.php`
-configuration, configure `HtmlRenderer` directly:
+Se a sua aplicação não tiver a configuração `error-handler.php` do template,
+configure o `HtmlRenderer` diretamente:
 
 ```php
 <?php
@@ -95,7 +98,8 @@ return [
 ];
 ```
 
-For Docker, use a closure to map the container path to the host path:
+Para o Docker, use uma closure para mapear o caminho do container para o
+caminho do host:
 
 ```php
 <?php

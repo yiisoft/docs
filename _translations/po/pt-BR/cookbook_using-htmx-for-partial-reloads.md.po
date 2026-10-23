@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-05-09 10:43+0000\n"
 "PO-Revision-Date: 2026-05-09 10:43+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Using htmx for partial page reloads"
-msgstr ""
+msgstr "Usando htmx para recarregar partes da página"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -29,39 +29,42 @@ msgid ""
 "application, this works well for grids: sorting, filtering, and pagination can update only the grid while the rest of\n"
 "the page stays in place.\n"
 msgstr ""
+"O [htmx](https://htmx.org/) permite que links e formulários requisitem fragmentos de HTML e os troquem na página atual. Em uma\n"
+"aplicação Yii, isso funciona bem para grids: ordenação, filtros e paginação podem atualizar só o grid enquanto o resto\n"
+"da página continua no lugar.\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "This recipe uses `GridView` as an example because it has links and forms that naturally benefit from partial reloads.  The same pattern works for any widget or page fragment: render the fragment separately, add htmx attributes to the controls that should refresh it, and return only that fragment for htmx requests."
-msgstr ""
+msgstr "Esta receita usa o `GridView` como exemplo porque ele tem links e formulários que se beneficiam naturalmente de recargas parciais.  O mesmo padrão funciona para qualquer widget ou fragmento de página: renderize o fragmento separadamente, adicione atributos do htmx aos controles que devem atualizá-lo e retorne apenas esse fragmento nas requisições do htmx."
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Install GridView"
-msgstr ""
+msgstr "Instale o GridView"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Install the data view package if the application doesn't use it yet:"
-msgstr ""
+msgstr "Instale o pacote de data view, se a aplicação ainda não o usa:"
 
 #. type: Fenced code block (shell)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "composer require yiisoft/yii-dataview\n"
-msgstr ""
+msgstr "composer require yiisoft/yii-dataview\n"
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Load htmx"
-msgstr ""
+msgstr "Carregue o htmx"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "The simplest setup is loading htmx from a CDN. Create `src/Web/Shared/Layout/Main/HtmxAsset.php`:"
-msgstr ""
+msgstr "A configuração mais simples é carregar o htmx de uma CDN. Crie `src/Web/Shared/Layout/Main/HtmxAsset.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -89,16 +92,37 @@ msgid ""
 "    ];\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Shared\\Layout\\Main;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class HtmxAsset extends AssetBundle\n"
+"{\n"
+"    public bool $cdn = true;\n"
+"\n"
+"    public array $js = [\n"
+"        'https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js',\n"
+"    ];\n"
+"\n"
+"    public array $jsOptions = [\n"
+"        'integrity' => 'sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V',\n"
+"        'crossorigin' => 'anonymous',\n"
+"    ];\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "When updating the htmx version, update the URL and `integrity` value together."
-msgstr ""
+msgstr "Ao atualizar a versão do htmx, atualize a URL e o valor de `integrity` juntos."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "For production applications, consider serving htmx from your application assets to avoid depending on a third-party CDN.  Download `htmx.min.js` into `assets/main/js/htmx.min.js` and use a local asset bundle:"
-msgstr ""
+msgstr "Em aplicações de produção, considere servir o htmx a partir dos assets da sua aplicação para não depender de uma CDN de terceiros.  Baixe o `htmx.min.js` para `assets/main/js/htmx.min.js` e use um asset bundle local:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -123,11 +147,29 @@ msgid ""
 "    ];\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Shared\\Layout\\Main;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class HtmxAsset extends AssetBundle\n"
+"{\n"
+"    public ?string $basePath = '@assets/main';\n"
+"    public ?string $baseUrl = '@assetsUrl/main';\n"
+"    public ?string $sourcePath = '@assetsSource/main';\n"
+"\n"
+"    public array $js = [\n"
+"        'js/htmx.min.js',\n"
+"    ];\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Add the bundle to the main layout asset:"
-msgstr ""
+msgstr "Adicione o bundle ao asset do layout principal:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -157,22 +199,45 @@ msgid ""
 "    ];\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Shared\\Layout\\Main;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class MainAsset extends AssetBundle\n"
+"{\n"
+"    public ?string $basePath = '@assets/main';\n"
+"    public ?string $baseUrl = '@assetsUrl/main';\n"
+"    public ?string $sourcePath = '@assetsSource/main';\n"
+"\n"
+"    public array $css = [\n"
+"        'site.css',\n"
+"    ];\n"
+"\n"
+"    public array $depends = [\n"
+"        BootstrapAsset::class,\n"
+"        HtmxAsset::class,\n"
+"    ];\n"
+"}\n"
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Create the reloadable part"
-msgstr ""
+msgstr "Crie a parte recarregável"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Start with a regular page that renders a grid. In a clean `yiisoft/app` project, this means adding an action, a view template, and a widget that renders the grid. The first version doesn't need htmx. It should work as a normal full page."
-msgstr ""
+msgstr "Comece com uma página comum que renderiza um grid. Em um projeto `yiisoft/app` limpo, isso significa adicionar uma action, um template de view e um widget que renderiza o grid. A primeira versão não precisa de htmx. Ela deve funcionar como uma página completa normal."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Create `src/Web/Users/Index/UsersGrid.php`:"
-msgstr ""
+msgstr "Crie `src/Web/Users/Index/UsersGrid.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -229,16 +294,66 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Users\\Index;\n"
+"\n"
+"use Yiisoft\\Data\\Paginator\\PaginatorInterface;\n"
+"use Yiisoft\\Data\\Reader\\Iterable\\IterableDataReader;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"use Yiisoft\\Yii\\DataView\\Column\\DataColumn;\n"
+"use Yiisoft\\Yii\\DataView\\GridView\\GridView;\n"
+"use Yiisoft\\Yii\\DataView\\Pagination\\OffsetPagination;\n"
+"use Yiisoft\\Yii\\DataView\\Pagination\\PaginationWidgetInterface;\n"
+"\n"
+"final class UsersGrid extends Widget\n"
+"{\n"
+"    public function render(): string\n"
+"    {\n"
+"        /** @var PaginationWidgetInterface<PaginatorInterface> */\n"
+"        $pagination = OffsetPagination::widget();\n"
+"\n"
+"        return GridView::widget()\n"
+"            ->containerAttributes([\n"
+"                'id' => 'UsersGridView',\n"
+"                'class' => 'mt-4 position-relative',\n"
+"            ])\n"
+"            ->dataReader($this->dataReader())\n"
+"            ->pageSizeConstraint(5)\n"
+"            ->paginationWidget($pagination)\n"
+"            ->columns(\n"
+"                new DataColumn('id', header: 'ID', filter: true),\n"
+"                new DataColumn('login', header: 'Login', filter: true),\n"
+"                new DataColumn('name', header: 'Name', filter: true),\n"
+"                new DataColumn('status', header: 'Status', filter: true),\n"
+"            )\n"
+"            ->render();\n"
+"    }\n"
+"\n"
+"    private function dataReader(): IterableDataReader\n"
+"    {\n"
+"        return new IterableDataReader([\n"
+"            ['id' => 1, 'login' => 'admin', 'name' => 'Alice Adams', 'status' => 'Active'],\n"
+"            ['id' => 2, 'login' => 'editor', 'name' => 'Eve Editor', 'status' => 'Active'],\n"
+"            ['id' => 3, 'login' => 'author', 'name' => 'Arthur Author', 'status' => 'Active'],\n"
+"            ['id' => 4, 'login' => 'reviewer', 'name' => 'Rita Reviewer', 'status' => 'Inactive'],\n"
+"            ['id' => 5, 'login' => 'support', 'name' => 'Sam Support', 'status' => 'Active'],\n"
+"            ['id' => 6, 'login' => 'guest', 'name' => 'Grace Guest', 'status' => 'Inactive'],\n"
+"        ]);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "For a real application, replace `dataReader()` with a reader backed by a database query or repository. Keep the widget responsible for rendering the grid fragment."
-msgstr ""
+msgstr "Em uma aplicação real, substitua `dataReader()` por um reader baseado em uma consulta ao banco de dados ou em um repositório. Mantenha o widget responsável por renderizar o fragmento do grid."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Create `src/Web/Users/Index/template.php`:"
-msgstr ""
+msgstr "Crie `src/Web/Users/Index/template.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -261,11 +376,27 @@ msgid ""
 "\n"
 "<?= UsersGrid::widget() ?>\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web\\Users\\Index\\UsersGrid;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" */\n"
+"\n"
+"$this->setTitle('Users');\n"
+"?>\n"
+"<h1>Users</h1>\n"
+"\n"
+"<?= UsersGrid::widget() ?>\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Create `src/Web/Users/Index/Action.php`:"
-msgstr ""
+msgstr "Crie `src/Web/Users/Index/Action.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -293,11 +424,32 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Users\\Index;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template');\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Add the action to `config/common/routes.php`:"
-msgstr ""
+msgstr "Adicione a action em `config/common/routes.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -323,22 +475,41 @@ msgid ""
 "        ),\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::get('/users')\n"
+"                ->action(Web\\Users\\Index\\Action::class)\n"
+"                ->name('users/index'),\n"
+"        ),\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Open `/users` and make sure sorting, filtering, and pagination work with full page reloads first."
-msgstr ""
+msgstr "Abra `/users` e verifique primeiro se a ordenação, os filtros e a paginação funcionam com recarga completa da página."
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Add htmx attributes to the grid"
-msgstr ""
+msgstr "Adicione atributos do htmx ao grid"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Now update `UsersGrid` so the grid controls request a fragment and swap it into `#UsersGridView`:"
-msgstr ""
+msgstr "Agora atualize o `UsersGrid` para que os controles do grid requisitem um fragmento e o troquem em `#UsersGridView`:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -413,57 +584,125 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Users\\Index;\n"
+"\n"
+"use Yiisoft\\Data\\Paginator\\PaginatorInterface;\n"
+"use Yiisoft\\Data\\Reader\\Iterable\\IterableDataReader;\n"
+"use Yiisoft\\Widget\\Widget;\n"
+"use Yiisoft\\Yii\\DataView\\Column\\DataColumn;\n"
+"use Yiisoft\\Yii\\DataView\\GridView\\GridView;\n"
+"use Yiisoft\\Yii\\DataView\\Pagination\\OffsetPagination;\n"
+"use Yiisoft\\Yii\\DataView\\Pagination\\PaginationWidgetInterface;\n"
+"\n"
+"final class UsersGrid extends Widget\n"
+"{\n"
+"    public function render(): string\n"
+"    {\n"
+"        $htmxLoadAttributes = [\n"
+"            'hx-indicator' => '#UsersGridView',\n"
+"            'hx-target' => '#UsersGridView',\n"
+"            'hx-replace-url' => 'true',\n"
+"            'hx-swap' => 'outerHTML',\n"
+"        ];\n"
+"\n"
+"        /** @var PaginationWidgetInterface<PaginatorInterface> */\n"
+"        $pagination = OffsetPagination::widget()->addLinkAttributes([\n"
+"            'hx-boost' => 'true',\n"
+"            ...$htmxLoadAttributes,\n"
+"        ]);\n"
+"\n"
+"        return GridView::widget()\n"
+"            ->containerAttributes([\n"
+"                'id' => 'UsersGridView',\n"
+"                'class' => 'mt-4 position-relative',\n"
+"            ])\n"
+"            ->dataReader($this->dataReader())\n"
+"            ->pageSizeConstraint(5)\n"
+"            ->sortableLinkAttributes([\n"
+"                'hx-boost' => 'true',\n"
+"                ...$htmxLoadAttributes,\n"
+"            ])\n"
+"            ->filterFormAttributes([\n"
+"                'hx-boost' => 'true',\n"
+"                ...$htmxLoadAttributes,\n"
+"            ])\n"
+"            ->paginationWidget($pagination)\n"
+"            ->columns(\n"
+"                new DataColumn('id', header: 'ID', filter: true),\n"
+"                new DataColumn('login', header: 'Login', filter: true),\n"
+"                new DataColumn('name', header: 'Name', filter: true),\n"
+"                new DataColumn('status', header: 'Status', filter: true),\n"
+"            )\n"
+"            ->render();\n"
+"    }\n"
+"\n"
+"    private function dataReader(): IterableDataReader\n"
+"    {\n"
+"        return new IterableDataReader([\n"
+"            ['id' => 1, 'login' => 'admin', 'name' => 'Alice Adams', 'status' => 'Active'],\n"
+"            ['id' => 2, 'login' => 'editor', 'name' => 'Eve Editor', 'status' => 'Active'],\n"
+"            ['id' => 3, 'login' => 'author', 'name' => 'Arthur Author', 'status' => 'Active'],\n"
+"            ['id' => 4, 'login' => 'reviewer', 'name' => 'Rita Reviewer', 'status' => 'Inactive'],\n"
+"            ['id' => 5, 'login' => 'support', 'name' => 'Sam Support', 'status' => 'Active'],\n"
+"            ['id' => 6, 'login' => 'guest', 'name' => 'Grace Guest', 'status' => 'Inactive'],\n"
+"        ]);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "The important part is the shared `$htmxLoadAttributes` array:"
-msgstr ""
+msgstr "A parte importante é o array compartilhado `$htmxLoadAttributes`:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "`hx-boost=\"true\"` makes the grid links and filter form send htmx requests."
-msgstr ""
+msgstr "`hx-boost=\"true\"` faz os links e o formulário de filtro do grid enviarem requisições htmx."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "`hx-target=\"#UsersGridView\"` tells htmx which element to replace."
-msgstr ""
+msgstr "`hx-target=\"#UsersGridView\"` diz ao htmx qual elemento substituir."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "`hx-swap=\"outerHTML\"` replaces the whole grid container with the response."
-msgstr ""
+msgstr "`hx-swap=\"outerHTML\"` substitui todo o container do grid pela resposta."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "`hx-replace-url=\"true\"` keeps the browser URL in sync with the current sort, filter, and page."
-msgstr ""
+msgstr "`hx-replace-url=\"true\"` mantém a URL do navegador sincronizada com a ordenação, o filtro e a página atuais."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "`hx-indicator=\"#UsersGridView\"` marks the grid as the loading indicator element while the request is active."
-msgstr ""
+msgstr "`hx-indicator=\"#UsersGridView\"` marca o grid como o elemento indicador de carregamento enquanto a requisição está ativa."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "The target selector and the container `id` must match. In this example, both use `UsersGridView`."
-msgstr ""
+msgstr "O seletor de destino e o `id` do container precisam coincidir. Neste exemplo, ambos usam `UsersGridView`."
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Return partial HTML for htmx requests"
-msgstr ""
+msgstr "Retorne HTML parcial para requisições do htmx"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "htmx sends the `HX-Request` header with its requests."
-msgstr ""
+msgstr "O htmx envia o header `HX-Request` nas suas requisições."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "In the action, return only the widget when the header is present:"
-msgstr ""
+msgstr "Na action, retorne apenas o widget quando o header estiver presente:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
@@ -498,44 +737,72 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Users\\Index;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\DataResponse\\ResponseFactory\\HtmlResponseFactory;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"        private HtmlResponseFactory $htmlResponseFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $response = $request->getHeaderLine('HX-Request') === 'true'\n"
+"            ? $this->htmlResponseFactory->createResponse(UsersGrid::widget())\n"
+"            : $this->viewRenderer->render(__DIR__ . '/template');\n"
+"\n"
+"        return $response->withAddedHeader('Vary', 'HX-Request');\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "The `Vary` header matters when a browser, proxy, or CDN caches responses. The same URL can return a full page without `HX-Request` and a fragment with `HX-Request: true`, so caches must keep these responses separate."
-msgstr ""
+msgstr "O header `Vary` importa quando um navegador, proxy ou CDN faz cache das respostas. A mesma URL pode retornar uma página completa sem `HX-Request` e um fragmento com `HX-Request: true`, então os caches precisam manter essas respostas separadas."
 
 #. type: Title ##
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 #, no-wrap
 msgid "Try it"
-msgstr ""
+msgstr "Experimente"
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Open the list page and use sorting, filtering, or pagination. The browser URL should change, and only the grid HTML should be replaced."
-msgstr ""
+msgstr "Abra a página da lista e use a ordenação, os filtros ou a paginação. A URL do navegador deve mudar, e apenas o HTML do grid deve ser substituído."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "In the browser developer tools, the htmx requests should include the `HX-Request` header. Their responses should contain only the grid container."
-msgstr ""
+msgstr "Nas ferramentas de desenvolvedor do navegador, as requisições do htmx devem incluir o header `HX-Request`. As respostas devem conter apenas o container do grid."
 
 #. type: Plain text
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Use the same pattern for other widgets or page fragments:"
-msgstr ""
+msgstr "Use o mesmo padrão para outros widgets ou fragmentos de página:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Put the reloadable HTML into a widget or another small renderer."
-msgstr ""
+msgstr "Coloque o HTML recarregável em um widget ou em outro pequeno renderizador."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Add htmx attributes to the links and forms that should refresh it."
-msgstr ""
+msgstr "Adicione atributos do htmx aos links e formulários que devem atualizá-lo."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/using-htmx-for-partial-reloads.md
 msgid "Return the fragment for htmx requests and the full page for regular requests."
-msgstr ""
+msgstr "Retorne o fragmento para requisições do htmx e a página completa para requisições comuns."

@@ -1,91 +1,89 @@
-# Domain
+# Domínio
 
-The Domain or domain model is what makes the project unique. With requirements and terminology of the problem being solved
-in mind (the problem context), you build an abstraction that consists of entities, their relationships, and logic that
-operates these entities. To focus on the complex part of the problem, domain is, ideally, separated from
- the infrastructure part of the system (that's how to save data into a database, how to form HTTP response, etc.).
+O domínio, ou modelo de domínio, é o que torna o projeto único. Com os requisitos e a terminologia do problema a ser resolvido
+em mente (o contexto do problema), você constrói uma abstração composta por entidades, seus relacionamentos e a lógica que
+opera essas entidades. Para focar na parte complexa do problema, o domínio, idealmente, fica separado da
+ parte de infraestrutura do sistema (como salvar dados no banco de dados, como montar a resposta HTTP etc.).
 
 > [!NOTE]
-> Such isolation is suitable for complex systems. If your project domain is basically create/read/update/delete
-> for a set of records with not much complex logic, it makes no sense to apply a complex solution to a simple problem.
-> The individual concepts of domain design below could be applied separately, so make sure to check these even if your
-> project isn't that complicated. 
+> Esse isolamento é adequado para sistemas complexos. Se o domínio do seu projeto é basicamente criar/ler/atualizar/excluir
+> um conjunto de registros sem muita lógica complexa, não faz sentido aplicar uma solução complexa a um problema simples.
+> Os conceitos individuais de design de domínio abaixo podem ser aplicados separadamente, então vale conferi-los mesmo que o seu
+> projeto não seja tão complicado. 
 
 ## Bounded context
 
-It's nearly impossible to build a model that solves multiple problems that
-aren't too complicated by itself. Therefore, it's a good practice to divide
-the domain into several use-cases and have a separate model for each
-use-case.  Such separated models are called "bounded contexts."
+É quase impossível construir um modelo que resolva vários problemas sem que
+ele mesmo fique complicado demais. Por isso, é uma boa prática dividir o
+domínio em vários casos de uso e ter um modelo separado para cada um.  Esses
+modelos separados são chamados de "bounded contexts".
 
-## Building blocks
+## Blocos de construção
 
-There are various building blocks that are typically used when describing
-domain models. It isn't mandatory to use them all.
+Existem vários blocos de construção normalmente usados para descrever
+modelos de domínio. Não é obrigatório usar todos.
 
-### Entity
+### Entidade
 
-Entity is a uniquely identifiable object such as user, product, payment,
-etc. When comparing them, you're checking ID, not the attribute values. If
-there are two objects with different attributes but the same ID, they're
-considered being the same thing.
+Entidade é um objeto identificável de forma única, como um usuário, um
+produto, um pagamento etc. Ao comparar entidades, você verifica o ID, não os
+valores dos atributos. Se dois objetos têm atributos diferentes, mas o mesmo
+ID, eles são considerados a mesma coisa.
 
 ### Value object
 
-Value object describes an object by its characteristics. For example, a
-price that consists of value and currency. When comparing such objects,
-you're checking actual values. If they match, an object is considered to be
-the same.
+Um value object descreve um objeto por suas características. Por exemplo, um
+preço composto por valor e moeda. Ao comparar esses objetos, você verifica
+os valores de fato. Se eles coincidem, os objetos são considerados iguais.
 
-### Aggregate
+### Agregado
 
-Aggregate is a set of domain objects such as entities and value objects and
-additional data that could be treated as a single unit. It usually
-represents a compound object from a domain model such as shop order or HR
-person dossier.
+Agregado é um conjunto de objetos de domínio, como entidades e value
+objects, e dados adicionais que podem ser tratados como uma única
+unidade. Ele geralmente representa um objeto composto do modelo de domínio,
+como um pedido de loja ou o dossiê de uma pessoa no RH.
 
-One of the components of an aggregate is called a root. The root identifies
-an aggregate as a whole and should be used to access it.
+Um dos componentes de um agregado é chamado de raiz. A raiz identifica o
+agregado como um todo e deve ser usada para acessá-lo.
 
-### Domain event
+### Evento de domínio
 
-An aggregate, while processed, may raise events. For example, when order is
-confirmed, `OrderConfirmed` event would be risen so other parts of the
-system may react on these.
+Um agregado, ao ser processado, pode disparar eventos. Por exemplo, quando
+um pedido é confirmado, o evento `OrderConfirmed` é disparado para que
+outras partes do sistema possam reagir a ele.
 
 ### Data transfer object
 
-Data transfer object or DTO is an object whose only purpose is to hold data
-as it is. It's commonly used to pass data between different services.
+Data transfer object, ou DTO, é um objeto cujo único propósito é guardar
+dados como estão. Ele é comumente usado para passar dados entre diferentes
+serviços.
 
-### Service
+### Serviço
 
-Service is a class that contains a standalone operation within the context
-of your domain model. See "[service components](service.md)".
+Serviço é uma classe que contém uma operação independente dentro do contexto
+do seu modelo de domínio. Veja "[componentes de serviço](service.md)".
 
-### Repository
+### Repositório
 
-The repository task is to abstract away how domain objects are
-obtained. These are usually separated into two parts: an interface that
-stays in the domain layer and an implementation that's situated in the
-infrastructure layer. In such a way, domain doesn't care how data is
-obtained and saved and may be focused around the complicated business logic
-instead.
+A tarefa do repositório é abstrair como os objetos de domínio são
+obtidos. Ele geralmente é dividido em duas partes: uma interface, que fica
+na camada de domínio, e uma implementação, que fica na camada de
+infraestrutura. Dessa forma, o domínio não se importa com como os dados são
+obtidos e salvos e pode se concentrar na lógica de negócio complicada.
 
-Repository is usually implemented as a service.
+O repositório geralmente é implementado como um serviço.
 
-### Instantiating building blocks
+### Instanciando os blocos de construção
 
-Entity, value object, aggregate, and domain events aren't services and
-shouldn't be instantiated through DI container.  Using `new` is the way to
-go with these.
+Entidades, value objects, agregados e eventos de domínio não são serviços e
+não devem ser instanciados pelo container de DI.  Use `new` para criá-los.
 
-## References
+## Referências
 
-- [BoundedContext by Martin
+- [BoundedContext, por Martin
   Fowler](https://martinfowler.com/bliki/BoundedContext.html)
-- [ValueObject by Martin
+- [ValueObject, por Martin
   Fowler](https://martinfowler.com/bliki/ValueObject.html)
-- [Aggregate by Marting
+- [Aggregate, por Martin
   Fowler](https://martinfowler.com/bliki/DDD_Aggregate.html)
 

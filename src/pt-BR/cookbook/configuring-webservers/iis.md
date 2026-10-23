@@ -1,10 +1,10 @@
-# Configuring web servers: IIS
+# Configurando servidores web: IIS
 
-When you use [IIS](https://www.iis.net/), host the application in a virtual
-host (Website) where the document root points to the `path/to/app/public`
-folder and configure the website to run PHP.  In that `public` folder, place
-a file named `web.config` at `path/to/app/public/web.config`.  Use the
-following content:
+Ao usar o [IIS](https://www.iis.net/), hospede a aplicação em um virtual
+host (Website) cujo document root aponte para a pasta `path/to/app/public` e
+configure o site para executar PHP.  Nessa pasta `public`, coloque um
+arquivo chamado `web.config` em `path/to/app/public/web.config`.  Use o
+seguinte conteúdo:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,8 +29,8 @@ following content:
 </configuration>
 ```
 
-Also, [IIS documentation](https://learn.microsoft.com/en-us/iis/) could be
-useful to configure PHP on IIS.
+A [documentação do IIS](https://learn.microsoft.com/en-us/iis/) também pode
+ser útil para configurar o PHP no IIS.
 
-See [application logs](general.md#application-logs) for logging
-configuration.
+Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração
+de logs.

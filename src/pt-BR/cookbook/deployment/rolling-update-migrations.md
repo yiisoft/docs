@@ -1,63 +1,67 @@
-# Applying migrations during rolling updates
+# Aplicando migrations durante rolling updates
 
-Rolling updates keep old and new application instances running at the same
-time. This makes database changes more delicate than in a single-server
-deployment: both application versions must work with the same database while
-the deployment is in progress.
+Rolling updates mantêm instâncias antigas e novas da aplicação rodando ao
+mesmo tempo. Isso torna as mudanças no banco de dados mais delicadas do que
+em um deploy em um único servidor: as duas versões da aplicação precisam
+funcionar com o mesmo banco de dados enquanto o deploy está em andamento.
 
-The safe rule is:
+A regra segura é:
 
-1. Apply database changes that are compatible with the current production
-   code.
-2. Deploy code that starts using these database changes.
-3. Remove obsolete database structures only after every old application
-   instance is gone.
+1. Aplique mudanças no banco de dados que sejam compatíveis com o código
+   atual de produção.
+2. Faça o deploy do código que passa a usar essas mudanças no banco de
+   dados.
+3. Remova estruturas obsoletas do banco de dados só depois que todas as
+   instâncias antigas da aplicação tiverem saído.
 
-This is often called the expand and contract pattern. First expand the
-schema so both versions can use it. Then move the application code. Finally
-contract the schema in a later deployment.
+Isso costuma ser chamado de padrão expand and contract. Primeiro expanda o
+schema para que as duas versões possam usá-lo. Depois atualize o código da
+aplicação. Por fim, contraia o schema em um deploy posterior.
 
-## Why this matters
+## Por que isso importa
 
-During a rolling update, requests may be served by different versions of the
-application:
+Durante um rolling update, as requisições podem ser atendidas por versões
+diferentes da aplicação:
 
-- old code that does not know about the new schema;
-- new code that expects the new schema;
-- background workers that may lag behind web instances;
-- scheduled commands that may run during deployment.
+- código antigo, que não conhece o novo schema;
+- código novo, que espera o novo schema;
+- workers em segundo plano, que podem ficar atrás das instâncias web;
+- comandos agendados, que podem rodar durante o deploy.
 
-If a migration drops or renames a column before all old instances stop using
-it, old code fails. If code that requires a new column is deployed before
-the column exists, new code fails. The migration plan must keep every
-intermediate state valid.
+Se uma migration remove ou renomeia uma coluna antes que todas as instâncias
+antigas parem de usá-la, o código antigo falha. Se o código que exige uma
+coluna nova vai para produção antes de a coluna existir, o código novo
+falha. O plano de migrations precisa manter válido cada estado
+intermediário.
 
-## Deployment flow
+## Fluxo de deploy
 
-Use this flow for changes that must not interrupt production traffic:
+Use este fluxo para mudanças que não podem interromper o tráfego de
+produção:
 
-1. Create a migration that only adds compatible schema.
-2. Apply this migration to production while the current application version
-   is still running.
-3. Deploy the new application version with a rolling update.
-4. Verify that all instances and workers run the new version.
-5. In a later release, apply cleanup migrations that remove old columns,
-   indexes, tables, or compatibility code.
+1. Crie uma migration que apenas adiciona schema compatível.
+2. Aplique essa migration em produção enquanto a versão atual da aplicação
+   ainda está rodando.
+3. Faça o deploy da nova versão da aplicação com um rolling update.
+4. Verifique se todas as instâncias e workers rodam a nova versão.
+5. Em uma release posterior, aplique as migrations de limpeza que removem
+   colunas, índices, tabelas ou código de compatibilidade antigos.
 
-For Yii applications, run migrations with the same command you use in
-regular deployments, for example:
+Em aplicações Yii, rode as migrations com o mesmo comando que você usa nos
+deploys normais, por exemplo:
 
 ```shell
 ./yii migrate
 ```
 
-Run migrations from a single deployment job or one dedicated console
-container. Do not let every rolling application instance run migrations on
-startup.
+Rode as migrations a partir de um único job de deploy ou de um container de
+console dedicado. Não deixe cada instância do rolling update rodar
+migrations na inicialização.
 
-## Adding a column
+## Adicionando uma coluna
 
-Adding a nullable column is usually compatible with old code:
+Adicionar uma coluna que aceita nulo normalmente é compatível com o código
+antigo:
 
 ```php
 public function up(MigrationBuilder $b): void
@@ -68,123 +72,133 @@ public function up(MigrationBuilder $b): void
 }
 ```
 
-Then deploy code that writes and reads `display_name`.
+Depois, faça o deploy do código que grava e lê `display_name`.
 
-If the column must eventually be required:
+Se a coluna precisar ser obrigatória no futuro:
 
-1. Add it as nullable.
-2. Deploy code that writes it for new and updated rows.
-3. Backfill existing rows in batches.
-4. Add a `NOT NULL` constraint in a later migration.
+1. Adicione-a como coluna que aceita nulo.
+2. Faça o deploy do código que a preenche em linhas novas e atualizadas.
+3. Preencha as linhas existentes em lotes.
+4. Adicione uma restrição `NOT NULL` em uma migration posterior.
 
-Do not add a `NOT NULL` column without a database default while old code
-still inserts rows without that column.
+Não adicione uma coluna `NOT NULL` sem um valor padrão no banco de dados
+enquanto o código antigo ainda insere linhas sem essa coluna.
 
-## Renaming a column
+## Renomeando uma coluna
 
-Renaming is not compatible because old code uses the old name and new code
-uses the new name. Use a multi-release change instead:
+Renomear não é compatível, porque o código antigo usa o nome antigo e o
+código novo usa o nome novo. Em vez disso, faça a mudança ao longo de várias
+releases:
 
-1. Add the new column.
-2. Backfill it from the old column.
-3. Deploy code that writes both columns and reads the new column with a
-   fallback to the old one.
-4. Wait until all old code is gone.
-5. Deploy code that uses only the new column.
-6. Drop the old column in a later cleanup migration.
+1. Adicione a nova coluna.
+2. Preencha-a a partir da coluna antiga.
+3. Faça o deploy do código que grava nas duas colunas e lê a nova coluna,
+   com fallback para a antiga.
+4. Espere até que todo o código antigo tenha saído.
+5. Faça o deploy do código que usa só a nova coluna.
+6. Remova a coluna antiga em uma migration de limpeza posterior.
 
-The same approach works for moving data to a different table.
+A mesma abordagem funciona para mover dados para outra tabela.
 
-## Changing a column type
+## Mudando o tipo de uma coluna
 
-Changing a column type in place may lock the table or break either the old
-or new code. Prefer a new column:
+Mudar o tipo de uma coluna no lugar pode travar a tabela ou quebrar o código
+antigo ou o novo. Prefira uma coluna nova:
 
-1. Add a column with the target type.
-2. Backfill it in batches.
-3. Deploy code that writes both columns.
-4. Deploy code that reads the new column.
-5. Drop the old column after all code uses the new one.
+1. Adicione uma coluna com o tipo desejado.
+2. Preencha-a em lotes.
+3. Faça o deploy do código que grava nas duas colunas.
+4. Faça o deploy do código que lê a nova coluna.
+5. Remova a coluna antiga depois que todo o código usar a nova.
 
-For small tables, an in-place type change may be acceptable. For production
-tables with traffic, verify locking behavior on the exact database engine
-and version before applying it.
+Em tabelas pequenas, mudar o tipo no lugar pode ser aceitável. Em tabelas de
+produção com tráfego, verifique o comportamento de locks no motor e na
+versão exatos do banco de dados antes de aplicar a mudança.
 
-## Dropping columns and tables
+## Removendo colunas e tabelas
 
-Dropping is a cleanup step, not the first step:
+Remover é uma etapa de limpeza, não a primeira etapa:
 
-1. Deploy code that no longer reads or writes the column or table.
-2. Confirm that old application instances, workers, and scheduled commands
-   are stopped.
-3. Confirm that no external reporting or maintenance scripts depend on it.
-4. Drop it in a separate migration.
+1. Faça o deploy do código que não lê nem grava mais a coluna ou a tabela.
+2. Confirme que as instâncias antigas da aplicação, os workers e os comandos
+   agendados pararam.
+3. Confirme que nenhum relatório externo ou script de manutenção depende
+   dela.
+4. Remova-a em uma migration separada.
 
-This makes rollback safer. If you need to roll back application code before
-cleanup, the old schema is still available.
+Isso torna o rollback mais seguro. Se você precisar fazer rollback do código
+da aplicação antes da limpeza, o schema antigo ainda está disponível.
 
-## Adding indexes and constraints
+## Adicionando índices e restrições
 
-Indexes and constraints may be logically compatible but operationally risky
-because they can lock tables.
+Índices e restrições podem ser logicamente compatíveis, mas arriscados na
+operação, porque podem travar tabelas.
 
-For indexes:
+Para índices:
 
-- use online index creation when the database supports it;
-- for PostgreSQL, consider `CREATE INDEX CONCURRENTLY` from a migration or
-  command that is not wrapped in a transaction;
-- for MySQL and MariaDB, check whether the operation can use online DDL for
-  your table and engine.
+- use criação de índice online quando o banco de dados suportar;
+- no PostgreSQL, considere `CREATE INDEX CONCURRENTLY` em uma migration ou
+  comando que não esteja dentro de uma transação;
+- no MySQL e no MariaDB, verifique se a operação pode usar online DDL para a
+  sua tabela e o seu motor.
 
-For constraints:
+Para restrições:
 
-- clean invalid data before adding the constraint;
-- add the constraint only after deployed code preserves it;
-- for PostgreSQL, consider adding foreign keys and check constraints as `NOT
-  VALID`, then validating them separately.
+- limpe os dados inválidos antes de adicionar a restrição;
+- adicione a restrição só depois que o código em produção a respeitar;
+- no PostgreSQL, considere adicionar chaves estrangeiras e check constraints
+  como `NOT VALID` e validá-las separadamente depois.
 
-Keep long-running index creation and validation separate from unrelated
-schema changes so it is easier to monitor and retry them.
+Mantenha a criação de índices e as validações demoradas separadas de
+mudanças de schema não relacionadas, para facilitar o monitoramento e novas
+tentativas.
 
-## Data migrations
+## Migrations de dados
 
-Data migrations that touch many rows should be safe to run while the
-application is live:
+Migrations de dados que mexem em muitas linhas precisam ser seguras para
+rodar com a aplicação no ar:
 
-- make them idempotent so rerunning them does not corrupt data;
-- process rows in small batches;
-- avoid depending on current application service or entity logic because
-  that logic changes over time;
-- prefer forward-compatible values that both old and new code can handle;
-- store progress when a backfill is too large for a single migration run.
+- torne-as idempotentes, para que rodar de novo não corrompa os dados;
+- processe as linhas em lotes pequenos;
+- evite depender da lógica atual de serviços ou entidades da aplicação,
+  porque essa lógica muda com o tempo;
+- prefira valores compatíveis com o futuro, que tanto o código antigo quanto
+  o novo consigam tratar;
+- guarde o progresso quando um preenchimento for grande demais para uma
+  única execução de migration.
 
-For very large backfills, use a console command or background job after the
-schema migration. The schema migration should prepare the database; the
-background process should move the data gradually.
+Para preenchimentos muito grandes, use um comando de console ou um job em
+segundo plano depois da migration de schema. A migration de schema deve
+preparar o banco de dados; o processo em segundo plano deve mover os dados
+aos poucos.
 
-## Reverting
+## Revertendo
 
-In production rolling deployments, reverting a destructive migration is
-often harder than deploying a corrective migration. Treat `down()` methods
-for destructive operations as a local-development convenience, not as the
-main production rollback plan.
+Em deploys com rolling update em produção, reverter uma migration destrutiva
+costuma ser mais difícil do que fazer o deploy de uma migration
+corretiva. Trate os métodos `down()` de operações destrutivas como uma
+conveniência para o desenvolvimento local, não como o principal plano de
+rollback em produção.
 
-A practical rollback plan is:
+Um plano de rollback prático é:
 
-- before cleanup, roll back code only because old schema is still present;
-- after cleanup, deploy a new forward migration that restores the required
-  structure or compatibility;
-- restore from backup only when data was actually lost and no forward repair
-  is possible.
+- antes da limpeza, faça rollback apenas do código, porque o schema antigo
+  ainda existe;
+- depois da limpeza, faça o deploy de uma nova migration que restaure a
+  estrutura ou a compatibilidade necessária;
+- restaure um backup só quando dados foram realmente perdidos e nenhum
+  reparo por uma nova migration é possível.
 
 ## Checklist
 
-Before applying a production migration, verify that:
+Antes de aplicar uma migration em produção, verifique que:
 
-- the current production code works after the migration;
-- the new code works before and after all instances are updated;
-- old workers and scheduled commands are covered;
-- inserts and updates keep required columns valid in every deployment phase;
-- long-running schema operations will not block production traffic
-  unexpectedly;
-- cleanup happens in a separate release after the rollout is complete.
+- o código atual de produção funciona depois da migration;
+- o código novo funciona antes e depois de todas as instâncias serem
+  atualizadas;
+- workers antigos e comandos agendados foram considerados;
+- inserts e updates mantêm as colunas obrigatórias válidas em todas as fases
+  do deploy;
+- operações de schema demoradas não vão bloquear o tráfego de produção de
+  forma inesperada;
+- a limpeza acontece em uma release separada, depois que o rollout terminou.

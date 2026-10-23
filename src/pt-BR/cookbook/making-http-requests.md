@@ -1,26 +1,26 @@
-# Making HTTP requests
+# Fazendo requisições HTTP
 
-Yii doesn't include its own HTTP client implementation. Use a client that
-implements [PSR-18](https://www.php-fig.org/psr/psr-18/) and depend on PSR
-interfaces in your application code.
+O Yii não inclui uma implementação própria de cliente HTTP. Use um cliente
+que implemente a [PSR-18](https://www.php-fig.org/psr/psr-18/) e dependa das
+interfaces PSR no código da sua aplicação.
 
-This recipe uses [Guzzle](https://docs.guzzlephp.org/) as the HTTP
-client. Guzzle provides a PSR-18 client and uses PSR-7 messages.
+Esta receita usa o [Guzzle](https://docs.guzzlephp.org/) como cliente
+HTTP. O Guzzle fornece um cliente PSR-18 e usa mensagens PSR-7.
 
-## Installation
+## Instalação
 
-Install Guzzle:
+Instale o Guzzle:
 
 ```shell
 composer require guzzlehttp/guzzle
 ```
 
-The package installs the PSR HTTP interfaces and `guzzlehttp/psr7`, which
-provides PSR-7 messages and PSR-17 factories.
+O pacote instala as interfaces HTTP da PSR e o `guzzlehttp/psr7`, que
+fornece mensagens PSR-7 e factories PSR-17.
 
-## Configure the container
+## Configure o container
 
-Create `config/common/di/http-client.php`:
+Crie `config/common/di/http-client.php`:
 
 ```php
 <?php
@@ -55,14 +55,14 @@ return [
 ];
 ```
 
-Use `ClientInterface` for sending requests and PSR-17 factories for creating
-requests, streams, and URIs.
+Use `ClientInterface` para enviar requisições e as factories PSR-17 para
+criar requisições, streams e URIs.
 
-## Send a GET request
+## Envie uma requisição GET
 
-Inject `Psr\Http\Client\ClientInterface` and
-`Psr\Http\Message\RequestFactoryInterface` into the service that talks to
-the external API:
+Injete `Psr\Http\Client\ClientInterface` e
+`Psr\Http\Message\RequestFactoryInterface` no serviço que conversa com a API
+externa:
 
 ```php
 <?php
@@ -118,13 +118,13 @@ final readonly class ReleaseClient
 }
 ```
 
-PSR-18 clients throw `ClientExceptionInterface` for request sending
-errors. HTTP status codes such as `404` and `500` are valid responses, so
-check the status code in your service.
+Clientes PSR-18 lançam `ClientExceptionInterface` para erros no envio da
+requisição. Códigos de status HTTP como `404` e `500` são respostas válidas,
+então verifique o código de status no seu serviço.
 
-## Send JSON
+## Envie JSON
 
-Use `StreamFactoryInterface` when you need a request body:
+Use `StreamFactoryInterface` quando precisar de um corpo na requisição:
 
 ```php
 <?php
@@ -166,7 +166,8 @@ final readonly class WebhookClient
 
 ## Testes
 
-For unit tests, pass a client configured with Guzzle's `MockHandler`:
+Para testes unitários, passe um cliente configurado com o `MockHandler` do
+Guzzle:
 
 ```php
 <?php
@@ -201,8 +202,9 @@ final class ReleaseClientTest extends TestCase
 }
 ```
 
-## When to use Guzzle directly
+## Quando usar o Guzzle diretamente
 
-Depend on PSR interfaces for regular application services. Use
-`GuzzleHttp\Client` directly in infrastructure code that needs Guzzle-only
-features such as asynchronous requests, handler stacks, or middleware.
+Dependa das interfaces PSR nos serviços comuns da aplicação. Use
+`GuzzleHttp\Client` diretamente em código de infraestrutura que precise de
+recursos exclusivos do Guzzle, como requisições assíncronas, handler stacks
+ou middleware.

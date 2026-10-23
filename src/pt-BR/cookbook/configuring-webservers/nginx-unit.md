@@ -1,13 +1,14 @@
-# Configuring web servers: NGINX Unit and FreeUnit
+# Configurando servidores web: NGINX Unit e FreeUnit
 
-Run Yii-based apps using [NGINX Unit](https://unit.nginx.org/) with a PHP
-language module.  The same configuration format is used by
-[FreeUnit](https://github.com/freeunitorg/freeunit), a community LTS fork of
-Unit.  With FreeUnit Docker images, such as
-`ghcr.io/freeunitorg/freeunit:latest-php8.5`, put the configuration in
+Execute aplicações baseadas em Yii usando o [NGINX
+Unit](https://unit.nginx.org/) com um módulo de linguagem PHP.  O mesmo
+formato de configuração é usado pelo
+[FreeUnit](https://github.com/freeunitorg/freeunit), um fork LTS do Unit
+mantido pela comunidade.  Com as imagens Docker do FreeUnit, como
+`ghcr.io/freeunitorg/freeunit:latest-php8.5`, coloque a configuração em
 `/var/lib/unit/config.json`.
 
-Here is a sample configuration.
+Aqui está um exemplo de configuração.
 
 ```json
 {
@@ -59,12 +60,12 @@ Here is a sample configuration.
 }
 ```
 
-You can also [set up](https://unit.nginx.org/configuration/#php) your PHP
-environment or supply a custom `php.ini` in the same configuration.
+Você também pode [configurar](https://unit.nginx.org/configuration/#php) o
+ambiente PHP ou fornecer um `php.ini` personalizado na mesma configuração.
 
-Since Yii3 application templates use environment variables, you can set them
-in `applications.yii.environment`.  In a production environment, remember to
-set `APP_ENV` to `prod`.
+Como os templates de aplicação do Yii3 usam variáveis de ambiente, você pode
+defini-las em `applications.yii.environment`.  Em produção, lembre-se de
+definir `APP_ENV` como `prod`.
 
-See [application logs](general.md#application-logs) for logging
-configuration.
+Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração
+de logs.

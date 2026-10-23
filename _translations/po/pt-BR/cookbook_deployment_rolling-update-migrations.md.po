@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-05-30 09:18+0000\n"
 "PO-Revision-Date: 2026-05-30 09:18+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,136 +19,136 @@ msgstr ""
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Applying migrations during rolling updates"
-msgstr ""
+msgstr "Aplicando migrations durante rolling updates"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Rolling updates keep old and new application instances running at the same time. This makes database changes more delicate than in a single-server deployment: both application versions must work with the same database while the deployment is in progress."
-msgstr ""
+msgstr "Rolling updates mantêm instâncias antigas e novas da aplicação rodando ao mesmo tempo. Isso torna as mudanças no banco de dados mais delicadas do que em um deploy em um único servidor: as duas versões da aplicação precisam funcionar com o mesmo banco de dados enquanto o deploy está em andamento."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "The safe rule is:"
-msgstr ""
+msgstr "A regra segura é:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Apply database changes that are compatible with the current production code."
-msgstr ""
+msgstr "Aplique mudanças no banco de dados que sejam compatíveis com o código atual de produção."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that starts using these database changes."
-msgstr ""
+msgstr "Faça o deploy do código que passa a usar essas mudanças no banco de dados."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Remove obsolete database structures only after every old application instance is gone."
-msgstr ""
+msgstr "Remova estruturas obsoletas do banco de dados só depois que todas as instâncias antigas da aplicação tiverem saído."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "This is often called the expand and contract pattern. First expand the schema so both versions can use it. Then move the application code. Finally contract the schema in a later deployment."
-msgstr ""
+msgstr "Isso costuma ser chamado de padrão expand and contract. Primeiro expanda o schema para que as duas versões possam usá-lo. Depois atualize o código da aplicação. Por fim, contraia o schema em um deploy posterior."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Why this matters"
-msgstr ""
+msgstr "Por que isso importa"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "During a rolling update, requests may be served by different versions of the application:"
-msgstr ""
+msgstr "Durante um rolling update, as requisições podem ser atendidas por versões diferentes da aplicação:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "old code that does not know about the new schema;"
-msgstr ""
+msgstr "código antigo, que não conhece o novo schema;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "new code that expects the new schema;"
-msgstr ""
+msgstr "código novo, que espera o novo schema;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "background workers that may lag behind web instances;"
-msgstr ""
+msgstr "workers em segundo plano, que podem ficar atrás das instâncias web;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "scheduled commands that may run during deployment."
-msgstr ""
+msgstr "comandos agendados, que podem rodar durante o deploy."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "If a migration drops or renames a column before all old instances stop using it, old code fails. If code that requires a new column is deployed before the column exists, new code fails. The migration plan must keep every intermediate state valid."
-msgstr ""
+msgstr "Se uma migration remove ou renomeia uma coluna antes que todas as instâncias antigas parem de usá-la, o código antigo falha. Se o código que exige uma coluna nova vai para produção antes de a coluna existir, o código novo falha. O plano de migrations precisa manter válido cada estado intermediário."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Deployment flow"
-msgstr ""
+msgstr "Fluxo de deploy"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Use this flow for changes that must not interrupt production traffic:"
-msgstr ""
+msgstr "Use este fluxo para mudanças que não podem interromper o tráfego de produção:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Create a migration that only adds compatible schema."
-msgstr ""
+msgstr "Crie uma migration que apenas adiciona schema compatível."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Apply this migration to production while the current application version is still running."
-msgstr ""
+msgstr "Aplique essa migration em produção enquanto a versão atual da aplicação ainda está rodando."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy the new application version with a rolling update."
-msgstr ""
+msgstr "Faça o deploy da nova versão da aplicação com um rolling update."
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Verify that all instances and workers run the new version."
-msgstr ""
+msgstr "Verifique se todas as instâncias e workers rodam a nova versão."
 
 #. type: Bullet: '5. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "In a later release, apply cleanup migrations that remove old columns, indexes, tables, or compatibility code."
-msgstr ""
+msgstr "Em uma release posterior, aplique as migrations de limpeza que removem colunas, índices, tabelas ou código de compatibilidade antigos."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "For Yii applications, run migrations with the same command you use in regular deployments, for example:"
-msgstr ""
+msgstr "Em aplicações Yii, rode as migrations com o mesmo comando que você usa nos deploys normais, por exemplo:"
 
 #. type: Fenced code block (shell)
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "./yii migrate\n"
-msgstr ""
+msgstr "./yii migrate\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Run migrations from a single deployment job or one dedicated console container. Do not let every rolling application instance run migrations on startup."
-msgstr ""
+msgstr "Rode as migrations a partir de um único job de deploy ou de um container de console dedicado. Não deixe cada instância do rolling update rodar migrations na inicialização."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Adding a column"
-msgstr ""
+msgstr "Adicionando uma coluna"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Adding a nullable column is usually compatible with old code:"
-msgstr ""
+msgstr "Adicionar uma coluna que aceita nulo normalmente é compatível com o código antigo:"
 
 #. type: Fenced code block (php)
 #: ../src/cookbook/deployment/rolling-update-migrations.md
@@ -161,330 +161,336 @@ msgid ""
 "    $b->addColumn('user', 'display_name', $cb::string());\n"
 "}\n"
 msgstr ""
+"public function up(MigrationBuilder $b): void\n"
+"{\n"
+"    $cb = $b->columnBuilder();\n"
+"\n"
+"    $b->addColumn('user', 'display_name', $cb::string());\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Then deploy code that writes and reads `display_name`."
-msgstr ""
+msgstr "Depois, faça o deploy do código que grava e lê `display_name`."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "If the column must eventually be required:"
-msgstr ""
+msgstr "Se a coluna precisar ser obrigatória no futuro:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Add it as nullable."
-msgstr ""
+msgstr "Adicione-a como coluna que aceita nulo."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that writes it for new and updated rows."
-msgstr ""
+msgstr "Faça o deploy do código que a preenche em linhas novas e atualizadas."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Backfill existing rows in batches."
-msgstr ""
+msgstr "Preencha as linhas existentes em lotes."
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Add a `NOT NULL` constraint in a later migration."
-msgstr ""
+msgstr "Adicione uma restrição `NOT NULL` em uma migration posterior."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Do not add a `NOT NULL` column without a database default while old code still inserts rows without that column."
-msgstr ""
+msgstr "Não adicione uma coluna `NOT NULL` sem um valor padrão no banco de dados enquanto o código antigo ainda insere linhas sem essa coluna."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Renaming a column"
-msgstr ""
+msgstr "Renomeando uma coluna"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Renaming is not compatible because old code uses the old name and new code uses the new name. Use a multi-release change instead:"
-msgstr ""
+msgstr "Renomear não é compatível, porque o código antigo usa o nome antigo e o código novo usa o nome novo. Em vez disso, faça a mudança ao longo de várias releases:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Add the new column."
-msgstr ""
+msgstr "Adicione a nova coluna."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Backfill it from the old column."
-msgstr ""
+msgstr "Preencha-a a partir da coluna antiga."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that writes both columns and reads the new column with a fallback to the old one."
-msgstr ""
+msgstr "Faça o deploy do código que grava nas duas colunas e lê a nova coluna, com fallback para a antiga."
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Wait until all old code is gone."
-msgstr ""
+msgstr "Espere até que todo o código antigo tenha saído."
 
 #. type: Bullet: '5. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that uses only the new column."
-msgstr ""
+msgstr "Faça o deploy do código que usa só a nova coluna."
 
 #. type: Bullet: '6. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Drop the old column in a later cleanup migration."
-msgstr ""
+msgstr "Remova a coluna antiga em uma migration de limpeza posterior."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "The same approach works for moving data to a different table."
-msgstr ""
+msgstr "A mesma abordagem funciona para mover dados para outra tabela."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Changing a column type"
-msgstr ""
+msgstr "Mudando o tipo de uma coluna"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Changing a column type in place may lock the table or break either the old or new code. Prefer a new column:"
-msgstr ""
+msgstr "Mudar o tipo de uma coluna no lugar pode travar a tabela ou quebrar o código antigo ou o novo. Prefira uma coluna nova:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Add a column with the target type."
-msgstr ""
+msgstr "Adicione uma coluna com o tipo desejado."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Backfill it in batches."
-msgstr ""
+msgstr "Preencha-a em lotes."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that writes both columns."
-msgstr ""
+msgstr "Faça o deploy do código que grava nas duas colunas."
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that reads the new column."
-msgstr ""
+msgstr "Faça o deploy do código que lê a nova coluna."
 
 #. type: Bullet: '5. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Drop the old column after all code uses the new one."
-msgstr ""
+msgstr "Remova a coluna antiga depois que todo o código usar a nova."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "For small tables, an in-place type change may be acceptable. For production tables with traffic, verify locking behavior on the exact database engine and version before applying it."
-msgstr ""
+msgstr "Em tabelas pequenas, mudar o tipo no lugar pode ser aceitável. Em tabelas de produção com tráfego, verifique o comportamento de locks no motor e na versão exatos do banco de dados antes de aplicar a mudança."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Dropping columns and tables"
-msgstr ""
+msgstr "Removendo colunas e tabelas"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Dropping is a cleanup step, not the first step:"
-msgstr ""
+msgstr "Remover é uma etapa de limpeza, não a primeira etapa:"
 
 #. type: Bullet: '1. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Deploy code that no longer reads or writes the column or table."
-msgstr ""
+msgstr "Faça o deploy do código que não lê nem grava mais a coluna ou a tabela."
 
 #. type: Bullet: '2. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Confirm that old application instances, workers, and scheduled commands are stopped."
-msgstr ""
+msgstr "Confirme que as instâncias antigas da aplicação, os workers e os comandos agendados pararam."
 
 #. type: Bullet: '3. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Confirm that no external reporting or maintenance scripts depend on it."
-msgstr ""
+msgstr "Confirme que nenhum relatório externo ou script de manutenção depende dela."
 
 #. type: Bullet: '4. '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Drop it in a separate migration."
-msgstr ""
+msgstr "Remova-a em uma migration separada."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "This makes rollback safer. If you need to roll back application code before cleanup, the old schema is still available."
-msgstr ""
+msgstr "Isso torna o rollback mais seguro. Se você precisar fazer rollback do código da aplicação antes da limpeza, o schema antigo ainda está disponível."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Adding indexes and constraints"
-msgstr ""
+msgstr "Adicionando índices e restrições"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Indexes and constraints may be logically compatible but operationally risky because they can lock tables."
-msgstr ""
+msgstr "Índices e restrições podem ser logicamente compatíveis, mas arriscados na operação, porque podem travar tabelas."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "For indexes:"
-msgstr ""
+msgstr "Para índices:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "use online index creation when the database supports it;"
-msgstr ""
+msgstr "use criação de índice online quando o banco de dados suportar;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "for PostgreSQL, consider `CREATE INDEX CONCURRENTLY` from a migration or command that is not wrapped in a transaction;"
-msgstr ""
+msgstr "no PostgreSQL, considere `CREATE INDEX CONCURRENTLY` em uma migration ou comando que não esteja dentro de uma transação;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "for MySQL and MariaDB, check whether the operation can use online DDL for your table and engine."
-msgstr ""
+msgstr "no MySQL e no MariaDB, verifique se a operação pode usar online DDL para a sua tabela e o seu motor."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "For constraints:"
-msgstr ""
+msgstr "Para restrições:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "clean invalid data before adding the constraint;"
-msgstr ""
+msgstr "limpe os dados inválidos antes de adicionar a restrição;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "add the constraint only after deployed code preserves it;"
-msgstr ""
+msgstr "adicione a restrição só depois que o código em produção a respeitar;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "for PostgreSQL, consider adding foreign keys and check constraints as `NOT VALID`, then validating them separately."
-msgstr ""
+msgstr "no PostgreSQL, considere adicionar chaves estrangeiras e check constraints como `NOT VALID` e validá-las separadamente depois."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Keep long-running index creation and validation separate from unrelated schema changes so it is easier to monitor and retry them."
-msgstr ""
+msgstr "Mantenha a criação de índices e as validações demoradas separadas de mudanças de schema não relacionadas, para facilitar o monitoramento e novas tentativas."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Data migrations"
-msgstr ""
+msgstr "Migrations de dados"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Data migrations that touch many rows should be safe to run while the application is live:"
-msgstr ""
+msgstr "Migrations de dados que mexem em muitas linhas precisam ser seguras para rodar com a aplicação no ar:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "make them idempotent so rerunning them does not corrupt data;"
-msgstr ""
+msgstr "torne-as idempotentes, para que rodar de novo não corrompa os dados;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "process rows in small batches;"
-msgstr ""
+msgstr "processe as linhas em lotes pequenos;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "avoid depending on current application service or entity logic because that logic changes over time;"
-msgstr ""
+msgstr "evite depender da lógica atual de serviços ou entidades da aplicação, porque essa lógica muda com o tempo;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "prefer forward-compatible values that both old and new code can handle;"
-msgstr ""
+msgstr "prefira valores compatíveis com o futuro, que tanto o código antigo quanto o novo consigam tratar;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "store progress when a backfill is too large for a single migration run."
-msgstr ""
+msgstr "guarde o progresso quando um preenchimento for grande demais para uma única execução de migration."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "For very large backfills, use a console command or background job after the schema migration. The schema migration should prepare the database; the background process should move the data gradually."
-msgstr ""
+msgstr "Para preenchimentos muito grandes, use um comando de console ou um job em segundo plano depois da migration de schema. A migration de schema deve preparar o banco de dados; o processo em segundo plano deve mover os dados aos poucos."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Reverting"
-msgstr ""
+msgstr "Revertendo"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "In production rolling deployments, reverting a destructive migration is often harder than deploying a corrective migration. Treat `down()` methods for destructive operations as a local-development convenience, not as the main production rollback plan."
-msgstr ""
+msgstr "Em deploys com rolling update em produção, reverter uma migration destrutiva costuma ser mais difícil do que fazer o deploy de uma migration corretiva. Trate os métodos `down()` de operações destrutivas como uma conveniência para o desenvolvimento local, não como o principal plano de rollback em produção."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "A practical rollback plan is:"
-msgstr ""
+msgstr "Um plano de rollback prático é:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "before cleanup, roll back code only because old schema is still present;"
-msgstr ""
+msgstr "antes da limpeza, faça rollback apenas do código, porque o schema antigo ainda existe;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "after cleanup, deploy a new forward migration that restores the required structure or compatibility;"
-msgstr ""
+msgstr "depois da limpeza, faça o deploy de uma nova migration que restaure a estrutura ou a compatibilidade necessária;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "restore from backup only when data was actually lost and no forward repair is possible."
-msgstr ""
+msgstr "restaure um backup só quando dados foram realmente perdidos e nenhum reparo por uma nova migration é possível."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 #, no-wrap
 msgid "Checklist"
-msgstr ""
+msgstr "Checklist"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "Before applying a production migration, verify that:"
-msgstr ""
+msgstr "Antes de aplicar uma migration em produção, verifique que:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "the current production code works after the migration;"
-msgstr ""
+msgstr "o código atual de produção funciona depois da migration;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "the new code works before and after all instances are updated;"
-msgstr ""
+msgstr "o código novo funciona antes e depois de todas as instâncias serem atualizadas;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "old workers and scheduled commands are covered;"
-msgstr ""
+msgstr "workers antigos e comandos agendados foram considerados;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "inserts and updates keep required columns valid in every deployment phase;"
-msgstr ""
+msgstr "inserts e updates mantêm as colunas obrigatórias válidas em todas as fases do deploy;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "long-running schema operations will not block production traffic unexpectedly;"
-msgstr ""
+msgstr "operações de schema demoradas não vão bloquear o tráfego de produção de forma inesperada;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/rolling-update-migrations.md
 msgid "cleanup happens in a separate release after the rollout is complete."
-msgstr ""
+msgstr "a limpeza acontece em uma release separada, depois que o rollout terminou."

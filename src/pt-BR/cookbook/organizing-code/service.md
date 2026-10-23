@@ -1,9 +1,9 @@
-# Service components
+# Componentes de serviço
 
-Application may get complicated, so it makes sense to extract focused parts
-of business logic or infrastructure into service components. They're
-typically injected into other components or action handlers.  It's usually
-done via autowiring:
+A aplicação pode ficar complicada, então faz sentido extrair partes focadas
+da lógica de negócio ou da infraestrutura para componentes de serviço. Eles
+normalmente são injetados em outros componentes ou em action handlers.  Isso
+geralmente é feito por autowiring:
 
 ```php
 public function actionIndex(CurrentRoute $route, MyService $myService): ResponseInterface
@@ -17,9 +17,9 @@ public function actionIndex(CurrentRoute $route, MyService $myService): Response
 }
 ```
 
-Yii3 doesn't technically imply any limitations on how you build services. In
-general, there's no need to extend from a base class or implement a certain
-interface:
+Tecnicamente, o Yii3 não impõe nenhuma limitação sobre como você constrói
+serviços. Em geral, não é preciso estender uma classe base nem implementar
+uma interface específica:
 
 ```php
 final readonly class MyService
@@ -37,29 +37,31 @@ final readonly class MyService
 }
 ```
 
-Services either perform a task or return data. They're created once, put
-into a DI container and then could be used multiple times. Because of that,
-it's a good idea to keep your services stateless that's both service itself
-and any of its dependencies shouldn't hold state. You can ensure it by using
-`readonly` PHP keyword at class level.
+Serviços executam uma tarefa ou retornam dados. Eles são criados uma vez,
+colocados em um container de DI e então podem ser usados várias vezes. Por
+isso, é uma boa ideia manter seus serviços sem estado: nem o próprio serviço
+nem qualquer uma de suas dependências devem guardar estado. Você pode
+garantir isso usando a palavra-chave `readonly` do PHP no nível da classe.
 
-## Service dependencies and configuration
+## Dependências e configuração de serviços
 
-Services should always define all their dependencies on other services via
-`__construct()`. It both allows you to use a service right away after it's
-created and serves as an indicator of a service doing too much if there are
-too many dependencies.
+Serviços devem sempre declarar todas as suas dependências de outros serviços
+via `__construct()`. Isso permite usar o serviço logo depois de criado e
+também serve como indicador de que o serviço faz coisas demais, quando há
+dependências demais.
 
-- After the service is created, it shouldn't be re-configured in runtime.
-- DI container instance usually **shouldn't** be injected as a
-  dependency. Prefer concrete interfaces.
-- In case of complicated or "heavy" initialization, try to postpone it until
-  the service method is called.
+- Depois de criado, o serviço não deve ser reconfigurado em tempo de
+  execução.
+- A instância do container de DI geralmente **não deve** ser injetada como
+  dependência. Prefira interfaces concretas.
+- Em caso de inicialização complicada ou "pesada", tente adiá-la até que o
+  método do serviço seja chamado.
 
-The same is valid for configuration values. They should be provided as a
-constructor argument. Related values could be grouped together into value
-objects. For example, database connection usually requires DSN string,
-username and password.  These three could be combined into Dsn class:
+O mesmo vale para valores de configuração. Eles devem ser fornecidos como
+argumento do construtor. Valores relacionados podem ser agrupados em value
+objects. Por exemplo, uma conexão com banco de dados geralmente exige a
+string DSN, o nome de usuário e a senha.  Esses três podem ser combinados em
+uma classe Dsn:
 
 ```php
 final readonly class Dsn
@@ -77,15 +79,15 @@ final readonly class Dsn
     
     private function isValidDsn(string $dsn): bool
     {
-        // check DSN validity    
+        // verifica se o DSN é válido    
     }
 }
 ```
 
-## Service methods
+## Métodos de serviço
 
-Service method usually does something. It could be a simple thing repeated
-exactly, but usually it depends on the context. For example:
+Um método de serviço geralmente faz alguma coisa. Pode ser algo simples
+repetido exatamente igual, mas normalmente depende do contexto. Por exemplo:
 
 ```php
 final readonly class PostPersister
@@ -103,17 +105,17 @@ final readonly class PostPersister
 }
 ```
 
-There's a service that is saving posts into permanent storage such as a
-database. An object allowing communication with a concrete storage is always
-the same, so it's injected using constructor while the post saved could
-vary, so it's passed as a method argument.
+Aqui há um serviço que salva posts em um armazenamento permanente, como um
+banco de dados. O objeto que permite a comunicação com um armazenamento
+concreto é sempre o mesmo, então é injetado pelo construtor, enquanto o post
+salvo pode variar, então é passado como argumento do método.
 
-## Is everything a service?
+## Tudo é um serviço?
 
-Often it makes sense to choose another class type to place your code
-into. Check:
+Muitas vezes faz sentido escolher outro tipo de classe para colocar seu
+código. Confira:
 
-- Repository
+- Repositório
 - Widget
 - [Middleware](middleware.md)
-- Entity
+- Entidade

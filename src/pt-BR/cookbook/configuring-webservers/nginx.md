@@ -1,17 +1,17 @@
-# Configuring web servers: Nginx
+# Configurando servidores web: Nginx
 
-To use [Nginx](https:/nginx.org/), install PHP as an [FPM
-SAPI](https://secure.php.net/install.fpm).  Use the following Nginx
-configuration, replacing `path/to/app/public` with the actual path for
-`app/public` and `mysite.test` with the actual hostname to serve.
+Para usar o [Nginx](https:/nginx.org/), instale o PHP como [FPM
+SAPI](https://secure.php.net/install.fpm).  Use a configuração do Nginx a
+seguir, substituindo `path/to/app/public` pelo caminho real de `app/public`
+e `mysite.test` pelo hostname real a ser servido.
 
 ```nginx
 server {
     charset utf-8;
     client_max_body_size 128M;
 
-    listen 80; ## listen for ipv4
-    #listen [::]:80 default_server ipv6only=on; ## listen for ipv6
+    listen 80; ## escuta em ipv4
+    #listen [::]:80 default_server ipv6only=on; ## escuta em ipv6
 
     server_name mysite.test;
     root        /path/to/app/public;
@@ -21,17 +21,17 @@ server {
     error_log   /path/to/basic/log/error.log;
 
     location / {
-        # Redirect everything that isn't a real file to index.php
+        # Redireciona para index.php tudo que não for um arquivo real
         try_files $uri $uri/ /index.php$is_args$args;
     }
 
-    # uncomment to avoid processing of calls to non-existing static files by Yii
+    # descomente para evitar que o Yii processe chamadas a arquivos estáticos inexistentes
     #location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
     #    try_files $uri =404;
     #}
     #error_page 404 /404.html;
 
-    # deny accessing php files for the /assets directory
+    # bloqueia o acesso a arquivos php no diretório /assets
     location ~ ^/assets/.*\.php$ {
         deny all;
     }
@@ -51,16 +51,17 @@ server {
 }
 ```
 
-When you use this configuration, also set `cgi.fix_pathinfo=0` in the
-`php.ini` file to avoid many unnecessary system `stat()` calls.
+Ao usar essa configuração, defina também `cgi.fix_pathinfo=0` no arquivo
+`php.ini` para evitar muitas chamadas de sistema `stat()` desnecessárias.
 
-Also, note that when running an HTTPS server, you need to add `fastcgi_param
-HTTPS on;` so that Yii can detect if a connection is secure.
+Além disso, ao executar um servidor HTTPS, você precisa adicionar
+`fastcgi_param HTTPS on;` para que o Yii consiga detectar se a conexão é
+segura.
 
-In the above, note the usage of `fastcgi_param APP_ENV`. Since Yii3
-application templates use environment variables, this is a possible place to
-set them. In production environment remember to set `APP_ENV` to `prod`.
+Observe o uso de `fastcgi_param APP_ENV` acima. Como os templates de
+aplicação do Yii3 usam variáveis de ambiente, este é um lugar possível para
+defini-las. Em produção, lembre-se de definir `APP_ENV` como `prod`.
 
-The Nginx `access_log` and `error_log` directives above don't capture
-PHP-FPM worker output.  See [application logs](general.md#application-logs)
-for logging configuration.
+As diretivas `access_log` e `error_log` do Nginx acima não capturam a saída
+dos workers do PHP-FPM.  Veja [logs da
+aplicação](general.md#logs-da-aplicacao) para a configuração de logs.

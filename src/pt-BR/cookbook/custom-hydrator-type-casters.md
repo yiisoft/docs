@@ -1,36 +1,38 @@
-# Custom hydrator type casters
+# Type casters personalizados para o hydrator
 
-[Yii Hydrator](https://github.com/yiisoft/hydrator) creates objects and
-fills them with data from arrays. It's used directly and by packages built
-on top of it:
+O [Yii Hydrator](https://github.com/yiisoft/hydrator) cria objetos e os
+preenche com dados de arrays. Ele é usado diretamente e por pacotes
+construídos sobre ele:
 
-- [Yii Input HTTP](https://github.com/yiisoft/input-http) fills request
-  input objects from query parameters, request body, and, with the help of
-  [Yii Router](https://github.com/yiisoft/router), route arguments.
-- [Yii Form Model](https://github.com/yiisoft/form-model) provides
-  `FormHydrator` that fills form models from submitted data.
+- O [Yii Input HTTP](https://github.com/yiisoft/input-http) preenche objetos
+  de entrada da requisição a partir de parâmetros da query string, do corpo
+  da requisição e, com a ajuda do [Yii
+  Router](https://github.com/yiisoft/router), dos argumentos da rota.
+- O [Yii Form Model](https://github.com/yiisoft/form-model) fornece o
+  `FormHydrator`, que preenche form models com os dados enviados.
 
-The incoming data is usually "raw": HTTP requests, database rows, and queue
-messages contain strings, numbers, and arrays. Before assigning a value to a
-property or passing it to a constructor parameter, the hydrator converts it
-to the declared type. A *type caster* performs this conversion. By writing
-your own type caster, you teach the hydrator to create your types, such as
-value objects, from raw data.
+Os dados recebidos geralmente são "brutos": requisições HTTP, linhas do
+banco de dados e mensagens de fila contêm strings, números e arrays. Antes
+de atribuir um valor a uma propriedade ou passá-lo a um parâmetro do
+construtor, o hydrator o converte para o tipo declarado. Um *type caster*
+faz essa conversão. Ao escrever seu próprio type caster, você ensina o
+hydrator a criar seus tipos, como value objects, a partir de dados brutos.
 
-## Why custom type casters
+## Por que type casters personalizados
 
-Out of the box, the hydrator uses a composite type caster with two casters:
+Por padrão, o hydrator usa um type caster composto com dois casters:
 
-- `PhpNativeTypeCaster` casts values to built-in PHP types, such as `int`,
-  `string`, `bool`, and `array`.
-- `HydratorTypeCaster` creates nested objects from arrays using the hydrator
-  itself.
+- `PhpNativeTypeCaster` converte valores para tipos nativos do PHP, como
+  `int`, `string`, `bool` e `array`.
+- `HydratorTypeCaster` cria objetos aninhados a partir de arrays usando o
+  próprio hydrator.
 
-That's enough for DTOs with scalar properties, but not for a rich domain
-model. Consider a property typed as `UserId`, `Email`, or `Money`. The
-incoming value is a string, and neither of the default casters knows how to
-turn it into such an object. So you end up declaring the property as
-`string` and converting it by hand wherever it's used:
+Isso basta para DTOs com propriedades escalares, mas não para um modelo de
+domínio rico. Considere uma propriedade tipada como `UserId`, `Email` ou
+`Money`. O valor recebido é uma string, e nenhum dos casters padrão sabe
+transformá-lo em um objeto desses. Assim, você acaba declarando a
+propriedade como `string` e convertendo-a manualmente onde quer que ela seja
+usada:
 
 ```php
 final class CreatePostForm extends FormModel
@@ -38,16 +40,16 @@ final class CreatePostForm extends FormModel
     public string $authorId = '';
 }
 
-// In every action that uses the form:
+// Em toda action que usa o formulário:
 try {
     $authorId = new UserId($form->authorId);
 } catch (InvalidArgumentException) {
-    // Report the error somehow.
+    // Reporte o erro de alguma forma.
 }
 ```
 
-With a type caster for `UserId`, you can declare the property with its real
-type. The conversion happens during hydration:
+Com um type caster para `UserId`, você pode declarar a propriedade com seu
+tipo real. A conversão acontece durante a hidratação:
 
 ```php
 final class CreatePostForm extends FormModel
@@ -55,77 +57,78 @@ final class CreatePostForm extends FormModel
     public ?UserId $authorId = null;
 }
 
-// $form->authorId is already an instance of UserId.
+// $form->authorId já é uma instância de UserId.
 ```
 
-The conversion logic lives in a single place. Once you register the caster,
-the hydrator applies it to every property and constructor parameter of the
-matching type in every object it creates.
+A lógica de conversão fica em um único lugar. Depois que você registra o
+caster, o hydrator o aplica a todas as propriedades e parâmetros de
+construtor do tipo correspondente em todos os objetos que ele cria.
 
-Typical use cases are:
+Casos de uso típicos:
 
-- value objects, such as entity IDs, emails, phone numbers, and money
-  amounts.
-- types from third-party libraries, such as UUIDs, dates, or currencies.
-- consistent normalization of values, for example, parsing dates in a format
-  specific to your application.
+- value objects, como IDs de entidades, e-mails, números de telefone e
+  valores monetários.
+- tipos de bibliotecas de terceiros, como UUIDs, datas ou moedas.
+- normalização consistente de valores, por exemplo, interpretar datas em um
+  formato específico da sua aplicação.
 
-## Anatomy of a type caster
+## Anatomia de um type caster
 
-A type caster implements `Yiisoft\Hydrator\TypeCaster\TypeCasterInterface`
-with a single method:
+Um type caster implementa `Yiisoft\Hydrator\TypeCaster\TypeCasterInterface`,
+que tem um único método:
 
 ```php
 public function cast(mixed $value, TypeCastContext $context): Result;
 ```
 
-- `$value` is the raw value to convert.
-- `$context` is a `Yiisoft\Hydrator\TypeCaster\TypeCastContext`. Its
-  `getReflectionType()` method returns the declared type of the target
-  property or constructor parameter. Use it to decide whether the caster
-  supports the target type.
-- The method returns a `Yiisoft\Hydrator\Result`:
-  `Result::success($convertedValue)` if the conversion succeeded or
-  `Result::fail()` if the caster can't handle the value.
+- `$value` é o valor bruto a ser convertido.
+- `$context` é um `Yiisoft\Hydrator\TypeCaster\TypeCastContext`. Seu método
+  `getReflectionType()` retorna o tipo declarado da propriedade ou do
+  parâmetro de construtor de destino. Use-o para decidir se o caster suporta
+  o tipo de destino.
+- O método retorna um `Yiisoft\Hydrator\Result`:
+  `Result::success($convertedValue)` se a conversão deu certo ou
+  `Result::fail()` se o caster não consegue lidar com o valor.
 
-Follow these rules when writing a type caster:
+Siga estas regras ao escrever um type caster:
 
-1. **Check the target type first.** If the declared type isn't the one your
-   caster is responsible for, return `Result::fail()` right away so other
-   casters can handle the value.
-2. **Handle both named and union types.** PHP represents a nullable type
-   such as `?Email` (or `Email|null`) with `ReflectionNamedType` and
-   `Email|string` with `ReflectionUnionType`. In the latter case, look for
-   your type among its subtypes.
-3. **Don't handle `null` yourself.** If the value is `null`, just return
-   `Result::fail()`. `PhpNativeTypeCaster` returns `null` for any type that
-   allows it, so a `null` value assigned to `?Email` stays `null`.
-4. **Accept already converted values.** If the value is already an instance
-   of the target type, return it as is.
-5. **Fail instead of throwing.** If your caster can't convert the value, for
-   example, a malformed string, return `Result::fail()`. An exception would
-   break the whole hydration.
+1. **Verifique o tipo de destino primeiro.** Se o tipo declarado não for
+   aquele pelo qual seu caster é responsável, retorne `Result::fail()`
+   imediatamente para que outros casters possam lidar com o valor.
+2. **Trate tipos nomeados e tipos união.** O PHP representa um tipo anulável
+   como `?Email` (ou `Email|null`) com `ReflectionNamedType` e
+   `Email|string` com `ReflectionUnionType`. No segundo caso, procure seu
+   tipo entre os subtipos.
+3. **Não trate `null` você mesmo.** Se o valor for `null`, apenas retorne
+   `Result::fail()`. O `PhpNativeTypeCaster` retorna `null` para qualquer
+   tipo que o permita, então um valor `null` atribuído a `?Email` continua
+   `null`.
+4. **Aceite valores já convertidos.** Se o valor já for uma instância do
+   tipo de destino, retorne-o como está.
+5. **Falhe em vez de lançar exceções.** Se seu caster não consegue converter
+   o valor, por exemplo, uma string malformada, retorne
+   `Result::fail()`. Uma exceção quebraria toda a hidratação.
 
-Keep in mind what happens when no caster succeeds:
+Tenha em mente o que acontece quando nenhum caster tem sucesso:
 
-- For a property, the cast fails silently. The hydrator doesn't set the
-  property or report an error, so the property keeps its default
-  value. Reporting the problem to the user is the job of the validation that
-  runs after hydration.  See [Null and invalid
-  values](#null-and-invalid-values) for an example.
-- For a constructor parameter, the hydrator omits the argument. If the
-  parameter has a default value, it's used.  Otherwise, object creation
-  fails with `WrongConstructorArgumentsCountException`, even for a nullable
-  parameter without a default value.
+- Para uma propriedade, a conversão falha silenciosamente. O hydrator não
+  define a propriedade nem reporta um erro, então a propriedade mantém seu
+  valor padrão. Reportar o problema ao usuário é papel da validação que roda
+  após a hidratação.  Veja [Valores nulos e
+  inválidos](#valores-nulos-e-invalidos) para um exemplo.
+- Para um parâmetro de construtor, o hydrator omite o argumento. Se o
+  parâmetro tiver um valor padrão, ele é usado.  Caso contrário, a criação
+  do objeto falha com `WrongConstructorArgumentsCountException`, mesmo para
+  um parâmetro anulável sem valor padrão.
 
-## Registering a type caster
+## Registrando um type caster
 
-Combine type casters with `CompositeTypeCaster`. It tries the casters one by
-one and uses the result of the first one that succeeds. To add your caster,
-redefine `TypeCasterInterface` in the DI container configuration, for
-example, in `config/common/di/hydrator.php`. The `HydratorInterface`
-implementation from the container uses this chain, as do packages that rely
-on it, such as Yii Input HTTP:
+Combine type casters com `CompositeTypeCaster`. Ele tenta os casters um a um
+e usa o resultado do primeiro que tiver sucesso. Para adicionar seu caster,
+redefina `TypeCasterInterface` na configuração do container de DI, por
+exemplo, em `config/common/di/hydrator.php`. A implementação de
+`HydratorInterface` do container usa essa cadeia, assim como os pacotes que
+dependem dela, como o Yii Input HTTP:
 
 ```php
 <?php
@@ -147,16 +150,17 @@ return [
 ];
 ```
 
-Since the first successful result wins, the order matters:
+Como o primeiro resultado bem-sucedido vence, a ordem importa:
 
-- Put custom casters before `PhpNativeTypeCaster`. Otherwise, for a property
-  declared as `UserId|string`, `PhpNativeTypeCaster` accepts a string as is,
-  and your caster never runs.
-- Keep the default casters in the list. `PhpNativeTypeCaster` casts scalar
-  values to built-in types, and `HydratorTypeCaster` creates nested objects
-  from arrays.
+- Coloque os casters personalizados antes do `PhpNativeTypeCaster`. Caso
+  contrário, para uma propriedade declarada como `UserId|string`, o
+  `PhpNativeTypeCaster` aceita a string como está, e seu caster nunca é
+  executado.
+- Mantenha os casters padrão na lista. O `PhpNativeTypeCaster` converte
+  valores escalares para tipos nativos, e o `HydratorTypeCaster` cria
+  objetos aninhados a partir de arrays.
 
-If a caster has dependencies, take it from the container:
+Se um caster tiver dependências, obtenha-o do container:
 
 ```php
 <?php
@@ -179,11 +183,11 @@ return [
 ];
 ```
 
-### Registering for form models
+### Registrando para form models
 
-`FormHydrator` from Yii Form Model doesn't use `TypeCasterInterface`. Its DI
-configuration creates a dedicated hydrator with its own chain of type
-casters, so add your caster there as well:
+O `FormHydrator` do Yii Form Model não usa `TypeCasterInterface`. Sua
+configuração de DI cria um hydrator dedicado com sua própria cadeia de type
+casters, então adicione seu caster lá também:
 
 ```php
 <?php
@@ -220,25 +224,25 @@ return [
 ];
 ```
 
-This definition replaces the one from the package, so keep its type
-casters. This example uses the list from `config/di.php` of Yii Form Model
-1.1. Check it against the version you use. `NullTypeCaster` turns empty
-strings submitted by forms into `null` for nullable properties, so it stays
-first.
+Essa definição substitui a do pacote, então mantenha os type casters
+dele. Este exemplo usa a lista do `config/di.php` do Yii Form Model
+1.1. Confira com a versão que você usa. O `NullTypeCaster` transforma
+strings vazias enviadas por formulários em `null` para propriedades
+anuláveis, por isso ele continua em primeiro.
 
-## Example: UUID value objects
+## Exemplo: value objects de UUID
 
-Entity IDs often use value objects, such as `UserId`, `PostId`, and
-`OrderId`, instead of plain strings.  Such objects make method signatures
-self-documenting and prevent passing a post ID where a method expects a user
-ID.  The following example shows how to write a type caster that creates
-them from UUID strings.
+IDs de entidades frequentemente usam value objects, como `UserId`, `PostId`
+e `OrderId`, em vez de strings simples.  Esses objetos tornam as assinaturas
+dos métodos autodocumentadas e impedem que você passe um ID de post onde um
+método espera um ID de usuário.  O exemplo a seguir mostra como escrever um
+type caster que os cria a partir de strings UUID.
 
 ### Value objects
 
-All ID value objects extend an abstract `UuidValue` class. The example uses
-[ramsey/uuid](https://github.com/ramsey/uuid) to validate and generate
-UUIDs:
+Todos os value objects de ID estendem uma classe abstrata `UuidValue`. O
+exemplo usa [ramsey/uuid](https://github.com/ramsey/uuid) para validar e
+gerar UUIDs:
 
 ```shell
 composer require ramsey/uuid
@@ -286,9 +290,9 @@ abstract readonly class UuidValue implements Stringable
 }
 ```
 
-The constructor is final, so `new static()` is safe and creates every child
-class from a string the same way.  A concrete ID is just an empty child
-class:
+O construtor é final, então `new static()` é seguro e cria todas as classes
+filhas a partir de uma string da mesma forma.  Um ID concreto é apenas uma
+classe filha vazia:
 
 ```php
 <?php
@@ -304,7 +308,7 @@ final readonly class UserId extends UuidValue
 }
 ```
 
-Define `PostId` and other IDs the same way.
+Defina `PostId` e outros IDs da mesma forma.
 
 ### Type caster
 
@@ -348,8 +352,8 @@ final readonly class UuidValueTypeCaster implements TypeCasterInterface
     }
 
     /**
-     * Returns the `UuidValue` child class from the declared type, or `null` if there is none or there are several
-     * of them, such as in `UserId|PostId`.
+     * Retorna a classe filha de `UuidValue` a partir do tipo declarado, ou `null` se não houver nenhuma ou houver várias
+     * delas, como em `UserId|PostId`.
      *
      * @return class-string<UuidValue>|null
      */
@@ -377,28 +381,28 @@ final readonly class UuidValueTypeCaster implements TypeCasterInterface
 }
 ```
 
-The caster follows the [rules for writing a type
-caster](#anatomy-of-a-type-caster). It chooses the class to create from the
-declared type. All IDs share the same UUID format, so a string alone can't
-tell whether it's a user ID or a post ID. A single caster therefore serves
-all `UuidValue` child classes, and adding a new ID class doesn't require
-changes to the caster. For the same reason, the caster fails for a type with
-several ID classes, such as `UserId|PostId`. There's no way to choose the
-right one.
+O caster segue as [regras para escrever um type
+caster](#anatomia-de-um-type-caster). Ele escolhe a classe a ser criada a
+partir do tipo declarado. Todos os IDs compartilham o mesmo formato UUID,
+então uma string sozinha não diz se é um ID de usuário ou de post. Por isso,
+um único caster atende todas as classes filhas de `UuidValue`, e adicionar
+uma nova classe de ID não exige mudanças no caster. Pelo mesmo motivo, o
+caster falha para um tipo com várias classes de ID, como
+`UserId|PostId`. Não há como escolher a correta.
 
-Register `UuidValueTypeCaster` as shown in the [Registering a type
-caster](#registering-a-type-caster) section, including the [form model
-configuration](#registering-for-form-models) if you use Yii Form Model.
+Registre o `UuidValueTypeCaster` como mostrado na seção [Registrando um type
+caster](#registrando-um-type-caster), incluindo a [configuração para form
+models](#registrando-para-form-models) se você usa o Yii Form Model.
 
-### Using the value objects
+### Usando os value objects
 
-Now any class that's populated by the hydrator can declare ID value objects
-directly.
+Agora qualquer classe preenchida pelo hydrator pode declarar value objects
+de ID diretamente.
 
 #### Hydrator
 
-The same string becomes a different value object depending on the type of
-the property:
+A mesma string se torna um value object diferente dependendo do tipo da
+propriedade:
 
 ```php
 use App\Post\PostId;
@@ -417,17 +421,18 @@ $filter = $hydrator->create(CommentFilter::class, [
     'postId' => '0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10',
 ]);
 
-// $filter->authorId is UserId, $filter->postId is PostId.
-// $filter->authorId->equals($filter->postId) returns false.
+// $filter->authorId é UserId, $filter->postId é PostId.
+// $filter->authorId->equals($filter->postId) retorna false.
 ```
 
-#### Request input
+#### Entrada da requisição
 
-The [Yii Input HTTP](https://github.com/yiisoft/input-http) package uses the
-hydrator to fill request input objects, so the same type caster works for
-query parameters, request body, and route arguments. The `RouteArgument`
-attribute comes from [Yii Router](https://github.com/yiisoft/router). Extend
-`AbstractInput` to get the input validated after hydration:
+O pacote [Yii Input HTTP](https://github.com/yiisoft/input-http) usa o
+hydrator para preencher objetos de entrada da requisição, então o mesmo type
+caster funciona para parâmetros da query string, corpo da requisição e
+argumentos da rota. O atributo `RouteArgument` vem do [Yii
+Router](https://github.com/yiisoft/router). Estenda `AbstractInput` para que
+a entrada seja validada após a hidratação:
 
 ```php
 <?php
@@ -463,10 +468,10 @@ final readonly class Action
     public function __invoke(UpdatePostInput $input): ResponseInterface
     {
         if (!$input->getValidationResult()->isValid()) {
-            // Return an error response.
+            // Retorne uma resposta de erro.
         }
 
-        // $input->id is PostId, $input->authorId is UserId.
+        // $input->id é PostId, $input->authorId é UserId.
         // ...
     }
 }
@@ -474,10 +479,10 @@ final readonly class Action
 
 #### Form model
 
-`FormHydrator` from [Yii Form Model](https://github.com/yiisoft/form-model)
-populates form models. Once you [register the caster for form
-models](#registering-for-form-models), you can declare form properties as
-value objects too:
+O `FormHydrator` do [Yii Form Model](https://github.com/yiisoft/form-model)
+preenche form models. Depois que você [registra o caster para form
+models](#registrando-para-form-models), também pode declarar propriedades de
+formulário como value objects:
 
 ```php
 <?php
@@ -518,7 +523,7 @@ final readonly class Action
         $form = new CreatePostForm();
 
         if ($this->formHydrator->populateFromPostAndValidate($form, $request)) {
-            // $form->authorId is UserId.
+            // $form->authorId é UserId.
             // ...
         }
 
@@ -527,38 +532,40 @@ final readonly class Action
 }
 ```
 
-### Null and invalid values
+### Valores nulos e inválidos
 
-Here is what happens with a property declared as `?UserId` for different
-input values:
+Veja o que acontece com uma propriedade declarada como `?UserId` para
+diferentes valores de entrada:
 
-| Input value                              | Handled by             | Property value                   |
+| Valor de entrada                         | Tratado por            | Valor da propriedade             |
 |------------------------------------------|------------------------|----------------------------------|
-| `'0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10'` | `UuidValueTypeCaster`  | `UserId` instance                |
+| `'0192f2a4-7a4b-7c3e-9a1b-3f5c8d2e6a10'` | `UuidValueTypeCaster`  | instância de `UserId`            |
 | `null`                                   | `PhpNativeTypeCaster`  | `null`                           |
-| `'not-a-uuid'`                           | none, all casters fail | default value, `null` in example |
+| `'not-a-uuid'`                           | nenhum, todos falham   | valor padrão, `null` no exemplo  |
 
-The last row is the important one: the hydrator doesn't report the malformed
-value.  With the `Required` rule, validation catches it with the "cannot be
-blank" error.  See the [request input](#request-input) and [form
-model](#form-model) examples.  But if the property is optional, an invalid
-UUID is silently turned into `null` and is indistinguishable from a missing
-value. If that's not acceptable, keep the raw value for validation: declare
-the property as `string`, validate its format, and convert it to the value
-object after validation.
+A última linha é a importante: o hydrator não reporta o valor malformado.
+Com a regra `Required`, a validação o detecta com o erro "cannot be blank".
+Veja os exemplos de [entrada da requisição](#entrada-da-requisicao) e [form
+model](#form-model).  Mas, se a propriedade for opcional, um UUID inválido é
+silenciosamente transformado em `null` e fica indistinguível de um valor
+ausente. Se isso não for aceitável, mantenha o valor bruto para validação:
+declare a propriedade como `string`, valide seu formato e converta-a para o
+value object após a validação.
 
-## When to use a type caster
+## Quando usar um type caster
 
-A type caster fits well when the conversion:
+Um type caster é uma boa escolha quando a conversão:
 
-- depends only on the value and the declared type.
-- is the same everywhere in the application.
-- doesn't need I/O, such as database queries or HTTP calls.
+- depende apenas do valor e do tipo declarado.
+- é a mesma em toda a aplicação.
+- não precisa de I/O, como consultas ao banco de dados ou chamadas HTTP.
 
-Value objects for IDs, emails, and money amounts match all three. Keep the
-conversion in a dedicated mapper or a domain factory instead when it:
+Value objects para IDs, e-mails e valores monetários atendem aos três
+critérios. Mantenha a conversão em um mapper dedicado ou em uma factory de
+domínio quando ela:
 
-- needs a database lookup, for example, turning an ID into a loaded entity.
-- depends on context, such as the current user.
-- combines several input fields into one object.
-- differs between use cases.
+- precisa consultar o banco de dados, por exemplo, transformar um ID em uma
+  entidade carregada.
+- depende de contexto, como o usuário atual.
+- combina vários campos de entrada em um único objeto.
+- difere entre casos de uso.

@@ -1,26 +1,26 @@
-# Using htmx for partial page reloads
+# Usando htmx para recarregar partes da página
 
-[htmx](https://htmx.org/) lets links and forms request HTML fragments and swap them into the current page. In a Yii
-application, this works well for grids: sorting, filtering, and pagination can update only the grid while the rest of
-the page stays in place.
+O [htmx](https://htmx.org/) permite que links e formulários requisitem fragmentos de HTML e os troquem na página atual. Em uma
+aplicação Yii, isso funciona bem para grids: ordenação, filtros e paginação podem atualizar só o grid enquanto o resto
+da página continua no lugar.
 
-This recipe uses `GridView` as an example because it has links and forms
-that naturally benefit from partial reloads.  The same pattern works for any
-widget or page fragment: render the fragment separately, add htmx attributes
-to the controls that should refresh it, and return only that fragment for
-htmx requests.
+Esta receita usa o `GridView` como exemplo porque ele tem links e
+formulários que se beneficiam naturalmente de recargas parciais.  O mesmo
+padrão funciona para qualquer widget ou fragmento de página: renderize o
+fragmento separadamente, adicione atributos do htmx aos controles que devem
+atualizá-lo e retorne apenas esse fragmento nas requisições do htmx.
 
-## Install GridView
+## Instale o GridView
 
-Install the data view package if the application doesn't use it yet:
+Instale o pacote de data view, se a aplicação ainda não o usa:
 
 ```shell
 composer require yiisoft/yii-dataview
 ```
 
-## Load htmx
+## Carregue o htmx
 
-The simplest setup is loading htmx from a CDN. Create
+A configuração mais simples é carregar o htmx de uma CDN. Crie
 `src/Web/Shared/Layout/Main/HtmxAsset.php`:
 
 ```php
@@ -47,12 +47,12 @@ final class HtmxAsset extends AssetBundle
 }
 ```
 
-When updating the htmx version, update the URL and `integrity` value
-together.
+Ao atualizar a versão do htmx, atualize a URL e o valor de `integrity`
+juntos.
 
-For production applications, consider serving htmx from your application
-assets to avoid depending on a third-party CDN.  Download `htmx.min.js` into
-`assets/main/js/htmx.min.js` and use a local asset bundle:
+Em aplicações de produção, considere servir o htmx a partir dos assets da
+sua aplicação para não depender de uma CDN de terceiros.  Baixe o
+`htmx.min.js` para `assets/main/js/htmx.min.js` e use um asset bundle local:
 
 ```php
 <?php
@@ -75,7 +75,7 @@ final class HtmxAsset extends AssetBundle
 }
 ```
 
-Add the bundle to the main layout asset:
+Adicione o bundle ao asset do layout principal:
 
 ```php
 <?php
@@ -103,14 +103,14 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-## Create the reloadable part
+## Crie a parte recarregável
 
-Start with a regular page that renders a grid. In a clean `yiisoft/app`
-project, this means adding an action, a view template, and a widget that
-renders the grid. The first version doesn't need htmx. It should work as a
-normal full page.
+Comece com uma página comum que renderiza um grid. Em um projeto
+`yiisoft/app` limpo, isso significa adicionar uma action, um template de
+view e um widget que renderiza o grid. A primeira versão não precisa de
+htmx. Ela deve funcionar como uma página completa normal.
 
-Create `src/Web/Users/Index/UsersGrid.php`:
+Crie `src/Web/Users/Index/UsersGrid.php`:
 
 ```php
 <?php
@@ -165,11 +165,11 @@ final class UsersGrid extends Widget
 }
 ```
 
-For a real application, replace `dataReader()` with a reader backed by a
-database query or repository. Keep the widget responsible for rendering the
-grid fragment.
+Em uma aplicação real, substitua `dataReader()` por um reader baseado em uma
+consulta ao banco de dados ou em um repositório. Mantenha o widget
+responsável por renderizar o fragmento do grid.
 
-Create `src/Web/Users/Index/template.php`:
+Crie `src/Web/Users/Index/template.php`:
 
 ```php
 <?php
@@ -190,7 +190,7 @@ $this->setTitle('Users');
 <?= UsersGrid::widget() ?>
 ```
 
-Create `src/Web/Users/Index/Action.php`:
+Crie `src/Web/Users/Index/Action.php`:
 
 ```php
 <?php
@@ -216,7 +216,7 @@ final readonly class Action
 }
 ```
 
-Add the action to `config/common/routes.php`:
+Adicione a action em `config/common/routes.php`:
 
 ```php
 <?php
@@ -240,13 +240,13 @@ return [
 ];
 ```
 
-Open `/users` and make sure sorting, filtering, and pagination work with
-full page reloads first.
+Abra `/users` e verifique primeiro se a ordenação, os filtros e a paginação
+funcionam com recarga completa da página.
 
-## Add htmx attributes to the grid
+## Adicione atributos do htmx ao grid
 
-Now update `UsersGrid` so the grid controls request a fragment and swap it
-into `#UsersGridView`:
+Agora atualize o `UsersGrid` para que os controles do grid requisitem um
+fragmento e o troquem em `#UsersGridView`:
 
 ```php
 <?php
@@ -319,24 +319,25 @@ final class UsersGrid extends Widget
 }
 ```
 
-The important part is the shared `$htmxLoadAttributes` array:
+A parte importante é o array compartilhado `$htmxLoadAttributes`:
 
-- `hx-boost="true"` makes the grid links and filter form send htmx requests.
-- `hx-target="#UsersGridView"` tells htmx which element to replace.
-- `hx-swap="outerHTML"` replaces the whole grid container with the response.
-- `hx-replace-url="true"` keeps the browser URL in sync with the current
-  sort, filter, and page.
-- `hx-indicator="#UsersGridView"` marks the grid as the loading indicator
-  element while the request is active.
+- `hx-boost="true"` faz os links e o formulário de filtro do grid enviarem
+  requisições htmx.
+- `hx-target="#UsersGridView"` diz ao htmx qual elemento substituir.
+- `hx-swap="outerHTML"` substitui todo o container do grid pela resposta.
+- `hx-replace-url="true"` mantém a URL do navegador sincronizada com a
+  ordenação, o filtro e a página atuais.
+- `hx-indicator="#UsersGridView"` marca o grid como o elemento indicador de
+  carregamento enquanto a requisição está ativa.
 
-The target selector and the container `id` must match. In this example, both
-use `UsersGridView`.
+O seletor de destino e o `id` do container precisam coincidir. Neste
+exemplo, ambos usam `UsersGridView`.
 
-## Return partial HTML for htmx requests
+## Retorne HTML parcial para requisições do htmx
 
-htmx sends the `HX-Request` header with its requests.
+O htmx envia o header `HX-Request` nas suas requisições.
 
-In the action, return only the widget when the header is present:
+Na action, retorne apenas o widget quando o header estiver presente:
 
 ```php
 <?php
@@ -369,22 +370,24 @@ final readonly class Action
 }
 ```
 
-The `Vary` header matters when a browser, proxy, or CDN caches
-responses. The same URL can return a full page without `HX-Request` and a
-fragment with `HX-Request: true`, so caches must keep these responses
-separate.
+O header `Vary` importa quando um navegador, proxy ou CDN faz cache das
+respostas. A mesma URL pode retornar uma página completa sem `HX-Request` e
+um fragmento com `HX-Request: true`, então os caches precisam manter essas
+respostas separadas.
 
-## Try it
+## Experimente
 
-Open the list page and use sorting, filtering, or pagination. The browser
-URL should change, and only the grid HTML should be replaced.
+Abra a página da lista e use a ordenação, os filtros ou a paginação. A URL
+do navegador deve mudar, e apenas o HTML do grid deve ser substituído.
 
-In the browser developer tools, the htmx requests should include the
-`HX-Request` header. Their responses should contain only the grid container.
+Nas ferramentas de desenvolvedor do navegador, as requisições do htmx devem
+incluir o header `HX-Request`. As respostas devem conter apenas o container
+do grid.
 
-Use the same pattern for other widgets or page fragments:
+Use o mesmo padrão para outros widgets ou fragmentos de página:
 
-1. Put the reloadable HTML into a widget or another small renderer.
-2. Add htmx attributes to the links and forms that should refresh it.
-3. Return the fragment for htmx requests and the full page for regular
-   requests.
+1. Coloque o HTML recarregável em um widget ou em outro pequeno
+   renderizador.
+2. Adicione atributos do htmx aos links e formulários que devem atualizá-lo.
+3. Retorne o fragmento para requisições do htmx e a página completa para
+   requisições comuns.

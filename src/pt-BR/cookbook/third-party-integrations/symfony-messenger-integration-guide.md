@@ -1,19 +1,19 @@
-# Symfony Messenger integration guide
+# Guia de integração com o Symfony Messenger
 
-The [Symfony
-Messenger](https://symfony.com/doc/current/components/messenger.html)
-component helps applications send and receive messages to/from other
-applications or via message queues.
+O componente [Symfony
+Messenger](https://symfony.com/doc/current/components/messenger.html) ajuda
+as aplicações a enviar e receber mensagens de/para outras aplicações ou por
+meio de filas de mensagens.
 
-## Installation
+## Instalação
 
 ```shell
 composer require symfony/messenger
 ```
 
-## How to use with Yii
+## Como usar com o Yii
 
-### 1. Create a Message and Handler.
+### 1. Crie uma Message e um Handler.
 
 ```php
 namespace App\Messages;
@@ -44,10 +44,10 @@ final readonly class MyMessageHandler
 }
 ```
 
-### 2. Implement the ServiceProviderInterface.
+### 2. Implemente a ServiceProviderInterface.
 
-This instance of the ServiceProviderInterface is used to configure certain
-Symfony Messenger commands.
+Essa instância da ServiceProviderInterface é usada para configurar alguns
+comandos do Symfony Messenger.
 
 ```php
 namespace App\Services;
@@ -90,13 +90,13 @@ final readonly class ServiceProvider implements ServiceProviderInterface
 }
 ```
 
-### 3. Configure the Symfony Messenger.
+### 3. Configure o Symfony Messenger.
 
-Example uses the
+O exemplo usa o pacote
 [symfony/doctrine-messenger](https://packagist.org/packages/symfony/doctrine-messenger)
-package for transport:
+como transporte:
 
-Add the Doctrine packages to the `composer.json`:
+Adicione os pacotes do Doctrine ao `composer.json`:
 ```json
 {
     // ...
@@ -109,12 +109,12 @@ Add the Doctrine packages to the `composer.json`:
 }
 ```
 
-Install Doctrine:
+Instale o Doctrine:
 ```shell
 composer install
 ```
 
-Configure the Doctrine connection in the `config/common/params.php`:
+Configure a conexão do Doctrine em `config/common/params.php`:
 ```php
 return [
     // ...
@@ -132,12 +132,12 @@ return [
 ];
 ```
 
-Install the Symfony Doctrine Messenger package:
+Instale o pacote Symfony Doctrine Messenger:
 ```shell
 composer require symfony/doctrine-messenger
 ```
 
-Configure the Doctrine and Symfony Messenger dependencies in the
+Configure as dependências do Doctrine e do Symfony Messenger em
 `config/common/di/application.php`:
 ```php
 use App\Messages\MyMessage;
@@ -295,9 +295,9 @@ return [
 ];
 ```
 
-### 4. Integrate the Symfony Messenger commands into the Yii console.
+### 4. Integre os comandos do Symfony Messenger ao console do Yii.
 
-Add the commands to `config/console/commands.php`:
+Adicione os comandos em `config/console/commands.php`:
 ```php
 use Symfony\Component\Messenger\Command\ConsumeMessagesCommand;
 use Symfony\Component\Messenger\Command\DebugCommand;
@@ -321,9 +321,9 @@ return [
 ];
 ```
 
-### 5. Dispatch a message.
+### 5. Despache uma mensagem.
 
-Example:
+Exemplo:
 
 ```php
 use App\Messages\MyMessage;
@@ -344,9 +344,9 @@ final readonly class MyController
 }
 ```
 
-### 6. Consume messages.
+### 6. Consuma as mensagens.
 
-Example:
+Exemplo:
 ```bash
 ./yii symfony:messenger:consume DoctrineTransport --bus=MyMessageBus
 ```

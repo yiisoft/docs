@@ -1,9 +1,9 @@
-# Third-Party Integrations
+# Integrações de terceiros
 
-This is a collection of community-contributed guides for integrating
-third-party packages with Yii3.
+Esta é uma coleção de guias, contribuídos pela comunidade, para integrar
+pacotes de terceiros com o Yii3.
 
-- The Yii community creates the guides.
+- Os guias são criados pela comunidade Yii.
 - Membros do time principal do Yii fazem a curadoria e a edição.
 
 Fique à vontade para enviar seus próprios textos via pull request. Os
@@ -12,7 +12,7 @@ possível.
 
 ---
 
-- [Symfony Messenger integration
-  guide](symfony-messenger-integration-guide.md)
-- [Symfony Scheduler integration
-  guide](symfony-scheduler-integration-guide.md)
+- [Guia de integração com o Symfony
+  Messenger](symfony-messenger-integration-guide.md)
+- [Guia de integração com o Symfony
+  Scheduler](symfony-scheduler-integration-guide.md)

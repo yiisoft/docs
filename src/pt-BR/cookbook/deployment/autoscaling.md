@@ -1,40 +1,40 @@
-# Configuring an application for autoscaling
+# Configurando uma aplicação para autoscaling
 
-Autoscaling works when any application instance can handle any request and
-can be added or removed without special local state. In Yii applications
-this mostly means keeping runtime state outside the container or VM, making
-health checks cheap, and running migrations and workers separately from web
-replicas.
+O autoscaling funciona quando qualquer instância da aplicação consegue
+atender qualquer requisição e pode ser adicionada ou removida sem estado
+local especial. Em aplicações Yii, isso significa principalmente manter o
+estado de runtime fora do container ou da VM, deixar os health checks
+baratos e rodar migrations e workers separados das réplicas web.
 
-## Keep web instances stateless
+## Mantenha as instâncias web sem estado
 
-Do not store user-visible state on the local filesystem of a web
-instance. Local files disappear when an instance is replaced and are not
-visible to other replicas.
+Não guarde estado visível ao usuário no sistema de arquivos local de uma
+instância web. Arquivos locais somem quando uma instância é substituída e
+não ficam visíveis para as outras réplicas.
 
-Move these resources to shared services:
+Mova estes recursos para serviços compartilhados:
 
-- Sessions: use a shared session handler when users can move between
-  replicas. See [Sessions](../../guide/runtime/sessions.md) and prefer
-  closing sessions early.
-- Cache: use Redis, Memcached, database, or another shared PSR-16 cache
-  backend for data that must be consistent across replicas. See [Data
-  caching](../../guide/caching/data.md).
-- Uploads: store files in object storage, a shared volume, or a service
-  dedicated to file storage. Local `runtime` or `public/uploads` directories
-  are safe only for temporary files.
-- Generated assets: build them into the image or publish them to shared
-  storage/CDN during deployment.
-- Logs: write to stdout/stderr or a central log target. Do not depend on
-  files inside a short-lived instance.
+- Sessões: use um handler de sessão compartilhado quando os usuários puderem
+  alternar entre réplicas. Veja [Sessões](../../guide/runtime/sessions.md) e
+  prefira fechar as sessões cedo.
+- Cache: use Redis, Memcached, banco de dados ou outro backend de cache
+  PSR-16 compartilhado para dados que precisam ser consistentes entre as
+  réplicas. Veja [Cache de dados](../../guide/caching/data.md).
+- Uploads: guarde arquivos em object storage, em um volume compartilhado ou
+  em um serviço dedicado ao armazenamento de arquivos. Os diretórios locais
+  `runtime` ou `public/uploads` só são seguros para arquivos temporários.
+- Assets gerados: inclua-os na imagem ou publique-os em um armazenamento
+  compartilhado/CDN durante o deploy.
+- Logs: escreva em stdout/stderr ou em um destino de log central. Não
+  dependa de arquivos dentro de uma instância de vida curta.
 
-Sticky sessions can reduce immediate pressure, but they are not a substitute
-for shared state. A replacement instance or deployment rollout still breaks
-local session and upload storage.
+Sticky sessions podem aliviar a pressão imediata, mas não substituem o
+estado compartilhado. Uma instância substituta ou o rollout de um deploy
+ainda quebram o armazenamento local de sessões e de uploads.
 
-## Add health endpoints
+## Adicione endpoints de saúde
 
-Use a cheap liveness endpoint for the load balancer or orchestrator:
+Use um endpoint de liveness barato para o load balancer ou o orquestrador:
 
 ```php
 <?php
@@ -61,7 +61,7 @@ final readonly class HealthCheckAction
 }
 ```
 
-Register it in `config/common/routes.php`:
+Registre-o em `config/common/routes.php`:
 
 ```php
 use App\Web\Health\HealthCheckAction;
@@ -75,94 +75,100 @@ return [
 ];
 ```
 
-Keep this endpoint independent from the database and external APIs. It
-should answer whether the PHP process can accept requests, not whether every
-dependency is healthy.
+Mantenha esse endpoint independente do banco de dados e de APIs
+externas. Ele deve responder se o processo PHP consegue aceitar requisições,
+não se todas as dependências estão saudáveis.
 
-If your platform supports readiness checks, add a separate endpoint such as
-`/readyz` for dependencies that must be available before routing traffic to
-a new instance. Keep it bounded with short timeouts. A slow readiness check
-can make a traffic spike worse.
+Se a sua plataforma suporta readiness checks, adicione um endpoint separado,
+como `/readyz`, para as dependências que precisam estar disponíveis antes de
+direcionar tráfego para uma nova instância. Limite-o com timeouts curtos. Um
+readiness check lento pode piorar um pico de tráfego.
 
-## Configure runtime paths
+## Configure os caminhos de runtime
 
-The `runtime` directory should contain disposable process-local files only:
-logs before shipping, cache files that can be rebuilt, temporary upload
-chunks, locks scoped to one instance, and debug artifacts.
+O diretório `runtime` deve conter apenas arquivos descartáveis e locais ao
+processo: logs antes de serem enviados, arquivos de cache que podem ser
+recriados, partes temporárias de upload, locks restritos a uma instância e
+artefatos de debug.
 
-For autoscaled deployments:
+Para deploys com autoscaling:
 
-- mount `runtime` as an instance-local writable volume or create it during
-  image startup;
-- do not store permanent uploaded files in `runtime`;
-- do not use local file locks for jobs that must be unique across all
-  replicas;
-- clear or ignore local runtime cache during rollouts.
+- monte `runtime` como um volume gravável local à instância ou crie-o na
+  inicialização da imagem;
+- não guarde arquivos enviados permanentes em `runtime`;
+- não use locks de arquivo locais para jobs que precisam ser únicos entre
+  todas as réplicas;
+- limpe ou ignore o cache local de runtime durante os rollouts.
 
-When a command or worker must be unique globally, use a database lock, Redis
-lock, queue semantics, or run it as a single scheduled job outside the web
-autoscaling group.
+Quando um comando ou worker precisa ser único globalmente, use um lock no
+banco de dados, um lock no Redis, a semântica da fila, ou rode-o como um
+único job agendado fora do grupo de autoscaling web.
 
-## Run migrations once
+## Rode as migrations uma única vez
 
-Do not run `./yii migrate` from every web instance during startup. Multiple
-replicas starting at the same time can compete for locks, slow down boot, or
-partially deploy incompatible schema.
+Não rode `./yii migrate` em cada instância web durante a
+inicialização. Várias réplicas subindo ao mesmo tempo podem disputar locks,
+deixar o boot lento ou aplicar parcialmente um schema incompatível.
 
-Run migrations from one deployment job or a dedicated console container
-before or during rollout:
+Rode as migrations a partir de um único job de deploy ou de um container de
+console dedicado, antes ou durante o rollout:
 
 ```shell
 APP_ENV=prod php ./yii migrate --no-interaction
 ```
 
-For zero-downtime deployments, use an expand-and-contract migration
-flow. See [Applying migrations during rolling
+Para deploys sem downtime, use um fluxo de migrations do tipo
+expand-and-contract. Veja [Aplicando migrations durante rolling
 updates](rolling-update-migrations.md).
 
-## Separate web, workers, and scheduled jobs
+## Separe web, workers e jobs agendados
 
-Scale web replicas for request traffic. Scale queue workers for queue depth
-or processing latency. Run scheduled jobs from one scheduler, not from every
-web replica.
+Escale as réplicas web conforme o tráfego de requisições. Escale os workers
+de fila conforme o tamanho da fila ou a latência de processamento. Rode os
+jobs agendados a partir de um único agendador, não de cada réplica web.
 
-Use the same application image when practical, but different entry points:
+Use a mesma imagem da aplicação quando for prático, mas com pontos de
+entrada diferentes:
 
 ```shell
 php ./yii queue:listen
 php ./yii app:send-digests --no-interaction
 ```
 
-Make workers and scheduled commands idempotent. A deployment may stop a
-worker after it started processing a message, and the queue may deliver it
-again.
+Torne workers e comandos agendados idempotentes. Um deploy pode parar um
+worker depois que ele começou a processar uma mensagem, e a fila pode
+entregá-la de novo.
 
-## Use environment-specific configuration
+## Use configuração específica por ambiente
 
-Keep secrets and per-environment values out of the image:
+Mantenha segredos e valores de cada ambiente fora da imagem:
 
-- database DSN, username, and password;
-- cache/session backend addresses;
-- cookie validation keys and encryption keys;
-- mail, queue, and object-storage credentials;
-- public base URL and trusted proxy settings.
+- DSN, usuário e senha do banco de dados;
+- endereços dos backends de cache/sessão;
+- chaves de validação de cookies e chaves de criptografia;
+- credenciais de e-mail, fila e object storage;
+- URL base pública e configurações de proxies confiáveis.
 
-Load them through environment variables or environment-specific Yii config
-files. Every replica of the same release should receive the same
-configuration values, except for platform-provided instance metadata.
+Carregue-os por variáveis de ambiente ou por arquivos de configuração do Yii
+específicos de cada ambiente. Todas as réplicas da mesma release devem
+receber os mesmos valores de configuração, exceto os metadados de instância
+fornecidos pela plataforma.
 
-## Capacity checklist
+## Checklist de capacidade
 
-Before enabling autoscaling, verify that:
+Antes de habilitar o autoscaling, verifique que:
 
-- a request can be served correctly after the previous request went to
-  another replica;
-- login and flash messages work without sticky sessions;
-- uploaded files remain available after the handling instance is removed;
-- cache misses on one instance do not corrupt or hide data on another
-  instance;
-- migrations are run by exactly one deployment step;
-- background workers and scheduled commands are not multiplied accidentally;
-- health checks are fast and do not overload the database;
-- logs and metrics identify the application version and instance;
-- shutdown is graceful enough for your web server and queue worker timeouts.
+- uma requisição é atendida corretamente depois que a requisição anterior
+  foi para outra réplica;
+- login e mensagens flash funcionam sem sticky sessions;
+- arquivos enviados continuam disponíveis depois que a instância que os
+  recebeu é removida;
+- cache misses em uma instância não corrompem nem escondem dados em outra
+  instância;
+- as migrations são executadas por exatamente uma etapa do deploy;
+- workers em segundo plano e comandos agendados não são multiplicados por
+  acidente;
+- os health checks são rápidos e não sobrecarregam o banco de dados;
+- logs e métricas identificam a versão da aplicação e a instância;
+- o desligamento é gracioso o bastante para os timeouts do seu servidor web
+  e dos workers de fila.

@@ -1,35 +1,36 @@
-# Structuring code by use-case with vertical slices
+# Estruturando o código por caso de uso com vertical slices
 
-When building an application, it's important to organize the code in a way
-that makes it easy to understand, support, and scale. One popular approach
-is to structure the code by use-case with vertical slices.
+Ao construir uma aplicação, é importante organizar o código de forma que ele
+seja fácil de entender, manter e escalar. Uma abordagem popular é estruturar
+o código por caso de uso com vertical slices.
 
-Vertical slices are self-contained pieces of functionality that cover the
-entire stack, from the user interface to the data access layer.  Developer
-organizes each slice around a specific use case, such as creating a new user
-or updating a product.
+Vertical slices são partes autocontidas de funcionalidade que cobrem toda a
+stack, da interface do usuário à camada de acesso a dados.  O desenvolvedor
+organiza cada slice em torno de um caso de uso específico, como criar um
+novo usuário ou atualizar um produto.
 
-When structuring code classically by type (such as models, views,
-controllers, helpers, etc.), it can be easy to lose sight of the bigger
-picture and how different pieces of code interact to support specific
-features or use cases.  This can lead to code duplication, tight coupling,
-and poor maintainability as the application grows.
+Ao estruturar o código da forma clássica, por tipo (models, views,
+controllers, helpers etc.), é fácil perder de vista o quadro geral e como as
+diferentes partes do código interagem para atender funcionalidades ou casos
+de uso específicos.  Isso pode levar a duplicação de código, acoplamento
+forte e manutenção difícil à medida que a aplicação cresce.
 
-On the other hand, structuring code by use-case makes developers focus on a
-specific feature or workflow and understand how different pieces of code
-work together to support that feature. This approach also helps to keep
-related code together in a single directory, making it easier to navigate
-and support. Vertical slicing also encourages the use of domain-driven
-design concepts, such as entities, repositories, and services, which can
-help to promote good separation of concerns and modularity.
+Por outro lado, estruturar o código por caso de uso faz os desenvolvedores
+focarem em uma funcionalidade ou fluxo específico e entenderem como as
+diferentes partes do código trabalham juntas para atendê-lo. Essa abordagem
+também ajuda a manter o código relacionado junto, em um único diretório, o
+que facilita a navegação e a manutenção. O vertical slicing também incentiva
+o uso de conceitos de domain-driven design, como entidades, repositórios e
+serviços, que ajudam a promover uma boa separação de responsabilidades e
+modularidade.
 
-Additionally, structuring code by use-case can make it easier to test and
-debug the application since use-case namespace encapsulates each feature or
-workflow in its own directory with clear boundaries and well-defined
-interfaces.
+Além disso, estruturar o código por caso de uso pode facilitar os testes e o
+debug da aplicação, já que o namespace do caso de uso encapsula cada
+funcionalidade ou fluxo em seu próprio diretório, com limites claros e
+interfaces bem definidas.
 
-Here's an example directory structure for a PHP application organized using
-vertical slices:
+Veja um exemplo de estrutura de diretórios de uma aplicação PHP organizada
+com vertical slices:
 
 ```
 src/
@@ -68,14 +69,14 @@ src/
     |   |   ├── RssBuilder.php
 ```
 
-Each vertical slice has its own directory, which has code associated with
-the use case.
+Cada vertical slice tem seu próprio diretório, que contém o código associado
+ao caso de uso.
 
-The use-case subdirectories and their respective classes are organized by
-type within each directory, omitting a directory if there's a single class
-of the type. If code is shared between multiple use-cases, it's moved one
-level up such as `Model` or `Service`.
+Os subdiretórios de caso de uso e suas respectivas classes são organizados
+por tipo dentro de cada diretório, omitindo o diretório quando há uma única
+classe daquele tipo. Se um código é compartilhado entre vários casos de uso,
+ele sobe um nível, como em `Model` ou `Service`.
 
-## References
+## Referências
 
-- [Application structure overview](../../guide/structure/overview.md)
+- [Visão geral da estrutura da aplicação](../../guide/structure/overview.md)

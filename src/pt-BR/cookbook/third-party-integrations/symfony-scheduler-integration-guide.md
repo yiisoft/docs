@@ -1,19 +1,20 @@
-# Symfony Scheduler integration guide
+# Guia de integração com o Symfony Scheduler
 
-The [Symfony Scheduler](https://symfony.com/doc/current/scheduler.html)
-component manages task scheduling within your PHP application, like running
-a task each night at 3 AM, every two weeks except for holidays or any other
-custom schedule you might need.
+O componente [Symfony
+Scheduler](https://symfony.com/doc/current/scheduler.html) gerencia o
+agendamento de tarefas na sua aplicação PHP, como rodar uma tarefa toda
+noite às 3h, a cada duas semanas exceto em feriados, ou qualquer outro
+agendamento personalizado de que você precise.
 
-## Installation
+## Instalação
 
 ```shell
 composer require symfony/scheduler
 ```
 
-## How to use with Yii
+## Como usar com o Yii
 
-### 1. Create a Message and Handler.
+### 1. Crie uma Message e um Handler.
 
 ```php
 namespace App\Messages;
@@ -44,7 +45,7 @@ final readonly class MyMessageHandler
 }
 ```
 
-### 2. Attaching Recurring Messages to a Schedule.
+### 2. Associe mensagens recorrentes a um Schedule.
 
 ```php
 namespace App\Scheduler;
@@ -68,30 +69,30 @@ class MyScheduleProvider implements ScheduleProviderInterface
 }
 ```
 
-### 3. Configure the Symfony Scheduler.
+### 3. Configure o Symfony Scheduler.
 
-Depending on your needs, the Symfony Scheduler component offers two ways to
-consume messages: using the `messenger:consume` command or [creating a
-worker
-programmatically](https://symfony.com/doc/current/scheduler.html#creating-a-consumer-programmatically).
-The example uses the
-[symfony/messenger](https://packagist.org/packages/symfony/messenger)
-package to consume messages.
+Dependendo das suas necessidades, o componente Symfony Scheduler oferece
+duas formas de consumir mensagens: usando o comando `messenger:consume` ou
+[criando um worker
+programaticamente](https://symfony.com/doc/current/scheduler.html#creating-a-consumer-programmatically).
+O exemplo usa o pacote
+[symfony/messenger](https://packagist.org/packages/symfony/messenger) para
+consumir as mensagens.
 
 
-Install the Symfony Messenger package:
+Instale o pacote Symfony Messenger:
 ```shell
 composer require symfony/messenger
 ```
 
-Install the Symfony Cache package:
+Instale o pacote Symfony Cache:
 ```shell
 composer require symfony/cache
 ```
 
-Implement the ServiceProviderInterface. This instance of the
-ServiceProviderInterface is used to configure certain Symfony Messenger
-commands.
+Implemente a ServiceProviderInterface. Essa instância da
+ServiceProviderInterface é usada para configurar alguns comandos do Symfony
+Messenger.
 
 ```php
 namespace App\Services;
@@ -134,7 +135,7 @@ final readonly class ServiceProvider implements ServiceProviderInterface
 }
 ```
 
-Configure the Symfony Scheduler and Symfony Messenger dependencies in the
+Configure as dependências do Symfony Scheduler e do Symfony Messenger em
 `config/common/di/application.php`:
 ```php
 use App\Messages\MyMessage;
@@ -258,9 +259,9 @@ return [
 ];
 ```
 
-### 4. Integrate the Symfony Messenger commands into the Yii console.
+### 4. Integre os comandos do Symfony Messenger ao console do Yii.
 
-Add the commands to `config/console/commands.php`:
+Adicione os comandos em `config/console/commands.php`:
 ```php
 use Symfony\Component\Messenger\Command\ConsumeMessagesCommand;
 use Symfony\Component\Messenger\Command\DebugCommand;
@@ -284,9 +285,9 @@ return [
 ];
 ```
 
-### 5. Consume messages.
+### 5. Consuma as mensagens.
 
-Example:
+Exemplo:
 ```bash
 ./yii symfony:messenger:consume SchedulerTransport --bus=MyMessageBus
 ```

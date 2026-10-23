@@ -1,14 +1,14 @@
-# Deploying Yii applications to Docker Swarm and Caddy
+# Fazendo deploy de aplicações Yii no Docker Swarm com Caddy
 
-This guide walks you through deploying a Yii application to [Docker
-Swarm](https://docs.docker.com/engine/swarm/)  starting from a blank server,
-using [Caddy](https://caddyserver.com/) as a reverse proxy and deploying
-from a container registry ([Forgejo](https://forgejo.org/) or
-[Gitea](https://about.gitea.com/)).
+Este guia mostra como fazer o deploy de uma aplicação Yii no [Docker
+Swarm](https://docs.docker.com/engine/swarm/)  a partir de um servidor
+vazio, usando o [Caddy](https://caddyserver.com/) como proxy reverso e
+fazendo o deploy a partir de um registro de containers
+([Forgejo](https://forgejo.org/) ou [Gitea](https://about.gitea.com/)).
 
 ```mermaid
 graph LR
-    A[Internet] --> B[Reverse Proxy: Caddy]
+    A[Internet] --> B[Proxy reverso: Caddy]
     B --> C[app1.example.com]
     B --> D[app2.example.com]
     
@@ -19,43 +19,44 @@ graph LR
     end
 ```
 
-## Prerequisites
+## Pré-requisitos
 
-- A server with a fresh installation of a Linux distribution (Ubuntu 22.04
-  LTS or later recommended)
-- A domain name pointing to your server's IP address
-- SSH access to your server
-- Basic knowledge of Docker and command-line tools
+- Um servidor com uma distribuição Linux recém-instalada (recomendado Ubuntu
+  22.04 LTS ou mais recente)
+- Um nome de domínio apontando para o IP do seu servidor
+- Acesso SSH ao seu servidor
+- Conhecimento básico de Docker e de ferramentas de linha de comando
 
-## Server preparation
+## Preparando o servidor
 
-### Install Docker
+### Instale o Docker
 
-For installation instructions, see the [official Docker
-documentation](https://docs.docker.com/engine/install/ubuntu/).
+Para as instruções de instalação, veja a [documentação oficial do
+Docker](https://docs.docker.com/engine/install/ubuntu/).
 
-### Initialize Docker Swarm
+### Inicialize o Docker Swarm
 
-Initialize your server as a Docker Swarm manager:
+Inicialize o seu servidor como manager do Docker Swarm:
 
 ```bash
 docker swarm init --advertise-addr <YOUR_SERVER_IP>
 ```
 
-Replace `<YOUR_SERVER_IP>` with your server's public IP address.
+Substitua `<YOUR_SERVER_IP>` pelo IP público do seu servidor.
 
-### Set up the reverse proxy network
+### Configure a rede do proxy reverso
 
-Create a dedicated overlay network for reverse proxy to communicate with
-your services:
+Crie uma rede overlay dedicada para o proxy reverso se comunicar com os seus
+serviços:
 
 ```bash
 docker network create --driver=overlay reverse_proxy_public
 ```
 
-## Setting up Caddy as reverse proxy
+## Configurando o Caddy como proxy reverso
 
-To deploy Caddy as reverse proxy create a file `caddy-stack.yml`:
+Para fazer o deploy do Caddy como proxy reverso, crie um arquivo
+`caddy-stack.yml`:
 
 ```yaml
 services:
@@ -78,15 +79,15 @@ networks:
     external: true
 ```
 
-Deploy Caddy:
+Faça o deploy do Caddy:
 
 ```bash
 docker stack deploy -c caddy-stack.yml caddy
 ```
 
-Caddy automatically discovers services with Caddy labels and sets up HTTPS
-using Let's Encrypt. Yii3 application templates are using Caddy labels by
-default:
+O Caddy descobre automaticamente os serviços com labels do Caddy e configura
+HTTPS usando o Let's Encrypt. Os templates de aplicação do Yii3 usam labels
+do Caddy por padrão:
 
 ```yaml
 deploy:
@@ -96,17 +97,17 @@ deploy:
 ```
 
 > [!IMPORTANT]
-> Make sure your domain DNS records are configured and pointing to your server before deploying services with
-> Caddy labels, as Let's Encrypt requires domain validation.
+> Garanta que os registros DNS do seu domínio estejam configurados e apontando para o seu servidor antes de fazer o deploy de serviços com
+> labels do Caddy, porque o Let's Encrypt exige a validação do domínio.
 
-## Setting up a container registry
+## Configurando um registro de containers
 
-You need a container registry to store your Docker images. Choose one of the
-following options.
+Você precisa de um registro de containers para guardar as suas imagens
+Docker. Escolha uma das opções a seguir.
 
-### Option 1: Using Forgejo
+### Opção 1: usando o Forgejo
 
-To deploy Forgejo create a file `forgejo-stack.yml`:
+Para fazer o deploy do Forgejo, crie um arquivo `forgejo-stack.yml`:
 
 ```yaml
 services:
@@ -131,21 +132,21 @@ networks:
     external: true
 ```
 
-Deploy Forgejo:
+Faça o deploy do Forgejo:
 
 ```bash
 docker stack deploy -c forgejo-stack.yml forgejo
 ```
 
-Replace `git.example.com` with your desired subdomain.
+Substitua `git.example.com` pelo subdomínio desejado.
 
-After deployment, access Forgejo at `https://git.example.com` and complete
-the initial setup. Make sure to enable the container registry in the
-settings.
+Depois do deploy, acesse o Forgejo em `https://git.example.com` e conclua a
+configuração inicial. Não esqueça de habilitar o registro de containers nas
+configurações.
 
-### Option 2: Using Gitea
+### Opção 2: usando o Gitea
 
-To deploy Gitea create a file `gitea-stack.yml`:
+Para fazer o deploy do Gitea, crie um arquivo `gitea-stack.yml`:
 
 ```yaml
 services:
@@ -170,30 +171,31 @@ networks:
     external: true
 ```
 
-Deploy Gitea:
+Faça o deploy do Gitea:
 
 ```bash
 docker stack deploy -c gitea-stack.yml gitea
 ```
 
-Replace `git.example.com` with your desired subdomain.
+Substitua `git.example.com` pelo subdomínio desejado.
 
-After deployment, access Gitea at `https://git.example.com` and complete the
-initial setup.  Make sure to enable the container registry in the settings.
+Depois do deploy, acesse o Gitea em `https://git.example.com` e conclua a
+configuração inicial.  Não esqueça de habilitar o registro de containers nas
+configurações.
 
-## Configuring your Yii application
+## Configurando a sua aplicação Yii
 
-### Update the Makefile configuration
+### Atualize a configuração do Makefile
 
-The [Yii application template](https://github.com/yiisoft/app) includes a
-Makefile with deployment commands. Update the `docker/.env` file in your
-project:
+O [template de aplicação do Yii](https://github.com/yiisoft/app) inclui um
+Makefile com comandos de deploy. Atualize o arquivo `docker/.env` do seu
+projeto:
 
 ```bash
 STACK_NAME=myapp
 
 #
-# Production
+# Produção
 #
 
 PROD_HOST=app.example.com
@@ -203,36 +205,37 @@ IMAGE=git.example.com/username/myapp
 IMAGE_TAG=latest
 ```
 
-Replace the values: - `STACK_NAME`: A unique name for your application stack
-- `PROD_HOST`: The domain name where your app will be accessible -
-`PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)
-- `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`:
-Image tag, typically `latest` or a version number
+Substitua os valores: - `STACK_NAME`: um nome único para a stack da sua
+aplicação - `PROD_HOST`: o nome de domínio em que a aplicação vai ficar
+acessível - `PROD_SSH`: a string de conexão SSH com o seu servidor (formato:
+`ssh://user@host`)  - `IMAGE`: o caminho completo da imagem do container no
+registro - `IMAGE_TAG`: a tag da imagem, normalmente `latest` ou um número
+de versão
 
-### Configure the production environment
+### Configure o ambiente de produção
 
-Update `docker/prod/.env` with your production environment variables:
+Atualize o `docker/prod/.env` com as variáveis de ambiente de produção:
 
 ```bash
 APP_ENV=prod
 YII_DEBUG=false
 YII_ENV=prod
 
-# Database configuration
+# Configuração do banco de dados
 DB_HOST=db
 DB_NAME=myapp
 DB_USER=myapp
 DB_PASSWORD=secure_password_here
 
-# Add other environment-specific variables
+# Adicione outras variáveis específicas do ambiente
 ```
 
 > [!WARNING]
-> Never commit sensitive credentials to version control. Use `docker/prod/override.env` for sensitive values and add it to `.gitignore`.
+> Nunca faça commit de credenciais sensíveis no controle de versão. Use `docker/prod/override.env` para valores sensíveis e adicione-o ao `.gitignore`.
 
-### Review the production Docker Compose configuration
+### Revise a configuração do Docker Compose de produção
 
-The default `docker/prod/compose.yml` includes:
+O `docker/prod/compose.yml` padrão inclui:
 
 ```yaml
 services:
@@ -271,19 +274,19 @@ services:
         caddy.reverse_proxy: "{{upstreams 80}}"
 ```
 
-This configuration:
-- Runs 2 replicas for high availability
-- Uses a rolling update strategy with automatic rollback on failure
-- Configures `labels` for automatic HTTPS on the reverse proxy
-- Disables obtaining of HTTPs certificates on the container itself
-  since proxy communicates with the container via HTTP. That is `auto_https off`.
+Essa configuração:
+- Roda 2 réplicas para alta disponibilidade
+- Usa uma estratégia de rolling update com rollback automático em caso de falha
+- Configura `labels` para HTTPS automático no proxy reverso
+- Desabilita a obtenção de certificados HTTPS no próprio container,
+  já que o proxy se comunica com o container via HTTP. Isso é o `auto_https off`.
 
-If you need a database, add it to the stack:
+Se você precisa de um banco de dados, adicione-o à stack:
 
 ```yaml
 services:
   app:
-    # ... existing configuration ...
+    # ... configuração existente ...
     
   db:
     image: postgres:18-alpine
@@ -312,70 +315,70 @@ secrets:
     external: true
 ```
 
-Create the database password secret on the server:
+Crie o secret com a senha do banco de dados no servidor:
 
 ```bash
 echo "your_secure_password" | docker secret create db_password -
 ```
 
-## Building and pushing the image
+## Construindo e enviando a imagem
 
-### Set up Docker login on your local machine
+### Configure o login do Docker na sua máquina local
 
-Configure Docker to authenticate with your container registry:
+Configure o Docker para se autenticar no seu registro de containers:
 
 ```bash
 docker login git.example.com
 ```
 
-Enter your username and password when prompted.
+Informe o seu usuário e a sua senha quando solicitado.
 
-### Build the production image
+### Construa a imagem de produção
 
-Use the Makefile to build your production image:
+Use o Makefile para construir a imagem de produção:
 
 ```bash
 make prod-build
 ```
 
-This runs the command defined in the Makefile:
+Isso executa o comando definido no Makefile:
 
 ```bash
 docker build --file docker/Dockerfile --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .
 ```
 
-The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies
-in a builder stage 2. Creates a minimal production image with only the
-necessary files 3. Runs as a non-root user (`www-data`)
+O Dockerfile usa um build multi-stage: 1. Instala as dependências do
+Composer em um estágio de build 2. Cria uma imagem de produção mínima, só
+com os arquivos necessários 3. Roda como um usuário não root (`www-data`)
 
-### Push the image to the registry
+### Envie a imagem para o registro
 
-Push your built image to the container registry:
+Envie a imagem construída para o registro de containers:
 
 ```bash
 make prod-push
 ```
 
-This executes:
+Isso executa:
 
 ```bash
 docker push ${IMAGE}:${IMAGE_TAG}
 ```
 
-## Deploying to Docker Swarm
+## Fazendo deploy no Docker Swarm
 
-### Configure SSH access
+### Configure o acesso SSH
 
-Set up SSH key-based authentication to your server:
+Configure a autenticação por chave SSH no seu servidor:
 
 ```bash
-# Generate SSH key (if you don't have one)
+# Gera uma chave SSH (se você ainda não tiver uma)
 ssh-keygen -t ed25519 -C "your_email@example.com"
 
-# Copy the key to your server
+# Copia a chave para o seu servidor
 ssh-copy-id user@your-server-ip
 
-# Add the SSH host to your SSH config (~/.ssh/config)
+# Adiciona o host SSH à sua configuração SSH (~/.ssh/config)
 cat >> ~/.ssh/config << EOF
 Host docker-web
     HostName your-server-ip
@@ -384,86 +387,87 @@ Host docker-web
 EOF
 ```
 
-### Set up Docker context
+### Configure o contexto do Docker
 
-Create a Docker context for remote deployment:
+Crie um contexto do Docker para o deploy remoto:
 
 ```bash
 docker context create swarm-prod --docker "host=ssh://docker-web"
 ```
 
-Alternatively, configure the `DOCKER_HOST` environment variable:
+Como alternativa, configure a variável de ambiente `DOCKER_HOST`:
 
 ```bash
 export DOCKER_HOST=ssh://docker-web
 ```
 
-### Deploy the application
+### Faça o deploy da aplicação
 
-Deploy your application stack to Docker Swarm:
+Faça o deploy da stack da sua aplicação no Docker Swarm:
 
 ```bash
 make prod-deploy
 ```
 
-This executes:
+Isso executa:
 
 ```bash
 docker -H ${PROD_SSH} stack deploy --prune --detach=false --with-registry-auth -c docker/compose.yml -c docker/prod/compose.yml ${STACK_NAME}
 ```
 
-The `--with-registry-auth` flag ensures the Swarm nodes can pull images from
-your private registry.
+A flag `--with-registry-auth` garante que os nós do Swarm consigam baixar
+imagens do seu registro privado.
 
-### Verify the deployment
+### Verifique o deploy
 
-Check the status of your services:
+Verifique o status dos seus serviços:
 
 ```bash
 docker -H ssh://docker-web service ls
 docker -H ssh://docker-web service ps ${STACK_NAME}_app
 ```
 
-View logs:
+Veja os logs:
 
 ```bash
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
 ```
 
-## Monitoring and maintenance
+## Monitoramento e manutenção
 
-### View service logs
+### Veja os logs do serviço
 
 ```bash
-# View all logs
+# Mostra todos os logs
 docker -H ssh://docker-web service logs -f ${STACK_NAME}_app
 
-# View logs from the last 100 lines
+# Mostra as últimas 100 linhas de log
 docker -H ssh://docker-web service logs --tail 100 ${STACK_NAME}_app
 
-# View logs with timestamps
+# Mostra os logs com timestamps
 docker -H ssh://docker-web service logs -t ${STACK_NAME}_app
 ```
 
-### Scale the application
+### Escale a aplicação
 
-Adjust the number of replicas:
+Ajuste o número de réplicas:
 
 ```bash
 docker -H ssh://docker-web service scale ${STACK_NAME}_app=3
 ```
 
-Or update the `replicas` value in `docker/prod/compose.yml` and redeploy.
+Ou atualize o valor de `replicas` em `docker/prod/compose.yml` e faça o
+deploy de novo.
 
-### Resource limits
+### Limites de recursos
 
-Add resource limits to prevent containers from consuming all server
-resources. Update `docker/prod/compose.yml`:
+Adicione limites de recursos para evitar que os containers consumam todos os
+recursos do servidor. Atualize o `docker/prod/compose.yml`:
 
 ```yaml
 services:
   app:
-    # ... existing configuration ...
+    # ... configuração existente ...
     deploy:
       resources:
         limits:
@@ -474,20 +478,20 @@ services:
           memory: 256M
 ```
 
-## Security considerations
+## Considerações de segurança
 
-### Use Docker secrets for sensitive data
+### Use Docker secrets para dados sensíveis
 
-Instead of environment variables, use Docker secrets for sensitive
-information:
+Em vez de variáveis de ambiente, use Docker secrets para informações
+sensíveis:
 
 ```bash
-# Create secrets
+# Cria os secrets
 echo "database_password" | docker secret create db_password -
 echo "api_key" | docker secret create api_key -
 ```
 
-Update `docker/prod/compose.yml`:
+Atualize o `docker/prod/compose.yml`:
 
 ```yaml
 services:
@@ -503,89 +507,89 @@ secrets:
     external: true
 ```
 
-Access secrets in your application at `/run/secrets/secret_name`.
+Acesse os secrets na sua aplicação em `/run/secrets/secret_name`.
 
-### Set up a firewall
+### Configure um firewall
 
-Configure UFW (Uncomplicated Firewall) on your server:
+Configure o UFW (Uncomplicated Firewall) no seu servidor:
 
 ```bash
-# Allow SSH
+# Libera SSH
 sudo ufw allow 22/tcp
 
-# Allow HTTP and HTTPS
+# Libera HTTP e HTTPS
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 
-# Allow Docker Swarm ports (if you plan to add more nodes)
+# Libera as portas do Docker Swarm (se você pretende adicionar mais nós)
 sudo ufw allow 2377/tcp
 sudo ufw allow 7946/tcp
 sudo ufw allow 7946/udp
 sudo ufw allow 4789/udp
 
-# Enable the firewall
+# Habilita o firewall
 sudo ufw enable
 ```
 
-### Keep the system updated
+### Mantenha o sistema atualizado
 
-Regularly update your server and Docker:
+Atualize regularmente o seu servidor e o Docker:
 
 ```bash
-# Update system packages
+# Atualiza os pacotes do sistema
 sudo apt-get update && sudo apt-get upgrade -y
 
-# Update Docker images
+# Atualiza as imagens Docker
 docker -H ssh://docker-web service update --image ${IMAGE}:${IMAGE_TAG} ${STACK_NAME}_app
 ```
 
-## Troubleshooting
+## Solução de problemas
 
-### Service won't start
+### O serviço não sobe
 
-Check service events and logs:
+Verifique os eventos e os logs do serviço:
 
 ```bash
 docker -H ssh://docker-web service ps ${STACK_NAME}_app --no-trunc
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
 ```
 
-Common issues: - **Image pull errors**: Verify registry authentication with
-`docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other
-services are using ports 80/443 - **Resource constraints**: Check available
-resources with `docker -H ssh://docker-web node ls`
+Problemas comuns: - **Erros ao baixar a imagem**: verifique a autenticação
+no registro com `docker -H ssh://docker-web login` - **Conflitos de porta**:
+garanta que nenhum outro serviço esteja usando as portas 80/443 -
+**Limitação de recursos**: verifique os recursos disponíveis com `docker -H
+ssh://docker-web node ls`
 
-### SSL certificate issues
+### Problemas com certificados SSL
 
-If Caddy can't obtain certificates: - Verify DNS is pointing to your server
-- Check that ports 80 and 443 are accessible from the internet - Ensure the
-email in the Let's Encrypt configuration is valid - Check logs: `docker -H
-ssh://docker-web service logs caddy`
+Se o Caddy não consegue obter os certificados: - Verifique se o DNS aponta
+para o seu servidor - Verifique se as portas 80 e 443 estão acessíveis pela
+internet - Garanta que o e-mail na configuração do Let's Encrypt é válido -
+Verifique os logs: `docker -H ssh://docker-web service logs caddy`
 
-### Container registry connection issues
+### Problemas de conexão com o registro de containers
 
-Test registry connectivity:
+Teste a conectividade com o registro:
 
 ```bash
-# From your local machine
+# Na sua máquina local
 docker pull git.example.com/username/myapp:latest
 
-# From the server
+# No servidor
 docker -H ssh://docker-web pull git.example.com/username/myapp:latest
 ```
 
 ## Resumo
 
-You've successfully deployed a Yii application to Docker Swarm with: - A
-container registry (Forgejo or Gitea)  - Automatic HTTPS via Caddy -
-Zero-downtime deployments with rolling updates - High availability with
-multiple replicas
+Você fez o deploy de uma aplicação Yii no Docker Swarm com: - Um registro de
+containers (Forgejo ou Gitea)  - HTTPS automático via Caddy - Deploys sem
+downtime com rolling updates - Alta disponibilidade com várias réplicas
 
-The Makefile commands simplify the deployment workflow: - `make prod-build`
-- Build the production image - `make prod-push` - Push to the registry -
-`make prod-deploy` - Deploy to Docker Swarm
+Os comandos do Makefile simplificam o fluxo de deploy: - `make prod-build` -
+Constrói a imagem de produção - `make prod-push` - Envia para o registro -
+`make prod-deploy` - Faz o deploy no Docker Swarm
 
-For more information, see: - [Yii Application
-Template](https://github.com/yiisoft/app)  - [Docker Swarm
-Documentation](https://docs.docker.com/engine/swarm/)  - [Caddy Docker
+Para mais informações, veja: - [Template de aplicação do
+Yii](https://github.com/yiisoft/app)  - [Documentação do Docker
+Swarm](https://docs.docker.com/engine/swarm/)  - [Caddy Docker
 Proxy](https://github.com/lucaslorentz/caddy-docker-proxy)

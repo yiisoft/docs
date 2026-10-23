@@ -1,60 +1,60 @@
-# Configuring web servers: Apache
+# Configurando servidores web: Apache
 
-Use the following configuration in Apache's `httpd.conf` file or within a
-virtual host configuration. Note that you should replace
-`path/to/app/public` with the actual path for `app/public`.
+Use a configuração a seguir no arquivo `httpd.conf` do Apache ou na
+configuração de um virtual host. Substitua `path/to/app/public` pelo caminho
+real de `app/public`.
 
 ```apache
-# Set document root to be "app/public"
+# Define o document root como "app/public"
 DocumentRoot "path/to/app/public"
 
 <Directory "path/to/app/public">
-    # use mod_rewrite for pretty URL support
+    # usa mod_rewrite para suportar URLs amigáveis
     RewriteEngine on
     
-    # Do not allow access to URLs with a script name
+    # Não permite acesso a URLs com o nome do script
     RewriteCond %{THE_REQUEST} index.php [NC]
     RewriteRule . - [R=404,L]
     
-    # If a directory or a file exists, use the request directly
+    # Se um diretório ou arquivo existir, usa a requisição diretamente
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     
-    # Otherwise forward the request to index.php
+    # Caso contrário, encaminha a requisição para index.php
     RewriteRule . index.php
     
     SetEnv APP_ENV dev
 
-    # ...other settings...
+    # ...outras configurações...
 </Directory>
 ```
 
-In case you have `AllowOverride All` you can add `.htaccess` file with the
-following configuration instead of using `httpd.conf`:
+Se você tiver `AllowOverride All`, pode adicionar um arquivo `.htaccess` com
+a configuração a seguir em vez de usar o `httpd.conf`:
 
 ```apache
-# use mod_rewrite for pretty URL support
+# usa mod_rewrite para suportar URLs amigáveis
 RewriteEngine on
 
-# Do not allow access to URLs with a script name
+# Não permite acesso a URLs com o nome do script
 RewriteCond %{THE_REQUEST} index.php [NC]
 RewriteRule . - [R=404,L]
 
-# If a directory or a file exists, use the request directly
+# Se um diretório ou arquivo existir, usa a requisição diretamente
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Otherwise forward the request to index.php
+# Caso contrário, encaminha a requisição para index.php
 RewriteRule . index.php
 
 SetEnv APP_ENV dev
 
-# ...other settings...
+# ...outras configurações...
 ```
 
-In the above, note the usage of `SetEnv`. Since Yii3 application templates
-use environment variables, this is a possible place to set them. In
-production environment remember to set `APP_ENV` to `prod`.
+Observe o uso de `SetEnv` acima. Como os templates de aplicação do Yii3 usam
+variáveis de ambiente, este é um lugar possível para defini-las. Em
+produção, lembre-se de definir `APP_ENV` como `prod`.
 
-See [application logs](general.md#application-logs) for logging
-configuration.
+Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração
+de logs.

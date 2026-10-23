@@ -1,28 +1,28 @@
-# Deploying Yii applications with Angie Docker Proxy
+# Fazendo deploy de aplicações Yii com o Angie Docker Proxy
 
-[Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy) is a
-small reverse proxy for Docker Compose projects. It runs in a separate
-container alongside the applications, reads the Docker API through the
-Docker socket, discovers containers using the `VIRTUAL_HOST` and
-`VIRTUAL_PORT` environment variables, generates the Angie configuration, and
-automatically obtains TLS certificates using ACME.
+O [Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy) é um
+pequeno proxy reverso para projetos Docker Compose. Ele roda em um container
+separado, ao lado das aplicações, lê a API do Docker pelo socket do Docker,
+descobre containers pelas variáveis de ambiente `VIRTUAL_HOST` e
+`VIRTUAL_PORT`, gera a configuração do Angie e obtém certificados TLS
+automaticamente via ACME.
 
-This approach is useful when you need to run several web applications on one
-server and enable HTTPS for them without manually editing the reverse proxy
-configuration for each domain.
+Essa abordagem é útil quando você precisa rodar várias aplicações web em um
+servidor e habilitar HTTPS para elas sem editar manualmente a configuração
+do proxy reverso para cada domínio.
 
-In this example, we'll connect a containerized Yii application to Angie
-Docker Proxy and configure automatic HTTPS.
+Neste exemplo, vamos conectar uma aplicação Yii em container ao Angie Docker
+Proxy e configurar HTTPS automático.
 
-This guide assumes that your Yii application is already packaged as a Docker
-image and accepts HTTP requests on port 80. Building and configuring the
-application image is outside the scope of this guide.
+Este guia assume que sua aplicação Yii já está empacotada como imagem Docker
+e aceita requisições HTTP na porta 80. Construir e configurar a imagem da
+aplicação está fora do escopo deste guia.
 
 ```mermaid
 graph LR
-    A[Internet] --> B[Reverse Proxy: Angie]
-    B --> C[Yii application]
-    B --> D[Another application]
+    A[Internet] --> B[Proxy reverso: Angie]
+    B --> C[Aplicação Yii]
+    B --> D[Outra aplicação]
 
     subgraph Docker Compose Project
         B
@@ -31,31 +31,31 @@ graph LR
     end
 ```
 
-## Prerequisites
+## Pré-requisitos
 
-- A server with a fresh Linux distribution.
-- A domain name pointing to your server's IP address.
-- Docker and Docker Compose.
-- Open TCP ports `80` and `443`.
-- SSH access to your server.
-- Basic knowledge of Docker and command-line tools.
+- Um servidor com uma distribuição Linux recém-instalada.
+- Um nome de domínio apontando para o IP do seu servidor.
+- Docker e Docker Compose.
+- Portas TCP `80` e `443` abertas.
+- Acesso SSH ao seu servidor.
+- Conhecimento básico de Docker e de ferramentas de linha de comando.
 
-## Project structure
+## Estrutura do projeto
 
-The example requires a single Docker Compose configuration:
+O exemplo precisa de uma única configuração do Docker Compose:
 
 ```text
 yii-angie-demo/
 └── docker-compose.yml
 ```
 
-## Configuring Docker Compose
+## Configurando o Docker Compose
 
-Create `docker-compose.yml` with the following configuration. Replace:
+Crie o `docker-compose.yml` com a configuração a seguir. Substitua:
 
-- `admin@example.com` with your email address;
-- `registry.example.com/yii-app:1.0.0` with your application image;
-- `example-demo.example.com` with the domain pointing to your server.
+- `admin@example.com` pelo seu endereço de e-mail;
+- `registry.example.com/yii-app:1.0.0` pela imagem da sua aplicação;
+- `example-demo.example.com` pelo domínio que aponta para o seu servidor.
 
 ```yaml
 services:
@@ -92,27 +92,27 @@ volumes:
   angie_acme:
 ```
 
-`VIRTUAL_HOST` is the application's public domain.
+`VIRTUAL_HOST` é o domínio público da aplicação.
 
-`VIRTUAL_PORT` is the container's internal port to which Angie should proxy
-requests.
+`VIRTUAL_PORT` é a porta interna do container para a qual o Angie deve
+encaminhar as requisições.
 
-Angie Docker Proxy automatically discovers `VIRTUAL_HOST` and `VIRTUAL_PORT`
-from the environment variables and issues certificates using the Angie ACME
-module and Let's Encrypt.
+O Angie Docker Proxy descobre `VIRTUAL_HOST` e `VIRTUAL_PORT`
+automaticamente pelas variáveis de ambiente e emite certificados usando o
+módulo ACME do Angie e o Let's Encrypt.
 
-## Starting the services
+## Subindo os serviços
 
-Start the proxy and application containers:
+Suba os containers do proxy e da aplicação:
 
 ```bash
 docker compose up -d
 ```
 
-## Adding another application
+## Adicionando outra aplicação
 
-To expose another application, add it to `services` in `docker-compose.yml`
-and attach it to the `proxy` network:
+Para expor outra aplicação, adicione-a em `services` no `docker-compose.yml`
+e conecte-a à rede `proxy`:
 
 ```yaml
 services:
@@ -125,61 +125,62 @@ services:
       - proxy
 ```
 
-Apply the changes:
+Aplique as alterações:
 
 ```bash
 docker compose up -d
 ```
 
-## How it works
+## Como funciona
 
-Angie Docker Proxy monitors the Docker API and discovers containers
-configured with `VIRTUAL_HOST` and `VIRTUAL_PORT`.  It generates the Angie
-configuration, obtains TLS certificates using ACME, and forwards incoming
-requests to the corresponding containers through the shared Docker network.
+O Angie Docker Proxy monitora a API do Docker e descobre os containers
+configurados com `VIRTUAL_HOST` e `VIRTUAL_PORT`.  Ele gera a configuração
+do Angie, obtém certificados TLS via ACME e encaminha as requisições
+recebidas para os containers correspondentes pela rede Docker compartilhada.
 
-When containers are added, removed, or updated, the proxy regenerates its
-configuration and performs a graceful reload.  Existing connections continue
-to be handled while the updated configuration is applied.
+Quando containers são adicionados, removidos ou atualizados, o proxy gera a
+configuração de novo e faz um reload gracioso.  As conexões existentes
+continuam sendo atendidas enquanto a configuração atualizada é aplicada.
 
-For configuration options and implementation details, see the [Angie Docker
-Proxy documentation](https://hub.docker.com/r/angiesoftware/proxy).
+Para opções de configuração e detalhes de implementação, veja a
+[documentação do Angie Docker
+Proxy](https://hub.docker.com/r/angiesoftware/proxy).
 
-## Verification
+## Verificação
 
-Check the containers:
+Verifique os containers:
 
 ```bash
 docker compose ps
 ```
 
-Check the HTTP redirect:
+Verifique o redirecionamento HTTP:
 
 ```bash
 curl -I http://example-demo.example.com/
 ```
 
-Expected result:
+Resultado esperado:
 
 ```text
 HTTP/1.1 301 Moved Permanently
 Location: https://example-demo.example.com/
 ```
 
-Check HTTPS:
+Verifique o HTTPS:
 
 ```bash
 curl -I https://example-demo.example.com/
 ```
 
-Expected result:
+Resultado esperado:
 
 ```text
 HTTP/1.1 200 OK
 Server: Angie/...
 ```
 
-Check the certificate:
+Verifique o certificado:
 
 ```bash
 echo | openssl s_client \
@@ -188,7 +189,7 @@ echo | openssl s_client \
   | openssl x509 -noout -issuer -subject -dates
 ```
 
-Expected issuer:
+Emissor esperado:
 
 ```text
 Let's Encrypt
@@ -197,38 +198,38 @@ Let's Encrypt
 
 ## Logs
 
-Proxy logs:
+Logs do proxy:
 
 ```bash
 docker compose logs -f angie-proxy
 ```
 
-## Stopping the services
+## Parando os serviços
 
-Stop the services:
+Pare os serviços:
 
 ```bash
 docker compose down
 ```
 
-Stop the services and remove the certificates:
+Pare os serviços e remova os certificados:
 
 ```bash
 docker compose down -v
 ```
 
-## Limitations
+## Limitações
 
-This setup is intended for Docker Compose. Kubernetes doesn't expose
-workloads through the Docker API and requires an Ingress or Gateway API
-controller. Docker Swarm also uses the Docker API, but Swarm deployment
-isn't covered in this guide.
+Esta configuração é feita para o Docker Compose. O Kubernetes não expõe
+workloads pela API do Docker e exige um controller de Ingress ou de Gateway
+API. O Docker Swarm também usa a API do Docker, mas o deploy no Swarm não é
+coberto neste guia.
 
-## For more information
+## Para mais informações
 
-- [Angie Docker Proxy
-  documentation](https://hub.docker.com/r/angiesoftware/proxy)
-- [Yii Application Template](https://github.com/yiisoft/app)
-- [Docker in Yii Application
-  Templates](https://yiisoft.github.io/docs/guide/tutorial/docker.html)
-- [Docker Compose documentation](https://docs.docker.com/compose/)
+- [Documentação do Angie Docker
+  Proxy](https://hub.docker.com/r/angiesoftware/proxy)
+- [Template de aplicação do Yii](https://github.com/yiisoft/app)
+- [Docker nos templates de aplicação do
+  Yii](https://yiisoft.github.io/docs/guide/tutorial/docker.html)
+- [Documentação do Docker Compose](https://docs.docker.com/compose/)

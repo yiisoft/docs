@@ -1,44 +1,45 @@
-# Disabling CSRF protection
+# Desativando a proteção CSRF
 
-## What is CSRF protection?
+## O que é a proteção CSRF?
 
-Cross-Site Request Forgery (CSRF) protection is a security mechanism that
-prevents malicious websites from making unauthorized requests on behalf of
-authenticated users. Yii3 includes built-in CSRF protection through the
-`Yiisoft\Yii\Web\Middleware\CsrfTokenMiddleware` middleware.
+A proteção contra Cross-Site Request Forgery (CSRF) é um mecanismo de
+segurança que impede sites maliciosos de fazer requisições não autorizadas
+em nome de usuários autenticados. O Yii3 inclui proteção CSRF nativa por
+meio do middleware `Yiisoft\Yii\Web\Middleware\CsrfTokenMiddleware`.
 
-For a comprehensive understanding of CSRF attacks and protection mechanisms,
-see the [Security best
-practices](../guide/security/best-practices.md#avoiding-csrf) section in the
-main guide.
+Para entender a fundo os ataques CSRF e os mecanismos de proteção, veja a
+seção [Boas práticas de
+segurança](../guide/security/best-practices.md#evitando-csrf) do guia
+principal.
 
-## When to disable CSRF protection
+## Quando desativar a proteção CSRF
 
-While CSRF protection should generally remain enabled for web applications,
-there are specific scenarios where you might need to disable it:
+Embora a proteção CSRF deva, em geral, continuar ativada em aplicações web,
+há cenários específicos em que você pode precisar desativá-la:
 
-### When external systems cannot provide CSRF tokens
+### Quando sistemas externos não conseguem fornecer tokens CSRF
 
-When building APIs or handling automated requests from external systems,
-CSRF protection can interfere with legitimate requests since these systems
-cannot provide valid CSRF tokens:
+Ao construir APIs ou tratar requisições automatizadas de sistemas externos,
+a proteção CSRF pode atrapalhar requisições legítimas, já que esses sistemas
+não conseguem fornecer tokens CSRF válidos:
 
-- **Third-party integrations**: External services cannot provide valid CSRF
-  tokens
-- **Mobile applications**: Native mobile apps typically don't use cookies or
-  sessions in the same way as web browsers
-- **Server-to-server communication**: API endpoints designed for
-  machine-to-machine communication
-- **Payment processors**: PayPal, Stripe, and other payment systems send
-  webhook notifications
-- **Version control systems**: GitHub, GitLab webhooks for CI/CD pipelines
-- **Social media platforms**: Twitter, Facebook webhook notifications
-- **Communication services**: Slack, Discord bot integrations
+- **Integrações de terceiros**: serviços externos não conseguem fornecer
+  tokens CSRF válidos
+- **Aplicativos móveis**: apps móveis nativos normalmente não usam cookies
+  ou sessões da mesma forma que os navegadores
+- **Comunicação entre servidores**: endpoints de API projetados para
+  comunicação máquina a máquina
+- **Processadores de pagamento**: PayPal, Stripe e outros sistemas de
+  pagamento enviam notificações por webhook
+- **Sistemas de controle de versão**: webhooks do GitHub e do GitLab para
+  pipelines de CI/CD
+- **Redes sociais**: notificações por webhook do Twitter e do Facebook
+- **Serviços de comunicação**: integrações com bots do Slack e do Discord
 
-## How to disable CSRF protection
+## Como desativar a proteção CSRF
 
-First, you need to remove CSRF middleware from your main application
-middleware list in `config/web/di/application.php`:
+Primeiro, remova o middleware de CSRF da lista principal de middlewares da
+aplicação em `config/web/di/application.php`:
 
 ```php
 return [
@@ -50,13 +51,12 @@ return [
                     [
                         ErrorCatcher::class,
                         SessionMiddleware::class,
-                        CsrfTokenMiddleware::class, // <- Remove this line                        
+                        CsrfTokenMiddleware::class, // <- Remova esta linha                        
 ```
 
-Now, if you need to leave CSRF on for specific routes or route groups, you
-can do so by adding the `CsrfTokenMiddleware` middleware to the router
-configuration in `config/common/routes.php`. For a group that would be the
-following:
+Agora, se você precisar manter o CSRF ativo para rotas ou grupos de rotas
+específicos, adicione o middleware `CsrfTokenMiddleware` na configuração do
+router em `config/common/routes.php`. Para um grupo, fica assim:
 
 ```php
 return [
@@ -65,7 +65,7 @@ return [
         ->routes(
 ```
 
-For a single route, you can add the middleware directly to the route:
+Para uma única rota, você pode adicionar o middleware diretamente nela:
 
 ```php
 Route::methods([Method::GET, Method::POST], '/say[/{test}]')
@@ -75,31 +75,34 @@ Route::methods([Method::GET, Method::POST], '/say[/{test}]')
 ```
 
 
-## Security considerations
+## Considerações de segurança
 
-When disabling CSRF protection, keep these security considerations in mind:
+Ao desativar a proteção CSRF, tenha em mente estas considerações de
+segurança:
 
-### Alternative authentication methods
+### Métodos alternativos de autenticação
 
-For API endpoints, implement proper authentication mechanisms:
+Para endpoints de API, implemente mecanismos de autenticação adequados:
 
-- **API keys**: Require API keys for authentication
-- **Bearer tokens**: Use JWT or similar token-based authentication
-- **OAuth 2.0**: Implement OAuth 2.0 for third-party access
-- **IP whitelisting**: Restrict access to known IP addresses for webhooks
+- **Chaves de API**: exija chaves de API para autenticação
+- **Bearer tokens**: use JWT ou autenticação similar baseada em token
+- **OAuth 2.0**: implemente OAuth 2.0 para acesso de terceiros
+- **Lista de IPs permitidos**: restrinja o acesso de webhooks a endereços IP
+  conhecidos
 
-### Request validation
+### Validação da requisição
 
-Implement additional validation for requests without CSRF protection:
+Implemente validação adicional para requisições sem proteção CSRF:
 
-- **Signature verification**: Verify webhook signatures (e.g., GitHub's
-  X-Hub-Signature)
-- **Timestamp validation**: Check request timestamps to prevent replay
-  attacks
-- **Rate limiting**: Implement rate limiting to prevent abuse
-- **Input validation**: Strictly validate all input parameters
+- **Verificação de assinatura**: verifique assinaturas de webhooks (por
+  exemplo, o X-Hub-Signature do GitHub)
+- **Validação de timestamp**: confira o timestamp das requisições para
+  evitar ataques de replay
+- **Rate limiting**: implemente limite de requisições para evitar abuso
+- **Validação de entrada**: valide rigorosamente todos os parâmetros de
+  entrada
 
-### Example: Webhook signature verification
+### Exemplo: verificação de assinatura de webhook
 
 ```php
 <?php
@@ -113,7 +116,7 @@ final class WebhookController
 {
     public function payment(ServerRequestInterface $request): ResponseInterface
     {
-        // Verify webhook signature
+        // Verifica a assinatura do webhook
         $signature = $request->getHeaderLine('X-Webhook-Signature');
         $payload = (string) $request->getBody();
         $expectedSignature = hash_hmac('sha256', $payload, $this->webhookSecret);
@@ -122,32 +125,32 @@ final class WebhookController
             throw new \RuntimeException('Invalid webhook signature');
         }
         
-        // Process webhook payload
+        // Processa o payload do webhook
         // ...
     }
 }
 ```
 
-## Best practices
+## Boas práticas
 
-1. **Minimize exposure**: Only disable CSRF protection where absolutely
-   necessary
-2. **Use HTTPS**: Always use HTTPS for API endpoints and webhooks
-3. **Monitor logs**: Log all requests to API endpoints for security
-   monitoring
-4. **Regular security audits**: Periodically review your API endpoints and
-   their security measures
-5. **Documentation**: Clearly document which endpoints have CSRF protection
-   disabled and why
+1. **Minimize a exposição**: desative a proteção CSRF apenas onde for
+   realmente necessário
+2. **Use HTTPS**: sempre use HTTPS para endpoints de API e webhooks
+3. **Monitore os logs**: registre em log todas as requisições aos endpoints
+   de API para monitoramento de segurança
+4. **Auditorias de segurança regulares**: revise periodicamente seus
+   endpoints de API e as medidas de segurança deles
+5. **Documentação**: documente claramente quais endpoints têm a proteção
+   CSRF desativada e por quê
 
-## Conclusion
+## Conclusão
 
-While CSRF protection is crucial for web applications, there are legitimate
-scenarios where it needs to be disabled, particularly for external APIs and
-webhooks. When disabling CSRF protection, always implement alternative
-security measures and follow security best practices to maintain the overall
-security of your application.
+Embora a proteção CSRF seja essencial para aplicações web, há cenários
+legítimos em que ela precisa ser desativada, principalmente para APIs
+externas e webhooks. Ao desativá-la, sempre implemente medidas de segurança
+alternativas e siga as boas práticas de segurança para manter a segurança
+geral da sua aplicação.
 
-Remember that disabling CSRF protection increases security risks, so careful
-consideration and proper implementation of alternative security measures are
-essential.
+Lembre-se de que desativar a proteção CSRF aumenta os riscos de segurança,
+então é essencial avaliar com cuidado e implementar corretamente as medidas
+de segurança alternativas.

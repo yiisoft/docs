@@ -1,4 +1,4 @@
-# Preface
+# Prefácio
 
 O Yii é um framework PHP de alto desempenho, baseado em pacotes, para
 desenvolver aplicações modernas.  O nome Yii (pronuncia-se `Yee` ou `[ji:]`)
@@ -11,27 +11,28 @@ arquitetura e do suporte sofisticado a cache, ele é especialmente indicado
 para aplicações de grande porte, como portais, sistemas de gerenciamento de
 conteúdo, e-commerce, APIs REST etc.
 
-With comprehensive documentation and an enthusiastic user community, Yii can
-significantly reduce your development time in the long run.
+Com uma documentação abrangente e uma comunidade de usuários entusiasmada, o
+Yii pode reduzir bastante o seu tempo de desenvolvimento a longo prazo.
 
-## What's the book about
+## Sobre o que é este livro
 
-This book is for you if you're familiar with Yii3, building Yii
-applications, and read the official Yii3 guide.  It covers fundamentally
-important development concepts, application architecture approaches,
-integrating third party services with Yii3, etc.
+Este livro é para você se já conhece o Yii3, constrói aplicações Yii e leu o
+guia oficial do Yii3.  Ele cobre conceitos de desenvolvimento fundamentais,
+abordagens de arquitetura de aplicações, integração de serviços de terceiros
+com o Yii3 etc.
 
-The book consists of individual recipes gathered from Yii experts that you
-can apply in your applications.  These go by topic, but you are free to read
-them in any order as there is no dependency between them.
+O livro é formado por receitas individuais reunidas por especialistas em
+Yii, que você pode aplicar nas suas aplicações.  Elas são organizadas por
+tema, mas você pode lê-las em qualquer ordem, já que não há dependência
+entre elas.
 
-## Prerequisites
+## Pré-requisitos
 
-- You should have Yii3 installed.
-- You should be familiar with the framework basics and the official guide.
+- Você deve ter o Yii3 instalado.
+- Você deve conhecer o básico do framework e o guia oficial.
 
-## How to participate
+## Como participar
 
-If you've found any errata, wrong information, want to improve something or
-have a good recipe, create an issue or make a pull request in [the book
-GitHub repository](https://github.com/yiisoft/docs).
+Se você encontrou alguma errata ou informação errada, quer melhorar algo ou
+tem uma boa receita, crie uma issue ou abra um pull request no [repositório
+do livro no GitHub](https://github.com/yiisoft/docs).

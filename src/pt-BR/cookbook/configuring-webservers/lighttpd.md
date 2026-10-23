@@ -1,10 +1,10 @@
-# Configuring web servers: lighttpd
+# Configurando servidores web: lighttpd
 
-To use [lighttpd](https://www.lighttpd.net/) >= 1.4.24, put `index.php` in the web root and add the following to the configuration:
+Para usar o [lighttpd](https://www.lighttpd.net/) >= 1.4.24, coloque o `index.php` na raiz web e adicione o seguinte à configuração:
 
 ```
 url.rewrite-if-not-file = ("(.*)" => "/index.php/$0")
 ```
 
-See [application logs](general.md#application-logs) for logging
-configuration.
+Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração
+de logs.

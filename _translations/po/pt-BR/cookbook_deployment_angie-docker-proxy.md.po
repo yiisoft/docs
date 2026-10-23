@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2026-09-25 14:35+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,27 +19,27 @@ msgstr ""
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Deploying Yii applications with Angie Docker Proxy"
-msgstr ""
+msgstr "Fazendo deploy de aplicações Yii com o Angie Docker Proxy"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "[Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy) is a small reverse proxy for Docker Compose projects. It runs in a separate container alongside the applications, reads the Docker API through the Docker socket, discovers containers using the `VIRTUAL_HOST` and `VIRTUAL_PORT` environment variables, generates the Angie configuration, and automatically obtains TLS certificates using ACME."
-msgstr ""
+msgstr "O [Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy) é um pequeno proxy reverso para projetos Docker Compose. Ele roda em um container separado, ao lado das aplicações, lê a API do Docker pelo socket do Docker, descobre containers pelas variáveis de ambiente `VIRTUAL_HOST` e `VIRTUAL_PORT`, gera a configuração do Angie e obtém certificados TLS automaticamente via ACME."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "This approach is useful when you need to run several web applications on one server and enable HTTPS for them without manually editing the reverse proxy configuration for each domain."
-msgstr ""
+msgstr "Essa abordagem é útil quando você precisa rodar várias aplicações web em um servidor e habilitar HTTPS para elas sem editar manualmente a configuração do proxy reverso para cada domínio."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "In this example, we'll connect a containerized Yii application to Angie Docker Proxy and configure automatic HTTPS."
-msgstr ""
+msgstr "Neste exemplo, vamos conectar uma aplicação Yii em container ao Angie Docker Proxy e configurar HTTPS automático."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "This guide assumes that your Yii application is already packaged as a Docker image and accepts HTTP requests on port 80. Building and configuring the application image is outside the scope of this guide."
-msgstr ""
+msgstr "Este guia assume que sua aplicação Yii já está empacotada como imagem Docker e aceita requisições HTTP na porta 80. Construir e configurar a imagem da aplicação está fora do escopo deste guia."
 
 #. type: Fenced code block (mermaid)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -56,57 +56,63 @@ msgid ""
 "        D\n"
 "    end\n"
 msgstr ""
+"graph LR\n"
+"    A[Internet] --> B[Proxy reverso: Angie]\n"
+"    B --> C[Aplicação Yii]\n"
+"    B --> D[Outra aplicação]\n"
+"\n"
+"    subgraph Docker Compose Project\n"
+"        B\n"
+"        C\n"
+"        D\n"
+"    end\n"
 
 #. type: Title ##
-#: ../src/cookbook/deployment/angie-docker-proxy.md
-#: ../src/cookbook/deployment/docker-swarm-caddy.md
-#: ../src/cookbook/deployment/docker-swarm-traefik.md
-#: ../src/cookbook/preface.md
+#: ../src/cookbook/deployment/angie-docker-proxy.md ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md ../src/cookbook/preface.md
 #, no-wrap
 msgid "Prerequisites"
-msgstr ""
+msgstr "Pré-requisitos"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "A server with a fresh Linux distribution."
-msgstr ""
+msgstr "Um servidor com uma distribuição Linux recém-instalada."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "A domain name pointing to your server's IP address."
-msgstr ""
+msgstr "Um nome de domínio apontando para o IP do seu servidor."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Docker and Docker Compose."
-msgstr ""
+msgstr "Docker e Docker Compose."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Open TCP ports `80` and `443`."
-msgstr ""
+msgstr "Portas TCP `80` e `443` abertas."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "SSH access to your server."
-msgstr ""
+msgstr "Acesso SSH ao seu servidor."
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Basic knowledge of Docker and command-line tools."
-msgstr ""
+msgstr "Conhecimento básico de Docker e de ferramentas de linha de comando."
 
 #. type: Title ##
-#: ../src/cookbook/deployment/angie-docker-proxy.md
-#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
+#: ../src/cookbook/deployment/angie-docker-proxy.md ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Project structure"
-msgstr ""
+msgstr "Estrutura do projeto"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "The example requires a single Docker Compose configuration:"
-msgstr ""
+msgstr "O exemplo precisa de uma única configuração do Docker Compose:"
 
 #. type: Fenced code block (text)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -115,32 +121,34 @@ msgid ""
 "yii-angie-demo/\n"
 "└── docker-compose.yml\n"
 msgstr ""
+"yii-angie-demo/\n"
+"└── docker-compose.yml\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Configuring Docker Compose"
-msgstr ""
+msgstr "Configurando o Docker Compose"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Create `docker-compose.yml` with the following configuration. Replace:"
-msgstr ""
+msgstr "Crie o `docker-compose.yml` com a configuração a seguir. Substitua:"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "`admin@example.com` with your email address;"
-msgstr ""
+msgstr "`admin@example.com` pelo seu endereço de e-mail;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "`registry.example.com/yii-app:1.0.0` with your application image;"
-msgstr ""
+msgstr "`registry.example.com/yii-app:1.0.0` pela imagem da sua aplicação;"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "`example-demo.example.com` with the domain pointing to your server."
-msgstr ""
+msgstr "`example-demo.example.com` pelo domínio que aponta para o seu servidor."
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -179,49 +187,81 @@ msgid ""
 "volumes:\n"
 "  angie_acme:\n"
 msgstr ""
+"services:\n"
+"  angie-proxy:\n"
+"    image: angiesoftware/proxy:latest\n"
+"    environment:\n"
+"      - ANGIE_ACME_EMAIL=admin@example.com\n"
+"      - ANGIE_ACME_URL=https://acme-v02.api.letsencrypt.org/directory\n"
+"      - ANGIE_RESOLVER=1.1.1.1 8.8.8.8\n"
+"      - ANGIE_RESOLVER_VALID=300s\n"
+"      - ANGIE_PROXY_NETWORK=proxy\n"
+"    ports:\n"
+"      - \"80:80\"\n"
+"      - \"443:443\"\n"
+"    volumes:\n"
+"      - /var/run/docker.sock:/tmp/docker.sock:ro\n"
+"      - angie_acme:/var/lib/angie/acme\n"
+"    networks:\n"
+"      - proxy\n"
+"\n"
+"  yii-app:\n"
+"    image: registry.example.com/yii-app:1.0.0\n"
+"    environment:\n"
+"      - VIRTUAL_HOST=example-demo.example.com\n"
+"      - VIRTUAL_PORT=80\n"
+"    networks:\n"
+"      - proxy\n"
+"\n"
+"networks:\n"
+"  proxy:\n"
+"    name: proxy\n"
+"\n"
+"volumes:\n"
+"  angie_acme:\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "`VIRTUAL_HOST` is the application's public domain."
-msgstr ""
+msgstr "`VIRTUAL_HOST` é o domínio público da aplicação."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "`VIRTUAL_PORT` is the container's internal port to which Angie should proxy requests."
-msgstr ""
+msgstr "`VIRTUAL_PORT` é a porta interna do container para a qual o Angie deve encaminhar as requisições."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Angie Docker Proxy automatically discovers `VIRTUAL_HOST` and `VIRTUAL_PORT` from the environment variables and issues certificates using the Angie ACME module and Let's Encrypt."
-msgstr ""
+msgstr "O Angie Docker Proxy descobre `VIRTUAL_HOST` e `VIRTUAL_PORT` automaticamente pelas variáveis de ambiente e emite certificados usando o módulo ACME do Angie e o Let's Encrypt."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Starting the services"
-msgstr ""
+msgstr "Subindo os serviços"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Start the proxy and application containers:"
-msgstr ""
+msgstr "Suba os containers do proxy e da aplicação:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "docker compose up -d\n"
-msgstr ""
+msgstr "docker compose up -d\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Adding another application"
-msgstr ""
+msgstr "Adicionando outra aplicação"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "To expose another application, add it to `services` in `docker-compose.yml` and attach it to the `proxy` network:"
-msgstr ""
+msgstr "Para expor outra aplicação, adicione-a em `services` no `docker-compose.yml` e conecte-a à rede `proxy`:"
 
 #. type: Fenced code block (yaml)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -236,65 +276,73 @@ msgid ""
 "    networks:\n"
 "      - proxy\n"
 msgstr ""
+"services:\n"
+"  second-app:\n"
+"    image: traefik/whoami\n"
+"    environment:\n"
+"      - VIRTUAL_HOST=example-demo2.example.com\n"
+"      - VIRTUAL_PORT=80\n"
+"    networks:\n"
+"      - proxy\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Apply the changes:"
-msgstr ""
+msgstr "Aplique as alterações:"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "How it works"
-msgstr ""
+msgstr "Como funciona"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Angie Docker Proxy monitors the Docker API and discovers containers configured with `VIRTUAL_HOST` and `VIRTUAL_PORT`.  It generates the Angie configuration, obtains TLS certificates using ACME, and forwards incoming requests to the corresponding containers through the shared Docker network."
-msgstr ""
+msgstr "O Angie Docker Proxy monitora a API do Docker e descobre os containers configurados com `VIRTUAL_HOST` e `VIRTUAL_PORT`.  Ele gera a configuração do Angie, obtém certificados TLS via ACME e encaminha as requisições recebidas para os containers correspondentes pela rede Docker compartilhada."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "When containers are added, removed, or updated, the proxy regenerates its configuration and performs a graceful reload.  Existing connections continue to be handled while the updated configuration is applied."
-msgstr ""
+msgstr "Quando containers são adicionados, removidos ou atualizados, o proxy gera a configuração de novo e faz um reload gracioso.  As conexões existentes continuam sendo atendidas enquanto a configuração atualizada é aplicada."
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "For configuration options and implementation details, see the [Angie Docker Proxy documentation](https://hub.docker.com/r/angiesoftware/proxy)."
-msgstr ""
+msgstr "Para opções de configuração e detalhes de implementação, veja a [documentação do Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy)."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Verification"
-msgstr ""
+msgstr "Verificação"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Check the containers:"
-msgstr ""
+msgstr "Verifique os containers:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "docker compose ps\n"
-msgstr ""
+msgstr "docker compose ps\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Check the HTTP redirect:"
-msgstr ""
+msgstr "Verifique o redirecionamento HTTP:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "curl -I http://example-demo.example.com/\n"
-msgstr ""
+msgstr "curl -I http://example-demo.example.com/\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Expected result:"
-msgstr ""
+msgstr "Resultado esperado:"
 
 #. type: Fenced code block (text)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -303,17 +351,19 @@ msgid ""
 "HTTP/1.1 301 Moved Permanently\n"
 "Location: https://example-demo.example.com/\n"
 msgstr ""
+"HTTP/1.1 301 Moved Permanently\n"
+"Location: https://example-demo.example.com/\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Check HTTPS:"
-msgstr ""
+msgstr "Verifique o HTTPS:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "curl -I https://example-demo.example.com/\n"
-msgstr ""
+msgstr "curl -I https://example-demo.example.com/\n"
 
 #. type: Fenced code block (text)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -322,11 +372,13 @@ msgid ""
 "HTTP/1.1 200 OK\n"
 "Server: Angie/...\n"
 msgstr ""
+"HTTP/1.1 200 OK\n"
+"Server: Angie/...\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Check the certificate:"
-msgstr ""
+msgstr "Verifique o certificado:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
@@ -337,96 +389,100 @@ msgid ""
 "  -servername example-demo.example.com 2>/dev/null \\\n"
 "  | openssl x509 -noout -issuer -subject -dates\n"
 msgstr ""
+"echo | openssl s_client \\\n"
+"  -connect example-demo.example.com:443 \\\n"
+"  -servername example-demo.example.com 2>/dev/null \\\n"
+"  | openssl x509 -noout -issuer -subject -dates\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Expected issuer:"
-msgstr ""
+msgstr "Emissor esperado:"
 
 #. type: Fenced code block (text)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Let's Encrypt\n"
-msgstr ""
+msgstr "Let's Encrypt\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Logs"
-msgstr ""
+msgstr "Logs"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Proxy logs:"
-msgstr ""
+msgstr "Logs do proxy:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "docker compose logs -f angie-proxy\n"
-msgstr ""
+msgstr "docker compose logs -f angie-proxy\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Stopping the services"
-msgstr ""
+msgstr "Parando os serviços"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Stop the services:"
-msgstr ""
+msgstr "Pare os serviços:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "docker compose down\n"
-msgstr ""
+msgstr "docker compose down\n"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "Stop the services and remove the certificates:"
-msgstr ""
+msgstr "Pare os serviços e remova os certificados:"
 
 #. type: Fenced code block (bash)
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "docker compose down -v\n"
-msgstr ""
+msgstr "docker compose down -v\n"
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "Limitations"
-msgstr ""
+msgstr "Limitações"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "This setup is intended for Docker Compose. Kubernetes doesn't expose workloads through the Docker API and requires an Ingress or Gateway API controller. Docker Swarm also uses the Docker API, but Swarm deployment isn't covered in this guide."
-msgstr ""
+msgstr "Esta configuração é feita para o Docker Compose. O Kubernetes não expõe workloads pela API do Docker e exige um controller de Ingress ou de Gateway API. O Docker Swarm também usa a API do Docker, mas o deploy no Swarm não é coberto neste guia."
 
 #. type: Title ##
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 #, no-wrap
 msgid "For more information"
-msgstr ""
+msgstr "Para mais informações"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "[Angie Docker Proxy documentation](https://hub.docker.com/r/angiesoftware/proxy)"
-msgstr ""
+msgstr "[Documentação do Angie Docker Proxy](https://hub.docker.com/r/angiesoftware/proxy)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "[Yii Application Template](https://github.com/yiisoft/app)"
-msgstr ""
+msgstr "[Template de aplicação do Yii](https://github.com/yiisoft/app)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "[Docker in Yii Application Templates](https://yiisoft.github.io/docs/guide/tutorial/docker.html)"
-msgstr ""
+msgstr "[Docker nos templates de aplicação do Yii](https://yiisoft.github.io/docs/guide/tutorial/docker.html)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/deployment/angie-docker-proxy.md
 msgid "[Docker Compose documentation](https://docs.docker.com/compose/)"
-msgstr ""
+msgstr "[Documentação do Docker Compose](https://docs.docker.com/compose/)"

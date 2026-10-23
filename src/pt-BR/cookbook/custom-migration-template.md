@@ -1,16 +1,17 @@
-# Using a custom migration template
+# Usando um template de migration personalizado
 
-The `migrate:create` command from `yiisoft/db-migration` generates migration
-classes from PHP view templates. Use a custom template when your project
-wants a standard header, strict class shape, comments, helper calls, or
-team-specific placeholders in every new migration.
+O comando `migrate:create` do `yiisoft/db-migration` gera classes de
+migration a partir de templates PHP de view. Use um template personalizado
+quando seu projeto quiser um cabeçalho padrão, um formato de classe rígido,
+comentários, chamadas a helpers ou placeholders específicos da equipe em
+toda nova migration.
 
-This recipe assumes migrations are already configured as described in the
-[Database migrations](../guide/databases/db-migrations.md) guide.
+Esta receita assume que as migrations já estão configuradas como descrito no
+guia [Migrations de banco de dados](../guide/databases/db-migrations.md).
 
-## Create a template
+## Crie um template
 
-Create `resources/migration-templates/migration.php`:
+Crie `resources/migration-templates/migration.php`:
 
 ```php
 <?php
@@ -18,11 +19,11 @@ Create `resources/migration-templates/migration.php`:
 declare(strict_types=1);
 
 /**
- * This view is used by {@see Yiisoft\Db\Migration\Command\CreateCommand}.
+ * Esta view é usada por {@see Yiisoft\Db\Migration\Command\CreateCommand}.
  *
  * @var \Yiisoft\Db\Migration\Service\Generate\PhpRenderer $this
- * @var string $className The new migration class name without namespace.
- * @var string $namespace The new migration class namespace.
+ * @var string $className O nome da nova classe de migration, sem namespace.
+ * @var string $namespace O namespace da nova classe de migration.
  */
 
 echo "<?php\n";
@@ -50,13 +51,12 @@ final class <?= $className ?> implements RevertibleMigrationInterface
 }
 ```
 
-The template is a PHP file that prints the generated migration. For the
-default `create` command, the most useful variables are `$className` and
-`$namespace`.
+O template é um arquivo PHP que imprime a migration gerada. Para o comando
+`create` padrão, as variáveis mais úteis são `$className` e `$namespace`.
 
-## Configure the generator
+## Configure o gerador
 
-Create `config/common/di/migration-generator.php`:
+Crie `config/common/di/migration-generator.php`:
 
 ```php
 <?php
@@ -75,24 +75,25 @@ return [
 ];
 ```
 
-The `create` key changes the template used by:
+A chave `create` muda o template usado por:
 
 ```shell
 ./yii migrate:create audit_log
 ```
 
-The command asks for confirmation and then writes a migration using your
+O comando pede confirmação e então grava uma migration usando o seu
 template.
 
-If the new DI file is not picked up, rebuild the config merge plan:
+Se o novo arquivo de DI não for carregado, reconstrua o merge plan da
+configuração:
 
 ```shell
 composer yii-config-rebuild
 ```
 
-## Configure multiple templates
+## Configure vários templates
 
-`yiisoft/db-migration` supports these template keys:
+O `yiisoft/db-migration` suporta estas chaves de template:
 
 - `create`
 - `table`
@@ -101,7 +102,7 @@ composer yii-config-rebuild
 - `dropColumn`
 - `junction`
 
-To replace multiple templates at once, use `setTemplates()`:
+Para substituir vários templates de uma vez, use `setTemplates()`:
 
 ```php
 use Yiisoft\Db\Migration\Service\Generate\CreateService;
@@ -120,17 +121,17 @@ return [
 ];
 ```
 
-For table-oriented templates, copy the corresponding file from
-`vendor/yiisoft/db-migration/resources/views/` and adjust it. Those
-templates receive additional variables such as `$table`, `$columns`,
-`$foreignKeys`, and `$tableComment`.
+Para os templates voltados a tabelas, copie o arquivo correspondente de
+`vendor/yiisoft/db-migration/resources/views/` e ajuste-o. Esses templates
+recebem variáveis adicionais, como `$table`, `$columns`, `$foreignKeys` e
+`$tableComment`.
 
-## Keep templates maintainable
+## Mantenha os templates fáceis de manter
 
-Keep generated migrations independent from current application services. A
-migration may run years later, after service APIs have changed. Put stable
-schema operations in the generated class and leave business logic in console
-commands or application services.
+Mantenha as migrations geradas independentes dos serviços atuais da
+aplicação. Uma migration pode rodar anos depois, quando as APIs dos serviços
+já mudaram. Coloque operações de schema estáveis na classe gerada e deixe a
+lógica de negócio em comandos de console ou serviços da aplicação.
 
-Do not edit templates under `vendor/`. Copy them into your project and
-configure `CreateService` to use the copies.
+Não edite templates dentro de `vendor/`. Copie-os para o seu projeto e
+configure o `CreateService` para usar as cópias.
