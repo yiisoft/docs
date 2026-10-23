@@ -52,12 +52,12 @@ msgstr "[Sobre o Yii](intro/what-is-yii.md)"
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Upgrading from version 1.1](intro/upgrade-from-v1.md)"
-msgstr "[Atualizando a partir da versão 1.1](intro/upgrade-from-v1.md)"
+msgstr "[Migrando da versão 1.1](intro/upgrade-from-v1.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Upgrading from version 2.0](intro/upgrade-from-v2.md)"
-msgstr "[Atualizando a partir da versão 2.0](intro/upgrade-from-v2.md)"
+msgstr "[Migrando da versão 2.0](intro/upgrade-from-v2.md)"
 
 #. type: Title ##
 #: ../src/guide/index.md ../src/guide/tutorial/console-applications.md
@@ -355,7 +355,7 @@ msgstr "[Template engines](views/template-engines.md) TODO: verify!"
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[View injections](views/view-injections.md)"
-msgstr "[Injeções em views](views/view-injections.md)"
+msgstr "[Injeções de view](views/view-injections.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md
@@ -535,7 +535,7 @@ msgstr "[Envio de e-mails](tutorial/mailing.md)"
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Performance tuning](tutorial/performance-tuning.md)"
-msgstr "[Otimização de desempenho](tutorial/performance-tuning.md)"
+msgstr "[Ajuste de desempenho](tutorial/performance-tuning.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md

@@ -8,31 +8,27 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-09-25 14:35+0000\n"
 "PO-Revision-Date: 2026-09-25 14:35+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/deployment/angie-docker-proxy.md
-#: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
+#: ../src/cookbook/deployment/angie-docker-proxy.md ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Project structure"
-msgstr ""
+msgstr "Estrutura do projeto"
 
 #. type: Title ###
-#: ../src/cookbook/making-http-requests.md ../src/guide/index.md
-#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/testing/overview.md
-#: ../src/guide/tutorial/docker.md
+#: ../src/cookbook/making-http-requests.md ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
 #, no-wrap
 msgid "Testing"
 msgstr "Testes"
 
 #. type: Fenced code block (json)
-#: ../src/guide/concept/autoloading.md ../src/guide/intro/upgrade-from-v1.md
-#: ../src/guide/intro/upgrade-from-v2.md
+#: ../src/guide/concept/autoloading.md ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid ""
 "{\n"
@@ -43,6 +39,13 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"{\n"
+"    \"autoload\": {\n"
+"        \"psr-4\": {\n"
+"            \"App\\\\\": \"src/\"\n"
+"        }\n"
+"    }\n"
+"}\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/concept/configuration.md ../src/guide/intro/upgrade-from-v2.md
@@ -61,6 +64,18 @@ msgid ""
 "        ),\n"
 "];\n"
 msgstr ""
+"use App\\Web;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"        ),\n"
+"];\n"
 
 #. type: Title ##
 #: ../src/guide/index.md ../src/guide/intro/upgrade-from-v2.md
@@ -72,44 +87,44 @@ msgstr "APIs REST"
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Recommended approach"
-msgstr ""
+msgstr "Abordagem recomendada"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "For example, instead of reading post archive data directly from several controllers or widgets, create a small service that describes the application need:"
-msgstr ""
+msgstr "Por exemplo, em vez de ler os dados do arquivo de posts diretamente em vários controllers ou widgets, crie um pequeno serviço que descreva a necessidade da aplicação:"
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Things to learn before starting"
-msgstr ""
+msgstr "O que aprender antes de começar"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "[Docker](https://www.docker.com/get-started/). The default Yii3 application template includes Docker configuration.  Using it gives each application its own repeatable environment and reduces differences between local development and production."
-msgstr ""
+msgstr "[Docker](https://www.docker.com/get-started/). O template de aplicação padrão do Yii3 inclui configuração do Docker.  Usá-lo dá a cada aplicação seu próprio ambiente reproduzível e reduz as diferenças entre o desenvolvimento local e a produção."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "[Environment variables](https://en.wikipedia.org/wiki/Environment_variable). Yii3 templates commonly use them for environment-specific settings and secrets, especially in Docker-based deployments. This follows the same idea as [12-factor app configuration](https://12factor.net/config)."
-msgstr ""
+msgstr "[Variáveis de ambiente](https://en.wikipedia.org/wiki/Environment_variable). Os templates do Yii3 costumam usá-las para configurações específicas de ambiente e segredos, especialmente em deploys baseados em Docker. Isso segue a mesma ideia da [configuração de aplicações 12-factor](https://12factor.net/config)."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "[Actions](../structure/action.md). Yii3 does not require controller inheritance. A route can point to any callable, and the default template uses invokable action classes."
-msgstr ""
+msgstr "[Actions](../structure/action.md). O Yii3 não exige herança de controller. Uma rota pode apontar para qualquer callable, e o template padrão usa classes de action invocáveis."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "Configure your application namespace with PSR-4:"
-msgstr ""
+msgstr "Configure o namespace da sua aplicação com PSR-4:"
 
 #. type: Fenced code block (shell)
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "composer dump-autoload\n"
-msgstr ""
+msgstr "composer dump-autoload\n"
 
 #. type: Fenced code block (text)
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
@@ -122,31 +137,37 @@ msgid ""
 "src/\n"
 "tests/\n"
 msgstr ""
+"assets/\n"
+"config/\n"
+"public/\n"
+"runtime/\n"
+"src/\n"
+"tests/\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "Typical mappings to consider are:"
-msgstr ""
+msgstr "Mapeamentos típicos a considerar:"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Configuration](../concept/configuration.md), [Aliases](../concept/aliases.md), and [Dependency injection container](../concept/di-container.md)."
-msgstr ""
+msgstr "Veja [Configuração](../concept/configuration.md), [Aliases](../concept/aliases.md) e [Container de injeção de dependência](../concept/di-container.md)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Entry scripts](../structure/entry-script.md) and [Application workflow](../start/workflow.md)."
-msgstr ""
+msgstr "Veja [Scripts de entrada](../structure/entry-script.md) e [Fluxo da aplicação](../start/workflow.md)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Actions](../structure/action.md), [Middleware](../structure/middleware.md), and [Routing and URL generation](../runtime/routing.md)."
-msgstr ""
+msgstr "Veja [Actions](../structure/action.md), [Middleware](../structure/middleware.md) e [Roteamento e geração de URLs](../runtime/routing.md)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Request](../runtime/request.md), [Response](../runtime/response.md), [Sessions](../runtime/sessions.md), and [Cookies](../runtime/cookies.md)."
-msgstr ""
+msgstr "Veja [Requisição](../runtime/request.md), [Resposta](../runtime/response.md), [Sessões](../runtime/sessions.md) e [Cookies](../runtime/cookies.md)."
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
@@ -166,38 +187,51 @@ msgid ""
 "    public ?string $email = null;\n"
 "}\n"
 msgstr ""
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Email;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"final class ContactForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    public ?string $name = null;\n"
+"\n"
+"    #[Required]\n"
+"    #[Email]\n"
+"    public ?string $email = null;\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Working with forms](../start/forms.md), [Validating input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md), [yiisoft/form](https://github.com/yiisoft/form), and [yiisoft/form-model](https://github.com/yiisoft/form-model)."
-msgstr ""
+msgstr "Veja [Trabalhando com formulários](../start/forms.md), [Validando a entrada](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md), [yiisoft/form](https://github.com/yiisoft/form) e [yiisoft/form-model](https://github.com/yiisoft/form-model)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Working with databases](../start/databases.md), [Migrations](../databases/db-migrations.md), and [yiisoft/active-record](https://github.com/yiisoft/active-record)."
-msgstr ""
+msgstr "Veja [Trabalhando com banco de dados](../start/databases.md), [Migrations](../databases/db-migrations.md) e [yiisoft/active-record](https://github.com/yiisoft/active-record)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "GridView and data widgets"
-msgstr ""
+msgstr "GridView e widgets de dados"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Middleware](../structure/middleware.md), [Authentication](../security/authentication.md), and [Authorization](../security/authorization.md)."
-msgstr ""
+msgstr "Veja [Middleware](../structure/middleware.md), [Autenticação](../security/authentication.md) e [Autorização](../security/authorization.md)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Console applications](../tutorial/console-applications.md)."
-msgstr ""
+msgstr "Veja [Aplicações de console](../tutorial/console-applications.md)."
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Upgrading from Version 2.0"
-msgstr ""
+msgstr "Migrando da versão 2.0"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -206,122 +240,124 @@ msgid ""
 "> If you haven't used Yii 2.0, you can skip this section and get directly to \"[getting started](../start/prerequisites.md)\"\n"
 "> section.\n"
 msgstr ""
+"> Se você não usou o Yii 2.0, pode pular esta seção e ir direto para a seção \"[primeiros passos](../start/prerequisites.md)\"\n"
+"> do guia.\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 keeps many Yii ideas, but it is not a drop-in replacement for Yii 2.0. It uses PHP 8 features, PSR interfaces, dependency injection, explicit package composition, and a different application template. Use your Yii 2.0 experience to design a new Yii3 application deliberately instead of trying to reproduce the old application structure."
-msgstr ""
+msgstr "O Yii3 mantém muitas ideias do Yii, mas não é um substituto direto do Yii 2.0. Ele usa recursos do PHP 8, interfaces PSR, injeção de dependência, composição explícita de pacotes e um template de aplicação diferente. Use sua experiência com o Yii 2.0 para projetar uma nova aplicação Yii3 de forma deliberada, em vez de tentar reproduzir a estrutura da aplicação antiga."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "For source applications, compare against:"
-msgstr ""
+msgstr "Para as aplicações de origem, compare com:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[yiisoft/yii2-app-basic](https://github.com/yiisoft/yii2-app-basic)"
-msgstr ""
+msgstr "[yiisoft/yii2-app-basic](https://github.com/yiisoft/yii2-app-basic)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[yiisoft/yii2-app-advanced](https://github.com/yiisoft/yii2-app-advanced)"
-msgstr ""
+msgstr "[yiisoft/yii2-app-advanced](https://github.com/yiisoft/yii2-app-advanced)"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "For the target structure, compare against:"
-msgstr ""
+msgstr "Para a estrutura de destino, compare com:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[yiisoft/app](https://github.com/yiisoft/app)"
-msgstr ""
+msgstr "[yiisoft/app](https://github.com/yiisoft/app)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Yii3 guide](../index.md)"
-msgstr ""
+msgstr "[Guia do Yii3](../index.md)"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Before starting, [check maintenance policy and end-of-life dates for Yii 2.0](https://www.yiiframework.com/release-cycle).  Keeping a mature Yii 2.0 application on Yii 2.0 can be a valid choice. A Yii3 project is most useful when you want the new package ecosystem, stricter typing, PSR middleware, and a more explicit architecture."
-msgstr ""
+msgstr "Antes de começar, [confira a política de manutenção e as datas de fim de vida do Yii 2.0](https://www.yiiframework.com/release-cycle).  Manter uma aplicação Yii 2.0 madura no Yii 2.0 pode ser uma escolha válida. Um projeto Yii3 é mais útil quando você quer o novo ecossistema de pacotes, tipagem mais rigorosa, middleware PSR e uma arquitetura mais explícita."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Think of the work as building a Yii3 application that is informed by the old one. The old project tells you which routes, forms, database tables, business rules, and user workflows matter. The Yii3 project should decide again where these responsibilities belong."
-msgstr ""
+msgstr "Pense no trabalho como a construção de uma aplicação Yii3 guiada pela antiga. O projeto antigo diz quais rotas, formulários, tabelas do banco de dados, regras de negócio e fluxos dos usuários importam. O projeto Yii3 deve decidir de novo onde cada uma dessas responsabilidades fica."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Build it in vertical slices:"
-msgstr ""
+msgstr "Construa em vertical slices:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Create a new Yii3 application with `yiisoft/app`."
-msgstr ""
+msgstr "Crie uma nova aplicação Yii3 com `yiisoft/app`."
 
 #. type: Bullet: '2. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Configure Composer autoloading and add only the code needed for the slice you are building."
-msgstr ""
+msgstr "Configure o autoloading do Composer e adicione só o código necessário para o slice que você está construindo."
 
 #. type: Bullet: '3. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Define configuration and routes before writing actions."
-msgstr ""
+msgstr "Defina a configuração e as rotas antes de escrever as actions."
 
 #. type: Bullet: '4. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Build one request flow at a time: route, action, input model, service, persistence, view, assets, tests."
-msgstr ""
+msgstr "Construa um fluxo de requisição por vez: rota, action, modelo de entrada, serviço, persistência, view, assets, testes."
 
 #. type: Bullet: '5. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Keep the Yii 2.0 application running until each flow is verified in Yii3."
-msgstr ""
+msgstr "Mantenha a aplicação Yii 2.0 rodando até cada fluxo ser verificado no Yii3."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Avoid moving the whole directory tree first. Yii3's defaults are intentionally different, and a mechanical copy tends to preserve Yii 2.0 service-locator assumptions. Prefer small, reviewed decisions over carrying old structure forward because it is familiar."
-msgstr ""
+msgstr "Evite mover toda a árvore de diretórios primeiro. Os padrões do Yii3 são intencionalmente diferentes, e uma cópia mecânica tende a preservar as suposições de service locator do Yii 2.0. Prefira decisões pequenas e revisadas a carregar a estrutura antiga só porque ela é familiar."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Prepare the Yii 2.0 application"
-msgstr ""
+msgstr "Prepare a aplicação Yii 2.0"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Useful preparation can happen before the Yii3 application is ready. These refactorings improve the Yii 2.0 project itself and make the later rewrite less dependent on hidden framework state:"
-msgstr ""
+msgstr "Uma preparação útil pode acontecer antes de a aplicação Yii3 estar pronta. Estas refatorações melhoram o próprio projeto Yii 2.0 e deixam a reescrita posterior menos dependente de estado oculto do framework:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Replace `Yii::$app` access in reusable code with constructor arguments where practical. If a full dependency injection refactoring is too large, keep `Yii::$app` calls near controllers and widgets, then pass values and services to lower-level code explicitly."
-msgstr ""
+msgstr "Substitua o acesso a `Yii::$app` no código reutilizável por argumentos do construtor onde for viável. Se uma refatoração completa para injeção de dependência for grande demais, mantenha as chamadas a `Yii::$app` perto de controllers e widgets, e passe valores e serviços explicitamente para o código de nível mais baixo."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Introduce repositories or query services for database reads that are currently scattered across controllers, views, widgets, and Active Record methods. Yii3 does not require Active Record for persistence, so a repository boundary gives you a natural place to change the implementation later."
-msgstr ""
+msgstr "Introduza repositórios ou serviços de consulta para as leituras do banco de dados hoje espalhadas por controllers, views, widgets e métodos do Active Record. O Yii3 não exige Active Record para persistência, então uma fronteira de repositório dá a você um lugar natural para trocar a implementação depois."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Separate business rules from framework infrastructure. Domain code that does not extend Yii classes, read global application state, or render views is much easier to reuse or rewrite."
-msgstr ""
+msgstr "Separe as regras de negócio da infraestrutura do framework. Código de domínio que não estende classes do Yii, não lê o estado global da aplicação nem renderiza views é muito mais fácil de reutilizar ou reescrever."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Move reusable behavior into Yii 2.0 components or services instead of keeping it inside large controllers and Active Record classes. Yii3 services are configured and injected differently, but the responsibility boundary is similar."
-msgstr ""
+msgstr "Mova o comportamento reutilizável para componentes ou serviços do Yii 2.0 em vez de mantê-lo dentro de controllers e classes Active Record grandes. Os serviços do Yii3 são configurados e injetados de outra forma, mas a fronteira de responsabilidade é parecida."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Add tests around routes and workflows you plan to rebuild first. They become the executable specification for the Yii3 slice."
-msgstr ""
+msgstr "Adicione testes em torno das rotas e fluxos que você planeja reconstruir primeiro. Eles se tornam a especificação executável do slice Yii3."
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -340,102 +376,114 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"final class PostRepository\n"
+"{\n"
+"    public function getArchive(): array\n"
+"    {\n"
+"        // ...\n"
+"    }\n"
+"\n"
+"    public function getTopForFrontPage(int $limit = 10): array\n"
+"    {\n"
+"        // ...\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The Yii3 implementation may still use Active Record, or it may use `yiisoft/db` queries. The important point is that controllers and views no longer need to know that detail."
-msgstr ""
+msgstr "A implementação no Yii3 ainda pode usar Active Record, ou pode usar consultas do `yiisoft/db`. O importante é que controllers e views não precisem mais conhecer esse detalhe."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Some Yii3 application-template choices are worth learning before you start moving features:"
-msgstr ""
+msgstr "Vale a pena conhecer algumas escolhas do template de aplicação do Yii3 antes de começar a mover funcionalidades:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Application structure](../structure/overview.md). Yii3's default structure is different from Yii 2.0. The structure is flexible, but start with the Yii3 template and change it only when the application needs it."
-msgstr ""
+msgstr "[Estrutura da aplicação](../structure/overview.md). A estrutura padrão do Yii3 é diferente da do Yii 2.0. Ela é flexível, mas comece com o template do Yii3 e altere-o apenas quando a aplicação precisar."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "PHP requirements"
-msgstr ""
+msgstr "Requisitos de PHP"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 application templates require PHP 8.2 or above. As a result, application code can use language features that were not common in Yii 2.0 applications:"
-msgstr ""
+msgstr "Os templates de aplicação do Yii3 exigem PHP 8.2 ou superior. Com isso, o código da aplicação pode usar recursos da linguagem que não eram comuns em aplicações Yii 2.0:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Type declarations](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
-msgstr ""
+msgstr "[Declarações de tipo](https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Return type declarations](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
-msgstr ""
+msgstr "[Declarações de tipo de retorno](https://www.php.net/manual/en/functions.returning-values.php#functions.returning-values.type-declaration)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Class constant visibility](https://www.php.net/manual/en/language.oop5.constants.php)"
-msgstr ""
+msgstr "[Visibilidade de constantes de classe](https://www.php.net/manual/en/language.oop5.constants.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
-msgstr ""
+msgstr "[Argumentos nomeados](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Anonymous classes](https://www.php.net/manual/en/language.oop5.anonymous.php)"
-msgstr ""
+msgstr "[Classes anônimas](https://www.php.net/manual/en/language.oop5.anonymous.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
-msgstr ""
+msgstr "[::class](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.class)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Generators](https://www.php.net/manual/en/language.generators.php)"
-msgstr ""
+msgstr "[Generators](https://www.php.net/manual/en/language.generators.php)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Variadic functions](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
-msgstr ""
+msgstr "[Funções variádicas](https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly properties](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
-msgstr ""
+msgstr "[Propriedades readonly](https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Readonly classes](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
-msgstr ""
+msgstr "[Classes readonly](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class.readonly)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Constructor property promotion](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
-msgstr ""
+msgstr "[Promoção de propriedades no construtor](https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion)"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "[Attributes](https://www.php.net/manual/en/language.attributes.php)"
-msgstr ""
+msgstr "[Atributos](https://www.php.net/manual/en/language.attributes.php)"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Run static analysis and tests on Yii 2.0 before reusing code in Yii3. Code with explicit types, small services, and few implicit `Yii::$app` dependencies is easier to understand and easier to place in the new application."
-msgstr ""
+msgstr "Rode análise estática e testes no Yii 2.0 antes de reutilizar código no Yii3. Código com tipos explícitos, serviços pequenos e poucas dependências implícitas de `Yii::$app` é mais fácil de entender e de encaixar na nova aplicação."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 applications commonly keep framework roles in top-level directories:"
-msgstr ""
+msgstr "Aplicações Yii 2.0 costumam manter os papéis do framework em diretórios de primeiro nível:"
 
 #. type: Fenced code block (text)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -451,11 +499,20 @@ msgid ""
 "web/\n"
 "widgets/\n"
 msgstr ""
+"assets/\n"
+"commands/\n"
+"config/\n"
+"controllers/\n"
+"models/\n"
+"runtime/\n"
+"views/\n"
+"web/\n"
+"widgets/\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The Yii 2.0 advanced template splits the same roles by application:"
-msgstr ""
+msgstr "O template advanced do Yii 2.0 divide os mesmos papéis por aplicação:"
 
 #. type: Fenced code block (text)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -466,11 +523,15 @@ msgid ""
 "console/\n"
 "frontend/\n"
 msgstr ""
+"backend/\n"
+"common/\n"
+"console/\n"
+"frontend/\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The current Yii3 application template is organized around source code, configuration, public files, and runtime files:"
-msgstr ""
+msgstr "O template de aplicação atual do Yii3 é organizado em torno do código-fonte, da configuração, dos arquivos públicos e dos arquivos de runtime:"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -487,43 +548,53 @@ msgid ""
 "| `commands/` | `console/controllers/` | `src/Console/*Command.php` |\n"
 "| `config/*.php` | app and common config files | `config/common`, `config/web`, `config/console`, `config/environments` |\n"
 msgstr ""
+"| Yii 2.0 basic | Yii 2.0 advanced | Yii3 |\n"
+"|---------------|------------------|------|\n"
+"| `controllers/` | `frontend/controllers/`, `backend/controllers/` | `src/Web/*/Action.php` ou classes no estilo controller |\n"
+"| `models/` | `common/models/`, models específicos de cada app | `src/Domain`, `src/Shared`, `src/Web/*` ou `src/Db`, conforme a responsabilidade |\n"
+"| `views/` | `frontend/views/`, `backend/views/` | templates perto da funcionalidade, por exemplo `src/Web/HomePage/template.php` |\n"
+"| `views/layouts/` | diretórios de layout de cada app | classes/templates de layout, por exemplo `src/Web/Shared/Layout/Main` |\n"
+"| `assets/` | asset bundles de cada app | `assets/` para os arquivos-fonte e `src/Web/.../*Asset.php` para os bundles |\n"
+"| `web/` | `frontend/web/`, `backend/web/` | `public/` |\n"
+"| `commands/` | `console/controllers/` | `src/Console/*Command.php` |\n"
+"| `config/*.php` | arquivos de configuração do app e comuns | `config/common`, `config/web`, `config/console`, `config/environments` |\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "There is no single required layout. The important change is that Yii3 applications should group code by responsibility and make dependencies explicit. If you are coming from the advanced template, treat `frontend` and `backend` as separate web contexts. Shared domain code can live in `src/Shared` or in application-specific packages."
-msgstr ""
+msgstr "Não existe um layout obrigatório único. A mudança importante é que aplicações Yii3 devem agrupar o código por responsabilidade e tornar as dependências explícitas. Se você vem do template advanced, trate `frontend` e `backend` como contextos web separados. O código de domínio compartilhado pode ficar em `src/Shared` ou em pacotes específicos da aplicação."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Composer and autoloading"
-msgstr ""
+msgstr "Composer e autoloading"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 applications usually require `vendor/autoload.php` and `vendor/yiisoft/yii2/Yii.php` in `web/index.php`.  Yii3 applications require only Composer's autoloader and application bootstrap code."
-msgstr ""
+msgstr "Aplicações Yii 2.0 geralmente fazem require de `vendor/autoload.php` e `vendor/yiisoft/yii2/Yii.php` em `web/index.php`.  Aplicações Yii3 precisam apenas do autoloader do Composer e do código de bootstrap da aplicação."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Then rebuild Composer autoload files:"
-msgstr ""
+msgstr "Depois, reconstrua os arquivos de autoload do Composer:"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Install Yii3 packages intentionally. Yii3 is split into focused packages, so features such as database access, forms, validation, assets, data widgets, authentication, and caching are separate Composer dependencies."
-msgstr ""
+msgstr "Instale os pacotes Yii3 de forma intencional. O Yii3 é dividido em pacotes focados, então funcionalidades como acesso ao banco de dados, formulários, validação, assets, widgets de dados, autenticação e cache são dependências separadas do Composer."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Configuration and services"
-msgstr ""
+msgstr "Configuração e serviços"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii 2.0, many services are configured as application components and accessed through the service locator:"
-msgstr ""
+msgstr "No Yii 2.0, muitos serviços são configurados como componentes da aplicação e acessados pelo service locator:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -533,11 +604,14 @@ msgid ""
 "$db = Yii::$app->db;\n"
 "$url = Yii::$app->urlManager->createUrl(['post/view', 'id' => $id]);\n"
 msgstr ""
+"$cache = Yii::$app->cache;\n"
+"$db = Yii::$app->db;\n"
+"$url = Yii::$app->urlManager->createUrl(['post/view', 'id' => $id]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii3, services are configured for the container and injected where they are needed:"
-msgstr ""
+msgstr "No Yii3, os serviços são configurados no container e injetados onde são necessários:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -557,62 +631,75 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use Psr\\SimpleCache\\CacheInterface;\n"
+"use Yiisoft\\Db\\Connection\\ConnectionInterface;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"final readonly class PostService\n"
+"{\n"
+"    public function __construct(\n"
+"        private ConnectionInterface $db,\n"
+"        private CacheInterface $cache,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Move configuration in groups:"
-msgstr ""
+msgstr "Mova a configuração por grupos:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "aliases to `config/common/aliases.php`;"
-msgstr ""
+msgstr "aliases para `config/common/aliases.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "route definitions to `config/common/routes.php`;"
-msgstr ""
+msgstr "definições de rotas para `config/common/routes.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "shared service definitions to `config/common/di/*.php`;"
-msgstr ""
+msgstr "definições de serviços compartilhadas para `config/common/di/*.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "web-only service definitions to `config/web/di/*.php`;"
-msgstr ""
+msgstr "definições de serviços apenas para web para `config/web/di/*.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "console parameters and commands to `config/console/*.php`;"
-msgstr ""
+msgstr "parâmetros e comandos de console para `config/console/*.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "shared parameters to `config/common/params.php`;"
-msgstr ""
+msgstr "parâmetros compartilhados para `config/common/params.php`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "environment overrides to `config/environments`."
-msgstr ""
+msgstr "sobrescritas por ambiente para `config/environments`."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The default template's `di-console` group reuses shared definitions from `config/common/di/*.php`. If you need console-only container definitions, add the corresponding files to the `di-console` group in `config/configuration.php` and rebuild the merge plan."
-msgstr ""
+msgstr "O grupo `di-console` do template padrão reutiliza as definições compartilhadas de `config/common/di/*.php`. Se você precisar de definições de container apenas para o console, adicione os arquivos correspondentes ao grupo `di-console` em `config/configuration.php` e reconstrua o merge plan."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Entry script and bootstrap"
-msgstr ""
+msgstr "Script de entrada e bootstrap"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "A Yii 2.0 basic entry script commonly creates the application directly:"
-msgstr ""
+msgstr "Um script de entrada do template basic do Yii 2.0 geralmente cria a aplicação diretamente:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -628,22 +715,31 @@ msgid ""
 "\n"
 "(new yii\\web\\Application($config))->run();\n"
 msgstr ""
+"defined('YII_DEBUG') or define('YII_DEBUG', true);\n"
+"defined('YII_ENV') or define('YII_ENV', 'dev');\n"
+"\n"
+"require __DIR__ . '/../vendor/autoload.php';\n"
+"require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';\n"
+"\n"
+"$config = require __DIR__ . '/../config/web.php';\n"
+"\n"
+"(new yii\\web\\Application($config))->run();\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii3, use the application template entry script as the source of truth. It loads Composer and bootstraps the configured application runner. Avoid recreating the old `yii\\web\\Application` pattern in `public/index.php`; put configuration in config files and dependencies in the container."
-msgstr ""
+msgstr "No Yii3, use o script de entrada do template de aplicação como fonte da verdade. Ele carrega o Composer e inicializa o runner da aplicação configurada. Evite recriar o antigo padrão `yii\\web\\Application` em `public/index.php`; coloque a configuração nos arquivos de configuração e as dependências no container."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Controllers, actions, and routing"
-msgstr ""
+msgstr "Controllers, actions e roteamento"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 routes usually point to controller action methods:"
-msgstr ""
+msgstr "As rotas do Yii 2.0 geralmente apontam para métodos de action de controllers:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -661,11 +757,22 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"namespace app\\controllers;\n"
+"\n"
+"use yii\\web\\Controller;\n"
+"\n"
+"final class SiteController extends Controller\n"
+"{\n"
+"    public function actionIndex(): string\n"
+"    {\n"
+"        return $this->render('index');\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 does not require controller base classes. The current application template uses invokable action classes:"
-msgstr ""
+msgstr "O Yii3 não exige classes base de controller. O template de aplicação atual usa classes de action invocáveis:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -689,27 +796,44 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"namespace App\\Web\\HomePage;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template');\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Routes are explicit:"
-msgstr ""
+msgstr "As rotas são explícitas:"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "When redesigning a controller flow, list all Yii 2.0 actions and create named routes for the flows you still need.  Then implement each flow as an invokable class or a controller-like service. Constructor injection replaces calls to `Yii::$app` and controller properties."
-msgstr ""
+msgstr "Ao redesenhar o fluxo de um controller, liste todas as actions do Yii 2.0 e crie rotas nomeadas para os fluxos de que você ainda precisa.  Depois, implemente cada fluxo como uma classe invocável ou um serviço no estilo controller. A injeção pelo construtor substitui as chamadas a `Yii::$app` e as propriedades do controller."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Requests, responses, sessions, and cookies"
-msgstr ""
+msgstr "Requisições, respostas, sessões e cookies"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 actions often read request data and write response data through application components:"
-msgstr ""
+msgstr "As actions do Yii 2.0 frequentemente leem os dados da requisição e escrevem os dados da resposta por meio de componentes da aplicação:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -720,11 +844,15 @@ msgid ""
 "\n"
 "return $this->redirect(['post/view', 'id' => $id]);\n"
 msgstr ""
+"$id = Yii::$app->request->get('id');\n"
+"Yii::$app->session->setFlash('success', 'Saved.');\n"
+"\n"
+"return $this->redirect(['post/view', 'id' => $id]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 uses PSR-7 request and response objects and injectable services:"
-msgstr ""
+msgstr "O Yii3 usa objetos de requisição e resposta PSR-7 e serviços injetáveis:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -755,22 +883,46 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"\n"
+"final readonly class SavePostAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"        private UrlGeneratorInterface $urlGenerator,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $id = (int) ($request->getQueryParams()['id'] ?? 0);\n"
+"        $url = $this->urlGenerator->generate('post/view', ['id' => $id]);\n"
+"\n"
+"        return $this->responseFactory\n"
+"            ->createResponse(Status::SEE_OTHER)\n"
+"            ->withHeader('Location', $url);\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Design request handling early because it affects forms, filters, REST endpoints, redirects, and tests."
-msgstr ""
+msgstr "Pense no tratamento de requisições logo no início, porque ele afeta formulários, filtros, endpoints REST, redirecionamentos e testes."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Views, layouts, assets, and URLs"
-msgstr ""
+msgstr "Views, layouts, assets e URLs"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii 2.0, controller rendering finds files under `views/{controller}` and layouts under `views/layouts`:"
-msgstr ""
+msgstr "No Yii 2.0, a renderização do controller procura arquivos em `views/{controller}` e layouts em `views/layouts`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -780,11 +932,14 @@ msgid ""
 "    'model' => $model,\n"
 "]);\n"
 msgstr ""
+"return $this->render('view', [\n"
+"    'model' => $model,\n"
+"]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii3, the template path is explicit in the action:"
-msgstr ""
+msgstr "No Yii3, o caminho do template é explícito na action:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -794,11 +949,14 @@ msgid ""
 "    'post' => $post,\n"
 "]);\n"
 msgstr ""
+"return $this->viewRenderer->render(__DIR__ . '/view', [\n"
+"    'post' => $post,\n"
+"]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "A Yii3 template receives a `Yiisoft\\View\\WebView` instance as `$this`:"
-msgstr ""
+msgstr "Um template do Yii3 recebe uma instância de `Yiisoft\\View\\WebView` como `$this`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -819,11 +977,25 @@ msgid ""
 "\n"
 "<h1><?= Html::encode($title) ?></h1>\n"
 msgstr ""
+"use App\\Shared\\ApplicationParams;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\View\\WebView;\n"
+"\n"
+"/**\n"
+" * @var WebView $this\n"
+" * @var ApplicationParams $applicationParams\n"
+" * @var string $title\n"
+" */\n"
+"\n"
+"$this->setTitle($title . ' - ' . $applicationParams->name);\n"
+"?>\n"
+"\n"
+"<h1><?= Html::encode($title) ?></h1>\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Asset bundles move from `yii\\web\\AssetBundle` to `Yiisoft\\Assets\\AssetBundle`:"
-msgstr ""
+msgstr "Os asset bundles passam de `yii\\web\\AssetBundle` para `Yiisoft\\Assets\\AssetBundle`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -844,11 +1016,25 @@ msgid ""
 "    ];\n"
 "}\n"
 msgstr ""
+"namespace App\\Web\\Shared\\Layout\\Main;\n"
+"\n"
+"use Yiisoft\\Assets\\AssetBundle;\n"
+"\n"
+"final class MainAsset extends AssetBundle\n"
+"{\n"
+"    public ?string $basePath = '@assets/main';\n"
+"    public ?string $baseUrl = '@assetsUrl/main';\n"
+"    public ?string $sourcePath = '@assetsSource/main';\n"
+"\n"
+"    public array $css = [\n"
+"        'site.css',\n"
+"    ];\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Register assets in a layout or view via the asset manager:"
-msgstr ""
+msgstr "Registre os assets em um layout ou view pelo gerenciador de assets:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -859,6 +1045,10 @@ msgid ""
 "$this->addCssFiles($assetManager->getCssFiles());\n"
 "$this->addJsFiles($assetManager->getJsFiles());\n"
 msgstr ""
+"$assetManager->register(MainAsset::class);\n"
+"\n"
+"$this->addCssFiles($assetManager->getCssFiles());\n"
+"$this->addJsFiles($assetManager->getJsFiles());\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -867,28 +1057,30 @@ msgid ""
 "Replace `yii\\helpers\\Url` and `Yii::$app->urlManager` usage with named routes and\n"
 "`Yiisoft\\Router\\UrlGeneratorInterface`:\n"
 msgstr ""
+"Substitua o uso de `yii\\helpers\\Url` e `Yii::$app->urlManager` por rotas nomeadas e\n"
+"`Yiisoft\\Router\\UrlGeneratorInterface`:\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "$url = $urlGenerator->generate('post/view', ['id' => $post->getId()]);\n"
-msgstr ""
+msgstr "$url = $urlGenerator->generate('post/view', ['id' => $post->getId()]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [View](../views/view.md), [Assets](../views/asset.md), [Scripts, styles and metatags](../views/script-style-meta.md), and [Template engines](../views/template-engines.md)."
-msgstr ""
+msgstr "Veja [View](../views/view.md), [Assets](../views/asset.md), [Scripts, estilos e metatags](../views/script-style-meta.md) e [Template engines](../views/template-engines.md)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Forms and validation"
-msgstr ""
+msgstr "Formulários e validação"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 frequently combines form data, labels, validation, and sometimes persistence in a `yii\\base\\Model` or `yii\\db\\ActiveRecord` class:"
-msgstr ""
+msgstr "O Yii 2.0 frequentemente junta dados do formulário, rótulos, validação e às vezes persistência em uma classe `yii\\base\\Model` ou `yii\\db\\ActiveRecord`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -908,42 +1100,55 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"final class ContactForm extends \\yii\\base\\Model\n"
+"{\n"
+"    public $name;\n"
+"    public $email;\n"
+"\n"
+"    public function rules(): array\n"
+"    {\n"
+"        return [\n"
+"            [['name', 'email'], 'required'],\n"
+"            ['email', 'email'],\n"
+"        ];\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 separates these concerns. Use `yiisoft/form-model` for form data and metadata, and `yiisoft/validator` for rules:"
-msgstr ""
+msgstr "O Yii3 separa essas responsabilidades. Use `yiisoft/form-model` para os dados e metadados do formulário, e `yiisoft/validator` para as regras:"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "For form rendering, replace `yii\\widgets\\ActiveForm` with `yiisoft/form` fields and form model integration. For input hydration, prefer the form-model and hydrator packages instead of mass-assigning arbitrary request data to persistence objects."
-msgstr ""
+msgstr "Para a renderização de formulários, substitua `yii\\widgets\\ActiveForm` pelos campos do `yiisoft/form` e pela integração com form models. Para a hidratação da entrada, prefira os pacotes de form model e hydrator em vez de atribuir em massa dados arbitrários da requisição a objetos de persistência."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Active Record and persistence"
-msgstr ""
+msgstr "Active Record e persistência"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "There are two common Yii3 choices for code that used Yii 2.0 Active Record classes."
-msgstr ""
+msgstr "Existem duas escolhas comuns no Yii3 para código que usava classes Active Record do Yii 2.0."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The first path is architectural: move business logic to services and domain objects, then use repositories for persistence. This is recommended when the Yii 2.0 model contains validation, form scenarios, authorization checks, mailing, file uploads, and database access in the same class."
-msgstr ""
+msgstr "O primeiro caminho é arquitetural: mova a lógica de negócio para serviços e objetos de domínio e use repositórios para a persistência. Ele é recomendado quando o model do Yii 2.0 contém validação, cenários de formulário, verificações de autorização, envio de e-mails, upload de arquivos e acesso ao banco de dados na mesma classe."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The second path is incremental: represent the database model with [yiisoft/active-record](https://github.com/yiisoft/active-record). This is closer to Yii 2.0 and can be significantly faster when your Active Record classes mostly describe tables and relations."
-msgstr ""
+msgstr "O segundo caminho é incremental: represente o modelo do banco de dados com o [yiisoft/active-record](https://github.com/yiisoft/active-record). Ele é mais próximo do Yii 2.0 e pode ser bem mais rápido quando suas classes Active Record descrevem principalmente tabelas e relações."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0:"
-msgstr ""
+msgstr "Yii 2.0:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -965,11 +1170,26 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"final class Post extends \\yii\\db\\ActiveRecord\n"
+"{\n"
+"    public static function tableName(): string\n"
+"    {\n"
+"        return '{{%post}}';\n"
+"    }\n"
+"\n"
+"    public function rules(): array\n"
+"    {\n"
+"        return [\n"
+"            [['title', 'body'], 'required'],\n"
+"            ['title', 'string', 'max' => 255],\n"
+"        ];\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 Active Record:"
-msgstr ""
+msgstr "Active Record no Yii3:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1004,11 +1224,39 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use Yiisoft\\ActiveRecord\\ActiveRecord;\n"
+"\n"
+"final class Post extends ActiveRecord\n"
+"{\n"
+"    protected int $id;\n"
+"    protected string $title;\n"
+"    protected string $body;\n"
+"\n"
+"    public function tableName(): string\n"
+"    {\n"
+"        return '{{%post}}';\n"
+"    }\n"
+"\n"
+"    public function getId(): ?int\n"
+"    {\n"
+"        return $this->id ?? null;\n"
+"    }\n"
+"\n"
+"    public function getTitle(): ?string\n"
+"    {\n"
+"        return $this->title ?? null;\n"
+"    }\n"
+"\n"
+"    public function setTitle(string $title): void\n"
+"    {\n"
+"        $this->title = $title;\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Do not move Yii 2.0 `rules()` directly into the Active Record class. In Yii3, validation belongs to validator rules, form models, command objects, or services:"
-msgstr ""
+msgstr "Não mova o `rules()` do Yii 2.0 diretamente para a classe Active Record. No Yii3, a validação pertence a regras do validator, form models, objetos de comando ou serviços:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1028,11 +1276,24 @@ msgid ""
 "    public ?string $body = null;\n"
 "}\n"
 msgstr ""
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"\n"
+"final class PostInput extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Length(max: 255)]\n"
+"    public ?string $title = null;\n"
+"\n"
+"    #[Required]\n"
+"    public ?string $body = null;\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Then copy validated data into the record or pass it to an application service:"
-msgstr ""
+msgstr "Depois, copie os dados validados para o registro ou passe-os para um serviço da aplicação:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1042,56 +1303,59 @@ msgid ""
 "$post->setTitle($input->title);\n"
 "$post->save();\n"
 msgstr ""
+"$post = new Post();\n"
+"$post->setTitle($input->title);\n"
+"$post->save();\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "When deciding what to reuse, check each Active Record method:"
-msgstr ""
+msgstr "Ao decidir o que reutilizar, verifique cada método do Active Record:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "table mapping and relations can usually move to `yiisoft/active-record`;"
-msgstr ""
+msgstr "o mapeamento de tabelas e as relações geralmente podem ir para o `yiisoft/active-record`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "validation should move to `yiisoft/validator`;"
-msgstr ""
+msgstr "a validação deve ir para o `yiisoft/validator`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "form labels and hints should move to `yiisoft/form-model`;"
-msgstr ""
+msgstr "rótulos e dicas de formulário devem ir para o `yiisoft/form-model`;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "search models should become query/data-reader services;"
-msgstr ""
+msgstr "os search models devem virar serviços de consulta/data reader;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "business workflows should become services;"
-msgstr ""
+msgstr "os fluxos de negócio devem virar serviços;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "events should use PSR-14 events or package-specific events;"
-msgstr ""
+msgstr "os eventos devem usar eventos PSR-14 ou eventos específicos de pacotes;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "direct `Yii::$app->db` usage should become injected database dependencies."
-msgstr ""
+msgstr "o uso direto de `Yii::$app->db` deve virar dependências de banco de dados injetadas."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 migrations and Yii3 `yiisoft/db-migration` migrations are not compatible. Start a new migration history or create structure dumps for the current schema, then use Yii3 migrations for future schema changes."
-msgstr ""
+msgstr "As migrations do Yii 2.0 e as migrations do `yiisoft/db-migration` do Yii3 não são compatíveis. Comece um novo histórico de migrations ou crie dumps da estrutura do esquema atual, e use migrations do Yii3 para as mudanças futuras no esquema."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 `GridView` is commonly used with `ActiveDataProvider`:"
-msgstr ""
+msgstr "O `GridView` do Yii 2.0 costuma ser usado com `ActiveDataProvider`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1110,11 +1374,23 @@ msgid ""
 "    ],\n"
 "]);\n"
 msgstr ""
+"use yii\\grid\\GridView;\n"
+"\n"
+"echo GridView::widget([\n"
+"    'dataProvider' => $dataProvider,\n"
+"    'filterModel' => $searchModel,\n"
+"    'columns' => [\n"
+"        'id',\n"
+"        'title',\n"
+"        'created_at:datetime',\n"
+"        ['class' => 'yii\\grid\\ActionColumn'],\n"
+"    ],\n"
+"]);\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 uses [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview). It renders data from a data reader and uses fluent widget configuration:"
-msgstr ""
+msgstr "O Yii3 usa o [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview). Ele renderiza dados a partir de um data reader e usa configuração fluente do widget:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1138,11 +1414,28 @@ msgid ""
 "        new ActionColumn(),\n"
 "    );\n"
 msgstr ""
+"use Yiisoft\\Data\\Reader\\ReadableDataInterface;\n"
+"use Yiisoft\\Yii\\DataView\\Column\\DataColumn;\n"
+"use Yiisoft\\Yii\\DataView\\GridView\\Column\\ActionColumn;\n"
+"use Yiisoft\\Yii\\DataView\\GridView\\GridView;\n"
+"\n"
+"/**\n"
+" * @var ReadableDataInterface $dataReader\n"
+" */\n"
+"\n"
+"echo GridView::widget()\n"
+"    ->dataReader($dataReader)\n"
+"    ->columns(\n"
+"        new DataColumn('id'),\n"
+"        new DataColumn('title', header: 'Title'),\n"
+"        new DataColumn('created_at', header: 'Created'),\n"
+"        new ActionColumn(),\n"
+"    );\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "For sorting, pagination, filtering, and action URLs, wire the widget to Yii Router:"
-msgstr ""
+msgstr "Para ordenação, paginação, filtragem e URLs de actions, conecte o widget ao Yii Router:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1166,47 +1459,64 @@ msgid ""
 "        ),\n"
 "    );\n"
 msgstr ""
+"use Yiisoft\\Yii\\DataView\\YiiRouter\\ActionColumnUrlConfig;\n"
+"use Yiisoft\\Yii\\DataView\\YiiRouter\\ActionColumnUrlCreator;\n"
+"use Yiisoft\\Yii\\DataView\\YiiRouter\\UrlCreator;\n"
+"use Yiisoft\\Yii\\DataView\\YiiRouter\\UrlParameterProvider;\n"
+"\n"
+"echo GridView::widget()\n"
+"    ->dataReader($dataReader)\n"
+"    ->urlParameterProvider(new UrlParameterProvider($currentRoute))\n"
+"    ->urlCreator(new UrlCreator($urlGenerator))\n"
+"    ->columns(\n"
+"        new DataColumn('id'),\n"
+"        new DataColumn('title'),\n"
+"        new ActionColumn(\n"
+"            urlCreator: new ActionColumnUrlCreator($urlGenerator, $currentRoute),\n"
+"            urlConfig: new ActionColumnUrlConfig(baseRouteName: 'post'),\n"
+"        ),\n"
+"    );\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "A Yii 2.0 search model usually becomes a query service that:"
-msgstr ""
+msgstr "Um search model do Yii 2.0 geralmente vira um serviço de consulta que:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "reads filter and sort parameters from the request;"
-msgstr ""
+msgstr "lê os parâmetros de filtro e ordenação da requisição;"
 
 #. type: Bullet: '2. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "validates them with `yiisoft/validator`;"
-msgstr ""
+msgstr "valida esses parâmetros com `yiisoft/validator`;"
 
 #. type: Bullet: '3. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "builds a database query or repository query;"
-msgstr ""
+msgstr "monta uma consulta ao banco de dados ou ao repositório;"
 
 #. type: Bullet: '4. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "exposes a data reader to GridView."
-msgstr ""
+msgstr "expõe um data reader para o GridView."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Using htmx for partial reloads](../../cookbook/using-htmx-for-partial-reloads.md) for a complete Yii3 GridView workflow and [yii-dataview GridView docs](https://github.com/yiisoft/yii-dataview/blob/master/docs/en/guide/gridview.md)."
-msgstr ""
+msgstr "Veja [Usando htmx para recarregamentos parciais](../../cookbook/using-htmx-for-partial-reloads.md) para um fluxo completo de GridView no Yii3 e a [documentação do GridView do yii-dataview](https://github.com/yiisoft/yii-dataview/blob/master/docs/en/guide/gridview.md)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Filters, middleware, and access control"
-msgstr ""
+msgstr "Filtros, middleware e controle de acesso"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 controller filters and behaviors usually look like this:"
-msgstr ""
+msgstr "Os filtros e behaviors de controller do Yii 2.0 geralmente são assim:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1224,23 +1534,33 @@ msgid ""
 "    ];\n"
 "}\n"
 msgstr ""
+"public function behaviors(): array\n"
+"{\n"
+"    return [\n"
+"        'access' => [\n"
+"            'class' => \\yii\\filters\\AccessControl::class,\n"
+"            'rules' => [\n"
+"                ['allow' => true, 'roles' => ['@']],\n"
+"            ],\n"
+"        ],\n"
+"    ];\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "In Yii3, request processing is middleware-based. Move cross-cutting concerns such as authentication, authorization, body parsing, locale negotiation, CSRF checks, and error handling to middleware or dedicated services. Keep actions focused on the request flow they implement."
-msgstr ""
+msgstr "No Yii3, o processamento das requisições é baseado em middleware. Mova responsabilidades transversais, como autenticação, autorização, parsing do corpo, negociação de idioma, verificação de CSRF e tratamento de erros, para middlewares ou serviços dedicados. Mantenha as actions focadas no fluxo de requisição que elas implementam."
 
 #. type: Title ##
-#: ../src/guide/intro/upgrade-from-v2.md
-#: ../src/guide/structure/designing-packages.md
+#: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Console commands"
-msgstr ""
+msgstr "Comandos de console"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 console commands extend `yii\\console\\Controller`:"
-msgstr ""
+msgstr "Os comandos de console do Yii 2.0 estendem `yii\\console\\Controller`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1255,11 +1575,19 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"final class ReportController extends \\yii\\console\\Controller\n"
+"{\n"
+"    public function actionSend(): int\n"
+"    {\n"
+"        // ...\n"
+"        return self::EXIT_CODE_NORMAL;\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 console commands are services in `src/Console`:"
-msgstr ""
+msgstr "Os comandos de console do Yii3 são serviços em `src/Console`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/intro/upgrade-from-v2.md
@@ -1282,129 +1610,145 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"namespace App\\Console;\n"
+"\n"
+"use Symfony\\Component\\Console\\Attribute\\AsCommand;\n"
+"use Symfony\\Component\\Console\\Command\\Command;\n"
+"use Symfony\\Component\\Console\\Input\\InputInterface;\n"
+"use Symfony\\Component\\Console\\Output\\OutputInterface;\n"
+"\n"
+"#[AsCommand(name: 'report/send')]\n"
+"final class SendReportCommand extends Command\n"
+"{\n"
+"    protected function execute(InputInterface $input, OutputInterface $output): int\n"
+"    {\n"
+"        // ...\n"
+"        return Command::SUCCESS;\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Move command dependencies to constructor injection and register commands in console configuration."
-msgstr ""
+msgstr "Passe as dependências dos comandos para injeção pelo construtor e registre os comandos na configuração de console."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii 2.0 REST controllers, serializers, and response formatters do not move directly to Yii3. Start from PSR-7 responses and explicit routing. Build one resource at a time:"
-msgstr ""
+msgstr "Os controllers REST, serializers e formatadores de resposta do Yii 2.0 não passam diretamente para o Yii3. Comece pelas respostas PSR-7 e pelo roteamento explícito. Construa um recurso por vez:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "define routes for collection and item operations;"
-msgstr ""
+msgstr "defina rotas para as operações de coleção e de item;"
 
 #. type: Bullet: '2. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "inject request, persistence, serializer, and response factory dependencies;"
-msgstr ""
+msgstr "injete as dependências de requisição, persistência, serializer e response factory;"
 
 #. type: Bullet: '3. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "validate input with `yiisoft/validator`;"
-msgstr ""
+msgstr "valide a entrada com `yiisoft/validator`;"
 
 #. type: Bullet: '4. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "return JSON responses through Yii3 response helpers or PSR-7 factories;"
-msgstr ""
+msgstr "retorne respostas JSON pelos helpers de resposta do Yii3 ou por factories PSR-7;"
 
 #. type: Bullet: '5. '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "move authentication and rate limiting to middleware."
-msgstr ""
+msgstr "mova a autenticação e o rate limiting para middlewares."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Response](../runtime/response.md), [Authentication](../security/authentication.md), and [Authorization](../security/authorization.md)."
-msgstr ""
+msgstr "Veja [Resposta](../runtime/response.md), [Autenticação](../security/authentication.md) e [Autorização](../security/authorization.md)."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Do not postpone tests until the whole Yii3 application is done. For each new request flow, add:"
-msgstr ""
+msgstr "Não deixe os testes para quando a aplicação Yii3 inteira estiver pronta. Para cada novo fluxo de requisição, adicione:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "unit tests for services and validators;"
-msgstr ""
+msgstr "testes unitários para serviços e validadores;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "functional tests for actions and middleware;"
-msgstr ""
+msgstr "testes funcionais para actions e middlewares;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "end-to-end tests for critical browser flows;"
-msgstr ""
+msgstr "testes end-to-end para os fluxos críticos no navegador;"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "static analysis for stricter type checks."
-msgstr ""
+msgstr "análise estática para verificações de tipo mais rigorosas."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Yii3 code is more explicit, so tests should assert services directly instead of constructing large application component arrays."
-msgstr ""
+msgstr "O código Yii3 é mais explícito, então os testes devem verificar os serviços diretamente, em vez de montar grandes arrays de componentes da aplicação."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Testing overview](../testing/overview.md), [Unit tests](../testing/unit.md), [Functional tests](../testing/functional.md), and [End-to-end tests](../testing/end-to-end.md)."
-msgstr ""
+msgstr "Veja [Visão geral dos testes](../testing/overview.md), [Testes unitários](../testing/unit.md), [Testes funcionais](../testing/functional.md) e [Testes end-to-end](../testing/end-to-end.md)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Refactoring Yii 2.0 code before reusing it"
-msgstr ""
+msgstr "Refatorando o código Yii 2.0 antes de reutilizá-lo"
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "These changes are useful even if the old application stays on Yii 2.0 for a while:"
-msgstr ""
+msgstr "Estas mudanças são úteis mesmo que a aplicação antiga continue no Yii 2.0 por um tempo:"
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Replace `Yii::$app` access in domain code with constructor arguments."
-msgstr ""
+msgstr "Substitua o acesso a `Yii::$app` no código de domínio por argumentos do construtor."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Move queries out of controllers and views into repositories or query services."
-msgstr ""
+msgstr "Tire as consultas dos controllers e views e leve-as para repositórios ou serviços de consulta."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Move business workflows out of Active Record classes."
-msgstr ""
+msgstr "Tire os fluxos de negócio das classes Active Record."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Separate form models from persistence models."
-msgstr ""
+msgstr "Separe os form models dos models de persistência."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Add return types and parameter types."
-msgstr ""
+msgstr "Adicione tipos de retorno e tipos de parâmetros."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Replace route arrays scattered in views with named route constants or helper methods."
-msgstr ""
+msgstr "Substitua arrays de rotas espalhados pelas views por constantes de rotas nomeadas ou métodos helper."
 
 #. type: Bullet: '- '
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "Add tests around each flow before rebuilding it in Yii3."
-msgstr ""
+msgstr "Adicione testes em torno de cada fluxo antes de reconstruí-lo no Yii3."
 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v2.md
 msgid "The less framework state your Yii 2.0 code assumes, the easier it is to understand what should be reused and what should be redesigned for Yii3."
-msgstr ""
+msgstr "Quanto menos estado do framework o seu código Yii 2.0 pressupor, mais fácil fica entender o que deve ser reutilizado e o que deve ser redesenhado para o Yii3."

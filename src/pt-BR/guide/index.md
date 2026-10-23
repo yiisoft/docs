@@ -6,8 +6,8 @@ Yii](https://www.yiiframework.com/license#docs).
 ## Introdução
 
 - [Sobre o Yii](intro/what-is-yii.md)
-- [Atualizando a partir da versão 1.1](intro/upgrade-from-v1.md)
-- [Atualizando a partir da versão 2.0](intro/upgrade-from-v2.md)
+- [Migrando da versão 1.1](intro/upgrade-from-v1.md)
+- [Migrando da versão 2.0](intro/upgrade-from-v2.md)
 
 ## Primeiros passos
 
@@ -86,7 +86,7 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Assets](views/asset.md) TODO: verify!
 - [Scripts, estilos e meta tags](views/script-style-meta.md) TODO: verify!
 - [Template engines](views/template-engines.md) TODO: verify!
-- [Injeções em views](views/view-injections.md)
+- [Injeções de view](views/view-injections.md)
 - [Widgets](views/widget.md) TODO: verify!
 
 ## Recebendo dados dos usuários
@@ -137,7 +137,7 @@ Yii](https://www.yiiframework.com/license#docs).
 
 - [Aplicações de console](tutorial/console-applications.md)
 - [Envio de e-mails](tutorial/mailing.md)
-- [Otimização de desempenho](tutorial/performance-tuning.md)
+- [Ajuste de desempenho](tutorial/performance-tuning.md)
 - [Usando o Yii com event loop](tutorial/using-with-event-loop.md)
 - [Usando o Yii com FrankenPHP](tutorial/using-yii-with-frankenphp.md)
 - [Usando o Yii com Rapira](tutorial/using-yii-with-rapira.md)
