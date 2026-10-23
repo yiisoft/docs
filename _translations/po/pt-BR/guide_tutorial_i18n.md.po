@@ -448,7 +448,7 @@ msgstr "Escape o texto traduzido antes de exibi-lo. Guarde HTML confiável separ
 #: ../src/guide/tutorial/i18n.md
 #, no-wrap
 msgid "Choosing locale per request"
-msgstr "Escolhendo o idioma por requisição"
+msgstr "Escolhendo o idioma por requisição <a id=\"escolhendo-o-idioma-por-requisicao\"></a>"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md

@@ -26,13 +26,13 @@ objetivo. Procuramos
 Desempenho é uma condição necessária para a praticidade. O software não deve
 desperdiçar recursos de máquina nem recursos humanos.
 
-### Padrões sensatos e flexibilidade
+### Padrões sensatos e flexibilidade <a id="padroes-sensatos-e-flexibilidade"></a>
 
 Preferimos padrões e convenções sensatos que os usuários possam
 personalizar.  Buscamos um equilíbrio entre flexibilidade, disciplina e
 simplicidade que atenda às necessidades comuns.
 
-### Ser orientado à prática
+### Ser orientado à prática <a id="ser-orientado-a-pratica"></a>
 
 Preferimos a prática à teoria. Por exemplo:
 
@@ -61,7 +61,7 @@ As soluções devem ser simples e expressivas:
 - Evitamos soluções feias, a menos que não haja alternativa.
 - Menos regras é melhor do que mais regras.
 
-### Ser explícito
+### Ser explícito <a id="ser-explicito"></a>
 
 Preferimos soluções e código explícitos e óbvios. As soluções devem
 expressar claramente o que fazem. Por exemplo:

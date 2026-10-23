@@ -100,7 +100,7 @@ msgstr "Desempenho é uma condição necessária para a praticidade. O software 
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Sensible defaults and flexibility"
-msgstr "Padrões sensatos e flexibilidade"
+msgstr "Padrões sensatos e flexibilidade <a id=\"padroes-sensatos-e-flexibilidade\"></a>"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
@@ -111,7 +111,7 @@ msgstr "Preferimos padrões e convenções sensatos que os usuários possam pers
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be practice-oriented"
-msgstr "Ser orientado à prática"
+msgstr "Ser orientado à prática <a id=\"ser-orientado-a-pratica\"></a>"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md
@@ -178,7 +178,7 @@ msgstr "Menos regras é melhor do que mais regras."
 #: ../src/en/internals/001-yii-values.md
 #, no-wrap
 msgid "Be Explicit"
-msgstr "Ser explícito"
+msgstr "Ser explícito <a id=\"ser-explicito\"></a>"
 
 #. type: Plain text
 #: ../src/en/internals/001-yii-values.md

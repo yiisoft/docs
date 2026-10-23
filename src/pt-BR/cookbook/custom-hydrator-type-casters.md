@@ -425,7 +425,7 @@ $filter = $hydrator->create(CommentFilter::class, [
 // $filter->authorId->equals($filter->postId) retorna false.
 ```
 
-#### Entrada da requisição
+#### Entrada da requisição <a id="entrada-da-requisicao"></a>
 
 O pacote [Yii Input HTTP](https://github.com/yiisoft/input-http) usa o
 hydrator para preencher objetos de entrada da requisição, então o mesmo type
@@ -532,7 +532,7 @@ final readonly class Action
 }
 ```
 
-### Valores nulos e inválidos
+### Valores nulos e inválidos <a id="valores-nulos-e-invalidos"></a>
 
 Veja o que acontece com uma propriedade declarada como `?UserId` para
 diferentes valores de entrada:

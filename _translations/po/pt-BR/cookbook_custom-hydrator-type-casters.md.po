@@ -791,7 +791,7 @@ msgstr ""
 #: ../src/cookbook/custom-hydrator-type-casters.md
 #, no-wrap
 msgid "Request input"
-msgstr "Entrada da requisição"
+msgstr "Entrada da requisição <a id=\"entrada-da-requisicao\"></a>"
 
 #. type: Plain text
 #: ../src/cookbook/custom-hydrator-type-casters.md
@@ -995,7 +995,7 @@ msgstr ""
 #: ../src/cookbook/custom-hydrator-type-casters.md
 #, no-wrap
 msgid "Null and invalid values"
-msgstr "Valores nulos e inválidos"
+msgstr "Valores nulos e inválidos <a id=\"valores-nulos-e-invalidos\"></a>"
 
 #. type: Plain text
 #: ../src/cookbook/custom-hydrator-type-casters.md
