@@ -1,19 +1,19 @@
 # Segurança
 
-Good security is vital to the health and success of any
-application. Unfortunately, many developers cut corners when it comes to
-security, either due to a lack of understanding or because implementation is
-too much of a hurdle. To make your Yii-powered application as secure as
-possible, Yii has included several excellent and easy-to-use security
-features.
+Uma boa segurança é vital para a saúde e o sucesso de qualquer
+aplicação. Infelizmente, muitos desenvolvedores negligenciam a segurança,
+seja por falta de entendimento, seja porque a implementação parece um
+obstáculo grande demais. Para deixar sua aplicação Yii o mais segura
+possível, o Yii inclui vários recursos de segurança excelentes e fáceis de
+usar.
 
-* [Authentication](authentication.md)
-* [Authorization](authorization.md)
-* [Working with Passwords](passwords.md)
-* [Cryptography](cryptography.md)
-* [Best Practices](best-practices.md)
-* [Trusted request](trusted-request.md)
+* [Autenticação](authentication.md)
+* [Autorização](authorization.md)
+* [Trabalhando com senhas](passwords.md)
+* [Criptografia](cryptography.md)
+* [Boas práticas](best-practices.md)
+* [Requisição confiável](trusted-request.md)
 
-See also:
+Veja também:
 
-* [Views security](../views/view.md#security)
+* [Segurança de views](../views/view.md#security)

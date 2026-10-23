@@ -1,34 +1,35 @@
-# Authentication
+# Autenticação
 
-Authentication is the process of verifying the identity of a user. It
-usually uses an identifier (for example, a username or an email address) and
-a secret token (such as a password or an access token) to judge if the user
-is the one whom he claims as. Authentication is the basis of the login
-feature.
+Autenticação é o processo de verificar a identidade de um
+usuário. Normalmente ela usa um identificador (por exemplo, um nome de
+usuário ou um endereço de e-mail) e um token secreto (como uma senha ou um
+token de acesso) para decidir se o usuário é quem diz ser. A autenticação é
+a base do recurso de login.
 
-Yii provides an authentication framework which wires up various components
-to support login. To use this framework, you mainly need to do the following
-work:
+O Yii fornece um framework de autenticação que conecta vários componentes
+para dar suporte ao login. Para usar esse framework, você precisa
+basicamente fazer o seguinte:
 
-* Configure the `Yiisoft\User\CurrentUser` service;
-* Create a class implementing the `\Yiisoft\Auth\IdentityInterface`
-  interface;
-* Create a class implementing the
-  `\Yiisoft\Auth\IdentityRepositoryInterface` interface;
+* Configurar o serviço `Yiisoft\User\CurrentUser`;
+* Criar uma classe que implementa a interface
+  `\Yiisoft\Auth\IdentityInterface`;
+* Criar uma classe que implementa a interface
+  `\Yiisoft\Auth\IdentityRepositoryInterface`;
 
-To use the `Yiisoft\User\CurrentUser` service, install
-[yiisoft/user](https://github.com/yiisoft/user) package:
+Para usar o serviço `Yiisoft\User\CurrentUser`, instale o pacote
+[yiisoft/user](https://github.com/yiisoft/user):
 
 ```shell
 composer require yiisoft/user
 ```
 
-## Configuring `Yiisoft\User\CurrentUser`
+## Configurando `Yiisoft\User\CurrentUser`
 
-The `Yiisoft\User\CurrentUser` application service manages the user
-authentication status. It depends on
-`Yiisoft\Auth\IdentityRepositoryInterface` that should return an instance of
-`\Yiisoft\Auth\IdentityInterface` which has the actual authentication logic.
+O serviço de aplicação `Yiisoft\User\CurrentUser` gerencia o estado de
+autenticação do usuário. Ele depende de
+`Yiisoft\Auth\IdentityRepositoryInterface`, que deve retornar uma instância
+de `\Yiisoft\Auth\IdentityInterface` contendo a lógica de autenticação de
+fato.
 
 ```php
 use Yiisoft\Session\Session;
@@ -53,16 +54,16 @@ return [
 ];
 ```
 
-## Implementing`\Yiisoft\Auth\IdentityInterface`
+## Implementando`\Yiisoft\Auth\IdentityInterface`
 
-The identity class must implement the `\Yiisoft\Auth\IdentityInterface`
-which has a single method:
+A classe de identidade deve implementar a `\Yiisoft\Auth\IdentityInterface`,
+que tem um único método:
 
-* [[yii\web\IdentityInterface::getId()|getId()]]: it returns the ID of the
-  user represented by this identity instance.
+* [[yii\web\IdentityInterface::getId()|getId()]]: retorna o ID do usuário
+  representado por esta instância de identidade.
 
-In the following example, an identity class is implemented as a pure PHP
-object.
+No exemplo a seguir, a classe de identidade é implementada como um objeto
+PHP puro.
 
 ```php
 <?php
@@ -85,20 +86,20 @@ final readonly class Identity implements IdentityInterface
 }
 ```
 
-## Implementing`\Yiisoft\Auth\IdentityRepositoryInterface`
+## Implementando`\Yiisoft\Auth\IdentityRepositoryInterface`
 
-The identity repository class must implement the
-`\Yiisoft\Auth\IdentityRepositoryInterface` which has the following methods:
+A classe de repositório de identidades deve implementar a
+`\Yiisoft\Auth\IdentityRepositoryInterface`, que tem os seguintes métodos:
 
-* `findIdentity(string $id): ?IdentityInterface`: it looks for an instance
-  of the identity class using the specified ID. This method is used when you
-  need to keep the login status via session.
-* `findIdentityByToken(string $token, string $type): ?IdentityInterface`: it
-  looks for an instance of the identity class using the specified access
-  token. This method is used when you need to authenticate a user by a
-  single secret token (for example, in a stateless REST API).
+* `findIdentity(string $id): ?IdentityInterface`: procura uma instância da
+  classe de identidade usando o ID informado. Esse método é usado quando
+  você precisa manter o estado de login via sessão.
+* `findIdentityByToken(string $token, string $type): ?IdentityInterface`:
+  procura uma instância da classe de identidade usando o token de acesso
+  informado. Esse método é usado quando você precisa autenticar um usuário
+  por um único token secreto (por exemplo, numa API REST sem estado).
   
-A dummy implementation may look like the following:
+Uma implementação fictícia pode ficar assim:
 
 ```php
 namespace App\User;
@@ -144,11 +145,12 @@ final readonly class IdentityRepository implements IdentityRepositoryInterface
 }
 ```
 
-## Using `Yiisoft\User\CurrentUser`
+## Usando `Yiisoft\User\CurrentUser`
 
-You can use `Yiisoft\User\CurrentUser` service to get current user
-identity.  As any service, it could be auto-wired in either action handler
-constructor or method:
+Você pode usar o serviço `Yiisoft\User\CurrentUser` para obter a identidade
+do usuário atual.  Como qualquer serviço, ele pode ser injetado
+automaticamente (autowiring) no construtor ou no método do handler da
+action:
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -161,19 +163,19 @@ final readonly class SiteController
     public function index(ServerRequestInterface $request): ResponseInterface
     {
         if ($this->user->isGuest()) {
-            // user is guest
+            // o usuário é visitante
         } else {
             $identity = $this->user->getIdentity();
-            // do something based on identity
+            // faça algo com base na identidade
         }
     }
 }
 ```
 
-`isGuest()` determines if user is logged in or not. `getIdentity()` returns
-an instance of identity.
+`isGuest()` determina se o usuário está logado ou não. `getIdentity()`
+retorna uma instância da identidade.
 
-To log in a user, you may use the following code:
+Para fazer o login de um usuário, você pode usar o seguinte código:
 
 ```php
 $identity = $identityRepository->findByEmail($email);
@@ -182,22 +184,23 @@ $identity = $identityRepository->findByEmail($email);
 $user->login($identity);
 ```
 
-The `login()` method sets the identity to the User service.  It stores
-identity into session so user authentication status is maintained.
+O método `login()` define a identidade no serviço de usuário.  Ele armazena
+a identidade na sessão, para que o estado de autenticação do usuário seja
+mantido.
 
-To log out a user, call
+Para fazer o logout de um usuário, chame
 
 ```php
 /* @var $user \Yiisoft\User\CurrentUser */
 $user->logout();
 ```
 
-## Protecting Routes
+## Protegendo rotas
 
-The `Yiisoft\Auth\Middleware\Authentication` middleware can be used to
-restrict access to a given route to authenticated users only.
+O middleware `Yiisoft\Auth\Middleware\Authentication` pode ser usado para
+restringir o acesso a uma rota apenas a usuários autenticados.
 
-First, configure the `Yiisoft\Auth\AuthenticationMethodInterface`:
+Primeiro, configure a `Yiisoft\Auth\AuthenticationMethodInterface`:
 
 ```php
 use Yiisoft\Auth\AuthenticationMethodInterface;
@@ -209,8 +212,8 @@ return [
 ];
 ```
 
-Then, apply the `Yiisoft\Auth\Middleware\Authentication` middleware to a
-route:
+Depois, aplique o middleware `Yiisoft\Auth\Middleware\Authentication` a uma
+rota:
  
 ```php
 use Yiisoft\Auth\Middleware\Authentication;
@@ -221,7 +224,7 @@ Route::post('/create')
         ->name('site/create')
 ```
 
- Or to a group of routes:
+ Ou a um grupo de rotas:
 
 ```php
 use Yiisoft\Auth\Middleware\Authentication;
@@ -238,21 +241,22 @@ Group::create()
         )
 ```
 
-## Authentication Events
+## Eventos de autenticação
 
-The user service raises a few events during the login and logout processes.
+O serviço de usuário dispara alguns eventos durante os processos de login e
+logout.
 
 
-* `\Yiisoft\User\Event\BeforeLogin`: raised at the beginning of `login()`.
-  If the event handler calls `invalidate()` on an event object, the login
-  process will be cancelled.
-* `\Yiisoft\User\Event\AfterLogin`: raised after a successful login.
-* `\Yiisoft\User\Event\BeforeLogout`: raised at the beginning of
-  `logout()`.  If the event handler calls `invalidate()` on an event object,
-  the logout process will be cancelled.
-* `\Yiisoft\User\Event\AfterLogout`: raised after a successful logout.
+* `\Yiisoft\User\Event\BeforeLogin`: disparado no início de `login()`.  Se o
+  handler do evento chamar `invalidate()` no objeto do evento, o processo de
+  login será cancelado.
+* `\Yiisoft\User\Event\AfterLogin`: disparado após um login bem-sucedido.
+* `\Yiisoft\User\Event\BeforeLogout`: disparado no início de `logout()`.  Se
+  o handler do evento chamar `invalidate()` no objeto do evento, o processo
+  de logout será cancelado.
+* `\Yiisoft\User\Event\AfterLogout`: disparado após um logout bem-sucedido.
 
-You may respond to these events to implement features such as login audit,
-online user statistics. For example, in the handler for
-`\Yiisoft\User\Event\AfterLogin`, you may record the login time and IP
-address in the `user` database table.
+Você pode responder a esses eventos para implementar recursos como auditoria
+de login ou estatísticas de usuários online. Por exemplo, no handler de
+`\Yiisoft\User\Event\AfterLogin`, você pode registrar o horário e o endereço
+IP do login na tabela `user` do banco de dados.

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-09-04 11:19+0500\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,44 +24,44 @@ msgstr "Segurança"
 #. type: Plain text
 #: en/security/overview.md
 msgid "Good security is vital to the health and success of any application. Unfortunately, many developers cut corners when it comes to security, either due to a lack of understanding or because implementation is too much of a hurdle. To make your Yii-powered application as secure as possible, Yii has included several excellent and easy-to-use security features."
-msgstr ""
+msgstr "Uma boa segurança é vital para a saúde e o sucesso de qualquer aplicação. Infelizmente, muitos desenvolvedores negligenciam a segurança, seja por falta de entendimento, seja porque a implementação parece um obstáculo grande demais. Para deixar sua aplicação Yii o mais segura possível, o Yii inclui vários recursos de segurança excelentes e fáceis de usar."
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Authentication](authentication.md)"
-msgstr ""
+msgstr "[Autenticação](authentication.md)"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Authorization](authorization.md)"
-msgstr ""
+msgstr "[Autorização](authorization.md)"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Working with Passwords](passwords.md)"
-msgstr ""
+msgstr "[Trabalhando com senhas](passwords.md)"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Cryptography](cryptography.md)"
-msgstr ""
+msgstr "[Criptografia](cryptography.md)"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Best Practices](best-practices.md)"
-msgstr ""
+msgstr "[Boas práticas](best-practices.md)"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Trusted request](trusted-request.md)"
-msgstr ""
+msgstr "[Requisição confiável](trusted-request.md)"
 
 #. type: Plain text
 #: en/security/overview.md
 msgid "See also:"
-msgstr ""
+msgstr "Veja também:"
 
 #. type: Bullet: '* '
 #: en/security/overview.md
 msgid "[Views security](../views/view.md#security)"
-msgstr ""
+msgstr "[Segurança de views](../views/view.md#security)"

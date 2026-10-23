@@ -38,7 +38,7 @@ Sem containers, o destino depende de como você inicia o PHP e captura a
 saída dele.  Por exemplo, o PHP-FPM descarta a saída dos workers por padrão,
 a menos que você ative `catch_workers_output`.  Veja a [configuração de logs
 do servidor
-web](../../cookbook/configuring-webservers/general.md#application-logs).
+web](../../cookbook/configuring-webservers/general.md#logs-da-aplicacao).
 Para o Yii escrever arquivos de log da aplicação diretamente, configure um
 [destino em arquivo](#logs-em-arquivos).
 

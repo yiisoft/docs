@@ -1,12 +1,12 @@
-# Authorization
+# Autorização
 
-Authorization is the process of verifying that a user has enough permission
-to do something.
+Autorização é o processo de verificar se um usuário tem permissão suficiente
+para fazer algo.
 
-## Checking for permission
+## Verificando permissões
 
-You can check if a user has certain permissions by using
-`\Yiisoft\User\CurrentUser` service:
+Você pode verificar se um usuário tem determinadas permissões usando o
+serviço `\Yiisoft\User\CurrentUser`:
 
 ```php
 namespace App\Blog\Post;
@@ -28,14 +28,14 @@ final readonly class PostController
     {
         $post = $this->postRepository->findByPK($id);
         if ($post === null) {
-            // respond with 404
+            // responda com 404
         }
 
         if (!$this->canCurrentUserUpdatePost($post)) {
-            // respond with 403
+            // responda com 403
         }
 
-        // continue with updating the post
+        // continue com a atualização do post
     }
 
     private function canCurrentUserUpdatePost(Post $post): bool
@@ -46,75 +46,80 @@ final readonly class PostController
 }
 ```
 
-Behind the scenes, `Yiisoft\User\CurrentUser::can()` method calls
-`Yiisoft\Access\AccessCheckerInterface::userHasPermission()` so you should
-provide an implementation in dependency container in order for it to work.
+Por baixo dos panos, o método `Yiisoft\User\CurrentUser::can()` chama
+`Yiisoft\Access\AccessCheckerInterface::userHasPermission()`, então você
+precisa fornecer uma implementação no container de dependências para que ele
+funcione.
 
-## Role-based access control (RBAC)
+## Controle de acesso baseado em papéis (RBAC)
 
-Role-Based Access Control (RBAC) provides a simple yet powerful centralized
-access control. Please refer to the
-[Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) for
-details about comparing RBAC with other more traditional access control
-schemes.
+O controle de acesso baseado em papéis (RBAC, Role-Based Access Control)
+oferece um controle de acesso centralizado simples e flexível. Consulte a
+[Wikipedia](https://en.wikipedia.org/wiki/Role-based_access_control) para
+detalhes sobre a comparação do RBAC com outros esquemas de controle de
+acesso mais tradicionais.
 
-Yii implements a General Hierarchical RBAC, following the [NIST RBAC
-model](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
+O Yii implementa um RBAC hierárquico geral, seguindo o [modelo RBAC do
+NIST](https://csrc.nist.gov/CSRC/media/Publications/conference-paper/2000/07/26/the-nist-model-for-role-based-access-control-towards-a-unified-/documents/sandhu-ferraiolo-kuhn-00.pdf).
 
-Using RBAC involves two parts of work. The first part is to build up the
-RBAC authorization data, and the second part is to use the authorization
-data to perform access check in places where it's necessary. Since RBAC
-implements `\Yiisoft\Access\AccessCheckerInterface`, using it's similar to
-using any other implementation of an access checker.
+Usar RBAC envolve duas partes de trabalho. A primeira é montar os dados de
+autorização do RBAC, e a segunda é usar esses dados para fazer a verificação
+de acesso onde for necessário. Como o RBAC implementa
+`\Yiisoft\Access\AccessCheckerInterface`, usá-lo é parecido com usar
+qualquer outra implementação de verificador de acesso.
 
-To ease description next, there are some basic RBAC concepts first.
+Para facilitar a explicação a seguir, primeiro alguns conceitos básicos de
+RBAC.
 
-### Basic concepts
+### Conceitos básicos
 
-A role represents a collection of *permissions* (for example, creating
-posts, updating posts).  You may assign a role to one or many users.  To
-check if a user has a specified permission, you may check if the user has a
-role with that permission.
+Um papel representa um conjunto de *permissões* (por exemplo, criar posts,
+atualizar posts).  Você pode atribuir um papel a um ou mais usuários.  Para
+verificar se um usuário tem uma determinada permissão, você pode verificar
+se ele tem um papel com essa permissão.
 
-Associated with each role or permission, there may be a *rule*.  A rule
-represents a piece of code that an access checker will execute to decide if
-the corresponding role or permission applies to the current user.  For
-example, the "update post" permission may have a rule that checks if the
-current user is the post creator.  During access checking, if the user is
-NOT the post creator, there's no "update post" permission.
+Cada papel ou permissão pode ter uma *regra* associada.  Uma regra
+representa um trecho de código que o verificador de acesso executa para
+decidir se o papel ou a permissão correspondente se aplica ao usuário
+atual.  Por exemplo, a permissão "atualizar post" pode ter uma regra que
+verifica se o usuário atual é o criador do post.  Durante a verificação de
+acesso, se o usuário NÃO for o criador do post, ele não tem a permissão
+"atualizar post".
 
-Both roles and permissions are in a hierarchy.  In particular, a role may
-consist of other roles or permissions.  And a permission may consist of
-other permissions.  Yii implements a *partial order* hierarchy which
-includes the more special *tree* hierarchy.  While a role can contain a
-permission, it isn't `true` vice versa.
+Tanto papéis quanto permissões ficam em uma hierarquia.  Em particular, um
+papel pode ser composto de outros papéis ou permissões.  E uma permissão
+pode ser composta de outras permissões.  O Yii implementa uma hierarquia de
+*ordem parcial*, que inclui a hierarquia mais específica em *árvore*.
+Embora um papel possa conter uma permissão, o inverso não é verdadeiro.
 
-### Configuring RBAC
+### Configurando o RBAC
 
-Yii RBAC requires storage to be provided.
+O RBAC do Yii exige que um armazenamento seja fornecido.
 
-One of the following storages could be installed:
+Um dos seguintes armazenamentos pode ser instalado:
 
-- [PHP storage](https://github.com/yiisoft/rbac-php) - PHP file storage;
-- [DB storage](https://github.com/yiisoft/rbac-db) - database storage based
-  on [Yii DB](https://github.com/yiisoft/db);
-- [Cycle DB storage](https://github.com/yiisoft/rbac-cycle-db) - database
-  storage based on [Cycle DBAL](https://github.com/cycle/database).
+- [Armazenamento PHP](https://github.com/yiisoft/rbac-php) - armazenamento
+  em arquivos PHP;
+- [Armazenamento em DB](https://github.com/yiisoft/rbac-db) - armazenamento
+  em banco de dados baseado no [Yii DB](https://github.com/yiisoft/db);
+- [Armazenamento Cycle DB](https://github.com/yiisoft/rbac-cycle-db) -
+  armazenamento em banco de dados baseado no [Cycle
+  DBAL](https://github.com/cycle/database).
   
-You can also provide your own storage using the
-[yiisoft/rbac](https://github.com/yiisoft/rbac) package.
+Você também pode fornecer seu próprio armazenamento usando o pacote
+[yiisoft/rbac](https://github.com/yiisoft/rbac).
   
-#### Configuring RBAC with the [PHP storage](https://github.com/yiisoft/rbac-php)
+#### Configurando o RBAC com o [armazenamento PHP](https://github.com/yiisoft/rbac-php)
 
-Install [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php) package:
+Instale o pacote [yiisoft/rbac-php](https://github.com/yiisoft/rbac-php):
 
 ```
 composer require yiisoft/rbac-php
 ```
 
-Before we set off to define authorization data and perform access checking,
-you need to configure the `Yiisoft\Access\AccessCheckerInterface` in
-dependency container:
+Antes de definir os dados de autorização e fazer verificações de acesso,
+você precisa configurar a `Yiisoft\Access\AccessCheckerInterface` no
+container de dependências:
 
 ```php
 use Yiisoft\Rbac\ItemsStorageInterface;
@@ -147,31 +152,32 @@ return [
 ];
 ```
 
-`Yiisoft\Rbac\Manager` uses PHP script files to store authorization data.
-Make sure the directory and all the files in it are writable by the Web
-server process if you want to change permission hierarchy online.
+O `Yiisoft\Rbac\Manager` usa arquivos de script PHP para armazenar os dados
+de autorização.  Garanta que o diretório e todos os arquivos dentro dele
+tenham permissão de escrita para o processo do servidor web, se você quiser
+alterar a hierarquia de permissões em tempo de execução.
 
-#### Configuring RBAC with the [DB storage](https://github.com/yiisoft/rbac-db)
+#### Configurando o RBAC com o [armazenamento em DB](https://github.com/yiisoft/rbac-db)
 
-Install [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db) package:
+Instale o pacote [yiisoft/rbac-db](https://github.com/yiisoft/rbac-db):
 
 ```
 composer require yiisoft/rbac-db
 ```
 
-Install one of the following drivers:
-  - [SQLite](https://github.com/yiisoft/db-sqlite) (minimal required version is 3.8.3)
+Instale um dos seguintes drivers:
+  - [SQLite](https://github.com/yiisoft/db-sqlite) (a versão mínima exigida é a 3.8.3)
   - [MySQL](https://github.com/yiisoft/db-mysql)
   - [PostgreSQL](https://github.com/yiisoft/db-pgsql)
   - [Microsoft SQL Server](https://github.com/yiisoft/db-mssql)
   - [Oracle](https://github.com/yiisoft/db-oracle)
   
-[Configure
-connection](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection).
+[Configure a
+conexão](https://yiisoft.github.io/docs/guide/start/databases.html#configuring-connection).
 
-Before we set off to define authorization data and perform access checking,
-you need to configure the `Yiisoft\Access\AccessCheckerInterface` in
-dependency container:
+Antes de definir os dados de autorização e fazer verificações de acesso,
+você precisa configurar a `Yiisoft\Access\AccessCheckerInterface` no
+container de dependências:
 
 ```php
 use Yiisoft\Rbac\ItemsStorageInterface;
@@ -189,8 +195,8 @@ return [
 ];
 ```
 
-Add the RBAC [DB storage](https://github.com/yiisoft/rbac-db) migration
-paths to params.php:
+Adicione os caminhos das migrations do [armazenamento em
+DB](https://github.com/yiisoft/rbac-db) do RBAC ao params.php:
 
 ```php
 return [
@@ -204,44 +210,44 @@ return [
 ];
 ```
 
-Apply migrations:
+Aplique as migrations:
 
 ```
 ./yii migrate:up
 ```
 
-### Building authorization data
+### Montando os dados de autorização
 
-Building authorization data is all about the following tasks:
+Montar os dados de autorização consiste nas seguintes tarefas:
 
-- defining roles and permissions;
-- establishing relations between roles and permissions;
-- defining rules;
-- associating rules with roles and permissions;
-- assigning roles to users.
+- definir papéis e permissões;
+- estabelecer relações entre papéis e permissões;
+- definir regras;
+- associar regras a papéis e permissões;
+- atribuir papéis a usuários.
 
-Depending on authorization flexibility requirements, you can do the tasks in
-different ways.  If only developers change your permission hierarchy, you
-can use either migrations or a console command.  Migration advantage is that
-you could execute it along with other migrations.  The Console command
-advantage is that you have a good overview of the hierarchy in the code
-without a need to read many migrations.
+Dependendo da flexibilidade de autorização exigida, você pode fazer essas
+tarefas de maneiras diferentes.  Se apenas desenvolvedores alteram sua
+hierarquia de permissões, você pode usar migrations ou um comando de
+console.  A vantagem da migration é que você pode executá-la junto com as
+outras migrations.  A vantagem do comando de console é que você tem uma boa
+visão da hierarquia no código, sem precisar ler muitas migrations.
 
-Either way, in the end, you'll get the following RBAC hierarchy:
+De qualquer forma, no fim você terá a seguinte hierarquia RBAC:
 
-![Simple RBAC hierarchy](/images/guide/security/rbac-hierarchy-1.svg "Simple
-RBAC hierarchy")
+![Hierarquia RBAC simples](/images/guide/security/rbac-hierarchy-1.svg
+"Hierarquia RBAC simples")
 
-In case you want to build permission hierarchy dynamically, you need a UI or
-a console command.  The API used to build the hierarchy itself won't be
-different.
+Caso você queira montar a hierarquia de permissões dinamicamente, precisa de
+uma interface de usuário ou de um comando de console.  A API usada para
+montar a hierarquia em si não muda.
 
-### Using console command
+### Usando um comando de console
 
-If your permission hierarchy doesn't change at all, and you have a fixed
-number of users, you can create a [console
-command](../tutorial/console-applications.md) that will initialize
-authorization data once via APIs offered by
+Se a sua hierarquia de permissões não muda nunca e você tem um número fixo
+de usuários, pode criar um [comando de
+console](../tutorial/console-applications.md) que inicializa os dados de
+autorização uma única vez, usando as APIs oferecidas por
 `\Yiisoft\Rbac\ManagerInterface`:
 
 ```php
@@ -280,18 +286,18 @@ final class RbacCommand extends Command
         $this->manager->addPermission((new Permission(RbacCommand::CREATE_POST_PERMISSION))->withDescription('Create a post'));
         $this->manager->addPermission((new Permission(RbacCommand::UPDATE_POST_PERMISSION))->withDescription('Update post'));
 
-        // add the "author" role and give this role the "createPost" permission
+        // adiciona o papel "author" e dá a ele a permissão "createPost"
         $this->manager->addRole(new Role(RbacCommand::ROLE_AUTHOR));
         $this->manager->addChild(RbacCommand::ROLE_AUTHOR, RbacCommand::CREATE_POST_PERMISSION);
 
-        // add the "admin" role and give this role the "updatePost" permission
-        // as well as the permissions of the "author" role
+        // adiciona o papel "admin" e dá a ele a permissão "updatePost"
+        // além das permissões do papel "author"
         $this->manager->addRole(new Role(RbacCommand::ROLE_ADMIN));
         $this->manager->addChild(RbacCommand::ROLE_ADMIN, RbacCommand::UPDATE_POST_PERMISSION);
         $this->manager->addChild(RbacCommand::ROLE_ADMIN, RbacCommand::ROLE_AUTHOR);
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
+        // Atribui papéis aos usuários. 1 e 2 são IDs retornados por IdentityInterface::getId(),
+        // normalmente implementado no seu model User.
         $this->manager->assign(RbacCommand::ROLE_AUTHOR, 2);
         $this->manager->assign(RbacCommand::ROLE_ADMIN, 1);
 
@@ -312,7 +318,7 @@ final class RbacCommand extends Command
 }
 ```
 
-Add the command to `config/console/commands.php`:
+Adicione o comando em `config/console/commands.php`:
 
 ```php
 return [ 
@@ -321,24 +327,25 @@ return [
 ];
 ```
  
-You can execute the command above from the console the following way:
+Você pode executar o comando acima no console da seguinte forma:
 
 ```
 ./yii rbac:init
 ```
 
-> If you don't want to hardcode what users have certain roles, don't put `->assign()` calls into the command. Instead,
-  create either UI or console command to manage assignments.
+> Se você não quer deixar fixo no código quais usuários têm determinados papéis, não coloque chamadas `->assign()` no comando. Em vez disso,
+  crie uma interface de usuário ou um comando de console para gerenciar as atribuições.
 
-#### Using migrations
+#### Usando migrations
 
-**TODO**: finish it when migrations are implemented.
+**TODO**: terminar quando as migrations forem implementadas.
 
-You can use [migrations](../databases/db-migrations.md)  to initialize and
-change hierarchy via APIs offered by `\Yiisoft\Rbac\ManagerInterface`.
+Você pode usar [migrations](../databases/db-migrations.md)  para inicializar
+e alterar a hierarquia via APIs oferecidas por
+`\Yiisoft\Rbac\ManagerInterface`.
 
-Create new migration using `./yii migrate:create init_rbac` then implement
-creating a hierarchy:
+Crie uma nova migration com `./yii migrate:create init_rbac` e implemente a
+criação da hierarquia:
 
 ```php
 <?php
@@ -366,18 +373,18 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
         $this->manager->addPermission((new Permission(M260112125812InitRbac::CREATE_POST_PERMISSION))->withDescription('Create a post'));
         $this->manager->addPermission((new Permission(M260112125812InitRbac::UPDATE_POST_PERMISSION))->withDescription('Update post'));
 
-        // add the "author" role and give this role the "createPost" permission
+        // adiciona o papel "author" e dá a ele a permissão "createPost"
         $this->manager->addRole(new Role(M260112125812InitRbac::ROLE_AUTHOR));
         $this->manager->addChild(M260112125812InitRbac::ROLE_AUTHOR, M260112125812InitRbac::CREATE_POST_PERMISSION);
 
-        // add the "admin" role and give this role the "updatePost" permission
-        // as well as the permissions of the "author" role
+        // adiciona o papel "admin" e dá a ele a permissão "updatePost"
+        // além das permissões do papel "author"
         $this->manager->addRole(new Role(M260112125812InitRbac::ROLE_ADMIN));
         $this->manager->addChild(M260112125812InitRbac::ROLE_ADMIN, M260112125812InitRbac::UPDATE_POST_PERMISSION);
         $this->manager->addChild(M260112125812InitRbac::ROLE_ADMIN, M260112125812InitRbac::ROLE_AUTHOR);
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
+        // Atribui papéis aos usuários. 1 e 2 são IDs retornados por IdentityInterface::getId(),
+        // normalmente implementado no seu model User.
         $this->manager->assign(M260112125812InitRbac::ROLE_AUTHOR, 2);
         $this->manager->assign(M260112125812InitRbac::ROLE_ADMIN, 1);
     }
@@ -396,22 +403,23 @@ final class M260112125812InitRbac implements RevertibleMigrationInterface
 }
 ```
 
-> If you don't want to hardcode which users have certain roles, don't put `->assign()` calls in migrations. Instead,
-  create either UI or console command to manage assignments.
+> Se você não quer deixar fixo no código quais usuários têm determinados papéis, não coloque chamadas `->assign()` nas migrations. Em vez disso,
+  crie uma interface de usuário ou um comando de console para gerenciar as atribuições.
 
-You could apply migration by using `./yii migrate:up`.
+Você pode aplicar a migration com `./yii migrate:up`.
 
-## Assigning roles to users
+## Atribuindo papéis a usuários
 
-TODO: update when signup implemented in demo / template.
+TODO: atualizar quando o cadastro for implementado no demo / template.
 
-The author can create a post, admin can update the post and do everything
-the author can.
+O autor pode criar um post, o admin pode atualizar o post e fazer tudo o que
+o autor pode.
 
-If your application allows user signup, you need to assign roles to these
-new users at once.  For example, in order for all signed-up users to become
-authors in your advanced project template, you need to change
-`frontend\models\SignupForm::signup()` as follows:
+Se sua aplicação permite o cadastro de usuários, você precisa atribuir
+papéis a esses novos usuários imediatamente.  Por exemplo, para que todos os
+usuários cadastrados se tornem autores no seu template de projeto avançado,
+você precisa alterar `frontend\models\SignupForm::signup()` da seguinte
+forma:
 
 ```php
 public function signup()
@@ -424,7 +432,7 @@ public function signup()
         $user->generateAuthKey();
         $user->save(false);
 
-        // the following three lines were added:
+        // as três linhas a seguir foram adicionadas:
         $authorRole = $this->manager->getRole('author');
         if ($authorRole !== null) {
             $this->manager->assign($authorRole->getName(), $user->getId());
@@ -437,19 +445,19 @@ public function signup()
 }
 ```
 
-For applications that require complex access control with dynamically
-updated authorization data (such as an admin panel), you many need to
-develop special user interfaces using APIs offered by
-`Yiisoft\Rbac\Manager`.
+Para aplicações que exigem controle de acesso complexo com dados de
+autorização atualizados dinamicamente (como um painel administrativo),
+talvez você precise desenvolver interfaces de usuário específicas usando as
+APIs oferecidas por `Yiisoft\Rbac\Manager`.
 
 
-### Using rules
+### Usando regras
 
-As aforementioned, rules add extra constraint to roles and permissions.  A
-rule is a class extending from `\Yiisoft\Rbac\Rule`.  It must implement the
-`execute()` method.  In the hierarchy you've created before, the author
-can't edit his own post.  Let's fix it. First, you need a rule to verify
-that the user is the post author:
+Como mencionado, regras adicionam restrições extras a papéis e permissões.
+Uma regra é uma classe que estende `\Yiisoft\Rbac\Rule`.  Ela deve
+implementar o método `execute()`.  Na hierarquia que você criou antes, o
+autor não pode editar o próprio post.  Vamos corrigir isso. Primeiro, você
+precisa de uma regra para verificar se o usuário é o autor do post:
 
 ```php
 namespace App\User\Rbac;
@@ -471,39 +479,38 @@ final readonly class AuthorRule implements RuleInterface
 }
 ```
 
-The rule checks if user created the `post`. Create a special permission
-`updateOwnPost` in the command you've used before:
+A regra verifica se o usuário criou o `post`. Crie uma permissão especial
+`updateOwnPost` no comando que você usou antes:
 
 ```php
 use Yiisoft\Rbac\Permission;
 use Yiisoft\Rbac\ManagerInterface;
 
-// add the "updateOwnPost" permission and associate the rule with it.
+// adiciona a permissão "updateOwnPost" e associa a regra a ela.
 $updateOwnPost = (new Permission('updateOwnPost'))
     ->withDescription('Update own post')
     ->withRuleName(AuthorRule::class);
 $this->manager->addPermission($updateOwnPost);
 
-// "updateOwnPost" will be used from "updatePost"
+// "updateOwnPost" será usada a partir de "updatePost"
 $this->manager->addChild($updateOwnPost->getName(), $updatePost->getName());
 
-// allow "author" to update their own posts
+// permite que "author" atualize os próprios posts
 $this->manager->addChild($authorRole->getName(), $updateOwnPost->getName());
 
-// Remove this line since we don't want the AuthorRule to be applied to the 'admin' role
+// Remova esta linha, já que não queremos que a AuthorRule seja aplicada ao papel 'admin'
 $this->manager->addChild('admin', 'author');
 ```
 
-Now you've got the following hierarchy:
+Agora você tem a seguinte hierarquia:
 
-![RBAC hierarchy with a rule](/images/guide/security/rbac-hierarchy-2.svg
-"RBAC hierarchy with a rule")
+![Hierarquia RBAC com uma regra](/images/guide/security/rbac-hierarchy-2.svg
+"Hierarquia RBAC com uma regra")
 
 
-### Access check
+### Verificação de acesso
 
-The check is done similarly to how it was done in the first section of this
-guide:
+A verificação é feita de forma semelhante à da primeira seção deste guia:
 
 ```php
 namespace App\Blog\Post;
@@ -525,14 +532,14 @@ final readonly class PostController
     {
         $post = $this->postRepository->findByPK($id);
         if ($post === null) {
-            // respond with 404
+            // responda com 404
         }
 
         if (!$this->canCurrentUserUpdatePost($post)) {
-            // respond with 403
+            // responda com 403
         }
 
-        // continue with updating the post
+        // continue com a atualização do post
     }
 
     private function canCurrentUserUpdatePost(Post $post): bool
@@ -542,44 +549,44 @@ final readonly class PostController
 }
 ```
 
-The difference is that now checking for a user's own post is part of the
-RBAC.
+A diferença é que agora a verificação do próprio post do usuário faz parte
+do RBAC.
 
-If the current user is Jane with `ID=1` you are starting at `createPost` and
-trying to get to `Jane`:
+Se o usuário atual for Jane, com `ID=1`, você começa em `createPost` e tenta
+chegar a `Jane`:
 
-![Access check](/images/guide/security/rbac-access-check-1.svg "Access
-check")
+![Verificação de acesso](/images/guide/security/rbac-access-check-1.svg
+"Verificação de acesso")
 
-To check if a user can update a post, you need to pass an extra parameter
-that's required by `AuthorRule` described before:
+Para verificar se um usuário pode atualizar um post, você precisa passar um
+parâmetro extra exigido pela `AuthorRule` descrita antes:
 
 ```php
 if ($user->can('updatePost', ['post' => $post])) {
-    // update post
+    // atualiza o post
 }
 ```
 
-Here is what happens if the current user is John:
+Veja o que acontece se o usuário atual for John:
 
 
-![Access check](/images/guide/security/rbac-access-check-2.svg "Access
-check")
+![Verificação de acesso](/images/guide/security/rbac-access-check-2.svg
+"Verificação de acesso")
 
-You're starting with the `updatePost` and going through `updateOwnPost`. To pass the access check, `AuthorRule`
-should return `true` from its `execute()` method. The method receives its `$params` from the `can()` method call, so the value is
+Você começa em `updatePost` e passa por `updateOwnPost`. Para passar na verificação de acesso, a `AuthorRule`
+deve retornar `true` no método `execute()`. O método recebe seus `$params` da chamada do método `can()`, então o valor é
 `['post' => $post]`.
-If everything is fine, you will get to `author` assigned to John.
+Se tudo estiver certo, você chega a `author`, atribuído a John.
 
-In the case of Jane, it's a bit simpler since she is an admin:
+No caso de Jane, é um pouco mais simples, já que ela é admin:
 
-![Access check](/images/guide/security/rbac-access-check-3.svg "Access
-check")
+![Verificação de acesso](/images/guide/security/rbac-access-check-3.svg
+"Verificação de acesso")
 
-## Implementing your own access checker
+## Implementando seu próprio verificador de acesso
 
-If RBAC doesn't suit your needs, you can implement your own access checker
-without changing the application code:
+Se o RBAC não atende às suas necessidades, você pode implementar seu próprio
+verificador de acesso sem alterar o código da aplicação:
 
 
 ```php

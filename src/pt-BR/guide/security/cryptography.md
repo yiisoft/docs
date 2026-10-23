@@ -1,90 +1,90 @@
-# Cryptography
+# Criptografia
 
-In this section, we'll review the following security aspects:
+Nesta seção, vamos ver os seguintes aspectos de segurança:
 
-- Generating random data
-- Encryption and Decryption
-- Confirming Data Integrity
+- Geração de dados aleatórios
+- Cifrar e decifrar dados
+- Confirmação da integridade dos dados
 
-To use these features, you need to install `yiisoft/security` package:
+Para usar esses recursos, você precisa instalar o pacote `yiisoft/security`:
 
 ```
 composer install yiisoft/security
 ```
 
-## Generating pseudorandom data
+## Geração de dados pseudoaleatórios
 
-Pseudorandom data are useful in many situations. For example, when resetting
-a password via email, you need to generate a token, save it to the database,
-and send it via email to the end user, which in turn will allow them to
-prove ownership of that account. It's important that this token be unique
-and hard to guess, else there is a possibility that an attacker can predict
-the token's value and reset the user's password.
+Dados pseudoaleatórios são úteis em muitas situações. Por exemplo, ao
+redefinir uma senha por e-mail, você precisa gerar um token, salvá-lo no
+banco de dados e enviá-lo por e-mail ao usuário final, o que permite a ele
+provar que é o dono daquela conta. É importante que esse token seja único e
+difícil de adivinhar; caso contrário, existe a possibilidade de um atacante
+prever o valor do token e redefinir a senha do usuário.
 
-`\Yiisoft\Security\Random` makes generating pseudorandom data simple:
+`\Yiisoft\Security\Random` torna simples gerar dados pseudoaleatórios:
 
 ```php
 $key = \Yiisoft\Security\Random::string(42);
 ```
 
-The code above would give you a random string consisting of 42 characters.
+O código acima gera uma string aleatória com 42 caracteres.
 
-If you need bytes or integers, use PHP functions directly:
+Se você precisar de bytes ou inteiros, use as funções do PHP diretamente:
 
-- `random_bytes()` for bytes. Note that the output may not be ASCII.
-- `random_int()` for integers.
+- `random_bytes()` para bytes. Note que a saída pode não ser ASCII.
+- `random_int()` para inteiros.
 
-## Encryption and decryption
+## Cifrar e decifrar dados
 
-Yii provides convenient helper functions to encrypt/decrypt data using a
-secret key.  The data is passed through the encryption function so that only
-the person who has the secret key will be able to decrypt it.  For example,
-you need to store some information in your database, but you need to make
-sure only the user who has the secret key can view it (even if one
-compromises the application database):
+O Yii fornece funções auxiliares práticas para cifrar e decifrar dados
+usando uma chave secreta.  Os dados passam pela função de cifragem de modo
+que apenas quem tem a chave secreta consiga decifrá-los.  Por exemplo, você
+precisa armazenar alguma informação no banco de dados, mas precisa garantir
+que apenas o usuário que tem a chave secreta possa vê-la (mesmo que alguém
+comprometa o banco de dados da aplicação):
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByPassword($data, $password);
 
-// save data to a database or another storage
+// salve os dados em um banco de dados ou outro armazenamento
 saveData($encryptedData);
 ```
 
-Decrypting it:
+Para decifrar:
 
 ```php
-// collect encrypted data from a database or another storage
+// obtenha os dados cifrados de um banco de dados ou outro armazenamento
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByPassword($encryptedData, $password);
 ```
 
-You could use a key instead of a password:
+Você pode usar uma chave em vez de uma senha:
 
 ```php
 $encryptedData = (new \Yiisoft\Security\Crypt())->encryptByKey($data, $key);
 
-// save data to a database or another storage
+// salve os dados em um banco de dados ou outro armazenamento
 saveData($encryptedData);
 ```
 
-Decrypting it:
+Para decifrar:
 
 ```php
-// collect encrypted data from a database or another storage
+// obtenha os dados cifrados de um banco de dados ou outro armazenamento
 $encryptedData = getEncryptedData();
 
 $data = (new \Yiisoft\Security\Crypt())->decryptByKey($encryptedData, $key);
 ```
 
-## Confirming data integrity
+## Confirmação da integridade dos dados
 
-There are situations in which you need to verify that your data hasn't been
-tampered with by a third party or even corrupted in some way. Yii provides a
-way to confirm data integrity by MAC signing.
+Há situações em que você precisa verificar se seus dados não foram
+adulterados por terceiros ou até corrompidos de alguma forma. O Yii oferece
+uma maneira de confirmar a integridade dos dados por meio de assinatura MAC.
 
-The `$key` should be present at both sending and receiving sides. On the
-sending side:
+A `$key` deve estar presente tanto no lado que envia quanto no que
+recebe. No lado que envia:
 
 ```php
 $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
@@ -92,7 +92,7 @@ $signedMessage = (new \Yiisoft\Security\Mac())->sign($message, $key);
 sendMessage($signedMessage);
 ```
 
-On the receiving side:
+No lado que recebe:
 
 ```php
 $signedMessage = receiveMessage($signedMessage);
@@ -100,23 +100,23 @@ $signedMessage = receiveMessage($signedMessage);
 try {
     $message = (new \Yiisoft\Security\Mac())->getMessage($signedMessage, $key);
 } catch (\Yiisoft\Security\DataIsTamperedException $e) {
-    // data is tampered
+    // os dados foram adulterados
 }
 ```
 
-## Masking token length
+## Mascaramento do comprimento do token
 
-Masking a token helps to mitigate a BREACH attack by randomizing how the
-token outputted on each request.  A random mask is applied to the token,
-making the string always unique.
+Mascarar um token ajuda a mitigar um ataque BREACH, tornando aleatória a
+forma como o token é exibido em cada requisição.  Uma máscara aleatória é
+aplicada ao token, fazendo com que a string seja sempre única.
 
-To mask a token:
+Para mascarar um token:
 
 ```php
 $maskedToken = \Yiisoft\Security\TokenMask::apply($token);
 ```
 
-To get the original value from the masked one:
+Para obter o valor original a partir do mascarado:
 
 ```php
 $token = \Yiisoft\Security\TokenMask::remove($maskedToken);

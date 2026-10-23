@@ -1,29 +1,29 @@
-# Security best practices
+# Boas práticas de segurança
 
-Below, we'll review common security principles and describe how to avoid
-threats when developing applications using Yii.  Most of these principles
-aren't unique to Yii alone but apply to website or software development in
-general, so you will also find links for further reading on the general
-ideas behind these.
-
-
-## Basic principles
-
-There are two main principles when it comes to security no matter which
-application is being developed:
-
-1. Filter input.
-2. Escape output.
+A seguir, vamos revisar princípios comuns de segurança e descrever como
+evitar ameaças ao desenvolver aplicações com o Yii.  A maioria desses
+princípios não é exclusiva do Yii e vale para o desenvolvimento de sites e
+software em geral, por isso você também vai encontrar links para leitura
+adicional sobre as ideias gerais por trás deles.
 
 
-### Filter input
+## Princípios básicos
 
-Filter input means that you should never consider input safe, and you should
-always check if the value you've got is actually among allowed ones.  For
-example, if you know that you sort by three fields `title`, `created_at` and
-`status` and the field came from user input, it's better to check the value
-you've got right where you're receiving it.  In terms of basic PHP, that
-would look like the following:
+Há dois princípios principais quando o assunto é segurança, não importa qual
+aplicação esteja sendo desenvolvida:
+
+1. Filtre a entrada.
+2. Escape a saída.
+
+
+### Filtre a entrada
+
+Filtrar a entrada significa que você nunca deve considerar uma entrada
+segura e deve sempre verificar se o valor recebido está de fato entre os
+permitidos.  Por exemplo, se você sabe que a ordenação é feita por três
+campos, `title`, `created_at` e `status`, e o campo vem da entrada do
+usuário, é melhor verificar o valor no mesmo lugar em que você o recebe.  Em
+PHP puro, isso ficaria assim:
 
 ```php
 $sortBy = $_GET['sort'];
@@ -32,57 +32,58 @@ if (!in_array($sortBy, ['title', 'created_at', 'status'])) {
 }
 ```
 
-In Yii, most probably you'll use form validation to do similar checks.
+No Yii, você provavelmente vai usar a validação de formulários para fazer
+verificações parecidas.
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-community/vulnerabilities/Improper_Data_Validation>
 - <https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html>
 
 
-### Escape output
+### Escape a saída
 
-Escape output means that, depending on the context where you're using data,
-you should prepend it with special characters to negate its special meaning.
-In context of HTML you should escape `<`, `>` and alike special characters.
-In the context of JavaScript or SQL, it will be a different set of characters.
-Since it's error-prone to escape manually, Yii provides various tools to perform escaping in different contexts.
+Escapar a saída significa que, dependendo do contexto em que você usa os dados,
+você deve prefixá-los com caracteres especiais para anular seu significado especial.
+No contexto de HTML, você deve escapar `<`, `>` e caracteres especiais semelhantes.
+No contexto de JavaScript ou SQL, o conjunto de caracteres será outro.
+Como escapar manualmente é propenso a erros, o Yii fornece várias ferramentas para fazer o escape em diferentes contextos.
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-community/attacks/Command_Injection>
 - <https://owasp.org/www-community/attacks/Code_Injection>
 - <https://owasp.org/www-community/attacks/xss/>
 
 
-## Avoiding SQL injections
+## Evitando SQL injection
 
-SQL injection happens when you form a query text by concatenating unescaped
-strings such as the following:
+SQL injection acontece quando você monta o texto de uma consulta
+concatenando strings não escapadas, como a seguir:
 
 ```php
 $username = $_GET['username'];
 $sql = "SELECT * FROM user WHERE username = '$username'";
 ```
 
-Instead of supplying correct username attacker could give your applications
-something like `'; DROP TABLE user; --`.  The Resulting SQL will be the
-following:
+Em vez de informar um nome de usuário correto, um atacante pode passar para
+sua aplicação algo como `'; DROP TABLE user; --`.  O SQL resultante será o
+seguinte:
 
 ```sql
 SELECT * FROM user WHERE username = ''; DROP TABLE user; --'
 ```
 
-This is a valid query that will search for users with empty username and
-then will drop `user` table most probably resulting in a broken website and
-data loss (you've set up regular backups, right?).
+Essa é uma consulta válida, que vai buscar usuários com nome de usuário
+vazio e depois apagar a tabela `user`, o que provavelmente resulta em um
+site quebrado e perda de dados (você configurou backups regulares, certo?).
 
-Make sure to either use PDO prepared statements directly or ensure that the
-library you prefer is doing it.  In the case of prepared statements, it's
-impossible to manipulate the query as was demonstrated above.
+Use prepared statements do PDO diretamente ou garanta que a biblioteca que
+você prefere faça isso.  Com prepared statements, é impossível manipular a
+consulta como demonstrado acima.
 
-If you use data to specify column names or table names, the best thing to do
-is to allow only a predefined set of values:
+Se você usa dados para especificar nomes de colunas ou de tabelas, o melhor
+é permitir apenas um conjunto predefinido de valores:
  
 ```php
 function actionList($orderBy = null)
@@ -95,188 +96,191 @@ function actionList($orderBy = null)
 }
 ```
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-community/attacks/SQL_Injection>
 
 
-## Avoiding XSS
+## Evitando XSS
 
-XSS or cross-site scripting happens when output isn't escaped properly when outputting HTML to the browser. For example,
-if user can enter his name and instead of `Alexander` he enters `<script>alert('Hello!');</script>`, every page that
-outputs username without escaping it will execute JavaScript `alert('Hello!');` resulting in alert box popping up
-in a browser. Depending on the website instead of innocent alert, such a script could send messages using your name or even
-perform bank transactions.
+XSS, ou cross-site scripting, acontece quando a saída não é escapada corretamente ao enviar HTML para o navegador. Por exemplo,
+se o usuário pode informar o nome dele e, em vez de `Alexander`, ele digita `<script>alert('Hello!');</script>`, toda página que
+exibe o nome do usuário sem escapá-lo vai executar o JavaScript `alert('Hello!');`, fazendo uma caixa de alerta aparecer
+no navegador. Dependendo do site, em vez de um alerta inofensivo, um script assim poderia enviar mensagens em seu nome ou até
+fazer transações bancárias.
 
-Avoiding XSS is quite easy in Yii. There are two cases:
+Evitar XSS no Yii é bem fácil. Há dois casos:
 
-1. You want to output data as plain text.
-2. You want to output data as HTML.
+1. Você quer exibir os dados como texto puro.
+2. Você quer exibir os dados como HTML.
 
-If all you need is plain text, then escaping is as easy as the following:
+Se tudo o que você precisa é de texto puro, escapar é tão simples quanto o
+seguinte:
 
 
 ```php
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML, you could get some help from
-[HtmlPurifier](http://htmlpurifier.org/).  Note that HtmlPurifier processing
-is quite heavy, so consider adding caching.
+Se precisar ser HTML, você pode ter a ajuda do
+[HtmlPurifier](http://htmlpurifier.org/).  Note que o processamento do
+HtmlPurifier é bem pesado, então considere usar cache.
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-community/attacks/xss/>
 
 
-## Avoiding CSRF
+## Evitando CSRF
 
-CSRF is an abbreviation for cross-site request forgery. The idea is that
-many applications assume that requests coming from a user browser are made
-by the user themselves. This assumption could be false.
+CSRF é a sigla de cross-site request forgery (falsificação de requisição
+entre sites). A ideia é que muitas aplicações assumem que as requisições
+vindas do navegador de um usuário são feitas pelo próprio usuário. Essa
+suposição pode ser falsa.
 
-For example, the website `an.example.com` has a `/logout` URL that, when accessed using a simple GET request, logs the user out. As long
-as it's requested by the user themselves everything is OK, but one day bad guys are somehow posting
-`<img src="http://an.example.com/logout">` on a forum the user often visits. The browser doesn't make any difference between
-requesting an image or requesting a page so when the user opens a page with such a manipulated `<img>` tag,
-the browser will send the GET request to that URL and the user will be logged out from `an.example.com`.
+Por exemplo, o site `an.example.com` tem uma URL `/logout` que, quando acessada com uma simples requisição GET, faz o logout do usuário. Enquanto
+for o próprio usuário que faz a requisição, está tudo certo, mas um dia alguém mal-intencionado consegue publicar
+`<img src="http://an.example.com/logout">` em um fórum que o usuário visita com frequência. O navegador não faz diferença entre
+requisitar uma imagem e requisitar uma página, então, quando o usuário abre uma página com essa tag `<img>` manipulada,
+o navegador envia a requisição GET para aquela URL e o usuário é deslogado de `an.example.com`.
 
-That's the basic idea of how a CSRF attack works. One can say that logging out a user isn't a serious thing.
-However, this was just an example.
-There are many more things one could do using this approach.
-For example, triggering payments or changing data. Imagine that some website has a URL
-`http://an.example.com/purse/transfer?to=anotherUser&amount=2000`. Accessing it using GET request, causes transfer of $2000
-from an authorized user account to user `anotherUser`.
-You know that the browser will always send a GET request to load an image,
-so you can change the code to accept only POST requests on that URL.
-Unfortunately, this won't save you, because an attacker
-can put some JavaScript code instead of `<img>` tag, which allows sending POST requests to that URL as well.
+Essa é a ideia básica de como um ataque CSRF funciona. Alguém pode dizer que deslogar um usuário não é grave.
+Porém, isso foi só um exemplo.
+Há muito mais coisas que se pode fazer com essa abordagem.
+Por exemplo, disparar pagamentos ou alterar dados. Imagine que um site tem uma URL
+`http://an.example.com/purse/transfer?to=anotherUser&amount=2000`. Acessá-la com uma requisição GET causa a transferência de $2000
+da conta de um usuário autorizado para o usuário `anotherUser`.
+Você sabe que o navegador sempre envia uma requisição GET para carregar uma imagem,
+então pode alterar o código para aceitar apenas requisições POST nessa URL.
+Infelizmente, isso não vai salvar você, porque um atacante
+pode colocar algum código JavaScript no lugar da tag `<img>`, o que permite enviar requisições POST para essa URL também.
 
-For this reason, Yii applies extra mechanisms to protect against CSRF
-attacks.
+Por isso, o Yii aplica mecanismos extras para proteger contra ataques CSRF.
 
-To avoid CSRF, you should always:
+Para evitar CSRF, você deve sempre:
 
-1. Follow HTTP specification. GET shouldn't change the application state.
-   See [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) for
-   more details.
-2. Keep Yii CSRF protection enabled.
+1. Seguir a especificação HTTP. GET não deve alterar o estado da aplicação.
+   Veja a [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
+   para mais detalhes.
+2. Manter a proteção CSRF do Yii ativada.
 
-Yii has CSRF protection via `Yiisoft\Csrf\CsrfTokenMiddleware` from the
-[`yiisoft/csrf`](https://github.com/yiisoft/csrf) package.  Make sure it's
-in your application middleware stack. For AJAX/SPA backends that use
-cookie-based authentication, the same package provides
-`Yiisoft\Csrf\CsrfHeaderMiddleware` — an alternative approach that relies on
-custom request headers and the CORS preflight mechanism instead of
-token-in-form.
+O Yii tem proteção CSRF via `Yiisoft\Csrf\CsrfTokenMiddleware`, do pacote
+[`yiisoft/csrf`](https://github.com/yiisoft/csrf).  Garanta que ele esteja
+na pilha de middlewares da sua aplicação. Para backends AJAX/SPA que usam
+autenticação baseada em cookie, o mesmo pacote fornece o
+`Yiisoft\Csrf\CsrfHeaderMiddleware`, uma abordagem alternativa que depende
+de headers de requisição personalizados e do mecanismo de preflight do CORS
+em vez de um token no formulário.
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-community/attacks/csrf>
 - <https://owasp.org/www-community/SameSite>
 
 
-## Avoiding file exposure
+## Evitando a exposição de arquivos
 
-By default, server webroot is meant to be pointed to `public` directory where `index.php` is. In the case of shared hosting
- environments, it could be impossible to achieve, so you'll end up with all the code, configs and logs in server webroot.
+Por padrão, o webroot do servidor deve apontar para o diretório `public`, onde fica o `index.php`. Em ambientes de hospedagem
+ compartilhada, isso pode ser impossível, e você acaba com todo o código, as configurações e os logs no webroot do servidor.
 
-If so, remember to deny access to everything except `web`.  If it's
-impossible, consider hosting your application elsewhere.
+Nesse caso, lembre-se de negar o acesso a tudo, exceto `web`.  Se isso for
+impossível, considere hospedar sua aplicação em outro lugar.
 
 
-## Avoiding debug info and tools in production
+## Evitando informações e ferramentas de debug em produção
 
-In debug mode, Yii shows quite verbose errors which are certainly helpful
-for development.  The thing is that these verbose errors are handy for
-attacker as well since these could reveal database structure, configuration
-values and parts of your code.
+No modo debug, o Yii mostra erros bem detalhados, que certamente ajudam no
+desenvolvimento.  O problema é que esses erros detalhados também são úteis
+para um atacante, já que podem revelar a estrutura do banco de dados,
+valores de configuração e partes do seu código.
 
-Never run production applications with debugger or Gii accessible to
-everyone.  One could use it to get information about database structure,
-code and to simply rewrite code with what's generated by Gii.
+Nunca rode aplicações em produção com o debugger ou o Gii acessíveis a
+todos.  Alguém poderia usá-los para obter informações sobre a estrutura do
+banco de dados e o código, ou simplesmente reescrever o código com o que o
+Gii gera.
 
-You should avoid the debug toolbar in production unless necessary.  It
-exposes all the application and config details possible.  If you absolutely
-need it, check twice you restrict access to your IP only.
+Evite a barra de debug em produção, a menos que seja necessário.  Ela expõe
+todos os detalhes possíveis da aplicação e da configuração.  Se você
+realmente precisar dela, confira duas vezes se o acesso está restrito apenas
+ao seu IP.
 
-Further reading on the topic:
+Leitura adicional sobre o assunto:
 
 - <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
 - <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
 
 
-## Using secure connection over TLS
+## Usando conexão segura via TLS
 
-Yii provides features that rely on cookies and/or PHP sessions. These can be
-vulnerable in case your connection is compromised. The risk is reduced if
-the app uses secure connection via TLS (often referred to as
+O Yii fornece recursos que dependem de cookies e/ou sessões do PHP. Eles
+podem ficar vulneráveis caso sua conexão seja comprometida. O risco diminui
+se a aplicação usar conexão segura via TLS (muitas vezes chamado de
 [SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)).
 
-Nowadays, anyone can get a certificate for free and automatically update it
-thanks to [Let's Encrypt](https://letsencrypt.org/).
+Hoje em dia, qualquer pessoa pode obter um certificado de graça e renová-lo
+automaticamente graças ao [Let's Encrypt](https://letsencrypt.org/).
 
-## Secure server configuration
+## Configuração segura do servidor
 
-The purpose of this section is to highlight risks that need to be considered
-when creating a server configuration for serving a Yii-based
-website. Besides the points covered here, there may be other
-security-related configuration options to be considered, so don't consider
-this section to be complete.
+O objetivo desta seção é destacar os riscos que precisam ser considerados ao
+criar a configuração de um servidor para servir um site baseado em Yii. Além
+dos pontos tratados aqui, pode haver outras opções de configuração
+relacionadas à segurança a considerar, então não considere esta seção
+completa.
 
-### Avoiding `Host`-header attacks
+### Evitando ataques via header `Host`
 
-If the webserver is configured to serve the same site independent of the
-value of the `Host` header, this information mayn't be reliable and [may be
-faked by the user sending the HTTP
-request](https://www.acunetix.com/vulnerabilities/web/host-header-attack).
-In such situations, you should fix your webserver configuration to serve the
-site only for specified host names.
+Se o servidor web estiver configurado para servir o mesmo site
+independentemente do valor do header `Host`, essa informação pode não ser
+confiável e [pode ser falsificada pelo usuário que envia a requisição
+HTTP](https://www.acunetix.com/vulnerabilities/web/host-header-attack).
+Nessas situações, você deve corrigir a configuração do servidor web para
+servir o site apenas para os nomes de host especificados.
 
-For more information about the server configuration, please refer to the
-documentation of your webserver:
+Para mais informações sobre a configuração do servidor, consulte a
+documentação do seu servidor web:
 
 - Apache 2:
   <https://httpd.apache.org/docs/trunk/vhosts/examples.html#defaultallports>
 - Nginx:
   <https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/>
 
-### Configuring SSL peer validation
+### Configurando a validação SSL do peer
 
-There is a typical misconception about how to solve SSL certificate
-validation issues such as:
+Há um equívoco comum sobre como resolver problemas de validação de
+certificado SSL, como:
 
 ```
 cURL error 60: SSL certificate problem: unable to get local issuer certificate
 ```
 
-or
+ou
 
 ```
 stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages: error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed
 ```
 
-Many sources wrongly suggest disabling SSL peer verification.  That
-shouldn't be ever done since it enables man-in-the middle type of attacks.
-Instead, PHP should be configured properly:
+Muitas fontes sugerem, erroneamente, desativar a verificação SSL do peer.
+Isso nunca deve ser feito, porque abre caminho para ataques do tipo
+man-in-the-middle.  Em vez disso, o PHP deve ser configurado corretamente:
 
-1. Download
+1. Baixe
    [https://curl.haxx.se/ca/cacert.pem](https://curl.haxx.se/ca/cacert.pem).
-2. Add the following to your php.ini:
+2. Adicione o seguinte ao seu php.ini:
   ```
   openssl.cafile="/path/to/cacert.pem"
   curl.cainfo="/path/to/cacert.pem".
   ```
 
-Note that you should keep the file up to date.
+Note que você deve manter o arquivo atualizado.
 
-## References
+## Referências
 
 - [OWASP top 10](https://owasp.org/Top10/)
 - [The Basics of Web Application
-  Security](https://martinfowler.com/articles/web-security-basics.html) by
+  Security](https://martinfowler.com/articles/web-security-basics.html), de
   Martin Fowler
-- [PHP manual: security](https://www.php.net/manual/en/security.php)
-- [Information security at
-  STackExchange](https://security.stackexchange.com/)
+- [Manual do PHP: segurança](https://www.php.net/manual/en/security.php)
+- [Segurança da informação no
+  StackExchange](https://security.stackexchange.com/)
 

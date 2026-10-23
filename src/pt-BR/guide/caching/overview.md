@@ -1,21 +1,22 @@
 # Cache
 
-Caching is an inexpensive and effective way to improve the performance of an
-application.  By storing relatively static data in cache and serving it from
-cache when requested, the application saves the time that it otherwise would
-require to generate the data from scratch every time.
+O cache é uma forma barata e eficaz de melhorar o desempenho de uma
+aplicação.  Ao armazenar dados relativamente estáticos no cache e servi-los
+a partir dele quando solicitados, a aplicação economiza o tempo que, de
+outra forma, precisaria para gerar os dados do zero a cada vez.
 
-Caching can occur at different levels and places in an application. On the
-server-side, at the lower level, cache may be used to store basic data, such
-as a list of most recent article information fetched from the database; and
-at the higher level, cache may be used to store fragments or whole of Web
-pages, such as the rendering result of the most recent articles. On the
-client-side, you may use HTTP caching to keep most recently visited page
-content in the browser cache.
+O cache pode ocorrer em diferentes níveis e lugares de uma aplicação. No
+lado do servidor, no nível mais baixo, o cache pode ser usado para armazenar
+dados básicos, como uma lista com as informações dos artigos mais recentes
+obtida do banco de dados; e, no nível mais alto, o cache pode ser usado para
+armazenar fragmentos ou páginas web inteiras, como o resultado da
+renderização dos artigos mais recentes. No lado do cliente, você pode usar o
+cache HTTP para manter o conteúdo das páginas visitadas mais recentemente no
+cache do navegador.
 
-Yii supports all these caching mechanisms:
+O Yii suporta todos estes mecanismos de cache:
 
-* [Data caching](data.md)
-* [Fragment caching](fragment.md)
-* [Page caching](page.md)
-* [HTTP caching](http.md)
+* [Cache de dados](data.md)
+* [Cache de fragmentos](fragment.md)
+* [Cache de páginas](page.md)
+* [Cache HTTP](http.md)

@@ -1,27 +1,27 @@
-# Data caching
+# Cache de dados
 
-Data caching is about storing some PHP variables in a cache and retrieving
-them later from the cache.  It's also the foundation for more advanced
-caching features, such as [page caching](page.md).
+O cache de dados consiste em guardar algumas variáveis PHP no cache e
+recuperá-las dele mais tarde.  Ele também é a base para recursos de cache
+mais avançados, como o [cache de páginas](page.md).
 
-To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache)
-package:
+Para usar o cache, instale o pacote
+[yiisoft/cache](https://github.com/yiisoft/cache):
 
 ```shell
 composer require yiisoft/cache
 ```
 
-The following code is a typical usage pattern of data caching, where
-`$cache` refers to a `Cache` instance from the package:
+O código a seguir é um padrão típico de uso do cache de dados, em que
+`$cache` se refere a uma instância de `Cache` do pacote:
 
 ```php
 public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
 {
     $key = ['top-products', $count = 10];
     
-    // Try retrieving $data from cache.
+    // Tenta recuperar $data do cache.
     $data = $cache->getOrSet($key, function (\Psr\SimpleCache\CacheInterface $cache) use ($count) {
-        // Can't find $data in a cache, calculate it from scratch.
+        // $data não está no cache, então calcula do zero.
         return getTopProductsFromDatabase($count);
     }, 3600);
     
@@ -29,92 +29,93 @@ public function getTopProducts(\Yiisoft\Cache\CacheInterface $cache): array
 }
 ```
 
-When cache has data associated with the `$key`, it returns the cached
-value.  Otherwise, it executes the passed anonymous function to calculate
-the value to cache and return.
+Quando o cache tem dados associados à `$key`, ele retorna o valor em cache.
+Caso contrário, executa a função anônima passada para calcular o valor a ser
+guardado no cache e retornado.
 
-If the anonymous function requires some data from the outer scope, you can
-pass it with the `use` statement.
+Se a função anônima precisar de dados do escopo externo, você pode passá-los
+com a instrução `use`.
 
-## Cache handlers
+## Drivers de cache
 
-The cache service uses [PSR-16](https://www.php-fig.org/psr/psr-16/)
-compatible cache handlers which represent various cache storages, such as
-memory, files, and databases.
+O serviço de cache usa drivers de cache compatíveis com a
+[PSR-16](https://www.php-fig.org/psr/psr-16/), que representam vários tipos
+de armazenamento, como memória, arquivos e bancos de dados.
 
-Yii provides the following handlers:
+O Yii fornece os seguintes drivers:
 
-- `NullCache` — a cache placeholder which does no real caching. The purpose
-  of this handler is to simplify the code that needs to check the
-  availability of cache. For example, during development or if the server
-  doesn't have actual cache support, you may configure a cache service to
-  use this handler.  When you enable actual cache support, you can switch to
-  using the corresponding cache handler.  In both cases, you may use the
-  same code without extra checks.
-- `ArrayCache` — provides caching for the current request only by storing
-  the values in an array.
-- [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP
-  [APC](https://secure.php.net/manual/en/book.apc.php) extension.  You can
-  consider this option as the fastest one when dealing with cache for a
-  centralized thick application (e.g., one server, no dedicated load
-  balancers, etc.).
-- [Database](https://github.com/yiisoft/cache-db) — uses a database table to
-  store cached data.
-- [File](https://github.com/yiisoft/cache-file) — uses standard files to
-  store cached data. This is particularly suitable to cache large chunks of
-  data, such as page content.
-- [Memcached](https://github.com/yiisoft/cache-memcached) — uses a PHP
-  [memcached](https://secure.php.net/manual/en/book.memcached.php)
-  extension. You can consider this option as the fastest one when dealing
-  with cache in a distributed application
-  (e.g., with several servers, load balancers, etc.)
-- [Wincache](https://github.com/yiisoft/cache-wincache) — uses PHP [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
-  ([see also](https://secure.php.net/manual/en/book.wincache.php)) extension.
+- `NullCache` — um substituto de cache que não faz cache de verdade. O
+  objetivo desse driver é simplificar o código que precisa verificar se há
+  cache disponível. Por exemplo, durante o desenvolvimento ou se o servidor
+  não tiver suporte real a cache, você pode configurar o serviço de cache
+  para usar esse driver.  Quando você habilitar o suporte real a cache, pode
+  trocar para o driver correspondente.  Nos dois casos, você pode usar o
+  mesmo código, sem verificações extras.
+- `ArrayCache` — faz cache apenas durante a requisição atual, guardando os
+  valores em um array.
+- [APCu](https://github.com/yiisoft/cache-apcu) - usa a extensão
+  [APC](https://secure.php.net/manual/en/book.apc.php) do PHP.  Você pode
+  considerar esta a opção mais rápida ao lidar com cache em uma aplicação
+  centralizada e robusta (por exemplo, um servidor, sem load balancers
+  dedicados etc.).
+- [Banco de dados](https://github.com/yiisoft/cache-db) — usa uma tabela do
+  banco de dados para guardar os dados em cache.
+- [Arquivo](https://github.com/yiisoft/cache-file) — usa arquivos comuns
+  para guardar os dados em cache. É especialmente adequado para guardar
+  grandes blocos de dados, como o conteúdo de páginas.
+- [Memcached](https://github.com/yiisoft/cache-memcached) — usa a extensão
+  [memcached](https://secure.php.net/manual/en/book.memcached.php)  do
+  PHP. Você pode considerar esta a opção mais rápida ao lidar com cache em
+  uma aplicação distribuída
+  (por exemplo, com vários servidores, load balancers etc.)
+- [Wincache](https://github.com/yiisoft/cache-wincache) — usa a extensão [WinCache](https://iis.net/downloads/microsoft/wincache-extension)
+  ([veja também](https://secure.php.net/manual/en/book.wincache.php)) do PHP.
 
-[You could find more handlers at
+[Você encontra mais drivers no
 packagist.org](https://packagist.org/providers/psr/simple-cache-implementation).
 
 > [!TIP]
-> You may use different cache storage in the same application. A common strategy is:
-> - To use memory-based cache storage to store small but constantly used data (e.g., statistics)
-> - To use file-based or database-based cache storage to store big and less often used data (e.g., page content)
+> Você pode usar armazenamentos de cache diferentes na mesma aplicação. Uma estratégia comum é:
+> - Usar armazenamento de cache em memória para dados pequenos, mas usados constantemente (por exemplo, estatísticas)
+> - Usar armazenamento de cache em arquivo ou em banco de dados para dados grandes e usados com menos frequência (por exemplo, conteúdo de páginas)
 
-Cache handlers are usually set up in a [dependency injection
-container](../concept/di-container.md) so that they can be globally
-configurable and accessible.
+Os drivers de cache normalmente são configurados em um [container de injeção
+de dependência](../concept/di-container.md), para que possam ser
+configurados e acessados globalmente.
 
-Because all cache handlers support the same set of APIs, you can swap the
-underlying cache handler with a different one. You can do it by
-reconfiguring the application without modifying the code that uses the
-cache.
+Como todos os drivers de cache suportam o mesmo conjunto de APIs, você pode
+trocar o driver de cache subjacente por outro. Basta reconfigurar a
+aplicação, sem modificar o código que usa o cache.
 
-### Cache keys
+### Chaves de cache
 
-A key uniquely identifies each data item stored in the cache. When you store
-a data item, you have to specify a key for it. Later, when you retrieve the
-data item, you should give the corresponding key.
+Uma chave identifica de forma única cada item de dados guardado no cache. Ao
+guardar um item, você precisa especificar uma chave para ele. Depois, ao
+recuperar o item, você deve informar a chave correspondente.
 
-You may use a string or an arbitrary value as a cache key. When a key isn't
-a string, it will be automatically serialized into a string.
+Você pode usar uma string ou um valor arbitrário como chave de cache. Quando
+a chave não é uma string, ela é serializada automaticamente em uma string.
 
-A common strategy of defining a cache key is to include all determining
-factors in terms of an array.
+Uma estratégia comum para definir uma chave de cache é incluir todos os
+fatores determinantes em um array.
 
-When different applications use the same cache storage, you should specify a
-unique cache key prefix for each application to avoid conflicts of cache
-keys.  You can do this by using `\Yiisoft\Cache\PrefixedCache` decorator:
+Quando aplicações diferentes usam o mesmo armazenamento de cache, você deve
+especificar um prefixo de chave de cache único para cada aplicação, para
+evitar conflitos de chaves.  Você pode fazer isso usando o decorator
+`\Yiisoft\Cache\PrefixedCache`:
 
 ```php
 $arrayCacheWithPrefix = new \Yiisoft\Cache\PrefixedCache(new \Yiisoft\Cache\ArrayCache(), 'myapp_');
 $cache = new \Yiisoft\Cache\Cache($arrayCacheWithPrefix);
 ```
 
-### Cache expiration
+### Expiração do cache
 
-A data item stored in a cache will remain there forever unless it's removed
-because of some caching policy enforcement. For example, caching space is
-full and cache storage removes the oldest data.  To change this behavior,
-you can set a TTL parameter when calling a method to store a data item:
+Um item de dados guardado no cache fica lá para sempre, a menos que seja
+removido por alguma política de cache. Por exemplo, o espaço do cache fica
+cheio e o armazenamento remove os dados mais antigos.  Para mudar esse
+comportamento, você pode definir um parâmetro TTL ao chamar um método que
+guarda um item:
 
 ```php
 $ttl = 3600;
@@ -123,35 +124,34 @@ return getTopProductsFromDatabase($count);
 }, $ttl);
 ```
 
-The `$ttl` parameter indicates for how many seconds the data item can remain
-valid in the cache. When you retrieve the data item, if it has passed the
-expiration time, the method will execute the function and set the resulting
-value into cache.
+O parâmetro `$ttl` indica por quantos segundos o item pode continuar válido
+no cache. Ao recuperar o item, se o tempo de expiração já tiver passado, o
+método executa a função e grava o valor resultante no cache.
 
-You may set the default TTL for the cache:
+Você pode definir o TTL padrão do cache:
 
 ```php
-$cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hour
+$cache = new \Yiisoft\Cache\Cache($arrayCache, 60 * 60); // 1 hora
 ```
 
-Additionally, you can invalidate a cache key explicitly:
+Além disso, você pode invalidar uma chave de cache explicitamente:
 
 ```php
 $cache->remove($key);
 ```
 
-### Invalidation dependencies
+### Dependências de invalidação
 
-Besides the expiration setting, changes of the so-called **invalidation
-dependencies** may also invalidate cached data item.  For example,
-`\Yiisoft\Cache\Dependency\FileDependency` represents the dependency of a
-file's modification time.  When this dependency changes, it means something
-modifying the corresponding file.  As a result, any outdated file content
-found in the cache should invalidate.
+Além da configuração de expiração, mudanças nas chamadas **dependências de
+invalidação** também podem invalidar um item em cache.  Por exemplo,
+`\Yiisoft\Cache\Dependency\FileDependency` representa a dependência da data
+de modificação de um arquivo.  Quando essa dependência muda, significa que
+algo modificou o arquivo correspondente.  Como resultado, qualquer conteúdo
+desatualizado do arquivo encontrado no cache deve ser invalidado.
 
-Cache dependencies are objects of `\Yiisoft\Cache\Dependency\Dependency`
-descendant classes. When you store a data item in the cache, you can pass
-along an associated cache dependency object. For example,
+As dependências de cache são objetos de classes descendentes de
+`\Yiisoft\Cache\Dependency\Dependency`. Ao guardar um item no cache, você
+pode passar junto um objeto de dependência de cache associado. Por exemplo,
 
 ```php
 /**
@@ -161,46 +161,48 @@ along an associated cache dependency object. For example,
 
 use Yiisoft\Cache\Dependency\TagDependency;
 
-// Set many cache values marking both with a tag.
+// Grava vários valores no cache, marcando ambos com uma tag.
 $cache->getOrSet('item_42_price', $callable, null, new TagDependency('item_42'));
 $cache->getOrSet('item_42_total', $callable, 3600, new TagDependency('item_42'));
 
-// Trigger invalidation by tag.
+// Dispara a invalidação pela tag.
 TagDependency::invalidate($cache, 'item_42');
 ```
 
-Below is a summary of the available cache dependencies:
+Veja um resumo das dependências de cache disponíveis:
 
-- `\Yiisoft\Cache\Dependency\ValueDependency`: invalidates the cache when
-  specified value changes.
-- `\Yiisoft\Cache\Dependency\CallbackDependency`: invalidates the cache when
-  the result of the specified PHP callback is different.
-- `\Yiisoft\Cache\Dependency\FileDependency`: invalidates the cache when the
-  file's last modification time is different.
-- `\Yiisoft\Cache\Dependency\TagDependency`: associates a cached data item
-  with one or many tags. You may invalidate the cached data items with the
-  specified tag(s) by calling `TagDependency::invalidate()`.
+- `\Yiisoft\Cache\Dependency\ValueDependency`: invalida o cache quando o
+  valor especificado muda.
+- `\Yiisoft\Cache\Dependency\CallbackDependency`: invalida o cache quando o
+  resultado do callback PHP especificado é diferente.
+- `\Yiisoft\Cache\Dependency\FileDependency`: invalida o cache quando a data
+  da última modificação do arquivo é diferente.
+- `\Yiisoft\Cache\Dependency\TagDependency`: associa um item em cache a uma
+  ou várias tags. Você pode invalidar os itens em cache com as tags
+  especificadas chamando `TagDependency::invalidate()`.
 
-You may combine many dependencies using
-`\Yiisoft\Cache\Dependency\AnyDependency` or
+Você pode combinar várias dependências usando
+`\Yiisoft\Cache\Dependency\AnyDependency` ou
 `\Yiisoft\Cache\Dependency\AllDependencies`.
 
-To implement your own dependency, extend from
+Para implementar a sua própria dependência, estenda
 `\Yiisoft\Cache\Dependency\Dependency`.
 
-### Cache stampede prevention
+### Prevenção do efeito manada
 
-[A cache stampede](https://en.wikipedia.org/wiki/Cache_stampede) is a type
-of cascading failure that can occur when massively parallel computing
-systems with caching mechanisms come under a high load.  This behavior is
-sometimes also called dog-piling.
+O [efeito manada (cache
+stampede)](https://en.wikipedia.org/wiki/Cache_stampede) é um tipo de falha
+em cascata que pode ocorrer quando sistemas de computação massivamente
+paralelos com mecanismos de cache ficam sob carga alta.  Esse comportamento
+às vezes também é chamado de dog-piling.
 
-The `\Yiisoft\Cache\Cache` uses a built-in "Probably early expiration"
-algorithm that prevents cache stampede.  This algorithm randomly fakes a
-cache miss for one user while others are still served the cached value.  You
-can control its behavior with the fifth optional parameter of `getOrSet()`,
-which is a float value called `$beta`.  By default, beta is `1.0`, which is
-usually enough.  The higher the value, the earlier cache will be re-created.
+O `\Yiisoft\Cache\Cache` usa um algoritmo embutido de "expiração antecipada
+probabilística" ("Probably early expiration") que evita o efeito manada.
+Esse algoritmo simula aleatoriamente um cache miss para um usuário enquanto
+os outros continuam recebendo o valor em cache.  Você pode controlar o
+comportamento dele com o quinto parâmetro opcional de `getOrSet()`, um valor
+float chamado `$beta`.  Por padrão, beta é `1.0`, o que costuma ser
+suficiente.  Quanto maior o valor, mais cedo o cache será recriado.
 
 ```php
 /**

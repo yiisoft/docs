@@ -1,26 +1,27 @@
-# Quick start
+# Início rápido
 
-Yii works with JSON APIs through the same PSR-7 request and response objects
-used by web pages.  For API endpoints, the usual flow is:
+O Yii trabalha com APIs JSON usando os mesmos objetos de requisição e
+resposta PSR-7 das páginas web.  Para endpoints de API, o fluxo comum é:
 
-* Parse the request body when the client sends JSON.
-* Map request data to a typed input object.
-* Validate the input object.
-* Return a response whose data is formatted as JSON.
+* Ler o corpo da requisição quando o cliente envia JSON.
+* Mapear os dados da requisição para um objeto de entrada tipado.
+* Validar o objeto de entrada.
+* Retornar uma resposta cujos dados são formatados como JSON.
 
-This guide assumes that you use the [API application
-template](https://github.com/yiisoft/app-api).  It already includes request
-body parsing, request input resolving, JSON data responses, and presenter
-examples.  For complete applications with different structures, see [Demo
-applications](../start/demo-apps.md).
+Este guia assume que você usa o [template de aplicação
+API](https://github.com/yiisoft/app-api).  Ele já inclui a leitura do corpo
+da requisição, a resolução da entrada da requisição, respostas de dados em
+JSON e exemplos de presenters.  Para aplicações completas com outras
+estruturas, veja [Aplicações demo](../start/demo-apps.md).
 
-## Creating request input
+## Criando a entrada da requisição
 
-Use [yiisoft/input-http](https://github.com/yiisoft/input-http) to describe
-request data as a typed input object.  Attach `#[FromBody]` when all values
-should come from the parsed request body.
+Use o [yiisoft/input-http](https://github.com/yiisoft/input-http) para
+descrever os dados da requisição como um objeto de entrada tipado.  Adicione
+`#[FromBody]` quando todos os valores devem vir do corpo da requisição já
+interpretado.
 
-Create `src/Api/Post/CreatePostInput.php`:
+Crie `src/Api/Post/CreatePostInput.php`:
 
 ```php
 <?php
@@ -46,7 +47,7 @@ final class CreatePostInput extends AbstractInput
 }
 ```
 
-For a request such as:
+Para uma requisição como:
 
 ```http
 POST /posts HTTP/1.1
@@ -55,13 +56,13 @@ Content-Type: application/json
 {"title": "First post", "content": "Text"}
 ```
 
-`CreatePostInput` receives `title` and `content` from the decoded JSON body.
+`CreatePostInput` recebe `title` e `content` do corpo JSON decodificado.
 
-If most values should come from the request body, but one value must come
-from another part of the request, combine `#[FromBody]` with parameter
-attributes.
+Se a maioria dos valores deve vir do corpo da requisição, mas um valor
+precisa vir de outra parte da requisição, combine `#[FromBody]` com
+atributos de parâmetro.
 
-For example, create `src/Api/Post/UpdatePostInput.php`:
+Por exemplo, crie `src/Api/Post/UpdatePostInput.php`:
 
 ```php
 <?php
@@ -91,10 +92,10 @@ final class UpdatePostInput extends AbstractInput
 }
 ```
 
-For file uploads submitted as `multipart/form-data`, map uploaded files with
-`#[UploadedFiles]`.
+Para uploads de arquivos enviados como `multipart/form-data`, mapeie os
+arquivos enviados com `#[UploadedFiles]`.
 
-For example, create `src/Api/Post/UploadImageInput.php`:
+Por exemplo, crie `src/Api/Post/UploadImageInput.php`:
 
 ```php
 <?php
@@ -118,13 +119,13 @@ final class UploadImageInput extends AbstractInput
 }
 ```
 
-## Creating an action
+## Criando uma action
 
-`RequestInputParametersResolver` lets an action type-hint request input
-objects directly.  In the API application template, it is already configured
-in `config/web/di/application.php`.
+O `RequestInputParametersResolver` permite que uma action declare o tipo de
+objetos de entrada da requisição diretamente.  No template de aplicação API,
+ele já está configurado em `config/web/di/application.php`.
 
-Create `src/Api/Post/CreatePostAction.php`:
+Crie `src/Api/Post/CreatePostAction.php`:
 
 ```php
 <?php
@@ -159,21 +160,21 @@ final readonly class CreatePostAction
 }
 ```
 
-You can validate the input in the action as shown above.  Alternatively,
-configure `RequestInputParametersResolver` to throw
-`Yiisoft\Input\Http\InputValidationException` and convert that exception to
-a JSON response in one error handler.  The API application template uses
-this centralized approach.
+Você pode validar a entrada na action como mostrado acima.  Outra opção é
+configurar o `RequestInputParametersResolver` para lançar
+`Yiisoft\Input\Http\InputValidationException` e converter essa exceção em
+uma resposta JSON em um único tratador de erros.  O template de aplicação
+API usa essa abordagem centralizada.
 
-## Returning JSON responses
+## Retornando respostas JSON
 
-For small endpoints, you can write JSON to a PSR-7 response manually as
-shown in [Responding with
-JSON](../runtime/response.md#responding-with-json).  For APIs, prefer
-[yiisoft/data-response](https://github.com/yiisoft/data-response), which
-formats response data and sets the `Content-Type` header.
+Para endpoints pequenos, você pode escrever o JSON em uma resposta PSR-7
+manualmente, como mostrado em [Respondendo com
+JSON](../runtime/response.md#respondendo-com-json).  Para APIs, prefira o
+[yiisoft/data-response](https://github.com/yiisoft/data-response), que
+formata os dados da resposta e define o header `Content-Type`.
 
-The API application template keeps response formatting in
+O template de aplicação API mantém a formatação das respostas em
 `src/Api/Shared/ResponseFactory.php`:
 
 ```php
@@ -220,11 +221,12 @@ final readonly class ResponseFactory
 }
 ```
 
-Presenters are application-level abstractions that transform application
-objects to API output arrays.  Keep them separate from domain entities so
-changing an API response doesn't force changes in business objects.
+Presenters são abstrações da camada de aplicação que transformam objetos da
+aplicação em arrays de saída da API.  Mantenha-os separados das entidades de
+domínio, para que mudar uma resposta da API não force mudanças nos objetos
+de negócio.
 
-Create `src/Api/Post/PostPresenter.php`:
+Crie `src/Api/Post/PostPresenter.php`:
 
 ```php
 <?php
@@ -251,14 +253,14 @@ final readonly class PostPresenter implements PresenterInterface
 }
 ```
 
-The API template contains a fuller implementation of [response
+O template de API contém uma implementação mais completa da [response
 factory](https://github.com/yiisoft/app-api/blob/master/src/Api/Shared/ResponseFactory.php)
-and
+e dos
 [presenters](https://github.com/yiisoft/app-api/tree/master/src/Api/Shared/Presenter).
 
-## Routing an endpoint
+## Roteando um endpoint
 
-Register API routes in `config/common/routes.php`:
+Registre as rotas da API em `config/common/routes.php`:
 
 ```php
 use App\Api\Post\CreatePostAction;
@@ -272,8 +274,8 @@ return [
 ];
 ```
 
-Send JSON by setting `Content-Type: application/json`.  Ask for JSON
-responses with `Accept: application/json`.
+Envie JSON definindo `Content-Type: application/json`.  Peça respostas JSON
+com `Accept: application/json`.
 
 ```shell
 curl -X POST http://localhost:8080/posts \
@@ -282,26 +284,28 @@ curl -X POST http://localhost:8080/posts \
     -d '{"title":"First post","content":"Text"}'
 ```
 
-Validation errors are returned as JSON with HTTP status `422 Unprocessable
-Entity`.  Successful creation usually returns `201 Created`.
+Erros de validação são retornados como JSON com status HTTP `422
+Unprocessable Entity`.  Uma criação bem-sucedida normalmente retorna `201
+Created`.
 
-## Existing applications
+## Aplicações existentes
 
-If you add JSON API endpoints to an existing web application, install the
-API packages first:
+Se você for adicionar endpoints de API JSON a uma aplicação web existente,
+primeiro instale os pacotes de API:
 
 ```shell
 composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
 ```
 
-If you use Docker:
+Se você usa Docker:
 
 ```shell
 make composer require yiisoft/input-http yiisoft/request-body-parser yiisoft/data-response
 ```
 
-In `config/web/di/application.php`, add `RequestBodyParser` before `Router`
-so JSON requests are parsed before actions run:
+Em `config/web/di/application.php`, adicione o `RequestBodyParser` antes do
+`Router`, para que as requisições JSON sejam lidas antes de as actions
+rodarem:
 
 ```php
 use Yiisoft\Request\Body\RequestBodyParser;
@@ -313,8 +317,8 @@ return [
 ];
 ```
 
-In the same file, add JSON data response middleware before error handling
-and routing:
+No mesmo arquivo, adicione o middleware de resposta de dados JSON antes do
+tratamento de erros e do roteamento:
 
 ```php
 use Yiisoft\DataResponse\Formatter\JsonFormatter;
@@ -327,12 +331,12 @@ return [
         ],
         fallback: new JsonFormatter(),
     ),
-    // error handling, request body parser, router, and not-found middleware
+    // tratamento de erros, leitor do corpo da requisição, router e middleware de não encontrado
 ];
 ```
 
-Also in `config/web/di/application.php`, configure action parameter
-resolvers:
+Também em `config/web/di/application.php`, configure os resolvedores de
+parâmetros das actions:
 
 ```php
 use Yiisoft\Definitions\Reference;
@@ -352,6 +356,7 @@ return [
 ];
 ```
 
-Use the [API application template
-configuration](https://github.com/yiisoft/app-api/blob/master/config/web/di/application.php)
-as the complete reference for middleware order and resolver setup.
+Use a [configuração do template de aplicação
+API](https://github.com/yiisoft/app-api/blob/master/config/web/di/application.php)
+como referência completa para a ordem dos middlewares e a configuração dos
+resolvedores.
