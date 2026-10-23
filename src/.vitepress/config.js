@@ -1339,8 +1339,8 @@ export default {
                             text: 'Introdução',
                             items: [
                                 {text: 'Sobre o Yii', link: '/pt-BR/guide/intro/what-is-yii'},
-                                {text: 'Atualizando a partir da versão 1.1', link: '/pt-BR/guide/intro/upgrade-from-v1'},
-                                {text: 'Atualizando a partir da versão 2', link: '/pt-BR/guide/intro/upgrade-from-v2'}
+                                {text: 'Migrando da versão 1.1', link: '/pt-BR/guide/intro/upgrade-from-v1'},
+                                {text: 'Migrando da versão 2.0', link: '/pt-BR/guide/intro/upgrade-from-v2'}
                             ]
                         },
                         {
@@ -1438,7 +1438,7 @@ export default {
                                 {text: 'Assets', link: '/pt-BR/guide/views/asset'},
                                 {text: 'Scripts, estilos e meta tags', link: '/pt-BR/guide/views/script-style-meta'},
                                 {text: 'Template engines', link: '/pt-BR/guide/views/template-engines'},
-                                {text: 'Injeções em views', link: '/pt-BR/guide/views/view-injections'},
+                                {text: 'Injeções de view', link: '/pt-BR/guide/views/view-injections'},
                                 {text: 'Widgets', link: '/pt-BR/guide/views/widget'}
                             ]
                         },
@@ -1458,7 +1458,7 @@ export default {
                             items: [
                                 {text: 'Aplicações de console', link: '/pt-BR/guide/tutorial/console-applications'},
                                 {text: 'Envio de e-mails', link: '/pt-BR/guide/tutorial/mailing'},
-                                {text: 'Otimização de desempenho', link: '/pt-BR/guide/tutorial/performance-tuning'},
+                                {text: 'Ajuste de desempenho', link: '/pt-BR/guide/tutorial/performance-tuning'},
                                 {text: 'Usando com event loop', link: '/pt-BR/guide/tutorial/using-with-event-loop'},
                                 {text: 'Usando o Yii com FrankenPHP', link: '/pt-BR/guide/tutorial/using-yii-with-frankenphp'},
                                 {text: 'Usando o Yii com Rapira', link: '/pt-BR/guide/tutorial/using-yii-with-rapira'},
