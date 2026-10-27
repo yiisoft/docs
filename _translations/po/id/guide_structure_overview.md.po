@@ -16,8 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/en/guide/structure/overview.md
-#: ../src/en/guide/views/script-style-meta.md
+#: ../src/en/guide/structure/overview.md ../src/en/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Overview"
 msgstr ""
@@ -136,7 +135,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/en/guide/structure/overview.md
-msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
+msgid "A context may have [an entry point known as \"action\" or \"controller\"](action.md). Its job is to take [a request instance](../runtime/request.md), pass it to [domain layer](../../cookbook/organizing-code/domain.md) in a suitable format, and create [a response](../runtime/response.md) based on domain layer return."
 msgstr ""
 
 #. type: Plain text
@@ -151,7 +150,7 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/en/guide/structure/overview.md
-msgid "[services](service.md): they're typically stateless objects registered within dependency container and provide various action methods."
+msgid "[services](../../cookbook/organizing-code/service.md): they're typically stateless objects registered within dependency container and provide various action methods."
 msgstr ""
 
 #. type: Bullet: '* '

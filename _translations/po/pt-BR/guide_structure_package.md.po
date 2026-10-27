@@ -1,0 +1,247 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Fenced code block (sh)
+#: ../src/cookbook/using-yii-in-third-party-apps.md ../src/guide/structure/designing-packages.md ../src/guide/structure/module.md ../src/guide/structure/package.md ../src/guide/tutorial/i18n.md
+#, no-wrap
+msgid "composer yii-config-rebuild\n"
+msgstr "composer yii-config-rebuild\n"
+
+#. type: Title #
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Using packages"
+msgstr "Usando pacotes"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Reusable code is distributed as [Composer packages](https://getcomposer.org/doc/05-repositories.md#package).  A package can be an infrastructure library, a Yii integration, a reusable feature, or a module representing an application context."
+msgstr "Código reutilizável é distribuído como [pacotes Composer](https://getcomposer.org/doc/05-repositories.md#package).  Um pacote pode ser uma biblioteca de infraestrutura, uma integração com o Yii, um recurso reutilizável ou um módulo que representa um contexto da aplicação."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "This page explains how to use packages in an application. To create a Yii-aware package, see [Designing packages for Yii applications](designing-packages.md)."
+msgstr "Esta página explica como usar pacotes em uma aplicação. Para criar um pacote compatível com o Yii, veja [Projetando pacotes para aplicações Yii](designing-packages.md)."
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Installing packages"
+msgstr "Instalando pacotes"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "By default, Composer installs packages registered on [Packagist](https://packagist.org/), the main repository for open source PHP packages."
+msgstr "Por padrão, o Composer instala pacotes registrados no [Packagist](https://packagist.org/), o principal repositório de pacotes PHP de código aberto."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Install a package with:"
+msgstr "Instale um pacote com:"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor-name/package-name\n"
+msgstr "composer require vendor-name/package-name\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Composer updates two files:"
+msgstr "O Composer atualiza dois arquivos:"
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer.json` stores the package name and version constraint."
+msgstr "`composer.json` armazena o nome do pacote e a restrição de versão."
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer.lock` stores the exact versions installed."
+msgstr "`composer.lock` armazena as versões exatas instaladas."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Commit both files so other environments install the same dependency versions."
+msgstr "Faça commit dos dois arquivos para que outros ambientes instalem as mesmas versões das dependências."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Installed packages are stored in the application `vendor/` directory."
+msgstr "Os pacotes instalados ficam na pasta `vendor/` da aplicação."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid ""
+"> [!WARNING]\n"
+"> Never edit files in `vendor/` directly. Change application configuration, extend classes, decorate services, or\n"
+"> contribute fixes to the package instead.\n"
+msgstr ""
+"> [!WARNING]\n"
+"> Nunca edite arquivos em `vendor/` diretamente. Em vez disso, altere a configuração da aplicação, estenda classes, decore serviços ou\n"
+"> contribua com correções para o pacote.\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Package classes are available through Composer autoloading after installation. See [Autoloading](../concept/autoloading.md)  for details."
+msgstr "As classes dos pacotes ficam disponíveis pelo autoload do Composer após a instalação. Veja [Autoload](../concept/autoloading.md)  para mais detalhes."
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Updating packages"
+msgstr "Atualizando pacotes"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Update a package within the version constraint recorded in `composer.json`:"
+msgstr "Atualize um pacote dentro da restrição de versão registrada no `composer.json`:"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer update vendor-name/package-name\n"
+msgstr "composer update vendor-name/package-name\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Change the accepted version constraint with `composer require`:"
+msgstr "Altere a restrição de versão aceita com `composer require`:"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor-name/package-name:^2.0\n"
+msgstr "composer require vendor-name/package-name:^2.0\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "After updating a Yii-aware package, Composer rebuilds Yii's configuration merge plan. If you changed configuration group mappings manually, rebuild it explicitly:"
+msgstr "Depois de atualizar um pacote compatível com o Yii, o Composer reconstrói o merge plan de configuração do Yii. Se você alterou manualmente os mapeamentos de grupos de configuração, reconstrua-o explicitamente:"
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Removing packages"
+msgstr "Removendo pacotes"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Remove a package with:"
+msgstr "Remova um pacote com:"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer remove vendor-name/package-name\n"
+msgstr "composer remove vendor-name/package-name\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Then remove application code and configuration that referenced classes, services, routes, commands, assets, migrations, or translations from that package."
+msgstr "Em seguida, remova o código e a configuração da aplicação que referenciavam classes, serviços, rotas, comandos, assets, migrations ou traduções desse pacote."
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Private packages"
+msgstr "Pacotes privados"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For private code, configure Composer repositories in the application `composer.json`. Common options are:"
+msgstr "Para código privado, configure repositórios do Composer no `composer.json` da aplicação. As opções mais comuns são:"
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`vcs` for a Git repository."
+msgstr "`vcs` para um repositório Git."
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`path` for a local package during development."
+msgstr "`path` para um pacote local durante o desenvolvimento."
+
+#. type: Bullet: '- '
+#: ../src/guide/structure/package.md
+msgid "`composer` for a private Composer repository."
+msgstr "`composer` para um repositório Composer privado."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For example, to work with a package located next to the application:"
+msgstr "Por exemplo, para trabalhar com um pacote localizado ao lado da aplicação:"
+
+#. type: Fenced code block (json)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"repositories\": [\n"
+"        {\n"
+"            \"type\": \"path\",\n"
+"            \"url\": \"../packages/blog\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"repositories\": [\n"
+"        {\n"
+"            \"type\": \"path\",\n"
+"            \"url\": \"../packages/blog\"\n"
+"        }\n"
+"    ]\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Then install it normally:"
+msgstr "Depois, instale-o normalmente:"
+
+#. type: Fenced code block (sh)
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "composer require vendor/blog\n"
+msgstr "composer require vendor/blog\n"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Read more in the [Composer repository documentation](https://getcomposer.org/doc/05-repositories.md)."
+msgstr "Leia mais na [documentação de repositórios do Composer](https://getcomposer.org/doc/05-repositories.md)."
+
+#. type: Title ##
+#: ../src/guide/structure/package.md
+#, no-wrap
+msgid "Package configuration"
+msgstr "Configuração de pacotes"
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Some Yii packages provide default configuration through [yiisoft/config](https://github.com/yiisoft/config).  After installation, the package configuration becomes part of the vendor layer and the application can override it in the root package configuration."
+msgstr "Alguns pacotes Yii fornecem configuração padrão por meio do [yiisoft/config](https://github.com/yiisoft/config).  Após a instalação, a configuração do pacote passa a fazer parte da camada vendor, e a aplicação pode sobrescrevê-la na configuração do pacote raiz."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "Prefer partial overrides in application config files over copying whole package config files. For example, override only the parameter or service definition you need."
+msgstr "Prefira sobrescritas parciais nos arquivos de configuração da aplicação em vez de copiar arquivos de configuração inteiros do pacote. Por exemplo, sobrescreva apenas o parâmetro ou a definição de serviço de que você precisa."
+
+#. type: Plain text
+#: ../src/guide/structure/package.md
+msgid "For more details, see [Configuration](../concept/configuration.md) and [Designing packages for Yii applications](designing-packages.md)."
+msgstr "Para mais detalhes, veja [Configuração](../concept/configuration.md) e [Projetando pacotes para aplicações Yii](designing-packages.md)."

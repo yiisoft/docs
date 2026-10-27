@@ -115,5 +115,5 @@ into. Check:
 
 - 仓库
 - Widget
-- [Middleware](middleware.md)
+- [Middleware](../../guide/structure/middleware.md)
 - Entity

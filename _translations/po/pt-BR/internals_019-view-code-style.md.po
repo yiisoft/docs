@@ -1,0 +1,113 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "019 — View code style"
+msgstr "019 — Estilo de código das views"
+
+#. type: Plain text
+#: ../src/en/internals/019-view-code-style.md
+msgid "The PHP code in the view files shouldn't be complicated.  The code must contain the logic responsible for formatting the data, but not the logic for requesting this data."
+msgstr "O código PHP nos arquivos de view não deve ser complicado.  O código deve conter a lógica responsável por formatar os dados, mas não a lógica para buscar esses dados."
+
+#. type: Title ##
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "Heading"
+msgstr "Cabeçalho"
+
+#. type: Plain text
+#: ../src/en/internals/019-view-code-style.md
+msgid "View file heading is used to place phpdoc describing variables available and to import classes:"
+msgstr "O cabeçalho do arquivo de view é usado para colocar o phpdoc que descreve as variáveis disponíveis e para importar classes:"
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/** @var Post $post */\n"
+"/** @var string $name */\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"/** @var Post $post */\n"
+"/** @var string $name */\n"
+"\n"
+"use Yiisoft\\Html\\Html;\n"
+
+#. type: Title ##
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "Control structures"
+msgstr "Estruturas de controle"
+
+#. type: Plain text
+#: ../src/en/internals/019-view-code-style.md
+msgid "Alternative syntax for control structures such as `foreach` and `if` is preferred:"
+msgstr "Prefira a sintaxe alternativa para estruturas de controle como `foreach` e `if`:"
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid ""
+"<?php foreach ($posts as $post): ?>   \n"
+"    <h2><?= Html::encode($post->getTitle()) ?></h2>\n"
+"    <p><?= Html::encode($post->getDescription()) ?></p>\n"
+"<?php endforeach; ?>\n"
+msgstr ""
+"<?php foreach ($posts as $post): ?>   \n"
+"    <h2><?= Html::encode($post->getTitle()) ?></h2>\n"
+"    <p><?= Html::encode($post->getDescription()) ?></p>\n"
+"<?php endforeach; ?>\n"
+
+#. type: Title ##
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "Short echo"
+msgstr "Short echo"
+
+#. type: Plain text
+#: ../src/en/internals/019-view-code-style.md
+msgid "Short echo is preferred:"
+msgstr "Prefira o short echo:"
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "<?= Html::encode($name) ?>\n"
+msgstr "<?= Html::encode($name) ?>\n"
+
+#. type: Title ##
+#: ../src/en/internals/019-view-code-style.md
+#, no-wrap
+msgid "Class methods"
+msgstr "Métodos de classe"
+
+#. type: Plain text
+#: ../src/en/internals/019-view-code-style.md
+msgid "All class methods used in view files must be public regardless if the view is rendered by the class itself."
+msgstr "Todos os métodos de classe usados em arquivos de view devem ser públicos, mesmo que a view seja renderizada pela própria classe."

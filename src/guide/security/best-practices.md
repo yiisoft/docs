@@ -112,7 +112,7 @@ If all you need is plain text, then escaping is as easy as the following:
 <?= \Yiisoft\Html\Html::encode($username) ?>
 ```
 
-If it should be HTML, you could get some help from [HtmlPurifier](http://htmlpurifier.org/).
+If it should be HTML, you could get some help from [HtmlPurifier](https://github.com/ezyang/htmlpurifier).
 Note that HtmlPurifier processing is quite heavy, so consider adding caching.
 
 Further reading on the topic:
@@ -186,8 +186,8 @@ If you absolutely need it, check twice you restrict access to your IP only.
 
 Further reading on the topic:
 
-- <https://owasp.org/www-project-.net/articles/Exception_Handling.md>
-- <https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>
+- <https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>
+- <https://owasp.org/www-project-top-ten/>
 
 
 ## Using secure connection over TLS

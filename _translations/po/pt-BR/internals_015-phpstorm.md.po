@@ -1,0 +1,157 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "015 — PhpStorm metadata and attributes"
+msgstr "015 — Metadados e atributos do PhpStorm"
+
+#. type: Title ##
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "PhpStorm metadata"
+msgstr "Metadados do PhpStorm"
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "[PhpStorm metadata](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) helps the IDE to understand code better in cases when regular types and PHPDoc tags don't help."
+msgstr "Os [metadados do PhpStorm](https://www.jetbrains.com/help/phpstorm/ide-advanced-metadata.html) ajudam a IDE a entender melhor o código nos casos em que os tipos comuns e as tags PHPDoc não ajudam."
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "We use the following set of coding styles for metadata."
+msgstr "Usamos o seguinte conjunto de convenções de estilo para os metadados."
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Metadata location"
+msgstr "Localização dos metadados"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/015-phpstorm.md
+msgid "Metadata should be placed in `/.phpstorm.meta.php` directory."
+msgstr "Os metadados devem ficar no diretório `/.phpstorm.meta.php`."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/015-phpstorm.md
+msgid "Configuration should be split into files. Each file should be named after a class it configures."
+msgstr "A configuração deve ser dividida em arquivos. Cada arquivo deve ter o nome da classe que configura."
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> There is no support for subdirectories in PhpStorm yet.\n"
+msgstr ""
+"> [!NOTE]\n"
+"> O PhpStorm ainda não suporta subdiretórios.\n"
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Constants "
+msgstr "Constantes "
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "All constant dictionaries should be named as `{Class FQN}::{Group name}`. Group name should be short and written in capital letters.  Use underscore as a word separator that's `\\Yiisoft\\Http\\Status::STATUSES`. For example:"
+msgstr "Todos os dicionários de constantes devem ser nomeados como `{Class FQN}::{Group name}`. O nome do grupo deve ser curto e escrito em letras maiúsculas.  Use sublinhado como separador de palavras, por exemplo `\\Yiisoft\\Http\\Status::STATUSES`. Por exemplo:"
+
+#. type: Fenced code block (php)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"expectedReturnValues(\n"
+"  \\Psr\\Http\\Message\\RequestInterface::getMethod(),\n"
+"  argumentsSet('\\Yiisoft\\Http\\Method::METHODS'),\n"
+");\n"
+"\n"
+"registerArgumentsSet(\n"
+"  '\\Yiisoft\\Http\\Method::METHODS',\n"
+"  \\Yiisoft\\Http\\Method::GET,\n"
+"  \\Yiisoft\\Http\\Method::POST,\n"
+"  \\Yiisoft\\Http\\Method::PUT,\n"
+"  \\Yiisoft\\Http\\Method::DELETE,\n"
+"  \\Yiisoft\\Http\\Method::PATCH,\n"
+"  \\Yiisoft\\Http\\Method::HEAD,\n"
+"  \\Yiisoft\\Http\\Method::OPTIONS,\n"
+");\n"
+msgstr ""
+"expectedReturnValues(\n"
+"  \\Psr\\Http\\Message\\RequestInterface::getMethod(),\n"
+"  argumentsSet('\\Yiisoft\\Http\\Method::METHODS'),\n"
+");\n"
+"\n"
+"registerArgumentsSet(\n"
+"  '\\Yiisoft\\Http\\Method::METHODS',\n"
+"  \\Yiisoft\\Http\\Method::GET,\n"
+"  \\Yiisoft\\Http\\Method::POST,\n"
+"  \\Yiisoft\\Http\\Method::PUT,\n"
+"  \\Yiisoft\\Http\\Method::DELETE,\n"
+"  \\Yiisoft\\Http\\Method::PATCH,\n"
+"  \\Yiisoft\\Http\\Method::HEAD,\n"
+"  \\Yiisoft\\Http\\Method::OPTIONS,\n"
+");\n"
+
+#. type: Title ##
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "PhpStorm attributes"
+msgstr "Atributos do PhpStorm"
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "[PhpStorm attributes](https://github.com/JetBrains/phpstorm-attributes) CAN be used in code, but package `jetbrains/phpstorm-attributes` MUST be added as a dev dependency:"
+msgstr "Os [atributos do PhpStorm](https://github.com/JetBrains/phpstorm-attributes) PODEM ser usados no código, mas o pacote `jetbrains/phpstorm-attributes` DEVE ser adicionado como dependência de desenvolvimento:"
+
+#. type: Fenced code block (shell)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "composer require --dev jetbrains/phpstorm-attributes\n"
+msgstr "composer require --dev jetbrains/phpstorm-attributes\n"
+
+#. type: Title ###
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid "Using with ComposerRequireChecker"
+msgstr "Usando com o ComposerRequireChecker"
+
+#. type: Plain text
+#: ../src/en/internals/015-phpstorm.md
+msgid "When [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) is also used within the same package, add involved attributes' class names to whitelist in config. For example:"
+msgstr "Quando o [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) também é usado no mesmo pacote, adicione os nomes das classes dos atributos envolvidos à whitelist na configuração. Por exemplo:"
+
+#. type: Fenced code block (json)
+#: ../src/en/internals/015-phpstorm.md
+#, no-wrap
+msgid ""
+"{\n"
+"    \"symbol-whitelist\": [\n"
+"        \"JetBrains\\\\PhpStorm\\\\ExpectedValues\",\n"
+"        \"JetBrains\\\\PhpStorm\\\\Pure\"\n"
+"    ]\n"
+"}\n"
+msgstr ""
+"{\n"
+"    \"symbol-whitelist\": [\n"
+"        \"JetBrains\\\\PhpStorm\\\\ExpectedValues\",\n"
+"        \"JetBrains\\\\PhpStorm\\\\Pure\"\n"
+"    ]\n"
+"}\n"

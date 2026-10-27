@@ -1,0 +1,139 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
+"PO-Revision-Date: 2026-10-15 10:10+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/configuring-webservers/nginx.md
+#, no-wrap
+msgid "Configuring web servers: Nginx"
+msgstr "Configurando servidores web: Nginx"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx.md
+msgid "To use [Nginx](https:/nginx.org/), install PHP as an [FPM SAPI](https://secure.php.net/install.fpm).  Use the following Nginx configuration, replacing `path/to/app/public` with the actual path for `app/public` and `mysite.test` with the actual hostname to serve."
+msgstr "Para usar o [Nginx](https:/nginx.org/), instale o PHP como [FPM SAPI](https://secure.php.net/install.fpm).  Use a configuração do Nginx a seguir, substituindo `path/to/app/public` pelo caminho real de `app/public` e `mysite.test` pelo hostname real a ser servido."
+
+#. type: Fenced code block (nginx)
+#: ../src/cookbook/configuring-webservers/nginx.md
+#, no-wrap
+msgid ""
+"server {\n"
+"    charset utf-8;\n"
+"    client_max_body_size 128M;\n"
+"\n"
+"    listen 80; ## listen for ipv4\n"
+"    #listen [::]:80 default_server ipv6only=on; ## listen for ipv6\n"
+"\n"
+"    server_name mysite.test;\n"
+"    root        /path/to/app/public;\n"
+"    index       index.php;\n"
+"\n"
+"    access_log  /path/to/basic/log/access.log;\n"
+"    error_log   /path/to/basic/log/error.log;\n"
+"\n"
+"    location / {\n"
+"        # Redirect everything that isn't a real file to index.php\n"
+"        try_files $uri $uri/ /index.php$is_args$args;\n"
+"    }\n"
+"\n"
+"    # uncomment to avoid processing of calls to non-existing static files by Yii\n"
+"    #location ~ \\.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {\n"
+"    #    try_files $uri =404;\n"
+"    #}\n"
+"    #error_page 404 /404.html;\n"
+"\n"
+"    # deny accessing php files for the /assets directory\n"
+"    location ~ ^/assets/.*\\.php$ {\n"
+"        deny all;\n"
+"    }\n"
+"\n"
+"    location ~ \\.php$ {\n"
+"        include fastcgi_params;\n"
+"        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n"
+"        fastcgi_pass 127.0.0.1:9000;\n"
+"        #fastcgi_pass unix:/var/run/php8-fpm.sock;\n"
+"        try_files $uri =404;\n"
+"        fastcgi_param APP_ENV \"dev\";\n"
+"    }\n"
+"\n"
+"    location ~* /\\. {\n"
+"        deny all;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"server {\n"
+"    charset utf-8;\n"
+"    client_max_body_size 128M;\n"
+"\n"
+"    listen 80; ## escuta em ipv4\n"
+"    #listen [::]:80 default_server ipv6only=on; ## escuta em ipv6\n"
+"\n"
+"    server_name mysite.test;\n"
+"    root        /path/to/app/public;\n"
+"    index       index.php;\n"
+"\n"
+"    access_log  /path/to/basic/log/access.log;\n"
+"    error_log   /path/to/basic/log/error.log;\n"
+"\n"
+"    location / {\n"
+"        # Redireciona para index.php tudo que não for um arquivo real\n"
+"        try_files $uri $uri/ /index.php$is_args$args;\n"
+"    }\n"
+"\n"
+"    # descomente para evitar que o Yii processe chamadas a arquivos estáticos inexistentes\n"
+"    #location ~ \\.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {\n"
+"    #    try_files $uri =404;\n"
+"    #}\n"
+"    #error_page 404 /404.html;\n"
+"\n"
+"    # bloqueia o acesso a arquivos php no diretório /assets\n"
+"    location ~ ^/assets/.*\\.php$ {\n"
+"        deny all;\n"
+"    }\n"
+"\n"
+"    location ~ \\.php$ {\n"
+"        include fastcgi_params;\n"
+"        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n"
+"        fastcgi_pass 127.0.0.1:9000;\n"
+"        #fastcgi_pass unix:/var/run/php8-fpm.sock;\n"
+"        try_files $uri =404;\n"
+"        fastcgi_param APP_ENV \"dev\";\n"
+"    }\n"
+"\n"
+"    location ~* /\\. {\n"
+"        deny all;\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx.md
+msgid "When you use this configuration, also set `cgi.fix_pathinfo=0` in the `php.ini` file to avoid many unnecessary system `stat()` calls."
+msgstr "Ao usar essa configuração, defina também `cgi.fix_pathinfo=0` no arquivo `php.ini` para evitar muitas chamadas de sistema `stat()` desnecessárias."
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx.md
+msgid "Also, note that when running an HTTPS server, you need to add `fastcgi_param HTTPS on;` so that Yii can detect if a connection is secure."
+msgstr "Além disso, ao executar um servidor HTTPS, você precisa adicionar `fastcgi_param HTTPS on;` para que o Yii consiga detectar se a conexão é segura."
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx.md
+msgid "In the above, note the usage of `fastcgi_param APP_ENV`. Since Yii3 application templates use environment variables, this is a possible place to set them. In production environment remember to set `APP_ENV` to `prod`."
+msgstr "Observe o uso de `fastcgi_param APP_ENV` acima. Como os templates de aplicação do Yii3 usam variáveis de ambiente, este é um lugar possível para defini-las. Em produção, lembre-se de definir `APP_ENV` como `prod`."
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/nginx.md
+msgid "The Nginx `access_log` and `error_log` directives above don't capture PHP-FPM worker output.  See [application logs](general.md#application-logs) for logging configuration."
+msgstr "As diretivas `access_log` e `error_log` do Nginx acima não capturam a saída dos workers do PHP-FPM.  Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração de logs."

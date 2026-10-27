@@ -1,0 +1,119 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "013 — Code review"
+msgstr "013 — Code review"
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "Code reviews are essential for the success of the project and are as important as contributing code."
+msgstr "Code reviews são essenciais para o sucesso do projeto e tão importantes quanto contribuir com código."
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "Reviews are handled via GitHub pull requests. When the request is ready for review, the \"status: code review\" label is added to it."
+msgstr "As revisões são feitas por meio de pull requests no GitHub. Quando o pull request está pronto para revisão, recebe o label \"status: code review\"."
+
+#. type: Plain text
+#: ../src/en/internals/013-code-review.md
+msgid "[A full list of pull requests that need review](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  is available at GitHub."
+msgstr "[A lista completa de pull requests que precisam de revisão](https://github.com/search?q=org%3Ayiisoft+label%3A\"status%3Acode+review\"&state=open&type=Issues)  está disponível no GitHub."
+
+#. type: Title ##
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "Guidelines"
+msgstr "Diretrizes"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Check out the pull request branch, open the project in the IDE, get a big picture."
+msgstr "Faça checkout do branch do pull request, abra o projeto na IDE e tenha uma visão geral."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Does the pull request make sense overall?"
+msgstr "O pull request faz sentido como um todo?"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Run tests and/or application using code from the pull request. Are these OK?"
+msgstr "Rode os testes e/ou a aplicação usando o código do pull request. Está tudo certo?"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Read all lines of code in the pull request."
+msgstr "Leia todas as linhas de código do pull request."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Could it be done simpler?"
+msgstr "Daria para fazer de forma mais simples?"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Are there security issues?"
+msgstr "Há problemas de segurança?"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Are there performance issues?"
+msgstr "Há problemas de desempenho?"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "When leaving comments, be polite."
+msgstr "Ao deixar comentários, seja educado."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "Avoid code-formatting comments."
+msgstr "Evite comentários sobre formatação de código."
+
+#. type: Title ##
+#: ../src/en/internals/013-code-review.md
+#, no-wrap
+msgid "Mandatory parts"
+msgstr "Itens obrigatórios"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Tests that fail without code and pass with code."
+msgstr "[ ] Testes que falham sem o código e passam com ele."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Type hints."
+msgstr "[ ] Type hints."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] `declare(strict_types=1)`."
+msgstr "[ ] `declare(strict_types=1)`."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Documentation: phpdoc, yiisoft/docs."
+msgstr "[ ] Documentação: phpdoc, yiisoft/docs."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/013-code-review.md
+msgid "[ ] Changelog entry (if package is stable)."
+msgstr "[ ] Entrada no changelog (se o pacote for estável)."

@@ -1,0 +1,147 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-15 11:09+0000\n"
+"PO-Revision-Date: 2026-10-15 11:09+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/cookbook/index.md
+#, no-wrap
+msgid "Yii3 community cookbook"
+msgstr "Cookbook da comunidade Yii3"
+
+#. type: Plain text
+#: ../src/cookbook/index.md
+msgid "Yii3 Community Cookbook is an OpenSource book full of tips and tricks about the [Yii3](https://www.yiiframework.com/)  PHP framework."
+msgstr "O Cookbook da comunidade Yii3 é um livro de código aberto cheio de dicas e truques sobre o framework PHP [Yii3](https://www.yiiframework.com/)."
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "The Yii community creates the cookbook."
+msgstr "A comunidade Yii escreve o cookbook."
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
+msgid "Yii core team members curate and edit it."
+msgstr "Membros do time principal do Yii fazem a curadoria e a edição."
+
+#. type: Plain text
+#: ../src/cookbook/index.md ../src/cookbook/third-party-integrations/index.md
+msgid "Feel free to pull-request your own writings. Team members will review it, give feedback and merge the best possible way."
+msgstr "Fique à vontade para enviar seus próprios textos via pull request. Os membros do time vão revisar, dar feedback e fazer o merge da melhor forma possível."
+
+#. type: Plain text
+#: ../src/cookbook/index.md
+msgid "This book conforms to the [Terms of Yii Documentation](https://www.yiiframework.com/license#docs)."
+msgstr "Este livro segue os [Termos da documentação do Yii](https://www.yiiframework.com/license#docs)."
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Preface](preface.md)"
+msgstr "[Prefácio](preface.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Making HTTP requests](making-http-requests.md)"
+msgstr "[Fazendo requisições HTTP](making-http-requests.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Using htmx for partial page reloads](using-htmx-for-partial-reloads.md)"
+msgstr "[Usando htmx para recarregar partes da página](using-htmx-for-partial-reloads.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Disabling CSRF protection](disabling-csrf-protection.md)"
+msgstr "[Desativando a proteção CSRF](disabling-csrf-protection.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Sentry integration](sentry-integration.md)"
+msgstr "[Integração com o Sentry](sentry-integration.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Using a custom migration template](custom-migration-template.md)"
+msgstr "[Usando um template de migration personalizado](custom-migration-template.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Custom hydrator type casters](custom-hydrator-type-casters.md)"
+msgstr "[Type casters personalizados para o hydrator](custom-hydrator-type-casters.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Using Yii in third-party applications](using-yii-in-third-party-apps.md)"
+msgstr "[Usando o Yii em aplicações de terceiros](using-yii-in-third-party-apps.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Third-party integrations](third-party-integrations/index.md)"
+msgstr "[Integrações com terceiros](third-party-integrations/index.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Working on Windows](working-on-windows.md)"
+msgstr "[Trabalhando no Windows](working-on-windows.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Opening files directly in PhpStorm](opening-files-in-phpstorm.md)"
+msgstr "[Abrindo arquivos direto no PhpStorm](opening-files-in-phpstorm.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring Xdebug](configuring-xdebug.md)"
+msgstr "[Configurando o Xdebug](configuring-xdebug.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring webservers](configuring-webservers/general.md)"
+msgstr "[Configurando servidores web](configuring-webservers/general.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Structuring code by use-case with vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
+msgstr "[Estruturando o código por caso de uso com vertical slices](organizing-code/structuring-by-use-case-with-vertical-slices.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Domain](organizing-code/domain.md)"
+msgstr "[Domínio](organizing-code/domain.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Service components](organizing-code/service.md)"
+msgstr "[Componentes de serviço](organizing-code/service.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Deploying to Docker Swarm](deployment/docker-swarm.md)"
+msgstr "[Deploy com Docker Swarm](deployment/docker-swarm.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Deploying Yii applications with Angie Docker Proxy](deployment/angie-docker-proxy.md)"
+msgstr "[Deploy de aplicações Yii com Angie Docker Proxy](deployment/angie-docker-proxy.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Configuring an application for autoscaling](deployment/autoscaling.md)"
+msgstr "[Configurando uma aplicação para autoscaling](deployment/autoscaling.md)"
+
+#. type: Bullet: '- '
+#: ../src/cookbook/index.md
+msgid "[Applying migrations during rolling updates](deployment/rolling-update-migrations.md)"
+msgstr "[Aplicando migrations durante rolling updates](deployment/rolling-update-migrations.md)"

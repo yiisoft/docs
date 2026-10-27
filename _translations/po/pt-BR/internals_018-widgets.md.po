@@ -1,0 +1,113 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/en/guide/concept/immutability.md ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Immutability"
+msgstr "Imutabilidade"
+
+#. type: Title ###
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Names"
+msgstr "Nomes"
+
+#. type: Title ##
+#: ../src/en/internals/010-code-style.md ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Methods"
+msgstr "Métodos"
+
+#. type: Title ##
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Class names"
+msgstr "Nomes de classes"
+
+#. type: Title ##
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Inheritance"
+msgstr "Herança"
+
+#. type: Plain text
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Inheritance is allowed with some restrictions:"
+msgstr "A herança é permitida com algumas restrições:"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "If a class isn't abstract, it should be final."
+msgstr "Se uma classe não é abstrata, ela deve ser final."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Hierarchy should be kept as linear as possible."
+msgstr "A hierarquia deve ser mantida o mais linear possível."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Have no state."
+msgstr "Não ter estado."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Unlike other classes, methods that return a clone of the object with some properties modified aren't prefixed."
+msgstr "Diferente de outras classes, os métodos que retornam um clone do objeto com algumas propriedades modificadas não têm prefixo."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "Keep method names as short as possible but don't hurt readability."
+msgstr "Mantenha os nomes dos métodos o mais curtos possível, sem prejudicar a legibilidade."
+
+#. type: Title ###
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "Boolean flags"
+msgstr "Flags booleanas"
+
+#. type: Plain text
+#: ../src/en/internals/017-tags.md ../src/en/internals/018-widgets.md
+msgid "The method that corresponds to the boolean attribute should be named after the attribute and accept a boolean flag argument."
+msgstr "O método que corresponde a um atributo booleano deve ter o nome do atributo e aceitar um argumento booleano como flag."
+
+#. type: Title #
+#: ../src/en/internals/018-widgets.md
+#, no-wrap
+msgid "018 - Widgets"
+msgstr "018 - Widgets"
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid "Unlike regular classes, widgets are used in view templates, so syntax is important.  It should be both easy to write, easy to read and not too verbose because similar constructs are meant to be used over and over again."
+msgstr "Diferente das classes comuns, os widgets são usados em templates de view, então a sintaxe é importante.  Ela deve ser fácil de escrever, fácil de ler e não muito verbosa, porque construções parecidas são usadas repetidas vezes."
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid "Widgets aren't postfixed or prefixed."
+msgstr "Os widgets não têm prefixo nem sufixo."
+
+#. type: Plain text
+#: ../src/en/internals/018-widgets.md
+msgid "Widgets should:"
+msgstr "Os widgets devem:"
+
+#. type: Bullet: '- '
+#: ../src/en/internals/018-widgets.md
+msgid "Be immutable."
+msgstr "Ser imutáveis."

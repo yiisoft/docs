@@ -16,12 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md
-#: ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md
-#: ../src/guide/security/best-practices.md ../src/guide/structure/domain.md
-#: ../src/guide/tutorial/console-applications.md
-#: ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md
-#: ../src/internals/008-interfaces.md
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md ../src/guide/security/best-practices.md ../src/guide/structure/domain.md ../src/guide/tutorial/console-applications.md ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md ../src/internals/008-interfaces.md
 #, no-wrap
 msgid "References"
 msgstr "参考资料"
@@ -250,8 +245,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../src/guide/security/best-practices.md
-msgid "If it should be HTML, you could get some help from [HtmlPurifier](http://htmlpurifier.org/).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
-msgstr "如果它应该是 HTML，您可以从 [HtmlPurifier](http://htmlpurifier.org/) 获得一些帮助。请注意，HtmlPurifier 处理相当繁重，因此请考虑添加缓存。"
+msgid "If it should be HTML, you could get some help from [HtmlPurifier](https://github.com/ezyang/htmlpurifier).  Note that HtmlPurifier processing is quite heavy, so consider adding caching."
+msgstr "如果它应该是 HTML，您可以从 [HtmlPurifier](https://github.com/ezyang/htmlpurifier) 获得一些帮助。请注意，HtmlPurifier 处理相当繁重，因此请考虑添加缓存。"
 
 #. type: Title ##
 #: ../src/guide/security/best-practices.md
@@ -385,12 +380,12 @@ msgstr "除非必要，否则应避免在生产环境中使用调试工具栏。
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-project-.net/articles/Exception_Handling.md>"
+msgid "<https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html>"
 msgstr ""
 
 #. type: Bullet: '- '
 #: ../src/guide/security/best-practices.md
-msgid "<https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf>"
+msgid "<https://owasp.org/www-project-top-ten/>"
 msgstr ""
 
 #. type: Title ##

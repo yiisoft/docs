@@ -48,19 +48,19 @@ msgstr "[Caching dei dati](caching/data.md)"
 #: ../src/guide/caching/overview.md
 #, fuzzy
 #| msgid "[Fragment caching](caching/fragment.md) TODO"
-msgid "[Fragment caching](fragment.md)"
+msgid "Fragment caching"
 msgstr "[Caching dei frammenti](caching/fragment.md) TODO"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
 #, fuzzy
 #| msgid "[Page caching](caching/page.md) TODO"
-msgid "[Page caching](page.md)"
+msgid "Page caching"
 msgstr "[Caching delle pagine](caching/page.md) TODO"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
 #, fuzzy
 #| msgid "[HTTP caching](caching/http.md) TODO"
-msgid "[HTTP caching](http.md)"
+msgid "HTTP caching"
 msgstr "[Caching HTTP](caching/http.md) TODO"

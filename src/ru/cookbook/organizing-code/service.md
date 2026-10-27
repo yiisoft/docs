@@ -115,5 +115,5 @@ into. Check:
 
 - Репозиторий
 - Widget
-- [Middleware](middleware.md)
+- [Middleware](../../guide/structure/middleware.md)
 - Entity

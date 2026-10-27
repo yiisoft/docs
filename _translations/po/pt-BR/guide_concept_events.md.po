@@ -1,0 +1,399 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/guide/concept/configuration.md ../src/guide/concept/events.md ../src/guide/structure/designing-packages.md ../src/internals/022-config-groups.md
+#, no-wrap
+msgid "Events"
+msgstr "Eventos"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "Events allow you to run custom code at certain execution points without changing the code that emits the event.  You attach a custom code called a listener to an event. When the event is dispatched, the listener is executed."
+msgstr "Eventos permitem executar código personalizado em determinados pontos da execução, sem alterar o código que emite o evento.  Você associa a um evento um código personalizado chamado listener. Quando o evento é disparado, o listener é executado."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "For example, when a user signs up, you need to send a welcome email. You can do it in `SignupService`.  Later, when you also need to resize the user's avatar image, the service has to know about that too."
+msgstr "Por exemplo, quando um usuário se cadastra, você precisa enviar um e-mail de boas-vindas. Dá para fazer isso no `SignupService`.  Mais tarde, quando você também precisar redimensionar a imagem de avatar do usuário, o serviço vai ter que saber disso também."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "A cleaner flow is to dispatch a `UserSignedUp` event from `SignupService`. The welcome email sender and the avatar processor listen to this event. Additional signup-related work can be added by registering another listener."
+msgstr "Um fluxo mais limpo é disparar um evento `UserSignedUp` a partir do `SignupService`. O remetente do e-mail de boas-vindas e o processador de avatar escutam esse evento. Trabalho adicional relacionado ao cadastro pode ser incluído registrando outro listener."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "Yii uses [yiisoft/yii-event](https://github.com/yiisoft/yii-event) for application event configuration. It builds on the [yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher) package, which provides a [PSR-14](https://www.php-fig.org/psr/psr-14/) compatible event dispatcher."
+msgstr "O Yii usa o [yiisoft/yii-event](https://github.com/yiisoft/yii-event) para a configuração de eventos da aplicação. Ele é construído sobre o pacote [yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher), que fornece um event dispatcher compatível com [PSR-14](https://www.php-fig.org/psr/psr-14/)."
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Event classes"
+msgstr "Classes de evento"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "An event is an object. It usually contains data that listeners need:"
+msgstr "Um evento é um objeto. Normalmente ele contém os dados de que os listeners precisam:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"final readonly class UserSignedUp\n"
+"{\n"
+"    public function __construct(\n"
+"        public SignupForm $form,\n"
+"    ) {}\n"
+"}\n"
+msgstr ""
+"final readonly class UserSignedUp\n"
+"{\n"
+"    public function __construct(\n"
+"        public SignupForm $form,\n"
+"    ) {}\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Event listeners"
+msgstr "Listeners de eventos"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "An event listener is a [PHP callable](https://www.php.net/manual/en/language.types.callable.php) that receives an event:"
+msgstr "Um listener de evento é um [callable do PHP](https://www.php.net/manual/en/language.types.callable.php) que recebe um evento:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"static function (UserSignedUp $event): void {\n"
+"    // Send a welcome email.\n"
+"}\n"
+msgstr ""
+"static function (UserSignedUp $event): void {\n"
+"    // Envia um e-mail de boas-vindas.\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "You can also use an invokable class:"
+msgstr "Você também pode usar uma classe invocável:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"final readonly class WelcomeEmailSender\n"
+"{\n"
+"    public function __invoke(UserSignedUp $event): void\n"
+"    {\n"
+"        // Send a welcome email.\n"
+"    }\n"
+"}\n"
+msgstr ""
+"final readonly class WelcomeEmailSender\n"
+"{\n"
+"    public function __invoke(UserSignedUp $event): void\n"
+"    {\n"
+"        // Envia um e-mail de boas-vindas.\n"
+"    }\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Configuring event listeners"
+msgstr "Configurando listeners de eventos"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "In an application, configure listeners in:"
+msgstr "Em uma aplicação, configure os listeners em:"
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/events.md
+msgid "`config/events.php` for all application types."
+msgstr "`config/events.php` para todos os tipos de aplicação."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/events.md
+msgid "`config/events-web.php` for web application events."
+msgstr "`config/events-web.php` para eventos da aplicação web."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/events.md
+msgid "`config/events-console.php` for console application events."
+msgstr "`config/events-console.php` para eventos da aplicação de console."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "The configuration is an array where keys are event class names and values are lists of listeners:"
+msgstr "A configuração é um array em que as chaves são os nomes das classes de evento e os valores são listas de listeners:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Event\\UserSignedUp;\n"
+"use App\\EventListener\\WelcomeEmailSender;\n"
+"use App\\Service\\AvatarProcessor;\n"
+"\n"
+"return [\n"
+"    UserSignedUp::class => [\n"
+"        WelcomeEmailSender::class,\n"
+"        static fn (UserSignedUp $event, AvatarProcessor $avatarProcessor) => $avatarProcessor->resize($event->form),\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Event\\UserSignedUp;\n"
+"use App\\EventListener\\WelcomeEmailSender;\n"
+"use App\\Service\\AvatarProcessor;\n"
+"\n"
+"return [\n"
+"    UserSignedUp::class => [\n"
+"        WelcomeEmailSender::class,\n"
+"        static fn (UserSignedUp $event, AvatarProcessor $avatarProcessor) => $avatarProcessor->resize($event->form),\n"
+"    ],\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "The listener may be a closure, a callable array, an invokable object, an invokable class name, or a DI alias.  For closure and callable array listeners, parameters after the first event parameter are resolved from the DI container.  Invokable class names are instantiated by the container."
+msgstr "O listener pode ser uma closure, um array callable, um objeto invocável, o nome de uma classe invocável ou um alias de DI.  Para listeners do tipo closure e array callable, os parâmetros depois do primeiro (o evento) são resolvidos pelo container de DI.  Nomes de classes invocáveis são instanciados pelo container."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "Dependencies are resolved when the event is dispatched."
+msgstr "As dependências são resolvidas quando o evento é disparado."
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Dispatching events"
+msgstr "Disparando eventos"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "To dispatch an event, use `Psr\\EventDispatcher\\EventDispatcherInterface`:"
+msgstr "Para disparar um evento, use `Psr\\EventDispatcher\\EventDispatcherInterface`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
+"\n"
+"final readonly class SignupService\n"
+"{\n"
+"    public function __construct(\n"
+"        private EventDispatcherInterface $eventDispatcher,\n"
+"    ) {}\n"
+"\n"
+"    public function signup(SignupForm $form): void\n"
+"    {\n"
+"        // Sign up the user.\n"
+"\n"
+"        $this->eventDispatcher->dispatch(new UserSignedUp($form));\n"
+"    }\n"
+"}\n"
+msgstr ""
+"use Psr\\EventDispatcher\\EventDispatcherInterface;\n"
+"\n"
+"final readonly class SignupService\n"
+"{\n"
+"    public function __construct(\n"
+"        private EventDispatcherInterface $eventDispatcher,\n"
+"    ) {}\n"
+"\n"
+"    public function signup(SignupForm $form): void\n"
+"    {\n"
+"        // Cadastra o usuário.\n"
+"\n"
+"        $this->eventDispatcher->dispatch(new UserSignedUp($form));\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "The dispatcher asks a listener provider for listeners that match the event and calls them one by one."
+msgstr "O dispatcher pede a um listener provider os listeners que correspondem ao evento e os chama um por um."
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Event listener order"
+msgstr "Ordem dos listeners"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "When several listeners are configured for the same event, they are called in the order they are listed in the config.  If an event implements `Psr\\EventDispatcher\\StoppableEventInterface`, the dispatcher checks `isPropagationStopped()` before calling the next listener. When it returns `true`, the dispatcher stops processing the event."
+msgstr "Quando vários listeners são configurados para o mesmo evento, eles são chamados na ordem em que aparecem na configuração.  Se um evento implementa `Psr\\EventDispatcher\\StoppableEventInterface`, o dispatcher verifica `isPropagationStopped()` antes de chamar o próximo listener. Quando ele retorna `true`, o dispatcher para de processar o evento."
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "Keep listeners independent where possible. Ordering is useful for technical needs, but business logic is usually easier to maintain when each listener can run on its own."
+msgstr "Mantenha os listeners independentes sempre que possível. A ordem é útil para necessidades técnicas, mas a lógica de negócio costuma ser mais fácil de manter quando cada listener consegue rodar sozinho."
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Event hierarchy"
+msgstr "Hierarquia de eventos"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "Events don't have names or wildcard matching. Event class names, interfaces, and inheritance can be used when one listener should handle several related events:"
+msgstr "Eventos não têm nomes nem correspondência por curinga. Nomes de classes de evento, interfaces e herança podem ser usados quando um listener precisa tratar vários eventos relacionados:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"interface DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class BeforeDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class AfterDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+msgstr ""
+"interface DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class BeforeDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+"\n"
+"final readonly class AfterDocumentProcessed implements DocumentEvent\n"
+"{\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "With the interface, you can listen to all document-related events:"
+msgstr "Com a interface, você pode escutar todos os eventos relacionados a documentos:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\EventDispatcher\\Provider\\ListenerCollection;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"$listeners = (new ListenerCollection())\n"
+"    ->add(static function (DocumentEvent $event): void {\n"
+"        // Log document events.\n"
+"    });\n"
+"\n"
+"$provider = new Provider($listeners);\n"
+msgstr ""
+"use Yiisoft\\EventDispatcher\\Provider\\ListenerCollection;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"$listeners = (new ListenerCollection())\n"
+"    ->add(static function (DocumentEvent $event): void {\n"
+"        // Registra em log os eventos de documentos.\n"
+"    });\n"
+"\n"
+"$provider = new Provider($listeners);\n"
+
+#. type: Title ##
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "Manual listener provider setup"
+msgstr "Configuração manual do listener provider"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+msgid "In an application, use event configuration. For package-level code or tests, you can create a listener provider manually:"
+msgstr "Em uma aplicação, use a configuração de eventos. Para código de pacotes ou testes, você pode criar um listener provider manualmente:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\EventDispatcher\\Dispatcher\\Dispatcher;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\ListenerCollection;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"$listeners = (new ListenerCollection())\n"
+"    ->add(static function (UserSignedUp $event): void {\n"
+"        // Send a welcome email.\n"
+"    });\n"
+"\n"
+"$provider = new Provider($listeners);\n"
+"$dispatcher = new Dispatcher($provider);\n"
+"\n"
+"$dispatcher->dispatch(new UserSignedUp($form));\n"
+msgstr ""
+"use Yiisoft\\EventDispatcher\\Dispatcher\\Dispatcher;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\ListenerCollection;\n"
+"use Yiisoft\\EventDispatcher\\Provider\\Provider;\n"
+"\n"
+"$listeners = (new ListenerCollection())\n"
+"    ->add(static function (UserSignedUp $event): void {\n"
+"        // Envia um e-mail de boas-vindas.\n"
+"    });\n"
+"\n"
+"$provider = new Provider($listeners);\n"
+"$dispatcher = new Dispatcher($provider);\n"
+"\n"
+"$dispatcher->dispatch(new UserSignedUp($form));\n"
+
+#. type: Plain text
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid "`ListenerCollection::add()` returns a new collection instance. Assign the result when building a collection step by step:\n"
+msgstr "`ListenerCollection::add()` retorna uma nova instância da coleção. Atribua o resultado ao montar uma coleção passo a passo:\n"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/events.md
+#, no-wrap
+msgid ""
+"$listeners = new ListenerCollection();\n"
+"$listeners = $listeners->add(\n"
+"    static function (UserSignedUp $event): void {\n"
+"        // Send a welcome email.\n"
+"    },\n"
+"    UserSignedUp::class,\n"
+");\n"
+msgstr ""
+"$listeners = new ListenerCollection();\n"
+"$listeners = $listeners->add(\n"
+"    static function (UserSignedUp $event): void {\n"
+"        // Envia um e-mail de boas-vindas.\n"
+"    },\n"
+"    UserSignedUp::class,\n"
+");\n"

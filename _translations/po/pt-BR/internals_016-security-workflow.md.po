@@ -1,0 +1,176 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-09 18:47+0000\n"
+"PO-Revision-Date: 2026-05-09 18:47+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "016 — Security workflow"
+msgstr "016 — Fluxo de segurança"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "Security issues are typically sent via [a security form](https://www.yiiframework.com/security)."
+msgstr "Problemas de segurança normalmente são enviados pelo [formulário de segurança](https://www.yiiframework.com/security)."
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid ""
+"If an issue is reported directly to a public page such as a repository issue or a forum topic, get the message\n"
+"and delete the issue. Say thanks to the reporter and point to the security form for next time.  \n"
+msgstr ""
+"Se um problema for relatado diretamente em uma página pública, como uma issue do repositório ou um tópico do fórum, copie a mensagem\n"
+"e apague a issue. Agradeça a quem relatou e indique o formulário de segurança para a próxima vez.  \n"
+
+#. type: Fenced code block (mermaid)
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid ""
+"flowchart TD\n"
+"    form[Security form report] --> verify[Verify issue]\n"
+"    public[Public report] --> remove[Save details and delete public issue]\n"
+"    remove --> redirect[Point reporter to the security form]\n"
+"    redirect --> verify\n"
+"    verify -->|needs details| requestInfo[Request more information]\n"
+"    requestInfo --> verify\n"
+"    verify -->|valid| advisory[Create draft security advisory]\n"
+"    advisory --> severity[Set CVSS severity]\n"
+"    severity --> credit[Ask about reporter credit]\n"
+"    credit --> cve[Request CVE number]\n"
+"    cve --> patch[Prepare patch pull request]\n"
+"    patch --> wait[Wait for CVE allocation]\n"
+"    wait --> release[Release]\n"
+"    release --> publish[Publish advisory and submit FriendsOfPHP entry]\n"
+msgstr ""
+"flowchart TD\n"
+"    form[Relato pelo formulário de segurança] --> verify[Verificar o problema]\n"
+"    public[Relato público] --> remove[Salvar os detalhes e apagar a issue pública]\n"
+"    remove --> redirect[Indicar o formulário de segurança a quem relatou]\n"
+"    redirect --> verify\n"
+"    verify -->|precisa de detalhes| requestInfo[Pedir mais informações]\n"
+"    requestInfo --> verify\n"
+"    verify -->|válido| advisory[Criar rascunho de security advisory]\n"
+"    advisory --> severity[Definir a severidade CVSS]\n"
+"    severity --> credit[Perguntar sobre o crédito a quem relatou]\n"
+"    credit --> cve[Solicitar número CVE]\n"
+"    cve --> patch[Preparar pull request com o patch]\n"
+"    patch --> wait[Aguardar a atribuição do CVE]\n"
+"    wait --> release[Release]\n"
+"    release --> publish[Publicar o advisory e enviar entrada ao FriendsOfPHP]\n"
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Verify"
+msgstr "Verificar"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "Verify that the issue is valid. Request more information if needed."
+msgstr "Verifique se o problema é válido. Peça mais informações, se necessário."
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Add security advisory"
+msgstr "Adicionar security advisory"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "Create a draft GitHub security advisory."
+msgstr "Crie um rascunho de security advisory no GitHub."
+
+#. type: Title ###
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Find out severity"
+msgstr "Descobrir a severidade"
+
+#. type: Bullet: '1. '
+#: ../src/internals/016-security-workflow.md
+msgid "Get CVSS score using [NVD calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)."
+msgstr "Obtenha a pontuação CVSS usando a [calculadora do NVD](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)."
+
+#. type: Bullet: '2. '
+#: ../src/internals/016-security-workflow.md
+msgid "Choose severity based on the [rating scale](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale)."
+msgstr "Escolha a severidade com base na [escala de classificação](https://www.first.org/cvss/specification-document#Qualitative-Severity-Rating-Scale)."
+
+#. type: Title ###
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Give credit to the reporter"
+msgstr "Dar crédito a quem relatou"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "Ask the reporter if he wants a credit for finding the issue. If so, point to his GitHub account."
+msgstr "Pergunte a quem relatou se deseja receber crédito por ter encontrado o problema. Se sim, indique a conta dessa pessoa no GitHub."
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Request a CVE number"
+msgstr "Solicitar um número CVE"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "When you're ready, request a CVE."
+msgstr "Quando estiver pronto, solicite um CVE."
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Prepare a patch"
+msgstr "Preparar um patch"
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "Prepare a pull request fixing the issue. GitHub allows doing it in a private fork."
+msgstr "Prepare um pull request que corrija o problema. O GitHub permite fazer isso em um fork privado."
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Wait till the CVE number is allocated "
+msgstr "Aguardar a atribuição do número CVE "
+
+#. type: Plain text
+#: ../src/internals/016-security-workflow.md
+msgid "It usually takes several days."
+msgstr "Normalmente leva alguns dias."
+
+#. type: Title ##
+#: ../src/internals/016-security-workflow.md
+#, no-wrap
+msgid "Release"
+msgstr "Release"
+
+#. type: Bullet: '- '
+#: ../src/internals/016-security-workflow.md
+msgid "Merge the patch pull request right before tagging the next package release."
+msgstr "Faça o merge do pull request com o patch logo antes de criar a tag do próximo release do pacote."
+
+#. type: Bullet: '- '
+#: ../src/internals/016-security-workflow.md
+msgid "Publish security advisory."
+msgstr "Publique o security advisory."
+
+#. type: Bullet: '- '
+#: ../src/internals/016-security-workflow.md
+msgid "Add CVE to [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).  See [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) as an example."
+msgstr "Adicione o CVE em [FriendsOfPHP/security-advisories](https://github.com/FriendsOfPHP/security-advisories).  Veja [#488](https://github.com/FriendsOfPHP/security-advisories/pull/488) como exemplo."

@@ -1,0 +1,284 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/making-http-requests.md ../src/en/cookbook/sentry-integration.md ../src/en/guide/tutorial/using-yii-with-roadrunner.md ../src/en/guide/tutorial/using-yii-with-swoole.md ../src/en/guide/views/asset.md ../src/en/guide/views/view.md ../src/en/guide/views/widget.md
+#, no-wrap
+msgid "Installation"
+msgstr "Instalação"
+
+#. type: Title #
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Sentry integration"
+msgstr "Integração com o Sentry"
+
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "What is Sentry"
+msgstr "O que é o Sentry"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid ""
+"[Sentry](https://sentry.io/) is a tool for monitoring and debugging application stability and performance.\n"
+"Sentry gives you access to the events that you send there from your application.\n"
+msgstr ""
+"O [Sentry](https://sentry.io/) é uma ferramenta para monitorar e depurar a estabilidade e o desempenho de aplicações.\n"
+"O Sentry dá acesso aos eventos que você envia para ele a partir da sua aplicação.\n"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Most often, Sentry is used for monitoring errors (exceptions).  You can enrich errors with context to better understand the problem: - Request arguments - Tags for grouping exceptions - Environment state: environment variables, application state, and other global attributes"
+msgstr "Na maioria das vezes, o Sentry é usado para monitorar erros (exceções).  Você pode enriquecer os erros com contexto para entender melhor o problema: - Argumentos da requisição - Tags para agrupar exceções - Estado do ambiente: variáveis de ambiente, estado da aplicação e outros atributos globais"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "You can find the full list of features on the official website: https://sentry.io/welcome/"
+msgstr "Você encontra a lista completa de funcionalidades no site oficial: https://sentry.io/welcome/"
+
+#. type: Title ###
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Install the package"
+msgstr "Instale o pacote"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Install the required package `yiisoft/yii-sentry` with the following command:"
+msgstr "Instale o pacote necessário `yiisoft/yii-sentry` com o seguinte comando:"
+
+#. type: Fenced code block (shell)
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "composer require yiisoft/yii-sentry --prefer-dist\n"
+msgstr "composer require yiisoft/yii-sentry --prefer-dist\n"
+
+#. type: Title ###
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Install an HTTP driver"
+msgstr "Instale um driver HTTP"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "The [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) library requires the `php-http/httplug` package and any HTTP driver.  In the example below we’ll use the Guzzle adapter."
+msgstr "A biblioteca [`getsentry/sentry-php`](https://github.com/getsentry/sentry-php) exige o pacote `php-http/httplug` e algum driver HTTP.  No exemplo abaixo, vamos usar o adaptador do Guzzle."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "> You can find the list of all adapters on [this page](https://docs.php-http.org/en/latest/clients.html#clients-adapters).\n"
+msgstr "> Você encontra a lista de todos os adaptadores [nesta página](https://docs.php-http.org/en/latest/clients.html#clients-adapters).\n"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "To install the packages, run the following command:"
+msgstr "Para instalar os pacotes, execute o seguinte comando:"
+
+#. type: Fenced code block (shell)
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "composer require php-http/httplug php-http/guzzle7-adapter --prefer-dist\n"
+msgstr "composer require php-http/httplug php-http/guzzle7-adapter --prefer-dist\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md ../src/en/guide/concept/configuration.md ../src/en/guide/tutorial/using-yii-with-roadrunner.md ../src/en/guide/views/view-injections.md
+#, no-wrap
+msgid "Configuration"
+msgstr "Configuração"
+
+#. type: Title ###
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Get and store the token"
+msgstr "Obtenha e guarde o token"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Next, configure the application."
+msgstr "Em seguida, configure a aplicação."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "First, register at [Sentry](https://sentry.io) and create a project."
+msgstr "Primeiro, cadastre-se no [Sentry](https://sentry.io) e crie um projeto."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Then, in the project settings on the “General Settings” tab, find the “Security Token” field and copy its value."
+msgstr "Depois, nas configurações do projeto, na aba “General Settings”, encontre o campo “Security Token” e copie o valor dele."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid ""
+"Now put this token into the package configuration. By default, the config is located at `config/packages/yiisoft/yii-sentry/config/params.php`.\n"
+"Set the copied token as the value of the array element at `yiisoft/yii-sentry` => `options` => `dsn`. Example:\n"
+msgstr ""
+"Agora coloque esse token na configuração do pacote. Por padrão, a configuração fica em `config/packages/yiisoft/yii-sentry/config/params.php`.\n"
+"Defina o token copiado como valor do elemento do array em `yiisoft/yii-sentry` => `options` => `dsn`. Exemplo:\n"
+
+#. type: Fenced code block (diff)
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid ""
+"'yiisoft/yii-sentry' => [\n"
+"    'enabled' => true,\n"
+"    'options' => [\n"
+"-        'dsn' => '',\n"
+"+        'dsn' => 'TOKEN',\n"
+"    ],\n"
+"],\n"
+msgstr ""
+"'yiisoft/yii-sentry' => [\n"
+"    'enabled' => true,\n"
+"    'options' => [\n"
+"-        'dsn' => '',\n"
+"+        'dsn' => 'TOKEN',\n"
+"    ],\n"
+"],\n"
+
+#. type: Title ###
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Configure the HTTP client"
+msgstr "Configure o cliente HTTP"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "After installing the HTTP client, configure it."
+msgstr "Depois de instalar o cliente HTTP, configure-o."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Create the file `config/common/sentry.php` and put the following code into it:"
+msgstr "Crie o arquivo `config/common/sentry.php` e coloque nele o seguinte código:"
+
+#. type: Fenced code block (php)
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    \\Http\\Client\\HttpClient::class => \\GuzzleHttp\\Client::class,\n"
+"    \\Http\\Client\\HttpAsyncClient::class => [\n"
+"        'class' => \\Http\\Adapter\\Guzzle7\\Client::class,\n"
+"        '__construct()' => [\n"
+"            \\Yiisoft\\Factory\\Definition\\Reference::to(\\Http\\Client\\HttpClient::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"return [\n"
+"    \\Http\\Client\\HttpClient::class => \\GuzzleHttp\\Client::class,\n"
+"    \\Http\\Client\\HttpAsyncClient::class => [\n"
+"        'class' => \\Http\\Adapter\\Guzzle7\\Client::class,\n"
+"        '__construct()' => [\n"
+"            \\Yiisoft\\Factory\\Definition\\Reference::to(\\Http\\Client\\HttpClient::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+
+#. type: Title #
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Integration"
+msgstr "Integração"
+
+#. type: Title ###
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid "Web"
+msgstr "Web"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Sentry support for `web` is implemented as middleware."
+msgstr "O suporte do Sentry para `web` é implementado como middleware."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "That means you only need to add `SentryMiddleware` to the global middleware list in `config/web/application.php`:"
+msgstr "Isso significa que você só precisa adicionar o `SentryMiddleware` à lista global de middlewares em `config/web/application.php`:"
+
+#. type: Fenced code block (diff)
+#: ../src/en/cookbook/sentry-integration.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    Yiisoft\\Yii\\Web\\Application::class => [\n"
+"        '__construct()' => [\n"
+"            'dispatcher' => DynamicReference::to(static function (Injector $injector) {\n"
+"                return ($injector->make(MiddlewareDispatcher::class))\n"
+"                    ->withMiddlewares(\n"
+"                        [\n"
+"                            Router::class,\n"
+"                            SubFolder::class,\n"
+"+                            SentryMiddleware::class,\n"
+"                            ErrorCatcher::class,\n"
+"                        ]\n"
+"                    );\n"
+"            }),\n"
+"            'fallbackHandler' => Reference::to(NotFoundHandler::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"return [\n"
+"    Yiisoft\\Yii\\Web\\Application::class => [\n"
+"        '__construct()' => [\n"
+"            'dispatcher' => DynamicReference::to(static function (Injector $injector) {\n"
+"                return ($injector->make(MiddlewareDispatcher::class))\n"
+"                    ->withMiddlewares(\n"
+"                        [\n"
+"                            Router::class,\n"
+"                            SubFolder::class,\n"
+"+                            SentryMiddleware::class,\n"
+"                            ErrorCatcher::class,\n"
+"                        ]\n"
+"                    );\n"
+"            }),\n"
+"            'fallbackHandler' => Reference::to(NotFoundHandler::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
+
+#. type: Title ##
+#: ../src/en/cookbook/sentry-integration.md ../src/en/internals/003-roadmap.md
+#, no-wrap
+msgid "Console"
+msgstr "Console"
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "Sentry supports `console` via a handler for the [ConsoleEvents::ERROR](https://symfony.com/doc/current/components/console/events.html#the-consoleevents-error-event) event."
+msgstr "O Sentry suporta o `console` por meio de um handler para o evento [ConsoleEvents::ERROR](https://symfony.com/doc/current/components/console/events.html#the-consoleevents-error-event)."
+
+#. type: Plain text
+#: ../src/en/cookbook/sentry-integration.md
+msgid "The package provides a configuration file that automatically subscribes the application to this event."
+msgstr "O pacote fornece um arquivo de configuração que inscreve a aplicação nesse evento automaticamente."

@@ -1,0 +1,674 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md ../src/guide/concept/autoloading.md ../src/guide/concept/di-container.md ../src/guide/security/best-practices.md ../src/guide/structure/domain.md ../src/guide/tutorial/console-applications.md ../src/internals/004-namespaces.md ../src/internals/007-exceptions.md ../src/internals/008-interfaces.md
+#, no-wrap
+msgid "References"
+msgstr "Referências"
+
+#. type: Title #
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "Dependency injection and container"
+msgstr "Injeção de dependência e container"
+
+#. type: Title ##
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "Dependency injection"
+msgstr "Injeção de dependência"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "There are two ways of re-using things in OOP: inheritance and composition."
+msgstr "Há duas formas de reaproveitar código em OOP: herança e composição."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Inheritance is simple:"
+msgstr "A herança é simples:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"class Cache\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget extends Cache\n"
+"{\n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+msgstr ""
+"class Cache\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget extends Cache\n"
+"{\n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "The issue here is that these two are becoming unnecessarily coupled or inter-dependent, making them more fragile."
+msgstr "O problema aqui é que essas duas classes ficam acopladas ou interdependentes sem necessidade, o que as torna mais frágeis."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Another way to handle this is composition:"
+msgstr "Outra forma de resolver isso é a composição:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"interface CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key);\n"
+"}\n"
+"\n"
+"final readonly class Cache implements CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"    \n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->cache->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+msgstr ""
+"interface CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key);\n"
+"}\n"
+"\n"
+"final readonly class Cache implements CacheInterface\n"
+"{\n"
+"    public function getCachedValue($key)\n"
+"    {\n"
+"        // ..\n"
+"    }\n"
+"}\n"
+"\n"
+"final readonly class CachedWidget\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"    \n"
+"    public function render(): string\n"
+"    {\n"
+"        $output = $this->cache->getCachedValue('cachedWidget');\n"
+"        if ($output !== null) {\n"
+"            return $output;\n"
+"        }\n"
+"        // ...        \n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "We've avoided unnecessary inheritance and used `CacheInterface` in the `CacheWidget` to reduce coupling.  You can replace cache implementation without changing `CachedWidget` so it's becoming more stable. The less edits are made to the code, the less chance of breaking it."
+msgstr "Evitamos a herança desnecessária e usamos `CacheInterface` no `CacheWidget` para reduzir o acoplamento.  Você pode trocar a implementação do cache sem alterar o `CachedWidget`, então ele fica mais estável. Quanto menos edições forem feitas no código, menor a chance de quebrá-lo."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "The `CacheInterface` here is a dependency: a contract our object needs to function. In other words, our object depends on the contract."
+msgstr "Aqui, `CacheInterface` é uma dependência: um contrato de que o nosso objeto precisa para funcionar. Em outras palavras, o nosso objeto depende do contrato."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "The process of putting an instance of a contract into an object (`CachedWidget`) is called dependency injection.  There are many ways to perform it:"
+msgstr "O processo de colocar uma instância de um contrato dentro de um objeto (`CachedWidget`) se chama injeção de dependência.  Há várias formas de fazer isso:"
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "Constructor injection. Best for mandatory dependencies."
+msgstr "Injeção pelo construtor. A melhor para dependências obrigatórias."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "Method injection. Best for optional dependencies."
+msgstr "Injeção por método. A melhor para dependências opcionais."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "Property injection. Better to be avoided in PHP except maybe data transfer objects."
+msgstr "Injeção por propriedade. É melhor evitar em PHP, exceto talvez em data transfer objects."
+
+#. type: Title ###
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "Why use private properties"
+msgstr "Por que usar propriedades privadas"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "In the composition example above, note that the `$cache` property is declared as `private`."
+msgstr "No exemplo de composição acima, repare que a propriedade `$cache` é declarada como `private`."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "This approach embraces composition by ensuring objects have well-defined interfaces for interaction rather than direct property access, making the code more maintainable and less prone to certain types of mistakes."
+msgstr "Essa abordagem favorece a composição ao garantir que os objetos tenham interfaces bem definidas para interação, em vez de acesso direto às propriedades, o que deixa o código mais fácil de manter e menos sujeito a certos tipos de erro."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "This design choice provides several benefits:"
+msgstr "Essa escolha de design traz vários benefícios:"
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "**Encapsulation**: Private properties with getters/setters allow you to control access and make future changes without breaking existing code."
+msgstr "**Encapsulamento**: propriedades privadas com getters/setters permitem controlar o acesso e fazer mudanças futuras sem quebrar o código existente."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "**Data integrity**: Setters can validate, normalize, or format values before storing them, ensuring properties contain valid data."
+msgstr "**Integridade dos dados**: setters podem validar, normalizar ou formatar valores antes de armazená-los, garantindo que as propriedades contenham dados válidos."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "**Immutability**: Private properties enable immutable object patterns where setter `with*()` methods return new instances rather than modifying the current one."
+msgstr "**Imutabilidade**: propriedades privadas permitem padrões de objetos imutáveis, em que os métodos `with*()` retornam novas instâncias em vez de modificar a atual."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "**Flexibility**: You can create read-only or write-only properties or add additional logic to property access later."
+msgstr "**Flexibilidade**: você pode criar propriedades somente leitura ou somente escrita, ou acrescentar lógica ao acesso às propriedades mais tarde."
+
+#. type: Title ##
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "DI container"
+msgstr "Container de DI"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Injecting basic dependencies is straightforward. You're choosing a place where you don't care about dependencies, which is usually an action handler, which you aren't going to unit-test ever, create instances of dependencies needed and pass these to dependent classes."
+msgstr "Injetar dependências básicas é simples. Você escolhe um lugar onde não se importa com as dependências, que normalmente é um handler de action, que você nunca vai testar com testes unitários, cria as instâncias das dependências necessárias e as passa para as classes dependentes."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "It works well when there are few dependencies overall and when there are no nested dependencies. When there are many and each dependency has dependencies itself, instantiating the whole hierarchy becomes a tedious process, which requires lots of code and may lead to hardly debuggable mistakes."
+msgstr "Isso funciona bem quando há poucas dependências no total e quando não há dependências aninhadas. Quando há muitas e cada dependência tem as suas próprias dependências, instanciar a hierarquia inteira se torna um processo tedioso, que exige muito código e pode levar a erros difíceis de depurar."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Additionally, lots of dependencies, such as certain third-party API wrappers, are the same for any class using it.  So it makes sense to:"
+msgstr "Além disso, muitas dependências, como certos wrappers de APIs de terceiros, são as mesmas para qualquer classe que as use.  Então faz sentido:"
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "Define how to instantiate such common dependencies."
+msgstr "Definir como instanciar essas dependências comuns."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "Instantiate them when required and only once per request."
+msgstr "Instanciá-las quando necessário e apenas uma vez por requisição."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "That's what dependency containers are for."
+msgstr "É para isso que servem os containers de dependências."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "A dependency injection (DI) container is an object that knows how to instantiate and configure objects and all objects they depend on."
+msgstr "Um container de injeção de dependência (DI) é um objeto que sabe como instanciar e configurar objetos e todos os objetos dos quais eles dependem."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Yii provides the DI container feature through the [yiisoft/di](https://github.com/yiisoft/di) package and [yiisoft/injector](https://github.com/yiisoft/injector) package."
+msgstr "O Yii fornece o container de DI por meio dos pacotes [yiisoft/di](https://github.com/yiisoft/di) e [yiisoft/injector](https://github.com/yiisoft/injector)."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> The container contains only shared instances. If you need a factory, use the dedicated\n"
+"> [yiisoft/factory](https://github.com/yiisoft/factory) package.\n"
+msgstr ""
+"> [!NOTE]\n"
+"> O container contém apenas instâncias compartilhadas. Se você precisar de uma factory, use o pacote dedicado\n"
+"> [yiisoft/factory](https://github.com/yiisoft/factory).\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"> [!TIP]\n"
+"> [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well\n"
+"> explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.\n"
+msgstr ""
+"> [!TIP]\n"
+"> O [artigo de Martin Fowler](https://martinfowler.com/articles/injection.html) explica bem\n"
+"> por que um container de DI é útil. Aqui vamos explicar principalmente o uso do container de DI fornecido pelo Yii.\n"
+
+#. type: Title ###
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "Configuring container"
+msgstr "Configurando o container"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Because to create a new object you need its dependencies, you should register them as early as possible.  You can do it in the application configuration, `config/web.php`. For the following service:"
+msgstr "Como para criar um novo objeto você precisa das dependências dele, registre-as o quanto antes.  Você pode fazer isso na configuração da aplicação, `config/web.php`. Para o seguinte serviço:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+"}\n"
+msgstr ""
+"final class MyService implements MyServiceInterface\n"
+"{\n"
+"    public function __construct(int $amount)\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function setDiscount(int $discount): void\n"
+"    {\n"
+"    \n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "configuration could be:"
+msgstr "a configuração poderia ser:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => [42],\n"
+"        'setDiscount()' => [10],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => [42],\n"
+"        'setDiscount()' => [10],\n"
+"    ],\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "That's equal to the following:"
+msgstr "Isso equivale ao seguinte:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"$myService = new MyService(42);\n"
+"$myService->setDiscount(10);\n"
+msgstr ""
+"$myService = new MyService(42);\n"
+"$myService->setDiscount(10);\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "You can provide arguments with names as well:"
+msgstr "Você também pode passar argumentos com nomes:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => ['amount' => 42],\n"
+"        'setDiscount()' => ['discount' => 10],\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"return [\n"
+"    MyServiceInterface::class => [\n"
+"        'class' => MyService::class,\n"
+"        '__construct()' => ['amount' => 42],\n"
+"        'setDiscount()' => ['discount' => 10],\n"
+"    ],\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "That's basically it. You define a map of interfaces to classes and define how to configure them. When an interface is requested in constructor or elsewhere, container creates an instance of a class and configures it as per the configuration:"
+msgstr "Basicamente é isso. Você define um mapa de interfaces para classes e define como configurá-las. Quando uma interface é solicitada no construtor ou em outro lugar, o container cria uma instância da classe e a configura conforme a configuração:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class MyAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private readonly MyServiceInterface $myService\n"
+"    ) {\n"
+"    }\n"
+"    \n"
+"    public function __invoke() \n"
+"    {\n"
+"        $this->myService->doSomething();\n"
+"    }\n"
+"}\n"
+msgstr ""
+"final class MyAction\n"
+"{\n"
+"    public function __construct(\n"
+"        private readonly MyServiceInterface $myService\n"
+"    ) {\n"
+"    }\n"
+"    \n"
+"    public function __invoke() \n"
+"    {\n"
+"        $this->myService->doSomething();\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "There are extra methods of declaring dependency configuration."
+msgstr "Há outras formas de declarar a configuração de dependências."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "For simplest cases where there are no custom values needed and all the constructor dependencies could be obtained from a container, you can use a class name as a value."
+msgstr "Nos casos mais simples, em que não são necessários valores personalizados e todas as dependências do construtor podem ser obtidas do container, você pode usar um nome de classe como valor."
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"interface EngineInterface\n"
+"{\n"
+"    \n"
+"}\n"
+"\n"
+"final class EngineMarkOne implements EngineInterface\n"
+"{\n"
+"    public function __construct(CacheInterface $cache) {\n"
+"    }   \n"
+"}\n"
+msgstr ""
+"interface EngineInterface\n"
+"{\n"
+"    \n"
+"}\n"
+"\n"
+"final class EngineMarkOne implements EngineInterface\n"
+"{\n"
+"    public function __construct(CacheInterface $cache) {\n"
+"    }   \n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "In the above example, if we already have cache defined in the container, nothing besides the class name is needed:"
+msgstr "No exemplo acima, se já houver um cache definido no container, não é preciso nada além do nome da classe:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"return [\n"
+"    // declare a class for an interface, resolve dependencies automatically\n"
+"    EngineInterface::class => EngineMarkOne::class,\n"
+"];\n"
+msgstr ""
+"return [\n"
+"    // declara uma classe para uma interface, resolvendo as dependências automaticamente\n"
+"    EngineInterface::class => EngineMarkOne::class,\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "If you have a dependency that has public properties, you can configure it as well."
+msgstr "Se você tiver uma dependência com propriedades públicas, também pode configurá-la."
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"final class NameProvider\n"
+"{\n"
+"    public string $name;\n"
+"}\n"
+msgstr ""
+"final class NameProvider\n"
+"{\n"
+"    public string $name;\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Here's how to do it for the example above:"
+msgstr "Veja como fazer isso no exemplo acima:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"NameProvider::class => [\n"
+"    'class' => NameProvider::class, \n"
+"    '$name' => 'Alex',\n"
+"],\n"
+msgstr ""
+"NameProvider::class => [\n"
+"    'class' => NameProvider::class, \n"
+"    '$name' => 'Alex',\n"
+"],\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "In this example, you may notice `NameProvider` specified twice. The key is what you may request as dependency and the value is how to create it."
+msgstr "Neste exemplo, você pode notar que `NameProvider` aparece duas vezes. A chave é o que você pode solicitar como dependência, e o valor é como criá-la."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "If the configuration is tricky and requires some logic, a closure can be used:"
+msgstr "Se a configuração for complicada e exigir alguma lógica, você pode usar uma closure:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"MyServiceInterface::class => static function(ContainerInterface $container) {\n"
+"    return new MyService($container->get('db'));\n"
+"},\n"
+msgstr ""
+"MyServiceInterface::class => static function(ContainerInterface $container) {\n"
+"    return new MyService($container->get('db'));\n"
+"},\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Additionally, to `ContainerInterface`, you can request any registered service directly as a closure parameter.  The injector will automatically resolve and inject these:"
+msgstr "Além do `ContainerInterface`, você pode solicitar qualquer serviço registrado diretamente como parâmetro da closure.  O injector vai resolvê-los e injetá-los automaticamente:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"MyServiceInterface::class => static function(ConnectionInterface $db) {\n"
+"    return new MyService($db);\n"
+"},\n"
+msgstr ""
+"MyServiceInterface::class => static function(ConnectionInterface $db) {\n"
+"    return new MyService($db);\n"
+"},\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "It's possible to use a static method call:"
+msgstr "É possível usar a chamada de um método estático:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "MyServiceInterface::class => [MyFactory::class, 'create'],\n"
+msgstr "MyServiceInterface::class => [MyFactory::class, 'create'],\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Or an instance of an object:"
+msgstr "Ou uma instância de um objeto:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "MyServiceInterface::class => new MyService(),\n"
+msgstr "MyServiceInterface::class => new MyService(),\n"
+
+#. type: Title ###
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid "Injecting dependencies properly"
+msgstr "Injetando dependências corretamente"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Directly referencing a container in a class is a bad idea since the code becomes non-generic, coupled to the container interface and, what's worse, dependencies are becoming hidden.  Because of that, Yii inverts the control by automatically injecting objects from a container in some constructors and methods based on method argument types."
+msgstr "Referenciar o container diretamente em uma classe é uma má ideia, porque o código deixa de ser genérico, fica acoplado à interface do container e, pior ainda, as dependências ficam escondidas.  Por isso, o Yii inverte o controle, injetando automaticamente objetos do container em alguns construtores e métodos com base nos tipos dos argumentos."
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "This is primarily done in constructor and handing method of action handlers:"
+msgstr "Isso é feito principalmente no construtor e no método de tratamento dos handlers de action:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/concept/di-container.md
+#, no-wrap
+msgid ""
+"use \\Yiisoft\\Cache\\CacheInterface;\n"
+"\n"
+"final readonly class MyController\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"        $this->cache = $cache;    \n"
+"    }\n"
+"\n"
+"    public function actionDashboard(RevenueReport $report)\n"
+"    {\n"
+"        $reportData = $this->cache->getOrSet('revenue_report', function() use ($report) {\n"
+"            return $report->getData();               \n"
+"        });\n"
+"\n"
+"        return $this->render('dashboard', [\n"
+"           'reportData' => $reportData,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"use \\Yiisoft\\Cache\\CacheInterface;\n"
+"\n"
+"final readonly class MyController\n"
+"{\n"
+"    public function __construct(\n"
+"        private CacheInterface $cache\n"
+"    )\n"
+"    {\n"
+"        $this->cache = $cache;    \n"
+"    }\n"
+"\n"
+"    public function actionDashboard(RevenueReport $report)\n"
+"    {\n"
+"        $reportData = $this->cache->getOrSet('revenue_report', function() use ($report) {\n"
+"            return $report->getData();               \n"
+"        });\n"
+"\n"
+"        return $this->render('dashboard', [\n"
+"           'reportData' => $reportData,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/concept/di-container.md
+msgid "Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that instantiates and calls action handler, it checks the constructor and method argument types, gets dependencies of these types from a container and passes them as arguments. That's usually called auto-wiring. It happens for sub-dependencies as well, that's if you don't give dependency explicitly, the container would check if it has such a dependency first.  It's enough to declare a dependency you need, and it would be got from a container automatically."
+msgstr "Como é o [yiisoft/injector](https://github.com/yiisoft/injector) que instancia e chama o handler de action, ele verifica os tipos dos argumentos do construtor e do método, obtém do container as dependências desses tipos e as passa como argumentos. Isso normalmente se chama autowiring. Acontece também com as subdependências: se você não fornecer uma dependência explicitamente, o container vai verificar primeiro se tem essa dependência.  Basta declarar a dependência de que você precisa, e ela será obtida do container automaticamente."
+
+#. type: Bullet: '- '
+#: ../src/guide/concept/di-container.md
+msgid "[Inversion of Control Containers and the Dependency Injection pattern by Martin Fowler](https://martinfowler.com/articles/injection.html)"
+msgstr "[Inversion of Control Containers and the Dependency Injection pattern, de Martin Fowler](https://martinfowler.com/articles/injection.html)"

@@ -1,0 +1,518 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-05 20:33+0000\n"
+"PO-Revision-Date: 2026-06-05 20:33+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Authentication"
+msgstr "Autenticação"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "Authentication is the process of verifying the identity of a user. It usually uses an identifier (for example, a username or an email address) and a secret token (such as a password or an access token) to judge if the user is the one whom he claims as. Authentication is the basis of the login feature."
+msgstr "Autenticação é o processo de verificar a identidade de um usuário. Normalmente ela usa um identificador (por exemplo, um nome de usuário ou um endereço de e-mail) e um token secreto (como uma senha ou um token de acesso) para decidir se o usuário é quem diz ser. A autenticação é a base do recurso de login."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "Yii provides an authentication framework which wires up various components to support login. To use this framework, you mainly need to do the following work:"
+msgstr "O Yii fornece um framework de autenticação que conecta vários componentes para dar suporte ao login. Para usar esse framework, você precisa basicamente fazer o seguinte:"
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "Configure the `Yiisoft\\User\\CurrentUser` service;"
+msgstr "Configurar o serviço `Yiisoft\\User\\CurrentUser`;"
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityInterface` interface;"
+msgstr "Criar uma classe que implementa a interface `\\Yiisoft\\Auth\\IdentityInterface`;"
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "Create a class implementing the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` interface;"
+msgstr "Criar uma classe que implementa a interface `\\Yiisoft\\Auth\\IdentityRepositoryInterface`;"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "To use the `Yiisoft\\User\\CurrentUser` service, install [yiisoft/user](https://github.com/yiisoft/user) package:"
+msgstr "Para usar o serviço `Yiisoft\\User\\CurrentUser`, instale o pacote [yiisoft/user](https://github.com/yiisoft/user):"
+
+#. type: Fenced code block (shell)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "composer require yiisoft/user\n"
+msgstr "composer require yiisoft/user\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Configuring `Yiisoft\\User\\CurrentUser`"
+msgstr "Configurando `Yiisoft\\User\\CurrentUser`"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The `Yiisoft\\User\\CurrentUser` application service manages the user authentication status. It depends on `Yiisoft\\Auth\\IdentityRepositoryInterface` that should return an instance of `\\Yiisoft\\Auth\\IdentityInterface` which has the actual authentication logic."
+msgstr "O serviço de aplicação `Yiisoft\\User\\CurrentUser` gerencia o estado de autenticação do usuário. Ele depende de `Yiisoft\\Auth\\IdentityRepositoryInterface`, que deve retornar uma instância de `\\Yiisoft\\Auth\\IdentityInterface` contendo a lógica de autenticação de fato."
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Session\\Session;\n"
+"use Yiisoft\\Session\\SessionInterface;\n"
+"use Yiisoft\\Auth\\IdentityRepositoryInterface;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"\n"
+"    SessionInterface::class => [\n"
+"        'class' => Session::class,\n"
+"        '__construct()' => [\n"
+"            $params['session']['options'] ?? [],\n"
+"            $params['session']['handler'] ?? null,\n"
+"        ],\n"
+"    ],\n"
+"    IdentityRepositoryInterface::class => IdentityRepository::class,\n"
+"    CurrentUser::class => [\n"
+"        'withSession()' => [Reference::to(SessionInterface::class)]\n"
+"    ],\n"
+"];\n"
+msgstr ""
+"use Yiisoft\\Session\\Session;\n"
+"use Yiisoft\\Session\\SessionInterface;\n"
+"use Yiisoft\\Auth\\IdentityRepositoryInterface;\n"
+"use Yiisoft\\Definitions\\Reference;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"\n"
+"    SessionInterface::class => [\n"
+"        'class' => Session::class,\n"
+"        '__construct()' => [\n"
+"            $params['session']['options'] ?? [],\n"
+"            $params['session']['handler'] ?? null,\n"
+"        ],\n"
+"    ],\n"
+"    IdentityRepositoryInterface::class => IdentityRepository::class,\n"
+"    CurrentUser::class => [\n"
+"        'withSession()' => [Reference::to(SessionInterface::class)]\n"
+"    ],\n"
+"];\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityInterface`"
+msgstr "Implementando`\\Yiisoft\\Auth\\IdentityInterface`"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The identity class must implement the `\\Yiisoft\\Auth\\IdentityInterface` which has a single method:"
+msgstr "A classe de identidade deve implementar a `\\Yiisoft\\Auth\\IdentityInterface`, que tem um único método:"
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "[[yii\\web\\IdentityInterface::getId()|getId()]]: it returns the ID of the user represented by this identity instance."
+msgstr "[[yii\\web\\IdentityInterface::getId()|getId()]]: retorna o ID do usuário representado por esta instância de identidade."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "In the following example, an identity class is implemented as a pure PHP object."
+msgstr "No exemplo a seguir, a classe de identidade é implementada como um objeto PHP puro."
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"namespace App\\User;\n"
+"\n"
+"use Yiisoft\\Auth\\IdentityInterface;\n"
+"\n"
+"final readonly class Identity implements IdentityInterface\n"
+"{\n"
+"    public function __construct(\n"
+"        private string $id\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function getId(): string\n"
+"    {\n"
+"        return $this->id;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"namespace App\\User;\n"
+"\n"
+"use Yiisoft\\Auth\\IdentityInterface;\n"
+"\n"
+"final readonly class Identity implements IdentityInterface\n"
+"{\n"
+"    public function __construct(\n"
+"        private string $id\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function getId(): string\n"
+"    {\n"
+"        return $this->id;\n"
+"    }\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Implementing`\\Yiisoft\\Auth\\IdentityRepositoryInterface`"
+msgstr "Implementando`\\Yiisoft\\Auth\\IdentityRepositoryInterface`"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The identity repository class must implement the `\\Yiisoft\\Auth\\IdentityRepositoryInterface` which has the following methods:"
+msgstr "A classe de repositório de identidades deve implementar a `\\Yiisoft\\Auth\\IdentityRepositoryInterface`, que tem os seguintes métodos:"
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`findIdentity(string $id): ?IdentityInterface`: it looks for an instance of the identity class using the specified ID. This method is used when you need to keep the login status via session."
+msgstr "`findIdentity(string $id): ?IdentityInterface`: procura uma instância da classe de identidade usando o ID informado. Esse método é usado quando você precisa manter o estado de login via sessão."
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`findIdentityByToken(string $token, string $type): ?IdentityInterface`: it looks for an instance of the identity class using the specified access token. This method is used when you need to authenticate a user by a single secret token (for example, in a stateless REST API)."
+msgstr "`findIdentityByToken(string $token, string $type): ?IdentityInterface`: procura uma instância da classe de identidade usando o token de acesso informado. Esse método é usado quando você precisa autenticar um usuário por um único token secreto (por exemplo, numa API REST sem estado)."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "A dummy implementation may look like the following:"
+msgstr "Uma implementação fictícia pode ficar assim:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"namespace App\\User;\n"
+"\n"
+"use App\\User\\Identity;\n"
+"use \\Yiisoft\\Auth\\IdentityInterface;\n"
+"use \\Yiisoft\\Auth\\IdentityRepositoryInterface;\n"
+"\n"
+"final readonly class IdentityRepository implements IdentityRepositoryInterface\n"
+"{\n"
+"    private const USERS = [\n"
+"      [\n"
+"        'id' => 1,\n"
+"        'token' => '12345'   \n"
+"      ],\n"
+"      [\n"
+"        'id' => 42,\n"
+"        'token' => '54321'\n"
+"      ],  \n"
+"    ];\n"
+"\n"
+"    public function findIdentity(string $id) : ?IdentityInterface\n"
+"    {\n"
+"        foreach (self::USERS as $user) {\n"
+"            if ((string)$user['id'] === $id) {\n"
+"                return new Identity($id);            \n"
+"            }\n"
+"        }\n"
+"        \n"
+"        return null;\n"
+"    }\n"
+"\n"
+"    public function findIdentityByToken(string $token, string $type) : ?IdentityInterface\n"
+"    {\n"
+"        foreach (self::USERS as $user) {\n"
+"             if ($user['token'] === $token) {\n"
+"                 return new Identity((string)$user['id']);            \n"
+"             }\n"
+"         }\n"
+"         \n"
+"         return null;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"namespace App\\User;\n"
+"\n"
+"use App\\User\\Identity;\n"
+"use \\Yiisoft\\Auth\\IdentityInterface;\n"
+"use \\Yiisoft\\Auth\\IdentityRepositoryInterface;\n"
+"\n"
+"final readonly class IdentityRepository implements IdentityRepositoryInterface\n"
+"{\n"
+"    private const USERS = [\n"
+"      [\n"
+"        'id' => 1,\n"
+"        'token' => '12345'   \n"
+"      ],\n"
+"      [\n"
+"        'id' => 42,\n"
+"        'token' => '54321'\n"
+"      ],  \n"
+"    ];\n"
+"\n"
+"    public function findIdentity(string $id) : ?IdentityInterface\n"
+"    {\n"
+"        foreach (self::USERS as $user) {\n"
+"            if ((string)$user['id'] === $id) {\n"
+"                return new Identity($id);            \n"
+"            }\n"
+"        }\n"
+"        \n"
+"        return null;\n"
+"    }\n"
+"\n"
+"    public function findIdentityByToken(string $token, string $type) : ?IdentityInterface\n"
+"    {\n"
+"        foreach (self::USERS as $user) {\n"
+"             if ($user['token'] === $token) {\n"
+"                 return new Identity((string)$user['id']);            \n"
+"             }\n"
+"         }\n"
+"         \n"
+"         return null;\n"
+"    }\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Using `Yiisoft\\User\\CurrentUser`"
+msgstr "Usando `Yiisoft\\User\\CurrentUser`"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "You can use `Yiisoft\\User\\CurrentUser` service to get current user identity.  As any service, it could be auto-wired in either action handler constructor or method:"
+msgstr "Você pode usar o serviço `Yiisoft\\User\\CurrentUser` para obter a identidade do usuário atual.  Como qualquer serviço, ele pode ser injetado automaticamente (autowiring) no construtor ou no método do handler da action:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\User\\CurrentUser;\n"
+"\n"
+"final readonly class SiteController\n"
+"{\n"
+"    public function __construct(private CurrentUser $user) {}\n"
+"\n"
+"    public function index(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        if ($this->user->isGuest()) {\n"
+"            // user is guest\n"
+"        } else {\n"
+"            $identity = $this->user->getIdentity();\n"
+"            // do something based on identity\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\User\\CurrentUser;\n"
+"\n"
+"final readonly class SiteController\n"
+"{\n"
+"    public function __construct(private CurrentUser $user) {}\n"
+"\n"
+"    public function index(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        if ($this->user->isGuest()) {\n"
+"            // o usuário é visitante\n"
+"        } else {\n"
+"            $identity = $this->user->getIdentity();\n"
+"            // faça algo com base na identidade\n"
+"        }\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "`isGuest()` determines if user is logged in or not. `getIdentity()` returns an instance of identity."
+msgstr "`isGuest()` determina se o usuário está logado ou não. `getIdentity()` retorna uma instância da identidade."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "To log in a user, you may use the following code:"
+msgstr "Para fazer o login de um usuário, você pode usar o seguinte código:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"$identity = $identityRepository->findByEmail($email);\n"
+"\n"
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
+"$user->login($identity);\n"
+msgstr ""
+"$identity = $identityRepository->findByEmail($email);\n"
+"\n"
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
+"$user->login($identity);\n"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The `login()` method sets the identity to the User service.  It stores identity into session so user authentication status is maintained."
+msgstr "O método `login()` define a identidade no serviço de usuário.  Ele armazena a identidade na sessão, para que o estado de autenticação do usuário seja mantido."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "To log out a user, call"
+msgstr "Para fazer o logout de um usuário, chame"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
+"$user->logout();\n"
+msgstr ""
+"/* @var $user \\Yiisoft\\User\\CurrentUser */\n"
+"$user->logout();\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Protecting Routes"
+msgstr "Protegendo rotas"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The `Yiisoft\\Auth\\Middleware\\Authentication` middleware can be used to restrict access to a given route to authenticated users only."
+msgstr "O middleware `Yiisoft\\Auth\\Middleware\\Authentication` pode ser usado para restringir o acesso a uma rota apenas a usuários autenticados."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "First, configure the `Yiisoft\\Auth\\AuthenticationMethodInterface`:"
+msgstr "Primeiro, configure a `Yiisoft\\Auth\\AuthenticationMethodInterface`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\AuthenticationMethodInterface;\n"
+"use Yiisoft\\User\\Method\\WebAuth;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    AuthenticationMethodInterface::class => WebAuth::class,\n"
+"];\n"
+msgstr ""
+"use Yiisoft\\Auth\\AuthenticationMethodInterface;\n"
+"use Yiisoft\\User\\Method\\WebAuth;\n"
+"\n"
+"return [\n"
+"    // ...\n"
+"    AuthenticationMethodInterface::class => WebAuth::class,\n"
+"];\n"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "Then, apply the `Yiisoft\\Auth\\Middleware\\Authentication` middleware to a route:"
+msgstr "Depois, aplique o middleware `Yiisoft\\Auth\\Middleware\\Authentication` a uma rota:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+" \n"
+"Route::post('/create')\n"
+"        ->middleware(Authentication::class)\n"
+"        ->action([SiteController::class, 'create'])\n"
+"        ->name('site/create')\n"
+msgstr ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+" \n"
+"Route::post('/create')\n"
+"        ->middleware(Authentication::class)\n"
+"        ->action([SiteController::class, 'create'])\n"
+"        ->name('site/create')\n"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid " Or to a group of routes:\n"
+msgstr " Ou a um grupo de rotas:\n"
+
+#. type: Fenced code block (php)
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+"\n"
+"Group::create()\n"
+"        ->middleware(Authentication::class)\n"
+"        ->routes(\n"
+"            Route::post('/create')\n"
+"                ->action([SiteController::class, 'create'])\n"
+"                ->name('site/create'),\n"
+"            Route::put('/update/{id}')\n"
+"                ->action([SiteController::class, 'update'])\n"
+"                ->name('site/update')\n"
+"        )\n"
+msgstr ""
+"use Yiisoft\\Auth\\Middleware\\Authentication;\n"
+"\n"
+"Group::create()\n"
+"        ->middleware(Authentication::class)\n"
+"        ->routes(\n"
+"            Route::post('/create')\n"
+"                ->action([SiteController::class, 'create'])\n"
+"                ->name('site/create'),\n"
+"            Route::put('/update/{id}')\n"
+"                ->action([SiteController::class, 'update'])\n"
+"                ->name('site/update')\n"
+"        )\n"
+
+#. type: Title ##
+#: ../src/guide/security/authentication.md
+#, no-wrap
+msgid "Authentication Events"
+msgstr "Eventos de autenticação"
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "The user service raises a few events during the login and logout processes."
+msgstr "O serviço de usuário dispara alguns eventos durante os processos de login e logout."
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`\\Yiisoft\\User\\Event\\BeforeLogin`: raised at the beginning of `login()`.  If the event handler calls `invalidate()` on an event object, the login process will be cancelled."
+msgstr "`\\Yiisoft\\User\\Event\\BeforeLogin`: disparado no início de `login()`.  Se o handler do evento chamar `invalidate()` no objeto do evento, o processo de login será cancelado."
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`\\Yiisoft\\User\\Event\\AfterLogin`: raised after a successful login."
+msgstr "`\\Yiisoft\\User\\Event\\AfterLogin`: disparado após um login bem-sucedido."
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`\\Yiisoft\\User\\Event\\BeforeLogout`: raised at the beginning of `logout()`.  If the event handler calls `invalidate()` on an event object, the logout process will be cancelled."
+msgstr "`\\Yiisoft\\User\\Event\\BeforeLogout`: disparado no início de `logout()`.  Se o handler do evento chamar `invalidate()` no objeto do evento, o processo de logout será cancelado."
+
+#. type: Bullet: '* '
+#: ../src/guide/security/authentication.md
+msgid "`\\Yiisoft\\User\\Event\\AfterLogout`: raised after a successful logout."
+msgstr "`\\Yiisoft\\User\\Event\\AfterLogout`: disparado após um logout bem-sucedido."
+
+#. type: Plain text
+#: ../src/guide/security/authentication.md
+msgid "You may respond to these events to implement features such as login audit, online user statistics. For example, in the handler for `\\Yiisoft\\User\\Event\\AfterLogin`, you may record the login time and IP address in the `user` database table."
+msgstr "Você pode responder a esses eventos para implementar recursos como auditoria de login ou estatísticas de usuários online. Por exemplo, no handler de `\\Yiisoft\\User\\Event\\AfterLogin`, você pode registrar o horário e o endereço IP do login na tabela `user` do banco de dados."

@@ -1,0 +1,39 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-10-15 10:10+0000\n"
+"PO-Revision-Date: 2026-10-15 10:10+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/apache.md ../src/cookbook/configuring-webservers/iis.md ../src/cookbook/configuring-webservers/lighttpd.md ../src/cookbook/configuring-webservers/nginx-unit.md
+msgid "See [application logs](general.md#application-logs) for logging configuration."
+msgstr "Veja [logs da aplicação](general.md#logs-da-aplicacao) para a configuração de logs."
+
+#. type: Title #
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#, no-wrap
+msgid "Configuring web servers: lighttpd"
+msgstr "Configurando servidores web: lighttpd"
+
+#. type: Plain text
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#, no-wrap
+msgid "To use [lighttpd](https://www.lighttpd.net/) >= 1.4.24, put `index.php` in the web root and add the following to the configuration:\n"
+msgstr "Para usar o [lighttpd](https://www.lighttpd.net/) >= 1.4.24, coloque o `index.php` na raiz web e adicione o seguinte à configuração:\n"
+
+#. type: Fenced code block
+#: ../src/cookbook/configuring-webservers/lighttpd.md
+#, no-wrap
+msgid "url.rewrite-if-not-file = (\"(.*)\" => \"/index.php/$0\")\n"
+msgstr "url.rewrite-if-not-file = (\"(.*)\" => \"/index.php/$0\")\n"

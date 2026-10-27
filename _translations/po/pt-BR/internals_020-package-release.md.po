@@ -1,0 +1,161 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-29 09:48+0000\n"
+"PO-Revision-Date: 2026-05-29 09:48+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid "020 — Package release"
+msgstr "020 — Release de pacotes"
+
+#. type: Title ##
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid "Criteria"
+msgstr "Critérios"
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "No critical issues."
+msgstr "Nenhuma issue crítica."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "Public API changes aren't likely. Some time passed w/o issues reported that may require API changes."
+msgstr "Mudanças na API pública são improváveis. Já passou algum tempo sem issues relatadas que possam exigir mudanças na API."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "All dependencies are stable."
+msgstr "Todas as dependências são estáveis."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "Close to 100% test coverage with, ideally, a 100% MSI score."
+msgstr "Cobertura de testes próxima de 100% e, idealmente, score MSI de 100%."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "README is alright."
+msgstr "O README está em ordem."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "Everything is type-hinted unless special cases."
+msgstr "Tudo tem type hints, exceto em casos especiais."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "Psalm analysis passes on at least level 2."
+msgstr "A análise do Psalm passa pelo menos no nível 2."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "phpdoc is alright."
+msgstr "O phpdoc está em ordem."
+
+#. type: Bullet: '- '
+#: ../src/internals/020-package-release.md
+msgid "Public API is alright."
+msgstr "A API pública está em ordem."
+
+#. type: Title ##
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid "Release branch policy"
+msgstr "Política de branches de release"
+
+#. type: Plain text
+#: ../src/internals/020-package-release.md
+msgid "Use `master` for all regular releases."
+msgstr "Use `master` para todos os releases regulares."
+
+#. type: Plain text
+#: ../src/internals/020-package-release.md
+msgid "Create a separate branch only when releasing a new version for a previous major version. In this case, create the branch from the latest tag in that previous major version line and apply only the changes needed for the release."
+msgstr "Crie um branch separado apenas ao lançar uma nova versão de uma versão major anterior. Nesse caso, crie o branch a partir da tag mais recente dessa linha de versão major anterior e aplique apenas as mudanças necessárias para o release."
+
+#. type: Title ##
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid "Release instruction"
+msgstr "Instruções de release"
+
+#. type: Plain text
+#: ../src/internals/020-package-release.md
+msgid "Release a package via [Yii Development Tool](005-development-tool.md)."
+msgstr "Faça o release de um pacote com a [Ferramenta de desenvolvimento do Yii](005-development-tool.md)."
+
+#. type: Plain text
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid ""
+"1. Check that you can sign commits locally (see \n"
+"[Signing commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).\n"
+msgstr ""
+"1. Verifique se você consegue assinar commits localmente (veja \n"
+"[Assinando commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)).\n"
+
+#. type: Bullet: '2. '
+#: ../src/internals/020-package-release.md
+msgid "For regular releases, pull last changes from the `master` branch:"
+msgstr "Para releases regulares, faça pull das últimas mudanças do branch `master`:"
+
+#. type: Fenced code block (shell)
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid ""
+"./yii-dev git/checkout master package-name\n"
+"./yii-dev git/pull package-name\n"
+msgstr ""
+"./yii-dev git/checkout master package-name\n"
+"./yii-dev git/pull package-name\n"
+
+#. type: Plain text
+#: ../src/internals/020-package-release.md
+msgid "For previous major version releases, use the branch created according to the release branch policy instead of `master`."
+msgstr "Para releases de versões major anteriores, use o branch criado de acordo com a política de branches de release, em vez de `master`."
+
+#. type: Bullet: '3. '
+#: ../src/internals/020-package-release.md
+msgid "Check the package for compliance with the criteria above."
+msgstr "Verifique se o pacote atende aos critérios acima."
+
+#. type: Bullet: '4. '
+#: ../src/internals/020-package-release.md
+msgid "Run `release/make` command:"
+msgstr "Execute o comando `release/make`:"
+
+#. type: Fenced code block (shell)
+#: ../src/internals/020-package-release.md
+#, no-wrap
+msgid "./yii-dev release/make package-name\n"
+msgstr "./yii-dev release/make package-name\n"
+
+#. type: Bullet: '5. '
+#: ../src/internals/020-package-release.md
+msgid "Select the version type (major, minor or patch)."
+msgstr "Selecione o tipo de versão (major, minor ou patch)."
+
+#. type: Bullet: '6. '
+#: ../src/internals/020-package-release.md
+msgid "On the question \"Push commits and tags, and release on GitHub?\" check a diff. If the diff is alright, answer \"yes.\""
+msgstr "Na pergunta \"Push commits and tags, and release on GitHub?\", confira o diff. Se o diff estiver correto, responda \"yes\"."
+
+#. type: Bullet: '7. '
+#: ../src/internals/020-package-release.md
+msgid "For major and minor releases, add a record with release notes on [Yii Framework News](https://www.yiiframework.com/news)."
+msgstr "Para releases major e minor, adicione um registro com as notas de release em [Yii Framework News](https://www.yiiframework.com/news)."

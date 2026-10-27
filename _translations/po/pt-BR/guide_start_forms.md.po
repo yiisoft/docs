@@ -1,0 +1,799 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-30 09:05+0000\n"
+"PO-Revision-Date: 2026-06-30 09:05+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title ##
+#: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md ../src/guide/start/forms.md ../src/guide/start/hello.md
+#, no-wrap
+msgid "Summary"
+msgstr "Resumo"
+
+#. type: Title #
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Working with forms"
+msgstr "Trabalhando com formulários"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "This section continues to improve on \"Saying Hello.\" Instead of using URL, you will now ask a user for a message via form."
+msgstr "Esta seção continua a melhorar o \"Dizendo olá\". Em vez de usar a URL, agora você vai pedir a mensagem ao usuário por meio de um formulário."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Through this tutorial, you will learn how to:"
+msgstr "Neste tutorial, você vai aprender a:"
+
+#. type: Bullet: '* '
+#: ../src/guide/start/forms.md
+msgid "Create a form model to represent the data entered by a user through a form."
+msgstr "Criar um form model para representar os dados que o usuário informa em um formulário."
+
+#. type: Bullet: '* '
+#: ../src/guide/start/forms.md
+msgid "Declare rules to validate the data entered."
+msgstr "Declarar regras para validar os dados informados."
+
+#. type: Bullet: '* '
+#: ../src/guide/start/forms.md
+msgid "Build an HTML form in a view."
+msgstr "Montar um formulário HTML em uma view."
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Installing form package"
+msgstr "Instalando o pacote de formulários"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "To install form package, issue the following command in your application directory:"
+msgstr "Para instalar o pacote de formulários, rode o seguinte comando no diretório da sua aplicação:"
+
+#. type: Fenced code block
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "composer require yiisoft/form-model\n"
+msgstr "composer require yiisoft/form-model\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For Docker that would be:"
+msgstr "No Docker, fica assim:"
+
+#. type: Fenced code block
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "make composer require yiisoft/form-model\n"
+msgstr "make composer require yiisoft/form-model\n"
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Creating a form"
+msgstr "Criando um formulário"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The data to be requested from the user will be represented by a `Form` class as shown below and saved in the file `/src/Web/Echo/Form.php`:"
+msgstr "Os dados que serão pedidos ao usuário ficam representados por uma classe `Form`, como mostrado abaixo, salva no arquivo `/src/Web/Echo/Form.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('The message to be echoed')]\n"
+"    #[Length(min: 2)]\n"
+"    public string $message = '';\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Rule\\Length;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('The message to be echoed')]\n"
+"    #[Length(min: 2)]\n"
+"    public string $message = '';\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "In the above example, the `Form` has a single string property `$message` which length should be at least of two characters. There's also a custom label for the property."
+msgstr "No exemplo acima, o `Form` tem uma única propriedade string, `$message`, cujo tamanho deve ser de pelo menos dois caracteres. Também há um label personalizado para a propriedade."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"> Note: Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. If a field\n"
+"> also needs application-specific validation, use `Callback` for that domain logic. With PHP attributes, use the `method`\n"
+"> option because PHP attributes can't contain closures. For example, validate UUID syntax with `Uuid`, then add\n"
+"> `#[Callback(method: 'validateUuidV7', skipOnError: true)]` only when your domain specifically requires UUID version 7.\n"
+msgstr ""
+"> Nota: os atributos de validação são regras do Yii Validator. Para verificações comuns, procure primeiro uma regra existente. Se um campo\n"
+"> também precisar de validação específica da aplicação, use `Callback` para essa lógica de domínio. Com atributos PHP, use a opção `method`,\n"
+"> porque atributos PHP não podem conter closures. Por exemplo, valide a sintaxe do UUID com `Uuid` e só então adicione\n"
+"> `#[Callback(method: 'validateUuidV7', skipOnError: true)]` quando o seu domínio exigir especificamente UUID versão 7.\n"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Uuid;\n"
+"\n"
+"#[Uuid(skipOnError: true)]\n"
+"#[Callback(method: 'validateUuidV7', skipOnError: true)]\n"
+"public string $id = '';\n"
+"\n"
+"private function validateUuidV7(mixed $value): Result\n"
+"{\n"
+"    return \\App\\Support\\Uuid::isVersion7($value)\n"
+"        ? new Result()\n"
+"        : (new Result())->addError('ID must be a UUID version 7.');\n"
+"}\n"
+msgstr ""
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Uuid;\n"
+"\n"
+"#[Uuid(skipOnError: true)]\n"
+"#[Callback(method: 'validateUuidV7', skipOnError: true)]\n"
+"public string $id = '';\n"
+"\n"
+"private function validateUuidV7(mixed $value): Result\n"
+"{\n"
+"    return \\App\\Support\\Uuid::isVersion7($value)\n"
+"        ? new Result()\n"
+"        : (new Result())->addError('ID must be a UUID version 7.');\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The callback method returns a `Result`: return an empty result when the value is valid or add an error when it isn't.  The method body can call any validation code your application already uses, such as `App\\Support\\Uuid::isValid($value, 'v7')`.  See [Callback rule details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)  for full examples and available method signatures."
+msgstr "O método de callback retorna um `Result`: retorne um resultado vazio quando o valor for válido ou adicione um erro quando não for.  O corpo do método pode chamar qualquer código de validação que a sua aplicação já usa, como `App\\Support\\Uuid::isValid($value, 'v7')`.  Veja os [detalhes da regra Callback](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md) para exemplos completos e as assinaturas de método disponíveis."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For validation logic reused in several forms, create a custom Yii Validator rule and handler instead of copying callback methods. See the [custom rule guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)  for the rule/handler structure."
+msgstr "Para uma lógica de validação reaproveitada em vários formulários, crie uma regra e um handler personalizados do Yii Validator em vez de copiar métodos de callback. Veja o [guia de regras personalizadas](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md) para a estrutura de regra/handler."
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Custom validation"
+msgstr "Validação personalizada"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. For example, to validate a UUID string, use `Uuid`:"
+msgstr "Os atributos de validação são regras do Yii Validator. Para verificações comuns, procure primeiro uma regra existente. Por exemplo, para validar uma string UUID, use `Uuid`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Uuid;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Uuid]\n"
+"    public string $id = '';\n"
+"}\n"
+msgstr ""
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Rule\\Uuid;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Uuid]\n"
+"    public string $id = '';\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "When a field needs application-specific validation that isn't covered by a built-in rule, use `Callback`. This is useful for one-off checks or for delegating to a domain/library method. With PHP attributes, use the `method` option because PHP attributes can't contain closures. For example, the following form validates a card number checksum:"
+msgstr "Quando um campo precisa de uma validação específica da aplicação que nenhuma regra embutida cobre, use `Callback`. Isso é útil para verificações pontuais ou para delegar a um método do domínio ou de uma biblioteca. Com atributos PHP, use a opção `method`, porque atributos PHP não podem conter closures. Por exemplo, o formulário a seguir valida o dígito verificador de um número de cartão:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('Card number')]\n"
+"    #[Required]\n"
+"    #[Callback(method: 'validateCardNumberChecksum', skipOnError: true)]\n"
+"    public string $cardNumber = '';\n"
+"\n"
+"    private function validateCardNumberChecksum(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        if (!is_string($value)) {\n"
+"            return (new Result())->addError('Card number must be a string.');\n"
+"        }\n"
+"\n"
+"        $digits = str_replace([' ', '-'], '', $value);\n"
+"\n"
+"        if ($digits === '' || !ctype_digit($digits)) {\n"
+"            return (new Result())->addError('Card number must contain digits only.');\n"
+"        }\n"
+"\n"
+"        $sum = 0;\n"
+"        $double = false;\n"
+"\n"
+"        foreach (array_reverse(str_split($digits)) as $digit) {\n"
+"            $number = (int) $digit;\n"
+"\n"
+"            if ($double) {\n"
+"                $number *= 2;\n"
+"                if ($number > 9) {\n"
+"                    $number -= 9;\n"
+"                }\n"
+"            }\n"
+"\n"
+"            $sum += $number;\n"
+"            $double = !$double;\n"
+"        }\n"
+"\n"
+"        if ($sum % 10 !== 0) {\n"
+"            return (new Result())->addError('Card number checksum is invalid.');\n"
+"        }\n"
+"\n"
+"        return new Result();\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Label;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"final class Form extends FormModel\n"
+"{\n"
+"    #[Label('Card number')]\n"
+"    #[Required]\n"
+"    #[Callback(method: 'validateCardNumberChecksum', skipOnError: true)]\n"
+"    public string $cardNumber = '';\n"
+"\n"
+"    private function validateCardNumberChecksum(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        if (!is_string($value)) {\n"
+"            return (new Result())->addError('Card number must be a string.');\n"
+"        }\n"
+"\n"
+"        $digits = str_replace([' ', '-'], '', $value);\n"
+"\n"
+"        if ($digits === '' || !ctype_digit($digits)) {\n"
+"            return (new Result())->addError('Card number must contain digits only.');\n"
+"        }\n"
+"\n"
+"        $sum = 0;\n"
+"        $double = false;\n"
+"\n"
+"        foreach (array_reverse(str_split($digits)) as $digit) {\n"
+"            $number = (int) $digit;\n"
+"\n"
+"            if ($double) {\n"
+"                $number *= 2;\n"
+"                if ($number > 9) {\n"
+"                    $number -= 9;\n"
+"                }\n"
+"            }\n"
+"\n"
+"            $sum += $number;\n"
+"            $double = !$double;\n"
+"        }\n"
+"\n"
+"        if ($sum % 10 !== 0) {\n"
+"            return (new Result())->addError('Card number checksum is invalid.');\n"
+"        }\n"
+"\n"
+"        return new Result();\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The callback method returns a `Result`: return an empty result when the value is valid or add an error when it isn't.  The method body can call any validation code your application already uses, such as `App\\Payment\\CardNumber::hasValidChecksum($value)`."
+msgstr "O método de callback retorna um `Result`: retorne um resultado vazio quando o valor for válido ou adicione um erro quando não for.  O corpo do método pode chamar qualquer código de validação que a sua aplicação já usa, como `App\\Payment\\CardNumber::hasValidChecksum($value)`."
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Validating several fields together"
+msgstr "Validando vários campos juntos"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Property attributes are enough when each field can be validated independently. When a rule depends on several fields, put a `Callback` rule on the form model class and attach an error to the field that should display it."
+msgstr "Atributos nas propriedades bastam quando cada campo pode ser validado de forma independente. Quando uma regra depende de vários campos, coloque uma regra `Callback` na classe do form model e associe o erro ao campo que deve exibi-lo."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For example, a report filter may require the start date to be earlier than or equal to the end date:"
+msgstr "Por exemplo, um filtro de relatório pode exigir que a data inicial seja anterior ou igual à data final:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Report;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Date\\Date;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"#[Callback(method: 'validateDateRange')]\n"
+"final class ReportFilterForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateFrom = '';\n"
+"\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateTo = '';\n"
+"\n"
+"    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        $result = new Result();\n"
+"\n"
+"        if ($this->dateFrom === '' || $this->dateTo === '') {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        $dateFrom = $this->parseDate($this->dateFrom);\n"
+"        $dateTo = $this->parseDate($this->dateTo);\n"
+"\n"
+"        if ($dateFrom === null || $dateTo === null) {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        if ($dateFrom > $dateTo) {\n"
+"            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);\n"
+"        }\n"
+"\n"
+"        return $result;\n"
+"    }\n"
+"\n"
+"    private function parseDate(string $value): ?DateTimeImmutable\n"
+"    {\n"
+"        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);\n"
+"        $errors = DateTimeImmutable::getLastErrors();\n"
+"\n"
+"        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $date;\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Report;\n"
+"\n"
+"use DateTimeImmutable;\n"
+"use Yiisoft\\FormModel\\FormModel;\n"
+"use Yiisoft\\Validator\\Result;\n"
+"use Yiisoft\\Validator\\Rule\\Callback;\n"
+"use Yiisoft\\Validator\\Rule\\Date\\Date;\n"
+"use Yiisoft\\Validator\\Rule\\Required;\n"
+"use Yiisoft\\Validator\\ValidationContext;\n"
+"\n"
+"#[Callback(method: 'validateDateRange')]\n"
+"final class ReportFilterForm extends FormModel\n"
+"{\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateFrom = '';\n"
+"\n"
+"    #[Required]\n"
+"    #[Date(format: 'php:Y-m-d')]\n"
+"    public string $dateTo = '';\n"
+"\n"
+"    public function validateDateRange(mixed $value, Callback $rule, ValidationContext $context): Result\n"
+"    {\n"
+"        $result = new Result();\n"
+"\n"
+"        if ($this->dateFrom === '' || $this->dateTo === '') {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        $dateFrom = $this->parseDate($this->dateFrom);\n"
+"        $dateTo = $this->parseDate($this->dateTo);\n"
+"\n"
+"        if ($dateFrom === null || $dateTo === null) {\n"
+"            return $result;\n"
+"        }\n"
+"\n"
+"        if ($dateFrom > $dateTo) {\n"
+"            $result->addError('The start date must be earlier than or equal to the end date.', [], ['dateFrom']);\n"
+"        }\n"
+"\n"
+"        return $result;\n"
+"    }\n"
+"\n"
+"    private function parseDate(string $value): ?DateTimeImmutable\n"
+"    {\n"
+"        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);\n"
+"        $errors = DateTimeImmutable::getLastErrors();\n"
+"\n"
+"        if ($date === false || ($errors !== false && ($errors['warning_count'] > 0 || $errors['error_count'] > 0))) {\n"
+"            return null;\n"
+"        }\n"
+"\n"
+"        return $date;\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The class-level `Callback` receives the whole object as `$value`, but using `$this` is usually clearer in a form model method. Returning an empty `Result` means the cross-field rule passed. The third argument of `addError()` is the value path; `['dateFrom']` makes the error appear on the `dateFrom` field when rendering the form."
+msgstr "O `Callback` no nível da classe recebe o objeto inteiro como `$value`, mas usar `$this` costuma ser mais claro em um método do form model. Retornar um `Result` vazio significa que a regra entre campos passou. O terceiro argumento de `addError()` é o caminho do valor; `['dateFrom']` faz o erro aparecer no campo `dateFrom` quando o formulário é renderizado."
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Using the form "
+msgstr "Usando o formulário"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Now that you have a form, use it in your action from \"[Saying Hello](hello.md)\"."
+msgstr "Agora que você tem um formulário, use-o na sua action do \"[Dizendo olá](hello.md)\"."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Here's what you end up with in `/src/Web/Echo/Action.php`:"
+msgstr "Este é o resultado final em `/src/Web/Echo/Action.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\FormModel\\FormHydrator;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"        private FormHydrator $formHydrator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $form = new Form();        \n"
+"\n"
+"        $this->formHydrator->populateFromPostAndValidate($form, $request);\n"
+"\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'form' => $form,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Yiisoft\\FormModel\\FormHydrator;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"        private FormHydrator $formHydrator,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $form = new Form();        \n"
+"\n"
+"        $this->formHydrator->populateFromPostAndValidate($form, $request);\n"
+"\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'form' => $form,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Instead of reading from route, you fill your form from request's POST data and validate it with the help of `FormHydrator`. Next you pass the form to the view."
+msgstr "Em vez de ler da rota, você preenche o formulário com os dados POST da requisição e o valida com a ajuda do `FormHydrator`. Depois, passa o formulário para a view."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "For the form to function we need to allow both GET to render the form and POST to send the data.  Adjust your route in `config/common/routes.php`:"
+msgstr "Para o formulário funcionar, precisamos permitir tanto GET, para renderizar o formulário, quanto POST, para enviar os dados.  Ajuste a sua rota em `config/common/routes.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::methods([Method::GET, Method::POST], '/say')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use App\\Web;\n"
+"use Yiisoft\\Http\\Method;\n"
+"use Yiisoft\\Router\\Group;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"return [\n"
+"    Group::create()\n"
+"        ->routes(\n"
+"            Route::get('/')\n"
+"                ->action(Web\\HomePage\\Action::class)\n"
+"                ->name('home'),\n"
+"            Route::methods([Method::GET, Method::POST], '/say')\n"
+"                ->action(Web\\Echo\\Action::class)\n"
+"                ->name('echo/say'),\n"
+"        ),\n"
+"];\n"
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Adjusting view"
+msgstr "Ajustando a view"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "To render a form, you need to change your view, `src/Web/Echo/template.php`:"
+msgstr "Para renderizar um formulário, você precisa alterar a sua view, `src/Web/Echo/template.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use App\\Web\\Echo\\Form;\n"
+"use Yiisoft\\FormModel\\Field;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\Csrf;\n"
+"\n"
+"/**\n"
+" * @var Form $form\n"
+" * @var string[] $errors\n"
+" * @var UrlGeneratorInterface $urlGenerator\n"
+" * @var Csrf $csrf\n"
+" */\n"
+"\n"
+"$htmlForm = Html::form()\n"
+"    ->post($urlGenerator->generate('echo/say'))\n"
+"    ->csrf($csrf);\n"
+"?>\n"
+"\n"
+"<?= $htmlForm->open() ?>\n"
+"    <?= Field::text($form, 'message')->required() ?>\n"
+"    <?= Html::submitButton('Say') ?>\n"
+"<?= $htmlForm->close() ?>\n"
+"\n"
+"<?php if ($form->isValid()): ?>\n"
+"    Echo said: <?= Html::encode($form->message) ?>\n"
+"<?php endif ?>\n"
+msgstr ""
+"<?php\n"
+"use App\\Web\\Echo\\Form;\n"
+"use Yiisoft\\FormModel\\Field;\n"
+"use Yiisoft\\Html\\Html;\n"
+"use Yiisoft\\Router\\UrlGeneratorInterface;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\Csrf;\n"
+"\n"
+"/**\n"
+" * @var Form $form\n"
+" * @var string[] $errors\n"
+" * @var UrlGeneratorInterface $urlGenerator\n"
+" * @var Csrf $csrf\n"
+" */\n"
+"\n"
+"$htmlForm = Html::form()\n"
+"    ->post($urlGenerator->generate('echo/say'))\n"
+"    ->csrf($csrf);\n"
+"?>\n"
+"\n"
+"<?= $htmlForm->open() ?>\n"
+"    <?= Field::text($form, 'message')->required() ?>\n"
+"    <?= Html::submitButton('Say') ?>\n"
+"<?= $htmlForm->close() ?>\n"
+"\n"
+"<?php if ($form->isValid()): ?>\n"
+"    Echo said: <?= Html::encode($form->message) ?>\n"
+"<?php endif ?>\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "If the form is valid, you display a message. The rest initializes and renders the form."
+msgstr "Se o formulário for válido, você exibe uma mensagem. O restante inicializa e renderiza o formulário."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "First, you initialize `$htmlForm` with the POST type and the action URL generated with the help from the URL generator.  You can access it as `$urlGenerator` in all views. You also need to pass the CSRF token to the form, which is also available in every view as `$csrf` thanks to the view injections listed in `config/common/params.php`:"
+msgstr "Primeiro, você inicializa `$htmlForm` com o tipo POST e a URL da action gerada com a ajuda do gerador de URLs.  Você pode acessá-lo como `$urlGenerator` em todas as views. Também precisa passar o token CSRF para o formulário, que também está disponível em toda view como `$csrf` graças às view injections listadas em `config/common/params.php`:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid ""
+"'yiisoft/yii-view-renderer' => [\n"
+"    'injections' => [\n"
+"        Reference::to(CsrfViewInjection::class),\n"
+"    ],\n"
+"],\n"
+msgstr ""
+"'yiisoft/yii-view-renderer' => [\n"
+"    'injections' => [\n"
+"        Reference::to(CsrfViewInjection::class),\n"
+"    ],\n"
+"],\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "The template renders the CSRF token value as a hidden input to ensure that the request originates from the form page and not from another website. It will be submitted along with POST form data. Omitting it would result in [HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2)."
+msgstr "O template renderiza o valor do token CSRF como um input oculto para garantir que a requisição vem da página do formulário e não de outro site. Ele é enviado junto com os dados POST do formulário. Sem ele, o resultado seria o [código de resposta HTTP 422](https://tools.ietf.org/html/rfc4918#section-11.2)."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "You use `Field::text()` to output \"message\" field, so it takes care about filling the value, escaping it, rendering field label and validation errors."
+msgstr "Você usa `Field::text()` para exibir o campo \"message\", então ele cuida de preencher o valor, escapá-lo e renderizar o label do campo e os erros de validação."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "Now, in case you submit an empty message, you will get a validation error: \"The message to be echoed must contain at least 2 characters.\""
+msgstr "Agora, se você enviar uma mensagem vazia, vai receber um erro de validação: \"The message to be echoed must contain at least 2 characters.\""
+
+#. type: Title ##
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "Trying it Out"
+msgstr "Testando"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "To see how it works, use your browser to access the following URL:"
+msgstr "Para ver como funciona, acesse a seguinte URL no navegador:"
+
+#. type: Fenced code block
+#: ../src/guide/start/forms.md
+#, no-wrap
+msgid "http://localhost:8080/say\n"
+msgstr "http://localhost:8080/say\n"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "You will see a page with a form input field and a label that indicates what data to enter.  Also, the form has a \"submit\" button labeled \"Say\". If you click the \"submit\" button without entering anything, you will see that the field is required. If you enter a single character, the form displays an error message next to the problematic input field."
+msgstr "Você vai ver uma página com um campo de formulário e um label indicando qual dado informar.  O formulário também tem um botão \"submit\" com o texto \"Say\". Se você clicar no botão \"submit\" sem digitar nada, vai ver que o campo é obrigatório. Se digitar um único caractere, o formulário mostra uma mensagem de erro ao lado do campo com problema."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "![Form with a validation error](/images/guide/start/form-error.png)"
+msgstr "![Formulário com erro de validação](/images/guide/start/form-error.png)"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "After you enter a valid message and click the \"submit\" button, the page echoes the data that you entered."
+msgstr "Depois de digitar uma mensagem válida e clicar no botão \"submit\", a página mostra de volta os dados que você digitou."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "![Form with a success message](/images/guide/start/form-success.png)"
+msgstr "![Formulário com mensagem de sucesso](/images/guide/start/form-success.png)"
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "In this section of the guide, you've learned how to create a form model class to represent the user data and validate said data."
+msgstr "Nesta seção do guia, você aprendeu a criar uma classe de form model para representar os dados do usuário e validar esses dados."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "You've also learned how to get data from users and how to display data back in the browser.  This is a task that could take you a lot of time when developing an application, but Yii provides powerful widgets to make this task easy."
+msgstr "Você também aprendeu a receber dados dos usuários e a exibi-los de volta no navegador.  Essa é uma tarefa que pode tomar muito tempo no desenvolvimento de uma aplicação, mas o Yii oferece widgets poderosos que a tornam fácil."
+
+#. type: Plain text
+#: ../src/guide/start/forms.md
+msgid "In the next section, you will learn how to work with databases, which are needed in nearly every application."
+msgstr "Na próxima seção, você vai aprender a trabalhar com bancos de dados, que são necessários em quase toda aplicação."

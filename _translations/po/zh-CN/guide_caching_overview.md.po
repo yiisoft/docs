@@ -43,15 +43,15 @@ msgstr "[数据缓存](data.md)"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Fragment caching](fragment.md)"
-msgstr "[片段缓存](fragment.md)"
+msgid "Fragment caching"
+msgstr "片段缓存"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Page caching](page.md)"
-msgstr "[页面缓存](page.md)"
+msgid "Page caching"
+msgstr "页面缓存"
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[HTTP caching](http.md)"
-msgstr "[HTTP 缓存](http.md)"
+msgid "HTTP caching"
+msgstr "HTTP 缓存"

@@ -17,7 +17,7 @@ If the total length of readme is less than about 200 lines, it's fine to keep do
 
 ## Definitive guide
 
-The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/guide/en)
+The definitive guide, [yiisoft/docs/guide](https://github.com/yiisoft/docs/tree/master/src/guide)
 aims at covering usage of packages as a whole framework. Unlike package documentation, it isn't
 focused on a single package but is covering certain use-cases.
 

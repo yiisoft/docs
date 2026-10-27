@@ -1,0 +1,714 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-06-02 21:36+0000\n"
+"PO-Revision-Date: 2026-06-02 21:36+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "Request"
+msgstr "Requisição"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "HTTP request has a method, URI, a set of headers and a body:"
+msgstr "Uma requisição HTTP tem um método, uma URI, um conjunto de headers e um corpo:"
+
+#. type: Fenced code block
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"POST /contact HTTP/1.1\n"
+"Host: example.org\n"
+"Accept-Language: en-us\n"
+"Accept-Encoding: gzip, deflate\n"
+"\n"
+"{\n"
+"    \"subject\": \"Hello\",\n"
+"    \"body\": \"Hello there, we need to build Yii application together!\"\n"
+"}\n"
+msgstr ""
+"POST /contact HTTP/1.1\n"
+"Host: example.org\n"
+"Accept-Language: en-us\n"
+"Accept-Encoding: gzip, deflate\n"
+"\n"
+"{\n"
+"    \"subject\": \"Hello\",\n"
+"    \"body\": \"Hello there, we need to build Yii application together!\"\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "The method is `POST`, URI is `/contact`.  Extra headers are specifying host, preferred language and encoding.  The body could be anything.  In this case, it's a JSON payload."
+msgstr "O método é `POST` e a URI é `/contact`.  Os headers extras informam o host, o idioma preferido e a codificação.  O corpo pode ser qualquer coisa.  Neste caso, é um payload JSON."
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Yii uses [PSR-7 `ServerRequest`](https://www.php-fig.org/psr/psr-7/) as request representation.  The object is available in controller actions and other types of middleware:"
+msgstr "O Yii usa o [`ServerRequest` da PSR-7](https://www.php-fig.org/psr/psr-7/) para representar a requisição.  O objeto está disponível nas actions de controllers e em outros tipos de middleware:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"public function view(ServerRequestInterface $request): ResponseInterface\n"
+"{\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+"public function view(ServerRequestInterface $request): ResponseInterface\n"
+"{\n"
+"    // ...\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "Method"
+msgstr "Método"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "The method could be obtained from a request object:"
+msgstr "O método pode ser obtido do objeto de requisição:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "$method = $request->getMethod();\n"
+msgstr "$method = $request->getMethod();\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Usually it's one of the:"
+msgstr "Normalmente ele é um destes:"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "GET"
+msgstr "GET"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "POST"
+msgstr "POST"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "PUT"
+msgstr "PUT"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "DELETE"
+msgstr "DELETE"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "HEAD"
+msgstr "HEAD"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "PATCH"
+msgstr "PATCH"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "OPTIONS"
+msgstr "OPTIONS"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "In case you want to make sure the request method is of a certain type, there is a special class with method names:"
+msgstr "Se você quiser garantir que o método da requisição é de um tipo específico, existe uma classe especial com os nomes dos métodos:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Http\\Method;\n"
+"\n"
+"if ($request->getMethod() === Method::POST) {\n"
+"    // method is POST\n"
+"}\n"
+msgstr ""
+"use Yiisoft\\Http\\Method;\n"
+"\n"
+"if ($request->getMethod() === Method::POST) {\n"
+"    // method is POST\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "URI"
+msgstr "URI"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "A URI has:"
+msgstr "Uma URI tem:"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Scheme (`http`, `https`)"
+msgstr "Esquema (`http`, `https`)"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Host (`yiiframework.com`)"
+msgstr "Host (`yiiframework.com`)"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Port (`80`, `443`)"
+msgstr "Porta (`80`, `443`)"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Path (`/posts/1`)"
+msgstr "Caminho (`/posts/1`)"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Query string (`page=1&sort=+id`)"
+msgstr "Query string (`page=1&sort=+id`)"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Fragment (`#anchor`)"
+msgstr "Fragmento (`#anchor`)"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "You can obtain `UriInterface` from request like the following:"
+msgstr "Você pode obter a `UriInterface` da requisição assim:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "$uri = $request->getUri();\n"
+msgstr "$uri = $request->getUri();\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Then you can get various details from its methods:"
+msgstr "Depois, pode obter vários detalhes pelos métodos dela:"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getScheme()`"
+msgstr "`getScheme()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getAuthority()`"
+msgstr "`getAuthority()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getUserInfo()`"
+msgstr "`getUserInfo()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getHost()`"
+msgstr "`getHost()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getPort()`"
+msgstr "`getPort()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getPath()`"
+msgstr "`getPath()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getQuery()`"
+msgstr "`getQuery()`"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`getFragment()`"
+msgstr "`getFragment()`"
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md ../src/guide/runtime/response.md
+#, no-wrap
+msgid "Headers"
+msgstr "Headers"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "There are various methods to inspect request headers. To get all headers as an array:"
+msgstr "Há vários métodos para inspecionar os headers da requisição. Para obter todos os headers como array:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"$headers = $request->getHeaders();\n"
+"foreach ($headers as $name => $values) {\n"
+"   // ...\n"
+"}\n"
+msgstr ""
+"$headers = $request->getHeaders();\n"
+"foreach ($headers as $name => $values) {\n"
+"   // ...\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "To get a single header:"
+msgstr "Para obter um único header:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "$values = $request->getHeader('Accept-Encoding');\n"
+msgstr "$values = $request->getHeader('Accept-Encoding');\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Also, you could get value as a comma-separated string instead of an array.  That's especially handy if a header has a single value:"
+msgstr "Você também pode obter o valor como uma string separada por vírgulas em vez de um array.  Isso é bem prático quando o header tem um único valor:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {\n"
+"    // This is an AJAX request made with jQuery.\n"
+"    // Note that header presence and name may vary depending on the library used. \n"
+"}\n"
+msgstr ""
+"if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {\n"
+"    // This is an AJAX request made with jQuery.\n"
+"    // Note that header presence and name may vary depending on the library used. \n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "To check if a header is present in the request:"
+msgstr "Para verificar se um header está presente na requisição:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"if ($request->hasHeader('Accept-Encoding')) {\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+"if ($request->hasHeader('Accept-Encoding')) {\n"
+"    // ...\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md ../src/guide/runtime/response.md ../src/internals/006-git-commit-messages.md
+#, no-wrap
+msgid "Body"
+msgstr "Corpo"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "There are two methods to get body contents. The first is getting the body as it is without parsing:"
+msgstr "Há dois métodos para obter o conteúdo do corpo. O primeiro retorna o corpo como está, sem parsing:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "$body = $request->getBody();\n"
+msgstr "$body = $request->getBody();\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "The `$body` would be an instance of `Psr\\Http\\Message\\StreamInterface`."
+msgstr "`$body` será uma instância de `Psr\\Http\\Message\\StreamInterface`."
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Also, you could get a parsed body:"
+msgstr "Você também pode obter o corpo já interpretado:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "$bodyParameters = $request->getParsedBody();\n"
+msgstr "$bodyParameters = $request->getParsedBody();\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Parsing depends on PSR-7 implementation and may require middleware for custom body formats."
+msgstr "O parsing depende da implementação da PSR-7 e pode exigir um middleware para formatos de corpo personalizados."
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"use Psr\\Http\\Message\\ServerRequestInterface as Request;\n"
+"use Psr\\Http\\Message\\ResponseInterface as Response;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface as RequestHandler;\n"
+"\n"
+"final readonly class JsonBodyParserMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    public function process(Request $request, RequestHandler $next): Response\n"
+"    {\n"
+"        $contentType = $request->getHeaderLine('Content-Type');\n"
+"\n"
+"        if (strpos($contentType, 'application/json') !== false) {\n"
+"            $body = $request->getBody();\n"
+"            $parsedBody = $this->parse($body);\n"
+"            $request = $request->withParsedBody($parsedBody);\n"
+"            \n"
+"        }\n"
+"\n"
+"        return $next->handle($request);\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"use Psr\\Http\\Message\\ServerRequestInterface as Request;\n"
+"use Psr\\Http\\Message\\ResponseInterface as Response;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface as RequestHandler;\n"
+"\n"
+"final readonly class JsonBodyParserMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    public function process(Request $request, RequestHandler $next): Response\n"
+"    {\n"
+"        $contentType = $request->getHeaderLine('Content-Type');\n"
+"\n"
+"        if (strpos($contentType, 'application/json') !== false) {\n"
+"            $body = $request->getBody();\n"
+"            $parsedBody = $this->parse($body);\n"
+"            $request = $request->withParsedBody($parsedBody);\n"
+"            \n"
+"        }\n"
+"\n"
+"        return $next->handle($request);\n"
+"    }\n"
+"}\n"
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "File uploads"
+msgstr "Upload de arquivos"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Uploaded files that user submitted from a form with `enctype` attribute equals to `multipart/form-data` are handled via special request method:"
+msgstr "Os arquivos enviados pelo usuário em um formulário com o atributo `enctype` igual a `multipart/form-data` são tratados por um método especial da requisição:"
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"$files = $request->getUploadedFiles();\n"
+"foreach ($files as $file) {\n"
+"    if ($file->getError() === UPLOAD_ERR_OK) {\n"
+"        $file->moveTo('path/to/uploads/new_filename.ext');\n"
+"    }\n"
+"}\n"
+msgstr ""
+"$files = $request->getUploadedFiles();\n"
+"foreach ($files as $file) {\n"
+"    if ($file->getError() === UPLOAD_ERR_OK) {\n"
+"        $file->moveTo('path/to/uploads/new_filename.ext');\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Always validate the upload before reading the stream or moving the file. The file may be missing, too large for PHP configuration, only partially uploaded, rejected by a PHP extension, or not match the file type and size your application expects. Yii Validator provides the `Yiisoft\\Validator\\Rule\\File` rule for this. It accepts PSR-7 `UploadedFileInterface` values and validates upload error codes, extension, MIME type, and size. Use `Yiisoft\\Validator\\Rule\\Each` when a field contains several files."
+msgstr "Sempre valide o upload antes de ler o stream ou mover o arquivo. O arquivo pode estar ausente, ser grande demais para a configuração do PHP, ter sido enviado só em parte, ter sido rejeitado por uma extensão do PHP ou não corresponder ao tipo e ao tamanho que a sua aplicação espera. O Yii Validator oferece a regra `Yiisoft\\Validator\\Rule\\File` para isso. Ela aceita valores `UploadedFileInterface` da PSR-7 e valida os códigos de erro do upload, a extensão, o tipo MIME e o tamanho. Use `Yiisoft\\Validator\\Rule\\Each` quando um campo tiver vários arquivos."
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "The following example handles a single `avatar` upload. It validates the uploaded file with Yii Validator, stores the file outside the public directory, and generates its own file name instead of trusting the client-provided name."
+msgstr "O exemplo a seguir trata o upload de um único `avatar`. Ele valida o arquivo enviado com o Yii Validator, guarda o arquivo fora do diretório público e gera o próprio nome do arquivo em vez de confiar no nome informado pelo cliente."
+
+#. type: Fenced code block (php)
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Profile;\n"
+"\n"
+"use finfo;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Message\\UploadedFileInterface;\n"
+"use RuntimeException;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Validator\\Rule\\File;\n"
+"use Yiisoft\\Validator\\Rule\\Image\\Image;\n"
+"use Yiisoft\\Validator\\Validator;\n"
+"\n"
+"final readonly class UploadAvatarAction\n"
+"{\n"
+"    private const MAX_SIZE = 2 * 1024 * 1024;\n"
+"\n"
+"    /**\n"
+"     * @var array<string, string>\n"
+"     */\n"
+"    private const EXTENSIONS = [\n"
+"        'image/jpeg' => 'jpg',\n"
+"        'image/png' => 'png',\n"
+"        'image/webp' => 'webp',\n"
+"    ];\n"
+"\n"
+"    public function __construct(\n"
+"        private Aliases $aliases,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $file = $request->getUploadedFiles()['avatar'] ?? null;\n"
+"\n"
+"        $result = (new Validator())->validate(\n"
+"            ['avatar' => $file],\n"
+"            [\n"
+"                'avatar' => [\n"
+"                    new File(\n"
+"                        extensions: ['jpg', 'jpeg', 'png', 'webp'],\n"
+"                        mimeTypes: array_keys(self::EXTENSIONS),\n"
+"                        maxSize: self::MAX_SIZE,\n"
+"                    ),\n"
+"                    new Image(skipOnError: true),\n"
+"                ],\n"
+"            ],\n"
+"        );\n"
+"\n"
+"        if (!$result->isValid() || !$file instanceof UploadedFileInterface) {\n"
+"            $messages = $result->getPropertyErrorMessages('avatar');\n"
+"            return $this->badRequest(\n"
+"                $messages === [] ? 'Upload a file in the \"avatar\" field.' : implode(' ', $messages),\n"
+"            );\n"
+"        }\n"
+"\n"
+"        $uploadDirectory = $this->aliases->get('@runtime/uploads/avatars');\n"
+"        $this->ensureDirectory($uploadDirectory);\n"
+"\n"
+"        $temporaryPath = $uploadDirectory . DIRECTORY_SEPARATOR . bin2hex(random_bytes(16)) . '.upload';\n"
+"        $file->moveTo($temporaryPath);\n"
+"\n"
+"        $mediaType = (new finfo(FILEINFO_MIME_TYPE))->file($temporaryPath);\n"
+"\n"
+"        if (!is_string($mediaType) || !isset(self::EXTENSIONS[$mediaType])) {\n"
+"            unlink($temporaryPath);\n"
+"            return $this->badRequest('Only JPEG, PNG, and WebP images are allowed.');\n"
+"        }\n"
+"\n"
+"        $fileName = bin2hex(random_bytes(16)) . '.' . self::EXTENSIONS[$mediaType];\n"
+"        $targetPath = $uploadDirectory . DIRECTORY_SEPARATOR . $fileName;\n"
+"\n"
+"        if (!rename($temporaryPath, $targetPath)) {\n"
+"            unlink($temporaryPath);\n"
+"            throw new RuntimeException('Unable to store uploaded file.');\n"
+"        }\n"
+"\n"
+"        $response = $this->responseFactory->createResponse(Status::CREATED);\n"
+"        $response->getBody()->write('Stored as ' . $fileName);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function badRequest(string $message): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse(Status::BAD_REQUEST);\n"
+"        $response->getBody()->write($message);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function ensureDirectory(string $directory): void\n"
+"    {\n"
+"        if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {\n"
+"            throw new RuntimeException(sprintf('Directory \"%s\" was not created.', $directory));\n"
+"        }\n"
+"    }\n"
+"}\n"
+msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Profile;\n"
+"\n"
+"use finfo;\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Message\\UploadedFileInterface;\n"
+"use RuntimeException;\n"
+"use Yiisoft\\Aliases\\Aliases;\n"
+"use Yiisoft\\Http\\Status;\n"
+"use Yiisoft\\Validator\\Rule\\File;\n"
+"use Yiisoft\\Validator\\Rule\\Image\\Image;\n"
+"use Yiisoft\\Validator\\Validator;\n"
+"\n"
+"final readonly class UploadAvatarAction\n"
+"{\n"
+"    private const MAX_SIZE = 2 * 1024 * 1024;\n"
+"\n"
+"    /**\n"
+"     * @var array<string, string>\n"
+"     */\n"
+"    private const EXTENSIONS = [\n"
+"        'image/jpeg' => 'jpg',\n"
+"        'image/png' => 'png',\n"
+"        'image/webp' => 'webp',\n"
+"    ];\n"
+"\n"
+"    public function __construct(\n"
+"        private Aliases $aliases,\n"
+"        private ResponseFactoryInterface $responseFactory,\n"
+"    ) {\n"
+"    }\n"
+"\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        $file = $request->getUploadedFiles()['avatar'] ?? null;\n"
+"\n"
+"        $result = (new Validator())->validate(\n"
+"            ['avatar' => $file],\n"
+"            [\n"
+"                'avatar' => [\n"
+"                    new File(\n"
+"                        extensions: ['jpg', 'jpeg', 'png', 'webp'],\n"
+"                        mimeTypes: array_keys(self::EXTENSIONS),\n"
+"                        maxSize: self::MAX_SIZE,\n"
+"                    ),\n"
+"                    new Image(skipOnError: true),\n"
+"                ],\n"
+"            ],\n"
+"        );\n"
+"\n"
+"        if (!$result->isValid() || !$file instanceof UploadedFileInterface) {\n"
+"            $messages = $result->getPropertyErrorMessages('avatar');\n"
+"            return $this->badRequest(\n"
+"                $messages === [] ? 'Upload a file in the \"avatar\" field.' : implode(' ', $messages),\n"
+"            );\n"
+"        }\n"
+"\n"
+"        $uploadDirectory = $this->aliases->get('@runtime/uploads/avatars');\n"
+"        $this->ensureDirectory($uploadDirectory);\n"
+"\n"
+"        $temporaryPath = $uploadDirectory . DIRECTORY_SEPARATOR . bin2hex(random_bytes(16)) . '.upload';\n"
+"        $file->moveTo($temporaryPath);\n"
+"\n"
+"        $mediaType = (new finfo(FILEINFO_MIME_TYPE))->file($temporaryPath);\n"
+"\n"
+"        if (!is_string($mediaType) || !isset(self::EXTENSIONS[$mediaType])) {\n"
+"            unlink($temporaryPath);\n"
+"            return $this->badRequest('Only JPEG, PNG, and WebP images are allowed.');\n"
+"        }\n"
+"\n"
+"        $fileName = bin2hex(random_bytes(16)) . '.' . self::EXTENSIONS[$mediaType];\n"
+"        $targetPath = $uploadDirectory . DIRECTORY_SEPARATOR . $fileName;\n"
+"\n"
+"        if (!rename($temporaryPath, $targetPath)) {\n"
+"            unlink($temporaryPath);\n"
+"            throw new RuntimeException('Unable to store uploaded file.');\n"
+"        }\n"
+"\n"
+"        $response = $this->responseFactory->createResponse(Status::CREATED);\n"
+"        $response->getBody()->write('Stored as ' . $fileName);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function badRequest(string $message): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse(Status::BAD_REQUEST);\n"
+"        $response->getBody()->write($message);\n"
+"\n"
+"        return $response;\n"
+"    }\n"
+"\n"
+"    private function ensureDirectory(string $directory): void\n"
+"    {\n"
+"        if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {\n"
+"            throw new RuntimeException(sprintf('Directory \"%s\" was not created.', $directory));\n"
+"        }\n"
+"    }\n"
+"}\n"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Notes:"
+msgstr "Observações:"
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Store uploads under `@runtime` or another non-public directory unless the files are intentionally public."
+msgstr "Guarde os uploads em `@runtime` ou em outro diretório não público, a menos que os arquivos sejam públicos de propósito."
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Do not use `getClientFilename()` as a storage path. A browser controls it, so it may contain unsafe characters, path-like values, or duplicate names."
+msgstr "Não use `getClientFilename()` como caminho de armazenamento. Quem controla esse valor é o navegador, então ele pode ter caracteres inseguros, valores que parecem caminhos ou nomes duplicados."
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Do not rely on `getClientMediaType()` alone. It comes from the client. Use `File` MIME type validation, `Image` for image validation and dimension checks, or another server-side parser appropriate for the file format."
+msgstr "Não confie apenas em `getClientMediaType()`. Esse valor vem do cliente. Use a validação de tipo MIME da regra `File`, a regra `Image` para validar imagens e dimensões, ou outro parser no servidor adequado ao formato do arquivo."
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "Check PHP limits such as `upload_max_filesize`, `post_max_size`, and `max_file_uploads` when expected files are rejected before the action runs."
+msgstr "Verifique limites do PHP como `upload_max_filesize`, `post_max_size` e `max_file_uploads` quando arquivos esperados forem rejeitados antes de a action rodar."
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "When a form uploads several files, the array returned by `getUploadedFiles()` has the same shape as the file input names. Validate them with `Each(new File(...))` and move each `UploadedFileInterface` separately."
+msgstr "Quando um formulário envia vários arquivos, o array retornado por `getUploadedFiles()` tem o mesmo formato dos nomes dos inputs de arquivo. Valide-os com `Each(new File(...))` e mova cada `UploadedFileInterface` separadamente."
+
+#. type: Bullet: '- '
+#: ../src/guide/runtime/request.md
+msgid "`File` can also validate string file paths and `SplFileInfo` instances. Do not pass user-submitted paths directly: use PSR-7 uploaded file objects from the request, or perform upload provenance checks before validating filesystem paths."
+msgstr "A regra `File` também valida caminhos de arquivo em string e instâncias de `SplFileInfo`. Não passe caminhos enviados pelo usuário diretamente: use os objetos de arquivo enviado da PSR-7 vindos da requisição, ou verifique a origem do upload antes de validar caminhos do sistema de arquivos."
+
+#. type: Title ##
+#: ../src/guide/runtime/request.md
+#, no-wrap
+msgid "Attributes"
+msgstr "Atributos"
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Application middleware may set custom request attributes using `withAttribute()` method.  You can get these attributes with `getAttribute()`."
+msgstr "Os middlewares da aplicação podem definir atributos personalizados na requisição com o método `withAttribute()`.  Você pode ler esses atributos com `getAttribute()`."
+
+#. type: Plain text
+#: ../src/guide/runtime/request.md
+msgid "Route arguments, such as `id` from a `/posts/{id}` route pattern, aren't request attributes.  Use `#[RouteArgument]` in an action parameter or inject `Yiisoft\\Router\\CurrentRoute` when you need route arguments or route metadata."
+msgstr "Argumentos de rota, como o `id` de um padrão de rota `/posts/{id}`, não são atributos da requisição.  Use `#[RouteArgument]` em um parâmetro da action ou injete `Yiisoft\\Router\\CurrentRoute` quando precisar de argumentos ou metadados da rota."

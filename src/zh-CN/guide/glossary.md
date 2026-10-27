@@ -202,7 +202,7 @@ generation"](runtime/routing.md).
 
 Service is a focused object that performs application work or provides
 infrastructure behavior and is usually stored in the DI container.  Read
-more in ["Service components"](structure/service.md).
+more in ["Service components"](../cookbook/organizing-code/service.md).
 
 ## service provider
 

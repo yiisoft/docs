@@ -1,6 +1,6 @@
 # 数据缓存
 
-数据缓存是将一些 PHP 变量存储在缓存中，然后稍后从缓存中检索它们。它也是更高级缓存功能（如 [页面缓存](page.md)）的基础。
+数据缓存是将一些 PHP 变量存储在缓存中，然后稍后从缓存中检索它们。它也是更高级缓存功能（如 页面缓存）的基础。
 
 要使用缓存，请安装 [yiisoft/cache](https://github.com/yiisoft/cache) 包：
 
@@ -40,7 +40,7 @@ Yii 提供以下处理器：
   一个不进行实际缓存的缓存占位符。此处理器的目的是简化需要检查缓存可用性的代码。例如，在开发期间或服务器没有实际缓存支持时，您可以配置缓存服务使用此处理器。当您启用实际缓存支持时，可以切换到使用相应的缓存处理器。在这两种情况下，您都可以使用相同的代码而无需额外检查。
 - `ArrayCache` — 通过将值存储在数组中，仅为当前请求提供缓存。
 - [APCu](https://github.com/yiisoft/cache-apcu) - 使用 PHP
-  [APC](https://secure.php.net/manual/en/book.apc.php)
+  [APC](https://www.php.net/manual/en/book.apcu.php)
   扩展。在处理集中式厚应用程序（例如，单服务器，无专用负载均衡器等）的缓存时，您可以将此选项视为最快的选项。
 - [数据库](https://github.com/yiisoft/cache-db) — 使用数据库表存储缓存数据。
 - [文件](https://github.com/yiisoft/cache-file) —

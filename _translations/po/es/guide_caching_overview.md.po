@@ -44,15 +44,15 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Fragment caching](fragment.md)"
+msgid "Fragment caching"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[Page caching](page.md)"
+msgid "Page caching"
 msgstr ""
 
 #. type: Bullet: '* '
 #: ../src/guide/caching/overview.md
-msgid "[HTTP caching](http.md)"
+msgid "HTTP caching"
 msgstr ""

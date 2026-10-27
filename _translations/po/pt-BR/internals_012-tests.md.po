@@ -1,0 +1,72 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-12-24 08:02+0000\n"
+"PO-Revision-Date: 2025-12-24 08:02+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/en/internals/012-tests.md
+#, no-wrap
+msgid "012 — Tests"
+msgstr "012 — Testes"
+
+#. type: Plain text
+#: ../src/en/internals/012-tests.md
+msgid "For each package, we're adding unit-tests that are run via [PHPUnit](https://phpunit.de/).  When designing tests, the following guidelines should be taken into account."
+msgstr "Para cada pacote, adicionamos testes unitários executados com o [PHPUnit](https://phpunit.de/).  Ao projetar os testes, leve em conta as diretrizes a seguir."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Test class should be marked as `final` by default."
+msgstr "A classe de teste deve ser marcada como `final` por padrão."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "`@test` annotation must not be used, prefix methods with `test`."
+msgstr "A anotação `@test` não deve ser usada; use o prefixo `test` nos métodos."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "The test method name must reflect the purpose of the test."
+msgstr "O nome do método de teste deve refletir o propósito do teste."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "\"should\" must not be used in the test method name."
+msgstr "\"should\" não deve ser usado no nome do método de teste."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "If necessary, the test method phpdoc may describe the desired behavior."
+msgstr "Se necessário, o phpdoc do método de teste pode descrever o comportamento esperado."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "The test must follow AAA: first arrange the necessary preconditions, then act, then assert expected results."
+msgstr "O teste deve seguir o AAA: primeiro prepare (arrange) as pré-condições necessárias, depois aja (act) e, por fim, verifique (assert) os resultados esperados."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "There must be one test case per test method that's a single AAA."
+msgstr "Deve haver um caso de teste por método de teste, ou seja, um único AAA."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Test must use public API.  Private properties or methods shouldn't be accessed, assumptions on internals of the class tested shouldn't be made."
+msgstr "O teste deve usar a API pública.  Não se deve acessar propriedades ou métodos privados, nem fazer suposições sobre os detalhes internos da classe testada."
+
+#. type: Bullet: '- '
+#: ../src/en/internals/012-tests.md
+msgid "Tests shouldn't rely on composer-config-plugin and DI container unless necessary."
+msgstr "Os testes não devem depender do composer-config-plugin nem do container de DI, a menos que seja necessário."

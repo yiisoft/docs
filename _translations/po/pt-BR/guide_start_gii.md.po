@@ -1,0 +1,32 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-03-06 12:40+0000\n"
+"PO-Revision-Date: 2026-03-06 12:40+0000\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: ../src/guide/start/gii.md
+#, no-wrap
+msgid "Generating code with Gii"
+msgstr "Gerando código com o Gii"
+
+#. type: Plain text
+#: ../src/guide/start/gii.md
+#, no-wrap
+msgid ""
+"> [!NOTE]\n"
+"> Gii is under development and will be available later.\n"
+msgstr ""
+"> [!NOTE]\n"
+"> O Gii está em desenvolvimento e vai ficar disponível mais tarde.\n"

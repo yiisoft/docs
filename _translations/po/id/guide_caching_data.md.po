@@ -24,10 +24,10 @@ msgstr "Caching data"
 
 #. type: Plain text
 #: ../../guide/en/caching/data.md
-msgid "Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.  It's also the foundation for more advanced caching features, such as [page caching](page.md)."
+msgid "Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.  It's also the foundation for more advanced caching features, such as page caching."
 msgstr ""
 "Caching data adalah tentang menyimpan beberapa variabel PHP ke dalam cache dan mengambilnya kembali dari cache.\n"
-"Ini juga menjadi fondasi untuk fitur caching yang lebih lanjut, seperti [caching halaman](page.md)."
+"Ini juga menjadi fondasi untuk fitur caching yang lebih lanjut, seperti caching halaman."
 
 #. type: Plain text
 #: ../../guide/en/caching/data.md
@@ -137,9 +137,9 @@ msgstr "`ArrayCache` — menyediakan caching hanya untuk permintaan saat ini den
 
 #. type: Bullet: '- '
 #: ../../guide/en/caching/data.md
-msgid "[APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.  You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one server, no dedicated load balancers, etc.)."
+msgid "[APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://www.php.net/manual/en/book.apcu.php) extension.  You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one server, no dedicated load balancers, etc.)."
 msgstr ""
-"[APCu](https://github.com/yiisoft/cache-apcu) — menggunakan ekstensi PHP [APC](https://secure.php.net/manual/en/book.apc.php).\n"
+"[APCu](https://github.com/yiisoft/cache-apcu) — menggunakan ekstensi PHP [APC](https://www.php.net/manual/en/book.apcu.php).\n"
 "  Ini bisa dianggap sebagai opsi tercepat saat berurusan dengan cache untuk aplikasi terpusat (mis., satu\n"
 "  server, tanpa load balancer khusus, dll.)."
 

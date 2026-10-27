@@ -45,11 +45,12 @@ App/
 
 一个上下文可以有
 [一个称为“动作”或“控制器”的入口点](action.md)。它的工作是获取[请求实例](../runtime/request.md)，以适当的格式将其传递给
-[领域层](domain.md)，并根据领域层的返回创建 [响应](../runtime/response.md)。
+[领域层](../../cookbook/organizing-code/domain.md)，并根据领域层的返回创建
+[响应](../runtime/response.md)。
 
 此外，Yii 应用程序还具有以下内容：
 
 * [入口脚本](entry-script.md)：它们是最终用户可以直接访问的 PHP
   脚本。它们负责启动请求处理周期。通常，单个入口脚本处理整个应用程序。
-* [服务](service.md)：它们通常是在依赖容器中注册的无状态对象，并提供各种操作方法。
+* [服务](../../cookbook/organizing-code/service.md)：它们通常是在依赖容器中注册的无状态对象，并提供各种操作方法。
 * [中间件](middleware.md)：它们表示需要在操作处理器实际处理每个请求之前和之后调用的代码。

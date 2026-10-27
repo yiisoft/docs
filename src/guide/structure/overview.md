@@ -45,7 +45,7 @@ A context may include sub-contexts. If a class is shared by multiple contexts, i
 both contexts.
 
 A context may have [an entry point known as "action" or "controller"](action.md). Its job is to take [a request
-instance](../runtime/request.md), pass it to [domain layer](domain.md) in a suitable format, and create
+instance](../runtime/request.md), pass it to [domain layer](../../cookbook/organizing-code/domain.md) in a suitable format, and create
 [a response](../runtime/response.md) based on domain layer return. 
 
 Besides, Yii applications also have the following:
@@ -53,7 +53,7 @@ Besides, Yii applications also have the following:
 * [entry scripts](entry-script.md): they're PHP scripts that are directly accessible by end users.
   They're responsible for starting a request handling cycle. Typically, a single entry script is handling
   the whole application.
-* [services](service.md): they're typically stateless objects registered within dependency container and
+* [services](../../cookbook/organizing-code/service.md): they're typically stateless objects registered within dependency container and
   provide various action methods.
 * [middleware](middleware.md): they represent a code that needs to be invoked before and after the actual
   handling of each request by action handlers.

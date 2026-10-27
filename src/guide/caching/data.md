@@ -1,7 +1,7 @@
 # Data caching
 
 Data caching is about storing some PHP variables in a cache and retrieving them later from the cache.
-It's also the foundation for more advanced caching features, such as [page caching](page.md).
+It's also the foundation for more advanced caching features, such as page caching.
 
 To use cache, install [yiisoft/cache](https://github.com/yiisoft/cache) package:
 
@@ -45,7 +45,7 @@ Yii provides the following handlers:
   When you enable actual cache support, you can switch to using the corresponding cache handler.
   In both cases, you may use the same code without extra checks.
 - `ArrayCache` — provides caching for the current request only by storing the values in an array.
-- [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://secure.php.net/manual/en/book.apc.php) extension.
+- [APCu](https://github.com/yiisoft/cache-apcu) - uses a PHP [APC](https://www.php.net/manual/en/book.apcu.php) extension.
   You can consider this option as the fastest one when dealing with cache for a centralized thick application (e.g., one
   server, no dedicated load balancers, etc.).
 - [Database](https://github.com/yiisoft/cache-db) — uses a database table to store cached data.

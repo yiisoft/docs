@@ -1,0 +1,409 @@
+# Language pt-BR translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2025-09-04 11:19+0500\n"
+"PO-Revision-Date: 2025-09-04 11:19+0500\n"
+"Last-Translator: Yuri Neves <yurineves92@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Cookies"
+msgstr "Cookies"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Cookies are for persisting data between requests by sending it to the client browser using HTTP headers.  The client sends data back to the server in request headers. Thus, cookies are handy to store small amounts of data, such as tokens or flags."
+msgstr "Os cookies servem para manter dados entre requisições, enviando-os ao navegador do cliente por headers HTTP.  O cliente devolve os dados ao servidor nos headers da requisição. Por isso, os cookies são práticos para guardar pequenas quantidades de dados, como tokens ou flags."
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Reading cookies"
+msgstr "Lendo cookies"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "You could obtain Cookie values from server request that's available as route handler (such as controller action) argument:"
+msgstr "Você pode obter os valores dos cookies a partir da requisição do servidor, que está disponível como argumento do handler da rota (por exemplo, uma action de controller):"
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"private function actionProfile(\\Psr\\Http\\Message\\ServerRequestInterface $request)\n"
+"{\n"
+"    $cookieValues = $request->getCookieParams();\n"
+"    $cookieValue = $cookieValues['cookieName'] ?? null;\n"
+"    // ...\n"
+"}\n"
+msgstr ""
+"private function actionProfile(\\Psr\\Http\\Message\\ServerRequestInterface $request)\n"
+"{\n"
+"    $cookieValues = $request->getCookieParams();\n"
+"    $cookieValue = $cookieValues['cookieName'] ?? null;\n"
+"    // ...\n"
+"}\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "In addition to getting cookie values directly from the server request, you can also use the [yiisoft/request-provider](https://github.com/yiisoft/request-provider)  package, which provides a more structured way to handle cookies through the `\\Yiisoft\\RequestProvider\\RequestCookieProvider`.  This approach can simplify your code and improve readability."
+msgstr "Além de obter os valores dos cookies direto da requisição do servidor, você também pode usar o pacote [yiisoft/request-provider](https://github.com/yiisoft/request-provider), que oferece uma forma mais estruturada de lidar com cookies por meio do `\\Yiisoft\\RequestProvider\\RequestCookieProvider`.  Essa abordagem pode simplificar o código e melhorar a legibilidade."
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Here’s an example of how to work with cookies using the `\\Yiisoft\\RequestProvider\\RequestCookieProvider`:"
+msgstr "Veja um exemplo de como trabalhar com cookies usando o `\\Yiisoft\\RequestProvider\\RequestCookieProvider`:"
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"final readonly class MyService\n"
+"{\n"
+"    public function __construct(\n"
+"        private \\Yiisoft\\RequestProvider\\RequestCookieProvider $cookies\n"
+"    ) {}\n"
+"\n"
+"    public function go(): void\n"
+"    {\n"
+"        // Check if a specific cookie exists\n"
+"        if ($this->cookies->has('foo')) {\n"
+"            // Retrieve the value of the cookie\n"
+"            $fooValue = $this->cookies->get('foo');\n"
+"            // Do something with the cookie value\n"
+"        }\n"
+"\n"
+"        // Retrieve another cookie value\n"
+"        $barValue = $this->cookies->get('bar');\n"
+"        // Do something with the bar cookie value\n"
+"    }\n"
+"}\n"
+"\n"
+"## Sending cookies\n"
+"\n"
+"Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is\n"
+"`\\Yiisoft\\Cookies\\Cookie` class to help with it:\n"
+"\n"
+"```php\n"
+"$cookie = (new \\Yiisoft\\Cookies\\Cookie('cookieName', 'value'))\n"
+"    ->withPath('/')\n"
+"    ->withDomain('yiiframework.com')\n"
+"    ->withHttpOnly(true)\n"
+"    ->withSecure(true)\n"
+"    ->withSameSite(\\Yiisoft\\Cookies\\Cookie::SAME_SITE_STRICT)\n"
+"    ->withMaxAge(new \\DateInterval('P7D'));\n"
+"\n"
+"return $cookie->addToResponse($response);\n"
+msgstr ""
+"final readonly class MyService\n"
+"{\n"
+"    public function __construct(\n"
+"        private \\Yiisoft\\RequestProvider\\RequestCookieProvider $cookies\n"
+"    ) {}\n"
+"\n"
+"    public function go(): void\n"
+"    {\n"
+"        // Check if a specific cookie exists\n"
+"        if ($this->cookies->has('foo')) {\n"
+"            // Retrieve the value of the cookie\n"
+"            $fooValue = $this->cookies->get('foo');\n"
+"            // Do something with the cookie value\n"
+"        }\n"
+"\n"
+"        // Retrieve another cookie value\n"
+"        $barValue = $this->cookies->get('bar');\n"
+"        // Do something with the bar cookie value\n"
+"    }\n"
+"}\n"
+"\n"
+"## Sending cookies\n"
+"\n"
+"Since sending cookies is, in fact, sending a header but since forming the header isn't trivial, there is\n"
+"`\\Yiisoft\\Cookies\\Cookie` class to help with it:\n"
+"\n"
+"```php\n"
+"$cookie = (new \\Yiisoft\\Cookies\\Cookie('cookieName', 'value'))\n"
+"    ->withPath('/')\n"
+"    ->withDomain('yiiframework.com')\n"
+"    ->withHttpOnly(true)\n"
+"    ->withSecure(true)\n"
+"    ->withSameSite(\\Yiisoft\\Cookies\\Cookie::SAME_SITE_STRICT)\n"
+"    ->withMaxAge(new \\DateInterval('P7D'));\n"
+"\n"
+"return $cookie->addToResponse($response);\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "After forming a cookie call `addToResponse()` passing an instance of `\\Psr\\Http\\Message\\ResponseInterface` to add corresponding HTTP headers to it."
+msgstr "Depois de montar o cookie, chame `addToResponse()` passando uma instância de `\\Psr\\Http\\Message\\ResponseInterface` para adicionar os headers HTTP correspondentes a ela."
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Signing and encrypting cookies"
+msgstr "Assinando e criptografando cookies"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To prevent the substitution of the cookie value, the package provides two implementations:"
+msgstr "Para evitar que o valor do cookie seja substituído, o pacote oferece duas implementações:"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "`Yiisoft\\Cookies\\CookieSigner` - signs each cookie with a unique prefix hash based on the value of the cookie and a secret key.  `Yiisoft\\Cookies\\CookieEncryptor` - encrypts each cookie with a secret key."
+msgstr "`Yiisoft\\Cookies\\CookieSigner` - assina cada cookie com um prefixo de hash único baseado no valor do cookie e em uma chave secreta.  `Yiisoft\\Cookies\\CookieEncryptor` - criptografa cada cookie com uma chave secreta."
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Encryption is more secure than signing but has lower performance."
+msgstr "A criptografia é mais segura que a assinatura, mas tem desempenho menor."
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"$cookie = new \\Yiisoft\\Cookies\\Cookie('identity', 'identityValue');\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$signedCookie = $signer->sign($cookie);\n"
+"$encryptedCookie = $encryptor->encrypt($cookie);\n"
+msgstr ""
+"$cookie = new \\Yiisoft\\Cookies\\Cookie('identity', 'identityValue');\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$signedCookie = $signer->sign($cookie);\n"
+"$encryptedCookie = $encryptor->encrypt($cookie);\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To validate and get back the pure value, use the `validate()` and `decrypt()` method."
+msgstr "Para validar e obter de volta o valor puro, use os métodos `validate()` e `decrypt()`."
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"$cookie = $signer->validate($signedCookie);\n"
+"$cookie = $encryptor->decrypt($encryptedCookie);\n"
+msgstr ""
+"$cookie = $signer->validate($signedCookie);\n"
+"$cookie = $encryptor->decrypt($encryptedCookie);\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "If the cookie value is tampered with or hasn't been signed/encrypted before, a `\\RuntimeException` will be thrown.  Therefore, if you aren't sure that the cookie value was signed/encrypted earlier, first use the `isSigned()` and `isEncrypted()` methods, respectively."
+msgstr "Se o valor do cookie tiver sido adulterado ou não tiver sido assinado/criptografado antes, uma `\\RuntimeException` será lançada.  Por isso, se você não tem certeza de que o valor do cookie foi assinado/criptografado antes, use primeiro os métodos `isSigned()` e `isEncrypted()`, respectivamente."
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"if ($signer->isSigned($cookie)) {\n"
+"    $cookie = $signer->validate($cookie);\n"
+"}\n"
+"\n"
+"if ($encryptor->isEncrypted($cookie)) {\n"
+"    $cookie = $encryptor->decrypt($cookie);\n"
+"}\n"
+msgstr ""
+"if ($signer->isSigned($cookie)) {\n"
+"    $cookie = $signer->validate($cookie);\n"
+"}\n"
+"\n"
+"if ($encryptor->isEncrypted($cookie)) {\n"
+"    $cookie = $encryptor->decrypt($cookie);\n"
+"}\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "It makes sense to sign or encrypt the value of a cookie if you store important data that a user shouldn't change."
+msgstr "Faz sentido assinar ou criptografar o valor de um cookie quando você guarda dados importantes que o usuário não deve alterar."
+
+#. type: Title ###
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Automating encryption and signing"
+msgstr "Automatizando a criptografia e a assinatura"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "To automate the encryption/signing and decryption/validation of cookie values, use an instance of `Yiisoft\\Cookies\\CookieMiddleware`, which is [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware."
+msgstr "Para automatizar a criptografia/assinatura e a descriptografia/validação dos valores dos cookies, use uma instância de `Yiisoft\\Cookies\\CookieMiddleware`, que é um middleware [PSR-15](https://www.php-fig.org/psr/psr-15/)."
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "This middleware provides the following features:"
+msgstr "Esse middleware oferece os seguintes recursos:"
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Validates and decrypts the cookie parameter values from the request."
+msgstr "Valida e descriptografa os valores dos cookies vindos da requisição."
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Excludes the cookie parameter from the request if it was tampered with and logs information about it."
+msgstr "Remove o cookie da requisição se ele tiver sido adulterado e registra essa informação no log."
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Encrypts/signs cookie values and replaces their clean values in the `Set-Cookie` headers in the response."
+msgstr "Criptografa/assina os valores dos cookies e substitui os valores puros nos headers `Set-Cookie` da resposta."
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "In order for the middleware to know which values of which cookies need to be encrypted/signed, an array of settings must be passed to its constructor. The array keys are cookie name patterns and values are constant values of `CookieMiddleware::ENCRYPT` or `CookieMiddleware::SIGN`."
+msgstr "Para o middleware saber quais valores de quais cookies precisam ser criptografados/assinados, é preciso passar um array de configurações para o construtor dele. As chaves do array são padrões de nomes de cookies e os valores são as constantes `CookieMiddleware::ENCRYPT` ou `CookieMiddleware::SIGN`."
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"use Yiisoft\\Cookies\\CookieMiddleware;\n"
+"\n"
+"$cookiesSettings = [\n"
+"    // Exact match with the name `identity`.\n"
+"    'identity' => CookieMiddleware::ENCRYPT,\n"
+"    // Matches any number from 1 to 9 after the underscore.\n"
+"    'name_[1-9]' => CookieMiddleware::SIGN,\n"
+"    // Matches any string after the prefix, including an\n"
+"    // empty string, except for the delimiters \"/\" and \"\\\".\n"
+"    'prefix*' => CookieMiddleware::SIGN,\n"
+"];\n"
+msgstr ""
+"use Yiisoft\\Cookies\\CookieMiddleware;\n"
+"\n"
+"$cookiesSettings = [\n"
+"    // Exact match with the name `identity`.\n"
+"    'identity' => CookieMiddleware::ENCRYPT,\n"
+"    // Matches any number from 1 to 9 after the underscore.\n"
+"    'name_[1-9]' => CookieMiddleware::SIGN,\n"
+"    // Matches any string after the prefix, including an\n"
+"    // empty string, except for the delimiters \"/\" and \"\\\".\n"
+"    'prefix*' => CookieMiddleware::SIGN,\n"
+"];\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "For more information on using the wildcard pattern, see the [yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage) package."
+msgstr "Para mais informações sobre o uso de padrões com curinga, veja o pacote [yiisoft/strings](https://github.com/yiisoft/strings#wildcardpattern-usage)."
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "Creating and using middleware:"
+msgstr "Criando e usando o middleware:"
+
+#. type: Fenced code block (php)
+#: en/runtime/cookies.md
+#, no-wrap
+msgid ""
+"/**\n"
+" * @var \\Psr\\Http\\Message\\ServerRequestInterface $request\n"
+" * @var \\Psr\\Http\\Server\\RequestHandlerInterface $handler\n"
+" * @var \\Psr\\Log\\LoggerInterface $logger\n"
+" */\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$cookiesSettings = [\n"
+"    'identity' => \\Yiisoft\\Cookies\\CookieMiddleware::ENCRYPT,\n"
+"    'session' => \\Yiisoft\\Cookies\\CookieMiddleware::SIGN,\n"
+"];\n"
+"\n"
+"$middleware = new \\Yiisoft\\Cookies\\CookieMiddleware(\n"
+"    $logger\n"
+"    $encryptor,\n"
+"    $signer,\n"
+"    $cookiesSettings,\n"
+");\n"
+"\n"
+"// The cookie parameter values from the request are decrypted/validated.\n"
+"// The cookie values are encrypted/signed and appended to the response.\n"
+"$response = $middleware->process($request, $handler);\n"
+msgstr ""
+"/**\n"
+" * @var \\Psr\\Http\\Message\\ServerRequestInterface $request\n"
+" * @var \\Psr\\Http\\Server\\RequestHandlerInterface $handler\n"
+" * @var \\Psr\\Log\\LoggerInterface $logger\n"
+" */\n"
+"\n"
+"// The secret key used to sign and validate cookies.\n"
+"$key = '0my1xVkjCJnD_q1yr6lUxcAdpDlTMwiU';\n"
+"$signer = new \\Yiisoft\\Cookies\\CookieSigner($key);\n"
+"$encryptor = new \\Yiisoft\\Cookies\\CookieEncryptor($key);\n"
+"\n"
+"$cookiesSettings = [\n"
+"    'identity' => \\Yiisoft\\Cookies\\CookieMiddleware::ENCRYPT,\n"
+"    'session' => \\Yiisoft\\Cookies\\CookieMiddleware::SIGN,\n"
+"];\n"
+"\n"
+"$middleware = new \\Yiisoft\\Cookies\\CookieMiddleware(\n"
+"    $logger\n"
+"    $encryptor,\n"
+"    $signer,\n"
+"    $cookiesSettings,\n"
+");\n"
+"\n"
+"// The cookie parameter values from the request are decrypted/validated.\n"
+"// The cookie values are encrypted/signed and appended to the response.\n"
+"$response = $middleware->process($request, $handler);\n"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "If the `$cookiesSettings` array is empty, no cookies will be encrypted and signed."
+msgstr "Se o array `$cookiesSettings` estiver vazio, nenhum cookie será criptografado ou assinado."
+
+#. type: Title ##
+#: en/runtime/cookies.md
+#, no-wrap
+msgid "Cookies security"
+msgstr "Segurança dos cookies"
+
+#. type: Plain text
+#: en/runtime/cookies.md
+msgid "You should configure each cookie to be secure. Important security settings are:"
+msgstr "Você deve configurar cada cookie para ser seguro. As configurações de segurança importantes são:"
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`httpOnly`. Setting it to `true` would prevent JavaScript to access cookie value."
+msgstr "`httpOnly`. Definir como `true` impede que o JavaScript acesse o valor do cookie."
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`secure`. Setting it to `true` would prevent sending cookie via `HTTP`. It will be sent via `HTTPS` only."
+msgstr "`secure`. Definir como `true` impede o envio do cookie via `HTTP`. Ele só será enviado via `HTTPS`."
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "`sameSite`, if set to either `SAME_SITE_LAX` or `SAME_SITE_STRICT` would prevent sending a cookie in cross-site browsing context. `SAME_SITE_LAX` would prevent cookie sending during CSRF-prone request methods (e.g., POST, PUT, PATCH, etc.). `SAME_SITE_STRICT` would prevent cookies sending for all methods."
+msgstr "`sameSite`, se definido como `SAME_SITE_LAX` ou `SAME_SITE_STRICT`, impede o envio do cookie em contexto de navegação entre sites. `SAME_SITE_LAX` impede o envio do cookie em métodos de requisição sujeitos a CSRF (por exemplo, POST, PUT, PATCH etc.). `SAME_SITE_STRICT` impede o envio dos cookies em todos os métodos."
+
+#. type: Bullet: '- '
+#: en/runtime/cookies.md
+msgid "Sign or encrypt the value of the cookie to prevent spoofing of values if the data in the value shouldn't be tampered with."
+msgstr "Assine ou criptografe o valor do cookie para evitar falsificação quando os dados não puderem ser adulterados."
