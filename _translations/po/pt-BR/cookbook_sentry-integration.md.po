@@ -46,7 +46,11 @@ msgstr ""
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md
 msgid "Most often, Sentry is used for monitoring errors (exceptions).  You can enrich errors with context to better understand the problem: - Request arguments - Tags for grouping exceptions - Environment state: environment variables, application state, and other global attributes"
-msgstr "Na maioria das vezes, o Sentry é usado para monitorar erros (exceções).  Você pode enriquecer os erros com contexto para entender melhor o problema: - Argumentos da requisição - Tags para agrupar exceções - Estado do ambiente: variáveis de ambiente, estado da aplicação e outros atributos globais"
+msgstr ""
+"Na maioria das vezes, o Sentry é usado para monitorar erros (exceções).  Você pode enriquecer os erros com contexto para entender melhor o problema:\n"
+"- Argumentos da requisição\n"
+"- Tags para agrupar exceções\n"
+"- Estado do ambiente: variáveis de ambiente, estado da aplicação e outros atributos globais"
 
 #. type: Plain text
 #: ../src/en/cookbook/sentry-integration.md

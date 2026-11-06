@@ -76,7 +76,7 @@ msgstr "Simplicidade."
 #. type: Bullet: '  - '
 #: ../src/guide/intro/what-is-yii.md
 msgid "Explicitness."
-msgstr "Clareza."
+msgstr "Ser explícito."
 
 #. type: Bullet: '  - '
 #: ../src/guide/intro/what-is-yii.md

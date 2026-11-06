@@ -36,7 +36,7 @@ msgstr "Injeção de dependência"
 #. type: Plain text
 #: ../src/guide/concept/di-container.md
 msgid "There are two ways of re-using things in OOP: inheritance and composition."
-msgstr "Há duas formas de reaproveitar código em OOP: herança e composição."
+msgstr "Há duas formas de reaproveitar código em POO: herança e composição."
 
 #. type: Plain text
 #: ../src/guide/concept/di-container.md

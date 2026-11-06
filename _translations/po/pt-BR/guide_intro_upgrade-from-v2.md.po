@@ -209,7 +209,7 @@ msgstr "Veja [Trabalhando com formulários](../start/forms.md), [Validando a ent
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Working with databases](../start/databases.md), [Migrations](../databases/db-migrations.md), and [yiisoft/active-record](https://github.com/yiisoft/active-record)."
-msgstr "Veja [Trabalhando com banco de dados](../start/databases.md), [Migrations](../databases/db-migrations.md) e [yiisoft/active-record](https://github.com/yiisoft/active-record)."
+msgstr "Veja [Trabalhando com bancos de dados](../start/databases.md), [Migrations](../databases/db-migrations.md) e [yiisoft/active-record](https://github.com/yiisoft/active-record)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md

@@ -21,6 +21,7 @@ const labels = {
   'es': 'Reportar un problema',
   'id': 'Laporkan masalah',
   'it': 'Segnala un problema',
+  'pt-BR': 'Reportar um problema',
   'ru': 'Сообщить об ошибке',
   'zh-CN': '报告问题',
 }
