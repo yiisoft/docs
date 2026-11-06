@@ -572,7 +572,7 @@ de Active Record por repositórios e objetos de domínio. Dá mais trabalho no
 início, mas evita carregar o acoplamento entre formulário e persistência do
 Yii 1.1 para a nova aplicação.
 
-Veja [Trabalhando com banco de dados](../start/databases.md),
+Veja [Trabalhando com bancos de dados](../start/databases.md),
 [Migrations](../databases/db-migrations.md) e
 [yiisoft/active-record](https://github.com/yiisoft/active-record).
 
@@ -587,7 +587,7 @@ As migrations não são compatíveis entre o Yii 1.1 e o Yii3. Para uma
 aplicação existente, crie uma base a partir do esquema atual e use
 migrations do Yii3 para as novas mudanças.
 
-Veja [Trabalhando com banco de dados](../start/databases.md) e
+Veja [Trabalhando com bancos de dados](../start/databases.md) e
 [Migrations](../databases/db-migrations.md).
 
 ## GridView e widgets de dados

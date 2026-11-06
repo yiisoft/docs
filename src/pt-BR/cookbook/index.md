@@ -27,9 +27,9 @@ Yii](https://www.yiiframework.com/license#docs).
   hydrator](custom-hydrator-type-casters.md)
 - [Usando o Yii em aplicações de
   terceiros](using-yii-in-third-party-apps.md)
-- [Integrações com terceiros](third-party-integrations/index.md)
+- [Integrações de terceiros](third-party-integrations/index.md)
 - [Trabalhando no Windows](working-on-windows.md)
-- [Abrindo arquivos direto no PhpStorm](opening-files-in-phpstorm.md)
+- [Abrindo arquivos diretamente no PhpStorm](opening-files-in-phpstorm.md)
 - [Configurando o Xdebug](configuring-xdebug.md)
 - [Configurando servidores web](configuring-webservers/general.md)
 - [Estruturando o código por caso de uso com vertical
@@ -37,7 +37,7 @@ Yii](https://www.yiiframework.com/license#docs).
 - [Domínio](organizing-code/domain.md)
 - [Componentes de serviço](organizing-code/service.md)
 - [Deploy com Docker Swarm](deployment/docker-swarm.md)
-- [Deploy de aplicações Yii com Angie Docker
+- [Fazendo deploy de aplicações Yii com o Angie Docker
   Proxy](deployment/angie-docker-proxy.md)
 - [Configurando uma aplicação para autoscaling](deployment/autoscaling.md)
 - [Aplicando migrations durante rolling

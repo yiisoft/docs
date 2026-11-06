@@ -2,7 +2,7 @@
 
 ## Injeção de dependência
 
-Há duas formas de reaproveitar código em OOP: herança e composição.
+Há duas formas de reaproveitar código em POO: herança e composição.
 
 A herança é simples:
 

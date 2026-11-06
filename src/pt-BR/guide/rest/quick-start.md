@@ -12,7 +12,7 @@ Este guia assume que você usa o [template de aplicação
 API](https://github.com/yiisoft/app-api).  Ele já inclui a leitura do corpo
 da requisição, a resolução da entrada da requisição, respostas de dados em
 JSON e exemplos de presenters.  Para aplicações completas com outras
-estruturas, veja [Aplicações demo](../start/demo-apps.md).
+estruturas, veja [Aplicações de demonstração](../start/demo-apps.md).
 
 ## Criando a entrada da requisição
 

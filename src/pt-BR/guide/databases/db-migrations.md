@@ -104,7 +104,7 @@ em `newMigrationPath`. Se as migrations a aplicar vêm de várias fontes, como
 módulos externos, você pode usar `sourcePaths` para defini-las.
 
 Você também precisa de uma conexão com o banco de dados configurada. Veja
-[Trabalhando com banco de dados](../start/databases.md) para um exemplo de
+[Trabalhando com bancos de dados](../start/databases.md) para um exemplo de
 configuração com PostgreSQL.
 
 ## Criando uma migration

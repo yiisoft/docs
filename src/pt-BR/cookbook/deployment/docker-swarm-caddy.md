@@ -205,12 +205,13 @@ IMAGE=git.example.com/username/myapp
 IMAGE_TAG=latest
 ```
 
-Substitua os valores: - `STACK_NAME`: um nome único para a stack da sua
-aplicação - `PROD_HOST`: o nome de domínio em que a aplicação vai ficar
-acessível - `PROD_SSH`: a string de conexão SSH com o seu servidor (formato:
-`ssh://user@host`)  - `IMAGE`: o caminho completo da imagem do container no
-registro - `IMAGE_TAG`: a tag da imagem, normalmente `latest` ou um número
-de versão
+Substitua os valores:
+- `STACK_NAME`: um nome único para a stack da sua aplicação
+- `PROD_HOST`: o nome de domínio em que a aplicação vai ficar acessível
+- `PROD_SSH`: a string de conexão SSH com o seu servidor (formato:
+`ssh://user@host`)
+- `IMAGE`: o caminho completo da imagem do container no registro
+- `IMAGE_TAG`: a tag da imagem, normalmente `latest` ou um número de versão
 
 ### Configure o ambiente de produção
 
@@ -347,9 +348,10 @@ Isso executa o comando definido no Makefile:
 docker build --file docker/Dockerfile --target prod --pull -t ${IMAGE}:${IMAGE_TAG} .
 ```
 
-O Dockerfile usa um build multi-stage: 1. Instala as dependências do
-Composer em um estágio de build 2. Cria uma imagem de produção mínima, só
-com os arquivos necessários 3. Roda como um usuário não root (`www-data`)
+O Dockerfile usa um build multi-stage:
+1. Instala as dependências do Composer em um estágio de build
+2. Cria uma imagem de produção mínima, só com os arquivos necessários
+3. Roda como um usuário não root (`www-data`)
 
 ### Envie a imagem para o registro
 
@@ -554,18 +556,21 @@ docker -H ssh://docker-web service ps ${STACK_NAME}_app --no-trunc
 docker -H ssh://docker-web service logs ${STACK_NAME}_app
 ```
 
-Problemas comuns: - **Erros ao baixar a imagem**: verifique a autenticação
-no registro com `docker -H ssh://docker-web login` - **Conflitos de porta**:
-garanta que nenhum outro serviço esteja usando as portas 80/443 -
-**Limitação de recursos**: verifique os recursos disponíveis com `docker -H
-ssh://docker-web node ls`
+Problemas comuns:
+- **Erros ao baixar a imagem**: verifique a autenticação no registro com
+`docker -H ssh://docker-web login`
+- **Conflitos de porta**: garanta que nenhum outro serviço esteja usando as
+portas 80/443
+- **Limitação de recursos**: verifique os recursos disponíveis com `docker
+-H ssh://docker-web node ls`
 
 ### Problemas com certificados SSL
 
-Se o Caddy não consegue obter os certificados: - Verifique se o DNS aponta
-para o seu servidor - Verifique se as portas 80 e 443 estão acessíveis pela
-internet - Garanta que o e-mail na configuração do Let's Encrypt é válido -
-Verifique os logs: `docker -H ssh://docker-web service logs caddy`
+Se o Caddy não consegue obter os certificados:
+- Verifique se o DNS aponta para o seu servidor
+- Verifique se as portas 80 e 443 estão acessíveis pela internet
+- Garanta que o e-mail na configuração do Let's Encrypt é válido
+- Verifique os logs: `docker -H ssh://docker-web service logs caddy`
 
 ### Problemas de conexão com o registro de containers
 
@@ -581,15 +586,18 @@ docker -H ssh://docker-web pull git.example.com/username/myapp:latest
 
 ## Resumo
 
-Você fez o deploy de uma aplicação Yii no Docker Swarm com: - Um registro de
-containers (Forgejo ou Gitea)  - HTTPS automático via Caddy - Deploys sem
-downtime com rolling updates - Alta disponibilidade com várias réplicas
+Você fez o deploy de uma aplicação Yii no Docker Swarm com:
+- Um registro de containers (Forgejo ou Gitea)
+- HTTPS automático via Caddy
+- Deploys sem downtime com rolling updates
+- Alta disponibilidade com várias réplicas
 
-Os comandos do Makefile simplificam o fluxo de deploy: - `make prod-build` -
-Constrói a imagem de produção - `make prod-push` - Envia para o registro -
-`make prod-deploy` - Faz o deploy no Docker Swarm
+Os comandos do Makefile simplificam o fluxo de deploy:
+- `make prod-build` - Constrói a imagem de produção
+- `make prod-push` - Envia para o registro
+- `make prod-deploy` - Faz o deploy no Docker Swarm
 
-Para mais informações, veja: - [Template de aplicação do
-Yii](https://github.com/yiisoft/app)  - [Documentação do Docker
-Swarm](https://docs.docker.com/engine/swarm/)  - [Caddy Docker
-Proxy](https://github.com/lucaslorentz/caddy-docker-proxy)
+Para mais informações, veja:
+- [Template de aplicação do Yii](https://github.com/yiisoft/app)
+- [Documentação do Docker Swarm](https://docs.docker.com/engine/swarm/)
+- [Caddy Docker Proxy](https://github.com/lucaslorentz/caddy-docker-proxy)

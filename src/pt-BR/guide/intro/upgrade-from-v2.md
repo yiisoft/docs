@@ -675,7 +675,7 @@ não são compatíveis. Comece um novo histórico de migrations ou crie dumps da
 estrutura do esquema atual, e use migrations do Yii3 para as mudanças
 futuras no esquema.
 
-Veja [Trabalhando com banco de dados](../start/databases.md),
+Veja [Trabalhando com bancos de dados](../start/databases.md),
 [Migrations](../databases/db-migrations.md) e
 [yiisoft/active-record](https://github.com/yiisoft/active-record).
 

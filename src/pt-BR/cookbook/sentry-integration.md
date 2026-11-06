@@ -7,9 +7,10 @@ O Sentry dá acesso aos eventos que você envia para ele a partir da sua aplica�
 
 Na maioria das vezes, o Sentry é usado para monitorar erros (exceções).
 Você pode enriquecer os erros com contexto para entender melhor o problema:
-- Argumentos da requisição - Tags para agrupar exceções - Estado do
-ambiente: variáveis de ambiente, estado da aplicação e outros atributos
-globais
+- Argumentos da requisição
+- Tags para agrupar exceções
+- Estado do ambiente: variáveis de ambiente, estado da aplicação e outros
+atributos globais
 
 Você encontra a lista completa de funcionalidades no site oficial:
 https://sentry.io/welcome/
