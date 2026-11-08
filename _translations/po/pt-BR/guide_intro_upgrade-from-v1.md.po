@@ -1112,7 +1112,7 @@ msgstr "Em aplicações mais complexas, considere substituir o código muito dep
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 msgid "See [Working with databases](../start/databases.md), [Migrations](../databases/db-migrations.md), and [yiisoft/active-record](https://github.com/yiisoft/active-record)."
-msgstr "Veja [Trabalhando com banco de dados](../start/databases.md), [Migrations](../databases/db-migrations.md) e [yiisoft/active-record](https://github.com/yiisoft/active-record)."
+msgstr "Veja [Trabalhando com bancos de dados](../start/databases.md), [Migrations](../databases/db-migrations.md) e [yiisoft/active-record](https://github.com/yiisoft/active-record)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v1.md
@@ -1133,7 +1133,7 @@ msgstr "As migrations não são compatíveis entre o Yii 1.1 e o Yii3. Para uma 
 #. type: Plain text
 #: ../src/guide/intro/upgrade-from-v1.md
 msgid "See [Working with databases](../start/databases.md) and [Migrations](../databases/db-migrations.md)."
-msgstr "Veja [Trabalhando com banco de dados](../start/databases.md) e [Migrations](../databases/db-migrations.md)."
+msgstr "Veja [Trabalhando com bancos de dados](../start/databases.md) e [Migrations](../databases/db-migrations.md)."
 
 #. type: Title ##
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md

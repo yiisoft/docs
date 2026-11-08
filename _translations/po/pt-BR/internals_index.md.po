@@ -65,7 +65,7 @@ msgstr "[005 — Ferramenta de desenvolvimento do Yii](005-development-tool.md) 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
 msgid "[006 — Git commit messages](006-git-commit-messages.md) - Commit message format"
-msgstr "[006 — Mensagens de commit no Git](006-git-commit-messages.md) - Formato das mensagens de commit"
+msgstr "[006 — Mensagens de commit do Git](006-git-commit-messages.md) - Formato das mensagens de commit"
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md
@@ -130,7 +130,7 @@ msgstr "[018 — Widgets](018-widgets.md) - Diretrizes para desenvolver widgets"
 #. type: Bullet: '- '
 #: ../src/internals/index.md
 msgid "[019 — View code style](019-view-code-style.md) - Code style for view templates"
-msgstr "[019 — Estilo de código de views](019-view-code-style.md) - Estilo de código para templates de view"
+msgstr "[019 — Estilo de código das views](019-view-code-style.md) - Estilo de código para templates de view"
 
 #. type: Bullet: '- '
 #: ../src/internals/index.md

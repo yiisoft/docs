@@ -24,7 +24,7 @@ compara a ele:
   - Padrões convenientes e personalizáveis.
   - Foco na prática.
   - Simplicidade.
-  - Clareza.
+  - Ser explícito.
   - Consistência.
   
   O Yii nunca tenta complicar o design só para seguir algum padrão de projeto.

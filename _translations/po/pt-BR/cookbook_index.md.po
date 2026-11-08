@@ -89,7 +89,7 @@ msgstr "[Usando o Yii em aplicações de terceiros](using-yii-in-third-party-app
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Third-party integrations](third-party-integrations/index.md)"
-msgstr "[Integrações com terceiros](third-party-integrations/index.md)"
+msgstr "[Integrações de terceiros](third-party-integrations/index.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
@@ -99,7 +99,7 @@ msgstr "[Trabalhando no Windows](working-on-windows.md)"
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Opening files directly in PhpStorm](opening-files-in-phpstorm.md)"
-msgstr "[Abrindo arquivos direto no PhpStorm](opening-files-in-phpstorm.md)"
+msgstr "[Abrindo arquivos diretamente no PhpStorm](opening-files-in-phpstorm.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
@@ -134,7 +134,7 @@ msgstr "[Deploy com Docker Swarm](deployment/docker-swarm.md)"
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md
 msgid "[Deploying Yii applications with Angie Docker Proxy](deployment/angie-docker-proxy.md)"
-msgstr "[Deploy de aplicações Yii com Angie Docker Proxy](deployment/angie-docker-proxy.md)"
+msgstr "[Fazendo deploy de aplicações Yii com o Angie Docker Proxy](deployment/angie-docker-proxy.md)"
 
 #. type: Bullet: '- '
 #: ../src/cookbook/index.md

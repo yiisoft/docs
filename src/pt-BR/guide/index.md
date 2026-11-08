@@ -126,7 +126,7 @@ Yii](https://www.yiiframework.com/license#docs).
 ## Testes
 
 - [Visão geral de testes](testing/overview.md)
-- [Configurando o ambiente de testes](testing/environment-setup.md)
+- [Configuração do ambiente de testes](testing/environment-setup.md)
 - [Testes unitários](testing/unit.md)
 - [Testes funcionais](testing/functional.md)
 - [Testes end-to-end](testing/end-to-end.md)

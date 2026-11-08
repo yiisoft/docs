@@ -217,7 +217,13 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Replace the values: - `STACK_NAME`: A unique name for your application stack - `PROD_HOST`: The domain name where your app will be accessible - `PROD_SSH`: SSH connection string to your server (format: `ssh://user@host`)  - `IMAGE`: Full path to your container image in the registry - `IMAGE_TAG`: Image tag, typically `latest` or a version number"
-msgstr "Substitua os valores: - `STACK_NAME`: um nome único para a stack da sua aplicação - `PROD_HOST`: o nome de domínio em que a aplicação vai ficar acessível - `PROD_SSH`: a string de conexão SSH com o seu servidor (formato: `ssh://user@host`)  - `IMAGE`: o caminho completo da imagem do container no registro - `IMAGE_TAG`: a tag da imagem, normalmente `latest` ou um número de versão"
+msgstr ""
+"Substitua os valores:\n"
+"- `STACK_NAME`: um nome único para a stack da sua aplicação\n"
+"- `PROD_HOST`: o nome de domínio em que a aplicação vai ficar acessível\n"
+"- `PROD_SSH`: a string de conexão SSH com o seu servidor (formato: `ssh://user@host`)\n"
+"- `IMAGE`: o caminho completo da imagem do container no registro\n"
+"- `IMAGE_TAG`: a tag da imagem, normalmente `latest` ou um número de versão"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -431,7 +437,11 @@ msgstr "docker build --file docker/Dockerfile --target prod --pull -t ${IMAGE}:$
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The Dockerfile uses a multi-stage build: 1. Installs Composer dependencies in a builder stage 2. Creates a minimal production image with only the necessary files 3. Runs as a non-root user (`www-data`)"
-msgstr "O Dockerfile usa um build multi-stage: 1. Instala as dependências do Composer em um estágio de build 2. Cria uma imagem de produção mínima, só com os arquivos necessários 3. Roda como um usuário não root (`www-data`)"
+msgstr ""
+"O Dockerfile usa um build multi-stage:\n"
+"1. Instala as dependências do Composer em um estágio de build\n"
+"2. Cria uma imagem de produção mínima, só com os arquivos necessários\n"
+"3. Roda como um usuário não root (`www-data`)"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -858,7 +868,11 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "Common issues: - **Image pull errors**: Verify registry authentication with `docker -H ssh://docker-web login` - **Port conflicts**: Ensure no other services are using ports 80/443 - **Resource constraints**: Check available resources with `docker -H ssh://docker-web node ls`"
-msgstr "Problemas comuns: - **Erros ao baixar a imagem**: verifique a autenticação no registro com `docker -H ssh://docker-web login` - **Conflitos de porta**: garanta que nenhum outro serviço esteja usando as portas 80/443 - **Limitação de recursos**: verifique os recursos disponíveis com `docker -H ssh://docker-web node ls`"
+msgstr ""
+"Problemas comuns:\n"
+"- **Erros ao baixar a imagem**: verifique a autenticação no registro com `docker -H ssh://docker-web login`\n"
+"- **Conflitos de porta**: garanta que nenhum outro serviço esteja usando as portas 80/443\n"
+"- **Limitação de recursos**: verifique os recursos disponíveis com `docker -H ssh://docker-web node ls`"
 
 #. type: Title ###
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -902,7 +916,11 @@ msgstr "Resumo"
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "The Makefile commands simplify the deployment workflow: - `make prod-build` - Build the production image - `make prod-push` - Push to the registry - `make prod-deploy` - Deploy to Docker Swarm"
-msgstr "Os comandos do Makefile simplificam o fluxo de deploy: - `make prod-build` - Constrói a imagem de produção - `make prod-push` - Envia para o registro - `make prod-deploy` - Faz o deploy no Docker Swarm"
+msgstr ""
+"Os comandos do Makefile simplificam o fluxo de deploy:\n"
+"- `make prod-build` - Constrói a imagem de produção\n"
+"- `make prod-push` - Envia para o registro\n"
+"- `make prod-deploy` - Faz o deploy no Docker Swarm"
 
 #. type: Title #
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
@@ -1232,14 +1250,28 @@ msgstr ""
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "If Traefik can't obtain certificates: - Verify DNS is pointing to your server - Check that ports 80 and 443 are accessible from the internet - Ensure the email in the Let's Encrypt configuration is valid - Check logs: `docker -H ssh://docker-web service logs traefik_traefik`"
-msgstr "Se o Traefik não consegue obter os certificados: - Verifique se o DNS aponta para o seu servidor - Verifique se as portas 80 e 443 estão acessíveis pela internet - Garanta que o e-mail na configuração do Let's Encrypt é válido - Verifique os logs: `docker -H ssh://docker-web service logs traefik_traefik`"
+msgstr ""
+"Se o Traefik não consegue obter os certificados:\n"
+"- Verifique se o DNS aponta para o seu servidor\n"
+"- Verifique se as portas 80 e 443 estão acessíveis pela internet\n"
+"- Garanta que o e-mail na configuração do Let's Encrypt é válido\n"
+"- Verifique os logs: `docker -H ssh://docker-web service logs traefik_traefik`"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "You've successfully deployed a Yii application to Docker Swarm with: - A container registry (Forgejo or Gitea)  - Automatic HTTPS via Traefik - Zero-downtime deployments with rolling updates - High availability with multiple replicas"
-msgstr "Você fez o deploy de uma aplicação Yii no Docker Swarm com: - Um registro de containers (Forgejo ou Gitea)  - HTTPS automático via Traefik - Deploys sem downtime com rolling updates - Alta disponibilidade com várias réplicas"
+msgstr ""
+"Você fez o deploy de uma aplicação Yii no Docker Swarm com:\n"
+"- Um registro de containers (Forgejo ou Gitea)\n"
+"- HTTPS automático via Traefik\n"
+"- Deploys sem downtime com rolling updates\n"
+"- Alta disponibilidade com várias réplicas"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 msgid "For more information, see: - [Yii Application Template](https://github.com/yiisoft/app)  - [Docker Swarm Documentation](https://docs.docker.com/engine/swarm/)  - [Traefik Documentation](https://doc.traefik.io/traefik/)"
-msgstr "Para mais informações, veja: - [Template de aplicação do Yii](https://github.com/yiisoft/app)  - [Documentação do Docker Swarm](https://docs.docker.com/engine/swarm/)  - [Documentação do Traefik](https://doc.traefik.io/traefik/)"
+msgstr ""
+"Para mais informações, veja:\n"
+"- [Template de aplicação do Yii](https://github.com/yiisoft/app)\n"
+"- [Documentação do Docker Swarm](https://docs.docker.com/engine/swarm/)\n"
+"- [Documentação do Traefik](https://doc.traefik.io/traefik/)"

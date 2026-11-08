@@ -80,7 +80,12 @@ msgstr "Asset Manager"
 #. type: Plain text
 #: ../src/guide/views/asset.md
 msgid "The Asset Manager is responsible for: - Resolving asset bundle dependencies - Publishing assets from protected directories to web-accessible locations - Combining and minifying assets (when configured)  - Generating proper URLs for assets"
-msgstr "O Asset Manager é responsável por: - Resolver as dependências dos asset bundles - Publicar assets de diretórios protegidos em locais acessíveis pela web - Combinar e minificar assets (quando configurado)  - Gerar as URLs corretas dos assets"
+msgstr ""
+"O Asset Manager é responsável por:\n"
+"- Resolver as dependências dos asset bundles\n"
+"- Publicar assets de diretórios protegidos em locais acessíveis pela web\n"
+"- Combinar e minificar assets (quando configurado)\n"
+"- Gerar as URLs corretas dos assets"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md

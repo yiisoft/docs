@@ -227,7 +227,7 @@ msgstr "Se você quiser colocar as migrations em outro lugar, pode definir o cam
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
 msgid "You need a database connection configured as well. See [Working with databases](../start/databases.md) for an example of configuring it for PostgreSQL."
-msgstr "Você também precisa de uma conexão com o banco de dados configurada. Veja [Trabalhando com banco de dados](../start/databases.md) para um exemplo de configuração com PostgreSQL."
+msgstr "Você também precisa de uma conexão com o banco de dados configurada. Veja [Trabalhando com bancos de dados](../start/databases.md) para um exemplo de configuração com PostgreSQL."
 
 #. type: Title ##
 #: ../src/guide/databases/db-migrations.md

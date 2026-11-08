@@ -27,10 +27,11 @@ outros bundles, o que permite gerenciar as dependências corretamente.
 
 ### Asset Manager
 
-O Asset Manager é responsável por: - Resolver as dependências dos asset
-bundles - Publicar assets de diretórios protegidos em locais acessíveis pela
-web - Combinar e minificar assets (quando configurado)  - Gerar as URLs
-corretas dos assets
+O Asset Manager é responsável por:
+- Resolver as dependências dos asset bundles
+- Publicar assets de diretórios protegidos em locais acessíveis pela web
+- Combinar e minificar assets (quando configurado)
+- Gerar as URLs corretas dos assets
 
 ## Criando asset bundles
 

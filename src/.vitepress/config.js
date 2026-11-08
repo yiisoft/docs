@@ -1446,7 +1446,7 @@ export default {
                             text: 'Testes',
                             items: [
                                 {text: 'Visão geral de testes', link: '/pt-BR/guide/testing/overview'},
-                                {text: 'Configurando o ambiente de testes', link: '/pt-BR/guide/testing/environment-setup'},
+                                {text: 'Configuração do ambiente de testes', link: '/pt-BR/guide/testing/environment-setup'},
                                 {text: 'Testes unitários', link: '/pt-BR/guide/testing/unit'},
                                 {text: 'Testes funcionais', link: '/pt-BR/guide/testing/functional'},
                                 {text: 'Testes end-to-end', link: '/pt-BR/guide/testing/end-to-end'},
@@ -1497,7 +1497,7 @@ export default {
                                 {text: 'Usando um template de migration personalizado', link: '/pt-BR/cookbook/custom-migration-template'},
                                 {text: 'Type casters personalizados para o hydrator', link: '/pt-BR/cookbook/custom-hydrator-type-casters'},
                                 {text: 'Usando o Yii em aplicações de terceiros', link: '/pt-BR/cookbook/using-yii-in-third-party-apps'},
-                                {text: 'Integrações com terceiros', link: '/pt-BR/cookbook/third-party-integrations/'}
+                                {text: 'Integrações de terceiros', link: '/pt-BR/cookbook/third-party-integrations/'}
                             ]
                         },
                         {
@@ -1549,7 +1549,7 @@ export default {
                                 {text: 'Roadmap', link: '/pt-BR/internals/003-roadmap'},
                                 {text: 'Namespaces', link: '/pt-BR/internals/004-namespaces'},
                                 {text: 'Ferramenta de desenvolvimento', link: '/pt-BR/internals/005-development-tool'},
-                                {text: 'Mensagens de commit no Git', link: '/pt-BR/internals/006-git-commit-messages'},
+                                {text: 'Mensagens de commit do Git', link: '/pt-BR/internals/006-git-commit-messages'},
                                 {text: 'Exceções', link: '/pt-BR/internals/007-exceptions'},
                                 {text: 'Interfaces', link: '/pt-BR/internals/008-interfaces'},
                                 {text: 'Decisões de design', link: '/pt-BR/internals/009-design-decisions'},
@@ -1562,7 +1562,7 @@ export default {
                                 {text: 'Fluxo de segurança', link: '/pt-BR/internals/016-security-workflow'},
                                 {text: 'Tags', link: '/pt-BR/internals/017-tags'},
                                 {text: 'Widgets', link: '/pt-BR/internals/018-widgets'},
-                                {text: 'Estilo de código de views', link: '/pt-BR/internals/019-view-code-style'},
+                                {text: 'Estilo de código das views', link: '/pt-BR/internals/019-view-code-style'},
                                 {text: 'Release de pacotes', link: '/pt-BR/internals/020-package-release'},
                                 {text: 'Changelog e upgrade', link: '/pt-BR/internals/021-changelog-upgrade'},
                                 {text: 'Grupos de configuração', link: '/pt-BR/internals/022-config-groups'},

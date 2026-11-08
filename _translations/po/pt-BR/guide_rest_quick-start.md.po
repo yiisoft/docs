@@ -49,7 +49,7 @@ msgstr "Retornar uma resposta cujos dados são formatados como JSON."
 #. type: Plain text
 #: ../src/guide/rest/quick-start.md
 msgid "This guide assumes that you use the [API application template](https://github.com/yiisoft/app-api).  It already includes request body parsing, request input resolving, JSON data responses, and presenter examples.  For complete applications with different structures, see [Demo applications](../start/demo-apps.md)."
-msgstr "Este guia assume que você usa o [template de aplicação API](https://github.com/yiisoft/app-api).  Ele já inclui a leitura do corpo da requisição, a resolução da entrada da requisição, respostas de dados em JSON e exemplos de presenters.  Para aplicações completas com outras estruturas, veja [Aplicações demo](../start/demo-apps.md)."
+msgstr "Este guia assume que você usa o [template de aplicação API](https://github.com/yiisoft/app-api).  Ele já inclui a leitura do corpo da requisição, a resolução da entrada da requisição, respostas de dados em JSON e exemplos de presenters.  Para aplicações completas com outras estruturas, veja [Aplicações de demonstração](../start/demo-apps.md)."
 
 #. type: Title ##
 #: ../src/guide/rest/quick-start.md

@@ -494,7 +494,7 @@ msgstr "[Visão geral de testes](testing/overview.md)"
 #. type: Bullet: '- '
 #: ../src/guide/index.md
 msgid "[Testing environment setup](testing/environment-setup.md)"
-msgstr "[Configurando o ambiente de testes](testing/environment-setup.md)"
+msgstr "[Configuração do ambiente de testes](testing/environment-setup.md)"
 
 #. type: Bullet: '- '
 #: ../src/guide/index.md

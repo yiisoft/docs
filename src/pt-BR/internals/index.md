@@ -16,7 +16,7 @@ desenvolver os pacotes do Yii.
 - [004 — Namespaces](004-namespaces.md) - Convenções de namespaces
 - [005 — Ferramenta de desenvolvimento do Yii](005-development-tool.md) -
   Ferramentas de desenvolvimento para pacotes do Yii
-- [006 — Mensagens de commit no Git](006-git-commit-messages.md) - Formato
+- [006 — Mensagens de commit do Git](006-git-commit-messages.md) - Formato
   das mensagens de commit
 - [007 — Exceções](007-exceptions.md) - Diretrizes para exceções
 - [008 — Interfaces](008-interfaces.md) - Princípios de design de interfaces
@@ -36,7 +36,7 @@ desenvolver os pacotes do Yii.
   problemas de segurança
 - [017 — Tags](017-tags.md) - Convenções de tags no Git
 - [018 — Widgets](018-widgets.md) - Diretrizes para desenvolver widgets
-- [019 — Estilo de código de views](019-view-code-style.md) - Estilo de
+- [019 — Estilo de código das views](019-view-code-style.md) - Estilo de
   código para templates de view
 - [020 — Release de pacotes](020-package-release.md) - Processo de release
   de pacotes
