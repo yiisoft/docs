@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-03-06 12:40+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/guide/start/gii.md
 #, no-wrap
 msgid "Generating code with Gii"
-msgstr ""
+msgstr "Generar código con Gii"
 
 #. type: Plain text
 #: ../src/guide/start/gii.md
@@ -29,3 +29,5 @@ msgid ""
 "> [!NOTE]\n"
 "> Gii is under development and will be available later.\n"
 msgstr ""
+"> [!NOTE]\n"
+"> Gii está en desarrollo y estará disponible más adelante.\n"

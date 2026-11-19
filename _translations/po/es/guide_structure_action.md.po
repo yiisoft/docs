@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-05-05 21:53+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,17 +20,17 @@ msgstr ""
 #: ../src/guide/intro/upgrade-from-v2.md ../src/guide/structure/action.md
 #, no-wrap
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "In a web application, the request URL determines what's executed. Matching is made by a router configured with multiple routes. Each route can be attached to a middleware that, given request, produces a response. Since middleware overall could be chained and can pass actual handling to the next middleware, we call the middleware actually doing the job an action."
-msgstr ""
+msgstr "En una aplicación web, la URL de la solicitud determina qué se ejecuta. La coincidencia la realiza un router configurado con varias rutas. Cada ruta puede asociarse a un middleware que, dada una solicitud, produce una respuesta. Como los middlewares pueden encadenarse y pasar la gestión real al siguiente middleware, llamamos acción al middleware que realmente hace el trabajo."
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "There are multiple ways to describe an action. The simplest one is using a closure:"
-msgstr ""
+msgstr "Hay varias formas de describir una acción. La más sencilla es usar una closure:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -46,11 +46,20 @@ msgid ""
 "    return $response;\n"
 "});\n"
 msgstr ""
+"use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"Route::get('/')->action(function (ServerRequestInterface $request) use ($responseFactory): ResponseInterface {\n"
+"    $response = $responseFactory->createResponse();\n"
+"    $response->getBody()->write('You are at homepage.');\n"
+"    return $response;\n"
+"});\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "It's fine for simple handling since any more complicated one would require getting dependencies, so a good idea would be moving the handling to a class method. Callback middleware could be used for the purpose:"
-msgstr ""
+msgstr "Esto sirve para una gestión sencilla, ya que cualquier otra más complicada requeriría obtener dependencias, así que es buena idea trasladar la gestión a un método de clase. Para ello se puede usar un middleware de callback:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -60,11 +69,14 @@ msgid ""
 "\n"
 "Route::get('/')->action(FrontPageAction::class),\n"
 msgstr ""
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"Route::get('/')->action(FrontPageAction::class),\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "The class itself would be like:"
-msgstr ""
+msgstr "La clase en sí sería así:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -81,11 +93,21 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"\n"
+"final readonly class FrontPageAction\n"
+"{\n"
+"    public function __invoke(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        // construir la respuesta para la portada    \n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "For many cases, it makes sense to group handling for many routes into a single class:"
-msgstr ""
+msgstr "En muchos casos tiene sentido agrupar en una sola clase la gestión de muchas rutas:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -96,11 +118,15 @@ msgid ""
 "Route::get('/post/index')->action([PostController::class, 'actionIndex']),\n"
 "Route::get('/post/view/{id:\\d+}')->action([PostController::class, 'actionView']),\n"
 msgstr ""
+"use Yiisoft\\Router\\Route;\n"
+"\n"
+"Route::get('/post/index')->action([PostController::class, 'actionIndex']),\n"
+"Route::get('/post/view/{id:\\d+}')->action([PostController::class, 'actionView']),\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "The class itself would look like the following:"
-msgstr ""
+msgstr "La clase en sí tendría este aspecto:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -128,22 +154,43 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function actionIndex(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        // renderizar la lista de posts\n"
+"    }\n"
+"    \n"
+"    \n"
+"    public function actionView(\n"
+"        ServerRequestInterface $request,\n"
+"        #[RouteArgument('id')]\n"
+"        int $id,\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        // renderizar un único post por su $id\n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "We usually call such a class \"controller.\""
-msgstr ""
+msgstr "Normalmente llamamos a este tipo de clase \"controlador\"."
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "The `{id}` part of the `/post/view/{id:\\d+}` route is a named route parameter. Route parameters are available from `Yiisoft\\Router\\CurrentRoute`. To receive one as an action argument, add the `RouteArgument` attribute to the corresponding parameter. The attribute name should match the route parameter name."
-msgstr ""
+msgstr "La parte `{id}` de la ruta `/post/view/{id:\\d+}` es un parámetro de ruta con nombre. Los parámetros de ruta están disponibles en `Yiisoft\\Router\\CurrentRoute`. Para recibir uno como argumento de la acción, añade el atributo `RouteArgument` al parámetro correspondiente. El nombre del atributo debe coincidir con el nombre del parámetro de ruta."
 
 #. type: Title ##
 #: ../src/guide/structure/action.md
 #, no-wrap
 msgid "Autowiring"
-msgstr ""
+msgstr "Autowiring"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
@@ -152,6 +199,8 @@ msgid ""
 "Both constructors of action-classes and action-methods are automatically getting services from\n"
 " the dependency injection container:\n"
 msgstr ""
+"Tanto los constructores de las clases de acción como los métodos de acción obtienen automáticamente los servicios\n"
+" del contenedor de inyección de dependencias:\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/action.md
@@ -182,8 +231,32 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"use \\Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use \\Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Log\\LoggerInterface;\n"
+"\n"
+"final readonly class PostController\n"
+"{\n"
+"    public function __construct(\n"
+"        private PostRepository $postRepository\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function actionIndex(ServerRequestInterface $request, LoggerInterface $logger): ResponseInterface\n"
+"    {\n"
+"        $logger->debug('Rendering posts list');\n"
+"        // renderizar la lista de posts\n"
+"    }\n"
+"    \n"
+"    \n"
+"    public function actionView(ServerRequestInterface $request): ResponseInterface\n"
+"    {\n"
+"        // renderizar un único post      \n"
+"    }\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/action.md
 msgid "In the above example `PostRepository` is injected automatically via constructor. That means it is available in every action. Logger is injected into `index` action only."
-msgstr ""
+msgstr "En el ejemplo anterior, `PostRepository` se inyecta automáticamente mediante el constructor. Eso significa que está disponible en todas las acciones. El logger solo se inyecta en la acción `index`."

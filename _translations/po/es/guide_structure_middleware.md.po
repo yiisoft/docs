@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-06-29 17:10+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,68 +20,68 @@ msgstr ""
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Middleware"
-msgstr ""
+msgstr "Middleware"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP message interfaces](https://www.php-fig.org/psr/psr-7/)  and [PSR-15 request handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/)."
-msgstr ""
+msgstr "Yii trabaja con HTTP mediante una capa de abstracción construida sobre las [interfaces de mensajes HTTP de PSR-7](https://www.php-fig.org/psr/psr-7/) y las [interfaces de manejadores de solicitudes y middlewares de PSR-15](https://www.php-fig.org/psr/psr-15/)."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "The application is composed of one or several middleware. Middleware runs between request and response.  When the URL is requested, the request object is passed to the middleware dispatcher that starts executing middleware one after another.  Each middleware, given the request, can:"
-msgstr ""
+msgstr "La aplicación se compone de uno o varios middlewares. Los middlewares se ejecutan entre la solicitud y la respuesta. Cuando se solicita una URL, el objeto de solicitud se pasa al despachador de middlewares, que empieza a ejecutar los middlewares uno tras otro. Cada middleware, dada la solicitud, puede:"
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/middleware.md
 msgid "Pass the request to the next middleware performing some work before / after it."
-msgstr ""
+msgstr "Pasar la solicitud al siguiente middleware y realizar algún trabajo antes o después."
 
 #. type: Bullet: '- '
 #: ../src/guide/structure/middleware.md
 msgid "Form the response and return it."
-msgstr ""
+msgstr "Formar la respuesta y devolverla."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Depending on middleware used, application behavior may vary significantly."
-msgstr ""
+msgstr "Según los middlewares que se usen, el comportamiento de la aplicación puede variar mucho."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "![Middleware](/images/guide/middleware.svg)"
-msgstr ""
+msgstr "![Middleware](/images/guide/middleware.svg)"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In the above each next middleware wraps the previous middleware. Alternatively, it could be presented as follows:"
-msgstr ""
+msgstr "En la imagen anterior, cada middleware envuelve al anterior. También se puede representar así:"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "![Middleware](/images/guide/middleware_alternative.svg)"
-msgstr ""
+msgstr "![Middleware](/images/guide/middleware_alternative.svg)"
 
 #. type: Title ##
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Using middleware"
-msgstr ""
+msgstr "Usar middlewares"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware could be used with Yii, and there are many.  Say, you need to add basic authentication to one of the application URLs.  URL-dependent middleware is configured using router, so you need to change the router factory."
-msgstr ""
+msgstr "Con Yii se puede usar cualquier middleware compatible con [PSR-15](https://www.php-fig.org/psr/psr-15/), y hay muchos. Supongamos que necesitas añadir autenticación básica a una de las URL de la aplicación. Los middlewares que dependen de la URL se configuran con el router, así que tienes que cambiar la factoría del router."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Authentication middleware is implemented by `middlewares/http-authentication` package so execute `composer require middlewares/http-authentication` in the application root directory."
-msgstr ""
+msgstr "El middleware de autenticación lo implementa el paquete `middlewares/http-authentication`, así que ejecuta `composer require middlewares/http-authentication` en el directorio raíz de la aplicación."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Now register the middleware in DI container configuration `config/web.php`:"
-msgstr ""
+msgstr "Ahora registra el middleware en la configuración del contenedor DI, `config/web.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -99,11 +99,22 @@ msgid ""
 "    'attribute()' => ['username'],\n"
 "],\n"
 msgstr ""
+"<?php\n"
+"\\Middlewares\\BasicAuthentication::class => [\n"
+"    'class' => \\Middlewares\\BasicAuthentication::class,\n"
+"    '__construct()' => [\n"
+"        'users' => [\n"
+"            'foo' => 'bar',\n"
+"        ],\n"
+"    ],\n"
+"    'realm()' => ['Access to the staging site via basic auth'],\n"
+"    'attribute()' => ['username'],\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In the `config/routes.php`, add new route:"
-msgstr ""
+msgstr "En `config/routes.php`, añade una nueva ruta:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -126,18 +137,32 @@ msgid ""
 "        ->prependMiddleware(BasicAuthentication::class)\n"
 "];\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Yiisoft\\Router\\Route;\n"
+"use App\\Controller\\SiteController;\n"
+"use Middlewares\\BasicAuthentication;\n"
+"\n"
+"\n"
+"return [\n"
+"    //...\n"
+"    Route::get('/basic-auth')\n"
+"        ->action([SiteController::class, 'auth'])\n"
+"        ->name('site/auth')\n"
+"        ->prependMiddleware(BasicAuthentication::class)\n"
+"];\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "When configuring routing, you're binding `/basic-auth` URL to a chain of middleware consisting of basic authentication, and the action itself. A chain is a special middleware that executes all the middleware it's configured with."
-msgstr ""
+msgstr "Al configurar el enrutamiento, asocias la URL `/basic-auth` a una cadena de middlewares formada por la autenticación básica y la propia acción. Una cadena es un middleware especial que ejecuta todos los middlewares con los que se ha configurado."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
-#, fuzzy
-#| msgid "The event class itself may look like the following:"
 msgid "The action itself could be the following:"
-msgstr "La clase del evento en sí se podría ver como esto:"
+msgstr "La acción en sí podría ser la siguiente:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -150,16 +175,22 @@ msgid ""
 "    return $response;\n"
 "}\n"
 msgstr ""
+"public function auth(ServerRequestInterface $request): ResponseInterface\n"
+"{\n"
+"    $response = $this->responseFactory->createResponse();\n"
+"    $response->getBody()->write('Hi ' . $request->getAttribute('username'));\n"
+"    return $response;\n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "Basic authentication middleware wrote to request `username` attribute, so you can access the data if needed."
-msgstr ""
+msgstr "El middleware de autenticación básica escribió el atributo `username` en la solicitud, así que puedes acceder a ese dato si lo necesitas."
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To apply middleware to application overall regardless of URL, adjust `config/application.php`:"
-msgstr ""
+msgstr "Para aplicar un middleware a toda la aplicación, independientemente de la URL, ajusta `config/application.php`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -185,39 +216,58 @@ msgid ""
 "    ],\n"
 "];\n"
 msgstr ""
+"return [\n"
+"    Yiisoft\\Yii\\Http\\Application::class => [\n"
+"        '__construct()' => [\n"
+"            'dispatcher' => DynamicReference::to(static function (Injector $injector) {\n"
+"                return ($injector->make(MiddlewareDispatcher::class))\n"
+"                    ->withMiddlewares(\n"
+"                        [\n"
+"                            ErrorCatcher::class,\n"
+"                            BasicAuthentication::class,\n"
+"                            SessionMiddleware::class,\n"
+"                            CsrfTokenMiddleware::class,\n"
+"                            Router::class,\n"
+"                        ]\n"
+"                    );\n"
+"            }),\n"
+"            'fallbackHandler' => Reference::to(NotFoundHandler::class),\n"
+"        ],\n"
+"    ],\n"
+"];\n"
 
 #. type: Title ##
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Creating your own middleware"
-msgstr ""
+msgstr "Crear tu propio middleware"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To create middleware, you need to implement a single `process` method of `Psr\\Http\\Server\\MiddlewareInterface`:"
-msgstr ""
+msgstr "Para crear un middleware, tienes que implementar el único método `process` de `Psr\\Http\\Server\\MiddlewareInterface`:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;\n"
-msgstr ""
+msgstr "public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "There are multiple ways to handle a request, and choosing one depends on what the middleware should achieve."
-msgstr ""
+msgstr "Hay varias formas de gestionar una solicitud, y la elección depende de lo que deba conseguir el middleware."
 
 #. type: Title ###
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Forming a response directly"
-msgstr ""
+msgstr "Formar una respuesta directamente"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To respond directly, one needs a response factory passed via constructor:"
-msgstr ""
+msgstr "Para responder directamente, hace falta una factoría de respuestas que se pasa mediante el constructor:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -248,12 +298,36 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"declare(strict_types=1);\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseFactoryInterface;\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Psr\\Http\\Message\\ServerRequestInterface;\n"
+"use Psr\\Http\\Server\\MiddlewareInterface;\n"
+"use Psr\\Http\\Server\\RequestHandlerInterface;\n"
+"\n"
+"final readonly class RespondingMiddleware implements MiddlewareInterface\n"
+"{\n"
+"    public function __construct(\n"
+"        private ResponseFactoryInterface $responseFactory\n"
+"    )\n"
+"    {\n"
+"    }\n"
+"\n"
+"    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
+"    {\n"
+"        $response = $this->responseFactory->createResponse();\n"
+"        $response->getBody()->write('Hello!');\n"
+"        return $response;\n"
+"    }\n"
+"}\n"
 
 #. type: Title ###
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Delegating handling to the next middleware"
-msgstr ""
+msgstr "Delegar la gestión en el siguiente middleware"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
@@ -262,6 +336,8 @@ msgid ""
 "If middleware either isn't intended to form a response or change the request or can't do anything this time,\n"
 "handling could be left to the next middleware in the stack:  \n"
 msgstr ""
+"Si el middleware no está pensado para formar una respuesta ni para cambiar la solicitud, o si esta vez no puede hacer nada,\n"
+"la gestión puede dejarse al siguiente middleware de la pila:  \n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -272,11 +348,15 @@ msgid ""
 "    return $handler->handle($request);    \n"
 "}\n"
 msgstr ""
+"public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface\n"
+"{\n"
+"    return $handler->handle($request);    \n"
+"}\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "In case you need to pass data to the next middleware, you can use request attributes:"
-msgstr ""
+msgstr "Si necesitas pasar datos al siguiente middleware, puedes usar los atributos de la solicitud:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -285,28 +365,30 @@ msgid ""
 "$request = $request->withAttribute('answer', 42);\n"
 "return $handler->handle($request);\n"
 msgstr ""
+"$request = $request->withAttribute('answer', 42);\n"
+"return $handler->handle($request);\n"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "To get it in the next middleware:"
-msgstr ""
+msgstr "Para obtenerlos en el siguiente middleware:"
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "$answer = $request->getAttribute('answer');\n"
-msgstr ""
+msgstr "$answer = $request->getAttribute('answer');\n"
 
 #. type: Title ###
 #: ../src/guide/structure/middleware.md
 #, no-wrap
 msgid "Capturing response to manipulate it"
-msgstr ""
+msgstr "Capturar la respuesta para manipularla"
 
 #. type: Plain text
 #: ../src/guide/structure/middleware.md
 msgid "You may want to capture the response to manipulate it. It could be useful for adding CORS headers, gzipping content, etc."
-msgstr ""
+msgstr "Puede que quieras capturar la respuesta para manipularla. Puede ser útil para añadir cabeceras CORS, comprimir el contenido con gzip, etc."
 
 #. type: Fenced code block (php)
 #: ../src/guide/structure/middleware.md
@@ -316,3 +398,6 @@ msgid ""
 "// extra handing\n"
 "return $response;\n"
 msgstr ""
+"$response = $handler->handle($request);\n"
+"// gestión adicional\n"
+"return $response;\n"
