@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2026-04-07 16:34+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "Creating a project"
-msgstr ""
+msgstr "Crear un proyecto"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "In this guide we'll provide commands for both [Docker](https://docs.docker.com/get-started/get-docker/) and the built-in dev server with everything installed locally."
-msgstr ""
+msgstr "En esta guía daremos los comandos tanto para [Docker](https://docs.docker.com/get-started/get-docker/) como para el servidor de desarrollo integrado, con todo instalado en local."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -35,29 +35,30 @@ msgid ""
 "> If you want to use another web server,\n"
 "> see [\"Configuring web servers\"](../../cookbook/configuring-webservers/general.md).\n"
 msgstr ""
+"> [!NOTE]\n"
+"> Si quieres usar otro servidor web,\n"
+"> consulta [\"Configurar servidores web\"](../../cookbook/configuring-webservers/general.md).\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "We recommend starting with a project template that's a minimal working Yii project implementing some basic features.  It can serve as a good starting point for your projects."
-msgstr ""
+msgstr "Te recomendamos empezar con una plantilla de proyecto, que es un proyecto Yii mínimo y funcional que implementa algunas funcionalidades básicas. Puede ser un buen punto de partida para tus proyectos."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "You can create a new project from a template using the [Composer](https://getcomposer.org) package manager:"
-msgstr ""
+msgstr "Puedes crear un proyecto nuevo a partir de una plantilla con el gestor de paquetes [Composer](https://getcomposer.org):"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "composer create-project yiisoft/app your_project\n"
-msgstr ""
+msgstr "composer create-project yiisoft/app your_project\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
-#, fuzzy
-#| msgid "Events are raised like the following:"
 msgid "Docker users can run the following commands:"
-msgstr "Los eventos se lanzan de la siguiente forma:"
+msgstr "Si usas Docker, puedes ejecutar los siguientes comandos:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -68,11 +69,15 @@ msgid ""
 "cd your_project\n"
 "make composer update\n"
 msgstr ""
+"docker run --rm -it -v \"$(pwd):/app\" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project\n"
+"sudo chown -R $(id -u):$(id -g) your_project\n"
+"cd your_project\n"
+"make composer update\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "If you want development version instead of release one:"
-msgstr ""
+msgstr "Si quieres la versión de desarrollo en lugar de una versión publicada:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
@@ -83,11 +88,15 @@ msgid ""
 "rm -rf .git && \\\n"
 "make composer update\n"
 msgstr ""
+"git clone https://github.com/yiisoft/app.git --depth 1 your_project && \\\n"
+"cd your_project && \\\n"
+"rm -rf .git && \\\n"
+"make composer update\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "This installs the latest stable version of the Yii project template in a directory named `your_project`.  You can choose a different directory name if you want."
-msgstr ""
+msgstr "Esto instala la última versión estable de la plantilla de proyecto de Yii en un directorio llamado `your_project`. Si quieres, puedes elegir otro nombre de directorio."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -97,33 +106,36 @@ msgid ""
 "> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.\n"
 "> Don't use the development version of Yii for production because it may break your running code.\n"
 msgstr ""
+"> [!TIP]\n"
+"> Si quieres instalar la última versión de desarrollo de Yii, puedes añadir `--stability=dev` al comando.\n"
+"> No uses la versión de desarrollo de Yii en producción, porque podría romper tu código en ejecución.\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "Go into the newly created directory, copy `.env.example` to `.env`, and run:"
-msgstr ""
+msgstr "Entra en el directorio recién creado, copia `.env.example` a `.env` y ejecuta:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "./yii serve --port=80\n"
-msgstr ""
+msgstr "./yii serve --port=80\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "For Docker users, run:"
-msgstr ""
+msgstr "Si usas Docker, ejecuta:"
 
 #. type: Fenced code block (sh)
 #: ../src/guide/start/creating-project.md
 #, no-wrap
 msgid "make up\n"
-msgstr ""
+msgstr "make up\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "Open your browser to the URL `http://localhost/`."
-msgstr ""
+msgstr "Abre en tu navegador la URL `http://localhost/`."
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
@@ -133,8 +145,11 @@ msgid ""
 "> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`\n"
 "> in `docker/.env`.\n"
 msgstr ""
+"> [!NOTE]\n"
+"> Para cambiar el puerto del servidor integrado, pasa `--port` a `./yii serve`. En Docker, establece `DEV_PORT`\n"
+"> en `docker/.env`.\n"
 
 #. type: Plain text
 #: ../src/guide/start/creating-project.md
 msgid "![Successful Installation of Yii](/images/guide/start/app-installed.png)"
-msgstr ""
+msgstr "![Instalación correcta de Yii](/images/guide/start/app-installed.png)"
