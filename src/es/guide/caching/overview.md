@@ -1,4 +1,4 @@
-# Caching
+# Caché
 
 Caching is an inexpensive and effective way to improve the performance of an
 application.  By storing relatively static data in cache and serving it from

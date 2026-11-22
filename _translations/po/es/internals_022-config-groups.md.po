@@ -28,7 +28,7 @@ msgstr "Eventos"
 #: ../src/en/internals/022-config-groups.md
 #, no-wrap
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #. type: Title ##
 #: ../src/en/internals/003-roadmap.md ../src/en/internals/022-config-groups.md

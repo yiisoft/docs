@@ -1,28 +1,29 @@
-# Saying hello
+# Decir hola
 
-This section describes how to create a new "Hello" page in your
-application.  It's a simple page that will echo back whatever you pass to it
-or, if nothing passed, will just say "Hello!".
+Esta sección describe cómo crear una nueva página "Hello" en tu
+aplicación. Es una página sencilla que devuelve lo que le pases o, si no le
+pasas nada, simplemente dice "Hello!".
 
-To achieve this goal, you will define a route and create [a
-handler](../structure/action.md) that does the job and forms the response.
-Then you will improve it to use [view](../views/view.md) for building the
-response.
+Para conseguirlo, definirás una ruta y crearás [un
+manejador](../structure/action.md) que haga el trabajo y construya la
+respuesta. Después lo mejorarás para que use una [vista](../views/view.md)
+al construir la respuesta.
 
-Through this tutorial, you will learn three things:
+Con este tutorial aprenderás tres cosas:
 
-1. How to create a handler to respond to a request.
-2. How to map URL to the handler.
-3. How to use [view](../views/view.md) to compose the response's content.
+1. Cómo crear un manejador que responda a una solicitud.
+2. Cómo asociar una URL al manejador.
+3. Cómo usar una [vista](../views/view.md) para componer el contenido de la
+   respuesta.
 
-## Creating a handler
+## Crear un manejador
 
-For the "Hello" task, you will create a handler class that reads a `message`
-parameter from the request and displays that message back to the user. If
-the request doesn't provide a `message` parameter, the action will display
-the default "Hello" message.
+Para la tarea "Hello", crearás una clase manejadora que lee un parámetro
+`message` de la solicitud y muestra ese mensaje al usuario. Si la solicitud
+no proporciona un parámetro `message`, la acción mostrará el mensaje
+predeterminado "Hello".
 
-Create `src/Web/Echo/Action.php`:
+Crea `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -54,19 +55,18 @@ final readonly class Action
 }
 ```
 
-In your example, the `__invoke` method receives the `$message` parameter
-that with the help of `RouteArgument` attribute gets the message from
-URL. The value defaults to `"Hello!"`. If the request is made to
-`/say/Goodbye`, the action assigns the value "Goodbye" to the `$message`
-variable.
+En este ejemplo, el método `__invoke` recibe el parámetro `$message`, que
+obtiene el mensaje de la URL gracias al atributo `RouteArgument`. Su valor
+predeterminado es `"Hello!"`. Si la solicitud se hace a `/say/Goodbye`, la
+acción asigna el valor "Goodbye" a la variable `$message`.
 
-The application passes the response through the [middleware
-stack](../structure/middleware.md) to the emitter that outputs the response
-to the end user.
+La aplicación pasa la respuesta por la [pila de
+middlewares](../structure/middleware.md) hasta el emisor, que envía la
+respuesta al usuario final.
 
-## Configuring router
+## Configurar el router
 
-Now, to map your handler to URL, you need to add a route in
+Ahora, para asociar tu manejador a una URL, tienes que añadir una ruta en
 `config/common/routes.php`:
 
 ```php
@@ -91,33 +91,33 @@ return [
 ];
 ```
 
-In the above, you map the `/say[/{message}]` pattern to
-`\App\Web\Echo\Action`.  For a request, the router creates an instance and
-calls the `__invoke()` method.  The `{message}` part of the pattern writes
-anything specified in this place to the `message` route argument.  `[]`
-marks this part of the pattern as optional.
+En el código anterior, asocias el patrón `/say[/{message}]` a
+`\App\Web\Echo\Action`. Para cada solicitud, el router crea una instancia y
+llama al método `__invoke()`. La parte `{message}` del patrón guarda en el
+argumento de ruta `message` lo que se indique en esa posición. `[]` marca
+esa parte del patrón como opcional.
 
-You also give a `echo/say` name to this route to be able to generate URLs
-pointing to it.
+También le das el nombre `echo/say` a esta ruta para poder generar URL que
+apunten a ella.
 
-## Trying it out
+## Probarlo
 
-After creating the action and the view open
-`http://localhost/say/Hello+World` in your browser.
+Después de crear la acción y la vista, abre
+`http://localhost/say/Hello+World` en tu navegador.
 
-This URL displays a page with "The message is: Hello World".
+Esta URL muestra una página con el texto "The message is: Hello World".
 
-If you omit the `message` parameter in the URL, the page displays "The
-message is: Hello!".
+Si omites el parámetro `message` en la URL, la página muestra "The message
+is: Hello!".
 
-## Creating a View Template
+## Crear una plantilla de vista
 
-Usually, the task is more complicated than printing out "hello world" and
-involves rendering some complex HTML. For this task, it's handy to use view
-templates. They're scripts you write to generate a response's body.
+Normalmente, la tarea es más complicada que imprimir "hello world" e implica
+renderizar un HTML complejo. Para eso resulta práctico usar plantillas de
+vista: son scripts que escribes para generar el cuerpo de una respuesta.
 
-For the "Hello" task, create a `src/Web/Echo/template.php` template that
-prints the `message` parameter received from the action method:
+Para la tarea "Hello", crea una plantilla `src/Web/Echo/template.php` que
+imprima el parámetro `message` recibido del método de acción:
 
 ```php
 <?php
@@ -128,17 +128,17 @@ use Yiisoft\Html\Html;
 <p>The message is: <?= Html::encode($message) ?></p>
 ```
 
-In the above code, the `message` parameter uses HTML encoding before you
-print it. You need that because the parameter comes from an end user and is
-vulnerable to [cross-site scripting (XSS)
-attacks](https://en.wikipedia.org/wiki/Cross-site_scripting) by embedding
-malicious JavaScript in the parameter.
+En el código anterior, el parámetro `message` se codifica en HTML antes de
+imprimirlo. Es necesario porque el parámetro procede del usuario final y es
+vulnerable a [ataques de cross-site scripting
+(XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting), que insertan
+JavaScript malicioso en el parámetro.
 
-Naturally, you may put more content in the `say` view. The content can
-consist of HTML tags, plain text, and even PHP statements. In fact, the view
-service executes the `say` view as a PHP script.
+Naturalmente, puedes poner más contenido en la vista `say`. El contenido
+puede incluir etiquetas HTML, texto plano e incluso sentencias PHP. De
+hecho, el servicio de vistas ejecuta la vista `say` como un script PHP.
 
-To use the view, you need to change `src/Web/Echo/Action.php`:
+Para usar la vista, tienes que cambiar `src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -169,23 +169,24 @@ final readonly class Action
 }
 ```
 
-Now open your browser and check it again. You should see the similar text
-but with a layout applied.
+Ahora abre el navegador y compruébalo de nuevo. Deberías ver un texto
+parecido, pero con un layout aplicado.
 
-Also, you've separated the part about how it works and part of how it's
-presented. In the larger applications, it helps a lot to deal with
-complexity.
+Además, has separado la parte que define cómo funciona de la parte que
+define cómo se presenta. En aplicaciones más grandes, esto ayuda mucho a
+gestionar la complejidad.
 
-## Summary
+## Resumen
 
-In this section, you've touched the handler and template parts of the
-typical web application.  You created a handler as part of a class to handle
-a specific request. You also created a view to compose the response's
-content. In this simple example, no data source was involved as the only
-data used was the `message` parameter.
+En esta sección has trabajado con las partes de manejador y de plantilla de
+una aplicación web típica. Has creado un manejador como parte de una clase
+para gestionar una solicitud concreta. También has creado una vista para
+componer el contenido de la respuesta. En este ejemplo sencillo no ha
+intervenido ninguna fuente de datos, ya que el único dato usado era el
+parámetro `message`.
 
-You've also learned about routing in Yii, which acts as the bridge between
-user requests and handlers.
+También has aprendido cómo funciona el enrutamiento en Yii, que actúa como
+puente entre las solicitudes de los usuarios y los manejadores.
 
-In the next section, you will learn how to fetch data and add a new page
-containing an HTML form.
+En la siguiente sección aprenderás a obtener datos y a añadir una página
+nueva que contiene un formulario HTML.

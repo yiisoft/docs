@@ -1,34 +1,35 @@
-# Working with forms
+# Trabajar con formularios
 
-This section continues to improve on "Saying Hello." Instead of using URL,
-you will now ask a user for a message via form.
+Esta sección sigue mejorando el ejemplo de "Decir hola". En lugar de usar la
+URL, ahora pedirás al usuario un mensaje mediante un formulario.
 
-Through this tutorial, you will learn how to:
+Con este tutorial aprenderás a:
 
-* Create a form model to represent the data entered by a user through a
-  form.
-* Declare rules to validate the data entered.
-* Build an HTML form in a view.
+* Crear un modelo de formulario que represente los datos que introduce un
+  usuario a través de un formulario.
+* Declarar reglas para validar los datos introducidos.
+* Construir un formulario HTML en una vista.
 
-## Installing form package
+## Instalar el paquete de formularios
 
-To install form package, issue the following command in your application
-directory:
+Para instalar el paquete de formularios, ejecuta el siguiente comando en el
+directorio de tu aplicación:
 
 ```
 composer require yiisoft/form-model
 ```
 
-For Docker that would be:
+Con Docker sería:
 
 ```
 make composer require yiisoft/form-model
 ```
 
-## Creating a form
+## Crear un formulario
 
-The data to be requested from the user will be represented by a `Form` class
-as shown below and saved in the file `/src/Web/Echo/Form.php`:
+Los datos que se pedirán al usuario se representarán mediante una clase
+`Form`, como la que se muestra a continuación, guardada en el archivo
+`/src/Web/Echo/Form.php`:
 
 ```php
 <?php
@@ -49,14 +50,14 @@ final class Form extends FormModel
 }
 ```
 
-In the above example, the `Form` has a single string property `$message`
-which length should be at least of two characters. There's also a custom
-label for the property.
+En el ejemplo anterior, `Form` tiene una única propiedad de tipo cadena,
+`$message`, cuya longitud debe ser de al menos dos caracteres. También hay
+una etiqueta personalizada para la propiedad.
 
-> Note: Validation attributes are Yii Validator rules. For common checks, first look for an existing rule. If a field
-> also needs application-specific validation, use `Callback` for that domain logic. With PHP attributes, use the `method`
-> option because PHP attributes can't contain closures. For example, validate UUID syntax with `Uuid`, then add
-> `#[Callback(method: 'validateUuidV7', skipOnError: true)]` only when your domain specifically requires UUID version 7.
+> Nota: los atributos de validación son reglas de Yii Validator. Para las comprobaciones habituales, busca primero una regla existente. Si un campo
+> necesita además una validación específica de la aplicación, usa `Callback` para esa lógica de dominio. Con atributos de PHP, usa la opción `method`,
+> porque los atributos de PHP no pueden contener closures. Por ejemplo, valida la sintaxis del UUID con `Uuid` y añade
+> `#[Callback(method: 'validateUuidV7', skipOnError: true)]` solo cuando tu dominio requiera específicamente la versión 7 de UUID.
 
 ```php
 use Yiisoft\Validator\Result;
@@ -75,22 +76,25 @@ private function validateUuidV7(mixed $value): Result
 }
 ```
 
-The callback method returns a `Result`: return an empty result when the
-value is valid or add an error when it isn't.  The method body can call any
-validation code your application already uses, such as
-`App\Support\Uuid::isValid($value, 'v7')`.  See [Callback rule
-details](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
-for full examples and available method signatures.
+El método callback devuelve un `Result`: devuelve un resultado vacío cuando
+el valor es válido o añade un error cuando no lo es. El cuerpo del método
+puede llamar a cualquier código de validación que tu aplicación ya use, como
+`App\Support\Uuid::isValid($value, 'v7')`. Consulta los [detalles de la
+regla
+Callback](https://github.com/yiisoft/validator/blob/master/docs/guide/en/built-in-rules-callback.md)
+para ver ejemplos completos y las firmas de método disponibles.
 
-For validation logic reused in several forms, create a custom Yii Validator
-rule and handler instead of copying callback methods. See the [custom rule
-guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
-for the rule/handler structure.
+Para la lógica de validación que se reutiliza en varios formularios, crea
+una regla y un manejador personalizados de Yii Validator en lugar de copiar
+métodos callback. Consulta la [guía de reglas
+personalizadas](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+para ver la estructura de regla y manejador.
 
-## Custom validation
+## Validación personalizada
 
-Validation attributes are Yii Validator rules. For common checks, first look
-for an existing rule. For example, to validate a UUID string, use `Uuid`:
+Los atributos de validación son reglas de Yii Validator. Para las
+comprobaciones habituales, busca primero una regla existente. Por ejemplo,
+para validar una cadena UUID, usa `Uuid`:
 
 ```php
 use Yiisoft\FormModel\FormModel;
@@ -103,11 +107,12 @@ final class Form extends FormModel
 }
 ```
 
-When a field needs application-specific validation that isn't covered by a
-built-in rule, use `Callback`. This is useful for one-off checks or for
-delegating to a domain/library method. With PHP attributes, use the `method`
-option because PHP attributes can't contain closures. For example, the
-following form validates a card number checksum:
+Cuando un campo necesita una validación específica de la aplicación que no
+cubre ninguna regla integrada, usa `Callback`. Es útil para comprobaciones
+puntuales o para delegar en un método del dominio o de una biblioteca. Con
+atributos de PHP, usa la opción `method`, porque los atributos de PHP no
+pueden contener closures. Por ejemplo, el siguiente formulario valida la
+suma de verificación de un número de tarjeta:
 
 ```php
 <?php
@@ -168,25 +173,26 @@ final class Form extends FormModel
 }
 ```
 
-The callback method returns a `Result`: return an empty result when the
-value is valid or add an error when it isn't.  The method body can call any
-validation code your application already uses, such as
+El método callback devuelve un `Result`: devuelve un resultado vacío cuando
+el valor es válido o añade un error cuando no lo es. El cuerpo del método
+puede llamar a cualquier código de validación que tu aplicación ya use, como
 `App\Payment\CardNumber::hasValidChecksum($value)`.
 
-For validation logic reused in several forms, create a custom Yii Validator
-rule and handler instead of copying callback methods. See the [custom rule
-guide](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
-for the rule/handler structure.
+Para la lógica de validación que se reutiliza en varios formularios, crea
+una regla y un manejador personalizados de Yii Validator en lugar de copiar
+métodos callback. Consulta la [guía de reglas
+personalizadas](https://github.com/yiisoft/validator/blob/master/docs/guide/en/creating-custom-rules.md)
+para ver la estructura de regla y manejador.
 
-## Validating several fields together
+## Validar varios campos a la vez
 
-Property attributes are enough when each field can be validated
-independently. When a rule depends on several fields, put a `Callback` rule
-on the form model class and attach an error to the field that should display
-it.
+Los atributos de propiedad bastan cuando cada campo puede validarse de forma
+independiente. Cuando una regla depende de varios campos, pon una regla
+`Callback` en la clase del modelo de formulario y asocia el error al campo
+que debe mostrarlo.
 
-For example, a report filter may require the start date to be earlier than
-or equal to the end date:
+Por ejemplo, un filtro de informes puede exigir que la fecha de inicio sea
+anterior o igual a la fecha de fin:
 
 ```php
 <?php
@@ -250,18 +256,19 @@ final class ReportFilterForm extends FormModel
 }
 ```
 
-The class-level `Callback` receives the whole object as `$value`, but using
-`$this` is usually clearer in a form model method. Returning an empty
-`Result` means the cross-field rule passed. The third argument of
-`addError()` is the value path; `['dateFrom']` makes the error appear on the
-`dateFrom` field when rendering the form.
+El `Callback` a nivel de clase recibe el objeto completo como `$value`, pero
+en un método del modelo de formulario suele ser más claro usar
+`$this`. Devolver un `Result` vacío significa que la regla entre campos se
+ha cumplido. El tercer argumento de `addError()` es la ruta del valor:
+`['dateFrom']` hace que el error aparezca en el campo `dateFrom` al
+renderizar el formulario.
 
-## Using the form 
+## Usar el formulario
 
-Now that you have a form, use it in your action from "[Saying
-Hello](hello.md)".
+Ahora que tienes un formulario, úsalo en tu acción de "[Decir
+hola](hello.md)".
 
-Here's what you end up with in `/src/Web/Echo/Action.php`:
+Este es el resultado final en `/src/Web/Echo/Action.php`:
 
 ```php
 <?php
@@ -295,12 +302,13 @@ final readonly class Action
 }
 ```
 
-Instead of reading from route, you fill your form from request's POST data
-and validate it with the help of `FormHydrator`. Next you pass the form to
-the view.
+En lugar de leer de la ruta, rellenas el formulario con los datos POST de la
+solicitud y lo validas con la ayuda de `FormHydrator`. Después pasas el
+formulario a la vista.
 
-For the form to function we need to allow both GET to render the form and
-POST to send the data.  Adjust your route in `config/common/routes.php`:
+Para que el formulario funcione, hay que permitir tanto GET, para mostrar el
+formulario, como POST, para enviar los datos. Ajusta tu ruta en
+`config/common/routes.php`:
 
 ```php
 <?php
@@ -325,9 +333,10 @@ return [
 ];
 ```
 
-## Adjusting view
+## Ajustar la vista
 
-To render a form, you need to change your view, `src/Web/Echo/template.php`:
+Para renderizar un formulario, tienes que cambiar la vista,
+`src/Web/Echo/template.php`:
 
 ```php
 <?php
@@ -359,14 +368,14 @@ $htmlForm = Html::form()
 <?php endif ?>
 ```
 
-If the form is valid, you display a message. The rest initializes and
-renders the form.
+Si el formulario es válido, muestras un mensaje. El resto inicializa y
+renderiza el formulario.
 
-First, you initialize `$htmlForm` with the POST type and the action URL
-generated with the help from the URL generator.  You can access it as
-`$urlGenerator` in all views. You also need to pass the CSRF token to the
-form, which is also available in every view as `$csrf` thanks to the view
-injections listed in `config/common/params.php`:
+Primero, inicializas `$htmlForm` con el tipo POST y la URL de acción
+generada con la ayuda del generador de URL, al que puedes acceder como
+`$urlGenerator` en todas las vistas. También tienes que pasar el token CSRF
+al formulario; está disponible en todas las vistas como `$csrf` gracias a
+las inyecciones de vista indicadas en `config/common/params.php`:
 
 ```php
 'yiisoft/yii-view-renderer' => [
@@ -376,47 +385,49 @@ injections listed in `config/common/params.php`:
 ],
 ```
 
-The template renders the CSRF token value as a hidden input to ensure that
-the request originates from the form page and not from another website. It
-will be submitted along with POST form data. Omitting it would result in
-[HTTP response code 422](https://tools.ietf.org/html/rfc4918#section-11.2).
+La plantilla renderiza el valor del token CSRF como un campo oculto para
+garantizar que la solicitud procede de la página del formulario y no de otro
+sitio web. Se enviará junto con los datos POST del formulario. Si se omite,
+se obtiene un [código de respuesta HTTP
+422](https://tools.ietf.org/html/rfc4918#section-11.2).
 
-You use `Field::text()` to output "message" field, so it takes care about
-filling the value, escaping it, rendering field label and validation errors.
+Usas `Field::text()` para mostrar el campo "message", que se encarga de
+rellenar el valor, escaparlo y renderizar la etiqueta del campo y los
+errores de validación.
 
-Now, in case you submit an empty message, you will get a validation error:
-"The message to be echoed must contain at least 2 characters."
+Ahora, si envías un mensaje vacío, obtendrás un error de validación: "The
+message to be echoed must contain at least 2 characters."
 
-## Trying it Out
+## Probarlo
 
-To see how it works, use your browser to access the following URL:
+Para ver cómo funciona, accede con tu navegador a la siguiente URL:
 
 ```
 http://localhost:8080/say
 ```
 
-You will see a page with a form input field and a label that indicates what
-data to enter.  Also, the form has a "submit" button labeled "Say". If you
-click the "submit" button without entering anything, you will see that the
-field is required. If you enter a single character, the form displays an
-error message next to the problematic input field.
+Verás una página con un campo de formulario y una etiqueta que indica qué
+datos introducir. Además, el formulario tiene un botón de envío con el texto
+"Say". Si pulsas el botón de envío sin introducir nada, verás que el campo
+es obligatorio. Si introduces un solo carácter, el formulario mostrará un
+mensaje de error junto al campo problemático.
 
-![Form with a validation error](/images/guide/start/form-error.png)
+![Formulario con un error de validación](/images/guide/start/form-error.png)
 
-After you enter a valid message and click the "submit" button, the page
-echoes the data that you entered.
+Después de introducir un mensaje válido y pulsar el botón de envío, la
+página repite los datos que has introducido.
 
-![Form with a success message](/images/guide/start/form-success.png)
+![Formulario con un mensaje de éxito](/images/guide/start/form-success.png)
 
-## Summary
+## Resumen
 
-In this section of the guide, you've learned how to create a form model
-class to represent the user data and validate said data.
+En esta sección de la guía has aprendido a crear una clase de modelo de
+formulario para representar los datos del usuario y validarlos.
 
-You've also learned how to get data from users and how to display data back
-in the browser.  This is a task that could take you a lot of time when
-developing an application, but Yii provides powerful widgets to make this
-task easy.
+También has aprendido a obtener datos de los usuarios y a mostrarlos de
+nuevo en el navegador. Es una tarea que podría llevarte mucho tiempo al
+desarrollar una aplicación, pero Yii proporciona widgets potentes que la
+facilitan.
 
-In the next section, you will learn how to work with databases, which are
-needed in nearly every application.
+En la siguiente sección aprenderás a trabajar con bases de datos, que se
+necesitan en casi todas las aplicaciones.

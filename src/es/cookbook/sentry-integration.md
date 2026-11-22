@@ -38,7 +38,7 @@ To install the packages, run the following command:
 composer require php-http/httplug php-http/guzzle7-adapter --prefer-dist
 ```
 
-## Configuration
+## Configuración
 
 ### Get and store the token
 

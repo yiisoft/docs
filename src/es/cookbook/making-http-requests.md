@@ -164,7 +164,7 @@ final readonly class WebhookClient
 }
 ```
 
-## Testing
+## Pruebas
 
 For unit tests, pass a client configured with Guzzle's `MockHandler`:
 

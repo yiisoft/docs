@@ -40,7 +40,7 @@ graph LR
 - SSH access to your server.
 - Basic knowledge of Docker and command-line tools.
 
-## Project structure
+## Estructura del proyecto
 
 The example requires a single Docker Compose configuration:
 

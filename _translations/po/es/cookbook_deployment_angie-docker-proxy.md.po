@@ -102,7 +102,7 @@ msgstr ""
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/intro/upgrade-from-v2.md
 #, no-wrap
 msgid "Project structure"
-msgstr ""
+msgstr "Estructura del proyecto"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/angie-docker-proxy.md

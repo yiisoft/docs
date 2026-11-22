@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/index.md ../src/internals/003-roadmap.md
 #, no-wrap
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #. type: Title ##
 #: ../src/cookbook/sentry-integration.md ../src/internals/003-roadmap.md

@@ -1,70 +1,73 @@
-# What is Yii
+# Qué es Yii
 
-Yii is a high-performance, package-based PHP framework for developing modern
-applications.  The name Yii (pronounced `Yee` or `[ji:]`) means "simple and
-evolutionary" in Chinese.  You can also think about it as an acronym for
-**Yes It Is**!
+Yii es un framework PHP de alto rendimiento y basado en paquetes para
+desarrollar aplicaciones modernas. El nombre Yii (se pronuncia `Yee` o
+`[ji:]`) significa "sencillo y evolutivo" en chino. ¡También puedes verlo
+como el acrónimo de **Yes It Is**!
 
-## What's Yii best for
+## Para qué es mejor Yii
 
-Yii is a generic Web programming framework.  You can use it for developing
-all kinds of Web applications using PHP.  Because of its architecture and
-sophisticated caching support, it's especially suitable for developing
-large-scale applications such as portals, content management systems,
-e-commerce, REST APIs, etc.
+Yii es un framework de programación web de uso general. Puedes usarlo para
+desarrollar todo tipo de aplicaciones web con PHP. Gracias a su arquitectura
+y a su avanzado soporte de caché, es especialmente adecuado para desarrollar
+aplicaciones a gran escala, como portales, sistemas de gestión de
+contenidos, comercio electrónico, API REST, etc.
 
-## How does Yii compare with other frameworks?
+## ¿Cómo se compara Yii con otros frameworks?
 
-If you're already familiar with another framework, you may appreciate
-knowing how Yii compares:
+Si ya conoces otro framework, quizá te interese saber cómo se compara Yii
+con él:
 
-- Yii takes the [philosophy of being practical and
-  helpful](../../internals/001-yii-values.md) achieving:
-  - Performance in both development and execution.
-  - Convenient customizable defaults.
-  - Practice-orientation.
-  - Simplicity.
-  - Explicitness.
-  - Consistency.
+- Yii sigue la [filosofía de ser práctico y
+  útil](../../internals/001-yii-values.md) y consigue:
+  - Rendimiento tanto en el desarrollo como en la ejecución.
+  - Valores predeterminados prácticos y personalizables.
+  - Orientación a la práctica.
+  - Sencillez.
+  - Explicitud.
+  - Coherencia.
   
-  Yii will never try to over-design things mainly to follow some design patterns.
-- Yii extensively uses PSR interfaces with the ability to reuse what PHP community created and even
-  replace core implementations if needed.
-- Yii is both a set of libraries and a full-stack framework providing many proven and ready-to-use features:
-  caching, logging, template engine, data abstraction, development tools, code generation, and more.
-- Yii is extensible. You can customize or replace every piece of the core's code. You can also
-  take advantage of Yii's solid architecture to use or develop redistributable packages.
-- High performance is always a primary goal of Yii.
+  Yii nunca intentará sobrediseñar las cosas solo por seguir ciertos patrones de diseño.
+- Yii usa ampliamente las interfaces PSR, lo que permite reutilizar lo que ha creado la comunidad de PHP e incluso
+  sustituir las implementaciones del núcleo si hace falta.
+- Yii es a la vez un conjunto de bibliotecas y un framework full-stack que ofrece muchas funcionalidades probadas y listas para usar:
+  caché, registro de logs, motor de plantillas, abstracción de datos, herramientas de desarrollo, generación de código y mucho más.
+- Yii es extensible. Puedes personalizar o sustituir cualquier parte del código del núcleo. También puedes
+  aprovechar la sólida arquitectura de Yii para usar o desarrollar paquetes redistribuibles.
+- El alto rendimiento es siempre uno de los objetivos principales de Yii.
 
-Yii is backed up by a [strong core developer
-team](https://www.yiiframework.com/team/) financially backed from an
-[OpenCollective foundation](https://opencollective.com/yiisoft), as well as
-a large community of professionals constantly contributing to Yii's
-development. The Yii developer team keeps a close eye on the latest Web
-development trends and on the best practices and features found in other
-frameworks and projects. The most relevant best practices and features found
-elsewhere are incorporated into the core framework and exposed via simple
-and elegant interfaces.
-
-
-## Yii versions
-
-Yii currently has three major versions available: 1.1, 2.0, and 3.0.
-
-- Version 1.1 is the old generation and is now in the feature freeze bugfix
-  mode.
-- Version 2.0 is a current stable version in the feature freeze bugfix mode.
-- Version 3.0 is the current version in development. This guide is mainly
-  about version 3.
+Yii cuenta con el respaldo de un [sólido equipo de desarrolladores del
+núcleo](https://www.yiiframework.com/team/), financiado a través de
+[OpenCollective](https://opencollective.com/yiisoft), así como de una gran
+comunidad de profesionales que contribuyen constantemente a su
+desarrollo. El equipo de desarrollo de Yii sigue de cerca las últimas
+tendencias del desarrollo web y las buenas prácticas y funcionalidades de
+otros frameworks y proyectos. Las buenas prácticas y funcionalidades más
+relevantes que se encuentran en otros lugares se incorporan al núcleo del
+framework y se exponen mediante interfaces sencillas y elegantes.
 
 
-## Requirements and prerequisites
+## Versiones de Yii
 
-Yii3 requires PHP 8.2 or above, but some packages work with older PHP, such
-as PHP 7.4.
+Actualmente Yii tiene tres versiones principales disponibles: 1.1, 2.0 y
+3.0.
 
-Using Yii requires basic knowledge of object-oriented programming (OOP), as
-Yii is a pure OOP-based framework.  Yii3 also makes use of the latest PHP
-features, such as type declarations and generators. Understanding these
-concepts will help you pick up Yii3 faster.
+- La versión 1.1 es la generación antigua y ahora solo recibe correcciones
+  de errores, sin funcionalidades nuevas.
+- La versión 2.0 es la versión estable actual y solo recibe correcciones de
+  errores, sin funcionalidades nuevas.
+- La versión 3.0 es la versión actual en desarrollo. Esta guía trata
+  principalmente de la versión 3.
+
+
+## Requisitos y conocimientos previos
+
+Yii3 requiere PHP 8.2 o superior, aunque algunos paquetes funcionan con
+versiones anteriores de PHP, como PHP 7.4.
+
+Para usar Yii necesitas conocimientos básicos de programación orientada a
+objetos (POO), ya que Yii es un framework basado completamente en la
+POO. Yii3 también aprovecha las funcionalidades más recientes de PHP, como
+las declaraciones de tipos y los generadores. Entender estos conceptos te
+ayudará a aprender Yii3 más rápido.
 

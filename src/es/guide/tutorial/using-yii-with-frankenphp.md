@@ -25,7 +25,7 @@ runtime used by the Yii application templates Docker setup described in
 > This runner is for worker mode. To use FrankenPHP in classic mode, keep `public/index.php` and
 > [yiisoft/yii-runner-http](https://github.com/yiisoft/yii-runner-http), the default HTTP runner in the templates.
 
-## Configuration
+## Configuración
 
 First, configure the worker entry script.
 

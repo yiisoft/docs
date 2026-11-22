@@ -438,7 +438,7 @@ msgstr ""
 #: ../src/guide/runtime/routing.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Routing"
-msgstr ""
+msgstr "Enrutamiento"
 
 #. type: Plain text
 #: ../src/guide/runtime/routing.md

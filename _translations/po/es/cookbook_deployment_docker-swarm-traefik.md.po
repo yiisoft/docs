@@ -880,7 +880,7 @@ msgstr ""
 #: ../src/cookbook/deployment/docker-swarm-traefik.md
 #, no-wrap
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #. type: Plain text
 #: ../src/cookbook/deployment/docker-swarm-caddy.md

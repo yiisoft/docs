@@ -39,7 +39,7 @@ msgstr ""
 #: ../src/guide/views/asset.md
 #, no-wrap
 msgid "Assets"
-msgstr ""
+msgstr "Assets"
 
 #. type: Plain text
 #: ../src/guide/views/asset.md

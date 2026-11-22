@@ -113,7 +113,7 @@ vary, so it's passed as a method argument.
 Often it makes sense to choose another class type to place your code
 into. Check:
 
-- Repository
+- Repositorio
 - Widget
 - [Middleware](../../guide/structure/middleware.md)
 - Entity

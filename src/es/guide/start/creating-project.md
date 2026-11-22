@@ -1,25 +1,25 @@
-# Creating a project
+# Crear un proyecto
 
-In this guide we'll provide commands for both
-[Docker](https://docs.docker.com/get-started/get-docker/) and the built-in
-dev server with everything installed locally.
+En esta guía daremos los comandos tanto para
+[Docker](https://docs.docker.com/get-started/get-docker/) como para el
+servidor de desarrollo integrado, con todo instalado en local.
 
 > [!NOTE]
-> If you want to use another web server,
-> see ["Configuring web servers"](../../cookbook/configuring-webservers/general.md).
+> Si quieres usar otro servidor web,
+> consulta ["Configurar servidores web"](../../cookbook/configuring-webservers/general.md).
 
-We recommend starting with a project template that's a minimal working Yii
-project implementing some basic features.  It can serve as a good starting
-point for your projects.
+Te recomendamos empezar con una plantilla de proyecto, que es un proyecto
+Yii mínimo y funcional que implementa algunas funcionalidades básicas. Puede
+ser un buen punto de partida para tus proyectos.
 
-You can create a new project from a template using the
-[Composer](https://getcomposer.org) package manager:
+Puedes crear un proyecto nuevo a partir de una plantilla con el gestor de
+paquetes [Composer](https://getcomposer.org):
 
 ```sh
 composer create-project yiisoft/app your_project
 ```
 
-Docker users can run the following commands:
+Si usas Docker, puedes ejecutar los siguientes comandos:
 
 ```sh
 docker run --rm -it -v "$(pwd):/app" --user $(id -u):$(id -g) composer/composer create-project yiisoft/app your_project
@@ -28,7 +28,7 @@ cd your_project
 make composer update
 ```
 
-If you want development version instead of release one:
+Si quieres la versión de desarrollo en lugar de una versión publicada:
  
 ```sh
 git clone https://github.com/yiisoft/app.git --depth 1 your_project && \
@@ -37,30 +37,31 @@ rm -rf .git && \
 make composer update
 ```
 
-This installs the latest stable version of the Yii project template in a
-directory named `your_project`.  You can choose a different directory name
-if you want.
+Esto instala la última versión estable de la plantilla de proyecto de Yii en
+un directorio llamado `your_project`. Si quieres, puedes elegir otro nombre
+de directorio.
 
 > [!TIP]
-> If you want to install the latest development version of Yii, you may add `--stability=dev` to the command.
-> Don't use the development version of Yii for production because it may break your running code.
+> Si quieres instalar la última versión de desarrollo de Yii, puedes añadir `--stability=dev` al comando.
+> No uses la versión de desarrollo de Yii en producción, porque podría romper tu código en ejecución.
 
-Go into the newly created directory, copy `.env.example` to `.env`, and run:
+Entra en el directorio recién creado, copia `.env.example` a `.env` y
+ejecuta:
 
 ```sh
 ./yii serve --port=80
 ```
 
-For Docker users, run:
+Si usas Docker, ejecuta:
 
 ```sh
 make up
 ```
 
-Open your browser to the URL `http://localhost/`.
+Abre en tu navegador la URL `http://localhost/`.
 
 > [!NOTE]
-> To change the port for the built-in server, pass `--port` to `./yii serve`. For Docker, set `DEV_PORT`
-> in `docker/.env`.
+> Para cambiar el puerto del servidor integrado, pasa `--port` a `./yii serve`. En Docker, establece `DEV_PORT`
+> en `docker/.env`.
 
-![Successful Installation of Yii](/images/guide/start/app-installed.png)
+![Instalación correcta de Yii](/images/guide/start/app-installed.png)

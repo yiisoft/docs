@@ -1,39 +1,44 @@
 # Middleware
 
-Yii works with HTTP using the abstraction layer built around [PSR-7 HTTP
-message interfaces](https://www.php-fig.org/psr/psr-7/)  and [PSR-15 request
-handler/middleware interfaces](https://www.php-fig.org/psr/psr-15/).
+Yii trabaja con HTTP mediante una capa de abstracción construida sobre las
+[interfaces de mensajes HTTP de PSR-7](https://www.php-fig.org/psr/psr-7/) y
+las [interfaces de manejadores de solicitudes y middlewares de
+PSR-15](https://www.php-fig.org/psr/psr-15/).
 
-The application is composed of one or several middleware. Middleware runs
-between request and response.  When the URL is requested, the request object
-is passed to the middleware dispatcher that starts executing middleware one
-after another.  Each middleware, given the request, can:
+La aplicación se compone de uno o varios middlewares. Los middlewares se
+ejecutan entre la solicitud y la respuesta. Cuando se solicita una URL, el
+objeto de solicitud se pasa al despachador de middlewares, que empieza a
+ejecutar los middlewares uno tras otro. Cada middleware, dada la solicitud,
+puede:
 
-- Pass the request to the next middleware performing some work before /
-  after it.
-- Form the response and return it.
+- Pasar la solicitud al siguiente middleware y realizar algún trabajo antes
+  o después.
+- Formar la respuesta y devolverla.
 
-Depending on middleware used, application behavior may vary significantly.
+Según los middlewares que se usen, el comportamiento de la aplicación puede
+variar mucho.
 
 ![Middleware](/images/guide/middleware.svg)
 
-In the above each next middleware wraps the previous
-middleware. Alternatively, it could be presented as follows:
+En la imagen anterior, cada middleware envuelve al anterior. También se
+puede representar así:
 
 ![Middleware](/images/guide/middleware_alternative.svg)
 
-## Using middleware
+## Usar middlewares
 
-Any [PSR-15](https://www.php-fig.org/psr/psr-15/) compatible middleware
-could be used with Yii, and there are many.  Say, you need to add basic
-authentication to one of the application URLs.  URL-dependent middleware is
-configured using router, so you need to change the router factory.
+Con Yii se puede usar cualquier middleware compatible con
+[PSR-15](https://www.php-fig.org/psr/psr-15/), y hay muchos. Supongamos que
+necesitas añadir autenticación básica a una de las URL de la aplicación. Los
+middlewares que dependen de la URL se configuran con el router, así que
+tienes que cambiar la factoría del router.
 
-Authentication middleware is implemented by
-`middlewares/http-authentication` package so execute `composer require
-middlewares/http-authentication` in the application root directory.
+El middleware de autenticación lo implementa el paquete
+`middlewares/http-authentication`, así que ejecuta `composer require
+middlewares/http-authentication` en el directorio raíz de la aplicación.
 
-Now register the middleware in DI container configuration `config/web.php`:
+Ahora registra el middleware en la configuración del contenedor DI,
+`config/web.php`:
 
 ```php
 <?php
@@ -49,7 +54,7 @@ Now register the middleware in DI container configuration `config/web.php`:
 ],
 ```
 
-In the `config/routes.php`, add new route:
+En `config/routes.php`, añade una nueva ruta:
 
 ```php
 <?php
@@ -70,12 +75,12 @@ return [
 ];
 ```
 
-When configuring routing, you're binding `/basic-auth` URL to a chain of
-middleware consisting of basic authentication, and the action itself. A
-chain is a special middleware that executes all the middleware it's
-configured with.
+Al configurar el enrutamiento, asocias la URL `/basic-auth` a una cadena de
+middlewares formada por la autenticación básica y la propia acción. Una
+cadena es un middleware especial que ejecuta todos los middlewares con los
+que se ha configurado.
 
-The action itself could be the following:
+La acción en sí podría ser la siguiente:
 
 ```php
 public function auth(ServerRequestInterface $request): ResponseInterface
@@ -86,11 +91,11 @@ public function auth(ServerRequestInterface $request): ResponseInterface
 }
 ```
 
-Basic authentication middleware wrote to request `username` attribute, so
-you can access the data if needed.
+El middleware de autenticación básica escribió el atributo `username` en la
+solicitud, así que puedes acceder a ese dato si lo necesitas.
 
-To apply middleware to application overall regardless of URL, adjust
-`config/application.php`:
+Para aplicar un middleware a toda la aplicación, independientemente de la
+URL, ajusta `config/application.php`:
 
 ```php
 return [
@@ -114,21 +119,22 @@ return [
 ];
 ```
 
-## Creating your own middleware
+## Crear tu propio middleware
 
-To create middleware, you need to implement a single `process` method of
-`Psr\Http\Server\MiddlewareInterface`:
+Para crear un middleware, tienes que implementar el único método `process`
+de `Psr\Http\Server\MiddlewareInterface`:
 
 ```php
 public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
 ```
 
-There are multiple ways to handle a request, and choosing one depends on
-what the middleware should achieve.
+Hay varias formas de gestionar una solicitud, y la elección depende de lo
+que deba conseguir el middleware.
 
-### Forming a response directly
+### Formar una respuesta directamente
 
-To respond directly, one needs a response factory passed via constructor:
+Para responder directamente, hace falta una factoría de respuestas que se
+pasa mediante el constructor:
 
 ```php
 <?php
@@ -157,10 +163,10 @@ final readonly class RespondingMiddleware implements MiddlewareInterface
 }
 ```
 
-### Delegating handling to the next middleware
+### Delegar la gestión en el siguiente middleware
 
-If middleware either isn't intended to form a response or change the request or can't do anything this time,
-handling could be left to the next middleware in the stack:  
+Si el middleware no está pensado para formar una respuesta ni para cambiar la solicitud, o si esta vez no puede hacer nada,
+la gestión puede dejarse al siguiente middleware de la pila:  
 
 ```php
 public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -169,27 +175,27 @@ public function process(ServerRequestInterface $request, RequestHandlerInterface
 }
 ```
 
-In case you need to pass data to the next middleware, you can use request
-attributes:
+Si necesitas pasar datos al siguiente middleware, puedes usar los atributos
+de la solicitud:
 
 ```php
 $request = $request->withAttribute('answer', 42);
 return $handler->handle($request);
 ``` 
 
-To get it in the next middleware:
+Para obtenerlos en el siguiente middleware:
 
 ```php
 $answer = $request->getAttribute('answer');
 ```
 
-### Capturing response to manipulate it
+### Capturar la respuesta para manipularla
 
-You may want to capture the response to manipulate it. It could be useful
-for adding CORS headers, gzipping content, etc.
+Puede que quieras capturar la respuesta para manipularla. Puede ser útil
+para añadir cabeceras CORS, comprimir el contenido con gzip, etc.
 
 ```php
 $response = $handler->handle($request);
-// extra handing
+// gestión adicional
 return $response;
 ```

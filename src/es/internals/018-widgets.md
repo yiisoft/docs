@@ -15,7 +15,7 @@ Inheritance is allowed with some restrictions:
 - If a class isn't abstract, it should be final.
 - Hierarchy should be kept as linear as possible.
 
-## Immutability
+## Inmutabilidad
 
 Widgets should:
 

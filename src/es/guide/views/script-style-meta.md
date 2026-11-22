@@ -5,7 +5,7 @@ code, and HTML meta tags.  Yii3 provides a comprehensive system for
 registering and organizing these resources through the `WebView` class,
 which is part of the `yiisoft/view` package.
 
-## Overview
+## Resumen
 
 The `WebView` class extends the basic `View` class with web-specific
 functionality, allowing you to:

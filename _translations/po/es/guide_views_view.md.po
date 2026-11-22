@@ -28,7 +28,7 @@ msgstr ""
 
 #. type: Title #
 #: ../src/guide/index.md ../src/guide/views/view.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Views"
 msgstr "Vistas"
 
@@ -43,6 +43,12 @@ msgid ""
 "\n"
 "<p>The message is: <?= Html::encode($message) ?></p>\n"
 msgstr ""
+"<?php\n"
+"use Yiisoft\\Html\\Html;\n"
+"/* @var string $message */\n"
+"?>\n"
+"\n"
+"<p>The message is: <?= Html::encode($message) ?></p>\n"
 
 #. type: Fenced code block (php)
 #: ../src/guide/start/hello.md ../src/guide/views/view.md
@@ -75,6 +81,32 @@ msgid ""
 "    }\n"
 "}\n"
 msgstr ""
+"<?php\n"
+"\n"
+"declare(strict_types=1);\n"
+"\n"
+"namespace App\\Web\\Echo;\n"
+"\n"
+"use Psr\\Http\\Message\\ResponseInterface;\n"
+"use Yiisoft\\Router\\HydratorAttribute\\RouteArgument;\n"
+"use Yiisoft\\Yii\\View\\Renderer\\WebViewRenderer;\n"
+"\n"
+"final readonly class Action\n"
+"{\n"
+"    public function __construct(\n"
+"        private WebViewRenderer $viewRenderer,\n"
+"    ) {}\n"
+"\n"
+"    public function __invoke(\n"
+"        #[RouteArgument('message')]\n"
+"        string $message = 'Hello!'\n"
+"    ): ResponseInterface\n"
+"    {\n"
+"        return $this->viewRenderer->render(__DIR__ . '/template', [\n"
+"            'message' => $message,\n"
+"        ]);\n"
+"    }\n"
+"}\n"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md ../src/guide/views/view.md

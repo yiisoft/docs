@@ -22,7 +22,7 @@ composer require yiisoft/yii-runner-rapira:@dev rapira/contract:@dev
 These stability flags allow the development versions used by the runner's
 installation instructions.
 
-## Configuration
+## Configuración
 
 The following example assumes an application based on `yiisoft/app` or
 `yiisoft/app-api`, with `App\Environment` and `src/bootstrap.php` provided

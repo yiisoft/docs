@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-10-11 10:37+0000\n"
+"POT-Creation-Date: 2026-10-23 18:03+0000\n"
 "PO-Revision-Date: 2026-10-11 10:37+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,16 +17,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: Bullet: '- '
-#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md
+#: ../src/cookbook/organizing-code/domain.md
+#: ../src/cookbook/organizing-code/service.md
 #, no-wrap
 msgid "Entity"
 msgstr ""
 
 #. type: Title ##
-#: ../src/cookbook/organizing-code/domain.md ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
+#: ../src/cookbook/organizing-code/domain.md
+#: ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Repository"
-msgstr ""
+msgstr "Repositorio"
 
 #. type: Title #
 #: ../src/cookbook/organizing-code/service.md

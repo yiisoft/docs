@@ -1,4 +1,4 @@
-# Security
+# Seguridad
 
 Good security is vital to the health and success of any
 application. Unfortunately, many developers cut corners when it comes to

@@ -1,64 +1,70 @@
-# Working with databases
+# Trabajar con bases de datos
 
-Yii doesn't dictate using a particular database or storage for your
-application.  There are many ways you can work with relational databases:
+Yii no impone el uso de una base de datos o un almacenamiento concretos para
+tu aplicación. Hay muchas formas de trabajar con bases de datos
+relacionales:
 
 - [Yii DB](https://github.com/yiisoft/db)
 - [Yii Active Record](https://github.com/yiisoft/active-record)
-- [Cycle](https://github.com/cycle) via [Yii Cycle
-  package](https://github.com/yiisoft/yii-cycle)
-- [Doctrine](https://www.doctrine-project.org/) via [Yii Doctrine
-  package](https://github.com/stargazer-team/yii-doctrine)
+- [Cycle](https://github.com/cycle) mediante el [paquete Yii
+  Cycle](https://github.com/yiisoft/yii-cycle)
+- [Doctrine](https://www.doctrine-project.org/) mediante el [paquete Yii
+  Doctrine](https://github.com/stargazer-team/yii-doctrine)
 - [PDO](https://www.php.net/manual/en/book.pdo.php)
 
-For non-relational ones, there are usually official libraries available:
+Para las no relacionales, normalmente hay bibliotecas oficiales disponibles:
 
 - [ElasticSearch](https://github.com/elastic/elasticsearch-php)
 - [Redis](https://redis.io/docs/latest/develop/clients/php/)
 - ...
 
-## Choosing a data access approach
+## Elegir un enfoque de acceso a datos
 
-Yii3 keeps database access in optional packages. A new application doesn't get a global `Yii::$app->db` component
-or a built-in Active Record layer automatically, so choose the package and boundary that fit your application.
+Yii3 mantiene el acceso a bases de datos en paquetes opcionales. Una aplicación nueva no obtiene automáticamente un componente global `Yii::$app->db`
+ni una capa de Active Record integrada, así que elige el paquete y la frontera que mejor se adapten a tu aplicación.
 
-If you used Yii 2.0 database access layer, `yiisoft/db` is the closest Yii3 equivalent. It provides database
-connections, commands, schema support, and a query builder. Instead of calling `Yii::$app->db`, configure a
-connection as a service and inject `ConnectionInterface` where the database is needed.
+Si usabas la capa de acceso a bases de datos de Yii 2.0, `yiisoft/db` es el equivalente más cercano en Yii3. Proporciona conexiones
+a bases de datos, comandos, soporte de esquemas y un constructor de consultas. En lugar de llamar a `Yii::$app->db`, configura una
+conexión como servicio e inyecta `ConnectionInterface` donde se necesite la base de datos.
 
-If you used Yii 2.0 Active Record, you can install
-`yiisoft/active-record`. It is useful when your model classes mostly
-describe tables and relations. For applications where Yii 2.0 Active Record
-classes also contain form validation, request scenarios, authorization
-checks, or business workflows, move those responsibilities to form models,
-services, and domain objects instead of putting them back into the record
-class.
+Si usabas Active Record de Yii 2.0, puedes instalar
+`yiisoft/active-record`. Es útil cuando tus clases de modelo se limitan
+sobre todo a describir tablas y relaciones. En las aplicaciones en las que
+las clases Active Record de Yii 2.0 también contienen validación de
+formularios, escenarios de solicitud, comprobaciones de autorización o
+flujos de negocio, traslada esas responsabilidades a modelos de formulario,
+servicios y objetos de dominio en lugar de volver a ponerlas en la clase del
+registro.
 
-For most application code, put a repository or query service between the
-action/service layer and storage:
+Para la mayor parte del código de la aplicación, pon un repositorio o un
+servicio de consulta entre la capa de acciones/servicios y el
+almacenamiento:
 
-- actions and application services depend on repository methods such as
-  `findOneBySlug()`, `findAll()`, `save()`, and `deleteBySlug()`;
-- the repository hides whether persistence is implemented with `yiisoft/db`,
-  Active Record, Cycle, Doctrine, or another storage;
-- the repository is the place to map raw database rows or records to typed
-  objects used by the rest of the code.
+- las acciones y los servicios de la aplicación dependen de métodos del
+  repositorio como `findOneBySlug()`, `findAll()`, `save()` y
+  `deleteBySlug()`;
+- el repositorio oculta si la persistencia se implementa con `yiisoft/db`,
+  Active Record, Cycle, Doctrine u otro almacenamiento;
+- el repositorio es el lugar donde se transforman las filas en bruto de la
+  base de datos o los registros en los objetos tipados que usa el resto del
+  código.
 
-Small CRUD applications can start with a concrete repository class. Larger
-applications usually benefit from a repository interface in the domain or
-module and an implementation in the infrastructure layer.
+Las aplicaciones CRUD pequeñas pueden empezar con una clase de repositorio
+concreta. Las aplicaciones más grandes suelen beneficiarse de una interfaz
+de repositorio en el dominio o en el módulo y una implementación en la capa
+de infraestructura.
 
-In this guide, we will focus on working with relational databases using Yii
-DB. We'll use PostgreSQL to implement a simple CRUD (create read update
-delete).
+En esta guía nos centraremos en trabajar con bases de datos relacionales
+mediante Yii DB. Usaremos PostgreSQL para implementar un CRUD sencillo
+(crear, leer, actualizar y eliminar).
 
-## Installing PostgreSQL
+## Instalar PostgreSQL
 
-You need to install PostgreSQL. If you prefer not to use Docker, [get the
-installer from official website](https://www.postgresql.org/download/),
-install it and create a database.
+Tienes que instalar PostgreSQL. Si prefieres no usar Docker, [descarga el
+instalador desde la web oficial](https://www.postgresql.org/download/),
+instálalo y crea una base de datos.
 
-If you use Docker, it is a bit simpler. Modify `docker/dev/compose.yml`:
+Si usas Docker, es algo más sencillo. Modifica `docker/dev/compose.yml`:
 
 ```yaml
 services:
@@ -104,13 +110,14 @@ services:
             retries: 5
 ```
 
-Note that we add `depends_on` so application waits for database to be up.
+Ten en cuenta que añadimos `depends_on` para que la aplicación espere a que
+la base de datos esté en marcha.
 
 > [!IMPORTANT]
-> Also, we'll need a `pdo_pgsql` extension to communicate with PostgreSQL. You can enable it locally in `php.ini`.
+> Además, necesitaremos la extensión `pdo_pgsql` para comunicarnos con PostgreSQL. En local, puedes habilitarla en `php.ini`.
 
-If you use Docker, check `docker/Dockerfile` and add `pdo_pgsql` in
-`install-php-extensions` list:
+Si usas Docker, revisa `docker/Dockerfile` y añade `pdo_pgsql` a la lista de
+`install-php-extensions`:
 
 ```dockerfile
 RUN install-php-extensions \
@@ -129,23 +136,23 @@ RUN install-php-extensions \
     pdo_pgsql
 ```
 
-Then rebuild PHP image with
+Después, vuelve a construir la imagen de PHP con
 
 ```sh
 make build && make down && make up
 ```
 
-## Configuring connection
+## Configurar la conexión
 
-Now that we have the database, it's time to define the connection.
+Ahora que tenemos la base de datos, es hora de definir la conexión.
 
-First we need a package to be installed:
+Primero tenemos que instalar un paquete:
 
 ```sh
 make composer require yiisoft/db-pgsql:2.*
 ```
 
-Now create `config/common/di/db-pgsql.php`:
+Ahora crea `config/common/di/db-pgsql.php`:
 
 ```php
 <?php
@@ -170,8 +177,7 @@ return [
 ];
 ```
 
-And define parameters in `config/common/params.php`. For Docker that would
-be:
+Y define los parámetros en `config/common/params.php`. Con Docker sería:
 
 ```php
 use Yiisoft\Db\Pgsql\Dsn;
@@ -186,17 +192,17 @@ return [
 ];
 ```
 
-`db` host is resolved automatically within the Docker network.
+El host `db` se resuelve automáticamente dentro de la red de Docker.
 
-For local installation without Docker the host in Dsn would be
-`localhost`. You'll have to adjust the rest to match how you configured the
-database.
+En una instalación local sin Docker, el host del DSN sería
+`localhost`. Tendrás que ajustar el resto según cómo hayas configurado la
+base de datos.
 
-### Multiple database connections
+### Varias conexiones a bases de datos
 
-When the application works with several databases, keep
-`ConnectionInterface` for the primary connection and add a class alias for
-each named connection:
+Cuando la aplicación trabaja con varias bases de datos, mantén
+`ConnectionInterface` para la conexión principal y añade un alias de clase
+para cada conexión con nombre:
 
 ```php
 <?php
@@ -239,10 +245,10 @@ return [
 ];
 ```
 
-The alias class names are used as service IDs and type hints. They don't
-need PHP files of their own.
+Los nombres de las clases alias se usan como identificadores de servicio y
+en las declaraciones de tipo. No necesitan archivos PHP propios.
 
-Define matching parameters:
+Define los parámetros correspondientes:
 
 ```php
 use Yiisoft\Db\Pgsql\Dsn;
@@ -264,9 +270,9 @@ return [
 ];
 ```
 
-Services that need the primary database can still depend on
-`ConnectionInterface`. Services that need another database should type-hint
-the corresponding alias:
+Los servicios que necesitan la base de datos principal pueden seguir
+dependiendo de `ConnectionInterface`. Los servicios que necesitan otra base
+de datos deben declarar como tipo el alias correspondiente:
 
 ```php
 <?php
@@ -285,21 +291,23 @@ final readonly class ReportRepository
 }
 ```
 
-## Creating and applying migrations
+## Crear y aplicar migraciones
 
-For the initial state of the application and for further database changes,
-it is a good idea to use migrations.  These are files that create database
-changes. Applied migrations are tracked in the database, allowing us to know
-the current state and which migrations remain to be applied.
+Para el estado inicial de la aplicación y para los cambios posteriores en la
+base de datos, conviene usar migraciones. Son archivos que aplican cambios a
+la base de datos. Las migraciones aplicadas se registran en la base de
+datos, lo que nos permite conocer el estado actual y saber qué migraciones
+quedan por aplicar.
 
-To use migrations we need another package installed:
+Para usar migraciones necesitamos instalar otro paquete:
 
 ```sh
 make composer require yiisoft/db-migration
 ```
 
-Create a directory to store migrations `src/Migration` right in the project
-root. Add the following configuration to `config/common/params.php`:
+Crea, a partir de la raíz del proyecto, un directorio `src/Migration` para
+guardar las migraciones. Añade la siguiente configuración a
+`config/common/params.php`:
 
 ```php
 'yiisoft/db-migration' => [
@@ -308,8 +316,9 @@ root. Add the following configuration to `config/common/params.php`:
 ],
 ```
 
-Now you can use `make yii migrate:create page` to create a new
-migration. For our example we need a `page` table with some columns:
+Ahora puedes usar `make yii migrate:create page` para crear una migración
+nueva. Para nuestro ejemplo necesitamos una tabla `page` con algunas
+columnas:
 
 ```php
 <?php
@@ -344,29 +353,31 @@ final class M251102141707Page implements RevertibleMigrationInterface
 }
 ```
 
-The `M251102141707Page` name of the migration class is generated so replace
-the `Page` suffix with the actual migration name. The `M251102141707` prefix
-is needed to find and sort migrations in the order they were added.
+El nombre `M251102141707Page` de la clase de migración se genera
+automáticamente, así que sustituye el sufijo `Page` por el nombre real de la
+migración. El prefijo `M251102141707` es necesario para encontrar las
+migraciones y ordenarlas según se añadieron.
 
-Note that we use UUID as the primary key. We are going to generate these IDs
-ourselves instead of relying on database so we'll need an extra compose
-package for that.
+Ten en cuenta que usamos UUID como clave primaria. Vamos a generar estos
+identificadores nosotros mismos en lugar de depender de la base de datos,
+así que necesitaremos un paquete de Composer adicional para ello.
 
 ```shell
 make composer require ramsey/uuid
 ```
 
-While the storage space is a bit bigger than using int, the workflow with
-such IDs is beneficial. Since you generate the ID yourself so you can define
-a set of related data and save it in a single transaction.  The entities
-that define this set of data in the code are often called an "aggregate".
+Aunque ocupa algo más de espacio que un int, trabajar con este tipo de
+identificadores tiene ventajas. Como generas tú mismo el identificador,
+puedes definir un conjunto de datos relacionados y guardarlo en una sola
+transacción. Las entidades que definen este conjunto de datos en el código
+suelen llamarse "agregado".
 
-Apply the migration with `make yii migrate:up`.
+Aplica la migración con `make yii migrate:up`.
 
-## An entity
+## Una entidad
 
-Now that you have a table it is time to define an entity in the code. Create
-`src/Web/Page/Page.php`:
+Ahora que tienes una tabla, es hora de definir una entidad en el
+código. Crea `src/Web/Page/Page.php`:
 
 ```php
 <?php
@@ -411,14 +422,14 @@ final readonly class Page
 }
 ```
 
-## Repository
+## Repositorio
 
-Now that we have an entity, we need a place for methods to save it, delete
-it, and select either a single page or multiple pages. This is the
-repository boundary described earlier: the rest of the application works
-with `Page` objects and doesn't need to know how they are stored.
+Ahora que tenemos una entidad, necesitamos un lugar para los métodos que la
+guardan, la eliminan y seleccionan una sola página o varias. Esta es la
+frontera del repositorio descrita antes: el resto de la aplicación trabaja
+con objetos `Page` y no necesita saber cómo se almacenan.
 
-Create `src/Web/Page/PageRepository.php`:
+Crea `src/Web/Page/PageRepository.php`:
 
 ```php
 <?php
@@ -513,28 +524,28 @@ final readonly class PageRepository
 }
 ```
 
-In this repository there are both methods to get data and `save()` to do
-insert or update. DB returns raw data as arrays but our repository
-automatically creates entities from this raw data so later we operate typed
-data.
+En este repositorio hay tanto métodos para obtener datos como `save()`, que
+inserta o actualiza. La base de datos devuelve los datos en bruto como
+arrays, pero nuestro repositorio crea automáticamente entidades a partir de
+ellos, de modo que después trabajamos con datos tipados.
 
-## Actions and routes
+## Acciones y rutas
 
-We need some actions to:
+Necesitamos algunas acciones para:
 
-1. List all pages.
-2. View a page.
-3. Delete a page.
-4. Create a page.
-5. Update a page.
+1. Listar todas las páginas.
+2. Ver una página.
+3. Eliminar una página.
+4. Crear una página.
+5. Actualizar una página.
 
-Then we need routing for all these.
+Después necesitamos el enrutamiento para todas ellas.
 
-Let's tackle these one by one.
+Vamos a abordarlas una a una.
 
-### List all pages
+### Listar todas las páginas
 
-Create `src/Web/Page/ListAction.php`:
+Crea `src/Web/Page/ListAction.php`:
 
 ```php
 <?php
@@ -564,7 +575,7 @@ final readonly class ListAction
 }
 ```
 
-Define list view in `src/Web/Page/list.php`:
+Define la vista de lista en `src/Web/Page/list.php`:
 
 ```php
 <?php
@@ -587,9 +598,9 @@ use Yiisoft\Router\UrlGeneratorInterface;
 <?= Html::a('Create', $urlGenerator->generate('page/edit', ['slug' => 'new'])) ?>
 ```
 
-### View a page
+### Ver una página
 
-Create `src/Web/Page/ViewAction.php`:
+Crea `src/Web/Page/ViewAction.php`:
 
 ```php
 <?php
@@ -628,7 +639,7 @@ final readonly class ViewAction
 }
 ```
 
-Now, a template in `src/Web/Page/view.php`:
+Ahora, una plantilla en `src/Web/Page/view.php`:
 
 ```php
 <?php
@@ -661,16 +672,17 @@ use Yiisoft\Yii\View\Renderer\Csrf;
 <?= $deleteForm->close() ?>
 ```
 
-In this view we have a form that submits a request for page
-deletion. Handing it with `GET` is common as well, but it is very
-wrong. Since deletion changes data, it needs to be handled by one of the
-non-idempotent HTTP methods.  We use POST and a form in our example, but it
-could be `DELETE` and async request made with JavaScript.  The button could
-be later styled properly to look similar to the "Edit".
+En esta vista tenemos un formulario que envía una solicitud para eliminar la
+página. Gestionarlo con `GET` también es habitual, pero es un grave
+error. Como la eliminación modifica datos, debe gestionarse con uno de los
+métodos HTTP no idempotentes. En nuestro ejemplo usamos POST y un
+formulario, pero podría ser `DELETE` y una solicitud asíncrona hecha con
+JavaScript. Más adelante se le puede dar estilo al botón para que se parezca
+a "Edit".
 
-### Delete a page
+### Eliminar una página
 
-Create `src/Web/Page/DeleteAction.php`:
+Crea `src/Web/Page/DeleteAction.php`:
 
 ```php
 <?php
@@ -707,9 +719,9 @@ final readonly class DeleteAction
 }
 ```
 
-### Create or update a page
+### Crear o actualizar una página
 
-First of all, we need a form at `src/Web/Page/Form.php`:
+En primer lugar, necesitamos un formulario en `src/Web/Page/Form.php`:
 
 ```php
 <?php
@@ -734,7 +746,7 @@ final class Form extends FormModel
 }
 ```
 
-Then an action. Create `src/Web/Page/EditAction.php`:
+Después, una acción. Crea `src/Web/Page/EditAction.php`:
 
 ```php
 <?php
@@ -815,15 +827,16 @@ final readonly class EditAction
 }
 ```
 
-Note that `Uuid::uuid7()->toString()` won't work for MySQL and you'll need bytes instead, `Uuid::uuid7()->getBytes()`.
+Ten en cuenta que `Uuid::uuid7()->toString()` no funcionará con MySQL; en ese caso necesitarás los bytes, `Uuid::uuid7()->getBytes()`.
 
-In the above we use a special slug in the URL for new pages so the URL looks
-like `http://localhost/pages/new`. If the page isn't new, we pre-fill the
-form with the data from the database. Similar to how we did in [Working with
-forms](forms.md), we handle the form submission. After successful save we
-redirect to the page view.
+En el código anterior usamos un slug especial en la URL para las páginas
+nuevas, de modo que la URL queda como `http://localhost/pages/new`. Si la
+página no es nueva, rellenamos previamente el formulario con los datos de la
+base de datos. Igual que hicimos en [Trabajar con formularios](forms.md),
+gestionamos el envío del formulario. Tras guardar correctamente, redirigimos
+a la vista de la página.
 
-Now, a template in `src/Web/Page/edit.php`:
+Ahora, una plantilla en `src/Web/Page/edit.php`:
 
 ```php
 <?php
@@ -854,9 +867,9 @@ $htmlForm = Html::form()
 <?= $htmlForm->close() ?>
 ```
 
-### Routing
+### Enrutamiento
 
-Adjust `config/common/routes.php`:
+Ajusta `config/common/routes.php`:
 
 ```php
 <?php
@@ -896,10 +909,11 @@ return [
 ];
 ```
 
-Note that we've grouped all page-related routes with a group under `/pages`
-prefix. That is a convenient way to both not to repeat yourself and add some
-extra middleware, such as authentication, to the whole group.
+Ten en cuenta que hemos agrupado todas las rutas relacionadas con las
+páginas en un grupo con el prefijo `/pages`. Es una forma práctica tanto de
+no repetirse como de añadir middlewares adicionales, como la autenticación,
+a todo el grupo.
 
-## Trying it out
+## Probarlo
 
-Now try it out by opening `http://localhost/pages` in your browser.
+Ahora pruébalo abriendo `http://localhost/pages` en tu navegador.

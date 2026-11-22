@@ -142,7 +142,7 @@ msgstr ""
 #: ../src/cookbook/organizing-code/service.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "Repository"
-msgstr ""
+msgstr "Repositorio"
 
 #. type: Plain text
 #: ../src/cookbook/organizing-code/domain.md

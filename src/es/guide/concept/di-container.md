@@ -1,10 +1,11 @@
-# Dependency injection and container
+# Inyección de dependencias y contenedor
 
-## Dependency injection
+## Inyección de dependencias
 
-There are two ways of re-using things in OOP: inheritance and composition.
+Hay dos formas de reutilizar código en la programación orientada a objetos:
+la herencia y la composición.
 
-Inheritance is simple:
+La herencia es sencilla:
 
 ```php
 class Cache
@@ -28,10 +29,10 @@ final readonly class CachedWidget extends Cache
 }
 ```
 
-The issue here is that these two are becoming unnecessarily coupled or
-inter-dependent, making them more fragile.
+El problema es que estas dos clases quedan acopladas o son interdependientes
+sin necesidad, lo que las hace más frágiles.
 
-Another way to handle this is composition:
+Otra forma de resolverlo es la composición:
 
 ```php
 interface CacheInterface
@@ -66,86 +67,95 @@ final readonly class CachedWidget
 }
 ```
 
-We've avoided unnecessary inheritance and used `CacheInterface` in the
-`CacheWidget` to reduce coupling.  You can replace cache implementation
-without changing `CachedWidget` so it's becoming more stable. The less edits
-are made to the code, the less chance of breaking it.
+Hemos evitado una herencia innecesaria y hemos usado `CacheInterface` en
+`CacheWidget` para reducir el acoplamiento. Puedes sustituir la
+implementación de la caché sin cambiar `CachedWidget`, por lo que la clase
+se vuelve más estable. Cuantas menos modificaciones se hacen en el código,
+menos probabilidades hay de romperlo.
 
-The `CacheInterface` here is a dependency: a contract our object needs to
-function. In other words, our object depends on the contract.
+Aquí, `CacheInterface` es una dependencia: un contrato que nuestro objeto
+necesita para funcionar. Dicho de otro modo, nuestro objeto depende del
+contrato.
 
-The process of putting an instance of a contract into an object
-(`CachedWidget`) is called dependency injection.  There are many ways to
-perform it:
+El proceso de introducir una instancia de un contrato en un objeto
+(`CachedWidget`) se llama inyección de dependencias. Hay muchas formas de
+hacerlo:
 
-- Constructor injection. Best for mandatory dependencies.
-- Method injection. Best for optional dependencies.
-- Property injection. Better to be avoided in PHP except maybe data transfer
-  objects.
+- Inyección por constructor. Es la mejor opción para las dependencias
+  obligatorias.
+- Inyección por método. Es la mejor opción para las dependencias opcionales.
+- Inyección por propiedad. En PHP es mejor evitarla, salvo quizá en los
+  objetos de transferencia de datos (DTO).
 
-### Why use private properties
+### Por qué usar propiedades privadas
 
-In the composition example above, note that the `$cache` property is
-declared as `private`.
+En el ejemplo de composición anterior, fíjate en que la propiedad `$cache`
+se declara como `private`.
 
-This approach embraces composition by ensuring objects have well-defined
-interfaces for interaction rather than direct property access, making the
-code more maintainable and less prone to certain types of mistakes.
+Este enfoque favorece la composición, ya que garantiza que los objetos
+tengan interfaces bien definidas para interactuar en lugar de permitir el
+acceso directo a sus propiedades, lo que hace que el código sea más fácil de
+mantener y menos propenso a ciertos tipos de errores.
 
-This design choice provides several benefits:
+Esta decisión de diseño ofrece varias ventajas:
 
-- **Encapsulation**: Private properties with getters/setters allow you to
-  control access and make future changes without breaking existing code.
-- **Data integrity**: Setters can validate, normalize, or format values
-  before storing them, ensuring properties contain valid data.
-- **Immutability**: Private properties enable immutable object patterns
-  where setter `with*()` methods return new instances rather than modifying
-  the current one.
-- **Flexibility**: You can create read-only or write-only properties or add
-  additional logic to property access later.
+- **Encapsulación**: las propiedades privadas con getters/setters te
+  permiten controlar el acceso y hacer cambios en el futuro sin romper el
+  código existente.
+- **Integridad de los datos**: los setters pueden validar, normalizar o
+  formatear los valores antes de guardarlos, lo que garantiza que las
+  propiedades contengan datos válidos.
+- **Inmutabilidad**: las propiedades privadas permiten patrones de objetos
+  inmutables en los que los métodos setter `with*()` devuelven nuevas
+  instancias en lugar de modificar la actual.
+- **Flexibilidad**: puedes crear propiedades de solo lectura o de solo
+  escritura, o añadir más adelante lógica adicional al acceso a las
+  propiedades.
 
 
-## DI container
+## Contenedor DI
 
-Injecting basic dependencies is straightforward. You're choosing a place
-where you don't care about dependencies, which is usually an action handler,
-which you aren't going to unit-test ever, create instances of dependencies
-needed and pass these to dependent classes.
+Inyectar dependencias básicas es sencillo. Eliges un lugar en el que no te
+preocupen las dependencias, que suele ser un manejador de acción al que
+nunca vas a hacer pruebas unitarias, creas las instancias de las
+dependencias necesarias y se las pasas a las clases dependientes.
 
-It works well when there are few dependencies overall and when there are no
-nested dependencies. When there are many and each dependency has
-dependencies itself, instantiating the whole hierarchy becomes a tedious
-process, which requires lots of code and may lead to hardly debuggable
-mistakes.
+Funciona bien cuando hay pocas dependencias en total y no hay dependencias
+anidadas. Cuando hay muchas y cada dependencia tiene a su vez sus propias
+dependencias, instanciar toda la jerarquía se convierte en un proceso
+tedioso, que requiere mucho código y puede provocar errores difíciles de
+depurar.
 
-Additionally, lots of dependencies, such as certain third-party API
-wrappers, are the same for any class using it.  So it makes sense to:
+Además, muchas dependencias, como ciertos envoltorios (wrappers) de API de
+terceros, son las mismas para cualquier clase que las use. Por eso tiene
+sentido:
 
-- Define how to instantiate such common dependencies.
-- Instantiate them when required and only once per request.
+- Definir cómo instanciar esas dependencias comunes.
+- Instanciarlas cuando se necesiten y solo una vez por solicitud.
 
-That's what dependency containers are for.
+Para eso sirven los contenedores de dependencias.
 
-A dependency injection (DI) container is an object that knows how to
-instantiate and configure objects and all objects they depend on.
+Un contenedor de inyección de dependencias (DI) es un objeto que sabe cómo
+instanciar y configurar objetos y todos los objetos de los que estos
+dependen.
 
-Yii provides the DI container feature through the
-[yiisoft/di](https://github.com/yiisoft/di) package and
-[yiisoft/injector](https://github.com/yiisoft/injector) package.
+Yii ofrece la funcionalidad de contenedor DI mediante los paquetes
+[yiisoft/di](https://github.com/yiisoft/di) y
+[yiisoft/injector](https://github.com/yiisoft/injector).
 
 > [!NOTE]
-> The container contains only shared instances. If you need a factory, use the dedicated
-> [yiisoft/factory](https://github.com/yiisoft/factory) package.
+> El contenedor solo contiene instancias compartidas. Si necesitas una factoría, usa el paquete específico
+> [yiisoft/factory](https://github.com/yiisoft/factory).
 
 > [!TIP]
-> [Martin Fowler's article](https://martinfowler.com/articles/injection.html) has well
-> explained why DI container is useful. Here we will mainly explain the usage of the DI container provided by Yii.
+> El [artículo de Martin Fowler](https://martinfowler.com/articles/injection.html) explica muy bien
+> por qué es útil un contenedor DI. Aquí explicaremos principalmente cómo usar el contenedor DI que proporciona Yii.
 
-### Configuring container
+### Configurar el contenedor
 
-Because to create a new object you need its dependencies, you should
-register them as early as possible.  You can do it in the application
-configuration, `config/web.php`. For the following service:
+Como para crear un objeto nuevo necesitas sus dependencias, conviene
+registrarlas lo antes posible. Puedes hacerlo en la configuración de la
+aplicación, `config/web.php`. Para el siguiente servicio:
 
 ```php
 final class MyService implements MyServiceInterface
@@ -161,7 +171,7 @@ final class MyService implements MyServiceInterface
 }
 ```
 
-configuration could be:
+la configuración podría ser:
 
 ```php
 return [
@@ -173,14 +183,14 @@ return [
 ];
 ```
 
-That's equal to the following:
+Esto equivale a lo siguiente:
 
 ```php
 $myService = new MyService(42);
 $myService->setDiscount(10);
 ```
 
-You can provide arguments with names as well:
+También puedes pasar los argumentos con nombre:
 
 ```php
 return [
@@ -192,10 +202,10 @@ return [
 ];
 ```
 
-That's basically it. You define a map of interfaces to classes and define
-how to configure them. When an interface is requested in constructor or
-elsewhere, container creates an instance of a class and configures it as per
-the configuration:
+Básicamente, eso es todo. Defines un mapa de interfaces a clases e indicas
+cómo configurarlas. Cuando se solicita una interfaz en un constructor o en
+otro lugar, el contenedor crea una instancia de la clase y la configura
+según lo indicado en la configuración:
 
 ```php
 final class MyAction
@@ -212,11 +222,11 @@ final class MyAction
 }
 ```
 
-There are extra methods of declaring dependency configuration.
+Hay otras formas de declarar la configuración de las dependencias.
 
-For simplest cases where there are no custom values needed and all the
-constructor dependencies could be obtained from a container, you can use a
-class name as a value.
+En los casos más sencillos, en los que no se necesitan valores
+personalizados y todas las dependencias del constructor pueden obtenerse del
+contenedor, puedes usar un nombre de clase como valor.
 
 ```php
 interface EngineInterface
@@ -231,18 +241,18 @@ final class EngineMarkOne implements EngineInterface
 }
 ```
 
-In the above example, if we already have cache defined in the container,
-nothing besides the class name is needed:
+En el ejemplo anterior, si ya tenemos la caché definida en el contenedor, no
+hace falta nada más que el nombre de la clase:
 
 ```php
 return [
-    // declare a class for an interface, resolve dependencies automatically
+    // declara una clase para una interfaz y resuelve las dependencias automáticamente
     EngineInterface::class => EngineMarkOne::class,
 ];
 ```
 
-If you have a dependency that has public properties, you can configure it as
-well.
+Si tienes una dependencia con propiedades públicas, también puedes
+configurarlas.
 
 
 ```php
@@ -252,7 +262,7 @@ final class NameProvider
 }
 ```
 
-Here's how to do it for the example above:
+Así se hace para el ejemplo anterior:
 
 ```php
 NameProvider::class => [
@@ -261,11 +271,12 @@ NameProvider::class => [
 ],
 ```
 
-In this example, you may notice `NameProvider` specified twice. The key is
-what you may request as dependency and the value is how to create it.
+En este ejemplo, quizá notes que `NameProvider` se especifica dos veces. La
+clave es lo que puedes solicitar como dependencia y el valor es cómo
+crearla.
 
-If the configuration is tricky and requires some logic, a closure can be
-used:
+Si la configuración es complicada y requiere cierta lógica, puedes usar un
+closure:
 
 ```php
 MyServiceInterface::class => static function(ContainerInterface $container) {
@@ -273,9 +284,9 @@ MyServiceInterface::class => static function(ContainerInterface $container) {
 },
 ```
 
-Additionally, to `ContainerInterface`, you can request any registered
-service directly as a closure parameter.  The injector will automatically
-resolve and inject these:
+Además de `ContainerInterface`, puedes solicitar directamente cualquier
+servicio registrado como parámetro del closure. El inyector los resolverá e
+inyectará automáticamente:
 
 ```php
 MyServiceInterface::class => static function(ConnectionInterface $db) {
@@ -283,27 +294,29 @@ MyServiceInterface::class => static function(ConnectionInterface $db) {
 },
 ```
 
-It's possible to use a static method call:
+Se puede usar una llamada a un método estático:
 
 ```php
 MyServiceInterface::class => [MyFactory::class, 'create'],
 ```
 
-Or an instance of an object:
+O una instancia de un objeto:
 
 ```php
 MyServiceInterface::class => new MyService(),
 ```
 
-### Injecting dependencies properly
+### Inyectar dependencias correctamente
 
-Directly referencing a container in a class is a bad idea since the code
-becomes non-generic, coupled to the container interface and, what's worse,
-dependencies are becoming hidden.  Because of that, Yii inverts the control
-by automatically injecting objects from a container in some constructors and
-methods based on method argument types.
+Hacer referencia directamente a un contenedor dentro de una clase es una
+mala idea, ya que el código deja de ser genérico, queda acoplado a la
+interfaz del contenedor y, lo que es peor, las dependencias quedan
+ocultas. Por eso, Yii invierte el control inyectando automáticamente objetos
+desde un contenedor en algunos constructores y métodos según los tipos de
+sus argumentos.
 
-This is primarily done in constructor and handing method of action handlers:
+Esto se hace principalmente en el constructor y en el método que procesa la
+acción de los manejadores de acción:
 
 ```php
 use \Yiisoft\Cache\CacheInterface;
@@ -330,17 +343,17 @@ final readonly class MyController
 }
 ```
 
-Since it's [yiisoft/injector](https://github.com/yiisoft/injector) that
-instantiates and calls action handler, it checks the constructor and method
-argument types, gets dependencies of these types from a container and passes
-them as arguments. That's usually called auto-wiring. It happens for
-sub-dependencies as well, that's if you don't give dependency explicitly,
-the container would check if it has such a dependency first.  It's enough to
-declare a dependency you need, and it would be got from a container
-automatically.
+Como es [yiisoft/injector](https://github.com/yiisoft/injector) quien
+instancia y llama al manejador de acción, comprueba los tipos de los
+argumentos del constructor y del método, obtiene del contenedor las
+dependencias de esos tipos y las pasa como argumentos. Esto suele llamarse
+autowiring (conexión automática). También ocurre con las subdependencias: si
+no proporcionas una dependencia explícitamente, el contenedor comprueba
+primero si tiene esa dependencia. Basta con declarar la dependencia que
+necesitas para que se obtenga automáticamente del contenedor.
 
 
 ## Referencias
 
-- [Inversion of Control Containers and the Dependency Injection pattern by
+- [Inversion of Control Containers and the Dependency Injection pattern, de
   Martin Fowler](https://martinfowler.com/articles/injection.html)

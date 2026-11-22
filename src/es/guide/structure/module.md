@@ -1,18 +1,19 @@
-# Modules
+# Módulos
 
-A module is an application part grouped around a business context or a
-reusable feature. In Yii, this is a design boundary, not a required base
-class. A module can be:
+Un módulo es una parte de la aplicación agrupada en torno a un contexto de
+negocio o a una funcionalidad reutilizable. En Yii es una frontera de
+diseño, no una clase base obligatoria. Un módulo puede ser:
 
-- application code under the `App\` namespace;
-- a [Composer package](package.md) installed into `vendor/`;
-- code that starts in the application and is later extracted into a package.
+- código de la aplicación dentro del espacio de nombres `App\`;
+- un [paquete de Composer](package.md) instalado en `vendor/`;
+- código que empieza en la aplicación y más adelante se extrae a un paquete.
 
-Use a module when a group of actions, domain services, repositories, event
-handlers, views, assets, commands, and related configuration changes
-together and has a name that makes sense to the business.
+Usa un módulo cuando un grupo de acciones, servicios de dominio,
+repositorios, manejadores de eventos, vistas, assets, comandos y
+configuración relacionada cambia a la vez y tiene un nombre con sentido para
+el negocio.
 
-For example, a blog module can live in an application as:
+Por ejemplo, un módulo de blog puede vivir en una aplicación así:
 
 ```
 src/
@@ -26,51 +27,56 @@ src/
             index.php
 ```
 
-The same structure can later become a Composer package by changing the
-namespace and adding package metadata and configuration files. See
-[Designing packages](designing-packages.md) for package-specific details.
+Más adelante, la misma estructura puede convertirse en un paquete de
+Composer cambiando el espacio de nombres y añadiendo los metadatos y los
+archivos de configuración del paquete. Consulta [Diseñar paquetes para
+aplicaciones Yii](designing-packages.md) para los detalles específicos de
+los paquetes.
 
-## Module boundaries
+## Fronteras de los módulos
 
-Keep module code together by context first and by technical type
-second. This is close to the [vertical
-slices](../../cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md)
-approach, but at a larger application-structure boundary. Prefer
-`App\Blog\Post\PostRepositoryInterface` over a global
-`App\Repository\PostRepositoryInterface` when the repository belongs to blog
-posts only.
+Agrupa el código de un módulo primero por contexto y después por tipo
+técnico. Esto se parece al enfoque de [porciones
+verticales](../../cookbook/organizing-code/structuring-by-use-case-with-vertical-slices.md),
+pero a la escala más amplia de la estructura de la aplicación. Es preferible
+`App\Blog\Post\PostRepositoryInterface` a un
+`App\Repository\PostRepositoryInterface` global cuando el repositorio solo
+pertenece a las publicaciones del blog.
 
-Treat module classes as a public API only when another module is expected to
-use them. Good public API classes are usually:
+Trata las clases de un módulo como API pública solo cuando se espere que
+otro módulo las use. Las buenas clases de API pública suelen ser:
 
-- commands or queries that express a use case;
-- DTOs or value objects passed between modules;
-- interfaces for services another module may call;
-- events emitted by the module.
+- comandos o consultas que expresan un caso de uso;
+- DTO u objetos de valor que se pasan entre módulos;
+- interfaces para servicios a los que otro módulo puede llamar;
+- eventos emitidos por el módulo.
 
-Keep implementation classes private to the module namespace. Other modules
-should not depend on `App\Blog\Post\InMemoryPostRepository` or a controller
-action directly. They should depend on an interface, a use case class, or an
-event.
+Mantén las clases de implementación privadas dentro del espacio de nombres
+del módulo. Otros módulos no deben depender directamente de
+`App\Blog\Post\InMemoryPostRepository` ni de una acción de
+controlador. Deben depender de una interfaz, de una clase de caso de uso o
+de un evento.
 
-## Interfaces between modules
+## Interfaces entre módulos
 
-Put an interface where the contract belongs:
+Pon cada interfaz donde corresponda el contrato:
 
-- If the interface describes a capability provided by a module, place it in
-  that module. For example, `App\Blog\Post\PostRepositoryInterface` belongs
-  to the blog module because it describes how blog posts are read.
-- If the interface describes what a module needs from the outside world,
-  place it in the consuming module. For example,
-  `App\Order\Customer\CustomerVerifierInterface` belongs to the order module
-  if orders only need a yes-or-no customer check. The customer module, an
-  application adapter, or a package can provide the implementation.
+- Si la interfaz describe una capacidad que proporciona un módulo, colócala
+  en ese módulo. Por ejemplo, `App\Blog\Post\PostRepositoryInterface`
+  pertenece al módulo de blog porque describe cómo se leen las publicaciones
+  del blog.
+- Si la interfaz describe lo que un módulo necesita del mundo exterior,
+  colócala en el módulo que la consume. Por ejemplo,
+  `App\Order\Customer\CustomerVerifierInterface` pertenece al módulo de
+  pedidos si los pedidos solo necesitan una comprobación de sí o no sobre el
+  cliente. El módulo de clientes, un adaptador de la aplicación o un paquete
+  pueden proporcionar la implementación.
 
-This keeps dependencies explicit. A module can depend on another module's
-public contract, but it should not reach into another module's internal
-implementation classes.
+Así las dependencias quedan explícitas. Un módulo puede depender del
+contrato público de otro módulo, pero no debe acceder a las clases de
+implementación internas de otro módulo.
 
-First, define the interface in the module:
+Primero, define la interfaz en el módulo:
 
 ```php
 <?php
@@ -88,7 +94,7 @@ interface PostRepositoryInterface
 }
 ```
 
-Put the implementation in the same module and bind the interface to it:
+Pon la implementación en el mismo módulo y asocia la interfaz a ella:
 
 ```php
 <?php
@@ -103,15 +109,16 @@ return [
 ];
 ```
 
-In the default application template, put this file under
-`config/common/di/`, for example `config/common/di/blog.php`. The template
-loads `config/common/di/*.php` into the shared `di` configuration group, so
-the binding is available to web and console entry points.
+En la plantilla de aplicación predeterminada, pon este archivo en
+`config/common/di/`, por ejemplo `config/common/di/blog.php`. La plantilla
+carga `config/common/di/*.php` en el grupo de configuración compartido `di`,
+así que la asociación está disponible para los puntos de entrada web y de
+consola.
 
-## Web actions
+## Acciones web
 
-Actions belong to the module when they are the web entry point for module
-behavior:
+Las acciones pertenecen al módulo cuando son el punto de entrada web del
+comportamiento del módulo:
 
 ```php
 <?php
@@ -141,12 +148,13 @@ final readonly class IndexAction
 }
 ```
 
-Keep request parsing and response creation in the action. Keep business
-decisions in the module's domain classes or use case services.
+Mantén en la acción el análisis de la solicitud y la creación de la
+respuesta. Mantén las decisiones de negocio en las clases de dominio del
+módulo o en los servicios de casos de uso.
 
-## Routes
+## Rutas
 
-For a small application, add module routes directly to
+En una aplicación pequeña, añade las rutas del módulo directamente a
 `config/common/routes.php`:
 
 ```php
@@ -176,10 +184,12 @@ return [
 ];
 ```
 
-Use module-prefixed route names, such as `blog/index`, to avoid collisions.
+Usa nombres de rutas con el prefijo del módulo, como `blog/index`, para
+evitar colisiones.
 
-If the application has many modules, you can give each module its own route
-config file. Change the `routes` group in `config/configuration.php`:
+Si la aplicación tiene muchos módulos, puedes dar a cada módulo su propio
+archivo de configuración de rutas. Cambia el grupo `routes` en
+`config/configuration.php`:
 
 ```php
 'routes' => [
@@ -188,7 +198,7 @@ config file. Change the `routes` group in `config/configuration.php`:
 ],
 ```
 
-Then create `config/common/routes/blog.php`:
+Después, crea `config/common/routes/blog.php`:
 
 ```php
 <?php
@@ -209,24 +219,26 @@ return [
 ];
 ```
 
-After changing `config/configuration.php` or adding files matched by a
-config wildcard, rebuild the merge plan:
+Después de cambiar `config/configuration.php` o de añadir archivos que
+coincidan con un comodín de configuración, vuelve a generar el plan de
+fusión:
 
 ```sh
 composer yii-config-rebuild
 ```
 
-## Module configuration
+## Configuración de los módulos
 
-Application modules use the same configuration groups as packages. The
-difference is where the configuration lives:
+Los módulos de la aplicación usan los mismos grupos de configuración que los
+paquetes. La diferencia está en dónde reside la configuración:
 
-- application module configuration lives in the root application under
-  `config/`;
-- package module configuration lives in the package and is declared in
-  `extra.config-plugin`.
+- la configuración de los módulos de la aplicación reside en la aplicación
+  raíz, dentro de `config/`;
+- la configuración de los módulos distribuidos como paquetes reside en el
+  paquete y se declara en `extra.config-plugin`.
 
-Common locations for application module configuration are:
+Las ubicaciones habituales de la configuración de los módulos de la
+aplicación son:
 
 ```
 config/
@@ -242,13 +254,14 @@ config/
         params.php
 ```
 
-Put shared service definitions in `common/di/`. Put web-only definitions in
-`web/di/`. Put console-only parameters or command registrations in
-`console/params.php`.
+Pon las definiciones de servicios compartidas en `common/di/`. Pon las
+definiciones exclusivas de la web en `web/di/`. Pon los parámetros o
+registros de comandos exclusivos de la consola en `console/params.php`.
 
-When a module grows enough to become reusable, move its PHP classes to a
-Composer package, move its configuration files to the package `config/`
-directory, and declare them in the package `composer.json`:
+Cuando un módulo crezca lo suficiente como para ser reutilizable, traslada
+sus clases PHP a un paquete de Composer, mueve sus archivos de configuración
+al directorio `config/` del paquete y decláralos en el `composer.json` del
+paquete:
 
 ```json
 {
@@ -261,20 +274,24 @@ directory, and declare them in the package `composer.json`:
 }
 ```
 
-The application can then override package defaults in its own config files.
+Así, la aplicación puede sobrescribir los valores predeterminados del
+paquete en sus propios archivos de configuración.
 
-## Cross-module communication
+## Comunicación entre módulos
 
-Choose the smallest coupling that supports the behavior:
+Elige el acoplamiento más pequeño que permita el comportamiento:
 
-- Use constructor injection with an interface for a direct synchronous call.
-- Use an event when the producer should not know who reacts to something
-  that happened.
-- Use an application service or use case class when orchestration belongs
-  outside both modules.
-- Use a package when the module must be reused by more than one application.
+- Usa la inyección por constructor con una interfaz para una llamada
+  síncrona directa.
+- Usa un evento cuando el productor no deba saber quién reacciona a algo que
+  ha ocurrido.
+- Usa un servicio de la aplicación o una clase de caso de uso cuando la
+  orquestación no pertenezca a ninguno de los dos módulos.
+- Usa un paquete cuando el módulo deba reutilizarse en más de una
+  aplicación.
 
-Avoid service locator calls and global state inside module classes. Let
-actions, commands, and services receive their dependencies through
-constructors so module boundaries stay visible in code and testable in
-isolation.
+Evita las llamadas al localizador de servicios y el estado global dentro de
+las clases de los módulos. Deja que las acciones, los comandos y los
+servicios reciban sus dependencias a través de los constructores, para que
+las fronteras de los módulos sigan siendo visibles en el código y se puedan
+probar de forma aislada.

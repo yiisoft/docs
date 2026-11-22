@@ -1,28 +1,30 @@
 # Eventos
 
-Events allow you to run custom code at certain execution points without
-changing the code that emits the event.  You attach a custom code called a
-listener to an event. When the event is dispatched, the listener is
-executed.
+Los eventos te permiten ejecutar código personalizado en determinados puntos
+de la ejecución sin cambiar el código que emite el evento. A un evento se le
+asocia un código personalizado llamado listener. Cuando se despacha el
+evento, se ejecuta el listener.
 
-For example, when a user signs up, you need to send a welcome email. You can
-do it in `SignupService`.  Later, when you also need to resize the user's
-avatar image, the service has to know about that too.
+Por ejemplo, cuando un usuario se registra, tienes que enviarle un correo de
+bienvenida. Puedes hacerlo en `SignupService`. Más adelante, cuando también
+necesites redimensionar la imagen del avatar del usuario, el servicio tendrá
+que saber eso también.
 
-A cleaner flow is to dispatch a `UserSignedUp` event from
-`SignupService`. The welcome email sender and the avatar processor listen to
-this event. Additional signup-related work can be added by registering
-another listener.
+Un flujo más limpio consiste en despachar un evento `UserSignedUp` desde
+`SignupService`. El remitente del correo de bienvenida y el procesador de
+avatares escuchan este evento. Para añadir más tareas relacionadas con el
+registro, basta con registrar otro listener.
 
-Yii uses [yiisoft/yii-event](https://github.com/yiisoft/yii-event) for
-application event configuration. It builds on the
-[yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher)
-package, which provides a [PSR-14](https://www.php-fig.org/psr/psr-14/)
-compatible event dispatcher.
+Yii usa [yiisoft/yii-event](https://github.com/yiisoft/yii-event) para
+configurar los eventos de la aplicación. Se basa en el paquete
+[yiisoft/event-dispatcher](https://github.com/yiisoft/event-dispatcher), que
+proporciona un despachador de eventos compatible con
+[PSR-14](https://www.php-fig.org/psr/psr-14/).
 
-## Event classes
+## Clases de eventos
 
-An event is an object. It usually contains data that listeners need:
+Un evento es un objeto. Normalmente contiene los datos que necesitan los
+listeners:
 
 ```php
 final readonly class UserSignedUp
@@ -33,40 +35,40 @@ final readonly class UserSignedUp
 }
 ```
 
-## Event listeners
+## Listeners de eventos
 
-An event listener is a [PHP
-callable](https://www.php.net/manual/en/language.types.callable.php) that
-receives an event:
+Un listener de eventos es un [callable de
+PHP](https://www.php.net/manual/en/language.types.callable.php) que recibe
+un evento:
 
 ```php
 static function (UserSignedUp $event): void {
-    // Send a welcome email.
+    // Enviar un correo de bienvenida.
 }
 ```
 
-You can also use an invokable class:
+También puedes usar una clase invocable:
 
 ```php
 final readonly class WelcomeEmailSender
 {
     public function __invoke(UserSignedUp $event): void
     {
-        // Send a welcome email.
+        // Enviar un correo de bienvenida.
     }
 }
 ```
 
-## Configuring event listeners
+## Configurar los listeners de eventos
 
-In an application, configure listeners in:
+En una aplicación, los listeners se configuran en:
 
-- `config/events.php` for all application types.
-- `config/events-web.php` for web application events.
-- `config/events-console.php` for console application events.
+- `config/events.php` para todos los tipos de aplicación.
+- `config/events-web.php` para los eventos de la aplicación web.
+- `config/events-console.php` para los eventos de la aplicación de consola.
 
-The configuration is an array where keys are event class names and values
-are lists of listeners:
+La configuración es un array cuyas claves son los nombres de las clases de
+eventos y cuyos valores son listas de listeners:
 
 ```php
 <?php
@@ -85,16 +87,18 @@ return [
 ];
 ```
 
-The listener may be a closure, a callable array, an invokable object, an
-invokable class name, or a DI alias.  For closure and callable array
-listeners, parameters after the first event parameter are resolved from the
-DI container.  Invokable class names are instantiated by the container.
+El listener puede ser una closure, un array callable, un objeto invocable,
+el nombre de una clase invocable o un alias del contenedor DI. En los
+listeners que son closures o arrays callables, los parámetros que siguen al
+primer parámetro (el evento) se resuelven desde el contenedor DI. El
+contenedor instancia las clases invocables indicadas por su nombre.
 
-Dependencies are resolved when the event is dispatched.
+Las dependencias se resuelven cuando se despacha el evento.
 
-## Dispatching events
+## Despachar eventos
 
-To dispatch an event, use `Psr\EventDispatcher\EventDispatcherInterface`:
+Para despachar un evento, usa
+`Psr\EventDispatcher\EventDispatcherInterface`:
 
 ```php
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -107,33 +111,33 @@ final readonly class SignupService
 
     public function signup(SignupForm $form): void
     {
-        // Sign up the user.
+        // Registrar al usuario.
 
         $this->eventDispatcher->dispatch(new UserSignedUp($form));
     }
 }
 ```
 
-The dispatcher asks a listener provider for listeners that match the event
-and calls them one by one.
+El despachador pide a un proveedor de listeners los listeners que coinciden
+con el evento y los llama uno a uno.
 
-## Event listener order
+## Orden de los listeners de eventos
 
-When several listeners are configured for the same event, they are called in
-the order they are listed in the config.  If an event implements
-`Psr\EventDispatcher\StoppableEventInterface`, the dispatcher checks
-`isPropagationStopped()` before calling the next listener. When it returns
-`true`, the dispatcher stops processing the event.
+Cuando hay varios listeners configurados para el mismo evento, se llaman en
+el orden en que aparecen en la configuración. Si un evento implementa
+`Psr\EventDispatcher\StoppableEventInterface`, el despachador comprueba
+`isPropagationStopped()` antes de llamar al siguiente listener. Cuando
+devuelve `true`, el despachador deja de procesar el evento.
 
-Keep listeners independent where possible. Ordering is useful for technical
-needs, but business logic is usually easier to maintain when each listener
-can run on its own.
+Mantén los listeners independientes siempre que puedas. El orden es útil
+para necesidades técnicas, pero la lógica de negocio suele ser más fácil de
+mantener cuando cada listener puede ejecutarse por sí solo.
 
-## Event hierarchy
+## Jerarquía de eventos
 
-Events don't have names or wildcard matching. Event class names, interfaces,
-and inheritance can be used when one listener should handle several related
-events:
+Los eventos no tienen nombres ni coincidencia con comodines. Cuando un
+listener debe gestionar varios eventos relacionados, puedes usar los nombres
+de las clases de eventos, las interfaces y la herencia:
 
 ```php
 interface DocumentEvent
@@ -149,8 +153,8 @@ final readonly class AfterDocumentProcessed implements DocumentEvent
 }
 ```
 
-Para que la interface de arriba escuche todos los eventos relacionados con
-documentos, se puede realizar de la siguiente forma:
+Con la interfaz, puedes escuchar todos los eventos relacionados con
+documentos:
 
 ```php
 use Yiisoft\EventDispatcher\Provider\ListenerCollection;
@@ -158,16 +162,16 @@ use Yiisoft\EventDispatcher\Provider\Provider;
 
 $listeners = (new ListenerCollection())
     ->add(static function (DocumentEvent $event): void {
-        // Log document events.
+        // Registrar en el log los eventos de documentos.
     });
 
 $provider = new Provider($listeners);
 ```
 
-## Manual listener provider setup
+## Configurar manualmente el proveedor de listeners
 
-In an application, use event configuration. For package-level code or tests,
-you can create a listener provider manually:
+En una aplicación, usa la configuración de eventos. En el código de paquetes
+o en las pruebas, puedes crear un proveedor de listeners manualmente:
 
 ```php
 use Yiisoft\EventDispatcher\Dispatcher\Dispatcher;
@@ -176,7 +180,7 @@ use Yiisoft\EventDispatcher\Provider\Provider;
 
 $listeners = (new ListenerCollection())
     ->add(static function (UserSignedUp $event): void {
-        // Send a welcome email.
+        // Enviar un correo de bienvenida.
     });
 
 $provider = new Provider($listeners);
@@ -185,13 +189,13 @@ $dispatcher = new Dispatcher($provider);
 $dispatcher->dispatch(new UserSignedUp($form));
 ```
 
-`ListenerCollection::add()` returns a new collection instance. Assign the result when building a collection step by step:
+`ListenerCollection::add()` devuelve una nueva instancia de la colección. Asigna el resultado cuando construyas una colección paso a paso:
 
 ```php
 $listeners = new ListenerCollection();
 $listeners = $listeners->add(
     static function (UserSignedUp $event): void {
-        // Send a welcome email.
+        // Enviar un correo de bienvenida.
     },
     UserSignedUp::class,
 );

@@ -1,12 +1,13 @@
-# Actions
+# Acciones
 
-In a web application, the request URL determines what's executed. Matching
-is made by a router configured with multiple routes. Each route can be
-attached to a middleware that, given request, produces a response. Since
-middleware overall could be chained and can pass actual handling to the next
-middleware, we call the middleware actually doing the job an action.
+En una aplicación web, la URL de la solicitud determina qué se ejecuta. La
+coincidencia la realiza un router configurado con varias rutas. Cada ruta
+puede asociarse a un middleware que, dada una solicitud, produce una
+respuesta. Como los middlewares pueden encadenarse y pasar la gestión real
+al siguiente middleware, llamamos acción al middleware que realmente hace el
+trabajo.
 
-There are multiple ways to describe an action. The simplest one is using a
+Hay varias formas de describir una acción. La más sencilla es usar una
 closure:
 
 ```php
@@ -21,9 +22,9 @@ Route::get('/')->action(function (ServerRequestInterface $request) use ($respons
 });
 ```
 
-It's fine for simple handling since any more complicated one would require
-getting dependencies, so a good idea would be moving the handling to a class
-method. Callback middleware could be used for the purpose:
+Esto sirve para una gestión sencilla, ya que cualquier otra más complicada
+requeriría obtener dependencias, así que es buena idea trasladar la gestión
+a un método de clase. Para ello se puede usar un middleware de callback:
 
 ```php
 use Yiisoft\Router\Route;
@@ -31,7 +32,7 @@ use Yiisoft\Router\Route;
 Route::get('/')->action(FrontPageAction::class),
 ```
 
-The class itself would be like:
+La clase en sí sería así:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -41,13 +42,13 @@ final readonly class FrontPageAction
 {
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
-        // build response for a front page    
+        // construir la respuesta para la portada    
     }
 }
 ```
 
-For many cases, it makes sense to group handling for many routes into a
-single class:
+En muchos casos tiene sentido agrupar en una sola clase la gestión de muchas
+rutas:
 
 
 ```php
@@ -57,7 +58,7 @@ Route::get('/post/index')->action([PostController::class, 'actionIndex']),
 Route::get('/post/view/{id:\d+}')->action([PostController::class, 'actionView']),
 ```
 
-The class itself would look like the following:
+La clase en sí tendría este aspecto:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -68,7 +69,7 @@ final readonly class PostController
 {
     public function actionIndex(ServerRequestInterface $request): ResponseInterface
     {
-        // render posts list
+        // renderizar la lista de posts
     }
     
     
@@ -78,23 +79,23 @@ final readonly class PostController
         int $id,
     ): ResponseInterface
     {
-        // render a single post by $id
+        // renderizar un único post por su $id
     }
 }
 ```
 
-We usually call such a class "controller."
+Normalmente llamamos a este tipo de clase "controlador".
 
-The `{id}` part of the `/post/view/{id:\d+}` route is a named route
-parameter. Route parameters are available from
-`Yiisoft\Router\CurrentRoute`. To receive one as an action argument, add the
-`RouteArgument` attribute to the corresponding parameter. The attribute name
-should match the route parameter name.
+La parte `{id}` de la ruta `/post/view/{id:\d+}` es un parámetro de ruta con
+nombre. Los parámetros de ruta están disponibles en
+`Yiisoft\Router\CurrentRoute`. Para recibir uno como argumento de la acción,
+añade el atributo `RouteArgument` al parámetro correspondiente. El nombre
+del atributo debe coincidir con el nombre del parámetro de ruta.
 
 ## Autowiring
 
-Both constructors of action-classes and action-methods are automatically getting services from
- the dependency injection container:
+Tanto los constructores de las clases de acción como los métodos de acción obtienen automáticamente los servicios
+ del contenedor de inyección de dependencias:
 
 ```php
 use \Psr\Http\Message\ServerRequestInterface;
@@ -112,17 +113,17 @@ final readonly class PostController
     public function actionIndex(ServerRequestInterface $request, LoggerInterface $logger): ResponseInterface
     {
         $logger->debug('Rendering posts list');
-        // render posts list
+        // renderizar la lista de posts
     }
     
     
     public function actionView(ServerRequestInterface $request): ResponseInterface
     {
-        // render a single post      
+        // renderizar un único post      
     }
 }
 ```
 
-In the above example `PostRepository` is injected automatically via
-constructor. That means it is available in every action. Logger is injected
-into `index` action only.
+En el ejemplo anterior, `PostRepository` se inyecta automáticamente mediante
+el constructor. Eso significa que está disponible en todas las acciones. El
+logger solo se inyecta en la acción `index`.

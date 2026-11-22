@@ -1,4 +1,4 @@
-# Generating code with Gii
+# Generar código con Gii
 
 > [!NOTE]
-> Gii is under development and will be available later.
+> Gii está en desarrollo y estará disponible más adelante.

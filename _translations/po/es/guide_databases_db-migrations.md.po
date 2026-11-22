@@ -21,7 +21,7 @@ msgstr ""
 #: ../src/guide/structure/designing-packages.md
 #, no-wrap
 msgid "Migrations"
-msgstr ""
+msgstr "Migraciones"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -169,7 +169,7 @@ msgstr ""
 #: ../src/guide/databases/db-migrations.md ../src/guide/start/databases.md
 #, no-wrap
 msgid "make composer require yiisoft/db-migration\n"
-msgstr ""
+msgstr "make composer require yiisoft/db-migration\n"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md
@@ -190,6 +190,10 @@ msgid ""
 "    'sourceNamespaces' => ['App\\\\Migration'],\n"
 "],\n"
 msgstr ""
+"'yiisoft/db-migration' => [\n"
+"    'newMigrationNamespace' => 'App\\\\Migration',\n"
+"    'sourceNamespaces' => ['App\\\\Migration'],\n"
+"],\n"
 
 #. type: Plain text
 #: ../src/guide/databases/db-migrations.md

@@ -6,33 +6,37 @@ proyecto. Un alias debe comenzar con el signo `@` para ser diferenciado de
 una ruta normal de archivo y de URLs. Los alias definidos
 sin el `@` del principio, serán prefijados con el signo `@`.
 
-Default Yii application has some aliases pre-defined in
-`config/params.php`. For example, the alias `@public` represents the web
-root path; `@baseUrl` represents the base URL for the currently running Web
-application.
+La aplicación Yii predeterminada tiene algunos alias predefinidos en
+`config/params.php`. Por ejemplo, el alias `@public` representa la ruta de
+la raíz web y `@baseUrl` representa la URL base de la aplicación web que se
+está ejecutando.
 
-## Defining aliases
+## Definir alias
 
 Puedes definir un alias mediante la aplicación en `config/params.php`:
 
 ```php
 return [
     // ...
-
-    'aliases' => [
-        // un alias de una ruta de archivos
-        '@foo' => '/path/to/foo',
-
-        // un alias de un URL
-        '@bar' => 'http://www.example.com',
-
-        // un alias de un archivo en concreto que contiene la clase \foo\Bar
-        '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
-    ]
+    
+    'yiisoft/aliases' => [
+        'aliases' => [
+            // ...
+        
+            // un alias de una ruta de archivo
+            '@foo' => '/path/to/foo',
+        
+            // un alias de una URL
+            '@bar' => 'https://www.example.com',
+        
+            // un alias de un archivo concreto que contiene la clase \foo\Bar 
+            '@foo/Bar.php' => '/definitely/not/foo/Bar.php',
+        ],
+    ],
 ];
 ```
 
-> [!Nota]
+> [!NOTE]
 > Una ruta de archivo o URL en alias *no* se refiere necesariamente a un archivo o recurso existente.
 
 Dado un alias, puedes derivar un nuevo alias anexando una barra diagonal `/`
@@ -47,9 +51,9 @@ derivado):
 '@foobar' => '@foo/bar',
 ```
 
-The `yiisoft/aliases` parameter initializes `Aliases` service from
-[`yiisoft/aliases`](https://github.com/yiisoft/aliases) package.  You can
-set extra aliases in runtime by using the service:
+El parámetro `yiisoft/aliases` inicializa el servicio `Aliases` del paquete
+[`yiisoft/aliases`](https://github.com/yiisoft/aliases). Puedes establecer
+alias adicionales en tiempo de ejecución usando el servicio:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -60,10 +64,10 @@ public function actionIndex(Aliases $aliases)
 }
 ```
 
-## Using aliases in configuration
+## Usar alias en la configuración
 
-It's preferred to resolve aliases at the configuration level, so services
-get URLs and paths as ready to use strings:
+Es preferible resolver los alias en la configuración, para que los servicios
+reciban las URL y las rutas como cadenas listas para usar:
 
 ```php
 <?php
@@ -82,7 +86,7 @@ return [
 ];
 ```
 
-## Resolving aliases
+## Resolver alias
 
 Puedes utilizar el servicio `Aliases` para resolver un alias o un alias
 derivado a la ruta de archivo o URL que representa:
@@ -103,13 +107,13 @@ por la sustitución de la parte de su alias raíz con su correspondiente
 ruta/Url en el alias derivado.
 
 > [!NOTE]
-> El método `get()` no comprueba si la ruta/URL resultante hacer referencia a un archivo o recurso existente.
+> El método `get()` no comprueba si la ruta/URL resultante hace referencia a un archivo o recurso existente.
 
 
-Un alias de raíz puede contener carácteres `/`.
-El método `get()` es lo suficientemente inteligente para saber qué parte de
-un alias es un alias de raíz y por lo tanto determinar correctamente la
-correspondiente ruta de archivo o URL. Por ejemplo:
+Un alias de raíz también puede contener caracteres `/`. El método `get()` es
+lo suficientemente inteligente para saber qué parte de un alias es un alias
+de raíz y por lo tanto determinar correctamente la correspondiente ruta de
+archivo o URL. Por ejemplo:
 
 ```php
 use \Yiisoft\Aliases\Aliases;
@@ -128,23 +132,25 @@ Si `@foo/bar` no está definido como un alias de raíz, la última declaración
 mostraría `/path/to/foo/bar/file.php`.
 
 
-## Predefined aliases
+## Alias predefinidos
 
-[Yii application](https://github.com/yiisoft/app) predefines a set of
-aliases to reference commonly used file paths and URLs:
+La [aplicación Yii](https://github.com/yiisoft/app) predefine un conjunto de
+alias para referirse a las rutas de archivos y URL de uso habitual:
 
 - `@root`, la ruta base de la aplicación que se está ejecutando actualmente.
-- `@assets` - application's public directory where it publishes assets.
-- `@assetsUrl` - URL of base directory with published assets.
-- `@baseUrl` - the base URL of the currently running Web
-  application. Defaults to `/`.
-- `@npm` - node packages directory.
-- `@bower` - bower packages directory.
+- `@assets`, el directorio público de la aplicación donde se publican los
+  assets.
+- `@assetsUrl`, la URL del directorio base con los assets publicados.
+- `@baseUrl`, la URL base de la aplicación web que se está ejecutando. Por
+  defecto, `/`.
+- `@npm`, el directorio de paquetes de Node.
+- `@bower`, el directorio de paquetes de Bower.
 - `@vendor`, la carpeta `vendor` de Composer.
-- `@public` - application's publicly accessible directory that with
-  `index.php`.
+- `@public`, el directorio de la aplicación accesible públicamente que
+  contiene `index.php`.
 - `@runtime`, la ruta de ejecución de la aplicación en ejecución. Por
-  defecto`@root/runtime`.
-- `@layout` - the directory with layouts.
-- `@resources` - directory with views, asset sources and other resources.
-- `@views` - application view templates base directory.
+  defecto, `@root/runtime`.
+- `@layout`, el directorio con los layouts.
+- `@resources`, el directorio con las vistas, las fuentes de los assets y
+  otros recursos.
+- `@views`, el directorio base de las plantillas de vista de la aplicación.

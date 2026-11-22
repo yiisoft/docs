@@ -20,7 +20,7 @@ msgstr ""
 #: en/security/overview.md
 #, no-wrap
 msgid "Security"
-msgstr ""
+msgstr "Seguridad"
 
 #. type: Plain text
 #: en/security/overview.md

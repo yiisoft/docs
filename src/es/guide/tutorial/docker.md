@@ -429,7 +429,7 @@ running:
 | `make psalm`                         | Run [Psalm](https://psalm.dev/) static analysis. |
 | `make composer-dependency-analyser`  | Run [Composer Dependency Analyser](https://github.com/shipmonk-rnd/composer-dependency-analyser). |
 
-### Testing
+### Pruebas
 
 | Command                | Description                                               |
 |------------------------|-----------------------------------------------------------|

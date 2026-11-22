@@ -19,7 +19,7 @@ msgstr ""
 #. type: Bullet: '    - '
 #: ../src/en/guide/start/databases.md ../src/en/internals/000-packages.md
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. type: Title #
 #: ../src/en/internals/000-packages.md

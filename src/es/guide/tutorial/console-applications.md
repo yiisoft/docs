@@ -1,9 +1,9 @@
-# Console applications
+# Aplicaciones de consola
 
 Console applications are mainly used to create utility, background
 processing and maintenance tasks.
 
-## Getting started
+## Primeros pasos
 
 If you're using [yiisoft/app](https://github.com/yiisoft/app) or
 [yiisoft/app-api](https://github.com/yiisoft/app-api), console support is

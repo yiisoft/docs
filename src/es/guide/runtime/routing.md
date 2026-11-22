@@ -256,7 +256,7 @@ second case it will be `123`.
 In cause URL should be valid for a single host, you can specify it with
 `host()`.
 
-## Routing
+## Enrutamiento
 
 Yii routing is flexible, and internally it may use different routing
 implementations.  The actual matching algorithm may vary, but the basic idea

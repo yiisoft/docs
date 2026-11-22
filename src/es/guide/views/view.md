@@ -1,4 +1,4 @@
-# Views
+# Vistas
 
 View is responsible for presenting data to end users. You give it a template
 with some placeholders and presentation logic and some data. The view is

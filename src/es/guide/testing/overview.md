@@ -1,4 +1,4 @@
-# Testing
+# Pruebas
 
 The Yii application template includes a ready test setup. It uses
 Codeception with PHPUnit assertions and has four suites:

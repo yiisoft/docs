@@ -109,7 +109,7 @@ msgstr ""
 #: ../src/en/guide/views/view-injections.md
 #, no-wrap
 msgid "Configuration"
-msgstr ""
+msgstr "Configuración"
 
 #. type: Title ###
 #: ../src/en/cookbook/sentry-integration.md

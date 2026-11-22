@@ -1,72 +1,78 @@
-# Upgrading from Version 1.1
+# Actualizar desde la versión 1.1
 
-> If you haven't used Yii 1.1, you can skip this section and get directly to
-> "[getting started](../start/prerequisites.md)" section.
+> Si no has usado Yii 1.1, puedes saltarte esta sección e ir directamente a la sección
+> "[primeros pasos](../start/prerequisites.md)".
 
-Yii3 is not an incremental upgrade from Yii 1.1. Yii 2.0 was a full rewrite,
-and Yii3 changes the architecture again: Composer packages, namespaces, PHP
-8, PSR interfaces, dependency injection, explicit routes, middleware, and
-separate packages for features that were built into the framework in Yii
+Yii3 no es una actualización incremental de Yii 1.1. Yii 2.0 fue una
+reescritura completa, y Yii3 vuelve a cambiar la arquitectura: paquetes de
+Composer, espacios de nombres, PHP 8, interfaces PSR, inyección de
+dependencias, rutas explícitas, middleware y paquetes independientes para
+funcionalidades que en Yii 1.1 venían integradas en el framework.
+
+Plantéatelo como la construcción de una nueva aplicación Yii3 aprovechando
+tu experiencia con Yii 1.1. Reutiliza el conocimiento del dominio, el
+esquema de la base de datos, los flujos de trabajo de los usuarios y una
+parte del código tras refactorizarlo. No intentes reproducir en Yii3 la
+estructura de la aplicación Yii 1.1. Una conversión directa a base de buscar
+y reemplazar no es realista.
+
+Para más contexto, lee la sección [Actualizar desde la versión
+1.1](https://www.yiiframework.com/doc/guide/2.0/en/intro-upgrade-from-v1) de
+la guía de Yii 2.0. Explica la primera gran ruptura con Yii 1.1: Composer,
+espacios de nombres, configuración de objetos, cambios en las vistas,
+valores de retorno de los controladores, widgets, assets, helpers,
+formularios, constructor de consultas, Active Record y gestión de URL. Yii3
+se basa en muchos de esos cambios y hace más explícitas las dependencias.
+
+## Enfoque recomendado
+
+Elige uno de estos caminos:
+
+- Construye directamente una nueva aplicación Yii3 cuando la aplicación Yii
+  1.1 sea pequeña o ya estés reescribiendo los flujos de solicitud.
+- Traslada primero los conceptos de Yii 1.1 a Yii 2.0 cuando el equipo
+  necesite un salto conceptual más pequeño.
+- Mantén Yii 1.1 en funcionamiento y reconstruye en Yii3 los flujos críticos
+  uno a uno.
+
+Para la mayoría de las aplicaciones de larga duración, la tercera opción es
+la menos arriesgada. Crea una aplicación Yii3, conéctala a la misma base de
+datos y construye porciones verticales: ruta, acción, validación de la
+entrada, persistencia, vista, assets y pruebas. Cada porción debe ser código
+Yii3 idiomático, aunque se base en el comportamiento de la aplicación Yii
 1.1.
 
-Treat this as building a new Yii3 application with the benefit of Yii 1.1
-experience. Reuse the domain knowledge, database schema, user workflows, and
-selected code after refactoring. Do not try to reproduce the Yii 1.1
-application structure in Yii3. A direct search-and-replace conversion is not
-realistic.
+## Preparar la aplicación Yii 1.1
 
-For additional background, read the Yii 2.0 guide section [Upgrading from
-Version
-1.1](https://www.yiiframework.com/doc/guide/2.0/en/intro-upgrade-from-v1).
-It explains the first major break from Yii 1.1: Composer, namespaces, object
-configuration, view changes, controller return values, widgets, assets,
-helpers, forms, query builder, Active Record, and URL management. Yii3
-builds on many of those changes and makes dependencies more explicit.
+Parte de la preparación útil puede hacerse antes de que la aplicación Yii3
+esté lista. Estas refactorizaciones hacen que el comportamiento antiguo sea
+más fácil de entender y reducen la cantidad de estado del framework Yii 1.1
+que pasa al código nuevo:
 
-## Recommended approach
+- Elimina el acceso directo a `Yii::app()` del código reutilizable cuando
+  sea viable. Si una refactorización completa es demasiado grande, mantén
+  las llamadas a `Yii::app()` cerca de los controladores, widgets y
+  comandos, y pasa explícitamente los valores y servicios al código de nivel
+  inferior.
+- Introduce repositorios o servicios de consulta para las lecturas de la
+  base de datos que ahora están repartidas entre controladores, vistas,
+  métodos de `CActiveRecord` y widgets. Yii3 puede usar Active Record, pero
+  no lo exige para todas las tareas de persistencia.
+- Separa las reglas de negocio de la infraestructura del framework. El
+  código que no extiende `CComponent`, no lee el estado global de la
+  aplicación ni renderiza vistas es más fácil de reutilizar como
+  especificación para el código de Yii3.
+- Saca el comportamiento reutilizable de los controladores grandes y las
+  clases Active Record y llévalo a componentes de aplicación de Yii 1.1 o a
+  servicios simples. Los servicios de Yii3 se configuran e inyectan de otra
+  manera, pero el reparto de responsabilidades es similar.
+- Añade pruebas o comprobaciones de caracterización para las rutas y los
+  flujos de trabajo que planeas reconstruir primero. Se convertirán en la
+  especificación ejecutable de la porción de Yii3.
 
-Choose one of these paths:
-
-- Build a new Yii3 application directly when the Yii 1.1 application is
-  small or you are already rewriting request flows.
-- Move Yii 1.1 concepts to Yii 2.0 first when the team needs a smaller
-  conceptual step.
-- Keep Yii 1.1 running and rebuild critical flows in Yii3 one by one.
-
-For most long-lived applications, the third option is the least
-risky. Create a Yii3 application, connect it to the same database, and build
-vertical slices: route, action, input validation, persistence, view, assets,
-and tests.  Each slice should be idiomatic Yii3, even when it is based on
-behavior from the Yii 1.1 application.
-
-## Prepare the Yii 1.1 application
-
-Useful preparation can happen before the Yii3 application is ready. These
-refactorings make old behavior easier to understand and reduce the amount of
-Yii 1.1 framework state that crosses into the new code:
-
-- Remove direct `Yii::app()` access from reusable code where practical. If a
-  full refactoring is too large, keep `Yii::app()` calls near controllers,
-  widgets, and commands, then pass values and services to lower-level code
-  explicitly.
-- Introduce repositories or query services for database reads currently
-  spread across controllers, views, `CActiveRecord` methods, and
-  widgets. Yii3 can use Active Record, but it does not require it for every
-  persistence task.
-- Separate business rules from framework infrastructure. Code that does not
-  extend `CComponent`, read global application state, or render views is
-  easier to reuse as a specification for Yii3 code.
-- Move reusable behavior out of large controllers and Active Record classes
-  into Yii 1.1 application components or plain services. Yii3 services are
-  configured and injected differently, but the responsibility boundary is
-  similar.
-- Add tests or characterization checks around routes and workflows you plan
-  to rebuild first. They become the executable specification for the Yii3
-  slice.
-
-For example, instead of reading post archive data directly from several
-controllers or widgets, create a small service that describes the
-application need:
+Por ejemplo, en lugar de leer los datos del histórico de publicaciones
+directamente desde varios controladores o widgets, crea un pequeño servicio
+que describa la necesidad de la aplicación:
 
 ```php
 class PostRepository extends CComponent
@@ -83,41 +89,44 @@ class PostRepository extends CComponent
 }
 ```
 
-The Yii3 implementation may use `yiisoft/active-record`, `yiisoft/db`, or
-another persistence layer. The important point is that controllers and views
-no longer need to know that detail.
+La implementación de Yii3 puede usar `yiisoft/active-record`, `yiisoft/db` u
+otra capa de persistencia. Lo importante es que los controladores y las
+vistas ya no necesiten conocer ese detalle.
 
-## Things to learn before starting
+## Qué aprender antes de empezar
 
-Some Yii3 application-template choices are likely to be new in a Yii 1.1
-codebase:
+Algunas decisiones de la plantilla de aplicación de Yii3 probablemente sean
+nuevas si vienes de un código base de Yii 1.1:
 
-- [Composer](https://getcomposer.org/). Yii3 applications and packages are
-  installed through Composer and loaded with PSR-4 autoloading.
-- [Namespaces](https://www.php.net/manual/en/language.namespaces.php). Yii3
-  classes are namespaced instead of using Yii 1.1-style class prefixes and
-  path aliases for class loading.
-- [Docker](https://www.docker.com/get-started/). The default Yii3
-  application template includes Docker configuration.  Using it gives each
-  application its own repeatable environment and reduces differences between
-  local development and production.
-- [Environment
-  variables](https://en.wikipedia.org/wiki/Environment_variable). Yii3
-  templates commonly use them for environment-specific settings and secrets,
-  especially in Docker-based deployments. This follows the same idea as
-  [12-factor app configuration](https://12factor.net/config).
-- [Actions](../structure/action.md). Yii3 does not require controller
-  inheritance. A route can point to any callable, and the default template
-  uses invokable action classes.
-- [Application structure](../structure/overview.md). Yii3's default
-  structure is different from Yii 1.1. Start with the Yii3 template and
-  change it only when the application needs it.
+- [Composer](https://getcomposer.org/). Las aplicaciones y los paquetes de
+  Yii3 se instalan mediante Composer y se cargan con la autocarga PSR-4.
+- [Espacios de
+  nombres](https://www.php.net/manual/en/language.namespaces.php). Las
+  clases de Yii3 usan espacios de nombres en lugar de los prefijos de clase
+  y los alias de ruta al estilo de Yii 1.1 para cargar las clases.
+- [Docker](https://www.docker.com/get-started/). La plantilla de aplicación
+  predeterminada de Yii3 incluye configuración de Docker. Usarla proporciona
+  a cada aplicación su propio entorno reproducible y reduce las diferencias
+  entre el desarrollo local y producción.
+- [Variables de
+  entorno](https://en.wikipedia.org/wiki/Environment_variable). Las
+  plantillas de Yii3 suelen usarlas para los ajustes específicos de cada
+  entorno y para los secretos, sobre todo en despliegues basados en
+  Docker. Sigue la misma idea que la [configuración de las aplicaciones de
+  12 factores](https://12factor.net/config).
+- [Acciones](../structure/action.md). Yii3 no exige heredar de un
+  controlador. Una ruta puede apuntar a cualquier callable, y la plantilla
+  predeterminada usa clases de acción invocables.
+- [Estructura de la aplicación](../structure/overview.md). La estructura
+  predeterminada de Yii3 es distinta de la de Yii 1.1. Empieza con la
+  plantilla de Yii3 y cámbiala solo cuando la aplicación lo necesite.
 
-## PHP, Composer, and namespaces
+## PHP, Composer y espacios de nombres
 
-Yii 1.1 applications commonly rely on PHP 5-era code, class prefixes such as
-`CController`, and autoloading by class name. Yii3 applications require
-modern PHP and Composer autoloading.
+Las aplicaciones Yii 1.1 suelen basarse en código de la época de PHP 5, en
+prefijos de clase como `CController` y en la autocarga por nombre de
+clase. Las aplicaciones Yii3 requieren un PHP moderno y la autocarga de
+Composer.
 
 Yii 1.1:
 
@@ -137,7 +146,7 @@ final readonly class Action
 }
 ```
 
-Configure your application namespace with PSR-4:
+Configura el espacio de nombres de tu aplicación con PSR-4:
 
 ```json
 {
@@ -149,20 +158,21 @@ Configure your application namespace with PSR-4:
 }
 ```
 
-Run:
+Ejecuta:
 
 ```shell
 composer dump-autoload
 ```
 
-When reusing a class, give it a namespace, add strict types, replace Yii 1.1
-base classes, and inject dependencies instead of reading them from global
-application state. If these changes make the class awkward, use the old
-class as a specification and write a new Yii3 class instead.
+Al reutilizar una clase, dale un espacio de nombres, añade tipos estrictos,
+sustituye las clases base de Yii 1.1 e inyecta las dependencias en lugar de
+leerlas del estado global de la aplicación. Si estos cambios hacen que la
+clase resulte forzada, usa la clase antigua como especificación y escribe en
+su lugar una nueva clase de Yii3.
 
-## Project structure
+## Estructura del proyecto
 
-A Yii 1.1 application often uses:
+Una aplicación Yii 1.1 suele usar:
 
 ```text
 protected/
@@ -179,7 +189,7 @@ themes/
 webroot/
 ```
 
-The current Yii3 application template uses:
+La plantilla de aplicación actual de Yii3 usa:
 
 ```text
 assets/
@@ -190,28 +200,28 @@ src/
 tests/
 ```
 
-Typical mappings to consider are:
+Las correspondencias habituales que conviene tener en cuenta son:
 
 | Yii 1.1 | Yii3 |
 |---------|------|
-| `protected/controllers` | `src/Web/*/Action.php` or controller-like services |
-| `protected/models` | `src/Domain`, `src/Shared`, `src/Db`, or form models by responsibility |
-| `protected/views` | templates near the feature, for example `src/Web/HomePage/template.php` |
-| `protected/views/layouts` | layout templates and assets under `src/Web/Shared/Layout` |
-| `protected/components` | services configured in the dependency injection container |
-| `protected/extensions` | Composer packages or local packages |
+| `protected/controllers` | `src/Web/*/Action.php` o servicios similares a controladores |
+| `protected/models` | `src/Domain`, `src/Shared`, `src/Db` o modelos de formulario, según la responsabilidad |
+| `protected/views` | plantillas junto a la funcionalidad, por ejemplo `src/Web/HomePage/template.php` |
+| `protected/views/layouts` | plantillas de layout y assets dentro de `src/Web/Shared/Layout` |
+| `protected/components` | servicios configurados en el contenedor de inyección de dependencias |
+| `protected/extensions` | paquetes de Composer o paquetes locales |
 | `protected/commands` | `src/Console/*Command.php` |
-| `protected/messages` | translator message files |
+| `protected/messages` | archivos de mensajes del traductor |
 | `protected/config` | `config/common`, `config/web`, `config/console`, `config/environments` |
 | `webroot` | `public` |
 
-Do not recreate `protected` in Yii3. Put PHP source under `src`, public
-files under `public`, generated/runtime files under `runtime`, and
-configuration under `config`.
+No recrees `protected` en Yii3. Pon el código fuente PHP en `src`, los
+archivos públicos en `public`, los archivos generados y de tiempo de
+ejecución en `runtime`, y la configuración en `config`.
 
-## Configuration and application components
+## Configuración y componentes de la aplicación
 
-Yii 1.1 configuration is usually one large array:
+La configuración de Yii 1.1 suele ser un único array grande:
 
 ```php
 return [
@@ -232,22 +242,25 @@ return [
 ];
 ```
 
-In Yii3, configuration is split by purpose and services are wired through
-the container:
+En Yii3, la configuración se divide según su finalidad y los servicios se
+conectan a través del contenedor:
 
-- aliases in `config/common/aliases.php`;
-- parameters in `config/common/params.php` and environment files;
-- shared service definitions in `config/common/di/*.php`;
-- web-only service definitions in `config/web/di/*.php`;
-- routes in `config/common/routes.php`;
-- console commands in `config/console/*.php`.
+- los alias, en `config/common/aliases.php`;
+- los parámetros, en `config/common/params.php` y en los archivos de
+  entorno;
+- las definiciones de servicios compartidas, en `config/common/di/*.php`;
+- las definiciones de servicios exclusivas de la web, en
+  `config/web/di/*.php`;
+- las rutas, en `config/common/routes.php`;
+- los comandos de consola, en `config/console/*.php`.
 
-The default template's console DI group reuses shared definitions from
-`config/common/di/*.php`. If you need console-only container definitions,
-add files for them to the `di-console` group in `config/configuration.php`
-and rebuild the merge plan.
+El grupo DI de consola de la plantilla predeterminada reutiliza las
+definiciones compartidas de `config/common/di/*.php`. Si necesitas
+definiciones del contenedor exclusivas de la consola, añade sus archivos al
+grupo `di-console` en `config/configuration.php` y vuelve a generar el plan
+de fusión.
 
-Replace `Yii::app()->componentName` with constructor-injected services:
+Sustituye `Yii::app()->componentName` por servicios inyectados en el constructor:
 
 ```php
 use Yiisoft\Db\Connection\ConnectionInterface;
@@ -263,13 +276,14 @@ final readonly class PostRepository
 }
 ```
 
-See [Configuration](../concept/configuration.md),
-[Aliases](../concept/aliases.md), and [Dependency injection
-container](../concept/di-container.md).
+Consulta [Configuración](../concept/configuration.md),
+[Alias](../concept/aliases.md) e [Inyección de dependencias y
+contenedor](../concept/di-container.md).
 
-## Entry script
+## Script de entrada
 
-Yii 1.1 entry scripts commonly load `yii.php` and create a web application:
+Los scripts de entrada de Yii 1.1 suelen cargar `yii.php` y crear una
+aplicación web:
 
 ```php
 require_once __DIR__ . '/../framework/yii.php';
@@ -277,18 +291,18 @@ require_once __DIR__ . '/../framework/yii.php';
 Yii::createWebApplication($config)->run();
 ```
 
-Yii3 entry scripts load Composer and bootstrap the configured
-application. Start with the `public/index.php` file from `yiisoft/app` and
-adjust configuration instead of building the application manually in the
-entry script.
+Los scripts de entrada de Yii3 cargan Composer y arrancan la aplicación
+configurada. Parte del archivo `public/index.php` de `yiisoft/app` y ajusta
+la configuración en lugar de construir la aplicación manualmente en el
+script de entrada.
 
-See [Entry scripts](../structure/entry-script.md) and [Application
-workflow](../start/workflow.md).
+Consulta [Scripts de entrada](../structure/entry-script.md) y [Flujo de
+trabajo de la aplicación](../start/workflow.md).
 
-## Controllers, actions, and routes
+## Controladores, acciones y rutas
 
-Yii 1.1 controllers extend `CController`, and actions are methods named
-`actionName`:
+Los controladores de Yii 1.1 extienden `CController`, y las acciones son
+métodos con nombres del tipo `actionName`:
 
 ```php
 class PostController extends CController
@@ -306,8 +320,8 @@ class PostController extends CController
 }
 ```
 
-Yii3 does not require controller inheritance. The current template uses
-invokable action classes:
+Yii3 no exige heredar de un controlador. La plantilla actual usa clases de
+acción invocables:
 
 ```php
 namespace App\Web\Post\View;
@@ -337,7 +351,7 @@ final readonly class Action
 }
 ```
 
-The route is explicit:
+La ruta es explícita:
 
 ```php
 use App\Web\Post\View;
@@ -350,16 +364,17 @@ return [
 ];
 ```
 
-Define routes before action bodies. It gives you a checklist of request
-flows you decided to keep in the Yii3 application.
+Define las rutas antes que el cuerpo de las acciones. Así tendrás una lista
+de comprobación de los flujos de solicitud que has decidido conservar en la
+aplicación Yii3.
 
-See [Actions](../structure/action.md),
-[Middleware](../structure/middleware.md), and [Routing and URL
-generation](../runtime/routing.md).
+Consulta [Acciones](../structure/action.md),
+[Middleware](../structure/middleware.md) y [Enrutamiento y generación de
+URL](../runtime/routing.md).
 
-## Requests, responses, redirects, sessions, and cookies
+## Solicitudes, respuestas, redirecciones, sesiones y cookies
 
-Yii 1.1 code often reads and writes through `Yii::app()`:
+El código de Yii 1.1 suele leer y escribir a través de `Yii::app()`:
 
 ```php
 $id = Yii::app()->request->getParam('id');
@@ -367,17 +382,20 @@ Yii::app()->user->setFlash('success', 'Saved.');
 $this->redirect(['post/view', 'id' => $id]);
 ```
 
-Yii3 uses PSR-7 request and response objects and injectable
-services. Request input is available from `ServerRequestInterface`;
-redirects, sessions, cookies, and responses are explicit dependencies.
+Yii3 usa objetos de solicitud y respuesta PSR-7 y servicios inyectables. La
+entrada de la solicitud está disponible en `ServerRequestInterface`; las
+redirecciones, las sesiones, las cookies y las respuestas son dependencias
+explícitas.
 
-See [Request](../runtime/request.md), [Response](../runtime/response.md),
-[Sessions](../runtime/sessions.md), and [Cookies](../runtime/cookies.md).
+Consulta [Solicitud](../runtime/request.md),
+[Respuesta](../runtime/response.md), [Sesiones](../runtime/sessions.md) y
+[Cookies](../runtime/cookies.md).
 
-## Views and layouts
+## Vistas y layouts
 
-Yii 1.1 views use `$this` as the controller or widget context. Layouts and
-partials are rendered through controller methods:
+Las vistas de Yii 1.1 usan `$this` como contexto del controlador o del
+widget. Los layouts y las vistas parciales se renderizan mediante métodos
+del controlador:
 
 ```php
 <?php
@@ -388,7 +406,8 @@ partials are rendered through controller methods:
 <h1><?php echo CHtml::encode($post->title); ?></h1>
 ```
 
-In Yii3 templates, `$this` is a `Yiisoft\View\WebView` instance:
+En las plantillas de Yii3, `$this` es una instancia de
+`Yiisoft\View\WebView`:
 
 ```php
 use Yiisoft\Html\Html;
@@ -405,24 +424,24 @@ $this->setTitle($post->getTitle());
 <h1><?= Html::encode($post->getTitle()) ?></h1>
 ```
 
-Move controller-specific view logic to the action or to a presenter. Pass
-only the data a template needs.
+Traslada la lógica de vista específica del controlador a la acción o a un
+presentador (presenter). Pasa solo los datos que necesita la plantilla.
 
-See [View](../views/view.md), [View
-injections](../views/view-injections.md), and [Template
-engines](../views/template-engines.md).
+Consulta [Vistas](../views/view.md), [Inyecciones de
+vista](../views/view-injections.md) y [Motores de
+plantillas](../views/template-engines.md).
 
-## Assets and client scripts
+## Assets y scripts de cliente
 
-Yii 1.1 applications often use `CClientScript`, themes, and
-extension-specific asset publishing:
+Las aplicaciones Yii 1.1 suelen usar `CClientScript`, temas y la publicación
+de assets propia de cada extensión:
 
 ```php
 Yii::app()->clientScript->registerCssFile('/css/site.css');
 Yii::app()->clientScript->registerScriptFile('/js/site.js');
 ```
 
-Yii3 uses asset bundles from `yiisoft/assets`:
+Yii3 usa paquetes de assets de `yiisoft/assets`:
 
 ```php
 namespace App\Web\Shared\Layout\Main;
@@ -440,26 +459,28 @@ final class MainAsset extends AssetBundle
 }
 ```
 
-Register bundles through the asset manager in layouts or views.
+Registra los paquetes mediante el gestor de assets en los layouts o las
+vistas.
 
-See [Assets](../views/asset.md) and [Scripts, styles and
-metatags](../views/script-style-meta.md).
+Consulta [Assets](../views/asset.md) y [Scripts, estilos y
+metaetiquetas](../views/script-style-meta.md).
 
-## Models, forms, and validation
+## Modelos, formularios y validación
 
-Yii 1.1 has `CModel`, `CFormModel`, and `CActiveRecord`. It is common for
-one model class to contain input data, labels, validation rules, database
-persistence, and business logic.
+Yii 1.1 tiene `CModel`, `CFormModel` y `CActiveRecord`. Es habitual que una
+sola clase de modelo contenga los datos de entrada, las etiquetas, las
+reglas de validación, la persistencia en la base de datos y la lógica de
+negocio.
 
-Yii3 works better when these responsibilities are split:
+Yii3 funciona mejor cuando estas responsabilidades están separadas:
 
-- form data and labels: `yiisoft/form-model`;
-- validation rules: `yiisoft/validator`;
-- form rendering: `yiisoft/form`;
-- persistence: repositories, `yiisoft/db`, or `yiisoft/active-record`;
-- business workflows: application services.
+- datos y etiquetas del formulario: `yiisoft/form-model`;
+- reglas de validación: `yiisoft/validator`;
+- renderizado de formularios: `yiisoft/form`;
+- persistencia: repositorios, `yiisoft/db` o `yiisoft/active-record`;
+- flujos de negocio: servicios de la aplicación.
 
-Yii 1.1 form model:
+Modelo de formulario de Yii 1.1:
 
 ```php
 class ContactForm extends CFormModel
@@ -477,7 +498,7 @@ class ContactForm extends CFormModel
 }
 ```
 
-Yii3 form model:
+Modelo de formulario de Yii3:
 
 ```php
 use Yiisoft\FormModel\FormModel;
@@ -495,14 +516,14 @@ final class ContactForm extends FormModel
 }
 ```
 
-See [Working with forms](../start/forms.md), [Validating
-input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md),
-[yiisoft/form](https://github.com/yiisoft/form), and
+Consulta [Trabajar con formularios](../start/forms.md), [Validar la
+entrada](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md),
+[yiisoft/form](https://github.com/yiisoft/form) y
 [yiisoft/form-model](https://github.com/yiisoft/form-model).
 
 ## Active Record
 
-Yii 1.1 Active Record uses `CActiveRecord::model()` and dynamic attributes:
+Active Record de Yii 1.1 usa `CActiveRecord::model()` y atributos dinámicos:
 
 ```php
 class Post extends CActiveRecord
@@ -527,7 +548,7 @@ class Post extends CActiveRecord
 }
 ```
 
-The incremental Yii3 option is
+La opción incremental en Yii3 es
 [yiisoft/active-record](https://github.com/yiisoft/active-record):
 
 ```php
@@ -556,36 +577,37 @@ final class Post extends ActiveRecord
 }
 ```
 
-Move Yii 1.1 `rules()` to a form model, validator rules, or a service. Keep
-Active Record focused on persistence: table mapping, properties, relations,
-and database operations.
+Traslada `rules()` de Yii 1.1 a un modelo de formulario, a reglas del
+validador o a un servicio. Mantén Active Record centrado en la persistencia:
+mapeo de tablas, propiedades, relaciones y operaciones de base de datos.
 
-For more complex applications, consider replacing Active Record-heavy code
-with repositories and domain objects. That is more work initially, but it
-avoids carrying Yii 1.1 form and persistence coupling into the new
-application.
+En aplicaciones más complejas, plantéate sustituir el código que depende
+mucho de Active Record por repositorios y objetos de dominio. Al principio
+supone más trabajo, pero evita arrastrar a la nueva aplicación el
+acoplamiento entre formularios y persistencia de Yii 1.1.
 
-See [Working with databases](../start/databases.md),
-[Migrations](../databases/db-migrations.md), and
+Consulta [Trabajar con bases de datos](../start/databases.md),
+[Migraciones](../databases/db-migrations.md) y
 [yiisoft/active-record](https://github.com/yiisoft/active-record).
 
-## Database queries and migrations
+## Consultas a la base de datos y migraciones
 
-Yii 1.1 code may use `CDbCriteria`, `CDbCommand`, `CActiveDataProvider`, and
-`CGridView` data providers. In Yii3, use `yiisoft/db` for database access
-and query building, and `yiisoft/data` / `yiisoft/yii-dataview` for data
-readers and widgets.
+El código de Yii 1.1 puede usar `CDbCriteria`, `CDbCommand`,
+`CActiveDataProvider` y proveedores de datos de `CGridView`. En Yii3, usa
+`yiisoft/db` para el acceso a la base de datos y la construcción de
+consultas, y `yiisoft/data` / `yiisoft/yii-dataview` para los lectores de
+datos y los widgets.
 
-Migrations are not compatible across Yii 1.1 and Yii3. For an existing
-application, create a baseline from the current schema and use Yii3
-migrations for new changes.
+Las migraciones no son compatibles entre Yii 1.1 y Yii3. En una aplicación
+existente, crea una línea base a partir del esquema actual y usa las
+migraciones de Yii3 para los cambios nuevos.
 
-See [Working with databases](../start/databases.md) and
-[Migrations](../databases/db-migrations.md).
+Consulta [Trabajar con bases de datos](../start/databases.md) y
+[Migraciones](../databases/db-migrations.md).
 
-## GridView and data widgets
+## GridView y widgets de datos
 
-Yii 1.1 `CGridView` is often configured with `CActiveDataProvider`:
+En Yii 1.1, `CGridView` suele configurarse con `CActiveDataProvider`:
 
 ```php
 $this->widget('zii.widgets.grid.CGridView', [
@@ -600,7 +622,7 @@ $this->widget('zii.widgets.grid.CGridView', [
 ]);
 ```
 
-Yii3 uses [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview):
+Yii3 usa [yiisoft/yii-dataview](https://github.com/yiisoft/yii-dataview):
 
 ```php
 use Yiisoft\Data\Reader\ReadableDataInterface;
@@ -621,15 +643,16 @@ echo GridView::widget()
     );
 ```
 
-Replace the old data provider with a query service that returns a data
-reader. Model filters as validator rules and route or query parameters.
+Sustituye el antiguo proveedor de datos por un servicio de consulta que
+devuelva un lector de datos. Modela los filtros como reglas del validador y
+como parámetros de ruta o de consulta.
 
-See [Using htmx for partial
-reloads](../../cookbook/using-htmx-for-partial-reloads.md) and [yii-dataview
-GridView
-docs](https://github.com/yiisoft/yii-dataview/blob/master/docs/en/guide/gridview.md).
+Consulta [Usar htmx para recargas
+parciales](../../cookbook/using-htmx-for-partial-reloads.md) y la
+[documentación de GridView de
+yii-dataview](https://github.com/yiisoft/yii-dataview/blob/master/docs/en/guide/gridview.md).
 
-## URL management
+## Gestión de URL
 
 Yii 1.1:
 
@@ -649,14 +672,15 @@ $url = $urlGenerator->generate('post/view', ['id' => $post->getId()]);
 echo Html::a('View', $url)->render();
 ```
 
-Prefer named routes. They make views and GridView action columns easier to
-design and maintain.
+Es preferible usar rutas con nombre. Facilitan el diseño y el mantenimiento
+de las vistas y de las columnas de acción de GridView.
 
-See [Routing and URL generation](../runtime/routing.md).
+Consulta [Enrutamiento y generación de URL](../runtime/routing.md).
 
-## Filters, access control, and authentication
+## Filtros, control de acceso y autenticación
 
-Yii 1.1 controller filters are controller methods or filter classes:
+Los filtros de controlador de Yii 1.1 son métodos del controlador o clases
+de filtro:
 
 ```php
 public function filters()
@@ -667,31 +691,32 @@ public function filters()
 }
 ```
 
-Yii3 uses middleware and focused packages. Move authentication,
-authorization, CSRF, locale detection, and request body parsing out of
-controllers and into middleware or services.
+Yii3 usa middleware y paquetes especializados. Saca de los controladores la
+autenticación, la autorización, CSRF, la detección del idioma (locale) y el
+análisis del cuerpo de la solicitud, y llévalos a middlewares o servicios.
 
-See [Middleware](../structure/middleware.md),
-[Authentication](../security/authentication.md), and
-[Authorization](../security/authorization.md).
+Consulta [Middleware](../structure/middleware.md),
+[Autenticación](../security/authentication.md) y
+[Autorización](../security/authorization.md).
 
-## Widgets, helpers, and extensions
+## Widgets, helpers y extensiones
 
-Yii 1.1 widgets and helpers usually depend on Yii-specific base classes such
-as `CWidget`, `CHtml`, and extension autoloading. In Yii3:
+Los widgets y helpers de Yii 1.1 suelen depender de clases base específicas
+de Yii, como `CWidget` y `CHtml`, y de la autocarga de extensiones. En Yii3:
 
-- replace helper calls with `yiisoft/html`, `yiisoft/arrays`,
-  `yiisoft/strings`, or application helpers;
-- replace extensions with Composer packages;
-- rebuild custom widgets with `yiisoft/widget` or plain services/templates;
-- replace jQuery UI and Bootstrap widgets with current frontend packages or
-  Yii3 widget packages where available.
+- sustituye las llamadas a helpers por `yiisoft/html`, `yiisoft/arrays`,
+  `yiisoft/strings` o helpers de la aplicación;
+- sustituye las extensiones por paquetes de Composer;
+- reconstruye los widgets personalizados con `yiisoft/widget` o con
+  servicios/plantillas simples;
+- sustituye los widgets de jQuery UI y Bootstrap por paquetes frontend
+  actuales o por paquetes de widgets de Yii3 cuando existan.
 
-See [Widgets](../views/widget.md).
+Consulta [Widgets](../views/widget.md).
 
-## Console applications
+## Aplicaciones de consola
 
-Yii 1.1 console commands extend `CConsoleCommand`:
+Los comandos de consola de Yii 1.1 extienden `CConsoleCommand`:
 
 ```php
 class ReportCommand extends CConsoleCommand
@@ -702,7 +727,8 @@ class ReportCommand extends CConsoleCommand
 }
 ```
 
-Yii3 console commands are Symfony Console commands configured as services:
+Los comandos de consola de Yii3 son comandos de Symfony Console configurados
+como servicios:
 
 ```php
 namespace App\Console;
@@ -722,31 +748,32 @@ final class SendReportCommand extends Command
 }
 ```
 
-See [Console applications](../tutorial/console-applications.md).
+Consulta [Aplicaciones de consola](../tutorial/console-applications.md).
 
-## Internationalization
+## Internacionalización
 
-Yii 1.1 message files under `protected/messages` can usually be kept
-conceptually, but configuration changes. Yii3 uses translator packages and
-explicit message sources. Move message files into the structure expected by
-the selected translator message package and inject translation services
-where needed.
+Los archivos de mensajes de Yii 1.1 en `protected/messages` normalmente
+pueden conservarse a nivel conceptual, pero la configuración cambia. Yii3
+usa paquetes de traducción y fuentes de mensajes explícitas. Traslada los
+archivos de mensajes a la estructura que espera el paquete de mensajes del
+traductor elegido e inyecta los servicios de traducción donde se necesiten.
 
-See [Internationalization](../tutorial/i18n.md).
+Consulta [Internacionalización](../tutorial/i18n.md).
 
-## What to refactor before reusing
+## Qué refactorizar antes de reutilizar
 
-These Yii 1.1 refactorings make the old behavior easier to understand and
-reuse:
+Estas refactorizaciones de Yii 1.1 hacen que el comportamiento antiguo sea
+más fácil de entender y de reutilizar:
 
-- isolate database queries from controllers;
-- remove direct `Yii::app()` access from domain code;
-- move validation out of Active Record when it describes request input
-  rather than database invariants;
-- replace large controller actions with services;
-- document all routes and URL rules;
-- add tests around the flows you plan to rebuild first;
-- upgrade PHP syntax gradually if the old runtime allows it.
+- aísla las consultas a la base de datos de los controladores;
+- elimina el acceso directo a `Yii::app()` del código de dominio;
+- saca la validación de Active Record cuando describa la entrada de la
+  solicitud y no invariantes de la base de datos;
+- sustituye las acciones de controlador grandes por servicios;
+- documenta todas las rutas y reglas de URL;
+- añade pruebas para los flujos que planeas reconstruir primero;
+- actualiza la sintaxis de PHP de forma gradual si el entorno de ejecución
+  antiguo lo permite.
 
-The goal is not to make Yii 1.1 look like Yii3. The goal is to reduce hidden
-coupling before the code crosses the framework boundary.
+El objetivo no es que Yii 1.1 se parezca a Yii3. El objetivo es reducir el
+acoplamiento oculto antes de que el código cruce la frontera del framework.

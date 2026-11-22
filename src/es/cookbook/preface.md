@@ -1,15 +1,15 @@
 # Preface
 
-Yii is a high-performance, package-based PHP framework for developing modern
-applications.  The name Yii (pronounced `Yee` or `[ji:]`) means "simple and
-evolutionary" in Chinese.  You can also think about it as an acronym for
-**Yes It Is**!
+Yii es un framework PHP de alto rendimiento y basado en paquetes para
+desarrollar aplicaciones modernas. El nombre Yii (se pronuncia `Yee` o
+`[ji:]`) significa "sencillo y evolutivo" en chino. ¡También puedes verlo
+como el acrónimo de **Yes It Is**!
 
-Yii is a generic Web programming framework.  You can use it for developing
-all kinds of Web applications using PHP.  Because of its architecture and
-sophisticated caching support, it's especially suitable for developing
-large-scale applications such as portals, content management systems,
-e-commerce, REST APIs, etc.
+Yii es un framework de programación web de uso general. Puedes usarlo para
+desarrollar todo tipo de aplicaciones web con PHP. Gracias a su arquitectura
+y a su avanzado soporte de caché, es especialmente adecuado para desarrollar
+aplicaciones a gran escala, como portales, sistemas de gestión de
+contenidos, comercio electrónico, API REST, etc.
 
 With comprehensive documentation and an enthusiastic user community, Yii can
 significantly reduce your development time in the long run.

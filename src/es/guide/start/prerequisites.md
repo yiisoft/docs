@@ -1,44 +1,47 @@
-# What do you need to know?
+# ¿Qué necesitas saber?
 
-The Yii learning curve isn't as steep as other PHP frameworks, but still,
-there are some things you should learn before starting with Yii.
+La curva de aprendizaje de Yii no es tan pronunciada como la de otros
+frameworks PHP, pero aun así hay algunas cosas que deberías aprender antes
+de empezar con Yii.
 
 ## PHP
 
-Yii is a PHP framework, so make sure you [read and understand language
-reference](https://www.php.net/manual/en/langref.php).
+Yii es un framework PHP, así que asegúrate de [leer y entender la referencia
+del lenguaje](https://www.php.net/manual/en/langref.php).
 
-## Object-oriented programming
+## Programación orientada a objetos
 
-You need a basic understanding of object-oriented programming. If you're not
-familiar with it, check one of the many tutorials available such as [the one
-from
+Necesitas conocimientos básicos de programación orientada a objetos. Si no
+estás familiarizado con ella, consulta alguno de los muchos tutoriales
+disponibles, como [el de
 tuts+](https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762).
 
-When you develop with Yii, you write code in an object-oriented fashion, so
-make sure you're familiar with [PHP OOP
-support](https://www.php.net/manual/en/language.oop5.php).
+Cuando desarrollas con Yii, escribes código orientado a objetos, así que
+asegúrate de conocer bien [el soporte de PHP para la programación orientada
+a objetos](https://www.php.net/manual/en/language.oop5.php).
 
-Note that the more complicated your application is, the more advanced OOP
-concepts you should learn to successfully manage that complexity.
+Ten en cuenta que, cuanto más compleja sea tu aplicación, más conceptos
+avanzados de programación orientada a objetos tendrás que aprender para
+gestionar esa complejidad con éxito.
 
-## Command line and Composer
+## Línea de comandos y Composer
 
-Yii extensively uses the de-facto standard PHP package manager,
-[Composer](https://getcomposer.org) so make sure you read and understand its
-[guide](https://getcomposer.org/doc/01-basic-usage.md). If you aren't
-familiar with using the command line, it's time to start trying. Once you
-learn the basics, you'll never want to work without it.
+Yii usa ampliamente el gestor de paquetes estándar de facto de PHP,
+[Composer](https://getcomposer.org), así que asegúrate de leer y entender su
+[guía](https://getcomposer.org/doc/01-basic-usage.md). Si no estás
+familiarizado con la línea de comandos, es hora de empezar a probarla. Una
+vez que aprendas lo básico, no querrás volver a trabajar sin ella.
 
 ## HTTP
 
-Since Yii is a web framework and the web largely uses HTTP, it's a good idea
-to [learn more about it](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+Como Yii es un framework web y la web usa HTTP en gran medida, es buena idea
+[aprender más sobre él](https://developer.mozilla.org/en-US/docs/Web/HTTP).
 
 ## Docker
 
-The default application template leverages Docker, so we recommend that you
-[read and understand the concepts](https://docs.docker.com/get-started/).
+La plantilla de aplicación predeterminada utiliza Docker, así que te
+recomendamos [leer y entender sus
+conceptos](https://docs.docker.com/get-started/).
 
-Also, you will benefit from familiarizing yourself with [twelve-factor
-app](https://12factor.net/) principles.
+Además, te resultará útil familiarizarte con los principios de las
+[aplicaciones de doce factores (twelve-factor app)](https://12factor.net/).

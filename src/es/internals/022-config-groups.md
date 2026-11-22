@@ -13,7 +13,7 @@ to group names via `composer.json`.
 - If there's no postfix, it's "common" and applies to both web and console
 - "web" and "console" may override what's defined in "common"
 
-## Parameters
+## Parámetros
 
 Application config parameters that are used in all configs.
 

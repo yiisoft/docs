@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/guide/structure/overview.md ../src/guide/views/script-style-meta.md
 #, no-wrap
 msgid "Overview"
-msgstr ""
+msgstr "Resumen"
 
 #. type: Title ##
 #: ../src/guide/views/asset.md ../src/guide/views/script-style-meta.md

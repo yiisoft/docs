@@ -1,254 +1,274 @@
 # A
 
-## action
+## acción (action)
 
-Action is a callable, class, or class method that handles a matched route
-and returns a response.  Read more in ["Actions"](structure/action.md).
+Una acción es un callable, una clase o un método de clase que gestiona una
+ruta coincidente y devuelve una respuesta. Más información en
+["Acciones"](structure/action.md).
 
 ## alias
 
-Alias is a string used by Yii to refer to the class or directory such as
-`@app/vendor`.  Read more in ["Aliases"](concept/aliases.md).
+Un alias es una cadena que Yii usa para referirse a una clase o a un
+directorio, como `@app/vendor`. Más información en
+["Alias"](concept/aliases.md).
 
-## application
+## aplicación (application)
 
-Application is an object that starts up, handles a request through
-configured middleware, and shuts down.  Read more in
-["Application"](structure/application.md).
+La aplicación es un objeto que se inicia, gestiona una solicitud a través de
+los middlewares configurados y finaliza. Más información en
+["Aplicación"](structure/application.md).
 
 ## asset
 
-Asset refers to a resource file. Typically, it contains JavaScript or CSS
-code but can be any static content accessed via HTTP.  Read more in
-["Assets"](views/asset.md).
+Un asset es un archivo de recursos. Normalmente contiene código JavaScript o
+CSS, pero puede ser cualquier contenido estático al que se accede por
+HTTP. Más información en ["Assets"](views/asset.md).
 
-## asset bundle
+## asset bundle (paquete de assets)
 
-Asset bundle is a PHP class that declares a group of CSS, JavaScript, image,
-or font files that should be published and registered together.  Read more
-in ["Asset Bundles"](views/asset.md#asset-bundles).
+Un paquete de assets es una clase PHP que declara un grupo de archivos CSS,
+JavaScript, imágenes o fuentes que deben publicarse y registrarse
+juntos. Más información en ["Paquetes de
+assets"](views/asset.md#asset-bundles).
 
-## authentication
+## autenticación (authentication)
 
-Authentication is the process of determining the identity of the current
-user.  Read more in ["Authentication"](security/authentication.md).
+La autenticación es el proceso de determinar la identidad del usuario
+actual. Más información en ["Autenticación"](security/authentication.md).
 
-## authorization
+## autorización (authorization)
 
-Authorization is the process of checking whether an authenticated or
-anonymous user is allowed to perform an action.  Read more in
-["Authorization"](security/authorization.md).
+La autorización es el proceso de comprobar si un usuario autenticado o
+anónimo tiene permiso para realizar una acción. Más información en
+["Autorización"](security/authorization.md).
 
-## autoloading
+## autocarga (autoloading)
 
-Autoloading is the process of loading PHP classes automatically when they
-are first used.  Read more in ["Class autoloading"](concept/autoloading.md).
+La autocarga es el proceso de cargar las clases PHP automáticamente la
+primera vez que se usan. Más información en ["Autocarga de
+clases"](concept/autoloading.md).
 
 # B
 
-## bootstrap
+## bootstrap (arranque)
 
-Bootstrap is application startup code that prepares services, configuration,
-and runtime state before request handling.  Read more in
-["Configuration"](concept/configuration.md).
+El arranque (bootstrap) es el código de inicio de la aplicación que prepara
+los servicios, la configuración y el estado de ejecución antes de gestionar
+las solicitudes. Más información en
+["Configuración"](concept/configuration.md).
 
 # C
 
-## configuration
+## configuración (configuration)
 
-Configuration may refer either to the process of setting properties of an
-object or to a configuration file that stores settings for an object, or a
-class of objects.  Read more in ["Configuration"](concept/configuration.md).
+La configuración puede referirse al proceso de establecer las propiedades de
+un objeto o a un archivo de configuración que guarda los ajustes de un
+objeto o de una clase de objetos. Más información en
+["Configuración"](concept/configuration.md).
 
-## container
+## contenedor (container)
 
-Container is an object that creates services, resolves their dependencies,
-and returns configured instances.  Read more in ["DI
-container"](concept/di-container.md#di-container).
+El contenedor es un objeto que crea servicios, resuelve sus dependencias y
+devuelve instancias configuradas. Más información en ["Contenedor
+DI"](concept/di-container.md#contenedor-di).
 
-## controller
+## controlador (controller)
 
-Controller is a class that groups action methods for related routes.  Read
-more in ["Actions"](structure/action.md).
+Un controlador es una clase que agrupa los métodos de acción de rutas
+relacionadas. Más información en ["Acciones"](structure/action.md).
 
 ## cookie
 
-Cookie is a small piece of data stored by a browser and sent with later
-requests to the same site.  Read more in ["Cookies"](runtime/cookies.md).
+Una cookie es un pequeño fragmento de datos que el navegador guarda y envía
+en las solicitudes posteriores al mismo sitio. Más información en
+["Cookies"](runtime/cookies.md).
 
 ## CSRF
 
-CSRF means cross-site request forgery, an attack where another site tries to
-make a user's browser submit an unwanted request to your application.  Read
-more in ["Avoiding CSRF"](security/best-practices.md#avoiding-csrf).
+CSRF significa falsificación de solicitudes entre sitios (cross-site request
+forgery), un ataque en el que otro sitio intenta que el navegador de un
+usuario envíe una solicitud no deseada a tu aplicación. Más información en
+["Evitar CSRF"](security/best-practices.md#avoiding-csrf).
 
 # D
 
 ## DI
 
-Dependency injection is a programming technique where an object receives its
-dependencies from the outside.  Read more in ["Dependency injection and
-container"](concept/di-container.md).
+La inyección de dependencias (DI, dependency injection) es una técnica de
+programación en la que un objeto recibe sus dependencias desde fuera. Más
+información en ["Inyección de dependencias y
+contenedor"](concept/di-container.md).
 
 # E
 
-## entry script
+## entry script (script de entrada)
 
-Entry script is the first PHP script executed for a web or console
-application.  Read more in ["Entry scripts"](structure/entry-script.md).
+El script de entrada es el primer script PHP que se ejecuta en una
+aplicación web o de consola. Más información en ["Scripts de
+entrada"](structure/entry-script.md).
 
-## event
+## evento (event)
 
-Event is an object that represents something that happened and can be passed
-to listeners.  Read more in ["Events"](concept/events.md).
+Un evento es un objeto que representa algo que ha ocurrido y que se puede
+pasar a los listeners. Más información en ["Eventos"](concept/events.md).
 
 # H
 
-## handler
+## handler (manejador)
 
-Handler is callable code selected by routing or middleware to process a
-request and produce a response.  Read more in ["Routing and URL
-generation"](runtime/routing.md).
+Un manejador es código callable que el enrutamiento o un middleware
+selecciona para procesar una solicitud y producir una respuesta. Más
+información en ["Enrutamiento y generación de URL"](runtime/routing.md).
 
 # I
 
-## installation
+## instalación (installation)
 
-Installation is a process of preparing something to work either by following
-a readme file or by executing a specially prepared script. In the case of
-Yii, it's setting permissions and fulfilling software requirements.
+La instalación es el proceso de preparar algo para que funcione, ya sea
+siguiendo un archivo readme o ejecutando un script preparado para ello. En
+el caso de Yii, consiste en establecer los permisos y cumplir los requisitos
+de software.
 
 # L
 
 ## layout
 
-Layout is a view template that wraps page-specific content with shared page
-structure.  Read more in ["Working with
-layouts"](views/view.md#working-with-layouts).
+Un layout es una plantilla de vista que envuelve el contenido propio de cada
+página con la estructura común de la página. Más información en ["Trabajar
+con layouts"](views/view.md#working-with-layouts).
 
 # M
 
-## migration
+## migración (migration)
 
-Migration is a versioned PHP class that applies or reverts a database schema
-or data change.  Read more in ["Migrations"](databases/db-migrations.md).
+Una migración es una clase PHP versionada que aplica o revierte un cambio en
+el esquema o en los datos de la base de datos. Más información en
+["Migraciones"](databases/db-migrations.md).
 
 ## middleware
 
-Middleware is a processor in the request processing stack. Given a request,
-it may either produce a response or do some action and pass processing to
-the next middleware.  Read more in ["Middleware"](structure/middleware.md).
+Un middleware es un procesador de la pila de procesamiento de
+solicitudes. Dada una solicitud, puede producir una respuesta o realizar
+alguna acción y pasar el procesamiento al siguiente middleware. Más
+información en ["Middleware"](structure/middleware.md).
 
-## model
+## modelo (model)
 
-Model is an object that represents application data and usually contains
-validation or business rules for that data.  Read more in ["Working with
-forms"](start/forms.md).
+Un modelo es un objeto que representa datos de la aplicación y que suele
+contener reglas de validación o de negocio para esos datos. Más información
+en ["Trabajar con formularios"](start/forms.md).
 
-## module
+## módulo (module)
 
-The module is a namespace that groups some code based on a use-case. It's
-typically used within the main application and may contain any source code,
-define additional URL handlers or console commands.
+Un módulo es un espacio de nombres que agrupa código según un caso de
+uso. Normalmente se usa dentro de la aplicación principal y puede contener
+cualquier código fuente, definir manejadores de URL adicionales o comandos
+de consola.
 
 # N
 
-## namespace
+## namespace (espacio de nombres)
 
-Namespace refers to a [PHP language
-feature](https://www.php.net/manual/en/language.namespaces.php) to group
-multiple classes under a certain name.
+Un espacio de nombres es una [funcionalidad del lenguaje
+PHP](https://www.php.net/manual/en/language.namespaces.php) que permite
+agrupar varias clases bajo un nombre determinado.
 
 # P
 
-## package
+## paquete (package)
 
-A package usually refers to [Composer
-package](https://getcomposer.org/doc/). It's code ready for reuse and
-redistribution installable automatically via a package manager.
+Un paquete suele referirse a un [paquete de
+Composer](https://getcomposer.org/doc/). Es código listo para reutilizarse y
+redistribuirse que se puede instalar automáticamente con un gestor de
+paquetes.
 
-## parameter
+## parámetro (parameter)
 
-Parameter is a configuration value that can be used by application or
-package config files.  Read more in
-["Parameters"](concept/configuration.md#parameters).
+Un parámetro es un valor de configuración que pueden usar los archivos de
+configuración de la aplicación o de los paquetes. Más información en
+["Parámetros"](concept/configuration.md#parametros).
 
 # Q
 
-## queue
+## queue (cola)
 
-A queue is a data structure that processes items in first-in, first-out
-order.  Yii has a [yiisoft/queue](https://github.com/yiisoft/queue) package.
+Una cola es una estructura de datos que procesa los elementos en orden de
+llegada (el primero en entrar es el primero en salir). Yii tiene el paquete
+[yiisoft/queue](https://github.com/yiisoft/queue).
 
 # R
 
-## request
+## request (solicitud)
 
-Request is a PSR-7 object that represents an incoming HTTP message,
-including method, URI, headers, body, uploaded files, and attributes.  Read
-more in ["Request"](runtime/request.md).
+La solicitud es un objeto PSR-7 que representa un mensaje HTTP entrante, con
+su método, URI, cabeceras, cuerpo, archivos subidos y atributos. Más
+información en ["Solicitud"](runtime/request.md).
 
-## response
+## response (respuesta)
 
-Response is a PSR-7 object that represents an outgoing HTTP message,
-including status code, headers, and body.  Read more in
-["Response"](runtime/response.md).
+La respuesta es un objeto PSR-7 que representa un mensaje HTTP saliente, con
+su código de estado, cabeceras y cuerpo. Más información en
+["Respuesta"](runtime/response.md).
 
-## route
+## ruta (route)
 
-Route describes which request method and URL pattern should be handled by
-which action or middleware.  Read more in ["Routing and URL
-generation"](runtime/routing.md).
+Una ruta describe qué método de solicitud y qué patrón de URL debe gestionar
+cada acción o middleware. Más información en ["Enrutamiento y generación de
+URL"](runtime/routing.md).
 
-## rule
+## regla (rule)
 
-The rule usually refers to a validation rule of the
-[yiisoft/validator](https://github.com/yiisoft/validator) package.  It holds
-a set of parameters for checking if a data set is valid.  "Rule handler"
-does the actual processing.
+Una regla suele referirse a una regla de validación del paquete
+[yiisoft/validator](https://github.com/yiisoft/validator). Contiene un
+conjunto de parámetros para comprobar si un conjunto de datos es válido. El
+procesamiento real lo hace el "manejador de la regla" (rule handler).
 
 # S
 
-## service
+## servicio (service)
 
-Service is a focused object that performs application work or provides
-infrastructure behavior and is usually stored in the DI container.  Read
-more in ["Service components"](../cookbook/organizing-code/service.md).
+Un servicio es un objeto con un propósito concreto que realiza trabajo de la
+aplicación o aporta comportamiento de infraestructura, y que normalmente se
+guarda en el contenedor DI. Más información en ["Componentes de
+servicio"](../cookbook/organizing-code/service.md).
 
-## service provider
+## service provider (proveedor de servicios)
 
-Service provider is a class that registers related service definitions for
-the DI container.  Read more in ["Service
-providers"](concept/configuration.md#service-providers).
+Un proveedor de servicios es una clase que registra definiciones de
+servicios relacionados en el contenedor DI. Más información en ["Proveedores
+de servicios"](concept/configuration.md#proveedores-de-servicios).
 
-## session
+## sesión (session)
 
-Session is server-side storage associated with a browser across multiple
-requests.  Read more in ["Sessions"](runtime/sessions.md).
+La sesión es un almacenamiento en el servidor asociado a un navegador a lo
+largo de varias solicitudes. Más información en
+["Sesiones"](runtime/sessions.md).
 
 # T
 
-## template
+## template (plantilla)
 
-Template is a file used by a view or template engine to produce presentation
-output such as HTML.  Read more in ["Views"](views/view.md).
+Una plantilla es un archivo que usa una vista o un motor de plantillas para
+generar la salida de presentación, como HTML. Más información en
+["Vistas"](views/view.md).
 
 # V
 
 ## vendor
 
-A vendor is an organization or individual developer providing code in the
-form of packages.  It also may refer to [Composer's `vendor`
-directory](https://getcomposer.org/doc/).
+Un vendor es una organización o un desarrollador individual que proporciona
+código en forma de paquetes. También puede referirse al [directorio `vendor`
+de Composer](https://getcomposer.org/doc/).
 
-## view
+## vista (view)
 
-View is responsible for presenting data to end users, usually by executing a
-template with provided data.  Read more in ["Views"](views/view.md).
+La vista se encarga de presentar los datos a los usuarios finales,
+normalmente ejecutando una plantilla con los datos proporcionados. Más
+información en ["Vistas"](views/view.md).
 
 # W
 
 ## widget
 
-Widget is a reusable view component that renders a piece of user interface.
-Read more in ["Widgets"](views/widget.md).
+Un widget es un componente de vista reutilizable que renderiza una parte de
+la interfaz de usuario. Más información en ["Widgets"](views/widget.md).

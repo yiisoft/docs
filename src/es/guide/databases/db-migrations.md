@@ -1,4 +1,4 @@
-# Migrations
+# Migraciones
 
 During the course of developing and maintaining a database-driven
 application, the structure of the database being used evolves just like the

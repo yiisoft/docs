@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-12-24 08:23+0000\n"
+"POT-Creation-Date: 2026-10-23 18:03+0000\n"
 "PO-Revision-Date: 2025-09-04 11:19+0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/guide/caching/overview.md ../src/guide/index.md
 #, no-wrap
 msgid "Caching"
-msgstr ""
+msgstr "Caché"
 
 #. type: Plain text
 #: ../src/guide/caching/overview.md

@@ -18,9 +18,9 @@ msgstr ""
 
 #. type: Title ###
 #: ../src/guide/index.md ../src/guide/tutorial/docker.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Testing"
-msgstr "Pruebas (Testing)"
+msgstr "Pruebas"
 
 #. type: Title #
 #: ../src/guide/tutorial/docker.md

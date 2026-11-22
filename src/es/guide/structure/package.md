@@ -1,87 +1,92 @@
-# Using packages
+# Usar paquetes
 
-Reusable code is distributed as [Composer
-packages](https://getcomposer.org/doc/05-repositories.md#package).  A
-package can be an infrastructure library, a Yii integration, a reusable
-feature, or a module representing an application context.
+El código reutilizable se distribuye como [paquetes de
+Composer](https://getcomposer.org/doc/05-repositories.md#package). Un
+paquete puede ser una biblioteca de infraestructura, una integración con
+Yii, una funcionalidad reutilizable o un módulo que representa un contexto
+de la aplicación.
 
-This page explains how to use packages in an application. To create a
-Yii-aware package, see [Designing packages for Yii
-applications](designing-packages.md).
+Esta página explica cómo usar paquetes en una aplicación. Para crear un
+paquete preparado para Yii, consulta [Diseñar paquetes para aplicaciones
+Yii](designing-packages.md).
 
-## Installing packages
+## Instalar paquetes
 
-By default, Composer installs packages registered on
-[Packagist](https://packagist.org/), the main repository for open source PHP
-packages.
+Por defecto, Composer instala los paquetes registrados en
+[Packagist](https://packagist.org/), el repositorio principal de paquetes
+PHP de código abierto.
 
-Install a package with:
+Instala un paquete con:
 
 ```sh
 composer require vendor-name/package-name
 ```
 
-Composer updates two files:
+Composer actualiza dos archivos:
 
-- `composer.json` stores the package name and version constraint.
-- `composer.lock` stores the exact versions installed.
+- `composer.json` guarda el nombre del paquete y la restricción de versión.
+- `composer.lock` guarda las versiones exactas instaladas.
 
-Commit both files so other environments install the same dependency
-versions.
+Incluye ambos archivos en el control de versiones para que los demás
+entornos instalen las mismas versiones de las dependencias.
 
-Installed packages are stored in the application `vendor/` directory.
+Los paquetes instalados se guardan en el directorio `vendor/` de la
+aplicación.
 
 > [!WARNING]
-> Never edit files in `vendor/` directly. Change application configuration, extend classes, decorate services, or
-> contribute fixes to the package instead.
+> Nunca edites directamente los archivos de `vendor/`. En su lugar, cambia la configuración de la aplicación, extiende clases, decora servicios o
+> contribuye con correcciones al paquete.
 
-Package classes are available through Composer autoloading after
-installation. See [Autoloading](../concept/autoloading.md)  for details.
+Las clases de los paquetes están disponibles mediante la autocarga de
+Composer tras la instalación. Consulta [Autocarga de
+clases](../concept/autoloading.md) para más detalles.
 
-## Updating packages
+## Actualizar paquetes
 
-Update a package within the version constraint recorded in `composer.json`:
+Actualiza un paquete dentro de la restricción de versión registrada en
+`composer.json`:
 
 ```sh
 composer update vendor-name/package-name
 ```
 
-Change the accepted version constraint with `composer require`:
+Cambia la restricción de versión aceptada con `composer require`:
 
 ```sh
 composer require vendor-name/package-name:^2.0
 ```
 
-After updating a Yii-aware package, Composer rebuilds Yii's configuration
-merge plan. If you changed configuration group mappings manually, rebuild it
-explicitly:
+Tras actualizar un paquete preparado para Yii, Composer vuelve a generar el
+plan de fusión de la configuración de Yii. Si has cambiado manualmente las
+asignaciones de los grupos de configuración, vuelve a generarlo
+explícitamente:
 
 ```sh
 composer yii-config-rebuild
 ```
 
-## Removing packages
+## Eliminar paquetes
 
-Remove a package with:
+Elimina un paquete con:
 
 ```sh
 composer remove vendor-name/package-name
 ```
 
-Then remove application code and configuration that referenced classes,
-services, routes, commands, assets, migrations, or translations from that
-package.
+Después, elimina el código y la configuración de la aplicación que hacían
+referencia a clases, servicios, rutas, comandos, assets, migraciones o
+traducciones de ese paquete.
 
-## Private packages
+## Paquetes privados
 
-For private code, configure Composer repositories in the application
-`composer.json`. Common options are:
+Para el código privado, configura repositorios de Composer en el
+`composer.json` de la aplicación. Las opciones habituales son:
 
-- `vcs` for a Git repository.
-- `path` for a local package during development.
-- `composer` for a private Composer repository.
+- `vcs` para un repositorio Git.
+- `path` para un paquete local durante el desarrollo.
+- `composer` para un repositorio privado de Composer.
 
-For example, to work with a package located next to the application:
+Por ejemplo, para trabajar con un paquete situado junto a la aplicación:
 
 ```json
 {
@@ -94,25 +99,27 @@ For example, to work with a package located next to the application:
 }
 ```
 
-Then install it normally:
+Después, instálalo de la forma habitual:
 
 ```sh
 composer require vendor/blog
 ```
 
-Read more in the [Composer repository
-documentation](https://getcomposer.org/doc/05-repositories.md).
+Más información en la [documentación de repositorios de
+Composer](https://getcomposer.org/doc/05-repositories.md).
 
-## Package configuration
+## Configuración de paquetes
 
-Some Yii packages provide default configuration through
-[yiisoft/config](https://github.com/yiisoft/config).  After installation,
-the package configuration becomes part of the vendor layer and the
-application can override it in the root package configuration.
+Algunos paquetes de Yii proporcionan configuración predeterminada mediante
+[yiisoft/config](https://github.com/yiisoft/config). Tras la instalación, la
+configuración del paquete pasa a formar parte de la capa de terceros
+(vendor) y la aplicación puede sobrescribirla en la configuración del
+paquete raíz.
 
-Prefer partial overrides in application config files over copying whole
-package config files. For example, override only the parameter or service
-definition you need.
+En lugar de copiar archivos de configuración completos de un paquete, es
+preferible sobrescribir solo una parte en los archivos de configuración de
+la aplicación. Por ejemplo, sobrescribe únicamente el parámetro o la
+definición de servicio que necesites.
 
-For more details, see [Configuration](../concept/configuration.md) and
-[Designing packages for Yii applications](designing-packages.md).
+Para más detalles, consulta [Configuración](../concept/configuration.md) y
+[Diseñar paquetes para aplicaciones Yii](designing-packages.md).

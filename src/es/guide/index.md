@@ -1,162 +1,163 @@
-# The definitive guide to Yii3
+# La guía definitiva de Yii3
 
-We release this guide under the [Terms of Yii
-Documentation](https://www.yiiframework.com/license#docs).
+Publicamos esta guía según los [Términos de la documentación de
+Yii](https://www.yiiframework.com/license#docs).
 
-## Introduction
+## Introducción
 
-- [About Yii](intro/what-is-yii.md)
-- [Upgrading from version 1.1](intro/upgrade-from-v1.md)
-- [Upgrading from version 2.0](intro/upgrade-from-v2.md)
+- [Acerca de Yii](intro/what-is-yii.md)
+- [Actualizar desde la versión 1.1](intro/upgrade-from-v1.md)
+- [Actualizar desde la versión 2.0](intro/upgrade-from-v2.md)
 
-## Getting started
+## Primeros pasos
 
-- [What do you need to know?](start/prerequisites.md)
-- [Creating a project](start/creating-project.md)
-- [Application Workflow](start/workflow.md)
-- [Saying hello](start/hello.md)
-- [Working with forms](start/forms.md)
-- [Working with databases](start/databases.md)
-- [Generating code with Gii](start/gii.md) TODO
-- [Looking ahead](start/looking-ahead.md)
-- [Demo applications](start/demo-apps.md)
+- [¿Qué necesitas saber?](start/prerequisites.md)
+- [Crear un proyecto](start/creating-project.md)
+- [Flujo de trabajo de la aplicación](start/workflow.md)
+- [Decir hola](start/hello.md)
+- [Trabajar con formularios](start/forms.md)
+- [Trabajar con bases de datos](start/databases.md)
+- [Generar código con Gii](start/gii.md) TODO
+- [Próximos pasos](start/looking-ahead.md)
+- [Aplicaciones de demostración](start/demo-apps.md)
 
-## Key concepts
+## Conceptos clave
 
-- [Aliases](concept/aliases.md)
-- [Autoloading](concept/autoloading.md)
-- [Configuration](concept/configuration.md)
-- [Dependency injection container](concept/di-container.md)
-- [Events](concept/events.md)
-- [Immutability](concept/immutability.md)
+- [Alias](concept/aliases.md)
+- [Autocarga](concept/autoloading.md)
+- [Configuración](concept/configuration.md)
+- [Contenedor de inyección de dependencias](concept/di-container.md)
+- [Eventos](concept/events.md)
+- [Inmutabilidad](concept/immutability.md)
 
-## Application structure
+## Estructura de la aplicación
 
-- [Application structure overview](structure/overview.md)
-- [Entry scripts](structure/entry-script.md)
-- [Application](structure/application.md)
-- [Modules](structure/module.md)
-- [Actions](structure/action.md)
+- [Resumen de la estructura de la aplicación](structure/overview.md)
+- [Scripts de entrada](structure/entry-script.md)
+- [Aplicación](structure/application.md)
+- [Módulos](structure/module.md)
+- [Acciones](structure/action.md)
 - [Middleware](structure/middleware.md)
 
-## Packages
+## Paquetes
 
-- [Using packages](structure/package.md)
-- [Designing packages](structure/designing-packages.md)
+- [Usar paquetes](structure/package.md)
+- [Diseñar paquetes](structure/designing-packages.md)
 
-## Handling requests
+## Manejo de solicitudes
 
-- [Routing and URL generation](runtime/routing.md)
-- [Request](runtime/request.md)
-- [Response](runtime/response.md)
-- [Sessions](runtime/sessions.md)
+- [Enrutamiento y generación de URL](runtime/routing.md)
+- [Solicitud](runtime/request.md)
+- [Respuesta](runtime/response.md)
+- [Sesiones](runtime/sessions.md)
 - [Cookies](runtime/cookies.md)
-- [Handling errors](runtime/handling-errors.md)
-- [Logging](runtime/logging.md)
+- [Manejo de errores](runtime/handling-errors.md)
+- [Registro](runtime/logging.md)
 
-## Security
+## Seguridad
 
-- [Security overview](security/overview.md)
-- [Authentication](security/authentication.md)
-- [Authorization](security/authorization.md) TODO: verify and complete!
-- [Working with passwords](security/passwords.md)
-- [Cryptography](security/cryptography.md)
-- [Trusted request](security/trusted-request.md)
-- [Best practices](security/best-practices.md)
+- [Resumen de seguridad](security/overview.md)
+- [Autenticación](security/authentication.md)
+- [Autorización](security/authorization.md) TODO: verify and complete!
+- [Trabajar con contraseñas](security/passwords.md)
+- [Criptografía](security/cryptography.md)
+- [Solicitud de confianza](security/trusted-request.md)
+- [Buenas prácticas](security/best-practices.md)
 
-## Caching
+## Caché
 
-- [Caching overview](caching/overview.md)
-- [Data caching](caching/data.md)
-- Fragment caching TODO
-- Page caching TODO
-- HTTP caching TODO
+- [Resumen de la caché](caching/overview.md)
+- [Caché de datos](caching/data.md)
+- Caché de fragmentos TODO
+- Caché de páginas TODO
+- Caché HTTP TODO
 
-## Working with databases
+## Trabajar con bases de datos
 
 - [Yii
   DB](https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md)
 - [Active
   Record](https://github.com/yiisoft/active-record/blob/master/README.md)
-- [Migrations](databases/db-migrations.md) TODO: verify/update!
+- [Migraciones](databases/db-migrations.md) TODO: verify/update!
 
-## Views
+## Vistas
 
-- [View](views/view.md)
+- [Vista](views/view.md)
 - [Assets](views/asset.md) TODO: verify!
-- [Scripts, styles and metatags](views/script-style-meta.md) TODO: verify!
-- [Template engines](views/template-engines.md) TODO: verify!
-- [View injections](views/view-injections.md)
+- [Scripts, estilos y metaetiquetas](views/script-style-meta.md) TODO:
+  verify!
+- [Motores de plantillas](views/template-engines.md) TODO: verify!
+- [Inyecciones de vista](views/view-injections.md)
 - [Widgets](views/widget.md) TODO: verify!
 
-## Getting data from users
+## Obtener datos de los usuarios
 
-- Creating forms TODO
-- [Validating
-  input](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
-- Uploading files TODO
-- Collecting tabular input TODO
+- Crear formularios TODO
+- [Validar la
+  entrada](https://github.com/yiisoft/validator/blob/master/docs/guide/en/README.md)
+- Subir archivos TODO
+- Recoger entradas tabulares TODO
 
-## Displaying data
+## Mostrar datos
 
-- Data formatting TODO
-- Pagination TODO
-- Sorting TODO
-- Data providers TODO
-- Data widgets TODO
+- Formato de datos TODO
+- Paginación TODO
+- Ordenación TODO
+- Proveedores de datos TODO
+- Widgets de datos TODO
 
-## REST APIs
+## API REST
 
-- [Quick start](rest/quick-start.md)
-- Resources TODO
-- Controllers TODO
-- Routing TODO
-- Authentication TODO
-- Rate limiting TODO
-- Versioning TODO
-- Error handling TODO
+- [Inicio rápido](rest/quick-start.md)
+- Recursos TODO
+- Controladores TODO
+- Enrutamiento TODO
+- Autenticación TODO
+- Limitación de solicitudes TODO
+- Versionado TODO
+- Manejo de errores TODO
 
-## Development tools
+## Herramientas de desarrollo
 
-- Debug toolbar and debugger
-- Generating code using Gii
-- Generating API documentation
-
-
-## Testing
-
-- [Testing overview](testing/overview.md)
-- [Testing environment setup](testing/environment-setup.md)
-- [Unit tests](testing/unit.md)
-- [Functional tests](testing/functional.md)
-- [End-to-end tests](testing/end-to-end.md)
-- [Static analysis and mutation testing](testing/quality-tools.md)
+- Barra de depuración y depurador
+- Generar código con Gii
+- Generar documentación de la API
 
 
-## Special topics
+## Pruebas
 
-- [Console applications](tutorial/console-applications.md)
-- [Mailing](tutorial/mailing.md)
-- [Performance tuning](tutorial/performance-tuning.md)
-- [Using Yii with event loop](tutorial/using-with-event-loop.md)
-- [Using Yii with FrankenPHP](tutorial/using-yii-with-frankenphp.md)
-- [Using Yii with Rapira](tutorial/using-yii-with-rapira.md)
-- [Using Yii with RoadRunner](tutorial/using-yii-with-roadrunner.md)
-- [Using Yii with Swoole](tutorial/using-yii-with-swoole.md)
-- [Docker in application templates](tutorial/docker.md)
-- [Internationalization](tutorial/i18n.md)
+- [Resumen de las pruebas](testing/overview.md)
+- [Configuración del entorno de pruebas](testing/environment-setup.md)
+- [Pruebas unitarias](testing/unit.md)
+- [Pruebas funcionales](testing/functional.md)
+- [Pruebas de extremo a extremo](testing/end-to-end.md)
+- [Análisis estático y pruebas de mutación](testing/quality-tools.md)
+
+
+## Temas especiales
+
+- [Aplicaciones de consola](tutorial/console-applications.md)
+- [Envío de correo](tutorial/mailing.md)
+- [Optimización del rendimiento](tutorial/performance-tuning.md)
+- [Usar Yii con un bucle de eventos](tutorial/using-with-event-loop.md)
+- [Usar Yii con FrankenPHP](tutorial/using-yii-with-frankenphp.md)
+- [Usar Yii con Rapira](tutorial/using-yii-with-rapira.md)
+- [Usar Yii con RoadRunner](tutorial/using-yii-with-roadrunner.md)
+- [Usar Yii con Swoole](tutorial/using-yii-with-swoole.md)
+- [Docker en las plantillas de aplicación](tutorial/docker.md)
+- [Internacionalización](tutorial/i18n.md)
 
 ## Helpers
 
 - [Arrays](https://github.com/yiisoft/arrays/)
-- [Files](https://github.com/yiisoft/files/)
+- [Archivos](https://github.com/yiisoft/files/)
 - [Html](https://github.com/yiisoft/html/)
 - [Json](https://github.com/yiisoft/json)
-- [Network utilities](https://github.com/yiisoft/network-utilities/)
+- [Utilidades de red](https://github.com/yiisoft/network-utilities/)
 - [VarDumper](https://github.com/yiisoft/var-dumper)
-- [Strings](https://github.com/yiisoft/strings)
+- [Cadenas](https://github.com/yiisoft/strings)
 
 ## Extras
 
-- [Cookbook](../cookbook/index.md)
-- [Glossary](glossary.md)
+- [Recetario](../cookbook/index.md)
+- [Glosario](glossary.md)

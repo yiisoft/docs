@@ -19,9 +19,9 @@ msgstr ""
 #. type: Title ###
 #: ../src/cookbook/making-http-requests.md ../src/guide/index.md
 #: ../src/guide/testing/overview.md ../src/guide/tutorial/docker.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Testing"
-msgstr "Pruebas (Testing)"
+msgstr "Pruebas"
 
 #. type: Fenced code block (shell)
 #: ../src/guide/testing/environment-setup.md ../src/guide/testing/overview.md

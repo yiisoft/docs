@@ -21,15 +21,15 @@ msgstr ""
 #: ../src/guide/structure/designing-packages.md
 #: ../src/guide/structure/module.md ../src/guide/structure/package.md
 #: ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "composer yii-config-rebuild\n"
-msgstr "Introducción"
+msgstr "composer yii-config-rebuild\n"
 
 #. type: Title #
 #: ../src/guide/intro/upgrade-from-v1.md ../src/guide/tutorial/i18n.md
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Internationalization"
-msgstr "Introducción"
+msgstr "Internacionalización"
 
 #. type: Plain text
 #: ../src/guide/tutorial/i18n.md

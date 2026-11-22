@@ -1,62 +1,63 @@
-# Application Workflow
+# Flujo de trabajo de la aplicación
 
-After installing Yii, you have a working Yii application.  This section
-introduces the application's built-in functionality, how the code is
-organized, and how the application handles requests in general.
+Tras instalar Yii, tienes una aplicación Yii funcionando. Esta sección
+presenta la funcionalidad integrada de la aplicación, cómo está organizado
+el código y cómo gestiona la aplicación las solicitudes en general.
 
-Note that unlike the framework itself, after you install a project template,
-it's all yours.  You're free to add or delete code and overall change it as
-you need.
+Ten en cuenta que, a diferencia del propio framework, una vez que instalas
+una plantilla de proyecto, es toda tuya. Puedes añadir o eliminar código y,
+en general, modificarla como necesites.
 
-## Functionality
+## Funcionalidad
 
-The installed application contains only one page, accessible at
-`http://localhost/`.  It shares a common layout that you can reuse on
-further pages.
+La aplicación instalada contiene una sola página, accesible en
+`http://localhost/`. Usa un layout común que puedes reutilizar en otras
+páginas.
 
 <!--
-You should also see a toolbar at the bottom of the browser window.
-This is useful [debugger tool](https://github.com/yiisoft/yii-debug) provided by Yii to record and display a lot of
-debugging information, such as log messages, response statuses, the database queries run, and so on.
+También deberías ver una barra de herramientas en la parte inferior de la ventana del navegador.
+Es una útil [herramienta de depuración](https://github.com/yiisoft/yii-debug) que proporciona Yii para registrar y mostrar mucha
+información de depuración, como mensajes de log, estados de las respuestas, las consultas ejecutadas en la base de datos, etc.
 -->
 
-In addition to the web application, you can access a console script via
-`./yii` or, in case of Docker, `make yii`.  Use this script to run
-background and maintenance tasks for the application, which the [Console
-Application Section](../tutorial/console-applications.md) describes.
+Además de la aplicación web, puedes acceder a un script de consola mediante
+`./yii` o, si usas Docker, `make yii`. Usa este script para ejecutar tareas
+en segundo plano y de mantenimiento de la aplicación, que se describen en la
+sección [Aplicaciones de consola](../tutorial/console-applications.md).
 
-## Experimental debugger
+## Depurador experimental
 
-Yii has a debugger that can collect debug data for web requests and expose
-it through the [Yii Dev
-Panel](https://yiisoft.github.io/yii-dev-panel/). The debugger is a work in
-progress. It isn't released as a stable package, and its API, routes, and
-setup may change or be deprecated.
+Yii tiene un depurador que puede recopilar datos de depuración de las
+solicitudes web y exponerlos a través de [Yii Dev
+Panel](https://yiisoft.github.io/yii-dev-panel/). El depurador está en
+desarrollo: no se publica como paquete estable, y su API, sus rutas y su
+configuración pueden cambiar o quedar obsoletas.
 
-To try the current development version, install the debug API package:
+Para probar la versión de desarrollo actual, instala el paquete de la API de
+depuración:
 
 ```shell
 composer require yiisoft/yii-debug-api:^3.0@dev
 ```
 
-Enable debug mode in `.env`:
+Activa el modo de depuración en `.env`:
 
 ```dotenv
 APP_DEBUG=true
 ```
 
-The package registers its routes automatically. Start the application and
-open `/debug` to check that the debug API is available. Then open [Yii Dev
-Panel](https://yiisoft.github.io/yii-dev-panel/) and set your application
-URL there.
+El paquete registra sus rutas automáticamente. Inicia la aplicación y abre
+`/debug` para comprobar que la API de depuración está disponible. Después,
+abre [Yii Dev Panel](https://yiisoft.github.io/yii-dev-panel/) y configura
+allí la URL de tu aplicación.
 
 > [!CAUTION]
-> Use debug mode for local development. In production, keep `APP_DEBUG=false` and don't expose debug routes publicly.
+> Usa el modo de depuración solo para el desarrollo local. En producción, mantén `APP_DEBUG=false` y no expongas públicamente las rutas de depuración.
 
-## Application structure
+## Estructura de la aplicación
 
-The most important directories and files in your application are (assuming
-the application's root directory is `app`):
+Los directorios y archivos más importantes de tu aplicación son estos
+(suponiendo que el directorio raíz de la aplicación es `app`):
 
 ```
 assets/                 Asset bundle source files.
@@ -87,31 +88,32 @@ Makefile                Config for make command.
 yii                     Console application entry point.
 ```
 
-In general, the files in the application fall into two groups: those under
-`app/public` and those under other directories. You can access the former
-directly via HTTP (i.e., in a browser), while you shouldn't expose the
-latter.
+En general, los archivos de la aplicación se dividen en dos grupos: los que
+están en `app/public` y los que están en otros directorios. A los primeros
+puedes acceder directamente por HTTP (es decir, desde un navegador),
+mientras que los segundos no deberías exponerlos.
 
-Each application has an entry script `public/index.php`, the only
-web-accessible PHP script in the application.  The entry script uses an
-[application runner](https://github.com/yiisoft/yii-runner) to create an
-instance of an incoming request with the help of one of PSR-7 packages and
-passes it to an [application](../structure/application.md)  instance. The
-application executes a set of middleware sequentially to process the
-request.  It then passes the result to the emitter, which sends the response
-to the browser.
+Cada aplicación tiene un script de entrada, `public/index.php`, que es el
+único script PHP de la aplicación accesible desde la web. El script de
+entrada usa un [ejecutor (runner) de la
+aplicación](https://github.com/yiisoft/yii-runner) para crear una instancia
+de la solicitud entrante con la ayuda de uno de los paquetes PSR-7 y la pasa
+a una instancia de la [aplicación](../structure/application.md). La
+aplicación ejecuta secuencialmente un conjunto de middlewares para procesar
+la solicitud. Después pasa el resultado al emisor, que envía la respuesta al
+navegador.
 
-Depending on the middleware you use, the application may behave
-differently. By default, a router uses the requested URL and configuration
-to choose a handler and execute it to produce a response.
+Según los middlewares que uses, la aplicación puede comportarse de forma
+diferente. Por defecto, un router usa la URL solicitada y la configuración
+para elegir un manejador y ejecutarlo para producir una respuesta.
 
-You can learn more about the application template from the [yiisoft/app
-package
-documentation](https://github.com/yiisoft/app/blob/master/README.md).
+Puedes obtener más información sobre la plantilla de aplicación en la
+[documentación del paquete
+yiisoft/app](https://github.com/yiisoft/app/blob/master/README.md).
 
-## Request Lifecycle
+## Ciclo de vida de la solicitud
 
-The following diagram shows how an application handles a request.
+El siguiente diagrama muestra cómo gestiona una aplicación una solicitud.
 
 ```mermaid
 flowchart LR
@@ -130,20 +132,21 @@ flowchart LR
   emitter --> user
 ```
 
-1. A user makes a request to the [entry
-   script](../structure/entry-script.md) `public/index.php`.
-2. The entry script with the help of the application runner loads the
-   container [configuration](../concept/configuration.md) and creates an
-   [application](../structure/application.md) instance and services
-   necessary to handle the request.
-3. Request factory creates a request object based on a raw request that came
-   from a user.
-4. Application passes a request object through a middleware array
-   configured. One of these is typically a router.
-5. The Router finds out what handler to execute based on request and
-   configuration.
-6. The handler may load some data, possibly from a database.
-7. The handler forms a response by using data. Either directly or with the
-   help of the view package.
-8. Emitter receives the response and takes care of sending the response to
-   the user's browser.
+1. Un usuario hace una solicitud al [script de
+   entrada](../structure/entry-script.md) `public/index.php`.
+2. El script de entrada, con la ayuda del ejecutor de la aplicación, carga
+   la [configuración](../concept/configuration.md) del contenedor y crea una
+   instancia de la [aplicación](../structure/application.md) y los servicios
+   necesarios para gestionar la solicitud.
+3. La factoría de solicitudes crea un objeto de solicitud a partir de la
+   solicitud en bruto que ha llegado del usuario.
+4. La aplicación pasa el objeto de solicitud por el array de middlewares
+   configurado. Uno de ellos suele ser un router.
+5. El router determina qué manejador ejecutar en función de la solicitud y
+   la configuración.
+6. El manejador puede cargar algunos datos, posiblemente de una base de
+   datos.
+7. El manejador construye una respuesta con esos datos, ya sea directamente
+   o con la ayuda del paquete de vistas.
+8. El emisor recibe la respuesta y se encarga de enviarla al navegador del
+   usuario.

@@ -1,20 +1,21 @@
-# Designing packages for Yii applications
+# Diseñar paquetes para aplicaciones Yii
 
-This page describes how to design a Composer package that adds behavior to a
-Yii application through configuration.  Use it when your package needs to
-register services, routes, events, commands, assets, migrations,
-translations, or a theme.
+Esta página describe cómo diseñar un paquete de Composer que añade
+comportamiento a una aplicación Yii mediante configuración. Úsala cuando tu
+paquete necesite registrar servicios, rutas, eventos, comandos, assets,
+migraciones, traducciones o un tema.
 
-For installing and updating packages in an application, see [Using
-packages](package.md).
+Para instalar y actualizar paquetes en una aplicación, consulta [Usar
+paquetes](package.md).
 
-## Composer metadata
+## Metadatos de Composer
 
-Each package must have a `composer.json` file in its root directory. At
-minimum, define a package name, dependencies, autoloading, and Yii config
-metadata when the package integrates with a Yii application.
+Cada paquete debe tener un archivo `composer.json` en su directorio
+raíz. Como mínimo, define un nombre de paquete, las dependencias, la
+autocarga y, si el paquete se integra con una aplicación Yii, los metadatos
+de configuración de Yii.
 
-Use a package name in the `vendor-name/project-name` format:
+Usa un nombre de paquete con el formato `vendor-name/project-name`:
 
 ```json
 {
@@ -33,17 +34,19 @@ Use a package name in the `vendor-name/project-name` format:
 }
 ```
 
-Use stable dependency constraints for stable releases. Avoid using `yiisoft`
-as your vendor name because it is reserved for Yii packages.
+Usa restricciones de dependencias estables para las versiones
+estables. Evita usar `yiisoft` como nombre de vendor, porque está reservado
+para los paquetes de Yii.
 
-If your package requires a Yii application, prefixing the project name with
-`yii-` can make that clear on Packagist.
+Si tu paquete requiere una aplicación Yii, añadir el prefijo `yii-` al
+nombre del proyecto puede dejarlo claro en Packagist.
 
-## Package layout
+## Estructura del paquete
 
-A Yii-aware package is a regular Composer package with PHP classes, optional
-resource files, and optional config files.  Keep the configuration in a
-predictable directory and make the public API explicit:
+Un paquete preparado para Yii es un paquete de Composer normal con clases
+PHP, archivos de recursos opcionales y archivos de configuración
+opcionales. Mantén la configuración en un directorio predecible y haz
+explícita la API pública:
 
 ```
 composer.json
@@ -68,14 +71,15 @@ views/
     ...
 ```
 
-Use only the files your package needs. For example, a package with console
-commands but no web routes does not need `routes.php`.
+Usa solo los archivos que necesite tu paquete. Por ejemplo, un paquete con
+comandos de consola pero sin rutas web no necesita `routes.php`.
 
-## Config plugin metadata
+## Metadatos del plugin de configuración
 
-Yii applications use [yiisoft/config](https://github.com/yiisoft/config) to
-discover package configuration.  Declare package config files in the
-`extra.config-plugin` section of `composer.json`:
+Las aplicaciones Yii usan
+[yiisoft/config](https://github.com/yiisoft/config) para descubrir la
+configuración de los paquetes. Declara los archivos de configuración del
+paquete en la sección `extra.config-plugin` de `composer.json`:
 
 ```json
 {
@@ -101,35 +105,38 @@ discover package configuration.  Declare package config files in the
 }
 ```
 
-Each `config-plugin` key is a config group name and each value is a path
-relative to the package root.
+Cada clave de `config-plugin` es un nombre de grupo de configuración y cada
+valor es una ruta relativa a la raíz del paquete.
 
-Use the common, web, and console groups consistently:
+Usa los grupos comunes, web y de consola de forma coherente:
 
-- `params`, `di`, `di-providers`, `di-delegates`, `events`, and `bootstrap`
-  apply to both web and console entry points.
-- `params-web`, `di-web`, `di-providers-web`, `events-web`, `bootstrap-web`,
-  and `routes` apply to web entry points.
-- `params-console`, `di-console`, `di-providers-console`, `events-console`,
-  and `bootstrap-console` apply to console entry points.
+- `params`, `di`, `di-providers`, `di-delegates`, `events` y `bootstrap` se
+  aplican tanto a los puntos de entrada web como a los de consola.
+- `params-web`, `di-web`, `di-providers-web`, `events-web`, `bootstrap-web`
+  y `routes` se aplican a los puntos de entrada web.
+- `params-console`, `di-console`, `di-providers-console`, `events-console` y
+  `bootstrap-console` se aplican a los puntos de entrada de consola.
 
-If your package defines a new config group, document how an application
-should load that group. Prefer the standard groups when you integrate with
-Yii services because application templates and Yii packages already use
-these names.
+Si tu paquete define un nuevo grupo de configuración, documenta cómo debe
+cargarlo una aplicación. Cuando te integres con servicios de Yii, es
+preferible usar los grupos estándar, porque las plantillas de aplicación y
+los paquetes de Yii ya usan esos nombres.
 
-After users install, update, remove, or dump Composer autoload files, the
-config plugin rebuilds the merge plan that Yii reads at runtime. If users
-edit their root package configuration manually, ask them to run:
+Cuando los usuarios instalan, actualizan o eliminan paquetes, o regeneran
+los archivos de autocarga de Composer, el plugin de configuración vuelve a
+generar el plan de fusión que Yii lee en tiempo de ejecución. Si los
+usuarios editan manualmente la configuración de su paquete raíz, pídeles que
+ejecuten:
 
 ```sh
 composer yii-config-rebuild
 ```
 
-## Parameters
+## Parámetros
 
-Put default options in `config/params.php`. Group package parameters under
-the Composer package name to avoid collisions:
+Pon las opciones predeterminadas en `config/params.php`. Agrupa los
+parámetros del paquete bajo el nombre del paquete de Composer para evitar
+colisiones:
 
 ```php
 <?php
@@ -144,18 +151,19 @@ return [
 ];
 ```
 
-Application developers can override these values in their own
-`config/common/params.php`, `config/web/params.php`,
-`config/console/params.php`, or environment-specific parameter files.
+Los desarrolladores de aplicaciones pueden sobrescribir estos valores en sus
+propios `config/common/params.php`, `config/web/params.php`,
+`config/console/params.php` o en los archivos de parámetros específicos de
+cada entorno.
 
-Do not read environment variables or global state from package code when a
-parameter can express the choice. Use parameters to configure services
-through DI definitions or service providers.
+No leas variables de entorno ni estado global desde el código del paquete
+cuando un parámetro pueda expresar esa elección. Usa parámetros para
+configurar servicios mediante definiciones DI o proveedores de servicios.
 
-## DI definitions
+## Definiciones DI
 
-Use `config/di.php`, `config/di-web.php`, or `config/di-console.php` for
-direct container definitions:
+Usa `config/di.php`, `config/di-web.php` o `config/di-console.php` para las
+definiciones directas del contenedor:
 
 ```php
 <?php
@@ -177,15 +185,15 @@ return [
 ];
 ```
 
-Prefer direct DI definitions when the configuration describes one service
-clearly.
+Es preferible usar definiciones DI directas cuando la configuración describe
+claramente un único servicio.
 
-## DI service providers
+## Proveedores de servicios DI
 
-Use a DI provider when registration belongs together as a reusable unit:
-several related services, aliases, factory definitions, or extensions.
+Usa un proveedor DI cuando el registro forme una unidad reutilizable: varios
+servicios relacionados, alias, definiciones de factorías o extensiones.
 
-Register providers in `config/di-providers.php`:
+Registra los proveedores en `config/di-providers.php`:
 
 ```php
 <?php
@@ -199,7 +207,7 @@ return [
 ];
 ```
 
-Declare the group in `composer.json`:
+Declara el grupo en `composer.json`:
 
 ```json
 "extra": {
@@ -209,8 +217,9 @@ Declare the group in `composer.json`:
 }
 ```
 
-A provider can return several service definitions and extensions. Place the
-provider class in `src/Provider/BlogProvider.php`:
+Un proveedor puede devolver varias definiciones de servicios y
+extensiones. Coloca la clase del proveedor en
+`src/Provider/BlogProvider.php`:
 
 ```php
 <?php
@@ -248,10 +257,10 @@ final class BlogProvider implements ServiceProviderInterface
 }
 ```
 
-## Routes
+## Rutas
 
-Web packages can add routes through `config/routes.php`, declared as the
-`routes` group:
+Los paquetes web pueden añadir rutas mediante `config/routes.php`, declarado
+como el grupo `routes`:
 
 ```php
 <?php
@@ -271,17 +280,19 @@ return [
 ];
 ```
 
-Route names should be package-prefixed. This avoids collisions with
-application routes and with routes from other packages.
+Los nombres de las rutas deben llevar como prefijo el del paquete. Así se
+evitan colisiones con las rutas de la aplicación y con las de otros
+paquetes.
 
-Keep package routes small and overridable. If an application needs full
-control over URLs, document the actions and let the application define its
-own routes.
+Mantén las rutas del paquete pequeñas y fáciles de sobrescribir. Si una
+aplicación necesita control total sobre las URL, documenta las acciones y
+deja que la aplicación defina sus propias rutas.
 
 ## Eventos
 
-Use `config/events.php`, `config/events-web.php`, or
-`config/events-console.php` to attach package handlers to events:
+Usa `config/events.php`, `config/events-web.php` o
+`config/events-console.php` para asociar los manejadores del paquete a
+eventos:
 
 ```php
 <?php
@@ -298,15 +309,16 @@ return [
 ];
 ```
 
-Handlers can be closures, callables, invokable objects, invokable class
-names, or DI aliases supported by the event dispatcher configuration. Prefer
-class names for package handlers because applications can override their
-dependencies through the container.
+Los manejadores pueden ser closures, callables, objetos invocables, nombres
+de clases invocables o alias DI admitidos por la configuración del
+despachador de eventos. Para los manejadores de paquetes, es preferible usar
+nombres de clase, porque las aplicaciones pueden sobrescribir sus
+dependencias a través del contenedor.
 
 ## Assets
 
-If your package ships CSS, JavaScript, images, or fonts, define asset
-bundles as PHP classes. For example, place this class in
+Si tu paquete incluye CSS, JavaScript, imágenes o fuentes, define paquetes
+de assets como clases PHP. Por ejemplo, coloca esta clase en
 `src/Asset/BlogAsset.php`:
 
 ```php
@@ -334,22 +346,24 @@ final class BlogAsset extends AssetBundle
 }
 ```
 
-Users can register the bundle from a view, widget, view injection, or
-action:
+Los usuarios pueden registrar el paquete de assets desde una vista, un
+widget, una inyección de vista o una acción:
 
 ```php
 $assetManager->register(BlogAsset::class);
 ```
 
-Use `$sourcePath` for files shipped inside the package. Use `$basePath` and
-`$baseUrl` as the public target where the asset manager publishes them.
+Usa `$sourcePath` para los archivos incluidos en el paquete. Usa `$basePath`
+y `$baseUrl` como el destino público en el que el gestor de assets los
+publica.
 
-## Migrations
+## Migraciones
 
-Packages that need database schema changes should ship migrations and add
-their namespace or path to `yiisoft/db-migration` parameters.
+Los paquetes que necesiten cambios en el esquema de la base de datos deben
+incluir migraciones y añadir su espacio de nombres o su ruta a los
+parámetros de `yiisoft/db-migration`.
 
-For namespaced migrations:
+Para migraciones con espacio de nombres:
 
 ```php
 <?php
@@ -365,7 +379,7 @@ return [
 ];
 ```
 
-For path-based migrations:
+Para migraciones basadas en rutas:
 
 ```php
 <?php
@@ -381,20 +395,22 @@ return [
 ];
 ```
 
-Put this in `config/params-console.php` and declare it as `params-console`
-in `composer.json`.
+Pon esto en `config/params-console.php` y decláralo como `params-console` en
+`composer.json`.
 
-This only contributes package migration locations. The application still
-needs `yiisoft/db-migration` installed and a database connection configured
-before migration commands can run.
+Esto solo aporta las ubicaciones de las migraciones del paquete. Para poder
+ejecutar los comandos de migración, la aplicación sigue necesitando tener
+instalado `yiisoft/db-migration` y una conexión a la base de datos
+configurada.
 
-Package migrations must be stable after release. Do not edit a migration
-that users may already have applied. Add a new migration instead.
+Las migraciones de un paquete deben permanecer estables una vez
+publicado. No edites una migración que los usuarios ya puedan haber
+aplicado. En su lugar, añade una migración nueva.
 
-## Translations
+## Traducciones
 
-If the package has user-facing messages, give it a dedicated translation
-category and register a category source in `config/di.php`:
+Si el paquete tiene mensajes dirigidos al usuario, asígnale una categoría de
+traducción propia y registra una fuente de categoría en `config/di.php`:
 
 ```php
 <?php
@@ -422,7 +438,7 @@ return [
 ];
 ```
 
-Store messages by locale and category:
+Guarda los mensajes por idioma (locale) y categoría:
 
 ```
 messages/
@@ -432,18 +448,19 @@ messages/
         vendor-blog.php
 ```
 
-Use the explicit category when translating:
+Usa la categoría explícita al traducir:
 
 ```php
 $translator->translate('post.created', category: 'vendor-blog');
 ```
 
-## Themes
+## Temas
 
-A package can ship view files and assets for a theme. Do not activate it
-from vendor package configuration. Instead, document the root application
-configuration needed to enable it. For the application template, this
-belongs in `config/web/params.php`:
+Un paquete puede incluir archivos de vista y assets para un tema. No lo
+actives desde la configuración del paquete de terceros. En su lugar,
+documenta la configuración de la aplicación raíz necesaria para
+activarlo. En la plantilla de aplicación, esto va en
+`config/web/params.php`:
 
 ```php
 <?php
@@ -463,21 +480,22 @@ return [
 ];
 ```
 
-Themes replace view paths according to a path map. Document which
-application view paths your theme replaces and which asset URL must be
-published or exposed by the application.
+Los temas sustituyen las rutas de las vistas según un mapa de
+rutas. Documenta qué rutas de vistas de la aplicación sustituye tu tema y
+qué URL de assets debe publicar o exponer la aplicación.
 
-Do not set `yiisoft/view.theme` directly in vendor package
-configuration. `yiisoft/view` already defines that key, and duplicate keys
-in the same configuration layer are not allowed.
+No establezcas `yiisoft/view.theme` directamente en la configuración del
+paquete de terceros. `yiisoft/view` ya define esa clave, y no se permiten
+claves duplicadas en la misma capa de configuración.
 
-If your package only provides optional theme files, do not make the theme
-active by default. Provide the view files, asset bundle, and a documented
-parameter snippet so the application can opt in.
+Si tu paquete solo proporciona archivos de tema opcionales, no actives el
+tema por defecto. Proporciona los archivos de vista, el paquete de assets y
+un fragmento de parámetros documentado para que la aplicación pueda
+activarlo si lo desea.
 
-## Console commands
+## Comandos de consola
 
-Console packages can add Symfony Console commands through
+Los paquetes de consola pueden añadir comandos de Symfony Console mediante
 `config/params-console.php`:
 
 ```php
@@ -496,41 +514,46 @@ return [
 ];
 ```
 
-Command names should be package-prefixed. Keep command dependencies
-constructor-injected and registered through DI.
+Los nombres de los comandos deben llevar como prefijo el del
+paquete. Inyecta las dependencias de los comandos por constructor y
+regístralas mediante DI.
 
-## Application overrides
+## Sobrescrituras de la aplicación
 
-Package configuration is the default layer. The application can override it
-in its root package configuration.  Design for that:
+La configuración del paquete es la capa predeterminada. La aplicación puede
+sobrescribirla en la configuración de su paquete raíz. Diseña teniéndolo en
+cuenta:
 
-- Use package-prefixed parameter keys, route names, event handler IDs, and
-  DI aliases.
-- Keep default configuration small and documented.
-- Avoid doing irreversible work during service registration.
-- Put optional integrations in separate config files or providers when they
-  require optional Composer packages.
-- Test the package inside a minimal Yii application so the config plugin, DI
-  container, routes, console commands, migrations, translations, and assets
-  are exercised together.
+- Usa claves de parámetros, nombres de rutas, identificadores de manejadores
+  de eventos y alias DI con el prefijo del paquete.
+- Mantén la configuración predeterminada pequeña y documentada.
+- Evita hacer trabajo irreversible durante el registro de servicios.
+- Pon las integraciones opcionales en archivos de configuración o
+  proveedores separados cuando requieran paquetes de Composer opcionales.
+- Prueba el paquete dentro de una aplicación Yii mínima para que el plugin
+  de configuración, el contenedor DI, las rutas, los comandos de consola,
+  las migraciones, las traducciones y los assets se pongan a prueba en
+  conjunto.
 
-When a user needs to customize package configuration, they usually do not
-need to copy the package config file. They can partially redefine the needed
-keys in the application configuration.
+Cuando un usuario necesita personalizar la configuración de un paquete,
+normalmente no necesita copiar el archivo de configuración del
+paquete. Puede redefinir parcialmente las claves necesarias en la
+configuración de la aplicación.
 
-After changing config group mappings, they should rebuild the merge plan
-with:
+Después de cambiar las asignaciones de los grupos de configuración, debe
+volver a generar el plan de fusión con:
 
 ```sh
 composer yii-config-rebuild
 ```
 
-## Releasing packages
+## Publicar paquetes
 
-Before tagging a release, test the package by itself and inside a minimal
-Yii application. Include a `README.md`, `CHANGELOG.md`, and `UPGRADE.md`
-when behavior or configuration changes require explanation.
+Antes de etiquetar una versión, prueba el paquete por sí solo y dentro de
+una aplicación Yii mínima. Incluye un `README.md`, un `CHANGELOG.md` y un
+`UPGRADE.md` cuando los cambios de comportamiento o de configuración
+requieran explicación.
 
-Use [semantic versioning](https://semver.org) for public releases. After the
-first release, do not edit migrations that users may already have applied;
-add new migrations instead.
+Usa el [versionado semántico](https://semver.org) para las versiones
+públicas. Tras la primera versión, no edites migraciones que los usuarios ya
+puedan haber aplicado; en su lugar, añade migraciones nuevas.
