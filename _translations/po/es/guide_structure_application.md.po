@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-12-27 03:24+0000\n"
-"PO-Revision-Date: 2025-09-04 11:19+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,29 +20,29 @@ msgstr ""
 #: ../src/guide/structure/application.md
 #, no-wrap
 msgid "Application"
-msgstr ""
+msgstr "Aplicación"
 
 #. type: Plain text
 #: ../src/guide/structure/application.md
 msgid "The primary purpose of the web application and its runner in Yii3 is to process requests to get responses."
-msgstr ""
+msgstr "El propósito principal de la aplicación web y de su runner en Yii3 es procesar solicitudes para obtener respuestas."
 
 #. type: Plain text
 #: ../src/guide/structure/application.md
 msgid "Typically, the runtime consists of:"
-msgstr ""
+msgstr "Normalmente, la ejecución consta de:"
 
 #. type: Bullet: '1. '
 #: ../src/guide/structure/application.md
 msgid "Startup. Get config, create an instance of container and do additional environment initialization such as registering error handler, so it can handle errors occurring. Fire `ApplicationStartup` event."
-msgstr ""
+msgstr "Arranque. Obtener la configuración, crear una instancia del contenedor y realizar inicializaciones adicionales del entorno, como registrar el manejador de errores para que pueda gestionar los errores que se produzcan. Lanzar el evento `ApplicationStartup`."
 
 #. type: Bullet: '2. '
 #: ../src/guide/structure/application.md
 msgid "Handle requests via passing request objects to middleware dispatcher to execute [middleware stack](middleware.md) and get a response object. In usual PHP applications, it's done once. In [environments such as RoadRunner](../tutorial/using-with-event-loop.md), it could be done multiple times with the same application instance. Response object is converted into an actual HTTP response by using emitter.  Fire `AfterEmit` event."
-msgstr ""
+msgstr "Gestionar las solicitudes pasando los objetos de solicitud al despachador de middlewares para que ejecute la [pila de middlewares](middleware.md) y obtener un objeto de respuesta. En las aplicaciones PHP habituales, esto se hace una sola vez. En [entornos como RoadRunner](../tutorial/using-with-event-loop.md), puede hacerse varias veces con la misma instancia de la aplicación. El objeto de respuesta se convierte en una respuesta HTTP real mediante un emisor. Lanzar el evento `AfterEmit`."
 
 #. type: Bullet: '3. '
 #: ../src/guide/structure/application.md
 msgid "Shutdown. Fire `ApplicationShutdown` event."
-msgstr ""
+msgstr "Cierre. Lanzar el evento `ApplicationShutdown`."

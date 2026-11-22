@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2025-12-24 08:02+0000\n"
-"PO-Revision-Date: 2025-09-05 12:25+0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-19 09:00+0000\n"
+"Last-Translator: Pedro Flores\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -33,23 +33,17 @@ msgstr "Referencias"
 #: ../src/en/guide/concept/autoloading.md
 #, no-wrap
 msgid "Class autoloading"
-msgstr "Autocarga de Clases (Autoloading)"
+msgstr "Autocarga de clases"
 
 #. type: Plain text
 #: ../src/en/guide/concept/autoloading.md
 msgid "Since Yii uses [Composer](https://getcomposer.org) to manage packages, it automatically loads classes from these packages without the need to `require` their file explicitly.  When it installs packages, it generates a [PSR-4 compatible autoloader](https://www.php-fig.org/psr/psr-4/).  To use it, `require_once` autoloader `/vendor/autoload.php` in your `index.php` entry point file."
-msgstr ""
-"Dado que Yii utiliza [Composer](https://getcomposer.org) para administar paquetes, las clases de esos paquetes son automaticamente\n"
-"cargados sin la necesidad de ser incluidos utilizando `require` para cada uno de ellos. Cuando los paquetes son instalados,\n"
-"un [autocargador compatible con PSR-0](https://www.php-fig.org/psr/psr-4/) es generado. Para usarlo,\n"
-"se debe invocar el autocargador `/vendor/autoload.php` con `require_once` en el script de entrada `index.php`."
+msgstr "Dado que Yii utiliza [Composer](https://getcomposer.org) para administrar paquetes, las clases de esos paquetes se cargan automáticamente sin necesidad de incluirlas con `require` una a una. Cuando los paquetes son instalados, un [autocargador compatible con PSR-4](https://www.php-fig.org/psr/psr-4/) es generado. Para usarlo, se debe invocar el autocargador `/vendor/autoload.php` con `require_once` en el script de entrada `index.php`."
 
 #. type: Plain text
 #: ../src/en/guide/concept/autoloading.md
 msgid "You can use autoloader not only for the packages installed, but for your application as well since it's also a package.  To load classes of a certain namespace, add the following to `composer.json`:"
-msgstr ""
-"El autocargador no se utiliza solamente para los paquetes que se instalan, tambien se utiliza para su aplicación que también es un paquete.\n"
-"Para cargar clases desde cierto espacio de nombres (namespaces), lo siguiente debe ser añadido a `composer.json`:"
+msgstr "El autocargador no se utiliza solamente para los paquetes que se instalan, también se utiliza para tu aplicación que también es un paquete. Para cargar clases desde cierto espacio de nombres (namespaces), lo siguiente debe ser añadido a `composer.json`:"
 
 #. type: Fenced code block (json)
 #: ../src/en/guide/concept/autoloading.md
@@ -74,14 +68,12 @@ msgstr ""
 #. type: Plain text
 #: ../src/en/guide/concept/autoloading.md
 msgid "Where `App\\\\` is a root namespace and `src/` is a directory where you have your classes. You can add more source roots if needed. When done, execute `composer dump-autoload` or simply `composer du` and classes from the corresponding namespaces will start loading automatically."
-msgstr ""
-"Donde `App\\\\` es el espacio de nombre raiz (namespace), y `src/` es la carpeta donde se ubican las clases. Se pueden añadir distintos namespaces y carpetas si es necesario.\n"
-"Una vez listo, ejecuta `composer dump-autoload` y las clases de los espacios de nombres serán cargados automaticamente."
+msgstr "Donde `App\\\\` es el espacio de nombres raíz (namespace), y `src/` es la carpeta donde se ubican las clases. Se pueden añadir distintos namespaces y carpetas si es necesario. Una vez listo, ejecuta `composer dump-autoload` o simplemente `composer du`, y las clases de los espacios de nombres correspondientes se cargarán automáticamente."
 
 #. type: Plain text
 #: ../src/en/guide/concept/autoloading.md
 msgid "If you need development-environment-specific autoloading that isn't used when executing Composer with `--no-dev` flag, add it to `autoload-dev` section instead of `autoload`."
-msgstr ""
+msgstr "Si necesitas una autocarga específica del entorno de desarrollo que no se use al ejecutar Composer con la opción `--no-dev`, añádela a la sección `autoload-dev` en lugar de a `autoload`."
 
 #. type: Bullet: '- '
 #: ../src/en/guide/concept/autoloading.md

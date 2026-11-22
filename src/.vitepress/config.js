@@ -293,6 +293,7 @@ export default {
             }
         },
         es: {
+            title: 'Documentación de Yii3',
             label: 'Español',
             lang: 'es',
             link: '/es/',
@@ -309,20 +310,21 @@ export default {
                             text: 'Introducción',
                             items: [
                                 {text: 'Acerca de Yii', link: '/es/guide/intro/what-is-yii'},
-                                {text: 'Actualización desde la versión 2', link: '/es/guide/intro/upgrade-from-v2'}
+                                {text: 'Actualizar desde la versión 1.1', link: '/es/guide/intro/upgrade-from-v1'},
+                                {text: 'Actualizar desde la versión 2.0', link: '/es/guide/intro/upgrade-from-v2'}
                             ]
                         },
                         {
                             text: 'Primeros pasos',
                             items: [
-                                {text: 'Prerrequisitos', link: '/es/guide/start/prerequisites'},
-                                {text: 'Creando un proyecto', link: '/es/guide/start/creating-project'},
-                                {text: 'Diciendo Hola', link: '/es/guide/start/hello'},
-                                {text: 'Trabajando con formularios', link: '/es/guide/start/forms'},
-                                {text: 'Trabajando con bases de datos', link: '/es/guide/start/databases'},
-                                {text: 'Generando código con Gii', link: '/es/guide/start/gii'},
-                                {text: 'Mirando hacia adelante', link: '/es/guide/start/looking-ahead'},
+                                {text: '¿Qué necesitas saber?', link: '/es/guide/start/prerequisites'},
+                                {text: 'Crear un proyecto', link: '/es/guide/start/creating-project'},
                                 {text: 'Flujo de trabajo de la aplicación', link: '/es/guide/start/workflow'},
+                                {text: 'Decir hola', link: '/es/guide/start/hello'},
+                                {text: 'Trabajar con formularios', link: '/es/guide/start/forms'},
+                                {text: 'Trabajar con bases de datos', link: '/es/guide/start/databases'},
+                                {text: 'Generar código con Gii', link: '/es/guide/start/gii'},
+                                {text: 'Próximos pasos', link: '/es/guide/start/looking-ahead'},
                                 {text: 'Aplicaciones de demostración', link: '/es/guide/start/demo-apps'}
                             ]
                         },
@@ -343,11 +345,16 @@ export default {
                                 {text: 'Resumen', link: '/es/guide/structure/overview'},
                                 {text: 'Script de entrada', link: '/es/guide/structure/entry-script'},
                                 {text: 'Aplicación', link: '/es/guide/structure/application'},
+                                {text: 'Módulo', link: '/es/guide/structure/module'},
                                 {text: 'Acción', link: '/es/guide/structure/action'},
-                                {text: 'Middleware', link: '/es/guide/structure/middleware'},
-                                {text: 'Dominio', link: '/es/guide/structure/domain'},
-                                {text: 'Servicio', link: '/es/guide/structure/service'},
-                                {text: 'Paquete', link: '/es/guide/structure/package'}
+                                {text: 'Middleware', link: '/es/guide/structure/middleware'}
+                            ]
+                        },
+                        {
+                            text: 'Paquetes',
+                            items: [
+                                {text: 'Usar paquetes', link: '/es/guide/structure/package'},
+                                {text: 'Diseñar paquetes', link: '/es/guide/structure/designing-packages'}
                             ]
                         },
                         {
@@ -363,15 +370,21 @@ export default {
                             ]
                         },
                         {
+                            text: 'API REST',
+                            items: [
+                                {text: 'Inicio rápido', link: '/es/guide/rest/quick-start'}
+                            ]
+                        },
+                        {
                             text: 'Seguridad',
                             items: [
                                 {text: 'Resumen', link: '/es/guide/security/overview'},
                                 {text: 'Autenticación', link: '/es/guide/security/authentication'},
                                 {text: 'Autorización', link: '/es/guide/security/authorization'},
-                                {text: 'Trabajando con contraseñas', link: '/es/guide/security/passwords'},
+                                {text: 'Trabajar con contraseñas', link: '/es/guide/security/passwords'},
                                 {text: 'Criptografía', link: '/es/guide/security/cryptography'},
-                                {text: 'Solicitud confiable', link: '/es/guide/security/trusted-request'},
-                                {text: 'Mejores prácticas', link: '/es/guide/security/best-practices'}
+                                {text: 'Solicitud de confianza', link: '/es/guide/security/trusted-request'},
+                                {text: 'Buenas prácticas', link: '/es/guide/security/best-practices'}
                             ]
                         },
                         {
@@ -382,8 +395,10 @@ export default {
                             ]
                         },
                         {
-                            text: 'Trabajando con bases de datos',
+                            text: 'Trabajar con bases de datos',
                             items: [
+                                {text: 'Yii DB', link: 'https://github.com/yiisoft/db/blob/master/docs/guide/en/README.md'},
+                                {text: 'Active Record', link: 'https://github.com/yiisoft/active-record/blob/master/README.md'},
                                 {text: 'Migraciones de base de datos', link: '/es/guide/databases/db-migrations'}
                             ]
                         },
@@ -392,10 +407,21 @@ export default {
                             items: [
                                 {text: 'Vistas', link: '/es/guide/views/view'},
                                 {text: 'Assets', link: '/es/guide/views/asset'},
-                                {text: 'Scripts, estilos y meta tags', link: '/es/guide/views/script-style-meta'},
+                                {text: 'Scripts, estilos y metaetiquetas', link: '/es/guide/views/script-style-meta'},
                                 {text: 'Motores de plantillas', link: '/es/guide/views/template-engines'},
                                 {text: 'Inyecciones de vista', link: '/es/guide/views/view-injections'},
                                 {text: 'Widgets', link: '/es/guide/views/widget'}
+                            ]
+                        },
+                        {
+                            text: 'Pruebas',
+                            items: [
+                                {text: 'Resumen de las pruebas', link: '/es/guide/testing/overview'},
+                                {text: 'Configuración del entorno de pruebas', link: '/es/guide/testing/environment-setup'},
+                                {text: 'Pruebas unitarias', link: '/es/guide/testing/unit'},
+                                {text: 'Pruebas funcionales', link: '/es/guide/testing/functional'},
+                                {text: 'Pruebas de extremo a extremo', link: '/es/guide/testing/end-to-end'},
+                                {text: 'Análisis estático y pruebas de mutación', link: '/es/guide/testing/quality-tools'}
                             ]
                         },
                         {
@@ -404,9 +430,25 @@ export default {
                                 {text: 'Aplicaciones de consola', link: '/es/guide/tutorial/console-applications'},
                                 {text: 'Envío de correo', link: '/es/guide/tutorial/mailing'},
                                 {text: 'Optimización del rendimiento', link: '/es/guide/tutorial/performance-tuning'},
-                                {text: 'Usando con bucle de eventos', link: '/es/guide/tutorial/using-with-event-loop'},
-                                {text: 'Usando Yii con RoadRunner', link: '/es/guide/tutorial/using-yii-with-roadrunner'},
-                                {text: 'Usando Yii con Swoole', link: '/es/guide/tutorial/using-yii-with-swoole'}
+                                {text: 'Usar Yii con un bucle de eventos', link: '/es/guide/tutorial/using-with-event-loop'},
+                                {text: 'Usar Yii con FrankenPHP', link: '/es/guide/tutorial/using-yii-with-frankenphp'},
+                                {text: 'Usar Yii con Rapira', link: '/es/guide/tutorial/using-yii-with-rapira'},
+                                {text: 'Usar Yii con RoadRunner', link: '/es/guide/tutorial/using-yii-with-roadrunner'},
+                                {text: 'Usar Yii con Swoole', link: '/es/guide/tutorial/using-yii-with-swoole'},
+                                {text: 'Docker en las plantillas de aplicación', link: '/es/guide/tutorial/docker'},
+                                {text: 'Internacionalización', link: '/es/guide/tutorial/i18n'}
+                            ]
+                        },
+                        {
+                            text: 'Helpers',
+                            items: [
+                                {text: 'Arrays', link: 'https://github.com/yiisoft/arrays/'},
+                                {text: 'Archivos', link: 'https://github.com/yiisoft/files/'},
+                                {text: 'Html', link: 'https://github.com/yiisoft/html/'},
+                                {text: 'Json', link: 'https://github.com/yiisoft/json'},
+                                {text: 'Utilidades de red', link: 'https://github.com/yiisoft/network-utilities/'},
+                                {text: 'VarDumper', link: 'https://github.com/yiisoft/var-dumper'},
+                                {text: 'Cadenas', link: 'https://github.com/yiisoft/strings'}
                             ]
                         },
                         {
@@ -419,13 +461,27 @@ export default {
                             text: 'Recetario',
                             items: [
                                 {text: 'Prefacio', link: '/es/cookbook/preface'},
-                                {text: 'Haciendo solicitudes HTTP', link: '/es/cookbook/making-http-requests'},
-                                {text: 'Deshabilitando la protección CSRF', link: '/es/cookbook/disabling-csrf-protection'},
-                                {text: 'Integración con Sentry', link: '/es/cookbook/sentry-integration'}
+                                {text: 'Hacer solicitudes HTTP', link: '/es/cookbook/making-http-requests'},
+                                {text: 'Usar htmx para recargas parciales de página', link: '/es/cookbook/using-htmx-for-partial-reloads'},
+                                {text: 'Desactivar la protección CSRF', link: '/es/cookbook/disabling-csrf-protection'},
+                                {text: 'Integración con Sentry', link: '/es/cookbook/sentry-integration'},
+                                {text: 'Usar una plantilla de migración personalizada', link: '/es/cookbook/custom-migration-template'},
+                                {text: 'Type casters personalizados del hidratador', link: '/es/cookbook/custom-hydrator-type-casters'},
+                                {text: 'Usar Yii en aplicaciones de terceros', link: '/es/cookbook/using-yii-in-third-party-apps'},
+                                {text: 'Integraciones de terceros', link: '/es/cookbook/third-party-integrations/'}
                             ]
                         },
                         {
-                            text: 'Configurando servidores web',
+                            text: 'Entorno del desarrollador',
+                            collapsed: false,
+                            items: [
+                                {text: 'Trabajar en Windows', link: '/es/cookbook/working-on-windows'},
+                                {text: 'Abrir archivos en PhpStorm', link: '/es/cookbook/opening-files-in-phpstorm'},
+                                {text: 'Configurar Xdebug', link: '/es/cookbook/configuring-xdebug'}
+                            ]
+                        },
+                        {
+                            text: 'Configurar servidores web',
                             collapsed: false,
                             items: [
                                 {text: 'General', link: '/es/cookbook/configuring-webservers/general'},
@@ -437,15 +493,20 @@ export default {
                             ]
                         },
                         {
-                            text: 'Organizando código',
+                            text: 'Organizar el código',
                             items: [
-                                {text: 'Rebanadas verticales', link: '/es/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'}
+                                {text: 'Porciones verticales', link: '/es/cookbook/organizing-code/structuring-by-use-case-with-vertical-slices'},
+                                {text: 'Dominio', link: '/es/cookbook/organizing-code/domain'},
+                                {text: 'Servicio', link: '/es/cookbook/organizing-code/service'}
                             ]
                         },
                         {
                             text: 'Despliegue',
                             items: [
-                                {text: 'Docker Swarm', link: '/es/cookbook/deployment/docker-swarm'}
+                                {text: 'Docker Swarm', link: '/es/cookbook/deployment/docker-swarm'},
+                                {text: 'Angie Docker Proxy', link: '/es/cookbook/deployment/angie-docker-proxy'},
+                                {text: 'Autoescalado', link: '/es/cookbook/deployment/autoscaling'},
+                                {text: 'Migraciones con actualizaciones continuas', link: '/es/cookbook/deployment/rolling-update-migrations'}
                             ]
                         }
                     ],
@@ -475,7 +536,8 @@ export default {
                                 {text: 'Estilo de código de vista', link: '/es/internals/019-view-code-style'},
                                 {text: 'Lanzamiento de paquete', link: '/es/internals/020-package-release'},
                                 {text: 'Registro de cambios y actualización', link: '/es/internals/021-changelog-upgrade'},
-                                {text: 'Grupos de configuración', link: '/es/internals/022-config-groups'}
+                                {text: 'Grupos de configuración', link: '/es/internals/022-config-groups'},
+                                {text: 'GitHub Actions', link: '/es/internals/023-github-actions'}
                             ]
                         }
                     ]
@@ -483,6 +545,35 @@ export default {
                 footer: {
                     message: 'Publicado bajo la <a href="https://github.com/yiisoft/docs/blob/master/LICENSE.md">Licencia BSD-3-Clause</a>.',
                     copyright: `Copyright © 2008-${currentYear} <a href="https://www.yiiframework.com/">Yii</a>`
+                },
+                docFooter: {
+                    prev: 'Página anterior',
+                    next: 'Página siguiente',
+                },
+                outline: {
+                    label: 'En esta página'
+                },
+                lastUpdated: {
+                    text: 'Última actualización'
+                },
+                search: {
+                    options: {
+                        translations: {
+                            button: {
+                                buttonText: 'Buscar',
+                                buttonAriaLabel: 'Buscar'
+                            },
+                            modal: {
+                                noResultsText: 'No hay resultados para',
+                                resetButtonTitle: 'Borrar la búsqueda',
+                                footer: {
+                                    selectText: 'seleccionar',
+                                    navigateText: 'navegar',
+                                    closeText: 'cerrar'
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
