@@ -556,3 +556,68 @@ Route::get('/posts[/{id}]')->defaults(['id' => '1']);
 ```
 
 Optional parts are only supported in a trailing position, not in the middle of a route.
+
+### Variable number of path segments
+
+If the number of path segments is small and known, use nested trailing optional parts. This keeps both matching and URL
+generation predictable:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\Docs\PageAction;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/docs[/{section}[/{page}]]')
+        ->action(PageAction::class)
+        ->name('docs/page'),
+];
+```
+
+This route matches `/docs`, `/docs/guide`, and `/docs/guide/routing`. Generate URLs by passing the arguments you need:
+
+```php
+echo $urlGenerator->generate('docs/page');
+// "/docs"
+
+echo $urlGenerator->generate('docs/page', ['section' => 'guide']);
+// "/docs/guide"
+
+echo $urlGenerator->generate('docs/page', [
+    'section' => 'guide',
+    'page' => 'routing',
+]);
+// "/docs/guide/routing"
+```
+
+For arbitrary-depth paths, a regular expression argument can match slashes:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Web\File\ViewAction;
+use Yiisoft\Router\Route;
+
+return [
+    Route::get('/files/{path:.+}')
+        ->action(ViewAction::class)
+        ->name('files/path'),
+];
+```
+
+The route above matches `/files/2026/report.pdf` with `path` equal to `2026/report.pdf`.
+
+Use this pattern carefully for generated URLs. When generating a URL, the argument value is URL-encoded, so:
+
+```php
+echo $urlGenerator->generate('files/path', ['path' => '2026/report.pdf']);
+// "/files/2026%2Freport.pdf"
+```
+
+If you need generated URLs that keep each path segment visible as `/`, prefer a bounded route with optional parts, a
+dedicated route for each public URL shape, or query parameters for arbitrary paths.
